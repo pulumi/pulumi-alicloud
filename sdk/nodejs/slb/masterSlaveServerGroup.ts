@@ -30,12 +30,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const msServerGroupZones = alicloud.getZones({
+ * const msServerGroup = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * });
- * const msServerGroupInstanceTypes = msServerGroupZones.then(msServerGroupZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: msServerGroupZones.zones?.[0]?.id,
+ * const msServerGroupGetInstanceTypes = msServerGroup.then(msServerGroup => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: msServerGroup.zones?.[0]?.id,
  *     eniAmount: 2,
  * }));
  * const image = alicloud.ecs.getImages({
@@ -45,48 +45,52 @@ import * as utilities from "../utilities";
  * });
  * const config = new pulumi.Config();
  * const slbMasterSlaveServerGroup = config.get("slbMasterSlaveServerGroup") || "forSlbMasterSlaveServerGroup";
- * const mainNetwork = new alicloud.vpc.Network("mainNetwork", {
+ * const main = new alicloud.vpc.Network("main", {
  *     vpcName: slbMasterSlaveServerGroup,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const mainSwitch = new alicloud.vpc.Switch("mainSwitch", {
- *     vpcId: mainNetwork.id,
+ * const mainSwitch = new alicloud.vpc.Switch("main", {
+ *     vpcId: main.id,
  *     cidrBlock: "172.16.0.0/16",
- *     zoneId: msServerGroupZones.then(msServerGroupZones => msServerGroupZones.zones?.[0]?.id),
+ *     zoneId: msServerGroup.then(msServerGroup => msServerGroup.zones?.[0]?.id),
  *     vswitchName: slbMasterSlaveServerGroup,
  * });
- * const groupSecurityGroup = new alicloud.ecs.SecurityGroup("groupSecurityGroup", {vpcId: mainNetwork.id});
+ * const group = new alicloud.ecs.SecurityGroup("group", {
+ *     name: slbMasterSlaveServerGroup,
+ *     vpcId: main.id,
+ * });
  * const msServerGroupInstance: alicloud.ecs.Instance[] = [];
  * for (const range = {value: 0}; range.value < 2; range.value++) {
- *     msServerGroupInstance.push(new alicloud.ecs.Instance(`msServerGroupInstance-${range.value}`, {
+ *     msServerGroupInstance.push(new alicloud.ecs.Instance(`ms_server_group-${range.value}`, {
  *         imageId: image.then(image => image.images?.[0]?.id),
- *         instanceType: msServerGroupInstanceTypes.then(msServerGroupInstanceTypes => msServerGroupInstanceTypes.instanceTypes?.[0]?.id),
+ *         instanceType: msServerGroupGetInstanceTypes.then(msServerGroupGetInstanceTypes => msServerGroupGetInstanceTypes.instanceTypes?.[0]?.id),
  *         instanceName: slbMasterSlaveServerGroup,
- *         securityGroups: [groupSecurityGroup.id],
+ *         securityGroups: [group.id],
  *         internetChargeType: "PayByTraffic",
  *         internetMaxBandwidthOut: 10,
- *         availabilityZone: msServerGroupZones.then(msServerGroupZones => msServerGroupZones.zones?.[0]?.id),
+ *         availabilityZone: msServerGroup.then(msServerGroup => msServerGroup.zones?.[0]?.id),
  *         instanceChargeType: "PostPaid",
  *         systemDiskCategory: "cloud_efficiency",
  *         vswitchId: mainSwitch.id,
  *     }));
  * }
- * const msServerGroupApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("msServerGroupApplicationLoadBalancer", {
+ * const msServerGroupApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("ms_server_group", {
  *     loadBalancerName: slbMasterSlaveServerGroup,
  *     vswitchId: mainSwitch.id,
  *     loadBalancerSpec: "slb.s2.small",
  * });
- * const msServerGroupEcsNetworkInterface = new alicloud.ecs.EcsNetworkInterface("msServerGroupEcsNetworkInterface", {
+ * const msServerGroupEcsNetworkInterface = new alicloud.ecs.EcsNetworkInterface("ms_server_group", {
  *     networkInterfaceName: slbMasterSlaveServerGroup,
  *     vswitchId: mainSwitch.id,
- *     securityGroupIds: [groupSecurityGroup.id],
+ *     securityGroupIds: [group.id],
  * });
- * const msServerGroupEcsNetworkInterfaceAttachment = new alicloud.ecs.EcsNetworkInterfaceAttachment("msServerGroupEcsNetworkInterfaceAttachment", {
+ * const msServerGroupEcsNetworkInterfaceAttachment = new alicloud.ecs.EcsNetworkInterfaceAttachment("ms_server_group", {
  *     instanceId: msServerGroupInstance[0].id,
  *     networkInterfaceId: msServerGroupEcsNetworkInterface.id,
  * });
- * const groupMasterSlaveServerGroup = new alicloud.slb.MasterSlaveServerGroup("groupMasterSlaveServerGroup", {
+ * const groupMasterSlaveServerGroup = new alicloud.slb.MasterSlaveServerGroup("group", {
  *     loadBalancerId: msServerGroupApplicationLoadBalancer.id,
+ *     name: slbMasterSlaveServerGroup,
  *     servers: [
  *         {
  *             serverId: msServerGroupInstance[0].id,

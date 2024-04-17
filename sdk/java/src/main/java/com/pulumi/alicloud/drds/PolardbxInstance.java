@@ -56,17 +56,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *         var example = new Network(&#34;example&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
  *             .build());
  * 
  *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
- *             .vpcId(exampleNetwork.id())
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .vpcId(example.id())
+ *             .zoneId(default_.zones()[0].id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
  *             .vswitchName(name)
  *             .build());
@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *             .dnNodeCount(&#34;2&#34;)
  *             .secondaryZone(&#34;ap-southeast-1b&#34;)
  *             .tertiaryZone(&#34;ap-southeast-1c&#34;)
- *             .vpcId(exampleNetwork.id())
+ *             .vpcId(example.id())
  *             .build());
  * 
  *     }

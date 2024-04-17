@@ -133,18 +133,18 @@ class Snapshot(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_images = alicloud.simpleapplicationserver.get_images()
-        default_server_plans = alicloud.simpleapplicationserver.get_server_plans()
-        default_instance = alicloud.simpleapplicationserver.Instance("defaultInstance",
+        default = alicloud.simpleapplicationserver.get_images()
+        default_get_server_plans = alicloud.simpleapplicationserver.get_server_plans()
+        default_instance = alicloud.simpleapplicationserver.Instance("default",
             payment_type="Subscription",
-            plan_id=default_server_plans.plans[0].id,
+            plan_id=default_get_server_plans.plans[0].id,
             instance_name=name,
-            image_id=default_images.images[0].id,
+            image_id=default.images[0].id,
             period=1,
             data_disk_size=100)
-        default_server_disks = alicloud.simpleapplicationserver.get_server_disks_output(instance_id=default_instance.id)
-        default_snapshot = alicloud.simpleapplicationserver.Snapshot("defaultSnapshot",
-            disk_id=default_server_disks.ids[0],
+        default_get_server_disks = alicloud.simpleapplicationserver.get_server_disks_output(instance_id=default_instance.id)
+        default_snapshot = alicloud.simpleapplicationserver.Snapshot("default",
+            disk_id=default_get_server_disks.ids[0],
             snapshot_name=name)
         ```
         <!--End PulumiCodeChooser -->
@@ -188,18 +188,18 @@ class Snapshot(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_images = alicloud.simpleapplicationserver.get_images()
-        default_server_plans = alicloud.simpleapplicationserver.get_server_plans()
-        default_instance = alicloud.simpleapplicationserver.Instance("defaultInstance",
+        default = alicloud.simpleapplicationserver.get_images()
+        default_get_server_plans = alicloud.simpleapplicationserver.get_server_plans()
+        default_instance = alicloud.simpleapplicationserver.Instance("default",
             payment_type="Subscription",
-            plan_id=default_server_plans.plans[0].id,
+            plan_id=default_get_server_plans.plans[0].id,
             instance_name=name,
-            image_id=default_images.images[0].id,
+            image_id=default.images[0].id,
             period=1,
             data_disk_size=100)
-        default_server_disks = alicloud.simpleapplicationserver.get_server_disks_output(instance_id=default_instance.id)
-        default_snapshot = alicloud.simpleapplicationserver.Snapshot("defaultSnapshot",
-            disk_id=default_server_disks.ids[0],
+        default_get_server_disks = alicloud.simpleapplicationserver.get_server_disks_output(instance_id=default_instance.id)
+        default_snapshot = alicloud.simpleapplicationserver.Snapshot("default",
+            disk_id=default_get_server_disks.ids[0],
             snapshot_name=name)
         ```
         <!--End PulumiCodeChooser -->

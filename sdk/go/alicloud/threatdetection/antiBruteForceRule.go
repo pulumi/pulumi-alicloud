@@ -37,12 +37,12 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := threatdetection.NewAntiBruteForceRule(ctx, "default", &threatdetection.AntiBruteForceRuleArgs{
 //				AntiBruteForceRuleName: pulumi.String("apispec_example"),
-//				FailCount:              pulumi.Int(80),
 //				ForbiddenTime:          pulumi.Int(360),
-//				Span:                   pulumi.Int(10),
 //				UuidLists: pulumi.StringArray{
 //					pulumi.String("032b618f-b220-4a0d-bd37-fbdc6ef58b6a"),
 //				},
+//				FailCount: pulumi.Int(80),
+//				Span:      pulumi.Int(10),
 //			})
 //			if err != nil {
 //				return err

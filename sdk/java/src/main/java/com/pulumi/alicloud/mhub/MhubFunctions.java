@@ -54,7 +54,7 @@ public final class MhubFunctions {
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
      *         var default_ = new App(&#34;default&#34;, AppArgs.builder()        
      *             .appName(name)
-     *             .productId(alicloud_mhub_product.default().id())
+     *             .productId(defaultAlicloudMhubProduct.id())
      *             .packageName(&#34;com.test.android&#34;)
      *             .type(&#34;2&#34;)
      *             .build());
@@ -113,7 +113,7 @@ public final class MhubFunctions {
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
      *         var default_ = new App(&#34;default&#34;, AppArgs.builder()        
      *             .appName(name)
-     *             .productId(alicloud_mhub_product.default().id())
+     *             .productId(defaultAlicloudMhubProduct.id())
      *             .packageName(&#34;com.test.android&#34;)
      *             .type(&#34;2&#34;)
      *             .build());
@@ -172,7 +172,7 @@ public final class MhubFunctions {
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
      *         var default_ = new App(&#34;default&#34;, AppArgs.builder()        
      *             .appName(name)
-     *             .productId(alicloud_mhub_product.default().id())
+     *             .productId(defaultAlicloudMhubProduct.id())
      *             .packageName(&#34;com.test.android&#34;)
      *             .type(&#34;2&#34;)
      *             .build());
@@ -231,7 +231,7 @@ public final class MhubFunctions {
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
      *         var default_ = new App(&#34;default&#34;, AppArgs.builder()        
      *             .appName(name)
-     *             .productId(alicloud_mhub_product.default().id())
+     *             .productId(defaultAlicloudMhubProduct.id())
      *             .packageName(&#34;com.test.android&#34;)
      *             .type(&#34;2&#34;)
      *             .build());

@@ -21,34 +21,34 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ * const exampleInstance = new alicloud.cen.Instance("example", {
  *     cenInstanceName: name,
  *     description: "an example for cen",
  * });
- * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("example", {
  *     transitRouterName: name,
  *     cenId: exampleInstance.id,
  * });
- * const exampleTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", {transitRouterId: exampleTransitRouter.transitRouterId});
- * const examplePhysicalConnections = alicloud.expressconnect.getPhysicalConnections({
+ * const exampleTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("example", {transitRouterId: exampleTransitRouter.transitRouterId});
+ * const example = alicloud.expressconnect.getPhysicalConnections({
  *     nameRegex: "^preserved-NODELETING",
  * });
- * const vlanId = new random.RandomInteger("vlanId", {
+ * const vlanId = new random.index.Integer("vlan_id", {
  *     max: 2999,
  *     min: 1,
  * });
- * const exampleVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter", {
+ * const exampleVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("example", {
  *     localGatewayIp: "10.0.0.1",
  *     peerGatewayIp: "10.0.0.2",
  *     peeringSubnetMask: "255.255.255.252",
- *     physicalConnectionId: examplePhysicalConnections.then(examplePhysicalConnections => examplePhysicalConnections.connections?.[0]?.id),
+ *     physicalConnectionId: example.then(example => example.connections?.[0]?.id),
  *     virtualBorderRouterName: name,
  *     vlanId: vlanId.id,
  *     minRxInterval: 1000,
  *     minTxInterval: 1000,
  *     detectMultiplier: 10,
  * });
- * const exampleTransitRouterVbrAttachment = new alicloud.cen.TransitRouterVbrAttachment("exampleTransitRouterVbrAttachment", {
+ * const exampleTransitRouterVbrAttachment = new alicloud.cen.TransitRouterVbrAttachment("example", {
  *     vbrId: exampleVirtualBorderRouter.id,
  *     cenId: exampleInstance.id,
  *     transitRouterId: exampleTransitRouter.transitRouterId,
@@ -56,7 +56,7 @@ import * as utilities from "../utilities";
  *     transitRouterAttachmentName: name,
  *     transitRouterAttachmentDescription: name,
  * });
- * const exampleTransitRouterRouteEntry = new alicloud.cen.TransitRouterRouteEntry("exampleTransitRouterRouteEntry", {
+ * const exampleTransitRouterRouteEntry = new alicloud.cen.TransitRouterRouteEntry("example", {
  *     transitRouterRouteTableId: exampleTransitRouterRouteTable.transitRouterRouteTableId,
  *     transitRouterRouteEntryDestinationCidrBlock: "192.168.0.0/24",
  *     transitRouterRouteEntryNextHopType: "Attachment",

@@ -33,16 +33,12 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.Provider;
- * import com.pulumi.alicloud.ProviderArgs;
- * import com.pulumi.alicloud.inputs.ProviderAssumeRoleArgs;
  * import com.pulumi.alicloud.cloudconnect.Network;
  * import com.pulumi.alicloud.cloudconnect.NetworkArgs;
  * import com.pulumi.alicloud.cen.Instance;
  * import com.pulumi.alicloud.cen.InstanceArgs;
  * import com.pulumi.alicloud.cloudconnect.NetworkGrant;
  * import com.pulumi.alicloud.cloudconnect.NetworkGrantArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -59,18 +55,6 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var cenUid = config.get(&#34;cenUid&#34;).orElse(123456789);
- *         var default_ = new Provider(&#34;default&#34;, ProviderArgs.builder()        
- *             .region(&#34;cn-shanghai&#34;)
- *             .build());
- * 
- *         // Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
- *         var cenAccount = new Provider(&#34;cenAccount&#34;, ProviderArgs.builder()        
- *             .region(&#34;cn-hangzhou&#34;)
- *             .assumeRole(ProviderAssumeRoleArgs.builder()
- *                 .roleArn(String.format(&#34;acs:ram::%s:role/terraform-example-assume-role&#34;, cenUid))
- *                 .build())
- *             .build());
- * 
  *         // Method 2: Use the target cen account&#39;s access_key, secret_key
  *         // provider &#34;alicloud&#34; {
  *         //   region     = &#34;cn-hangzhou&#34;
@@ -78,27 +62,22 @@ import javax.annotation.Nullable;
  *         //   secret_key = &#34;secret_key&#34;
  *         //   alias      = &#34;cen_account&#34;
  *         // }
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(name)
  *             .description(name)
  *             .cidrBlock(&#34;192.168.0.0/24&#34;)
  *             .isDefault(true)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.default())
- *                 .build());
+ *             .build());
  * 
  *         var cen = new Instance(&#34;cen&#34;, InstanceArgs.builder()        
  *             .cenInstanceName(name)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.cen_account())
- *                 .build());
+ *             .build());
  * 
  *         var defaultNetworkGrant = new NetworkGrant(&#34;defaultNetworkGrant&#34;, NetworkGrantArgs.builder()        
- *             .ccnId(defaultNetwork.id())
+ *             .ccnId(default_.id())
  *             .cenId(cen.id())
  *             .cenUid(cenUid)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.default())
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

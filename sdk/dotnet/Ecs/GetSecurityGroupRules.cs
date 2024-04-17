@@ -31,17 +31,20 @@ namespace Pulumi.AliCloud.Ecs
         /// {
         ///     var config = new Config();
         ///     var securityGroupId = config.RequireObject&lt;dynamic&gt;("securityGroupId");
+        ///     // Or get it from the alicloud_security_groups data source.
+        ///     // Please note that the data source arguments must be enough to filter results to one security group.
         ///     var groupsDs = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
         ///     {
         ///         NameRegex = "api",
         ///     });
         /// 
+        ///     // Filter the security group rule by group
         ///     var ingressRulesDs = AliCloud.Ecs.GetSecurityGroupRules.Invoke(new()
         ///     {
-        ///         Direction = "ingress",
         ///         GroupId = groupsDs.Apply(getSecurityGroupsResult =&gt; getSecurityGroupsResult.Groups[0]?.Id),
-        ///         IpProtocol = "tcp",
         ///         NicType = "internet",
+        ///         Direction = "ingress",
+        ///         IpProtocol = "tcp",
         ///     });
         /// 
         ///     // Pass port_range to the backend service
@@ -77,17 +80,20 @@ namespace Pulumi.AliCloud.Ecs
         /// {
         ///     var config = new Config();
         ///     var securityGroupId = config.RequireObject&lt;dynamic&gt;("securityGroupId");
+        ///     // Or get it from the alicloud_security_groups data source.
+        ///     // Please note that the data source arguments must be enough to filter results to one security group.
         ///     var groupsDs = AliCloud.Ecs.GetSecurityGroups.Invoke(new()
         ///     {
         ///         NameRegex = "api",
         ///     });
         /// 
+        ///     // Filter the security group rule by group
         ///     var ingressRulesDs = AliCloud.Ecs.GetSecurityGroupRules.Invoke(new()
         ///     {
-        ///         Direction = "ingress",
         ///         GroupId = groupsDs.Apply(getSecurityGroupsResult =&gt; getSecurityGroupsResult.Groups[0]?.Id),
-        ///         IpProtocol = "tcp",
         ///         NicType = "internet",
+        ///         Direction = "ingress",
+        ///         IpProtocol = "tcp",
         ///     });
         /// 
         ///     // Pass port_range to the backend service

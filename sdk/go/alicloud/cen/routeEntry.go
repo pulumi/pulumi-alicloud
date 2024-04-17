@@ -44,54 +44,55 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			example, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("Instance"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(exampleZones.Zones[0].Id),
+//			exampleGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(example.Zones[0].Id),
 //				CpuCoreCount:     pulumi.IntRef(1),
 //				MemorySize:       pulumi.Float64Ref(2),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//			exampleGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
 //				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
 //				Owners:    pulumi.StringRef("system"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.17.3.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(example.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String("terraform-example"),
 //				VpcId: exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstance, err := ecs.NewInstance(ctx, "exampleInstance", &ecs.InstanceArgs{
-//				AvailabilityZone: pulumi.String(exampleZones.Zones[0].Id),
+//			exampleInstance, err := ecs.NewInstance(ctx, "example", &ecs.InstanceArgs{
+//				AvailabilityZone: pulumi.String(example.Zones[0].Id),
 //				InstanceName:     pulumi.String("terraform-example"),
-//				ImageId:          pulumi.String(exampleImages.Images[0].Id),
-//				InstanceType:     pulumi.String(exampleInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:          pulumi.String(exampleGetImages.Images[0].Id),
+//				InstanceType:     pulumi.String(exampleGetInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroups: pulumi.StringArray{
 //					exampleSecurityGroup.ID(),
 //				},
@@ -101,15 +102,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewInstance(ctx, "exampleCen/instanceInstance", &cen.InstanceArgs{
+//			exampleInstance2, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String("tf_example"),
 //				Description:     pulumi.String("an example for cen"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "exampleInstanceAttachment", &cen.InstanceAttachmentArgs{
-//				InstanceId:            exampleCen / instanceInstance.Id,
+//			exampleInstanceAttachment, err := cen.NewInstanceAttachment(ctx, "example", &cen.InstanceAttachmentArgs{
+//				InstanceId:            exampleInstance2.ID(),
 //				ChildInstanceId:       exampleNetwork.ID(),
 //				ChildInstanceType:     pulumi.String("VPC"),
 //				ChildInstanceRegionId: pulumi.String(_default.Regions[0].Id),
@@ -117,7 +118,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleRouteEntry, err := vpc.NewRouteEntry(ctx, "exampleRouteEntry", &vpc.RouteEntryArgs{
+//			exampleRouteEntry, err := vpc.NewRouteEntry(ctx, "example", &vpc.RouteEntryArgs{
 //				RouteTableId:         exampleNetwork.RouteTableId,
 //				DestinationCidrblock: pulumi.String("11.0.0.0/16"),
 //				NexthopType:          pulumi.String("Instance"),
@@ -126,7 +127,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewRouteEntry(ctx, "exampleCen/routeEntryRouteEntry", &cen.RouteEntryArgs{
+//			_, err = cen.NewRouteEntry(ctx, "example", &cen.RouteEntryArgs{
 //				InstanceId:   exampleInstanceAttachment.InstanceId,
 //				RouteTableId: exampleNetwork.RouteTableId,
 //				CidrBlock:    exampleRouteEntry.DestinationCidrblock,

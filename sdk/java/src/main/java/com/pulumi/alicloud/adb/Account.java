@@ -56,18 +56,18 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var creation = config.get(&#34;creation&#34;).orElse(&#34;ADB&#34;);
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
- *         final var defaultZones = AdbFunctions.getZones();
+ *         final var default = AdbFunctions.getZones();
  * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
  *             .nameRegex(&#34;^default-NODELETING$&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(default_.ids()[0])
  *             .build());
  * 
- *         final var vswitchId = defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]);
+ *         final var vswitchId = defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]);
  * 
  *         var cluster = new DBCluster(&#34;cluster&#34;, DBClusterArgs.builder()        
  *             .dbClusterCategory(&#34;MixedStorage&#34;)

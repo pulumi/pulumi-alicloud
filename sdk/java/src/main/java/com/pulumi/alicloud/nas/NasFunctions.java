@@ -857,8 +857,8 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .descriptionRegex(alicloud_nas_file_system.foo().description())
      *             .protocolType(&#34;NFS&#34;)
+     *             .descriptionRegex(foo.description())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudNasFileSystemsId&#34;, fs.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
@@ -901,8 +901,8 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .descriptionRegex(alicloud_nas_file_system.foo().description())
      *             .protocolType(&#34;NFS&#34;)
+     *             .descriptionRegex(foo.description())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudNasFileSystemsId&#34;, fs.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
@@ -945,8 +945,8 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .descriptionRegex(alicloud_nas_file_system.foo().description())
      *             .protocolType(&#34;NFS&#34;)
+     *             .descriptionRegex(foo.description())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudNasFileSystemsId&#34;, fs.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
@@ -989,8 +989,8 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .descriptionRegex(alicloud_nas_file_system.foo().description())
      *             .protocolType(&#34;NFS&#34;)
+     *             .descriptionRegex(foo.description())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudNasFileSystemsId&#34;, fs.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
@@ -1033,8 +1033,8 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .descriptionRegex(alicloud_nas_file_system.foo().description())
      *             .protocolType(&#34;NFS&#34;)
+     *             .descriptionRegex(foo.description())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudNasFileSystemsId&#34;, fs.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
@@ -1077,8 +1077,8 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fs = NasFunctions.getFileSystems(GetFileSystemsArgs.builder()
-     *             .descriptionRegex(alicloud_nas_file_system.foo().description())
      *             .protocolType(&#34;NFS&#34;)
+     *             .descriptionRegex(foo.description())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudNasFileSystemsId&#34;, fs.applyValue(getFileSystemsResult -&gt; getFileSystemsResult.systems()[0].id()));
@@ -1705,9 +1705,9 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = NasFunctions.getProtocols(GetProtocolsArgs.builder()
-     *             .outputFile(&#34;protocols.txt&#34;)
      *             .type(&#34;Performance&#34;)
      *             .zoneId(&#34;cn-beijing-e&#34;)
+     *             .outputFile(&#34;protocols.txt&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;nasProtocolsProtocol&#34;, default_.protocols()[0]);
@@ -1750,9 +1750,9 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = NasFunctions.getProtocols(GetProtocolsArgs.builder()
-     *             .outputFile(&#34;protocols.txt&#34;)
      *             .type(&#34;Performance&#34;)
      *             .zoneId(&#34;cn-beijing-e&#34;)
+     *             .outputFile(&#34;protocols.txt&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;nasProtocolsProtocol&#34;, default_.protocols()[0]);
@@ -1795,9 +1795,9 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = NasFunctions.getProtocols(GetProtocolsArgs.builder()
-     *             .outputFile(&#34;protocols.txt&#34;)
      *             .type(&#34;Performance&#34;)
      *             .zoneId(&#34;cn-beijing-e&#34;)
+     *             .outputFile(&#34;protocols.txt&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;nasProtocolsProtocol&#34;, default_.protocols()[0]);
@@ -1840,9 +1840,9 @@ public final class NasFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = NasFunctions.getProtocols(GetProtocolsArgs.builder()
-     *             .outputFile(&#34;protocols.txt&#34;)
      *             .type(&#34;Performance&#34;)
      *             .zoneId(&#34;cn-beijing-e&#34;)
+     *             .outputFile(&#34;protocols.txt&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;nasProtocolsProtocol&#34;, default_.protocols()[0]);

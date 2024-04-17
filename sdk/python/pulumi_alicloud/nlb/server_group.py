@@ -551,12 +551,12 @@ class ServerGroup(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_server_group = alicloud.nlb.ServerGroup("defaultServerGroup",
-            resource_group_id=default_resource_groups.ids[0],
+        default_server_group = alicloud.nlb.ServerGroup("default",
+            resource_group_id=default.ids[0],
             server_group_name=name,
             server_group_type="Instance",
             vpc_id=default_network.id,
@@ -640,12 +640,12 @@ class ServerGroup(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_server_group = alicloud.nlb.ServerGroup("defaultServerGroup",
-            resource_group_id=default_resource_groups.ids[0],
+        default_server_group = alicloud.nlb.ServerGroup("default",
+            resource_group_id=default.ids[0],
             server_group_name=name,
             server_group_type="Instance",
             vpc_id=default_network.id,

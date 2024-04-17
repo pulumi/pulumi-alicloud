@@ -32,7 +32,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultQuotaApplication, err := quotas.NewQuotaApplication(ctx, "defaultQuotaApplication", &quotas.QuotaApplicationArgs{
+//			defaultQuotaApplication, err := quotas.NewQuotaApplication(ctx, "default", &quotas.QuotaApplicationArgs{
 //				ProductCode:     pulumi.String("vpc"),
 //				NoticeType:      pulumi.Int(3),
 //				EffectiveTime:   pulumi.String("2023-05-22T16:00:00Z"),

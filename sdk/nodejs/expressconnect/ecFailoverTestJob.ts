@@ -22,16 +22,16 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultPhysicalConnections = alicloud.expressconnect.getPhysicalConnections({
+ * const default = alicloud.expressconnect.getPhysicalConnections({
  *     nameRegex: "preserved-NODELETING",
  * });
- * const defaultEcFailoverTestJob = new alicloud.expressconnect.EcFailoverTestJob("defaultEcFailoverTestJob", {
+ * const defaultEcFailoverTestJob = new alicloud.expressconnect.EcFailoverTestJob("default", {
  *     description: name,
  *     jobType: "StartNow",
  *     resourceIds: [
- *         defaultPhysicalConnections.then(defaultPhysicalConnections => defaultPhysicalConnections.ids?.[0]),
- *         defaultPhysicalConnections.then(defaultPhysicalConnections => defaultPhysicalConnections.ids?.[1]),
- *         defaultPhysicalConnections.then(defaultPhysicalConnections => defaultPhysicalConnections.ids?.[2]),
+ *         _default.then(_default => _default.ids?.[0]),
+ *         _default.then(_default => _default.ids?.[1]),
+ *         _default.then(_default => _default.ids?.[2]),
  *     ],
  *     jobDuration: 1,
  *     resourceType: "PHYSICALCONNECTION",

@@ -31,22 +31,22 @@ namespace Pulumi.AliCloud.Nlb
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var defaultZones = AliCloud.Nlb.GetZones.Invoke();
+    ///     var defaultGetZones = AliCloud.Nlb.GetZones.Invoke();
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = name,
     ///         CidrBlock = "10.4.0.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
     ///     var default1 = new AliCloud.Vpc.Switch("default1", new()
@@ -54,13 +54,13 @@ namespace Pulumi.AliCloud.Nlb
     ///         VswitchName = name,
     ///         CidrBlock = "10.4.1.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id),
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id),
     ///     });
     /// 
-    ///     var defaultLoadBalancer = new AliCloud.Nlb.LoadBalancer("defaultLoadBalancer", new()
+    ///     var defaultLoadBalancer = new AliCloud.Nlb.LoadBalancer("default", new()
     ///     {
     ///         LoadBalancerName = name,
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
     ///         LoadBalancerType = "Network",
     ///         AddressType = "Internet",
     ///         AddressIpVersion = "Ipv4",
@@ -75,12 +75,12 @@ namespace Pulumi.AliCloud.Nlb
     ///             new AliCloud.Nlb.Inputs.LoadBalancerZoneMappingArgs
     ///             {
     ///                 VswitchId = defaultSwitch.Id,
-    ///                 ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///                 ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///             },
     ///             new AliCloud.Nlb.Inputs.LoadBalancerZoneMappingArgs
     ///             {
     ///                 VswitchId = default1.Id,
-    ///                 ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id),
+    ///                 ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[1]?.Id),
     ///             },
     ///         },
     ///     });

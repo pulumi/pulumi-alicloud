@@ -36,8 +36,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("masterId", data.Alicloud_cen_transit_router_available_resources.Default.Resources[0].Master_zones[0])
-//			ctx.Export("slaveId", data.Alicloud_cen_transit_router_available_resources.Default.Resources[0].Slave_zones[0])
+//			ctx.Export("masterId", _default.Resources[0].MasterZones[0])
+//			ctx.Export("slaveId", _default.Resources[0].SlaveZones[0])
 //			return nil
 //		})
 //	}

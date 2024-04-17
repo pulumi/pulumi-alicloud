@@ -52,19 +52,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new HoneypotProbe(&#34;default&#34;, HoneypotProbeArgs.builder()        
- *             .arp(true)
+ *             .uuid(&#34;032b618f-b220-4a0d-bd37-fbdc6ef58b6a&#34;)
+ *             .probeType(&#34;host_probe&#34;)
  *             .controlNodeId(&#34;a44e1ab3-6945-444c-889d-5bacee7056e8&#34;)
- *             .displayName(&#34;apispec&#34;)
+ *             .ping(true)
  *             .honeypotBindLists(HoneypotProbeHoneypotBindListArgs.builder()
  *                 .bindPortLists(HoneypotProbeHoneypotBindListBindPortListArgs.builder()
- *                     .endPort(80)
  *                     .startPort(80)
+ *                     .endPort(80)
  *                     .build())
  *                 .honeypotId(&#34;ede59ccdb1b7a2e21735d4593a6eb5ed31883af320c5ab63ab33818e94307be9&#34;)
  *                 .build())
- *             .ping(true)
- *             .probeType(&#34;host_probe&#34;)
- *             .uuid(&#34;032b618f-b220-4a0d-bd37-fbdc6ef58b6a&#34;)
+ *             .displayName(&#34;apispec&#34;)
+ *             .arp(true)
  *             .build());
  * 
  *     }

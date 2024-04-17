@@ -18,6 +18,44 @@ namespace Pulumi.AliCloud.Waf
     /// 
     /// &gt; **NOTE:** Available in 1.83.0+ .
     /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using System.Threading.Tasks;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(async() =&gt; 
+    /// {
+    ///     var @default = await AliCloud.Waf.GetInstances.InvokeAsync();
+    /// 
+    ///     var defaultInstance = new List&lt;AliCloud.Waf.Instance&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Instances.Length &gt; 0 ? 0 : 1; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         defaultInstance.Add(new AliCloud.Waf.Instance($"default-{range.Value}", new()
+    ///         {
+    ///             BigScreen = "0",
+    ///             ExclusiveIpPackage = "1",
+    ///             ExtBandwidth = "50",
+    ///             ExtDomainPackage = "1",
+    ///             PackageCode = "version_3",
+    ///             PrefessionalService = "false",
+    ///             SubscriptionType = "Subscription",
+    ///             Period = 1,
+    ///             WafLog = "false",
+    ///             LogStorage = "3",
+    ///             LogTime = "180",
+    ///             ResourceGroupId = "rs-abc12345",
+    ///         }));
+    ///     }
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// WAF instance can be imported using the id, e.g.

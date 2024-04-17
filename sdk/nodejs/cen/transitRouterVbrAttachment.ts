@@ -20,15 +20,15 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultInstance = new alicloud.cen.Instance("defaultInstance", {
+ * const _default = new alicloud.cen.Instance("default", {
  *     cenInstanceName: name,
  *     protectionLevel: "REDUCED",
  * });
- * const defaultTransitRouter = new alicloud.cen.TransitRouter("defaultTransitRouter", {cenId: defaultInstance.id});
+ * const defaultTransitRouter = new alicloud.cen.TransitRouter("default", {cenId: _default.id});
  * const nameRegex = alicloud.expressconnect.getPhysicalConnections({
  *     nameRegex: "^preserved-NODELETING",
  * });
- * const defaultVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("defaultVirtualBorderRouter", {
+ * const defaultVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("default", {
  *     localGatewayIp: "10.0.0.1",
  *     peerGatewayIp: "10.0.0.2",
  *     peeringSubnetMask: "255.255.255.252",
@@ -39,12 +39,12 @@ import * as utilities from "../utilities";
  *     minTxInterval: 1000,
  *     detectMultiplier: 10,
  * });
- * const defaultTransitRouterVbrAttachment = new alicloud.cen.TransitRouterVbrAttachment("defaultTransitRouterVbrAttachment", {
+ * const defaultTransitRouterVbrAttachment = new alicloud.cen.TransitRouterVbrAttachment("default", {
  *     transitRouterId: defaultTransitRouter.transitRouterId,
  *     transitRouterAttachmentName: "example",
  *     transitRouterAttachmentDescription: "example",
  *     vbrId: defaultVirtualBorderRouter.id,
- *     cenId: defaultInstance.id,
+ *     cenId: _default.id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

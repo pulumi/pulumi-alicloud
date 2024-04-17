@@ -21,8 +21,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.dataworks.Folder("example", {
- *     folderPath: "Business Flow/tfTestAcc/folderDi/tftest1",
  *     projectId: "320687",
+ *     folderPath: "Business Flow/tfTestAcc/folderDi/tftest1",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

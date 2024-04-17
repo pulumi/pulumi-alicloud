@@ -35,14 +35,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleTrafficMirrorFilter, err := vpc.NewTrafficMirrorFilter(ctx, "exampleTrafficMirrorFilter", &vpc.TrafficMirrorFilterArgs{
+//			example, err := vpc.NewTrafficMirrorFilter(ctx, "example", &vpc.TrafficMirrorFilterArgs{
 //				TrafficMirrorFilterName: pulumi.String("example_value"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewTrafficMirrorFilterIngressRule(ctx, "exampleTrafficMirrorFilterIngressRule", &vpc.TrafficMirrorFilterIngressRuleArgs{
-//				TrafficMirrorFilterId: exampleTrafficMirrorFilter.ID(),
+//			_, err = vpc.NewTrafficMirrorFilterIngressRule(ctx, "example", &vpc.TrafficMirrorFilterIngressRuleArgs{
+//				TrafficMirrorFilterId: example.ID(),
 //				Priority:              pulumi.Int(1),
 //				RuleAction:            pulumi.String("accept"),
 //				Protocol:              pulumi.String("UDP"),

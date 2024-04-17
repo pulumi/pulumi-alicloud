@@ -79,7 +79,7 @@ class Group(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         # Add a new Domain group.
-        group = alicloud.dns.Group("group")
+        group = alicloud.dns.Group("group", name="testgroup")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -106,7 +106,7 @@ class Group(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         # Add a new Domain group.
-        group = alicloud.dns.Group("group")
+        group = alicloud.dns.Group("group", name="testgroup")
         ```
         <!--End PulumiCodeChooser -->
 

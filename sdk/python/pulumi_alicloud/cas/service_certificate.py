@@ -241,10 +241,11 @@ class ServiceCertificate(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_service_certificate = alicloud.cas.ServiceCertificate("defaultServiceCertificate",
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_service_certificate = alicloud.cas.ServiceCertificate("default",
+            certificate_name=f"tf-example-{default['result']}",
             cert=\"\"\"-----BEGIN CERTIFICATE-----
         MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD
         TjEVMBMGA1UEAwwMKi50ZnRlc3QudG9wMRAwDgYDVQQIDAdCZWlKaW5nMRAwDgYD
@@ -266,9 +267,7 @@ class ServiceCertificate(pulumi.CustomResource):
         TTc40xwvQROekWUyxeJL7xaHuylUHE0bxsiIfx5bZsBizRjprIwGlj85CSPuTZyP
         DPfaiZAN/61h5HNAnxLltOZfqabKYYw7l9LBDg==
         -----END CERTIFICATE-----
-
         \"\"\",
-            certificate_name=default_random_integer.result.apply(lambda result: f"tf-example-{result}"),
             key=\"\"\"-----BEGIN PRIVATE KEY-----
         MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDOST00lQfs8tJA
         rhFGsZBjl1Wx+2SGcqH0eEjrKueWjBYgM9LU9kc5T/mBDvE9Q8Z0pBXlLvHzBE6c
@@ -297,7 +296,6 @@ class ServiceCertificate(pulumi.CustomResource):
         CIFqfEL5NriQelqrFsvgHsmD+MpvDoSWm5C8IrTubtlNyWUzXSVT4OIwzPobzPqG
         LILJ+e7bLw8RrM0HfgFnl8c=
         -----END PRIVATE KEY-----
-
         \"\"\")
         ```
         <!--End PulumiCodeChooser -->
@@ -345,10 +343,11 @@ class ServiceCertificate(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_service_certificate = alicloud.cas.ServiceCertificate("defaultServiceCertificate",
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_service_certificate = alicloud.cas.ServiceCertificate("default",
+            certificate_name=f"tf-example-{default['result']}",
             cert=\"\"\"-----BEGIN CERTIFICATE-----
         MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD
         TjEVMBMGA1UEAwwMKi50ZnRlc3QudG9wMRAwDgYDVQQIDAdCZWlKaW5nMRAwDgYD
@@ -370,9 +369,7 @@ class ServiceCertificate(pulumi.CustomResource):
         TTc40xwvQROekWUyxeJL7xaHuylUHE0bxsiIfx5bZsBizRjprIwGlj85CSPuTZyP
         DPfaiZAN/61h5HNAnxLltOZfqabKYYw7l9LBDg==
         -----END CERTIFICATE-----
-
         \"\"\",
-            certificate_name=default_random_integer.result.apply(lambda result: f"tf-example-{result}"),
             key=\"\"\"-----BEGIN PRIVATE KEY-----
         MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDOST00lQfs8tJA
         rhFGsZBjl1Wx+2SGcqH0eEjrKueWjBYgM9LU9kc5T/mBDvE9Q8Z0pBXlLvHzBE6c
@@ -401,7 +398,6 @@ class ServiceCertificate(pulumi.CustomResource):
         CIFqfEL5NriQelqrFsvgHsmD+MpvDoSWm5C8IrTubtlNyWUzXSVT4OIwzPobzPqG
         LILJ+e7bLw8RrM0HfgFnl8c=
         -----END PRIVATE KEY-----
-
         \"\"\")
         ```
         <!--End PulumiCodeChooser -->

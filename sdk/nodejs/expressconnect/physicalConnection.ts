@@ -20,8 +20,6 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const hz = new alicloud.Provider("hz", {region: "cn-hangzhou"});
- * const sgp = new alicloud.Provider("sgp", {region: "ap-southeast-1"});
  * const domestic = new alicloud.expressconnect.PhysicalConnection("domestic", {
  *     accessPointId: "ap-cn-hangzhou-yh-B",
  *     lineOperator: "CT",
@@ -31,8 +29,6 @@ import * as utilities from "../utilities";
  *     description: "my domestic connection",
  *     portType: "1000Base-LX",
  *     bandwidth: "100",
- * }, {
- *     provider: alicloud.hz,
  * });
  * const international = new alicloud.expressconnect.PhysicalConnection("international", {
  *     accessPointId: "ap-sg-singpore-A",
@@ -43,8 +39,6 @@ import * as utilities from "../utilities";
  *     description: "my domestic connection",
  *     portType: "1000Base-LX",
  *     bandwidth: "100",
- * }, {
- *     provider: alicloud.sgp,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

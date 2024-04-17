@@ -31,19 +31,19 @@ namespace Pulumi.AliCloud.MongoDB
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultZones = AliCloud.MongoDB.GetZones.Invoke();
+    ///     var @default = AliCloud.MongoDB.GetZones.Invoke();
     /// 
-    ///     var index = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones).Length.Apply(length =&gt; length - 1);
+    ///     var index = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length.Apply(length =&gt; length - 1);
     /// 
-    ///     var zoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones)[index].Id;
+    ///     var zoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[index].Id);
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "172.17.3.0/24",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = name,
     ///         CidrBlock = "172.17.3.0/24",
@@ -51,7 +51,7 @@ namespace Pulumi.AliCloud.MongoDB
     ///         ZoneId = zoneId,
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.MongoDB.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.MongoDB.Instance("default", new()
     ///     {
     ///         EngineVersion = "4.2",
     ///         DbInstanceClass = "dds.mongo.mid",
@@ -62,6 +62,7 @@ namespace Pulumi.AliCloud.MongoDB
     ///             "10.168.1.12",
     ///             "100.69.7.112",
     ///         },
+    ///         Name = name,
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
@@ -69,7 +70,7 @@ namespace Pulumi.AliCloud.MongoDB
     ///         },
     ///     });
     /// 
-    ///     var defaultAuditPolicy = new AliCloud.MongoDB.AuditPolicy("defaultAuditPolicy", new()
+    ///     var defaultAuditPolicy = new AliCloud.MongoDB.AuditPolicy("default", new()
     ///     {
     ///         DbInstanceId = defaultInstance.Id,
     ///         AuditStatus = "disabled",

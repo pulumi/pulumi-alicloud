@@ -43,11 +43,11 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			defaultGetZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
@@ -65,15 +65,15 @@ import (
 //			vswich, err := vpc.NewSwitch(ctx, "vswich", &vpc.SwitchArgs{
 //				VpcId:             vpc.ID(),
 //				CidrBlock:         pulumi.String("172.168.0.0/24"),
-//				ZoneId:            pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:            pulumi.String(defaultGetZones.Zones[0].Id),
 //				VswitchName:       pulumi.String(name),
 //				Ipv6CidrBlockMask: pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewIpv6Address(ctx, "defaultIpv6Address", &vpc.Ipv6AddressArgs{
-//				ResourceGroupId:        pulumi.String(defaultResourceGroups.Ids[0]),
+//			_, err = vpc.NewIpv6Address(ctx, "default", &vpc.Ipv6AddressArgs{
+//				ResourceGroupId:        pulumi.String(_default.Ids[0]),
 //				VswitchId:              vswich.ID(),
 //				Ipv6AddressDescription: pulumi.String("create_description"),
 //				Ipv6AddressName:        pulumi.String(name),

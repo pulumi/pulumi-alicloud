@@ -22,13 +22,13 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const _default = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultDedicatedHostGroup = new alicloud.cddc.DedicatedHostGroup("defaultDedicatedHostGroup", {
+ * const defaultDedicatedHostGroup = new alicloud.cddc.DedicatedHostGroup("default", {
  *     engine: "MySQL",
- *     vpcId: defaultNetwork.id,
+ *     vpcId: _default.id,
  *     cpuAllocationRatio: 101,
  *     memAllocationRatio: 50,
  *     diskAllocationRatio: 200,

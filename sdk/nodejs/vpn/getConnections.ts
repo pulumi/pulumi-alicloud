@@ -19,10 +19,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const foo = alicloud.vpn.getConnections({
- *     customerGatewayId: "fake-cgw-id",
  *     ids: ["fake-conn-id"],
- *     outputFile: "/tmp/vpnconn",
  *     vpnGatewayId: "fake-vpn-id",
+ *     customerGatewayId: "fake-cgw-id",
+ *     outputFile: "/tmp/vpnconn",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -110,10 +110,10 @@ export interface GetConnectionsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const foo = alicloud.vpn.getConnections({
- *     customerGatewayId: "fake-cgw-id",
  *     ids: ["fake-conn-id"],
- *     outputFile: "/tmp/vpnconn",
  *     vpnGatewayId: "fake-vpn-id",
+ *     customerGatewayId: "fake-cgw-id",
+ *     outputFile: "/tmp/vpnconn",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

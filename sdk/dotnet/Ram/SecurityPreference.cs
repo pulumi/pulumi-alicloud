@@ -31,8 +31,8 @@ namespace Pulumi.AliCloud.Ram
     /// {
     ///     var example = new AliCloud.Ram.SecurityPreference("example", new()
     ///     {
-    ///         AllowUserToChangePassword = true,
     ///         EnableSaveMfaTicket = false,
+    ///         AllowUserToChangePassword = true,
     ///     });
     /// 
     /// });

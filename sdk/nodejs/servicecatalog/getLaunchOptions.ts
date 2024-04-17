@@ -20,13 +20,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultEndUserProducts = alicloud.servicecatalog.getEndUserProducts({
+ * const default = alicloud.servicecatalog.getEndUserProducts({
  *     nameRegex: "ram模板创建",
  * });
- * const defaultLaunchOptions = alicloud.servicecatalog.getLaunchOptions({
+ * const defaultGetLaunchOptions = alicloud.servicecatalog.getLaunchOptions({
  *     productId: "data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id",
  * });
- * export const alicloudServiceCatalogLaunchOptionExampleId = defaultLaunchOptions.then(defaultLaunchOptions => defaultLaunchOptions.launchOptions?.[0]?.id);
+ * export const alicloudServiceCatalogLaunchOptionExampleId = defaultGetLaunchOptions.then(defaultGetLaunchOptions => defaultGetLaunchOptions.launchOptions?.[0]?.id);
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -100,13 +100,13 @@ export interface GetLaunchOptionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultEndUserProducts = alicloud.servicecatalog.getEndUserProducts({
+ * const default = alicloud.servicecatalog.getEndUserProducts({
  *     nameRegex: "ram模板创建",
  * });
- * const defaultLaunchOptions = alicloud.servicecatalog.getLaunchOptions({
+ * const defaultGetLaunchOptions = alicloud.servicecatalog.getLaunchOptions({
  *     productId: "data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id",
  * });
- * export const alicloudServiceCatalogLaunchOptionExampleId = defaultLaunchOptions.then(defaultLaunchOptions => defaultLaunchOptions.launchOptions?.[0]?.id);
+ * export const alicloudServiceCatalogLaunchOptionExampleId = defaultGetLaunchOptions.then(defaultGetLaunchOptions => defaultGetLaunchOptions.launchOptions?.[0]?.id);
  * ```
  * <!--End PulumiCodeChooser -->
  */

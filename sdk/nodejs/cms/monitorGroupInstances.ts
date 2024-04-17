@@ -24,12 +24,12 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "192.168.0.0/16",
  * });
- * const defaultMonitorGroup = new alicloud.cms.MonitorGroup("defaultMonitorGroup", {monitorGroupName: name});
- * const defaultRegions = alicloud.getRegions({
+ * const defaultMonitorGroup = new alicloud.cms.MonitorGroup("default", {monitorGroupName: name});
+ * const default = alicloud.getRegions({
  *     current: true,
  * });
  * const example = new alicloud.cms.MonitorGroupInstances("example", {
@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     instances: [{
  *         instanceId: defaultNetwork.id,
  *         instanceName: name,
- *         regionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *         regionId: _default.then(_default => _default.regions?.[0]?.id),
  *         category: "vpc",
  *     }],
  * });

@@ -22,15 +22,15 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-testaccoossetting";
- * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {
+ * const _default = new alicloud.oss.Bucket("default", {
  *     bucket: name,
  *     acl: "public-read-write",
  * });
- * const defaultProject = new alicloud.log.Project("defaultProject", {});
- * const defaultServiceSetting = new alicloud.oos.ServiceSetting("defaultServiceSetting", {
+ * const defaultProject = new alicloud.log.Project("default", {name: name});
+ * const defaultServiceSetting = new alicloud.oos.ServiceSetting("default", {
  *     deliveryOssEnabled: true,
  *     deliveryOssKeyPrefix: "path1/",
- *     deliveryOssBucketName: defaultBucket.bucket,
+ *     deliveryOssBucketName: _default.bucket,
  *     deliverySlsEnabled: true,
  *     deliverySlsProjectName: defaultProject.name,
  * });

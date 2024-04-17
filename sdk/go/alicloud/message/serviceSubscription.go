@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultServiceTopic, err := message.NewServiceTopic(ctx, "defaultServiceTopic", &message.ServiceTopicArgs{
+//			_, err := message.NewServiceTopic(ctx, "default", &message.ServiceTopicArgs{
 //				TopicName:      pulumi.String(name),
 //				MaxMessageSize: pulumi.Int(12357),
 //				LoggingEnabled: pulumi.Bool(true),
@@ -49,8 +49,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = message.NewServiceSubscription(ctx, "defaultServiceSubscription", &message.ServiceSubscriptionArgs{
-//				TopicName:           defaultServiceTopic.TopicName,
+//			_, err = message.NewServiceSubscription(ctx, "default", &message.ServiceSubscriptionArgs{
+//				TopicName:           _default.TopicName,
 //				SubscriptionName:    pulumi.String(name),
 //				Endpoint:            pulumi.String("http://example.com"),
 //				PushType:            pulumi.String("http"),

@@ -22,8 +22,8 @@ import * as utilities from "../utilities";
  *
  * const example = alicloud.rds.getModifyParameterLogs({
  *     dbInstanceId: "example_value",
- *     endTime: "2022-06-08T13:56Z",
  *     startTime: "2022-06-04T13:56Z",
+ *     endTime: "2022-06-08T13:56Z",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -91,8 +91,8 @@ export interface GetModifyParameterLogsResult {
  *
  * const example = alicloud.rds.getModifyParameterLogs({
  *     dbInstanceId: "example_value",
- *     endTime: "2022-06-08T13:56Z",
  *     startTime: "2022-06-04T13:56Z",
+ *     endTime: "2022-06-08T13:56Z",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -20,17 +20,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultRule = new alicloud.sddp.Rule("defaultRule", {
+ * const defaultRule = new alicloud.sddp.Rule("default", {
  *     category: 0,
  *     content: "content",
  *     ruleName: "rule_name",
  *     riskLevelId: "4",
  *     productCode: "ODPS",
  * });
- * const defaultRules = alicloud.sddp.getRulesOutput({
+ * const default = alicloud.sddp.getRulesOutput({
  *     ids: [defaultRule.id],
  * });
- * export const sddpRuleId = defaultRules.apply(defaultRules => defaultRules.id);
+ * export const sddpRuleId = _default.apply(_default => _default.id);
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -148,17 +148,17 @@ export interface GetRulesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultRule = new alicloud.sddp.Rule("defaultRule", {
+ * const defaultRule = new alicloud.sddp.Rule("default", {
  *     category: 0,
  *     content: "content",
  *     ruleName: "rule_name",
  *     riskLevelId: "4",
  *     productCode: "ODPS",
  * });
- * const defaultRules = alicloud.sddp.getRulesOutput({
+ * const default = alicloud.sddp.getRulesOutput({
  *     ids: [defaultRule.id],
  * });
- * export const sddpRuleId = defaultRules.apply(defaultRules => defaultRules.id);
+ * export const sddpRuleId = _default.apply(_default => _default.id);
  * ```
  * <!--End PulumiCodeChooser -->
  */

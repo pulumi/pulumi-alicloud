@@ -52,14 +52,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
  *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
  *             .debugEnable(false)
  *             .description(name)
- *             .namespaceLogicalId(String.format(&#34;%s:example&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id())))
+ *             .namespaceLogicalId(String.format(&#34;%s:example&#34;, default_.regions()[0].id()))
  *             .namespaceName(name)
  *             .build());
  * 

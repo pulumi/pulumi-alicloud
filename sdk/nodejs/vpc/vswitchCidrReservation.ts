@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultVpc = new alicloud.vpc.Network("defaultVpc", {
@@ -33,9 +33,9 @@ import * as utilities from "../utilities";
  *     vpcId: defaultVpc.id,
  *     cidrBlock: "10.0.0.0/20",
  *     vswitchName: `${name}1`,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const defaultVswitchCidrReservation = new alicloud.vpc.VswitchCidrReservation("defaultVswitchCidrReservation", {
+ * const defaultVswitchCidrReservation = new alicloud.vpc.VswitchCidrReservation("default", {
  *     ipVersion: "IPv4",
  *     vswitchId: defaultVSwitch.id,
  *     cidrReservationDescription: name,

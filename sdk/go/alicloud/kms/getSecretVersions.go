@@ -30,9 +30,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Declare the data source
 //			kmsSecretVersionsDs, err := kms.GetSecretVersions(ctx, &kms.GetSecretVersionsArgs{
-//				EnableDetails: pulumi.BoolRef(true),
 //				SecretName:    "secret_name",
+//				EnableDetails: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err

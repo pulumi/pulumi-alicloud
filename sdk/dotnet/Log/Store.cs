@@ -30,20 +30,22 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     var example = new AliCloud.Log.Project("example", new()
     ///     {
+    ///         Name = $"terraform-example-{@default.Result}",
     ///         Description = "terraform-example",
     ///     });
     /// 
-    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     var exampleStore = new AliCloud.Log.Store("example", new()
     ///     {
-    ///         Project = exampleProject.Name,
+    ///         Project = example.Name,
+    ///         Name = "example-store",
     ///         ShardCount = 3,
     ///         AutoSplit = true,
     ///         MaxSplitShardCount = 60,
@@ -67,30 +69,33 @@ namespace Pulumi.AliCloud.Log
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
+    ///     // The region of kms key.
     ///     var region = config.Get("region") ?? "cn-hangzhou";
-    ///     var exampleAccount = AliCloud.GetAccount.Invoke();
+    ///     var example = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var exampleKey = new AliCloud.Kms.Key("exampleKey", new()
+    ///     var exampleKey = new AliCloud.Kms.Key("example", new()
     ///     {
     ///         Description = "terraform-example",
     ///         PendingWindowInDays = 7,
     ///         Status = "Enabled",
     ///     });
     /// 
-    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     var exampleProject = new AliCloud.Log.Project("example", new()
     ///     {
+    ///         Name = $"terraform-example-{@default.Result}",
     ///         Description = "terraform-example",
     ///     });
     /// 
-    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     var exampleStore = new AliCloud.Log.Store("example", new()
     ///     {
     ///         Project = exampleProject.Name,
+    ///         Name = "example-store",
     ///         ShardCount = 1,
     ///         AutoSplit = true,
     ///         MaxSplitShardCount = 60,
@@ -101,7 +106,7 @@ namespace Pulumi.AliCloud.Log
     ///             UserCmkInfo = new AliCloud.Log.Inputs.StoreEncryptConfUserCmkInfoArgs
     ///             {
     ///                 CmkKeyId = exampleKey.Id,
-    ///                 Arn = $"acs:ram::{exampleAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:role/aliyunlogdefaultrole",
+    ///                 Arn = $"acs:ram::{example.Apply(getAccountResult =&gt; getAccountResult.Id)}:role/aliyunlogdefaultrole",
     ///                 RegionId = region,
     ///             },
     ///         },

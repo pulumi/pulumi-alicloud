@@ -352,12 +352,12 @@ class DedicatedHostGroup(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_dedicated_host_group = alicloud.cddc.DedicatedHostGroup("defaultDedicatedHostGroup",
+        default_dedicated_host_group = alicloud.cddc.DedicatedHostGroup("default",
             engine="MySQL",
-            vpc_id=default_network.id,
+            vpc_id=default.id,
             cpu_allocation_ratio=101,
             mem_allocation_ratio=50,
             disk_allocation_ratio=200,
@@ -414,12 +414,12 @@ class DedicatedHostGroup(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_dedicated_host_group = alicloud.cddc.DedicatedHostGroup("defaultDedicatedHostGroup",
+        default_dedicated_host_group = alicloud.cddc.DedicatedHostGroup("default",
             engine="MySQL",
-            vpc_id=default_network.id,
+            vpc_id=default.id,
             cpu_allocation_ratio=101,
             mem_allocation_ratio=50,
             disk_allocation_ratio=200,

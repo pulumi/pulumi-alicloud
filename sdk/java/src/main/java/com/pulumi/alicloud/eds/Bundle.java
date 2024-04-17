@@ -54,13 +54,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultImages = EdsFunctions.getImages(GetImagesArgs.builder()
+ *         final var default = EdsFunctions.getImages(GetImagesArgs.builder()
  *             .imageType(&#34;SYSTEM&#34;)
  *             .osType(&#34;Windows&#34;)
  *             .desktopInstanceType(&#34;eds.hf.4c8g&#34;)
  *             .build());
  * 
- *         final var defaultDesktopTypes = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
+ *         final var defaultGetDesktopTypes = EdsFunctions.getDesktopTypes(GetDesktopTypesArgs.builder()
  *             .instanceTypeFamily(&#34;eds.hf&#34;)
  *             .cpuCount(4)
  *             .memorySize(8192)
@@ -68,9 +68,9 @@ import javax.annotation.Nullable;
  * 
  *         var defaultBundle = new Bundle(&#34;defaultBundle&#34;, BundleArgs.builder()        
  *             .description(name)
- *             .desktopType(defaultDesktopTypes.applyValue(getDesktopTypesResult -&gt; getDesktopTypesResult.ids()[0]))
+ *             .desktopType(defaultGetDesktopTypes.applyValue(getDesktopTypesResult -&gt; getDesktopTypesResult.ids()[0]))
  *             .bundleName(name)
- *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.ids()[0]))
+ *             .imageId(default_.ids()[0])
  *             .userDiskSizeGibs(70)
  *             .rootDiskSizeGib(80)
  *             .rootDiskPerformanceLevel(&#34;PL1&#34;)

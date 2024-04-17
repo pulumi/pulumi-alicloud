@@ -29,26 +29,26 @@ namespace Pulumi.AliCloud.Vpc
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/21",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var defaultNatGateway = new AliCloud.Vpc.NatGateway("defaultNatGateway", new()
+    ///     var defaultNatGateway = new AliCloud.Vpc.NatGateway("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///         NatGatewayName = name,
@@ -57,18 +57,18 @@ namespace Pulumi.AliCloud.Vpc
     ///         NatType = "Enhanced",
     ///     });
     /// 
-    ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
+    ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("default", new()
     ///     {
     ///         AddressName = name,
     ///     });
     /// 
-    ///     var defaultEipAssociation = new AliCloud.Ecs.EipAssociation("defaultEipAssociation", new()
+    ///     var defaultEipAssociation = new AliCloud.Ecs.EipAssociation("default", new()
     ///     {
     ///         AllocationId = defaultEipAddress.Id,
     ///         InstanceId = defaultNatGateway.Id,
     ///     });
     /// 
-    ///     var defaultSnatEntry = new AliCloud.Vpc.SnatEntry("defaultSnatEntry", new()
+    ///     var defaultSnatEntry = new AliCloud.Vpc.SnatEntry("default", new()
     ///     {
     ///         SnatTableId = defaultNatGateway.SnatTableIds,
     ///         SourceVswitchId = defaultSwitch.Id,

@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -52,17 +52,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
+ *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
+ *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
  *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
- *             .project(exampleProject.name())
+ *             .project(example.name())
+ *             .name(&#34;example-store&#34;)
  *             .shardCount(3)
  *             .autoSplit(true)
  *             .maxSplitShardCount(60)
@@ -70,7 +72,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleDashboard = new Dashboard(&#34;exampleDashboard&#34;, DashboardArgs.builder()        
- *             .projectName(exampleProject.name())
+ *             .projectName(example.name())
  *             .dashboardName(&#34;terraform-example&#34;)
  *             .displayName(&#34;terraform-example&#34;)
  *             .attribute(&#34;&#34;&#34;

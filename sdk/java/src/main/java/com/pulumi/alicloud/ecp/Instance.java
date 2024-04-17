@@ -25,6 +25,100 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.158.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
+ * import com.pulumi.alicloud.ecp.EcpFunctions;
+ * import com.pulumi.alicloud.ecp.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.ecp.inputs.GetInstanceTypesArgs;
+ * import com.pulumi.alicloud.vpc.VpcFunctions;
+ * import com.pulumi.alicloud.vpc.inputs.GetNetworksArgs;
+ * import com.pulumi.alicloud.vpc.inputs.GetSwitchesArgs;
+ * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+ * import com.pulumi.alicloud.ecp.KeyPair;
+ * import com.pulumi.alicloud.ecp.KeyPairArgs;
+ * import com.pulumi.alicloud.ecp.Instance;
+ * import com.pulumi.alicloud.ecp.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
+ *             .min(10000)
+ *             .max(99999)
+ *             .build());
+ * 
+ *         final var default = EcpFunctions.getZones();
+ * 
+ *         final var defaultGetInstanceTypes = EcpFunctions.getInstanceTypes();
+ * 
+ *         final var countSize = default_.zones().length();
+ * 
+ *         final var zoneId = default_.zones()[countSize - 1].zoneId();
+ * 
+ *         final var instanceTypeCountSize = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()).length();
+ * 
+ *         final var instanceType = defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[instanceTypeCountSize - 1].instanceType();
+ * 
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *             .nameRegex(&#34;^default-NODELETING$&#34;)
+ *             .build());
+ * 
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(zoneId)
+ *             .build());
+ * 
+ *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+ *             .name(name)
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .build());
+ * 
+ *         var defaultKeyPair = new KeyPair(&#34;defaultKeyPair&#34;, KeyPairArgs.builder()        
+ *             .keyPairName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
+ *             .publicKeyBody(&#34;ssh-rsa AAAAB3Nza12345678qwertyuudsfsg&#34;)
+ *             .build());
+ * 
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .instanceName(name)
+ *             .description(name)
+ *             .keyPairName(defaultKeyPair.keyPairName())
+ *             .securityGroupId(group.id())
+ *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .imageId(&#34;android_9_0_0_release_2851157_20211201.vhd&#34;)
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[1].instanceType()))
+ *             .vncPassword(&#34;Ecp123&#34;)
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .force(&#34;true&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Elastic Cloud Phone (ECP) Instance can be imported using the id, e.g.

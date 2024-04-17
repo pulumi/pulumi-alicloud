@@ -27,12 +27,12 @@ namespace Pulumi.AliCloud.Vpn
         /// {
         ///     var foo = AliCloud.Vpn.GetCustomerGateways.Invoke(new()
         ///     {
+        ///         NameRegex = "testAcc*",
         ///         Ids = new[]
         ///         {
         ///             "fake-id1",
         ///             "fake-id2",
         ///         },
-        ///         NameRegex = "testAcc*",
         ///         OutputFile = "/tmp/cgws",
         ///     });
         /// 
@@ -59,12 +59,12 @@ namespace Pulumi.AliCloud.Vpn
         /// {
         ///     var foo = AliCloud.Vpn.GetCustomerGateways.Invoke(new()
         ///     {
+        ///         NameRegex = "testAcc*",
         ///         Ids = new[]
         ///         {
         ///             "fake-id1",
         ///             "fake-id2",
         ///         },
-        ///         NameRegex = "testAcc*",
         ///         OutputFile = "/tmp/cgws",
         ///     });
         /// 

@@ -113,12 +113,13 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_key = alicloud.kms.Key("exampleKey",
+        example = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_key = alicloud.kms.Key("example",
             description="terraform-example",
             pending_window_in_days=7,
             status="Enabled")
-        example_auto_snapshot_policy = alicloud.ecs.AutoSnapshotPolicy("exampleAutoSnapshotPolicy",
+        example_auto_snapshot_policy = alicloud.ecs.AutoSnapshotPolicy("example",
+            name="terraform-example",
             repeat_weekdays=[
                 "1",
                 "2",
@@ -130,8 +131,8 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
                 "22",
                 "23",
             ])
-        example_ecs_disk = alicloud.ecs.EcsDisk("exampleEcsDisk",
-            zone_id=example_zones.zones[0].id,
+        example_ecs_disk = alicloud.ecs.EcsDisk("example",
+            zone_id=example.zones[0].id,
             disk_name="terraform-example",
             description="Hello ecs disk.",
             category="cloud_efficiency",
@@ -141,7 +142,7 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
             tags={
                 "Name": "terraform-example",
             })
-        example_ecs_auto_snapshot_policy_attachment = alicloud.ecs.EcsAutoSnapshotPolicyAttachment("exampleEcsAutoSnapshotPolicyAttachment",
+        example_ecs_auto_snapshot_policy_attachment = alicloud.ecs.EcsAutoSnapshotPolicyAttachment("example",
             auto_snapshot_policy_id=example_auto_snapshot_policy.id,
             disk_id=example_ecs_disk.id)
         ```
@@ -182,12 +183,13 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_key = alicloud.kms.Key("exampleKey",
+        example = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_key = alicloud.kms.Key("example",
             description="terraform-example",
             pending_window_in_days=7,
             status="Enabled")
-        example_auto_snapshot_policy = alicloud.ecs.AutoSnapshotPolicy("exampleAutoSnapshotPolicy",
+        example_auto_snapshot_policy = alicloud.ecs.AutoSnapshotPolicy("example",
+            name="terraform-example",
             repeat_weekdays=[
                 "1",
                 "2",
@@ -199,8 +201,8 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
                 "22",
                 "23",
             ])
-        example_ecs_disk = alicloud.ecs.EcsDisk("exampleEcsDisk",
-            zone_id=example_zones.zones[0].id,
+        example_ecs_disk = alicloud.ecs.EcsDisk("example",
+            zone_id=example.zones[0].id,
             disk_name="terraform-example",
             description="Hello ecs disk.",
             category="cloud_efficiency",
@@ -210,7 +212,7 @@ class EcsAutoSnapshotPolicyAttachment(pulumi.CustomResource):
             tags={
                 "Name": "terraform-example",
             })
-        example_ecs_auto_snapshot_policy_attachment = alicloud.ecs.EcsAutoSnapshotPolicyAttachment("exampleEcsAutoSnapshotPolicyAttachment",
+        example_ecs_auto_snapshot_policy_attachment = alicloud.ecs.EcsAutoSnapshotPolicyAttachment("example",
             auto_snapshot_policy_id=example_auto_snapshot_policy.id,
             disk_id=example_ecs_disk.id)
         ```

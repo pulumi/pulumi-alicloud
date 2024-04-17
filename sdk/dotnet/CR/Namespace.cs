@@ -33,6 +33,7 @@ namespace Pulumi.AliCloud.CR
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var example = new AliCloud.CR.Namespace("example", new()
     ///     {
+    ///         Name = name,
     ///         AutoCreate = false,
     ///         DefaultVisibility = "PUBLIC",
     ///     });

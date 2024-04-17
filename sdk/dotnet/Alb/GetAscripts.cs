@@ -31,11 +31,11 @@ namespace Pulumi.AliCloud.Alb
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_alb_ascript.Default.Id,
+        ///             defaultAlicloudAlbAscript.Id,
         ///         },
-        ///         NameRegex = alicloud_alb_ascript.Default.Name,
+        ///         NameRegex = defaultAlicloudAlbAscript.Name,
         ///         AscriptName = "test",
-        ///         ListenerId = @var.ListenerId,
+        ///         ListenerId = listenerId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -69,11 +69,11 @@ namespace Pulumi.AliCloud.Alb
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_alb_ascript.Default.Id,
+        ///             defaultAlicloudAlbAscript.Id,
         ///         },
-        ///         NameRegex = alicloud_alb_ascript.Default.Name,
+        ///         NameRegex = defaultAlicloudAlbAscript.Name,
         ///         AscriptName = "test",
-        ///         ListenerId = @var.ListenerId,
+        ///         ListenerId = listenerId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

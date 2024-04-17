@@ -36,11 +36,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := ecs.NewSecurityGroup(ctx, "default", nil)
+//			_, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				Name: pulumi.String("default"),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewSecurityGroupRule(ctx, "allowAllTcp", &ecs.SecurityGroupRuleArgs{
+//			_, err = ecs.NewSecurityGroupRule(ctx, "allow_all_tcp", &ecs.SecurityGroupRuleArgs{
 //				Type:            pulumi.String("ingress"),
 //				IpProtocol:      pulumi.String("tcp"),
 //				NicType:         pulumi.String("internet"),

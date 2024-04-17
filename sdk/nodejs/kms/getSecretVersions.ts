@@ -18,9 +18,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const kmsSecretVersionsDs = alicloud.kms.getSecretVersions({
- *     enableDetails: true,
  *     secretName: "secret_name",
+ *     enableDetails: true,
  * });
  * export const firstSecretData = kmsSecretVersionsDs.then(kmsSecretVersionsDs => kmsSecretVersionsDs.versions?.[0]?.secretData);
  * ```
@@ -106,9 +107,10 @@ export interface GetSecretVersionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const kmsSecretVersionsDs = alicloud.kms.getSecretVersions({
- *     enableDetails: true,
  *     secretName: "secret_name",
+ *     enableDetails: true,
  * });
  * export const firstSecretData = kmsSecretVersionsDs.then(kmsSecretVersionsDs => kmsSecretVersionsDs.versions?.[0]?.secretData);
  * ```

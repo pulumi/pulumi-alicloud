@@ -26,6 +26,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/rds"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -40,24 +42,24 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
+//			_default, err := rds.GetZones(ctx, &rds.GetZonesArgs{
 //				Engine:        pulumi.StringRef("MySQL"),
 //				EngineVersion: pulumi.StringRef("5.6"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -77,9 +79,10 @@ import (
 //			var db []*rds.Database
 //			for index := 0; index < 2; index++ {
 //				key0 := index
-//				_ := index
+//				val0 := index
 //				__res, err := rds.NewDatabase(ctx, fmt.Sprintf("db-%v", key0), &rds.DatabaseArgs{
 //					InstanceId:  instance.ID(),
+//					Name:        pulumi.String(fmt.Sprintf("%v_%v", name, val0)),
 //					Description: pulumi.String("from terraform"),
 //				})
 //				if err != nil {

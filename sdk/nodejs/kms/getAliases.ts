@@ -18,11 +18,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const kmsAliases = alicloud.kms.getAliases({
  *     ids: ["d89e8a53-b708-41aa-8c67-6873axxx"],
  *     nameRegex: "alias/tf-testKmsAlias_123",
  * });
- * export const firstKeyId = data.alicloud_kms_keys.kms_keys_ds.keys[0].id;
+ * export const firstKeyId = kmsKeysDs.keys[0].id;
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -90,11 +91,12 @@ export interface GetAliasesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const kmsAliases = alicloud.kms.getAliases({
  *     ids: ["d89e8a53-b708-41aa-8c67-6873axxx"],
  *     nameRegex: "alias/tf-testKmsAlias_123",
  * });
- * export const firstKeyId = data.alicloud_kms_keys.kms_keys_ds.keys[0].id;
+ * export const firstKeyId = kmsKeysDs.keys[0].id;
  * ```
  * <!--End PulumiCodeChooser -->
  */

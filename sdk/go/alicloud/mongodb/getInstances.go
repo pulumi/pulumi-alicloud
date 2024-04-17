@@ -30,10 +30,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := mongodb.GetInstances(ctx, &mongodb.GetInstancesArgs{
-//				AvailabilityZone: pulumi.StringRef("eu-central-1a"),
-//				InstanceClass:    pulumi.StringRef("dds.mongo.mid"),
-//				InstanceType:     pulumi.StringRef("replicate"),
 //				NameRegex:        pulumi.StringRef("dds-.+\\d+"),
+//				InstanceType:     pulumi.StringRef("replicate"),
+//				InstanceClass:    pulumi.StringRef("dds.mongo.mid"),
+//				AvailabilityZone: pulumi.StringRef("eu-central-1a"),
 //			}, nil)
 //			if err != nil {
 //				return err

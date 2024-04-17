@@ -48,29 +48,29 @@ import (
 //			if param := cfg.Get("endpointGroupRegion"); param != "" {
 //				endpointGroupRegion = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.17.3.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "defaultApplicationLoadBalancer", &slb.ApplicationLoadBalancerArgs{
+//			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "default", &slb.ApplicationLoadBalancerArgs{
 //				LoadBalancerName: pulumi.String("terraform-example"),
 //				VswitchId:        defaultSwitch.ID(),
 //				LoadBalancerSpec: pulumi.String("slb.s2.small"),
@@ -79,7 +79,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultBasicAccelerator, err := ga.NewBasicAccelerator(ctx, "defaultBasicAccelerator", &ga.BasicAcceleratorArgs{
+//			defaultBasicAccelerator, err := ga.NewBasicAccelerator(ctx, "default", &ga.BasicAcceleratorArgs{
 //				Duration:             pulumi.Int(1),
 //				BasicAcceleratorName: pulumi.String("terraform-example"),
 //				Description:          pulumi.String("terraform-example"),
@@ -90,7 +90,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ga.NewBasicEndpointGroup(ctx, "defaultBasicEndpointGroup", &ga.BasicEndpointGroupArgs{
+//			_, err = ga.NewBasicEndpointGroup(ctx, "default", &ga.BasicEndpointGroupArgs{
 //				AcceleratorId:          defaultBasicAccelerator.ID(),
 //				EndpointGroupRegion:    pulumi.String(endpointGroupRegion),
 //				EndpointType:           pulumi.String("SLB"),

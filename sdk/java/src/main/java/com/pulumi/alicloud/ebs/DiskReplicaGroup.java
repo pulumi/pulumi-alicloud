@@ -22,6 +22,61 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.187.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.AlicloudFunctions;
+ * import com.pulumi.alicloud.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.ebs.EbsFunctions;
+ * import com.pulumi.alicloud.ebs.inputs.GetRegionsArgs;
+ * import com.pulumi.alicloud.ebs.DiskReplicaGroup;
+ * import com.pulumi.alicloud.ebs.DiskReplicaGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var config = ctx.config();
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *             .current(true)
+ *             .build());
+ * 
+ *         final var defaultGetRegions = EbsFunctions.getRegions(GetRegionsArgs.builder()
+ *             .regionId(default_.regions()[0].id())
+ *             .build());
+ * 
+ *         var defaultDiskReplicaGroup = new DiskReplicaGroup(&#34;defaultDiskReplicaGroup&#34;, DiskReplicaGroupArgs.builder()        
+ *             .sourceRegionId(default_.regions()[0].id())
+ *             .sourceZoneId(defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].zones()[0].zoneId()))
+ *             .destinationRegionId(default_.regions()[0].id())
+ *             .destinationZoneId(defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].zones()[1].zoneId()))
+ *             .groupName(name)
+ *             .description(name)
+ *             .rpo(900)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * EBS Disk Replica Group can be imported using the id, e.g.

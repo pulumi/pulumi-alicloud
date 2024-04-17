@@ -300,10 +300,11 @@ class Project(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
         example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
             description="terraform-example",
             tags={
                 "Created": "TF",
@@ -320,10 +321,11 @@ class Project(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_policy = alicloud.log.Project("examplePolicy",
+        example_policy = alicloud.log.Project("example_policy",
+            name=f"terraform-example-{default['result']}",
             description="terraform-example",
             policy=\"\"\"{
           "Statement": [
@@ -344,7 +346,6 @@ class Project(pulumi.CustomResource):
           ],
           "Version": "1"
         }
-
         \"\"\")
         ```
         <!--End PulumiCodeChooser -->
@@ -396,10 +397,11 @@ class Project(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
         example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
             description="terraform-example",
             tags={
                 "Created": "TF",
@@ -416,10 +418,11 @@ class Project(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_policy = alicloud.log.Project("examplePolicy",
+        example_policy = alicloud.log.Project("example_policy",
+            name=f"terraform-example-{default['result']}",
             description="terraform-example",
             policy=\"\"\"{
           "Statement": [
@@ -440,7 +443,6 @@ class Project(pulumi.CustomResource):
           ],
           "Version": "1"
         }
-
         \"\"\")
         ```
         <!--End PulumiCodeChooser -->

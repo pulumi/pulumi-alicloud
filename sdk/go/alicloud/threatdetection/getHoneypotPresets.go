@@ -31,7 +31,7 @@ import (
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // _default, err := threatdetection.GetHoneypotPresets(ctx, &threatdetection.GetHoneypotPresetsArgs{
 // Ids: interface{}{
-// alicloud_threat_detection_honeypot_preset.Default.Id,
+// defaultAlicloudThreatDetectionHoneypotPreset.Id,
 // },
 // HoneypotImageName: pulumi.StringRef("shiro"),
 // NodeId: pulumi.StringRef("example_value"),

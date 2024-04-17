@@ -45,7 +45,7 @@ import (
 //			if param := cfg.Get("secretKey"); param != "" {
 //				secretKey = param
 //			}
-//			defaultInstance, err := amqp.NewInstance(ctx, "defaultInstance", &amqp.InstanceArgs{
+//			_, err := amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
 //				InstanceType:  pulumi.String("enterprise"),
 //				MaxTps:        pulumi.String("3000"),
 //				QueueCapacity: pulumi.String("200"),
@@ -58,8 +58,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = amqp.NewStaticAccount(ctx, "defaultStaticAccount", &amqp.StaticAccountArgs{
-//				InstanceId: defaultInstance.ID(),
+//			_, err = amqp.NewStaticAccount(ctx, "default", &amqp.StaticAccountArgs{
+//				InstanceId: _default.ID(),
 //				AccessKey:  pulumi.String(accessKey),
 //				SecretKey:  pulumi.String(secretKey),
 //			})

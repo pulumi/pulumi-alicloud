@@ -43,15 +43,15 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			examplePhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//			example, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
 //				NameRegex: pulumi.StringRef("^preserved-NODELETING"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			vlanId, err := random.NewRandomInteger(ctx, "vlanId", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(2999),
-//				Min: pulumi.Int(1),
+//			vlanId, err := random.NewInteger(ctx, "vlan_id", &random.IntegerArgs{
+//				Max: 2999,
+//				Min: 1,
 //			})
 //			if err != nil {
 //				return err
@@ -60,13 +60,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = expressconnect.NewVirtualPhysicalConnection(ctx, "exampleVirtualPhysicalConnection", &expressconnect.VirtualPhysicalConnectionArgs{
+//			_, err = expressconnect.NewVirtualPhysicalConnection(ctx, "example", &expressconnect.VirtualPhysicalConnectionArgs{
 //				VirtualPhysicalConnectionName: pulumi.String(name),
 //				Description:                   pulumi.String(name),
 //				OrderMode:                     pulumi.String("PayByPhysicalConnectionOwner"),
-//				ParentPhysicalConnectionId:    pulumi.String(examplePhysicalConnections.Ids[0]),
+//				ParentPhysicalConnectionId:    pulumi.String(example.Ids[0]),
 //				Spec:                          pulumi.String("50M"),
-//				VlanId:                        vlanId.ID(),
+//				VlanId:                        vlanId.Id,
 //				VpconnAliUid:                  pulumi.String(_default.Id),
 //			})
 //			if err != nil {

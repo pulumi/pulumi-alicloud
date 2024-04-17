@@ -34,23 +34,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
-//				Bucket: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("terraform-example-%v", result), nil
-//				}).(pulumi.StringOutput),
-//				Acl: pulumi.String("private"),
+//			defaultBucket, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
+//				Bucket: pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
+//				Acl:    pulumi.String("private"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = oss.NewBucketObject(ctx, "defaultBucketObject", &oss.BucketObjectArgs{
+//			_, err = oss.NewBucketObject(ctx, "default", &oss.BucketObjectArgs{
 //				Bucket: defaultBucket.Bucket,
 //				Key:    pulumi.String("example_key"),
 //				Source: pulumi.String("./main.tf"),
@@ -83,23 +81,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
-//				Bucket: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("terraform-example-%v", result), nil
-//				}).(pulumi.StringOutput),
-//				Acl: pulumi.String("private"),
+//			defaultBucket, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
+//				Bucket: pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
+//				Acl:    pulumi.String("private"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = oss.NewBucketObject(ctx, "defaultBucketObject", &oss.BucketObjectArgs{
+//			_, err = oss.NewBucketObject(ctx, "default", &oss.BucketObjectArgs{
 //				Bucket:  defaultBucket.Bucket,
 //				Key:     pulumi.String("example_key"),
 //				Content: pulumi.String("the content that you want to upload."),

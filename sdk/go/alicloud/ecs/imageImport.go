@@ -36,8 +36,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ecs.NewImageImport(ctx, "this", &ecs.ImageImportArgs{
-//				Architecture: pulumi.String("x86_64"),
 //				Description:  pulumi.String("test import image"),
+//				Architecture: pulumi.String("x86_64"),
+//				ImageName:    pulumi.String("test-import-image"),
+//				LicenseType:  pulumi.String("Auto"),
+//				Platform:     pulumi.String("Ubuntu"),
+//				OsType:       pulumi.String("linux"),
 //				DiskDeviceMappings: ecs.ImageImportDiskDeviceMappingArray{
 //					&ecs.ImageImportDiskDeviceMappingArgs{
 //						DiskImageSize: pulumi.Int(5),
@@ -45,10 +49,6 @@ import (
 //						OssObject:     pulumi.String("root.img"),
 //					},
 //				},
-//				ImageName:   pulumi.String("test-import-image"),
-//				LicenseType: pulumi.String("Auto"),
-//				OsType:      pulumi.String("linux"),
-//				Platform:    pulumi.String("Ubuntu"),
 //			})
 //			if err != nil {
 //				return err

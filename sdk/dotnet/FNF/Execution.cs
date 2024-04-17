@@ -31,8 +31,9 @@ namespace Pulumi.AliCloud.FNF
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example-fnfflow";
-    ///     var defaultRole = new AliCloud.Ram.Role("defaultRole", new()
+    ///     var @default = new AliCloud.Ram.Role("default", new()
     ///     {
+    ///         Name = name,
     ///         Document = @"  {
     ///     ""Statement"": [
     ///       {
@@ -50,7 +51,7 @@ namespace Pulumi.AliCloud.FNF
     /// ",
     ///     });
     /// 
-    ///     var defaultFlow = new AliCloud.FNF.Flow("defaultFlow", new()
+    ///     var defaultFlow = new AliCloud.FNF.Flow("default", new()
     ///     {
     ///         Definition = @"  version: v1beta1
     ///   type: flow
@@ -59,12 +60,13 @@ namespace Pulumi.AliCloud.FNF
     ///       name: custom_wait
     ///       duration: $.wait
     /// ",
-    ///         RoleArn = defaultRole.Arn,
+    ///         RoleArn = @default.Arn,
     ///         Description = "Test for terraform fnf_flow.",
+    ///         Name = name,
     ///         Type = "FDL",
     ///     });
     /// 
-    ///     var defaultExecution = new AliCloud.FNF.Execution("defaultExecution", new()
+    ///     var defaultExecution = new AliCloud.FNF.Execution("default", new()
     ///     {
     ///         ExecutionName = name,
     ///         FlowName = defaultFlow.Name,

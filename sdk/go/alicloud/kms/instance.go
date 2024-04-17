@@ -42,29 +42,29 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//			_default, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 //				NameRegex: pulumi.StringRef("^default-NODELETING$"),
 //				CidrBlock: pulumi.StringRef("172.16.0.0/16"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(_default.Ids[0]),
 //				ZoneId: pulumi.StringRef("cn-hangzhou-k"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kms.NewInstance(ctx, "defaultInstance", &kms.InstanceArgs{
+//			_, err = kms.NewInstance(ctx, "default", &kms.InstanceArgs{
 //				ProductVersion: pulumi.String("3"),
-//				VpcId:          pulumi.String(defaultNetworks.Ids[0]),
+//				VpcId:          pulumi.String(_default.Ids[0]),
 //				ZoneIds: pulumi.StringArray{
 //					pulumi.String("cn-hangzhou-k"),
 //					pulumi.String("cn-hangzhou-j"),
 //				},
 //				VswitchIds: pulumi.StringArray{
-//					pulumi.String(defaultSwitches.Ids[0]),
+//					pulumi.String(defaultGetSwitches.Ids[0]),
 //				},
 //				VpcNum:    pulumi.Int(1),
 //				KeyNum:    pulumi.Int(1000),

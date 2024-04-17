@@ -17,6 +17,111 @@ namespace Pulumi.AliCloud.Slb
     /// &gt; **NOTE:** Applying this resource may conflict with applying `alicloud.slb.Listener`,
     /// and the `alicloud.slb.Listener` block should use `depends_on = [alicloud_slb_server_group_server_attachment.xxx]` to avoid it.
     /// 
+    /// ## Example Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var slbServerGroupServerAttachment = config.Get("slbServerGroupServerAttachment") ?? "terraform-example";
+    ///     var slbServerGroupServerAttachmentCount = config.GetDouble("slbServerGroupServerAttachmentCount") ?? 5;
+    ///     var serverAttachment = AliCloud.GetZones.Invoke(new()
+    ///     {
+    ///         AvailableDiskCategory = "cloud_efficiency",
+    ///         AvailableResourceCreation = "VSwitch",
+    ///     });
+    /// 
+    ///     var serverAttachmentGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     {
+    ///         AvailabilityZone = serverAttachment.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         CpuCoreCount = 1,
+    ///         MemorySize = 2,
+    ///     });
+    /// 
+    ///     var serverAttachmentGetImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     {
+    ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
+    ///         MostRecent = true,
+    ///         Owners = "system",
+    ///     });
+    /// 
+    ///     var serverAttachmentNetwork = new AliCloud.Vpc.Network("server_attachment", new()
+    ///     {
+    ///         VpcName = slbServerGroupServerAttachment,
+    ///         CidrBlock = "172.17.3.0/24",
+    ///     });
+    /// 
+    ///     var serverAttachmentSwitch = new AliCloud.Vpc.Switch("server_attachment", new()
+    ///     {
+    ///         VswitchName = slbServerGroupServerAttachment,
+    ///         CidrBlock = "172.17.3.0/24",
+    ///         VpcId = serverAttachmentNetwork.Id,
+    ///         ZoneId = serverAttachment.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///     });
+    /// 
+    ///     var serverAttachmentSecurityGroup = new AliCloud.Ecs.SecurityGroup("server_attachment", new()
+    ///     {
+    ///         Name = slbServerGroupServerAttachment,
+    ///         VpcId = serverAttachmentNetwork.Id,
+    ///     });
+    /// 
+    ///     var serverAttachmentInstance = new List&lt;AliCloud.Ecs.Instance&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; slbServerGroupServerAttachmentCount; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         serverAttachmentInstance.Add(new AliCloud.Ecs.Instance($"server_attachment-{range.Value}", new()
+    ///         {
+    ///             ImageId = serverAttachmentGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///             InstanceType = serverAttachmentGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///             InstanceName = slbServerGroupServerAttachment,
+    ///             SecurityGroups = new[]
+    ///             {
+    ///                 serverAttachmentSecurityGroup,
+    ///             }.Select(__item =&gt; __item.Id).ToList(),
+    ///             InternetChargeType = "PayByTraffic",
+    ///             InternetMaxBandwidthOut = 10,
+    ///             AvailabilityZone = serverAttachment.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///             InstanceChargeType = "PostPaid",
+    ///             SystemDiskCategory = "cloud_efficiency",
+    ///             VswitchId = serverAttachmentSwitch.Id,
+    ///         }));
+    ///     }
+    ///     var serverAttachmentApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("server_attachment", new()
+    ///     {
+    ///         LoadBalancerName = slbServerGroupServerAttachment,
+    ///         VswitchId = serverAttachmentSwitch.Id,
+    ///         LoadBalancerSpec = "slb.s2.small",
+    ///         AddressType = "intranet",
+    ///     });
+    /// 
+    ///     var serverAttachmentServerGroup = new AliCloud.Slb.ServerGroup("server_attachment", new()
+    ///     {
+    ///         LoadBalancerId = serverAttachmentApplicationLoadBalancer.Id,
+    ///         Name = slbServerGroupServerAttachment,
+    ///     });
+    /// 
+    ///     var serverAttachmentServerGroupServerAttachment = new List&lt;AliCloud.Slb.ServerGroupServerAttachment&gt;();
+    ///     for (var rangeIndex = 0; rangeIndex &lt; slbServerGroupServerAttachmentCount; rangeIndex++)
+    ///     {
+    ///         var range = new { Value = rangeIndex };
+    ///         serverAttachmentServerGroupServerAttachment.Add(new AliCloud.Slb.ServerGroupServerAttachment($"server_attachment-{range.Value}", new()
+    ///         {
+    ///             ServerGroupId = serverAttachmentServerGroup.Id,
+    ///             ServerId = serverAttachmentInstance[range.Value].Id,
+    ///             Port = 8080,
+    ///             Weight = 0,
+    ///         }));
+    ///     }
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// Load balancer backend server group server attachment can be imported using the id, e.g.

@@ -36,14 +36,16 @@ import (
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // _, err := sag.GetAcls(ctx, &sag.GetAclsArgs{
 // Ids: interface{}{
-// alicloud_sag_acls.Default.Id,
+// defaultAlicloudSagAcls.Id,
 // },
 // NameRegex: pulumi.StringRef("^tf-testAcc.*"),
 // }, nil);
 // if err != nil {
 // return err
 // }
-// _, err = rocketmq.NewAcl(ctx, "defaultAcl", nil)
+// _, err = rocketmq.NewAcl(ctx, "default", &rocketmq.AclArgs{
+// Name: pulumi.String("tf-testAccSagAclName"),
+// })
 // if err != nil {
 // return err
 // }

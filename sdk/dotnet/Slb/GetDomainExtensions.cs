@@ -29,12 +29,12 @@ namespace Pulumi.AliCloud.Slb
         /// {
         ///     var foo = AliCloud.Slb.GetDomainExtensions.Invoke(new()
         ///     {
-        ///         FrontendPort = "fake-port",
         ///         Ids = new[]
         ///         {
         ///             "fake-de-id",
         ///         },
         ///         LoadBalancerId = "fake-lb-id",
+        ///         FrontendPort = "fake-port",
         ///     });
         /// 
         /// });
@@ -62,12 +62,12 @@ namespace Pulumi.AliCloud.Slb
         /// {
         ///     var foo = AliCloud.Slb.GetDomainExtensions.Invoke(new()
         ///     {
-        ///         FrontendPort = "fake-port",
         ///         Ids = new[]
         ///         {
         ///             "fake-de-id",
         ///         },
         ///         LoadBalancerId = "fake-lb-id",
+        ///         FrontendPort = "fake-port",
         ///     });
         /// 
         /// });

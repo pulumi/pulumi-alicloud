@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.rocketmq.Acl("default", {});
+ * const _default = new alicloud.rocketmq.Acl("default", {name: "terraform-example"});
  * ```
  * <!--End PulumiCodeChooser -->
  *

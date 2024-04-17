@@ -29,10 +29,10 @@ namespace Pulumi.AliCloud
     /// {
     ///     var example = new AliCloud.MscSubSubscription("example", new()
     ///     {
-    ///         EmailStatus = 1,
     ///         ItemName = "Notifications of Product Expiration",
-    ///         PmsgStatus = 1,
     ///         SmsStatus = 1,
+    ///         EmailStatus = 1,
+    ///         PmsgStatus = 1,
     ///         TtsStatus = 1,
     ///         WebhookStatus = 0,
     ///     });

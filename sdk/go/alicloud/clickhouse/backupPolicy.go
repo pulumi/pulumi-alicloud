@@ -44,29 +44,29 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRegions, err := clickhouse.GetRegions(ctx, &clickhouse.GetRegionsArgs{
+//			_default, err := clickhouse.GetRegions(ctx, &clickhouse.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultRegions.Regions[0].ZoneIds[0].ZoneId),
+//				ZoneId:      pulumi.String(_default.Regions[0].ZoneIds[0].ZoneId),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultDbCluster, err := clickhouse.NewDbCluster(ctx, "defaultDbCluster", &clickhouse.DbClusterArgs{
+//			defaultDbCluster, err := clickhouse.NewDbCluster(ctx, "default", &clickhouse.DbClusterArgs{
 //				DbClusterVersion:     pulumi.String("22.8.5.29"),
 //				Status:               pulumi.String("Running"),
 //				Category:             pulumi.String("Basic"),
@@ -82,7 +82,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = clickhouse.NewBackupPolicy(ctx, "defaultBackupPolicy", &clickhouse.BackupPolicyArgs{
+//			_, err = clickhouse.NewBackupPolicy(ctx, "default", &clickhouse.BackupPolicyArgs{
 //				DbClusterId: defaultDbCluster.ID(),
 //				PreferredBackupPeriods: pulumi.StringArray{
 //					pulumi.String("Monday"),

@@ -36,6 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ecs.NewCommand(ctx, "example", &ecs.CommandArgs{
+//				Name:           pulumi.String("tf-testAcc"),
 //				CommandContent: pulumi.String("bHMK"),
 //				Description:    pulumi.String("For Terraform Test"),
 //				Type:           pulumi.String("RunShellScript"),

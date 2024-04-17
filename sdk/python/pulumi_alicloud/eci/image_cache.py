@@ -413,27 +413,29 @@ class ImageCache(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.eci.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.eci.get_zones()
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.1.0.0/16",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].zone_ids[0])
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+            zone_id=default.zones[0].zone_ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_eip_address = alicloud.ecs.EipAddress("default",
             isp="BGP",
             address_name=name,
             netmode="public",
             bandwidth="1",
             security_protection_types=["AntiDDoS_Enhanced"],
             payment_type="PayAsYouGo")
-        default_regions = alicloud.get_regions(current=True)
-        default_image_cache = alicloud.eci.ImageCache("defaultImageCache",
+        default_get_regions = alicloud.get_regions(current=True)
+        default_image_cache = alicloud.eci.ImageCache("default",
             image_cache_name=name,
-            images=[f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/eci_open/nginx:alpine"],
+            images=[f"registry-vpc.{default_get_regions.regions[0].id}.aliyuncs.com/eci_open/nginx:alpine"],
             security_group_id=default_security_group.id,
             vswitch_id=default_switch.id,
             eip_instance_id=default_eip_address.id)
@@ -487,27 +489,29 @@ class ImageCache(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.eci.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.eci.get_zones()
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.0.0.0/8")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.1.0.0/16",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].zone_ids[0])
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+            zone_id=default.zones[0].zone_ids[0])
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_eip_address = alicloud.ecs.EipAddress("default",
             isp="BGP",
             address_name=name,
             netmode="public",
             bandwidth="1",
             security_protection_types=["AntiDDoS_Enhanced"],
             payment_type="PayAsYouGo")
-        default_regions = alicloud.get_regions(current=True)
-        default_image_cache = alicloud.eci.ImageCache("defaultImageCache",
+        default_get_regions = alicloud.get_regions(current=True)
+        default_image_cache = alicloud.eci.ImageCache("default",
             image_cache_name=name,
-            images=[f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/eci_open/nginx:alpine"],
+            images=[f"registry-vpc.{default_get_regions.regions[0].id}.aliyuncs.com/eci_open/nginx:alpine"],
             security_group_id=default_security_group.id,
             vswitch_id=default_switch.id,
             eip_instance_id=default_eip_address.id)

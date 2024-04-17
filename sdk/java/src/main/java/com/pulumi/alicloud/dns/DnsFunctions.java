@@ -2808,10 +2808,10 @@ public final class DnsFunctions {
      *     public static void stack(Context ctx) {
      *         final var recordsDs = DnsFunctions.getRecords(GetRecordsArgs.builder()
      *             .domainName(&#34;xiaozhu.top&#34;)
-     *             .hostRecordRegex(&#34;^@&#34;)
      *             .isLocked(false)
-     *             .outputFile(&#34;records.txt&#34;)
      *             .type(&#34;A&#34;)
+     *             .hostRecordRegex(&#34;^@&#34;)
+     *             .outputFile(&#34;records.txt&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getRecordsResult -&gt; getRecordsResult.records()[0].recordId()));
@@ -2855,10 +2855,10 @@ public final class DnsFunctions {
      *     public static void stack(Context ctx) {
      *         final var recordsDs = DnsFunctions.getRecords(GetRecordsArgs.builder()
      *             .domainName(&#34;xiaozhu.top&#34;)
-     *             .hostRecordRegex(&#34;^@&#34;)
      *             .isLocked(false)
-     *             .outputFile(&#34;records.txt&#34;)
      *             .type(&#34;A&#34;)
+     *             .hostRecordRegex(&#34;^@&#34;)
+     *             .outputFile(&#34;records.txt&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getRecordsResult -&gt; getRecordsResult.records()[0].recordId()));
@@ -2902,10 +2902,10 @@ public final class DnsFunctions {
      *     public static void stack(Context ctx) {
      *         final var recordsDs = DnsFunctions.getRecords(GetRecordsArgs.builder()
      *             .domainName(&#34;xiaozhu.top&#34;)
-     *             .hostRecordRegex(&#34;^@&#34;)
      *             .isLocked(false)
-     *             .outputFile(&#34;records.txt&#34;)
      *             .type(&#34;A&#34;)
+     *             .hostRecordRegex(&#34;^@&#34;)
+     *             .outputFile(&#34;records.txt&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getRecordsResult -&gt; getRecordsResult.records()[0].recordId()));
@@ -2949,10 +2949,10 @@ public final class DnsFunctions {
      *     public static void stack(Context ctx) {
      *         final var recordsDs = DnsFunctions.getRecords(GetRecordsArgs.builder()
      *             .domainName(&#34;xiaozhu.top&#34;)
-     *             .hostRecordRegex(&#34;^@&#34;)
      *             .isLocked(false)
-     *             .outputFile(&#34;records.txt&#34;)
      *             .type(&#34;A&#34;)
+     *             .hostRecordRegex(&#34;^@&#34;)
+     *             .outputFile(&#34;records.txt&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstRecordId&#34;, recordsDs.applyValue(getRecordsResult -&gt; getRecordsResult.records()[0].recordId()));

@@ -43,15 +43,15 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultProduct, err := mhub.NewProduct(ctx, "defaultProduct", &mhub.ProductArgs{
+//			_, err := mhub.NewProduct(ctx, "default", &mhub.ProductArgs{
 //				ProductName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = mhub.NewApp(ctx, "defaultApp", &mhub.AppArgs{
+//			_, err = mhub.NewApp(ctx, "default", &mhub.AppArgs{
 //				AppName:     pulumi.String(name),
-//				ProductId:   defaultProduct.ID(),
+//				ProductId:   _default.ID(),
 //				PackageName: pulumi.String("com.example.android"),
 //				Type:        pulumi.String("Android"),
 //			})

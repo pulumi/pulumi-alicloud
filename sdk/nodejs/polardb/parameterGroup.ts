@@ -23,13 +23,14 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.polardb.ParameterGroup("example", {
+ *     name: "example_value",
  *     dbType: "MySQL",
  *     dbVersion: "8.0",
- *     description: "example_value",
  *     parameters: [{
  *         paramName: "wait_timeout",
  *         paramValue: "86400",
  *     }],
+ *     description: "example_value",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "defaultAlarmContactGroup", &cms.AlarmContactGroupArgs{
+//			_, err := cms.NewAlarmContactGroup(ctx, "default", &cms.AlarmContactGroupArgs{
 //				AlarmContactGroupName: pulumi.String("example_value"),
 //				Describe:              pulumi.String("example_value"),
 //				EnableSubscribed:      pulumi.Bool(true),
@@ -43,9 +43,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cms.NewDynamicTagGroup(ctx, "defaultDynamicTagGroup", &cms.DynamicTagGroupArgs{
+//			_, err = cms.NewDynamicTagGroup(ctx, "default", &cms.DynamicTagGroupArgs{
 //				ContactGroupLists: pulumi.StringArray{
-//					defaultAlarmContactGroup.ID(),
+//					_default.ID(),
 //				},
 //				TagKey: pulumi.String("your_tag_key"),
 //				MatchExpresses: cms.DynamicTagGroupMatchExpressArray{

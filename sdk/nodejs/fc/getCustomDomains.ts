@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * const fcDomains = alicloud.fc.getCustomDomains({
  *     nameRegex: "sample_fc_custom_domain",
  * });
- * export const firstFcCustomDomainName = data.alicloud_fc_custom_domains.fc_domains_ds.domains[0].domain_name;
+ * export const firstFcCustomDomainName = fcDomainsDs.domains[0].domainName;
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -92,7 +92,7 @@ export interface GetCustomDomainsResult {
  * const fcDomains = alicloud.fc.getCustomDomains({
  *     nameRegex: "sample_fc_custom_domain",
  * });
- * export const firstFcCustomDomainName = data.alicloud_fc_custom_domains.fc_domains_ds.domains[0].domain_name;
+ * export const firstFcCustomDomainName = fcDomainsDs.domains[0].domainName;
  * ```
  * <!--End PulumiCodeChooser -->
  */

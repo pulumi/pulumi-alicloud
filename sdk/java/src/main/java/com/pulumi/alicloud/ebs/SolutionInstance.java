@@ -56,11 +56,11 @@ import javax.annotation.Nullable;
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         final var zoneId = config.get(&#34;zoneId&#34;).orElse(&#34;cn-shanghai-l&#34;);
  *         final var regionId = config.get(&#34;regionId&#34;).orElse(&#34;cn-shanghai&#34;);
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var defaultSolutionInstance = new SolutionInstance(&#34;defaultSolutionInstance&#34;, SolutionInstanceArgs.builder()        
  *             .solutionInstanceName(name)
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .resourceGroupId(default_.ids()[0])
  *             .description(&#34;description&#34;)
  *             .solutionId(&#34;mysql&#34;)
  *             .parameters(            

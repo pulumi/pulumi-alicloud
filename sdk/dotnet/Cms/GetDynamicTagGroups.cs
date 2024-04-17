@@ -31,18 +31,18 @@ namespace Pulumi.AliCloud.Cms
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "example_value";
-        ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new()
+        ///     var @default = new AliCloud.Cms.AlarmContactGroup("default", new()
         ///     {
         ///         AlarmContactGroupName = name,
         ///         Describe = "example_value",
         ///         EnableSubscribed = true,
         ///     });
         /// 
-        ///     var defaultDynamicTagGroup = new AliCloud.Cms.DynamicTagGroup("defaultDynamicTagGroup", new()
+        ///     var defaultDynamicTagGroup = new AliCloud.Cms.DynamicTagGroup("default", new()
         ///     {
         ///         ContactGroupLists = new[]
         ///         {
-        ///             defaultAlarmContactGroup.Id,
+        ///             @default.Id,
         ///         },
         ///         TagKey = "your_tag_key",
         ///         MatchExpresses = new[]
@@ -94,18 +94,18 @@ namespace Pulumi.AliCloud.Cms
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "example_value";
-        ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new()
+        ///     var @default = new AliCloud.Cms.AlarmContactGroup("default", new()
         ///     {
         ///         AlarmContactGroupName = name,
         ///         Describe = "example_value",
         ///         EnableSubscribed = true,
         ///     });
         /// 
-        ///     var defaultDynamicTagGroup = new AliCloud.Cms.DynamicTagGroup("defaultDynamicTagGroup", new()
+        ///     var defaultDynamicTagGroup = new AliCloud.Cms.DynamicTagGroup("default", new()
         ///     {
         ///         ContactGroupLists = new[]
         ///         {
-        ///             defaultAlarmContactGroup.Id,
+        ///             @default.Id,
         ///         },
         ///         TagKey = "your_tag_key",
         ///         MatchExpresses = new[]

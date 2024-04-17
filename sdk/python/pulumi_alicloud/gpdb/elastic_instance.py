@@ -701,14 +701,16 @@ class ElasticInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones(available_resource_creation="Gpdb")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            zone_id=default_zones.zones[0].id,
+        default = alicloud.get_zones(available_resource_creation="Gpdb")
+        default_network = alicloud.vpc.Network("default",
+            name="vpc-123456",
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            zone_id=default.zones[0].id,
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             vswitch_name="vpc-123456")
-        adb_pg_instance = alicloud.gpdb.ElasticInstance("adbPgInstance",
+        adb_pg_instance = alicloud.gpdb.ElasticInstance("adb_pg_instance",
             engine="gpdb",
             engine_version="6.0",
             seg_storage_type="cloud_essd",
@@ -778,14 +780,16 @@ class ElasticInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones(available_resource_creation="Gpdb")
-        default_network = alicloud.vpc.Network("defaultNetwork", cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
-            zone_id=default_zones.zones[0].id,
+        default = alicloud.get_zones(available_resource_creation="Gpdb")
+        default_network = alicloud.vpc.Network("default",
+            name="vpc-123456",
+            cidr_block="172.16.0.0/16")
+        default_switch = alicloud.vpc.Switch("default",
+            zone_id=default.zones[0].id,
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
             vswitch_name="vpc-123456")
-        adb_pg_instance = alicloud.gpdb.ElasticInstance("adbPgInstance",
+        adb_pg_instance = alicloud.gpdb.ElasticInstance("adb_pg_instance",
             engine="gpdb",
             engine_version="6.0",
             seg_storage_type="cloud_essd",

@@ -351,21 +351,21 @@ class Account(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.kvstore.get_zones()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.kvstore.get_zones()
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_instance = alicloud.kvstore.Instance("defaultInstance",
+            zone_id=default.zones[0].id)
+        default_instance = alicloud.kvstore.Instance("default",
             db_instance_name=name,
             vswitch_id=default_switch.id,
-            resource_group_id=default_resource_groups.ids[0],
-            zone_id=default_zones.zones[0].id,
+            resource_group_id=default_get_resource_groups.ids[0],
+            zone_id=default.zones[0].id,
             instance_class="redis.master.large.default",
             instance_type="Redis",
             engine_version="5.0",
@@ -378,7 +378,7 @@ class Account(pulumi.CustomResource):
                 "Created": "TF",
                 "For": "example",
             })
-        default_account = alicloud.kvstore.Account("defaultAccount",
+        default_account = alicloud.kvstore.Account("default",
             account_name="tfexamplename",
             account_password="YourPassword_123",
             instance_id=default_instance.id)
@@ -435,21 +435,21 @@ class Account(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.kvstore.get_zones()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.kvstore.get_zones()
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_instance = alicloud.kvstore.Instance("defaultInstance",
+            zone_id=default.zones[0].id)
+        default_instance = alicloud.kvstore.Instance("default",
             db_instance_name=name,
             vswitch_id=default_switch.id,
-            resource_group_id=default_resource_groups.ids[0],
-            zone_id=default_zones.zones[0].id,
+            resource_group_id=default_get_resource_groups.ids[0],
+            zone_id=default.zones[0].id,
             instance_class="redis.master.large.default",
             instance_type="Redis",
             engine_version="5.0",
@@ -462,7 +462,7 @@ class Account(pulumi.CustomResource):
                 "Created": "TF",
                 "For": "example",
             })
-        default_account = alicloud.kvstore.Account("defaultAccount",
+        default_account = alicloud.kvstore.Account("default",
             account_name="tfexamplename",
             account_password="YourPassword_123",
             instance_id=default_instance.id)

@@ -274,10 +274,10 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.databasefilesystem.AutoSnapShotPolicy("default",
+            time_points=["01"],
             policy_name="tf-example",
-            repeat_weekdays=["2"],
             retention_days=1,
-            time_points=["01"])
+            repeat_weekdays=["2"])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -319,10 +319,10 @@ class AutoSnapShotPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.databasefilesystem.AutoSnapShotPolicy("default",
+            time_points=["01"],
             policy_name="tf-example",
-            repeat_weekdays=["2"],
             retention_days=1,
-            time_points=["01"])
+            repeat_weekdays=["2"])
         ```
         <!--End PulumiCodeChooser -->
 

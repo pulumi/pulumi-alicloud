@@ -29,27 +29,27 @@ namespace Pulumi.AliCloud.KVStore
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "kvstorebackuppolicyvpc";
-    ///     var defaultZones = AliCloud.KVStore.GetZones.Invoke();
+    ///     var @default = AliCloud.KVStore.GetZones.Invoke();
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.KVStore.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.KVStore.Instance("default", new()
     ///     {
     ///         DbInstanceName = name,
     ///         VswitchId = defaultSwitch.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         InstanceClass = "redis.master.large.default",
     ///         InstanceType = "Redis",
     ///         EngineVersion = "5.0",
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.KVStore
     ///         },
     ///     });
     /// 
-    ///     var defaultBackupPolicy = new AliCloud.KVStore.BackupPolicy("defaultBackupPolicy", new()
+    ///     var defaultBackupPolicy = new AliCloud.KVStore.BackupPolicy("default", new()
     ///     {
     ///         InstanceId = defaultInstance.Id,
     ///         BackupPeriods = new[]

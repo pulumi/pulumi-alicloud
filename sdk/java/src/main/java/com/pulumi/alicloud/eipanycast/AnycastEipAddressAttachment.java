@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultZones = SlbFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = SlbFunctions.getZones(GetZonesArgs.builder()
  *             .availableSlbAddressType(&#34;vpc&#34;)
  *             .build());
  * 
@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock(&#34;10.1.0.0/16&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
  *         var defaultApplicationLoadBalancer = new ApplicationLoadBalancer(&#34;defaultApplicationLoadBalancer&#34;, ApplicationLoadBalancerArgs.builder()        
@@ -87,7 +87,7 @@ import javax.annotation.Nullable;
  *             .vswitchId(defaultSwitch.id())
  *             .loadBalancerName(name)
  *             .loadBalancerSpec(&#34;slb.s1.small&#34;)
- *             .masterZoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .masterZoneId(default_.zones()[0].id())
  *             .build());
  * 
  *         var defaultAnycastEipAddress = new AnycastEipAddress(&#34;defaultAnycastEipAddress&#34;, AnycastEipAddressArgs.builder()        
@@ -95,14 +95,14 @@ import javax.annotation.Nullable;
  *             .serviceLocation(&#34;ChineseMainland&#34;)
  *             .build());
  * 
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
  *         var defaultAnycastEipAddressAttachment = new AnycastEipAddressAttachment(&#34;defaultAnycastEipAddressAttachment&#34;, AnycastEipAddressAttachmentArgs.builder()        
  *             .bindInstanceId(defaultApplicationLoadBalancer.id())
  *             .bindInstanceType(&#34;SlbInstance&#34;)
- *             .bindInstanceRegionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .bindInstanceRegionId(defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
  *             .anycastId(defaultAnycastEipAddress.id())
  *             .build());
  * 
@@ -122,8 +122,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.Provider;
- * import com.pulumi.alicloud.ProviderArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.ecs.EcsFunctions;
@@ -141,7 +139,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.eipanycast.AnycastEipAddressArgs;
  * import com.pulumi.alicloud.eipanycast.AnycastEipAddressAttachment;
  * import com.pulumi.alicloud.eipanycast.AnycastEipAddressAttachmentArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -157,27 +154,19 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var beijing = new Provider(&#34;beijing&#34;, ProviderArgs.builder()        
- *             .region(&#34;cn-beijing&#34;)
- *             .build());
- * 
- *         var hangzhou = new Provider(&#34;hangzhou&#34;, ProviderArgs.builder()        
- *             .region(&#34;cn-hangzhou&#34;)
- *             .build());
- * 
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
  *             .mostRecent(true)
  *             .owners(&#34;system&#34;)
  *             .build());
  * 
- *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(default_.zones()[0].id())
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
@@ -185,63 +174,51 @@ import javax.annotation.Nullable;
  *         var defaultVpc = new Network(&#34;defaultVpc&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
  *             .cidrBlock(&#34;192.168.0.0/16&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(&#34;alicloud.beijing&#34;)
- *                 .build());
+ *             .build());
  * 
  *         var defaultVsw = new Switch(&#34;defaultVsw&#34;, SwitchArgs.builder()        
  *             .vpcId(defaultVpc.id())
  *             .cidrBlock(&#34;192.168.0.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(&#34;alicloud.beijing&#34;)
- *                 .build());
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
  * 
  *         var defaultuBsECI = new SecurityGroup(&#34;defaultuBsECI&#34;, SecurityGroupArgs.builder()        
  *             .vpcId(defaultVpc.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(&#34;alicloud.beijing&#34;)
- *                 .build());
+ *             .build());
  * 
  *         var default9KDlN7 = new Instance(&#34;default9KDlN7&#34;, InstanceArgs.builder()        
- *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
  *             .instanceName(name)
  *             .securityGroups(defaultuBsECI.id())
  *             .availabilityZone(defaultVsw.zoneId())
  *             .instanceChargeType(&#34;PostPaid&#34;)
  *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
  *             .vswitchId(defaultVsw.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(&#34;alicloud.beijing&#34;)
- *                 .build());
+ *             .build());
  * 
  *         var defaultXkpFRs = new AnycastEipAddress(&#34;defaultXkpFRs&#34;, AnycastEipAddressArgs.builder()        
  *             .serviceLocation(&#34;ChineseMainland&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(&#34;alicloud.hangzhou&#34;)
- *                 .build());
+ *             .build());
  * 
  *         var defaultVpc2 = new Network(&#34;defaultVpc2&#34;, NetworkArgs.builder()        
  *             .vpcName(String.format(&#34;%s6&#34;, name))
  *             .cidrBlock(&#34;192.168.0.0/16&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(&#34;alicloud.hangzhou&#34;)
- *                 .build());
+ *             .build());
  * 
- *         final var default2Zones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var default2 = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableDiskCategory(&#34;cloud_efficiency&#34;)
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         final var default2Images = EcsFunctions.getImages(GetImagesArgs.builder()
+ *         final var default2GetImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
  *             .mostRecent(true)
  *             .owners(&#34;system&#34;)
  *             .build());
  * 
- *         final var default2InstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(default2Zones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var default2GetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(default2.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
@@ -249,29 +226,23 @@ import javax.annotation.Nullable;
  *         var defaultdsVsw2 = new Switch(&#34;defaultdsVsw2&#34;, SwitchArgs.builder()        
  *             .vpcId(defaultVpc2.id())
  *             .cidrBlock(&#34;192.168.0.0/24&#34;)
- *             .zoneId(default2Zones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].id()))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(&#34;alicloud.hangzhou&#34;)
- *                 .build());
+ *             .zoneId(default2.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].id()))
+ *             .build());
  * 
  *         var defaultuBsECI2 = new SecurityGroup(&#34;defaultuBsECI2&#34;, SecurityGroupArgs.builder()        
  *             .vpcId(defaultVpc2.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(&#34;alicloud.hangzhou&#34;)
- *                 .build());
+ *             .build());
  * 
  *         var defaultEcs2 = new Instance(&#34;defaultEcs2&#34;, InstanceArgs.builder()        
- *             .imageId(default2Images.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(default2InstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .imageId(default2GetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(default2GetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
  *             .instanceName(name)
  *             .securityGroups(defaultuBsECI2.id())
  *             .availabilityZone(defaultdsVsw2.zoneId())
  *             .instanceChargeType(&#34;PostPaid&#34;)
  *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
  *             .vswitchId(defaultdsVsw2.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(&#34;alicloud.hangzhou&#34;)
- *                 .build());
+ *             .build());
  * 
  *         var defaultEfYBJY = new AnycastEipAddressAttachment(&#34;defaultEfYBJY&#34;, AnycastEipAddressAttachmentArgs.builder()        
  *             .bindInstanceId(default9KDlN7.networkInterfaceId())
@@ -279,18 +250,14 @@ import javax.annotation.Nullable;
  *             .bindInstanceRegionId(&#34;cn-beijing&#34;)
  *             .anycastId(defaultXkpFRs.id())
  *             .associationMode(&#34;Default&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(&#34;alicloud.beijing&#34;)
- *                 .build());
+ *             .build());
  * 
  *         var normal = new AnycastEipAddressAttachment(&#34;normal&#34;, AnycastEipAddressAttachmentArgs.builder()        
  *             .bindInstanceId(defaultEcs2.networkInterfaceId())
  *             .bindInstanceType(&#34;NetworkInterface&#34;)
  *             .bindInstanceRegionId(&#34;cn-hangzhou&#34;)
  *             .anycastId(defaultEfYBJY.anycastId())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(&#34;alicloud.hangzhou&#34;)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

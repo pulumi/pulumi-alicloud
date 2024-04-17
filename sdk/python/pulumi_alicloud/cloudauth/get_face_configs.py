@@ -108,12 +108,12 @@ def get_face_configs(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_face_config = alicloud.cloudauth.FaceConfig("defaultFaceConfig",
+    default_face_config = alicloud.cloudauth.FaceConfig("default",
         biz_name="example-value",
         biz_type="example-value")
-    default_face_configs = alicloud.cloudauth.get_face_configs_output(ids=[default_face_config.id],
+    default = alicloud.cloudauth.get_face_configs_output(ids=[default_face_config.id],
         name_regex=default_face_config.biz_name)
-    pulumi.export("faceConfig", default_face_configs.configs[0])
+    pulumi.export("faceConfig", default.configs[0])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -157,12 +157,12 @@ def get_face_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_face_config = alicloud.cloudauth.FaceConfig("defaultFaceConfig",
+    default_face_config = alicloud.cloudauth.FaceConfig("default",
         biz_name="example-value",
         biz_type="example-value")
-    default_face_configs = alicloud.cloudauth.get_face_configs_output(ids=[default_face_config.id],
+    default = alicloud.cloudauth.get_face_configs_output(ids=[default_face_config.id],
         name_regex=default_face_config.biz_name)
-    pulumi.export("faceConfig", default_face_configs.configs[0])
+    pulumi.export("faceConfig", default.configs[0])
     ```
     <!--End PulumiCodeChooser -->
 

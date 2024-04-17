@@ -33,6 +33,7 @@ namespace Pulumi.AliCloud.Datahub
     ///     var name = config.Get("name") ?? "tf_example";
     ///     var example = new AliCloud.Datahub.Project("example", new()
     ///     {
+    ///         Name = name,
     ///         Comment = "created by terraform",
     ///     });
     /// 

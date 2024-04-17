@@ -12,6 +12,81 @@ import * as utilities from "../utilities";
  * > **NOTE:** Applying this resource may conflict with applying `alicloud.slb.Listener`,
  * and the `alicloud.slb.Listener` block should use `dependsOn = [alicloud_slb_server_group_server_attachment.xxx]` to avoid it.
  *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const slbServerGroupServerAttachment = config.get("slbServerGroupServerAttachment") || "terraform-example";
+ * const slbServerGroupServerAttachmentCount = config.getNumber("slbServerGroupServerAttachmentCount") || 5;
+ * const serverAttachment = alicloud.getZones({
+ *     availableDiskCategory: "cloud_efficiency",
+ *     availableResourceCreation: "VSwitch",
+ * });
+ * const serverAttachmentGetInstanceTypes = serverAttachment.then(serverAttachment => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: serverAttachment.zones?.[0]?.id,
+ *     cpuCoreCount: 1,
+ *     memorySize: 2,
+ * }));
+ * const serverAttachmentGetImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const serverAttachmentNetwork = new alicloud.vpc.Network("server_attachment", {
+ *     vpcName: slbServerGroupServerAttachment,
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const serverAttachmentSwitch = new alicloud.vpc.Switch("server_attachment", {
+ *     vswitchName: slbServerGroupServerAttachment,
+ *     cidrBlock: "172.17.3.0/24",
+ *     vpcId: serverAttachmentNetwork.id,
+ *     zoneId: serverAttachment.then(serverAttachment => serverAttachment.zones?.[0]?.id),
+ * });
+ * const serverAttachmentSecurityGroup = new alicloud.ecs.SecurityGroup("server_attachment", {
+ *     name: slbServerGroupServerAttachment,
+ *     vpcId: serverAttachmentNetwork.id,
+ * });
+ * const serverAttachmentInstance: alicloud.ecs.Instance[] = [];
+ * for (const range = {value: 0}; range.value < slbServerGroupServerAttachmentCount; range.value++) {
+ *     serverAttachmentInstance.push(new alicloud.ecs.Instance(`server_attachment-${range.value}`, {
+ *         imageId: serverAttachmentGetImages.then(serverAttachmentGetImages => serverAttachmentGetImages.images?.[0]?.id),
+ *         instanceType: serverAttachmentGetInstanceTypes.then(serverAttachmentGetInstanceTypes => serverAttachmentGetInstanceTypes.instanceTypes?.[0]?.id),
+ *         instanceName: slbServerGroupServerAttachment,
+ *         securityGroups: [serverAttachmentSecurityGroup].map(__item => __item.id),
+ *         internetChargeType: "PayByTraffic",
+ *         internetMaxBandwidthOut: 10,
+ *         availabilityZone: serverAttachment.then(serverAttachment => serverAttachment.zones?.[0]?.id),
+ *         instanceChargeType: "PostPaid",
+ *         systemDiskCategory: "cloud_efficiency",
+ *         vswitchId: serverAttachmentSwitch.id,
+ *     }));
+ * }
+ * const serverAttachmentApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("server_attachment", {
+ *     loadBalancerName: slbServerGroupServerAttachment,
+ *     vswitchId: serverAttachmentSwitch.id,
+ *     loadBalancerSpec: "slb.s2.small",
+ *     addressType: "intranet",
+ * });
+ * const serverAttachmentServerGroup = new alicloud.slb.ServerGroup("server_attachment", {
+ *     loadBalancerId: serverAttachmentApplicationLoadBalancer.id,
+ *     name: slbServerGroupServerAttachment,
+ * });
+ * const serverAttachmentServerGroupServerAttachment: alicloud.slb.ServerGroupServerAttachment[] = [];
+ * for (const range = {value: 0}; range.value < slbServerGroupServerAttachmentCount; range.value++) {
+ *     serverAttachmentServerGroupServerAttachment.push(new alicloud.slb.ServerGroupServerAttachment(`server_attachment-${range.value}`, {
+ *         serverGroupId: serverAttachmentServerGroup.id,
+ *         serverId: serverAttachmentInstance[range.value].id,
+ *         port: 8080,
+ *         weight: 0,
+ *     }));
+ * }
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * Load balancer backend server group server attachment can be imported using the id, e.g.

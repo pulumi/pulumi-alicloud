@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.Hbr
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -41,12 +41,12 @@ namespace Pulumi.AliCloud.Hbr
     ///     var defaultyk84Hc = new AliCloud.Hbr.Vault("defaultyk84Hc", new()
     ///     {
     ///         VaultType = "STANDARD",
-    ///         VaultName = defaultRandomInteger.Result.Apply(result =&gt; $"example-value-{result}"),
+    ///         VaultName = $"example-value-{@default.Result}",
     ///     });
     /// 
     ///     var defaultoqWvHQ = new AliCloud.Hbr.Policy("defaultoqWvHQ", new()
     ///     {
-    ///         PolicyName = defaultRandomInteger.Result.Apply(result =&gt; $"example-value-{result}"),
+    ///         PolicyName = $"example-value-{@default.Result}",
     ///         Rules = new[]
     ///         {
     ///             new AliCloud.Hbr.Inputs.PolicyRuleArgs
@@ -65,10 +65,10 @@ namespace Pulumi.AliCloud.Hbr
     ///     var defaultKtt2XY = new AliCloud.Oss.Bucket("defaultKtt2XY", new()
     ///     {
     ///         StorageClass = "Standard",
-    ///         BucketName = defaultRandomInteger.Result.Apply(result =&gt; $"example-value-{result}"),
+    ///         BucketName = $"example-value-{@default.Result}",
     ///     });
     /// 
-    ///     var defaultPolicyBinding = new AliCloud.Hbr.PolicyBinding("defaultPolicyBinding", new()
+    ///     var defaultPolicyBinding = new AliCloud.Hbr.PolicyBinding("default", new()
     ///     {
     ///         SourceType = "OSS",
     ///         Disabled = false,

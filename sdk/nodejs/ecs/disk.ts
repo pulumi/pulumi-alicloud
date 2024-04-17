@@ -19,13 +19,14 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Create a new ECS disk.
- * const ecsDisk = new alicloud.ecs.Disk("ecsDisk", {
+ * const ecsDisk = new alicloud.ecs.Disk("ecs_disk", {
  *     availabilityZone: "cn-beijing-b",
- *     category: "cloud_efficiency",
+ *     name: "New-disk",
  *     description: "Hello ecs disk.",
+ *     category: "cloud_efficiency",
+ *     size: 30,
  *     encrypted: true,
  *     kmsKeyId: "2a6767f0-a16c-4679-a60f-13bf*****",
- *     size: 30,
  *     tags: {
  *         Name: "TerraformTest",
  *     },

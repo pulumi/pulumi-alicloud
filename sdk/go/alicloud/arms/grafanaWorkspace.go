@@ -41,14 +41,14 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = arms.NewGrafanaWorkspace(ctx, "defaultGrafanaWorkspace", &arms.GrafanaWorkspaceArgs{
+//			_, err = arms.NewGrafanaWorkspace(ctx, "default", &arms.GrafanaWorkspaceArgs{
 //				GrafanaVersion:          pulumi.String("9.0.x"),
 //				Description:             pulumi.String(name),
-//				ResourceGroupId:         pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId:         pulumi.String(_default.Ids[0]),
 //				GrafanaWorkspaceEdition: pulumi.String("standard"),
 //				GrafanaWorkspaceName:    pulumi.String(name),
 //				Tags: pulumi.Map{

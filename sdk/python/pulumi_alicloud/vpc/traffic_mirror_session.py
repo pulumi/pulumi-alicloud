@@ -501,49 +501,50 @@ class TrafficMirrorSession(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.g7")
-        default_zones = alicloud.get_zones(available_resource_creation="Instance",
-            available_instance_type=default_instance_types.instance_types[0].id)
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.ecs.get_instance_types(instance_type_family="ecs.g7")
+        default_get_zones = alicloud.get_zones(available_resource_creation="Instance",
+            available_instance_type=default.instance_types[0].id)
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
+            zone_id=default_get_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
             description=name,
             vpc_id=default_network.id)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             most_recent=True,
             owners="system")
         default_instance = []
         for range in [{"value": i} for i in range(0, 2)]:
-            default_instance.append(alicloud.ecs.Instance(f"defaultInstance-{range['value']}",
-                availability_zone=default_zones.zones[0].id,
+            default_instance.append(alicloud.ecs.Instance(f"default-{range['value']}",
+                availability_zone=default_get_zones.zones[0].id,
                 instance_name=name,
                 host_name=name,
-                image_id=default_images.images[0].id,
-                instance_type=default_instance_types.instance_types[0].id,
+                image_id=default_get_images.images[0].id,
+                instance_type=default.instance_types[0].id,
                 security_groups=[default_security_group.id],
                 vswitch_id=default_switch.id,
                 system_disk_category="cloud_essd"))
         default_ecs_network_interface = []
         for range in [{"value": i} for i in range(0, 2)]:
-            default_ecs_network_interface.append(alicloud.ecs.EcsNetworkInterface(f"defaultEcsNetworkInterface-{range['value']}",
+            default_ecs_network_interface.append(alicloud.ecs.EcsNetworkInterface(f"default-{range['value']}",
                 network_interface_name=name,
                 vswitch_id=default_switch.id,
                 security_group_ids=[default_security_group.id]))
         default_ecs_network_interface_attachment = []
         for range in [{"value": i} for i in range(0, 2)]:
-            default_ecs_network_interface_attachment.append(alicloud.ecs.EcsNetworkInterfaceAttachment(f"defaultEcsNetworkInterfaceAttachment-{range['value']}",
+            default_ecs_network_interface_attachment.append(alicloud.ecs.EcsNetworkInterfaceAttachment(f"default-{range['value']}",
                 instance_id=default_instance[range["value"]].id,
                 network_interface_id=default_ecs_network_interface[range["value"]].id))
-        default_traffic_mirror_filter = alicloud.vpc.TrafficMirrorFilter("defaultTrafficMirrorFilter",
+        default_traffic_mirror_filter = alicloud.vpc.TrafficMirrorFilter("default",
             traffic_mirror_filter_name=name,
             traffic_mirror_filter_description=name)
-        default_traffic_mirror_session = alicloud.vpc.TrafficMirrorSession("defaultTrafficMirrorSession",
+        default_traffic_mirror_session = alicloud.vpc.TrafficMirrorSession("default",
             priority=1,
             virtual_network_id=10,
             traffic_mirror_session_description=name,
@@ -607,49 +608,50 @@ class TrafficMirrorSession(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_instance_types = alicloud.ecs.get_instance_types(instance_type_family="ecs.g7")
-        default_zones = alicloud.get_zones(available_resource_creation="Instance",
-            available_instance_type=default_instance_types.instance_types[0].id)
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.ecs.get_instance_types(instance_type_family="ecs.g7")
+        default_get_zones = alicloud.get_zones(available_resource_creation="Instance",
+            available_instance_type=default.instance_types[0].id)
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup",
+            zone_id=default_get_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
             description=name,
             vpc_id=default_network.id)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             most_recent=True,
             owners="system")
         default_instance = []
         for range in [{"value": i} for i in range(0, 2)]:
-            default_instance.append(alicloud.ecs.Instance(f"defaultInstance-{range['value']}",
-                availability_zone=default_zones.zones[0].id,
+            default_instance.append(alicloud.ecs.Instance(f"default-{range['value']}",
+                availability_zone=default_get_zones.zones[0].id,
                 instance_name=name,
                 host_name=name,
-                image_id=default_images.images[0].id,
-                instance_type=default_instance_types.instance_types[0].id,
+                image_id=default_get_images.images[0].id,
+                instance_type=default.instance_types[0].id,
                 security_groups=[default_security_group.id],
                 vswitch_id=default_switch.id,
                 system_disk_category="cloud_essd"))
         default_ecs_network_interface = []
         for range in [{"value": i} for i in range(0, 2)]:
-            default_ecs_network_interface.append(alicloud.ecs.EcsNetworkInterface(f"defaultEcsNetworkInterface-{range['value']}",
+            default_ecs_network_interface.append(alicloud.ecs.EcsNetworkInterface(f"default-{range['value']}",
                 network_interface_name=name,
                 vswitch_id=default_switch.id,
                 security_group_ids=[default_security_group.id]))
         default_ecs_network_interface_attachment = []
         for range in [{"value": i} for i in range(0, 2)]:
-            default_ecs_network_interface_attachment.append(alicloud.ecs.EcsNetworkInterfaceAttachment(f"defaultEcsNetworkInterfaceAttachment-{range['value']}",
+            default_ecs_network_interface_attachment.append(alicloud.ecs.EcsNetworkInterfaceAttachment(f"default-{range['value']}",
                 instance_id=default_instance[range["value"]].id,
                 network_interface_id=default_ecs_network_interface[range["value"]].id))
-        default_traffic_mirror_filter = alicloud.vpc.TrafficMirrorFilter("defaultTrafficMirrorFilter",
+        default_traffic_mirror_filter = alicloud.vpc.TrafficMirrorFilter("default",
             traffic_mirror_filter_name=name,
             traffic_mirror_filter_description=name)
-        default_traffic_mirror_session = alicloud.vpc.TrafficMirrorSession("defaultTrafficMirrorSession",
+        default_traffic_mirror_session = alicloud.vpc.TrafficMirrorSession("default",
             priority=1,
             virtual_network_id=10,
             traffic_mirror_session_description=name,

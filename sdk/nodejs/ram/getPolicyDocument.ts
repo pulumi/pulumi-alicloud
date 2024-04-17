@@ -121,6 +121,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const role = new alicloud.ram.Role("role", {
+ *     name: "tf-example-role-ram",
  *     document: ramExample.then(ramExample => ramExample.document),
  *     force: true,
  * });
@@ -147,6 +148,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const role = new alicloud.ram.Role("role", {
+ *     name: "tf-example-role-service",
  *     document: serviceExample.then(serviceExample => serviceExample.document),
  *     force: true,
  * });
@@ -178,6 +180,7 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * const role = new alicloud.ram.Role("role", {
+ *     name: "tf-example-role-federated",
  *     document: federatedExample.then(federatedExample => federatedExample.document),
  *     force: true,
  * });
@@ -346,6 +349,7 @@ export interface GetPolicyDocumentResult {
  *     }],
  * });
  * const role = new alicloud.ram.Role("role", {
+ *     name: "tf-example-role-ram",
  *     document: ramExample.then(ramExample => ramExample.document),
  *     force: true,
  * });
@@ -372,6 +376,7 @@ export interface GetPolicyDocumentResult {
  *     }],
  * });
  * const role = new alicloud.ram.Role("role", {
+ *     name: "tf-example-role-service",
  *     document: serviceExample.then(serviceExample => serviceExample.document),
  *     force: true,
  * });
@@ -403,6 +408,7 @@ export interface GetPolicyDocumentResult {
  *     }],
  * });
  * const role = new alicloud.ram.Role("role", {
+ *     name: "tf-example-role-federated",
  *     document: federatedExample.then(federatedExample => federatedExample.document),
  *     force: true,
  * });

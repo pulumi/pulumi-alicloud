@@ -124,8 +124,8 @@ def get_instances(description_regex: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    instance_instances = alicloud.bastionhost.get_instances(description_regex="^bastionhost")
-    pulumi.export("instance", [__item["id"] for __item in alicloud_bastionhost_instances["instance"]])
+    instance = alicloud.bastionhost.get_instances(description_regex="^bastionhost")
+    pulumi.export("instance", [__item["id"] for __item in instance_alicloud_bastionhost_instances])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -183,8 +183,8 @@ def get_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]
     import pulumi
     import pulumi_alicloud as alicloud
 
-    instance_instances = alicloud.bastionhost.get_instances(description_regex="^bastionhost")
-    pulumi.export("instance", [__item["id"] for __item in alicloud_bastionhost_instances["instance"]])
+    instance = alicloud.bastionhost.get_instances(description_regex="^bastionhost")
+    pulumi.export("instance", [__item["id"] for __item in instance_alicloud_bastionhost_instances])
     ```
     <!--End PulumiCodeChooser -->
 

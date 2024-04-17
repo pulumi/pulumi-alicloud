@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Declare the data source
 //			kmsKeysDs, err := kms.GetKeys(ctx, &kms.GetKeysArgs{
 //				DescriptionRegex: pulumi.StringRef("Hello KMS"),
 //				OutputFile:       pulumi.StringRef("kms_keys.json"),

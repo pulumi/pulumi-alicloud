@@ -136,7 +136,7 @@ def get_instances(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.threatdetection.get_instances(ids=[alicloud_threat_detection_instance["default"]["id"]])
+    default = alicloud.threatdetection.get_instances(ids=[default_alicloud_threat_detection_instance["id"]])
     pulumi.export("alicloudThreatDetectionInstanceExampleId", default.instances[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -188,7 +188,7 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.threatdetection.get_instances(ids=[alicloud_threat_detection_instance["default"]["id"]])
+    default = alicloud.threatdetection.get_instances(ids=[default_alicloud_threat_detection_instance["id"]])
     pulumi.export("alicloudThreatDetectionInstanceExampleId", default.instances[0].id)
     ```
     <!--End PulumiCodeChooser -->

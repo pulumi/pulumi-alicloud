@@ -354,17 +354,17 @@ class Bundle(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_images = alicloud.eds.get_images(image_type="SYSTEM",
+        default = alicloud.eds.get_images(image_type="SYSTEM",
             os_type="Windows",
             desktop_instance_type="eds.hf.4c8g")
-        default_desktop_types = alicloud.eds.get_desktop_types(instance_type_family="eds.hf",
+        default_get_desktop_types = alicloud.eds.get_desktop_types(instance_type_family="eds.hf",
             cpu_count=4,
             memory_size=8192)
-        default_bundle = alicloud.eds.Bundle("defaultBundle",
+        default_bundle = alicloud.eds.Bundle("default",
             description=name,
-            desktop_type=default_desktop_types.ids[0],
+            desktop_type=default_get_desktop_types.ids[0],
             bundle_name=name,
-            image_id=default_images.ids[0],
+            image_id=default.ids[0],
             user_disk_size_gibs=[70],
             root_disk_size_gib=80,
             root_disk_performance_level="PL1",
@@ -420,17 +420,17 @@ class Bundle(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_images = alicloud.eds.get_images(image_type="SYSTEM",
+        default = alicloud.eds.get_images(image_type="SYSTEM",
             os_type="Windows",
             desktop_instance_type="eds.hf.4c8g")
-        default_desktop_types = alicloud.eds.get_desktop_types(instance_type_family="eds.hf",
+        default_get_desktop_types = alicloud.eds.get_desktop_types(instance_type_family="eds.hf",
             cpu_count=4,
             memory_size=8192)
-        default_bundle = alicloud.eds.Bundle("defaultBundle",
+        default_bundle = alicloud.eds.Bundle("default",
             description=name,
-            desktop_type=default_desktop_types.ids[0],
+            desktop_type=default_get_desktop_types.ids[0],
             bundle_name=name,
-            image_id=default_images.ids[0],
+            image_id=default.ids[0],
             user_disk_size_gibs=[70],
             root_disk_size_gib=80,
             root_disk_performance_level="PL1",

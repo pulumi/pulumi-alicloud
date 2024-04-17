@@ -37,43 +37,46 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 //				NameRegex: pulumi.StringRef("^default-NODELETING$"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(_default.Ids[0]),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultGateway, err := vpn.NewGateway(ctx, "defaultGateway", &vpn.GatewayArgs{
-//				VpcId:              pulumi.String(defaultNetworks.Ids[0]),
+//			defaultGateway, err := vpn.NewGateway(ctx, "default", &vpn.GatewayArgs{
+//				Name:               pulumi.String("terraform-example"),
+//				VpcId:              pulumi.String(defaultGetNetworks.Ids[0]),
 //				Bandwidth:          pulumi.Int(10),
 //				InstanceChargeType: pulumi.String("PrePaid"),
 //				EnableSsl:          pulumi.Bool(false),
-//				VswitchId:          pulumi.String(defaultSwitches.Ids[0]),
+//				VswitchId:          pulumi.String(defaultGetSwitches.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultCustomerGateway, err := vpn.NewCustomerGateway(ctx, "defaultCustomerGateway", &vpn.CustomerGatewayArgs{
+//			defaultCustomerGateway, err := vpn.NewCustomerGateway(ctx, "default", &vpn.CustomerGatewayArgs{
+//				Name:      pulumi.String(name),
 //				IpAddress: pulumi.String("192.168.1.1"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultConnection, err := vpn.NewConnection(ctx, "defaultConnection", &vpn.ConnectionArgs{
+//			defaultConnection, err := vpn.NewConnection(ctx, "default", &vpn.ConnectionArgs{
+//				Name:              pulumi.String(name),
 //				CustomerGatewayId: defaultCustomerGateway.ID(),
 //				VpnGatewayId:      defaultGateway.ID(),
 //				LocalSubnets: pulumi.StringArray{
@@ -86,7 +89,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpn.NewRouteEntry(ctx, "defaultRouteEntry", &vpn.RouteEntryArgs{
+//			_, err = vpn.NewRouteEntry(ctx, "default", &vpn.RouteEntryArgs{
 //				VpnGatewayId: defaultGateway.ID(),
 //				RouteDest:    pulumi.String("10.0.0.0/24"),
 //				NextHop:      defaultConnection.ID(),

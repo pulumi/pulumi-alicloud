@@ -270,30 +270,30 @@ class Remediation(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example-oss"
-        default_regions = alicloud.get_regions(current=True)
-        default_bucket = alicloud.oss.Bucket("defaultBucket",
+        default = alicloud.get_regions(current=True)
+        default_bucket = alicloud.oss.Bucket("default",
             bucket=name,
             acl="public-read",
             tags={
                 "For": "example",
             })
-        default_rule = alicloud.cfg.Rule("defaultRule",
+        default_rule = alicloud.cfg.Rule("default",
             description="If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.",
             source_owner="ALIYUN",
             source_identifier="oss-bucket-public-read-prohibited",
             risk_level=1,
             tag_key_scope="For",
             tag_value_scope="example",
-            region_ids_scope=default_regions.regions[0].id,
+            region_ids_scope=default.regions[0].id,
             config_rule_trigger_types="ConfigurationItemChangeNotification",
             resource_types_scopes=["ACS::OSS::Bucket"],
             rule_name="oss-bucket-public-read-prohibited")
-        default_remediation = alicloud.cfg.Remediation("defaultRemediation",
+        default_remediation = alicloud.cfg.Remediation("default",
             config_rule_id=default_rule.config_rule_id,
             remediation_template_id="ACS-OSS-PutBucketAcl",
             remediation_source_type="ALIYUN",
             invoke_type="MANUAL_EXECUTION",
-            params=default_bucket.bucket.apply(lambda bucket: f"{{\\"bucketName\\": \\"{bucket}\\", \\"regionId\\": \\"{default_regions.regions[0].id}\\", \\"permissionName\\": \\"private\\"}}"),
+            params=default_bucket.bucket.apply(lambda bucket: f"{{\\"bucketName\\": \\"{bucket}\\", \\"regionId\\": \\"{default.regions[0].id}\\", \\"permissionName\\": \\"private\\"}}"),
             remediation_type="OOS")
         ```
         <!--End PulumiCodeChooser -->
@@ -343,30 +343,30 @@ class Remediation(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example-oss"
-        default_regions = alicloud.get_regions(current=True)
-        default_bucket = alicloud.oss.Bucket("defaultBucket",
+        default = alicloud.get_regions(current=True)
+        default_bucket = alicloud.oss.Bucket("default",
             bucket=name,
             acl="public-read",
             tags={
                 "For": "example",
             })
-        default_rule = alicloud.cfg.Rule("defaultRule",
+        default_rule = alicloud.cfg.Rule("default",
             description="If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant.",
             source_owner="ALIYUN",
             source_identifier="oss-bucket-public-read-prohibited",
             risk_level=1,
             tag_key_scope="For",
             tag_value_scope="example",
-            region_ids_scope=default_regions.regions[0].id,
+            region_ids_scope=default.regions[0].id,
             config_rule_trigger_types="ConfigurationItemChangeNotification",
             resource_types_scopes=["ACS::OSS::Bucket"],
             rule_name="oss-bucket-public-read-prohibited")
-        default_remediation = alicloud.cfg.Remediation("defaultRemediation",
+        default_remediation = alicloud.cfg.Remediation("default",
             config_rule_id=default_rule.config_rule_id,
             remediation_template_id="ACS-OSS-PutBucketAcl",
             remediation_source_type="ALIYUN",
             invoke_type="MANUAL_EXECUTION",
-            params=default_bucket.bucket.apply(lambda bucket: f"{{\\"bucketName\\": \\"{bucket}\\", \\"regionId\\": \\"{default_regions.regions[0].id}\\", \\"permissionName\\": \\"private\\"}}"),
+            params=default_bucket.bucket.apply(lambda bucket: f"{{\\"bucketName\\": \\"{bucket}\\", \\"regionId\\": \\"{default.regions[0].id}\\", \\"permissionName\\": \\"private\\"}}"),
             remediation_type="OOS")
         ```
         <!--End PulumiCodeChooser -->

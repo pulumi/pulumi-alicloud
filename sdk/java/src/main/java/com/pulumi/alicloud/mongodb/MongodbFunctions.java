@@ -425,10 +425,10 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .availabilityZone(&#34;eu-central-1a&#34;)
-     *             .instanceClass(&#34;dds.mongo.mid&#34;)
-     *             .instanceType(&#34;replicate&#34;)
      *             .nameRegex(&#34;dds-.+\\d+&#34;)
+     *             .instanceType(&#34;replicate&#34;)
+     *             .instanceClass(&#34;dds.mongo.mid&#34;)
+     *             .availabilityZone(&#34;eu-central-1a&#34;)
      *             .build());
      * 
      *     }
@@ -469,10 +469,10 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .availabilityZone(&#34;eu-central-1a&#34;)
-     *             .instanceClass(&#34;dds.mongo.mid&#34;)
-     *             .instanceType(&#34;replicate&#34;)
      *             .nameRegex(&#34;dds-.+\\d+&#34;)
+     *             .instanceType(&#34;replicate&#34;)
+     *             .instanceClass(&#34;dds.mongo.mid&#34;)
+     *             .availabilityZone(&#34;eu-central-1a&#34;)
      *             .build());
      * 
      *     }
@@ -513,10 +513,10 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .availabilityZone(&#34;eu-central-1a&#34;)
-     *             .instanceClass(&#34;dds.mongo.mid&#34;)
-     *             .instanceType(&#34;replicate&#34;)
      *             .nameRegex(&#34;dds-.+\\d+&#34;)
+     *             .instanceType(&#34;replicate&#34;)
+     *             .instanceClass(&#34;dds.mongo.mid&#34;)
+     *             .availabilityZone(&#34;eu-central-1a&#34;)
      *             .build());
      * 
      *     }
@@ -557,10 +557,10 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .availabilityZone(&#34;eu-central-1a&#34;)
-     *             .instanceClass(&#34;dds.mongo.mid&#34;)
-     *             .instanceType(&#34;replicate&#34;)
      *             .nameRegex(&#34;dds-.+\\d+&#34;)
+     *             .instanceType(&#34;replicate&#34;)
+     *             .instanceClass(&#34;dds.mongo.mid&#34;)
+     *             .availabilityZone(&#34;eu-central-1a&#34;)
      *             .build());
      * 
      *     }
@@ -601,10 +601,10 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .availabilityZone(&#34;eu-central-1a&#34;)
-     *             .instanceClass(&#34;dds.mongo.mid&#34;)
-     *             .instanceType(&#34;replicate&#34;)
      *             .nameRegex(&#34;dds-.+\\d+&#34;)
+     *             .instanceType(&#34;replicate&#34;)
+     *             .instanceClass(&#34;dds.mongo.mid&#34;)
+     *             .availabilityZone(&#34;eu-central-1a&#34;)
      *             .build());
      * 
      *     }
@@ -645,10 +645,10 @@ public final class MongodbFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var mongo = MongodbFunctions.getInstances(GetInstancesArgs.builder()
-     *             .availabilityZone(&#34;eu-central-1a&#34;)
-     *             .instanceClass(&#34;dds.mongo.mid&#34;)
-     *             .instanceType(&#34;replicate&#34;)
      *             .nameRegex(&#34;dds-.+\\d+&#34;)
+     *             .instanceType(&#34;replicate&#34;)
+     *             .instanceClass(&#34;dds.mongo.mid&#34;)
+     *             .availabilityZone(&#34;eu-central-1a&#34;)
      *             .build());
      * 
      *     }
@@ -1257,6 +1257,7 @@ public final class MongodbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
      *         // Create an mongoDB instance with the first matched zone
@@ -1264,7 +1265,6 @@ public final class MongodbFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```
@@ -1305,6 +1305,7 @@ public final class MongodbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
      *         // Create an mongoDB instance with the first matched zone
@@ -1312,7 +1313,6 @@ public final class MongodbFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```
@@ -1353,6 +1353,7 @@ public final class MongodbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
      *         // Create an mongoDB instance with the first matched zone
@@ -1360,7 +1361,6 @@ public final class MongodbFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```
@@ -1401,6 +1401,7 @@ public final class MongodbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
      *         // Create an mongoDB instance with the first matched zone
@@ -1408,7 +1409,6 @@ public final class MongodbFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```
@@ -1449,6 +1449,7 @@ public final class MongodbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
      *         // Create an mongoDB instance with the first matched zone
@@ -1456,7 +1457,6 @@ public final class MongodbFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```
@@ -1497,6 +1497,7 @@ public final class MongodbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = MongodbFunctions.getZones();
      * 
      *         // Create an mongoDB instance with the first matched zone
@@ -1504,7 +1505,6 @@ public final class MongodbFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```

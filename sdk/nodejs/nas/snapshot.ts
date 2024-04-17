@@ -24,18 +24,18 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "testacc";
- * const defaultZones = alicloud.nas.getZones({
+ * const default = alicloud.nas.getZones({
  *     fileSystemType: "extreme",
  * });
- * const defaultFileSystem = new alicloud.nas.FileSystem("defaultFileSystem", {
+ * const defaultFileSystem = new alicloud.nas.FileSystem("default", {
  *     fileSystemType: "extreme",
  *     protocolType: "NFS",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneId),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.zoneId),
  *     storageType: "standard",
  *     description: name,
  *     capacity: 100,
  * });
- * const defaultSnapshot = new alicloud.nas.Snapshot("defaultSnapshot", {
+ * const defaultSnapshot = new alicloud.nas.Snapshot("default", {
  *     fileSystemId: defaultFileSystem.id,
  *     description: name,
  *     retentionDays: 20,

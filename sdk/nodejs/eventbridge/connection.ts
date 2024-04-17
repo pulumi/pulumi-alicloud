@@ -25,19 +25,22 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const region = config.get("region") || "cn-chengdu";
  * const name = config.get("name") || "terraform-example";
- * const defaultZones = alicloud.getZones({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const default = alicloud.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultSwitch.vpcId});
- * const defaultConnection = new alicloud.eventbridge.Connection("defaultConnection", {
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultSwitch.vpcId,
+ * });
+ * const defaultConnection = new alicloud.eventbridge.Connection("default", {
  *     connectionName: name,
  *     description: "test-connection-basic-pre",
  *     networkParameters: {

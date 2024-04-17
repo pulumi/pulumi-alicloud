@@ -36,13 +36,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = alb.NewAcl(ctx, "defaultAcl", &alb.AclArgs{
+//			_, err = alb.NewAcl(ctx, "default", &alb.AclArgs{
 //				AclName:         pulumi.String("tf_example"),
-//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
 //			})
 //			if err != nil {
 //				return err

@@ -129,11 +129,11 @@ def get_sasl_acls(acl_resource_name: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    sasl_acls_ds = alicloud.actiontrail.get_sasl_acls(acl_resource_name="testTopic",
+    sasl_acls_ds = alicloud.actiontrail.get_sasl_acls(instance_id="xxx",
+        username="username",
         acl_resource_type="Topic",
-        instance_id="xxx",
-        output_file="saslAcls.txt",
-        username="username")
+        acl_resource_name="testTopic",
+        output_file="saslAcls.txt")
     pulumi.export("firstSaslAclUsername", sasl_acls_ds.acls[0].username)
     ```
     <!--End PulumiCodeChooser -->
@@ -183,11 +183,11 @@ def get_sasl_acls_output(acl_resource_name: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    sasl_acls_ds = alicloud.actiontrail.get_sasl_acls(acl_resource_name="testTopic",
+    sasl_acls_ds = alicloud.actiontrail.get_sasl_acls(instance_id="xxx",
+        username="username",
         acl_resource_type="Topic",
-        instance_id="xxx",
-        output_file="saslAcls.txt",
-        username="username")
+        acl_resource_name="testTopic",
+        output_file="saslAcls.txt")
     pulumi.export("firstSaslAclUsername", sasl_acls_ds.acls[0].username)
     ```
     <!--End PulumiCodeChooser -->

@@ -23,14 +23,14 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.sddp.Instance("default", {
- *     dataphin: "yes",
  *     paymentType: "Subscription",
- *     period: 1,
- *     sdCbool: "yes",
- *     sdc: "3",
  *     sddpVersion: "version_company",
+ *     sdCbool: "yes",
+ *     period: 1,
+ *     sdc: "3",
  *     udCbool: "yes",
  *     udc: "2000",
+ *     dataphin: "yes",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -177,8 +177,9 @@ class ResourceRecord(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_resource = alicloud.log.Resource("exampleResource",
+        example = alicloud.log.Resource("example",
             type="userdefine",
+            name="user.tf.resource",
             description="user tf resource desc",
             ext_info="{}",
             schema=\"\"\"    {
@@ -201,8 +202,8 @@ class ResourceRecord(pulumi.CustomResource):
               ]
             }
         \"\"\")
-        example_resource_record = alicloud.log.ResourceRecord("exampleResourceRecord",
-            resource_name_=example_resource.id,
+        example_resource_record = alicloud.log.ResourceRecord("example",
+            resource_name_=example.id,
             record_id="user_tf_resource_1",
             tag="resource tag",
             value=\"\"\"    {
@@ -250,8 +251,9 @@ class ResourceRecord(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_resource = alicloud.log.Resource("exampleResource",
+        example = alicloud.log.Resource("example",
             type="userdefine",
+            name="user.tf.resource",
             description="user tf resource desc",
             ext_info="{}",
             schema=\"\"\"    {
@@ -274,8 +276,8 @@ class ResourceRecord(pulumi.CustomResource):
               ]
             }
         \"\"\")
-        example_resource_record = alicloud.log.ResourceRecord("exampleResourceRecord",
-            resource_name_=example_resource.id,
+        example_resource_record = alicloud.log.ResourceRecord("example",
+            resource_name_=example.id,
             record_id="user_tf_resource_1",
             tag="resource tag",
             value=\"\"\"    {

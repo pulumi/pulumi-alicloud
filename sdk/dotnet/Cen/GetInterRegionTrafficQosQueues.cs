@@ -31,9 +31,9 @@ namespace Pulumi.AliCloud.Cen
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_cen_inter_region_traffic_qos_queue.Default.Id,
+        ///             defaultAlicloudCenInterRegionTrafficQosQueue.Id,
         ///         },
-        ///         NameRegex = alicloud_cen_inter_region_traffic_qos_queue.Default.Name,
+        ///         NameRegex = defaultAlicloudCenInterRegionTrafficQosQueue.Name,
         ///         TrafficQosPolicyId = "qos-xxxxxxx",
         ///     });
         /// 
@@ -68,9 +68,9 @@ namespace Pulumi.AliCloud.Cen
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_cen_inter_region_traffic_qos_queue.Default.Id,
+        ///             defaultAlicloudCenInterRegionTrafficQosQueue.Id,
         ///         },
-        ///         NameRegex = alicloud_cen_inter_region_traffic_qos_queue.Default.Name,
+        ///         NameRegex = defaultAlicloudCenInterRegionTrafficQosQueue.Name,
         ///         TrafficQosPolicyId = "qos-xxxxxxx",
         ///     });
         /// 

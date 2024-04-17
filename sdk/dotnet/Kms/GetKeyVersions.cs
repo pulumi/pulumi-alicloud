@@ -27,13 +27,14 @@ namespace Pulumi.AliCloud.Kms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var alicloudKmsKeyVersionsDs = AliCloud.Kms.GetKeyVersions.Invoke(new()
         ///     {
+        ///         KeyId = "08438c-b4d5-4d05-928c-07b7xxxx",
         ///         Ids = new[]
         ///         {
         ///             "d89e8a53-b708-41aa-8c67-6873axxx",
         ///         },
-        ///         KeyId = "08438c-b4d5-4d05-928c-07b7xxxx",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -63,13 +64,14 @@ namespace Pulumi.AliCloud.Kms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var alicloudKmsKeyVersionsDs = AliCloud.Kms.GetKeyVersions.Invoke(new()
         ///     {
+        ///         KeyId = "08438c-b4d5-4d05-928c-07b7xxxx",
         ///         Ids = new[]
         ///         {
         ///             "d89e8a53-b708-41aa-8c67-6873axxx",
         ///         },
-        ///         KeyId = "08438c-b4d5-4d05-928c-07b7xxxx",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

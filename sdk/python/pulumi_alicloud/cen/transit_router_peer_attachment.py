@@ -548,36 +548,28 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         peer_region = config.get("peerRegion")
         if peer_region is None:
             peer_region = "cn-beijing"
-        hz = alicloud.Provider("hz", region=region)
-        bj = alicloud.Provider("bj", region=peer_region)
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example = alicloud.cen.Instance("example",
             cen_instance_name=name,
-            protection_level="REDUCED",
-            opts=pulumi.ResourceOptions(provider=alicloud["bj"]))
-        example_bandwidth_package = alicloud.cen.BandwidthPackage("exampleBandwidthPackage",
+            protection_level="REDUCED")
+        example_bandwidth_package = alicloud.cen.BandwidthPackage("example",
             bandwidth=5,
             cen_bandwidth_package_name="tf_example",
             geographic_region_a_id="China",
-            geographic_region_b_id="China",
-            opts=pulumi.ResourceOptions(provider=alicloud["bj"]))
-        example_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
-            instance_id=example_instance.id,
-            bandwidth_package_id=example_bandwidth_package.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["bj"]))
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter", cen_id=example_bandwidth_package_attachment.instance_id,
-        opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        peer = alicloud.cen.TransitRouter("peer", cen_id=example_transit_router.cen_id,
-        opts=pulumi.ResourceOptions(provider=alicloud["bj"]))
-        example_transit_router_peer_attachment = alicloud.cen.TransitRouterPeerAttachment("exampleTransitRouterPeerAttachment",
-            cen_id=example_instance.id,
+            geographic_region_b_id="China")
+        example_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("example",
+            instance_id=example.id,
+            bandwidth_package_id=example_bandwidth_package.id)
+        example_transit_router = alicloud.cen.TransitRouter("example", cen_id=example_bandwidth_package_attachment.instance_id)
+        peer = alicloud.cen.TransitRouter("peer", cen_id=example_transit_router.cen_id)
+        example_transit_router_peer_attachment = alicloud.cen.TransitRouterPeerAttachment("example",
+            cen_id=example.id,
             transit_router_id=example_transit_router.transit_router_id,
             peer_transit_router_region_id=peer_region,
             peer_transit_router_id=peer.transit_router_id,
             cen_bandwidth_package_id=example_bandwidth_package_attachment.bandwidth_package_id,
             bandwidth=5,
             transit_router_attachment_description=name,
-            transit_router_attachment_name=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
+            transit_router_attachment_name=name)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -636,36 +628,28 @@ class TransitRouterPeerAttachment(pulumi.CustomResource):
         peer_region = config.get("peerRegion")
         if peer_region is None:
             peer_region = "cn-beijing"
-        hz = alicloud.Provider("hz", region=region)
-        bj = alicloud.Provider("bj", region=peer_region)
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example = alicloud.cen.Instance("example",
             cen_instance_name=name,
-            protection_level="REDUCED",
-            opts=pulumi.ResourceOptions(provider=alicloud["bj"]))
-        example_bandwidth_package = alicloud.cen.BandwidthPackage("exampleBandwidthPackage",
+            protection_level="REDUCED")
+        example_bandwidth_package = alicloud.cen.BandwidthPackage("example",
             bandwidth=5,
             cen_bandwidth_package_name="tf_example",
             geographic_region_a_id="China",
-            geographic_region_b_id="China",
-            opts=pulumi.ResourceOptions(provider=alicloud["bj"]))
-        example_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
-            instance_id=example_instance.id,
-            bandwidth_package_id=example_bandwidth_package.id,
-            opts=pulumi.ResourceOptions(provider=alicloud["bj"]))
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter", cen_id=example_bandwidth_package_attachment.instance_id,
-        opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        peer = alicloud.cen.TransitRouter("peer", cen_id=example_transit_router.cen_id,
-        opts=pulumi.ResourceOptions(provider=alicloud["bj"]))
-        example_transit_router_peer_attachment = alicloud.cen.TransitRouterPeerAttachment("exampleTransitRouterPeerAttachment",
-            cen_id=example_instance.id,
+            geographic_region_b_id="China")
+        example_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("example",
+            instance_id=example.id,
+            bandwidth_package_id=example_bandwidth_package.id)
+        example_transit_router = alicloud.cen.TransitRouter("example", cen_id=example_bandwidth_package_attachment.instance_id)
+        peer = alicloud.cen.TransitRouter("peer", cen_id=example_transit_router.cen_id)
+        example_transit_router_peer_attachment = alicloud.cen.TransitRouterPeerAttachment("example",
+            cen_id=example.id,
             transit_router_id=example_transit_router.transit_router_id,
             peer_transit_router_region_id=peer_region,
             peer_transit_router_id=peer.transit_router_id,
             cen_bandwidth_package_id=example_bandwidth_package_attachment.bandwidth_package_id,
             bandwidth=5,
             transit_router_attachment_description=name,
-            transit_router_attachment_name=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
+            transit_router_attachment_name=name)
         ```
         <!--End PulumiCodeChooser -->
 

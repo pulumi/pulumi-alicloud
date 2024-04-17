@@ -36,15 +36,16 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := polardb.NewParameterGroup(ctx, "example", &polardb.ParameterGroupArgs{
-//				DbType:      pulumi.String("MySQL"),
-//				DbVersion:   pulumi.String("8.0"),
-//				Description: pulumi.String("example_value"),
+//				Name:      pulumi.String("example_value"),
+//				DbType:    pulumi.String("MySQL"),
+//				DbVersion: pulumi.String("8.0"),
 //				Parameters: polardb.ParameterGroupParameterArray{
 //					&polardb.ParameterGroupParameterArgs{
 //						ParamName:  pulumi.String("wait_timeout"),
 //						ParamValue: pulumi.String("86400"),
 //					},
 //				},
+//				Description: pulumi.String("example_value"),
 //			})
 //			if err != nil {
 //				return err

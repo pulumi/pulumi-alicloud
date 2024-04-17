@@ -21,11 +21,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const _default = new random.RandomInteger("default", {
- *     max: 99999,
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
+ *     max: 99999,
  * });
- * const example = new alicloud.directmail.Domain("example", {domainName: pulumi.interpolate`alicloud-provider-${_default.result}.online`});
+ * const example = new alicloud.directmail.Domain("example", {domainName: `alicloud-provider-${_default.result}.online`});
  * ```
  * <!--End PulumiCodeChooser -->
  *

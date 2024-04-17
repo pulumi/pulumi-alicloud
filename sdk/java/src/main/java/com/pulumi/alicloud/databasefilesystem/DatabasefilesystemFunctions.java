@@ -50,7 +50,7 @@ public final class DatabasefilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DatabasefilesystemFunctions.getAutoSnapShotPolicies(GetAutoSnapShotPoliciesArgs.builder()
-     *             .ids(alicloud_dbfs_auto_snap_shot_policy.default().id())
+     *             .ids(defaultAlicloudDbfsAutoSnapShotPolicy.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudDbfsAutoSnapShotPolicyExampleId&#34;, default_.autoSnapShotPolicies()[0].id());
@@ -93,7 +93,7 @@ public final class DatabasefilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DatabasefilesystemFunctions.getAutoSnapShotPolicies(GetAutoSnapShotPoliciesArgs.builder()
-     *             .ids(alicloud_dbfs_auto_snap_shot_policy.default().id())
+     *             .ids(defaultAlicloudDbfsAutoSnapShotPolicy.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudDbfsAutoSnapShotPolicyExampleId&#34;, default_.autoSnapShotPolicies()[0].id());
@@ -136,7 +136,7 @@ public final class DatabasefilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DatabasefilesystemFunctions.getAutoSnapShotPolicies(GetAutoSnapShotPoliciesArgs.builder()
-     *             .ids(alicloud_dbfs_auto_snap_shot_policy.default().id())
+     *             .ids(defaultAlicloudDbfsAutoSnapShotPolicy.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudDbfsAutoSnapShotPolicyExampleId&#34;, default_.autoSnapShotPolicies()[0].id());
@@ -179,7 +179,7 @@ public final class DatabasefilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DatabasefilesystemFunctions.getAutoSnapShotPolicies(GetAutoSnapShotPoliciesArgs.builder()
-     *             .ids(alicloud_dbfs_auto_snap_shot_policy.default().id())
+     *             .ids(defaultAlicloudDbfsAutoSnapShotPolicy.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudDbfsAutoSnapShotPolicyExampleId&#34;, default_.autoSnapShotPolicies()[0].id());
@@ -222,7 +222,7 @@ public final class DatabasefilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DatabasefilesystemFunctions.getAutoSnapShotPolicies(GetAutoSnapShotPoliciesArgs.builder()
-     *             .ids(alicloud_dbfs_auto_snap_shot_policy.default().id())
+     *             .ids(defaultAlicloudDbfsAutoSnapShotPolicy.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudDbfsAutoSnapShotPolicyExampleId&#34;, default_.autoSnapShotPolicies()[0].id());
@@ -265,7 +265,7 @@ public final class DatabasefilesystemFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = DatabasefilesystemFunctions.getAutoSnapShotPolicies(GetAutoSnapShotPoliciesArgs.builder()
-     *             .ids(alicloud_dbfs_auto_snap_shot_policy.default().id())
+     *             .ids(defaultAlicloudDbfsAutoSnapShotPolicy.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudDbfsAutoSnapShotPolicyExampleId&#34;, default_.autoSnapShotPolicies()[0].id());

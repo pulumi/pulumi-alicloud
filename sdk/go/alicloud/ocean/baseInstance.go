@@ -43,20 +43,20 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, nil, nil)
+//			_default, err := alicloud.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			defaultGetResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ocean.NewBaseInstance(ctx, "defaultBaseInstance", &ocean.BaseInstanceArgs{
-//				ResourceGroupId: pulumi.String(defaultResourceGroups.Ids[0]),
+//			_, err = ocean.NewBaseInstance(ctx, "default", &ocean.BaseInstanceArgs{
+//				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Ids[0]),
 //				Zones: pulumi.StringArray{
-//					defaultZones.Ids[len(defaultZones.Ids)-2],
-//					defaultZones.Ids[len(defaultZones.Ids)-3],
-//					defaultZones.Ids[len(defaultZones.Ids)-4],
+//					_default.Ids[len(_default.Ids)-2],
+//					_default.Ids[len(_default.Ids)-3],
+//					_default.Ids[len(_default.Ids)-4],
 //				},
 //				AutoRenew:        pulumi.Bool(false),
 //				DiskSize:         pulumi.Int(100),

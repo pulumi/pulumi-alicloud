@@ -212,7 +212,7 @@ class EnvCustomJob(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
         config = pulumi.Config()
@@ -225,10 +225,10 @@ class EnvCustomJob(pulumi.CustomResource):
             vpc_name=name)
         env_ecs = alicloud.arms.Environment("env-ecs",
             environment_type="ECS",
-            environment_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            environment_name=f"terraform-example-{default['result']}",
             bind_resource_id=vpc.id,
             environment_sub_type="ECS")
-        default_env_custom_job = alicloud.arms.EnvCustomJob("defaultEnvCustomJob",
+        default_env_custom_job = alicloud.arms.EnvCustomJob("default",
             status="run",
             environment_id=env_ecs.id,
             env_custom_job_name=name,
@@ -286,7 +286,7 @@ class EnvCustomJob(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
         config = pulumi.Config()
@@ -299,10 +299,10 @@ class EnvCustomJob(pulumi.CustomResource):
             vpc_name=name)
         env_ecs = alicloud.arms.Environment("env-ecs",
             environment_type="ECS",
-            environment_name=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"),
+            environment_name=f"terraform-example-{default['result']}",
             bind_resource_id=vpc.id,
             environment_sub_type="ECS")
-        default_env_custom_job = alicloud.arms.EnvCustomJob("defaultEnvCustomJob",
+        default_env_custom_job = alicloud.arms.EnvCustomJob("default",
             status="run",
             environment_id=env_ecs.id,
             env_custom_job_name=name,

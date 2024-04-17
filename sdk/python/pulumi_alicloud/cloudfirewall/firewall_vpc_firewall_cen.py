@@ -315,10 +315,10 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
             local_vpc=alicloud.cloudfirewall.FirewallVpcFirewallCenLocalVpcArgs(
                 network_instance_id="vpc-xxx",
             ),
-            member_uid="14151*****827022",
             status="open",
-            vpc_firewall_name="tf-vpc-firewall-name",
-            vpc_region="cn-hangzhou")
+            member_uid="14151*****827022",
+            vpc_region="cn-hangzhou",
+            vpc_firewall_name="tf-vpc-firewall-name")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -368,10 +368,10 @@ class FirewallVpcFirewallCen(pulumi.CustomResource):
             local_vpc=alicloud.cloudfirewall.FirewallVpcFirewallCenLocalVpcArgs(
                 network_instance_id="vpc-xxx",
             ),
-            member_uid="14151*****827022",
             status="open",
-            vpc_firewall_name="tf-vpc-firewall-name",
-            vpc_region="cn-hangzhou")
+            member_uid="14151*****827022",
+            vpc_region="cn-hangzhou",
+            vpc_firewall_name="tf-vpc-firewall-name")
         ```
         <!--End PulumiCodeChooser -->
 

@@ -31,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			ds, err := ess.GetLifecycleHooks(ctx, &ess.GetLifecycleHooksArgs{
-//				NameRegex:      pulumi.StringRef("lifecyclehook_name"),
 //				ScalingGroupId: pulumi.StringRef("scaling_group_id"),
+//				NameRegex:      pulumi.StringRef("lifecyclehook_name"),
 //			}, nil)
 //			if err != nil {
 //				return err

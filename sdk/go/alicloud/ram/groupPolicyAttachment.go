@@ -33,12 +33,14 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a RAM Group Policy attachment.
 //			group, err := ram.NewGroup(ctx, "group", &ram.GroupArgs{
+//				Name:     pulumi.String("groupName"),
 //				Comments: pulumi.String("this is a group comments."),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			policy, err := ram.NewPolicy(ctx, "policy", &ram.PolicyArgs{
+//				Name: pulumi.String("policyName"),
 //				Document: pulumi.String(`    {
 //	      "Statement": [
 //	        {

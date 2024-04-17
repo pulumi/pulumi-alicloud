@@ -22,13 +22,13 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultDisk = new alicloud.ens.Disk("defaultDisk", {
+ * const _default = new alicloud.ens.Disk("default", {
  *     size: 20,
  *     ensRegionId: "cn-chenzhou-telecom_unicom_cmcc",
  *     paymentType: "PayAsYouGo",
  *     category: "cloud_efficiency",
  * });
- * const defaultInstance = new alicloud.ens.Instance("defaultInstance", {
+ * const defaultInstance = new alicloud.ens.Instance("default", {
  *     systemDisk: {
  *         size: 20,
  *     },
@@ -45,10 +45,10 @@ import * as utilities from "../utilities";
  *     periodUnit: "Month",
  *     period: 1,
  * });
- * const defaultDiskInstanceAttachment = new alicloud.ens.DiskInstanceAttachment("defaultDiskInstanceAttachment", {
+ * const defaultDiskInstanceAttachment = new alicloud.ens.DiskInstanceAttachment("default", {
  *     instanceId: defaultInstance.id,
  *     deleteWithInstance: "false",
- *     diskId: defaultDisk.id,
+ *     diskId: _default.id,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

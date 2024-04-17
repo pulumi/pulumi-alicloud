@@ -32,22 +32,22 @@ namespace Pulumi.AliCloud.Dcdn
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var defaultKvNamespace = new AliCloud.Dcdn.KvNamespace("defaultKvNamespace", new()
+    ///     var defaultKvNamespace = new AliCloud.Dcdn.KvNamespace("default", new()
     ///     {
     ///         Description = name,
-    ///         Namespace = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         Namespace = $"{name}-{@default.Result}",
     ///     });
     /// 
-    ///     var defaultKv = new AliCloud.Dcdn.Kv("defaultKv", new()
+    ///     var defaultKv = new AliCloud.Dcdn.Kv("default", new()
     ///     {
     ///         Value = "example-value",
-    ///         Key = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         Key = $"{name}-{@default.Result}",
     ///         Namespace = defaultKvNamespace.Namespace,
     ///     });
     /// 

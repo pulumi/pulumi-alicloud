@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// {
         ///     var pvtzZonesDs = AliCloud.Pvtz.GetZones.Invoke(new()
         ///     {
-        ///         Keyword = alicloud_pvtz_zone.Basic.Zone_name,
+        ///         Keyword = basic.ZoneName,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -57,7 +57,7 @@ namespace Pulumi.AliCloud.Pvtz
         /// {
         ///     var pvtzZonesDs = AliCloud.Pvtz.GetZones.Invoke(new()
         ///     {
-        ///         Keyword = alicloud_pvtz_zone.Basic.Zone_name,
+        ///         Keyword = basic.ZoneName,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

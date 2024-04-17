@@ -21,13 +21,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.threatdetection.BaselineStrategy("default", {
- *     baselineStrategyName: "apispec",
  *     customType: "custom",
- *     cycleDays: 3,
  *     endTime: "08:00:00",
- *     riskSubTypeName: "hc_exploit_redis",
- *     startTime: "05:00:00",
+ *     baselineStrategyName: "apispec",
+ *     cycleDays: 3,
  *     targetType: "groupId",
+ *     startTime: "05:00:00",
+ *     riskSubTypeName: "hc_exploit_redis",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

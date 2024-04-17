@@ -107,10 +107,10 @@ def get_accounts(db_cluster_id: Optional[str] = None,
         db_version="8.0",
         pay_type="PostPaid",
         category="Normal")
-    default_network = alicloud.vpc.Network("defaultNetwork",
+    default_network = alicloud.vpc.Network("default",
         vpc_name="terraform-example",
         cidr_block="172.16.0.0/16")
-    default_switch = alicloud.vpc.Switch("defaultSwitch",
+    default_switch = alicloud.vpc.Switch("default",
         vpc_id=default_network.id,
         cidr_block="172.16.0.0/24",
         zone_id=this.classes[0].zone_id,
@@ -124,15 +124,15 @@ def get_accounts(db_cluster_id: Optional[str] = None,
         vswitch_id=default_switch.id)
     polardb_clusters_ds = alicloud.polardb.get_clusters_output(description_regex=cluster.description,
         status="Running")
-    account_account = alicloud.polardb.Account("accountAccount",
+    account = alicloud.polardb.Account("account",
         db_cluster_id=polardb_clusters_ds.clusters[0].id,
         account_name="tfnormal_01",
         account_password="Test12345",
         account_description="tf_account_description",
         account_type="Normal")
-    default_accounts = pulumi.Output.all(polardb_clusters_ds, account_account.account_name).apply(lambda polardb_clusters_ds, account_name: alicloud.polardb.get_accounts_output(db_cluster_id=polardb_clusters_ds.clusters[0].id,
+    default = pulumi.Output.all(polardb_clusters_ds, account.account_name).apply(lambda polardb_clusters_ds, account_name: alicloud.polardb.get_accounts_output(db_cluster_id=polardb_clusters_ds.clusters[0].id,
         name_regex=account_name))
-    pulumi.export("account", default_accounts.accounts[0].account_name)
+    pulumi.export("account", default.accounts[0].account_name)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -175,10 +175,10 @@ def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
         db_version="8.0",
         pay_type="PostPaid",
         category="Normal")
-    default_network = alicloud.vpc.Network("defaultNetwork",
+    default_network = alicloud.vpc.Network("default",
         vpc_name="terraform-example",
         cidr_block="172.16.0.0/16")
-    default_switch = alicloud.vpc.Switch("defaultSwitch",
+    default_switch = alicloud.vpc.Switch("default",
         vpc_id=default_network.id,
         cidr_block="172.16.0.0/24",
         zone_id=this.classes[0].zone_id,
@@ -192,15 +192,15 @@ def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
         vswitch_id=default_switch.id)
     polardb_clusters_ds = alicloud.polardb.get_clusters_output(description_regex=cluster.description,
         status="Running")
-    account_account = alicloud.polardb.Account("accountAccount",
+    account = alicloud.polardb.Account("account",
         db_cluster_id=polardb_clusters_ds.clusters[0].id,
         account_name="tfnormal_01",
         account_password="Test12345",
         account_description="tf_account_description",
         account_type="Normal")
-    default_accounts = pulumi.Output.all(polardb_clusters_ds, account_account.account_name).apply(lambda polardb_clusters_ds, account_name: alicloud.polardb.get_accounts_output(db_cluster_id=polardb_clusters_ds.clusters[0].id,
+    default = pulumi.Output.all(polardb_clusters_ds, account.account_name).apply(lambda polardb_clusters_ds, account_name: alicloud.polardb.get_accounts_output(db_cluster_id=polardb_clusters_ds.clusters[0].id,
         name_regex=account_name))
-    pulumi.export("account", default_accounts.accounts[0].account_name)
+    pulumi.export("account", default.accounts[0].account_name)
     ```
     <!--End PulumiCodeChooser -->
 

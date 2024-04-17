@@ -24,22 +24,22 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultNetworks = alicloud.vpc.getNetworks({
+ * const default = alicloud.vpc.getNetworks({
  *     nameRegex: "default-NODELETING",
  * });
- * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
+ * const defaultGetSwitches = _default.then(_default => alicloud.vpc.getSwitches({
+ *     vpcId: _default.ids?.[0],
  * }));
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0])});
- * const defaultPrometheus = new alicloud.arms.Prometheus("defaultPrometheus", {
+ * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {vpcId: _default.then(_default => _default.ids?.[0])});
+ * const defaultPrometheus = new alicloud.arms.Prometheus("default", {
  *     clusterType: "ecs",
  *     grafanaInstanceId: "free",
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vpcId: _default.then(_default => _default.ids?.[0]),
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
  *     securityGroupId: defaultSecurityGroup.id,
- *     clusterName: defaultNetworks.then(defaultNetworks => `${name}-${defaultNetworks.ids?.[0]}`),
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[1]?.id),
+ *     clusterName: _default.then(_default => `${name}-${_default.ids?.[0]}`),
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.groups?.[1]?.id),
  *     tags: {
  *         Created: "TF",
  *         For: "Prometheus",
@@ -143,22 +143,22 @@ export interface GetPrometheisResult {
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultNetworks = alicloud.vpc.getNetworks({
+ * const default = alicloud.vpc.getNetworks({
  *     nameRegex: "default-NODELETING",
  * });
- * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
+ * const defaultGetSwitches = _default.then(_default => alicloud.vpc.getSwitches({
+ *     vpcId: _default.ids?.[0],
  * }));
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0])});
- * const defaultPrometheus = new alicloud.arms.Prometheus("defaultPrometheus", {
+ * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {vpcId: _default.then(_default => _default.ids?.[0])});
+ * const defaultPrometheus = new alicloud.arms.Prometheus("default", {
  *     clusterType: "ecs",
  *     grafanaInstanceId: "free",
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vpcId: _default.then(_default => _default.ids?.[0]),
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
  *     securityGroupId: defaultSecurityGroup.id,
- *     clusterName: defaultNetworks.then(defaultNetworks => `${name}-${defaultNetworks.ids?.[0]}`),
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[1]?.id),
+ *     clusterName: _default.then(_default => `${name}-${_default.ids?.[0]}`),
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.groups?.[1]?.id),
  *     tags: {
  *         Created: "TF",
  *         For: "Prometheus",

@@ -35,8 +35,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ga.NewAccelerator(ctx, "example", &ga.AcceleratorArgs{
-//				AutoUseCoupon: pulumi.Bool(true),
 //				Duration:      pulumi.Int(1),
+//				AutoUseCoupon: pulumi.Bool(true),
 //				Spec:          pulumi.String("1"),
 //			})
 //			if err != nil {

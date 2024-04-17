@@ -19,10 +19,10 @@ import * as utilities from "./utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.MscSubSubscription("example", {
- *     emailStatus: 1,
  *     itemName: "Notifications of Product Expiration",
- *     pmsgStatus: 1,
  *     smsStatus: 1,
+ *     emailStatus: 1,
+ *     pmsgStatus: 1,
  *     ttsStatus: 1,
  *     webhookStatus: 0,
  * });

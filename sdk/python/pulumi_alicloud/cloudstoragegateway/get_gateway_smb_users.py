@@ -109,21 +109,21 @@ def get_gateway_smb_users(gateway_id: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-    default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
+    default = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+    default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0])
     example = alicloud.cloudstoragegateway.StorageBundle("example", storage_bundle_name="example_value")
-    default_gateway = alicloud.cloudstoragegateway.Gateway("defaultGateway",
+    default_gateway = alicloud.cloudstoragegateway.Gateway("default",
         description="tf-acctestDesalone",
         gateway_class="Standard",
         type="File",
         payment_type="PayAsYouGo",
-        vswitch_id=default_switches.ids[0],
+        vswitch_id=default_get_switches.ids[0],
         release_after_expiration=False,
         public_network_bandwidth=40,
         storage_bundle_id=example.id,
         location="Cloud",
         gateway_name="example_value")
-    default_gateway_smb_user = alicloud.cloudstoragegateway.GatewaySmbUser("defaultGatewaySmbUser",
+    default_gateway_smb_user = alicloud.cloudstoragegateway.GatewaySmbUser("default",
         username="your_username",
         password="password",
         gateway_id=default_gateway.id)
@@ -176,21 +176,21 @@ def get_gateway_smb_users_output(gateway_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-    default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
+    default = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+    default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0])
     example = alicloud.cloudstoragegateway.StorageBundle("example", storage_bundle_name="example_value")
-    default_gateway = alicloud.cloudstoragegateway.Gateway("defaultGateway",
+    default_gateway = alicloud.cloudstoragegateway.Gateway("default",
         description="tf-acctestDesalone",
         gateway_class="Standard",
         type="File",
         payment_type="PayAsYouGo",
-        vswitch_id=default_switches.ids[0],
+        vswitch_id=default_get_switches.ids[0],
         release_after_expiration=False,
         public_network_bandwidth=40,
         storage_bundle_id=example.id,
         location="Cloud",
         gateway_name="example_value")
-    default_gateway_smb_user = alicloud.cloudstoragegateway.GatewaySmbUser("defaultGatewaySmbUser",
+    default_gateway_smb_user = alicloud.cloudstoragegateway.GatewaySmbUser("default",
         username="your_username",
         password="password",
         gateway_id=default_gateway.id)

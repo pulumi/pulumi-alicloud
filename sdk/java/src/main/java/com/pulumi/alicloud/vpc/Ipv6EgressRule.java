@@ -68,18 +68,18 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(default_.zones()[0].id())
  *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
  *             .cpuCoreCount(4)
  *             .minimumEniIpv6AddressQuantity(1)
  *             .build());
  * 
- *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
  *             .mostRecent(true)
  *             .owners(&#34;system&#34;)
@@ -94,22 +94,23 @@ import javax.annotation.Nullable;
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/21&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .ipv6CidrBlockMask(&#34;64&#34;)
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .name(name)
  *             .description(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .availabilityZone(default_.zones()[0].id())
  *             .ipv6AddressCount(1)
- *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
  *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
- *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
  *             .instanceName(name)
  *             .vswitchId(defaultSwitch.id())
  *             .internetMaxBandwidthOut(10)
@@ -121,13 +122,13 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         final var defaultIpv6Addresses = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
+ *         final var defaultGetIpv6Addresses = VpcFunctions.getIpv6Addresses(GetIpv6AddressesArgs.builder()
  *             .associatedInstanceId(defaultInstance.id())
  *             .status(&#34;Available&#34;)
  *             .build());
  * 
  *         var defaultIpv6InternetBandwidth = new Ipv6InternetBandwidth(&#34;defaultIpv6InternetBandwidth&#34;, Ipv6InternetBandwidthArgs.builder()        
- *             .ipv6AddressId(defaultIpv6Addresses.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult).applyValue(defaultIpv6Addresses -&gt; defaultIpv6Addresses.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id())))
+ *             .ipv6AddressId(defaultGetIpv6Addresses.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult).applyValue(defaultGetIpv6Addresses -&gt; defaultGetIpv6Addresses.applyValue(getIpv6AddressesResult -&gt; getIpv6AddressesResult.addresses()[0].id())))
  *             .ipv6GatewayId(defaultIpv6Gateway.ipv6GatewayId())
  *             .internetChargeType(&#34;PayByBandwidth&#34;)
  *             .bandwidth(&#34;20&#34;)

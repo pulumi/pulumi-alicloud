@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var defaultSyntheticTask = new SyntheticTask(&#34;defaultSyntheticTask&#34;, SyntheticTaskArgs.builder()        
  *             .monitors(SyntheticTaskMonitorArgs.builder()
@@ -232,7 +232,7 @@ import javax.annotation.Nullable;
  *                 .isOpenTrace(&#34;true&#34;)
  *                 .traceClientType(&#34;1&#34;)
  *                 .build())
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[1]))
+ *             .resourceGroupId(default_.ids()[1])
  *             .build());
  * 
  *     }

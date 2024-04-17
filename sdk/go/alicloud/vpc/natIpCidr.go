@@ -36,29 +36,29 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			example, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VpcId:       exampleNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(example.Zones[0].Id),
 //				VswitchName: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleNatGateway, err := vpc.NewNatGateway(ctx, "exampleNatGateway", &vpc.NatGatewayArgs{
+//			exampleNatGateway, err := vpc.NewNatGateway(ctx, "example", &vpc.NatGatewayArgs{
 //				VpcId:              exampleNetwork.ID(),
 //				InternetChargeType: pulumi.String("PayByLcu"),
 //				NatGatewayName:     pulumi.String("terraform-example"),
@@ -70,7 +70,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewNatIpCidr(ctx, "exampleNatIpCidr", &vpc.NatIpCidrArgs{
+//			_, err = vpc.NewNatIpCidr(ctx, "example", &vpc.NatIpCidrArgs{
 //				NatGatewayId:  exampleNatGateway.ID(),
 //				NatIpCidrName: pulumi.String("terraform-example"),
 //				NatIpCidr:     pulumi.String("192.168.0.0/16"),

@@ -24,16 +24,16 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
  * const displayName = config.get("displayName") || "EAccount";
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const exampleFolder = new alicloud.resourcemanager.Folder("exampleFolder", {folderName: pulumi.interpolate`${name}-${_default.result}`});
- * const exampleAccount = new alicloud.resourcemanager.Account("exampleAccount", {
- *     displayName: pulumi.interpolate`${displayName}-${_default.result}`,
- *     folderId: exampleFolder.id,
+ * const example = new alicloud.resourcemanager.Folder("example", {folderName: `${name}-${_default.result}`});
+ * const exampleAccount = new alicloud.resourcemanager.Account("example", {
+ *     displayName: `${displayName}-${_default.result}`,
+ *     folderId: example.id,
  * });
- * const exampleDelegatedAdministrator = new alicloud.resourcemanager.DelegatedAdministrator("exampleDelegatedAdministrator", {
+ * const exampleDelegatedAdministrator = new alicloud.resourcemanager.DelegatedAdministrator("example", {
  *     accountId: exampleAccount.id,
  *     servicePrincipal: "cloudfw.aliyuncs.com",
  * });

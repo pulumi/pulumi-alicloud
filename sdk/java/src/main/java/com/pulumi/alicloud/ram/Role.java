@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new RAM Role.
  *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
- *             .description(&#34;this is a role test.&#34;)
+ *             .name(&#34;terraform-example&#34;)
  *             .document(&#34;&#34;&#34;
  *   {
  *     &#34;Statement&#34;: [
@@ -67,8 +67,8 @@ import javax.annotation.Nullable;
  *     ],
  *     &#34;Version&#34;: &#34;1&#34;
  *   }
- *   
  *             &#34;&#34;&#34;)
+ *             .description(&#34;this is a role test.&#34;)
  *             .build());
  * 
  *     }

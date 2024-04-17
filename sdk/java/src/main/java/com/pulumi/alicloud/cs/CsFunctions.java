@@ -306,6 +306,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs.builder()
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
@@ -350,6 +351,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs.builder()
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
@@ -394,6 +396,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs.builder()
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
@@ -438,6 +441,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs.builder()
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
@@ -482,6 +486,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs.builder()
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
@@ -526,6 +531,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getEdgeKubernetesClusters(GetEdgeKubernetesClustersArgs.builder()
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
@@ -571,12 +577,12 @@ public final class CsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CsFunctions.getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs.builder()
-     *             .clusterId(var_.cluster_id())
+     *             .clusterId(clusterId)
      *             .name(&#34;nginx-ingress-controller&#34;)
      *             .version(&#34;v1.1.2-aliyun.2&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;addonConfigSchema&#34;, data.alicloud_cs_kubernetes_addons().default().config_schema());
+     *         ctx.export(&#34;addonConfigSchema&#34;, defaultAlicloudCsKubernetesAddons.configSchema());
      *     }
      * }
      * ```
@@ -616,12 +622,12 @@ public final class CsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CsFunctions.getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs.builder()
-     *             .clusterId(var_.cluster_id())
+     *             .clusterId(clusterId)
      *             .name(&#34;nginx-ingress-controller&#34;)
      *             .version(&#34;v1.1.2-aliyun.2&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;addonConfigSchema&#34;, data.alicloud_cs_kubernetes_addons().default().config_schema());
+     *         ctx.export(&#34;addonConfigSchema&#34;, defaultAlicloudCsKubernetesAddons.configSchema());
      *     }
      * }
      * ```
@@ -661,12 +667,12 @@ public final class CsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CsFunctions.getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs.builder()
-     *             .clusterId(var_.cluster_id())
+     *             .clusterId(clusterId)
      *             .name(&#34;nginx-ingress-controller&#34;)
      *             .version(&#34;v1.1.2-aliyun.2&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;addonConfigSchema&#34;, data.alicloud_cs_kubernetes_addons().default().config_schema());
+     *         ctx.export(&#34;addonConfigSchema&#34;, defaultAlicloudCsKubernetesAddons.configSchema());
      *     }
      * }
      * ```
@@ -706,12 +712,12 @@ public final class CsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CsFunctions.getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs.builder()
-     *             .clusterId(var_.cluster_id())
+     *             .clusterId(clusterId)
      *             .name(&#34;nginx-ingress-controller&#34;)
      *             .version(&#34;v1.1.2-aliyun.2&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;addonConfigSchema&#34;, data.alicloud_cs_kubernetes_addons().default().config_schema());
+     *         ctx.export(&#34;addonConfigSchema&#34;, defaultAlicloudCsKubernetesAddons.configSchema());
      *     }
      * }
      * ```
@@ -792,10 +798,11 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getKubernetesClusters(GetKubernetesClustersArgs.builder()
-     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getKubernetesClustersResult -&gt; getKubernetesClustersResult.clusters()));
@@ -839,10 +846,11 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getKubernetesClusters(GetKubernetesClustersArgs.builder()
-     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getKubernetesClustersResult -&gt; getKubernetesClustersResult.clusters()));
@@ -886,10 +894,11 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getKubernetesClusters(GetKubernetesClustersArgs.builder()
-     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getKubernetesClustersResult -&gt; getKubernetesClustersResult.clusters()));
@@ -933,10 +942,11 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getKubernetesClusters(GetKubernetesClustersArgs.builder()
-     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getKubernetesClustersResult -&gt; getKubernetesClustersResult.clusters()));
@@ -980,10 +990,11 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getKubernetesClusters(GetKubernetesClustersArgs.builder()
-     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getKubernetesClustersResult -&gt; getKubernetesClustersResult.clusters()));
@@ -1027,10 +1038,11 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getKubernetesClusters(GetKubernetesClustersArgs.builder()
-     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .kubeConfigFilePrefix(&#34;~/.kube/k8s&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getKubernetesClustersResult -&gt; getKubernetesClustersResult.clusters()));
@@ -1074,13 +1086,15 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultUsers = RamFunctions.getUsers();
+     *         // Declare the data source
+     *         final var default = RamFunctions.getUsers();
      * 
-     *         final var defaultKubernetesPermission = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
-     *             .uid(defaultUsers.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()))
+     *         // permissions
+     *         final var defaultGetKubernetesPermission = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
+     *             .uid(default_.users()[0].id())
      *             .build());
      * 
-     *         ctx.export(&#34;permissions&#34;, defaultKubernetesPermission.applyValue(getKubernetesPermissionResult -&gt; getKubernetesPermissionResult.permissions()));
+     *         ctx.export(&#34;permissions&#34;, defaultGetKubernetesPermission.applyValue(getKubernetesPermissionResult -&gt; getKubernetesPermissionResult.permissions()));
      *     }
      * }
      * ```
@@ -1121,13 +1135,15 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultUsers = RamFunctions.getUsers();
+     *         // Declare the data source
+     *         final var default = RamFunctions.getUsers();
      * 
-     *         final var defaultKubernetesPermission = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
-     *             .uid(defaultUsers.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()))
+     *         // permissions
+     *         final var defaultGetKubernetesPermission = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
+     *             .uid(default_.users()[0].id())
      *             .build());
      * 
-     *         ctx.export(&#34;permissions&#34;, defaultKubernetesPermission.applyValue(getKubernetesPermissionResult -&gt; getKubernetesPermissionResult.permissions()));
+     *         ctx.export(&#34;permissions&#34;, defaultGetKubernetesPermission.applyValue(getKubernetesPermissionResult -&gt; getKubernetesPermissionResult.permissions()));
      *     }
      * }
      * ```
@@ -1168,13 +1184,15 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultUsers = RamFunctions.getUsers();
+     *         // Declare the data source
+     *         final var default = RamFunctions.getUsers();
      * 
-     *         final var defaultKubernetesPermission = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
-     *             .uid(defaultUsers.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()))
+     *         // permissions
+     *         final var defaultGetKubernetesPermission = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
+     *             .uid(default_.users()[0].id())
      *             .build());
      * 
-     *         ctx.export(&#34;permissions&#34;, defaultKubernetesPermission.applyValue(getKubernetesPermissionResult -&gt; getKubernetesPermissionResult.permissions()));
+     *         ctx.export(&#34;permissions&#34;, defaultGetKubernetesPermission.applyValue(getKubernetesPermissionResult -&gt; getKubernetesPermissionResult.permissions()));
      *     }
      * }
      * ```
@@ -1215,13 +1233,15 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultUsers = RamFunctions.getUsers();
+     *         // Declare the data source
+     *         final var default = RamFunctions.getUsers();
      * 
-     *         final var defaultKubernetesPermission = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
-     *             .uid(defaultUsers.applyValue(getUsersResult -&gt; getUsersResult.users()[0].id()))
+     *         // permissions
+     *         final var defaultGetKubernetesPermission = CsFunctions.getKubernetesPermission(GetKubernetesPermissionArgs.builder()
+     *             .uid(default_.users()[0].id())
      *             .build());
      * 
-     *         ctx.export(&#34;permissions&#34;, defaultKubernetesPermission.applyValue(getKubernetesPermissionResult -&gt; getKubernetesPermissionResult.permissions()));
+     *         ctx.export(&#34;permissions&#34;, defaultGetKubernetesPermission.applyValue(getKubernetesPermissionResult -&gt; getKubernetesPermissionResult.permissions()));
      *     }
      * }
      * ```
@@ -1260,6 +1280,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Query the managed kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
      *             .clusterType(&#34;ManagedKubernetes&#34;)
      *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
@@ -1294,6 +1315,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Query the kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
      *             .clusterType(&#34;Kubernetes&#34;)
      *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
@@ -1328,6 +1350,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Query the serverless kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
      *             .clusterType(&#34;ManagedKubernetes&#34;)
      *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
@@ -1362,6 +1385,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Query the edge kubernetes cluster metadata of version 1.20.11-aliyunedge.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
      *             .clusterType(&#34;ManagedKubernetes&#34;)
      *             .kubernetesVersion(&#34;1.20.11-aliyunedge.1&#34;)
@@ -1407,6 +1431,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Query the managed kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
      *             .clusterType(&#34;ManagedKubernetes&#34;)
      *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
@@ -1441,6 +1466,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Query the kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
      *             .clusterType(&#34;Kubernetes&#34;)
      *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
@@ -1475,6 +1501,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Query the serverless kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
      *             .clusterType(&#34;ManagedKubernetes&#34;)
      *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
@@ -1509,6 +1536,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Query the edge kubernetes cluster metadata of version 1.20.11-aliyunedge.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
      *             .clusterType(&#34;ManagedKubernetes&#34;)
      *             .kubernetesVersion(&#34;1.20.11-aliyunedge.1&#34;)
@@ -1554,6 +1582,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Query the managed kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
      *             .clusterType(&#34;ManagedKubernetes&#34;)
      *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
@@ -1588,6 +1617,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Query the kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
      *             .clusterType(&#34;Kubernetes&#34;)
      *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
@@ -1622,6 +1652,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Query the serverless kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
      *             .clusterType(&#34;ManagedKubernetes&#34;)
      *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
@@ -1656,6 +1687,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Query the edge kubernetes cluster metadata of version 1.20.11-aliyunedge.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
      *             .clusterType(&#34;ManagedKubernetes&#34;)
      *             .kubernetesVersion(&#34;1.20.11-aliyunedge.1&#34;)
@@ -1701,6 +1733,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Query the managed kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
      *             .clusterType(&#34;ManagedKubernetes&#34;)
      *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
@@ -1735,6 +1768,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Query the kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
      *             .clusterType(&#34;Kubernetes&#34;)
      *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
@@ -1769,6 +1803,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Query the serverless kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
      *             .clusterType(&#34;ManagedKubernetes&#34;)
      *             .kubernetesVersion(&#34;1.22.3-aliyun.1&#34;)
@@ -1803,6 +1838,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Query the edge kubernetes cluster metadata of version 1.20.11-aliyunedge.1 in the region specified by the client.
      *         final var default = CsFunctions.getKubernetesVersion(GetKubernetesVersionArgs.builder()
      *             .clusterType(&#34;ManagedKubernetes&#34;)
      *             .kubernetesVersion(&#34;1.20.11-aliyunedge.1&#34;)
@@ -1850,10 +1886,11 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getManagedKubernetesClusters(GetManagedKubernetesClustersArgs.builder()
-     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getManagedKubernetesClustersResult -&gt; getManagedKubernetesClustersResult.clusters()));
@@ -1897,10 +1934,11 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getManagedKubernetesClusters(GetManagedKubernetesClustersArgs.builder()
-     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getManagedKubernetesClustersResult -&gt; getManagedKubernetesClustersResult.clusters()));
@@ -1944,10 +1982,11 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getManagedKubernetesClusters(GetManagedKubernetesClustersArgs.builder()
-     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getManagedKubernetesClustersResult -&gt; getManagedKubernetesClustersResult.clusters()));
@@ -1991,10 +2030,11 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getManagedKubernetesClusters(GetManagedKubernetesClustersArgs.builder()
-     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getManagedKubernetesClustersResult -&gt; getManagedKubernetesClustersResult.clusters()));
@@ -2038,10 +2078,11 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getManagedKubernetesClusters(GetManagedKubernetesClustersArgs.builder()
-     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getManagedKubernetesClustersResult -&gt; getManagedKubernetesClustersResult.clusters()));
@@ -2085,10 +2126,11 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getManagedKubernetesClusters(GetManagedKubernetesClustersArgs.builder()
-     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .kubeConfigFilePrefix(&#34;~/.kube/managed&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getManagedKubernetesClustersResult -&gt; getManagedKubernetesClustersResult.clusters()));
@@ -2130,6 +2172,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var myInstances = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
      *             .nameRegex(&#34;my-instances&#34;)
      *             .outputFile(&#34;my-instances-json&#34;)
@@ -2174,6 +2217,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var myInstances = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
      *             .nameRegex(&#34;my-instances&#34;)
      *             .outputFile(&#34;my-instances-json&#34;)
@@ -2218,6 +2262,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var myInstances = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
      *             .nameRegex(&#34;my-instances&#34;)
      *             .outputFile(&#34;my-instances-json&#34;)
@@ -2262,6 +2307,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var myInstances = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
      *             .nameRegex(&#34;my-instances&#34;)
      *             .outputFile(&#34;my-instances-json&#34;)
@@ -2306,6 +2352,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var myInstances = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
      *             .nameRegex(&#34;my-instances&#34;)
      *             .outputFile(&#34;my-instances-json&#34;)
@@ -2350,6 +2397,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var myInstances = CsFunctions.getRegistryEnterpriseInstances(GetRegistryEnterpriseInstancesArgs.builder()
      *             .nameRegex(&#34;my-instances&#34;)
      *             .outputFile(&#34;my-instances-json&#34;)
@@ -2394,6 +2442,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var myNamespaces = CsFunctions.getRegistryEnterpriseNamespaces(GetRegistryEnterpriseNamespacesArgs.builder()
      *             .instanceId(&#34;cri-xxx&#34;)
      *             .nameRegex(&#34;my-namespace&#34;)
@@ -2439,6 +2488,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var myNamespaces = CsFunctions.getRegistryEnterpriseNamespaces(GetRegistryEnterpriseNamespacesArgs.builder()
      *             .instanceId(&#34;cri-xxx&#34;)
      *             .nameRegex(&#34;my-namespace&#34;)
@@ -2484,6 +2534,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var myNamespaces = CsFunctions.getRegistryEnterpriseNamespaces(GetRegistryEnterpriseNamespacesArgs.builder()
      *             .instanceId(&#34;cri-xxx&#34;)
      *             .nameRegex(&#34;my-namespace&#34;)
@@ -2529,6 +2580,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var myNamespaces = CsFunctions.getRegistryEnterpriseNamespaces(GetRegistryEnterpriseNamespacesArgs.builder()
      *             .instanceId(&#34;cri-xxx&#34;)
      *             .nameRegex(&#34;my-namespace&#34;)
@@ -2574,6 +2626,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var myRepos = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
      *             .instanceId(&#34;cri-xx&#34;)
      *             .nameRegex(&#34;my-repos&#34;)
@@ -2619,6 +2672,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var myRepos = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
      *             .instanceId(&#34;cri-xx&#34;)
      *             .nameRegex(&#34;my-repos&#34;)
@@ -2664,6 +2718,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var myRepos = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
      *             .instanceId(&#34;cri-xx&#34;)
      *             .nameRegex(&#34;my-repos&#34;)
@@ -2709,6 +2764,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var myRepos = CsFunctions.getRegistryEnterpriseRepos(GetRegistryEnterpriseReposArgs.builder()
      *             .instanceId(&#34;cri-xx&#34;)
      *             .nameRegex(&#34;my-repos&#34;)
@@ -2754,6 +2810,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var mySyncRules = CsFunctions.getRegistryEnterpriseSyncRules(GetRegistryEnterpriseSyncRulesArgs.builder()
      *             .instanceId(&#34;cri-xxx&#34;)
      *             .namespaceName(&#34;test-namespace&#34;)
@@ -2801,6 +2858,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var mySyncRules = CsFunctions.getRegistryEnterpriseSyncRules(GetRegistryEnterpriseSyncRulesArgs.builder()
      *             .instanceId(&#34;cri-xxx&#34;)
      *             .namespaceName(&#34;test-namespace&#34;)
@@ -2848,6 +2906,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var mySyncRules = CsFunctions.getRegistryEnterpriseSyncRules(GetRegistryEnterpriseSyncRulesArgs.builder()
      *             .instanceId(&#34;cri-xxx&#34;)
      *             .namespaceName(&#34;test-namespace&#34;)
@@ -2895,6 +2954,7 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var mySyncRules = CsFunctions.getRegistryEnterpriseSyncRules(GetRegistryEnterpriseSyncRulesArgs.builder()
      *             .instanceId(&#34;cri-xxx&#34;)
      *             .namespaceName(&#34;test-namespace&#34;)
@@ -2944,10 +3004,11 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs.builder()
-     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getServerlessKubernetesClustersResult -&gt; getServerlessKubernetesClustersResult.clusters()));
@@ -2991,10 +3052,11 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs.builder()
-     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getServerlessKubernetesClustersResult -&gt; getServerlessKubernetesClustersResult.clusters()));
@@ -3038,10 +3100,11 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs.builder()
-     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getServerlessKubernetesClustersResult -&gt; getServerlessKubernetesClustersResult.clusters()));
@@ -3085,10 +3148,11 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs.builder()
-     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getServerlessKubernetesClustersResult -&gt; getServerlessKubernetesClustersResult.clusters()));
@@ -3132,10 +3196,11 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs.builder()
-     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getServerlessKubernetesClustersResult -&gt; getServerlessKubernetesClustersResult.clusters()));
@@ -3179,10 +3244,11 @@ public final class CsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var k8sClusters = CsFunctions.getServerlessKubernetesClusters(GetServerlessKubernetesClustersArgs.builder()
-     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
      *             .nameRegex(&#34;my-first-k8s&#34;)
      *             .outputFile(&#34;my-first-k8s-json&#34;)
+     *             .kubeConfigFilePrefix(&#34;~/.kube/serverless&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;output&#34;, k8sClusters.applyValue(getServerlessKubernetesClustersResult -&gt; getServerlessKubernetesClustersResult.clusters()));

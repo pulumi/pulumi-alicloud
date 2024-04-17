@@ -19,7 +19,7 @@ import * as utilities from "./utilities";
  * const default = alicloud.getFileCrc64Checksum({
  *     filename: "exampleFileName",
  * });
- * export const fileCrc64Checksum = data.alicloud_file_crc64_checksum.defualt.checksum;
+ * export const fileCrc64Checksum = defualt.checksum;
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -73,7 +73,7 @@ export interface GetFileCrc64ChecksumResult {
  * const default = alicloud.getFileCrc64Checksum({
  *     filename: "exampleFileName",
  * });
- * export const fileCrc64Checksum = data.alicloud_file_crc64_checksum.defualt.checksum;
+ * export const fileCrc64Checksum = defualt.checksum;
  * ```
  * <!--End PulumiCodeChooser -->
  */

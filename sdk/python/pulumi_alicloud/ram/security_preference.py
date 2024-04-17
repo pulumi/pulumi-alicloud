@@ -293,8 +293,8 @@ class SecurityPreference(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.ram.SecurityPreference("example",
-            allow_user_to_change_password=True,
-            enable_save_mfa_ticket=False)
+            enable_save_mfa_ticket=False,
+            allow_user_to_change_password=True)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -342,8 +342,8 @@ class SecurityPreference(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.ram.SecurityPreference("example",
-            allow_user_to_change_password=True,
-            enable_save_mfa_ticket=False)
+            enable_save_mfa_ticket=False,
+            allow_user_to_change_password=True)
         ```
         <!--End PulumiCodeChooser -->
 

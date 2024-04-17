@@ -23,15 +23,15 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.cloudfirewall.AddressBook("example", {
- *     autoAddTagEcs: 0,
  *     description: "example_value",
+ *     groupName: "example_value",
+ *     groupType: "tag",
+ *     tagRelation: "and",
+ *     autoAddTagEcs: 0,
  *     ecsTags: [{
  *         tagKey: "created",
  *         tagValue: "tfTestAcc0",
  *     }],
- *     groupName: "example_value",
- *     groupType: "tag",
- *     tagRelation: "and",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

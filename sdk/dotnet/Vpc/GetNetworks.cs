@@ -28,8 +28,8 @@ namespace Pulumi.AliCloud.Vpc
         ///     var vpcsDs = AliCloud.Vpc.GetNetworks.Invoke(new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
-        ///         NameRegex = "^foo",
         ///         Status = "Available",
+        ///         NameRegex = "^foo",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -60,8 +60,8 @@ namespace Pulumi.AliCloud.Vpc
         ///     var vpcsDs = AliCloud.Vpc.GetNetworks.Invoke(new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
-        ///         NameRegex = "^foo",
         ///         Status = "Available",
+        ///         NameRegex = "^foo",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

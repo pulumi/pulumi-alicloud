@@ -214,7 +214,8 @@ class Port(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_ddos_coo_instance = alicloud.ddos.DdosCooInstance("defaultDdosCooInstance",
+        default = alicloud.ddos.DdosCooInstance("default",
+            name=name,
             bandwidth="30",
             base_bandwidth="30",
             service_bandwidth="100",
@@ -222,8 +223,8 @@ class Port(pulumi.CustomResource):
             domain_count="50",
             period=1,
             product_type="ddoscoo")
-        default_port = alicloud.ddos.Port("defaultPort",
-            instance_id=default_ddos_coo_instance.id,
+        default_port = alicloud.ddos.Port("default",
+            instance_id=default.id,
             frontend_port="7001",
             backend_port="7002",
             frontend_protocol="tcp",
@@ -276,7 +277,8 @@ class Port(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_ddos_coo_instance = alicloud.ddos.DdosCooInstance("defaultDdosCooInstance",
+        default = alicloud.ddos.DdosCooInstance("default",
+            name=name,
             bandwidth="30",
             base_bandwidth="30",
             service_bandwidth="100",
@@ -284,8 +286,8 @@ class Port(pulumi.CustomResource):
             domain_count="50",
             period=1,
             product_type="ddoscoo")
-        default_port = alicloud.ddos.Port("defaultPort",
-            instance_id=default_ddos_coo_instance.id,
+        default_port = alicloud.ddos.Port("default",
+            instance_id=default.id,
             frontend_port="7001",
             backend_port="7002",
             frontend_protocol="tcp",

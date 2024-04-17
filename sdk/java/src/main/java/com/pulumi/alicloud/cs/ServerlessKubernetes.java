@@ -76,7 +76,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;ask-example&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
@@ -89,7 +89,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;10.1.1.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
  *         var serverless = new ServerlessKubernetes(&#34;serverless&#34;, ServerlessKubernetesArgs.builder()        

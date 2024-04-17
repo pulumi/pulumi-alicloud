@@ -128,14 +128,14 @@ def get_nas_file_systems(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+    default = alicloud.eds.SimpleOfficeSite("default",
         cidr_block="172.16.0.0/12",
         desktop_access_type="Internet",
         office_site_name="your_office_site_name",
         enable_internet_access=False)
-    default_nas_file_system = alicloud.eds.NasFileSystem("defaultNasFileSystem",
+    default_nas_file_system = alicloud.eds.NasFileSystem("default",
         description="your_description",
-        office_site_id=default_simple_office_site.id,
+        office_site_id=default.id,
         nas_file_system_name="your_nas_file_system_name")
     ids = alicloud.eds.get_nas_file_systems()
     pulumi.export("ecdNasFileSystemId1", ids.systems[0].id)
@@ -192,14 +192,14 @@ def get_nas_file_systems_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+    default = alicloud.eds.SimpleOfficeSite("default",
         cidr_block="172.16.0.0/12",
         desktop_access_type="Internet",
         office_site_name="your_office_site_name",
         enable_internet_access=False)
-    default_nas_file_system = alicloud.eds.NasFileSystem("defaultNasFileSystem",
+    default_nas_file_system = alicloud.eds.NasFileSystem("default",
         description="your_description",
-        office_site_id=default_simple_office_site.id,
+        office_site_id=default.id,
         nas_file_system_name="your_nas_file_system_name")
     ids = alicloud.eds.get_nas_file_systems()
     pulumi.export("ecdNasFileSystemId1", ids.systems[0].id)

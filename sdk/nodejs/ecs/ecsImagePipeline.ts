@@ -20,41 +20,42 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ * const default = alicloud.resourcemanager.getResourceGroups({
  *     nameRegex: "default",
  * });
- * const defaultZones = alicloud.getZones({
+ * const defaultGetZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultImages = alicloud.ecs.getImages({
+ * const defaultGetImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
  *     mostRecent: true,
  *     owners: "system",
  * });
- * const defaultInstanceTypes = defaultImages.then(defaultImages => alicloud.ecs.getInstanceTypes({
- *     imageId: defaultImages.ids?.[0],
+ * const defaultGetInstanceTypes = defaultGetImages.then(defaultGetImages => alicloud.ecs.getInstanceTypes({
+ *     imageId: defaultGetImages.ids?.[0],
  * }));
- * const defaultAccount = alicloud.getAccount({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultGetAccount = alicloud.getAccount({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.17.3.0/24",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: "terraform-example",
  *     cidrBlock: "172.17.3.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
  * });
- * const defaultEcsImagePipeline = new alicloud.ecs.EcsImagePipeline("defaultEcsImagePipeline", {
- *     addAccounts: [defaultAccount.then(defaultAccount => defaultAccount.id)],
- *     baseImage: defaultImages.then(defaultImages => defaultImages.ids?.[0]),
+ * const defaultEcsImagePipeline = new alicloud.ecs.EcsImagePipeline("default", {
+ *     addAccounts: [defaultGetAccount.then(defaultGetAccount => defaultGetAccount.id)],
+ *     baseImage: defaultGetImages.then(defaultGetImages => defaultGetImages.ids?.[0]),
  *     baseImageType: "IMAGE",
  *     buildContent: "RUN yum update -y",
  *     deleteInstanceOnFailure: false,
  *     imageName: "terraform-example",
+ *     name: "terraform-example",
  *     description: "terraform-example",
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.ids?.[0]),
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.ids?.[0]),
+ *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
  *     internetMaxBandwidthOut: 20,
  *     systemDiskSize: 40,
  *     toRegionIds: [

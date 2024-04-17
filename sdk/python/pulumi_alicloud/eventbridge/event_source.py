@@ -301,10 +301,10 @@ class EventSource(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        example_event_bus = alicloud.eventbridge.EventBus("exampleEventBus", event_bus_name=name)
-        example_queue = alicloud.mns.Queue("exampleQueue")
-        example_event_source = alicloud.eventbridge.EventSource("exampleEventSource",
-            event_bus_name=example_event_bus.event_bus_name,
+        example = alicloud.eventbridge.EventBus("example", event_bus_name=name)
+        example_queue = alicloud.mns.Queue("example", name=name)
+        example_event_source = alicloud.eventbridge.EventSource("example",
+            event_bus_name=example.event_bus_name,
             event_source_name=name,
             description=name,
             linked_external_source=True,
@@ -371,10 +371,10 @@ class EventSource(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        example_event_bus = alicloud.eventbridge.EventBus("exampleEventBus", event_bus_name=name)
-        example_queue = alicloud.mns.Queue("exampleQueue")
-        example_event_source = alicloud.eventbridge.EventSource("exampleEventSource",
-            event_bus_name=example_event_bus.event_bus_name,
+        example = alicloud.eventbridge.EventBus("example", event_bus_name=name)
+        example_queue = alicloud.mns.Queue("example", name=name)
+        example_event_source = alicloud.eventbridge.EventSource("example",
+            event_bus_name=example.event_bus_name,
             event_source_name=name,
             description=name,
             linked_external_source=True,

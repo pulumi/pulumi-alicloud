@@ -32,12 +32,12 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var examplePhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
+    ///     var example = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
     ///     {
     ///         NameRegex = "^preserved-NODELETING",
     ///     });
     /// 
-    ///     var vlanId = new Random.RandomInteger("vlanId", new()
+    ///     var vlanId = new Random.Index.Integer("vlan_id", new()
     ///     {
     ///         Max = 2999,
     ///         Min = 1,
@@ -45,12 +45,12 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// 
     ///     var @default = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var exampleVirtualPhysicalConnection = new AliCloud.ExpressConnect.VirtualPhysicalConnection("exampleVirtualPhysicalConnection", new()
+    ///     var exampleVirtualPhysicalConnection = new AliCloud.ExpressConnect.VirtualPhysicalConnection("example", new()
     ///     {
     ///         VirtualPhysicalConnectionName = name,
     ///         Description = name,
     ///         OrderMode = "PayByPhysicalConnectionOwner",
-    ///         ParentPhysicalConnectionId = examplePhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Ids[0]),
+    ///         ParentPhysicalConnectionId = example.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Ids[0]),
     ///         Spec = "50M",
     ///         VlanId = vlanId.Id,
     ///         VpconnAliUid = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),

@@ -22,22 +22,22 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const config = new pulumi.Config();
  * const instanceSeries = config.get("instanceSeries") || "drds.sn1.4c8g";
- * const defaultNetworks = alicloud.vpc.getNetworks({
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
  *     nameRegex: "default-NODELETING",
  * });
- * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
+ * const defaultGetSwitches = defaultGetNetworks.then(defaultGetNetworks => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
  * }));
- * const defaultInstance = new alicloud.drds.Instance("defaultInstance", {
+ * const defaultInstance = new alicloud.drds.Instance("default", {
  *     description: "drds instance",
  *     instanceChargeType: "PostPaid",
- *     zoneId: defaultSwitches.then(defaultSwitches => defaultSwitches.vswitches?.[0]?.zoneId),
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.vswitches?.[0]?.id),
+ *     zoneId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.vswitches?.[0]?.zoneId),
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.vswitches?.[0]?.id),
  *     instanceSeries: instanceSeries,
  *     specification: "drds.sn1.4c8g.8C16G",
  * });

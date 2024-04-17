@@ -108,7 +108,7 @@ public final class PolardbFunctions {
      *             .status(&#34;Running&#34;)
      *             .build());
      * 
-     *         var accountAccount = new Account(&#34;accountAccount&#34;, AccountArgs.builder()        
+     *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
      *             .accountName(&#34;tfnormal_01&#34;)
      *             .accountPassword(&#34;Test12345&#34;)
@@ -116,12 +116,12 @@ public final class PolardbFunctions {
      *             .accountType(&#34;Normal&#34;)
      *             .build());
      * 
-     *         final var defaultAccounts = PolardbFunctions.getAccounts(GetAccountsArgs.builder()
+     *         final var default = PolardbFunctions.getAccounts(GetAccountsArgs.builder()
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
-     *             .nameRegex(accountAccount.accountName())
+     *             .nameRegex(account.accountName())
      *             .build());
      * 
-     *         ctx.export(&#34;account&#34;, defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult).applyValue(defaultAccounts -&gt; defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].accountName())));
+     *         ctx.export(&#34;account&#34;, default_.applyValue(default_ -&gt; default_.accounts()[0].accountName()));
      *     }
      * }
      * ```
@@ -204,7 +204,7 @@ public final class PolardbFunctions {
      *             .status(&#34;Running&#34;)
      *             .build());
      * 
-     *         var accountAccount = new Account(&#34;accountAccount&#34;, AccountArgs.builder()        
+     *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
      *             .accountName(&#34;tfnormal_01&#34;)
      *             .accountPassword(&#34;Test12345&#34;)
@@ -212,12 +212,12 @@ public final class PolardbFunctions {
      *             .accountType(&#34;Normal&#34;)
      *             .build());
      * 
-     *         final var defaultAccounts = PolardbFunctions.getAccounts(GetAccountsArgs.builder()
+     *         final var default = PolardbFunctions.getAccounts(GetAccountsArgs.builder()
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
-     *             .nameRegex(accountAccount.accountName())
+     *             .nameRegex(account.accountName())
      *             .build());
      * 
-     *         ctx.export(&#34;account&#34;, defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult).applyValue(defaultAccounts -&gt; defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].accountName())));
+     *         ctx.export(&#34;account&#34;, default_.applyValue(default_ -&gt; default_.accounts()[0].accountName()));
      *     }
      * }
      * ```
@@ -300,7 +300,7 @@ public final class PolardbFunctions {
      *             .status(&#34;Running&#34;)
      *             .build());
      * 
-     *         var accountAccount = new Account(&#34;accountAccount&#34;, AccountArgs.builder()        
+     *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
      *             .accountName(&#34;tfnormal_01&#34;)
      *             .accountPassword(&#34;Test12345&#34;)
@@ -308,12 +308,12 @@ public final class PolardbFunctions {
      *             .accountType(&#34;Normal&#34;)
      *             .build());
      * 
-     *         final var defaultAccounts = PolardbFunctions.getAccounts(GetAccountsArgs.builder()
+     *         final var default = PolardbFunctions.getAccounts(GetAccountsArgs.builder()
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
-     *             .nameRegex(accountAccount.accountName())
+     *             .nameRegex(account.accountName())
      *             .build());
      * 
-     *         ctx.export(&#34;account&#34;, defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult).applyValue(defaultAccounts -&gt; defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].accountName())));
+     *         ctx.export(&#34;account&#34;, default_.applyValue(default_ -&gt; default_.accounts()[0].accountName()));
      *     }
      * }
      * ```
@@ -396,7 +396,7 @@ public final class PolardbFunctions {
      *             .status(&#34;Running&#34;)
      *             .build());
      * 
-     *         var accountAccount = new Account(&#34;accountAccount&#34;, AccountArgs.builder()        
+     *         var account = new Account(&#34;account&#34;, AccountArgs.builder()        
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
      *             .accountName(&#34;tfnormal_01&#34;)
      *             .accountPassword(&#34;Test12345&#34;)
@@ -404,12 +404,12 @@ public final class PolardbFunctions {
      *             .accountType(&#34;Normal&#34;)
      *             .build());
      * 
-     *         final var defaultAccounts = PolardbFunctions.getAccounts(GetAccountsArgs.builder()
+     *         final var default = PolardbFunctions.getAccounts(GetAccountsArgs.builder()
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
-     *             .nameRegex(accountAccount.accountName())
+     *             .nameRegex(account.accountName())
      *             .build());
      * 
-     *         ctx.export(&#34;account&#34;, defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult).applyValue(defaultAccounts -&gt; defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.accounts()[0].accountName())));
+     *         ctx.export(&#34;account&#34;, default_.applyValue(default_ -&gt; default_.accounts()[0].accountName()));
      *     }
      * }
      * ```
@@ -463,13 +463,13 @@ public final class PolardbFunctions {
      *             .category(&#34;Normal&#34;)
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
      *             .vpcName(&#34;terraform-example&#34;)
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .vpcId(defaultNetwork.id())
+     *             .vpcId(default_.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName(&#34;terraform-example&#34;)
@@ -543,13 +543,13 @@ public final class PolardbFunctions {
      *             .category(&#34;Normal&#34;)
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
      *             .vpcName(&#34;terraform-example&#34;)
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .vpcId(defaultNetwork.id())
+     *             .vpcId(default_.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName(&#34;terraform-example&#34;)
@@ -623,13 +623,13 @@ public final class PolardbFunctions {
      *             .category(&#34;Normal&#34;)
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
      *             .vpcName(&#34;terraform-example&#34;)
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .vpcId(defaultNetwork.id())
+     *             .vpcId(default_.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName(&#34;terraform-example&#34;)
@@ -703,13 +703,13 @@ public final class PolardbFunctions {
      *             .category(&#34;Normal&#34;)
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
      *             .vpcName(&#34;terraform-example&#34;)
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .vpcId(defaultNetwork.id())
+     *             .vpcId(default_.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName(&#34;terraform-example&#34;)
@@ -783,13 +783,13 @@ public final class PolardbFunctions {
      *             .category(&#34;Normal&#34;)
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
      *             .vpcName(&#34;terraform-example&#34;)
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .vpcId(defaultNetwork.id())
+     *             .vpcId(default_.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName(&#34;terraform-example&#34;)
@@ -863,13 +863,13 @@ public final class PolardbFunctions {
      *             .category(&#34;Normal&#34;)
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
      *             .vpcName(&#34;terraform-example&#34;)
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .vpcId(defaultNetwork.id())
+     *             .vpcId(default_.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName(&#34;terraform-example&#34;)
@@ -978,12 +978,12 @@ public final class PolardbFunctions {
      *             .dbDescription(&#34;from terraform&#34;)
      *             .build());
      * 
-     *         final var defaultDatabases = PolardbFunctions.getDatabases(GetDatabasesArgs.builder()
+     *         final var default = PolardbFunctions.getDatabases(GetDatabasesArgs.builder()
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
      *             .nameRegex(defaultDatabase.dbName())
      *             .build());
      * 
-     *         ctx.export(&#34;database&#34;, defaultDatabases.applyValue(getDatabasesResult -&gt; getDatabasesResult).applyValue(defaultDatabases -&gt; defaultDatabases.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()[0].dbName())));
+     *         ctx.export(&#34;database&#34;, default_.applyValue(default_ -&gt; default_.databases()[0].dbName()));
      *     }
      * }
      * ```
@@ -1072,12 +1072,12 @@ public final class PolardbFunctions {
      *             .dbDescription(&#34;from terraform&#34;)
      *             .build());
      * 
-     *         final var defaultDatabases = PolardbFunctions.getDatabases(GetDatabasesArgs.builder()
+     *         final var default = PolardbFunctions.getDatabases(GetDatabasesArgs.builder()
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
      *             .nameRegex(defaultDatabase.dbName())
      *             .build());
      * 
-     *         ctx.export(&#34;database&#34;, defaultDatabases.applyValue(getDatabasesResult -&gt; getDatabasesResult).applyValue(defaultDatabases -&gt; defaultDatabases.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()[0].dbName())));
+     *         ctx.export(&#34;database&#34;, default_.applyValue(default_ -&gt; default_.databases()[0].dbName()));
      *     }
      * }
      * ```
@@ -1166,12 +1166,12 @@ public final class PolardbFunctions {
      *             .dbDescription(&#34;from terraform&#34;)
      *             .build());
      * 
-     *         final var defaultDatabases = PolardbFunctions.getDatabases(GetDatabasesArgs.builder()
+     *         final var default = PolardbFunctions.getDatabases(GetDatabasesArgs.builder()
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
      *             .nameRegex(defaultDatabase.dbName())
      *             .build());
      * 
-     *         ctx.export(&#34;database&#34;, defaultDatabases.applyValue(getDatabasesResult -&gt; getDatabasesResult).applyValue(defaultDatabases -&gt; defaultDatabases.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()[0].dbName())));
+     *         ctx.export(&#34;database&#34;, default_.applyValue(default_ -&gt; default_.databases()[0].dbName()));
      *     }
      * }
      * ```
@@ -1260,12 +1260,12 @@ public final class PolardbFunctions {
      *             .dbDescription(&#34;from terraform&#34;)
      *             .build());
      * 
-     *         final var defaultDatabases = PolardbFunctions.getDatabases(GetDatabasesArgs.builder()
+     *         final var default = PolardbFunctions.getDatabases(GetDatabasesArgs.builder()
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
      *             .nameRegex(defaultDatabase.dbName())
      *             .build());
      * 
-     *         ctx.export(&#34;database&#34;, defaultDatabases.applyValue(getDatabasesResult -&gt; getDatabasesResult).applyValue(defaultDatabases -&gt; defaultDatabases.applyValue(getDatabasesResult -&gt; getDatabasesResult.databases()[0].dbName())));
+     *         ctx.export(&#34;database&#34;, default_.applyValue(default_ -&gt; default_.databases()[0].dbName()));
      *     }
      * }
      * ```
@@ -1346,11 +1346,11 @@ public final class PolardbFunctions {
      *             .status(&#34;Running&#34;)
      *             .build());
      * 
-     *         final var defaultEndpoints = PolardbFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *         final var default = PolardbFunctions.getEndpoints(GetEndpointsArgs.builder()
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
      *             .build());
      * 
-     *         ctx.export(&#34;endpoint&#34;, defaultEndpoints.applyValue(getEndpointsResult -&gt; getEndpointsResult).applyValue(defaultEndpoints -&gt; defaultEndpoints.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].dbEndpointId())));
+     *         ctx.export(&#34;endpoint&#34;, default_.applyValue(default_ -&gt; default_.endpoints()[0].dbEndpointId()));
      *     }
      * }
      * ```
@@ -1431,11 +1431,11 @@ public final class PolardbFunctions {
      *             .status(&#34;Running&#34;)
      *             .build());
      * 
-     *         final var defaultEndpoints = PolardbFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *         final var default = PolardbFunctions.getEndpoints(GetEndpointsArgs.builder()
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
      *             .build());
      * 
-     *         ctx.export(&#34;endpoint&#34;, defaultEndpoints.applyValue(getEndpointsResult -&gt; getEndpointsResult).applyValue(defaultEndpoints -&gt; defaultEndpoints.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].dbEndpointId())));
+     *         ctx.export(&#34;endpoint&#34;, default_.applyValue(default_ -&gt; default_.endpoints()[0].dbEndpointId()));
      *     }
      * }
      * ```
@@ -1516,11 +1516,11 @@ public final class PolardbFunctions {
      *             .status(&#34;Running&#34;)
      *             .build());
      * 
-     *         final var defaultEndpoints = PolardbFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *         final var default = PolardbFunctions.getEndpoints(GetEndpointsArgs.builder()
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
      *             .build());
      * 
-     *         ctx.export(&#34;endpoint&#34;, defaultEndpoints.applyValue(getEndpointsResult -&gt; getEndpointsResult).applyValue(defaultEndpoints -&gt; defaultEndpoints.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].dbEndpointId())));
+     *         ctx.export(&#34;endpoint&#34;, default_.applyValue(default_ -&gt; default_.endpoints()[0].dbEndpointId()));
      *     }
      * }
      * ```
@@ -1601,11 +1601,11 @@ public final class PolardbFunctions {
      *             .status(&#34;Running&#34;)
      *             .build());
      * 
-     *         final var defaultEndpoints = PolardbFunctions.getEndpoints(GetEndpointsArgs.builder()
+     *         final var default = PolardbFunctions.getEndpoints(GetEndpointsArgs.builder()
      *             .dbClusterId(polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult).applyValue(polardbClustersDs -&gt; polardbClustersDs.applyValue(getClustersResult -&gt; getClustersResult.clusters()[0].id())))
      *             .build());
      * 
-     *         ctx.export(&#34;endpoint&#34;, defaultEndpoints.applyValue(getEndpointsResult -&gt; getEndpointsResult).applyValue(defaultEndpoints -&gt; defaultEndpoints.applyValue(getEndpointsResult -&gt; getEndpointsResult.endpoints()[0].dbEndpointId())));
+     *         ctx.export(&#34;endpoint&#34;, default_.applyValue(default_ -&gt; default_.endpoints()[0].dbEndpointId()));
      *     }
      * }
      * ```
@@ -1662,13 +1662,13 @@ public final class PolardbFunctions {
      *             .category(&#34;Normal&#34;)
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
      *             .vpcName(&#34;terraform-example&#34;)
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .vpcId(defaultNetwork.id())
+     *             .vpcId(default_.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName(&#34;terraform-example&#34;)
@@ -1754,13 +1754,13 @@ public final class PolardbFunctions {
      *             .category(&#34;Normal&#34;)
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
      *             .vpcName(&#34;terraform-example&#34;)
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .vpcId(defaultNetwork.id())
+     *             .vpcId(default_.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName(&#34;terraform-example&#34;)
@@ -1846,13 +1846,13 @@ public final class PolardbFunctions {
      *             .category(&#34;Normal&#34;)
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
      *             .vpcName(&#34;terraform-example&#34;)
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .vpcId(defaultNetwork.id())
+     *             .vpcId(default_.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName(&#34;terraform-example&#34;)
@@ -1938,13 +1938,13 @@ public final class PolardbFunctions {
      *             .category(&#34;Normal&#34;)
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
      *             .vpcName(&#34;terraform-example&#34;)
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .vpcId(defaultNetwork.id())
+     *             .vpcId(default_.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName(&#34;terraform-example&#34;)
@@ -2030,13 +2030,13 @@ public final class PolardbFunctions {
      *             .category(&#34;Normal&#34;)
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
      *             .vpcName(&#34;terraform-example&#34;)
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .vpcId(defaultNetwork.id())
+     *             .vpcId(default_.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName(&#34;terraform-example&#34;)
@@ -2122,13 +2122,13 @@ public final class PolardbFunctions {
      *             .category(&#34;Normal&#34;)
      *             .build());
      * 
-     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
      *             .vpcName(&#34;terraform-example&#34;)
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
      *             .build());
      * 
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
-     *             .vpcId(defaultNetwork.id())
+     *             .vpcId(default_.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .zoneId(this_.classes()[0].zoneId())
      *             .vswitchName(&#34;terraform-example&#34;)
@@ -2710,6 +2710,7 @@ public final class PolardbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = PolardbFunctions.getZones();
      * 
      *     }
@@ -2750,6 +2751,7 @@ public final class PolardbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = PolardbFunctions.getZones();
      * 
      *     }
@@ -2790,6 +2792,7 @@ public final class PolardbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = PolardbFunctions.getZones();
      * 
      *     }
@@ -2830,6 +2833,7 @@ public final class PolardbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = PolardbFunctions.getZones();
      * 
      *     }
@@ -2870,6 +2874,7 @@ public final class PolardbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = PolardbFunctions.getZones();
      * 
      *     }
@@ -2910,6 +2915,7 @@ public final class PolardbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = PolardbFunctions.getZones();
      * 
      *     }

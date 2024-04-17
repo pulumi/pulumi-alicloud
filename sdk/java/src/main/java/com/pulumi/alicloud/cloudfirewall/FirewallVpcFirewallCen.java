@@ -55,10 +55,10 @@ import javax.annotation.Nullable;
  *             .localVpc(FirewallVpcFirewallCenLocalVpcArgs.builder()
  *                 .networkInstanceId(&#34;vpc-xxx&#34;)
  *                 .build())
- *             .memberUid(&#34;14151*****827022&#34;)
  *             .status(&#34;open&#34;)
- *             .vpcFirewallName(&#34;tf-vpc-firewall-name&#34;)
+ *             .memberUid(&#34;14151*****827022&#34;)
  *             .vpcRegion(&#34;cn-hangzhou&#34;)
+ *             .vpcFirewallName(&#34;tf-vpc-firewall-name&#34;)
  *             .build());
  * 
  *     }

@@ -20,9 +20,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultGroup = new alicloud.apigateway.Group("defaultGroup", {description: "example_value"});
- * const defaultModel = new alicloud.apigateway.Model("defaultModel", {
- *     groupId: defaultGroup.id,
+ * const _default = new alicloud.apigateway.Group("default", {
+ *     name: "example_value",
+ *     description: "example_value",
+ * });
+ * const defaultModel = new alicloud.apigateway.Model("default", {
+ *     groupId: _default.id,
  *     modelName: "example_value",
  *     schema: "{\"type\":\"object\",\"properties\":{\"id\":{\"format\":\"int64\",\"maximum\":100,\"exclusiveMaximum\":true,\"type\":\"integer\"},\"name\":{\"maxLength\":10,\"type\":\"string\"}}}",
  *     description: "example_value",

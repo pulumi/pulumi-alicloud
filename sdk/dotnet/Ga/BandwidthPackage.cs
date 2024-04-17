@@ -33,12 +33,12 @@ namespace Pulumi.AliCloud.Ga
     /// {
     ///     var example = new AliCloud.Ga.BandwidthPackage("example", new()
     ///     {
-    ///         AutoPay = true,
     ///         Bandwidth = 20,
+    ///         Type = "Basic",
     ///         BandwidthType = "Basic",
     ///         Duration = "1",
+    ///         AutoPay = true,
     ///         Ratio = 30,
-    ///         Type = "Basic",
     ///     });
     /// 
     /// });

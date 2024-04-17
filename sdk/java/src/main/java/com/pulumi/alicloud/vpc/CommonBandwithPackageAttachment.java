@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaultCommonBandwithPackage = new CommonBandwithPackage(&#34;defaultCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
+ *         var default_ = new CommonBandwithPackage(&#34;default&#34;, CommonBandwithPackageArgs.builder()        
  *             .bandwidth(3)
  *             .internetChargeType(&#34;PayByBandwidth&#34;)
  *             .build());
@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultCommonBandwithPackageAttachment = new CommonBandwithPackageAttachment(&#34;defaultCommonBandwithPackageAttachment&#34;, CommonBandwithPackageAttachmentArgs.builder()        
- *             .bandwidthPackageId(defaultCommonBandwithPackage.id())
+ *             .bandwidthPackageId(default_.id())
  *             .instanceId(defaultEipAddress.id())
  *             .bandwidthPackageBandwidth(&#34;2&#34;)
  *             .ipType(&#34;EIP&#34;)

@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["serviceMeshVersion"] = data.Alicloud_service_mesh_versions.Versions[0].Version,
+        ///         ["serviceMeshVersion"] = versions[0].Version,
         ///     };
         /// });
         /// ```
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["serviceMeshVersion"] = data.Alicloud_service_mesh_versions.Versions[0].Version,
+        ///         ["serviceMeshVersion"] = versions[0].Version,
         ///     };
         /// });
         /// ```

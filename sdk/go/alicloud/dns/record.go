@@ -35,6 +35,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new Domain record
 //			_, err := dns.NewRecord(ctx, "record", &dns.RecordArgs{
+//				Name:       pulumi.String("domainname"),
 //				HostRecord: pulumi.String("@"),
 //				Type:       pulumi.String("A"),
 //				Value:      pulumi.String("192.168.99.99"),

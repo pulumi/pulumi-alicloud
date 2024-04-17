@@ -122,11 +122,11 @@ def get_shared_targets(ids: Optional[Sequence[str]] = None,
     name = config.get("name")
     if name is None:
         name = "tf-example"
-    default_accounts = alicloud.resourcemanager.get_accounts()
-    default_resource_share = alicloud.resourcemanager.ResourceShare("defaultResourceShare", resource_share_name=name)
-    default_shared_target = alicloud.resourcemanager.SharedTarget("defaultSharedTarget",
+    default = alicloud.resourcemanager.get_accounts()
+    default_resource_share = alicloud.resourcemanager.ResourceShare("default", resource_share_name=name)
+    default_shared_target = alicloud.resourcemanager.SharedTarget("default",
         resource_share_id=default_resource_share.id,
-        target_id=default_accounts.ids[0])
+        target_id=default.ids[0])
     ids = alicloud.resourcemanager.get_shared_targets_output(ids=[default_shared_target.target_id])
     pulumi.export("firstResourceManagerSharedTargetId", ids.targets[0].id)
     resource_share_id = alicloud.resourcemanager.get_shared_targets_output(resource_share_id=default_shared_target.resource_share_id)
@@ -181,11 +181,11 @@ def get_shared_targets_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     name = config.get("name")
     if name is None:
         name = "tf-example"
-    default_accounts = alicloud.resourcemanager.get_accounts()
-    default_resource_share = alicloud.resourcemanager.ResourceShare("defaultResourceShare", resource_share_name=name)
-    default_shared_target = alicloud.resourcemanager.SharedTarget("defaultSharedTarget",
+    default = alicloud.resourcemanager.get_accounts()
+    default_resource_share = alicloud.resourcemanager.ResourceShare("default", resource_share_name=name)
+    default_shared_target = alicloud.resourcemanager.SharedTarget("default",
         resource_share_id=default_resource_share.id,
-        target_id=default_accounts.ids[0])
+        target_id=default.ids[0])
     ids = alicloud.resourcemanager.get_shared_targets_output(ids=[default_shared_target.target_id])
     pulumi.export("firstResourceManagerSharedTargetId", ids.targets[0].id)
     resource_share_id = alicloud.resourcemanager.get_shared_targets_output(resource_share_id=default_shared_target.resource_share_id)

@@ -22,40 +22,43 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const exampleRegions = alicloud.getRegions({
+ * const example = alicloud.getRegions({
  *     current: true,
  * });
- * const exampleZones = alicloud.rds.getZones({
+ * const exampleGetZones = alicloud.rds.getZones({
  *     engine: "MySQL",
  *     engineVersion: "8.0",
  *     instanceChargeType: "PostPaid",
  *     category: "Basic",
  *     dbInstanceStorageType: "cloud_essd",
  * });
- * const exampleInstanceClasses = exampleZones.then(exampleZones => alicloud.rds.getInstanceClasses({
- *     zoneId: exampleZones.zones?.[0]?.id,
+ * const exampleGetInstanceClasses = exampleGetZones.then(exampleGetZones => alicloud.rds.getInstanceClasses({
+ *     zoneId: exampleGetZones.zones?.[0]?.id,
  *     engine: "MySQL",
  *     engineVersion: "8.0",
  *     instanceChargeType: "PostPaid",
  *     category: "Basic",
  *     dbInstanceStorageType: "cloud_essd",
  * }));
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
  *     vpcId: exampleNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     zoneId: exampleGetZones.then(exampleGetZones => exampleGetZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
- * const exampleInstance = new alicloud.rds.Instance("exampleInstance", {
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
+ *     name: name,
+ *     vpcId: exampleNetwork.id,
+ * });
+ * const exampleInstance = new alicloud.rds.Instance("example", {
  *     engine: "MySQL",
  *     engineVersion: "8.0",
- *     instanceType: exampleInstanceClasses.then(exampleInstanceClasses => exampleInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *     instanceStorage: exampleInstanceClasses.then(exampleInstanceClasses => exampleInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceType: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceStorage: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
  *     instanceChargeType: "Postpaid",
  *     instanceName: name,
  *     vswitchId: exampleSwitch.id,
@@ -63,23 +66,26 @@ import * as utilities from "../utilities";
  *     dbInstanceStorageType: "cloud_essd",
  *     securityGroupIds: [exampleSecurityGroup.id],
  * });
- * const exampleRdsAccount = new alicloud.rds.RdsAccount("exampleRdsAccount", {
+ * const exampleRdsAccount = new alicloud.rds.RdsAccount("example", {
  *     dbInstanceId: exampleInstance.id,
  *     accountName: "example_name",
  *     accountPassword: "example_1234",
  * });
- * const exampleDatabase = new alicloud.rds.Database("exampleDatabase", {instanceId: exampleInstance.id});
- * const exampleAccountPrivilege = new alicloud.rds.AccountPrivilege("exampleAccountPrivilege", {
+ * const exampleDatabase = new alicloud.rds.Database("example", {
+ *     instanceId: exampleInstance.id,
+ *     name: name,
+ * });
+ * const exampleAccountPrivilege = new alicloud.rds.AccountPrivilege("example", {
  *     instanceId: exampleInstance.id,
  *     accountName: exampleRdsAccount.name,
  *     privilege: "ReadWrite",
  *     dbNames: [exampleDatabase.name],
  * });
- * const exampleSubscriptionJob = new alicloud.dts.SubscriptionJob("exampleSubscriptionJob", {
+ * const exampleSubscriptionJob = new alicloud.dts.SubscriptionJob("example", {
  *     dtsJobName: name,
  *     paymentType: "PayAsYouGo",
  *     sourceEndpointEngineName: "MySQL",
- *     sourceEndpointRegion: exampleRegions.then(exampleRegions => exampleRegions.regions?.[0]?.id),
+ *     sourceEndpointRegion: example.then(example => example.regions?.[0]?.id),
  *     sourceEndpointInstanceType: "RDS",
  *     sourceEndpointInstanceId: exampleInstance.id,
  *     sourceEndpointDatabaseName: exampleDatabase.name,
@@ -91,7 +97,7 @@ import * as utilities from "../utilities";
  *     subscriptionInstanceVswitchId: exampleSwitch.id,
  *     status: "Normal",
  * });
- * const exampleConsumerChannel = new alicloud.dts.ConsumerChannel("exampleConsumerChannel", {
+ * const exampleConsumerChannel = new alicloud.dts.ConsumerChannel("example", {
  *     dtsInstanceId: exampleSubscriptionJob.dtsInstanceId,
  *     consumerGroupName: name,
  *     consumerGroupUserName: "example",

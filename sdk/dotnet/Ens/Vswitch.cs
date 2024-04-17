@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ens
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultNetwork = new AliCloud.Ens.Network("defaultNetwork", new()
+    ///     var @default = new AliCloud.Ens.Network("default", new()
     ///     {
     ///         NetworkName = name,
     ///         Description = name,
@@ -39,13 +39,13 @@ namespace Pulumi.AliCloud.Ens
     ///         EnsRegionId = "cn-chenzhou-telecom_unicom_cmcc",
     ///     });
     /// 
-    ///     var defaultVswitch = new AliCloud.Ens.Vswitch("defaultVswitch", new()
+    ///     var defaultVswitch = new AliCloud.Ens.Vswitch("default", new()
     ///     {
     ///         Description = name,
     ///         CidrBlock = "192.168.2.0/24",
     ///         VswitchName = name,
     ///         EnsRegionId = "cn-chenzhou-telecom_unicom_cmcc",
-    ///         NetworkId = defaultNetwork.Id,
+    ///         NetworkId = @default.Id,
     ///     });
     /// 
     /// });

@@ -27,17 +27,18 @@ namespace Pulumi.AliCloud.Dms
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tfexamplename";
-    ///     var defaultUser = new AliCloud.Ram.User("defaultUser", new()
+    ///     var @default = new AliCloud.Ram.User("default", new()
     ///     {
+    ///         Name = name,
     ///         DisplayName = name,
     ///         Mobile = "86-18688888888",
     ///         Email = "hello.uuu@aaa.com",
     ///         Comments = "example",
     ///     });
     /// 
-    ///     var defaultEnterpriseUser = new AliCloud.Dms.EnterpriseUser("defaultEnterpriseUser", new()
+    ///     var defaultEnterpriseUser = new AliCloud.Dms.EnterpriseUser("default", new()
     ///     {
-    ///         Uid = defaultUser.Id,
+    ///         Uid = @default.Id,
     ///         UserName = name,
     ///         RoleNames = new[]
     ///         {

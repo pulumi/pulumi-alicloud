@@ -44,7 +44,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			exampleRegistryEnterpriseInstance, err := cr.NewRegistryEnterpriseInstance(ctx, "exampleRegistryEnterpriseInstance", &cr.RegistryEnterpriseInstanceArgs{
+//			example, err := cr.NewRegistryEnterpriseInstance(ctx, "example", &cr.RegistryEnterpriseInstanceArgs{
 //				PaymentType:   pulumi.String("Subscription"),
 //				Period:        pulumi.Int(1),
 //				RenewPeriod:   pulumi.Int(0),
@@ -55,8 +55,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cs.NewRegistryEnterpriseNamespace(ctx, "exampleRegistryEnterpriseNamespace", &cs.RegistryEnterpriseNamespaceArgs{
-//				InstanceId:        exampleRegistryEnterpriseInstance.ID(),
+//			_, err = cs.NewRegistryEnterpriseNamespace(ctx, "example", &cs.RegistryEnterpriseNamespaceArgs{
+//				InstanceId:        example.ID(),
+//				Name:              pulumi.String(name),
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PUBLIC"),
 //			})

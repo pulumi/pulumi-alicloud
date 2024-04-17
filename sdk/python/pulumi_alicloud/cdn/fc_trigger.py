@@ -274,15 +274,15 @@ class FcTrigger(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_account = alicloud.get_account()
-        default_regions = alicloud.get_regions(current=True)
+        default = alicloud.get_account()
+        default_get_regions = alicloud.get_regions(current=True)
         example = alicloud.cdn.FcTrigger("example",
             event_meta_name="LogFileCreated",
             event_meta_version="1.0.0",
             notes="example_value",
-            role_arn=f"acs:ram::{default_account.id}:role/aliyuncdneventnotificationrole",
-            source_arn=f"acs:cdn:*:{default_account.id}:domain/example.com",
-            trigger_arn=f"acs:fc:{default_regions.regions[0].id}:{default_account.id}:services/FCTestService/functions/printEvent/triggers/testtrigger")
+            role_arn=f"acs:ram::{default.id}:role/aliyuncdneventnotificationrole",
+            source_arn=f"acs:cdn:*:{default.id}:domain/example.com",
+            trigger_arn=f"acs:fc:{default_get_regions.regions[0].id}:{default.id}:services/FCTestService/functions/printEvent/triggers/testtrigger")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -326,15 +326,15 @@ class FcTrigger(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_account = alicloud.get_account()
-        default_regions = alicloud.get_regions(current=True)
+        default = alicloud.get_account()
+        default_get_regions = alicloud.get_regions(current=True)
         example = alicloud.cdn.FcTrigger("example",
             event_meta_name="LogFileCreated",
             event_meta_version="1.0.0",
             notes="example_value",
-            role_arn=f"acs:ram::{default_account.id}:role/aliyuncdneventnotificationrole",
-            source_arn=f"acs:cdn:*:{default_account.id}:domain/example.com",
-            trigger_arn=f"acs:fc:{default_regions.regions[0].id}:{default_account.id}:services/FCTestService/functions/printEvent/triggers/testtrigger")
+            role_arn=f"acs:ram::{default.id}:role/aliyuncdneventnotificationrole",
+            source_arn=f"acs:cdn:*:{default.id}:domain/example.com",
+            trigger_arn=f"acs:fc:{default_get_regions.regions[0].id}:{default.id}:services/FCTestService/functions/printEvent/triggers/testtrigger")
         ```
         <!--End PulumiCodeChooser -->
 

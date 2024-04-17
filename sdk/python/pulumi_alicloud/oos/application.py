@@ -185,13 +185,13 @@ class Application(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_application = alicloud.oos.Application("defaultApplication",
-            resource_group_id=default_resource_groups.groups[0].id,
-            application_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_application = alicloud.oos.Application("default",
+            resource_group_id=default.groups[0].id,
+            application_name=f"{name}-{default_integer['result']}",
             description=name,
             tags={
                 "Created": "TF",
@@ -241,13 +241,13 @@ class Application(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_application = alicloud.oos.Application("defaultApplication",
-            resource_group_id=default_resource_groups.groups[0].id,
-            application_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_application = alicloud.oos.Application("default",
+            resource_group_id=default.groups[0].id,
+            application_name=f"{name}-{default_integer['result']}",
             description=name,
             tags={
                 "Created": "TF",

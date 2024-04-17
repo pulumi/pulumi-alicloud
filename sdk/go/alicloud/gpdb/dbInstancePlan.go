@@ -42,31 +42,31 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := gpdb.GetZones(ctx, nil, nil)
+//			_default, err := gpdb.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 //				NameRegex: pulumi.StringRef("^default-NODELETING$"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(_default.Ids[0]),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := gpdb.NewInstance(ctx, "defaultInstance", &gpdb.InstanceArgs{
+//			defaultInstance, err := gpdb.NewInstance(ctx, "default", &gpdb.InstanceArgs{
 //				DbInstanceCategory:  pulumi.String("HighAvailability"),
 //				DbInstanceClass:     pulumi.String("gpdb.group.segsdx1"),
 //				DbInstanceMode:      pulumi.String("StorageElastic"),
 //				Description:         pulumi.String(name),
 //				Engine:              pulumi.String("gpdb"),
 //				EngineVersion:       pulumi.String("6.0"),
-//				ZoneId:              pulumi.String(defaultZones.Ids[0]),
+//				ZoneId:              pulumi.String(_default.Ids[0]),
 //				InstanceNetworkType: pulumi.String("VPC"),
 //				InstanceSpec:        pulumi.String("2C16G"),
 //				MasterNodeNum:       pulumi.Int(1),
@@ -75,8 +75,8 @@ import (
 //				SegStorageType:      pulumi.String("cloud_essd"),
 //				SegNodeNum:          pulumi.Int(4),
 //				StorageSize:         pulumi.Int(50),
-//				VpcId:               pulumi.String(defaultNetworks.Ids[0]),
-//				VswitchId:           pulumi.String(defaultSwitches.Ids[0]),
+//				VpcId:               pulumi.String(defaultGetNetworks.Ids[0]),
+//				VswitchId:           pulumi.String(defaultGetSwitches.Ids[0]),
 //				IpWhitelists: gpdb.InstanceIpWhitelistArray{
 //					&gpdb.InstanceIpWhitelistArgs{
 //						SecurityIpList: pulumi.String("127.0.0.1"),
@@ -86,7 +86,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = gpdb.NewDbInstancePlan(ctx, "defaultDbInstancePlan", &gpdb.DbInstancePlanArgs{
+//			_, err = gpdb.NewDbInstancePlan(ctx, "default", &gpdb.DbInstancePlanArgs{
 //				DbInstancePlanName: pulumi.String(name),
 //				PlanDesc:           pulumi.String(name),
 //				PlanType:           pulumi.String("PauseResume"),

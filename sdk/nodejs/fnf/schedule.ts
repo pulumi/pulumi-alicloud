@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleFlow = new alicloud.fnf.Flow("exampleFlow", {
+ * const example = new alicloud.fnf.Flow("example", {
  *     definition: `  version: v1beta1
  *   type: flow
  *   steps:
@@ -28,13 +28,14 @@ import * as utilities from "../utilities";
  *       name: helloworld
  * `,
  *     description: "tf-exampleFnFFlow983041",
+ *     name: "tf-exampleSchedule",
  *     type: "FDL",
  * });
- * const exampleSchedule = new alicloud.fnf.Schedule("exampleSchedule", {
+ * const exampleSchedule = new alicloud.fnf.Schedule("example", {
  *     cronExpression: "30 9 * * * *",
  *     description: "tf-exampleFnFSchedule983041",
  *     enable: true,
- *     flowName: exampleFlow.name,
+ *     flowName: example.name,
  *     payload: "{\"tf-example\": \"example success\"}",
  *     scheduleName: "tf-exampleFnFSchedule983041",
  * });

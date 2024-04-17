@@ -61,15 +61,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var exampleZones = RdsFunctions.getZones(GetZonesArgs.builder()
+ *         final var example = RdsFunctions.getZones(GetZonesArgs.builder()
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;5.7&#34;)
  *             .category(&#34;HighAvailability&#34;)
  *             .dbInstanceStorageType(&#34;local_ssd&#34;)
  *             .build());
  * 
- *         final var exampleInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
- *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *         final var exampleGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;5.7&#34;)
  *             .category(&#34;HighAvailability&#34;)
@@ -84,11 +84,12 @@ import javax.annotation.Nullable;
  *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
  *             .vpcId(exampleNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .vswitchName(name)
  *             .build());
  * 
  *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .name(name)
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
@@ -96,8 +97,8 @@ import javax.annotation.Nullable;
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;5.7&#34;)
  *             .category(&#34;HighAvailability&#34;)
- *             .instanceType(exampleInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
- *             .instanceStorage(exampleInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *             .instanceType(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
+ *             .instanceStorage(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
  *             .instanceChargeType(&#34;Postpaid&#34;)
  *             .dbInstanceStorageType(&#34;local_ssd&#34;)
  *             .instanceName(name)

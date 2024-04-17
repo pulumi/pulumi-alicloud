@@ -23,14 +23,14 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const defaultInteger = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultApplication = new alicloud.oos.Application("defaultApplication", {
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
- *     applicationName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
+ * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultApplication = new alicloud.oos.Application("default", {
+ *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
+ *     applicationName: `${name}-${defaultInteger.result}`,
  *     description: name,
  *     tags: {
  *         Created: "TF",

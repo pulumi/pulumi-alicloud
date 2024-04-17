@@ -19,8 +19,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ds = alicloud.ess.getLifecycleHooks({
- *     nameRegex: "lifecyclehook_name",
  *     scalingGroupId: "scaling_group_id",
+ *     nameRegex: "lifecyclehook_name",
  * });
  * export const firstLifecycleHook = ds.then(ds => ds.hooks?.[0]?.id);
  * ```
@@ -100,8 +100,8 @@ export interface GetLifecycleHooksResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const ds = alicloud.ess.getLifecycleHooks({
- *     nameRegex: "lifecyclehook_name",
  *     scalingGroupId: "scaling_group_id",
+ *     nameRegex: "lifecyclehook_name",
  * });
  * export const firstLifecycleHook = ds.then(ds => ds.hooks?.[0]?.id);
  * ```

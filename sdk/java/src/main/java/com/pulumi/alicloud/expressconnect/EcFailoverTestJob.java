@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultPhysicalConnections = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+ *         final var default = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
  *             .nameRegex(&#34;preserved-NODELETING&#34;)
  *             .build());
  * 
@@ -61,9 +61,9 @@ import javax.annotation.Nullable;
  *             .description(name)
  *             .jobType(&#34;StartNow&#34;)
  *             .resourceIds(            
- *                 defaultPhysicalConnections.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.ids()[0]),
- *                 defaultPhysicalConnections.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.ids()[1]),
- *                 defaultPhysicalConnections.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.ids()[2]))
+ *                 default_.ids()[0],
+ *                 default_.ids()[1],
+ *                 default_.ids()[2])
  *             .jobDuration(&#34;1&#34;)
  *             .resourceType(&#34;PHYSICALCONNECTION&#34;)
  *             .ecFailoverTestJobName(name)

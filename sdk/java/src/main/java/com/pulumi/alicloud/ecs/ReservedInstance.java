@@ -50,18 +50,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *         final var default = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .instanceTypeFamily(&#34;ecs.g6&#34;)
  *             .build());
  * 
  *         var defaultReservedInstance = new ReservedInstance(&#34;defaultReservedInstance&#34;, ReservedInstanceArgs.builder()        
- *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .instanceType(default_.instanceTypes()[0].id())
  *             .instanceAmount(&#34;1&#34;)
  *             .periodUnit(&#34;Month&#34;)
  *             .offeringType(&#34;All Upfront&#34;)
  *             .reservedInstanceName(&#34;terraform-example&#34;)
  *             .description(&#34;ReservedInstance&#34;)
- *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].availabilityZones()[0]))
+ *             .zoneId(default_.instanceTypes()[0].availabilityZones()[0])
  *             .scope(&#34;Zone&#34;)
  *             .build());
  * 

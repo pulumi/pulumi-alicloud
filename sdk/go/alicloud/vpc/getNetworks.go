@@ -30,8 +30,8 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			vpcsDs, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 //				CidrBlock: pulumi.StringRef("172.16.0.0/12"),
-//				NameRegex: pulumi.StringRef("^foo"),
 //				Status:    pulumi.StringRef("Available"),
+//				NameRegex: pulumi.StringRef("^foo"),
 //			}, nil)
 //			if err != nil {
 //				return err

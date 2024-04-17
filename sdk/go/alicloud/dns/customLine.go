@@ -40,8 +40,8 @@ import (
 //				DomainName:     pulumi.String("alicloud-provider.com"),
 //				IpSegmentLists: dns.CustomLineIpSegmentListArray{
 //					&dns.CustomLineIpSegmentListArgs{
-//						EndIp:   pulumi.String("192.0.2.125"),
 //						StartIp: pulumi.String("192.0.2.123"),
+//						EndIp:   pulumi.String("192.0.2.125"),
 //					},
 //				},
 //			})

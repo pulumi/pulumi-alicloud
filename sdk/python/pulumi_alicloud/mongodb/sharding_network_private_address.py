@@ -253,21 +253,22 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.mongodb.get_zones()
-        index = len(default_zones.zones) - 1
-        zone_id = default_zones.zones[index].id
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.mongodb.get_zones()
+        index = len(default.zones) - 1
+        zone_id = default.zones[index].id
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="172.17.3.0/24",
             vpc_id=default_network.id,
             zone_id=zone_id)
-        default_sharding_instance = alicloud.mongodb.ShardingInstance("defaultShardingInstance",
+        default_sharding_instance = alicloud.mongodb.ShardingInstance("default",
             zone_id=zone_id,
             vswitch_id=default_switch.id,
             engine_version="4.2",
+            name=name,
             shard_lists=[
                 alicloud.mongodb.ShardingInstanceShardListArgs(
                     node_class="dds.shard.mid",
@@ -287,7 +288,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
                     node_class="dds.mongos.mid",
                 ),
             ])
-        default_sharding_network_private_address = alicloud.mongodb.ShardingNetworkPrivateAddress("defaultShardingNetworkPrivateAddress",
+        default_sharding_network_private_address = alicloud.mongodb.ShardingNetworkPrivateAddress("default",
             db_instance_id=default_sharding_instance.id,
             node_id=default_sharding_instance.shard_lists[0].node_id,
             zone_id=default_sharding_instance.zone_id,
@@ -343,21 +344,22 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.mongodb.get_zones()
-        index = len(default_zones.zones) - 1
-        zone_id = default_zones.zones[index].id
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.mongodb.get_zones()
+        index = len(default.zones) - 1
+        zone_id = default.zones[index].id
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="172.17.3.0/24",
             vpc_id=default_network.id,
             zone_id=zone_id)
-        default_sharding_instance = alicloud.mongodb.ShardingInstance("defaultShardingInstance",
+        default_sharding_instance = alicloud.mongodb.ShardingInstance("default",
             zone_id=zone_id,
             vswitch_id=default_switch.id,
             engine_version="4.2",
+            name=name,
             shard_lists=[
                 alicloud.mongodb.ShardingInstanceShardListArgs(
                     node_class="dds.shard.mid",
@@ -377,7 +379,7 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
                     node_class="dds.mongos.mid",
                 ),
             ])
-        default_sharding_network_private_address = alicloud.mongodb.ShardingNetworkPrivateAddress("defaultShardingNetworkPrivateAddress",
+        default_sharding_network_private_address = alicloud.mongodb.ShardingNetworkPrivateAddress("default",
             db_instance_id=default_sharding_instance.id,
             node_id=default_sharding_instance.shard_lists[0].node_id,
             zone_id=default_sharding_instance.zone_id,

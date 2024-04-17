@@ -49,6 +49,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new Domain record
  *         var record = new Record(&#34;record&#34;, RecordArgs.builder()        
+ *             .name(&#34;domainname&#34;)
  *             .hostRecord(&#34;@&#34;)
  *             .type(&#34;A&#34;)
  *             .value(&#34;192.168.99.99&#34;)

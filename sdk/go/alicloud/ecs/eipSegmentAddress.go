@@ -42,10 +42,10 @@ import (
 //				name = param
 //			}
 //			_, err := ecs.NewEipSegmentAddress(ctx, "default", &ecs.EipSegmentAddressArgs{
-//				Bandwidth:          pulumi.String("5"),
 //				EipMask:            pulumi.String("28"),
-//				InternetChargeType: pulumi.String("PayByBandwidth"),
+//				Bandwidth:          pulumi.String("5"),
 //				Isp:                pulumi.String("BGP"),
+//				InternetChargeType: pulumi.String("PayByBandwidth"),
 //				Netmode:            pulumi.String("public"),
 //			})
 //			if err != nil {

@@ -43,24 +43,25 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			_default, err := alicloud.GetAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			defaultGetRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultRole, err := ram.NewRole(ctx, "defaultRole", &ram.RoleArgs{
+//			defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
+//				Name: pulumi.String(fmt.Sprintf("examplerole%v", defaultInteger.Result)),
 //				Document: pulumi.String(`	{
 //			"Statement": [
 //			  {
@@ -84,10 +85,8 @@ import (
 //		if err != nil {
 //			return err
 //		}
-//		defaultPolicy, err := ram.NewPolicy(ctx, "defaultPolicy", &ram.PolicyArgs{
-//			PolicyName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//				return fmt.Sprintf("examplepolicy%v", result), nil
-//			}).(pulumi.StringOutput),
+//		defaultPolicy, err := ram.NewPolicy(ctx, "default", &ram.PolicyArgs{
+//			PolicyName: pulumi.String(fmt.Sprintf("examplepolicy%v", defaultInteger.Result)),
 //			PolicyDocument: pulumi.String(`	{
 //		"Version": "1",
 //		"Statement": [
@@ -105,7 +104,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ram.NewRolePolicyAttachment(ctx, "defaultRolePolicyAttachment", &ram.RolePolicyAttachmentArgs{
+//			_, err = ram.NewRolePolicyAttachment(ctx, "default", &ram.RolePolicyAttachmentArgs{
 //				RoleName:   defaultRole.Name,
 //				PolicyName: defaultPolicy.Name,
 //				PolicyType: pulumi.String("Custom"),
@@ -113,7 +112,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultService, err := fc.NewService(ctx, "defaultService", &fc.ServiceArgs{
+//			defaultService, err := fc.NewService(ctx, "default", &fc.ServiceArgs{
+//				Name:           pulumi.String(fmt.Sprintf("example-value-%v", defaultInteger.Result)),
 //				Description:    pulumi.String("example-value"),
 //				Role:           defaultRole.Arn,
 //				InternetAccess: pulumi.Bool(false),
@@ -121,16 +121,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
-//				Bucket: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("terraform-example-%v", result), nil
-//				}).(pulumi.StringOutput),
+//			defaultBucket, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
+//				Bucket: pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			// If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-//			defaultBucketObject, err := oss.NewBucketObject(ctx, "defaultBucketObject", &oss.BucketObjectArgs{
+//			defaultBucketObject, err := oss.NewBucketObject(ctx, "default", &oss.BucketObjectArgs{
 //				Bucket:  defaultBucket.ID(),
 //				Key:     pulumi.String("index.py"),
 //				Content: pulumi.String("import logging \ndef handler(event, context): \nlogger = logging.getLogger() \nlogger.info('hello world') \nreturn 'hello world'"),
@@ -138,8 +136,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultFunction, err := fc.NewFunction(ctx, "defaultFunction", &fc.FunctionArgs{
+//			defaultFunction, err := fc.NewFunction(ctx, "default", &fc.FunctionArgs{
 //				Service:     defaultService.Name,
+//				Name:        pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
 //				Description: pulumi.String("example"),
 //				OssBucket:   defaultBucket.ID(),
 //				OssKey:      defaultBucketObject.Key,
@@ -150,26 +149,30 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultQueue, err := mns.NewQueue(ctx, "defaultQueue", nil)
+//			defaultQueue, err := mns.NewQueue(ctx, "default", &mns.QueueArgs{
+//				Name: pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultTopic, err := mns.NewTopic(ctx, "defaultTopic", nil)
+//			defaultTopic, err := mns.NewTopic(ctx, "default", &mns.TopicArgs{
+//				Name: pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = fc.NewFunctionAsyncInvokeConfig(ctx, "defaultFunctionAsyncInvokeConfig", &fc.FunctionAsyncInvokeConfigArgs{
+//			_, err = fc.NewFunctionAsyncInvokeConfig(ctx, "default", &fc.FunctionAsyncInvokeConfigArgs{
 //				ServiceName:  defaultService.Name,
 //				FunctionName: defaultFunction.Name,
 //				DestinationConfig: &fc.FunctionAsyncInvokeConfigDestinationConfigArgs{
 //					OnFailure: &fc.FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs{
 //						Destination: defaultQueue.Name.ApplyT(func(name string) (string, error) {
-//							return fmt.Sprintf("acs:mns:%v:%v:/queues/%v/messages", defaultRegions.Regions[0].Id, defaultAccount.Id, name), nil
+//							return fmt.Sprintf("acs:mns:%v:%v:/queues/%v/messages", defaultGetRegions.Regions[0].Id, _default.Id, name), nil
 //						}).(pulumi.StringOutput),
 //					},
 //					OnSuccess: &fc.FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs{
 //						Destination: defaultTopic.Name.ApplyT(func(name string) (string, error) {
-//							return fmt.Sprintf("acs:mns:%v:%v:/topics/%v/messages", defaultRegions.Regions[0].Id, defaultAccount.Id, name), nil
+//							return fmt.Sprintf("acs:mns:%v:%v:/topics/%v/messages", defaultGetRegions.Regions[0].Id, _default.Id, name), nil
 //						}).(pulumi.StringOutput),
 //					},
 //				},

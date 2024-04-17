@@ -31,8 +31,9 @@ namespace Pulumi.AliCloud.Ddos
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultDdosCooInstance = new AliCloud.Ddos.DdosCooInstance("defaultDdosCooInstance", new()
+    ///     var @default = new AliCloud.Ddos.DdosCooInstance("default", new()
     ///     {
+    ///         Name = name,
     ///         Bandwidth = "30",
     ///         BaseBandwidth = "30",
     ///         ServiceBandwidth = "100",
@@ -42,9 +43,9 @@ namespace Pulumi.AliCloud.Ddos
     ///         ProductType = "ddoscoo",
     ///     });
     /// 
-    ///     var defaultPort = new AliCloud.Ddos.Port("defaultPort", new()
+    ///     var defaultPort = new AliCloud.Ddos.Port("default", new()
     ///     {
-    ///         InstanceId = defaultDdosCooInstance.Id,
+    ///         InstanceId = @default.Id,
     ///         FrontendPort = "7001",
     ///         BackendPort = "7002",
     ///         FrontendProtocol = "tcp",

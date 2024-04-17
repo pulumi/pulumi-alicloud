@@ -22,15 +22,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultAlertContact = new alicloud.arms.AlertContact("defaultAlertContact", {
+ * const _default = new alicloud.arms.AlertContact("default", {
  *     alertContactName: "example_value",
  *     email: "example_value@aaa.com",
  * });
- * const defaultAlertContactGroup = new alicloud.arms.AlertContactGroup("defaultAlertContactGroup", {
+ * const defaultAlertContactGroup = new alicloud.arms.AlertContactGroup("default", {
  *     alertContactGroupName: "example_value",
- *     contactIds: [defaultAlertContact.id],
+ *     contactIds: [_default.id],
  * });
- * const defaultDispatchRule = new alicloud.arms.DispatchRule("defaultDispatchRule", {
+ * const defaultDispatchRule = new alicloud.arms.DispatchRule("default", {
  *     dispatchRuleName: "example_value",
  *     dispatchType: "CREATE_ALERT",
  *     groupRules: [{
@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *     notifyRules: [{
  *         notifyObjects: [
  *             {
- *                 notifyObjectId: defaultAlertContact.id,
+ *                 notifyObjectId: _default.id,
  *                 notifyType: "ARMS_CONTACT",
  *                 name: "example_value",
  *             },

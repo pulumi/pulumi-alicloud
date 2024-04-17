@@ -213,12 +213,12 @@ class DomainConfig(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
         # Create a new Domain config.
         domain = alicloud.cdn.DomainNew("domain",
-            domain_name=default.result.apply(lambda result: f"mycdndomain-{result}.alicloud-provider.cn"),
+            domain_name=f"mycdndomain-{default['result']}.alicloud-provider.cn",
             cdn_type="web",
             scope="overseas",
             sources=[alicloud.cdn.DomainNewSourceArgs(
@@ -280,12 +280,12 @@ class DomainConfig(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
         # Create a new Domain config.
         domain = alicloud.cdn.DomainNew("domain",
-            domain_name=default.result.apply(lambda result: f"mycdndomain-{result}.alicloud-provider.cn"),
+            domain_name=f"mycdndomain-{default['result']}.alicloud-provider.cn",
             cdn_type="web",
             scope="overseas",
             sources=[alicloud.cdn.DomainNewSourceArgs(

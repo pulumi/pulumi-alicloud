@@ -117,11 +117,12 @@ def get_networks(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_networks = alicloud.cloudconnect.get_networks(ids=[alicloud_cloud_connect_networks["default"]["id"]],
+    default = alicloud.cloudconnect.get_networks(ids=[default_alicloud_cloud_connect_networks["id"]],
         name_regex="^tf-testAcc.*")
-    default_network = alicloud.cloudconnect.Network("defaultNetwork",
-        cidr_block="192.168.0.0/24",
+    default_network = alicloud.cloudconnect.Network("default",
+        name="tf-testAccCloudConnectNetworkName",
         description="tf-testAccCloudConnectNetworkDescription",
+        cidr_block="192.168.0.0/24",
         is_default=True)
     ```
     <!--End PulumiCodeChooser -->
@@ -165,11 +166,12 @@ def get_networks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_networks = alicloud.cloudconnect.get_networks(ids=[alicloud_cloud_connect_networks["default"]["id"]],
+    default = alicloud.cloudconnect.get_networks(ids=[default_alicloud_cloud_connect_networks["id"]],
         name_regex="^tf-testAcc.*")
-    default_network = alicloud.cloudconnect.Network("defaultNetwork",
-        cidr_block="192.168.0.0/24",
+    default_network = alicloud.cloudconnect.Network("default",
+        name="tf-testAccCloudConnectNetworkName",
         description="tf-testAccCloudConnectNetworkDescription",
+        cidr_block="192.168.0.0/24",
         is_default=True)
     ```
     <!--End PulumiCodeChooser -->

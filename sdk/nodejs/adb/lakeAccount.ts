@@ -25,31 +25,31 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const vPCID = new alicloud.vpc.Network("vPCID", {
+ * const VPCID = new alicloud.vpc.Network("VPCID", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/12",
  * });
- * const vSWITCHID = new alicloud.vpc.Switch("vSWITCHID", {
- *     vpcId: vPCID.id,
+ * const VSWITCHID = new alicloud.vpc.Switch("VSWITCHID", {
+ *     vpcId: VPCID.id,
  *     zoneId: "cn-hangzhou-k",
  *     vswitchName: name,
  *     cidrBlock: "172.16.0.0/24",
  * });
- * const createInstance = new alicloud.adb.DBClusterLakeVersion("createInstance", {
+ * const createInstance = new alicloud.adb.DBClusterLakeVersion("CreateInstance", {
  *     storageResource: "0ACU",
  *     zoneId: "cn-hangzhou-k",
- *     vpcId: vPCID.id,
- *     vswitchId: vSWITCHID.id,
+ *     vpcId: VPCID.id,
+ *     vswitchId: VSWITCHID.id,
  *     dbClusterDescription: name,
  *     computeResource: "16ACU",
  *     dbClusterVersion: "5.0",
  *     paymentType: "PayAsYouGo",
  *     securityIps: "127.0.0.1",
  * });
- * const defaultLakeAccount = new alicloud.adb.LakeAccount("defaultLakeAccount", {
+ * const defaultLakeAccount = new alicloud.adb.LakeAccount("default", {
  *     dbClusterId: createInstance.id,
  *     accountType: "Super",
  *     accountName: "tfnormal",

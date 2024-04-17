@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const accessKey = config.get("accessKey") || "access_key";
  * const secretKey = config.get("secretKey") || "secret_key";
- * const defaultInstance = new alicloud.amqp.Instance("defaultInstance", {
+ * const _default = new alicloud.amqp.Instance("default", {
  *     instanceType: "enterprise",
  *     maxTps: "3000",
  *     queueCapacity: "200",
@@ -33,8 +33,8 @@ import * as utilities from "../utilities";
  *     paymentType: "Subscription",
  *     period: 1,
  * });
- * const defaultStaticAccount = new alicloud.amqp.StaticAccount("defaultStaticAccount", {
- *     instanceId: defaultInstance.id,
+ * const defaultStaticAccount = new alicloud.amqp.StaticAccount("default", {
+ *     instanceId: _default.id,
  *     accessKey: accessKey,
  *     secretKey: secretKey,
  * });

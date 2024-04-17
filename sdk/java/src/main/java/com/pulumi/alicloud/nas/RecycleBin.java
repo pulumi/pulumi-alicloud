@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleZones = NasFunctions.getZones(GetZonesArgs.builder()
+ *         final var example = NasFunctions.getZones(GetZonesArgs.builder()
  *             .fileSystemType(&#34;standard&#34;)
  *             .build());
  * 
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .storageType(&#34;Performance&#34;)
  *             .description(&#34;terraform-example&#34;)
  *             .encryptType(&#34;1&#34;)
- *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
+ *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
  *             .build());
  * 
  *         var exampleRecycleBin = new RecycleBin(&#34;exampleRecycleBin&#34;, RecycleBinArgs.builder()        

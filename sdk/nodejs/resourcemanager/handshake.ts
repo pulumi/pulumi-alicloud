@@ -19,9 +19,9 @@ import * as utilities from "../utilities";
  *
  * // Add a Resource Manager handshake.
  * const example = new alicloud.resourcemanager.Handshake("example", {
- *     note: "test resource manager handshake",
  *     targetEntity: "1182775234******",
  *     targetType: "Account",
+ *     note: "test resource manager handshake",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

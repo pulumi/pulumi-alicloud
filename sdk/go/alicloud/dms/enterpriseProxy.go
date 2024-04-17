@@ -49,19 +49,19 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultUserTenants, err := dms.GetUserTenants(ctx, &dms.GetUserTenantsArgs{
+//			defaultGetUserTenants, err := dms.GetUserTenants(ctx, &dms.GetUserTenantsArgs{
 //				Status: pulumi.StringRef("ACTIVE"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
+//			defaultGetZones, err := rds.GetZones(ctx, &rds.GetZonesArgs{
 //				Engine:                pulumi.StringRef("MySQL"),
 //				EngineVersion:         pulumi.StringRef("8.0"),
 //				InstanceChargeType:    pulumi.StringRef("PostPaid"),
@@ -71,8 +71,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
-//				ZoneId:                pulumi.StringRef(defaultZones.Zones[0].Id),
+//			defaultGetInstanceClasses, err := rds.GetInstanceClasses(ctx, &rds.GetInstanceClassesArgs{
+//				ZoneId:                pulumi.StringRef(defaultGetZones.Zones[0].Id),
 //				Engine:                pulumi.StringRef("MySQL"),
 //				EngineVersion:         pulumi.StringRef("8.0"),
 //				Category:              pulumi.StringRef("HighAvailability"),
@@ -82,34 +82,35 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//			_, err = ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String(name),
 //				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := rds.NewInstance(ctx, "defaultInstance", &rds.InstanceArgs{
+//			defaultInstance, err := rds.NewInstance(ctx, "default", &rds.InstanceArgs{
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("8.0"),
 //				DbInstanceStorageType: pulumi.String("cloud_essd"),
-//				InstanceType:          pulumi.String(defaultInstanceClasses.InstanceClasses[0].InstanceClass),
-//				InstanceStorage:       pulumi.String(defaultInstanceClasses.InstanceClasses[0].StorageRange.Min),
+//				InstanceType:          pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].InstanceClass),
+//				InstanceStorage:       pulumi.String(defaultGetInstanceClasses.InstanceClasses[0].StorageRange.Min),
 //				VswitchId:             defaultSwitch.ID(),
 //				InstanceName:          pulumi.String(name),
 //				SecurityIps: pulumi.StringArray{
@@ -124,7 +125,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultAccount, err := rds.NewAccount(ctx, "defaultAccount", &rds.AccountArgs{
+//			defaultAccount, err := rds.NewAccount(ctx, "default", &rds.AccountArgs{
 //				DbInstanceId:    defaultInstance.ID(),
 //				AccountName:     pulumi.String("tfexamplename"),
 //				AccountPassword: pulumi.String("Example12345"),
@@ -133,8 +134,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultEnterpriseInstance, err := dms.NewEnterpriseInstance(ctx, "defaultEnterpriseInstance", &dms.EnterpriseInstanceArgs{
-//				Tid:              pulumi.String(defaultUserTenants.Ids[0]),
+//			defaultEnterpriseInstance, err := dms.NewEnterpriseInstance(ctx, "default", &dms.EnterpriseInstanceArgs{
+//				Tid:              pulumi.String(defaultGetUserTenants.Ids[0]),
 //				InstanceType:     pulumi.String("mysql"),
 //				InstanceSource:   pulumi.String("RDS"),
 //				NetworkType:      pulumi.String("VPC"),
@@ -148,16 +149,16 @@ import (
 //				SafeRule:         pulumi.String("自由操作"),
 //				QueryTimeout:     pulumi.Int(60),
 //				ExportTimeout:    pulumi.Int(600),
-//				EcsRegion:        pulumi.String(defaultRegions.Regions[0].Id),
+//				EcsRegion:        pulumi.String(_default.Regions[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dms.NewEnterpriseProxy(ctx, "defaultEnterpriseProxy", &dms.EnterpriseProxyArgs{
+//			_, err = dms.NewEnterpriseProxy(ctx, "default", &dms.EnterpriseProxyArgs{
 //				InstanceId: defaultEnterpriseInstance.InstanceId,
 //				Password:   pulumi.String("Example12345"),
 //				Username:   pulumi.String("tfexamplename"),
-//				Tid:        pulumi.String(defaultUserTenants.Ids[0]),
+//				Tid:        pulumi.String(defaultGetUserTenants.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

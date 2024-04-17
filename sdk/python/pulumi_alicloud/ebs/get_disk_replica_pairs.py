@@ -113,7 +113,7 @@ def get_disk_replica_pairs(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.ebs.get_disk_replica_pairs(ids=[alicloud_ebs_disk_replica_pair["default"]["id"]])
+    default = alicloud.ebs.get_disk_replica_pairs(ids=[default_alicloud_ebs_disk_replica_pair["id"]])
     pulumi.export("alicloudEbsDiskReplicaPairExampleId", default.pairs[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -159,7 +159,7 @@ def get_disk_replica_pairs_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.ebs.get_disk_replica_pairs(ids=[alicloud_ebs_disk_replica_pair["default"]["id"]])
+    default = alicloud.ebs.get_disk_replica_pairs(ids=[default_alicloud_ebs_disk_replica_pair["id"]])
     pulumi.export("alicloudEbsDiskReplicaPairExampleId", default.pairs[0].id)
     ```
     <!--End PulumiCodeChooser -->

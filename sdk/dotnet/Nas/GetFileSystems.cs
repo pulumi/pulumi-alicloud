@@ -29,8 +29,8 @@ namespace Pulumi.AliCloud.Nas
         /// {
         ///     var fs = AliCloud.Nas.GetFileSystems.Invoke(new()
         ///     {
-        ///         DescriptionRegex = alicloud_nas_file_system.Foo.Description,
         ///         ProtocolType = "NFS",
+        ///         DescriptionRegex = foo.Description,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -62,8 +62,8 @@ namespace Pulumi.AliCloud.Nas
         /// {
         ///     var fs = AliCloud.Nas.GetFileSystems.Invoke(new()
         ///     {
-        ///         DescriptionRegex = alicloud_nas_file_system.Foo.Description,
         ///         ProtocolType = "NFS",
+        ///         DescriptionRegex = foo.Description,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

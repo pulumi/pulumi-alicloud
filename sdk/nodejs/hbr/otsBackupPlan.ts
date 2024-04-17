@@ -23,15 +23,16 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const defaultInteger = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
- * const defaultVault = new alicloud.hbr.Vault("defaultVault", {
- *     vaultName: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`,
+ * const defaultVault = new alicloud.hbr.Vault("default", {
+ *     vaultName: `terraform-example-${defaultInteger.result}`,
  *     vaultType: "OTS_BACKUP",
  * });
- * const defaultInstance = new alicloud.ots.Instance("defaultInstance", {
+ * const defaultInstance = new alicloud.ots.Instance("default", {
+ *     name: `Example-${defaultInteger.result}`,
  *     description: "terraform-example",
  *     accessedBy: "Any",
  *     tags: {
@@ -39,7 +40,7 @@ import * as utilities from "../utilities";
  *         For: "example",
  *     },
  * });
- * const defaultTable = new alicloud.ots.Table("defaultTable", {
+ * const defaultTable = new alicloud.ots.Table("default", {
  *     instanceName: defaultInstance.name,
  *     tableName: "terraform_example",
  *     primaryKeys: [{
@@ -50,7 +51,8 @@ import * as utilities from "../utilities";
  *     maxVersion: 1,
  *     deviationCellVersionInSec: "1",
  * });
- * const defaultRole = new alicloud.ram.Role("defaultRole", {
+ * const defaultRole = new alicloud.ram.Role("default", {
+ *     name: "hbrexamplerole",
  *     document: `		{
  * 			"Statement": [
  * 			{
@@ -68,15 +70,15 @@ import * as utilities from "../utilities";
  * `,
  *     force: true,
  * });
- * const defaultAccount = alicloud.getAccount({});
+ * const default = alicloud.getAccount({});
  * const example = new alicloud.hbr.OtsBackupPlan("example", {
- *     otsBackupPlanName: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`,
+ *     otsBackupPlanName: `terraform-example-${defaultInteger.result}`,
  *     vaultId: defaultVault.id,
  *     backupType: "COMPLETE",
  *     retention: "1",
  *     instanceName: defaultInstance.name,
  *     crossAccountType: "SELF_ACCOUNT",
- *     crossAccountUserId: defaultAccount.then(defaultAccount => defaultAccount.id),
+ *     crossAccountUserId: _default.then(_default => _default.id),
  *     crossAccountRoleName: defaultRole.id,
  *     otsDetails: [{
  *         tableNames: [defaultTable.tableName],

@@ -29,23 +29,25 @@ namespace Pulumi.AliCloud.Datahub
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform_example";
-    ///     var exampleProject = new AliCloud.Datahub.Project("exampleProject", new()
+    ///     var example = new AliCloud.Datahub.Project("example", new()
     ///     {
+    ///         Name = name,
     ///         Comment = "created by terraform",
     ///     });
     /// 
-    ///     var exampleTopic = new AliCloud.Datahub.Topic("exampleTopic", new()
+    ///     var exampleTopic = new AliCloud.Datahub.Topic("example", new()
     ///     {
-    ///         ProjectName = exampleProject.Name,
+    ///         Name = name,
+    ///         ProjectName = example.Name,
     ///         RecordType = "BLOB",
     ///         ShardCount = 3,
     ///         LifeCycle = 7,
     ///         Comment = "created by terraform",
     ///     });
     /// 
-    ///     var exampleSubscription = new AliCloud.Datahub.Subscription("exampleSubscription", new()
+    ///     var exampleSubscription = new AliCloud.Datahub.Subscription("example", new()
     ///     {
-    ///         ProjectName = exampleProject.Name,
+    ///         ProjectName = example.Name,
     ///         TopicName = exampleTopic.Name,
     ///         Comment = "created by terraform",
     ///     });

@@ -213,10 +213,10 @@ class User(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.eds.User("default",
-            email="tf.example@abc.com",
             end_user_id="terraform_example123",
-            password="Example_123",
-            phone="18888888888")
+            email="tf.example@abc.com",
+            phone="18888888888",
+            password="Example_123")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -259,10 +259,10 @@ class User(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.eds.User("default",
-            email="tf.example@abc.com",
             end_user_id="terraform_example123",
-            password="Example_123",
-            phone="18888888888")
+            email="tf.example@abc.com",
+            phone="18888888888",
+            password="Example_123")
         ```
         <!--End PulumiCodeChooser -->
 

@@ -619,14 +619,14 @@ class Instance(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.sddp.Instance("default",
-            dataphin="yes",
             payment_type="Subscription",
-            period=1,
-            sd_cbool="yes",
-            sdc="3",
             sddp_version="version_company",
+            sd_cbool="yes",
+            period=1,
+            sdc="3",
             ud_cbool="yes",
-            udc="2000")
+            udc="2000",
+            dataphin="yes")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -680,14 +680,14 @@ class Instance(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.sddp.Instance("default",
-            dataphin="yes",
             payment_type="Subscription",
-            period=1,
-            sd_cbool="yes",
-            sdc="3",
             sddp_version="version_company",
+            sd_cbool="yes",
+            period=1,
+            sdc="3",
             ud_cbool="yes",
-            udc="2000")
+            udc="2000",
+            dataphin="yes")
         ```
         <!--End PulumiCodeChooser -->
 

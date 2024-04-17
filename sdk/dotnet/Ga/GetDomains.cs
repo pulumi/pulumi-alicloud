@@ -15,6 +15,50 @@ namespace Pulumi.AliCloud.Ga
         /// This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
         /// 
         /// &gt; **NOTE:** Available in 1.197.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Threading.Tasks;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(async() =&gt; 
+        /// {
+        ///     var @default = await AliCloud.Ga.GetAccelerators.InvokeAsync(new()
+        ///     {
+        ///         Status = "active",
+        ///     });
+        /// 
+        ///     var defaultAccelerator = new List&lt;AliCloud.Ga.Accelerator&gt;();
+        ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Accelerators.Length &gt; 0 ? 0 : 1; rangeIndex++)
+        ///     {
+        ///         var range = new { Value = rangeIndex };
+        ///         defaultAccelerator.Add(new AliCloud.Ga.Accelerator($"default-{range.Value}", new()
+        ///         {
+        ///             Duration = 1,
+        ///             AutoUseCoupon = true,
+        ///             Spec = "1",
+        ///         }));
+        ///     }
+        ///     var acceleratorId = @default.Accelerators.Length &gt; 0 ? @default.Accelerators[0]?.Id : defaultAccelerator[0].Id;
+        /// 
+        ///     var defaultGetDomains = await AliCloud.Ga.GetDomains.InvokeAsync(new()
+        ///     {
+        ///         AcceleratorId = acceleratorIdLocals,
+        ///         Domain = "your_domain",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudGaDomainExampleId"] = defaultGetDomains.Domains[0]?.Id,
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:ga/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
@@ -23,6 +67,50 @@ namespace Pulumi.AliCloud.Ga
         /// This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
         /// 
         /// &gt; **NOTE:** Available in 1.197.0+
+        /// 
+        /// ## Example Usage
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Threading.Tasks;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(async() =&gt; 
+        /// {
+        ///     var @default = await AliCloud.Ga.GetAccelerators.InvokeAsync(new()
+        ///     {
+        ///         Status = "active",
+        ///     });
+        /// 
+        ///     var defaultAccelerator = new List&lt;AliCloud.Ga.Accelerator&gt;();
+        ///     for (var rangeIndex = 0; rangeIndex &lt; @default.Accelerators.Length &gt; 0 ? 0 : 1; rangeIndex++)
+        ///     {
+        ///         var range = new { Value = rangeIndex };
+        ///         defaultAccelerator.Add(new AliCloud.Ga.Accelerator($"default-{range.Value}", new()
+        ///         {
+        ///             Duration = 1,
+        ///             AutoUseCoupon = true,
+        ///             Spec = "1",
+        ///         }));
+        ///     }
+        ///     var acceleratorId = @default.Accelerators.Length &gt; 0 ? @default.Accelerators[0]?.Id : defaultAccelerator[0].Id;
+        /// 
+        ///     var defaultGetDomains = await AliCloud.Ga.GetDomains.InvokeAsync(new()
+        ///     {
+        ///         AcceleratorId = acceleratorIdLocals,
+        ///         Domain = "your_domain",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["alicloudGaDomainExampleId"] = defaultGetDomains.Domains[0]?.Id,
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:ga/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());

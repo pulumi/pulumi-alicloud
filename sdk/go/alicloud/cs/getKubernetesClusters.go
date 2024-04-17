@@ -32,10 +32,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Declare the data source
 //			k8sClusters, err := cs.GetKubernetesClusters(ctx, &cs.GetKubernetesClustersArgs{
-//				KubeConfigFilePrefix: pulumi.StringRef("~/.kube/k8s"),
 //				NameRegex:            pulumi.StringRef("my-first-k8s"),
 //				OutputFile:           pulumi.StringRef("my-first-k8s-json"),
+//				KubeConfigFilePrefix: pulumi.StringRef("~/.kube/k8s"),
 //			}, nil)
 //			if err != nil {
 //				return err

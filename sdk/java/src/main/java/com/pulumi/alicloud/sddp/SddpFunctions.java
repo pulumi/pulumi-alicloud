@@ -61,12 +61,12 @@ public final class SddpFunctions {
      *             .value(10)
      *             .build());
      * 
-     *         final var defaultConfigs = SddpFunctions.getConfigs(GetConfigsArgs.builder()
+     *         final var default = SddpFunctions.getConfigs(GetConfigsArgs.builder()
      *             .ids(defaultConfig.id())
      *             .outputFile(&#34;./t.json&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;sddpConfigId&#34;, defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult).applyValue(defaultConfigs -&gt; defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult.ids())));
+     *         ctx.export(&#34;sddpConfigId&#34;, default_.applyValue(default_ -&gt; default_.ids()));
      *     }
      * }
      * ```
@@ -114,12 +114,12 @@ public final class SddpFunctions {
      *             .value(10)
      *             .build());
      * 
-     *         final var defaultConfigs = SddpFunctions.getConfigs(GetConfigsArgs.builder()
+     *         final var default = SddpFunctions.getConfigs(GetConfigsArgs.builder()
      *             .ids(defaultConfig.id())
      *             .outputFile(&#34;./t.json&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;sddpConfigId&#34;, defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult).applyValue(defaultConfigs -&gt; defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult.ids())));
+     *         ctx.export(&#34;sddpConfigId&#34;, default_.applyValue(default_ -&gt; default_.ids()));
      *     }
      * }
      * ```
@@ -167,12 +167,12 @@ public final class SddpFunctions {
      *             .value(10)
      *             .build());
      * 
-     *         final var defaultConfigs = SddpFunctions.getConfigs(GetConfigsArgs.builder()
+     *         final var default = SddpFunctions.getConfigs(GetConfigsArgs.builder()
      *             .ids(defaultConfig.id())
      *             .outputFile(&#34;./t.json&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;sddpConfigId&#34;, defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult).applyValue(defaultConfigs -&gt; defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult.ids())));
+     *         ctx.export(&#34;sddpConfigId&#34;, default_.applyValue(default_ -&gt; default_.ids()));
      *     }
      * }
      * ```
@@ -220,12 +220,12 @@ public final class SddpFunctions {
      *             .value(10)
      *             .build());
      * 
-     *         final var defaultConfigs = SddpFunctions.getConfigs(GetConfigsArgs.builder()
+     *         final var default = SddpFunctions.getConfigs(GetConfigsArgs.builder()
      *             .ids(defaultConfig.id())
      *             .outputFile(&#34;./t.json&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;sddpConfigId&#34;, defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult).applyValue(defaultConfigs -&gt; defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult.ids())));
+     *         ctx.export(&#34;sddpConfigId&#34;, default_.applyValue(default_ -&gt; default_.ids()));
      *     }
      * }
      * ```
@@ -273,12 +273,12 @@ public final class SddpFunctions {
      *             .value(10)
      *             .build());
      * 
-     *         final var defaultConfigs = SddpFunctions.getConfigs(GetConfigsArgs.builder()
+     *         final var default = SddpFunctions.getConfigs(GetConfigsArgs.builder()
      *             .ids(defaultConfig.id())
      *             .outputFile(&#34;./t.json&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;sddpConfigId&#34;, defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult).applyValue(defaultConfigs -&gt; defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult.ids())));
+     *         ctx.export(&#34;sddpConfigId&#34;, default_.applyValue(default_ -&gt; default_.ids()));
      *     }
      * }
      * ```
@@ -326,12 +326,12 @@ public final class SddpFunctions {
      *             .value(10)
      *             .build());
      * 
-     *         final var defaultConfigs = SddpFunctions.getConfigs(GetConfigsArgs.builder()
+     *         final var default = SddpFunctions.getConfigs(GetConfigsArgs.builder()
      *             .ids(defaultConfig.id())
      *             .outputFile(&#34;./t.json&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;sddpConfigId&#34;, defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult).applyValue(defaultConfigs -&gt; defaultConfigs.applyValue(getConfigsResult -&gt; getConfigsResult.ids())));
+     *         ctx.export(&#34;sddpConfigId&#34;, default_.applyValue(default_ -&gt; default_.ids()));
      *     }
      * }
      * ```
@@ -898,11 +898,11 @@ public final class SddpFunctions {
      *             .productCode(&#34;ODPS&#34;)
      *             .build());
      * 
-     *         final var defaultRules = SddpFunctions.getRules(GetRulesArgs.builder()
+     *         final var default = SddpFunctions.getRules(GetRulesArgs.builder()
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export(&#34;sddpRuleId&#34;, defaultRules.applyValue(getRulesResult -&gt; getRulesResult).applyValue(defaultRules -&gt; defaultRules.applyValue(getRulesResult -&gt; getRulesResult.id())));
+     *         ctx.export(&#34;sddpRuleId&#34;, default_.applyValue(default_ -&gt; default_.id()));
      *     }
      * }
      * ```
@@ -953,11 +953,11 @@ public final class SddpFunctions {
      *             .productCode(&#34;ODPS&#34;)
      *             .build());
      * 
-     *         final var defaultRules = SddpFunctions.getRules(GetRulesArgs.builder()
+     *         final var default = SddpFunctions.getRules(GetRulesArgs.builder()
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export(&#34;sddpRuleId&#34;, defaultRules.applyValue(getRulesResult -&gt; getRulesResult).applyValue(defaultRules -&gt; defaultRules.applyValue(getRulesResult -&gt; getRulesResult.id())));
+     *         ctx.export(&#34;sddpRuleId&#34;, default_.applyValue(default_ -&gt; default_.id()));
      *     }
      * }
      * ```
@@ -1008,11 +1008,11 @@ public final class SddpFunctions {
      *             .productCode(&#34;ODPS&#34;)
      *             .build());
      * 
-     *         final var defaultRules = SddpFunctions.getRules(GetRulesArgs.builder()
+     *         final var default = SddpFunctions.getRules(GetRulesArgs.builder()
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export(&#34;sddpRuleId&#34;, defaultRules.applyValue(getRulesResult -&gt; getRulesResult).applyValue(defaultRules -&gt; defaultRules.applyValue(getRulesResult -&gt; getRulesResult.id())));
+     *         ctx.export(&#34;sddpRuleId&#34;, default_.applyValue(default_ -&gt; default_.id()));
      *     }
      * }
      * ```
@@ -1063,11 +1063,11 @@ public final class SddpFunctions {
      *             .productCode(&#34;ODPS&#34;)
      *             .build());
      * 
-     *         final var defaultRules = SddpFunctions.getRules(GetRulesArgs.builder()
+     *         final var default = SddpFunctions.getRules(GetRulesArgs.builder()
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export(&#34;sddpRuleId&#34;, defaultRules.applyValue(getRulesResult -&gt; getRulesResult).applyValue(defaultRules -&gt; defaultRules.applyValue(getRulesResult -&gt; getRulesResult.id())));
+     *         ctx.export(&#34;sddpRuleId&#34;, default_.applyValue(default_ -&gt; default_.id()));
      *     }
      * }
      * ```
@@ -1118,11 +1118,11 @@ public final class SddpFunctions {
      *             .productCode(&#34;ODPS&#34;)
      *             .build());
      * 
-     *         final var defaultRules = SddpFunctions.getRules(GetRulesArgs.builder()
+     *         final var default = SddpFunctions.getRules(GetRulesArgs.builder()
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export(&#34;sddpRuleId&#34;, defaultRules.applyValue(getRulesResult -&gt; getRulesResult).applyValue(defaultRules -&gt; defaultRules.applyValue(getRulesResult -&gt; getRulesResult.id())));
+     *         ctx.export(&#34;sddpRuleId&#34;, default_.applyValue(default_ -&gt; default_.id()));
      *     }
      * }
      * ```
@@ -1173,11 +1173,11 @@ public final class SddpFunctions {
      *             .productCode(&#34;ODPS&#34;)
      *             .build());
      * 
-     *         final var defaultRules = SddpFunctions.getRules(GetRulesArgs.builder()
+     *         final var default = SddpFunctions.getRules(GetRulesArgs.builder()
      *             .ids(defaultRule.id())
      *             .build());
      * 
-     *         ctx.export(&#34;sddpRuleId&#34;, defaultRules.applyValue(getRulesResult -&gt; getRulesResult).applyValue(defaultRules -&gt; defaultRules.applyValue(getRulesResult -&gt; getRulesResult.id())));
+     *         ctx.export(&#34;sddpRuleId&#34;, default_.applyValue(default_ -&gt; default_.id()));
      *     }
      * }
      * ```

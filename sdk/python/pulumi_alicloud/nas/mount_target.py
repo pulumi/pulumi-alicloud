@@ -285,6 +285,46 @@ class MountTarget(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.34.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.nas.get_zones(file_system_type="extreme")
+        count_size = len(default.zones)
+        zone_id = default.zones[count_size - 1].zone_id
+        example = alicloud.vpc.Network("example",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("example",
+            vswitch_name=example.vpc_name,
+            cidr_block=example.cidr_block,
+            vpc_id=example.id,
+            zone_id=zone_id)
+        example_file_system = alicloud.nas.FileSystem("example",
+            protocol_type="NFS",
+            storage_type="advance",
+            file_system_type="extreme",
+            capacity=100,
+            zone_id=zone_id)
+        example_access_group = alicloud.nas.AccessGroup("example",
+            access_group_name="access_group_xxx",
+            access_group_type="Vpc",
+            description="test_access_group",
+            file_system_type="extreme")
+        example_mount_target = alicloud.nas.MountTarget("example",
+            file_system_id=example_file_system.id,
+            access_group_name=example_access_group.access_group_name,
+            vswitch_id=example_switch.id,
+            vpc_id=example.id,
+            network_type=example_access_group.access_group_type)
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         NAS MountTarget can be imported using the id, e.g.
@@ -314,6 +354,46 @@ class MountTarget(pulumi.CustomResource):
         For information about NAS Mount Target and how to use it, see [Manage NAS Mount Targets](https://www.alibabacloud.com/help/en/doc-detail/27531.htm).
 
         > **NOTE:** Available since v1.34.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.nas.get_zones(file_system_type="extreme")
+        count_size = len(default.zones)
+        zone_id = default.zones[count_size - 1].zone_id
+        example = alicloud.vpc.Network("example",
+            vpc_name="terraform-example",
+            cidr_block="172.17.3.0/24")
+        example_switch = alicloud.vpc.Switch("example",
+            vswitch_name=example.vpc_name,
+            cidr_block=example.cidr_block,
+            vpc_id=example.id,
+            zone_id=zone_id)
+        example_file_system = alicloud.nas.FileSystem("example",
+            protocol_type="NFS",
+            storage_type="advance",
+            file_system_type="extreme",
+            capacity=100,
+            zone_id=zone_id)
+        example_access_group = alicloud.nas.AccessGroup("example",
+            access_group_name="access_group_xxx",
+            access_group_type="Vpc",
+            description="test_access_group",
+            file_system_type="extreme")
+        example_mount_target = alicloud.nas.MountTarget("example",
+            file_system_id=example_file_system.id,
+            access_group_name=example_access_group.access_group_name,
+            vswitch_id=example_switch.id,
+            vpc_id=example.id,
+            network_type=example_access_group.access_group_type)
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -32,60 +32,55 @@ namespace Pulumi.AliCloud.Sae
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = name,
     ///         CidrBlock = "10.4.0.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
-    ///     var defaultNamespace = new AliCloud.Sae.Namespace("defaultNamespace", new()
+    ///     var defaultNamespace = new AliCloud.Sae.Namespace("default", new()
     ///     {
-    ///         NamespaceId = Output.Tuple(defaultRegions, defaultRandomInteger.Result).Apply(values =&gt;
-    ///         {
-    ///             var defaultRegions = values.Item1;
-    ///             var result = values.Item2;
-    ///             return $"{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example{result}";
-    ///         }),
+    ///         NamespaceId = @default.Apply(@default =&gt; $"{@default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example{defaultInteger.Result}"),
     ///         NamespaceName = name,
     ///         NamespaceDescription = name,
     ///         EnableMicroRegistration = false,
     ///     });
     /// 
-    ///     var defaultApplication = new AliCloud.Sae.Application("defaultApplication", new()
+    ///     var defaultApplication = new AliCloud.Sae.Application("default", new()
     ///     {
     ///         AppDescription = name,
-    ///         AppName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         AppName = $"{name}-{defaultInteger.Result}",
     ///         NamespaceId = defaultNamespace.Id,
-    ///         ImageUrl = $"registry-vpc.{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}.aliyuncs.com/sae-demo-image/consumer:1.0",
+    ///         ImageUrl = @default.Apply(@default =&gt; $"registry-vpc.{@default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}.aliyuncs.com/sae-demo-image/consumer:1.0"),
     ///         PackageType = "Image",
     ///         SecurityGroupId = defaultSecurityGroup.Id,
     ///         VpcId = defaultNetwork.Id,
@@ -96,7 +91,7 @@ namespace Pulumi.AliCloud.Sae
     ///         Memory = 2048,
     ///     });
     /// 
-    ///     var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", new()
+    ///     var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("default", new()
     ///     {
     ///         LoadBalancerName = name,
     ///         VswitchId = defaultSwitch.Id,
@@ -104,7 +99,7 @@ namespace Pulumi.AliCloud.Sae
     ///         AddressType = "intranet",
     ///     });
     /// 
-    ///     var defaultIngress = new AliCloud.Sae.Ingress("defaultIngress", new()
+    ///     var defaultIngress = new AliCloud.Sae.Ingress("default", new()
     ///     {
     ///         SlbId = defaultApplicationLoadBalancer.Id,
     ///         NamespaceId = defaultNamespace.Id,

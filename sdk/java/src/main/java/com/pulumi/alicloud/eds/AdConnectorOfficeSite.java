@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
  *             .cenInstanceName(name)
  *             .protectionLevel(&#34;REDUCED&#34;)
  *             .build());
@@ -62,7 +62,7 @@ import javax.annotation.Nullable;
  *         var defaultAdConnectorOfficeSite = new AdConnectorOfficeSite(&#34;defaultAdConnectorOfficeSite&#34;, AdConnectorOfficeSiteArgs.builder()        
  *             .adConnectorOfficeSiteName(name)
  *             .bandwidth(100)
- *             .cenId(defaultInstance.id())
+ *             .cenId(default_.id())
  *             .cidrBlock(&#34;10.0.0.0/12&#34;)
  *             .desktopAccessType(&#34;INTERNET&#34;)
  *             .dnsAddresses(&#34;127.0.0.2&#34;)

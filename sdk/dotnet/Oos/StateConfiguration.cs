@@ -29,16 +29,16 @@ namespace Pulumi.AliCloud.Oos
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var defaultStateConfiguration = new AliCloud.Oos.StateConfiguration("defaultStateConfiguration", new()
+    ///     var defaultStateConfiguration = new AliCloud.Oos.StateConfiguration("default", new()
     ///     {
     ///         TemplateName = "ACS-ECS-InventoryDataCollection",
     ///         ConfigureMode = "ApplyOnly",
     ///         Description = "terraform-example",
     ///         ScheduleType = "rate",
     ///         ScheduleExpression = "1 hour",
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
     ///         Targets = "{\"Filters\": [{\"Type\": \"All\", \"Parameters\": {\"InstanceChargeType\": \"PrePaid\"}}], \"ResourceType\": \"ALIYUN::ECS::Instance\"}",
     ///         Parameters = "{\"policy\": {\"ACS:Application\": {\"Collection\": \"Enabled\"}}}",
     ///         Tags = 

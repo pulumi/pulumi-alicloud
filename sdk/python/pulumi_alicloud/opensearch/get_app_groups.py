@@ -162,7 +162,7 @@ def get_app_groups(enable_details: Optional[bool] = None,
     name = config.get("name")
     if name is None:
         name = "tf_testacc"
-    default_app_group = alicloud.opensearch.AppGroup("defaultAppGroup",
+    default_app_group = alicloud.opensearch.AppGroup("default",
         app_group_name=name,
         payment_type="PayAsYouGo",
         type="standard",
@@ -171,8 +171,8 @@ def get_app_groups(enable_details: Optional[bool] = None,
             compute_resource=20,
             spec="opensearch.share.common",
         ))
-    default_app_groups = alicloud.opensearch.get_app_groups_output(ids=[default_app_group.id])
-    pulumi.export("appGroups", default_app_groups.groups)
+    default = alicloud.opensearch.get_app_groups_output(ids=[default_app_group.id])
+    pulumi.export("appGroups", default.groups)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -239,7 +239,7 @@ def get_app_groups_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
     name = config.get("name")
     if name is None:
         name = "tf_testacc"
-    default_app_group = alicloud.opensearch.AppGroup("defaultAppGroup",
+    default_app_group = alicloud.opensearch.AppGroup("default",
         app_group_name=name,
         payment_type="PayAsYouGo",
         type="standard",
@@ -248,8 +248,8 @@ def get_app_groups_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
             compute_resource=20,
             spec="opensearch.share.common",
         ))
-    default_app_groups = alicloud.opensearch.get_app_groups_output(ids=[default_app_group.id])
-    pulumi.export("appGroups", default_app_groups.groups)
+    default = alicloud.opensearch.get_app_groups_output(ids=[default_app_group.id])
+    pulumi.export("appGroups", default.groups)
     ```
     <!--End PulumiCodeChooser -->
 

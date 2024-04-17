@@ -630,6 +630,52 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.158.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default = alicloud.ecp.get_zones()
+        default_get_instance_types = alicloud.ecp.get_instance_types()
+        count_size = len(default.zones)
+        zone_id = default.zones[count_size - 1].zone_id
+        instance_type_count_size = len(default_get_instance_types.instance_types)
+        instance_type = default_get_instance_types.instance_types[instance_type_count_size - 1].instance_type
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=zone_id)
+        group = alicloud.ecs.SecurityGroup("group",
+            name=name,
+            vpc_id=default_get_networks.ids[0])
+        default_key_pair = alicloud.ecp.KeyPair("default",
+            key_pair_name=f"{name}-{default_integer['result']}",
+            public_key_body="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
+        default_instance = alicloud.ecp.Instance("default",
+            instance_name=name,
+            description=name,
+            key_pair_name=default_key_pair.key_pair_name,
+            security_group_id=group.id,
+            vswitch_id=default_get_switches.ids[0],
+            image_id="android_9_0_0_release_2851157_20211201.vhd",
+            instance_type=default_get_instance_types.instance_types[1].instance_type,
+            vnc_password="Ecp123",
+            payment_type="PayAsYouGo",
+            force=True)
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         Elastic Cloud Phone (ECP) Instance can be imported using the id, e.g.
@@ -679,6 +725,52 @@ class Instance(pulumi.CustomResource):
         see [What is Instance](https://www.alibabacloud.com/help/en/cloudphone/latest/api-cloudphone-2020-12-30-runinstances).
 
         > **NOTE:** Available since v1.158.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default_integer = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default = alicloud.ecp.get_zones()
+        default_get_instance_types = alicloud.ecp.get_instance_types()
+        count_size = len(default.zones)
+        zone_id = default.zones[count_size - 1].zone_id
+        instance_type_count_size = len(default_get_instance_types.instance_types)
+        instance_type = default_get_instance_types.instance_types[instance_type_count_size - 1].instance_type
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=zone_id)
+        group = alicloud.ecs.SecurityGroup("group",
+            name=name,
+            vpc_id=default_get_networks.ids[0])
+        default_key_pair = alicloud.ecp.KeyPair("default",
+            key_pair_name=f"{name}-{default_integer['result']}",
+            public_key_body="ssh-rsa AAAAB3Nza12345678qwertyuudsfsg")
+        default_instance = alicloud.ecp.Instance("default",
+            instance_name=name,
+            description=name,
+            key_pair_name=default_key_pair.key_pair_name,
+            security_group_id=group.id,
+            vswitch_id=default_get_switches.ids[0],
+            image_id="android_9_0_0_release_2851157_20211201.vhd",
+            instance_type=default_get_instance_types.instance_types[1].instance_type,
+            vnc_password="Ecp123",
+            payment_type="PayAsYouGo",
+            force=True)
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

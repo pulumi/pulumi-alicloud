@@ -23,6 +23,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tfexample";
  * const role = new alicloud.ram.Role("role", {
+ *     name: name,
  *     document: `  {
  *     "Statement": [
  *       {

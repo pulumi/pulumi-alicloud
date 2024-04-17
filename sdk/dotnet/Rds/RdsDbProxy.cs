@@ -27,32 +27,33 @@ namespace Pulumi.AliCloud.Rds
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultZones = AliCloud.Rds.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Rds.GetZones.Invoke(new()
     ///     {
     ///         Engine = "MySQL",
     ///         EngineVersion = "5.6",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
+    ///         Name = name,
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Rds.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.Rds.Instance("default", new()
     ///     {
     ///         Engine = "MySQL",
     ///         EngineVersion = "5.7",
@@ -64,7 +65,7 @@ namespace Pulumi.AliCloud.Rds
     ///         DbInstanceStorageType = "local_ssd",
     ///     });
     /// 
-    ///     var defaultReadOnlyInstance = new AliCloud.Rds.ReadOnlyInstance("defaultReadOnlyInstance", new()
+    ///     var defaultReadOnlyInstance = new AliCloud.Rds.ReadOnlyInstance("default", new()
     ///     {
     ///         ZoneId = defaultInstance.ZoneId,
     ///         MasterDbInstanceId = defaultInstance.Id,
@@ -75,7 +76,7 @@ namespace Pulumi.AliCloud.Rds
     ///         VswitchId = defaultSwitch.Id,
     ///     });
     /// 
-    ///     var defaultRdsDbProxy = new AliCloud.Rds.RdsDbProxy("defaultRdsDbProxy", new()
+    ///     var defaultRdsDbProxy = new AliCloud.Rds.RdsDbProxy("default", new()
     ///     {
     ///         InstanceId = defaultInstance.Id,
     ///         InstanceNetworkType = "VPC",

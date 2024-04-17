@@ -60,14 +60,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var defaultAlarmContactGroup = new AlarmContactGroup(&#34;defaultAlarmContactGroup&#34;, AlarmContactGroupArgs.builder()        
+ *         var default_ = new AlarmContactGroup(&#34;default&#34;, AlarmContactGroupArgs.builder()        
  *             .alarmContactGroupName(name)
  *             .describe(name)
  *             .build());
  * 
  *         var defaultMonitorGroup = new MonitorGroup(&#34;defaultMonitorGroup&#34;, MonitorGroupArgs.builder()        
  *             .monitorGroupName(name)
- *             .contactGroups(defaultAlarmContactGroup.id())
+ *             .contactGroups(default_.id())
  *             .build());
  * 
  *         var this_ = new GroupMetricRule(&#34;this&#34;, GroupMetricRuleArgs.builder()        

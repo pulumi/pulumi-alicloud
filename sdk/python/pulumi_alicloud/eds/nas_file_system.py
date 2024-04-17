@@ -267,14 +267,14 @@ class NasFileSystem(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+        default_simple_office_site = alicloud.eds.SimpleOfficeSite("default",
             cidr_block="172.16.0.0/12",
             enable_admin_access=False,
             desktop_access_type="Internet",
-            office_site_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
+            office_site_name=f"{name}-{default['result']}")
         example = alicloud.eds.NasFileSystem("example",
             nas_file_system_name=name,
             office_site_id=default_simple_office_site.id,
@@ -326,14 +326,14 @@ class NasFileSystem(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+        default_simple_office_site = alicloud.eds.SimpleOfficeSite("default",
             cidr_block="172.16.0.0/12",
             enable_admin_access=False,
             desktop_access_type="Internet",
-            office_site_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
+            office_site_name=f"{name}-{default['result']}")
         example = alicloud.eds.NasFileSystem("example",
             nas_file_system_name=name,
             office_site_id=default_simple_office_site.id,

@@ -33,25 +33,25 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const slbRuleName = config.get("slbRuleName") || "terraform-example";
- * const ruleZones = alicloud.getZones({
+ * const rule = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const ruleNetwork = new alicloud.vpc.Network("ruleNetwork", {
+ * const ruleNetwork = new alicloud.vpc.Network("rule", {
  *     vpcName: slbRuleName,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const ruleSwitch = new alicloud.vpc.Switch("ruleSwitch", {
+ * const ruleSwitch = new alicloud.vpc.Switch("rule", {
  *     vpcId: ruleNetwork.id,
  *     cidrBlock: "172.16.0.0/16",
- *     zoneId: ruleZones.then(ruleZones => ruleZones.zones?.[0]?.id),
+ *     zoneId: rule.then(rule => rule.zones?.[0]?.id),
  *     vswitchName: slbRuleName,
  * });
- * const ruleApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("ruleApplicationLoadBalancer", {
+ * const ruleApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("rule", {
  *     loadBalancerName: slbRuleName,
  *     vswitchId: ruleSwitch.id,
  *     instanceChargeType: "PayByCLCU",
  * });
- * const ruleListener = new alicloud.slb.Listener("ruleListener", {
+ * const ruleListener = new alicloud.slb.Listener("rule", {
  *     loadBalancerId: ruleApplicationLoadBalancer.id,
  *     backendPort: 22,
  *     frontendPort: 22,
@@ -59,10 +59,14 @@ import * as utilities from "../utilities";
  *     bandwidth: 5,
  *     healthCheckConnectPort: 20,
  * });
- * const ruleServerGroup = new alicloud.slb.ServerGroup("ruleServerGroup", {loadBalancerId: ruleApplicationLoadBalancer.id});
- * const ruleRule = new alicloud.slb.Rule("ruleRule", {
+ * const ruleServerGroup = new alicloud.slb.ServerGroup("rule", {
+ *     loadBalancerId: ruleApplicationLoadBalancer.id,
+ *     name: slbRuleName,
+ * });
+ * const ruleRule = new alicloud.slb.Rule("rule", {
  *     loadBalancerId: ruleApplicationLoadBalancer.id,
  *     frontendPort: ruleListener.frontendPort,
+ *     name: slbRuleName,
  *     domain: "*.aliyun.com",
  *     url: "/image",
  *     serverGroupId: ruleServerGroup.id,

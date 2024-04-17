@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstApiId"] = data.Alicloud_api_gateway_apis.Data_apigatway.Apis[0].Id,
+        ///         ["firstApiId"] = dataApigatway.Apis[0].Id,
         ///     };
         /// });
         /// ```
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstApiId"] = data.Alicloud_api_gateway_apis.Data_apigatway.Apis[0].Id,
+        ///         ["firstApiId"] = dataApigatway.Apis[0].Id,
         ///     };
         /// });
         /// ```

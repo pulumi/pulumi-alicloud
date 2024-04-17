@@ -31,11 +31,11 @@ import (
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // _default, err := alb.GetAscripts(ctx, &alb.GetAscriptsArgs{
 // Ids: interface{}{
-// alicloud_alb_ascript.Default.Id,
+// defaultAlicloudAlbAscript.Id,
 // },
-// NameRegex: pulumi.StringRef(alicloud_alb_ascript.Default.Name),
+// NameRegex: pulumi.StringRef(defaultAlicloudAlbAscript.Name),
 // AscriptName: pulumi.StringRef("test"),
-// ListenerId: pulumi.StringRef(_var.ListenerId),
+// ListenerId: pulumi.StringRef(listenerId),
 // }, nil);
 // if err != nil {
 // return err

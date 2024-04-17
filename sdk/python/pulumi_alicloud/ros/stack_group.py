@@ -483,7 +483,6 @@ class StackGroup(pulumi.CustomResource):
             template_body=\"\"\"    {
             	"ROSTemplateFormatVersion": "2015-09-01"
             }
-            
         \"\"\")
         ```
         <!--End PulumiCodeChooser -->
@@ -538,7 +537,6 @@ class StackGroup(pulumi.CustomResource):
             template_body=\"\"\"    {
             	"ROSTemplateFormatVersion": "2015-09-01"
             }
-            
         \"\"\")
         ```
         <!--End PulumiCodeChooser -->

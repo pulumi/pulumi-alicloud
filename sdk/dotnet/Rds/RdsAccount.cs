@@ -31,44 +31,44 @@ namespace Pulumi.AliCloud.Rds
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var defaultZones = AliCloud.Rds.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Rds.GetZones.Invoke(new()
     ///     {
     ///         Engine = "MySQL",
     ///         EngineVersion = "5.6",
     ///     });
     /// 
-    ///     var defaultInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     var defaultGetInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
     ///     {
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
     ///         Engine = "MySQL",
     ///         EngineVersion = "5.6",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0])),
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Rds.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.Rds.Instance("default", new()
     ///     {
     ///         Engine = "MySQL",
     ///         EngineVersion = "5.6",
-    ///         InstanceType = defaultInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceType = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
     ///         InstanceStorage = 10,
     ///         VswitchId = defaultSwitch.Id,
     ///         InstanceName = name,
     ///     });
     /// 
-    ///     var defaultRdsAccount = new AliCloud.Rds.RdsAccount("defaultRdsAccount", new()
+    ///     var defaultRdsAccount = new AliCloud.Rds.RdsAccount("default", new()
     ///     {
     ///         DbInstanceId = defaultInstance.Id,
     ///         AccountName = name,

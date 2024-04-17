@@ -45,23 +45,21 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = sae.NewNamespace(ctx, "example", &sae.NamespaceArgs{
-//				NamespaceId: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v:example%v", defaultRegions.Regions[0].Id, result), nil
-//				}).(pulumi.StringOutput),
+//				NamespaceId:             pulumi.String(fmt.Sprintf("%v:example%v", _default.Regions[0].Id, defaultInteger.Result)),
 //				NamespaceName:           pulumi.String(name),
 //				NamespaceDescription:    pulumi.String(name),
 //				EnableMicroRegistration: pulumi.Bool(false),

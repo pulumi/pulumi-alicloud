@@ -37,8 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.eds.SimpleOfficeSite;
  * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
  * import com.pulumi.alicloud.eds.EcdPolicyGroup;
@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
@@ -73,7 +73,7 @@ import javax.annotation.Nullable;
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .enableAdminAccess(true)
  *             .desktopAccessType(&#34;Internet&#34;)
- *             .officeSiteName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
+ *             .officeSiteName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
  *             .build());
  * 
  *         var defaultEcdPolicyGroup = new EcdPolicyGroup(&#34;defaultEcdPolicyGroup&#34;, EcdPolicyGroupArgs.builder()        
@@ -97,14 +97,14 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *         final var defaultBundles = EdsFunctions.getBundles(GetBundlesArgs.builder()
+ *         final var default = EdsFunctions.getBundles(GetBundlesArgs.builder()
  *             .bundleType(&#34;SYSTEM&#34;)
  *             .build());
  * 
  *         var defaultDesktop = new Desktop(&#34;defaultDesktop&#34;, DesktopArgs.builder()        
  *             .officeSiteId(defaultSimpleOfficeSite.id())
  *             .policyGroupId(defaultEcdPolicyGroup.id())
- *             .bundleId(defaultBundles.applyValue(getBundlesResult -&gt; getBundlesResult.bundles()[1].id()))
+ *             .bundleId(default_.bundles()[1].id())
  *             .desktopName(name)
  *             .build());
  * 

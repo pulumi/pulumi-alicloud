@@ -805,34 +805,39 @@ class Etl(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
+        example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
+            description="terraform-example")
+        example_store = alicloud.log.Store("example",
+            project=example.name,
+            name="example-store",
             retention_period=3650,
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
         example2 = alicloud.log.Store("example2",
-            project=example_project.name,
+            project=example.name,
+            name="example-store2",
             retention_period=3650,
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
         example3 = alicloud.log.Store("example3",
-            project=example_project.name,
+            project=example.name,
+            name="example-store3",
             retention_period=3650,
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        example_etl = alicloud.log.Etl("exampleEtl",
+        example_etl = alicloud.log.Etl("example",
             etl_name="terraform-example",
-            project=example_project.name,
+            project=example.name,
             display_name="terraform-example",
             description="terraform-example",
             access_key_id="access_key_id",
@@ -845,7 +850,7 @@ class Etl(pulumi.CustomResource):
                     access_key_id="example2_access_key_id",
                     access_key_secret="example2_access_key_secret",
                     endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=example_project.name,
+                    project=example.name,
                     logstore=example2.name,
                 ),
                 alicloud.log.EtlEtlSinkArgs(
@@ -853,7 +858,7 @@ class Etl(pulumi.CustomResource):
                     access_key_id="example3_access_key_id",
                     access_key_secret="example3_access_key_secret",
                     endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=example_project.name,
+                    project=example.name,
                     logstore=example3.name,
                 ),
             ])
@@ -917,34 +922,39 @@ class Etl(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
+        example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
+            description="terraform-example")
+        example_store = alicloud.log.Store("example",
+            project=example.name,
+            name="example-store",
             retention_period=3650,
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
         example2 = alicloud.log.Store("example2",
-            project=example_project.name,
+            project=example.name,
+            name="example-store2",
             retention_period=3650,
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
         example3 = alicloud.log.Store("example3",
-            project=example_project.name,
+            project=example.name,
+            name="example-store3",
             retention_period=3650,
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        example_etl = alicloud.log.Etl("exampleEtl",
+        example_etl = alicloud.log.Etl("example",
             etl_name="terraform-example",
-            project=example_project.name,
+            project=example.name,
             display_name="terraform-example",
             description="terraform-example",
             access_key_id="access_key_id",
@@ -957,7 +967,7 @@ class Etl(pulumi.CustomResource):
                     access_key_id="example2_access_key_id",
                     access_key_secret="example2_access_key_secret",
                     endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=example_project.name,
+                    project=example.name,
                     logstore=example2.name,
                 ),
                 alicloud.log.EtlEtlSinkArgs(
@@ -965,7 +975,7 @@ class Etl(pulumi.CustomResource):
                     access_key_id="example3_access_key_id",
                     access_key_secret="example3_access_key_secret",
                     endpoint="cn-hangzhou.log.aliyuncs.com",
-                    project=example_project.name,
+                    project=example.name,
                     logstore=example3.name,
                 ),
             ])

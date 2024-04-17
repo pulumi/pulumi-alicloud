@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_testacc";
- * const defaultAppGroup = new alicloud.opensearch.AppGroup("defaultAppGroup", {
+ * const defaultAppGroup = new alicloud.opensearch.AppGroup("default", {
  *     appGroupName: name,
  *     paymentType: "PayAsYouGo",
  *     type: "standard",
@@ -32,10 +32,10 @@ import * as utilities from "../utilities";
  *         spec: "opensearch.share.common",
  *     },
  * });
- * const defaultAppGroups = alicloud.opensearch.getAppGroupsOutput({
+ * const default = alicloud.opensearch.getAppGroupsOutput({
  *     ids: [defaultAppGroup.id],
  * });
- * export const appGroups = defaultAppGroups.apply(defaultAppGroups => defaultAppGroups.groups);
+ * export const appGroups = _default.apply(_default => _default.groups);
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -125,7 +125,7 @@ export interface GetAppGroupsResult {
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_testacc";
- * const defaultAppGroup = new alicloud.opensearch.AppGroup("defaultAppGroup", {
+ * const defaultAppGroup = new alicloud.opensearch.AppGroup("default", {
  *     appGroupName: name,
  *     paymentType: "PayAsYouGo",
  *     type: "standard",
@@ -135,10 +135,10 @@ export interface GetAppGroupsResult {
  *         spec: "opensearch.share.common",
  *     },
  * });
- * const defaultAppGroups = alicloud.opensearch.getAppGroupsOutput({
+ * const default = alicloud.opensearch.getAppGroupsOutput({
  *     ids: [defaultAppGroup.id],
  * });
- * export const appGroups = defaultAppGroups.apply(defaultAppGroups => defaultAppGroups.groups);
+ * export const appGroups = _default.apply(_default => _default.groups);
  * ```
  * <!--End PulumiCodeChooser -->
  */

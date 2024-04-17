@@ -153,7 +153,7 @@ def get_honeypot_probes(display_name: Optional[str] = None,
     name = config.get("name")
     if name is None:
         name = "tf-testAccThreatDetectionHoneypotProbe"
-    default_honeypot_probe = alicloud.threatdetection.HoneypotProbe("defaultHoneypotProbe",
+    default_honeypot_probe = alicloud.threatdetection.HoneypotProbe("default",
         uuid="e52c7872-29d1-4aa1-9908-0299abd53606",
         probe_type="host_probe",
         control_node_id="e1397077-4941-4b14-b533-ca2bdebd00a3",
@@ -167,11 +167,11 @@ def get_honeypot_probes(display_name: Optional[str] = None,
         )],
         display_name=name,
         arp=True)
-    default_honeypot_probes = alicloud.threatdetection.get_honeypot_probes_output(ids=[default_honeypot_probe.id],
+    default = alicloud.threatdetection.get_honeypot_probes_output(ids=[default_honeypot_probe.id],
         display_name=name,
         probe_type="host_probe",
         enable_details=True)
-    pulumi.export("alicloudThreatDetectionHoneypotProbeExampleId", default_honeypot_probes.probes[0].id)
+    pulumi.export("alicloudThreatDetectionHoneypotProbeExampleId", default.probes[0].id)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -231,7 +231,7 @@ def get_honeypot_probes_output(display_name: Optional[pulumi.Input[Optional[str]
     name = config.get("name")
     if name is None:
         name = "tf-testAccThreatDetectionHoneypotProbe"
-    default_honeypot_probe = alicloud.threatdetection.HoneypotProbe("defaultHoneypotProbe",
+    default_honeypot_probe = alicloud.threatdetection.HoneypotProbe("default",
         uuid="e52c7872-29d1-4aa1-9908-0299abd53606",
         probe_type="host_probe",
         control_node_id="e1397077-4941-4b14-b533-ca2bdebd00a3",
@@ -245,11 +245,11 @@ def get_honeypot_probes_output(display_name: Optional[pulumi.Input[Optional[str]
         )],
         display_name=name,
         arp=True)
-    default_honeypot_probes = alicloud.threatdetection.get_honeypot_probes_output(ids=[default_honeypot_probe.id],
+    default = alicloud.threatdetection.get_honeypot_probes_output(ids=[default_honeypot_probe.id],
         display_name=name,
         probe_type="host_probe",
         enable_details=True)
-    pulumi.export("alicloudThreatDetectionHoneypotProbeExampleId", default_honeypot_probes.probes[0].id)
+    pulumi.export("alicloudThreatDetectionHoneypotProbeExampleId", default.probes[0].id)
     ```
     <!--End PulumiCodeChooser -->
 

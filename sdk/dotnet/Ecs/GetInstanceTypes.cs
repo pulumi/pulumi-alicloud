@@ -29,12 +29,14 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var typesDs = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
         ///     {
         ///         CpuCoreCount = 1,
         ///         MemorySize = 2,
         ///     });
         /// 
+        ///     // Create ECS instance with the first matched instance_type
         ///     var instance = new AliCloud.Ecs.Instance("instance", new()
         ///     {
         ///         InstanceType = typesDs.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
@@ -65,12 +67,14 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var typesDs = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
         ///     {
         ///         CpuCoreCount = 1,
         ///         MemorySize = 2,
         ///     });
         /// 
+        ///     // Create ECS instance with the first matched instance_type
         ///     var instance = new AliCloud.Ecs.Instance("instance", new()
         ///     {
         ///         InstanceType = typesDs.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),

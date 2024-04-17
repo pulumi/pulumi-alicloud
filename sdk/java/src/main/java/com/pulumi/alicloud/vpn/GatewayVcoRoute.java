@@ -65,18 +65,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .cenInstanceName(var_.name())
+ *             .cenInstanceName(name)
  *             .build());
  * 
  *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
  *             .cenId(defaultInstance.id())
  *             .transitRouterDescription(&#34;desd&#34;)
- *             .transitRouterName(var_.name())
+ *             .transitRouterName(name)
  *             .build());
  * 
- *         final var defaultTransitRouterAvailableResources = CenFunctions.getTransitRouterAvailableResources();
+ *         final var default = CenFunctions.getTransitRouterAvailableResources();
  * 
  *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        
+ *             .name(name)
  *             .ipAddress(&#34;42.104.22.210&#34;)
  *             .asn(&#34;45014&#34;)
  *             .description(&#34;testAccVpnConnectionDesc&#34;)
@@ -121,18 +122,18 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .enableDpd(true)
  *             .enableNatTraversal(true)
- *             .vpnAttachmentName(var_.name())
+ *             .vpnAttachmentName(name)
  *             .build());
  * 
  *         var defaultTransitRouterVpnAttachment = new TransitRouterVpnAttachment(&#34;defaultTransitRouterVpnAttachment&#34;, TransitRouterVpnAttachmentArgs.builder()        
  *             .autoPublishRouteEnabled(false)
- *             .transitRouterAttachmentDescription(var_.name())
- *             .transitRouterAttachmentName(var_.name())
+ *             .transitRouterAttachmentDescription(name)
+ *             .transitRouterAttachmentName(name)
  *             .cenId(defaultTransitRouter.cenId())
  *             .transitRouterId(defaultTransitRouter.transitRouterId())
  *             .vpnId(defaultGatewayVpnAttachment.id())
  *             .zones(TransitRouterVpnAttachmentZoneArgs.builder()
- *                 .zoneId(defaultTransitRouterAvailableResources.applyValue(getTransitRouterAvailableResourcesResult -&gt; getTransitRouterAvailableResourcesResult.resources()[0].masterZones()[0]))
+ *                 .zoneId(default_.resources()[0].masterZones()[0])
  *                 .build())
  *             .build());
  * 

@@ -626,12 +626,12 @@ class GroupMetricRule(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup",
+        default = alicloud.cms.AlarmContactGroup("default",
             alarm_contact_group_name=name,
             describe=name)
-        default_monitor_group = alicloud.cms.MonitorGroup("defaultMonitorGroup",
+        default_monitor_group = alicloud.cms.MonitorGroup("default",
             monitor_group_name=name,
-            contact_groups=[default_alarm_contact_group.id])
+            contact_groups=[default.id])
         this = alicloud.cms.GroupMetricRule("this",
             group_id=default_monitor_group.id,
             group_metric_rule_name=name,
@@ -715,12 +715,12 @@ class GroupMetricRule(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup",
+        default = alicloud.cms.AlarmContactGroup("default",
             alarm_contact_group_name=name,
             describe=name)
-        default_monitor_group = alicloud.cms.MonitorGroup("defaultMonitorGroup",
+        default_monitor_group = alicloud.cms.MonitorGroup("default",
             monitor_group_name=name,
-            contact_groups=[default_alarm_contact_group.id])
+            contact_groups=[default.id])
         this = alicloud.cms.GroupMetricRule("this",
             group_id=default_monitor_group.id,
             group_metric_rule_name=name,

@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
  *             .status(&#34;OK&#34;)
  *             .build());
  * 
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .excludeResourceIdsScope(&#34;example-resource_id&#34;)
  *             .regionIdsScope(&#34;cn-hangzhou&#34;)
  *             .configRuleTriggerTypes(&#34;ConfigurationItemChangeNotification&#34;)
- *             .resourceGroupIdsScope(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .resourceGroupIdsScope(default_.ids()[0])
  *             .resourceTypesScopes(&#34;ACS::RDS::DBInstance&#34;)
  *             .ruleName(&#34;contains-tag&#34;)
  *             .inputParameters(Map.ofEntries(

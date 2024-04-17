@@ -115,9 +115,10 @@ def get_aliases(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     kms_aliases = alicloud.kms.get_aliases(ids=["d89e8a53-b708-41aa-8c67-6873axxx"],
         name_regex="alias/tf-testKmsAlias_123")
-    pulumi.export("firstKeyId", data["alicloud_kms_keys"]["kms_keys_ds"]["keys"][0]["id"])
+    pulumi.export("firstKeyId", kms_keys_ds["keys"][0]["id"])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -159,9 +160,10 @@ def get_aliases_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     kms_aliases = alicloud.kms.get_aliases(ids=["d89e8a53-b708-41aa-8c67-6873axxx"],
         name_regex="alias/tf-testKmsAlias_123")
-    pulumi.export("firstKeyId", data["alicloud_kms_keys"]["kms_keys_ds"]["keys"][0]["id"])
+    pulumi.export("firstKeyId", kms_keys_ds["keys"][0]["id"])
     ```
     <!--End PulumiCodeChooser -->
 

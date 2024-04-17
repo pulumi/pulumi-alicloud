@@ -29,12 +29,12 @@ namespace Pulumi.AliCloud.Dns
     /// {
     ///     var dns = new AliCloud.Dns.DomainAttachment("dns", new()
     ///     {
+    ///         InstanceId = "dns-cn-mp91lyq9xxxx",
     ///         DomainNames = new[]
     ///         {
     ///             "test111.abc",
     ///             "test222.abc",
     ///         },
-    ///         InstanceId = "dns-cn-mp91lyq9xxxx",
     ///     });
     /// 
     /// });

@@ -33,10 +33,10 @@ namespace Pulumi.AliCloud.Ecs
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.Ecs.EipSegmentAddress("default", new()
     ///     {
-    ///         Bandwidth = "5",
     ///         EipMask = "28",
-    ///         InternetChargeType = "PayByBandwidth",
+    ///         Bandwidth = "5",
     ///         Isp = "BGP",
+    ///         InternetChargeType = "PayByBandwidth",
     ///         Netmode = "public",
     ///     });
     /// 

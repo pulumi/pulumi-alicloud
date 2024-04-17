@@ -23,13 +23,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
  * // Create a new Domain config.
  * const domain = new alicloud.cdn.DomainNew("domain", {
- *     domainName: pulumi.interpolate`mycdndomain-${_default.result}.alicloud-provider.cn`,
+ *     domainName: `mycdndomain-${_default.result}.alicloud-provider.cn`,
  *     cdnType: "web",
  *     scope: "overseas",
  *     sources: [{

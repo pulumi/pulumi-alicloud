@@ -41,6 +41,11 @@ import (
 //				name = param
 //			}
 //			_, err := threatdetection.NewImageEventOperation(ctx, "default", &threatdetection.ImageEventOperationArgs{
+//				EventType:     pulumi.String("maliciousFile"),
+//				OperationCode: pulumi.String("whitelist"),
+//				EventKey:      pulumi.String("alibabacloud_ak"),
+//				Scenarios:     pulumi.String("{\n  \"type\":\"default\",\n  \"value\":\"\"\n}\n"),
+//				EventName:     pulumi.String("阿里云AK"),
 //				Conditions: pulumi.String(`[
 //	  {
 //	      "condition":"MD5",
@@ -49,14 +54,8 @@ import (
 //	  }
 //
 // ]
-//
 // `),
 //
-//				EventKey:      pulumi.String("alibabacloud_ak"),
-//				EventName:     pulumi.String("阿里云AK"),
-//				EventType:     pulumi.String("maliciousFile"),
-//				OperationCode: pulumi.String("whitelist"),
-//				Scenarios:     pulumi.String("{\n  \"type\":\"default\",\n  \"value\":\"\"\n}\n\n"),
 //			})
 //			if err != nil {
 //				return err

@@ -41,6 +41,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			// Decrypt encrypted ciphertext
 //			plaintext := kms.GetPlaintextOutput(ctx, kms.GetPlaintextOutputArgs{
 //				CiphertextBlob: encrypted.CiphertextBlob,
 //			}, nil)

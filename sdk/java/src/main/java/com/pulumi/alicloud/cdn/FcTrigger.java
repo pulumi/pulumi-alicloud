@@ -49,9 +49,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultAccount = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount();
  * 
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
@@ -59,9 +59,9 @@ import javax.annotation.Nullable;
  *             .eventMetaName(&#34;LogFileCreated&#34;)
  *             .eventMetaVersion(&#34;1.0.0&#34;)
  *             .notes(&#34;example_value&#34;)
- *             .roleArn(String.format(&#34;acs:ram::%s:role/aliyuncdneventnotificationrole&#34;, defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id())))
- *             .sourceArn(String.format(&#34;acs:cdn:*:%s:domain/example.com&#34;, defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id())))
- *             .triggerArn(String.format(&#34;acs:fc:%s:%s:services/FCTestService/functions/printEvent/triggers/testtrigger&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id())))
+ *             .roleArn(String.format(&#34;acs:ram::%s:role/aliyuncdneventnotificationrole&#34;, default_.id()))
+ *             .sourceArn(String.format(&#34;acs:cdn:*:%s:domain/example.com&#34;, default_.id()))
+ *             .triggerArn(String.format(&#34;acs:fc:%s:%s:services/FCTestService/functions/printEvent/triggers/testtrigger&#34;, defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),default_.id()))
  *             .build());
  * 
  *     }

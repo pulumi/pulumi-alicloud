@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultAccelerator = new AliCloud.Ga.Accelerator("defaultAccelerator", new()
+    ///     var @default = new AliCloud.Ga.Accelerator("default", new()
     ///     {
     ///         Duration = 1,
     ///         Spec = "1",
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Ga
     ///         Description = "terraform-example",
     ///     });
     /// 
-    ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("defaultBandwidthPackage", new()
+    ///     var defaultBandwidthPackage = new AliCloud.Ga.BandwidthPackage("default", new()
     ///     {
     ///         Bandwidth = 100,
     ///         Type = "Basic",
@@ -51,13 +51,13 @@ namespace Pulumi.AliCloud.Ga
     ///         AutoUseCoupon = true,
     ///     });
     /// 
-    ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment", new()
+    ///     var defaultBandwidthPackageAttachment = new AliCloud.Ga.BandwidthPackageAttachment("default", new()
     ///     {
-    ///         AcceleratorId = defaultAccelerator.Id,
+    ///         AcceleratorId = @default.Id,
     ///         BandwidthPackageId = defaultBandwidthPackage.Id,
     ///     });
     /// 
-    ///     var defaultAcceleratorSpareIpAttachment = new AliCloud.Ga.AcceleratorSpareIpAttachment("defaultAcceleratorSpareIpAttachment", new()
+    ///     var defaultAcceleratorSpareIpAttachment = new AliCloud.Ga.AcceleratorSpareIpAttachment("default", new()
     ///     {
     ///         AcceleratorId = defaultBandwidthPackageAttachment.AcceleratorId,
     ///         SpareIp = "127.0.0.1",

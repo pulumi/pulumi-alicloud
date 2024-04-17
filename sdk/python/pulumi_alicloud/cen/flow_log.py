@@ -247,18 +247,21 @@ class FlowLog(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         # Create a cen flowlog resource and use it to publish a route entry pointing to an ECS.
-        default_instance = alicloud.cen.Instance("defaultInstance")
-        default_project = alicloud.log.Project("defaultProject", description="create by terraform")
-        default_store = alicloud.log.Store("defaultStore",
+        default = alicloud.cen.Instance("default", name="my-cen")
+        default_project = alicloud.log.Project("default",
+            name="sls-for-flowlog",
+            description="create by terraform")
+        default_store = alicloud.log.Store("default",
             project=default_project.name,
+            name="sls-for-flowlog",
             retention_period=3650,
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        default_flow_log = alicloud.cen.FlowLog("defaultFlowLog",
+        default_flow_log = alicloud.cen.FlowLog("default",
             flow_log_name="my-flowlog",
-            cen_id=default_instance.id,
+            cen_id=default.id,
             project_name=default_project.name,
             log_store_name=default_store.name)
         ```
@@ -306,18 +309,21 @@ class FlowLog(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         # Create a cen flowlog resource and use it to publish a route entry pointing to an ECS.
-        default_instance = alicloud.cen.Instance("defaultInstance")
-        default_project = alicloud.log.Project("defaultProject", description="create by terraform")
-        default_store = alicloud.log.Store("defaultStore",
+        default = alicloud.cen.Instance("default", name="my-cen")
+        default_project = alicloud.log.Project("default",
+            name="sls-for-flowlog",
+            description="create by terraform")
+        default_store = alicloud.log.Store("default",
             project=default_project.name,
+            name="sls-for-flowlog",
             retention_period=3650,
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        default_flow_log = alicloud.cen.FlowLog("defaultFlowLog",
+        default_flow_log = alicloud.cen.FlowLog("default",
             flow_log_name="my-flowlog",
-            cen_id=default_instance.id,
+            cen_id=default.id,
             project_name=default_project.name,
             log_store_name=default_store.name)
         ```

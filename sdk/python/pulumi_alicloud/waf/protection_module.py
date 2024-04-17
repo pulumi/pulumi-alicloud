@@ -230,10 +230,10 @@ class ProtectionModule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_instances = alicloud.waf.get_instances()
-        default_domain = alicloud.waf.Domain("defaultDomain",
+        default = alicloud.waf.get_instances()
+        default_domain = alicloud.waf.Domain("default",
             domain_name="you domain",
-            instance_id=default_instances.ids[0],
+            instance_id=default.ids[0],
             is_access_product="On",
             source_ips=["1.1.1.1"],
             cluster_type="PhysicalCluster",
@@ -247,8 +247,8 @@ class ProtectionModule(pulumi.CustomResource):
                 key="foo",
                 value="http",
             )])
-        default_protection_module = alicloud.waf.ProtectionModule("defaultProtectionModule",
-            instance_id=default_instances.ids[0],
+        default_protection_module = alicloud.waf.ProtectionModule("default",
+            instance_id=default.ids[0],
             domain=default_domain.domain_name,
             defense_type="ac_cc",
             mode=0,
@@ -299,10 +299,10 @@ class ProtectionModule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_instances = alicloud.waf.get_instances()
-        default_domain = alicloud.waf.Domain("defaultDomain",
+        default = alicloud.waf.get_instances()
+        default_domain = alicloud.waf.Domain("default",
             domain_name="you domain",
-            instance_id=default_instances.ids[0],
+            instance_id=default.ids[0],
             is_access_product="On",
             source_ips=["1.1.1.1"],
             cluster_type="PhysicalCluster",
@@ -316,8 +316,8 @@ class ProtectionModule(pulumi.CustomResource):
                 key="foo",
                 value="http",
             )])
-        default_protection_module = alicloud.waf.ProtectionModule("defaultProtectionModule",
-            instance_id=default_instances.ids[0],
+        default_protection_module = alicloud.waf.ProtectionModule("default",
+            instance_id=default.ids[0],
             domain=default_domain.domain_name,
             defense_type="ac_cc",
             mode=0,

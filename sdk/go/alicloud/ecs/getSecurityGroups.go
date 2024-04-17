@@ -29,6 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Filter security groups and print the results into a file
 //			_, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
 //				NameRegex:  pulumi.StringRef("^web-"),
 //				OutputFile: pulumi.StringRef("web_access.json"),
@@ -37,7 +38,7 @@ import (
 //				return err
 //			}
 //			// In conjunction with a VPC
-//			primaryVpcDs, err := vpc.NewNetwork(ctx, "primaryVpcDs", nil)
+//			primaryVpcDs, err := vpc.NewNetwork(ctx, "primary_vpc_ds", nil)
 //			if err != nil {
 //				return err
 //			}

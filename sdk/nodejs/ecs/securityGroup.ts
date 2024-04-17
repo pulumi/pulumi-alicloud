@@ -24,7 +24,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.ecs.SecurityGroup("default", {description: "New security group"});
+ * const _default = new alicloud.ecs.SecurityGroup("default", {
+ *     name: "terraform-example",
+ *     description: "New security group",
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -39,7 +42,10 @@ import * as utilities from "../utilities";
  *     vpcName: "terraform-example",
  *     cidrBlock: "10.1.0.0/21",
  * });
- * const group = new alicloud.ecs.SecurityGroup("group", {vpcId: vpc.id});
+ * const group = new alicloud.ecs.SecurityGroup("group", {
+ *     name: "terraform-example",
+ *     vpcId: vpc.id,
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

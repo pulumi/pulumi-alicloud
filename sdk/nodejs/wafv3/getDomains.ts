@@ -20,17 +20,17 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultInstances = alicloud.wafv3.getInstances({});
- * const ids = defaultInstances.then(defaultInstances => alicloud.wafv3.getDomains({
- *     instanceId: defaultInstances.ids?.[0],
+ * const default = alicloud.wafv3.getInstances({});
+ * const ids = _default.then(_default => alicloud.wafv3.getDomains({
+ *     instanceId: _default.ids?.[0],
  *     ids: ["example_id"],
  * }));
  * export const wafv3DomainsId1 = ids.then(ids => ids.domains?.[0]?.id);
- * const defaultDomains = defaultInstances.then(defaultInstances => alicloud.wafv3.getDomains({
- *     instanceId: defaultInstances.ids?.[0],
+ * const defaultGetDomains = _default.then(_default => alicloud.wafv3.getDomains({
+ *     instanceId: _default.ids?.[0],
  *     domain: "zctest12.wafqax.top",
  * }));
- * export const wafv3DomainsId2 = defaultDomains.then(defaultDomains => defaultDomains.domains?.[0]?.id);
+ * export const wafv3DomainsId2 = defaultGetDomains.then(defaultGetDomains => defaultGetDomains.domains?.[0]?.id);
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -119,17 +119,17 @@ export interface GetDomainsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultInstances = alicloud.wafv3.getInstances({});
- * const ids = defaultInstances.then(defaultInstances => alicloud.wafv3.getDomains({
- *     instanceId: defaultInstances.ids?.[0],
+ * const default = alicloud.wafv3.getInstances({});
+ * const ids = _default.then(_default => alicloud.wafv3.getDomains({
+ *     instanceId: _default.ids?.[0],
  *     ids: ["example_id"],
  * }));
  * export const wafv3DomainsId1 = ids.then(ids => ids.domains?.[0]?.id);
- * const defaultDomains = defaultInstances.then(defaultInstances => alicloud.wafv3.getDomains({
- *     instanceId: defaultInstances.ids?.[0],
+ * const defaultGetDomains = _default.then(_default => alicloud.wafv3.getDomains({
+ *     instanceId: _default.ids?.[0],
  *     domain: "zctest12.wafqax.top",
  * }));
- * export const wafv3DomainsId2 = defaultDomains.then(defaultDomains => defaultDomains.domains?.[0]?.id);
+ * export const wafv3DomainsId2 = defaultGetDomains.then(defaultGetDomains => defaultGetDomains.domains?.[0]?.id);
  * ```
  * <!--End PulumiCodeChooser -->
  */

@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *         "example_value-2",
  *     ],
  * });
- * export const crChartRepositoryId1 = data.alicloud_cr_chart_repositories["default"].ids[0];
+ * export const crChartRepositoryId1 = _default.ids[0];
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -100,7 +100,7 @@ export interface GetChartRepositoriesResult {
  *         "example_value-2",
  *     ],
  * });
- * export const crChartRepositoryId1 = data.alicloud_cr_chart_repositories["default"].ids[0];
+ * export const crChartRepositoryId1 = _default.ids[0];
  * ```
  * <!--End PulumiCodeChooser -->
  */

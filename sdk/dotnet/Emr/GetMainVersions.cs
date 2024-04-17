@@ -30,12 +30,12 @@ namespace Pulumi.AliCloud.Emr
         /// {
         ///     var @default = AliCloud.Emr.GetMainVersions.Invoke(new()
         ///     {
+        ///         EmrVersion = "EMR-3.22.0",
         ///         ClusterTypes = new[]
         ///         {
         ///             "HADOOP",
         ///             "ZOOKEEPER",
         ///         },
-        ///         EmrVersion = "EMR-3.22.0",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -69,12 +69,12 @@ namespace Pulumi.AliCloud.Emr
         /// {
         ///     var @default = AliCloud.Emr.GetMainVersions.Invoke(new()
         ///     {
+        ///         EmrVersion = "EMR-3.22.0",
         ///         ClusterTypes = new[]
         ///         {
         ///             "HADOOP",
         ///             "ZOOKEEPER",
         ///         },
-        ///         EmrVersion = "EMR-3.22.0",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

@@ -31,21 +31,21 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultRouterInterface = new AliCloud.ExpressConnect.RouterInterface("defaultRouterInterface", new()
+    ///     var defaultRouterInterface = new AliCloud.ExpressConnect.RouterInterface("default", new()
     ///     {
     ///         Description = name,
-    ///         OppositeRegionId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         OppositeRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
     ///         RouterId = defaultNetwork.RouterId,
     ///         Role = "InitiatingSide",
     ///         RouterType = "VRouter",

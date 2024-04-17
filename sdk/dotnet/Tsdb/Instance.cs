@@ -29,21 +29,22 @@ namespace Pulumi.AliCloud.Tsdb
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZones = AliCloud.Tsdb.GetZones.Invoke();
+    ///     var example = AliCloud.Tsdb.GetZones.Invoke();
     /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
     ///     {
     ///         CidrBlock = "192.168.0.0/16",
+    ///         Name = "tf-testaccTsdbInstance",
     ///     });
     /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
     ///     {
-    ///         AvailabilityZone = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         AvailabilityZone = example.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
     ///         CidrBlock = "192.168.1.0/24",
     ///         VpcId = exampleNetwork.Id,
     ///     });
     /// 
-    ///     var exampleInstance = new AliCloud.Tsdb.Instance("exampleInstance", new()
+    ///     var exampleInstance = new AliCloud.Tsdb.Instance("example", new()
     ///     {
     ///         PaymentType = "PayAsYouGo",
     ///         VswitchId = exampleSwitch.Id,

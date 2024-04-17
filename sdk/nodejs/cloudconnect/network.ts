@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
  * const _default = new alicloud.cloudconnect.Network("default", {
+ *     name: name,
  *     description: name,
  *     cidrBlock: "192.168.0.0/24",
  *     isDefault: true,

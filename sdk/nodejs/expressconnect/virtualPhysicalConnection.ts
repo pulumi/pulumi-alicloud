@@ -23,19 +23,19 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const examplePhysicalConnections = alicloud.expressconnect.getPhysicalConnections({
+ * const example = alicloud.expressconnect.getPhysicalConnections({
  *     nameRegex: "^preserved-NODELETING",
  * });
- * const vlanId = new random.RandomInteger("vlanId", {
+ * const vlanId = new random.index.Integer("vlan_id", {
  *     max: 2999,
  *     min: 1,
  * });
  * const default = alicloud.getAccount({});
- * const exampleVirtualPhysicalConnection = new alicloud.expressconnect.VirtualPhysicalConnection("exampleVirtualPhysicalConnection", {
+ * const exampleVirtualPhysicalConnection = new alicloud.expressconnect.VirtualPhysicalConnection("example", {
  *     virtualPhysicalConnectionName: name,
  *     description: name,
  *     orderMode: "PayByPhysicalConnectionOwner",
- *     parentPhysicalConnectionId: examplePhysicalConnections.then(examplePhysicalConnections => examplePhysicalConnections.ids?.[0]),
+ *     parentPhysicalConnectionId: example.then(example => example.ids?.[0]),
  *     spec: "50M",
  *     vlanId: vlanId.id,
  *     vpconnAliUid: _default.then(_default => _default.id),

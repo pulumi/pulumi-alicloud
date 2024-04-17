@@ -31,72 +31,41 @@ namespace Pulumi.AliCloud.Cen
     /// {
     ///     var config = new Config();
     ///     var anotherUid = config.Get("anotherUid") ?? "xxxx";
-    ///     // Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
-    ///     var childAccount = new AliCloud.Provider("childAccount", new()
-    ///     {
-    ///         Region = "cn-hangzhou",
-    ///         AssumeRole = new AliCloud.Inputs.ProviderAssumeRoleArgs
-    ///         {
-    ///             RoleArn = $"acs:ram::{anotherUid}:role/terraform-example-assume-role",
-    ///         },
-    ///     });
+    ///     var yourAccount = AliCloud.GetAccount.Invoke();
     /// 
-    ///     // Method 2: Use the target cen account's access_key, secret_key
-    ///     // provider "alicloud" {
-    ///     //   region     = "cn-hangzhou"
-    ///     //   access_key = "access_key"
-    ///     //   secret_key = "secret_key"
-    ///     //   alias      = "child_account"
-    ///     // }
-    ///     var yourAccount = new AliCloud.Provider("yourAccount");
-    /// 
-    ///     var yourAccountAccount = AliCloud.GetAccount.Invoke();
-    /// 
-    ///     var childAccountAccount = AliCloud.GetAccount.Invoke();
+    ///     var childAccount = AliCloud.GetAccount.Invoke();
     /// 
     ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     var example = new AliCloud.Cen.Instance("example", new()
     ///     {
     ///         CenInstanceName = "tf_example",
     ///         Description = "an example for cen",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Your_account,
     ///     });
     /// 
-    ///     var childAccountNetwork = new AliCloud.Vpc.Network("childAccountNetwork", new()
+    ///     var childAccountNetwork = new AliCloud.Vpc.Network("child_account", new()
     ///     {
     ///         VpcName = "terraform-example",
     ///         CidrBlock = "172.17.3.0/24",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Child_account,
     ///     });
     /// 
-    ///     var childAccountInstanceGrant = new AliCloud.Cen.InstanceGrant("childAccountInstanceGrant", new()
+    ///     var childAccountInstanceGrant = new AliCloud.Cen.InstanceGrant("child_account", new()
     ///     {
-    ///         CenId = exampleInstance.Id,
+    ///         CenId = example.Id,
     ///         ChildInstanceId = childAccountNetwork.Id,
-    ///         CenOwnerId = yourAccountAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Child_account,
+    ///         CenOwnerId = yourAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
     ///     });
     /// 
-    ///     var exampleInstanceAttachment = new AliCloud.Cen.InstanceAttachment("exampleInstanceAttachment", new()
+    ///     var exampleInstanceAttachment = new AliCloud.Cen.InstanceAttachment("example", new()
     ///     {
-    ///         InstanceId = exampleInstance.Id,
+    ///         InstanceId = example.Id,
     ///         ChildInstanceId = childAccountInstanceGrant.ChildInstanceId,
     ///         ChildInstanceType = "VPC",
     ///         ChildInstanceRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
-    ///         ChildInstanceOwnerId = childAccountAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Your_account,
+    ///         ChildInstanceOwnerId = childAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
     ///     });
     /// 
     /// });

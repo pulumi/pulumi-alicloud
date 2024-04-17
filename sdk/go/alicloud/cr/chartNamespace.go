@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			exampleRegistryEnterpriseInstance, err := cr.NewRegistryEnterpriseInstance(ctx, "exampleRegistryEnterpriseInstance", &cr.RegistryEnterpriseInstanceArgs{
+//			example, err := cr.NewRegistryEnterpriseInstance(ctx, "example", &cr.RegistryEnterpriseInstanceArgs{
 //				PaymentType:   pulumi.String("Subscription"),
 //				Period:        pulumi.Int(1),
 //				RenewPeriod:   pulumi.Int(0),
@@ -52,8 +52,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cr.NewChartNamespace(ctx, "exampleChartNamespace", &cr.ChartNamespaceArgs{
-//				InstanceId:    exampleRegistryEnterpriseInstance.ID(),
+//			_, err = cr.NewChartNamespace(ctx, "example", &cr.ChartNamespaceArgs{
+//				InstanceId:    example.ID(),
 //				NamespaceName: pulumi.String(name),
 //			})
 //			if err != nil {

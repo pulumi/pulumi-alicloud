@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultInstance, err := amqp.NewInstance(ctx, "defaultInstance", &amqp.InstanceArgs{
+//			_, err := amqp.NewInstance(ctx, "default", &amqp.InstanceArgs{
 //				InstanceType:  pulumi.String("enterprise"),
 //				MaxTps:        pulumi.String("3000"),
 //				QueueCapacity: pulumi.String("200"),
@@ -48,18 +48,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultVirtualHost, err := amqp.NewVirtualHost(ctx, "defaultVirtualHost", &amqp.VirtualHostArgs{
-//				InstanceId:      defaultInstance.ID(),
+//			defaultVirtualHost, err := amqp.NewVirtualHost(ctx, "default", &amqp.VirtualHostArgs{
+//				InstanceId:      _default.ID(),
 //				VirtualHostName: pulumi.String("tf-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = amqp.NewExchange(ctx, "defaultExchange", &amqp.ExchangeArgs{
+//			_, err = amqp.NewExchange(ctx, "default", &amqp.ExchangeArgs{
 //				AutoDeleteState: pulumi.Bool(false),
 //				ExchangeName:    pulumi.String("tf-example"),
 //				ExchangeType:    pulumi.String("DIRECT"),
-//				InstanceId:      defaultInstance.ID(),
+//				InstanceId:      _default.ID(),
 //				Internal:        pulumi.Bool(false),
 //				VirtualHostName: defaultVirtualHost.VirtualHostName,
 //			})
@@ -67,7 +67,7 @@ import (
 //				return err
 //			}
 //			_, err = amqp.NewQueue(ctx, "example", &amqp.QueueArgs{
-//				InstanceId:      defaultInstance.ID(),
+//				InstanceId:      _default.ID(),
 //				QueueName:       pulumi.String("tf-example"),
 //				VirtualHostName: defaultVirtualHost.VirtualHostName,
 //			})

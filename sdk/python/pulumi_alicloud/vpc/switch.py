@@ -467,15 +467,15 @@ class Switch(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_network = alicloud.vpc.Network("fooNetwork",
+        foo = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_network = alicloud.vpc.Network("foo",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/12")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
+        foo_switch = alicloud.vpc.Switch("foo",
             vswitch_name="terraform-example",
             cidr_block="172.16.0.0/21",
             vpc_id=foo_network.id,
-            zone_id=foo_zones.zones[0].id)
+            zone_id=foo.zones[0].id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -488,7 +488,7 @@ class Switch(pulumi.CustomResource):
         vpc = alicloud.vpc.Network("vpc",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/12")
-        cidr_blocks = alicloud.vpc.Ipv4CidrBlock("cidrBlocks",
+        cidr_blocks = alicloud.vpc.Ipv4CidrBlock("cidr_blocks",
             vpc_id=vpc.id,
             secondary_cidr_block="192.163.0.0/16")
         island_nat = alicloud.vpc.Switch("island-nat",
@@ -512,17 +512,17 @@ class Switch(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_network = alicloud.vpc.Network("fooNetwork",
+        foo = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_network = alicloud.vpc.Network("foo",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/12")
-        foo_ipv4_cidr_block = alicloud.vpc.Ipv4CidrBlock("fooIpv4CidrBlock",
+        foo_ipv4_cidr_block = alicloud.vpc.Ipv4CidrBlock("foo",
             vpc_id=foo_network.id,
             secondary_cidr_block="192.163.0.0/16")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
+        foo_switch = alicloud.vpc.Switch("foo",
             vpc_id=foo_ipv4_cidr_block.vpc_id,
             cidr_block="192.163.0.0/24",
-            zone_id=foo_zones.zones[0].id)
+            zone_id=foo.zones[0].id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -575,15 +575,15 @@ class Switch(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_network = alicloud.vpc.Network("fooNetwork",
+        foo = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_network = alicloud.vpc.Network("foo",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/12")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
+        foo_switch = alicloud.vpc.Switch("foo",
             vswitch_name="terraform-example",
             cidr_block="172.16.0.0/21",
             vpc_id=foo_network.id,
-            zone_id=foo_zones.zones[0].id)
+            zone_id=foo.zones[0].id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -596,7 +596,7 @@ class Switch(pulumi.CustomResource):
         vpc = alicloud.vpc.Network("vpc",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/12")
-        cidr_blocks = alicloud.vpc.Ipv4CidrBlock("cidrBlocks",
+        cidr_blocks = alicloud.vpc.Ipv4CidrBlock("cidr_blocks",
             vpc_id=vpc.id,
             secondary_cidr_block="192.163.0.0/16")
         island_nat = alicloud.vpc.Switch("island-nat",
@@ -620,17 +620,17 @@ class Switch(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        foo_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        foo_network = alicloud.vpc.Network("fooNetwork",
+        foo = alicloud.get_zones(available_resource_creation="VSwitch")
+        foo_network = alicloud.vpc.Network("foo",
             vpc_name="terraform-example",
             cidr_block="172.16.0.0/12")
-        foo_ipv4_cidr_block = alicloud.vpc.Ipv4CidrBlock("fooIpv4CidrBlock",
+        foo_ipv4_cidr_block = alicloud.vpc.Ipv4CidrBlock("foo",
             vpc_id=foo_network.id,
             secondary_cidr_block="192.163.0.0/16")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
+        foo_switch = alicloud.vpc.Switch("foo",
             vpc_id=foo_ipv4_cidr_block.vpc_id,
             cidr_block="192.163.0.0/24",
-            zone_id=foo_zones.zones[0].id)
+            zone_id=foo.zones[0].id)
         ```
         <!--End PulumiCodeChooser -->
 

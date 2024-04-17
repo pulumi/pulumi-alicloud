@@ -162,12 +162,12 @@ class TlsCipherPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.slb.TlsCipherPolicy("example",
+            tls_cipher_policy_name="Test-example_value",
+            tls_versions=["TLSv1.2"],
             ciphers=[
                 "AES256-SHA256",
                 "AES128-GCM-SHA256",
-            ],
-            tls_cipher_policy_name="Test-example_value",
-            tls_versions=["TLSv1.2"])
+            ])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -208,12 +208,12 @@ class TlsCipherPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.slb.TlsCipherPolicy("example",
+            tls_cipher_policy_name="Test-example_value",
+            tls_versions=["TLSv1.2"],
             ciphers=[
                 "AES256-SHA256",
                 "AES128-GCM-SHA256",
-            ],
-            tls_cipher_policy_name="Test-example_value",
-            tls_versions=["TLSv1.2"])
+            ])
         ```
         <!--End PulumiCodeChooser -->
 

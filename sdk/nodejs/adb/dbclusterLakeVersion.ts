@@ -20,19 +20,19 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultZones = alicloud.adb.getZones({});
- * const defaultNetworks = alicloud.vpc.getNetworks({
+ * const default = alicloud.adb.getZones({});
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
  *     nameRegex: "^default-NODELETING$",
  * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.ids?.[0],
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.ids?.[0],
  * }));
- * const defaultDBClusterLakeVersion = new alicloud.adb.DBClusterLakeVersion("defaultDBClusterLakeVersion", {
+ * const defaultDBClusterLakeVersion = new alicloud.adb.DBClusterLakeVersion("default", {
  *     dbClusterVersion: "5.0",
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
- *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *     zoneId: _default.then(_default => _default.ids?.[0]),
  *     computeResource: "16ACU",
  *     storageResource: "0ACU",
  *     paymentType: "PayAsYouGo",

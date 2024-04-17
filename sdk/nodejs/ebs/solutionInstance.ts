@@ -26,10 +26,10 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "terraform-example";
  * const zoneId = config.get("zoneId") || "cn-shanghai-l";
  * const regionId = config.get("regionId") || "cn-shanghai";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultSolutionInstance = new alicloud.ebs.SolutionInstance("defaultSolutionInstance", {
+ * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultSolutionInstance = new alicloud.ebs.SolutionInstance("default", {
  *     solutionInstanceName: name,
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     resourceGroupId: _default.then(_default => _default.ids?.[0]),
  *     description: "description",
  *     solutionId: "mysql",
  *     parameters: [

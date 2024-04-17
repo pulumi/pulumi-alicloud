@@ -18,9 +18,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const attachmentAcl = new alicloud.slb.Acl("attachmentAcl", {ipVersion: "ipv4"});
- * const attachmentAclEntryAttachment = new alicloud.slb.AclEntryAttachment("attachmentAclEntryAttachment", {
- *     aclId: attachmentAcl.id,
+ * const attachment = new alicloud.slb.Acl("attachment", {
+ *     name: "forSlbAclEntryAttachment",
+ *     ipVersion: "ipv4",
+ * });
+ * const attachmentAclEntryAttachment = new alicloud.slb.AclEntryAttachment("attachment", {
+ *     aclId: attachment.id,
  *     entry: "168.10.10.0/24",
  *     comment: "second",
  * });

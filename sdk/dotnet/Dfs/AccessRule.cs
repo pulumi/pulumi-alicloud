@@ -31,20 +31,20 @@ namespace Pulumi.AliCloud.Dfs
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultAccessGroup = new AliCloud.Dfs.AccessGroup("defaultAccessGroup", new()
+    ///     var @default = new AliCloud.Dfs.AccessGroup("default", new()
     ///     {
     ///         Description = "example",
     ///         NetworkType = "VPC",
     ///         AccessGroupName = name,
     ///     });
     /// 
-    ///     var defaultAccessRule = new AliCloud.Dfs.AccessRule("defaultAccessRule", new()
+    ///     var defaultAccessRule = new AliCloud.Dfs.AccessRule("default", new()
     ///     {
     ///         Description = "example",
     ///         RwAccessType = "RDWR",
     ///         Priority = 1,
     ///         NetworkSegment = "192.168.81.1",
-    ///         AccessGroupId = defaultAccessGroup.Id,
+    ///         AccessGroupId = @default.Id,
     ///     });
     /// 
     /// });

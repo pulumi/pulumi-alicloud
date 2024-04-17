@@ -45,13 +45,13 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
+//			defaultBucket, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
 //				Bucket: pulumi.String(name),
 //				Acl:    pulumi.String("public-read"),
 //				Tags: pulumi.Map{
@@ -61,14 +61,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultRule, err := cfg.NewRule(ctx, "defaultRule", &cfg.RuleArgs{
+//			defaultRule, err := cfg.NewRule(ctx, "default", &cfg.RuleArgs{
 //				Description:            pulumi.String("If the ACL policy of the OSS bucket denies read access from the Internet, the configuration is considered compliant."),
 //				SourceOwner:            pulumi.String("ALIYUN"),
 //				SourceIdentifier:       pulumi.String("oss-bucket-public-read-prohibited"),
 //				RiskLevel:              pulumi.Int(1),
 //				TagKeyScope:            pulumi.String("For"),
 //				TagValueScope:          pulumi.String("example"),
-//				RegionIdsScope:         pulumi.String(defaultRegions.Regions[0].Id),
+//				RegionIdsScope:         pulumi.String(_default.Regions[0].Id),
 //				ConfigRuleTriggerTypes: pulumi.String("ConfigurationItemChangeNotification"),
 //				ResourceTypesScopes: pulumi.StringArray{
 //					pulumi.String("ACS::OSS::Bucket"),
@@ -78,13 +78,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cfg.NewRemediation(ctx, "defaultRemediation", &cfg.RemediationArgs{
+//			_, err = cfg.NewRemediation(ctx, "default", &cfg.RemediationArgs{
 //				ConfigRuleId:          defaultRule.ConfigRuleId,
 //				RemediationTemplateId: pulumi.String("ACS-OSS-PutBucketAcl"),
 //				RemediationSourceType: pulumi.String("ALIYUN"),
 //				InvokeType:            pulumi.String("MANUAL_EXECUTION"),
 //				Params: defaultBucket.Bucket.ApplyT(func(bucket *string) (string, error) {
-//					return fmt.Sprintf("{\"bucketName\": \"%v\", \"regionId\": \"%v\", \"permissionName\": \"private\"}", bucket, defaultRegions.Regions[0].Id), nil
+//					return fmt.Sprintf("{\"bucketName\": \"%v\", \"regionId\": \"%v\", \"permissionName\": \"private\"}", bucket, _default.Regions[0].Id), nil
 //				}).(pulumi.StringOutput),
 //				RemediationType: pulumi.String("OOS"),
 //			})

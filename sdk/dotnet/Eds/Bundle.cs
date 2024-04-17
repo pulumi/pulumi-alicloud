@@ -31,26 +31,26 @@ namespace Pulumi.AliCloud.Eds
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultImages = AliCloud.Eds.GetImages.Invoke(new()
+    ///     var @default = AliCloud.Eds.GetImages.Invoke(new()
     ///     {
     ///         ImageType = "SYSTEM",
     ///         OsType = "Windows",
     ///         DesktopInstanceType = "eds.hf.4c8g",
     ///     });
     /// 
-    ///     var defaultDesktopTypes = AliCloud.Eds.GetDesktopTypes.Invoke(new()
+    ///     var defaultGetDesktopTypes = AliCloud.Eds.GetDesktopTypes.Invoke(new()
     ///     {
     ///         InstanceTypeFamily = "eds.hf",
     ///         CpuCount = 4,
     ///         MemorySize = 8192,
     ///     });
     /// 
-    ///     var defaultBundle = new AliCloud.Eds.Bundle("defaultBundle", new()
+    ///     var defaultBundle = new AliCloud.Eds.Bundle("default", new()
     ///     {
     ///         Description = name,
-    ///         DesktopType = defaultDesktopTypes.Apply(getDesktopTypesResult =&gt; getDesktopTypesResult.Ids[0]),
+    ///         DesktopType = defaultGetDesktopTypes.Apply(getDesktopTypesResult =&gt; getDesktopTypesResult.Ids[0]),
     ///         BundleName = name,
-    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Ids[0]),
+    ///         ImageId = @default.Apply(@default =&gt; @default.Apply(getImagesResult =&gt; getImagesResult.Ids[0])),
     ///         UserDiskSizeGibs = new[]
     ///         {
     ///             70,

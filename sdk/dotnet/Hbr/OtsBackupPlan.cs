@@ -30,20 +30,21 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new()
+    ///     var defaultVault = new AliCloud.Hbr.Vault("default", new()
     ///     {
-    ///         VaultName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         VaultName = $"terraform-example-{defaultInteger.Result}",
     ///         VaultType = "OTS_BACKUP",
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Ots.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.Ots.Instance("default", new()
     ///     {
+    ///         Name = $"Example-{defaultInteger.Result}",
     ///         Description = "terraform-example",
     ///         AccessedBy = "Any",
     ///         Tags = 
@@ -53,7 +54,7 @@ namespace Pulumi.AliCloud.Hbr
     ///         },
     ///     });
     /// 
-    ///     var defaultTable = new AliCloud.Ots.Table("defaultTable", new()
+    ///     var defaultTable = new AliCloud.Ots.Table("default", new()
     ///     {
     ///         InstanceName = defaultInstance.Name,
     ///         TableName = "terraform_example",
@@ -70,8 +71,9 @@ namespace Pulumi.AliCloud.Hbr
     ///         DeviationCellVersionInSec = "1",
     ///     });
     /// 
-    ///     var defaultRole = new AliCloud.Ram.Role("defaultRole", new()
+    ///     var defaultRole = new AliCloud.Ram.Role("default", new()
     ///     {
+    ///         Name = "hbrexamplerole",
     ///         Document = @"		{
     /// 			""Statement"": [
     /// 			{
@@ -90,17 +92,17 @@ namespace Pulumi.AliCloud.Hbr
     ///         Force = true,
     ///     });
     /// 
-    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.GetAccount.Invoke();
     /// 
     ///     var example = new AliCloud.Hbr.OtsBackupPlan("example", new()
     ///     {
-    ///         OtsBackupPlanName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         OtsBackupPlanName = $"terraform-example-{defaultInteger.Result}",
     ///         VaultId = defaultVault.Id,
     ///         BackupType = "COMPLETE",
     ///         Retention = "1",
     ///         InstanceName = defaultInstance.Name,
     ///         CrossAccountType = "SELF_ACCOUNT",
-    ///         CrossAccountUserId = defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         CrossAccountUserId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
     ///         CrossAccountRoleName = defaultRole.Id,
     ///         OtsDetails = new[]
     ///         {

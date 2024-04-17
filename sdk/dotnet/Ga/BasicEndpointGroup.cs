@@ -32,26 +32,26 @@ namespace Pulumi.AliCloud.Ga
     ///     var config = new Config();
     ///     var region = config.Get("region") ?? "cn-hangzhou";
     ///     var endpointGroupRegion = config.Get("endpointGroupRegion") ?? "cn-beijing";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = "terraform-example",
     ///         CidrBlock = "172.17.3.0/24",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = "terraform-example",
     ///         CidrBlock = "172.17.3.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///     });
     /// 
-    ///     var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", new()
+    ///     var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("default", new()
     ///     {
     ///         LoadBalancerName = "terraform-example",
     ///         VswitchId = defaultSwitch.Id,
@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.Ga
     ///         AddressType = "intranet",
     ///     });
     /// 
-    ///     var defaultBasicAccelerator = new AliCloud.Ga.BasicAccelerator("defaultBasicAccelerator", new()
+    ///     var defaultBasicAccelerator = new AliCloud.Ga.BasicAccelerator("default", new()
     ///     {
     ///         Duration = 1,
     ///         BasicAcceleratorName = "terraform-example",
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Ga
     ///         AutoPay = true,
     ///     });
     /// 
-    ///     var defaultBasicEndpointGroup = new AliCloud.Ga.BasicEndpointGroup("defaultBasicEndpointGroup", new()
+    ///     var defaultBasicEndpointGroup = new AliCloud.Ga.BasicEndpointGroup("default", new()
     ///     {
     ///         AcceleratorId = defaultBasicAccelerator.Id,
     ///         EndpointGroupRegion = endpointGroupRegion,

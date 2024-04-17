@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultZones = EciFunctions.getZones();
+ *         final var default = EciFunctions.getZones();
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
@@ -78,10 +78,11 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock(&#34;10.1.0.0/16&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneIds()[0]))
+ *             .zoneId(default_.zones()[0].zoneIds()[0])
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
@@ -94,7 +95,7 @@ import javax.annotation.Nullable;
  *             .paymentType(&#34;PayAsYouGo&#34;)
  *             .build());
  * 
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var defaultVirtualNode = new VirtualNode(&#34;defaultVirtualNode&#34;, VirtualNodeArgs.builder()        
  *             .securityGroupId(defaultSecurityGroup.id())
@@ -102,7 +103,7 @@ import javax.annotation.Nullable;
  *             .vswitchId(defaultSwitch.id())
  *             .enablePublicNetwork(false)
  *             .eipInstanceId(defaultEipAddress.id())
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
  *             .kubeConfig(&#34;kube_config&#34;)
  *             .tags(Map.of(&#34;Created&#34;, &#34;TF&#34;))
  *             .taints(VirtualNodeTaintArgs.builder()

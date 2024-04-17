@@ -50,13 +50,13 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         var default_ = new MaliciousFileWhitelistConfig(&#34;default&#34;, MaliciousFileWhitelistConfigArgs.builder()        
- *             .eventName(&#34;123&#34;)
- *             .field(&#34;fileMd6&#34;)
- *             .fieldValue(&#34;sadfas&#34;)
  *             .operator(&#34;strEquals&#34;)
- *             .source(&#34;agentless&#34;)
- *             .targetType(&#34;SELECTION_KEY&#34;)
+ *             .field(&#34;fileMd6&#34;)
  *             .targetValue(&#34;123&#34;)
+ *             .targetType(&#34;SELECTION_KEY&#34;)
+ *             .eventName(&#34;123&#34;)
+ *             .source(&#34;agentless&#34;)
+ *             .fieldValue(&#34;sadfas&#34;)
  *             .build());
  * 
  *     }

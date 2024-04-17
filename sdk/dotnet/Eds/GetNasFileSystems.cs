@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new()
+        ///     var @default = new AliCloud.Eds.SimpleOfficeSite("default", new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
         ///         DesktopAccessType = "Internet",
@@ -37,10 +37,10 @@ namespace Pulumi.AliCloud.Eds
         ///         EnableInternetAccess = false,
         ///     });
         /// 
-        ///     var defaultNasFileSystem = new AliCloud.Eds.NasFileSystem("defaultNasFileSystem", new()
+        ///     var defaultNasFileSystem = new AliCloud.Eds.NasFileSystem("default", new()
         ///     {
         ///         Description = "your_description",
-        ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
+        ///         OfficeSiteId = @default.Id,
         ///         NasFileSystemName = "your_nas_file_system_name",
         ///     });
         /// 
@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new()
+        ///     var @default = new AliCloud.Eds.SimpleOfficeSite("default", new()
         ///     {
         ///         CidrBlock = "172.16.0.0/12",
         ///         DesktopAccessType = "Internet",
@@ -89,10 +89,10 @@ namespace Pulumi.AliCloud.Eds
         ///         EnableInternetAccess = false,
         ///     });
         /// 
-        ///     var defaultNasFileSystem = new AliCloud.Eds.NasFileSystem("defaultNasFileSystem", new()
+        ///     var defaultNasFileSystem = new AliCloud.Eds.NasFileSystem("default", new()
         ///     {
         ///         Description = "your_description",
-        ///         OfficeSiteId = defaultSimpleOfficeSite.Id,
+        ///         OfficeSiteId = @default.Id,
         ///         NasFileSystemName = "your_nas_file_system_name",
         ///     });
         /// 

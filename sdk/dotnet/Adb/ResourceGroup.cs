@@ -31,28 +31,28 @@ namespace Pulumi.AliCloud.Adb
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var defaultZones = AliCloud.Adb.GetZones.Invoke();
+    ///     var @default = AliCloud.Adb.GetZones.Invoke();
     /// 
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
     ///         Status = "OK",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "10.4.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var defaultDBCluster = new AliCloud.Adb.DBCluster("defaultDBCluster", new()
+    ///     var defaultDBCluster = new AliCloud.Adb.DBCluster("default", new()
     ///     {
     ///         ComputeResource = "48Core192GBNEW",
     ///         DbClusterCategory = "MixedStorage",
@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.Adb
     ///         MaintainTime = "04:00Z-05:00Z",
     ///         Mode = "flexible",
     ///         PaymentType = "PayAsYouGo",
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ResourceGroupId = defaultGetResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
     ///         SecurityIps = new[]
     ///         {
     ///             "10.168.1.12",
@@ -73,7 +73,7 @@ namespace Pulumi.AliCloud.Adb
     ///         },
     ///         VpcId = defaultNetwork.Id,
     ///         VswitchId = defaultSwitch.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Adb
     ///         },
     ///     });
     /// 
-    ///     var defaultResourceGroup = new AliCloud.Adb.ResourceGroup("defaultResourceGroup", new()
+    ///     var defaultResourceGroup = new AliCloud.Adb.ResourceGroup("default", new()
     ///     {
     ///         GroupName = "TF_EXAMPLE",
     ///         GroupType = "batch",

@@ -43,7 +43,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
@@ -53,10 +53,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bp.NewStudioApplication(ctx, "defaultStudioApplication", &bp.StudioApplicationArgs{
+//			_, err = bp.NewStudioApplication(ctx, "default", &bp.StudioApplicationArgs{
 //				ApplicationName: pulumi.String(name),
 //				TemplateId:      pulumi.String("YAUUQIYRSV1CMFGX"),
-//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
 //				AreaId:          pulumi.String("cn-hangzhou"),
 //				Instances: bp.StudioApplicationInstanceArray{
 //					&bp.StudioApplicationInstanceArgs{

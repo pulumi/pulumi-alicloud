@@ -129,13 +129,13 @@ class Domain(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+        default = alicloud.ga.Accelerator("default",
             duration=1,
             auto_use_coupon=True,
             spec="1")
-        default_domain = alicloud.ga.Domain("defaultDomain",
+        default_domain = alicloud.ga.Domain("default",
             domain="changes.com.cn",
-            accelerator_id=default_accelerator.id)
+            accelerator_id=default.id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -174,13 +174,13 @@ class Domain(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+        default = alicloud.ga.Accelerator("default",
             duration=1,
             auto_use_coupon=True,
             spec="1")
-        default_domain = alicloud.ga.Domain("defaultDomain",
+        default_domain = alicloud.ga.Domain("default",
             domain="changes.com.cn",
-            accelerator_id=default_accelerator.id)
+            accelerator_id=default.id)
         ```
         <!--End PulumiCodeChooser -->
 

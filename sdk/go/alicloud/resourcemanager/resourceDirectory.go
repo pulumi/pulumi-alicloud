@@ -23,6 +23,46 @@ import (
 //   - All member accounts must be removed from the resource directory.
 //   - All folders except the root folder must be deleted from the resource directory.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/resourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _default, err := resourcemanager.GetResourceDirectories(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// var defaultResourceDirectory []*resourcemanager.ResourceDirectory
+//
+//	for index := 0; index < %!v(PANIC=Format method: fatal: A failure has occurred: unlowered conditional expression @ example.pp:5,13-52); index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := resourcemanager.NewResourceDirectory(ctx, fmt.Sprintf("default-%v", key0), &resourcemanager.ResourceDirectoryArgs{
+// Status: pulumi.String("Enabled"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultResourceDirectory = append(defaultResourceDirectory, __res)
+// }
+// return nil
+// })
+// }
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // Resource Manager Resource Directory can be imported using the id, e.g.

@@ -20,11 +20,12 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const defaultInstance = new alicloud.ots.Instance("defaultInstance", {
+ * const defaultInstance = new alicloud.ots.Instance("default", {
+ *     name: `${name}-${_default.result}`,
  *     description: name,
  *     networkTypeAcls: ["VPC"],
  *     tags: {

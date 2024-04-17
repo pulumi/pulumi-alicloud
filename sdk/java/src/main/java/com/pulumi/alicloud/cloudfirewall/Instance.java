@@ -50,12 +50,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+ *             .paymentType(&#34;PayAsYouGo&#34;)
+ *             .spec(&#34;ultimate_version&#34;)
+ *             .ipNumber(400)
  *             .bandWidth(200)
  *             .cfwLog(true)
  *             .cfwLogStorage(1000)
- *             .ipNumber(400)
- *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .spec(&#34;ultimate_version&#34;)
  *             .build());
  * 
  *     }

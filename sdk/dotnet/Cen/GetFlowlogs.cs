@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstCenFlowlogId"] = data.Alicloud_cen_instances.Default.Flowlogs[0].Id,
+        ///         ["firstCenFlowlogId"] = defaultAlicloudCenInstances.Flowlogs[0].Id,
         ///     };
         /// });
         /// ```
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.Cen
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstCenFlowlogId"] = data.Alicloud_cen_instances.Default.Flowlogs[0].Id,
+        ///         ["firstCenFlowlogId"] = defaultAlicloudCenInstances.Flowlogs[0].Id,
         ///     };
         /// });
         /// ```

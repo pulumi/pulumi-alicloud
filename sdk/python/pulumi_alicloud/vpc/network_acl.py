@@ -404,16 +404,16 @@ class NetworkAcl(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
+        example_switch = alicloud.vpc.Switch("example",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
-            vpc_id=example_network.id,
+            vpc_id=example.id,
             zone_id=default.zones[0].id)
-        example_network_acl = alicloud.vpc.NetworkAcl("exampleNetworkAcl",
-            vpc_id=example_network.id,
+        example_network_acl = alicloud.vpc.NetworkAcl("example",
+            vpc_id=example.id,
             network_acl_name=name,
             description=name,
             ingress_acl_entries=[alicloud.vpc.NetworkAclIngressAclEntryArgs(
@@ -488,16 +488,16 @@ class NetworkAcl(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
+        example_switch = alicloud.vpc.Switch("example",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
-            vpc_id=example_network.id,
+            vpc_id=example.id,
             zone_id=default.zones[0].id)
-        example_network_acl = alicloud.vpc.NetworkAcl("exampleNetworkAcl",
-            vpc_id=example_network.id,
+        example_network_acl = alicloud.vpc.NetworkAcl("example",
+            vpc_id=example.id,
             network_acl_name=name,
             description=name,
             ingress_acl_entries=[alicloud.vpc.NetworkAclIngressAclEntryArgs(

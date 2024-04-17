@@ -14,6 +14,50 @@ import (
 // This data source provides Threat Detection Baseline Strategy available to the user.[What is Baseline Strategy](https://www.alibabacloud.com/help/en/security-center/developer-reference/api-sas-2018-12-03-describestrategy)
 //
 // > **NOTE:** Available in 1.195.0+
+//
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/threatdetection"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultBaselineStrategy, err := threatdetection.NewBaselineStrategy(ctx, "default", &threatdetection.BaselineStrategyArgs{
+//				CustomType:           pulumi.String("custom"),
+//				EndTime:              pulumi.String("08:00:00"),
+//				BaselineStrategyName: pulumi.String("apispec"),
+//				CycleDays:            pulumi.Int(3),
+//				TargetType:           pulumi.String("groupId"),
+//				StartTime:            pulumi.String("05:00:00"),
+//				RiskSubTypeName:      pulumi.String("hc_exploit_redis"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_ = defaultBaselineStrategy.ID().ApplyT(func(id string) (threatdetection.GetBaselineStrategiesResult, error) {
+//				return threatdetection.GetBaselineStrategiesOutput(ctx, threatdetection.GetBaselineStrategiesOutputArgs{
+//					Ids: []string{
+//						id,
+//					},
+//					NameRegex:  defaultBaselineStrategy.Name,
+//					CustomType: "custom",
+//				}, nil), nil
+//			}).(threatdetection.GetBaselineStrategiesResultOutput)
+//			ctx.Export("alicloudThreatDetectionBaselineStrategyExampleId", defaultAlicloudThreatDetectionBaselineStrategys.Strategys[0].Id)
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 func GetBaselineStrategies(ctx *pulumi.Context, args *GetBaselineStrategiesArgs, opts ...pulumi.InvokeOption) (*GetBaselineStrategiesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBaselineStrategiesResult

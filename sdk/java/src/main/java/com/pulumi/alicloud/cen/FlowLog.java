@@ -35,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.cen.Instance;
+ * import com.pulumi.alicloud.cen.InstanceArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -55,14 +56,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a cen flowlog resource and use it to publish a route entry pointing to an ECS.
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;);
+ *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+ *             .name(&#34;my-cen&#34;)
+ *             .build());
  * 
  *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
+ *             .name(&#34;sls-for-flowlog&#34;)
  *             .description(&#34;create by terraform&#34;)
  *             .build());
  * 
  *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
  *             .project(defaultProject.name())
+ *             .name(&#34;sls-for-flowlog&#34;)
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -72,7 +77,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultFlowLog = new FlowLog(&#34;defaultFlowLog&#34;, FlowLogArgs.builder()        
  *             .flowLogName(&#34;my-flowlog&#34;)
- *             .cenId(defaultInstance.id())
+ *             .cenId(default_.id())
  *             .projectName(defaultProject.name())
  *             .logStoreName(defaultStore.name())
  *             .build());

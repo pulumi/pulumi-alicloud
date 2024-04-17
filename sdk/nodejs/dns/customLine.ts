@@ -26,8 +26,8 @@ import * as utilities from "../utilities";
  *     customLineName: "tf-example",
  *     domainName: "alicloud-provider.com",
  *     ipSegmentLists: [{
- *         endIp: "192.0.2.125",
  *         startIp: "192.0.2.123",
+ *         endIp: "192.0.2.125",
  *     }],
  * });
  * ```

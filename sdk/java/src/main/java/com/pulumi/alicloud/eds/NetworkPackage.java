@@ -49,14 +49,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultSimpleOfficeSites = EdsFunctions.getSimpleOfficeSites(GetSimpleOfficeSitesArgs.builder()
+ *         final var default = EdsFunctions.getSimpleOfficeSites(GetSimpleOfficeSitesArgs.builder()
  *             .status(&#34;REGISTERED&#34;)
  *             .nameRegex(&#34;default&#34;)
  *             .build());
  * 
  *         var defaultNetworkPackage = new NetworkPackage(&#34;defaultNetworkPackage&#34;, NetworkPackageArgs.builder()        
  *             .bandwidth(10)
- *             .officeSiteId(defaultSimpleOfficeSites.applyValue(getSimpleOfficeSitesResult -&gt; getSimpleOfficeSitesResult.ids()[0]))
+ *             .officeSiteId(default_.ids()[0])
  *             .build());
  * 
  *     }

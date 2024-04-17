@@ -33,18 +33,18 @@ namespace Pulumi.AliCloud.Eais
     ///     var name = config.Get("name") ?? "tf-example";
     ///     var zoneId = "cn-hangzhou-h";
     /// 
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.0.0.0/8",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = name,
     ///         CidrBlock = "10.1.0.0/16",
@@ -52,12 +52,13 @@ namespace Pulumi.AliCloud.Eais
     ///         ZoneId = zoneId,
     ///     });
     /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
+    ///         Name = name,
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Eais.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.Eais.Instance("default", new()
     ///     {
     ///         InstanceType = "eais.ei-a6.2xlarge",
     ///         InstanceName = name,

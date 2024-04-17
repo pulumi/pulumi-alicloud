@@ -20,34 +20,34 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetworks = alicloud.vpc.getNetworks({
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
  *     nameRegex: "^default-NODELETING$",
  *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
  *     cidrBlock: "10.4.0.0/24",
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.zones?.[0]?.id,
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.zones?.[0]?.id,
  * }));
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0])});
- * const defaultInstance = new alicloud.bastionhost.Instance("defaultInstance", {
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0])});
+ * const defaultInstance = new alicloud.bastionhost.Instance("default", {
  *     description: name,
  *     licenseCode: "bhah_ent_50_asset",
  *     planCode: "cloudbastion",
  *     storage: "5",
  *     bandwidth: "5",
  *     period: 1,
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
  *     securityGroupIds: [defaultSecurityGroup.id],
  * });
- * const defaultUserGroup = new alicloud.bastionhost.UserGroup("defaultUserGroup", {
+ * const defaultUserGroup = new alicloud.bastionhost.UserGroup("default", {
  *     instanceId: defaultInstance.id,
  *     userGroupName: name,
  * });
- * const localUser = new alicloud.bastionhost.User("localUser", {
+ * const localUser = new alicloud.bastionhost.User("local_user", {
  *     instanceId: defaultInstance.id,
  *     mobileCountryCode: "CN",
  *     mobile: "13312345678",
@@ -55,7 +55,7 @@ import * as utilities from "../utilities";
  *     source: "Local",
  *     userName: `${name}_local_user`,
  * });
- * const defaultUserAttachment = new alicloud.bastionhost.UserAttachment("defaultUserAttachment", {
+ * const defaultUserAttachment = new alicloud.bastionhost.UserAttachment("default", {
  *     instanceId: defaultInstance.id,
  *     userGroupId: defaultUserGroup.userGroupId,
  *     userId: localUser.userId,

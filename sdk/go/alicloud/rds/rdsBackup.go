@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleInstance, err := rds.NewInstance(ctx, "exampleInstance", &rds.InstanceArgs{
+//			example, err := rds.NewInstance(ctx, "example", &rds.InstanceArgs{
 //				Engine:                pulumi.String("MySQL"),
 //				EngineVersion:         pulumi.String("5.6"),
 //				InstanceType:          pulumi.String("rds.mysql.t1.small"),
@@ -46,8 +46,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = rds.NewRdsBackup(ctx, "exampleRdsBackup", &rds.RdsBackupArgs{
-//				DbInstanceId: exampleInstance.ID(),
+//			_, err = rds.NewRdsBackup(ctx, "example", &rds.RdsBackupArgs{
+//				DbInstanceId: example.ID(),
 //			})
 //			if err != nil {
 //				return err

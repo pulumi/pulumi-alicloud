@@ -213,6 +213,8 @@ class Resource(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.log.Resource("example",
+            type="userdefine",
+            name="user.tf.resource",
             description="user tf resource desc",
             ext_info="{}",
             schema=\"\"\"    {
@@ -234,9 +236,7 @@ class Resource(pulumi.CustomResource):
                 }
               ]
             }
-          
-        \"\"\",
-            type="userdefine")
+        \"\"\")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -279,6 +279,8 @@ class Resource(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.log.Resource("example",
+            type="userdefine",
+            name="user.tf.resource",
             description="user tf resource desc",
             ext_info="{}",
             schema=\"\"\"    {
@@ -300,9 +302,7 @@ class Resource(pulumi.CustomResource):
                 }
               ]
             }
-          
-        \"\"\",
-            type="userdefine")
+        \"\"\")
         ```
         <!--End PulumiCodeChooser -->
 

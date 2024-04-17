@@ -10,6 +10,37 @@ import * as utilities from "../utilities";
  * This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
  *
  * > **NOTE:** Available in 1.197.0+
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * export = async () => {
+ *     const default = await alicloud.ga.getAccelerators({
+ *         status: "active",
+ *     });
+ *     const defaultAccelerator: alicloud.ga.Accelerator[] = [];
+ *     for (const range = {value: 0}; range.value < (_default.accelerators.length > 0 ? 0 : 1); range.value++) {
+ *         defaultAccelerator.push(new alicloud.ga.Accelerator(`default-${range.value}`, {
+ *             duration: 1,
+ *             autoUseCoupon: true,
+ *             spec: "1",
+ *         }));
+ *     }
+ *     const acceleratorId = _default.accelerators.length > 0 ? _default.accelerators?.[0]?.id : defaultAccelerator[0].id;
+ *     const defaultGetDomains = await alicloud.ga.getDomains({
+ *         acceleratorId: acceleratorIdLocals,
+ *         domain: "your_domain",
+ *     });
+ *     return {
+ *         alicloudGaDomainExampleId: defaultGetDomains.domains?.[0]?.id,
+ *     };
+ * }
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
@@ -87,6 +118,37 @@ export interface GetDomainsResult {
  * This data source provides Ga Domain available to the user.[What is Domain](https://www.alibabacloud.com/help/en/global-accelerator/latest/createdomain)
  *
  * > **NOTE:** Available in 1.197.0+
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * export = async () => {
+ *     const default = await alicloud.ga.getAccelerators({
+ *         status: "active",
+ *     });
+ *     const defaultAccelerator: alicloud.ga.Accelerator[] = [];
+ *     for (const range = {value: 0}; range.value < (_default.accelerators.length > 0 ? 0 : 1); range.value++) {
+ *         defaultAccelerator.push(new alicloud.ga.Accelerator(`default-${range.value}`, {
+ *             duration: 1,
+ *             autoUseCoupon: true,
+ *             spec: "1",
+ *         }));
+ *     }
+ *     const acceleratorId = _default.accelerators.length > 0 ? _default.accelerators?.[0]?.id : defaultAccelerator[0].id;
+ *     const defaultGetDomains = await alicloud.ga.getDomains({
+ *         acceleratorId: acceleratorIdLocals,
+ *         domain: "your_domain",
+ *     });
+ *     return {
+ *         alicloudGaDomainExampleId: defaultGetDomains.domains?.[0]?.id,
+ *     };
+ * }
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
     return pulumi.output(args).apply((a: any) => getDomains(a, opts))

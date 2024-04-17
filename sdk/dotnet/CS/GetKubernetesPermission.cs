@@ -27,16 +27,18 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultUsers = AliCloud.Ram.GetUsers.Invoke();
+        ///     // Declare the data source
+        ///     var @default = AliCloud.Ram.GetUsers.Invoke();
         /// 
-        ///     var defaultKubernetesPermission = AliCloud.CS.GetKubernetesPermission.Invoke(new()
+        ///     // permissions
+        ///     var defaultGetKubernetesPermission = AliCloud.CS.GetKubernetesPermission.Invoke(new()
         ///     {
-        ///         Uid = defaultUsers.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
+        ///         Uid = @default.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["permissions"] = defaultKubernetesPermission.Apply(getKubernetesPermissionResult =&gt; getKubernetesPermissionResult.Permissions),
+        ///         ["permissions"] = defaultGetKubernetesPermission.Apply(getKubernetesPermissionResult =&gt; getKubernetesPermissionResult.Permissions),
         ///     };
         /// });
         /// ```
@@ -61,16 +63,18 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultUsers = AliCloud.Ram.GetUsers.Invoke();
+        ///     // Declare the data source
+        ///     var @default = AliCloud.Ram.GetUsers.Invoke();
         /// 
-        ///     var defaultKubernetesPermission = AliCloud.CS.GetKubernetesPermission.Invoke(new()
+        ///     // permissions
+        ///     var defaultGetKubernetesPermission = AliCloud.CS.GetKubernetesPermission.Invoke(new()
         ///     {
-        ///         Uid = defaultUsers.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
+        ///         Uid = @default.Apply(getUsersResult =&gt; getUsersResult.Users[0]?.Id),
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["permissions"] = defaultKubernetesPermission.Apply(getKubernetesPermissionResult =&gt; getKubernetesPermissionResult.Permissions),
+        ///         ["permissions"] = defaultGetKubernetesPermission.Apply(getKubernetesPermissionResult =&gt; getKubernetesPermissionResult.Permissions),
         ///     };
         /// });
         /// ```

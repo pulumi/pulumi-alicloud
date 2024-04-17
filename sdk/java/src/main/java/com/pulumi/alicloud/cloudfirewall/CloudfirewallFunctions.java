@@ -592,7 +592,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getInstanceMembers(GetInstanceMembersArgs.builder()
-     *             .ids(alicloud_cloud_firewall_instance_member.default().id())
+     *             .ids(defaultAlicloudCloudFirewallInstanceMember.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudCloudFirewallInstanceMemberExampleId&#34;, default_.members()[0].id());
@@ -635,7 +635,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getInstanceMembers(GetInstanceMembersArgs.builder()
-     *             .ids(alicloud_cloud_firewall_instance_member.default().id())
+     *             .ids(defaultAlicloudCloudFirewallInstanceMember.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudCloudFirewallInstanceMemberExampleId&#34;, default_.members()[0].id());
@@ -678,7 +678,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getInstanceMembers(GetInstanceMembersArgs.builder()
-     *             .ids(alicloud_cloud_firewall_instance_member.default().id())
+     *             .ids(defaultAlicloudCloudFirewallInstanceMember.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudCloudFirewallInstanceMemberExampleId&#34;, default_.members()[0].id());
@@ -721,7 +721,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getInstanceMembers(GetInstanceMembersArgs.builder()
-     *             .ids(alicloud_cloud_firewall_instance_member.default().id())
+     *             .ids(defaultAlicloudCloudFirewallInstanceMember.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudCloudFirewallInstanceMemberExampleId&#34;, default_.members()[0].id());
@@ -764,7 +764,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getInstanceMembers(GetInstanceMembersArgs.builder()
-     *             .ids(alicloud_cloud_firewall_instance_member.default().id())
+     *             .ids(defaultAlicloudCloudFirewallInstanceMember.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudCloudFirewallInstanceMemberExampleId&#34;, default_.members()[0].id());
@@ -807,7 +807,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getInstanceMembers(GetInstanceMembersArgs.builder()
-     *             .ids(alicloud_cloud_firewall_instance_member.default().id())
+     *             .ids(defaultAlicloudCloudFirewallInstanceMember.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudCloudFirewallInstanceMemberExampleId&#34;, default_.members()[0].id());
@@ -1108,7 +1108,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewallCens(GetVpcFirewallCensArgs.builder()
-     *             .ids(alicloud_cloud_firewall_vpc_firewall_cen.default().id())
+     *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.id())
      *             .cenId(&#34;cen-cjok7uyb5w2b27573v&#34;)
      *             .memberUid(&#34;1415189284827022&#34;)
      *             .status(&#34;closed&#34;)
@@ -1155,7 +1155,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewallCens(GetVpcFirewallCensArgs.builder()
-     *             .ids(alicloud_cloud_firewall_vpc_firewall_cen.default().id())
+     *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.id())
      *             .cenId(&#34;cen-cjok7uyb5w2b27573v&#34;)
      *             .memberUid(&#34;1415189284827022&#34;)
      *             .status(&#34;closed&#34;)
@@ -1202,7 +1202,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewallCens(GetVpcFirewallCensArgs.builder()
-     *             .ids(alicloud_cloud_firewall_vpc_firewall_cen.default().id())
+     *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.id())
      *             .cenId(&#34;cen-cjok7uyb5w2b27573v&#34;)
      *             .memberUid(&#34;1415189284827022&#34;)
      *             .status(&#34;closed&#34;)
@@ -1249,7 +1249,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewallCens(GetVpcFirewallCensArgs.builder()
-     *             .ids(alicloud_cloud_firewall_vpc_firewall_cen.default().id())
+     *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.id())
      *             .cenId(&#34;cen-cjok7uyb5w2b27573v&#34;)
      *             .memberUid(&#34;1415189284827022&#34;)
      *             .status(&#34;closed&#34;)
@@ -1296,7 +1296,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewallCens(GetVpcFirewallCensArgs.builder()
-     *             .ids(alicloud_cloud_firewall_vpc_firewall_cen.default().id())
+     *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.id())
      *             .cenId(&#34;cen-cjok7uyb5w2b27573v&#34;)
      *             .memberUid(&#34;1415189284827022&#34;)
      *             .status(&#34;closed&#34;)
@@ -1343,7 +1343,7 @@ public final class CloudfirewallFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CloudfirewallFunctions.getVpcFirewallCens(GetVpcFirewallCensArgs.builder()
-     *             .ids(alicloud_cloud_firewall_vpc_firewall_cen.default().id())
+     *             .ids(defaultAlicloudCloudFirewallVpcFirewallCen.id())
      *             .cenId(&#34;cen-cjok7uyb5w2b27573v&#34;)
      *             .memberUid(&#34;1415189284827022&#34;)
      *             .status(&#34;closed&#34;)

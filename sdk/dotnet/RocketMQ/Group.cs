@@ -33,15 +33,18 @@ namespace Pulumi.AliCloud.RocketMQ
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "GID-tf-example";
     ///     var groupName = config.Get("groupName") ?? "GID-tf-example";
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance");
+    ///     var defaultInstance = new AliCloud.RocketMQ.Instance("default", new()
+    ///     {
+    ///         Name = $"{name}-{@default.Result}",
+    ///     });
     /// 
-    ///     var defaultGroup = new AliCloud.RocketMQ.Group("defaultGroup", new()
+    ///     var defaultGroup = new AliCloud.RocketMQ.Group("default", new()
     ///     {
     ///         GroupName = groupName,
     ///         InstanceId = defaultInstance.Id,

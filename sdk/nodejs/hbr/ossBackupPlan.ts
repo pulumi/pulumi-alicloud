@@ -21,13 +21,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
- * const defaultVault = new alicloud.hbr.Vault("defaultVault", {vaultName: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`});
- * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`});
- * const defaultOssBackupPlan = new alicloud.hbr.OssBackupPlan("defaultOssBackupPlan", {
+ * const defaultVault = new alicloud.hbr.Vault("default", {vaultName: `terraform-example-${_default.result}`});
+ * const defaultBucket = new alicloud.oss.Bucket("default", {bucket: `terraform-example-${_default.result}`});
+ * const defaultOssBackupPlan = new alicloud.hbr.OssBackupPlan("default", {
  *     ossBackupPlanName: "terraform-example",
  *     prefix: "/example",
  *     bucket: defaultBucket.bucket,

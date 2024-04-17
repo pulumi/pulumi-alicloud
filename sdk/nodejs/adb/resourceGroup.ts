@@ -22,21 +22,21 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const defaultZones = alicloud.adb.getZones({});
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ * const default = alicloud.adb.getZones({});
+ * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "10.4.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const defaultDBCluster = new alicloud.adb.DBCluster("defaultDBCluster", {
+ * const defaultDBCluster = new alicloud.adb.DBCluster("default", {
  *     computeResource: "48Core192GBNEW",
  *     dbClusterCategory: "MixedStorage",
  *     dbClusterVersion: "3.0",
@@ -48,20 +48,20 @@ import * as utilities from "../utilities";
  *     maintainTime: "04:00Z-05:00Z",
  *     mode: "flexible",
  *     paymentType: "PayAsYouGo",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.ids?.[0]),
  *     securityIps: [
  *         "10.168.1.12",
  *         "10.168.1.11",
  *     ],
  *     vpcId: defaultNetwork.id,
  *     vswitchId: defaultSwitch.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     tags: {
  *         Created: "TF",
  *         For: "example",
  *     },
  * });
- * const defaultResourceGroup = new alicloud.adb.ResourceGroup("defaultResourceGroup", {
+ * const defaultResourceGroup = new alicloud.adb.ResourceGroup("default", {
  *     groupName: "TF_EXAMPLE",
  *     groupType: "batch",
  *     nodeNum: 1,

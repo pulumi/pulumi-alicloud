@@ -226,14 +226,14 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("defaultCommonBandwithPackage",
+        default = alicloud.vpc.CommonBandwithPackage("default",
             bandwidth="3",
             internet_charge_type="PayByBandwidth")
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+        default_eip_address = alicloud.ecs.EipAddress("default",
             bandwidth="3",
             internet_charge_type="PayByTraffic")
-        default_common_bandwith_package_attachment = alicloud.vpc.CommonBandwithPackageAttachment("defaultCommonBandwithPackageAttachment",
-            bandwidth_package_id=default_common_bandwith_package.id,
+        default_common_bandwith_package_attachment = alicloud.vpc.CommonBandwithPackageAttachment("default",
+            bandwidth_package_id=default.id,
             instance_id=default_eip_address.id,
             bandwidth_package_bandwidth="2",
             ip_type="EIP")
@@ -276,14 +276,14 @@ class CommonBandwithPackageAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_common_bandwith_package = alicloud.vpc.CommonBandwithPackage("defaultCommonBandwithPackage",
+        default = alicloud.vpc.CommonBandwithPackage("default",
             bandwidth="3",
             internet_charge_type="PayByBandwidth")
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress",
+        default_eip_address = alicloud.ecs.EipAddress("default",
             bandwidth="3",
             internet_charge_type="PayByTraffic")
-        default_common_bandwith_package_attachment = alicloud.vpc.CommonBandwithPackageAttachment("defaultCommonBandwithPackageAttachment",
-            bandwidth_package_id=default_common_bandwith_package.id,
+        default_common_bandwith_package_attachment = alicloud.vpc.CommonBandwithPackageAttachment("default",
+            bandwidth_package_id=default.id,
             instance_id=default_eip_address.id,
             bandwidth_package_bandwidth="2",
             ip_type="EIP")

@@ -42,7 +42,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
+//			_, err := ecs.NewEipAddress(ctx, "default", &ecs.EipAddressArgs{
 //				AddressName:        pulumi.String(name),
 //				Isp:                pulumi.String("BGP"),
 //				InternetChargeType: pulumi.String("PayByBandwidth"),
@@ -51,8 +51,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ddos.NewBasicDefenseThreshold(ctx, "defaultBasicDefenseThreshold", &ddos.BasicDefenseThresholdArgs{
-//				InstanceId:   defaultEipAddress.ID(),
+//			_, err = ddos.NewBasicDefenseThreshold(ctx, "default", &ddos.BasicDefenseThresholdArgs{
+//				InstanceId:   _default.ID(),
 //				DdosType:     pulumi.String("defense"),
 //				InstanceType: pulumi.String("eip"),
 //				Bps:          pulumi.Int(390),

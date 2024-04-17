@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const dmsEnterpriseUsersDs = alicloud.dms.getEnterpriseUsers({
  *     ids: ["uid"],
  *     role: "USER",
@@ -118,6 +119,7 @@ export interface GetEnterpriseUsersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const dmsEnterpriseUsersDs = alicloud.dms.getEnterpriseUsers({
  *     ids: ["uid"],
  *     role: "USER",

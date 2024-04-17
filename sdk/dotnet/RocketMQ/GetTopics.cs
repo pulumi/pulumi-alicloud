@@ -30,16 +30,16 @@ namespace Pulumi.AliCloud.RocketMQ
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "onsInstanceName";
         ///     var topic = config.Get("topic") ?? "onsTopicDatasourceName";
-        ///     var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new()
+        ///     var @default = new AliCloud.RocketMQ.Instance("default", new()
         ///     {
         ///         InstanceName = name,
         ///         Remark = "default_ons_instance_remark",
         ///     });
         /// 
-        ///     var defaultTopic = new AliCloud.RocketMQ.Topic("defaultTopic", new()
+        ///     var defaultTopic = new AliCloud.RocketMQ.Topic("default", new()
         ///     {
         ///         TopicName = topic,
-        ///         InstanceId = defaultInstance.Id,
+        ///         InstanceId = @default.Id,
         ///         MessageType = 0,
         ///         Remark = "dafault_ons_topic_remark",
         ///     });
@@ -81,16 +81,16 @@ namespace Pulumi.AliCloud.RocketMQ
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "onsInstanceName";
         ///     var topic = config.Get("topic") ?? "onsTopicDatasourceName";
-        ///     var defaultInstance = new AliCloud.RocketMQ.Instance("defaultInstance", new()
+        ///     var @default = new AliCloud.RocketMQ.Instance("default", new()
         ///     {
         ///         InstanceName = name,
         ///         Remark = "default_ons_instance_remark",
         ///     });
         /// 
-        ///     var defaultTopic = new AliCloud.RocketMQ.Topic("defaultTopic", new()
+        ///     var defaultTopic = new AliCloud.RocketMQ.Topic("default", new()
         ///     {
         ///         TopicName = topic,
-        ///         InstanceId = defaultInstance.Id,
+        ///         InstanceId = @default.Id,
         ///         MessageType = 0,
         ///         Remark = "dafault_ons_topic_remark",
         ///     });

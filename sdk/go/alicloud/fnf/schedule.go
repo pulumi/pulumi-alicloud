@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleFlow, err := fnf.NewFlow(ctx, "exampleFlow", &fnf.FlowArgs{
+//			example, err := fnf.NewFlow(ctx, "example", &fnf.FlowArgs{
 //				Definition: pulumi.String(`  version: v1beta1
 //	  type: flow
 //	  steps:
@@ -45,16 +45,17 @@ import (
 // `),
 //
 //				Description: pulumi.String("tf-exampleFnFFlow983041"),
+//				Name:        pulumi.String("tf-exampleSchedule"),
 //				Type:        pulumi.String("FDL"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = fnf.NewSchedule(ctx, "exampleSchedule", &fnf.ScheduleArgs{
+//			_, err = fnf.NewSchedule(ctx, "example", &fnf.ScheduleArgs{
 //				CronExpression: pulumi.String("30 9 * * * *"),
 //				Description:    pulumi.String("tf-exampleFnFSchedule983041"),
 //				Enable:         pulumi.Bool(true),
-//				FlowName:       exampleFlow.Name,
+//				FlowName:       example.Name,
 //				Payload:        pulumi.String("{\"tf-example\": \"example success\"}"),
 //				ScheduleName:   pulumi.String("tf-exampleFnFSchedule983041"),
 //			})

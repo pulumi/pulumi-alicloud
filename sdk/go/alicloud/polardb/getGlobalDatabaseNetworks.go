@@ -42,15 +42,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			_, err = vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+//				VpcId:       _default.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				ZoneId:      pulumi.String(this.Classes[0].ZoneId),
 //				VswitchName: pulumi.String("terraform-example"),
@@ -69,7 +69,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultGlobalDatabaseNetwork, err := polardb.NewGlobalDatabaseNetwork(ctx, "defaultGlobalDatabaseNetwork", &polardb.GlobalDatabaseNetworkArgs{
+//			defaultGlobalDatabaseNetwork, err := polardb.NewGlobalDatabaseNetwork(ctx, "default", &polardb.GlobalDatabaseNetworkArgs{
 //				DbClusterId: cluster.ID(),
 //				Description: cluster.ID(),
 //			})

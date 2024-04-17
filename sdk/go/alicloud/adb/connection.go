@@ -42,24 +42,24 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := adb.GetZones(ctx, nil, nil)
+//			_default, err := adb.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 //				NameRegex: pulumi.StringRef("^default-NODELETING$"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(_default.Ids[0]),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			vswitchId := defaultSwitches.Ids[0]
+//			vswitchId := defaultGetSwitches.Ids[0]
 //			cluster, err := adb.NewDBCluster(ctx, "cluster", &adb.DBClusterArgs{
 //				DbClusterCategory: pulumi.String("MixedStorage"),
 //				Mode:              pulumi.String("flexible"),
@@ -70,7 +70,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = adb.NewConnection(ctx, "defaultConnection", &adb.ConnectionArgs{
+//			_, err = adb.NewConnection(ctx, "default", &adb.ConnectionArgs{
 //				DbClusterId:      cluster.ID(),
 //				ConnectionPrefix: pulumi.String("example"),
 //			})

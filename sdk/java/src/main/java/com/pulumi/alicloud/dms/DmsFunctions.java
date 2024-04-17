@@ -245,11 +245,12 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .envType(&#34;test&#34;)
-     *             .instanceType(&#34;mysql&#34;)
-     *             .nameRegex(&#34;tf_testAcc&#34;)
      *             .netType(&#34;CLASSIC&#34;)
+     *             .instanceType(&#34;mysql&#34;)
+     *             .envType(&#34;test&#34;)
+     *             .nameRegex(&#34;tf_testAcc&#34;)
      *             .outputFile(&#34;dms_enterprise_instances.json&#34;)
      *             .build());
      * 
@@ -292,11 +293,12 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .envType(&#34;test&#34;)
-     *             .instanceType(&#34;mysql&#34;)
-     *             .nameRegex(&#34;tf_testAcc&#34;)
      *             .netType(&#34;CLASSIC&#34;)
+     *             .instanceType(&#34;mysql&#34;)
+     *             .envType(&#34;test&#34;)
+     *             .nameRegex(&#34;tf_testAcc&#34;)
      *             .outputFile(&#34;dms_enterprise_instances.json&#34;)
      *             .build());
      * 
@@ -339,11 +341,12 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .envType(&#34;test&#34;)
-     *             .instanceType(&#34;mysql&#34;)
-     *             .nameRegex(&#34;tf_testAcc&#34;)
      *             .netType(&#34;CLASSIC&#34;)
+     *             .instanceType(&#34;mysql&#34;)
+     *             .envType(&#34;test&#34;)
+     *             .nameRegex(&#34;tf_testAcc&#34;)
      *             .outputFile(&#34;dms_enterprise_instances.json&#34;)
      *             .build());
      * 
@@ -386,11 +389,12 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .envType(&#34;test&#34;)
-     *             .instanceType(&#34;mysql&#34;)
-     *             .nameRegex(&#34;tf_testAcc&#34;)
      *             .netType(&#34;CLASSIC&#34;)
+     *             .instanceType(&#34;mysql&#34;)
+     *             .envType(&#34;test&#34;)
+     *             .nameRegex(&#34;tf_testAcc&#34;)
      *             .outputFile(&#34;dms_enterprise_instances.json&#34;)
      *             .build());
      * 
@@ -433,11 +437,12 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .envType(&#34;test&#34;)
-     *             .instanceType(&#34;mysql&#34;)
-     *             .nameRegex(&#34;tf_testAcc&#34;)
      *             .netType(&#34;CLASSIC&#34;)
+     *             .instanceType(&#34;mysql&#34;)
+     *             .envType(&#34;test&#34;)
+     *             .nameRegex(&#34;tf_testAcc&#34;)
      *             .outputFile(&#34;dms_enterprise_instances.json&#34;)
      *             .build());
      * 
@@ -480,11 +485,12 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var dmsEnterpriseInstancesDs = DmsFunctions.getEnterpriseInstances(GetEnterpriseInstancesArgs.builder()
-     *             .envType(&#34;test&#34;)
-     *             .instanceType(&#34;mysql&#34;)
-     *             .nameRegex(&#34;tf_testAcc&#34;)
      *             .netType(&#34;CLASSIC&#34;)
+     *             .instanceType(&#34;mysql&#34;)
+     *             .envType(&#34;test&#34;)
+     *             .nameRegex(&#34;tf_testAcc&#34;)
      *             .outputFile(&#34;dms_enterprise_instances.json&#34;)
      *             .build());
      * 
@@ -1100,12 +1106,12 @@ public final class DmsFunctions {
      *             .userId(104442)
      *             .build());
      * 
-     *         final var defaultEnterpriseProxyAccesses = DmsFunctions.getEnterpriseProxyAccesses(GetEnterpriseProxyAccessesArgs.builder()
+     *         final var default = DmsFunctions.getEnterpriseProxyAccesses(GetEnterpriseProxyAccessesArgs.builder()
      *             .ids(defaultEnterpriseProxyAccess.id())
      *             .proxyId(1881)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDmsProxyAccesesExampleId&#34;, defaultEnterpriseProxyAccesses.applyValue(getEnterpriseProxyAccessesResult -&gt; getEnterpriseProxyAccessesResult).applyValue(defaultEnterpriseProxyAccesses -&gt; defaultEnterpriseProxyAccesses.applyValue(getEnterpriseProxyAccessesResult -&gt; getEnterpriseProxyAccessesResult.accesses()[0].id())));
+     *         ctx.export(&#34;alicloudDmsProxyAccesesExampleId&#34;, default_.applyValue(default_ -&gt; default_.accesses()[0].id()));
      *     }
      * }
      * ```
@@ -1153,12 +1159,12 @@ public final class DmsFunctions {
      *             .userId(104442)
      *             .build());
      * 
-     *         final var defaultEnterpriseProxyAccesses = DmsFunctions.getEnterpriseProxyAccesses(GetEnterpriseProxyAccessesArgs.builder()
+     *         final var default = DmsFunctions.getEnterpriseProxyAccesses(GetEnterpriseProxyAccessesArgs.builder()
      *             .ids(defaultEnterpriseProxyAccess.id())
      *             .proxyId(1881)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDmsProxyAccesesExampleId&#34;, defaultEnterpriseProxyAccesses.applyValue(getEnterpriseProxyAccessesResult -&gt; getEnterpriseProxyAccessesResult).applyValue(defaultEnterpriseProxyAccesses -&gt; defaultEnterpriseProxyAccesses.applyValue(getEnterpriseProxyAccessesResult -&gt; getEnterpriseProxyAccessesResult.accesses()[0].id())));
+     *         ctx.export(&#34;alicloudDmsProxyAccesesExampleId&#34;, default_.applyValue(default_ -&gt; default_.accesses()[0].id()));
      *     }
      * }
      * ```
@@ -1206,12 +1212,12 @@ public final class DmsFunctions {
      *             .userId(104442)
      *             .build());
      * 
-     *         final var defaultEnterpriseProxyAccesses = DmsFunctions.getEnterpriseProxyAccesses(GetEnterpriseProxyAccessesArgs.builder()
+     *         final var default = DmsFunctions.getEnterpriseProxyAccesses(GetEnterpriseProxyAccessesArgs.builder()
      *             .ids(defaultEnterpriseProxyAccess.id())
      *             .proxyId(1881)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDmsProxyAccesesExampleId&#34;, defaultEnterpriseProxyAccesses.applyValue(getEnterpriseProxyAccessesResult -&gt; getEnterpriseProxyAccessesResult).applyValue(defaultEnterpriseProxyAccesses -&gt; defaultEnterpriseProxyAccesses.applyValue(getEnterpriseProxyAccessesResult -&gt; getEnterpriseProxyAccessesResult.accesses()[0].id())));
+     *         ctx.export(&#34;alicloudDmsProxyAccesesExampleId&#34;, default_.applyValue(default_ -&gt; default_.accesses()[0].id()));
      *     }
      * }
      * ```
@@ -1259,12 +1265,12 @@ public final class DmsFunctions {
      *             .userId(104442)
      *             .build());
      * 
-     *         final var defaultEnterpriseProxyAccesses = DmsFunctions.getEnterpriseProxyAccesses(GetEnterpriseProxyAccessesArgs.builder()
+     *         final var default = DmsFunctions.getEnterpriseProxyAccesses(GetEnterpriseProxyAccessesArgs.builder()
      *             .ids(defaultEnterpriseProxyAccess.id())
      *             .proxyId(1881)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudDmsProxyAccesesExampleId&#34;, defaultEnterpriseProxyAccesses.applyValue(getEnterpriseProxyAccessesResult -&gt; getEnterpriseProxyAccessesResult).applyValue(defaultEnterpriseProxyAccesses -&gt; defaultEnterpriseProxyAccesses.applyValue(getEnterpriseProxyAccessesResult -&gt; getEnterpriseProxyAccessesResult.accesses()[0].id())));
+     *         ctx.export(&#34;alicloudDmsProxyAccesesExampleId&#34;, default_.applyValue(default_ -&gt; default_.accesses()[0].id()));
      *     }
      * }
      * ```
@@ -1303,6 +1309,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
      *             .ids(&#34;uid&#34;)
      *             .role(&#34;USER&#34;)
@@ -1348,6 +1355,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
      *             .ids(&#34;uid&#34;)
      *             .role(&#34;USER&#34;)
@@ -1393,6 +1401,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
      *             .ids(&#34;uid&#34;)
      *             .role(&#34;USER&#34;)
@@ -1438,6 +1447,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
      *             .ids(&#34;uid&#34;)
      *             .role(&#34;USER&#34;)
@@ -1483,6 +1493,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
      *             .ids(&#34;uid&#34;)
      *             .role(&#34;USER&#34;)
@@ -1528,6 +1539,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var dmsEnterpriseUsersDs = DmsFunctions.getEnterpriseUsers(GetEnterpriseUsersArgs.builder()
      *             .ids(&#34;uid&#34;)
      *             .role(&#34;USER&#34;)
@@ -1573,6 +1585,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
      *             .status(&#34;ACTIVE&#34;)
      *             .build());
@@ -1616,6 +1629,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
      *             .status(&#34;ACTIVE&#34;)
      *             .build());
@@ -1659,6 +1673,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
      *             .status(&#34;ACTIVE&#34;)
      *             .build());
@@ -1702,6 +1717,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
      *             .status(&#34;ACTIVE&#34;)
      *             .build());
@@ -1745,6 +1761,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
      *             .status(&#34;ACTIVE&#34;)
      *             .build());
@@ -1788,6 +1805,7 @@ public final class DmsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var default = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
      *             .status(&#34;ACTIVE&#34;)
      *             .build());

@@ -41,8 +41,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
  * import com.pulumi.alicloud.vpc.SwitchArgs;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.eds.AdConnectorDirectory;
  * import com.pulumi.alicloud.eds.AdConnectorDirectoryArgs;
  * import java.util.List;
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultZones = EdsFunctions.getZones();
+ *         final var default = EdsFunctions.getZones();
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
@@ -70,17 +70,17 @@ import javax.annotation.Nullable;
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *             .zoneId(default_.ids()[0])
  *             .vswitchName(name)
  *             .build());
  * 
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
  *         var defaultAdConnectorDirectory = new AdConnectorDirectory(&#34;defaultAdConnectorDirectory&#34;, AdConnectorDirectoryArgs.builder()        
- *             .directoryName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
+ *             .directoryName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
  *             .desktopAccessType(&#34;INTERNET&#34;)
  *             .dnsAddresses(&#34;127.0.0.2&#34;)
  *             .domainName(&#34;corp.example.com&#34;)

@@ -31,31 +31,31 @@ namespace Pulumi.AliCloud.ResourceManager
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tfexample";
-    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
+    ///     var example = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "192.168.0.0/16",
     ///     });
     /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
     ///     {
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         CidrBlock = "192.168.0.0/16",
     ///         VpcId = exampleNetwork.Id,
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var exampleResourceShare = new AliCloud.ResourceManager.ResourceShare("exampleResourceShare", new()
+    ///     var exampleResourceShare = new AliCloud.ResourceManager.ResourceShare("example", new()
     ///     {
     ///         ResourceShareName = name,
     ///     });
     /// 
-    ///     var exampleSharedResource = new AliCloud.ResourceManager.SharedResource("exampleSharedResource", new()
+    ///     var exampleSharedResource = new AliCloud.ResourceManager.SharedResource("example", new()
     ///     {
     ///         ResourceId = exampleSwitch.Id,
     ///         ResourceShareId = exampleResourceShare.Id,

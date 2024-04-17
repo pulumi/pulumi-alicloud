@@ -22,12 +22,12 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultAcl = new alicloud.ga.Acl("defaultAcl", {
+ * const _default = new alicloud.ga.Acl("default", {
  *     aclName: "terraform-example",
  *     addressIpVersion: "IPv4",
  * });
- * const defaultAclEntryAttachment = new alicloud.ga.AclEntryAttachment("defaultAclEntryAttachment", {
- *     aclId: defaultAcl.id,
+ * const defaultAclEntryAttachment = new alicloud.ga.AclEntryAttachment("default", {
+ *     aclId: _default.id,
  *     entry: "192.168.1.1/32",
  *     entryDescription: "terraform-example",
  * });

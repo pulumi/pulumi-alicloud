@@ -247,10 +247,10 @@ class Acl(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_acl = alicloud.alb.Acl("defaultAcl",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_acl = alicloud.alb.Acl("default",
             acl_name="tf_example",
-            resource_group_id=default_resource_groups.groups[0].id)
+            resource_group_id=default.groups[0].id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -293,10 +293,10 @@ class Acl(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_acl = alicloud.alb.Acl("defaultAcl",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_acl = alicloud.alb.Acl("default",
             acl_name="tf_example",
-            resource_group_id=default_resource_groups.groups[0].id)
+            resource_group_id=default.groups[0].id)
         ```
         <!--End PulumiCodeChooser -->
 

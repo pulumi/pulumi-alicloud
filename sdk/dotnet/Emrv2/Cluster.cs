@@ -33,53 +33,55 @@ namespace Pulumi.AliCloud.Emrv2
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
     ///         Status = "OK",
     ///     });
     /// 
-    ///     var defaultKeys = AliCloud.Kms.GetKeys.Invoke(new()
+    ///     var defaultGetKeys = AliCloud.Kms.GetKeys.Invoke(new()
     ///     {
     ///         Status = "Enabled",
     ///     });
     /// 
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableInstanceType = "ecs.g7.xlarge",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/21",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var defaultEcsKeyPair = new AliCloud.Ecs.EcsKeyPair("defaultEcsKeyPair", new()
+    ///     var defaultEcsKeyPair = new AliCloud.Ecs.EcsKeyPair("default", new()
     ///     {
-    ///         KeyPairName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         KeyPairName = $"{name}-{defaultInteger.Result}",
     ///     });
     /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
+    ///         Name = name,
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
-    ///     var defaultRole = new AliCloud.Ram.Role("defaultRole", new()
+    ///     var defaultRole = new AliCloud.Ram.Role("default", new()
     ///     {
+    ///         Name = name,
     ///         Document = @"    {
     ///         ""Statement"": [
     ///         {
@@ -100,7 +102,7 @@ namespace Pulumi.AliCloud.Emrv2
     ///         Force = true,
     ///     });
     /// 
-    ///     var defaultCluster = new AliCloud.Emrv2.Cluster("defaultCluster", new()
+    ///     var defaultCluster = new AliCloud.Emrv2.Cluster("default", new()
     ///     {
     ///         NodeGroups = new[]
     ///         {
@@ -193,10 +195,10 @@ namespace Pulumi.AliCloud.Emrv2
     ///         {
     ///             new AliCloud.Emrv2.Inputs.ClusterNodeAttributeArgs
     ///             {
-    ///                 ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///                 ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///                 KeyPairName = defaultEcsKeyPair.Id,
     ///                 DataDiskEncrypted = true,
-    ///                 DataDiskKmsKeyId = defaultKeys.Apply(getKeysResult =&gt; getKeysResult.Ids[0]),
+    ///                 DataDiskKmsKeyId = defaultGetKeys.Apply(getKeysResult =&gt; getKeysResult.Ids[0]),
     ///                 VpcId = defaultNetwork.Id,
     ///                 RamRole = defaultRole.Name,
     ///                 SecurityGroupId = defaultSecurityGroup.Id,
@@ -213,7 +215,7 @@ namespace Pulumi.AliCloud.Emrv2
     ///                 "",
     ///             },
     ///         }),
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
     ///         ClusterName = name,
     ///         PaymentType = "PayAsYouGo",
     ///         ClusterType = "DATAFLOW",

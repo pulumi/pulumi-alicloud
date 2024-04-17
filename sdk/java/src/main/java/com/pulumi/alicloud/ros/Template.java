@@ -50,13 +50,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Template(&#34;example&#34;, TemplateArgs.builder()        
+ *             .templateName(&#34;example_value&#34;)
  *             .templateBody(&#34;&#34;&#34;
  *     {
  *     	&#34;ROSTemplateFormatVersion&#34;: &#34;2015-09-01&#34;
  *     }
- *     
  *             &#34;&#34;&#34;)
- *             .templateName(&#34;example_value&#34;)
  *             .build());
  * 
  *     }

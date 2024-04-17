@@ -31,9 +31,9 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// {
     ///     var @default = new AliCloud.ThreatDetection.VulWhitelist("default", new()
     ///     {
-    ///         Reason = "tf-example-reason",
-    ///         TargetInfo = "{\"type\":\"GroupId\",\"uuids\":[],\"groupIds\":[10782678]}",
     ///         Whitelist = "[{\"aliasName\":\"RHSA-2021:2260: libwebp 安全更新\",\"name\":\"RHSA-2021:2260: libwebp 安全更新\",\"type\":\"cve\"}]",
+    ///         TargetInfo = "{\"type\":\"GroupId\",\"uuids\":[],\"groupIds\":[10782678]}",
+    ///         Reason = "tf-example-reason",
     ///     });
     /// 
     /// });

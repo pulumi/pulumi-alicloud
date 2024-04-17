@@ -31,15 +31,17 @@ namespace Pulumi.AliCloud.CR
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var exampleNamespace = new AliCloud.CR.Namespace("exampleNamespace", new()
+    ///     var example = new AliCloud.CR.Namespace("example", new()
     ///     {
+    ///         Name = name,
     ///         AutoCreate = false,
     ///         DefaultVisibility = "PUBLIC",
     ///     });
     /// 
-    ///     var exampleRepo = new AliCloud.CR.Repo("exampleRepo", new()
+    ///     var exampleRepo = new AliCloud.CR.Repo("example", new()
     ///     {
-    ///         Namespace = exampleNamespace.Name,
+    ///         Namespace = example.Name,
+    ///         Name = name,
     ///         Summary = "this is summary of my new repo",
     ///         RepoType = "PUBLIC",
     ///         Detail = "this is a public repo",

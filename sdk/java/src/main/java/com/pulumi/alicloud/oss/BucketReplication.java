@@ -37,8 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.ram.Role;
@@ -69,20 +69,21 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
  *         var bucketSrc = new Bucket(&#34;bucketSrc&#34;, BucketArgs.builder()        
- *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-src-%s&#34;, result)))
+ *             .bucket(String.format(&#34;example-src-%s&#34;, default_.result()))
  *             .build());
  * 
  *         var bucketDest = new Bucket(&#34;bucketDest&#34;, BucketArgs.builder()        
- *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-dest-%s&#34;, result)))
+ *             .bucket(String.format(&#34;example-dest-%s&#34;, default_.result()))
  *             .build());
  * 
  *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+ *             .name(String.format(&#34;example-role-%s&#34;, default_.result()))
  *             .document(&#34;&#34;&#34;
  * 		{
  * 		  &#34;Statement&#34;: [
@@ -104,7 +105,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
- *             .policyName(default_.result().applyValue(result -&gt; String.format(&#34;example-policy-%s&#34;, result)))
+ *             .policyName(String.format(&#34;example-policy-%s&#34;, default_.result()))
  *             .policyDocument(&#34;&#34;&#34;
  * 		{
  * 		  &#34;Statement&#34;: [

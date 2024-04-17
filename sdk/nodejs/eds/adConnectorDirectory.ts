@@ -23,23 +23,23 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultZones = alicloud.eds.getZones({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const default = alicloud.eds.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
+ *     zoneId: _default.then(_default => _default.ids?.[0]),
  *     vswitchName: name,
  * });
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const defaultInteger = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const defaultAdConnectorDirectory = new alicloud.eds.AdConnectorDirectory("defaultAdConnectorDirectory", {
- *     directoryName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
+ * const defaultAdConnectorDirectory = new alicloud.eds.AdConnectorDirectory("default", {
+ *     directoryName: `${name}-${defaultInteger.result}`,
  *     desktopAccessType: "INTERNET",
  *     dnsAddresses: ["127.0.0.2"],
  *     domainName: "corp.example.com",

@@ -32,31 +32,31 @@ namespace Pulumi.AliCloud.Adb
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var vPCID = new AliCloud.Vpc.Network("vPCID", new()
+    ///     var VPCID = new AliCloud.Vpc.Network("VPCID", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
-    ///     var vSWITCHID = new AliCloud.Vpc.Switch("vSWITCHID", new()
+    ///     var VSWITCHID = new AliCloud.Vpc.Switch("VSWITCHID", new()
     ///     {
-    ///         VpcId = vPCID.Id,
+    ///         VpcId = VPCID.Id,
     ///         ZoneId = "cn-hangzhou-k",
     ///         VswitchName = name,
     ///         CidrBlock = "172.16.0.0/24",
     ///     });
     /// 
-    ///     var createInstance = new AliCloud.Adb.DBClusterLakeVersion("createInstance", new()
+    ///     var createInstance = new AliCloud.Adb.DBClusterLakeVersion("CreateInstance", new()
     ///     {
     ///         StorageResource = "0ACU",
     ///         ZoneId = "cn-hangzhou-k",
-    ///         VpcId = vPCID.Id,
-    ///         VswitchId = vSWITCHID.Id,
+    ///         VpcId = VPCID.Id,
+    ///         VswitchId = VSWITCHID.Id,
     ///         DbClusterDescription = name,
     ///         ComputeResource = "16ACU",
     ///         DbClusterVersion = "5.0",
@@ -64,7 +64,7 @@ namespace Pulumi.AliCloud.Adb
     ///         SecurityIps = "127.0.0.1",
     ///     });
     /// 
-    ///     var defaultLakeAccount = new AliCloud.Adb.LakeAccount("defaultLakeAccount", new()
+    ///     var defaultLakeAccount = new AliCloud.Adb.LakeAccount("default", new()
     ///     {
     ///         DbClusterId = createInstance.Id,
     ///         AccountType = "Super",

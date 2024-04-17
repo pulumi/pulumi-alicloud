@@ -35,23 +35,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAlertContact, err := arms.NewAlertContact(ctx, "defaultAlertContact", &arms.AlertContactArgs{
+//			_, err := arms.NewAlertContact(ctx, "default", &arms.AlertContactArgs{
 //				AlertContactName: pulumi.String("example_value"),
 //				Email:            pulumi.String("example_value@aaa.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultAlertContactGroup, err := arms.NewAlertContactGroup(ctx, "defaultAlertContactGroup", &arms.AlertContactGroupArgs{
+//			defaultAlertContactGroup, err := arms.NewAlertContactGroup(ctx, "default", &arms.AlertContactGroupArgs{
 //				AlertContactGroupName: pulumi.String("example_value"),
 //				ContactIds: pulumi.StringArray{
-//					defaultAlertContact.ID(),
+//					_default.ID(),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = arms.NewDispatchRule(ctx, "defaultDispatchRule", &arms.DispatchRuleArgs{
+//			_, err = arms.NewDispatchRule(ctx, "default", &arms.DispatchRuleArgs{
 //				DispatchRuleName: pulumi.String("example_value"),
 //				DispatchType:     pulumi.String("CREATE_ALERT"),
 //				GroupRules: arms.DispatchRuleGroupRuleArray{
@@ -83,7 +83,7 @@ import (
 //					&arms.DispatchRuleNotifyRuleArgs{
 //						NotifyObjects: arms.DispatchRuleNotifyRuleNotifyObjectArray{
 //							&arms.DispatchRuleNotifyRuleNotifyObjectArgs{
-//								NotifyObjectId: defaultAlertContact.ID(),
+//								NotifyObjectId: _default.ID(),
 //								NotifyType:     pulumi.String("ARMS_CONTACT"),
 //								Name:           pulumi.String("example_value"),
 //							},

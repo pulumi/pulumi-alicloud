@@ -31,9 +31,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.Provider;
- * import com.pulumi.alicloud.ProviderArgs;
- * import com.pulumi.alicloud.inputs.ProviderAssumeRoleArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
  * import com.pulumi.alicloud.cen.Instance;
@@ -44,7 +41,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cen.InstanceGrantArgs;
  * import com.pulumi.alicloud.cen.InstanceAttachment;
  * import com.pulumi.alicloud.cen.InstanceAttachmentArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -60,62 +56,37 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var anotherUid = config.get(&#34;anotherUid&#34;).orElse(&#34;xxxx&#34;);
- *         // Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
- *         var childAccount = new Provider(&#34;childAccount&#34;, ProviderArgs.builder()        
- *             .region(&#34;cn-hangzhou&#34;)
- *             .assumeRole(ProviderAssumeRoleArgs.builder()
- *                 .roleArn(String.format(&#34;acs:ram::%s:role/terraform-example-assume-role&#34;, anotherUid))
- *                 .build())
- *             .build());
+ *         final var yourAccount = AlicloudFunctions.getAccount();
  * 
- *         // Method 2: Use the target cen account&#39;s access_key, secret_key
- *         // provider &#34;alicloud&#34; {
- *         //   region     = &#34;cn-hangzhou&#34;
- *         //   access_key = &#34;access_key&#34;
- *         //   secret_key = &#34;secret_key&#34;
- *         //   alias      = &#34;child_account&#34;
- *         // }
- *         var yourAccount = new Provider(&#34;yourAccount&#34;);
- * 
- *         final var yourAccountAccount = AlicloudFunctions.getAccount();
- * 
- *         final var childAccountAccount = AlicloudFunctions.getAccount();
+ *         final var childAccount = AlicloudFunctions.getAccount();
  * 
  *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
  *             .cenInstanceName(&#34;tf_example&#34;)
  *             .description(&#34;an example for cen&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.your_account())
- *                 .build());
+ *             .build());
  * 
  *         var childAccountNetwork = new Network(&#34;childAccountNetwork&#34;, NetworkArgs.builder()        
  *             .vpcName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.17.3.0/24&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.child_account())
- *                 .build());
+ *             .build());
  * 
  *         var childAccountInstanceGrant = new InstanceGrant(&#34;childAccountInstanceGrant&#34;, InstanceGrantArgs.builder()        
- *             .cenId(exampleInstance.id())
+ *             .cenId(example.id())
  *             .childInstanceId(childAccountNetwork.id())
- *             .cenOwnerId(yourAccountAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.child_account())
- *                 .build());
+ *             .cenOwnerId(yourAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
+ *             .build());
  * 
  *         var exampleInstanceAttachment = new InstanceAttachment(&#34;exampleInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
- *             .instanceId(exampleInstance.id())
+ *             .instanceId(example.id())
  *             .childInstanceId(childAccountInstanceGrant.childInstanceId())
  *             .childInstanceType(&#34;VPC&#34;)
  *             .childInstanceRegionId(default_.regions()[0].id())
- *             .childInstanceOwnerId(childAccountAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.your_account())
- *                 .build());
+ *             .childInstanceOwnerId(childAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
+ *             .build());
  * 
  *     }
  * }

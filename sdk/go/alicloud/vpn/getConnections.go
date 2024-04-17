@@ -31,12 +31,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vpn.GetConnections(ctx, &vpn.GetConnectionsArgs{
-//				CustomerGatewayId: pulumi.StringRef("fake-cgw-id"),
 //				Ids: []string{
 //					"fake-conn-id",
 //				},
-//				OutputFile:   pulumi.StringRef("/tmp/vpnconn"),
-//				VpnGatewayId: pulumi.StringRef("fake-vpn-id"),
+//				VpnGatewayId:      pulumi.StringRef("fake-vpn-id"),
+//				CustomerGatewayId: pulumi.StringRef("fake-cgw-id"),
+//				OutputFile:        pulumi.StringRef("/tmp/vpnconn"),
 //			}, nil)
 //			if err != nil {
 //				return err

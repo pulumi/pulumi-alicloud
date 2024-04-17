@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *         final var example = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
  *             .status(&#34;OK&#34;)
  *             .build());
  * 
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  *             .host(&#34;1.1.1.1&#34;)
  *             .instanceNumber(1)
  *             .password(&#34;YouPassword123&#34;)
- *             .resourceGroupId(exampleResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .resourceGroupId(example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
  *             .sid(&#34;HXE&#34;)
  *             .useSsl(false)
  *             .userName(&#34;admin&#34;)
@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *             .clusterId(exampleHanaInstance.hanaInstanceId())
  *             .databaseName(&#34;SYSTEMDB&#34;)
  *             .planName(&#34;terraform-example&#34;)
- *             .resourceGroupId(exampleResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .resourceGroupId(example.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
  *             .schedule(&#34;I|1602673264|P1D&#34;)
  *             .vaultId(exampleHanaInstance.vaultId())
  *             .build());

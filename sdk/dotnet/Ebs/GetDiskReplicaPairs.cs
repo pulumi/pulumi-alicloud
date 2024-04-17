@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ebs
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_ebs_disk_replica_pair.Default.Id,
+        ///             defaultAlicloudEbsDiskReplicaPair.Id,
         ///         },
         ///     });
         /// 
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Ebs
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_ebs_disk_replica_pair.Default.Id,
+        ///             defaultAlicloudEbsDiskReplicaPair.Id,
         ///         },
         ///     });
         /// 

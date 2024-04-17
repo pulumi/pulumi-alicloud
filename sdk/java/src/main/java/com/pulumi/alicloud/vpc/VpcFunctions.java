@@ -1160,12 +1160,13 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         var fooCommonBandwithPackage = new CommonBandwithPackage(&#34;fooCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
      *             .bandwidth(&#34;2&#34;)
+     *             .name(&#34;tf-testAccCommonBandwidthPackage&#34;)
      *             .description(&#34;tf-testAcc-CommonBandwidthPackage&#34;)
      *             .build());
      * 
-     *         final var fooCommonBandwidthPackages = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
-     *             .ids(fooCommonBandwithPackage.id())
+     *         final var foo = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
      *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .ids(fooCommonBandwithPackage.id())
      *             .build());
      * 
      *     }
@@ -1218,12 +1219,13 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         var fooCommonBandwithPackage = new CommonBandwithPackage(&#34;fooCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
      *             .bandwidth(&#34;2&#34;)
+     *             .name(&#34;tf-testAccCommonBandwidthPackage&#34;)
      *             .description(&#34;tf-testAcc-CommonBandwidthPackage&#34;)
      *             .build());
      * 
-     *         final var fooCommonBandwidthPackages = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
-     *             .ids(fooCommonBandwithPackage.id())
+     *         final var foo = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
      *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .ids(fooCommonBandwithPackage.id())
      *             .build());
      * 
      *     }
@@ -1276,12 +1278,13 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         var fooCommonBandwithPackage = new CommonBandwithPackage(&#34;fooCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
      *             .bandwidth(&#34;2&#34;)
+     *             .name(&#34;tf-testAccCommonBandwidthPackage&#34;)
      *             .description(&#34;tf-testAcc-CommonBandwidthPackage&#34;)
      *             .build());
      * 
-     *         final var fooCommonBandwidthPackages = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
-     *             .ids(fooCommonBandwithPackage.id())
+     *         final var foo = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
      *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .ids(fooCommonBandwithPackage.id())
      *             .build());
      * 
      *     }
@@ -1334,12 +1337,13 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         var fooCommonBandwithPackage = new CommonBandwithPackage(&#34;fooCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
      *             .bandwidth(&#34;2&#34;)
+     *             .name(&#34;tf-testAccCommonBandwidthPackage&#34;)
      *             .description(&#34;tf-testAcc-CommonBandwidthPackage&#34;)
      *             .build());
      * 
-     *         final var fooCommonBandwidthPackages = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
-     *             .ids(fooCommonBandwithPackage.id())
+     *         final var foo = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
      *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .ids(fooCommonBandwithPackage.id())
      *             .build());
      * 
      *     }
@@ -1392,12 +1396,13 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         var fooCommonBandwithPackage = new CommonBandwithPackage(&#34;fooCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
      *             .bandwidth(&#34;2&#34;)
+     *             .name(&#34;tf-testAccCommonBandwidthPackage&#34;)
      *             .description(&#34;tf-testAcc-CommonBandwidthPackage&#34;)
      *             .build());
      * 
-     *         final var fooCommonBandwidthPackages = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
-     *             .ids(fooCommonBandwithPackage.id())
+     *         final var foo = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
      *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .ids(fooCommonBandwithPackage.id())
      *             .build());
      * 
      *     }
@@ -1450,12 +1455,13 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         var fooCommonBandwithPackage = new CommonBandwithPackage(&#34;fooCommonBandwithPackage&#34;, CommonBandwithPackageArgs.builder()        
      *             .bandwidth(&#34;2&#34;)
+     *             .name(&#34;tf-testAccCommonBandwidthPackage&#34;)
      *             .description(&#34;tf-testAcc-CommonBandwidthPackage&#34;)
      *             .build());
      * 
-     *         final var fooCommonBandwidthPackages = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
-     *             .ids(fooCommonBandwithPackage.id())
+     *         final var foo = VpcFunctions.getCommonBandwidthPackages(GetCommonBandwidthPackagesArgs.builder()
      *             .nameRegex(&#34;^tf-testAcc.*&#34;)
+     *             .ids(fooCommonBandwithPackage.id())
      *             .build());
      * 
      *     }
@@ -2216,7 +2222,7 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;forward-entry-config-example-name&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
@@ -2228,7 +2234,7 @@ public final class VpcFunctions {
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock(&#34;172.16.0.0/21&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
@@ -2258,7 +2264,7 @@ public final class VpcFunctions {
      *             .internalPort(&#34;8080&#34;)
      *             .build());
      * 
-     *         final var defaultForwardEntries = VpcFunctions.getForwardEntries(GetForwardEntriesArgs.builder()
+     *         final var defaultGetForwardEntries = VpcFunctions.getForwardEntries(GetForwardEntriesArgs.builder()
      *             .forwardTableId(defaultForwardEntry.forwardTableId())
      *             .build());
      * 
@@ -2316,7 +2322,7 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;forward-entry-config-example-name&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
@@ -2328,7 +2334,7 @@ public final class VpcFunctions {
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock(&#34;172.16.0.0/21&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
@@ -2358,7 +2364,7 @@ public final class VpcFunctions {
      *             .internalPort(&#34;8080&#34;)
      *             .build());
      * 
-     *         final var defaultForwardEntries = VpcFunctions.getForwardEntries(GetForwardEntriesArgs.builder()
+     *         final var defaultGetForwardEntries = VpcFunctions.getForwardEntries(GetForwardEntriesArgs.builder()
      *             .forwardTableId(defaultForwardEntry.forwardTableId())
      *             .build());
      * 
@@ -2416,7 +2422,7 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;forward-entry-config-example-name&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
@@ -2428,7 +2434,7 @@ public final class VpcFunctions {
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock(&#34;172.16.0.0/21&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
@@ -2458,7 +2464,7 @@ public final class VpcFunctions {
      *             .internalPort(&#34;8080&#34;)
      *             .build());
      * 
-     *         final var defaultForwardEntries = VpcFunctions.getForwardEntries(GetForwardEntriesArgs.builder()
+     *         final var defaultGetForwardEntries = VpcFunctions.getForwardEntries(GetForwardEntriesArgs.builder()
      *             .forwardTableId(defaultForwardEntry.forwardTableId())
      *             .build());
      * 
@@ -2516,7 +2522,7 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;forward-entry-config-example-name&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
@@ -2528,7 +2534,7 @@ public final class VpcFunctions {
      *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
      *             .vpcId(defaultNetwork.id())
      *             .cidrBlock(&#34;172.16.0.0/21&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
@@ -2558,7 +2564,7 @@ public final class VpcFunctions {
      *             .internalPort(&#34;8080&#34;)
      *             .build());
      * 
-     *         final var defaultForwardEntries = VpcFunctions.getForwardEntries(GetForwardEntriesArgs.builder()
+     *         final var defaultGetForwardEntries = VpcFunctions.getForwardEntries(GetForwardEntriesArgs.builder()
      *             .forwardTableId(defaultForwardEntry.forwardTableId())
      *             .build());
      * 
@@ -4833,20 +4839,20 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .vpcName(name)
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .build());
      * 
      *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
-     *             .natGateName(name)
-     *             .specification(&#34;Small&#34;)
      *             .vpcId(fooNetwork.id())
+     *             .specification(&#34;Small&#34;)
+     *             .natGateName(name)
      *             .build());
      * 
-     *         final var fooNatGateways = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
-     *             .ids(fooNatGateway.id())
-     *             .nameRegex(fooNatGateway.name())
+     *         final var foo = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
      *             .vpcId(fooNetwork.id())
+     *             .nameRegex(fooNatGateway.name())
+     *             .ids(fooNatGateway.id())
      *             .build());
      * 
      *     }
@@ -4900,20 +4906,20 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .vpcName(name)
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .build());
      * 
      *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
-     *             .natGateName(name)
-     *             .specification(&#34;Small&#34;)
      *             .vpcId(fooNetwork.id())
+     *             .specification(&#34;Small&#34;)
+     *             .natGateName(name)
      *             .build());
      * 
-     *         final var fooNatGateways = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
-     *             .ids(fooNatGateway.id())
-     *             .nameRegex(fooNatGateway.name())
+     *         final var foo = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
      *             .vpcId(fooNetwork.id())
+     *             .nameRegex(fooNatGateway.name())
+     *             .ids(fooNatGateway.id())
      *             .build());
      * 
      *     }
@@ -4967,20 +4973,20 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .vpcName(name)
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .build());
      * 
      *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
-     *             .natGateName(name)
-     *             .specification(&#34;Small&#34;)
      *             .vpcId(fooNetwork.id())
+     *             .specification(&#34;Small&#34;)
+     *             .natGateName(name)
      *             .build());
      * 
-     *         final var fooNatGateways = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
-     *             .ids(fooNatGateway.id())
-     *             .nameRegex(fooNatGateway.name())
+     *         final var foo = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
      *             .vpcId(fooNetwork.id())
+     *             .nameRegex(fooNatGateway.name())
+     *             .ids(fooNatGateway.id())
      *             .build());
      * 
      *     }
@@ -5034,20 +5040,20 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .vpcName(name)
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .build());
      * 
      *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
-     *             .natGateName(name)
-     *             .specification(&#34;Small&#34;)
      *             .vpcId(fooNetwork.id())
+     *             .specification(&#34;Small&#34;)
+     *             .natGateName(name)
      *             .build());
      * 
-     *         final var fooNatGateways = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
-     *             .ids(fooNatGateway.id())
-     *             .nameRegex(fooNatGateway.name())
+     *         final var foo = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
      *             .vpcId(fooNetwork.id())
+     *             .nameRegex(fooNatGateway.name())
+     *             .ids(fooNatGateway.id())
      *             .build());
      * 
      *     }
@@ -5101,20 +5107,20 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .vpcName(name)
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .build());
      * 
      *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
-     *             .natGateName(name)
-     *             .specification(&#34;Small&#34;)
      *             .vpcId(fooNetwork.id())
+     *             .specification(&#34;Small&#34;)
+     *             .natGateName(name)
      *             .build());
      * 
-     *         final var fooNatGateways = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
-     *             .ids(fooNatGateway.id())
-     *             .nameRegex(fooNatGateway.name())
+     *         final var foo = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
      *             .vpcId(fooNetwork.id())
+     *             .nameRegex(fooNatGateway.name())
+     *             .ids(fooNatGateway.id())
      *             .build());
      * 
      *     }
@@ -5168,20 +5174,20 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
-     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .vpcName(name)
+     *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .build());
      * 
      *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
-     *             .natGateName(name)
-     *             .specification(&#34;Small&#34;)
      *             .vpcId(fooNetwork.id())
+     *             .specification(&#34;Small&#34;)
+     *             .natGateName(name)
      *             .build());
      * 
-     *         final var fooNatGateways = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
-     *             .ids(fooNatGateway.id())
-     *             .nameRegex(fooNatGateway.name())
+     *         final var foo = VpcFunctions.getNatGateways(GetNatGatewaysArgs.builder()
      *             .vpcId(fooNetwork.id())
+     *             .nameRegex(fooNatGateway.name())
+     *             .ids(fooNatGateway.id())
      *             .build());
      * 
      *     }
@@ -6118,8 +6124,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var vpcsDs = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
      *             .status(&#34;Available&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstVpcId&#34;, vpcsDs.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()));
@@ -6161,8 +6167,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var vpcsDs = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
      *             .status(&#34;Available&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstVpcId&#34;, vpcsDs.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()));
@@ -6204,8 +6210,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var vpcsDs = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
      *             .status(&#34;Available&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstVpcId&#34;, vpcsDs.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()));
@@ -6247,8 +6253,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var vpcsDs = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
      *             .status(&#34;Available&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstVpcId&#34;, vpcsDs.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()));
@@ -6290,8 +6296,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var vpcsDs = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
      *             .status(&#34;Available&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstVpcId&#34;, vpcsDs.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()));
@@ -6333,8 +6339,8 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var vpcsDs = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .cidrBlock(&#34;172.16.0.0/12&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
      *             .status(&#34;Available&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstVpcId&#34;, vpcsDs.applyValue(getNetworksResult -&gt; getNetworksResult.vpcs()[0].id()));
@@ -7662,71 +7668,73 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
-     *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
      *             .cpuCoreCount(1)
      *             .memorySize(2)
      *             .build());
      * 
-     *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .mostRecent(true)
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
      *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+     *             .mostRecent(true)
      *             .owners(&#34;system&#34;)
      *             .build());
      * 
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccRouteEntryConfig&#34;);
      *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .name(name)
      *             .cidrBlock(&#34;10.1.0.0/21&#34;)
      *             .build());
      * 
      *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .cidrBlock(&#34;10.1.1.0/24&#34;)
      *             .vpcId(fooNetwork.id())
+     *             .cidrBlock(&#34;10.1.1.0/24&#34;)
+     *             .availabilityZone(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
      *         var tfTestFoo = new SecurityGroup(&#34;tfTestFoo&#34;, SecurityGroupArgs.builder()        
+     *             .name(name)
      *             .description(&#34;foo&#34;)
      *             .vpcId(fooNetwork.id())
      *             .build());
      * 
      *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
+     *             .securityGroups(tfTestFoo.id())
+     *             .vswitchId(fooSwitch.id())
      *             .allocatePublicIp(true)
-     *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
      *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceName(name)
-     *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
      *             .internetChargeType(&#34;PayByTraffic&#34;)
      *             .internetMaxBandwidthOut(5)
-     *             .securityGroups(tfTestFoo.id())
      *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .vswitchId(fooSwitch.id())
+     *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+     *             .instanceName(name)
      *             .build());
      * 
      *         var fooRouteEntry = new RouteEntry(&#34;fooRouteEntry&#34;, RouteEntryArgs.builder()        
-     *             .destinationCidrblock(&#34;172.11.1.1/32&#34;)
-     *             .nexthopId(fooInstance.id())
-     *             .nexthopType(&#34;Instance&#34;)
      *             .routeTableId(fooNetwork.routeTableId())
+     *             .destinationCidrblock(&#34;172.11.1.1/32&#34;)
+     *             .nexthopType(&#34;Instance&#34;)
+     *             .nexthopId(fooInstance.id())
      *             .build());
      * 
      *         var ingress = new SecurityGroupRule(&#34;ingress&#34;, SecurityGroupRuleArgs.builder()        
-     *             .cidrIp(&#34;0.0.0.0/0&#34;)
+     *             .type(&#34;ingress&#34;)
      *             .ipProtocol(&#34;tcp&#34;)
      *             .nicType(&#34;intranet&#34;)
      *             .policy(&#34;accept&#34;)
      *             .portRange(&#34;22/22&#34;)
      *             .priority(1)
      *             .securityGroupId(tfTestFoo.id())
-     *             .type(&#34;ingress&#34;)
+     *             .cidrIp(&#34;0.0.0.0/0&#34;)
      *             .build());
      * 
-     *         final var fooRouteEntries = VpcFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
+     *         final var foo = VpcFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
      *             .routeTableId(fooRouteEntry.routeTableId())
      *             .build());
      * 
@@ -7786,71 +7794,73 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
-     *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
      *             .cpuCoreCount(1)
      *             .memorySize(2)
      *             .build());
      * 
-     *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .mostRecent(true)
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
      *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+     *             .mostRecent(true)
      *             .owners(&#34;system&#34;)
      *             .build());
      * 
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccRouteEntryConfig&#34;);
      *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .name(name)
      *             .cidrBlock(&#34;10.1.0.0/21&#34;)
      *             .build());
      * 
      *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .cidrBlock(&#34;10.1.1.0/24&#34;)
      *             .vpcId(fooNetwork.id())
+     *             .cidrBlock(&#34;10.1.1.0/24&#34;)
+     *             .availabilityZone(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
      *         var tfTestFoo = new SecurityGroup(&#34;tfTestFoo&#34;, SecurityGroupArgs.builder()        
+     *             .name(name)
      *             .description(&#34;foo&#34;)
      *             .vpcId(fooNetwork.id())
      *             .build());
      * 
      *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
+     *             .securityGroups(tfTestFoo.id())
+     *             .vswitchId(fooSwitch.id())
      *             .allocatePublicIp(true)
-     *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
      *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceName(name)
-     *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
      *             .internetChargeType(&#34;PayByTraffic&#34;)
      *             .internetMaxBandwidthOut(5)
-     *             .securityGroups(tfTestFoo.id())
      *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .vswitchId(fooSwitch.id())
+     *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+     *             .instanceName(name)
      *             .build());
      * 
      *         var fooRouteEntry = new RouteEntry(&#34;fooRouteEntry&#34;, RouteEntryArgs.builder()        
-     *             .destinationCidrblock(&#34;172.11.1.1/32&#34;)
-     *             .nexthopId(fooInstance.id())
-     *             .nexthopType(&#34;Instance&#34;)
      *             .routeTableId(fooNetwork.routeTableId())
+     *             .destinationCidrblock(&#34;172.11.1.1/32&#34;)
+     *             .nexthopType(&#34;Instance&#34;)
+     *             .nexthopId(fooInstance.id())
      *             .build());
      * 
      *         var ingress = new SecurityGroupRule(&#34;ingress&#34;, SecurityGroupRuleArgs.builder()        
-     *             .cidrIp(&#34;0.0.0.0/0&#34;)
+     *             .type(&#34;ingress&#34;)
      *             .ipProtocol(&#34;tcp&#34;)
      *             .nicType(&#34;intranet&#34;)
      *             .policy(&#34;accept&#34;)
      *             .portRange(&#34;22/22&#34;)
      *             .priority(1)
      *             .securityGroupId(tfTestFoo.id())
-     *             .type(&#34;ingress&#34;)
+     *             .cidrIp(&#34;0.0.0.0/0&#34;)
      *             .build());
      * 
-     *         final var fooRouteEntries = VpcFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
+     *         final var foo = VpcFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
      *             .routeTableId(fooRouteEntry.routeTableId())
      *             .build());
      * 
@@ -7910,71 +7920,73 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
-     *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
      *             .cpuCoreCount(1)
      *             .memorySize(2)
      *             .build());
      * 
-     *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .mostRecent(true)
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
      *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+     *             .mostRecent(true)
      *             .owners(&#34;system&#34;)
      *             .build());
      * 
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccRouteEntryConfig&#34;);
      *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .name(name)
      *             .cidrBlock(&#34;10.1.0.0/21&#34;)
      *             .build());
      * 
      *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .cidrBlock(&#34;10.1.1.0/24&#34;)
      *             .vpcId(fooNetwork.id())
+     *             .cidrBlock(&#34;10.1.1.0/24&#34;)
+     *             .availabilityZone(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
      *         var tfTestFoo = new SecurityGroup(&#34;tfTestFoo&#34;, SecurityGroupArgs.builder()        
+     *             .name(name)
      *             .description(&#34;foo&#34;)
      *             .vpcId(fooNetwork.id())
      *             .build());
      * 
      *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
+     *             .securityGroups(tfTestFoo.id())
+     *             .vswitchId(fooSwitch.id())
      *             .allocatePublicIp(true)
-     *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
      *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceName(name)
-     *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
      *             .internetChargeType(&#34;PayByTraffic&#34;)
      *             .internetMaxBandwidthOut(5)
-     *             .securityGroups(tfTestFoo.id())
      *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .vswitchId(fooSwitch.id())
+     *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+     *             .instanceName(name)
      *             .build());
      * 
      *         var fooRouteEntry = new RouteEntry(&#34;fooRouteEntry&#34;, RouteEntryArgs.builder()        
-     *             .destinationCidrblock(&#34;172.11.1.1/32&#34;)
-     *             .nexthopId(fooInstance.id())
-     *             .nexthopType(&#34;Instance&#34;)
      *             .routeTableId(fooNetwork.routeTableId())
+     *             .destinationCidrblock(&#34;172.11.1.1/32&#34;)
+     *             .nexthopType(&#34;Instance&#34;)
+     *             .nexthopId(fooInstance.id())
      *             .build());
      * 
      *         var ingress = new SecurityGroupRule(&#34;ingress&#34;, SecurityGroupRuleArgs.builder()        
-     *             .cidrIp(&#34;0.0.0.0/0&#34;)
+     *             .type(&#34;ingress&#34;)
      *             .ipProtocol(&#34;tcp&#34;)
      *             .nicType(&#34;intranet&#34;)
      *             .policy(&#34;accept&#34;)
      *             .portRange(&#34;22/22&#34;)
      *             .priority(1)
      *             .securityGroupId(tfTestFoo.id())
-     *             .type(&#34;ingress&#34;)
+     *             .cidrIp(&#34;0.0.0.0/0&#34;)
      *             .build());
      * 
-     *         final var fooRouteEntries = VpcFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
+     *         final var foo = VpcFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
      *             .routeTableId(fooRouteEntry.routeTableId())
      *             .build());
      * 
@@ -8034,71 +8046,73 @@ public final class VpcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
-     *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
      *             .cpuCoreCount(1)
      *             .memorySize(2)
      *             .build());
      * 
-     *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
-     *             .mostRecent(true)
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
      *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
+     *             .mostRecent(true)
      *             .owners(&#34;system&#34;)
      *             .build());
      * 
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccRouteEntryConfig&#34;);
      *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .name(name)
      *             .cidrBlock(&#34;10.1.0.0/21&#34;)
      *             .build());
      * 
      *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
-     *             .cidrBlock(&#34;10.1.1.0/24&#34;)
      *             .vpcId(fooNetwork.id())
+     *             .cidrBlock(&#34;10.1.1.0/24&#34;)
+     *             .availabilityZone(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
      *         var tfTestFoo = new SecurityGroup(&#34;tfTestFoo&#34;, SecurityGroupArgs.builder()        
+     *             .name(name)
      *             .description(&#34;foo&#34;)
      *             .vpcId(fooNetwork.id())
      *             .build());
      * 
      *         var fooInstance = new Instance(&#34;fooInstance&#34;, InstanceArgs.builder()        
+     *             .securityGroups(tfTestFoo.id())
+     *             .vswitchId(fooSwitch.id())
      *             .allocatePublicIp(true)
-     *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
      *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceName(name)
-     *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
      *             .internetChargeType(&#34;PayByTraffic&#34;)
      *             .internetMaxBandwidthOut(5)
-     *             .securityGroups(tfTestFoo.id())
      *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
-     *             .vswitchId(fooSwitch.id())
+     *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+     *             .instanceName(name)
      *             .build());
      * 
      *         var fooRouteEntry = new RouteEntry(&#34;fooRouteEntry&#34;, RouteEntryArgs.builder()        
-     *             .destinationCidrblock(&#34;172.11.1.1/32&#34;)
-     *             .nexthopId(fooInstance.id())
-     *             .nexthopType(&#34;Instance&#34;)
      *             .routeTableId(fooNetwork.routeTableId())
+     *             .destinationCidrblock(&#34;172.11.1.1/32&#34;)
+     *             .nexthopType(&#34;Instance&#34;)
+     *             .nexthopId(fooInstance.id())
      *             .build());
      * 
      *         var ingress = new SecurityGroupRule(&#34;ingress&#34;, SecurityGroupRuleArgs.builder()        
-     *             .cidrIp(&#34;0.0.0.0/0&#34;)
+     *             .type(&#34;ingress&#34;)
      *             .ipProtocol(&#34;tcp&#34;)
      *             .nicType(&#34;intranet&#34;)
      *             .policy(&#34;accept&#34;)
      *             .portRange(&#34;22/22&#34;)
      *             .priority(1)
      *             .securityGroupId(tfTestFoo.id())
-     *             .type(&#34;ingress&#34;)
+     *             .cidrIp(&#34;0.0.0.0/0&#34;)
      *             .build());
      * 
-     *         final var fooRouteEntries = VpcFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
+     *         final var foo = VpcFunctions.getRouteEntries(GetRouteEntriesArgs.builder()
      *             .routeTableId(fooRouteEntry.routeTableId())
      *             .build());
      * 
@@ -8152,16 +8166,16 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var fooRouteTable = new RouteTable(&#34;fooRouteTable&#34;, RouteTableArgs.builder()        
-     *             .description(name)
-     *             .routeTableName(name)
      *             .vpcId(fooNetwork.id())
+     *             .routeTableName(name)
+     *             .description(name)
      *             .build());
      * 
-     *         final var fooRouteTables = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
+     *         final var foo = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
      *             .ids(fooRouteTable.id())
      *             .build());
      * 
-     *         ctx.export(&#34;routeTableIds&#34;, fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(fooRouteTables -&gt; fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
+     *         ctx.export(&#34;routeTableIds&#34;, foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(foo -&gt; foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
      *     }
      * }
      * ```
@@ -8212,16 +8226,16 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var fooRouteTable = new RouteTable(&#34;fooRouteTable&#34;, RouteTableArgs.builder()        
-     *             .description(name)
-     *             .routeTableName(name)
      *             .vpcId(fooNetwork.id())
+     *             .routeTableName(name)
+     *             .description(name)
      *             .build());
      * 
-     *         final var fooRouteTables = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
+     *         final var foo = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
      *             .ids(fooRouteTable.id())
      *             .build());
      * 
-     *         ctx.export(&#34;routeTableIds&#34;, fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(fooRouteTables -&gt; fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
+     *         ctx.export(&#34;routeTableIds&#34;, foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(foo -&gt; foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
      *     }
      * }
      * ```
@@ -8272,16 +8286,16 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var fooRouteTable = new RouteTable(&#34;fooRouteTable&#34;, RouteTableArgs.builder()        
-     *             .description(name)
-     *             .routeTableName(name)
      *             .vpcId(fooNetwork.id())
+     *             .routeTableName(name)
+     *             .description(name)
      *             .build());
      * 
-     *         final var fooRouteTables = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
+     *         final var foo = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
      *             .ids(fooRouteTable.id())
      *             .build());
      * 
-     *         ctx.export(&#34;routeTableIds&#34;, fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(fooRouteTables -&gt; fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
+     *         ctx.export(&#34;routeTableIds&#34;, foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(foo -&gt; foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
      *     }
      * }
      * ```
@@ -8332,16 +8346,16 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var fooRouteTable = new RouteTable(&#34;fooRouteTable&#34;, RouteTableArgs.builder()        
-     *             .description(name)
-     *             .routeTableName(name)
      *             .vpcId(fooNetwork.id())
+     *             .routeTableName(name)
+     *             .description(name)
      *             .build());
      * 
-     *         final var fooRouteTables = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
+     *         final var foo = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
      *             .ids(fooRouteTable.id())
      *             .build());
      * 
-     *         ctx.export(&#34;routeTableIds&#34;, fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(fooRouteTables -&gt; fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
+     *         ctx.export(&#34;routeTableIds&#34;, foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(foo -&gt; foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
      *     }
      * }
      * ```
@@ -8392,16 +8406,16 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var fooRouteTable = new RouteTable(&#34;fooRouteTable&#34;, RouteTableArgs.builder()        
-     *             .description(name)
-     *             .routeTableName(name)
      *             .vpcId(fooNetwork.id())
+     *             .routeTableName(name)
+     *             .description(name)
      *             .build());
      * 
-     *         final var fooRouteTables = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
+     *         final var foo = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
      *             .ids(fooRouteTable.id())
      *             .build());
      * 
-     *         ctx.export(&#34;routeTableIds&#34;, fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(fooRouteTables -&gt; fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
+     *         ctx.export(&#34;routeTableIds&#34;, foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(foo -&gt; foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
      *     }
      * }
      * ```
@@ -8452,16 +8466,16 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var fooRouteTable = new RouteTable(&#34;fooRouteTable&#34;, RouteTableArgs.builder()        
-     *             .description(name)
-     *             .routeTableName(name)
      *             .vpcId(fooNetwork.id())
+     *             .routeTableName(name)
+     *             .description(name)
      *             .build());
      * 
-     *         final var fooRouteTables = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
+     *         final var foo = VpcFunctions.getRouteTables(GetRouteTablesArgs.builder()
      *             .ids(fooRouteTable.id())
      *             .build());
      * 
-     *         ctx.export(&#34;routeTableIds&#34;, fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(fooRouteTables -&gt; fooRouteTables.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
+     *         ctx.export(&#34;routeTableIds&#34;, foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult).applyValue(foo -&gt; foo.applyValue(getRouteTablesResult -&gt; getRouteTablesResult.ids())));
      *     }
      * }
      * ```
@@ -8791,6 +8805,7 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .name(name)
      *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .build());
      * 
@@ -8804,6 +8819,7 @@ public final class VpcFunctions {
      *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
      *             .vpcId(fooNetwork.id())
      *             .specification(&#34;Small&#34;)
+     *             .name(name)
      *             .build());
      * 
      *         var fooEipAddress = new EipAddress(&#34;fooEipAddress&#34;, EipAddressArgs.builder()        
@@ -8821,7 +8837,7 @@ public final class VpcFunctions {
      *             .snatIp(fooEipAddress.ipAddress())
      *             .build());
      * 
-     *         final var fooSnatEntries = VpcFunctions.getSnatEntries(GetSnatEntriesArgs.builder()
+     *         final var foo = VpcFunctions.getSnatEntries(GetSnatEntriesArgs.builder()
      *             .snatTableId(fooSnatEntry.snatTableId())
      *             .build());
      * 
@@ -8884,6 +8900,7 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .name(name)
      *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .build());
      * 
@@ -8897,6 +8914,7 @@ public final class VpcFunctions {
      *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
      *             .vpcId(fooNetwork.id())
      *             .specification(&#34;Small&#34;)
+     *             .name(name)
      *             .build());
      * 
      *         var fooEipAddress = new EipAddress(&#34;fooEipAddress&#34;, EipAddressArgs.builder()        
@@ -8914,7 +8932,7 @@ public final class VpcFunctions {
      *             .snatIp(fooEipAddress.ipAddress())
      *             .build());
      * 
-     *         final var fooSnatEntries = VpcFunctions.getSnatEntries(GetSnatEntriesArgs.builder()
+     *         final var foo = VpcFunctions.getSnatEntries(GetSnatEntriesArgs.builder()
      *             .snatTableId(fooSnatEntry.snatTableId())
      *             .build());
      * 
@@ -8977,6 +8995,7 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .name(name)
      *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .build());
      * 
@@ -8990,6 +9009,7 @@ public final class VpcFunctions {
      *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
      *             .vpcId(fooNetwork.id())
      *             .specification(&#34;Small&#34;)
+     *             .name(name)
      *             .build());
      * 
      *         var fooEipAddress = new EipAddress(&#34;fooEipAddress&#34;, EipAddressArgs.builder()        
@@ -9007,7 +9027,7 @@ public final class VpcFunctions {
      *             .snatIp(fooEipAddress.ipAddress())
      *             .build());
      * 
-     *         final var fooSnatEntries = VpcFunctions.getSnatEntries(GetSnatEntriesArgs.builder()
+     *         final var foo = VpcFunctions.getSnatEntries(GetSnatEntriesArgs.builder()
      *             .snatTableId(fooSnatEntry.snatTableId())
      *             .build());
      * 
@@ -9070,6 +9090,7 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+     *             .name(name)
      *             .cidrBlock(&#34;172.16.0.0/12&#34;)
      *             .build());
      * 
@@ -9083,6 +9104,7 @@ public final class VpcFunctions {
      *         var fooNatGateway = new NatGateway(&#34;fooNatGateway&#34;, NatGatewayArgs.builder()        
      *             .vpcId(fooNetwork.id())
      *             .specification(&#34;Small&#34;)
+     *             .name(name)
      *             .build());
      * 
      *         var fooEipAddress = new EipAddress(&#34;fooEipAddress&#34;, EipAddressArgs.builder()        
@@ -9100,7 +9122,7 @@ public final class VpcFunctions {
      *             .snatIp(fooEipAddress.ipAddress())
      *             .build());
      * 
-     *         final var fooSnatEntries = VpcFunctions.getSnatEntries(GetSnatEntriesArgs.builder()
+     *         final var foo = VpcFunctions.getSnatEntries(GetSnatEntriesArgs.builder()
      *             .snatTableId(fooSnatEntry.snatTableId())
      *             .build());
      * 
@@ -9142,9 +9164,9 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnClientCerts(GetSslVpnClientCertsArgs.builder()
      *             .ids(&#34;fake-cert-id&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
-     *             .outputFile(&#34;/tmp/clientcert&#34;)
      *             .sslVpnServerId(&#34;fake-server-id&#34;)
+     *             .outputFile(&#34;/tmp/clientcert&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
      *     }
@@ -9185,9 +9207,9 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnClientCerts(GetSslVpnClientCertsArgs.builder()
      *             .ids(&#34;fake-cert-id&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
-     *             .outputFile(&#34;/tmp/clientcert&#34;)
      *             .sslVpnServerId(&#34;fake-server-id&#34;)
+     *             .outputFile(&#34;/tmp/clientcert&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
      *     }
@@ -9228,9 +9250,9 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnClientCerts(GetSslVpnClientCertsArgs.builder()
      *             .ids(&#34;fake-cert-id&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
-     *             .outputFile(&#34;/tmp/clientcert&#34;)
      *             .sslVpnServerId(&#34;fake-server-id&#34;)
+     *             .outputFile(&#34;/tmp/clientcert&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
      *     }
@@ -9271,9 +9293,9 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnClientCerts(GetSslVpnClientCertsArgs.builder()
      *             .ids(&#34;fake-cert-id&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
-     *             .outputFile(&#34;/tmp/clientcert&#34;)
      *             .sslVpnServerId(&#34;fake-server-id&#34;)
+     *             .outputFile(&#34;/tmp/clientcert&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
      *     }
@@ -9314,9 +9336,9 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnClientCerts(GetSslVpnClientCertsArgs.builder()
      *             .ids(&#34;fake-cert-id&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
-     *             .outputFile(&#34;/tmp/clientcert&#34;)
      *             .sslVpnServerId(&#34;fake-server-id&#34;)
+     *             .outputFile(&#34;/tmp/clientcert&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
      *     }
@@ -9357,9 +9379,9 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnClientCerts(GetSslVpnClientCertsArgs.builder()
      *             .ids(&#34;fake-cert-id&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
-     *             .outputFile(&#34;/tmp/clientcert&#34;)
      *             .sslVpnServerId(&#34;fake-server-id&#34;)
+     *             .outputFile(&#34;/tmp/clientcert&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
      *     }
@@ -9400,9 +9422,9 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnServers(GetSslVpnServersArgs.builder()
      *             .ids(&#34;fake-server-id&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
-     *             .outputFile(&#34;/tmp/sslserver&#34;)
      *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
+     *             .outputFile(&#34;/tmp/sslserver&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
      *     }
@@ -9443,9 +9465,9 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnServers(GetSslVpnServersArgs.builder()
      *             .ids(&#34;fake-server-id&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
-     *             .outputFile(&#34;/tmp/sslserver&#34;)
      *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
+     *             .outputFile(&#34;/tmp/sslserver&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
      *     }
@@ -9486,9 +9508,9 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnServers(GetSslVpnServersArgs.builder()
      *             .ids(&#34;fake-server-id&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
-     *             .outputFile(&#34;/tmp/sslserver&#34;)
      *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
+     *             .outputFile(&#34;/tmp/sslserver&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
      *     }
@@ -9529,9 +9551,9 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnServers(GetSslVpnServersArgs.builder()
      *             .ids(&#34;fake-server-id&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
-     *             .outputFile(&#34;/tmp/sslserver&#34;)
      *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
+     *             .outputFile(&#34;/tmp/sslserver&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
      *     }
@@ -9572,9 +9594,9 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnServers(GetSslVpnServersArgs.builder()
      *             .ids(&#34;fake-server-id&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
-     *             .outputFile(&#34;/tmp/sslserver&#34;)
      *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
+     *             .outputFile(&#34;/tmp/sslserver&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
      *     }
@@ -9615,9 +9637,9 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var foo = VpcFunctions.getSslVpnServers(GetSslVpnServersArgs.builder()
      *             .ids(&#34;fake-server-id&#34;)
-     *             .nameRegex(&#34;^foo&#34;)
-     *             .outputFile(&#34;/tmp/sslserver&#34;)
      *             .vpnGatewayId(&#34;fake-vpn-id&#34;)
+     *             .outputFile(&#34;/tmp/sslserver&#34;)
+     *             .nameRegex(&#34;^foo&#34;)
      *             .build());
      * 
      *     }
@@ -9664,7 +9686,7 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;vswitchDatasourceName&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones();
+     *         final var default = AlicloudFunctions.getZones();
      * 
      *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
@@ -9672,13 +9694,13 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .vswitchName(name)
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .vpcId(vpc.id())
-     *             .vswitchName(name)
+     *             .availabilityZone(default_.zones()[0].id())
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
      *             .nameRegex(vswitch.vswitchName())
      *             .build());
      * 
@@ -9726,7 +9748,7 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;vswitchDatasourceName&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones();
+     *         final var default = AlicloudFunctions.getZones();
      * 
      *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
@@ -9734,13 +9756,13 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .vswitchName(name)
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .vpcId(vpc.id())
-     *             .vswitchName(name)
+     *             .availabilityZone(default_.zones()[0].id())
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
      *             .nameRegex(vswitch.vswitchName())
      *             .build());
      * 
@@ -9788,7 +9810,7 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;vswitchDatasourceName&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones();
+     *         final var default = AlicloudFunctions.getZones();
      * 
      *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
@@ -9796,13 +9818,13 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .vswitchName(name)
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .vpcId(vpc.id())
-     *             .vswitchName(name)
+     *             .availabilityZone(default_.zones()[0].id())
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
      *             .nameRegex(vswitch.vswitchName())
      *             .build());
      * 
@@ -9850,7 +9872,7 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;vswitchDatasourceName&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones();
+     *         final var default = AlicloudFunctions.getZones();
      * 
      *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
@@ -9858,13 +9880,13 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .vswitchName(name)
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .vpcId(vpc.id())
-     *             .vswitchName(name)
+     *             .availabilityZone(default_.zones()[0].id())
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
      *             .nameRegex(vswitch.vswitchName())
      *             .build());
      * 
@@ -9912,7 +9934,7 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;vswitchDatasourceName&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones();
+     *         final var default = AlicloudFunctions.getZones();
      * 
      *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
@@ -9920,13 +9942,13 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .vswitchName(name)
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .vpcId(vpc.id())
-     *             .vswitchName(name)
+     *             .availabilityZone(default_.zones()[0].id())
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
      *             .nameRegex(vswitch.vswitchName())
      *             .build());
      * 
@@ -9974,7 +9996,7 @@ public final class VpcFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;vswitchDatasourceName&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones();
+     *         final var default = AlicloudFunctions.getZones();
      * 
      *         var vpc = new Network(&#34;vpc&#34;, NetworkArgs.builder()        
      *             .cidrBlock(&#34;172.16.0.0/16&#34;)
@@ -9982,13 +10004,13 @@ public final class VpcFunctions {
      *             .build());
      * 
      *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
-     *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .vswitchName(name)
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
      *             .vpcId(vpc.id())
-     *             .vswitchName(name)
+     *             .availabilityZone(default_.zones()[0].id())
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
      *             .nameRegex(vswitch.vswitchName())
      *             .build());
      * 

@@ -23,17 +23,17 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const defaultInteger = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
+ * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("default", {
  *     cidrBlock: "172.16.0.0/12",
  *     enableAdminAccess: true,
  *     desktopAccessType: "Internet",
- *     officeSiteName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
+ *     officeSiteName: `${name}-${defaultInteger.result}`,
  * });
- * const defaultEcdPolicyGroup = new alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup", {
+ * const defaultEcdPolicyGroup = new alicloud.eds.EcdPolicyGroup("default", {
  *     policyGroupName: name,
  *     clipboard: "read",
  *     localDrive: "read",
@@ -53,16 +53,16 @@ import * as utilities from "../utilities";
  *         cidrIp: "1.2.3.4/24",
  *     }],
  * });
- * const defaultBundles = alicloud.eds.getBundles({
+ * const default = alicloud.eds.getBundles({
  *     bundleType: "SYSTEM",
  * });
- * const defaultDesktop = new alicloud.eds.Desktop("defaultDesktop", {
+ * const defaultDesktop = new alicloud.eds.Desktop("default", {
  *     officeSiteId: defaultSimpleOfficeSite.id,
  *     policyGroupId: defaultEcdPolicyGroup.id,
- *     bundleId: defaultBundles.then(defaultBundles => defaultBundles.bundles?.[0]?.id),
+ *     bundleId: _default.then(_default => _default.bundles?.[0]?.id),
  *     desktopName: name,
  * });
- * const defaultCommand = new alicloud.eds.Command("defaultCommand", {
+ * const defaultCommand = new alicloud.eds.Command("default", {
  *     commandContent: "ipconfig",
  *     commandType: "RunPowerShellScript",
  *     desktopId: defaultDesktop.id,

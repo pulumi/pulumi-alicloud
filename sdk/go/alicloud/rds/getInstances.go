@@ -35,8 +35,8 @@ import (
 //				NameRegex: pulumi.StringRef("data-\\d+"),
 //				Status:    pulumi.StringRef("Running"),
 //				Tags: map[string]interface{}{
-//					"size": "tiny",
 //					"type": "database",
+//					"size": "tiny",
 //				},
 //			}, nil)
 //			if err != nil {

@@ -32,8 +32,8 @@ namespace Pulumi.AliCloud.Cassandra
         /// {
         ///     var cassandra = AliCloud.Cassandra.GetDataCenters.Invoke(new()
         ///     {
-        ///         ClusterId = "cds-xxxxx",
         ///         NameRegex = "tf_testAccCassandra_dc",
+        ///         ClusterId = "cds-xxxxx",
         ///     });
         /// 
         /// });
@@ -64,8 +64,8 @@ namespace Pulumi.AliCloud.Cassandra
         /// {
         ///     var cassandra = AliCloud.Cassandra.GetDataCenters.Invoke(new()
         ///     {
-        ///         ClusterId = "cds-xxxxx",
         ///         NameRegex = "tf_testAccCassandra_dc",
+        ///         ClusterId = "cds-xxxxx",
         ///     });
         /// 
         /// });

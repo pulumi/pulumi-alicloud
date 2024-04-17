@@ -375,14 +375,14 @@ class StateConfiguration(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_state_configuration = alicloud.oos.StateConfiguration("defaultStateConfiguration",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_state_configuration = alicloud.oos.StateConfiguration("default",
             template_name="ACS-ECS-InventoryDataCollection",
             configure_mode="ApplyOnly",
             description="terraform-example",
             schedule_type="rate",
             schedule_expression="1 hour",
-            resource_group_id=default_resource_groups.ids[0],
+            resource_group_id=default.ids[0],
             targets="{\\"Filters\\": [{\\"Type\\": \\"All\\", \\"Parameters\\": {\\"InstanceChargeType\\": \\"PrePaid\\"}}], \\"ResourceType\\": \\"ALIYUN::ECS::Instance\\"}",
             parameters="{\\"policy\\": {\\"ACS:Application\\": {\\"Collection\\": \\"Enabled\\"}}}",
             tags={
@@ -435,14 +435,14 @@ class StateConfiguration(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_state_configuration = alicloud.oos.StateConfiguration("defaultStateConfiguration",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_state_configuration = alicloud.oos.StateConfiguration("default",
             template_name="ACS-ECS-InventoryDataCollection",
             configure_mode="ApplyOnly",
             description="terraform-example",
             schedule_type="rate",
             schedule_expression="1 hour",
-            resource_group_id=default_resource_groups.ids[0],
+            resource_group_id=default.ids[0],
             targets="{\\"Filters\\": [{\\"Type\\": \\"All\\", \\"Parameters\\": {\\"InstanceChargeType\\": \\"PrePaid\\"}}], \\"ResourceType\\": \\"ALIYUN::ECS::Instance\\"}",
             parameters="{\\"policy\\": {\\"ACS:Application\\": {\\"Collection\\": \\"Enabled\\"}}}",
             tags={

@@ -38,20 +38,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = eds.NewSimpleOfficeSite(ctx, "defaultSimpleOfficeSite", &eds.SimpleOfficeSiteArgs{
+//			_, err = eds.NewSimpleOfficeSite(ctx, "default", &eds.SimpleOfficeSiteArgs{
 //				CidrBlock:         pulumi.String("172.16.0.0/12"),
-//				DesktopAccessType: pulumi.String("Internet"),
 //				EnableAdminAccess: pulumi.Bool(true),
-//				OfficeSiteName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("terraform-example-%v", result), nil
-//				}).(pulumi.StringOutput),
+//				DesktopAccessType: pulumi.String("Internet"),
+//				OfficeSiteName:    pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
 //			})
 //			if err != nil {
 //				return err

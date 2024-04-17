@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ga
     /// {
     ///     var config = new Config();
     ///     var region = config.Get("region") ?? "cn-hangzhou";
-    ///     var defaultBasicAccelerator = new AliCloud.Ga.BasicAccelerator("defaultBasicAccelerator", new()
+    ///     var @default = new AliCloud.Ga.BasicAccelerator("default", new()
     ///     {
     ///         Duration = 1,
     ///         BasicAcceleratorName = "terraform-example",
@@ -41,17 +41,17 @@ namespace Pulumi.AliCloud.Ga
     ///         AutoPay = true,
     ///     });
     /// 
-    ///     var defaultBasicIpSet = new AliCloud.Ga.BasicIpSet("defaultBasicIpSet", new()
+    ///     var defaultBasicIpSet = new AliCloud.Ga.BasicIpSet("default", new()
     ///     {
-    ///         AcceleratorId = defaultBasicAccelerator.Id,
+    ///         AcceleratorId = @default.Id,
     ///         AccelerateRegionId = region,
     ///         IspType = "BGP",
     ///         Bandwidth = 5,
     ///     });
     /// 
-    ///     var defaultBasicAccelerateIp = new AliCloud.Ga.BasicAccelerateIp("defaultBasicAccelerateIp", new()
+    ///     var defaultBasicAccelerateIp = new AliCloud.Ga.BasicAccelerateIp("default", new()
     ///     {
-    ///         AcceleratorId = defaultBasicAccelerator.Id,
+    ///         AcceleratorId = @default.Id,
     ///         IpSetId = defaultBasicIpSet.Id,
     ///     });
     /// 

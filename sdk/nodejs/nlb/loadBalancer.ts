@@ -24,27 +24,27 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultZones = alicloud.nlb.getZones({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultGetZones = alicloud.nlb.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
  *     cidrBlock: "10.4.0.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
  * });
  * const default1 = new alicloud.vpc.Switch("default1", {
  *     vswitchName: name,
  *     cidrBlock: "10.4.1.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[1]?.id),
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[1]?.id),
  * });
- * const defaultLoadBalancer = new alicloud.nlb.LoadBalancer("defaultLoadBalancer", {
+ * const defaultLoadBalancer = new alicloud.nlb.LoadBalancer("default", {
  *     loadBalancerName: name,
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     resourceGroupId: _default.then(_default => _default.ids?.[0]),
  *     loadBalancerType: "Network",
  *     addressType: "Internet",
  *     addressIpVersion: "Ipv4",
@@ -56,11 +56,11 @@ import * as utilities from "../utilities";
  *     zoneMappings: [
  *         {
  *             vswitchId: defaultSwitch.id,
- *             zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *             zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
  *         },
  *         {
  *             vswitchId: default1.id,
- *             zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[1]?.id),
+ *             zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[1]?.id),
  *         },
  *     ],
  * });

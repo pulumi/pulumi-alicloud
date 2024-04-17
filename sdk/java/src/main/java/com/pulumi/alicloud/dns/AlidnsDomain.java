@@ -50,13 +50,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultDomainGroup = new DomainGroup(&#34;defaultDomainGroup&#34;, DomainGroupArgs.builder()        
+ *         var default_ = new DomainGroup(&#34;default&#34;, DomainGroupArgs.builder()        
  *             .domainGroupName(&#34;tf-example&#34;)
  *             .build());
  * 
  *         var defaultAlidnsDomain = new AlidnsDomain(&#34;defaultAlidnsDomain&#34;, AlidnsDomainArgs.builder()        
  *             .domainName(&#34;starmove.com&#34;)
- *             .groupId(defaultDomainGroup.id())
+ *             .groupId(default_.id())
  *             .tags(Map.ofEntries(
  *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
  *                 Map.entry(&#34;For&#34;, &#34;example&#34;)

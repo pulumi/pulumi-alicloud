@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", {
+ * const _default = new alicloud.cms.AlarmContactGroup("default", {
  *     alarmContactGroupName: name,
  *     contacts: [
  *         "user",
@@ -32,11 +32,11 @@ import * as utilities from "../utilities";
  *         "user2",
  *     ],
  * });
- * const defaultMonitorGroup = new alicloud.cms.MonitorGroup("defaultMonitorGroup", {
+ * const defaultMonitorGroup = new alicloud.cms.MonitorGroup("default", {
  *     monitorGroupName: name,
- *     contactGroups: [defaultAlarmContactGroup.id],
+ *     contactGroups: [_default.id],
  * });
- * const defaultServiceGroupMonitoringAgentProcess = new alicloud.cloudmonitor.ServiceGroupMonitoringAgentProcess("defaultServiceGroupMonitoringAgentProcess", {
+ * const defaultServiceGroupMonitoringAgentProcess = new alicloud.cloudmonitor.ServiceGroupMonitoringAgentProcess("default", {
  *     groupId: defaultMonitorGroup.id,
  *     processName: name,
  *     matchExpressFilterRelation: "or",

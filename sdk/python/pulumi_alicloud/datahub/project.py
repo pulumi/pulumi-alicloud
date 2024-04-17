@@ -151,7 +151,9 @@ class Project(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        example = alicloud.datahub.Project("example", comment="created by terraform")
+        example = alicloud.datahub.Project("example",
+            name=name,
+            comment="created by terraform")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -194,7 +196,9 @@ class Project(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        example = alicloud.datahub.Project("example", comment="created by terraform")
+        example = alicloud.datahub.Project("example",
+            name=name,
+            comment="created by terraform")
         ```
         <!--End PulumiCodeChooser -->
 

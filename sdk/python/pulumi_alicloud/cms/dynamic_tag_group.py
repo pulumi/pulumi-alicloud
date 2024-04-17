@@ -229,12 +229,12 @@ class DynamicTagGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup",
+        default = alicloud.cms.AlarmContactGroup("default",
             alarm_contact_group_name="example_value",
             describe="example_value",
             enable_subscribed=True)
-        default_dynamic_tag_group = alicloud.cms.DynamicTagGroup("defaultDynamicTagGroup",
-            contact_group_lists=[default_alarm_contact_group.id],
+        default_dynamic_tag_group = alicloud.cms.DynamicTagGroup("default",
+            contact_group_lists=[default.id],
             tag_key="your_tag_key",
             match_expresses=[alicloud.cms.DynamicTagGroupMatchExpressArgs(
                 tag_value="your_tag_value",
@@ -281,12 +281,12 @@ class DynamicTagGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup",
+        default = alicloud.cms.AlarmContactGroup("default",
             alarm_contact_group_name="example_value",
             describe="example_value",
             enable_subscribed=True)
-        default_dynamic_tag_group = alicloud.cms.DynamicTagGroup("defaultDynamicTagGroup",
-            contact_group_lists=[default_alarm_contact_group.id],
+        default_dynamic_tag_group = alicloud.cms.DynamicTagGroup("default",
+            contact_group_lists=[default.id],
             tag_key="your_tag_key",
             match_expresses=[alicloud.cms.DynamicTagGroupMatchExpressArgs(
                 tag_value="your_tag_value",

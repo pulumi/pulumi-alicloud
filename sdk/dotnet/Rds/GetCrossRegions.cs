@@ -27,11 +27,12 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var crossRegions = AliCloud.Rds.GetCrossRegions.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstRdsCrossRegions"] = data.Alicloud_rds_cross_regions.Regions.Ids[0],
+        ///         ["firstRdsCrossRegions"] = regions.Ids[0],
         ///     };
         /// });
         /// ```
@@ -56,11 +57,12 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var crossRegions = AliCloud.Rds.GetCrossRegions.Invoke();
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["firstRdsCrossRegions"] = data.Alicloud_rds_cross_regions.Regions.Ids[0],
+        ///         ["firstRdsCrossRegions"] = regions.Ids[0],
         ///     };
         /// });
         /// ```

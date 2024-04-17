@@ -691,13 +691,13 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_instance = alicloud.cen.Instance("defaultInstance",
+        default = alicloud.cen.Instance("default",
             cen_instance_name=name,
             protection_level="REDUCED")
-        default_ad_connector_office_site = alicloud.eds.AdConnectorOfficeSite("defaultAdConnectorOfficeSite",
+        default_ad_connector_office_site = alicloud.eds.AdConnectorOfficeSite("default",
             ad_connector_office_site_name=name,
             bandwidth=100,
-            cen_id=default_instance.id,
+            cen_id=default.id,
             cidr_block="10.0.0.0/12",
             desktop_access_type="INTERNET",
             dns_addresses=["127.0.0.2"],
@@ -768,13 +768,13 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_instance = alicloud.cen.Instance("defaultInstance",
+        default = alicloud.cen.Instance("default",
             cen_instance_name=name,
             protection_level="REDUCED")
-        default_ad_connector_office_site = alicloud.eds.AdConnectorOfficeSite("defaultAdConnectorOfficeSite",
+        default_ad_connector_office_site = alicloud.eds.AdConnectorOfficeSite("default",
             ad_connector_office_site_name=name,
             bandwidth=100,
-            cen_id=default_instance.id,
+            cen_id=default.id,
             cidr_block="10.0.0.0/12",
             desktop_access_type="INTERNET",
             dns_addresses=["127.0.0.2"],

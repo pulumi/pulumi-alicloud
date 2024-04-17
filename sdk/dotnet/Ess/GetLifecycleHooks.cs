@@ -29,8 +29,8 @@ namespace Pulumi.AliCloud.Ess
         /// {
         ///     var ds = AliCloud.Ess.GetLifecycleHooks.Invoke(new()
         ///     {
-        ///         NameRegex = "lifecyclehook_name",
         ///         ScalingGroupId = "scaling_group_id",
+        ///         NameRegex = "lifecyclehook_name",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -62,8 +62,8 @@ namespace Pulumi.AliCloud.Ess
         /// {
         ///     var ds = AliCloud.Ess.GetLifecycleHooks.Invoke(new()
         ///     {
-        ///         NameRegex = "lifecyclehook_name",
         ///         ScalingGroupId = "scaling_group_id",
+        ///         NameRegex = "lifecyclehook_name",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

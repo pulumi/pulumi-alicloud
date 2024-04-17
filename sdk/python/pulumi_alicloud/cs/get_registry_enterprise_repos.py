@@ -151,6 +151,7 @@ def get_registry_enterprise_repos(enable_details: Optional[bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     my_repos = alicloud.cs.get_registry_enterprise_repos(instance_id="cri-xx",
         name_regex="my-repos",
         output_file="my-repo-json")
@@ -208,6 +209,7 @@ def get_registry_enterprise_repos_output(enable_details: Optional[pulumi.Input[O
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     my_repos = alicloud.cs.get_registry_enterprise_repos(instance_id="cri-xx",
         name_regex="my-repos",
         output_file="my-repo-json")

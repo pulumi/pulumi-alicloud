@@ -300,12 +300,12 @@ class StudioApplication(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_instances = alicloud.ecs.get_instances(status="Running")
-        default_studio_application = alicloud.bp.StudioApplication("defaultStudioApplication",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_get_instances = alicloud.ecs.get_instances(status="Running")
+        default_studio_application = alicloud.bp.StudioApplication("default",
             application_name=name,
             template_id="YAUUQIYRSV1CMFGX",
-            resource_group_id=default_resource_groups.groups[0].id,
+            resource_group_id=default.groups[0].id,
             area_id="cn-hangzhou",
             instances=[alicloud.bp.StudioApplicationInstanceArgs(
                 id="data.alicloud_instances.default.instances.0.id",
@@ -365,12 +365,12 @@ class StudioApplication(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_instances = alicloud.ecs.get_instances(status="Running")
-        default_studio_application = alicloud.bp.StudioApplication("defaultStudioApplication",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_get_instances = alicloud.ecs.get_instances(status="Running")
+        default_studio_application = alicloud.bp.StudioApplication("default",
             application_name=name,
             template_id="YAUUQIYRSV1CMFGX",
-            resource_group_id=default_resource_groups.groups[0].id,
+            resource_group_id=default.groups[0].id,
             area_id="cn-hangzhou",
             instances=[alicloud.bp.StudioApplicationInstanceArgs(
                 id="data.alicloud_instances.default.instances.0.id",

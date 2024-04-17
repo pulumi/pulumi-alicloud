@@ -16,13 +16,13 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultMscSubContract = new alicloud.MscSubContract("defaultMscSubContract", {
+ * const defaultMscSubContract = new alicloud.MscSubContract("default", {
  *     contactName: "example_value",
  *     position: "CEO",
  *     email: "123@163.com",
  *     mobile: "153xxxxx906",
  * });
- * const defaultMscSubContactVerificationMessage = defaultMscSubContract.id.apply(id => alicloud.getMscSubContactVerificationMessageOutput({
+ * const default = defaultMscSubContract.id.apply(id => alicloud.getMscSubContactVerificationMessageOutput({
  *     contactId: id,
  *     type: 1,
  * }));
@@ -79,13 +79,13 @@ export interface GetMscSubContactVerificationMessageResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultMscSubContract = new alicloud.MscSubContract("defaultMscSubContract", {
+ * const defaultMscSubContract = new alicloud.MscSubContract("default", {
  *     contactName: "example_value",
  *     position: "CEO",
  *     email: "123@163.com",
  *     mobile: "153xxxxx906",
  * });
- * const defaultMscSubContactVerificationMessage = defaultMscSubContract.id.apply(id => alicloud.getMscSubContactVerificationMessageOutput({
+ * const default = defaultMscSubContract.id.apply(id => alicloud.getMscSubContactVerificationMessageOutput({
  *     contactId: id,
  *     type: 1,
  * }));

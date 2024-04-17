@@ -81,12 +81,9 @@ import * as utilities from "../utilities";
  *     vpcName: "the-second-vpc",
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const eu = new alicloud.Provider("eu", {region: "eu-central-1"});
  * const third = new alicloud.vpc.Network("third", {
  *     vpcName: "the-third-vpc",
  *     cidrBlock: "172.16.0.0/16",
- * }, {
- *     provider: alicloud.eu,
  * });
  * const zone_attachment = new alicloud.pvtz.ZoneAttachment("zone-attachment", {
  *     zoneId: zone.id,

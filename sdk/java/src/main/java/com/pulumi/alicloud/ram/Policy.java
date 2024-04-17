@@ -55,7 +55,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new RAM Policy.
  *         var policy = new Policy(&#34;policy&#34;, PolicyArgs.builder()        
- *             .description(&#34;this is a policy test&#34;)
+ *             .policyName(&#34;policyName&#34;)
  *             .policyDocument(&#34;&#34;&#34;
  *   {
  *     &#34;Statement&#34;: [
@@ -73,9 +73,8 @@ import javax.annotation.Nullable;
  *     ],
  *       &#34;Version&#34;: &#34;1&#34;
  *   }
- *   
  *             &#34;&#34;&#34;)
- *             .policyName(&#34;policyName&#34;)
+ *             .description(&#34;this is a policy test&#34;)
  *             .build());
  * 
  *     }

@@ -27,6 +27,7 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var myRepos = AliCloud.CR.GetRepos.Invoke(new()
         ///     {
         ///         NameRegex = "my-repos",
@@ -60,6 +61,7 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var myRepos = AliCloud.CR.GetRepos.Invoke(new()
         ///     {
         ///         NameRegex = "my-repos",

@@ -33,6 +33,7 @@ namespace Pulumi.AliCloud.Imm
     ///     var name = config.Get("name") ?? "tfexample";
     ///     var role = new AliCloud.Ram.Role("role", new()
     ///     {
+    ///         Name = name,
     ///         Document = @"  {
     ///     ""Statement"": [
     ///       {

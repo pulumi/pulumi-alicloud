@@ -19,8 +19,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.expressconnect.getRouterInterfaces({
- *     ids: [alicloud_router_interface["default"].id],
- *     nameRegex: alicloud_router_interface["default"].name,
+ *     ids: [defaultAlicloudRouterInterface.id],
+ *     nameRegex: defaultAlicloudRouterInterface.name,
  * });
  * export const alicloudRouterInterfaceExampleId = _default.then(_default => _default.interfaces?.[0]?.id);
  * ```
@@ -106,8 +106,8 @@ export interface GetRouterInterfacesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.expressconnect.getRouterInterfaces({
- *     ids: [alicloud_router_interface["default"].id],
- *     nameRegex: alicloud_router_interface["default"].name,
+ *     ids: [defaultAlicloudRouterInterface.id],
+ *     nameRegex: defaultAlicloudRouterInterface.name,
  * });
  * export const alicloudRouterInterfaceExampleId = _default.then(_default => _default.interfaces?.[0]?.id);
  * ```

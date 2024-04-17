@@ -20,8 +20,9 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleResource = new alicloud.log.Resource("exampleResource", {
+ * const example = new alicloud.log.Resource("example", {
  *     type: "userdefine",
+ *     name: "user.tf.resource",
  *     description: "user tf resource desc",
  *     extInfo: "{}",
  *     schema: `    {
@@ -45,8 +46,8 @@ import * as utilities from "../utilities";
  *     }
  * `,
  * });
- * const exampleResourceRecord = new alicloud.log.ResourceRecord("exampleResourceRecord", {
- *     resourceName: exampleResource.id,
+ * const exampleResourceRecord = new alicloud.log.ResourceRecord("example", {
+ *     resourceName: example.id,
  *     recordId: "user_tf_resource_1",
  *     tag: "resource tag",
  *     value: `    {

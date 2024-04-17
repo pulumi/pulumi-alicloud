@@ -319,15 +319,15 @@ public final class ServicecatalogFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultEndUserProducts = ServicecatalogFunctions.getEndUserProducts(GetEndUserProductsArgs.builder()
+     *         final var default = ServicecatalogFunctions.getEndUserProducts(GetEndUserProductsArgs.builder()
      *             .nameRegex(&#34;ram模板创建&#34;)
      *             .build());
      * 
-     *         final var defaultLaunchOptions = ServicecatalogFunctions.getLaunchOptions(GetLaunchOptionsArgs.builder()
+     *         final var defaultGetLaunchOptions = ServicecatalogFunctions.getLaunchOptions(GetLaunchOptionsArgs.builder()
      *             .productId(&#34;data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogLaunchOptionExampleId&#34;, defaultLaunchOptions.applyValue(getLaunchOptionsResult -&gt; getLaunchOptionsResult.launchOptions()[0].id()));
+     *         ctx.export(&#34;alicloudServiceCatalogLaunchOptionExampleId&#34;, defaultGetLaunchOptions.applyValue(getLaunchOptionsResult -&gt; getLaunchOptionsResult.launchOptions()[0].id()));
      *     }
      * }
      * ```
@@ -369,15 +369,15 @@ public final class ServicecatalogFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultEndUserProducts = ServicecatalogFunctions.getEndUserProducts(GetEndUserProductsArgs.builder()
+     *         final var default = ServicecatalogFunctions.getEndUserProducts(GetEndUserProductsArgs.builder()
      *             .nameRegex(&#34;ram模板创建&#34;)
      *             .build());
      * 
-     *         final var defaultLaunchOptions = ServicecatalogFunctions.getLaunchOptions(GetLaunchOptionsArgs.builder()
+     *         final var defaultGetLaunchOptions = ServicecatalogFunctions.getLaunchOptions(GetLaunchOptionsArgs.builder()
      *             .productId(&#34;data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogLaunchOptionExampleId&#34;, defaultLaunchOptions.applyValue(getLaunchOptionsResult -&gt; getLaunchOptionsResult.launchOptions()[0].id()));
+     *         ctx.export(&#34;alicloudServiceCatalogLaunchOptionExampleId&#34;, defaultGetLaunchOptions.applyValue(getLaunchOptionsResult -&gt; getLaunchOptionsResult.launchOptions()[0].id()));
      *     }
      * }
      * ```
@@ -419,15 +419,15 @@ public final class ServicecatalogFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultEndUserProducts = ServicecatalogFunctions.getEndUserProducts(GetEndUserProductsArgs.builder()
+     *         final var default = ServicecatalogFunctions.getEndUserProducts(GetEndUserProductsArgs.builder()
      *             .nameRegex(&#34;ram模板创建&#34;)
      *             .build());
      * 
-     *         final var defaultLaunchOptions = ServicecatalogFunctions.getLaunchOptions(GetLaunchOptionsArgs.builder()
+     *         final var defaultGetLaunchOptions = ServicecatalogFunctions.getLaunchOptions(GetLaunchOptionsArgs.builder()
      *             .productId(&#34;data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogLaunchOptionExampleId&#34;, defaultLaunchOptions.applyValue(getLaunchOptionsResult -&gt; getLaunchOptionsResult.launchOptions()[0].id()));
+     *         ctx.export(&#34;alicloudServiceCatalogLaunchOptionExampleId&#34;, defaultGetLaunchOptions.applyValue(getLaunchOptionsResult -&gt; getLaunchOptionsResult.launchOptions()[0].id()));
      *     }
      * }
      * ```
@@ -469,15 +469,15 @@ public final class ServicecatalogFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultEndUserProducts = ServicecatalogFunctions.getEndUserProducts(GetEndUserProductsArgs.builder()
+     *         final var default = ServicecatalogFunctions.getEndUserProducts(GetEndUserProductsArgs.builder()
      *             .nameRegex(&#34;ram模板创建&#34;)
      *             .build());
      * 
-     *         final var defaultLaunchOptions = ServicecatalogFunctions.getLaunchOptions(GetLaunchOptionsArgs.builder()
+     *         final var defaultGetLaunchOptions = ServicecatalogFunctions.getLaunchOptions(GetLaunchOptionsArgs.builder()
      *             .productId(&#34;data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudServiceCatalogLaunchOptionExampleId&#34;, defaultLaunchOptions.applyValue(getLaunchOptionsResult -&gt; getLaunchOptionsResult.launchOptions()[0].id()));
+     *         ctx.export(&#34;alicloudServiceCatalogLaunchOptionExampleId&#34;, defaultGetLaunchOptions.applyValue(getLaunchOptionsResult -&gt; getLaunchOptionsResult.launchOptions()[0].id()));
      *     }
      * }
      * ```
@@ -517,8 +517,8 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getPortfolios(GetPortfoliosArgs.builder()
-     *             .ids(alicloud_service_catalog_portfolio.default().id())
-     *             .nameRegex(alicloud_service_catalog_portfolio.default().name())
+     *             .ids(defaultAlicloudServiceCatalogPortfolio.id())
+     *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.name())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudServiceCatalogPortfolioExampleId&#34;, default_.portfolios()[0].id());
@@ -561,8 +561,8 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getPortfolios(GetPortfoliosArgs.builder()
-     *             .ids(alicloud_service_catalog_portfolio.default().id())
-     *             .nameRegex(alicloud_service_catalog_portfolio.default().name())
+     *             .ids(defaultAlicloudServiceCatalogPortfolio.id())
+     *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.name())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudServiceCatalogPortfolioExampleId&#34;, default_.portfolios()[0].id());
@@ -605,8 +605,8 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getPortfolios(GetPortfoliosArgs.builder()
-     *             .ids(alicloud_service_catalog_portfolio.default().id())
-     *             .nameRegex(alicloud_service_catalog_portfolio.default().name())
+     *             .ids(defaultAlicloudServiceCatalogPortfolio.id())
+     *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.name())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudServiceCatalogPortfolioExampleId&#34;, default_.portfolios()[0].id());
@@ -649,8 +649,8 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getPortfolios(GetPortfoliosArgs.builder()
-     *             .ids(alicloud_service_catalog_portfolio.default().id())
-     *             .nameRegex(alicloud_service_catalog_portfolio.default().name())
+     *             .ids(defaultAlicloudServiceCatalogPortfolio.id())
+     *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.name())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudServiceCatalogPortfolioExampleId&#34;, default_.portfolios()[0].id());
@@ -693,8 +693,8 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getPortfolios(GetPortfoliosArgs.builder()
-     *             .ids(alicloud_service_catalog_portfolio.default().id())
-     *             .nameRegex(alicloud_service_catalog_portfolio.default().name())
+     *             .ids(defaultAlicloudServiceCatalogPortfolio.id())
+     *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.name())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudServiceCatalogPortfolioExampleId&#34;, default_.portfolios()[0].id());
@@ -737,8 +737,8 @@ public final class ServicecatalogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ServicecatalogFunctions.getPortfolios(GetPortfoliosArgs.builder()
-     *             .ids(alicloud_service_catalog_portfolio.default().id())
-     *             .nameRegex(alicloud_service_catalog_portfolio.default().name())
+     *             .ids(defaultAlicloudServiceCatalogPortfolio.id())
+     *             .nameRegex(defaultAlicloudServiceCatalogPortfolio.name())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudServiceCatalogPortfolioExampleId&#34;, default_.portfolios()[0].id());

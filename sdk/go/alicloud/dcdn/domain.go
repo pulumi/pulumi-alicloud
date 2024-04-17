@@ -48,18 +48,16 @@ import (
 //			if param := cfg.Get("domainName"); param != "" {
 //				domainName = param
 //			}
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dcdn.NewDomain(ctx, "example", &dcdn.DomainArgs{
-//				DomainName: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", domainName, result), nil
-//				}).(pulumi.StringOutput),
-//				Scope: pulumi.String("overseas"),
+//				DomainName: pulumi.String(fmt.Sprintf("%v-%v", domainName, _default.Result)),
+//				Scope:      pulumi.String("overseas"),
 //				Sources: dcdn.DomainSourceArray{
 //					&dcdn.DomainSourceArgs{
 //						Content:  pulumi.String("1.1.1.1"),

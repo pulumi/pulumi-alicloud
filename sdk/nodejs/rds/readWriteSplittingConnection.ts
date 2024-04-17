@@ -18,36 +18,39 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const exampleZones = alicloud.rds.getZones({
+ * const example = alicloud.rds.getZones({
  *     engine: "MySQL",
  *     engineVersion: "5.7",
  *     category: "HighAvailability",
  *     dbInstanceStorageType: "local_ssd",
  * });
- * const exampleInstanceClasses = exampleZones.then(exampleZones => alicloud.rds.getInstanceClasses({
- *     zoneId: exampleZones.ids?.[0],
+ * const exampleGetInstanceClasses = example.then(example => alicloud.rds.getInstanceClasses({
+ *     zoneId: example.ids?.[0],
  *     engine: "MySQL",
  *     engineVersion: "5.7",
  *     category: "HighAvailability",
  *     dbInstanceStorageType: "local_ssd",
  * }));
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
  *     vpcId: exampleNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: exampleZones.then(exampleZones => exampleZones.zones?.[0]?.id),
+ *     zoneId: example.then(example => example.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
- * const exampleInstance = new alicloud.rds.Instance("exampleInstance", {
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
+ *     name: name,
+ *     vpcId: exampleNetwork.id,
+ * });
+ * const exampleInstance = new alicloud.rds.Instance("example", {
  *     engine: "MySQL",
  *     engineVersion: "5.7",
  *     category: "HighAvailability",
- *     instanceType: exampleInstanceClasses.then(exampleInstanceClasses => exampleInstanceClasses.instanceClasses?.[0]?.instanceClass),
- *     instanceStorage: exampleInstanceClasses.then(exampleInstanceClasses => exampleInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
+ *     instanceType: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.instanceClass),
+ *     instanceStorage: exampleGetInstanceClasses.then(exampleGetInstanceClasses => exampleGetInstanceClasses.instanceClasses?.[0]?.storageRange?.min),
  *     instanceChargeType: "Postpaid",
  *     dbInstanceStorageType: "local_ssd",
  *     instanceName: name,
@@ -57,7 +60,7 @@ import * as utilities from "../utilities";
  *         "100.69.7.112",
  *     ],
  * });
- * const exampleReadOnlyInstance = new alicloud.rds.ReadOnlyInstance("exampleReadOnlyInstance", {
+ * const exampleReadOnlyInstance = new alicloud.rds.ReadOnlyInstance("example", {
  *     zoneId: exampleInstance.zoneId,
  *     masterDbInstanceId: exampleInstance.id,
  *     engineVersion: exampleInstance.engineVersion,
@@ -66,7 +69,7 @@ import * as utilities from "../utilities";
  *     instanceName: `${name}readonly`,
  *     vswitchId: exampleSwitch.id,
  * });
- * const exampleReadWriteSplittingConnection = new alicloud.rds.ReadWriteSplittingConnection("exampleReadWriteSplittingConnection", {
+ * const exampleReadWriteSplittingConnection = new alicloud.rds.ReadWriteSplittingConnection("example", {
  *     instanceId: exampleReadOnlyInstance.masterDbInstanceId,
  *     connectionPrefix: "example-con-123",
  *     distributionType: "Standard",

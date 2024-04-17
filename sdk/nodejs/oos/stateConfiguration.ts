@@ -20,14 +20,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultStateConfiguration = new alicloud.oos.StateConfiguration("defaultStateConfiguration", {
+ * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultStateConfiguration = new alicloud.oos.StateConfiguration("default", {
  *     templateName: "ACS-ECS-InventoryDataCollection",
  *     configureMode: "ApplyOnly",
  *     description: "terraform-example",
  *     scheduleType: "rate",
  *     scheduleExpression: "1 hour",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     resourceGroupId: _default.then(_default => _default.ids?.[0]),
  *     targets: "{\"Filters\": [{\"Type\": \"All\", \"Parameters\": {\"InstanceChargeType\": \"PrePaid\"}}], \"ResourceType\": \"ALIYUN::ECS::Instance\"}",
  *     parameters: "{\"policy\": {\"ACS:Application\": {\"Collection\": \"Enabled\"}}}",
  *     tags: {

@@ -47,7 +47,8 @@ import (
 //			if param := cfg.Get("sagId"); param != "" {
 //				sagId = param
 //			}
-//			defaultNetwork, err := cloudconnect.NewNetwork(ctx, "defaultNetwork", &cloudconnect.NetworkArgs{
+//			_, err := cloudconnect.NewNetwork(ctx, "default", &cloudconnect.NetworkArgs{
+//				Name:        pulumi.String(name),
 //				Description: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.0.0/24"),
 //				IsDefault:   pulumi.Bool(true),
@@ -55,8 +56,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudconnect.NewNetworkAttachment(ctx, "defaultNetworkAttachment", &cloudconnect.NetworkAttachmentArgs{
-//				CcnId: defaultNetwork.ID(),
+//			_, err = cloudconnect.NewNetworkAttachment(ctx, "default", &cloudconnect.NetworkAttachmentArgs{
+//				CcnId: _default.ID(),
 //				SagId: pulumi.String(sagId),
 //			})
 //			if err != nil {

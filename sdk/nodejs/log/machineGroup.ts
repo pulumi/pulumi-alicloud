@@ -18,13 +18,17 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
- * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
- * const exampleMachineGroup = new alicloud.log.MachineGroup("exampleMachineGroup", {
- *     project: exampleProject.name,
+ * const example = new alicloud.log.Project("example", {
+ *     name: `terraform-example-${_default.result}`,
+ *     description: "terraform-example",
+ * });
+ * const exampleMachineGroup = new alicloud.log.MachineGroup("example", {
+ *     project: example.name,
+ *     name: "terraform-example",
  *     identifyType: "ip",
  *     topic: "terraform",
  *     identifyLists: [

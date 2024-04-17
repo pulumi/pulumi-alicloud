@@ -379,12 +379,13 @@ class BucketReplication(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        bucket_src = alicloud.oss.Bucket("bucketSrc", bucket=default.result.apply(lambda result: f"example-src-{result}"))
-        bucket_dest = alicloud.oss.Bucket("bucketDest", bucket=default.result.apply(lambda result: f"example-dest-{result}"))
+        bucket_src = alicloud.oss.Bucket("bucket_src", bucket=f"example-src-{default['result']}")
+        bucket_dest = alicloud.oss.Bucket("bucket_dest", bucket=f"example-dest-{default['result']}")
         role = alicloud.ram.Role("role",
+            name=f"example-role-{default['result']}",
             document=\"\"\"		{
         		  "Statement": [
         			{
@@ -403,7 +404,7 @@ class BucketReplication(pulumi.CustomResource):
             description="this is a test",
             force=True)
         policy = alicloud.ram.Policy("policy",
-            policy_name=default.result.apply(lambda result: f"example-policy-{result}"),
+            policy_name=f"example-policy-{default['result']}",
             policy_document=\"\"\"		{
         		  "Statement": [
         			{
@@ -498,12 +499,13 @@ class BucketReplication(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        bucket_src = alicloud.oss.Bucket("bucketSrc", bucket=default.result.apply(lambda result: f"example-src-{result}"))
-        bucket_dest = alicloud.oss.Bucket("bucketDest", bucket=default.result.apply(lambda result: f"example-dest-{result}"))
+        bucket_src = alicloud.oss.Bucket("bucket_src", bucket=f"example-src-{default['result']}")
+        bucket_dest = alicloud.oss.Bucket("bucket_dest", bucket=f"example-dest-{default['result']}")
         role = alicloud.ram.Role("role",
+            name=f"example-role-{default['result']}",
             document=\"\"\"		{
         		  "Statement": [
         			{
@@ -522,7 +524,7 @@ class BucketReplication(pulumi.CustomResource):
             description="this is a test",
             force=True)
         policy = alicloud.ram.Policy("policy",
-            policy_name=default.result.apply(lambda result: f"example-policy-{result}"),
+            policy_name=f"example-policy-{default['result']}",
             policy_document=\"\"\"		{
         		  "Statement": [
         			{

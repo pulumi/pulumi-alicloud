@@ -34,10 +34,11 @@ namespace Pulumi.AliCloud.Ram
     ///     // Create a new RAM user.
     ///     var user = new AliCloud.Ram.User("user", new()
     ///     {
-    ///         Comments = "yoyoyo",
+    ///         Name = "terraform-example",
     ///         DisplayName = "user_display_name",
-    ///         Email = "hello.uuu@aaa.com",
     ///         Mobile = "86-18688888888",
+    ///         Email = "hello.uuu@aaa.com",
+    ///         Comments = "yoyoyo",
     ///     });
     /// 
     /// });

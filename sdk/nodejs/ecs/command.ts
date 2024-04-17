@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.ecs.Command("example", {
+ *     name: "tf-testAcc",
  *     commandContent: "bHMK",
  *     description: "For Terraform Test",
  *     type: "RunShellScript",

@@ -32,8 +32,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.Provider;
- * import com.pulumi.alicloud.ProviderArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.vpc.Network;
@@ -50,7 +48,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.ga.BasicEndpointGroupArgs;
  * import com.pulumi.alicloud.ga.BasicEndpoint;
  * import com.pulumi.alicloud.ga.BasicEndpointArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -67,46 +64,31 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-shenzhen&#34;);
  *         final var endpointRegion = config.get(&#34;endpointRegion&#34;).orElse(&#34;cn-hangzhou&#34;);
- *         var sz = new Provider(&#34;sz&#34;, ProviderArgs.builder()        
- *             .region(region)
- *             .build());
- * 
- *         var hz = new Provider(&#34;hz&#34;, ProviderArgs.builder()        
- *             .region(endpointRegion)
- *             .build());
- * 
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
  *             .vpcName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.17.3.0/24&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.sz())
- *                 .build());
+ *             .build());
  * 
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
  *             .vswitchName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.sz())
- *                 .build());
+ *             .zoneId(default_.zones()[0].id())
+ *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
  *             .vpcId(defaultNetwork.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.sz())
- *                 .build());
+ *             .name(&#34;terraform-example&#34;)
+ *             .build());
  * 
  *         var defaultEcsNetworkInterface = new EcsNetworkInterface(&#34;defaultEcsNetworkInterface&#34;, EcsNetworkInterfaceArgs.builder()        
  *             .vswitchId(defaultSwitch.id())
  *             .securityGroupIds(defaultSecurityGroup.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.sz())
- *                 .build());
+ *             .build());
  * 
  *         var defaultBasicAccelerator = new BasicAccelerator(&#34;defaultBasicAccelerator&#34;, BasicAcceleratorArgs.builder()        
  *             .duration(1)
@@ -132,9 +114,7 @@ import javax.annotation.Nullable;
  *             .endpointSubAddressType(&#34;secondary&#34;)
  *             .endpointSubAddress(&#34;192.168.0.1&#34;)
  *             .basicEndpointName(&#34;terraform-example&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

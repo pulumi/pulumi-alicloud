@@ -464,7 +464,7 @@ class Policy(pulumi.CustomResource):
 
         # Create a new RAM Policy.
         policy = alicloud.ram.Policy("policy",
-            description="this is a policy test",
+            policy_name="policyName",
             policy_document=\"\"\"  {
             "Statement": [
               {
@@ -481,9 +481,8 @@ class Policy(pulumi.CustomResource):
             ],
               "Version": "1"
           }
-          
         \"\"\",
-            policy_name="policyName")
+            description="this is a policy test")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -533,7 +532,7 @@ class Policy(pulumi.CustomResource):
 
         # Create a new RAM Policy.
         policy = alicloud.ram.Policy("policy",
-            description="this is a policy test",
+            policy_name="policyName",
             policy_document=\"\"\"  {
             "Statement": [
               {
@@ -550,9 +549,8 @@ class Policy(pulumi.CustomResource):
             ],
               "Version": "1"
           }
-          
         \"\"\",
-            policy_name="policyName")
+            description="this is a policy test")
         ```
         <!--End PulumiCodeChooser -->
 

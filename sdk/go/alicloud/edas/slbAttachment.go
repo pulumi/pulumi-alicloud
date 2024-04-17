@@ -43,60 +43,60 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			defaultGetZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//			defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
 //				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
 //				Owners:    pulumi.StringRef("system"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(defaultGetZones.Zones[0].Id),
 //				CpuCoreCount:     pulumi.IntRef(1),
 //				MemorySize:       pulumi.Float64Ref(2),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
-//				AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+//			defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
+//				AvailabilityZone: pulumi.String(defaultGetZones.Zones[0].Id),
 //				InstanceName:     pulumi.String(name),
-//				ImageId:          pulumi.String(defaultImages.Images[0].Id),
-//				InstanceType:     pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:          pulumi.String(defaultGetImages.Images[0].Id),
+//				InstanceType:     pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroups: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},
@@ -109,17 +109,17 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultCluster, err := edas.NewCluster(ctx, "defaultCluster", &edas.ClusterArgs{
+//			defaultCluster, err := edas.NewCluster(ctx, "default", &edas.ClusterArgs{
 //				ClusterName:     pulumi.String(name),
 //				ClusterType:     pulumi.Int(2),
 //				NetworkMode:     pulumi.Int(2),
-//				LogicalRegionId: pulumi.String(defaultRegions.Regions[0].Id),
+//				LogicalRegionId: pulumi.String(_default.Regions[0].Id),
 //				VpcId:           defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = edas.NewInstanceClusterAttachment(ctx, "defaultInstanceClusterAttachment", &edas.InstanceClusterAttachmentArgs{
+//			_, err = edas.NewInstanceClusterAttachment(ctx, "default", &edas.InstanceClusterAttachmentArgs{
 //				ClusterId: defaultCluster.ID(),
 //				InstanceIds: pulumi.StringArray{
 //					defaultInstance.ID(),
@@ -128,7 +128,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultApplication, err := edas.NewApplication(ctx, "defaultApplication", &edas.ApplicationArgs{
+//			defaultApplication, err := edas.NewApplication(ctx, "default", &edas.ApplicationArgs{
 //				ApplicationName: pulumi.String(name),
 //				ClusterId:       defaultCluster.ID(),
 //				PackageType:     pulumi.String("JAR"),
@@ -136,7 +136,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "defaultApplicationLoadBalancer", &slb.ApplicationLoadBalancerArgs{
+//			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "default", &slb.ApplicationLoadBalancerArgs{
 //				LoadBalancerName: pulumi.String(name),
 //				VswitchId:        defaultSwitch.ID(),
 //				LoadBalancerSpec: pulumi.String("slb.s2.small"),
@@ -145,7 +145,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = edas.NewSlbAttachment(ctx, "defaultSlbAttachment", &edas.SlbAttachmentArgs{
+//			_, err = edas.NewSlbAttachment(ctx, "default", &edas.SlbAttachmentArgs{
 //				AppId: defaultApplication.ID(),
 //				SlbId: defaultApplicationLoadBalancer.ID(),
 //				SlbIp: defaultApplicationLoadBalancer.Address,

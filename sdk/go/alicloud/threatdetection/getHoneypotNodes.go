@@ -31,7 +31,7 @@ import (
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // _default, err := threatdetection.GetHoneypotNodes(ctx, &threatdetection.GetHoneypotNodesArgs{
 // Ids: interface{}{
-// alicloud_threat_detection_honeypot_node.Default.Id,
+// defaultAlicloudThreatDetectionHoneypotNode.Id,
 // },
 // }, nil);
 // if err != nil {

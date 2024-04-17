@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-testacc-example";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const defaultVpc = new alicloud.vpc.Network("defaultVpc", {
@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *     vpcId: defaultVpc.id,
  *     cidrBlock: "192.168.0.0/21",
  *     vswitchName: `${name}1`,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     description: "tf-testacc-vswitch",
  * });
  * const defaultRg = new alicloud.resourcemanager.ResourceGroup("defaultRg", {
@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  *     displayName: "tf-testacc-changerg670",
  *     resourceGroupName: `${name}3`,
  * });
- * const defaultHaVipv2 = new alicloud.vpc.HaVipv2("defaultHaVipv2", {
+ * const defaultHaVipv2 = new alicloud.vpc.HaVipv2("default", {
  *     description: "test",
  *     vswitchId: defaultVswitch.id,
  *     haVipName: name,

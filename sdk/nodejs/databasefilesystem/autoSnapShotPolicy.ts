@@ -21,10 +21,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.databasefilesystem.AutoSnapShotPolicy("default", {
- *     policyName: "tf-example",
- *     repeatWeekdays: ["2"],
- *     retentionDays: 1,
  *     timePoints: ["01"],
+ *     policyName: "tf-example",
+ *     retentionDays: 1,
+ *     repeatWeekdays: ["2"],
  * });
  * ```
  * <!--End PulumiCodeChooser -->

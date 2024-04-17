@@ -36,64 +36,65 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("Instance"),
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_essd"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone:   pulumi.StringRef(defaultZones.Zones[0].Id),
+//			defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone:   pulumi.StringRef(_default.Zones[0].Id),
 //				SystemDiskCategory: pulumi.StringRef("cloud_essd"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//			defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
 //				Owners: pulumi.StringRef("system"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("terraform-example"),
 //				CidrBlock: pulumi.String("172.17.3.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String("terraform-example"),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String("terraform-example"),
 //				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
-//				AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+//			defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
+//				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 //				InstanceName:     pulumi.String("terraform-example"),
 //				SecurityGroups: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},
 //				VswitchId:               defaultSwitch.ID(),
-//				InstanceType:            pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
-//				ImageId:                 pulumi.String(defaultImages.Images[0].Id),
+//				InstanceType:            pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:                 pulumi.String(defaultGetImages.Images[0].Id),
 //				InternetMaxBandwidthOut: pulumi.Int(10),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultEcsDisk, err := ecs.NewEcsDisk(ctx, "defaultEcsDisk", &ecs.EcsDiskArgs{
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//			defaultEcsDisk, err := ecs.NewEcsDisk(ctx, "default", &ecs.EcsDiskArgs{
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				DiskName:    pulumi.String("terraform-example"),
 //				Description: pulumi.String("terraform-example"),
 //				Category:    pulumi.String("cloud_essd"),
@@ -102,14 +103,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewDiskAttachment(ctx, "defaultDiskAttachment", &ecs.DiskAttachmentArgs{
+//			_, err = ecs.NewDiskAttachment(ctx, "default", &ecs.DiskAttachmentArgs{
 //				DiskId:     defaultEcsDisk.ID(),
 //				InstanceId: defaultInstance.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewEcsSnapshotGroup(ctx, "defaultEcsSnapshotGroup", &ecs.EcsSnapshotGroupArgs{
+//			_, err = ecs.NewEcsSnapshotGroup(ctx, "default", &ecs.EcsSnapshotGroupArgs{
 //				Description: pulumi.String("terraform-example"),
 //				DiskIds: pulumi.StringArray{
 //					defaultEcsDisk.ID(),

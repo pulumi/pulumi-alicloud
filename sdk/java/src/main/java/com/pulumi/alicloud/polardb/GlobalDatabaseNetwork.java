@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultNodeClasses = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
+ *         final var default = PolardbFunctions.getNodeClasses(GetNodeClassesArgs.builder()
  *             .dbType(&#34;MySQL&#34;)
  *             .dbVersion(&#34;8.0&#34;)
  *             .category(&#34;Normal&#34;)
@@ -69,14 +69,14 @@ import javax.annotation.Nullable;
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(defaultNodeClasses.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].zoneId()))
+ *             .zoneId(default_.classes()[0].zoneId())
  *             .vswitchName(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
  *             .dbType(&#34;MySQL&#34;)
  *             .dbVersion(&#34;8.0&#34;)
- *             .dbNodeClass(defaultNodeClasses.applyValue(getNodeClassesResult -&gt; getNodeClassesResult.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass()))
+ *             .dbNodeClass(default_.classes()[0].supportedEngines()[0].availableResources()[0].dbNodeClass())
  *             .payType(&#34;PostPaid&#34;)
  *             .vswitchId(defaultSwitch.id())
  *             .description(&#34;terraform-example&#34;)

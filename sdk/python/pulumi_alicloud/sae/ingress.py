@@ -382,30 +382,30 @@ class Ingress(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = alicloud.get_regions(current=True)
+        default_integer = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_get_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
+            zone_id=default_get_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_network.id)
+        default_namespace = alicloud.sae.Namespace("default",
+            namespace_id=f"{default.regions[0].id}:example{default_integer['result']}",
             namespace_name=name,
             namespace_description=name,
             enable_micro_registration=False)
-        default_application = alicloud.sae.Application("defaultApplication",
+        default_application = alicloud.sae.Application("default",
             app_description=name,
-            app_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
+            app_name=f"{name}-{default_integer['result']}",
             namespace_id=default_namespace.id,
-            image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
+            image_url=f"registry-vpc.{default.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
             package_type="Image",
             security_group_id=default_security_group.id,
             vpc_id=default_network.id,
@@ -414,12 +414,12 @@ class Ingress(pulumi.CustomResource):
             replicas=5,
             cpu=500,
             memory=2048)
-        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("default",
             load_balancer_name=name,
             vswitch_id=default_switch.id,
             load_balancer_spec="slb.s2.small",
             address_type="intranet")
-        default_ingress = alicloud.sae.Ingress("defaultIngress",
+        default_ingress = alicloud.sae.Ingress("default",
             slb_id=default_application_load_balancer.id,
             namespace_id=default_namespace.id,
             listener_port=80,
@@ -485,30 +485,30 @@ class Ingress(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = alicloud.get_regions(current=True)
+        default_integer = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_get_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_namespace = alicloud.sae.Namespace("defaultNamespace",
-            namespace_id=default_random_integer.result.apply(lambda result: f"{default_regions.regions[0].id}:example{result}"),
+            zone_id=default_get_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default_network.id)
+        default_namespace = alicloud.sae.Namespace("default",
+            namespace_id=f"{default.regions[0].id}:example{default_integer['result']}",
             namespace_name=name,
             namespace_description=name,
             enable_micro_registration=False)
-        default_application = alicloud.sae.Application("defaultApplication",
+        default_application = alicloud.sae.Application("default",
             app_description=name,
-            app_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
+            app_name=f"{name}-{default_integer['result']}",
             namespace_id=default_namespace.id,
-            image_url=f"registry-vpc.{default_regions.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
+            image_url=f"registry-vpc.{default.regions[0].id}.aliyuncs.com/sae-demo-image/consumer:1.0",
             package_type="Image",
             security_group_id=default_security_group.id,
             vpc_id=default_network.id,
@@ -517,12 +517,12 @@ class Ingress(pulumi.CustomResource):
             replicas=5,
             cpu=500,
             memory=2048)
-        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer",
+        default_application_load_balancer = alicloud.slb.ApplicationLoadBalancer("default",
             load_balancer_name=name,
             vswitch_id=default_switch.id,
             load_balancer_spec="slb.s2.small",
             address_type="intranet")
-        default_ingress = alicloud.sae.Ingress("defaultIngress",
+        default_ingress = alicloud.sae.Ingress("default",
             slb_id=default_application_load_balancer.id,
             namespace_id=default_namespace.id,
             listener_port=80,

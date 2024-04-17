@@ -283,17 +283,18 @@ class SearchIndex(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_instance = alicloud.ots.Instance("defaultInstance",
+        default_instance = alicloud.ots.Instance("default",
+            name=f"{name}-{default['result']}",
             description=name,
             accessed_by="Any",
             tags={
                 "Created": "TF",
                 "For": "example",
             })
-        default_table = alicloud.ots.Table("defaultTable",
+        default_table = alicloud.ots.Table("default",
             instance_name=default_instance.name,
             table_name="tf_example",
             time_to_live=-1,
@@ -314,7 +315,7 @@ class SearchIndex(pulumi.CustomResource):
                     type="Binary",
                 ),
             ])
-        default_search_index = alicloud.ots.SearchIndex("defaultSearchIndex",
+        default_search_index = alicloud.ots.SearchIndex("default",
             instance_name=default_instance.name,
             table_name=default_table.table_name,
             index_name="example_index",
@@ -409,17 +410,18 @@ class SearchIndex(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_instance = alicloud.ots.Instance("defaultInstance",
+        default_instance = alicloud.ots.Instance("default",
+            name=f"{name}-{default['result']}",
             description=name,
             accessed_by="Any",
             tags={
                 "Created": "TF",
                 "For": "example",
             })
-        default_table = alicloud.ots.Table("defaultTable",
+        default_table = alicloud.ots.Table("default",
             instance_name=default_instance.name,
             table_name="tf_example",
             time_to_live=-1,
@@ -440,7 +442,7 @@ class SearchIndex(pulumi.CustomResource):
                     type="Binary",
                 ),
             ])
-        default_search_index = alicloud.ots.SearchIndex("defaultSearchIndex",
+        default_search_index = alicloud.ots.SearchIndex("default",
             instance_name=default_instance.name,
             table_name=default_table.table_name,
             index_name="example_index",

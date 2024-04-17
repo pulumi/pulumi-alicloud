@@ -204,50 +204,42 @@ class TransitRouterMulticastDomainPeerMember(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        hz = alicloud.Provider("hz", region="cn-hangzhou")
-        qd = alicloud.Provider("qd", region="cn-qingdao")
-        default_instance = alicloud.cen.Instance("defaultInstance", cen_instance_name=name)
-        default_bandwidth_package = alicloud.cen.BandwidthPackage("defaultBandwidthPackage",
+        default = alicloud.cen.Instance("default", cen_instance_name=name)
+        default_bandwidth_package = alicloud.cen.BandwidthPackage("default",
             bandwidth=5,
             cen_bandwidth_package_name=name,
             geographic_region_a_id="China",
             geographic_region_b_id="China")
-        default_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            instance_id=default_instance.id,
+        default_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("default",
+            instance_id=default.id,
             bandwidth_package_id=default_bandwidth_package.id)
-        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter",
+        default_transit_router = alicloud.cen.TransitRouter("default",
             cen_id=default_bandwidth_package_attachment.instance_id,
-            support_multicast=True,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        peer_transit_router = alicloud.cen.TransitRouter("peerTransitRouter",
+            support_multicast=True)
+        peer = alicloud.cen.TransitRouter("peer",
             cen_id=default_bandwidth_package_attachment.instance_id,
-            support_multicast=True,
-            opts=pulumi.ResourceOptions(provider=alicloud["qd"]))
-        default_transit_router_peer_attachment = alicloud.cen.TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment",
+            support_multicast=True)
+        default_transit_router_peer_attachment = alicloud.cen.TransitRouterPeerAttachment("default",
             cen_id=default_bandwidth_package_attachment.instance_id,
             transit_router_id=default_transit_router.transit_router_id,
-            peer_transit_router_id=peer_transit_router.transit_router_id,
+            peer_transit_router_id=peer.transit_router_id,
             peer_transit_router_region_id="cn-qingdao",
             cen_bandwidth_package_id=default_bandwidth_package_attachment.bandwidth_package_id,
             bandwidth=5,
             transit_router_attachment_description=name,
-            transit_router_attachment_name=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("defaultTransitRouterMulticastDomain",
+            transit_router_attachment_name=name)
+        default_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("default",
             transit_router_id=default_transit_router_peer_attachment.transit_router_id,
             transit_router_multicast_domain_name=name,
-            transit_router_multicast_domain_description=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        peer_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("peerTransitRouterMulticastDomain",
+            transit_router_multicast_domain_description=name)
+        peer_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("peer",
             transit_router_id=default_transit_router_peer_attachment.peer_transit_router_id,
             transit_router_multicast_domain_name=name,
-            transit_router_multicast_domain_description=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["qd"]))
-        default_transit_router_multicast_domain_peer_member = alicloud.cen.TransitRouterMulticastDomainPeerMember("defaultTransitRouterMulticastDomainPeerMember",
+            transit_router_multicast_domain_description=name)
+        default_transit_router_multicast_domain_peer_member = alicloud.cen.TransitRouterMulticastDomainPeerMember("default",
             transit_router_multicast_domain_id=default_transit_router_multicast_domain.id,
             peer_transit_router_multicast_domain_id=peer_transit_router_multicast_domain.id,
-            group_ip_address="224.0.0.1",
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
+            group_ip_address="224.0.0.1")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -292,50 +284,42 @@ class TransitRouterMulticastDomainPeerMember(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        hz = alicloud.Provider("hz", region="cn-hangzhou")
-        qd = alicloud.Provider("qd", region="cn-qingdao")
-        default_instance = alicloud.cen.Instance("defaultInstance", cen_instance_name=name)
-        default_bandwidth_package = alicloud.cen.BandwidthPackage("defaultBandwidthPackage",
+        default = alicloud.cen.Instance("default", cen_instance_name=name)
+        default_bandwidth_package = alicloud.cen.BandwidthPackage("default",
             bandwidth=5,
             cen_bandwidth_package_name=name,
             geographic_region_a_id="China",
             geographic_region_b_id="China")
-        default_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            instance_id=default_instance.id,
+        default_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("default",
+            instance_id=default.id,
             bandwidth_package_id=default_bandwidth_package.id)
-        default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter",
+        default_transit_router = alicloud.cen.TransitRouter("default",
             cen_id=default_bandwidth_package_attachment.instance_id,
-            support_multicast=True,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        peer_transit_router = alicloud.cen.TransitRouter("peerTransitRouter",
+            support_multicast=True)
+        peer = alicloud.cen.TransitRouter("peer",
             cen_id=default_bandwidth_package_attachment.instance_id,
-            support_multicast=True,
-            opts=pulumi.ResourceOptions(provider=alicloud["qd"]))
-        default_transit_router_peer_attachment = alicloud.cen.TransitRouterPeerAttachment("defaultTransitRouterPeerAttachment",
+            support_multicast=True)
+        default_transit_router_peer_attachment = alicloud.cen.TransitRouterPeerAttachment("default",
             cen_id=default_bandwidth_package_attachment.instance_id,
             transit_router_id=default_transit_router.transit_router_id,
-            peer_transit_router_id=peer_transit_router.transit_router_id,
+            peer_transit_router_id=peer.transit_router_id,
             peer_transit_router_region_id="cn-qingdao",
             cen_bandwidth_package_id=default_bandwidth_package_attachment.bandwidth_package_id,
             bandwidth=5,
             transit_router_attachment_description=name,
-            transit_router_attachment_name=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        default_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("defaultTransitRouterMulticastDomain",
+            transit_router_attachment_name=name)
+        default_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("default",
             transit_router_id=default_transit_router_peer_attachment.transit_router_id,
             transit_router_multicast_domain_name=name,
-            transit_router_multicast_domain_description=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
-        peer_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("peerTransitRouterMulticastDomain",
+            transit_router_multicast_domain_description=name)
+        peer_transit_router_multicast_domain = alicloud.cen.TransitRouterMulticastDomain("peer",
             transit_router_id=default_transit_router_peer_attachment.peer_transit_router_id,
             transit_router_multicast_domain_name=name,
-            transit_router_multicast_domain_description=name,
-            opts=pulumi.ResourceOptions(provider=alicloud["qd"]))
-        default_transit_router_multicast_domain_peer_member = alicloud.cen.TransitRouterMulticastDomainPeerMember("defaultTransitRouterMulticastDomainPeerMember",
+            transit_router_multicast_domain_description=name)
+        default_transit_router_multicast_domain_peer_member = alicloud.cen.TransitRouterMulticastDomainPeerMember("default",
             transit_router_multicast_domain_id=default_transit_router_multicast_domain.id,
             peer_transit_router_multicast_domain_id=peer_transit_router_multicast_domain.id,
-            group_ip_address="224.0.0.1",
-            opts=pulumi.ResourceOptions(provider=alicloud["hz"]))
+            group_ip_address="224.0.0.1")
         ```
         <!--End PulumiCodeChooser -->
 

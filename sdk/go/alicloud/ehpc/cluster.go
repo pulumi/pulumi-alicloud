@@ -45,49 +45,49 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//			defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
 //				NameRegex: pulumi.StringRef("^centos_7_6_x64*"),
 //				Owners:    pulumi.StringRef("system"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.0.0.0/8"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.1.0.0/16"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultFileSystem, err := nas.NewFileSystem(ctx, "defaultFileSystem", &nas.FileSystemArgs{
+//			defaultFileSystem, err := nas.NewFileSystem(ctx, "default", &nas.FileSystemArgs{
 //				StorageType:  pulumi.String("Performance"),
 //				ProtocolType: pulumi.String("NFS"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultMountTarget, err := nas.NewMountTarget(ctx, "defaultMountTarget", &nas.MountTargetArgs{
+//			defaultMountTarget, err := nas.NewMountTarget(ctx, "default", &nas.MountTargetArgs{
 //				FileSystemId:    defaultFileSystem.ID(),
 //				AccessGroupName: pulumi.String("DEFAULT_VPC_GROUP_NAME"),
 //				VswitchId:       defaultSwitch.ID(),
@@ -95,28 +95,28 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ehpc.NewCluster(ctx, "defaultCluster", &ehpc.ClusterArgs{
+//			_, err = ehpc.NewCluster(ctx, "default", &ehpc.ClusterArgs{
 //				ClusterName:         pulumi.String(name),
 //				DeployMode:          pulumi.String("Simple"),
 //				Description:         pulumi.String(name),
 //				HaEnable:            pulumi.Bool(false),
-//				ImageId:             pulumi.String(defaultImages.Images[0].Id),
+//				ImageId:             pulumi.String(defaultGetImages.Images[0].Id),
 //				ImageOwnerAlias:     pulumi.String("system"),
 //				VolumeProtocol:      pulumi.String("nfs"),
 //				VolumeId:            defaultFileSystem.ID(),
 //				VolumeMountpoint:    defaultMountTarget.MountTargetDomain,
 //				ComputeCount:        pulumi.Int(1),
-//				ComputeInstanceType: pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				ComputeInstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 //				LoginCount:          pulumi.Int(1),
-//				LoginInstanceType:   pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				LoginInstanceType:   pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 //				ManagerCount:        pulumi.Int(1),
-//				ManagerInstanceType: pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				ManagerInstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 //				OsTag:               pulumi.String("CentOS_7.6_64"),
 //				SchedulerType:       pulumi.String("pbs"),
 //				Password:            pulumi.String("your-password123"),
 //				VswitchId:           defaultSwitch.ID(),
 //				VpcId:               defaultNetwork.ID(),
-//				ZoneId:              pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:              pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err

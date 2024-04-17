@@ -75,6 +75,7 @@ import javax.annotation.Nullable;
  * 
  *         // Create a new ECS instance for a VPC
  *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+ *             .name(name)
  *             .description(&#34;foo&#34;)
  *             .vpcId(vpc.id())
  *             .build());

@@ -36,6 +36,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.rocketmq.Qos;
+ * import com.pulumi.alicloud.rocketmq.QosArgs;
  * import com.pulumi.alicloud.rocketmq.QosCar;
  * import com.pulumi.alicloud.rocketmq.QosCarArgs;
  * import java.util.List;
@@ -53,10 +54,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         var defaultQos = new Qos(&#34;defaultQos&#34;);
+ *         var default_ = new Qos(&#34;default&#34;, QosArgs.builder()        
+ *             .name(name)
+ *             .build());
  * 
  *         var defaultQosCar = new QosCar(&#34;defaultQosCar&#34;, QosCarArgs.builder()        
- *             .qosId(defaultQos.id())
+ *             .qosId(default_.id())
+ *             .name(name)
  *             .description(name)
  *             .priority(&#34;1&#34;)
  *             .limitType(&#34;Absolute&#34;)

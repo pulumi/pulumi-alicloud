@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_dbfs_auto_snap_shot_policy.Default.Id,
+        ///             defaultAlicloudDbfsAutoSnapShotPolicy.Id,
         ///         },
         ///     });
         /// 
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_dbfs_auto_snap_shot_policy.Default.Id,
+        ///             defaultAlicloudDbfsAutoSnapShotPolicy.Id,
         ///         },
         ///     });
         /// 

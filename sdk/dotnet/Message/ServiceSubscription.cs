@@ -31,16 +31,16 @@ namespace Pulumi.AliCloud.Message
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultServiceTopic = new AliCloud.Message.ServiceTopic("defaultServiceTopic", new()
+    ///     var @default = new AliCloud.Message.ServiceTopic("default", new()
     ///     {
     ///         TopicName = name,
     ///         MaxMessageSize = 12357,
     ///         LoggingEnabled = true,
     ///     });
     /// 
-    ///     var defaultServiceSubscription = new AliCloud.Message.ServiceSubscription("defaultServiceSubscription", new()
+    ///     var defaultServiceSubscription = new AliCloud.Message.ServiceSubscription("default", new()
     ///     {
-    ///         TopicName = defaultServiceTopic.TopicName,
+    ///         TopicName = @default.TopicName,
     ///         SubscriptionName = name,
     ///         Endpoint = "http://example.com",
     ///         PushType = "http",

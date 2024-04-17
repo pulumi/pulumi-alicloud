@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_threat_detection_web_lock_config.Default.Id,
+        ///             defaultAlicloudThreatDetectionWebLockConfig.Id,
         ///         },
         ///     });
         /// 
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_threat_detection_web_lock_config.Default.Id,
+        ///             defaultAlicloudThreatDetectionWebLockConfig.Id,
         ///         },
         ///     });
         /// 

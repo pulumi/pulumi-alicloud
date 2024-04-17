@@ -36,13 +36,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := threatdetection.NewBaselineStrategy(ctx, "default", &threatdetection.BaselineStrategyArgs{
-//				BaselineStrategyName: pulumi.String("apispec"),
 //				CustomType:           pulumi.String("custom"),
-//				CycleDays:            pulumi.Int(3),
 //				EndTime:              pulumi.String("08:00:00"),
-//				RiskSubTypeName:      pulumi.String("hc_exploit_redis"),
-//				StartTime:            pulumi.String("05:00:00"),
+//				BaselineStrategyName: pulumi.String("apispec"),
+//				CycleDays:            pulumi.Int(3),
 //				TargetType:           pulumi.String("groupId"),
+//				StartTime:            pulumi.String("05:00:00"),
+//				RiskSubTypeName:      pulumi.String("hc_exploit_redis"),
 //			})
 //			if err != nil {
 //				return err

@@ -276,13 +276,13 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
             description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+        example_transit_router = alicloud.cen.TransitRouter("example",
             transit_router_name="tf_example",
-            cen_id=example_instance.id)
-        example_traffic_marking_policy = alicloud.cen.TrafficMarkingPolicy("exampleTrafficMarkingPolicy",
+            cen_id=example.id)
+        example_traffic_marking_policy = alicloud.cen.TrafficMarkingPolicy("example",
             marking_dscp=1,
             priority=1,
             traffic_marking_policy_name="tf_example",
@@ -329,13 +329,13 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
             description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+        example_transit_router = alicloud.cen.TransitRouter("example",
             transit_router_name="tf_example",
-            cen_id=example_instance.id)
-        example_traffic_marking_policy = alicloud.cen.TrafficMarkingPolicy("exampleTrafficMarkingPolicy",
+            cen_id=example.id)
+        example_traffic_marking_policy = alicloud.cen.TrafficMarkingPolicy("example",
             marking_dscp=1,
             priority=1,
             traffic_marking_policy_name="tf_example",

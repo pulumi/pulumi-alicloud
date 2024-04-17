@@ -119,14 +119,14 @@ def get_projects(ids: Optional[Sequence[str]] = None,
     name = config.get("name")
     if name is None:
         name = "tf_testaccmp"
-    default_project = alicloud.maxcompute.Project("defaultProject",
+    default_project = alicloud.maxcompute.Project("default",
         default_quota="默认后付费Quota",
         project_name=name,
         comment=name,
         product_type="PAYASYOUGO")
-    default_projects = default_project.id.apply(lambda id: alicloud.maxcompute.get_projects_output(ids=[id],
+    default = default_project.id.apply(lambda id: alicloud.maxcompute.get_projects_output(ids=[id],
         name_regex=default_project.name))
-    pulumi.export("alicloudMaxcomputeProjectExampleId", default_projects.projects[0].id)
+    pulumi.export("alicloudMaxcomputeProjectExampleId", default.projects[0].id)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -172,14 +172,14 @@ def get_projects_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     name = config.get("name")
     if name is None:
         name = "tf_testaccmp"
-    default_project = alicloud.maxcompute.Project("defaultProject",
+    default_project = alicloud.maxcompute.Project("default",
         default_quota="默认后付费Quota",
         project_name=name,
         comment=name,
         product_type="PAYASYOUGO")
-    default_projects = default_project.id.apply(lambda id: alicloud.maxcompute.get_projects_output(ids=[id],
+    default = default_project.id.apply(lambda id: alicloud.maxcompute.get_projects_output(ids=[id],
         name_regex=default_project.name))
-    pulumi.export("alicloudMaxcomputeProjectExampleId", default_projects.projects[0].id)
+    pulumi.export("alicloudMaxcomputeProjectExampleId", default.projects[0].id)
     ```
     <!--End PulumiCodeChooser -->
 

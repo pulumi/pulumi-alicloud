@@ -19,17 +19,17 @@ import * as utilities from "../utilities";
  * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ * const example = new alicloud.vpc.Network("example", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
  * });
- * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
  *     vswitchName: name,
  *     cidrBlock: "10.4.0.0/24",
- *     vpcId: exampleNetwork.id,
+ *     vpcId: example.id,
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const exampleHAVip = new alicloud.vpc.HAVip("exampleHAVip", {
+ * const exampleHAVip = new alicloud.vpc.HAVip("example", {
  *     vswitchId: exampleSwitch.id,
  *     description: name,
  * });

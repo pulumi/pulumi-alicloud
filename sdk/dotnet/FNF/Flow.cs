@@ -31,6 +31,7 @@ namespace Pulumi.AliCloud.FNF
     /// {
     ///     var @default = new AliCloud.Ram.Role("default", new()
     ///     {
+    ///         Name = "tf-example-fnfflow",
     ///         Document = @"  {
     ///     ""Statement"": [
     ///       {
@@ -58,6 +59,7 @@ namespace Pulumi.AliCloud.FNF
     /// ",
     ///         RoleArn = @default.Arn,
     ///         Description = "Test for terraform fnf_flow.",
+    ///         Name = "tf-example-flow",
     ///         Type = "FDL",
     ///     });
     /// 

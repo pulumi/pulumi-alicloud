@@ -29,13 +29,13 @@ namespace Pulumi.AliCloud.CloudAuth
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultFaceConfig = new AliCloud.CloudAuth.FaceConfig("defaultFaceConfig", new()
+        ///     var defaultFaceConfig = new AliCloud.CloudAuth.FaceConfig("default", new()
         ///     {
         ///         BizName = "example-value",
         ///         BizType = "example-value",
         ///     });
         /// 
-        ///     var defaultFaceConfigs = AliCloud.CloudAuth.GetFaceConfigs.Invoke(new()
+        ///     var @default = AliCloud.CloudAuth.GetFaceConfigs.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.CloudAuth
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["faceConfig"] = defaultFaceConfigs.Apply(getFaceConfigsResult =&gt; getFaceConfigsResult.Configs[0]),
+        ///         ["faceConfig"] = @default.Apply(@default =&gt; @default.Apply(getFaceConfigsResult =&gt; getFaceConfigsResult.Configs[0])),
         ///     };
         /// });
         /// ```
@@ -73,13 +73,13 @@ namespace Pulumi.AliCloud.CloudAuth
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultFaceConfig = new AliCloud.CloudAuth.FaceConfig("defaultFaceConfig", new()
+        ///     var defaultFaceConfig = new AliCloud.CloudAuth.FaceConfig("default", new()
         ///     {
         ///         BizName = "example-value",
         ///         BizType = "example-value",
         ///     });
         /// 
-        ///     var defaultFaceConfigs = AliCloud.CloudAuth.GetFaceConfigs.Invoke(new()
+        ///     var @default = AliCloud.CloudAuth.GetFaceConfigs.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.CloudAuth
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["faceConfig"] = defaultFaceConfigs.Apply(getFaceConfigsResult =&gt; getFaceConfigsResult.Configs[0]),
+        ///         ["faceConfig"] = @default.Apply(@default =&gt; @default.Apply(getFaceConfigsResult =&gt; getFaceConfigsResult.Configs[0])),
         ///     };
         /// });
         /// ```

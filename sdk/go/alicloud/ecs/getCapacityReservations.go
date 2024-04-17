@@ -31,9 +31,9 @@ import (
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // _default, err := ecs.GetCapacityReservations(ctx, &ecs.GetCapacityReservationsArgs{
 // Ids: interface{}{
-// alicloud_ecs_capacity_reservation.Default.Id,
+// defaultAlicloudEcsCapacityReservation.Id,
 // },
-// NameRegex: pulumi.StringRef(alicloud_ecs_capacity_reservation.Default.Name),
+// NameRegex: pulumi.StringRef(defaultAlicloudEcsCapacityReservation.Name),
 // InstanceType: pulumi.StringRef("ecs.c6.large"),
 // Platform: pulumi.StringRef("linux"),
 // }, nil);

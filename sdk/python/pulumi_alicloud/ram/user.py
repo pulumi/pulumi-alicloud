@@ -251,10 +251,11 @@ class User(pulumi.CustomResource):
 
         # Create a new RAM user.
         user = alicloud.ram.User("user",
-            comments="yoyoyo",
+            name="terraform-example",
             display_name="user_display_name",
+            mobile="86-18688888888",
             email="hello.uuu@aaa.com",
-            mobile="86-18688888888")
+            comments="yoyoyo")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -301,10 +302,11 @@ class User(pulumi.CustomResource):
 
         # Create a new RAM user.
         user = alicloud.ram.User("user",
-            comments="yoyoyo",
+            name="terraform-example",
             display_name="user_display_name",
+            mobile="86-18688888888",
             email="hello.uuu@aaa.com",
-            mobile="86-18688888888")
+            comments="yoyoyo")
         ```
         <!--End PulumiCodeChooser -->
 

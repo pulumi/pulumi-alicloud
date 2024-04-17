@@ -29,8 +29,8 @@ namespace Pulumi.AliCloud.Ess
         /// {
         ///     var ds = AliCloud.Ess.GetScheduledTasks.Invoke(new()
         ///     {
-        ///         NameRegex = "scheduled_task_name",
         ///         ScheduledTaskId = "scheduled_task_id",
+        ///         NameRegex = "scheduled_task_name",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -62,8 +62,8 @@ namespace Pulumi.AliCloud.Ess
         /// {
         ///     var ds = AliCloud.Ess.GetScheduledTasks.Invoke(new()
         ///     {
-        ///         NameRegex = "scheduled_task_name",
         ///         ScheduledTaskId = "scheduled_task_id",
+        ///         NameRegex = "scheduled_task_name",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

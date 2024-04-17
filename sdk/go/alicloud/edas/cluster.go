@@ -41,24 +41,24 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = edas.NewCluster(ctx, "defaultCluster", &edas.ClusterArgs{
+//			_, err = edas.NewCluster(ctx, "default", &edas.ClusterArgs{
 //				ClusterName:     pulumi.String(name),
 //				ClusterType:     pulumi.Int(2),
 //				NetworkMode:     pulumi.Int(2),
-//				LogicalRegionId: pulumi.String(defaultRegions.Regions[0].Id),
+//				LogicalRegionId: pulumi.String(_default.Regions[0].Id),
 //				VpcId:           defaultNetwork.ID(),
 //			})
 //			if err != nil {

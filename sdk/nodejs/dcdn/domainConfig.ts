@@ -36,7 +36,7 @@ import * as utilities from "../utilities";
  *         weight: "10",
  *     }],
  * });
- * const ipAllowListSet = new alicloud.dcdn.DomainConfig("ipAllowListSet", {
+ * const ipAllowListSet = new alicloud.dcdn.DomainConfig("ip_allow_list_set", {
  *     domainName: example.domainName,
  *     functionName: "ip_allow_list_set",
  *     functionArgs: [{
@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  *         argValue: "192.168.0.1",
  *     }],
  * });
- * const refererWhiteListSet = new alicloud.dcdn.DomainConfig("refererWhiteListSet", {
+ * const refererWhiteListSet = new alicloud.dcdn.DomainConfig("referer_white_list_set", {
  *     domainName: example.domainName,
  *     functionName: "referer_white_list_set",
  *     functionArgs: [{
@@ -52,7 +52,7 @@ import * as utilities from "../utilities";
  *         argValue: "110.110.110.110",
  *     }],
  * });
- * const filetypeBasedTtlSet = new alicloud.dcdn.DomainConfig("filetypeBasedTtlSet", {
+ * const filetypeBasedTtlSet = new alicloud.dcdn.DomainConfig("filetype_based_ttl_set", {
  *     domainName: example.domainName,
  *     functionName: "filetype_based_ttl_set",
  *     functionArgs: [

@@ -46,33 +46,36 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+//				Name:      pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworkAcl, err := vpc.NewNetworkAcl(ctx, "defaultNetworkAcl", &vpc.NetworkAclArgs{
+//			defaultNetworkAcl, err := vpc.NewNetworkAcl(ctx, "default", &vpc.NetworkAclArgs{
 //				VpcId: defaultNetwork.ID(),
+//				Name:  pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:     defaultNetwork.ID(),
 //				CidrBlock: pulumi.String("172.16.0.0/21"),
-//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:    pulumi.String(_default.Zones[0].Id),
+//				Name:      pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewNetworkAclAttachment(ctx, "defaultNetworkAclAttachment", &vpc.NetworkAclAttachmentArgs{
+//			_, err = vpc.NewNetworkAclAttachment(ctx, "default", &vpc.NetworkAclAttachmentArgs{
 //				NetworkAclId: defaultNetworkAcl.ID(),
 //				Resources: vpc.NetworkAclAttachmentResourceArray{
 //					&vpc.NetworkAclAttachmentResourceArgs{
@@ -84,7 +87,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewNetworkAclEntries(ctx, "defaultNetworkAclEntries", &vpc.NetworkAclEntriesArgs{
+//			_, err = vpc.NewNetworkAclEntries(ctx, "default", &vpc.NetworkAclEntriesArgs{
 //				NetworkAclId: defaultNetworkAcl.ID(),
 //				Ingresses: vpc.NetworkAclEntriesIngressArray{
 //					&vpc.NetworkAclEntriesIngressArgs{

@@ -33,19 +33,19 @@ namespace Pulumi.AliCloud.Oss
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var createBucket = new AliCloud.Oss.Bucket("createBucket", new()
+    ///     var createBucket = new AliCloud.Oss.Bucket("CreateBucket", new()
     ///     {
     ///         StorageClass = "Standard",
-    ///         BucketName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         BucketName = $"{name}-{@default.Result}",
     ///     });
     /// 
-    ///     var defaultBucketPolicy = new AliCloud.Oss.BucketPolicy("defaultBucketPolicy", new()
+    ///     var defaultBucketPolicy = new AliCloud.Oss.BucketPolicy("default", new()
     ///     {
     ///         Policy = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {

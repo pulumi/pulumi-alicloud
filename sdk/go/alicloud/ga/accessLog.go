@@ -28,6 +28,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ga"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
@@ -44,24 +46,27 @@ import (
 //			if param := cfg.Get("region"); param != "" {
 //				region = param
 //			}
-//			_, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultProject, err := log.NewProject(ctx, "defaultProject", nil)
+//			defaultProject, err := log.NewProject(ctx, "default", &log.ProjectArgs{
+//				Name: pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultStore, err := log.NewStore(ctx, "defaultStore", &log.StoreArgs{
+//			defaultStore, err := log.NewStore(ctx, "default", &log.StoreArgs{
 //				Project: defaultProject.Name,
+//				Name:    pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultAccelerator, err := ga.NewAccelerator(ctx, "defaultAccelerator", &ga.AcceleratorArgs{
+//			defaultAccelerator, err := ga.NewAccelerator(ctx, "default", &ga.AcceleratorArgs{
 //				Duration:      pulumi.Int(1),
 //				AutoUseCoupon: pulumi.Bool(true),
 //				Spec:          pulumi.String("2"),
@@ -69,7 +74,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "defaultBandwidthPackage", &ga.BandwidthPackageArgs{
+//			defaultBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "default", &ga.BandwidthPackageArgs{
 //				Bandwidth:     pulumi.Int(100),
 //				Type:          pulumi.String("Basic"),
 //				BandwidthType: pulumi.String("Basic"),
@@ -80,17 +85,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "defaultBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
+//			defaultBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "default", &ga.BandwidthPackageAttachmentArgs{
 //				AcceleratorId:      defaultAccelerator.ID(),
 //				BandwidthPackageId: defaultBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultListener, err := ga.NewListener(ctx, "defaultListener", &ga.ListenerArgs{
+//			defaultListener, err := ga.NewListener(ctx, "default", &ga.ListenerArgs{
 //				AcceleratorId:  defaultBandwidthPackageAttachment.AcceleratorId,
 //				ClientAffinity: pulumi.String("SOURCE_IP"),
 //				Protocol:       pulumi.String("HTTP"),
+//				Name:           pulumi.String("terraform-example"),
 //				PortRanges: ga.ListenerPortRangeArray{
 //					&ga.ListenerPortRangeArgs{
 //						FromPort: pulumi.Int(70),
@@ -101,7 +107,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "defaultEipAddress", &ecs.EipAddressArgs{
+//			defaultEipAddress, err := ecs.NewEipAddress(ctx, "default", &ecs.EipAddressArgs{
 //				Bandwidth:          pulumi.String("10"),
 //				InternetChargeType: pulumi.String("PayByBandwidth"),
 //				AddressName:        pulumi.String("terraform-example"),
@@ -109,7 +115,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultEndpointGroup, err := ga.NewEndpointGroup(ctx, "defaultEndpointGroup", &ga.EndpointGroupArgs{
+//			defaultEndpointGroup, err := ga.NewEndpointGroup(ctx, "default", &ga.EndpointGroupArgs{
 //				AcceleratorId: defaultListener.AcceleratorId,
 //				EndpointConfigurations: ga.EndpointGroupEndpointConfigurationArray{
 //					&ga.EndpointGroupEndpointConfigurationArgs{
@@ -124,7 +130,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ga.NewAccessLog(ctx, "defaultAccessLog", &ga.AccessLogArgs{
+//			_, err = ga.NewAccessLog(ctx, "default", &ga.AccessLogArgs{
 //				AcceleratorId:   defaultAccelerator.ID(),
 //				ListenerId:      defaultListener.ID(),
 //				EndpointGroupId: defaultEndpointGroup.ID(),

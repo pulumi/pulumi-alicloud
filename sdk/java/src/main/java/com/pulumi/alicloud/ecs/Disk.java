@@ -52,11 +52,12 @@ import javax.annotation.Nullable;
  *         // Create a new ECS disk.
  *         var ecsDisk = new Disk(&#34;ecsDisk&#34;, DiskArgs.builder()        
  *             .availabilityZone(&#34;cn-beijing-b&#34;)
- *             .category(&#34;cloud_efficiency&#34;)
+ *             .name(&#34;New-disk&#34;)
  *             .description(&#34;Hello ecs disk.&#34;)
+ *             .category(&#34;cloud_efficiency&#34;)
+ *             .size(&#34;30&#34;)
  *             .encrypted(true)
  *             .kmsKeyId(&#34;2a6767f0-a16c-4679-a60f-13bf*****&#34;)
- *             .size(&#34;30&#34;)
  *             .tags(Map.of(&#34;Name&#34;, &#34;TerraformTest&#34;))
  *             .build());
  * 

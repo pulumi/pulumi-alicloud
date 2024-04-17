@@ -16,9 +16,13 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform_example";
- * const exampleGroup = new alicloud.apigateway.Group("exampleGroup", {description: name});
- * const exampleApi = new alicloud.apigateway.Api("exampleApi", {
- *     groupId: exampleGroup.id,
+ * const example = new alicloud.apigateway.Group("example", {
+ *     name: name,
+ *     description: name,
+ * });
+ * const exampleApi = new alicloud.apigateway.Api("example", {
+ *     groupId: example.id,
+ *     name: name,
  *     description: name,
  *     authType: "APP",
  *     forceNonceCheck: false,
@@ -49,7 +53,7 @@ import * as utilities from "../utilities";
  *         "TEST",
  *     ],
  * });
- * const examplePlugin = new alicloud.apigateway.Plugin("examplePlugin", {
+ * const examplePlugin = new alicloud.apigateway.Plugin("example", {
  *     description: "tf_example",
  *     pluginName: "tf_example",
  *     pluginData: JSON.stringify({
@@ -62,9 +66,9 @@ import * as utilities from "../utilities";
  *     }),
  *     pluginType: "cors",
  * });
- * const examplePluginAttachment = new alicloud.apigateway.PluginAttachment("examplePluginAttachment", {
+ * const examplePluginAttachment = new alicloud.apigateway.PluginAttachment("example", {
  *     apiId: exampleApi.apiId,
- *     groupId: exampleGroup.id,
+ *     groupId: example.id,
  *     pluginId: examplePlugin.id,
  *     stageName: "RELEASE",
  * });

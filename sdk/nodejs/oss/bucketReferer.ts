@@ -23,15 +23,15 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const createBucket = new alicloud.oss.Bucket("createBucket", {
+ * const createBucket = new alicloud.oss.Bucket("CreateBucket", {
  *     storageClass: "Standard",
- *     bucket: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
+ *     bucket: `${name}-${_default.result}`,
  * });
- * const defaultBucketReferer = new alicloud.oss.BucketReferer("defaultBucketReferer", {
+ * const defaultBucketReferer = new alicloud.oss.BucketReferer("default", {
  *     allowEmptyReferer: true,
  *     refererBlacklists: ["*.forbidden.com"],
  *     bucket: createBucket.bucket,

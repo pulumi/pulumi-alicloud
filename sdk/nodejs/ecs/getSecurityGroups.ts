@@ -16,12 +16,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Filter security groups and print the results into a file
  * const secGroupsDs = alicloud.ecs.getSecurityGroups({
  *     nameRegex: "^web-",
  *     outputFile: "web_access.json",
  * });
  * // In conjunction with a VPC
- * const primaryVpcDs = new alicloud.vpc.Network("primaryVpcDs", {});
+ * const primaryVpcDs = new alicloud.vpc.Network("primary_vpc_ds", {});
  * const primarySecGroupsDs = alicloud.ecs.getSecurityGroupsOutput({
  *     vpcId: primaryVpcDs.id,
  * });
@@ -141,12 +142,13 @@ export interface GetSecurityGroupsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Filter security groups and print the results into a file
  * const secGroupsDs = alicloud.ecs.getSecurityGroups({
  *     nameRegex: "^web-",
  *     outputFile: "web_access.json",
  * });
  * // In conjunction with a VPC
- * const primaryVpcDs = new alicloud.vpc.Network("primaryVpcDs", {});
+ * const primaryVpcDs = new alicloud.vpc.Network("primary_vpc_ds", {});
  * const primarySecGroupsDs = alicloud.ecs.getSecurityGroupsOutput({
  *     vpcId: primaryVpcDs.id,
  * });

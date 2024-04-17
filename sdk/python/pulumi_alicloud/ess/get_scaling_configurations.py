@@ -126,12 +126,12 @@ def get_scaling_configurations(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    scalingconfigurations_ds = alicloud.ess.get_scaling_configurations(ids=[
+    scalingconfigurations_ds = alicloud.ess.get_scaling_configurations(scaling_group_id="scaling_group_id",
+        ids=[
             "scaling_configuration_id1",
             "scaling_configuration_id2",
         ],
-        name_regex="scaling_configuration_name",
-        scaling_group_id="scaling_group_id")
+        name_regex="scaling_configuration_name")
     pulumi.export("firstScalingRule", scalingconfigurations_ds.configurations[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -176,12 +176,12 @@ def get_scaling_configurations_output(ids: Optional[pulumi.Input[Optional[Sequen
     import pulumi
     import pulumi_alicloud as alicloud
 
-    scalingconfigurations_ds = alicloud.ess.get_scaling_configurations(ids=[
+    scalingconfigurations_ds = alicloud.ess.get_scaling_configurations(scaling_group_id="scaling_group_id",
+        ids=[
             "scaling_configuration_id1",
             "scaling_configuration_id2",
         ],
-        name_regex="scaling_configuration_name",
-        scaling_group_id="scaling_group_id")
+        name_regex="scaling_configuration_name")
     pulumi.export("firstScalingRule", scalingconfigurations_ds.configurations[0].id)
     ```
     <!--End PulumiCodeChooser -->

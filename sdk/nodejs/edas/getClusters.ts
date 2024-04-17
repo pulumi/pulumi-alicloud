@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     ids: ["addfs-dfsasd"],
  *     outputFile: "clusters.txt",
  * });
- * export const firstClusterName = data.alicloud_alikafka_consumer_groups.clusters.clusters[0].cluster_name;
+ * export const firstClusterName = clustersAlicloudAlikafkaConsumerGroups.clusters[0].clusterName;
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -101,7 +101,7 @@ export interface GetClustersResult {
  *     ids: ["addfs-dfsasd"],
  *     outputFile: "clusters.txt",
  * });
- * export const firstClusterName = data.alicloud_alikafka_consumer_groups.clusters.clusters[0].cluster_name;
+ * export const firstClusterName = clustersAlicloudAlikafkaConsumerGroups.clusters[0].clusterName;
  * ```
  * <!--End PulumiCodeChooser -->
  */

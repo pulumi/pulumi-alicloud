@@ -31,12 +31,12 @@ namespace Pulumi.AliCloud.DBS
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
     ///         Status = "OK",
     ///     });
     /// 
-    ///     var defaultZones = AliCloud.Rds.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.Rds.GetZones.Invoke(new()
     ///     {
     ///         Engine = "MySQL",
     ///         EngineVersion = "8.0",
@@ -45,9 +45,9 @@ namespace Pulumi.AliCloud.DBS
     ///         DbInstanceStorageType = "cloud_essd",
     ///     });
     /// 
-    ///     var defaultInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
+    ///     var defaultGetInstanceClasses = AliCloud.Rds.GetInstanceClasses.Invoke(new()
     ///     {
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         Engine = "MySQL",
     ///         EngineVersion = "8.0",
     ///         Category = "HighAvailability",
@@ -55,50 +55,52 @@ namespace Pulumi.AliCloud.DBS
     ///         InstanceChargeType = "PostPaid",
     ///     });
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
     ///         NameRegex = "^default-NODELETING",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
-    ///     var vswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]);
+    ///     var vswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]);
     /// 
-    ///     var zoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]);
+    ///     var zoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]);
     /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         Name = name,
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Rds.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.Rds.Instance("default", new()
     ///     {
     ///         Engine = "MySQL",
     ///         EngineVersion = "8.0",
     ///         DbInstanceStorageType = "cloud_essd",
-    ///         InstanceType = defaultInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
-    ///         InstanceStorage = defaultInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
+    ///         InstanceType = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.InstanceClass),
+    ///         InstanceStorage = defaultGetInstanceClasses.Apply(getInstanceClassesResult =&gt; getInstanceClassesResult.InstanceClasses[0]?.StorageRange?.Min),
     ///         VswitchId = vswitchId,
     ///         InstanceName = name,
     ///     });
     /// 
-    ///     var defaultDatabase = new AliCloud.Rds.Database("defaultDatabase", new()
+    ///     var defaultDatabase = new AliCloud.Rds.Database("default", new()
     ///     {
     ///         InstanceId = defaultInstance.Id,
+    ///         Name = "tfdatabase",
     ///     });
     /// 
-    ///     var defaultRdsAccount = new AliCloud.Rds.RdsAccount("defaultRdsAccount", new()
+    ///     var defaultRdsAccount = new AliCloud.Rds.RdsAccount("default", new()
     ///     {
     ///         DbInstanceId = defaultInstance.Id,
     ///         AccountName = "tfnormal000",
     ///         AccountPassword = "Test12345",
     ///     });
     /// 
-    ///     var defaultAccountPrivilege = new AliCloud.Rds.AccountPrivilege("defaultAccountPrivilege", new()
+    ///     var defaultAccountPrivilege = new AliCloud.Rds.AccountPrivilege("default", new()
     ///     {
     ///         InstanceId = defaultInstance.Id,
     ///         AccountName = defaultRdsAccount.AccountName,
@@ -109,7 +111,7 @@ namespace Pulumi.AliCloud.DBS
     ///         },
     ///     });
     /// 
-    ///     var defaultBackupPlan = new AliCloud.DBS.BackupPlan("defaultBackupPlan", new()
+    ///     var defaultBackupPlan = new AliCloud.DBS.BackupPlan("default", new()
     ///     {
     ///         BackupPlanName = name,
     ///         PaymentType = "PayAsYouGo",
@@ -120,7 +122,7 @@ namespace Pulumi.AliCloud.DBS
     ///         StorageRegion = "cn-hangzhou",
     ///         InstanceType = "RDS",
     ///         SourceEndpointInstanceType = "RDS",
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
     ///         SourceEndpointRegion = "cn-hangzhou",
     ///         SourceEndpointInstanceId = defaultInstance.Id,
     ///         SourceEndpointUserName = defaultAccountPrivilege.AccountName,

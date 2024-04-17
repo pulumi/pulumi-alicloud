@@ -29,20 +29,21 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
+    ///     var example = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var exampleKey = new AliCloud.Kms.Key("exampleKey", new()
+    ///     var exampleKey = new AliCloud.Kms.Key("example", new()
     ///     {
     ///         Description = "terraform-example",
     ///         PendingWindowInDays = 7,
     ///         Status = "Enabled",
     ///     });
     /// 
-    ///     var exampleAutoSnapshotPolicy = new AliCloud.Ecs.AutoSnapshotPolicy("exampleAutoSnapshotPolicy", new()
+    ///     var exampleAutoSnapshotPolicy = new AliCloud.Ecs.AutoSnapshotPolicy("example", new()
     ///     {
+    ///         Name = "terraform-example",
     ///         RepeatWeekdays = new[]
     ///         {
     ///             "1",
@@ -58,9 +59,9 @@ namespace Pulumi.AliCloud.Ecs
     ///         },
     ///     });
     /// 
-    ///     var exampleEcsDisk = new AliCloud.Ecs.EcsDisk("exampleEcsDisk", new()
+    ///     var exampleEcsDisk = new AliCloud.Ecs.EcsDisk("example", new()
     ///     {
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         DiskName = "terraform-example",
     ///         Description = "Hello ecs disk.",
     ///         Category = "cloud_efficiency",
@@ -73,7 +74,7 @@ namespace Pulumi.AliCloud.Ecs
     ///         },
     ///     });
     /// 
-    ///     var exampleEcsAutoSnapshotPolicyAttachment = new AliCloud.Ecs.EcsAutoSnapshotPolicyAttachment("exampleEcsAutoSnapshotPolicyAttachment", new()
+    ///     var exampleEcsAutoSnapshotPolicyAttachment = new AliCloud.Ecs.EcsAutoSnapshotPolicyAttachment("example", new()
     ///     {
     ///         AutoSnapshotPolicyId = exampleAutoSnapshotPolicy.Id,
     ///         DiskId = exampleEcsDisk.Id,

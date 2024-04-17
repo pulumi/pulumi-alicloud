@@ -25,6 +25,7 @@ import * as utilities from "../utilities";
  * });
  * const instances = alicloud.ecs.getInstances({});
  * const template = new alicloud.ecs.LaunchTemplate("template", {
+ *     name: "tf-test-template",
  *     description: "test1",
  *     imageId: images.then(images => images.images?.[0]?.id),
  *     hostName: "tf-test-host",

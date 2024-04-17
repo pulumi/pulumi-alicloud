@@ -36,8 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.expressconnect.ExpressconnectFunctions;
  * import com.pulumi.alicloud.expressconnect.inputs.GetPhysicalConnectionsArgs;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.expressconnect.VirtualPhysicalConnection;
  * import com.pulumi.alicloud.expressconnect.VirtualPhysicalConnectionArgs;
@@ -56,11 +56,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var examplePhysicalConnections = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
+ *         final var example = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
  *             .nameRegex(&#34;^preserved-NODELETING&#34;)
  *             .build());
  * 
- *         var vlanId = new RandomInteger(&#34;vlanId&#34;, RandomIntegerArgs.builder()        
+ *         var vlanId = new Integer(&#34;vlanId&#34;, IntegerArgs.builder()        
  *             .max(2999)
  *             .min(1)
  *             .build());
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .virtualPhysicalConnectionName(name)
  *             .description(name)
  *             .orderMode(&#34;PayByPhysicalConnectionOwner&#34;)
- *             .parentPhysicalConnectionId(examplePhysicalConnections.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.ids()[0]))
+ *             .parentPhysicalConnectionId(example.applyValue(getPhysicalConnectionsResult -&gt; getPhysicalConnectionsResult.ids()[0]))
  *             .spec(&#34;50M&#34;)
  *             .vlanId(vlanId.id())
  *             .vpconnAliUid(default_.id())

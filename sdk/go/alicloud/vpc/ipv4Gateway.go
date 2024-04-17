@@ -44,7 +44,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultResourceGroup, err := resourcemanager.NewResourceGroup(ctx, "defaultResourceGroup", &resourcemanager.ResourceGroupArgs{
+//			_, err := resourcemanager.NewResourceGroup(ctx, "default", &resourcemanager.ResourceGroupArgs{
 //				DisplayName:       pulumi.String("tf-testAcc-rg665"),
 //				ResourceGroupName: pulumi.String(name),
 //			})
@@ -58,17 +58,17 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(fmt.Sprintf("%v2", name)),
 //				CidrBlock: pulumi.String("10.0.0.0/8"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewIpv4Gateway(ctx, "defaultIpv4Gateway", &vpc.Ipv4GatewayArgs{
+//			_, err = vpc.NewIpv4Gateway(ctx, "default", &vpc.Ipv4GatewayArgs{
 //				Ipv4GatewayName:        pulumi.String(name),
 //				Ipv4GatewayDescription: pulumi.String("tf-testAcc-Ipv4Gateway"),
-//				ResourceGroupId:        defaultResourceGroup.ID(),
+//				ResourceGroupId:        _default.ID(),
 //				VpcId:                  defaultNetwork.ID(),
 //			})
 //			if err != nil {

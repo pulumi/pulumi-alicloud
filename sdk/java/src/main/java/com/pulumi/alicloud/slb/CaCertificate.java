@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foo = new CaCertificate(&#34;foo&#34;, CaCertificateArgs.builder()        
+ *             .caCertificateName(&#34;tf-testAccSlbCACertificate&#34;)
  *             .caCertificate(&#34;&#34;&#34;
  * -----BEGIN CERTIFICATE-----
  * MIIDRjCCAq+gAwIBAgIJAJn3ox4K13PoMA0GCSqGSIb3DQEBBQUAMHYxCzAJBgNV
@@ -70,9 +71,7 @@ import javax.annotation.Nullable;
  * cQzfhiiG7ASjiPakw5wXoycHt5GCvLG5htp2TKVzgv9QTliA3gtfv6oV4zRZx7X1
  * Ofi6hVgErtHaXJheuPVeW6eAW8mHBoEfvDAfU3y9waYrtUevSl07643bzKL6v+Qd
  * DUBTxOAvSYfXTtI90EAxEG/bJJyOm5LqoiA=
- * -----END CERTIFICATE-----
- *             &#34;&#34;&#34;)
- *             .caCertificateName(&#34;tf-testAccSlbCACertificate&#34;)
+ * -----END CERTIFICATE-----            &#34;&#34;&#34;)
  *             .build());
  * 
  *     }
@@ -81,38 +80,6 @@ import javax.annotation.Nullable;
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * * using CA certificate file
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.slb.CaCertificate;
- * import com.pulumi.alicloud.slb.CaCertificateArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var foo_file = new CaCertificate(&#34;foo-file&#34;, CaCertificateArgs.builder()        
- *             .caCertificateName(&#34;tf-testAccSlbCACertificate&#34;)
- *             .caCertificate(Files.readString(Paths.get(String.format(&#34;%s/ca_certificate.pem&#34;, path.module()))))
- *             .build());
- * 
- *     }
- * }
- * ```
- * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

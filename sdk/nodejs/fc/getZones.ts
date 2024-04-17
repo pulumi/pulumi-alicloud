@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const zonesIds = alicloud.fc.getZones({});
  * ```
  * <!--End PulumiCodeChooser -->
@@ -71,6 +72,7 @@ export interface GetZonesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const zonesIds = alicloud.fc.getZones({});
  * ```
  * <!--End PulumiCodeChooser -->

@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooAccessGroup, err := nas.NewAccessGroup(ctx, "fooAccessGroup", &nas.AccessGroupArgs{
+//			foo, err := nas.NewAccessGroup(ctx, "foo", &nas.AccessGroupArgs{
 //				AccessGroupName: pulumi.String("tf-NasConfigName"),
 //				AccessGroupType: pulumi.String("Vpc"),
 //				Description:     pulumi.String("tf-testAccNasConfig"),
@@ -43,8 +43,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = nas.NewAccessRule(ctx, "fooAccessRule", &nas.AccessRuleArgs{
-//				AccessGroupName: fooAccessGroup.AccessGroupName,
+//			_, err = nas.NewAccessRule(ctx, "foo", &nas.AccessRuleArgs{
+//				AccessGroupName: foo.AccessGroupName,
 //				SourceCidrIp:    pulumi.String("168.1.1.0/16"),
 //				RwAccessType:    pulumi.String("RDWR"),
 //				UserAccessType:  pulumi.String("no_squash"),

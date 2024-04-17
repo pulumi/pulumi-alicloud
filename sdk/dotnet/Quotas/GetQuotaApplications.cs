@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Quotas
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultQuotaApplication = new AliCloud.Quotas.QuotaApplication("defaultQuotaApplication", new()
+        ///     var defaultQuotaApplication = new AliCloud.Quotas.QuotaApplication("default", new()
         ///     {
         ///         ProductCode = "vpc",
         ///         NoticeType = 3,
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Quotas
         ///         QuotaCategory = "WhiteListLabel",
         ///     });
         /// 
-        ///     var defaultQuotaApplications = AliCloud.Quotas.GetQuotaApplications.Invoke(new()
+        ///     var @default = AliCloud.Quotas.GetQuotaApplications.Invoke(new()
         ///     {
         ///         ProductCode = "vpc",
         ///         EnableDetails = true,
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.Quotas
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultQuotaApplication = new AliCloud.Quotas.QuotaApplication("defaultQuotaApplication", new()
+        ///     var defaultQuotaApplication = new AliCloud.Quotas.QuotaApplication("default", new()
         ///     {
         ///         ProductCode = "vpc",
         ///         NoticeType = 3,
@@ -93,7 +93,7 @@ namespace Pulumi.AliCloud.Quotas
         ///         QuotaCategory = "WhiteListLabel",
         ///     });
         /// 
-        ///     var defaultQuotaApplications = AliCloud.Quotas.GetQuotaApplications.Invoke(new()
+        ///     var @default = AliCloud.Quotas.GetQuotaApplications.Invoke(new()
         ///     {
         ///         ProductCode = "vpc",
         ///         EnableDetails = true,

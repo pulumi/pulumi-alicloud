@@ -156,18 +156,18 @@ def get_prometheis(enable_details: Optional[bool] = None,
     name = config.get("name")
     if name is None:
         name = "tf-example"
-    default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-    default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
-    default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-    default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
-    default_prometheus = alicloud.arms.Prometheus("defaultPrometheus",
+    default = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+    default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0])
+    default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
+    default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default.ids[0])
+    default_prometheus = alicloud.arms.Prometheus("default",
         cluster_type="ecs",
         grafana_instance_id="free",
-        vpc_id=default_networks.ids[0],
-        vswitch_id=default_switches.ids[0],
+        vpc_id=default.ids[0],
+        vswitch_id=default_get_switches.ids[0],
         security_group_id=default_security_group.id,
-        cluster_name=f"{name}-{default_networks.ids[0]}",
-        resource_group_id=default_resource_groups.groups[1].id,
+        cluster_name=f"{name}-{default.ids[0]}",
+        resource_group_id=default_get_resource_groups.groups[1].id,
         tags={
             "Created": "TF",
             "For": "Prometheus",
@@ -235,18 +235,18 @@ def get_prometheis_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
     name = config.get("name")
     if name is None:
         name = "tf-example"
-    default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-    default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
-    default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-    default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
-    default_prometheus = alicloud.arms.Prometheus("defaultPrometheus",
+    default = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+    default_get_switches = alicloud.vpc.get_switches(vpc_id=default.ids[0])
+    default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
+    default_security_group = alicloud.ecs.SecurityGroup("default", vpc_id=default.ids[0])
+    default_prometheus = alicloud.arms.Prometheus("default",
         cluster_type="ecs",
         grafana_instance_id="free",
-        vpc_id=default_networks.ids[0],
-        vswitch_id=default_switches.ids[0],
+        vpc_id=default.ids[0],
+        vswitch_id=default_get_switches.ids[0],
         security_group_id=default_security_group.id,
-        cluster_name=f"{name}-{default_networks.ids[0]}",
-        resource_group_id=default_resource_groups.groups[1].id,
+        cluster_name=f"{name}-{default.ids[0]}",
+        resource_group_id=default_get_resource_groups.groups[1].id,
         tags={
             "Created": "TF",
             "For": "Prometheus",

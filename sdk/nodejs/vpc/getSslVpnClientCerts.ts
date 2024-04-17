@@ -18,9 +18,9 @@ import * as utilities from "../utilities";
  *
  * const foo = alicloud.vpc.getSslVpnClientCerts({
  *     ids: ["fake-cert-id"],
- *     nameRegex: "^foo",
- *     outputFile: "/tmp/clientcert",
  *     sslVpnServerId: "fake-server-id",
+ *     outputFile: "/tmp/clientcert",
+ *     nameRegex: "^foo",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -98,9 +98,9 @@ export interface GetSslVpnClientCertsResult {
  *
  * const foo = alicloud.vpc.getSslVpnClientCerts({
  *     ids: ["fake-cert-id"],
- *     nameRegex: "^foo",
- *     outputFile: "/tmp/clientcert",
  *     sslVpnServerId: "fake-server-id",
+ *     outputFile: "/tmp/clientcert",
+ *     nameRegex: "^foo",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

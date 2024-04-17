@@ -29,6 +29,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -37,21 +39,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+//			example, err := log.NewProject(ctx, "example", &log.ProjectArgs{
+//				Name:        pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
 //				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleStore, err := log.NewStore(ctx, "exampleStore", &log.StoreArgs{
-//				Project:            exampleProject.Name,
+//			exampleStore, err := log.NewStore(ctx, "example", &log.StoreArgs{
+//				Project:            example.Name,
+//				Name:               pulumi.String("example-store"),
 //				RetentionPeriod:    pulumi.Int(3650),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),
@@ -61,8 +65,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = log.NewAlert(ctx, "exampleAlert", &log.AlertArgs{
-//				ProjectName:      exampleProject.Name,
+//			_, err = log.NewAlert(ctx, "example", &log.AlertArgs{
+//				ProjectName:      example.Name,
 //				AlertName:        pulumi.String("example-alert"),
 //				AlertDisplayname: pulumi.String("example-alert"),
 //				Condition:        pulumi.String("count> 100"),
@@ -126,6 +130,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -134,21 +140,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+//			example, err := log.NewProject(ctx, "example", &log.ProjectArgs{
+//				Name:        pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
 //				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleStore, err := log.NewStore(ctx, "exampleStore", &log.StoreArgs{
-//				Project:            exampleProject.Name,
+//			exampleStore, err := log.NewStore(ctx, "example", &log.StoreArgs{
+//				Project:            example.Name,
+//				Name:               pulumi.String("example-store"),
 //				RetentionPeriod:    pulumi.Int(3650),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),
@@ -161,7 +169,7 @@ import (
 //			_, err = log.NewAlert(ctx, "example-2", &log.AlertArgs{
 //				Version:          pulumi.String("2.0"),
 //				Type:             pulumi.String("default"),
-//				ProjectName:      exampleProject.Name,
+//				ProjectName:      example.Name,
 //				AlertName:        pulumi.String("example-alert"),
 //				AlertDisplayname: pulumi.String("example-alert"),
 //				MuteUntil:        pulumi.Int(1632486684),
@@ -182,7 +190,7 @@ import (
 //					&log.AlertQueryListArgs{
 //						Store:        exampleStore.Name,
 //						StoreType:    pulumi.String("log"),
-//						Project:      exampleProject.Name,
+//						Project:      example.Name,
 //						Region:       pulumi.String("cn-heyuan"),
 //						ChartTitle:   pulumi.String("chart_title"),
 //						Start:        pulumi.String("-60s"),
@@ -193,7 +201,7 @@ import (
 //					&log.AlertQueryListArgs{
 //						Store:        exampleStore.Name,
 //						StoreType:    pulumi.String("log"),
-//						Project:      exampleProject.Name,
+//						Project:      example.Name,
 //						Region:       pulumi.String("cn-heyuan"),
 //						ChartTitle:   pulumi.String("chart_title"),
 //						Start:        pulumi.String("-60s"),
@@ -281,6 +289,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -289,21 +299,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+//			example, err := log.NewProject(ctx, "example", &log.ProjectArgs{
+//				Name:        pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
 //				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = log.NewStore(ctx, "exampleStore", &log.StoreArgs{
-//				Project:            exampleProject.Name,
+//			_, err = log.NewStore(ctx, "example", &log.StoreArgs{
+//				Project:            example.Name,
+//				Name:               pulumi.String("example-store"),
 //				RetentionPeriod:    pulumi.Int(3650),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),
@@ -316,7 +328,7 @@ import (
 //			_, err = log.NewAlert(ctx, "example-3", &log.AlertArgs{
 //				Version:          pulumi.String("2.0"),
 //				Type:             pulumi.String("tpl"),
-//				ProjectName:      exampleProject.Name,
+//				ProjectName:      example.Name,
 //				AlertName:        pulumi.String("example-alert"),
 //				AlertDisplayname: pulumi.String("example-alert"),
 //				MuteUntil:        pulumi.Int(1632486684),
@@ -338,7 +350,7 @@ import (
 //						"default.action_policy":  pulumi.String("sls.app.ack.builtin"),
 //						"default.severity":       pulumi.String("6"),
 //						"sendResolved":           pulumi.String("false"),
-//						"default.project":        exampleProject.Name,
+//						"default.project":        example.Name,
 //						"default.logstore":       pulumi.String("k8s-event"),
 //						"default.repeatInterval": pulumi.String("4h"),
 //						"trigger_threshold":      pulumi.String("1"),

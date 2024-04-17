@@ -168,10 +168,10 @@ def get_policies(enable_details: Optional[bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    policies_ds = alicloud.ram.get_policies(group_name="group1",
-        output_file="policies.txt",
-        type="System",
-        user_name="user1")
+    policies_ds = alicloud.ram.get_policies(output_file="policies.txt",
+        user_name="user1",
+        group_name="group1",
+        type="System")
     pulumi.export("firstPolicyName", policies_ds.policies[0].name)
     ```
     <!--End PulumiCodeChooser -->
@@ -234,10 +234,10 @@ def get_policies_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
     import pulumi
     import pulumi_alicloud as alicloud
 
-    policies_ds = alicloud.ram.get_policies(group_name="group1",
-        output_file="policies.txt",
-        type="System",
-        user_name="user1")
+    policies_ds = alicloud.ram.get_policies(output_file="policies.txt",
+        user_name="user1",
+        group_name="group1",
+        type="System")
     pulumi.export("firstPolicyName", policies_ds.policies[0].name)
     ```
     <!--End PulumiCodeChooser -->

@@ -50,27 +50,29 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			vswitch, err := vpc.NewSwitch(ctx, "vswitch", &vpc.SwitchArgs{
+//				Name:      pulumi.String(name),
 //				CidrBlock: pulumi.String("192.168.0.0/24"),
-//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:    pulumi.String(_default.Zones[0].Id),
 //				VpcId:     vpc.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			group, err := ecs.NewSecurityGroup(ctx, "group", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String(name),
 //				VpcId: vpc.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewNetworkInterface(ctx, "defaultNetworkInterface", &vpc.NetworkInterfaceArgs{
+//			_, err = vpc.NewNetworkInterface(ctx, "default", &vpc.NetworkInterfaceArgs{
 //				NetworkInterfaceName: pulumi.String(name),
 //				VswitchId:            vswitch.ID(),
 //				SecurityGroupIds: pulumi.StringArray{

@@ -23,56 +23,60 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "networkInterfacesName";
  * const vpc = new alicloud.vpc.Network("vpc", {
- *     cidrBlock: "192.168.0.0/24",
  *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/24",
  * });
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const vswitch = new alicloud.vpc.Switch("vswitch", {
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     cidrBlock: "192.168.0.0/24",
- *     vpcId: vpc.id,
  *     vswitchName: name,
+ *     cidrBlock: "192.168.0.0/24",
+ *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
+ *     vpcId: vpc.id,
  * });
- * const group = new alicloud.ecs.SecurityGroup("group", {vpcId: vpc.id});
+ * const group = new alicloud.ecs.SecurityGroup("group", {
+ *     name: name,
+ *     vpcId: vpc.id,
+ * });
  * const _interface = new alicloud.vpc.NetworkInterface("interface", {
+ *     name: `${name}%d`,
+ *     vswitchId: vswitch.id,
+ *     securityGroups: [group.id],
  *     description: "Basic test",
  *     privateIp: "192.168.0.2",
- *     securityGroups: [group.id],
  *     tags: {
  *         "TF-VER": "0.11.3",
  *     },
- *     vswitchId: vswitch.id,
  * });
  * const instance = new alicloud.ecs.Instance("instance", {
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
+ *     securityGroups: [group.id],
+ *     instanceType: "ecs.e3.xlarge",
+ *     systemDiskCategory: "cloud_efficiency",
  *     imageId: "centos_7_04_64_20G_alibase_201701015.vhd",
  *     instanceName: name,
- *     instanceType: "ecs.e3.xlarge",
- *     internetMaxBandwidthOut: 10,
- *     securityGroups: [group.id],
- *     systemDiskCategory: "cloud_efficiency",
  *     vswitchId: vswitch.id,
+ *     internetMaxBandwidthOut: 10,
  * });
  * const attachment = new alicloud.vpc.NetworkInterfaceAttachment("attachment", {
  *     instanceId: instance.id,
  *     networkInterfaceId: _interface.id,
  * });
- * const defaultNetworkInterfaces = alicloud.ecs.getNetworkInterfacesOutput({
+ * const defaultGetNetworkInterfaces = alicloud.ecs.getNetworkInterfacesOutput({
  *     ids: [attachment.networkInterfaceId],
- *     instanceId: instance.id,
  *     nameRegex: name,
- *     privateIp: "192.168.0.2",
- *     securityGroupId: group.id,
  *     tags: {
  *         "TF-VER": "0.11.3",
  *     },
- *     type: "Secondary",
  *     vpcId: vpc.id,
  *     vswitchId: vswitch.id,
+ *     privateIp: "192.168.0.2",
+ *     securityGroupId: group.id,
+ *     type: "Secondary",
+ *     instanceId: instance.id,
  * });
- * export const eni0Name = defaultNetworkInterfaces.apply(defaultNetworkInterfaces => defaultNetworkInterfaces.interfaces?.[0]?.name);
+ * export const eni0Name = defaultGetNetworkInterfaces.apply(defaultGetNetworkInterfaces => defaultGetNetworkInterfaces.interfaces?.[0]?.name);
  * ```
  * <!--End PulumiCodeChooser -->
  *
@@ -242,56 +246,60 @@ export interface GetNetworkInterfacesResult {
  * const config = new pulumi.Config();
  * const name = config.get("name") || "networkInterfacesName";
  * const vpc = new alicloud.vpc.Network("vpc", {
- *     cidrBlock: "192.168.0.0/24",
  *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/24",
  * });
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const vswitch = new alicloud.vpc.Switch("vswitch", {
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     cidrBlock: "192.168.0.0/24",
- *     vpcId: vpc.id,
  *     vswitchName: name,
+ *     cidrBlock: "192.168.0.0/24",
+ *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
+ *     vpcId: vpc.id,
  * });
- * const group = new alicloud.ecs.SecurityGroup("group", {vpcId: vpc.id});
+ * const group = new alicloud.ecs.SecurityGroup("group", {
+ *     name: name,
+ *     vpcId: vpc.id,
+ * });
  * const _interface = new alicloud.vpc.NetworkInterface("interface", {
+ *     name: `${name}%d`,
+ *     vswitchId: vswitch.id,
+ *     securityGroups: [group.id],
  *     description: "Basic test",
  *     privateIp: "192.168.0.2",
- *     securityGroups: [group.id],
  *     tags: {
  *         "TF-VER": "0.11.3",
  *     },
- *     vswitchId: vswitch.id,
  * });
  * const instance = new alicloud.ecs.Instance("instance", {
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
+ *     securityGroups: [group.id],
+ *     instanceType: "ecs.e3.xlarge",
+ *     systemDiskCategory: "cloud_efficiency",
  *     imageId: "centos_7_04_64_20G_alibase_201701015.vhd",
  *     instanceName: name,
- *     instanceType: "ecs.e3.xlarge",
- *     internetMaxBandwidthOut: 10,
- *     securityGroups: [group.id],
- *     systemDiskCategory: "cloud_efficiency",
  *     vswitchId: vswitch.id,
+ *     internetMaxBandwidthOut: 10,
  * });
  * const attachment = new alicloud.vpc.NetworkInterfaceAttachment("attachment", {
  *     instanceId: instance.id,
  *     networkInterfaceId: _interface.id,
  * });
- * const defaultNetworkInterfaces = alicloud.ecs.getNetworkInterfacesOutput({
+ * const defaultGetNetworkInterfaces = alicloud.ecs.getNetworkInterfacesOutput({
  *     ids: [attachment.networkInterfaceId],
- *     instanceId: instance.id,
  *     nameRegex: name,
- *     privateIp: "192.168.0.2",
- *     securityGroupId: group.id,
  *     tags: {
  *         "TF-VER": "0.11.3",
  *     },
- *     type: "Secondary",
  *     vpcId: vpc.id,
  *     vswitchId: vswitch.id,
+ *     privateIp: "192.168.0.2",
+ *     securityGroupId: group.id,
+ *     type: "Secondary",
+ *     instanceId: instance.id,
  * });
- * export const eni0Name = defaultNetworkInterfaces.apply(defaultNetworkInterfaces => defaultNetworkInterfaces.interfaces?.[0]?.name);
+ * export const eni0Name = defaultGetNetworkInterfaces.apply(defaultGetNetworkInterfaces => defaultGetNetworkInterfaces.interfaces?.[0]?.name);
  * ```
  * <!--End PulumiCodeChooser -->
  *

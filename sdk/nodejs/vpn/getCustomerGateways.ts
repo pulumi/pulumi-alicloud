@@ -17,11 +17,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const foo = alicloud.vpn.getCustomerGateways({
+ *     nameRegex: "testAcc*",
  *     ids: [
  *         "fake-id1",
  *         "fake-id2",
  *     ],
- *     nameRegex: "testAcc*",
  *     outputFile: "/tmp/cgws",
  * });
  * ```
@@ -90,11 +90,11 @@ export interface GetCustomerGatewaysResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const foo = alicloud.vpn.getCustomerGateways({
+ *     nameRegex: "testAcc*",
  *     ids: [
  *         "fake-id1",
  *         "fake-id2",
  *     ],
- *     nameRegex: "testAcc*",
  *     outputFile: "/tmp/cgws",
  * });
  * ```

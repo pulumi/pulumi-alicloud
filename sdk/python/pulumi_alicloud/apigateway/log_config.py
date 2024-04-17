@@ -150,21 +150,21 @@ class LogConfig(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject",
-            project_name=default.result.apply(lambda result: f"{name}-{result}"),
+        example = alicloud.log.Project("example",
+            project_name=f"{name}-{default['result']}",
             description=name)
-        example_store = alicloud.log.Store("exampleStore",
-            project_name=example_project.project_name,
-            logstore_name=default.result.apply(lambda result: f"{name}-{result}"),
+        example_store = alicloud.log.Store("example",
+            project_name=example.project_name,
+            logstore_name=f"{name}-{default['result']}",
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        example_log_config = alicloud.apigateway.LogConfig("exampleLogConfig",
-            sls_project=example_project.project_name,
+        example_log_config = alicloud.apigateway.LogConfig("example",
+            sls_project=example.project_name,
             sls_log_store=example_store.logstore_name,
             log_type="PROVIDER")
         ```
@@ -211,21 +211,21 @@ class LogConfig(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject",
-            project_name=default.result.apply(lambda result: f"{name}-{result}"),
+        example = alicloud.log.Project("example",
+            project_name=f"{name}-{default['result']}",
             description=name)
-        example_store = alicloud.log.Store("exampleStore",
-            project_name=example_project.project_name,
-            logstore_name=default.result.apply(lambda result: f"{name}-{result}"),
+        example_store = alicloud.log.Store("example",
+            project_name=example.project_name,
+            logstore_name=f"{name}-{default['result']}",
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        example_log_config = alicloud.apigateway.LogConfig("exampleLogConfig",
-            sls_project=example_project.project_name,
+        example_log_config = alicloud.apigateway.LogConfig("example",
+            sls_project=example.project_name,
             sls_log_store=example_store.logstore_name,
             log_type="PROVIDER")
         ```

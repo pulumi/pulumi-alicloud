@@ -48,18 +48,16 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleDomain, err := dcdn.NewDomain(ctx, "exampleDomain", &dcdn.DomainArgs{
-//				DomainName: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", domainName, result), nil
-//				}).(pulumi.StringOutput),
-//				Scope: pulumi.String("overseas"),
+//			example, err := dcdn.NewDomain(ctx, "example", &dcdn.DomainArgs{
+//				DomainName: pulumi.String(fmt.Sprintf("%v-%v", domainName, _default.Result)),
+//				Scope:      pulumi.String("overseas"),
 //				Sources: dcdn.DomainSourceArray{
 //					&dcdn.DomainSourceArgs{
 //						Content:  pulumi.String("1.1.1.1"),
@@ -73,25 +71,23 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleWafDomain, err := dcdn.NewWafDomain(ctx, "exampleWafDomain", &dcdn.WafDomainArgs{
-//				DomainName:  exampleDomain.DomainName,
+//			exampleWafDomain, err := dcdn.NewWafDomain(ctx, "example", &dcdn.WafDomainArgs{
+//				DomainName:  example.DomainName,
 //				ClientIpTag: pulumi.String("X-Forwarded-For"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleWafPolicy, err := dcdn.NewWafPolicy(ctx, "exampleWafPolicy", &dcdn.WafPolicyArgs{
+//			exampleWafPolicy, err := dcdn.NewWafPolicy(ctx, "example", &dcdn.WafPolicyArgs{
 //				DefenseScene: pulumi.String("waf_group"),
-//				PolicyName: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v_%v", name, result), nil
-//				}).(pulumi.StringOutput),
-//				PolicyType: pulumi.String("custom"),
-//				Status:     pulumi.String("on"),
+//				PolicyName:   pulumi.String(fmt.Sprintf("%v_%v", name, _default.Result)),
+//				PolicyType:   pulumi.String("custom"),
+//				Status:       pulumi.String("on"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dcdn.NewWafPolicyDomainAttachment(ctx, "exampleWafPolicyDomainAttachment", &dcdn.WafPolicyDomainAttachmentArgs{
+//			_, err = dcdn.NewWafPolicyDomainAttachment(ctx, "example", &dcdn.WafPolicyDomainAttachmentArgs{
 //				DomainName: exampleWafDomain.DomainName,
 //				PolicyId:   exampleWafPolicy.ID(),
 //			})

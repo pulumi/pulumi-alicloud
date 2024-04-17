@@ -41,13 +41,13 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultHoneypotImages, err := threatdetection.GetHoneypotImages(ctx, &threatdetection.GetHoneypotImagesArgs{
+//			_default, err := threatdetection.GetHoneypotImages(ctx, &threatdetection.GetHoneypotImagesArgs{
 //				NameRegex: pulumi.StringRef("^ruoyi"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultHoneypotNode, err := threatdetection.NewHoneypotNode(ctx, "defaultHoneypotNode", &threatdetection.HoneypotNodeArgs{
+//			defaultHoneypotNode, err := threatdetection.NewHoneypotNode(ctx, "default", &threatdetection.HoneypotNodeArgs{
 //				NodeName:          pulumi.String(name),
 //				AvailableProbeNum: pulumi.Int(20),
 //				SecurityGroupProbeIpLists: pulumi.StringArray{
@@ -57,10 +57,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = threatdetection.NewHoneypotPreset(ctx, "defaultHoneypotPreset", &threatdetection.HoneypotPresetArgs{
+//			_, err = threatdetection.NewHoneypotPreset(ctx, "default", &threatdetection.HoneypotPresetArgs{
 //				PresetName:        pulumi.String(name),
 //				NodeId:            defaultHoneypotNode.ID(),
-//				HoneypotImageName: pulumi.String(defaultHoneypotImages.Images[0].HoneypotImageName),
+//				HoneypotImageName: pulumi.String(_default.Images[0].HoneypotImageName),
 //				Meta: &threatdetection.HoneypotPresetMetaArgs{
 //					PortraitOption: pulumi.Bool(true),
 //					Burp:           pulumi.String("open"),

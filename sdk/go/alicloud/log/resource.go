@@ -36,6 +36,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := log.NewResource(ctx, "example", &log.ResourceArgs{
+//				Type:        pulumi.String("userdefine"),
+//				Name:        pulumi.String("user.tf.resource"),
 //				Description: pulumi.String("user tf resource desc"),
 //				ExtInfo:     pulumi.String("{}"),
 //				Schema: pulumi.String(`    {
@@ -60,7 +62,6 @@ import (
 //
 // `),
 //
-//				Type: pulumi.String("userdefine"),
 //			})
 //			if err != nil {
 //				return err

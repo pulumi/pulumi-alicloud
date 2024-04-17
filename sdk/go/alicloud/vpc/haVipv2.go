@@ -43,7 +43,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
@@ -61,7 +61,7 @@ import (
 //				VpcId:       defaultVpc.ID(),
 //				CidrBlock:   pulumi.String("192.168.0.0/21"),
 //				VswitchName: pulumi.String(fmt.Sprintf("%v1", name)),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				Description: pulumi.String("tf-testacc-vswitch"),
 //			})
 //			if err != nil {
@@ -81,7 +81,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewHaVipv2(ctx, "defaultHaVipv2", &vpc.HaVipv2Args{
+//			_, err = vpc.NewHaVipv2(ctx, "default", &vpc.HaVipv2Args{
 //				Description:     pulumi.String("test"),
 //				VswitchId:       defaultVswitch.ID(),
 //				HaVipName:       pulumi.String(name),

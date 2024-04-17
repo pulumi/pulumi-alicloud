@@ -27,13 +27,13 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     var example = new AliCloud.Cen.Instance("example", new()
     ///     {
     ///         CenInstanceName = "tf_example",
     ///         Description = "an example for cen",
     ///     });
     /// 
-    ///     var exampleBandwidthPackage = new AliCloud.Cen.BandwidthPackage("exampleBandwidthPackage", new()
+    ///     var exampleBandwidthPackage = new AliCloud.Cen.BandwidthPackage("example", new()
     ///     {
     ///         Bandwidth = 5,
     ///         CenBandwidthPackageName = "tf_example",
@@ -41,9 +41,9 @@ namespace Pulumi.AliCloud.Cen
     ///         GeographicRegionBId = "China",
     ///     });
     /// 
-    ///     var exampleBandwidthPackageAttachment = new AliCloud.Cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", new()
+    ///     var exampleBandwidthPackageAttachment = new AliCloud.Cen.BandwidthPackageAttachment("example", new()
     ///     {
-    ///         InstanceId = exampleInstance.Id,
+    ///         InstanceId = example.Id,
     ///         BandwidthPackageId = exampleBandwidthPackage.Id,
     ///     });
     /// 

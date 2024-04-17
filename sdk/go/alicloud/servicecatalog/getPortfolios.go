@@ -31,9 +31,9 @@ import (
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // _default, err := servicecatalog.GetPortfolios(ctx, &servicecatalog.GetPortfoliosArgs{
 // Ids: interface{}{
-// alicloud_service_catalog_portfolio.Default.Id,
+// defaultAlicloudServiceCatalogPortfolio.Id,
 // },
-// NameRegex: pulumi.StringRef(alicloud_service_catalog_portfolio.Default.Name),
+// NameRegex: pulumi.StringRef(defaultAlicloudServiceCatalogPortfolio.Name),
 // }, nil);
 // if err != nil {
 // return err

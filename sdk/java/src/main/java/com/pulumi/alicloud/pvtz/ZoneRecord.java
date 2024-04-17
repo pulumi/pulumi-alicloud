@@ -28,6 +28,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.pvtz.Zone;
+ * import com.pulumi.alicloud.pvtz.ZoneArgs;
  * import com.pulumi.alicloud.pvtz.ZoneRecord;
  * import com.pulumi.alicloud.pvtz.ZoneRecordArgs;
  * import java.util.List;
@@ -43,7 +44,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var zone = new Zone(&#34;zone&#34;);
+ *         var zone = new Zone(&#34;zone&#34;, ZoneArgs.builder()        
+ *             .name(&#34;foo.test.com&#34;)
+ *             .build());
  * 
  *         var foo = new ZoneRecord(&#34;foo&#34;, ZoneRecordArgs.builder()        
  *             .zoneId(zone.id())

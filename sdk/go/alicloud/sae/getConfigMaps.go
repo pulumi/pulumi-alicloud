@@ -40,7 +40,7 @@ import (
 //			if param := cfg.Get("configMapName"); param != "" {
 //				configMapName = param
 //			}
-//			exampleNamespace, err := sae.NewNamespace(ctx, "exampleNamespace", &sae.NamespaceArgs{
+//			example, err := sae.NewNamespace(ctx, "example", &sae.NamespaceArgs{
 //				NamespaceId:          pulumi.String("cn-hangzhou:yourname"),
 //				NamespaceName:        pulumi.String("example_value"),
 //				NamespaceDescription: pulumi.String("your_description"),
@@ -56,15 +56,16 @@ import (
 //				return err
 //			}
 //			json0 := string(tmpJSON0)
-//			_, err = sae.NewConfigMap(ctx, "exampleConfigMap", &sae.ConfigMapArgs{
+//			_, err = sae.NewConfigMap(ctx, "example", &sae.ConfigMapArgs{
 //				Data:        pulumi.String(json0),
-//				NamespaceId: exampleNamespace.NamespaceId,
+//				Name:        pulumi.String(configMapName),
+//				NamespaceId: example.NamespaceId,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			nameRegex := sae.GetConfigMapsOutput(ctx, sae.GetConfigMapsOutputArgs{
-//				NamespaceId: exampleNamespace.NamespaceId,
+//				NamespaceId: example.NamespaceId,
 //				NameRegex:   pulumi.String("^example"),
 //			}, nil)
 //			ctx.Export("saeConfigMapId", nameRegex.ApplyT(func(nameRegex sae.GetConfigMapsResult) (*string, error) {

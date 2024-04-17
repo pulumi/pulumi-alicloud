@@ -16,9 +16,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleGroup = new alicloud.apigateway.Group("exampleGroup", {description: "tf-example"});
- * const exampleApi = new alicloud.apigateway.Api("exampleApi", {
- *     groupId: exampleGroup.id,
+ * const example = new alicloud.apigateway.Group("example", {
+ *     name: "tf-example",
+ *     description: "tf-example",
+ * });
+ * const exampleApi = new alicloud.apigateway.Api("example", {
+ *     groupId: example.id,
+ *     name: "tf-example",
  *     description: "tf-example",
  *     authType: "APP",
  *     forceNonceCheck: false,

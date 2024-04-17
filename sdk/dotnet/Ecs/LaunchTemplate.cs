@@ -36,6 +36,7 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     ///     var template = new AliCloud.Ecs.LaunchTemplate("template", new()
     ///     {
+    ///         Name = "tf-test-template",
     ///         Description = "test1",
     ///         ImageId = images.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
     ///         HostName = "tf-test-host",

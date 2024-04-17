@@ -41,6 +41,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Group(&#34;default&#34;, GroupArgs.builder()        
+ *             .name(&#34;tf_example&#34;)
  *             .description(&#34;tf_example&#34;)
  *             .build());
  * 

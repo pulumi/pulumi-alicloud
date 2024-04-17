@@ -24,21 +24,25 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
- * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
- * const exampleStore = new alicloud.log.Store("exampleStore", {
- *     project: exampleProject.name,
+ * const example = new alicloud.log.Project("example", {
+ *     name: `terraform-example-${_default.result}`,
+ *     description: "terraform-example",
+ * });
+ * const exampleStore = new alicloud.log.Store("example", {
+ *     project: example.name,
+ *     name: "example-store",
  *     retentionPeriod: 3650,
  *     shardCount: 3,
  *     autoSplit: true,
  *     maxSplitShardCount: 60,
  *     appendMeta: true,
  * });
- * const exampleAlert = new alicloud.log.Alert("exampleAlert", {
- *     projectName: exampleProject.name,
+ * const exampleAlert = new alicloud.log.Alert("example", {
+ *     projectName: example.name,
  *     alertName: "example-alert",
  *     alertDisplayname: "example-alert",
  *     condition: "count> 100",
@@ -93,13 +97,17 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
- * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
- * const exampleStore = new alicloud.log.Store("exampleStore", {
- *     project: exampleProject.name,
+ * const example = new alicloud.log.Project("example", {
+ *     name: `terraform-example-${_default.result}`,
+ *     description: "terraform-example",
+ * });
+ * const exampleStore = new alicloud.log.Store("example", {
+ *     project: example.name,
+ *     name: "example-store",
  *     retentionPeriod: 3650,
  *     shardCount: 3,
  *     autoSplit: true,
@@ -109,7 +117,7 @@ import * as utilities from "../utilities";
  * const example_2 = new alicloud.log.Alert("example-2", {
  *     version: "2.0",
  *     type: "default",
- *     projectName: exampleProject.name,
+ *     projectName: example.name,
  *     alertName: "example-alert",
  *     alertDisplayname: "example-alert",
  *     muteUntil: 1632486684,
@@ -130,7 +138,7 @@ import * as utilities from "../utilities";
  *         {
  *             store: exampleStore.name,
  *             storeType: "log",
- *             project: exampleProject.name,
+ *             project: example.name,
  *             region: "cn-heyuan",
  *             chartTitle: "chart_title",
  *             start: "-60s",
@@ -141,7 +149,7 @@ import * as utilities from "../utilities";
  *         {
  *             store: exampleStore.name,
  *             storeType: "log",
- *             project: exampleProject.name,
+ *             project: example.name,
  *             region: "cn-heyuan",
  *             chartTitle: "chart_title",
  *             start: "-60s",
@@ -216,13 +224,17 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
- * const exampleProject = new alicloud.log.Project("exampleProject", {description: "terraform-example"});
- * const exampleStore = new alicloud.log.Store("exampleStore", {
- *     project: exampleProject.name,
+ * const example = new alicloud.log.Project("example", {
+ *     name: `terraform-example-${_default.result}`,
+ *     description: "terraform-example",
+ * });
+ * const exampleStore = new alicloud.log.Store("example", {
+ *     project: example.name,
+ *     name: "example-store",
  *     retentionPeriod: 3650,
  *     shardCount: 3,
  *     autoSplit: true,
@@ -232,7 +244,7 @@ import * as utilities from "../utilities";
  * const example_3 = new alicloud.log.Alert("example-3", {
  *     version: "2.0",
  *     type: "tpl",
- *     projectName: exampleProject.name,
+ *     projectName: example.name,
  *     alertName: "example-alert",
  *     alertDisplayname: "example-alert",
  *     muteUntil: 1632486684,
@@ -254,7 +266,7 @@ import * as utilities from "../utilities";
  *             "default.action_policy": "sls.app.ack.builtin",
  *             "default.severity": "6",
  *             sendResolved: "false",
- *             "default.project": exampleProject.name,
+ *             "default.project": example.name,
  *             "default.logstore": "k8s-event",
  *             "default.repeatInterval": "4h",
  *             trigger_threshold: "1",

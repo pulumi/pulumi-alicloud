@@ -36,17 +36,17 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = oos.NewStateConfiguration(ctx, "defaultStateConfiguration", &oos.StateConfigurationArgs{
+//			_, err = oos.NewStateConfiguration(ctx, "default", &oos.StateConfigurationArgs{
 //				TemplateName:       pulumi.String("ACS-ECS-InventoryDataCollection"),
 //				ConfigureMode:      pulumi.String("ApplyOnly"),
 //				Description:        pulumi.String("terraform-example"),
 //				ScheduleType:       pulumi.String("rate"),
 //				ScheduleExpression: pulumi.String("1 hour"),
-//				ResourceGroupId:    pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId:    pulumi.String(_default.Ids[0]),
 //				Targets:            pulumi.String("{\"Filters\": [{\"Type\": \"All\", \"Parameters\": {\"InstanceChargeType\": \"PrePaid\"}}], \"ResourceType\": \"ALIYUN::ECS::Instance\"}"),
 //				Parameters:         pulumi.String("{\"policy\": {\"ACS:Application\": {\"Collection\": \"Enabled\"}}}"),
 //				Tags: pulumi.Map{

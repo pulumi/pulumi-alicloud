@@ -35,8 +35,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -69,19 +69,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultAccount = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount();
  * 
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
  *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
- *             .projectName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;example-value-%s&#34;, result)))
+ *             .projectName(String.format(&#34;example-value-%s&#34;, defaultInteger.result()))
  *             .build());
  * 
  *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
@@ -95,6 +95,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
+ *             .name(String.format(&#34;fcservicerole-%s&#34;, defaultInteger.result()))
  *             .document(&#34;&#34;&#34;
  *   {
  *       &#34;Statement&#34;: [
@@ -122,6 +123,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
+ *             .name(String.format(&#34;example-value-%s&#34;, defaultInteger.result()))
  *             .description(&#34;example-value&#34;)
  *             .role(defaultRole.arn())
  *             .logConfig(ServiceLogConfigArgs.builder()
@@ -133,7 +135,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .bucket(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *             .bucket(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
  *             .build());
  * 
  *         // If you upload the function by OSS Bucket, you need to specify path can&#39;t upload by content.
@@ -150,6 +152,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultFunction = new Function(&#34;defaultFunction&#34;, FunctionArgs.builder()        
  *             .service(defaultService.name())
+ *             .name(&#34;terraform-example&#34;)
  *             .description(&#34;example&#34;)
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
@@ -161,8 +164,9 @@ import javax.annotation.Nullable;
  *         var defaultTrigger = new Trigger(&#34;defaultTrigger&#34;, TriggerArgs.builder()        
  *             .service(defaultService.name())
  *             .function(defaultFunction.name())
+ *             .name(&#34;terraform-example&#34;)
  *             .role(defaultRole.arn())
- *             .sourceArn(defaultProject.name().applyValue(name -&gt; String.format(&#34;acs:log:%s:%s:project/%s&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()),name)))
+ *             .sourceArn(defaultProject.name().applyValue(name -&gt; String.format(&#34;acs:log:%s:%s:project/%s&#34;, defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),default_.id(),name)))
  *             .type(&#34;log&#34;)
  *             .config(Output.tuple(sourceStore.name(), defaultProject.name(), defaultStore.name()).applyValue(values -&gt; {
  *                 var sourceStoreName = values.t1;
@@ -210,9 +214,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.mns.Topic;
+ * import com.pulumi.alicloud.mns.TopicArgs;
  * import com.pulumi.alicloud.ram.Role;
  * import com.pulumi.alicloud.ram.RoleArgs;
  * import com.pulumi.alicloud.ram.RolePolicyAttachment;
@@ -240,20 +245,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultAccount = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount();
  * 
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultTopic = new Topic(&#34;defaultTopic&#34;);
+ *         var defaultTopic = new Topic(&#34;defaultTopic&#34;, TopicArgs.builder()        
+ *             .name(String.format(&#34;example-value-%s&#34;, defaultInteger.result()))
+ *             .build());
  * 
  *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
+ *             .name(String.format(&#34;fcservicerole-%s&#34;, defaultInteger.result()))
  *             .document(&#34;&#34;&#34;
  *   {
  *       &#34;Statement&#34;: [
@@ -281,12 +289,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
+ *             .name(String.format(&#34;example-value-%s&#34;, defaultInteger.result()))
  *             .description(&#34;example-value&#34;)
  *             .internetAccess(false)
  *             .build());
  * 
  *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .bucket(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *             .bucket(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
  *             .build());
  * 
  *         // If you upload the function by OSS Bucket, you need to specify path can&#39;t upload by content.
@@ -303,6 +312,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultFunction = new Function(&#34;defaultFunction&#34;, FunctionArgs.builder()        
  *             .service(defaultService.name())
+ *             .name(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
  *             .description(&#34;example&#34;)
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
@@ -314,8 +324,9 @@ import javax.annotation.Nullable;
  *         var defaultTrigger = new Trigger(&#34;defaultTrigger&#34;, TriggerArgs.builder()        
  *             .service(defaultService.name())
  *             .function(defaultFunction.name())
+ *             .name(&#34;terraform-example&#34;)
  *             .role(defaultRole.arn())
- *             .sourceArn(defaultTopic.name().applyValue(name -&gt; String.format(&#34;acs:mns:%s:%s:/topics/%s&#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()),name)))
+ *             .sourceArn(defaultTopic.name().applyValue(name -&gt; String.format(&#34;acs:mns:%s:%s:/topics/%s&#34;, defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),default_.id(),name)))
  *             .type(&#34;mns_topic&#34;)
  *             .configMns(&#34;&#34;&#34;
  *   {
@@ -341,8 +352,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.cdn.DomainNew;
  * import com.pulumi.alicloud.cdn.DomainNewArgs;
  * import com.pulumi.alicloud.cdn.inputs.DomainNewSourceArgs;
@@ -375,15 +386,15 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultAccount = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
  *         var defaultDomainNew = new DomainNew(&#34;defaultDomainNew&#34;, DomainNewArgs.builder()        
- *             .domainName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;example%s.tf.com&#34;, result)))
+ *             .domainName(String.format(&#34;example%s.tf.com&#34;, defaultInteger.result()))
  *             .cdnType(&#34;web&#34;)
  *             .scope(&#34;overseas&#34;)
  *             .sources(DomainNewSourceArgs.builder()
@@ -396,11 +407,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
+ *             .name(String.format(&#34;example-value-%s&#34;, defaultInteger.result()))
  *             .description(&#34;example-value&#34;)
  *             .internetAccess(false)
  *             .build());
  * 
  *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
+ *             .name(String.format(&#34;fcservicerole-%s&#34;, defaultInteger.result()))
  *             .document(&#34;&#34;&#34;
  *     {
  *       &#34;Statement&#34;: [
@@ -422,7 +435,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultPolicy = new Policy(&#34;defaultPolicy&#34;, PolicyArgs.builder()        
- *             .policyName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;fcservicepolicy-%s&#34;, result)))
+ *             .policyName(String.format(&#34;fcservicepolicy-%s&#34;, defaultInteger.result()))
  *             .policyDocument(Output.tuple(defaultService.name(), defaultService.name()).applyValue(values -&gt; {
  *                 var defaultServiceName = values.t1;
  *                 var defaultServiceName1 = values.t2;
@@ -455,7 +468,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .bucket(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *             .bucket(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
  *             .build());
  * 
  *         // If you upload the function by OSS Bucket, you need to specify path can&#39;t upload by content.
@@ -472,6 +485,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultFunction = new Function(&#34;defaultFunction&#34;, FunctionArgs.builder()        
  *             .service(defaultService.name())
+ *             .name(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
  *             .description(&#34;example&#34;)
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
@@ -483,8 +497,9 @@ import javax.annotation.Nullable;
  *         var defaultTrigger = new Trigger(&#34;defaultTrigger&#34;, TriggerArgs.builder()        
  *             .service(defaultService.name())
  *             .function(defaultFunction.name())
+ *             .name(&#34;terraform-example&#34;)
  *             .role(defaultRole.arn())
- *             .sourceArn(String.format(&#34;acs:cdn:*:%s&#34;, defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id())))
+ *             .sourceArn(String.format(&#34;acs:cdn:*:%s&#34;, default_.id()))
  *             .type(&#34;cdn_events&#34;)
  *             .config(defaultDomainNew.domainName().applyValue(domainName -&gt; &#34;&#34;&#34;
  *       {&#34;eventName&#34;:&#34;LogFileCreated&#34;,
@@ -513,8 +528,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.AlicloudFunctions;
  * import com.pulumi.alicloud.inputs.GetRegionsArgs;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.eventbridge.ServiceLinkedRole;
  * import com.pulumi.alicloud.eventbridge.ServiceLinkedRoleArgs;
  * import com.pulumi.alicloud.fc.Service;
@@ -552,13 +567,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultAccount = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount();
  * 
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
@@ -568,12 +583,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
+ *             .name(String.format(&#34;example-value-%s&#34;, defaultInteger.result()))
  *             .description(&#34;example-value&#34;)
  *             .internetAccess(false)
  *             .build());
  * 
  *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .bucket(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *             .bucket(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
  *             .build());
  * 
  *         // If you upload the function by OSS Bucket, you need to specify path can&#39;t upload by content.
@@ -590,6 +606,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultFunction = new Function(&#34;defaultFunction&#34;, FunctionArgs.builder()        
  *             .service(defaultService.name())
+ *             .name(&#34;terraform-example&#34;)
  *             .description(&#34;example&#34;)
  *             .ossBucket(defaultBucket.id())
  *             .ossKey(defaultBucketObject.key())
@@ -601,6 +618,7 @@ import javax.annotation.Nullable;
  *         var ossTrigger = new Trigger(&#34;ossTrigger&#34;, TriggerArgs.builder()        
  *             .service(defaultService.name())
  *             .function(defaultFunction.name())
+ *             .name(&#34;terraform-example-oss&#34;)
  *             .type(&#34;eventbridge&#34;)
  *             .config(&#34;&#34;&#34;
  *     {
@@ -624,6 +642,7 @@ import javax.annotation.Nullable;
  *         var mnsTrigger = new Trigger(&#34;mnsTrigger&#34;, TriggerArgs.builder()        
  *             .service(defaultService.name())
  *             .function(defaultFunction.name())
+ *             .name(&#34;terraform-example-mns&#34;)
  *             .type(&#34;eventbridge&#34;)
  *             .config(&#34;&#34;&#34;
  *     {
@@ -645,7 +664,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
- *             .instanceName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *             .instanceName(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
  *             .remark(&#34;terraform-example&#34;)
  *             .build());
  * 
@@ -665,6 +684,7 @@ import javax.annotation.Nullable;
  *         var rocketmqTrigger = new Trigger(&#34;rocketmqTrigger&#34;, TriggerArgs.builder()        
  *             .service(defaultService.name())
  *             .function(defaultFunction.name())
+ *             .name(&#34;terraform-example-rocketmq&#34;)
  *             .type(&#34;eventbridge&#34;)
  *             .config(Output.tuple(defaultInstance.id(), defaultGroup.groupName(), defaultTopic.topicName()).applyValue(values -&gt; {
  *                 var id = values.t1;
@@ -690,12 +710,12 @@ import javax.annotation.Nullable;
  *             }
  *         }
  *     }
- * &#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),id,groupName,topicName);
+ * &#34;, defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),id,groupName,topicName);
  *             }))
  *             .build());
  * 
- *         var defaultAmqp_instanceInstance = new Instance(&#34;defaultAmqp/instanceInstance&#34;, InstanceArgs.builder()        
- *             .instanceName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *         var defaultInstance2 = new Instance(&#34;defaultInstance2&#34;, InstanceArgs.builder()        
+ *             .instanceName(String.format(&#34;terraform-example-%s&#34;, defaultInteger.result()))
  *             .instanceType(&#34;professional&#34;)
  *             .maxTps(1000)
  *             .queueCapacity(50)
@@ -706,7 +726,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultVirtualHost = new VirtualHost(&#34;defaultVirtualHost&#34;, VirtualHostArgs.builder()        
- *             .instanceId(defaultAmqp / instanceInstance.id())
+ *             .instanceId(defaultInstance2.id())
  *             .virtualHostName(&#34;example-VirtualHost&#34;)
  *             .build());
  * 
@@ -719,10 +739,12 @@ import javax.annotation.Nullable;
  *         var rabbitmqTrigger = new Trigger(&#34;rabbitmqTrigger&#34;, TriggerArgs.builder()        
  *             .service(defaultService.name())
  *             .function(defaultFunction.name())
+ *             .name(&#34;terraform-example-rabbitmq&#34;)
  *             .type(&#34;eventbridge&#34;)
- *             .config(Output.tuple(defaultVirtualHost.virtualHostName(), defaultQueue.queueName()).applyValue(values -&gt; {
- *                 var virtualHostName = values.t1;
- *                 var queueName = values.t2;
+ *             .config(Output.tuple(defaultInstance2.id(), defaultVirtualHost.virtualHostName(), defaultQueue.queueName()).applyValue(values -&gt; {
+ *                 var id = values.t1;
+ *                 var virtualHostName = values.t2;
+ *                 var queueName = values.t3;
  *                 return &#34;&#34;&#34;
  *     {
  *         &#34;triggerEnable&#34;: false,
@@ -740,7 +762,7 @@ import javax.annotation.Nullable;
  *             }
  *         }
  *     }
- * &#34;, defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),defaultAmqp / instanceInstance.id(),virtualHostName,queueName);
+ * &#34;, defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()),id,virtualHostName,queueName);
  *             }))
  *             .build());
  * 

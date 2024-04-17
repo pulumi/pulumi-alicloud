@@ -23,26 +23,26 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const region = config.get("region") || "cn-hangzhou";
  * const endpointGroupRegion = config.get("endpointGroupRegion") || "cn-beijing";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.17.3.0/24",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: "terraform-example",
  *     cidrBlock: "172.17.3.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
+ * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("default", {
  *     loadBalancerName: "terraform-example",
  *     vswitchId: defaultSwitch.id,
  *     loadBalancerSpec: "slb.s2.small",
  *     addressType: "intranet",
  * });
- * const defaultBasicAccelerator = new alicloud.ga.BasicAccelerator("defaultBasicAccelerator", {
+ * const defaultBasicAccelerator = new alicloud.ga.BasicAccelerator("default", {
  *     duration: 1,
  *     basicAcceleratorName: "terraform-example",
  *     description: "terraform-example",
@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  *     autoUseCoupon: "true",
  *     autoPay: true,
  * });
- * const defaultBasicEndpointGroup = new alicloud.ga.BasicEndpointGroup("defaultBasicEndpointGroup", {
+ * const defaultBasicEndpointGroup = new alicloud.ga.BasicEndpointGroup("default", {
  *     acceleratorId: defaultBasicAccelerator.id,
  *     endpointGroupRegion: endpointGroupRegion,
  *     endpointType: "SLB",

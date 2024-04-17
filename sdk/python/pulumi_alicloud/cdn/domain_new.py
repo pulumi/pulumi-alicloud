@@ -361,18 +361,18 @@ class DomainNew(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_domain_new = alicloud.cdn.DomainNew("defaultDomainNew",
-            cdn_type="web",
-            domain_name=default_random_integer.result.apply(lambda result: f"mycdndomain-{result}.alicloud-provider.cn"),
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_domain_new = alicloud.cdn.DomainNew("default",
             scope="overseas",
+            domain_name=f"mycdndomain-{default['result']}.alicloud-provider.cn",
+            cdn_type="web",
             sources=[alicloud.cdn.DomainNewSourceArgs(
-                content="1.1.1.1",
-                port=80,
-                priority=20,
                 type="ipaddr",
+                content="1.1.1.1",
+                priority=20,
+                port=80,
                 weight=15,
             )])
         ```
@@ -424,18 +424,18 @@ class DomainNew(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_domain_new = alicloud.cdn.DomainNew("defaultDomainNew",
-            cdn_type="web",
-            domain_name=default_random_integer.result.apply(lambda result: f"mycdndomain-{result}.alicloud-provider.cn"),
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_domain_new = alicloud.cdn.DomainNew("default",
             scope="overseas",
+            domain_name=f"mycdndomain-{default['result']}.alicloud-provider.cn",
+            cdn_type="web",
             sources=[alicloud.cdn.DomainNewSourceArgs(
-                content="1.1.1.1",
-                port=80,
-                priority=20,
                 type="ipaddr",
+                content="1.1.1.1",
+                priority=20,
+                port=80,
                 weight=15,
             )])
         ```

@@ -31,8 +31,8 @@ namespace Pulumi.AliCloud.Ehpc
     /// {
     ///     var @default = new AliCloud.Ehpc.JobTemplate("default", new()
     ///     {
-    ///         CommandLine = "./LammpsTest/lammps.pbs",
     ///         JobTemplateName = "example_value",
+    ///         CommandLine = "./LammpsTest/lammps.pbs",
     ///     });
     /// 
     /// });

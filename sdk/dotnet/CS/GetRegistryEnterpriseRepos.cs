@@ -27,6 +27,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var myRepos = AliCloud.CS.GetRegistryEnterpriseRepos.Invoke(new()
         ///     {
         ///         InstanceId = "cri-xx",
@@ -61,6 +62,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var myRepos = AliCloud.CS.GetRegistryEnterpriseRepos.Invoke(new()
         ///     {
         ///         InstanceId = "cri-xx",

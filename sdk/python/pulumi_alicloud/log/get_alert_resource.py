@@ -91,8 +91,8 @@ def get_alert_resource(lang: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example_user = alicloud.log.get_alert_resource(lang="cn",
-        type="user")
+    example_user = alicloud.log.get_alert_resource(type="user",
+        lang="cn")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -136,8 +136,8 @@ def get_alert_resource_output(lang: Optional[pulumi.Input[Optional[str]]] = None
     import pulumi
     import pulumi_alicloud as alicloud
 
-    example_user = alicloud.log.get_alert_resource(lang="cn",
-        type="user")
+    example_user = alicloud.log.get_alert_resource(type="user",
+        lang="cn")
     ```
     <!--End PulumiCodeChooser -->
 

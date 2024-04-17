@@ -448,14 +448,14 @@ class PolardbxInstance(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork", vpc_name=name)
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vpc_id=example_network.id,
-            zone_id=default_zones.zones[0].id,
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        example = alicloud.vpc.Network("example", vpc_name=name)
+        example_switch = alicloud.vpc.Switch("example",
+            vpc_id=example.id,
+            zone_id=default.zones[0].id,
             cidr_block="172.16.0.0/24",
             vswitch_name=name)
-        default_polardbx_instance = alicloud.drds.PolardbxInstance("defaultPolardbxInstance",
+        default_polardbx_instance = alicloud.drds.PolardbxInstance("default",
             topology_type="3azones",
             vswitch_id=example_switch.id,
             primary_zone="ap-southeast-1a",
@@ -465,7 +465,7 @@ class PolardbxInstance(pulumi.CustomResource):
             dn_node_count=2,
             secondary_zone="ap-southeast-1b",
             tertiary_zone="ap-southeast-1c",
-            vpc_id=example_network.id)
+            vpc_id=example.id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -519,14 +519,14 @@ class PolardbxInstance(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork", vpc_name=name)
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            vpc_id=example_network.id,
-            zone_id=default_zones.zones[0].id,
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        example = alicloud.vpc.Network("example", vpc_name=name)
+        example_switch = alicloud.vpc.Switch("example",
+            vpc_id=example.id,
+            zone_id=default.zones[0].id,
             cidr_block="172.16.0.0/24",
             vswitch_name=name)
-        default_polardbx_instance = alicloud.drds.PolardbxInstance("defaultPolardbxInstance",
+        default_polardbx_instance = alicloud.drds.PolardbxInstance("default",
             topology_type="3azones",
             vswitch_id=example_switch.id,
             primary_zone="ap-southeast-1a",
@@ -536,7 +536,7 @@ class PolardbxInstance(pulumi.CustomResource):
             dn_node_count=2,
             secondary_zone="ap-southeast-1b",
             tertiary_zone="ap-southeast-1c",
-            vpc_id=example_network.id)
+            vpc_id=example.id)
         ```
         <!--End PulumiCodeChooser -->
 

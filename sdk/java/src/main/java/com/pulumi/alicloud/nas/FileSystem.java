@@ -140,7 +140,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleZones = NasFunctions.getZones(GetZonesArgs.builder()
+ *         final var example = NasFunctions.getZones(GetZonesArgs.builder()
  *             .fileSystemType(&#34;cpfs&#34;)
  *             .build());
  * 
@@ -153,7 +153,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .vpcId(exampleNetwork.id())
- *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].zoneId()))
+ *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].zoneId()))
  *             .build());
  * 
  *         var exampleFileSystem = new FileSystem(&#34;exampleFileSystem&#34;, FileSystemArgs.builder()        
@@ -161,7 +161,7 @@ import javax.annotation.Nullable;
  *             .storageType(&#34;advance_200&#34;)
  *             .fileSystemType(&#34;cpfs&#34;)
  *             .capacity(3600)
- *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].zoneId()))
+ *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[1].zoneId()))
  *             .vpcId(exampleNetwork.id())
  *             .vswitchId(exampleSwitch.id())
  *             .build());

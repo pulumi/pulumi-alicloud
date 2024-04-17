@@ -24,13 +24,13 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultServerGroup = new alicloud.nlb.ServerGroup("defaultServerGroup", {
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ * const defaultServerGroup = new alicloud.nlb.ServerGroup("default", {
+ *     resourceGroupId: _default.then(_default => _default.ids?.[0]),
  *     serverGroupName: name,
  *     serverGroupType: "Instance",
  *     vpcId: defaultNetwork.id,

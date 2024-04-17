@@ -32,62 +32,41 @@ namespace Pulumi.AliCloud.Ga
     ///     var config = new Config();
     ///     var region = config.Get("region") ?? "cn-shenzhen";
     ///     var endpointRegion = config.Get("endpointRegion") ?? "cn-hangzhou";
-    ///     var sz = new AliCloud.Provider("sz", new()
-    ///     {
-    ///         Region = region,
-    ///     });
-    /// 
-    ///     var hz = new AliCloud.Provider("hz", new()
-    ///     {
-    ///         Region = endpointRegion,
-    ///     });
-    /// 
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = "terraform-example",
     ///         CidrBlock = "172.17.3.0/24",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Sz,
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = "terraform-example",
     ///         CidrBlock = "172.17.3.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Sz,
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///     });
     /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Sz,
+    ///         Name = "terraform-example",
     ///     });
     /// 
-    ///     var defaultEcsNetworkInterface = new AliCloud.Ecs.EcsNetworkInterface("defaultEcsNetworkInterface", new()
+    ///     var defaultEcsNetworkInterface = new AliCloud.Ecs.EcsNetworkInterface("default", new()
     ///     {
     ///         VswitchId = defaultSwitch.Id,
     ///         SecurityGroupIds = new[]
     ///         {
     ///             defaultSecurityGroup.Id,
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Sz,
     ///     });
     /// 
-    ///     var defaultBasicAccelerator = new AliCloud.Ga.BasicAccelerator("defaultBasicAccelerator", new()
+    ///     var defaultBasicAccelerator = new AliCloud.Ga.BasicAccelerator("default", new()
     ///     {
     ///         Duration = 1,
     ///         BasicAcceleratorName = "terraform-example",
@@ -97,7 +76,7 @@ namespace Pulumi.AliCloud.Ga
     ///         AutoPay = true,
     ///     });
     /// 
-    ///     var defaultBasicEndpointGroup = new AliCloud.Ga.BasicEndpointGroup("defaultBasicEndpointGroup", new()
+    ///     var defaultBasicEndpointGroup = new AliCloud.Ga.BasicEndpointGroup("default", new()
     ///     {
     ///         AcceleratorId = defaultBasicAccelerator.Id,
     ///         EndpointGroupRegion = region,
@@ -105,7 +84,7 @@ namespace Pulumi.AliCloud.Ga
     ///         Description = "terraform-example",
     ///     });
     /// 
-    ///     var defaultBasicEndpoint = new AliCloud.Ga.BasicEndpoint("defaultBasicEndpoint", new()
+    ///     var defaultBasicEndpoint = new AliCloud.Ga.BasicEndpoint("default", new()
     ///     {
     ///         AcceleratorId = defaultBasicAccelerator.Id,
     ///         EndpointGroupId = defaultBasicEndpointGroup.Id,
@@ -114,9 +93,6 @@ namespace Pulumi.AliCloud.Ga
     ///         EndpointSubAddressType = "secondary",
     ///         EndpointSubAddress = "192.168.0.1",
     ///         BasicEndpointName = "terraform-example",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Hz,
     ///     });
     /// 
     /// });

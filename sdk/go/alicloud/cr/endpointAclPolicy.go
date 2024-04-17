@@ -33,46 +33,44 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "tf-example"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			defaultRegistryEnterpriseInstance, err := cr.NewRegistryEnterpriseInstance(ctx, "defaultRegistryEnterpriseInstance", &cr.RegistryEnterpriseInstanceArgs{
-//				PaymentType:   pulumi.String("Subscription"),
-//				Period:        pulumi.Int(1),
-//				RenewalStatus: pulumi.String("ManualRenewal"),
-//				InstanceType:  pulumi.String("Advanced"),
-//				InstanceName:  pulumi.String(name),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultEndpointAclService := cr.GetEndpointAclServiceOutput(ctx, cr.GetEndpointAclServiceOutputArgs{
-//				EndpointType: pulumi.String("internet"),
-//				Enable:       pulumi.Bool(true),
-//				InstanceId:   defaultRegistryEnterpriseInstance.ID(),
-//				ModuleName:   pulumi.String("Registry"),
-//			}, nil)
-//			_, err = cr.NewEndpointAclPolicy(ctx, "defaultEndpointAclPolicy", &cr.EndpointAclPolicyArgs{
-//				InstanceId: defaultEndpointAclService.ApplyT(func(defaultEndpointAclService cr.GetEndpointAclServiceResult) (*string, error) {
-//					return &defaultEndpointAclService.InstanceId, nil
-//				}).(pulumi.StringPtrOutput),
-//				Entry:        pulumi.String("192.168.1.0/24"),
-//				Description:  pulumi.String(name),
-//				ModuleName:   pulumi.String("Registry"),
-//				EndpointType: pulumi.String("internet"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "tf-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// defaultRegistryEnterpriseInstance, err := cr.NewRegistryEnterpriseInstance(ctx, "default", &cr.RegistryEnterpriseInstanceArgs{
+// PaymentType: pulumi.String("Subscription"),
+// Period: pulumi.Int(1),
+// RenewalStatus: pulumi.String("ManualRenewal"),
+// InstanceType: pulumi.String("Advanced"),
+// InstanceName: pulumi.String(name),
+// })
+// if err != nil {
+// return err
+// }
+// _default := cr.GetEndpointAclServiceOutput(ctx, cr.GetEndpointAclServiceOutputArgs{
+// EndpointType: pulumi.String("internet"),
+// Enable: pulumi.Bool(true),
+// InstanceId: defaultRegistryEnterpriseInstance.ID(),
+// ModuleName: pulumi.String("Registry"),
+// }, nil);
+// _, err = cr.NewEndpointAclPolicy(ctx, "default", &cr.EndpointAclPolicyArgs{
+// InstanceId: _default.ApplyT(func(_default cr.GetEndpointAclServiceResult) (*string, error) {
+// return &default.InstanceId, nil
+// }).(pulumi.StringPtrOutput),
+// Entry: pulumi.String("192.168.1.0/24"),
+// Description: pulumi.String(name),
+// ModuleName: pulumi.String("Registry"),
+// EndpointType: pulumi.String("internet"),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
 // ```
 // <!--End PulumiCodeChooser -->
 //

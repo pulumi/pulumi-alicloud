@@ -138,7 +138,7 @@ def get_alarm_contacts(chanel_type: Optional[str] = None,
     import pulumi_alicloud as alicloud
 
     example = alicloud.cms.get_alarm_contacts(ids=["tf-testAccCmsAlarmContact"])
-    pulumi.export("first-contact", data["alicloud_cms_alarm_contacts"]["this"]["contacts"])
+    pulumi.export("first-contact", this["contacts"])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -193,7 +193,7 @@ def get_alarm_contacts_output(chanel_type: Optional[pulumi.Input[Optional[str]]]
     import pulumi_alicloud as alicloud
 
     example = alicloud.cms.get_alarm_contacts(ids=["tf-testAccCmsAlarmContact"])
-    pulumi.export("first-contact", data["alicloud_cms_alarm_contacts"]["this"]["contacts"])
+    pulumi.export("first-contact", this["contacts"])
     ```
     <!--End PulumiCodeChooser -->
 

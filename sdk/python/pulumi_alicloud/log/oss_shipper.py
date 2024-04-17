@@ -662,23 +662,25 @@ class OssShipper(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject",
+        example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
             description="terraform-example",
             tags={
                 "Created": "TF",
                 "For": "example",
             })
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
+        example_store = alicloud.log.Store("example",
+            project=example.name,
+            name="example-store",
             retention_period=3650,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        example_oss_shipper = alicloud.log.OssShipper("exampleOssShipper",
-            project_name=example_project.name,
+        example_oss_shipper = alicloud.log.OssShipper("example",
+            project_name=example.name,
             logstore_name=example_store.name,
             shipper_name="terraform-example",
             oss_bucket="example_bucket",
@@ -750,23 +752,25 @@ class OssShipper(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject",
+        example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
             description="terraform-example",
             tags={
                 "Created": "TF",
                 "For": "example",
             })
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
+        example_store = alicloud.log.Store("example",
+            project=example.name,
+            name="example-store",
             retention_period=3650,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        example_oss_shipper = alicloud.log.OssShipper("exampleOssShipper",
-            project_name=example_project.name,
+        example_oss_shipper = alicloud.log.OssShipper("example",
+            project_name=example.name,
             logstore_name=example_store.name,
             shipper_name="terraform-example",
             oss_bucket="example_bucket",

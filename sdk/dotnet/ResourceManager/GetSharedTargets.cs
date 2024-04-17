@@ -31,17 +31,17 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "tf-example";
-        ///     var defaultAccounts = AliCloud.ResourceManager.GetAccounts.Invoke();
+        ///     var @default = AliCloud.ResourceManager.GetAccounts.Invoke();
         /// 
-        ///     var defaultResourceShare = new AliCloud.ResourceManager.ResourceShare("defaultResourceShare", new()
+        ///     var defaultResourceShare = new AliCloud.ResourceManager.ResourceShare("default", new()
         ///     {
         ///         ResourceShareName = name,
         ///     });
         /// 
-        ///     var defaultSharedTarget = new AliCloud.ResourceManager.SharedTarget("defaultSharedTarget", new()
+        ///     var defaultSharedTarget = new AliCloud.ResourceManager.SharedTarget("default", new()
         ///     {
         ///         ResourceShareId = defaultResourceShare.Id,
-        ///         TargetId = defaultAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0]),
+        ///         TargetId = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0])),
         ///     });
         /// 
         ///     var ids = AliCloud.ResourceManager.GetSharedTargets.Invoke(new()
@@ -89,17 +89,17 @@ namespace Pulumi.AliCloud.ResourceManager
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "tf-example";
-        ///     var defaultAccounts = AliCloud.ResourceManager.GetAccounts.Invoke();
+        ///     var @default = AliCloud.ResourceManager.GetAccounts.Invoke();
         /// 
-        ///     var defaultResourceShare = new AliCloud.ResourceManager.ResourceShare("defaultResourceShare", new()
+        ///     var defaultResourceShare = new AliCloud.ResourceManager.ResourceShare("default", new()
         ///     {
         ///         ResourceShareName = name,
         ///     });
         /// 
-        ///     var defaultSharedTarget = new AliCloud.ResourceManager.SharedTarget("defaultSharedTarget", new()
+        ///     var defaultSharedTarget = new AliCloud.ResourceManager.SharedTarget("default", new()
         ///     {
         ///         ResourceShareId = defaultResourceShare.Id,
-        ///         TargetId = defaultAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0]),
+        ///         TargetId = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0])),
         ///     });
         /// 
         ///     var ids = AliCloud.ResourceManager.GetSharedTargets.Invoke(new()

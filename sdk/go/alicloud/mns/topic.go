@@ -29,8 +29,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := mns.NewTopic(ctx, "topic", &mns.TopicArgs{
-//				LoggingEnabled:     pulumi.Bool(false),
+//				Name:               pulumi.String("tf-example-mnstopic"),
 //				MaximumMessageSize: pulumi.Int(65536),
+//				LoggingEnabled:     pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err

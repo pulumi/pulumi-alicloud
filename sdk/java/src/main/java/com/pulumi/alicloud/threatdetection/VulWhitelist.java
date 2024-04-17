@@ -48,9 +48,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new VulWhitelist(&#34;default&#34;, VulWhitelistArgs.builder()        
- *             .reason(&#34;tf-example-reason&#34;)
- *             .targetInfo(&#34;{\&#34;type\&#34;:\&#34;GroupId\&#34;,\&#34;uuids\&#34;:[],\&#34;groupIds\&#34;:[10782678]}&#34;)
  *             .whitelist(&#34;[{\&#34;aliasName\&#34;:\&#34;RHSA-2021:2260: libwebp 安全更新\&#34;,\&#34;name\&#34;:\&#34;RHSA-2021:2260: libwebp 安全更新\&#34;,\&#34;type\&#34;:\&#34;cve\&#34;}]&#34;)
+ *             .targetInfo(&#34;{\&#34;type\&#34;:\&#34;GroupId\&#34;,\&#34;uuids\&#34;:[],\&#34;groupIds\&#34;:[10782678]}&#34;)
+ *             .reason(&#34;tf-example-reason&#34;)
  *             .build());
  * 
  *     }

@@ -32,42 +32,26 @@ namespace Pulumi.AliCloud.Hbr
     /// {
     ///     var config = new Config();
     ///     var sourceRegion = config.Get("sourceRegion") ?? "cn-hangzhou";
-    ///     var source = new AliCloud.Provider("source", new()
-    ///     {
-    ///         Region = sourceRegion,
-    ///     });
+    ///     var @default = AliCloud.Hbr.GetReplicationVaultRegions.Invoke();
     /// 
-    ///     var defaultReplicationVaultRegions = AliCloud.Hbr.GetReplicationVaultRegions.Invoke();
-    /// 
-    ///     var replication = new AliCloud.Provider("replication", new()
-    ///     {
-    ///         Region = defaultReplicationVaultRegions.Apply(getReplicationVaultRegionsResult =&gt; getReplicationVaultRegionsResult.Regions[0]?.ReplicationRegionId),
-    ///     });
-    /// 
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new()
+    ///     var defaultVault = new AliCloud.Hbr.Vault("default", new()
     ///     {
-    ///         VaultName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Source,
+    ///         VaultName = $"terraform-example-{defaultInteger.Result}",
     ///     });
     /// 
-    ///     var defaultReplicationVault = new AliCloud.Hbr.ReplicationVault("defaultReplicationVault", new()
+    ///     var defaultReplicationVault = new AliCloud.Hbr.ReplicationVault("default", new()
     ///     {
     ///         ReplicationSourceRegionId = sourceRegion,
     ///         ReplicationSourceVaultId = defaultVault.Id,
     ///         VaultName = "terraform-example",
     ///         VaultStorageClass = "STANDARD",
     ///         Description = "terraform-example",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Replication,
     ///     });
     /// 
     /// });

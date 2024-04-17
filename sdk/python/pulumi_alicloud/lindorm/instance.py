@@ -1555,16 +1555,16 @@ class Instance(pulumi.CustomResource):
             name = "tf-example"
         region = "cn-hangzhou"
         zone_id = "cn-hangzhou-h"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
             zone_id=zone_id)
-        default_instance = alicloud.lindorm.Instance("defaultInstance",
+        default_instance = alicloud.lindorm.Instance("default",
             disk_category="cloud_efficiency",
             payment_type="PayAsYouGo",
             zone_id=zone_id,
-            vswitch_id=default_switches.ids[0],
-            vpc_id=default_networks.ids[0],
+            vswitch_id=default_get_switches.ids[0],
+            vpc_id=default_get_networks.ids[0],
             instance_name=name,
             table_engine_specification="lindorm.g.4xlarge",
             table_engine_node_count=2,
@@ -1656,16 +1656,16 @@ class Instance(pulumi.CustomResource):
             name = "tf-example"
         region = "cn-hangzhou"
         zone_id = "cn-hangzhou-h"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
             zone_id=zone_id)
-        default_instance = alicloud.lindorm.Instance("defaultInstance",
+        default_instance = alicloud.lindorm.Instance("default",
             disk_category="cloud_efficiency",
             payment_type="PayAsYouGo",
             zone_id=zone_id,
-            vswitch_id=default_switches.ids[0],
-            vpc_id=default_networks.ids[0],
+            vswitch_id=default_get_switches.ids[0],
+            vpc_id=default_get_networks.ids[0],
             instance_name=name,
             table_engine_specification="lindorm.g.4xlarge",
             table_engine_node_count=2,

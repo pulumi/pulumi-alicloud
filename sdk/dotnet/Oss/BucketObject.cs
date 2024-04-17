@@ -26,19 +26,19 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("default", new()
     ///     {
-    ///         BucketName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         BucketName = $"terraform-example-{@default.Result}",
     ///         Acl = "private",
     ///     });
     /// 
-    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("defaultBucketObject", new()
+    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("default", new()
     ///     {
     ///         Bucket = defaultBucket.BucketName,
     ///         Key = "example_key",
@@ -61,19 +61,19 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("default", new()
     ///     {
-    ///         BucketName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         BucketName = $"terraform-example-{@default.Result}",
     ///         Acl = "private",
     ///     });
     /// 
-    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("defaultBucketObject", new()
+    ///     var defaultBucketObject = new AliCloud.Oss.BucketObject("default", new()
     ///     {
     ///         Bucket = defaultBucket.BucketName,
     ///         Key = "example_key",

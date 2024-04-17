@@ -230,18 +230,18 @@ class Account(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.gpdb.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.ids[0])
-        default_instance = alicloud.gpdb.Instance("defaultInstance",
+        default = alicloud.gpdb.get_zones()
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[0])
+        default_instance = alicloud.gpdb.Instance("default",
             db_instance_category="HighAvailability",
             db_instance_class="gpdb.group.segsdx1",
             db_instance_mode="StorageElastic",
             description=name,
             engine="gpdb",
             engine_version="6.0",
-            zone_id=default_zones.ids[0],
+            zone_id=default.ids[0],
             instance_network_type="VPC",
             instance_spec="2C16G",
             master_node_num=1,
@@ -250,12 +250,12 @@ class Account(pulumi.CustomResource):
             seg_storage_type="cloud_essd",
             seg_node_num=4,
             storage_size=50,
-            vpc_id=default_networks.ids[0],
-            vswitch_id=default_switches.ids[0],
+            vpc_id=default_get_networks.ids[0],
+            vswitch_id=default_get_switches.ids[0],
             ip_whitelists=[alicloud.gpdb.InstanceIpWhitelistArgs(
                 security_ip_list="127.0.0.1",
             )])
-        default_account = alicloud.gpdb.Account("defaultAccount",
+        default_account = alicloud.gpdb.Account("default",
             account_name="tf_example",
             db_instance_id=default_instance.id,
             account_password="Example1234",
@@ -312,18 +312,18 @@ class Account(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.gpdb.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.ids[0])
-        default_instance = alicloud.gpdb.Instance("defaultInstance",
+        default = alicloud.gpdb.get_zones()
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[0])
+        default_instance = alicloud.gpdb.Instance("default",
             db_instance_category="HighAvailability",
             db_instance_class="gpdb.group.segsdx1",
             db_instance_mode="StorageElastic",
             description=name,
             engine="gpdb",
             engine_version="6.0",
-            zone_id=default_zones.ids[0],
+            zone_id=default.ids[0],
             instance_network_type="VPC",
             instance_spec="2C16G",
             master_node_num=1,
@@ -332,12 +332,12 @@ class Account(pulumi.CustomResource):
             seg_storage_type="cloud_essd",
             seg_node_num=4,
             storage_size=50,
-            vpc_id=default_networks.ids[0],
-            vswitch_id=default_switches.ids[0],
+            vpc_id=default_get_networks.ids[0],
+            vswitch_id=default_get_switches.ids[0],
             ip_whitelists=[alicloud.gpdb.InstanceIpWhitelistArgs(
                 security_ip_list="127.0.0.1",
             )])
-        default_account = alicloud.gpdb.Account("defaultAccount",
+        default_account = alicloud.gpdb.Account("default",
             account_name="tf_example",
             db_instance_id=default_instance.id,
             account_password="Example1234",

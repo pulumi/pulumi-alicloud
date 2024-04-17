@@ -52,14 +52,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultAlarmContactGroup = new AlarmContactGroup(&#34;defaultAlarmContactGroup&#34;, AlarmContactGroupArgs.builder()        
+ *         var default_ = new AlarmContactGroup(&#34;default&#34;, AlarmContactGroupArgs.builder()        
  *             .alarmContactGroupName(&#34;example_value&#34;)
  *             .describe(&#34;example_value&#34;)
  *             .enableSubscribed(true)
  *             .build());
  * 
  *         var defaultDynamicTagGroup = new DynamicTagGroup(&#34;defaultDynamicTagGroup&#34;, DynamicTagGroupArgs.builder()        
- *             .contactGroupLists(defaultAlarmContactGroup.id())
+ *             .contactGroupLists(default_.id())
  *             .tagKey(&#34;your_tag_key&#34;)
  *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
  *                 .tagValue(&#34;your_tag_value&#34;)

@@ -31,15 +31,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultDomainGroup, err := dns.NewDomainGroup(ctx, "defaultDomainGroup", &dns.DomainGroupArgs{
+//			_, err := dns.NewDomainGroup(ctx, "default", &dns.DomainGroupArgs{
 //				DomainGroupName: pulumi.String("tf-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultAlidnsDomain, err := dns.NewAlidnsDomain(ctx, "defaultAlidnsDomain", &dns.AlidnsDomainArgs{
+//			defaultAlidnsDomain, err := dns.NewAlidnsDomain(ctx, "default", &dns.AlidnsDomainArgs{
 //				DomainName: pulumi.String("starmove.com"),
-//				GroupId:    defaultDomainGroup.ID(),
+//				GroupId:    _default.ID(),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("example"),
@@ -48,7 +48,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultAlidnsInstance, err := dns.NewAlidnsInstance(ctx, "defaultAlidnsInstance", &dns.AlidnsInstanceArgs{
+//			defaultAlidnsInstance, err := dns.NewAlidnsInstance(ctx, "default", &dns.AlidnsInstanceArgs{
 //				DnsSecurity:   pulumi.String("basic"),
 //				DomainNumbers: pulumi.String("3"),
 //				VersionCode:   pulumi.String("version_personal"),
@@ -58,7 +58,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dns.NewAlidnsDomainAttachment(ctx, "defaultAlidnsDomainAttachment", &dns.AlidnsDomainAttachmentArgs{
+//			_, err = dns.NewAlidnsDomainAttachment(ctx, "default", &dns.AlidnsDomainAttachmentArgs{
 //				InstanceId: defaultAlidnsInstance.ID(),
 //				DomainNames: pulumi.StringArray{
 //					defaultAlidnsDomain.DomainName,

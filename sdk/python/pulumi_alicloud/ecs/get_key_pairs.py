@@ -164,8 +164,8 @@ def get_key_pairs(finger_print: Optional[str] = None,
     import pulumi_alicloud as alicloud
 
     # Declare the data source
-    default_key_pair = alicloud.ecs.KeyPair("defaultKeyPair", key_name="keyPairDatasource")
-    default_key_pairs = alicloud.ecs.get_key_pairs_output(name_regex=default_key_pair.key_name)
+    default_key_pair = alicloud.ecs.KeyPair("default", key_name="keyPairDatasource")
+    default = alicloud.ecs.get_key_pairs_output(name_regex=default_key_pair.key_name)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -221,8 +221,8 @@ def get_key_pairs_output(finger_print: Optional[pulumi.Input[Optional[str]]] = N
     import pulumi_alicloud as alicloud
 
     # Declare the data source
-    default_key_pair = alicloud.ecs.KeyPair("defaultKeyPair", key_name="keyPairDatasource")
-    default_key_pairs = alicloud.ecs.get_key_pairs_output(name_regex=default_key_pair.key_name)
+    default_key_pair = alicloud.ecs.KeyPair("default", key_name="keyPairDatasource")
+    default = alicloud.ecs.get_key_pairs_output(name_regex=default_key_pair.key_name)
     ```
     <!--End PulumiCodeChooser -->
 

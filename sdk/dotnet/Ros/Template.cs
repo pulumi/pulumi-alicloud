@@ -31,12 +31,11 @@ namespace Pulumi.AliCloud.Ros
     /// {
     ///     var example = new AliCloud.Ros.Template("example", new()
     ///     {
+    ///         TemplateName = "example_value",
     ///         TemplateBody = @"    {
     ///     	""ROSTemplateFormatVersion"": ""2015-09-01""
     ///     }
-    ///     
     /// ",
-    ///         TemplateName = "example_value",
     ///     });
     /// 
     /// });

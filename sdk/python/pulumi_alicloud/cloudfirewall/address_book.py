@@ -317,15 +317,15 @@ class AddressBook(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.cloudfirewall.AddressBook("example",
-            auto_add_tag_ecs=0,
             description="example_value",
+            group_name="example_value",
+            group_type="tag",
+            tag_relation="and",
+            auto_add_tag_ecs=0,
             ecs_tags=[alicloud.cloudfirewall.AddressBookEcsTagArgs(
                 tag_key="created",
                 tag_value="tfTestAcc0",
-            )],
-            group_name="example_value",
-            group_type="tag",
-            tag_relation="and")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -372,15 +372,15 @@ class AddressBook(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.cloudfirewall.AddressBook("example",
-            auto_add_tag_ecs=0,
             description="example_value",
+            group_name="example_value",
+            group_type="tag",
+            tag_relation="and",
+            auto_add_tag_ecs=0,
             ecs_tags=[alicloud.cloudfirewall.AddressBookEcsTagArgs(
                 tag_key="created",
                 tag_value="tfTestAcc0",
-            )],
-            group_name="example_value",
-            group_type="tag",
-            tag_relation="and")
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

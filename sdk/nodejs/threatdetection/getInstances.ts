@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.threatdetection.getInstances({
- *     ids: [alicloud_threat_detection_instance["default"].id],
+ *     ids: [defaultAlicloudThreatDetectionInstance.id],
  * });
  * export const alicloudThreatDetectionInstanceExampleId = _default.then(_default => _default.instances?.[0]?.id);
  * ```
@@ -101,7 +101,7 @@ export interface GetInstancesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.threatdetection.getInstances({
- *     ids: [alicloud_threat_detection_instance["default"].id],
+ *     ids: [defaultAlicloudThreatDetectionInstance.id],
  * });
  * export const alicloudThreatDetectionInstanceExampleId = _default.then(_default => _default.instances?.[0]?.id);
  * ```

@@ -50,16 +50,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
  *         var defaultSynchronizationInstance = new SynchronizationInstance(&#34;defaultSynchronizationInstance&#34;, SynchronizationInstanceArgs.builder()        
  *             .paymentType(&#34;PayAsYouGo&#34;)
  *             .sourceEndpointEngineName(&#34;MySQL&#34;)
- *             .sourceEndpointRegion(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .sourceEndpointRegion(default_.regions()[0].id())
  *             .destinationEndpointEngineName(&#34;MySQL&#34;)
- *             .destinationEndpointRegion(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .destinationEndpointRegion(default_.regions()[0].id())
  *             .instanceClass(&#34;small&#34;)
  *             .syncArchitecture(&#34;oneway&#34;)
  *             .build());

@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Sddp
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultRule = new AliCloud.Sddp.Rule("defaultRule", new()
+        ///     var defaultRule = new AliCloud.Sddp.Rule("default", new()
         ///     {
         ///         Category = 0,
         ///         Content = "content",
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Sddp
         ///         ProductCode = "ODPS",
         ///     });
         /// 
-        ///     var defaultRules = AliCloud.Sddp.GetRules.Invoke(new()
+        ///     var @default = AliCloud.Sddp.GetRules.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -48,7 +48,7 @@ namespace Pulumi.AliCloud.Sddp
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["sddpRuleId"] = defaultRules.Apply(getRulesResult =&gt; getRulesResult.Id),
+        ///         ["sddpRuleId"] = @default.Apply(@default =&gt; @default.Apply(getRulesResult =&gt; getRulesResult.Id)),
         ///     };
         /// });
         /// ```
@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.Sddp
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultRule = new AliCloud.Sddp.Rule("defaultRule", new()
+        ///     var defaultRule = new AliCloud.Sddp.Rule("default", new()
         ///     {
         ///         Category = 0,
         ///         Content = "content",
@@ -84,7 +84,7 @@ namespace Pulumi.AliCloud.Sddp
         ///         ProductCode = "ODPS",
         ///     });
         /// 
-        ///     var defaultRules = AliCloud.Sddp.GetRules.Invoke(new()
+        ///     var @default = AliCloud.Sddp.GetRules.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -94,7 +94,7 @@ namespace Pulumi.AliCloud.Sddp
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["sddpRuleId"] = defaultRules.Apply(getRulesResult =&gt; getRulesResult.Id),
+        ///         ["sddpRuleId"] = @default.Apply(@default =&gt; @default.Apply(getRulesResult =&gt; getRulesResult.Id)),
         ///     };
         /// });
         /// ```

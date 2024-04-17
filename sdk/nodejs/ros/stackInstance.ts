@@ -25,8 +25,8 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
  * const this = alicloud.getAccount({});
- * const defaultRegions = alicloud.ros.getRegions({});
- * const defaultStackGroup = new alicloud.ros.StackGroup("defaultStackGroup", {
+ * const default = alicloud.ros.getRegions({});
+ * const defaultStackGroup = new alicloud.ros.StackGroup("default", {
  *     stackGroupName: name,
  *     templateBody: "{\"ROSTemplateFormatVersion\":\"2015-09-01\", \"Parameters\": {\"VpcName\": {\"Type\": \"String\"},\"InstanceType\": {\"Type\": \"String\"}}}",
  *     description: "test for stack groups",
@@ -44,7 +44,7 @@ import * as utilities from "../utilities";
  * const example = new alicloud.ros.StackInstance("example", {
  *     stackGroupName: defaultStackGroup.stackGroupName,
  *     stackInstanceAccountId: _this.then(_this => _this.id),
- *     stackInstanceRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.regionId),
+ *     stackInstanceRegionId: _default.then(_default => _default.regions?.[0]?.regionId),
  *     operationPreferences: "{\"FailureToleranceCount\": 1, \"MaxConcurrentCount\": 2}",
  *     timeoutInMinutes: "60",
  *     operationDescription: "tf-example",

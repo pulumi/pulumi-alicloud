@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Arms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleAlertContact = new AliCloud.Arms.AlertContact("exampleAlertContact", new()
+    ///     var example = new AliCloud.Arms.AlertContact("example", new()
     ///     {
     ///         AlertContactName = "example_value",
     ///         DingRobotWebhookUrl = "https://oapi.dingtalk.com/robot/send?access_token=91f2f6****",
@@ -37,12 +37,12 @@ namespace Pulumi.AliCloud.Arms
     ///         PhoneNum = "1381111****",
     ///     });
     /// 
-    ///     var exampleAlertContactGroup = new AliCloud.Arms.AlertContactGroup("exampleAlertContactGroup", new()
+    ///     var exampleAlertContactGroup = new AliCloud.Arms.AlertContactGroup("example", new()
     ///     {
     ///         AlertContactGroupName = "example_value",
     ///         ContactIds = new[]
     ///         {
-    ///             exampleAlertContact.Id,
+    ///             example.Id,
     ///         },
     ///     });
     /// 

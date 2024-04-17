@@ -31,8 +31,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.resourcemanager.Folder;
  * import com.pulumi.alicloud.resourcemanager.FolderArgs;
  * import com.pulumi.alicloud.resourcemanager.Account;
@@ -55,18 +55,18 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var displayName = config.get(&#34;displayName&#34;).orElse(&#34;EAccount&#34;);
- *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         var exampleFolder = new Folder(&#34;exampleFolder&#34;, FolderArgs.builder()        
- *             .folderName(default_.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
+ *         var example = new Folder(&#34;example&#34;, FolderArgs.builder()        
+ *             .folderName(String.format(&#34;%s-%s&#34;, name,default_.result()))
  *             .build());
  * 
  *         var exampleAccount = new Account(&#34;exampleAccount&#34;, AccountArgs.builder()        
- *             .displayName(default_.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, displayName,result)))
- *             .folderId(exampleFolder.id())
+ *             .displayName(String.format(&#34;%s-%s&#34;, displayName,default_.result()))
+ *             .folderId(example.id())
  *             .build());
  * 
  *         var exampleDelegatedAdministrator = new DelegatedAdministrator(&#34;exampleDelegatedAdministrator&#34;, DelegatedAdministratorArgs.builder()        

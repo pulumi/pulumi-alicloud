@@ -31,18 +31,18 @@ namespace Pulumi.AliCloud.Cms
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new()
+    ///     var @default = new AliCloud.Cms.AlarmContactGroup("default", new()
     ///     {
     ///         AlarmContactGroupName = name,
     ///         Describe = name,
     ///     });
     /// 
-    ///     var defaultMonitorGroup = new AliCloud.Cms.MonitorGroup("defaultMonitorGroup", new()
+    ///     var defaultMonitorGroup = new AliCloud.Cms.MonitorGroup("default", new()
     ///     {
     ///         MonitorGroupName = name,
     ///         ContactGroups = new[]
     ///         {
-    ///             defaultAlarmContactGroup.Id,
+    ///             @default.Id,
     ///         },
     ///     });
     /// 

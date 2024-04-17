@@ -246,8 +246,8 @@ def get_instances(connection_mode: Optional[str] = None,
     db_instances_ds = alicloud.rds.get_instances(name_regex="data-\\\\d+",
         status="Running",
         tags={
-            "size": "tiny",
             "type": "database",
+            "size": "tiny",
         })
     pulumi.export("firstDbInstanceId", db_instances_ds.instances[0].id)
     ```
@@ -335,8 +335,8 @@ def get_instances_output(connection_mode: Optional[pulumi.Input[Optional[str]]] 
     db_instances_ds = alicloud.rds.get_instances(name_regex="data-\\\\d+",
         status="Running",
         tags={
-            "size": "tiny",
             "type": "database",
+            "size": "tiny",
         })
     pulumi.export("firstDbInstanceId", db_instances_ds.instances[0].id)
     ```

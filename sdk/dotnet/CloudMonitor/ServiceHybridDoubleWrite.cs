@@ -31,24 +31,24 @@ namespace Pulumi.AliCloud.CloudMonitor
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.GetAccount.Invoke();
     /// 
     ///     var source = new AliCloud.Cms.Namespace("source", new()
     ///     {
     ///         NamespaceName = name,
     ///     });
     /// 
-    ///     var defaultNamespace = new AliCloud.Cms.Namespace("defaultNamespace", new()
+    ///     var defaultNamespace = new AliCloud.Cms.Namespace("default", new()
     ///     {
     ///         NamespaceName = $"{name}-source",
     ///     });
     /// 
-    ///     var defaultServiceHybridDoubleWrite = new AliCloud.CloudMonitor.ServiceHybridDoubleWrite("defaultServiceHybridDoubleWrite", new()
+    ///     var defaultServiceHybridDoubleWrite = new AliCloud.CloudMonitor.ServiceHybridDoubleWrite("default", new()
     ///     {
     ///         SourceNamespace = source.Id,
-    ///         SourceUserId = defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         SourceUserId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
     ///         Namespace = defaultNamespace.Id,
-    ///         UserId = defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         UserId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
     ///     });
     /// 
     /// });

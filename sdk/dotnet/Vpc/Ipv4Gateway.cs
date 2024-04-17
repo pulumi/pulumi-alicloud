@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Vpc
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-testacc-example";
-    ///     var defaultResourceGroup = new AliCloud.ResourceManager.ResourceGroup("defaultResourceGroup", new()
+    ///     var @default = new AliCloud.ResourceManager.ResourceGroup("default", new()
     ///     {
     ///         DisplayName = "tf-testAcc-rg665",
     ///         ResourceGroupName = name,
@@ -43,17 +43,17 @@ namespace Pulumi.AliCloud.Vpc
     ///         ResourceGroupName = $"{name}1",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = $"{name}2",
     ///         CidrBlock = "10.0.0.0/8",
     ///     });
     /// 
-    ///     var defaultIpv4Gateway = new AliCloud.Vpc.Ipv4Gateway("defaultIpv4Gateway", new()
+    ///     var defaultIpv4Gateway = new AliCloud.Vpc.Ipv4Gateway("default", new()
     ///     {
     ///         Ipv4GatewayName = name,
     ///         Ipv4GatewayDescription = "tf-testAcc-Ipv4Gateway",
-    ///         ResourceGroupId = defaultResourceGroup.Id,
+    ///         ResourceGroupId = @default.Id,
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 

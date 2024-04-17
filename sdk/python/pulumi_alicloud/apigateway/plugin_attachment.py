@@ -176,9 +176,12 @@ class PluginAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform_example"
-        example_group = alicloud.apigateway.Group("exampleGroup", description=name)
-        example_api = alicloud.apigateway.Api("exampleApi",
-            group_id=example_group.id,
+        example = alicloud.apigateway.Group("example",
+            name=name,
+            description=name)
+        example_api = alicloud.apigateway.Api("example",
+            group_id=example.id,
+            name=name,
             description=name,
             auth_type="APP",
             force_nonce_check=False,
@@ -208,7 +211,7 @@ class PluginAttachment(pulumi.CustomResource):
                 "RELEASE",
                 "TEST",
             ])
-        example_plugin = alicloud.apigateway.Plugin("examplePlugin",
+        example_plugin = alicloud.apigateway.Plugin("example",
             description="tf_example",
             plugin_name="tf_example",
             plugin_data=json.dumps({
@@ -220,9 +223,9 @@ class PluginAttachment(pulumi.CustomResource):
                 "allowCredentials": True,
             }),
             plugin_type="cors")
-        example_plugin_attachment = alicloud.apigateway.PluginAttachment("examplePluginAttachment",
+        example_plugin_attachment = alicloud.apigateway.PluginAttachment("example",
             api_id=example_api.api_id,
-            group_id=example_group.id,
+            group_id=example.id,
             plugin_id=example_plugin.id,
             stage_name="RELEASE")
         ```
@@ -256,9 +259,12 @@ class PluginAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform_example"
-        example_group = alicloud.apigateway.Group("exampleGroup", description=name)
-        example_api = alicloud.apigateway.Api("exampleApi",
-            group_id=example_group.id,
+        example = alicloud.apigateway.Group("example",
+            name=name,
+            description=name)
+        example_api = alicloud.apigateway.Api("example",
+            group_id=example.id,
+            name=name,
             description=name,
             auth_type="APP",
             force_nonce_check=False,
@@ -288,7 +294,7 @@ class PluginAttachment(pulumi.CustomResource):
                 "RELEASE",
                 "TEST",
             ])
-        example_plugin = alicloud.apigateway.Plugin("examplePlugin",
+        example_plugin = alicloud.apigateway.Plugin("example",
             description="tf_example",
             plugin_name="tf_example",
             plugin_data=json.dumps({
@@ -300,9 +306,9 @@ class PluginAttachment(pulumi.CustomResource):
                 "allowCredentials": True,
             }),
             plugin_type="cors")
-        example_plugin_attachment = alicloud.apigateway.PluginAttachment("examplePluginAttachment",
+        example_plugin_attachment = alicloud.apigateway.PluginAttachment("example",
             api_id=example_api.api_id,
-            group_id=example_group.id,
+            group_id=example.id,
             plugin_id=example_plugin.id,
             stage_name="RELEASE")
         ```

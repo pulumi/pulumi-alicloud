@@ -22,14 +22,14 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {
+ * const _default = new alicloud.ecs.EipAddress("default", {
  *     addressName: name,
  *     isp: "BGP",
  *     internetChargeType: "PayByBandwidth",
  *     paymentType: "PayAsYouGo",
  * });
- * const defaultBasicDefenseThreshold = new alicloud.ddos.BasicDefenseThreshold("defaultBasicDefenseThreshold", {
- *     instanceId: defaultEipAddress.id,
+ * const defaultBasicDefenseThreshold = new alicloud.ddos.BasicDefenseThreshold("default", {
+ *     instanceId: _default.id,
  *     ddosType: "defense",
  *     instanceType: "eip",
  *     bps: 390,

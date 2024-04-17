@@ -36,9 +36,9 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := threatdetection.NewVulWhitelist(ctx, "default", &threatdetection.VulWhitelistArgs{
-//				Reason:     pulumi.String("tf-example-reason"),
-//				TargetInfo: pulumi.String("{\"type\":\"GroupId\",\"uuids\":[],\"groupIds\":[10782678]}"),
 //				Whitelist:  pulumi.String("[{\"aliasName\":\"RHSA-2021:2260: libwebp 安全更新\",\"name\":\"RHSA-2021:2260: libwebp 安全更新\",\"type\":\"cve\"}]"),
+//				TargetInfo: pulumi.String("{\"type\":\"GroupId\",\"uuids\":[],\"groupIds\":[10782678]}"),
+//				Reason:     pulumi.String("tf-example-reason"),
 //			})
 //			if err != nil {
 //				return err

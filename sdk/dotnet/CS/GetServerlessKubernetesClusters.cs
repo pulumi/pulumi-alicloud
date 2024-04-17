@@ -29,11 +29,12 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var k8sClusters = AliCloud.CS.GetServerlessKubernetesClusters.Invoke(new()
         ///     {
-        ///         KubeConfigFilePrefix = "~/.kube/serverless",
         ///         NameRegex = "my-first-k8s",
         ///         OutputFile = "my-first-k8s-json",
+        ///         KubeConfigFilePrefix = "~/.kube/serverless",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -65,11 +66,12 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var k8sClusters = AliCloud.CS.GetServerlessKubernetesClusters.Invoke(new()
         ///     {
-        ///         KubeConfigFilePrefix = "~/.kube/serverless",
         ///         NameRegex = "my-first-k8s",
         ///         OutputFile = "my-first-k8s-json",
+        ///         KubeConfigFilePrefix = "~/.kube/serverless",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

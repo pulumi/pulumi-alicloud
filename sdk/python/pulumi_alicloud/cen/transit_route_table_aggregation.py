@@ -227,14 +227,14 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
             description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+        example_transit_router = alicloud.cen.TransitRouter("example",
             transit_router_name="tf_example",
-            cen_id=example_instance.id)
-        example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", transit_router_id=example_transit_router.transit_router_id)
-        example_transit_route_table_aggregation = alicloud.cen.TransitRouteTableAggregation("exampleTransitRouteTableAggregation",
+            cen_id=example.id)
+        example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("example", transit_router_id=example_transit_router.transit_router_id)
+        example_transit_route_table_aggregation = alicloud.cen.TransitRouteTableAggregation("example",
             transit_route_table_id=example_transit_router_route_table.transit_router_route_table_id,
             transit_route_table_aggregation_cidr="10.0.0.0/8",
             transit_route_table_aggregation_scope="VPC",
@@ -281,14 +281,14 @@ class TransitRouteTableAggregation(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
             description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+        example_transit_router = alicloud.cen.TransitRouter("example",
             transit_router_name="tf_example",
-            cen_id=example_instance.id)
-        example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", transit_router_id=example_transit_router.transit_router_id)
-        example_transit_route_table_aggregation = alicloud.cen.TransitRouteTableAggregation("exampleTransitRouteTableAggregation",
+            cen_id=example.id)
+        example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("example", transit_router_id=example_transit_router.transit_router_id)
+        example_transit_route_table_aggregation = alicloud.cen.TransitRouteTableAggregation("example",
             transit_route_table_id=example_transit_router_route_table.transit_router_route_table_id,
             transit_route_table_aggregation_cidr="10.0.0.0/8",
             transit_route_table_aggregation_scope="VPC",

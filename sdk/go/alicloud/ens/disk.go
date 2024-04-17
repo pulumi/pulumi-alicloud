@@ -43,9 +43,9 @@ import (
 //			}
 //			_, err := ens.NewDisk(ctx, "default", &ens.DiskArgs{
 //				Category:    pulumi.String("cloud_ssd"),
-//				EnsRegionId: pulumi.String("cn-chongqing-11"),
-//				PaymentType: pulumi.String("PayAsYouGo"),
 //				Size:        pulumi.Int(20),
+//				PaymentType: pulumi.String("PayAsYouGo"),
+//				EnsRegionId: pulumi.String("cn-chongqing-11"),
 //			})
 //			if err != nil {
 //				return err

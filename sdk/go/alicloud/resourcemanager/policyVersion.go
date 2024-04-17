@@ -42,7 +42,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			examplePolicy, err := resourcemanager.NewPolicy(ctx, "examplePolicy", &resourcemanager.PolicyArgs{
+//			example, err := resourcemanager.NewPolicy(ctx, "example", &resourcemanager.PolicyArgs{
 //				PolicyName: pulumi.String(name),
 //				PolicyDocument: pulumi.String(`		{
 //				"Statement": [{
@@ -59,8 +59,8 @@ import (
 //	if err != nil {
 //		return err
 //	}
-//	_, err = resourcemanager.NewPolicyVersion(ctx, "examplePolicyVersion", &resourcemanager.PolicyVersionArgs{
-//		PolicyName: examplePolicy.PolicyName,
+//	_, err = resourcemanager.NewPolicyVersion(ctx, "example", &resourcemanager.PolicyVersionArgs{
+//		PolicyName: example.PolicyName,
 //		PolicyDocument: pulumi.String(`		{
 //		"Statement": [{
 //			"Action": ["oss:*"],

@@ -31,30 +31,30 @@ namespace Pulumi.AliCloud.Das
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tfexample";
-    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var defaultNodeClasses = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
+    ///     var defaultGetNodeClasses = AliCloud.PolarDB.GetNodeClasses.Invoke(new()
     ///     {
     ///         DbType = "MySQL",
     ///         DbVersion = "8.0",
     ///         PayType = "PostPaid",
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultNodeClasses.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId),
+    ///         ZoneId = defaultGetNodeClasses.Apply(getNodeClassesResult =&gt; getNodeClassesResult.Classes[0]?.ZoneId),
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var defaultCluster = new AliCloud.PolarDB.Cluster("defaultCluster", new()
+    ///     var defaultCluster = new AliCloud.PolarDB.Cluster("default", new()
     ///     {
     ///         DbType = "MySQL",
     ///         DbVersion = "8.0",
@@ -76,11 +76,11 @@ namespace Pulumi.AliCloud.Das
     ///         },
     ///     });
     /// 
-    ///     var defaultSwitchDasPro = new AliCloud.Das.SwitchDasPro("defaultSwitchDasPro", new()
+    ///     var defaultSwitchDasPro = new AliCloud.Das.SwitchDasPro("default", new()
     ///     {
     ///         InstanceId = defaultCluster.Id,
     ///         SqlRetention = 30,
-    ///         UserId = defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         UserId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
     ///     });
     /// 
     /// });

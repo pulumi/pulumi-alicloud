@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *             .instanceName(name)
  *             .build());
  * 
- *         final var defaultEndpointAclService = CrFunctions.getEndpointAclService(GetEndpointAclServiceArgs.builder()
+ *         final var default = CrFunctions.getEndpointAclService(GetEndpointAclServiceArgs.builder()
  *             .endpointType(&#34;internet&#34;)
  *             .enable(true)
  *             .instanceId(defaultRegistryEnterpriseInstance.id())
@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultEndpointAclPolicy = new EndpointAclPolicy(&#34;defaultEndpointAclPolicy&#34;, EndpointAclPolicyArgs.builder()        
- *             .instanceId(defaultEndpointAclService.applyValue(getEndpointAclServiceResult -&gt; getEndpointAclServiceResult).applyValue(defaultEndpointAclService -&gt; defaultEndpointAclService.applyValue(getEndpointAclServiceResult -&gt; getEndpointAclServiceResult.instanceId())))
+ *             .instanceId(default_.applyValue(default_ -&gt; default_.instanceId()))
  *             .entry(&#34;192.168.1.0/24&#34;)
  *             .description(name)
  *             .moduleName(&#34;Registry&#34;)

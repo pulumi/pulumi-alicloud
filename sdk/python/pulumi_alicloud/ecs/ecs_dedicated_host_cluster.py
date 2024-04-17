@@ -213,11 +213,11 @@ class EcsDedicatedHostCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_zones = alicloud.get_zones()
-        example_ecs_dedicated_host_cluster = alicloud.ecs.EcsDedicatedHostCluster("exampleEcsDedicatedHostCluster",
+        example = alicloud.get_zones()
+        example_ecs_dedicated_host_cluster = alicloud.ecs.EcsDedicatedHostCluster("example",
             dedicated_host_cluster_name="example_value",
             description="example_value",
-            zone_id=example_zones.zones[0].id,
+            zone_id=example.zones[0].id,
             tags={
                 "Create": "TF",
                 "For": "DDH_Cluster_Test",
@@ -263,11 +263,11 @@ class EcsDedicatedHostCluster(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_zones = alicloud.get_zones()
-        example_ecs_dedicated_host_cluster = alicloud.ecs.EcsDedicatedHostCluster("exampleEcsDedicatedHostCluster",
+        example = alicloud.get_zones()
+        example_ecs_dedicated_host_cluster = alicloud.ecs.EcsDedicatedHostCluster("example",
             dedicated_host_cluster_name="example_value",
             description="example_value",
-            zone_id=example_zones.zones[0].id,
+            zone_id=example.zones[0].id,
             tags={
                 "Create": "TF",
                 "For": "DDH_Cluster_Test",

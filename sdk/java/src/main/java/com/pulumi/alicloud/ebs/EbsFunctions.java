@@ -54,7 +54,7 @@ public final class EbsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getDedicatedBlockStorageClusters(GetDedicatedBlockStorageClustersArgs.builder()
      *             .ids(&#34;example_id&#34;)
-     *             .nameRegex(alicloud_ebs_dedicated_block_storage_cluster.default().name())
+     *             .nameRegex(defaultAlicloudEbsDedicatedBlockStorageCluster.name())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudEbsDedicatedBlockStorageClusterExampleId&#34;, default_.clusters()[0].id());
@@ -98,7 +98,7 @@ public final class EbsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getDedicatedBlockStorageClusters(GetDedicatedBlockStorageClustersArgs.builder()
      *             .ids(&#34;example_id&#34;)
-     *             .nameRegex(alicloud_ebs_dedicated_block_storage_cluster.default().name())
+     *             .nameRegex(defaultAlicloudEbsDedicatedBlockStorageCluster.name())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudEbsDedicatedBlockStorageClusterExampleId&#34;, default_.clusters()[0].id());
@@ -142,7 +142,7 @@ public final class EbsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getDedicatedBlockStorageClusters(GetDedicatedBlockStorageClustersArgs.builder()
      *             .ids(&#34;example_id&#34;)
-     *             .nameRegex(alicloud_ebs_dedicated_block_storage_cluster.default().name())
+     *             .nameRegex(defaultAlicloudEbsDedicatedBlockStorageCluster.name())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudEbsDedicatedBlockStorageClusterExampleId&#34;, default_.clusters()[0].id());
@@ -186,7 +186,7 @@ public final class EbsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getDedicatedBlockStorageClusters(GetDedicatedBlockStorageClustersArgs.builder()
      *             .ids(&#34;example_id&#34;)
-     *             .nameRegex(alicloud_ebs_dedicated_block_storage_cluster.default().name())
+     *             .nameRegex(defaultAlicloudEbsDedicatedBlockStorageCluster.name())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudEbsDedicatedBlockStorageClusterExampleId&#34;, default_.clusters()[0].id());
@@ -230,7 +230,7 @@ public final class EbsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getDedicatedBlockStorageClusters(GetDedicatedBlockStorageClustersArgs.builder()
      *             .ids(&#34;example_id&#34;)
-     *             .nameRegex(alicloud_ebs_dedicated_block_storage_cluster.default().name())
+     *             .nameRegex(defaultAlicloudEbsDedicatedBlockStorageCluster.name())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudEbsDedicatedBlockStorageClusterExampleId&#34;, default_.clusters()[0].id());
@@ -274,7 +274,7 @@ public final class EbsFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getDedicatedBlockStorageClusters(GetDedicatedBlockStorageClustersArgs.builder()
      *             .ids(&#34;example_id&#34;)
-     *             .nameRegex(alicloud_ebs_dedicated_block_storage_cluster.default().name())
+     *             .nameRegex(defaultAlicloudEbsDedicatedBlockStorageCluster.name())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudEbsDedicatedBlockStorageClusterExampleId&#34;, default_.clusters()[0].id());
@@ -587,7 +587,7 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getDiskReplicaPairs(GetDiskReplicaPairsArgs.builder()
-     *             .ids(alicloud_ebs_disk_replica_pair.default().id())
+     *             .ids(defaultAlicloudEbsDiskReplicaPair.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudEbsDiskReplicaPairExampleId&#34;, default_.pairs()[0].id());
@@ -630,7 +630,7 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getDiskReplicaPairs(GetDiskReplicaPairsArgs.builder()
-     *             .ids(alicloud_ebs_disk_replica_pair.default().id())
+     *             .ids(defaultAlicloudEbsDiskReplicaPair.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudEbsDiskReplicaPairExampleId&#34;, default_.pairs()[0].id());
@@ -673,7 +673,7 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getDiskReplicaPairs(GetDiskReplicaPairsArgs.builder()
-     *             .ids(alicloud_ebs_disk_replica_pair.default().id())
+     *             .ids(defaultAlicloudEbsDiskReplicaPair.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudEbsDiskReplicaPairExampleId&#34;, default_.pairs()[0].id());
@@ -716,7 +716,7 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getDiskReplicaPairs(GetDiskReplicaPairsArgs.builder()
-     *             .ids(alicloud_ebs_disk_replica_pair.default().id())
+     *             .ids(defaultAlicloudEbsDiskReplicaPair.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudEbsDiskReplicaPairExampleId&#34;, default_.pairs()[0].id());
@@ -759,7 +759,7 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getDiskReplicaPairs(GetDiskReplicaPairsArgs.builder()
-     *             .ids(alicloud_ebs_disk_replica_pair.default().id())
+     *             .ids(defaultAlicloudEbsDiskReplicaPair.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudEbsDiskReplicaPairExampleId&#34;, default_.pairs()[0].id());
@@ -802,7 +802,7 @@ public final class EbsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EbsFunctions.getDiskReplicaPairs(GetDiskReplicaPairsArgs.builder()
-     *             .ids(alicloud_ebs_disk_replica_pair.default().id())
+     *             .ids(defaultAlicloudEbsDiskReplicaPair.id())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudEbsDiskReplicaPairExampleId&#34;, default_.pairs()[0].id());

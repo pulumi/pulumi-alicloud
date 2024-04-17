@@ -695,24 +695,24 @@ class EcdPolicyGroup(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.eds.EcdPolicyGroup("default",
-            authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
-                cidr_ip="1.2.3.45/24",
-                description="terraform-example",
-            )],
-            authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
-                cidr_ip="1.2.3.4/24",
-                description="terraform-example",
-                ip_protocol="TCP",
-                policy="accept",
-                port_range="80/80",
-                priority="1",
-                type="inflow",
-            )],
+            policy_group_name="terraform-example",
             clipboard="read",
             local_drive="read",
-            policy_group_name="terraform-example",
             usb_redirect="off",
-            watermark="off")
+            watermark="off",
+            authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
+                description="terraform-example",
+                cidr_ip="1.2.3.45/24",
+            )],
+            authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
+                type="inflow",
+                policy="accept",
+                description="terraform-example",
+                port_range="80/80",
+                ip_protocol="TCP",
+                priority="1",
+                cidr_ip="1.2.3.4/24",
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -769,24 +769,24 @@ class EcdPolicyGroup(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.eds.EcdPolicyGroup("default",
-            authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
-                cidr_ip="1.2.3.45/24",
-                description="terraform-example",
-            )],
-            authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
-                cidr_ip="1.2.3.4/24",
-                description="terraform-example",
-                ip_protocol="TCP",
-                policy="accept",
-                port_range="80/80",
-                priority="1",
-                type="inflow",
-            )],
+            policy_group_name="terraform-example",
             clipboard="read",
             local_drive="read",
-            policy_group_name="terraform-example",
             usb_redirect="off",
-            watermark="off")
+            watermark="off",
+            authorize_access_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeAccessPolicyRuleArgs(
+                description="terraform-example",
+                cidr_ip="1.2.3.45/24",
+            )],
+            authorize_security_policy_rules=[alicloud.eds.EcdPolicyGroupAuthorizeSecurityPolicyRuleArgs(
+                type="inflow",
+                policy="accept",
+                description="terraform-example",
+                port_range="80/80",
+                ip_protocol="TCP",
+                priority="1",
+                cidr_ip="1.2.3.4/24",
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

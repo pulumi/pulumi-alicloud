@@ -158,6 +158,7 @@ def get_clusters(cluster_alias_name: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     example = alicloud.mse.get_clusters(ids=["mse-cn-0d9xxxx"],
         status="INIT_SUCCESS")
     pulumi.export("clusterId", example.clusters[0].id)
@@ -216,6 +217,7 @@ def get_clusters_output(cluster_alias_name: Optional[pulumi.Input[Optional[str]]
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     example = alicloud.mse.get_clusters(ids=["mse-cn-0d9xxxx"],
         status="INIT_SUCCESS")
     pulumi.export("clusterId", example.clusters[0].id)

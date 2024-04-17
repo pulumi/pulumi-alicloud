@@ -37,8 +37,8 @@ namespace Pulumi.AliCloud.Dns
     ///         {
     ///             new AliCloud.Dns.Inputs.CustomLineIpSegmentListArgs
     ///             {
-    ///                 EndIp = "192.0.2.125",
     ///                 StartIp = "192.0.2.123",
+    ///                 EndIp = "192.0.2.125",
     ///             },
     ///         },
     ///     });

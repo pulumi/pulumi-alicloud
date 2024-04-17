@@ -279,27 +279,29 @@ class LifecycleHook(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        my_name = default_random_integer.result.apply(lambda result: f"{name}-{result}")
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        my_name = f"{name}-{default_integer['result']}"
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=my_name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=my_name)
         default2 = alicloud.vpc.Switch("default2",
             vpc_id=default_network.id,
             cidr_block="172.16.1.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=f"{name}-bar")
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=my_name,
+            vpc_id=default_network.id)
+        default_scaling_group = alicloud.ess.ScalingGroup("default",
             min_size=1,
             max_size=1,
             scaling_group_name=my_name,
@@ -312,8 +314,9 @@ class LifecycleHook(pulumi.CustomResource):
                 default_switch.id,
                 default2.id,
             ])
-        default_lifecycle_hook = alicloud.ess.LifecycleHook("defaultLifecycleHook",
+        default_lifecycle_hook = alicloud.ess.LifecycleHook("default",
             scaling_group_id=default_scaling_group.id,
+            name=my_name,
             lifecycle_transition="SCALE_OUT",
             heartbeat_timeout=400,
             notification_metadata="example")
@@ -366,27 +369,29 @@ class LifecycleHook(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        my_name = default_random_integer.result.apply(lambda result: f"{name}-{result}")
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        my_name = f"{name}-{default_integer['result']}"
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=my_name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=my_name)
         default2 = alicloud.vpc.Switch("default2",
             vpc_id=default_network.id,
             cidr_block="172.16.1.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=f"{name}-bar")
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_scaling_group = alicloud.ess.ScalingGroup("defaultScalingGroup",
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=my_name,
+            vpc_id=default_network.id)
+        default_scaling_group = alicloud.ess.ScalingGroup("default",
             min_size=1,
             max_size=1,
             scaling_group_name=my_name,
@@ -399,8 +404,9 @@ class LifecycleHook(pulumi.CustomResource):
                 default_switch.id,
                 default2.id,
             ])
-        default_lifecycle_hook = alicloud.ess.LifecycleHook("defaultLifecycleHook",
+        default_lifecycle_hook = alicloud.ess.LifecycleHook("default",
             scaling_group_id=default_scaling_group.id,
+            name=my_name,
             lifecycle_transition="SCALE_OUT",
             heartbeat_timeout=400,
             notification_metadata="example")

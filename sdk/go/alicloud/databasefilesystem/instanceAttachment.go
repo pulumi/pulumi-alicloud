@@ -44,55 +44,56 @@ import (
 //				name = param
 //			}
 //			zoneId := "cn-hangzhou-i"
-//			exampleInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//			example, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
 //				AvailabilityZone:   pulumi.StringRef(zoneId),
 //				InstanceTypeFamily: pulumi.StringRef("ecs.g7se"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				InstanceType: pulumi.StringRef(exampleInstanceTypes.InstanceTypes[len(exampleInstanceTypes.InstanceTypes)-1].Id),
+//			exampleGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//				InstanceType: pulumi.StringRef(example.InstanceTypes[len(example.InstanceTypes)-1].Id),
 //				NameRegex:    pulumi.StringRef("^aliyun_2_1903_x64_20G_alibase_20231221.vhd"),
 //				Owners:       pulumi.StringRef("system"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//			_default, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 //				NameRegex: pulumi.StringRef("^default-NODELETING$"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(_default.Ids[0]),
 //				ZoneId: pulumi.StringRef(zoneId),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
-//				VpcId: pulumi.String(defaultNetworks.Ids[0]),
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String(name),
+//				VpcId: pulumi.String(_default.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
+//			defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
 //				AvailabilityZone: pulumi.String(zoneId),
 //				InstanceName:     pulumi.String(name),
-//				ImageId:          pulumi.String(exampleImages.Images[0].Id),
-//				InstanceType:     exampleInstanceTypes.InstanceTypes[len(exampleInstanceTypes.InstanceTypes)-1].Id,
+//				ImageId:          pulumi.String(exampleGetImages.Images[0].Id),
+//				InstanceType:     example.InstanceTypes[len(example.InstanceTypes)-1].Id,
 //				SecurityGroups: pulumi.StringArray{
 //					exampleSecurityGroup.ID(),
 //				},
-//				VswitchId:          pulumi.String(defaultSwitches.Ids[0]),
+//				VswitchId:          pulumi.String(defaultGetSwitches.Ids[0]),
 //				SystemDiskCategory: pulumi.String("cloud_essd"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databasefilesystem.NewInstance(ctx, "defaultDatabasefilesystem/instanceInstance", &databasefilesystem.InstanceArgs{
+//			defaultInstance2, err := databasefilesystem.NewInstance(ctx, "default", &databasefilesystem.InstanceArgs{
 //				Category:         pulumi.String("enterprise"),
 //				ZoneId:           defaultInstance.AvailabilityZone,
 //				PerformanceLevel: pulumi.String("PL1"),
@@ -102,9 +103,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = databasefilesystem.NewInstanceAttachment(ctx, "exampleInstanceAttachment", &databasefilesystem.InstanceAttachmentArgs{
+//			_, err = databasefilesystem.NewInstanceAttachment(ctx, "example", &databasefilesystem.InstanceAttachmentArgs{
 //				EcsId:      defaultInstance.ID(),
-//				InstanceId: defaultDatabasefilesystem / instanceInstance.Id,
+//				InstanceId: defaultInstance2.ID(),
 //			})
 //			if err != nil {
 //				return err

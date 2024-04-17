@@ -27,7 +27,10 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = new AliCloud.Slb.LoadBalancer("default");
+        ///     var @default = new AliCloud.Slb.LoadBalancer("default", new()
+        ///     {
+        ///         Name = "sample_slb",
+        ///     });
         /// 
         ///     var slbsDs = AliCloud.Slb.GetLoadBalancers.Invoke(new()
         ///     {
@@ -61,7 +64,10 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var @default = new AliCloud.Slb.LoadBalancer("default");
+        ///     var @default = new AliCloud.Slb.LoadBalancer("default", new()
+        ///     {
+        ///         Name = "sample_slb",
+        ///     });
         /// 
         ///     var slbsDs = AliCloud.Slb.GetLoadBalancers.Invoke(new()
         ///     {

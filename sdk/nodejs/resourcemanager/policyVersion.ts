@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tfexample";
- * const examplePolicy = new alicloud.resourcemanager.Policy("examplePolicy", {
+ * const example = new alicloud.resourcemanager.Policy("example", {
  *     policyName: name,
  *     policyDocument: `		{
  * 			"Statement": [{
@@ -35,8 +35,8 @@ import * as utilities from "../utilities";
  * 		}
  * `,
  * });
- * const examplePolicyVersion = new alicloud.resourcemanager.PolicyVersion("examplePolicyVersion", {
- *     policyName: examplePolicy.policyName,
+ * const examplePolicyVersion = new alicloud.resourcemanager.PolicyVersion("example", {
+ *     policyName: example.policyName,
  *     policyDocument: `		{
  * 			"Statement": [{
  * 				"Action": ["oss:*"],

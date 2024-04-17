@@ -204,17 +204,19 @@ class Connection(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.get_zones()
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_switch.vpc_id)
-        default_connection = alicloud.eventbridge.Connection("defaultConnection",
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_switch.vpc_id)
+        default_connection = alicloud.eventbridge.Connection("default",
             connection_name=name,
             description="test-connection-basic-pre",
             network_parameters=alicloud.eventbridge.ConnectionNetworkParametersArgs(
@@ -306,17 +308,19 @@ class Connection(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.get_zones()
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.get_zones()
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_switch.vpc_id)
-        default_connection = alicloud.eventbridge.Connection("defaultConnection",
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_switch.vpc_id)
+        default_connection = alicloud.eventbridge.Connection("default",
             connection_name=name,
             description="test-connection-basic-pre",
             network_parameters=alicloud.eventbridge.ConnectionNetworkParametersArgs(

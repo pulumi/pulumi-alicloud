@@ -248,11 +248,11 @@ class EcsDeploymentSet(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.ecs.EcsDeploymentSet("default",
-            deployment_set_name="example_value",
-            description="example_value",
+            strategy="Availability",
             domain="Default",
             granularity="Host",
-            strategy="Availability")
+            deployment_set_name="example_value",
+            description="example_value")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -296,11 +296,11 @@ class EcsDeploymentSet(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.ecs.EcsDeploymentSet("default",
-            deployment_set_name="example_value",
-            description="example_value",
+            strategy="Availability",
             domain="Default",
             granularity="Host",
-            strategy="Availability")
+            deployment_set_name="example_value",
+            description="example_value")
         ```
         <!--End PulumiCodeChooser -->
 

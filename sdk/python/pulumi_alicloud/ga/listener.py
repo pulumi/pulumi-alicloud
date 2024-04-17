@@ -473,21 +473,21 @@ class Listener(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+        default = alicloud.ga.Accelerator("default",
             duration=1,
             auto_use_coupon=True,
             spec="1")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("default",
             bandwidth=100,
             type="Basic",
             bandwidth_type="Basic",
             payment_type="PayAsYouGo",
             billing_type="PayBy95",
             ratio=30)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
+            accelerator_id=default.id,
             bandwidth_package_id=default_bandwidth_package.id)
-        default_listener = alicloud.ga.Listener("defaultListener",
+        default_listener = alicloud.ga.Listener("default",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
             port_ranges=[alicloud.ga.ListenerPortRangeArgs(
                 from_port=80,
@@ -544,21 +544,21 @@ class Listener(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+        default = alicloud.ga.Accelerator("default",
             duration=1,
             auto_use_coupon=True,
             spec="1")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("default",
             bandwidth=100,
             type="Basic",
             bandwidth_type="Basic",
             payment_type="PayAsYouGo",
             billing_type="PayBy95",
             ratio=30)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
+            accelerator_id=default.id,
             bandwidth_package_id=default_bandwidth_package.id)
-        default_listener = alicloud.ga.Listener("defaultListener",
+        default_listener = alicloud.ga.Listener("default",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
             port_ranges=[alicloud.ga.ListenerPortRangeArgs(
                 from_port=80,

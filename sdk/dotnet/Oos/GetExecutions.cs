@@ -27,14 +27,15 @@ namespace Pulumi.AliCloud.Oos
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var example = AliCloud.Oos.GetExecutions.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
         ///             "execution_id",
         ///         },
-        ///         Status = "Success",
         ///         TemplateName = "name",
+        ///         Status = "Success",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -64,14 +65,15 @@ namespace Pulumi.AliCloud.Oos
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var example = AliCloud.Oos.GetExecutions.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
         ///             "execution_id",
         ///         },
-        ///         Status = "Success",
         ///         TemplateName = "name",
+        ///         Status = "Success",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

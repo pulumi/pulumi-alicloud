@@ -32,18 +32,18 @@ namespace Pulumi.AliCloud.ResourceManager
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
     ///     var displayName = config.Get("displayName") ?? "EAccount";
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var exampleFolders = AliCloud.ResourceManager.GetFolders.Invoke();
+    ///     var example = AliCloud.ResourceManager.GetFolders.Invoke();
     /// 
-    ///     var exampleAccount = new AliCloud.ResourceManager.Account("exampleAccount", new()
+    ///     var exampleAccount = new AliCloud.ResourceManager.Account("example", new()
     ///     {
-    ///         DisplayName = @default.Result.Apply(result =&gt; $"{displayName}-{result}"),
-    ///         FolderId = exampleFolders.Apply(getFoldersResult =&gt; getFoldersResult.Ids[0]),
+    ///         DisplayName = $"{displayName}-{@default.Result}",
+    ///         FolderId = example.Apply(getFoldersResult =&gt; getFoldersResult.Ids[0]),
     ///     });
     /// 
     /// });

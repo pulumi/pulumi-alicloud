@@ -119,11 +119,11 @@ class WafDomain(pulumi.CustomResource):
         domain_name = config.get("domainName")
         if domain_name is None:
             domain_name = "tf-example.com"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        example_domain = alicloud.dcdn.Domain("exampleDomain",
-            domain_name=default.result.apply(lambda result: f"{domain_name}-{result}"),
+        example = alicloud.dcdn.Domain("example",
+            domain_name=f"{domain_name}-{default['result']}",
             scope="overseas",
             sources=[alicloud.dcdn.DomainSourceArgs(
                 content="1.1.1.1",
@@ -132,8 +132,8 @@ class WafDomain(pulumi.CustomResource):
                 type="ipaddr",
                 weight="10",
             )])
-        example_waf_domain = alicloud.dcdn.WafDomain("exampleWafDomain",
-            domain_name=example_domain.domain_name,
+        example_waf_domain = alicloud.dcdn.WafDomain("example",
+            domain_name=example.domain_name,
             client_ip_tag="X-Forwarded-For")
         ```
         <!--End PulumiCodeChooser -->
@@ -178,11 +178,11 @@ class WafDomain(pulumi.CustomResource):
         domain_name = config.get("domainName")
         if domain_name is None:
             domain_name = "tf-example.com"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        example_domain = alicloud.dcdn.Domain("exampleDomain",
-            domain_name=default.result.apply(lambda result: f"{domain_name}-{result}"),
+        example = alicloud.dcdn.Domain("example",
+            domain_name=f"{domain_name}-{default['result']}",
             scope="overseas",
             sources=[alicloud.dcdn.DomainSourceArgs(
                 content="1.1.1.1",
@@ -191,8 +191,8 @@ class WafDomain(pulumi.CustomResource):
                 type="ipaddr",
                 weight="10",
             )])
-        example_waf_domain = alicloud.dcdn.WafDomain("exampleWafDomain",
-            domain_name=example_domain.domain_name,
+        example_waf_domain = alicloud.dcdn.WafDomain("example",
+            domain_name=example.domain_name,
             client_ip_tag="X-Forwarded-For")
         ```
         <!--End PulumiCodeChooser -->

@@ -22,13 +22,13 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultAccount = alicloud.getAccount({});
- * const defaultNamespace = new alicloud.cms.Namespace("defaultNamespace", {
+ * const default = alicloud.getAccount({});
+ * const defaultNamespace = new alicloud.cms.Namespace("default", {
  *     description: name,
  *     namespace: name,
  *     specification: "cms.s1.large",
  * });
- * const defaultHybridMonitorFcTask = new alicloud.cms.HybridMonitorFcTask("defaultHybridMonitorFcTask", {
+ * const defaultHybridMonitorFcTask = new alicloud.cms.HybridMonitorFcTask("default", {
  *     namespace: defaultNamespace.id,
  *     yarmConfig: `products:
  * - namespace: acs_ecs_dashboard
@@ -48,7 +48,7 @@ import * as utilities from "../utilities";
  *     - MySQL_QPS
  *     - MySQL_TPS
  * `,
- *     targetUserId: defaultAccount.then(defaultAccount => defaultAccount.id),
+ *     targetUserId: _default.then(_default => _default.id),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

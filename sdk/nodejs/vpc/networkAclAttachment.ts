@@ -25,24 +25,24 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "NatGatewayConfigSpec";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/12",
  * });
- * const defaultNetworkAcl = new alicloud.vpc.NetworkAcl("defaultNetworkAcl", {
+ * const defaultNetworkAcl = new alicloud.vpc.NetworkAcl("default", {
  *     vpcId: defaultNetwork.id,
  *     networkAclName: name,
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const defaultNetworkAclAttachment = new alicloud.vpc.NetworkAclAttachment("defaultNetworkAclAttachment", {
+ * const defaultNetworkAclAttachment = new alicloud.vpc.NetworkAclAttachment("default", {
  *     networkAclId: defaultNetworkAcl.id,
  *     resources: [{
  *         resourceId: defaultSwitch.id,

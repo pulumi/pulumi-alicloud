@@ -44,7 +44,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultCluster, err := cassandra.NewCluster(ctx, "defaultCluster", &cassandra.ClusterArgs{
+//			_, err := cassandra.NewCluster(ctx, "default", &cassandra.ClusterArgs{
 //				ClusterName:       pulumi.String("cassandra-cluster-name-tf"),
 //				DataCenterName:    pulumi.String("dc-1"),
 //				AutoRenew:         pulumi.Bool(false),
@@ -62,8 +62,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cassandra.NewDataCenter(ctx, "defaultDataCenter", &cassandra.DataCenterArgs{
-//				ClusterId:      defaultCluster.ID(),
+//			_, err = cassandra.NewDataCenter(ctx, "default", &cassandra.DataCenterArgs{
+//				ClusterId:      _default.ID(),
 //				DataCenterName: pulumi.String("dc-2"),
 //				AutoRenew:      pulumi.Bool(false),
 //				InstanceType:   pulumi.String("cassandra.c.large"),

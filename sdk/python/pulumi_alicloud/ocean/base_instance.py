@@ -759,14 +759,14 @@ class BaseInstance(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.get_zones()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_base_instance = alicloud.ocean.BaseInstance("defaultBaseInstance",
-            resource_group_id=default_resource_groups.ids[0],
+        default = alicloud.get_zones()
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_base_instance = alicloud.ocean.BaseInstance("default",
+            resource_group_id=default_get_resource_groups.ids[0],
             zones=[
-                default_zones.ids[len(default_zones.ids) - 2],
-                default_zones.ids[len(default_zones.ids) - 3],
-                default_zones.ids[len(default_zones.ids) - 4],
+                default.ids[len(default.ids) - 2],
+                default.ids[len(default.ids) - 3],
+                default.ids[len(default.ids) - 4],
             ],
             auto_renew=False,
             disk_size=100,
@@ -868,14 +868,14 @@ class BaseInstance(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.get_zones()
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_base_instance = alicloud.ocean.BaseInstance("defaultBaseInstance",
-            resource_group_id=default_resource_groups.ids[0],
+        default = alicloud.get_zones()
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default_base_instance = alicloud.ocean.BaseInstance("default",
+            resource_group_id=default_get_resource_groups.ids[0],
             zones=[
-                default_zones.ids[len(default_zones.ids) - 2],
-                default_zones.ids[len(default_zones.ids) - 3],
-                default_zones.ids[len(default_zones.ids) - 4],
+                default.ids[len(default.ids) - 2],
+                default.ids[len(default.ids) - 3],
+                default.ids[len(default.ids) - 4],
             ],
             auto_renew=False,
             disk_size=100,

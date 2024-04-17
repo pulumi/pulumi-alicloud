@@ -19,8 +19,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const subscriptions = alicloud.mns.getTopicSubscriptions({
- *     namePrefix: "tf-",
  *     topicName: "topic_name",
+ *     namePrefix: "tf-",
  * });
  * export const firstTopicSubscriptionId = subscriptions.then(subscriptions => subscriptions.subscriptions?.[0]?.id);
  * ```
@@ -90,8 +90,8 @@ export interface GetTopicSubscriptionsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const subscriptions = alicloud.mns.getTopicSubscriptions({
- *     namePrefix: "tf-",
  *     topicName: "topic_name",
+ *     namePrefix: "tf-",
  * });
  * export const firstTopicSubscriptionId = subscriptions.then(subscriptions => subscriptions.subscriptions?.[0]?.id);
  * ```

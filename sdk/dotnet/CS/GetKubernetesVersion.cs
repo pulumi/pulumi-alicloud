@@ -27,6 +27,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Query the managed kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
         ///     var @default = AliCloud.CS.GetKubernetesVersion.Invoke(new()
         ///     {
         ///         ClusterType = "ManagedKubernetes",
@@ -51,6 +52,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Query the kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
         ///     var @default = AliCloud.CS.GetKubernetesVersion.Invoke(new()
         ///     {
         ///         ClusterType = "Kubernetes",
@@ -75,6 +77,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Query the serverless kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
         ///     var @default = AliCloud.CS.GetKubernetesVersion.Invoke(new()
         ///     {
         ///         ClusterType = "ManagedKubernetes",
@@ -99,6 +102,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Query the edge kubernetes cluster metadata of version 1.20.11-aliyunedge.1 in the region specified by the client.
         ///     var @default = AliCloud.CS.GetKubernetesVersion.Invoke(new()
         ///     {
         ///         ClusterType = "ManagedKubernetes",
@@ -133,6 +137,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Query the managed kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
         ///     var @default = AliCloud.CS.GetKubernetesVersion.Invoke(new()
         ///     {
         ///         ClusterType = "ManagedKubernetes",
@@ -157,6 +162,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Query the kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
         ///     var @default = AliCloud.CS.GetKubernetesVersion.Invoke(new()
         ///     {
         ///         ClusterType = "Kubernetes",
@@ -181,6 +187,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Query the serverless kubernetes cluster metadata of version 1.22.3-aliyun.1 in the region specified by the client.
         ///     var @default = AliCloud.CS.GetKubernetesVersion.Invoke(new()
         ///     {
         ///         ClusterType = "ManagedKubernetes",
@@ -205,6 +212,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Query the edge kubernetes cluster metadata of version 1.20.11-aliyunedge.1 in the region specified by the client.
         ///     var @default = AliCloud.CS.GetKubernetesVersion.Invoke(new()
         ///     {
         ///         ClusterType = "ManagedKubernetes",

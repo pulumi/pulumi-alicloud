@@ -37,17 +37,20 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			cfg := config.New(ctx, "")
 //			securityGroupId := cfg.RequireObject("securityGroupId")
+//			// Or get it from the alicloud_security_groups data source.
+//			// Please note that the data source arguments must be enough to filter results to one security group.
 //			groupsDs, err := ecs.GetSecurityGroups(ctx, &ecs.GetSecurityGroupsArgs{
 //				NameRegex: pulumi.StringRef("api"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
+//			// Filter the security group rule by group
 //			ingressRulesDs, err := ecs.GetSecurityGroupRules(ctx, &ecs.GetSecurityGroupRulesArgs{
-//				Direction:  pulumi.StringRef("ingress"),
 //				GroupId:    groupsDs.Groups[0].Id,
-//				IpProtocol: pulumi.StringRef("tcp"),
 //				NicType:    pulumi.StringRef("internet"),
+//				Direction:  pulumi.StringRef("ingress"),
+//				IpProtocol: pulumi.StringRef("tcp"),
 //			}, nil)
 //			if err != nil {
 //				return err

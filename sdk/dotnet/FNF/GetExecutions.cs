@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.FNF
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["fnfExecutionId1"] = data.Alicloud_fn_f_executions.Ids.Executions[0].Id,
+        ///         ["fnfExecutionId1"] = idsAlicloudFnFExecutions.Executions[0].Id,
         ///     };
         /// });
         /// ```
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.FNF
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["fnfExecutionId1"] = data.Alicloud_fn_f_executions.Ids.Executions[0].Id,
+        ///         ["fnfExecutionId1"] = idsAlicloudFnFExecutions.Executions[0].Id,
         ///     };
         /// });
         /// ```

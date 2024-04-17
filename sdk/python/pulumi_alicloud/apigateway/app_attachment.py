@@ -175,9 +175,12 @@ class AppAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform_example"
-        example_group = alicloud.apigateway.Group("exampleGroup", description=name)
-        example_api = alicloud.apigateway.Api("exampleApi",
-            group_id=example_group.id,
+        example = alicloud.apigateway.Group("example",
+            name=name,
+            description=name)
+        example_api = alicloud.apigateway.Api("example",
+            group_id=example.id,
+            name=name,
             description=name,
             auth_type="APP",
             force_nonce_check=False,
@@ -207,10 +210,12 @@ class AppAttachment(pulumi.CustomResource):
                 "RELEASE",
                 "TEST",
             ])
-        example_app = alicloud.apigateway.App("exampleApp", description=name)
-        example_app_attachment = alicloud.apigateway.AppAttachment("exampleAppAttachment",
+        example_app = alicloud.apigateway.App("example",
+            name=name,
+            description=name)
+        example_app_attachment = alicloud.apigateway.AppAttachment("example",
             api_id=example_api.api_id,
-            group_id=example_group.id,
+            group_id=example.id,
             app_id=example_app.id,
             stage_name="PRE")
         ```
@@ -243,9 +248,12 @@ class AppAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform_example"
-        example_group = alicloud.apigateway.Group("exampleGroup", description=name)
-        example_api = alicloud.apigateway.Api("exampleApi",
-            group_id=example_group.id,
+        example = alicloud.apigateway.Group("example",
+            name=name,
+            description=name)
+        example_api = alicloud.apigateway.Api("example",
+            group_id=example.id,
+            name=name,
             description=name,
             auth_type="APP",
             force_nonce_check=False,
@@ -275,10 +283,12 @@ class AppAttachment(pulumi.CustomResource):
                 "RELEASE",
                 "TEST",
             ])
-        example_app = alicloud.apigateway.App("exampleApp", description=name)
-        example_app_attachment = alicloud.apigateway.AppAttachment("exampleAppAttachment",
+        example_app = alicloud.apigateway.App("example",
+            name=name,
+            description=name)
+        example_app_attachment = alicloud.apigateway.AppAttachment("example",
             api_id=example_api.api_id,
-            group_id=example_group.id,
+            group_id=example.id,
             app_id=example_app.id,
             stage_name="PRE")
         ```

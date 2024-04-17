@@ -244,7 +244,9 @@ class Acl(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        acl = alicloud.slb.Acl("acl", ip_version="ipv4")
+        acl = alicloud.slb.Acl("acl",
+            name="terraformslbaclconfig",
+            ip_version="ipv4")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -309,7 +311,9 @@ class Acl(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        acl = alicloud.slb.Acl("acl", ip_version="ipv4")
+        acl = alicloud.slb.Acl("acl",
+            name="terraformslbaclconfig",
+            ip_version="ipv4")
         ```
         <!--End PulumiCodeChooser -->
 

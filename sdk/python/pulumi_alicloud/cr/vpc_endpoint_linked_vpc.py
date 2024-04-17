@@ -230,23 +230,23 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance",
+            zone_id=default.zones[0].id)
+        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
             instance_name=name)
-        default_vpc_endpoint_linked_vpc = alicloud.cr.VpcEndpointLinkedVpc("defaultVpcEndpointLinkedVpc",
+        default_vpc_endpoint_linked_vpc = alicloud.cr.VpcEndpointLinkedVpc("default",
             instance_id=default_registry_enterprise_instance.id,
             vpc_id=default_network.id,
             vswitch_id=default_switch.id,
@@ -297,23 +297,23 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance",
+            zone_id=default.zones[0].id)
+        default_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("default",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
             instance_name=name)
-        default_vpc_endpoint_linked_vpc = alicloud.cr.VpcEndpointLinkedVpc("defaultVpcEndpointLinkedVpc",
+        default_vpc_endpoint_linked_vpc = alicloud.cr.VpcEndpointLinkedVpc("default",
             instance_id=default_registry_enterprise_instance.id,
             vpc_id=default_network.id,
             vswitch_id=default_switch.id,

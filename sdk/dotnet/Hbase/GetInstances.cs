@@ -30,8 +30,8 @@ namespace Pulumi.AliCloud.Hbase
         /// {
         ///     var hbase = AliCloud.Hbase.GetInstances.Invoke(new()
         ///     {
-        ///         AvailabilityZone = "cn-shenzhen-b",
         ///         NameRegex = "tf_testAccHBase",
+        ///         AvailabilityZone = "cn-shenzhen-b",
         ///     });
         /// 
         /// });
@@ -60,8 +60,8 @@ namespace Pulumi.AliCloud.Hbase
         /// {
         ///     var hbase = AliCloud.Hbase.GetInstances.Invoke(new()
         ///     {
-        ///         AvailabilityZone = "cn-shenzhen-b",
         ///         NameRegex = "tf_testAccHBase",
+        ///         AvailabilityZone = "cn-shenzhen-b",
         ///     });
         /// 
         /// });

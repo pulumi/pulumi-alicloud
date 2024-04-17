@@ -184,10 +184,10 @@ def get_metric_rule_black_lists(category: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.cms.get_metric_rule_black_lists(ids=[alicloud_cms_metric_rule_black_lists["default"]["id"]],
+    default = alicloud.cms.get_metric_rule_black_lists(ids=[default_alicloud_cms_metric_rule_black_lists["id"]],
         category="ecs",
         namespace="acs_ecs_dashboard")
-    pulumi.export("alicloudCmsRuleBlackListExampleId", data["alicloud_cms_metric_rule_black_lists"]["lists"][0]["id"])
+    pulumi.export("alicloudCmsRuleBlackListExampleId", lists[0]["id"])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -250,10 +250,10 @@ def get_metric_rule_black_lists_output(category: Optional[pulumi.Input[Optional[
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.cms.get_metric_rule_black_lists(ids=[alicloud_cms_metric_rule_black_lists["default"]["id"]],
+    default = alicloud.cms.get_metric_rule_black_lists(ids=[default_alicloud_cms_metric_rule_black_lists["id"]],
         category="ecs",
         namespace="acs_ecs_dashboard")
-    pulumi.export("alicloudCmsRuleBlackListExampleId", data["alicloud_cms_metric_rule_black_lists"]["lists"][0]["id"])
+    pulumi.export("alicloudCmsRuleBlackListExampleId", lists[0]["id"])
     ```
     <!--End PulumiCodeChooser -->
 

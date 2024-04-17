@@ -37,8 +37,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.Provider;
- * import com.pulumi.alicloud.ProviderArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.cen.Instance;
@@ -47,7 +45,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cen.InstanceAttachmentArgs;
  * import com.pulumi.alicloud.cen.RouteMap;
  * import com.pulumi.alicloud.cen.RouteMapArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -64,27 +61,15 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var sourceRegion = config.get(&#34;sourceRegion&#34;).orElse(&#34;cn-hangzhou&#34;);
  *         final var destinationRegion = config.get(&#34;destinationRegion&#34;).orElse(&#34;cn-shanghai&#34;);
- *         var hz = new Provider(&#34;hz&#34;, ProviderArgs.builder()        
- *             .region(sourceRegion)
- *             .build());
- * 
- *         var sh = new Provider(&#34;sh&#34;, ProviderArgs.builder()        
- *             .region(destinationRegion)
- *             .build());
- * 
- *         var exampleHzNetwork = new Network(&#34;exampleHzNetwork&#34;, NetworkArgs.builder()        
+ *         var exampleHz = new Network(&#34;exampleHz&#34;, NetworkArgs.builder()        
  *             .vpcName(&#34;tf_example&#34;)
  *             .cidrBlock(&#34;192.168.0.0/16&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *             .build());
  * 
- *         var exampleShNetwork = new Network(&#34;exampleShNetwork&#34;, NetworkArgs.builder()        
+ *         var exampleSh = new Network(&#34;exampleSh&#34;, NetworkArgs.builder()        
  *             .vpcName(&#34;tf_example&#34;)
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.sh())
- *                 .build());
+ *             .build());
  * 
  *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
  *             .cenInstanceName(&#34;tf_example&#34;)
@@ -93,14 +78,14 @@ import javax.annotation.Nullable;
  * 
  *         var exampleHzInstanceAttachment = new InstanceAttachment(&#34;exampleHzInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
  *             .instanceId(example.id())
- *             .childInstanceId(exampleHzNetwork.id())
+ *             .childInstanceId(exampleHz.id())
  *             .childInstanceType(&#34;VPC&#34;)
  *             .childInstanceRegionId(sourceRegion)
  *             .build());
  * 
  *         var exampleShInstanceAttachment = new InstanceAttachment(&#34;exampleShInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
  *             .instanceId(example.id())
- *             .childInstanceId(exampleShNetwork.id())
+ *             .childInstanceId(exampleSh.id())
  *             .childInstanceType(&#34;VPC&#34;)
  *             .childInstanceRegionId(destinationRegion)
  *             .build());
@@ -118,11 +103,11 @@ import javax.annotation.Nullable;
  *             .sourceInstanceIdsReverseMatch(&#34;false&#34;)
  *             .destinationInstanceIds(exampleShInstanceAttachment.childInstanceId())
  *             .destinationInstanceIdsReverseMatch(&#34;false&#34;)
- *             .sourceRouteTableIds(exampleHzNetwork.routeTableId())
- *             .destinationRouteTableIds(exampleShNetwork.routeTableId())
+ *             .sourceRouteTableIds(exampleHz.routeTableId())
+ *             .destinationRouteTableIds(exampleSh.routeTableId())
  *             .sourceChildInstanceTypes(&#34;VPC&#34;)
  *             .destinationChildInstanceTypes(&#34;VPC&#34;)
- *             .destinationCidrBlocks(exampleShNetwork.cidrBlock())
+ *             .destinationCidrBlocks(exampleSh.cidrBlock())
  *             .cidrMatchMode(&#34;Include&#34;)
  *             .routeTypes(&#34;System&#34;)
  *             .matchAsns(&#34;65501&#34;)

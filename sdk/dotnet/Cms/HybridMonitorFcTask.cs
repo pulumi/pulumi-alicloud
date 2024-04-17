@@ -31,16 +31,16 @@ namespace Pulumi.AliCloud.Cms
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var defaultNamespace = new AliCloud.Cms.Namespace("defaultNamespace", new()
+    ///     var defaultNamespace = new AliCloud.Cms.Namespace("default", new()
     ///     {
     ///         Description = name,
     ///         NamespaceName = name,
     ///         Specification = "cms.s1.large",
     ///     });
     /// 
-    ///     var defaultHybridMonitorFcTask = new AliCloud.Cms.HybridMonitorFcTask("defaultHybridMonitorFcTask", new()
+    ///     var defaultHybridMonitorFcTask = new AliCloud.Cms.HybridMonitorFcTask("default", new()
     ///     {
     ///         Namespace = defaultNamespace.Id,
     ///         YarmConfig = @"products:
@@ -61,7 +61,7 @@ namespace Pulumi.AliCloud.Cms
     ///     - MySQL_QPS
     ///     - MySQL_TPS
     /// ",
-    ///         TargetUserId = defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         TargetUserId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
     ///     });
     /// 
     /// });

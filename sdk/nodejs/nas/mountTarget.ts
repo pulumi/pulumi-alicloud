@@ -10,6 +10,53 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.34.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.nas.getZones({
+ *     fileSystemType: "extreme",
+ * });
+ * const countSize = _default.then(_default => _default.zones).length;
+ * const zoneId = Promise.all([_default, countSize]).then(([_default, countSize]) => _default.zones[countSize - 1].zoneId);
+ * const example = new alicloud.vpc.Network("example", {
+ *     vpcName: "terraform-example",
+ *     cidrBlock: "172.17.3.0/24",
+ * });
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
+ *     vswitchName: example.vpcName,
+ *     cidrBlock: example.cidrBlock,
+ *     vpcId: example.id,
+ *     zoneId: zoneId,
+ * });
+ * const exampleFileSystem = new alicloud.nas.FileSystem("example", {
+ *     protocolType: "NFS",
+ *     storageType: "advance",
+ *     fileSystemType: "extreme",
+ *     capacity: 100,
+ *     zoneId: zoneId,
+ * });
+ * const exampleAccessGroup = new alicloud.nas.AccessGroup("example", {
+ *     accessGroupName: "access_group_xxx",
+ *     accessGroupType: "Vpc",
+ *     description: "test_access_group",
+ *     fileSystemType: "extreme",
+ * });
+ * const exampleMountTarget = new alicloud.nas.MountTarget("example", {
+ *     fileSystemId: exampleFileSystem.id,
+ *     accessGroupName: exampleAccessGroup.accessGroupName,
+ *     vswitchId: exampleSwitch.id,
+ *     vpcId: example.id,
+ *     networkType: exampleAccessGroup.accessGroupType,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * NAS MountTarget can be imported using the id, e.g.

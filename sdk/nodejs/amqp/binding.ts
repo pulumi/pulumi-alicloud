@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultInstance = new alicloud.amqp.Instance("defaultInstance", {
+ * const _default = new alicloud.amqp.Instance("default", {
  *     instanceType: "enterprise",
  *     maxTps: "3000",
  *     queueCapacity: "200",
@@ -30,29 +30,29 @@ import * as utilities from "../utilities";
  *     paymentType: "Subscription",
  *     period: 1,
  * });
- * const defaultVirtualHost = new alicloud.amqp.VirtualHost("defaultVirtualHost", {
- *     instanceId: defaultInstance.id,
+ * const defaultVirtualHost = new alicloud.amqp.VirtualHost("default", {
+ *     instanceId: _default.id,
  *     virtualHostName: "tf-example",
  * });
- * const defaultExchange = new alicloud.amqp.Exchange("defaultExchange", {
+ * const defaultExchange = new alicloud.amqp.Exchange("default", {
  *     autoDeleteState: false,
  *     exchangeName: "tf-example",
  *     exchangeType: "HEADERS",
- *     instanceId: defaultInstance.id,
+ *     instanceId: _default.id,
  *     internal: false,
  *     virtualHostName: defaultVirtualHost.virtualHostName,
  * });
- * const defaultQueue = new alicloud.amqp.Queue("defaultQueue", {
- *     instanceId: defaultInstance.id,
+ * const defaultQueue = new alicloud.amqp.Queue("default", {
+ *     instanceId: _default.id,
  *     queueName: "tf-example",
  *     virtualHostName: defaultVirtualHost.virtualHostName,
  * });
- * const defaultBinding = new alicloud.amqp.Binding("defaultBinding", {
+ * const defaultBinding = new alicloud.amqp.Binding("default", {
  *     argument: "x-match:all",
  *     bindingKey: defaultQueue.queueName,
  *     bindingType: "QUEUE",
  *     destinationName: "tf-example",
- *     instanceId: defaultInstance.id,
+ *     instanceId: _default.id,
  *     sourceExchange: defaultExchange.exchangeName,
  *     virtualHostName: defaultVirtualHost.virtualHostName,
  * });

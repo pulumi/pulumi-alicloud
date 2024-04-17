@@ -40,15 +40,15 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultInstance, err := cen.NewInstance(ctx, "defaultInstance", &cen.InstanceArgs{
+//			_, err := cen.NewInstance(ctx, "default", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String(name),
 //				ProtectionLevel: pulumi.String("REDUCED"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "defaultTransitRouter", &cen.TransitRouterArgs{
-//				CenId: defaultInstance.ID(),
+//			defaultTransitRouter, err := cen.NewTransitRouter(ctx, "default", &cen.TransitRouterArgs{
+//				CenId: _default.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -59,7 +59,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "defaultVirtualBorderRouter", &expressconnect.VirtualBorderRouterArgs{
+//			defaultVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "default", &expressconnect.VirtualBorderRouterArgs{
 //				LocalGatewayIp:          pulumi.String("10.0.0.1"),
 //				PeerGatewayIp:           pulumi.String("10.0.0.2"),
 //				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
@@ -73,12 +73,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewTransitRouterVbrAttachment(ctx, "defaultTransitRouterVbrAttachment", &cen.TransitRouterVbrAttachmentArgs{
+//			_, err = cen.NewTransitRouterVbrAttachment(ctx, "default", &cen.TransitRouterVbrAttachmentArgs{
 //				TransitRouterId:                    defaultTransitRouter.TransitRouterId,
 //				TransitRouterAttachmentName:        pulumi.String("example"),
 //				TransitRouterAttachmentDescription: pulumi.String("example"),
 //				VbrId:                              defaultVirtualBorderRouter.ID(),
-//				CenId:                              defaultInstance.ID(),
+//				CenId:                              _default.ID(),
 //			})
 //			if err != nil {
 //				return err

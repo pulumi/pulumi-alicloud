@@ -36,23 +36,23 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := threatdetection.NewHoneypotProbe(ctx, "default", &threatdetection.HoneypotProbeArgs{
-//				Arp:           pulumi.Bool(true),
+//				Uuid:          pulumi.String("032b618f-b220-4a0d-bd37-fbdc6ef58b6a"),
+//				ProbeType:     pulumi.String("host_probe"),
 //				ControlNodeId: pulumi.String("a44e1ab3-6945-444c-889d-5bacee7056e8"),
-//				DisplayName:   pulumi.String("apispec"),
+//				Ping:          pulumi.Bool(true),
 //				HoneypotBindLists: threatdetection.HoneypotProbeHoneypotBindListArray{
 //					&threatdetection.HoneypotProbeHoneypotBindListArgs{
 //						BindPortLists: threatdetection.HoneypotProbeHoneypotBindListBindPortListArray{
 //							&threatdetection.HoneypotProbeHoneypotBindListBindPortListArgs{
-//								EndPort:   pulumi.Int(80),
 //								StartPort: pulumi.Int(80),
+//								EndPort:   pulumi.Int(80),
 //							},
 //						},
 //						HoneypotId: pulumi.String("ede59ccdb1b7a2e21735d4593a6eb5ed31883af320c5ab63ab33818e94307be9"),
 //					},
 //				},
-//				Ping:      pulumi.Bool(true),
-//				ProbeType: pulumi.String("host_probe"),
-//				Uuid:      pulumi.String("032b618f-b220-4a0d-bd37-fbdc6ef58b6a"),
+//				DisplayName: pulumi.String("apispec"),
+//				Arp:         pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err

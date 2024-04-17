@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleInstance = new AliCloud.Rds.Instance("exampleInstance", new()
+    ///     var example = new AliCloud.Rds.Instance("example", new()
     ///     {
     ///         Engine = "MySQL",
     ///         EngineVersion = "5.6",
@@ -39,9 +39,9 @@ namespace Pulumi.AliCloud.Rds
     ///         DbInstanceStorageType = "local_ssd",
     ///     });
     /// 
-    ///     var exampleRdsBackup = new AliCloud.Rds.RdsBackup("exampleRdsBackup", new()
+    ///     var exampleRdsBackup = new AliCloud.Rds.RdsBackup("example", new()
     ///     {
-    ///         DbInstanceId = exampleInstance.Id,
+    ///         DbInstanceId = example.Id,
     ///     });
     /// 
     /// });

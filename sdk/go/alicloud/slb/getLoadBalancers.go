@@ -30,7 +30,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := slb.NewLoadBalancer(ctx, "default", nil)
+//			_, err := slb.NewLoadBalancer(ctx, "default", &slb.LoadBalancerArgs{
+//				Name: pulumi.String("sample_slb"),
+//			})
 //			if err != nil {
 //				return err
 //			}

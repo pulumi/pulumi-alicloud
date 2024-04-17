@@ -81,12 +81,12 @@ public final class ClickhouseFunctions {
      *             .accountPassword(pwd)
      *             .build());
      * 
-     *         final var defaultAccounts = ClickhouseFunctions.getAccounts(GetAccountsArgs.builder()
+     *         final var default = ClickhouseFunctions.getAccounts(GetAccountsArgs.builder()
      *             .ids(defaultAccount.id())
      *             .dbClusterId(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export(&#34;accountId&#34;, defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult).applyValue(defaultAccounts -&gt; defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.ids()[0])));
+     *         ctx.export(&#34;accountId&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
      *     }
      * }
      * ```
@@ -154,12 +154,12 @@ public final class ClickhouseFunctions {
      *             .accountPassword(pwd)
      *             .build());
      * 
-     *         final var defaultAccounts = ClickhouseFunctions.getAccounts(GetAccountsArgs.builder()
+     *         final var default = ClickhouseFunctions.getAccounts(GetAccountsArgs.builder()
      *             .ids(defaultAccount.id())
      *             .dbClusterId(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export(&#34;accountId&#34;, defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult).applyValue(defaultAccounts -&gt; defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.ids()[0])));
+     *         ctx.export(&#34;accountId&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
      *     }
      * }
      * ```
@@ -227,12 +227,12 @@ public final class ClickhouseFunctions {
      *             .accountPassword(pwd)
      *             .build());
      * 
-     *         final var defaultAccounts = ClickhouseFunctions.getAccounts(GetAccountsArgs.builder()
+     *         final var default = ClickhouseFunctions.getAccounts(GetAccountsArgs.builder()
      *             .ids(defaultAccount.id())
      *             .dbClusterId(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export(&#34;accountId&#34;, defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult).applyValue(defaultAccounts -&gt; defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.ids()[0])));
+     *         ctx.export(&#34;accountId&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
      *     }
      * }
      * ```
@@ -300,12 +300,12 @@ public final class ClickhouseFunctions {
      *             .accountPassword(pwd)
      *             .build());
      * 
-     *         final var defaultAccounts = ClickhouseFunctions.getAccounts(GetAccountsArgs.builder()
+     *         final var default = ClickhouseFunctions.getAccounts(GetAccountsArgs.builder()
      *             .ids(defaultAccount.id())
      *             .dbClusterId(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export(&#34;accountId&#34;, defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult).applyValue(defaultAccounts -&gt; defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.ids()[0])));
+     *         ctx.export(&#34;accountId&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
      *     }
      * }
      * ```
@@ -540,11 +540,11 @@ public final class ClickhouseFunctions {
      *             .vswitchId(&#34;your_vswitch_id&#34;)
      *             .build());
      * 
-     *         final var defaultDbClusters = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
+     *         final var default = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export(&#34;dbCluster&#34;, defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult).applyValue(defaultDbClusters -&gt; defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult.ids()[0])));
+     *         ctx.export(&#34;dbCluster&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
      *     }
      * }
      * ```
@@ -599,11 +599,11 @@ public final class ClickhouseFunctions {
      *             .vswitchId(&#34;your_vswitch_id&#34;)
      *             .build());
      * 
-     *         final var defaultDbClusters = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
+     *         final var default = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export(&#34;dbCluster&#34;, defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult).applyValue(defaultDbClusters -&gt; defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult.ids()[0])));
+     *         ctx.export(&#34;dbCluster&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
      *     }
      * }
      * ```
@@ -658,11 +658,11 @@ public final class ClickhouseFunctions {
      *             .vswitchId(&#34;your_vswitch_id&#34;)
      *             .build());
      * 
-     *         final var defaultDbClusters = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
+     *         final var default = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export(&#34;dbCluster&#34;, defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult).applyValue(defaultDbClusters -&gt; defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult.ids()[0])));
+     *         ctx.export(&#34;dbCluster&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
      *     }
      * }
      * ```
@@ -717,11 +717,11 @@ public final class ClickhouseFunctions {
      *             .vswitchId(&#34;your_vswitch_id&#34;)
      *             .build());
      * 
-     *         final var defaultDbClusters = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
+     *         final var default = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export(&#34;dbCluster&#34;, defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult).applyValue(defaultDbClusters -&gt; defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult.ids()[0])));
+     *         ctx.export(&#34;dbCluster&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
      *     }
      * }
      * ```
@@ -776,11 +776,11 @@ public final class ClickhouseFunctions {
      *             .vswitchId(&#34;your_vswitch_id&#34;)
      *             .build());
      * 
-     *         final var defaultDbClusters = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
+     *         final var default = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export(&#34;dbCluster&#34;, defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult).applyValue(defaultDbClusters -&gt; defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult.ids()[0])));
+     *         ctx.export(&#34;dbCluster&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
      *     }
      * }
      * ```
@@ -835,11 +835,11 @@ public final class ClickhouseFunctions {
      *             .vswitchId(&#34;your_vswitch_id&#34;)
      *             .build());
      * 
-     *         final var defaultDbClusters = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
+     *         final var default = ClickhouseFunctions.getDbClusters(GetDbClustersArgs.builder()
      *             .ids(defaultDbCluster.id())
      *             .build());
      * 
-     *         ctx.export(&#34;dbCluster&#34;, defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult).applyValue(defaultDbClusters -&gt; defaultDbClusters.applyValue(getDbClustersResult -&gt; getDbClustersResult.ids()[0])));
+     *         ctx.export(&#34;dbCluster&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
      *     }
      * }
      * ```

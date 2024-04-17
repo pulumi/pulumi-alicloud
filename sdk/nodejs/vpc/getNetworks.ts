@@ -18,8 +18,8 @@ import * as utilities from "../utilities";
  *
  * const vpcsDs = alicloud.vpc.getNetworks({
  *     cidrBlock: "172.16.0.0/12",
- *     nameRegex: "^foo",
  *     status: "Available",
+ *     nameRegex: "^foo",
  * });
  * export const firstVpcId = vpcsDs.then(vpcsDs => vpcsDs.vpcs?.[0]?.id);
  * ```
@@ -177,8 +177,8 @@ export interface GetNetworksResult {
  *
  * const vpcsDs = alicloud.vpc.getNetworks({
  *     cidrBlock: "172.16.0.0/12",
- *     nameRegex: "^foo",
  *     status: "Available",
+ *     nameRegex: "^foo",
  * });
  * export const firstVpcId = vpcsDs.then(vpcsDs => vpcsDs.vpcs?.[0]?.id);
  * ```

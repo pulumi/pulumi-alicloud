@@ -29,61 +29,59 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			this, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
-//				DbType:    pulumi.StringRef("MySQL"),
-//				DbVersion: pulumi.StringRef("8.0"),
-//				PayType:   "PostPaid",
-//				Category:  pulumi.StringRef("Normal"),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
-//				VpcName:   pulumi.String("terraform-example"),
-//				CidrBlock: pulumi.String("172.16.0.0/16"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
-//				VpcId:       defaultNetwork.ID(),
-//				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(this.Classes[0].ZoneId),
-//				VswitchName: pulumi.String("terraform-example"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			cluster, err := polardb.NewCluster(ctx, "cluster", &polardb.ClusterArgs{
-//				DbType:      pulumi.String("MySQL"),
-//				DbVersion:   pulumi.String("8.0"),
-//				PayType:     pulumi.String("PostPaid"),
-//				DbNodeCount: pulumi.Int(2),
-//				DbNodeClass: pulumi.String(this.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass),
-//				VswitchId:   defaultSwitch.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			polardbClustersDs := polardb.GetClustersOutput(ctx, polardb.GetClustersOutputArgs{
-//				DescriptionRegex: cluster.Description,
-//				Status:           pulumi.String("Running"),
-//			}, nil)
-//			defaultEndpoints := polardbClustersDs.ApplyT(func(polardbClustersDs polardb.GetClustersResult) (polardb.GetEndpointsResult, error) {
-//				return polardb.GetEndpointsOutput(ctx, polardb.GetEndpointsOutputArgs{
-//					DbClusterId: polardbClustersDs.Clusters[0].Id,
-//				}, nil), nil
-//			}).(polardb.GetEndpointsResultOutput)
-//			ctx.Export("endpoint", defaultEndpoints.ApplyT(func(defaultEndpoints polardb.GetEndpointsResult) (*string, error) {
-//				return &defaultEndpoints.Endpoints[0].DbEndpointId, nil
-//			}).(pulumi.StringPtrOutput))
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// this, err := polardb.GetNodeClasses(ctx, &polardb.GetNodeClassesArgs{
+// DbType: pulumi.StringRef("MySQL"),
+// DbVersion: pulumi.StringRef("8.0"),
+// PayType: "PostPaid",
+// Category: pulumi.StringRef("Normal"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+// VpcName: pulumi.String("terraform-example"),
+// CidrBlock: pulumi.String("172.16.0.0/16"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+// VpcId: defaultNetwork.ID(),
+// CidrBlock: pulumi.String("172.16.0.0/24"),
+// ZoneId: pulumi.String(this.Classes[0].ZoneId),
+// VswitchName: pulumi.String("terraform-example"),
+// })
+// if err != nil {
+// return err
+// }
+// cluster, err := polardb.NewCluster(ctx, "cluster", &polardb.ClusterArgs{
+// DbType: pulumi.String("MySQL"),
+// DbVersion: pulumi.String("8.0"),
+// PayType: pulumi.String("PostPaid"),
+// DbNodeCount: pulumi.Int(2),
+// DbNodeClass: pulumi.String(this.Classes[0].SupportedEngines[0].AvailableResources[0].DbNodeClass),
+// VswitchId: defaultSwitch.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// polardbClustersDs := polardb.GetClustersOutput(ctx, polardb.GetClustersOutputArgs{
+// DescriptionRegex: cluster.Description,
+// Status: pulumi.String("Running"),
+// }, nil);
+// _default := polardbClustersDs.ApplyT(func(polardbClustersDs polardb.GetClustersResult) (polardb.GetEndpointsResult, error) {
+// return polardb.GetEndpointsOutput(ctx, polardb.GetEndpointsOutputArgs{
+// DbClusterId: polardbClustersDs.Clusters[0].Id,
+// }, nil), nil
+// }).(polardb.GetEndpointsResultOutput)
+// ctx.Export("endpoint", _default.ApplyT(func(_default polardb.GetEndpointsResult) (*string, error) {
+// return &default.Endpoints[0].DbEndpointId, nil
+// }).(pulumi.StringPtrOutput))
+// return nil
+// })
+// }
 // ```
 // <!--End PulumiCodeChooser -->
 func GetEndpoints(ctx *pulumi.Context, args *GetEndpointsArgs, opts ...pulumi.InvokeOption) (*GetEndpointsResult, error) {

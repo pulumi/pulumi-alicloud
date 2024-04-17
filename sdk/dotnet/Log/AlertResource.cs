@@ -27,10 +27,10 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleUser = new AliCloud.Log.AlertResource("exampleUser", new()
+    ///     var exampleUser = new AliCloud.Log.AlertResource("example_user", new()
     ///     {
-    ///         Lang = "cn",
     ///         Type = "user",
+    ///         Lang = "cn",
     ///     });
     /// 
     /// });

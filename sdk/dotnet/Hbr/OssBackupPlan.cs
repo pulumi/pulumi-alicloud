@@ -30,23 +30,23 @@ namespace Pulumi.AliCloud.Hbr
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var defaultVault = new AliCloud.Hbr.Vault("defaultVault", new()
+    ///     var defaultVault = new AliCloud.Hbr.Vault("default", new()
     ///     {
-    ///         VaultName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         VaultName = $"terraform-example-{@default.Result}",
     ///     });
     /// 
-    ///     var defaultBucket = new AliCloud.Oss.Bucket("defaultBucket", new()
+    ///     var defaultBucket = new AliCloud.Oss.Bucket("default", new()
     ///     {
-    ///         BucketName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         BucketName = $"terraform-example-{@default.Result}",
     ///     });
     /// 
-    ///     var defaultOssBackupPlan = new AliCloud.Hbr.OssBackupPlan("defaultOssBackupPlan", new()
+    ///     var defaultOssBackupPlan = new AliCloud.Hbr.OssBackupPlan("default", new()
     ///     {
     ///         OssBackupPlanName = "terraform-example",
     ///         Prefix = "/example",

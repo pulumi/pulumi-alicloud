@@ -31,7 +31,7 @@ import (
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // _default, err := cloudfirewall.GetInstanceMembers(ctx, &cloudfirewall.GetInstanceMembersArgs{
 // Ids: interface{}{
-// alicloud_cloud_firewall_instance_member.Default.Id,
+// defaultAlicloudCloudFirewallInstanceMember.Id,
 // },
 // }, nil);
 // if err != nil {

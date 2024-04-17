@@ -31,9 +31,9 @@ namespace Pulumi.AliCloud.Cms
     /// {
     ///     var example = new AliCloud.Cms.Namespace("example", new()
     ///     {
-    ///         Description = "tf-example",
     ///         NamespaceName = "tf-example",
     ///         Specification = "cms.s1.large",
+    ///         Description = "tf-example",
     ///     });
     /// 
     /// });

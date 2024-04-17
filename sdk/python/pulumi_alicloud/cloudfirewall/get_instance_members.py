@@ -123,7 +123,7 @@ def get_instance_members(current_page: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.cloudfirewall.get_instance_members(ids=[alicloud_cloud_firewall_instance_member["default"]["id"]])
+    default = alicloud.cloudfirewall.get_instance_members(ids=[default_alicloud_cloud_firewall_instance_member["id"]])
     pulumi.export("alicloudCloudFirewallInstanceMemberExampleId", default.members[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -170,7 +170,7 @@ def get_instance_members_output(current_page: Optional[pulumi.Input[Optional[str
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.cloudfirewall.get_instance_members(ids=[alicloud_cloud_firewall_instance_member["default"]["id"]])
+    default = alicloud.cloudfirewall.get_instance_members(ids=[default_alicloud_cloud_firewall_instance_member["id"]])
     pulumi.export("alicloudCloudFirewallInstanceMemberExampleId", default.members[0].id)
     ```
     <!--End PulumiCodeChooser -->

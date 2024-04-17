@@ -18,10 +18,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const mongo = alicloud.mongodb.getInstances({
- *     availabilityZone: "eu-central-1a",
- *     instanceClass: "dds.mongo.mid",
- *     instanceType: "replicate",
  *     nameRegex: "dds-.+\\d+",
+ *     instanceType: "replicate",
+ *     instanceClass: "dds.mongo.mid",
+ *     availabilityZone: "eu-central-1a",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -123,10 +123,10 @@ export interface GetInstancesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const mongo = alicloud.mongodb.getInstances({
- *     availabilityZone: "eu-central-1a",
- *     instanceClass: "dds.mongo.mid",
- *     instanceType: "replicate",
  *     nameRegex: "dds-.+\\d+",
+ *     instanceType: "replicate",
+ *     instanceClass: "dds.mongo.mid",
+ *     availabilityZone: "eu-central-1a",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

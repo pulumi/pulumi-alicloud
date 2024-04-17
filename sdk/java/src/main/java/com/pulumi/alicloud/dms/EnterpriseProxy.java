@@ -71,15 +71,15 @@ import javax.annotation.Nullable;
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var current = AlicloudFunctions.getAccount();
  * 
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         final var defaultUserTenants = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
+ *         final var defaultGetUserTenants = DmsFunctions.getUserTenants(GetUserTenantsArgs.builder()
  *             .status(&#34;ACTIVE&#34;)
  *             .build());
  * 
- *         final var defaultZones = RdsFunctions.getZones(GetZonesArgs.builder()
+ *         final var defaultGetZones = RdsFunctions.getZones(GetZonesArgs.builder()
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;8.0&#34;)
  *             .instanceChargeType(&#34;PostPaid&#34;)
@@ -87,8 +87,8 @@ import javax.annotation.Nullable;
  *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
  *             .build());
  * 
- *         final var defaultInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var defaultGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;8.0&#34;)
  *             .category(&#34;HighAvailability&#34;)
@@ -105,10 +105,11 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock(&#34;10.4.0.0/24&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
@@ -116,8 +117,8 @@ import javax.annotation.Nullable;
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;8.0&#34;)
  *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
- *             .instanceType(defaultInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
- *             .instanceStorage(defaultInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *             .instanceType(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
+ *             .instanceStorage(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
  *             .vswitchId(defaultSwitch.id())
  *             .instanceName(name)
  *             .securityIps(            
@@ -137,7 +138,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultEnterpriseInstance = new EnterpriseInstance(&#34;defaultEnterpriseInstance&#34;, EnterpriseInstanceArgs.builder()        
- *             .tid(defaultUserTenants.applyValue(getUserTenantsResult -&gt; getUserTenantsResult.ids()[0]))
+ *             .tid(defaultGetUserTenants.applyValue(getUserTenantsResult -&gt; getUserTenantsResult.ids()[0]))
  *             .instanceType(&#34;mysql&#34;)
  *             .instanceSource(&#34;RDS&#34;)
  *             .networkType(&#34;VPC&#34;)
@@ -151,14 +152,14 @@ import javax.annotation.Nullable;
  *             .safeRule(&#34;自由操作&#34;)
  *             .queryTimeout(60)
  *             .exportTimeout(600)
- *             .ecsRegion(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .ecsRegion(default_.regions()[0].id())
  *             .build());
  * 
  *         var defaultEnterpriseProxy = new EnterpriseProxy(&#34;defaultEnterpriseProxy&#34;, EnterpriseProxyArgs.builder()        
  *             .instanceId(defaultEnterpriseInstance.instanceId())
  *             .password(&#34;Example12345&#34;)
  *             .username(&#34;tfexamplename&#34;)
- *             .tid(defaultUserTenants.applyValue(getUserTenantsResult -&gt; getUserTenantsResult.ids()[0]))
+ *             .tid(defaultGetUserTenants.applyValue(getUserTenantsResult -&gt; getUserTenantsResult.ids()[0]))
  *             .build());
  * 
  *     }

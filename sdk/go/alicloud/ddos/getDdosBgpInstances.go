@@ -36,7 +36,8 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := ddos.NewDdosBgpInstance(ctx, "instanceDdosBgpInstance", &ddos.DdosBgpInstanceArgs{
+//			_, err := ddos.NewDdosBgpInstance(ctx, "instance", &ddos.DdosBgpInstanceArgs{
+//				Name:            pulumi.String(name),
 //				BaseBandwidth:   pulumi.Int(20),
 //				Bandwidth:       -1,
 //				IpCount:         pulumi.Int(100),
@@ -47,7 +48,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			instanceDdosBgpInstances, err := ddos.GetDdosBgpInstances(ctx, &ddos.GetDdosBgpInstancesArgs{
+//			instance, err := ddos.GetDdosBgpInstances(ctx, &ddos.GetDdosBgpInstancesArgs{
 //				NameRegex: pulumi.StringRef("ddosbgp"),
 //			}, nil)
 //			if err != nil {
@@ -55,7 +56,7 @@ import (
 //			}
 //			var splat0 []*string
 //			for _, val0 := range []ddos.GetDdosBgpInstancesResult{
-//				instanceDdosBgpInstances,
+//				instance,
 //			} {
 //				splat0 = append(splat0, val0.Id)
 //			}

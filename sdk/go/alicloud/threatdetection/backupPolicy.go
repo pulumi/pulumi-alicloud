@@ -35,18 +35,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAssets, err := threatdetection.GetAssets(ctx, &threatdetection.GetAssetsArgs{
+//			_default, err := threatdetection.GetAssets(ctx, &threatdetection.GetAssetsArgs{
 //				MachineTypes: pulumi.StringRef("ecs"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = threatdetection.NewBackupPolicy(ctx, "defaultBackupPolicy", &threatdetection.BackupPolicyArgs{
+//			_, err = threatdetection.NewBackupPolicy(ctx, "default", &threatdetection.BackupPolicyArgs{
 //				BackupPolicyName: pulumi.String("tf-example-name"),
 //				Policy:           pulumi.String("{\"Exclude\":[\"/bin/\",\"/usr/bin/\",\"/sbin/\",\"/boot/\",\"/proc/\",\"/sys/\",\"/srv/\",\"/lib/\",\"/selinux/\",\"/usr/sbin/\",\"/run/\",\"/lib32/\",\"/lib64/\",\"/lost+found/\",\"/var/lib/kubelet/\",\"/var/lib/ntp/proc\",\"/var/lib/container\"],\"ExcludeSystemPath\":true,\"Include\":[],\"IsDefault\":1,\"Retention\":7,\"Schedule\":\"I|1668703620|PT24H\",\"Source\":[],\"SpeedLimiter\":\"\",\"UseVss\":true}"),
 //				PolicyVersion:    pulumi.String("2.0.0"),
 //				UuidLists: pulumi.StringArray{
-//					pulumi.String(defaultAssets.Ids[0]),
+//					pulumi.String(_default.Ids[0]),
 //				},
 //			})
 //			if err != nil {

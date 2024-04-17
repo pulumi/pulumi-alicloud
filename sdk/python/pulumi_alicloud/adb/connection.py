@@ -165,18 +165,18 @@ class Connection(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.adb.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.ids[0])
-        vswitch_id = default_switches.ids[0]
+        default = alicloud.adb.get_zones()
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[0])
+        vswitch_id = default_get_switches.ids[0]
         cluster = alicloud.adb.DBCluster("cluster",
             db_cluster_category="MixedStorage",
             mode="flexible",
             compute_resource="8Core32GB",
             vswitch_id=vswitch_id,
             description=name)
-        default_connection = alicloud.adb.Connection("defaultConnection",
+        default_connection = alicloud.adb.Connection("default",
             db_cluster_id=cluster.id,
             connection_prefix="example")
         ```
@@ -220,18 +220,18 @@ class Connection(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.adb.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.ids[0])
-        vswitch_id = default_switches.ids[0]
+        default = alicloud.adb.get_zones()
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[0])
+        vswitch_id = default_get_switches.ids[0]
         cluster = alicloud.adb.DBCluster("cluster",
             db_cluster_category="MixedStorage",
             mode="flexible",
             compute_resource="8Core32GB",
             vswitch_id=vswitch_id,
             description=name)
-        default_connection = alicloud.adb.Connection("defaultConnection",
+        default_connection = alicloud.adb.Connection("default",
             db_cluster_id=cluster.id,
             connection_prefix="example")
         ```

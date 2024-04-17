@@ -40,7 +40,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("first-contact", data.Alicloud_cms_alarm_contacts.This.Contacts)
+//			ctx.Export("first-contact", this.Contacts)
 //			return nil
 //		})
 //	}

@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var fooZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var foo = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(&#34;terraform-example&#34;)
  *             .cidrBlock(&#34;172.16.0.0/21&#34;)
  *             .vpcId(fooNetwork.id())
- *             .zoneId(fooZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(foo.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *     }
@@ -168,7 +168,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var fooZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var foo = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
@@ -185,7 +185,7 @@ import javax.annotation.Nullable;
  *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
  *             .vpcId(fooIpv4CidrBlock.vpcId())
  *             .cidrBlock(&#34;192.163.0.0/24&#34;)
- *             .zoneId(fooZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(foo.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .build());
  * 
  *     }

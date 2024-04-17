@@ -261,30 +261,32 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        example_zones = alicloud.rds.get_zones(engine="MySQL",
+        example = alicloud.rds.get_zones(engine="MySQL",
             engine_version="5.7",
             category="HighAvailability",
             db_instance_storage_type="local_ssd")
-        example_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_zones.ids[0],
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example.ids[0],
             engine="MySQL",
             engine_version="5.7",
             category="HighAvailability",
             db_instance_storage_type="local_ssd")
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example_network = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
+        example_switch = alicloud.vpc.Switch("example",
             vpc_id=example_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=example_zones.zones[0].id,
+            zone_id=example.zones[0].id,
             vswitch_name=name)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.rds.Instance("exampleInstance",
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name=name,
+            vpc_id=example_network.id)
+        example_instance = alicloud.rds.Instance("example",
             engine="MySQL",
             engine_version="5.7",
             category="HighAvailability",
-            instance_type=example_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_instance_classes.instance_classes[0].storage_range.min,
+            instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
             instance_charge_type="Postpaid",
             db_instance_storage_type="local_ssd",
             instance_name=name,
@@ -293,7 +295,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
                 "10.168.1.12",
                 "100.69.7.112",
             ])
-        example_read_only_instance = alicloud.rds.ReadOnlyInstance("exampleReadOnlyInstance",
+        example_read_only_instance = alicloud.rds.ReadOnlyInstance("example",
             zone_id=example_instance.zone_id,
             master_db_instance_id=example_instance.id,
             engine_version=example_instance.engine_version,
@@ -301,7 +303,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
             instance_type=example_instance.instance_type,
             instance_name=f"{name}readonly",
             vswitch_id=example_switch.id)
-        example_read_write_splitting_connection = alicloud.rds.ReadWriteSplittingConnection("exampleReadWriteSplittingConnection",
+        example_read_write_splitting_connection = alicloud.rds.ReadWriteSplittingConnection("example",
             instance_id=example_read_only_instance.master_db_instance_id,
             connection_prefix="example-con-123",
             distribution_type="Standard")
@@ -349,30 +351,32 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        example_zones = alicloud.rds.get_zones(engine="MySQL",
+        example = alicloud.rds.get_zones(engine="MySQL",
             engine_version="5.7",
             category="HighAvailability",
             db_instance_storage_type="local_ssd")
-        example_instance_classes = alicloud.rds.get_instance_classes(zone_id=example_zones.ids[0],
+        example_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=example.ids[0],
             engine="MySQL",
             engine_version="5.7",
             category="HighAvailability",
             db_instance_storage_type="local_ssd")
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example_network = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
+        example_switch = alicloud.vpc.Switch("example",
             vpc_id=example_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=example_zones.zones[0].id,
+            zone_id=example.zones[0].id,
             vswitch_name=name)
-        example_security_group = alicloud.ecs.SecurityGroup("exampleSecurityGroup", vpc_id=example_network.id)
-        example_instance = alicloud.rds.Instance("exampleInstance",
+        example_security_group = alicloud.ecs.SecurityGroup("example",
+            name=name,
+            vpc_id=example_network.id)
+        example_instance = alicloud.rds.Instance("example",
             engine="MySQL",
             engine_version="5.7",
             category="HighAvailability",
-            instance_type=example_instance_classes.instance_classes[0].instance_class,
-            instance_storage=example_instance_classes.instance_classes[0].storage_range.min,
+            instance_type=example_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=example_get_instance_classes.instance_classes[0].storage_range.min,
             instance_charge_type="Postpaid",
             db_instance_storage_type="local_ssd",
             instance_name=name,
@@ -381,7 +385,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
                 "10.168.1.12",
                 "100.69.7.112",
             ])
-        example_read_only_instance = alicloud.rds.ReadOnlyInstance("exampleReadOnlyInstance",
+        example_read_only_instance = alicloud.rds.ReadOnlyInstance("example",
             zone_id=example_instance.zone_id,
             master_db_instance_id=example_instance.id,
             engine_version=example_instance.engine_version,
@@ -389,7 +393,7 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
             instance_type=example_instance.instance_type,
             instance_name=f"{name}readonly",
             vswitch_id=example_switch.id)
-        example_read_write_splitting_connection = alicloud.rds.ReadWriteSplittingConnection("exampleReadWriteSplittingConnection",
+        example_read_write_splitting_connection = alicloud.rds.ReadWriteSplittingConnection("example",
             instance_id=example_read_only_instance.master_db_instance_id,
             connection_prefix="example-con-123",
             distribution_type="Standard")

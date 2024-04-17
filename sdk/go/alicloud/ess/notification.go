@@ -43,50 +43,48 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			myName := defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//				return fmt.Sprintf("%v-%v", name, result), nil
-//			}).(pulumi.StringOutput)
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			myName := fmt.Sprintf("%v-%v", name, defaultInteger.Result)
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			defaultGetAccount, err := alicloud.GetAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			defaultGetZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(myName),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
 //				VswitchName: pulumi.String(myName),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "defaultScalingGroup", &ess.ScalingGroupArgs{
+//			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "default", &ess.ScalingGroupArgs{
 //				MinSize:          pulumi.Int(1),
 //				MaxSize:          pulumi.Int(1),
 //				ScalingGroupName: pulumi.String(myName),
@@ -101,18 +99,20 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultQueue, err := mns.NewQueue(ctx, "defaultQueue", nil)
+//			defaultQueue, err := mns.NewQueue(ctx, "default", &mns.QueueArgs{
+//				Name: pulumi.String(myName),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ess.NewNotification(ctx, "defaultNotification", &ess.NotificationArgs{
+//			_, err = ess.NewNotification(ctx, "default", &ess.NotificationArgs{
 //				ScalingGroupId: defaultScalingGroup.ID(),
 //				NotificationTypes: pulumi.StringArray{
 //					pulumi.String("AUTOSCALING:SCALE_OUT_SUCCESS"),
 //					pulumi.String("AUTOSCALING:SCALE_OUT_ERROR"),
 //				},
 //				NotificationArn: defaultQueue.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("acs:ess:%v:%v:queue/%v", defaultRegions.Regions[0].Id, defaultAccount.Id, name), nil
+//					return fmt.Sprintf("acs:ess:%v:%v:queue/%v", _default.Regions[0].Id, defaultGetAccount.Id, name), nil
 //				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {

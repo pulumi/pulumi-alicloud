@@ -30,18 +30,18 @@ namespace Pulumi.AliCloud.Eds
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
-    ///         Max = 99999,
     ///         Min = 10000,
+    ///         Max = 99999,
     ///     });
     /// 
-    ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("defaultSimpleOfficeSite", new()
+    ///     var defaultSimpleOfficeSite = new AliCloud.Eds.SimpleOfficeSite("default", new()
     ///     {
     ///         CidrBlock = "172.16.0.0/12",
-    ///         DesktopAccessType = "Internet",
     ///         EnableAdminAccess = true,
-    ///         OfficeSiteName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         DesktopAccessType = "Internet",
+    ///         OfficeSiteName = $"terraform-example-{@default.Result}",
     ///     });
     /// 
     /// });

@@ -213,10 +213,11 @@ class Alias(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_service = alicloud.fc.Service("defaultService",
+        default_service = alicloud.fc.Service("default",
+            name=f"example-value-{default['result']}",
             description="example-value",
             publish=True)
         example = alicloud.fc.Alias("example",
@@ -265,10 +266,11 @@ class Alias(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_service = alicloud.fc.Service("defaultService",
+        default_service = alicloud.fc.Service("default",
+            name=f"example-value-{default['result']}",
             description="example-value",
             publish=True)
         example = alicloud.fc.Alias("example",

@@ -31,16 +31,16 @@ namespace Pulumi.AliCloud.Edas
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultNamespace = new AliCloud.Edas.Namespace("defaultNamespace", new()
+    ///     var defaultNamespace = new AliCloud.Edas.Namespace("default", new()
     ///     {
     ///         DebugEnable = false,
     ///         Description = name,
-    ///         NamespaceLogicalId = $"{defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example",
+    ///         NamespaceLogicalId = @default.Apply(@default =&gt; $"{@default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:example"),
     ///         NamespaceName = name,
     ///     });
     /// 

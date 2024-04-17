@@ -32,31 +32,31 @@ namespace Pulumi.AliCloud.Eds
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultZones = AliCloud.Eds.GetZones.Invoke();
+    ///     var @default = AliCloud.Eds.GetZones.Invoke();
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0])),
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var defaultAdConnectorDirectory = new AliCloud.Eds.AdConnectorDirectory("defaultAdConnectorDirectory", new()
+    ///     var defaultAdConnectorDirectory = new AliCloud.Eds.AdConnectorDirectory("default", new()
     ///     {
-    ///         DirectoryName = defaultRandomInteger.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         DirectoryName = $"{name}-{defaultInteger.Result}",
     ///         DesktopAccessType = "INTERNET",
     ///         DnsAddresses = new[]
     ///         {

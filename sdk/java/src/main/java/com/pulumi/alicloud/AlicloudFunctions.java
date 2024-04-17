@@ -536,7 +536,7 @@ public final class AlicloudFunctions {
      *             .filename(&#34;exampleFileName&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;fileCrc64Checksum&#34;, data.alicloud_file_crc64_checksum().defualt().checksum());
+     *         ctx.export(&#34;fileCrc64Checksum&#34;, defualt.checksum());
      *     }
      * }
      * ```
@@ -579,7 +579,7 @@ public final class AlicloudFunctions {
      *             .filename(&#34;exampleFileName&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;fileCrc64Checksum&#34;, data.alicloud_file_crc64_checksum().defualt().checksum());
+     *         ctx.export(&#34;fileCrc64Checksum&#34;, defualt.checksum());
      *     }
      * }
      * ```
@@ -622,7 +622,7 @@ public final class AlicloudFunctions {
      *             .filename(&#34;exampleFileName&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;fileCrc64Checksum&#34;, data.alicloud_file_crc64_checksum().defualt().checksum());
+     *         ctx.export(&#34;fileCrc64Checksum&#34;, defualt.checksum());
      *     }
      * }
      * ```
@@ -665,7 +665,7 @@ public final class AlicloudFunctions {
      *             .filename(&#34;exampleFileName&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;fileCrc64Checksum&#34;, data.alicloud_file_crc64_checksum().defualt().checksum());
+     *         ctx.export(&#34;fileCrc64Checksum&#34;, defualt.checksum());
      *     }
      * }
      * ```
@@ -713,7 +713,7 @@ public final class AlicloudFunctions {
      *             .mobile(&#34;153xxxxx906&#34;)
      *             .build());
      * 
-     *         final var defaultMscSubContactVerificationMessage = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
+     *         final var default = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
      *             .contactId(defaultMscSubContract.id())
      *             .type(1)
      *             .build());
@@ -765,7 +765,7 @@ public final class AlicloudFunctions {
      *             .mobile(&#34;153xxxxx906&#34;)
      *             .build());
      * 
-     *         final var defaultMscSubContactVerificationMessage = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
+     *         final var default = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
      *             .contactId(defaultMscSubContract.id())
      *             .type(1)
      *             .build());
@@ -817,7 +817,7 @@ public final class AlicloudFunctions {
      *             .mobile(&#34;153xxxxx906&#34;)
      *             .build());
      * 
-     *         final var defaultMscSubContactVerificationMessage = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
+     *         final var default = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
      *             .contactId(defaultMscSubContract.id())
      *             .type(1)
      *             .build());
@@ -869,7 +869,7 @@ public final class AlicloudFunctions {
      *             .mobile(&#34;153xxxxx906&#34;)
      *             .build());
      * 
-     *         final var defaultMscSubContactVerificationMessage = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
+     *         final var default = AlicloudFunctions.getMscSubContactVerificationMessage(GetMscSubContactVerificationMessageArgs.builder()
      *             .contactId(defaultMscSubContract.id())
      *             .type(1)
      *             .build());
@@ -2004,9 +2004,10 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
      *             .availableInstanceType(&#34;ecs.n4.large&#34;)
+     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
      *             .build());
      * 
      *     }
@@ -2047,9 +2048,10 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
      *             .availableInstanceType(&#34;ecs.n4.large&#34;)
+     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
      *             .build());
      * 
      *     }
@@ -2090,9 +2092,10 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
      *             .availableInstanceType(&#34;ecs.n4.large&#34;)
+     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
      *             .build());
      * 
      *     }
@@ -2133,9 +2136,10 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
      *             .availableInstanceType(&#34;ecs.n4.large&#34;)
+     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
      *             .build());
      * 
      *     }
@@ -2176,9 +2180,10 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
      *             .availableInstanceType(&#34;ecs.n4.large&#34;)
+     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
      *             .build());
      * 
      *     }
@@ -2219,9 +2224,10 @@ public final class AlicloudFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesDs = AlicloudFunctions.getZones(GetZonesArgs.builder()
-     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
      *             .availableInstanceType(&#34;ecs.n4.large&#34;)
+     *             .availableDiskCategory(&#34;cloud_ssd&#34;)
      *             .build());
      * 
      *     }

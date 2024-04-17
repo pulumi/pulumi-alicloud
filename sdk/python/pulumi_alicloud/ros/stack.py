@@ -728,6 +728,10 @@ class Stack(pulumi.CustomResource):
 
         example = alicloud.ros.Stack("example",
             stack_name="tf-testaccstack",
+            template_body=\"\"\"    {
+            	"ROSTemplateFormatVersion": "2015-09-01"
+            }
+        \"\"\",
             stack_policy_body=\"\"\"    {
             	"Statement": [{
             		"Action": "Update:Delete",
@@ -736,12 +740,6 @@ class Stack(pulumi.CustomResource):
             		"Principal": "*"
             	}]
             }
-            
-        \"\"\",
-            template_body=\"\"\"    {
-            	"ROSTemplateFormatVersion": "2015-09-01"
-            }
-            
         \"\"\")
         ```
         <!--End PulumiCodeChooser -->
@@ -801,6 +799,10 @@ class Stack(pulumi.CustomResource):
 
         example = alicloud.ros.Stack("example",
             stack_name="tf-testaccstack",
+            template_body=\"\"\"    {
+            	"ROSTemplateFormatVersion": "2015-09-01"
+            }
+        \"\"\",
             stack_policy_body=\"\"\"    {
             	"Statement": [{
             		"Action": "Update:Delete",
@@ -809,12 +811,6 @@ class Stack(pulumi.CustomResource):
             		"Principal": "*"
             	}]
             }
-            
-        \"\"\",
-            template_body=\"\"\"    {
-            	"ROSTemplateFormatVersion": "2015-09-01"
-            }
-            
         \"\"\")
         ```
         <!--End PulumiCodeChooser -->

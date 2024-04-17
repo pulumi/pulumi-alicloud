@@ -36,25 +36,26 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZones, err := tsdb.GetZones(ctx, nil, nil)
+//			example, err := tsdb.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
+//				Name:      pulumi.String("tf-testaccTsdbInstance"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
-//				AvailabilityZone: pulumi.String(exampleZones.Ids[0]),
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
+//				AvailabilityZone: pulumi.String(example.Ids[0]),
 //				CidrBlock:        pulumi.String("192.168.1.0/24"),
 //				VpcId:            exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = tsdb.NewInstance(ctx, "exampleInstance", &tsdb.InstanceArgs{
+//			_, err = tsdb.NewInstance(ctx, "example", &tsdb.InstanceArgs{
 //				PaymentType:     pulumi.String("PayAsYouGo"),
 //				VswitchId:       exampleSwitch.ID(),
 //				InstanceStorage: pulumi.String("50"),

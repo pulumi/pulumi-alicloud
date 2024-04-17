@@ -21,18 +21,18 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.getAccount({});
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ * const example = new alicloud.vpc.Network("example", {
  *     vpcName: "tf_example",
  *     cidrBlock: "172.17.3.0/24",
  * });
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ * const exampleInstance = new alicloud.cen.Instance("example", {
  *     cenInstanceName: "tf_example",
  *     description: "an example for cen",
  * });
- * const exampleTransitRouterGrantAttachment = new alicloud.cen.TransitRouterGrantAttachment("exampleTransitRouterGrantAttachment", {
+ * const exampleTransitRouterGrantAttachment = new alicloud.cen.TransitRouterGrantAttachment("example", {
  *     cenId: exampleInstance.id,
  *     cenOwnerId: _default.then(_default => _default.id),
- *     instanceId: exampleNetwork.id,
+ *     instanceId: example.id,
  *     instanceType: "VPC",
  *     orderType: "PayByCenOwner",
  * });

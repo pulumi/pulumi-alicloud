@@ -23,16 +23,16 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ * const default = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
  * });
- * const defaultPublicIpAddressPool = new alicloud.vpc.PublicIpAddressPool("defaultPublicIpAddressPool", {
+ * const defaultPublicIpAddressPool = new alicloud.vpc.PublicIpAddressPool("default", {
  *     description: name,
  *     publicIpAddressPoolName: name,
  *     isp: "BGP",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     resourceGroupId: _default.then(_default => _default.ids?.[0]),
  * });
- * const defaultPublicIpAddressPoolCidrBlock = new alicloud.vpc.PublicIpAddressPoolCidrBlock("defaultPublicIpAddressPoolCidrBlock", {
+ * const defaultPublicIpAddressPoolCidrBlock = new alicloud.vpc.PublicIpAddressPoolCidrBlock("default", {
  *     publicIpAddressPoolId: defaultPublicIpAddressPool.id,
  *     cidrBlock: "47.118.126.0/25",
  * });

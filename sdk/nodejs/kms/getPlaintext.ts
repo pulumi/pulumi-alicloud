@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  *     keyId: key.id,
  *     plaintext: "example",
  * });
+ * // Decrypt encrypted ciphertext
  * const plaintext = alicloud.kms.getPlaintextOutput({
  *     ciphertextBlob: encrypted.ciphertextBlob,
  * });
@@ -87,6 +88,7 @@ export interface GetPlaintextResult {
  *     keyId: key.id,
  *     plaintext: "example",
  * });
+ * // Decrypt encrypted ciphertext
  * const plaintext = alicloud.kms.getPlaintextOutput({
  *     ciphertextBlob: encrypted.ciphertextBlob,
  * });

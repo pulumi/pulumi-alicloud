@@ -36,8 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.ros.ChangeSet;
  * import com.pulumi.alicloud.ros.ChangeSetArgs;
  * import java.util.List;
@@ -53,16 +53,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
- *             .max(99999)
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .min(10000)
+ *             .max(99999)
  *             .build());
  * 
  *         var example = new ChangeSet(&#34;example&#34;, ChangeSetArgs.builder()        
  *             .changeSetName(&#34;example_value&#34;)
+ *             .stackName(String.format(&#34;tf-example-%s&#34;, default_.result()))
  *             .changeSetType(&#34;CREATE&#34;)
  *             .description(&#34;Test From Terraform&#34;)
- *             .stackName(default_.result().applyValue(result -&gt; String.format(&#34;tf-example-%s&#34;, result)))
  *             .templateBody(&#34;{\&#34;ROSTemplateFormatVersion\&#34;:\&#34;2015-09-01\&#34;}&#34;)
  *             .build());
  * 

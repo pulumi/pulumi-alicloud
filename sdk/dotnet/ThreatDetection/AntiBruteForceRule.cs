@@ -32,13 +32,13 @@ namespace Pulumi.AliCloud.ThreatDetection
     ///     var @default = new AliCloud.ThreatDetection.AntiBruteForceRule("default", new()
     ///     {
     ///         AntiBruteForceRuleName = "apispec_example",
-    ///         FailCount = 80,
     ///         ForbiddenTime = 360,
-    ///         Span = 10,
     ///         UuidLists = new[]
     ///         {
     ///             "032b618f-b220-4a0d-bd37-fbdc6ef58b6a",
     ///         },
+    ///         FailCount = 80,
+    ///         Span = 10,
     ///     });
     /// 
     /// });

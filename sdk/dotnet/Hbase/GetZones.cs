@@ -34,7 +34,6 @@ namespace Pulumi.AliCloud.Hbase
         ///         ZoneId = zonesIds.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
         ///     });
         /// 
-        ///     // Other properties...
         /// });
         /// ```
         /// &lt;!--End PulumiCodeChooser --&gt;
@@ -65,7 +64,6 @@ namespace Pulumi.AliCloud.Hbase
         ///         ZoneId = zonesIds.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
         ///     });
         /// 
-        ///     // Other properties...
         /// });
         /// ```
         /// &lt;!--End PulumiCodeChooser --&gt;

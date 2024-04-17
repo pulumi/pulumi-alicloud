@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleAccelerator, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
+//			example, err := ga.NewAccelerator(ctx, "example", &ga.AcceleratorArgs{
 //				Duration:      pulumi.Int(1),
 //				AutoUseCoupon: pulumi.Bool(true),
 //				Spec:          pulumi.String("1"),
@@ -43,7 +43,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "exampleBandwidthPackage", &ga.BandwidthPackageArgs{
+//			exampleBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "example", &ga.BandwidthPackageArgs{
 //				Bandwidth:     pulumi.Int(20),
 //				Type:          pulumi.String("Basic"),
 //				BandwidthType: pulumi.String("Basic"),
@@ -54,8 +54,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ga.NewBandwidthPackageAttachment(ctx, "exampleBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      exampleAccelerator.ID(),
+//			_, err = ga.NewBandwidthPackageAttachment(ctx, "example", &ga.BandwidthPackageAttachmentArgs{
+//				AcceleratorId:      example.ID(),
 //				BandwidthPackageId: exampleBandwidthPackage.ID(),
 //			})
 //			if err != nil {

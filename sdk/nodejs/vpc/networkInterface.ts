@@ -26,16 +26,20 @@ import * as utilities from "../utilities";
  *     vpcName: name,
  *     cidrBlock: "192.168.0.0/24",
  * });
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
  * const vswitch = new alicloud.vpc.Switch("vswitch", {
+ *     name: name,
  *     cidrBlock: "192.168.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vpcId: vpc.id,
  * });
- * const group = new alicloud.ecs.SecurityGroup("group", {vpcId: vpc.id});
- * const defaultNetworkInterface = new alicloud.vpc.NetworkInterface("defaultNetworkInterface", {
+ * const group = new alicloud.ecs.SecurityGroup("group", {
+ *     name: name,
+ *     vpcId: vpc.id,
+ * });
+ * const defaultNetworkInterface = new alicloud.vpc.NetworkInterface("default", {
  *     networkInterfaceName: name,
  *     vswitchId: vswitch.id,
  *     securityGroupIds: [group.id],

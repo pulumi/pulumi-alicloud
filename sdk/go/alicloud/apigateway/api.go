@@ -29,14 +29,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleGroup, err := apigateway.NewGroup(ctx, "exampleGroup", &apigateway.GroupArgs{
+//			example, err := apigateway.NewGroup(ctx, "example", &apigateway.GroupArgs{
+//				Name:        pulumi.String("tf-example"),
 //				Description: pulumi.String("tf-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = apigateway.NewApi(ctx, "exampleApi", &apigateway.ApiArgs{
-//				GroupId:         exampleGroup.ID(),
+//			_, err = apigateway.NewApi(ctx, "example", &apigateway.ApiArgs{
+//				GroupId:         example.ID(),
+//				Name:            pulumi.String("tf-example"),
 //				Description:     pulumi.String("tf-example"),
 //				AuthType:        pulumi.String("APP"),
 //				ForceNonceCheck: pulumi.Bool(false),

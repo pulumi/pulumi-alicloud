@@ -23,12 +23,12 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.ga.BandwidthPackage("example", {
- *     autoPay: true,
  *     bandwidth: 20,
+ *     type: "Basic",
  *     bandwidthType: "Basic",
  *     duration: "1",
+ *     autoPay: true,
  *     ratio: 30,
- *     type: "Basic",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -305,6 +305,7 @@ class Record(pulumi.CustomResource):
 
         # Create a new Domain record
         record = alicloud.dns.Record("record",
+            name="domainname",
             host_record="@",
             type="A",
             value="192.168.99.99")
@@ -351,6 +352,7 @@ class Record(pulumi.CustomResource):
 
         # Create a new Domain record
         record = alicloud.dns.Record("record",
+            name="domainname",
             host_record="@",
             type="A",
             value="192.168.99.99")

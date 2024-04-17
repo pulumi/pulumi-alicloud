@@ -29,11 +29,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vpn.GetCustomerGateways(ctx, &vpn.GetCustomerGatewaysArgs{
+//				NameRegex: pulumi.StringRef("testAcc*"),
 //				Ids: []string{
 //					"fake-id1",
 //					"fake-id2",
 //				},
-//				NameRegex:  pulumi.StringRef("testAcc*"),
 //				OutputFile: pulumi.StringRef("/tmp/cgws"),
 //			}, nil)
 //			if err != nil {

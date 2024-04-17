@@ -43,6 +43,7 @@ import (
 //				return err
 //			}
 //			_, err = ecs.NewLaunchTemplate(ctx, "template", &ecs.LaunchTemplateArgs{
+//				Name:                        pulumi.String("tf-test-template"),
 //				Description:                 pulumi.String("test1"),
 //				ImageId:                     pulumi.String(images.Images[0].Id),
 //				HostName:                    pulumi.String("tf-test-host"),

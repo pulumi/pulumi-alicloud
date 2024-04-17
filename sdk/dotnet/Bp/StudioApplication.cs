@@ -31,18 +31,18 @@ namespace Pulumi.AliCloud.Bp
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var defaultInstances = AliCloud.Ecs.GetInstances.Invoke(new()
+    ///     var defaultGetInstances = AliCloud.Ecs.GetInstances.Invoke(new()
     ///     {
     ///         Status = "Running",
     ///     });
     /// 
-    ///     var defaultStudioApplication = new AliCloud.Bp.StudioApplication("defaultStudioApplication", new()
+    ///     var defaultStudioApplication = new AliCloud.Bp.StudioApplication("default", new()
     ///     {
     ///         ApplicationName = name,
     ///         TemplateId = "YAUUQIYRSV1CMFGX",
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
     ///         AreaId = "cn-hangzhou",
     ///         Instances = new[]
     ///         {

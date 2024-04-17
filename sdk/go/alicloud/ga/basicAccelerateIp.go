@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("region"); param != "" {
 //				region = param
 //			}
-//			defaultBasicAccelerator, err := ga.NewBasicAccelerator(ctx, "defaultBasicAccelerator", &ga.BasicAcceleratorArgs{
+//			_, err := ga.NewBasicAccelerator(ctx, "default", &ga.BasicAcceleratorArgs{
 //				Duration:             pulumi.Int(1),
 //				BasicAcceleratorName: pulumi.String("terraform-example"),
 //				Description:          pulumi.String("terraform-example"),
@@ -52,8 +52,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultBasicIpSet, err := ga.NewBasicIpSet(ctx, "defaultBasicIpSet", &ga.BasicIpSetArgs{
-//				AcceleratorId:      defaultBasicAccelerator.ID(),
+//			defaultBasicIpSet, err := ga.NewBasicIpSet(ctx, "default", &ga.BasicIpSetArgs{
+//				AcceleratorId:      _default.ID(),
 //				AccelerateRegionId: pulumi.String(region),
 //				IspType:            pulumi.String("BGP"),
 //				Bandwidth:          pulumi.Int(5),
@@ -61,8 +61,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ga.NewBasicAccelerateIp(ctx, "defaultBasicAccelerateIp", &ga.BasicAccelerateIpArgs{
-//				AcceleratorId: defaultBasicAccelerator.ID(),
+//			_, err = ga.NewBasicAccelerateIp(ctx, "default", &ga.BasicAccelerateIpArgs{
+//				AcceleratorId: _default.ID(),
 //				IpSetId:       defaultBasicIpSet.ID(),
 //			})
 //			if err != nil {

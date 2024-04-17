@@ -32,39 +32,39 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var bucketRandom = defaultRandomInteger.Result;
+    ///     var bucketRandom = @default.Result;
     /// 
     ///     var default8j4t1R = new AliCloud.Oss.Bucket("default8j4t1R", new()
     ///     {
-    ///         BucketName = bucketRandom.Apply(bucketRandom =&gt; $"{name}-1-{bucketRandom}"),
+    ///         BucketName = $"{name}-1-{bucketRandom}",
     ///         StorageClass = "Standard",
     ///     });
     /// 
     ///     var default9HMqfT = new AliCloud.Oss.Bucket("default9HMqfT", new()
     ///     {
-    ///         BucketName = bucketRandom.Apply(bucketRandom =&gt; $"{name}-2-{bucketRandom}"),
+    ///         BucketName = $"{name}-2-{bucketRandom}",
     ///         StorageClass = "Standard",
     ///     });
     /// 
     ///     var defaultxBXqFQ = new AliCloud.Oss.Bucket("defaultxBXqFQ", new()
     ///     {
-    ///         BucketName = bucketRandom.Apply(bucketRandom =&gt; $"{name}-3-{bucketRandom}"),
+    ///         BucketName = $"{name}-3-{bucketRandom}",
     ///         StorageClass = "Standard",
     ///     });
     /// 
     ///     var defaulthZvCmR = new AliCloud.Oss.Bucket("defaulthZvCmR", new()
     ///     {
-    ///         BucketName = bucketRandom.Apply(bucketRandom =&gt; $"{name}-4-{bucketRandom}"),
+    ///         BucketName = $"{name}-4-{bucketRandom}",
     ///         StorageClass = "Standard",
     ///     });
     /// 
-    ///     var defaultOssScanConfig = new AliCloud.ThreatDetection.OssScanConfig("defaultOssScanConfig", new()
+    ///     var defaultOssScanConfig = new AliCloud.ThreatDetection.OssScanConfig("default", new()
     ///     {
     ///         KeySuffixLists = new[]
     ///         {

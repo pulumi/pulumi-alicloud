@@ -36,14 +36,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZones, err := alicloud.GetZones(ctx, nil, nil)
+//			example, err := alicloud.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewEcsDedicatedHostCluster(ctx, "exampleEcsDedicatedHostCluster", &ecs.EcsDedicatedHostClusterArgs{
+//			_, err = ecs.NewEcsDedicatedHostCluster(ctx, "example", &ecs.EcsDedicatedHostClusterArgs{
 //				DedicatedHostClusterName: pulumi.String("example_value"),
 //				Description:              pulumi.String("example_value"),
-//				ZoneId:                   pulumi.String(exampleZones.Zones[0].Id),
+//				ZoneId:                   pulumi.String(example.Zones[0].Id),
 //				Tags: pulumi.Map{
 //					"Create": pulumi.Any("TF"),
 //					"For":    pulumi.Any("DDH_Cluster_Test"),

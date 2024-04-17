@@ -245,12 +245,15 @@ class CustomDomain(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_project = alicloud.log.Project("defaultProject")
-        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
-        default_role = alicloud.ram.Role("defaultRole",
+        default_project = alicloud.log.Project("default", name=f"example-value-{default['result']}")
+        default_store = alicloud.log.Store("default",
+            project=default_project.name,
+            name="example-value")
+        default_role = alicloud.ram.Role("default",
+            name=f"fcservicerole-{default['result']}",
             document=\"\"\"  {
               "Statement": [
                 {
@@ -268,11 +271,12 @@ class CustomDomain(pulumi.CustomResource):
         \"\"\",
             description="this is a example",
             force=True)
-        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
+        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("default",
             role_name=default_role.name,
             policy_name="AliyunLogFullAccess",
             policy_type="System")
-        default_service = alicloud.fc.Service("defaultService",
+        default_service = alicloud.fc.Service("default",
+            name=f"example-value-{default['result']}",
             description="example-value",
             role=default_role.arn,
             log_config=alicloud.fc.ServiceLogConfigArgs(
@@ -281,9 +285,9 @@ class CustomDomain(pulumi.CustomResource):
                 enable_instance_metrics=True,
                 enable_request_metrics=True,
             ))
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        default_bucket = alicloud.oss.Bucket("default", bucket=f"terraform-example-{default['result']}")
         # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+        default_bucket_object = alicloud.oss.BucketObject("default",
             bucket=default_bucket.id,
             key="index.py",
             content=\"\"\"import logging 
@@ -291,15 +295,16 @@ class CustomDomain(pulumi.CustomResource):
         logger = logging.getLogger() 
         logger.info('hello world') 
         return 'hello world'\"\"\")
-        default_function = alicloud.fc.Function("defaultFunction",
+        default_function = alicloud.fc.Function("default",
             service=default_service.name,
+            name="terraform-example",
             description="example",
             oss_bucket=default_bucket.id,
             oss_key=default_bucket_object.key,
             memory_size=512,
             runtime="python2.7",
             handler="hello.handler")
-        default_custom_domain = alicloud.fc.CustomDomain("defaultCustomDomain",
+        default_custom_domain = alicloud.fc.CustomDomain("default",
             domain_name="terraform.functioncompute.com",
             protocol="HTTP",
             route_configs=[alicloud.fc.CustomDomainRouteConfigArgs(
@@ -359,12 +364,15 @@ class CustomDomain(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_project = alicloud.log.Project("defaultProject")
-        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
-        default_role = alicloud.ram.Role("defaultRole",
+        default_project = alicloud.log.Project("default", name=f"example-value-{default['result']}")
+        default_store = alicloud.log.Store("default",
+            project=default_project.name,
+            name="example-value")
+        default_role = alicloud.ram.Role("default",
+            name=f"fcservicerole-{default['result']}",
             document=\"\"\"  {
               "Statement": [
                 {
@@ -382,11 +390,12 @@ class CustomDomain(pulumi.CustomResource):
         \"\"\",
             description="this is a example",
             force=True)
-        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
+        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("default",
             role_name=default_role.name,
             policy_name="AliyunLogFullAccess",
             policy_type="System")
-        default_service = alicloud.fc.Service("defaultService",
+        default_service = alicloud.fc.Service("default",
+            name=f"example-value-{default['result']}",
             description="example-value",
             role=default_role.arn,
             log_config=alicloud.fc.ServiceLogConfigArgs(
@@ -395,9 +404,9 @@ class CustomDomain(pulumi.CustomResource):
                 enable_instance_metrics=True,
                 enable_request_metrics=True,
             ))
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        default_bucket = alicloud.oss.Bucket("default", bucket=f"terraform-example-{default['result']}")
         # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+        default_bucket_object = alicloud.oss.BucketObject("default",
             bucket=default_bucket.id,
             key="index.py",
             content=\"\"\"import logging 
@@ -405,15 +414,16 @@ class CustomDomain(pulumi.CustomResource):
         logger = logging.getLogger() 
         logger.info('hello world') 
         return 'hello world'\"\"\")
-        default_function = alicloud.fc.Function("defaultFunction",
+        default_function = alicloud.fc.Function("default",
             service=default_service.name,
+            name="terraform-example",
             description="example",
             oss_bucket=default_bucket.id,
             oss_key=default_bucket_object.key,
             memory_size=512,
             runtime="python2.7",
             handler="hello.handler")
-        default_custom_domain = alicloud.fc.CustomDomain("defaultCustomDomain",
+        default_custom_domain = alicloud.fc.CustomDomain("default",
             domain_name="terraform.functioncompute.com",
             protocol="HTTP",
             route_configs=[alicloud.fc.CustomDomainRouteConfigArgs(

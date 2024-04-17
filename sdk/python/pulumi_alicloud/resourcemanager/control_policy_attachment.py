@@ -118,10 +118,10 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        example_control_policy = alicloud.resourcemanager.ControlPolicy("exampleControlPolicy",
+        example = alicloud.resourcemanager.ControlPolicy("example",
             control_policy_name=name,
             description=name,
             effect_scope="RAM",
@@ -141,9 +141,9 @@ class ControlPolicyAttachment(pulumi.CustomResource):
             ]
           }
         \"\"\")
-        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=default.result.apply(lambda result: f"{name}-{result}"))
-        example_control_policy_attachment = alicloud.resourcemanager.ControlPolicyAttachment("exampleControlPolicyAttachment",
-            policy_id=example_control_policy.id,
+        example_folder = alicloud.resourcemanager.Folder("example", folder_name=f"{name}-{default['result']}")
+        example_control_policy_attachment = alicloud.resourcemanager.ControlPolicyAttachment("example",
+            policy_id=example.id,
             target_id=example_folder.id)
         ```
         <!--End PulumiCodeChooser -->
@@ -188,10 +188,10 @@ class ControlPolicyAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        example_control_policy = alicloud.resourcemanager.ControlPolicy("exampleControlPolicy",
+        example = alicloud.resourcemanager.ControlPolicy("example",
             control_policy_name=name,
             description=name,
             effect_scope="RAM",
@@ -211,9 +211,9 @@ class ControlPolicyAttachment(pulumi.CustomResource):
             ]
           }
         \"\"\")
-        example_folder = alicloud.resourcemanager.Folder("exampleFolder", folder_name=default.result.apply(lambda result: f"{name}-{result}"))
-        example_control_policy_attachment = alicloud.resourcemanager.ControlPolicyAttachment("exampleControlPolicyAttachment",
-            policy_id=example_control_policy.id,
+        example_folder = alicloud.resourcemanager.Folder("example", folder_name=f"{name}-{default['result']}")
+        example_control_policy_attachment = alicloud.resourcemanager.ControlPolicyAttachment("example",
+            policy_id=example.id,
             target_id=example_folder.id)
         ```
         <!--End PulumiCodeChooser -->

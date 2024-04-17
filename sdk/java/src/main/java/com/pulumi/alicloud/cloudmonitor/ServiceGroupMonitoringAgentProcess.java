@@ -57,7 +57,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaultAlarmContactGroup = new AlarmContactGroup(&#34;defaultAlarmContactGroup&#34;, AlarmContactGroupArgs.builder()        
+ *         var default_ = new AlarmContactGroup(&#34;default&#34;, AlarmContactGroupArgs.builder()        
  *             .alarmContactGroupName(name)
  *             .contacts(            
  *                 &#34;user&#34;,
@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  * 
  *         var defaultMonitorGroup = new MonitorGroup(&#34;defaultMonitorGroup&#34;, MonitorGroupArgs.builder()        
  *             .monitorGroupName(name)
- *             .contactGroups(defaultAlarmContactGroup.id())
+ *             .contactGroups(default_.id())
  *             .build());
  * 
  *         var defaultServiceGroupMonitoringAgentProcess = new ServiceGroupMonitoringAgentProcess(&#34;defaultServiceGroupMonitoringAgentProcess&#34;, ServiceGroupMonitoringAgentProcessArgs.builder()        

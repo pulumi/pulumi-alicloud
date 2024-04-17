@@ -31,7 +31,7 @@ import (
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // _default, err := ecs.GetElasticityAssurances(ctx, &ecs.GetElasticityAssurancesArgs{
 // Ids: interface{}{
-// alicloud_ecs_elasticity_assurance.Default.Id,
+// defaultAlicloudEcsElasticityAssurance.Id,
 // },
 // }, nil);
 // if err != nil {

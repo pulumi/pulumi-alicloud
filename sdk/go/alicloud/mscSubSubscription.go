@@ -34,10 +34,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := alicloud.NewMscSubSubscription(ctx, "example", &alicloud.MscSubSubscriptionArgs{
-//				EmailStatus:   pulumi.Int(1),
 //				ItemName:      pulumi.String("Notifications of Product Expiration"),
-//				PmsgStatus:    pulumi.Int(1),
 //				SmsStatus:     pulumi.Int(1),
+//				EmailStatus:   pulumi.Int(1),
+//				PmsgStatus:    pulumi.Int(1),
 //				TtsStatus:     pulumi.Int(1),
 //				WebhookStatus: pulumi.Int(0),
 //			})

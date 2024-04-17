@@ -20,7 +20,10 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "onsInstanceDatasourceName";
- * const _default = new alicloud.rocketmq.Instance("default", {remark: "default_ons_instance_remark"});
+ * const _default = new alicloud.rocketmq.Instance("default", {
+ *     name: name,
+ *     remark: "default_ons_instance_remark",
+ * });
  * const instancesDs = alicloud.rocketmq.getInstancesOutput({
  *     ids: [_default.id],
  *     nameRegex: _default.name,
@@ -120,7 +123,10 @@ export interface GetInstancesResult {
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "onsInstanceDatasourceName";
- * const _default = new alicloud.rocketmq.Instance("default", {remark: "default_ons_instance_remark"});
+ * const _default = new alicloud.rocketmq.Instance("default", {
+ *     name: name,
+ *     remark: "default_ons_instance_remark",
+ * });
  * const instancesDs = alicloud.rocketmq.getInstancesOutput({
  *     ids: [_default.id],
  *     nameRegex: _default.name,

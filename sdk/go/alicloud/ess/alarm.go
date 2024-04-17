@@ -45,17 +45,15 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			myName := defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//				return fmt.Sprintf("%v-%v", name, result), nil
-//			}).(pulumi.StringOutput)
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			myName := fmt.Sprintf("%v-%v", name, defaultInteger.Result)
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
@@ -63,7 +61,7 @@ import (
 //				return err
 //			}
 //			_, err = ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//				AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
 //				CpuCoreCount:     pulumi.IntRef(2),
 //				MemorySize:       pulumi.Float64Ref(4),
 //			}, nil)
@@ -78,29 +76,30 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(myName),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(myName),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String(myName),
 //				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewSecurityGroupRule(ctx, "defaultSecurityGroupRule", &ecs.SecurityGroupRuleArgs{
+//			_, err = ecs.NewSecurityGroupRule(ctx, "default", &ecs.SecurityGroupRuleArgs{
 //				Type:            pulumi.String("ingress"),
 //				IpProtocol:      pulumi.String("tcp"),
 //				NicType:         pulumi.String("intranet"),
@@ -116,13 +115,13 @@ import (
 //			default2, err := vpc.NewSwitch(ctx, "default2", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.1.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(fmt.Sprintf("%v-bar", name)),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "defaultScalingGroup", &ess.ScalingGroupArgs{
+//			defaultScalingGroup, err := ess.NewScalingGroup(ctx, "default", &ess.ScalingGroupArgs{
 //				MinSize:          pulumi.Int(1),
 //				MaxSize:          pulumi.Int(1),
 //				ScalingGroupName: pulumi.String(myName),
@@ -139,7 +138,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultScalingRule, err := ess.NewScalingRule(ctx, "defaultScalingRule", &ess.ScalingRuleArgs{
+//			defaultScalingRule, err := ess.NewScalingRule(ctx, "default", &ess.ScalingRuleArgs{
 //				ScalingRuleName: pulumi.String(myName),
 //				ScalingGroupId:  defaultScalingGroup.ID(),
 //				AdjustmentType:  pulumi.String("TotalCapacity"),
@@ -149,7 +148,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ess.NewAlarm(ctx, "defaultAlarm", &ess.AlarmArgs{
+//			_, err = ess.NewAlarm(ctx, "default", &ess.AlarmArgs{
+//				Name:        pulumi.String(myName),
 //				Description: pulumi.String(name),
 //				AlarmActions: pulumi.StringArray{
 //					defaultScalingRule.Ari,

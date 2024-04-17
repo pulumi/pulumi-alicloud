@@ -52,8 +52,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Accelerator(&#34;example&#34;, AcceleratorArgs.builder()        
- *             .autoUseCoupon(true)
  *             .duration(1)
+ *             .autoUseCoupon(true)
  *             .spec(&#34;1&#34;)
  *             .build());
  * 

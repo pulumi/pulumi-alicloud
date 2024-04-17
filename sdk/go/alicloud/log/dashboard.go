@@ -27,6 +27,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -35,21 +37,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+//			example, err := log.NewProject(ctx, "example", &log.ProjectArgs{
+//				Name:        pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
 //				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = log.NewStore(ctx, "exampleStore", &log.StoreArgs{
-//				Project:            exampleProject.Name,
+//			_, err = log.NewStore(ctx, "example", &log.StoreArgs{
+//				Project:            example.Name,
+//				Name:               pulumi.String("example-store"),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),
 //				MaxSplitShardCount: pulumi.Int(60),
@@ -58,8 +62,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = log.NewDashboard(ctx, "exampleDashboard", &log.DashboardArgs{
-//				ProjectName:   exampleProject.Name,
+//			_, err = log.NewDashboard(ctx, "example", &log.DashboardArgs{
+//				ProjectName:   example.Name,
 //				DashboardName: pulumi.String("terraform-example"),
 //				DisplayName:   pulumi.String("terraform-example"),
 //				Attribute:     pulumi.String("  {\n    \"type\":\"grid\"\n  }\n"),

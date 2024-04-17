@@ -109,21 +109,21 @@ class AlidnsDomainAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_domain_group = alicloud.dns.DomainGroup("defaultDomainGroup", domain_group_name="tf-example")
-        default_alidns_domain = alicloud.dns.AlidnsDomain("defaultAlidnsDomain",
+        default = alicloud.dns.DomainGroup("default", domain_group_name="tf-example")
+        default_alidns_domain = alicloud.dns.AlidnsDomain("default",
             domain_name="starmove.com",
-            group_id=default_domain_group.id,
+            group_id=default.id,
             tags={
                 "Created": "TF",
                 "For": "example",
             })
-        default_alidns_instance = alicloud.dns.AlidnsInstance("defaultAlidnsInstance",
+        default_alidns_instance = alicloud.dns.AlidnsInstance("default",
             dns_security="basic",
             domain_numbers="3",
             version_code="version_personal",
             period=1,
             renewal_status="ManualRenewal")
-        default_alidns_domain_attachment = alicloud.dns.AlidnsDomainAttachment("defaultAlidnsDomainAttachment",
+        default_alidns_domain_attachment = alicloud.dns.AlidnsDomainAttachment("default",
             instance_id=default_alidns_instance.id,
             domain_names=[default_alidns_domain.domain_name])
         ```
@@ -160,21 +160,21 @@ class AlidnsDomainAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_domain_group = alicloud.dns.DomainGroup("defaultDomainGroup", domain_group_name="tf-example")
-        default_alidns_domain = alicloud.dns.AlidnsDomain("defaultAlidnsDomain",
+        default = alicloud.dns.DomainGroup("default", domain_group_name="tf-example")
+        default_alidns_domain = alicloud.dns.AlidnsDomain("default",
             domain_name="starmove.com",
-            group_id=default_domain_group.id,
+            group_id=default.id,
             tags={
                 "Created": "TF",
                 "For": "example",
             })
-        default_alidns_instance = alicloud.dns.AlidnsInstance("defaultAlidnsInstance",
+        default_alidns_instance = alicloud.dns.AlidnsInstance("default",
             dns_security="basic",
             domain_numbers="3",
             version_code="version_personal",
             period=1,
             renewal_status="ManualRenewal")
-        default_alidns_domain_attachment = alicloud.dns.AlidnsDomainAttachment("defaultAlidnsDomainAttachment",
+        default_alidns_domain_attachment = alicloud.dns.AlidnsDomainAttachment("default",
             instance_id=default_alidns_instance.id,
             domain_names=[default_alidns_domain.domain_name])
         ```

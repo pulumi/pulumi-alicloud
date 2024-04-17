@@ -20,15 +20,20 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const example = new alicloud.datahub.Project("example", {comment: "created by terraform"});
- * const exampleBlob = new alicloud.datahub.Topic("exampleBlob", {
+ * const example = new alicloud.datahub.Project("example", {
+ *     name: name,
+ *     comment: "created by terraform",
+ * });
+ * const exampleBlob = new alicloud.datahub.Topic("example_blob", {
+ *     name: `${name}_blob`,
  *     projectName: example.name,
  *     recordType: "BLOB",
  *     shardCount: 3,
  *     lifeCycle: 7,
  *     comment: "created by terraform",
  * });
- * const exampleTuple = new alicloud.datahub.Topic("exampleTuple", {
+ * const exampleTuple = new alicloud.datahub.Topic("example_tuple", {
+ *     name: `${name}_tuple`,
  *     projectName: example.name,
  *     recordType: "TUPLE",
  *     recordSchema: {

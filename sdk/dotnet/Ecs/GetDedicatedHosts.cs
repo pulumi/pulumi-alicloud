@@ -27,10 +27,11 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var dedicatedHostsDs = AliCloud.Ecs.GetDedicatedHosts.Invoke(new()
         ///     {
-        ///         DedicatedHostType = "ddh.g5",
         ///         NameRegex = "tf-testAcc",
+        ///         DedicatedHostType = "ddh.g5",
         ///         Status = "Available",
         ///     });
         /// 
@@ -61,10 +62,11 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var dedicatedHostsDs = AliCloud.Ecs.GetDedicatedHosts.Invoke(new()
         ///     {
-        ///         DedicatedHostType = "ddh.g5",
         ///         NameRegex = "tf-testAcc",
+        ///         DedicatedHostType = "ddh.g5",
         ///         Status = "Available",
         ///     });
         /// 

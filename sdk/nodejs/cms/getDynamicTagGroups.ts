@@ -22,13 +22,13 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "example_value";
- * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", {
+ * const _default = new alicloud.cms.AlarmContactGroup("default", {
  *     alarmContactGroupName: name,
  *     describe: "example_value",
  *     enableSubscribed: true,
  * });
- * const defaultDynamicTagGroup = new alicloud.cms.DynamicTagGroup("defaultDynamicTagGroup", {
- *     contactGroupLists: [defaultAlarmContactGroup.id],
+ * const defaultDynamicTagGroup = new alicloud.cms.DynamicTagGroup("default", {
+ *     contactGroupLists: [_default.id],
  *     tagKey: "your_tag_key",
  *     matchExpresses: [{
  *         tagValue: "your_tag_value",
@@ -106,13 +106,13 @@ export interface GetDynamicTagGroupsResult {
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "example_value";
- * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", {
+ * const _default = new alicloud.cms.AlarmContactGroup("default", {
  *     alarmContactGroupName: name,
  *     describe: "example_value",
  *     enableSubscribed: true,
  * });
- * const defaultDynamicTagGroup = new alicloud.cms.DynamicTagGroup("defaultDynamicTagGroup", {
- *     contactGroupLists: [defaultAlarmContactGroup.id],
+ * const defaultDynamicTagGroup = new alicloud.cms.DynamicTagGroup("default", {
+ *     contactGroupLists: [_default.id],
  *     tagKey: "your_tag_key",
  *     matchExpresses: [{
  *         tagValue: "your_tag_value",

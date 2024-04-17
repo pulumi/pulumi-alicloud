@@ -307,11 +307,11 @@ class Group(pulumi.CustomResource):
         group_name = config.get("groupName")
         if group_name is None:
             group_name = "GID-tf-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_instance = alicloud.rocketmq.Instance("defaultInstance")
-        default_group = alicloud.rocketmq.Group("defaultGroup",
+        default_instance = alicloud.rocketmq.Instance("default", name=f"{name}-{default['result']}")
+        default_group = alicloud.rocketmq.Group("default",
             group_name=group_name,
             instance_id=default_instance.id,
             remark="dafault_ons_group_remark")
@@ -368,11 +368,11 @@ class Group(pulumi.CustomResource):
         group_name = config.get("groupName")
         if group_name is None:
             group_name = "GID-tf-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_instance = alicloud.rocketmq.Instance("defaultInstance")
-        default_group = alicloud.rocketmq.Group("defaultGroup",
+        default_instance = alicloud.rocketmq.Instance("default", name=f"{name}-{default['result']}")
+        default_group = alicloud.rocketmq.Group("default",
             group_name=group_name,
             instance_id=default_instance.id,
             remark="dafault_ons_group_remark")

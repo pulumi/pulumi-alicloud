@@ -22,9 +22,9 @@ import * as utilities from "../utilities";
  *
  * const tunnelsDs = alicloud.ots.getTunnels({
  *     instanceName: "sample-instance",
+ *     tableName: "sample-table",
  *     nameRegex: "sample-tunnel",
  *     outputFile: "tunnels.txt",
- *     tableName: "sample-table",
  * });
  * export const firstTunnelId = tunnelsDs.then(tunnelsDs => tunnelsDs.tunnels?.[0]?.id);
  * ```
@@ -115,9 +115,9 @@ export interface GetTunnelsResult {
  *
  * const tunnelsDs = alicloud.ots.getTunnels({
  *     instanceName: "sample-instance",
+ *     tableName: "sample-table",
  *     nameRegex: "sample-tunnel",
  *     outputFile: "tunnels.txt",
- *     tableName: "sample-table",
  * });
  * export const firstTunnelId = tunnelsDs.then(tunnelsDs => tunnelsDs.tunnels?.[0]?.id);
  * ```

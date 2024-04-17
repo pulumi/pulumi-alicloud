@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultQuotaApplication = new alicloud.quotas.QuotaApplication("defaultQuotaApplication", {
+ * const defaultQuotaApplication = new alicloud.quotas.QuotaApplication("default", {
  *     productCode: "vpc",
  *     noticeType: 3,
  *     effectiveTime: "2023-05-22T16:00:00Z",
@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *     envLanguage: "zh",
  *     quotaCategory: "WhiteListLabel",
  * });
- * const defaultQuotaApplications = pulumi.all([defaultQuotaApplication.quotaCategory, defaultQuotaApplication.id]).apply(([quotaCategory, id]) => alicloud.quotas.getQuotaApplicationsOutput({
+ * const default = pulumi.all([defaultQuotaApplication.quotaCategory, defaultQuotaApplication.id]).apply(([quotaCategory, id]) => alicloud.quotas.getQuotaApplicationsOutput({
  *     productCode: "vpc",
  *     enableDetails: true,
  *     quotaCategory: quotaCategory,
@@ -129,7 +129,7 @@ export interface GetQuotaApplicationsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultQuotaApplication = new alicloud.quotas.QuotaApplication("defaultQuotaApplication", {
+ * const defaultQuotaApplication = new alicloud.quotas.QuotaApplication("default", {
  *     productCode: "vpc",
  *     noticeType: 3,
  *     effectiveTime: "2023-05-22T16:00:00Z",
@@ -141,7 +141,7 @@ export interface GetQuotaApplicationsResult {
  *     envLanguage: "zh",
  *     quotaCategory: "WhiteListLabel",
  * });
- * const defaultQuotaApplications = pulumi.all([defaultQuotaApplication.quotaCategory, defaultQuotaApplication.id]).apply(([quotaCategory, id]) => alicloud.quotas.getQuotaApplicationsOutput({
+ * const default = pulumi.all([defaultQuotaApplication.quotaCategory, defaultQuotaApplication.id]).apply(([quotaCategory, id]) => alicloud.quotas.getQuotaApplicationsOutput({
  *     productCode: "vpc",
  *     enableDetails: true,
  *     quotaCategory: quotaCategory,

@@ -29,19 +29,20 @@ namespace Pulumi.AliCloud.CloudConnect
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultNetworks = AliCloud.CloudConnect.GetNetworks.Invoke(new()
+        ///     var @default = AliCloud.CloudConnect.GetNetworks.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_cloud_connect_networks.Default.Id,
+        ///             defaultAlicloudCloudConnectNetworks.Id,
         ///         },
         ///         NameRegex = "^tf-testAcc.*",
         ///     });
         /// 
-        ///     var defaultNetwork = new AliCloud.CloudConnect.Network("defaultNetwork", new()
+        ///     var defaultNetwork = new AliCloud.CloudConnect.Network("default", new()
         ///     {
-        ///         CidrBlock = "192.168.0.0/24",
+        ///         Name = "tf-testAccCloudConnectNetworkName",
         ///         Description = "tf-testAccCloudConnectNetworkDescription",
+        ///         CidrBlock = "192.168.0.0/24",
         ///         IsDefault = true,
         ///     });
         /// 
@@ -70,19 +71,20 @@ namespace Pulumi.AliCloud.CloudConnect
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultNetworks = AliCloud.CloudConnect.GetNetworks.Invoke(new()
+        ///     var @default = AliCloud.CloudConnect.GetNetworks.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_cloud_connect_networks.Default.Id,
+        ///             defaultAlicloudCloudConnectNetworks.Id,
         ///         },
         ///         NameRegex = "^tf-testAcc.*",
         ///     });
         /// 
-        ///     var defaultNetwork = new AliCloud.CloudConnect.Network("defaultNetwork", new()
+        ///     var defaultNetwork = new AliCloud.CloudConnect.Network("default", new()
         ///     {
-        ///         CidrBlock = "192.168.0.0/24",
+        ///         Name = "tf-testAccCloudConnectNetworkName",
         ///         Description = "tf-testAccCloudConnectNetworkDescription",
+        ///         CidrBlock = "192.168.0.0/24",
         ///         IsDefault = true,
         ///     });
         /// 

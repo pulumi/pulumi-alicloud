@@ -11,6 +11,35 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.187.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const default = alicloud.getRegions({
+ *     current: true,
+ * });
+ * const defaultGetRegions = _default.then(_default => alicloud.ebs.getRegions({
+ *     regionId: _default.regions?.[0]?.id,
+ * }));
+ * const defaultDiskReplicaGroup = new alicloud.ebs.DiskReplicaGroup("default", {
+ *     sourceRegionId: _default.then(_default => _default.regions?.[0]?.id),
+ *     sourceZoneId: defaultGetRegions.then(defaultGetRegions => defaultGetRegions.regions?.[0]?.zones?.[0]?.zoneId),
+ *     destinationRegionId: _default.then(_default => _default.regions?.[0]?.id),
+ *     destinationZoneId: defaultGetRegions.then(defaultGetRegions => defaultGetRegions.regions?.[0]?.zones?.[1]?.zoneId),
+ *     groupName: name,
+ *     description: name,
+ *     rpo: 900,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * EBS Disk Replica Group can be imported using the id, e.g.

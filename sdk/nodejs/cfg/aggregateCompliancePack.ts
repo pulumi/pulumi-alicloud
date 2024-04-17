@@ -24,20 +24,20 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform_example";
- * const defaultAccounts = alicloud.resourcemanager.getAccounts({
+ * const default = alicloud.resourcemanager.getAccounts({
  *     status: "CreateSuccess",
  * });
- * const defaultAggregator = new alicloud.cfg.Aggregator("defaultAggregator", {
+ * const defaultAggregator = new alicloud.cfg.Aggregator("default", {
  *     aggregatorAccounts: [{
- *         accountId: defaultAccounts.then(defaultAccounts => defaultAccounts.accounts?.[0]?.accountId),
- *         accountName: defaultAccounts.then(defaultAccounts => defaultAccounts.accounts?.[0]?.displayName),
+ *         accountId: _default.then(_default => _default.accounts?.[0]?.accountId),
+ *         accountName: _default.then(_default => _default.accounts?.[0]?.displayName),
  *         accountType: "ResourceDirectory",
  *     }],
  *     aggregatorName: name,
  *     description: name,
  *     aggregatorType: "CUSTOM",
  * });
- * const defaultAggregateConfigRule = new alicloud.cfg.AggregateConfigRule("defaultAggregateConfigRule", {
+ * const defaultAggregateConfigRule = new alicloud.cfg.AggregateConfigRule("default", {
  *     aggregateConfigRuleName: "contains-tag",
  *     aggregatorId: defaultAggregator.id,
  *     configRuleTriggerTypes: "ConfigurationItemChangeNotification",
@@ -51,7 +51,7 @@ import * as utilities from "../utilities";
  *         value: "example",
  *     },
  * });
- * const defaultAggregateCompliancePack = new alicloud.cfg.AggregateCompliancePack("defaultAggregateCompliancePack", {
+ * const defaultAggregateCompliancePack = new alicloud.cfg.AggregateCompliancePack("default", {
  *     aggregateCompliancePackName: name,
  *     aggregatorId: defaultAggregator.id,
  *     description: name,

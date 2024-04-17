@@ -280,14 +280,14 @@ class EcFailoverTestJob(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="preserved-NODELETING")
-        default_ec_failover_test_job = alicloud.expressconnect.EcFailoverTestJob("defaultEcFailoverTestJob",
+        default = alicloud.expressconnect.get_physical_connections(name_regex="preserved-NODELETING")
+        default_ec_failover_test_job = alicloud.expressconnect.EcFailoverTestJob("default",
             description=name,
             job_type="StartNow",
             resource_ids=[
-                default_physical_connections.ids[0],
-                default_physical_connections.ids[1],
-                default_physical_connections.ids[2],
+                default.ids[0],
+                default.ids[1],
+                default.ids[2],
             ],
             job_duration=1,
             resource_type="PHYSICALCONNECTION",
@@ -339,14 +339,14 @@ class EcFailoverTestJob(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="preserved-NODELETING")
-        default_ec_failover_test_job = alicloud.expressconnect.EcFailoverTestJob("defaultEcFailoverTestJob",
+        default = alicloud.expressconnect.get_physical_connections(name_regex="preserved-NODELETING")
+        default_ec_failover_test_job = alicloud.expressconnect.EcFailoverTestJob("default",
             description=name,
             job_type="StartNow",
             resource_ids=[
-                default_physical_connections.ids[0],
-                default_physical_connections.ids[1],
-                default_physical_connections.ids[2],
+                default.ids[0],
+                default.ids[1],
+                default.ids[2],
             ],
             job_duration=1,
             resource_type="PHYSICALCONNECTION",

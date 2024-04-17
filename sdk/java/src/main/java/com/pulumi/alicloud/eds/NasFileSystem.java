@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.eds.SimpleOfficeSite;
  * import com.pulumi.alicloud.eds.SimpleOfficeSiteArgs;
  * import com.pulumi.alicloud.eds.NasFileSystem;
@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .cidrBlock(&#34;172.16.0.0/12&#34;)
  *             .enableAdminAccess(false)
  *             .desktopAccessType(&#34;Internet&#34;)
- *             .officeSiteName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
+ *             .officeSiteName(String.format(&#34;%s-%s&#34;, name,default_.result()))
  *             .build());
  * 
  *         var example = new NasFileSystem(&#34;example&#34;, NasFileSystemArgs.builder()        

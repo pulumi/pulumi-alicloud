@@ -44,26 +44,26 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			examplePhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//			example, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
 //				NameRegex: pulumi.StringRef("^preserved-NODELETING"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			vlanId, err := random.NewRandomInteger(ctx, "vlanId", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(2999),
-//				Min: pulumi.Int(1),
+//			vlanId, err := random.NewInteger(ctx, "vlan_id", &random.IntegerArgs{
+//				Max: 2999,
+//				Min: 1,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "exampleVirtualBorderRouter", &expressconnect.VirtualBorderRouterArgs{
+//			exampleVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "example", &expressconnect.VirtualBorderRouterArgs{
 //				LocalGatewayIp:          pulumi.String("10.0.0.1"),
 //				PeerGatewayIp:           pulumi.String("10.0.0.2"),
 //				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
-//				PhysicalConnectionId:    pulumi.String(examplePhysicalConnections.Connections[0].Id),
+//				PhysicalConnectionId:    pulumi.String(example.Connections[0].Id),
 //				VirtualBorderRouterName: pulumi.String(name),
-//				VlanId:                  vlanId.ID(),
+//				VlanId:                  vlanId.Id,
 //				MinRxInterval:           pulumi.Int(1000),
 //				MinTxInterval:           pulumi.Int(1000),
 //				DetectMultiplier:        pulumi.Int(10),
@@ -71,7 +71,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//			exampleInstance, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String(name),
 //			})
 //			if err != nil {
@@ -81,7 +81,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = expressconnect.NewGrantRuleToCen(ctx, "exampleGrantRuleToCen", &expressconnect.GrantRuleToCenArgs{
+//			_, err = expressconnect.NewGrantRuleToCen(ctx, "example", &expressconnect.GrantRuleToCenArgs{
 //				CenId:      exampleInstance.ID(),
 //				CenOwnerId: pulumi.String(_default.Id),
 //				InstanceId: exampleVirtualBorderRouter.ID(),

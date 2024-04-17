@@ -48,9 +48,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         // Create a new action trail.
  *         var foo = new TrailDeprecated(&#34;foo&#34;, TrailDeprecatedArgs.builder()        
+ *             .name(&#34;action-trail&#34;)
  *             .eventRw(&#34;Write-test&#34;)
- *             .ossBucketName(alicloud_oss_bucket.bucket().id())
- *             .roleName(alicloud_ram_role_policy_attachment.attach().role_name())
+ *             .ossBucketName(bucket.id())
+ *             .roleName(attach.roleName())
  *             .ossKeyPrefix(&#34;at-product-account-audit-B&#34;)
  *             .build());
  * 

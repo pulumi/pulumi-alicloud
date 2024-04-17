@@ -187,6 +187,7 @@ class Network(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.cloudconnect.Network("default",
+            name=name,
             description=name,
             cidr_block="192.168.0.0/24",
             is_default=True)
@@ -237,6 +238,7 @@ class Network(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.cloudconnect.Network("default",
+            name=name,
             description=name,
             cidr_block="192.168.0.0/24",
             is_default=True)

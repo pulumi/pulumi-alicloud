@@ -39,7 +39,7 @@ namespace Pulumi.AliCloud.Cms
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["first-contact"] = data.Alicloud_cms_alarm_contacts.This.Contacts,
+        ///         ["first-contact"] = @this.Contacts,
         ///     };
         /// });
         /// ```
@@ -76,7 +76,7 @@ namespace Pulumi.AliCloud.Cms
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["first-contact"] = data.Alicloud_cms_alarm_contacts.This.Contacts,
+        ///         ["first-contact"] = @this.Contacts,
         ///     };
         /// });
         /// ```

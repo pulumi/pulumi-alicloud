@@ -164,8 +164,8 @@ def get_zone_records(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    records_ds = alicloud.pvtz.get_zone_records(keyword=alicloud_pvtz_zone_record["foo"]["value"],
-        zone_id=alicloud_pvtz_zone["basic"]["id"])
+    records_ds = alicloud.pvtz.get_zone_records(zone_id=basic["id"],
+        keyword=foo["value"])
     pulumi.export("firstRecordId", records_ds.records[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -233,8 +233,8 @@ def get_zone_records_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     import pulumi
     import pulumi_alicloud as alicloud
 
-    records_ds = alicloud.pvtz.get_zone_records(keyword=alicloud_pvtz_zone_record["foo"]["value"],
-        zone_id=alicloud_pvtz_zone["basic"]["id"])
+    records_ds = alicloud.pvtz.get_zone_records(zone_id=basic["id"],
+        keyword=foo["value"])
     pulumi.export("firstRecordId", records_ds.records[0].id)
     ```
     <!--End PulumiCodeChooser -->

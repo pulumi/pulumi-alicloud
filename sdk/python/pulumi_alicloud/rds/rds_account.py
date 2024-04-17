@@ -574,27 +574,27 @@ class RdsAccount(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
+        default = alicloud.rds.get_zones(engine="MySQL",
             engine_version="5.6")
-        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.ids[0],
+        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default.ids[0],
             engine="MySQL",
             engine_version="5.6")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.ids[0],
+            zone_id=default.ids[0],
             vswitch_name=name)
-        default_instance = alicloud.rds.Instance("defaultInstance",
+        default_instance = alicloud.rds.Instance("default",
             engine="MySQL",
             engine_version="5.6",
-            instance_type=default_instance_classes.instance_classes[0].instance_class,
+            instance_type=default_get_instance_classes.instance_classes[0].instance_class,
             instance_storage=10,
             vswitch_id=default_switch.id,
             instance_name=name)
-        default_rds_account = alicloud.rds.RdsAccount("defaultRdsAccount",
+        default_rds_account = alicloud.rds.RdsAccount("default",
             db_instance_id=default_instance.id,
             account_name=name,
             account_password="Example1234")
@@ -655,27 +655,27 @@ class RdsAccount(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
+        default = alicloud.rds.get_zones(engine="MySQL",
             engine_version="5.6")
-        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.ids[0],
+        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default.ids[0],
             engine="MySQL",
             engine_version="5.6")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.ids[0],
+            zone_id=default.ids[0],
             vswitch_name=name)
-        default_instance = alicloud.rds.Instance("defaultInstance",
+        default_instance = alicloud.rds.Instance("default",
             engine="MySQL",
             engine_version="5.6",
-            instance_type=default_instance_classes.instance_classes[0].instance_class,
+            instance_type=default_get_instance_classes.instance_classes[0].instance_class,
             instance_storage=10,
             vswitch_id=default_switch.id,
             instance_name=name)
-        default_rds_account = alicloud.rds.RdsAccount("defaultRdsAccount",
+        default_rds_account = alicloud.rds.RdsAccount("default",
             db_instance_id=default_instance.id,
             account_name=name,
             account_password="Example1234")

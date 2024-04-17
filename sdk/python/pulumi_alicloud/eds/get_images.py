@@ -148,12 +148,12 @@ def get_images(desktop_instance_type: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+    default_simple_office_site = alicloud.eds.SimpleOfficeSite("default",
         cidr_block="172.16.0.0/12",
         desktop_access_type="Internet",
         office_site_name="your_simple_office_site_name")
-    default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM")
-    default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
+    default = alicloud.eds.get_bundles(bundle_type="SYSTEM")
+    default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("default",
         policy_group_name="your_policy_group_name",
         clipboard="readwrite",
         local_drive="read",
@@ -170,12 +170,12 @@ def get_images(desktop_instance_type: Optional[str] = None,
             priority="1",
             cidr_ip="0.0.0.0/0",
         )])
-    default_desktop = alicloud.eds.Desktop("defaultDesktop",
+    default_desktop = alicloud.eds.Desktop("default",
         office_site_id=default_simple_office_site.id,
         policy_group_id=default_ecd_policy_group.id,
-        bundle_id=default_bundles.bundles[1].id,
+        bundle_id=default.bundles[1].id,
         desktop_name="your_desktop_name")
-    default_image = alicloud.eds.Image("defaultImage",
+    default_image = alicloud.eds.Image("default",
         image_name="your_image_name",
         desktop_id=default_desktop.id,
         description="example_value")
@@ -242,12 +242,12 @@ def get_images_output(desktop_instance_type: Optional[pulumi.Input[Optional[str]
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+    default_simple_office_site = alicloud.eds.SimpleOfficeSite("default",
         cidr_block="172.16.0.0/12",
         desktop_access_type="Internet",
         office_site_name="your_simple_office_site_name")
-    default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM")
-    default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
+    default = alicloud.eds.get_bundles(bundle_type="SYSTEM")
+    default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("default",
         policy_group_name="your_policy_group_name",
         clipboard="readwrite",
         local_drive="read",
@@ -264,12 +264,12 @@ def get_images_output(desktop_instance_type: Optional[pulumi.Input[Optional[str]
             priority="1",
             cidr_ip="0.0.0.0/0",
         )])
-    default_desktop = alicloud.eds.Desktop("defaultDesktop",
+    default_desktop = alicloud.eds.Desktop("default",
         office_site_id=default_simple_office_site.id,
         policy_group_id=default_ecd_policy_group.id,
-        bundle_id=default_bundles.bundles[1].id,
+        bundle_id=default.bundles[1].id,
         desktop_name="your_desktop_name")
-    default_image = alicloud.eds.Image("defaultImage",
+    default_image = alicloud.eds.Image("default",
         image_name="your_image_name",
         desktop_id=default_desktop.id,
         description="example_value")

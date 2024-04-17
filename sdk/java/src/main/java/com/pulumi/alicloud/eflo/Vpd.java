@@ -51,12 +51,12 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var defaultVpd = new Vpd(&#34;defaultVpd&#34;, VpdArgs.builder()        
  *             .cidr(&#34;10.0.0.0/8&#34;)
  *             .vpdName(name)
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .resourceGroupId(default_.groups()[0].id())
  *             .build());
  * 
  *     }

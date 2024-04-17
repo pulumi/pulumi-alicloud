@@ -18,12 +18,12 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultAcl = new alicloud.alb.Acl("defaultAcl", {
+ * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultAcl = new alicloud.alb.Acl("default", {
  *     aclName: name,
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
  * });
- * const defaultAclEntryAttachment = new alicloud.alb.AclEntryAttachment("defaultAclEntryAttachment", {
+ * const defaultAclEntryAttachment = new alicloud.alb.AclEntryAttachment("default", {
  *     aclId: defaultAcl.id,
  *     entry: "168.10.10.0/24",
  *     description: name,

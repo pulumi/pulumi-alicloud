@@ -25,8 +25,9 @@ namespace Pulumi.AliCloud.Mns
     /// {
     ///     var topic = new AliCloud.Mns.Topic("topic", new()
     ///     {
-    ///         LoggingEnabled = false,
+    ///         Name = "tf-example-mnstopic",
     ///         MaximumMessageSize = 65536,
+    ///         LoggingEnabled = false,
     ///     });
     /// 
     /// });

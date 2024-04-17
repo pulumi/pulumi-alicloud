@@ -21,17 +21,17 @@ import * as utilities from "../utilities";
  * const default = alicloud.getRegions({
  *     current: true,
  * });
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ * const example = new alicloud.vpc.Network("example", {
  *     vpcName: "tf_example",
  *     cidrBlock: "172.17.3.0/24",
  * });
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ * const exampleInstance = new alicloud.cen.Instance("example", {
  *     cenInstanceName: "tf_example",
  *     description: "an example for cen",
  * });
- * const exampleInstanceAttachment = new alicloud.cen.InstanceAttachment("exampleInstanceAttachment", {
+ * const exampleInstanceAttachment = new alicloud.cen.InstanceAttachment("example", {
  *     instanceId: exampleInstance.id,
- *     childInstanceId: exampleNetwork.id,
+ *     childInstanceId: example.id,
  *     childInstanceType: "VPC",
  *     childInstanceRegionId: _default.then(_default => _default.regions?.[0]?.id),
  * });

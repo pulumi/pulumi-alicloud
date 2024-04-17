@@ -158,12 +158,12 @@ def get_desktops(desktop_name: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+    default_simple_office_site = alicloud.eds.SimpleOfficeSite("default",
         cidr_block="172.16.0.0/12",
         desktop_access_type="Internet",
         office_site_name="your_office_site_name")
-    default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM")
-    default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
+    default = alicloud.eds.get_bundles(bundle_type="SYSTEM")
+    default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("default",
         policy_group_name="your_policy_group_name",
         clipboard="readwrite",
         local_drive="read",
@@ -180,15 +180,15 @@ def get_desktops(desktop_name: Optional[str] = None,
             priority="1",
             cidr_ip="0.0.0.0/0",
         )])
-    default_user = alicloud.eds.User("defaultUser",
+    default_user = alicloud.eds.User("default",
         end_user_id="your_end_user_id",
         email="your_email",
         phone="your_phone",
         password="your_password")
-    default_desktop = alicloud.eds.Desktop("defaultDesktop",
+    default_desktop = alicloud.eds.Desktop("default",
         office_site_id=default_simple_office_site.id,
         policy_group_id=default_ecd_policy_group.id,
-        bundle_id=default_bundles.bundles[0].id,
+        bundle_id=default.bundles[0].id,
         desktop_name="your_desktop_name",
         end_user_ids=[default_user.id])
     ids = alicloud.eds.get_desktops_output(ids=[default_desktop.id])
@@ -258,12 +258,12 @@ def get_desktops_output(desktop_name: Optional[pulumi.Input[Optional[str]]] = No
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+    default_simple_office_site = alicloud.eds.SimpleOfficeSite("default",
         cidr_block="172.16.0.0/12",
         desktop_access_type="Internet",
         office_site_name="your_office_site_name")
-    default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM")
-    default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
+    default = alicloud.eds.get_bundles(bundle_type="SYSTEM")
+    default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("default",
         policy_group_name="your_policy_group_name",
         clipboard="readwrite",
         local_drive="read",
@@ -280,15 +280,15 @@ def get_desktops_output(desktop_name: Optional[pulumi.Input[Optional[str]]] = No
             priority="1",
             cidr_ip="0.0.0.0/0",
         )])
-    default_user = alicloud.eds.User("defaultUser",
+    default_user = alicloud.eds.User("default",
         end_user_id="your_end_user_id",
         email="your_email",
         phone="your_phone",
         password="your_password")
-    default_desktop = alicloud.eds.Desktop("defaultDesktop",
+    default_desktop = alicloud.eds.Desktop("default",
         office_site_id=default_simple_office_site.id,
         policy_group_id=default_ecd_policy_group.id,
-        bundle_id=default_bundles.bundles[0].id,
+        bundle_id=default.bundles[0].id,
         desktop_name="your_desktop_name",
         end_user_ids=[default_user.id])
     ids = alicloud.eds.get_desktops_output(ids=[default_desktop.id])

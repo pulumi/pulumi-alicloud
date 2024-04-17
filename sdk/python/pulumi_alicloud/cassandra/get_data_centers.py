@@ -131,8 +131,8 @@ def get_data_centers(cluster_id: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    cassandra = alicloud.cassandra.get_data_centers(cluster_id="cds-xxxxx",
-        name_regex="tf_testAccCassandra_dc")
+    cassandra = alicloud.cassandra.get_data_centers(name_regex="tf_testAccCassandra_dc",
+        cluster_id="cds-xxxxx")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -181,8 +181,8 @@ def get_data_centers_output(cluster_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    cassandra = alicloud.cassandra.get_data_centers(cluster_id="cds-xxxxx",
-        name_regex="tf_testAccCassandra_dc")
+    cassandra = alicloud.cassandra.get_data_centers(name_regex="tf_testAccCassandra_dc",
+        cluster_id="cds-xxxxx")
     ```
     <!--End PulumiCodeChooser -->
 

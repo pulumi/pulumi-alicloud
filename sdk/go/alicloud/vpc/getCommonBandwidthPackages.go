@@ -30,18 +30,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			fooCommonBandwithPackage, err := vpc.NewCommonBandwithPackage(ctx, "fooCommonBandwithPackage", &vpc.CommonBandwithPackageArgs{
+//			fooCommonBandwithPackage, err := vpc.NewCommonBandwithPackage(ctx, "foo", &vpc.CommonBandwithPackageArgs{
 //				Bandwidth:   pulumi.String("2"),
+//				Name:        pulumi.String("tf-testAccCommonBandwidthPackage"),
 //				Description: pulumi.String("tf-testAcc-CommonBandwidthPackage"),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_ = vpc.GetCommonBandwidthPackagesOutput(ctx, vpc.GetCommonBandwidthPackagesOutputArgs{
+//				NameRegex: pulumi.String("^tf-testAcc.*"),
 //				Ids: pulumi.StringArray{
 //					fooCommonBandwithPackage.ID(),
 //				},
-//				NameRegex: pulumi.String("^tf-testAcc.*"),
 //			}, nil)
 //			return nil
 //		})

@@ -23,15 +23,15 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const _default = new random.RandomInteger("default", {
- *     max: 99999,
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
+ *     max: 99999,
  * });
  * const example = new alicloud.ros.ChangeSet("example", {
  *     changeSetName: "example_value",
+ *     stackName: `tf-example-${_default.result}`,
  *     changeSetType: "CREATE",
  *     description: "Test From Terraform",
- *     stackName: pulumi.interpolate`tf-example-${_default.result}`,
  *     templateBody: "{\"ROSTemplateFormatVersion\":\"2015-09-01\"}",
  * });
  * ```

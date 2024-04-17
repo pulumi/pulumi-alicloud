@@ -42,7 +42,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("fnfExecutionId1", data.Alicloud_fn_f_executions.Ids.Executions[0].Id)
+//			ctx.Export("fnfExecutionId1", idsAlicloudFnFExecutions.Executions[0].Id)
 //			return nil
 //		})
 //	}

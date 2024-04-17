@@ -41,13 +41,13 @@ import (
 //				name = param
 //			}
 //			_, err := threatdetection.NewMaliciousFileWhitelistConfig(ctx, "default", &threatdetection.MaliciousFileWhitelistConfigArgs{
-//				EventName:   pulumi.String("123"),
-//				Field:       pulumi.String("fileMd6"),
-//				FieldValue:  pulumi.String("sadfas"),
 //				Operator:    pulumi.String("strEquals"),
-//				Source:      pulumi.String("agentless"),
-//				TargetType:  pulumi.String("SELECTION_KEY"),
+//				Field:       pulumi.String("fileMd6"),
 //				TargetValue: pulumi.String("123"),
+//				TargetType:  pulumi.String("SELECTION_KEY"),
+//				EventName:   pulumi.String("123"),
+//				Source:      pulumi.String("agentless"),
+//				FieldValue:  pulumi.String("sadfas"),
 //			})
 //			if err != nil {
 //				return err

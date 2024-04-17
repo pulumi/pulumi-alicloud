@@ -228,13 +228,13 @@ class TransitRouterCidr(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
             description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+        example_transit_router = alicloud.cen.TransitRouter("example",
             transit_router_name="tf_example",
-            cen_id=example_instance.id)
-        example_transit_router_cidr = alicloud.cen.TransitRouterCidr("exampleTransitRouterCidr",
+            cen_id=example.id)
+        example_transit_router_cidr = alicloud.cen.TransitRouterCidr("example",
             transit_router_id=example_transit_router.transit_router_id,
             cidr="192.168.0.0/16",
             transit_router_cidr_name="tf_example",
@@ -281,13 +281,13 @@ class TransitRouterCidr(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
             description="an example for cen")
-        example_transit_router = alicloud.cen.TransitRouter("exampleTransitRouter",
+        example_transit_router = alicloud.cen.TransitRouter("example",
             transit_router_name="tf_example",
-            cen_id=example_instance.id)
-        example_transit_router_cidr = alicloud.cen.TransitRouterCidr("exampleTransitRouterCidr",
+            cen_id=example.id)
+        example_transit_router_cidr = alicloud.cen.TransitRouterCidr("example",
             transit_router_id=example_transit_router.transit_router_id,
             cidr="192.168.0.0/16",
             transit_router_cidr_name="tf_example",

@@ -41,24 +41,24 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//			example, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("tf_example"),
 //				CidrBlock: pulumi.String("172.17.3.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//			exampleInstance, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String("tf_example"),
 //				Description:     pulumi.String("an example for cen"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewTransitRouterGrantAttachment(ctx, "exampleTransitRouterGrantAttachment", &cen.TransitRouterGrantAttachmentArgs{
+//			_, err = cen.NewTransitRouterGrantAttachment(ctx, "example", &cen.TransitRouterGrantAttachmentArgs{
 //				CenId:        exampleInstance.ID(),
 //				CenOwnerId:   pulumi.String(_default.Id),
-//				InstanceId:   exampleNetwork.ID(),
+//				InstanceId:   example.ID(),
 //				InstanceType: pulumi.String("VPC"),
 //				OrderType:    pulumi.String("PayByCenOwner"),
 //			})

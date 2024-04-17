@@ -42,12 +42,12 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = nlb.NewSecurityPolicy(ctx, "defaultSecurityPolicy", &nlb.SecurityPolicyArgs{
-//				ResourceGroupId:    pulumi.String(defaultResourceGroups.Ids[0]),
+//			_, err = nlb.NewSecurityPolicy(ctx, "default", &nlb.SecurityPolicyArgs{
+//				ResourceGroupId:    pulumi.String(_default.Ids[0]),
 //				SecurityPolicyName: pulumi.String(name),
 //				Ciphers: pulumi.StringArray{
 //					pulumi.String("ECDHE-RSA-AES128-SHA"),

@@ -33,6 +33,15 @@ namespace Pulumi.AliCloud.ThreatDetection
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.ThreatDetection.ImageEventOperation("default", new()
     ///     {
+    ///         EventType = "maliciousFile",
+    ///         OperationCode = "whitelist",
+    ///         EventKey = "alibabacloud_ak",
+    ///         Scenarios = @"{
+    ///   ""type"":""default"",
+    ///   ""value"":""""
+    /// }
+    /// ",
+    ///         EventName = "阿里云AK",
     ///         Conditions = @"[
     ///   {
     ///       ""condition"":""MD5"",
@@ -40,17 +49,6 @@ namespace Pulumi.AliCloud.ThreatDetection
     ///       ""value"":""0083a31cc0083a31ccf7c10367a6e783e""
     ///   }
     /// ]
-    /// 
-    /// ",
-    ///         EventKey = "alibabacloud_ak",
-    ///         EventName = "阿里云AK",
-    ///         EventType = "maliciousFile",
-    ///         OperationCode = "whitelist",
-    ///         Scenarios = @"{
-    ///   ""type"":""default"",
-    ///   ""value"":""""
-    /// }
-    /// 
     /// ",
     ///     });
     /// 

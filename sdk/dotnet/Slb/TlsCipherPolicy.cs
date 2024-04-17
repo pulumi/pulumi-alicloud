@@ -31,15 +31,15 @@ namespace Pulumi.AliCloud.Slb
     /// {
     ///     var example = new AliCloud.Slb.TlsCipherPolicy("example", new()
     ///     {
-    ///         Ciphers = new[]
-    ///         {
-    ///             "AES256-SHA256",
-    ///             "AES128-GCM-SHA256",
-    ///         },
     ///         TlsCipherPolicyName = "Test-example_value",
     ///         TlsVersions = new[]
     ///         {
     ///             "TLSv1.2",
+    ///         },
+    ///         Ciphers = new[]
+    ///         {
+    ///             "AES256-SHA256",
+    ///             "AES128-GCM-SHA256",
     ///         },
     ///     });
     /// 

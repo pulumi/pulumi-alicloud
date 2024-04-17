@@ -775,12 +775,12 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
         bucket_acl = alicloud.oss.Bucket("bucket-acl",
-            acl="private",
-            bucket=default.result.apply(lambda result: f"example-value-{result}"))
+            bucket=f"example-value-{default['result']}",
+            acl="private")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -792,14 +792,14 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
         bucket_website = alicloud.oss.Bucket("bucket-website",
-            bucket=default.result.apply(lambda result: f"example-value-{result}"),
+            bucket=f"example-value-{default['result']}",
             website=alicloud.oss.BucketWebsiteArgs(
-                error_document="error.html",
                 index_document="index.html",
+                error_document="error.html",
             ))
         ```
         <!--End PulumiCodeChooser -->
@@ -812,14 +812,14 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
         bucket_target = alicloud.oss.Bucket("bucket-target",
-            bucket=default.result.apply(lambda result: f"example-value-{result}"),
+            bucket=f"example-value-{default['result']}",
             acl="public-read")
         bucket_logging = alicloud.oss.Bucket("bucket-logging",
-            bucket=default.result.apply(lambda result: f"example-logging-{result}"),
+            bucket=f"example-logging-{default['result']}",
             logging=alicloud.oss.BucketLoggingArgs(
                 target_bucket=bucket_target.id,
                 target_prefix="log/",
@@ -835,12 +835,12 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
         bucket_referer = alicloud.oss.Bucket("bucket-referer",
+            bucket=f"example-value-{default['result']}",
             acl="private",
-            bucket=default.result.apply(lambda result: f"example-value-{result}"),
             referer_config=alicloud.oss.BucketRefererConfigArgs(
                 allow_empty=False,
                 referers=[
@@ -905,12 +905,12 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
         bucket_acl = alicloud.oss.Bucket("bucket-acl",
-            acl="private",
-            bucket=default.result.apply(lambda result: f"example-value-{result}"))
+            bucket=f"example-value-{default['result']}",
+            acl="private")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -922,14 +922,14 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
         bucket_website = alicloud.oss.Bucket("bucket-website",
-            bucket=default.result.apply(lambda result: f"example-value-{result}"),
+            bucket=f"example-value-{default['result']}",
             website=alicloud.oss.BucketWebsiteArgs(
-                error_document="error.html",
                 index_document="index.html",
+                error_document="error.html",
             ))
         ```
         <!--End PulumiCodeChooser -->
@@ -942,14 +942,14 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
         bucket_target = alicloud.oss.Bucket("bucket-target",
-            bucket=default.result.apply(lambda result: f"example-value-{result}"),
+            bucket=f"example-value-{default['result']}",
             acl="public-read")
         bucket_logging = alicloud.oss.Bucket("bucket-logging",
-            bucket=default.result.apply(lambda result: f"example-logging-{result}"),
+            bucket=f"example-logging-{default['result']}",
             logging=alicloud.oss.BucketLoggingArgs(
                 target_bucket=bucket_target.id,
                 target_prefix="log/",
@@ -965,12 +965,12 @@ class Bucket(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
         bucket_referer = alicloud.oss.Bucket("bucket-referer",
+            bucket=f"example-value-{default['result']}",
             acl="private",
-            bucket=default.result.apply(lambda result: f"example-value-{result}"),
             referer_config=alicloud.oss.BucketRefererConfigArgs(
                 allow_empty=False,
                 referers=[

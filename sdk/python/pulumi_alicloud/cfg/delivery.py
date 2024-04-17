@@ -401,15 +401,17 @@ class Delivery(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example-sls"
-        this_account = alicloud.get_account()
-        this_regions = alicloud.get_regions(current=True)
-        default_project = alicloud.log.Project("defaultProject")
-        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
-        default_delivery = alicloud.cfg.Delivery("defaultDelivery",
+        this = alicloud.get_account()
+        this_get_regions = alicloud.get_regions(current=True)
+        default = alicloud.log.Project("default", name=name)
+        default_store = alicloud.log.Store("default",
+            name=name,
+            project=default.name)
+        default_delivery = alicloud.cfg.Delivery("default",
             configuration_item_change_notification=True,
             non_compliant_notification=True,
             delivery_channel_name=name,
-            delivery_channel_target_arn=pulumi.Output.all(default_project.name, default_store.name).apply(lambda defaultProjectName, defaultStoreName: f"acs:log:{this_regions.ids[0]}:{this_account.id}:project/{default_project_name}/logstore/{default_store_name}"),
+            delivery_channel_target_arn=pulumi.Output.all(default.name, default_store.name).apply(lambda defaultName, defaultStoreName: f"acs:log:{this_get_regions.ids[0]}:{this.id}:project/{default_name}/logstore/{default_store_name}"),
             delivery_channel_type="SLS",
             description=name)
         ```
@@ -467,15 +469,17 @@ class Delivery(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example-sls"
-        this_account = alicloud.get_account()
-        this_regions = alicloud.get_regions(current=True)
-        default_project = alicloud.log.Project("defaultProject")
-        default_store = alicloud.log.Store("defaultStore", project=default_project.name)
-        default_delivery = alicloud.cfg.Delivery("defaultDelivery",
+        this = alicloud.get_account()
+        this_get_regions = alicloud.get_regions(current=True)
+        default = alicloud.log.Project("default", name=name)
+        default_store = alicloud.log.Store("default",
+            name=name,
+            project=default.name)
+        default_delivery = alicloud.cfg.Delivery("default",
             configuration_item_change_notification=True,
             non_compliant_notification=True,
             delivery_channel_name=name,
-            delivery_channel_target_arn=pulumi.Output.all(default_project.name, default_store.name).apply(lambda defaultProjectName, defaultStoreName: f"acs:log:{this_regions.ids[0]}:{this_account.id}:project/{default_project_name}/logstore/{default_store_name}"),
+            delivery_channel_target_arn=pulumi.Output.all(default.name, default_store.name).apply(lambda defaultName, defaultStoreName: f"acs:log:{this_get_regions.ids[0]}:{this.id}:project/{default_name}/logstore/{default_store_name}"),
             delivery_channel_type="SLS",
             description=name)
         ```

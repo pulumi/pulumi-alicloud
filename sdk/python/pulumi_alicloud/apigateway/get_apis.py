@@ -140,7 +140,7 @@ def get_apis(api_id: Optional[str] = None,
     import pulumi_alicloud as alicloud
 
     data_apigatway_apis = alicloud.apigateway.get_apis(output_file="output_ApiGatawayApis")
-    pulumi.export("firstApiId", data["alicloud_api_gateway_apis"]["data_apigatway"]["apis"][0]["id"])
+    pulumi.export("firstApiId", data_apigatway["apis"][0]["id"])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -189,7 +189,7 @@ def get_apis_output(api_id: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi_alicloud as alicloud
 
     data_apigatway_apis = alicloud.apigateway.get_apis(output_file="output_ApiGatawayApis")
-    pulumi.export("firstApiId", data["alicloud_api_gateway_apis"]["data_apigatway"]["apis"][0]["id"])
+    pulumi.export("firstApiId", data_apigatway["apis"][0]["id"])
     ```
     <!--End PulumiCodeChooser -->
 

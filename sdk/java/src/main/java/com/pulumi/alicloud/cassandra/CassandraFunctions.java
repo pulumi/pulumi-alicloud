@@ -514,8 +514,8 @@ public final class CassandraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cassandra = CassandraFunctions.getDataCenters(GetDataCentersArgs.builder()
-     *             .clusterId(&#34;cds-xxxxx&#34;)
      *             .nameRegex(&#34;tf_testAccCassandra_dc&#34;)
+     *             .clusterId(&#34;cds-xxxxx&#34;)
      *             .build());
      * 
      *     }
@@ -560,8 +560,8 @@ public final class CassandraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cassandra = CassandraFunctions.getDataCenters(GetDataCentersArgs.builder()
-     *             .clusterId(&#34;cds-xxxxx&#34;)
      *             .nameRegex(&#34;tf_testAccCassandra_dc&#34;)
+     *             .clusterId(&#34;cds-xxxxx&#34;)
      *             .build());
      * 
      *     }
@@ -606,8 +606,8 @@ public final class CassandraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cassandra = CassandraFunctions.getDataCenters(GetDataCentersArgs.builder()
-     *             .clusterId(&#34;cds-xxxxx&#34;)
      *             .nameRegex(&#34;tf_testAccCassandra_dc&#34;)
+     *             .clusterId(&#34;cds-xxxxx&#34;)
      *             .build());
      * 
      *     }
@@ -652,8 +652,8 @@ public final class CassandraFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var cassandra = CassandraFunctions.getDataCenters(GetDataCentersArgs.builder()
-     *             .clusterId(&#34;cds-xxxxx&#34;)
      *             .nameRegex(&#34;tf_testAccCassandra_dc&#34;)
+     *             .clusterId(&#34;cds-xxxxx&#34;)
      *             .build());
      * 
      *     }
@@ -698,6 +698,7 @@ public final class CassandraFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = CassandraFunctions.getZones();
      * 
      *         // Create an Cassandra cluster with the first matched zone
@@ -705,7 +706,6 @@ public final class CassandraFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```
@@ -748,6 +748,7 @@ public final class CassandraFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = CassandraFunctions.getZones();
      * 
      *         // Create an Cassandra cluster with the first matched zone
@@ -755,7 +756,6 @@ public final class CassandraFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```
@@ -798,6 +798,7 @@ public final class CassandraFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = CassandraFunctions.getZones();
      * 
      *         // Create an Cassandra cluster with the first matched zone
@@ -805,7 +806,6 @@ public final class CassandraFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```
@@ -848,6 +848,7 @@ public final class CassandraFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = CassandraFunctions.getZones();
      * 
      *         // Create an Cassandra cluster with the first matched zone
@@ -855,7 +856,6 @@ public final class CassandraFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```
@@ -898,6 +898,7 @@ public final class CassandraFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = CassandraFunctions.getZones();
      * 
      *         // Create an Cassandra cluster with the first matched zone
@@ -905,7 +906,6 @@ public final class CassandraFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```
@@ -948,6 +948,7 @@ public final class CassandraFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = CassandraFunctions.getZones();
      * 
      *         // Create an Cassandra cluster with the first matched zone
@@ -955,7 +956,6 @@ public final class CassandraFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```

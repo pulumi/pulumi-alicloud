@@ -383,10 +383,10 @@ class DefenseTemplate(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_instances = alicloud.wafv3.get_instances()
-        default_defense_template = alicloud.wafv3.DefenseTemplate("defaultDefenseTemplate",
+        default = alicloud.wafv3.get_instances()
+        default_defense_template = alicloud.wafv3.DefenseTemplate("default",
             status="1",
-            instance_id=default_instances.ids[0],
+            instance_id=default.ids[0],
             defense_template_name=name,
             template_type="user_custom",
             template_origin="custom",
@@ -455,10 +455,10 @@ class DefenseTemplate(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_instances = alicloud.wafv3.get_instances()
-        default_defense_template = alicloud.wafv3.DefenseTemplate("defaultDefenseTemplate",
+        default = alicloud.wafv3.get_instances()
+        default_defense_template = alicloud.wafv3.DefenseTemplate("default",
             status="1",
-            instance_id=default_instances.ids[0],
+            instance_id=default.ids[0],
             defense_template_name=name,
             template_type="user_custom",
             template_origin="custom",

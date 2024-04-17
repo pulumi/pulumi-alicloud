@@ -168,15 +168,15 @@ class Image(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+        default_simple_office_site = alicloud.eds.SimpleOfficeSite("default",
             cidr_block="172.16.0.0/12",
             enable_admin_access=True,
             desktop_access_type="Internet",
-            office_site_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
-        default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
+            office_site_name=f"{name}-{default_integer['result']}")
+        default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("default",
             policy_group_name=name,
             clipboard="read",
             local_drive="read",
@@ -195,13 +195,13 @@ class Image(pulumi.CustomResource):
                 priority="1",
                 cidr_ip="1.2.3.4/24",
             )])
-        default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM")
-        default_desktop = alicloud.eds.Desktop("defaultDesktop",
+        default = alicloud.eds.get_bundles(bundle_type="SYSTEM")
+        default_desktop = alicloud.eds.Desktop("default",
             office_site_id=default_simple_office_site.id,
             policy_group_id=default_ecd_policy_group.id,
-            bundle_id=default_bundles.bundles[1].id,
+            bundle_id=default.bundles[1].id,
             desktop_name=name)
-        default_image = alicloud.eds.Image("defaultImage",
+        default_image = alicloud.eds.Image("default",
             image_name=name,
             desktop_id=default_desktop.id,
             description=name)
@@ -249,15 +249,15 @@ class Image(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+        default_simple_office_site = alicloud.eds.SimpleOfficeSite("default",
             cidr_block="172.16.0.0/12",
             enable_admin_access=True,
             desktop_access_type="Internet",
-            office_site_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
-        default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
+            office_site_name=f"{name}-{default_integer['result']}")
+        default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("default",
             policy_group_name=name,
             clipboard="read",
             local_drive="read",
@@ -276,13 +276,13 @@ class Image(pulumi.CustomResource):
                 priority="1",
                 cidr_ip="1.2.3.4/24",
             )])
-        default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM")
-        default_desktop = alicloud.eds.Desktop("defaultDesktop",
+        default = alicloud.eds.get_bundles(bundle_type="SYSTEM")
+        default_desktop = alicloud.eds.Desktop("default",
             office_site_id=default_simple_office_site.id,
             policy_group_id=default_ecd_policy_group.id,
-            bundle_id=default_bundles.bundles[1].id,
+            bundle_id=default.bundles[1].id,
             desktop_name=name)
-        default_image = alicloud.eds.Image("defaultImage",
+        default_image = alicloud.eds.Image("default",
             image_name=name,
             desktop_id=default_desktop.id,
             description=name)

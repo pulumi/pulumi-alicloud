@@ -35,15 +35,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleFileSystem, err := nas.NewFileSystem(ctx, "exampleFileSystem", &nas.FileSystemArgs{
+//			example, err := nas.NewFileSystem(ctx, "example", &nas.FileSystemArgs{
 //				ProtocolType: pulumi.String("NFS"),
 //				StorageType:  pulumi.String("Capacity"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = nas.NewLifecyclePolicy(ctx, "exampleLifecyclePolicy", &nas.LifecyclePolicyArgs{
-//				FileSystemId:        exampleFileSystem.ID(),
+//			_, err = nas.NewLifecyclePolicy(ctx, "example", &nas.LifecyclePolicyArgs{
+//				FileSystemId:        example.ID(),
 //				LifecyclePolicyName: pulumi.String("terraform-example"),
 //				LifecycleRuleName:   pulumi.String("DEFAULT_ATIME_14"),
 //				StorageType:         pulumi.String("InfrequentAccess"),

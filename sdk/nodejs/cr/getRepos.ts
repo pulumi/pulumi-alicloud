@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const myRepos = alicloud.cr.getRepos({
  *     nameRegex: "my-repos",
  *     outputFile: "my-repo-json",
@@ -100,6 +101,7 @@ export interface GetReposResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const myRepos = alicloud.cr.getRepos({
  *     nameRegex: "my-repos",
  *     outputFile: "my-repo-json",

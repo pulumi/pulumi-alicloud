@@ -478,15 +478,15 @@ class HanaInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        example_vault = alicloud.hbr.Vault("exampleVault", vault_name="terraform-example")
-        example_hana_instance = alicloud.hbr.HanaInstance("exampleHanaInstance",
+        example = alicloud.resourcemanager.get_resource_groups(status="OK")
+        example_vault = alicloud.hbr.Vault("example", vault_name="terraform-example")
+        example_hana_instance = alicloud.hbr.HanaInstance("example",
             alert_setting="INHERITED",
             hana_name="terraform-example",
             host="1.1.1.1",
             instance_number=1,
             password="YouPassword123",
-            resource_group_id=example_resource_groups.groups[0].id,
+            resource_group_id=example.groups[0].id,
             sid="HXE",
             use_ssl=False,
             user_name="admin",
@@ -542,15 +542,15 @@ class HanaInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-        example_vault = alicloud.hbr.Vault("exampleVault", vault_name="terraform-example")
-        example_hana_instance = alicloud.hbr.HanaInstance("exampleHanaInstance",
+        example = alicloud.resourcemanager.get_resource_groups(status="OK")
+        example_vault = alicloud.hbr.Vault("example", vault_name="terraform-example")
+        example_hana_instance = alicloud.hbr.HanaInstance("example",
             alert_setting="INHERITED",
             hana_name="terraform-example",
             host="1.1.1.1",
             instance_number=1,
             password="YouPassword123",
-            resource_group_id=example_resource_groups.groups[0].id,
+            resource_group_id=example.groups[0].id,
             sid="HXE",
             use_ssl=False,
             user_name="admin",

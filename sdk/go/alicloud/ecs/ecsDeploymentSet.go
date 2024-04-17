@@ -35,11 +35,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ecs.NewEcsDeploymentSet(ctx, "default", &ecs.EcsDeploymentSetArgs{
-//				DeploymentSetName: pulumi.String("example_value"),
-//				Description:       pulumi.String("example_value"),
+//				Strategy:          pulumi.String("Availability"),
 //				Domain:            pulumi.String("Default"),
 //				Granularity:       pulumi.String("Host"),
-//				Strategy:          pulumi.String("Availability"),
+//				DeploymentSetName: pulumi.String("example_value"),
+//				Description:       pulumi.String("example_value"),
 //			})
 //			if err != nil {
 //				return err

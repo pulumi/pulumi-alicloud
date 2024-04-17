@@ -40,7 +40,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["simpleApplicationServerPlanId1"] = data.Alicloud_simple_application_server_plans.Ids.Plans[0].Id,
+        ///         ["simpleApplicationServerPlanId1"] = ids.Plans[0].Id,
         ///     };
         /// });
         /// ```
@@ -78,7 +78,7 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["simpleApplicationServerPlanId1"] = data.Alicloud_simple_application_server_plans.Ids.Plans[0].Id,
+        ///         ["simpleApplicationServerPlanId1"] = ids.Plans[0].Id,
         ///     };
         /// });
         /// ```

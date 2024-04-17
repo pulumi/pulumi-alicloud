@@ -32,21 +32,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultFaceConfig, err := cloudauth.NewFaceConfig(ctx, "defaultFaceConfig", &cloudauth.FaceConfigArgs{
+//			defaultFaceConfig, err := cloudauth.NewFaceConfig(ctx, "default", &cloudauth.FaceConfigArgs{
 //				BizName: pulumi.String("example-value"),
 //				BizType: pulumi.String("example-value"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultFaceConfigs := cloudauth.GetFaceConfigsOutput(ctx, cloudauth.GetFaceConfigsOutputArgs{
+//			_default := cloudauth.GetFaceConfigsOutput(ctx, cloudauth.GetFaceConfigsOutputArgs{
 //				Ids: pulumi.StringArray{
 //					defaultFaceConfig.ID(),
 //				},
 //				NameRegex: defaultFaceConfig.BizName,
 //			}, nil)
-//			ctx.Export("faceConfig", defaultFaceConfigs.ApplyT(func(defaultFaceConfigs cloudauth.GetFaceConfigsResult) (cloudauth.GetFaceConfigsConfig, error) {
-//				return defaultFaceConfigs.Configs[0], nil
+//			ctx.Export("faceConfig", _default.ApplyT(func(_default cloudauth.GetFaceConfigsResult) (cloudauth.GetFaceConfigsConfig, error) {
+//				return _default.Configs[0], nil
 //			}).(cloudauth.GetFaceConfigsConfigOutput))
 //			return nil
 //		})

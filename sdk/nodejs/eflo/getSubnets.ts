@@ -19,10 +19,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.eflo.getSubnets({
- *     nameRegex: alicloud_eflo_subnet["default"].name,
+ *     nameRegex: defaultAlicloudEfloSubnet.name,
  *     subnetName: "SubnetTestForTerraform",
- *     vpdId: _var.vpdId,
- *     zoneId: _var.zoneId,
+ *     vpdId: vpdId,
+ *     zoneId: zoneId,
  * });
  * export const alicloudEfloSubnetExampleId = _default.then(_default => _default.subnets?.[0]?.id);
  * ```
@@ -159,10 +159,10 @@ export interface GetSubnetsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.eflo.getSubnets({
- *     nameRegex: alicloud_eflo_subnet["default"].name,
+ *     nameRegex: defaultAlicloudEfloSubnet.name,
  *     subnetName: "SubnetTestForTerraform",
- *     vpdId: _var.vpdId,
- *     zoneId: _var.zoneId,
+ *     vpdId: vpdId,
+ *     zoneId: zoneId,
  * });
  * export const alicloudEfloSubnetExampleId = _default.then(_default => _default.subnets?.[0]?.id);
  * ```

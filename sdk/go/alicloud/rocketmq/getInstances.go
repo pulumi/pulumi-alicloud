@@ -37,6 +37,7 @@ import (
 //				name = param
 //			}
 //			_, err := rocketmq.NewInstance(ctx, "default", &rocketmq.InstanceArgs{
+//				Name:   pulumi.String(name),
 //				Remark: pulumi.String("default_ons_instance_remark"),
 //			})
 //			if err != nil {

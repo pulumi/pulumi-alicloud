@@ -35,13 +35,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAgents, err := chatbot.GetAgents(ctx, nil, nil)
+//			_default, err := chatbot.GetAgents(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = chatbot.NewPublishTask(ctx, "defaultPublishTask", &chatbot.PublishTaskArgs{
+//			_, err = chatbot.NewPublishTask(ctx, "default", &chatbot.PublishTaskArgs{
 //				BizType:  pulumi.String("faq"),
-//				AgentKey: pulumi.String(defaultAgents.Agents[0].AgentKey),
+//				AgentKey: pulumi.String(_default.Agents[0].AgentKey),
 //			})
 //			if err != nil {
 //				return err

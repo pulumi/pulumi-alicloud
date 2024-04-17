@@ -260,10 +260,10 @@ class AntiBruteForceRule(pulumi.CustomResource):
 
         default = alicloud.threatdetection.AntiBruteForceRule("default",
             anti_brute_force_rule_name="apispec_example",
-            fail_count=80,
             forbidden_time=360,
-            span=10,
-            uuid_lists=["032b618f-b220-4a0d-bd37-fbdc6ef58b6a"])
+            uuid_lists=["032b618f-b220-4a0d-bd37-fbdc6ef58b6a"],
+            fail_count=80,
+            span=10)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -308,10 +308,10 @@ class AntiBruteForceRule(pulumi.CustomResource):
 
         default = alicloud.threatdetection.AntiBruteForceRule("default",
             anti_brute_force_rule_name="apispec_example",
-            fail_count=80,
             forbidden_time=360,
-            span=10,
-            uuid_lists=["032b618f-b220-4a0d-bd37-fbdc6ef58b6a"])
+            uuid_lists=["032b618f-b220-4a0d-bd37-fbdc6ef58b6a"],
+            fail_count=80,
+            span=10)
         ```
         <!--End PulumiCodeChooser -->
 

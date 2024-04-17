@@ -166,11 +166,11 @@ def get_instance_types(cluster_type: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.emr.get_instance_types(cluster_type="HADOOP",
-        destination_resource="InstanceType",
+    default = alicloud.emr.get_instance_types(destination_resource="InstanceType",
         instance_charge_type="PostPaid",
-        instance_type="ecs.g5.2xlarge",
         support_local_storage=False,
+        cluster_type="HADOOP",
+        instance_type="ecs.g5.2xlarge",
         support_node_types=[
             "MASTER",
             "CORE",
@@ -239,11 +239,11 @@ def get_instance_types_output(cluster_type: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.emr.get_instance_types(cluster_type="HADOOP",
-        destination_resource="InstanceType",
+    default = alicloud.emr.get_instance_types(destination_resource="InstanceType",
         instance_charge_type="PostPaid",
-        instance_type="ecs.g5.2xlarge",
         support_local_storage=False,
+        cluster_type="HADOOP",
+        instance_type="ecs.g5.2xlarge",
         support_node_types=[
             "MASTER",
             "CORE",

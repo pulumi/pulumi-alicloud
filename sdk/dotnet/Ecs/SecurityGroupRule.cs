@@ -30,9 +30,12 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.Ecs.SecurityGroup("default");
+    ///     var @default = new AliCloud.Ecs.SecurityGroup("default", new()
+    ///     {
+    ///         Name = "default",
+    ///     });
     /// 
-    ///     var allowAllTcp = new AliCloud.Ecs.SecurityGroupRule("allowAllTcp", new()
+    ///     var allowAllTcp = new AliCloud.Ecs.SecurityGroupRule("allow_all_tcp", new()
     ///     {
     ///         Type = "ingress",
     ///         IpProtocol = "tcp",

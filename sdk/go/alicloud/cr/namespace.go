@@ -42,6 +42,7 @@ import (
 //				name = param
 //			}
 //			_, err := cr.NewNamespace(ctx, "example", &cr.NamespaceArgs{
+//				Name:              pulumi.String(name),
 //				AutoCreate:        pulumi.Bool(false),
 //				DefaultVisibility: pulumi.String("PUBLIC"),
 //			})

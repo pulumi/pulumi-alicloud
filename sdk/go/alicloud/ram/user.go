@@ -38,10 +38,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Create a new RAM user.
 //			_, err := ram.NewUser(ctx, "user", &ram.UserArgs{
-//				Comments:    pulumi.String("yoyoyo"),
+//				Name:        pulumi.String("terraform-example"),
 //				DisplayName: pulumi.String("user_display_name"),
-//				Email:       pulumi.String("hello.uuu@aaa.com"),
 //				Mobile:      pulumi.String("86-18688888888"),
+//				Email:       pulumi.String("hello.uuu@aaa.com"),
+//				Comments:    pulumi.String("yoyoyo"),
 //			})
 //			if err != nil {
 //				return err

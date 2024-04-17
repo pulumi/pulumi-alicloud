@@ -56,11 +56,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *         var example = new Network(&#34;example&#34;, NetworkArgs.builder()        
  *             .vpcName(&#34;tf_example&#34;)
  *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .build());
@@ -72,16 +72,16 @@ import javax.annotation.Nullable;
  * 
  *         var exampleInstanceAttachment = new InstanceAttachment(&#34;exampleInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
  *             .instanceId(exampleInstance.id())
- *             .childInstanceId(exampleNetwork.id())
+ *             .childInstanceId(example.id())
  *             .childInstanceType(&#34;VPC&#34;)
- *             .childInstanceRegionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .childInstanceRegionId(default_.regions()[0].id())
  *             .build());
  * 
  *         var defaultPrivateZone = new PrivateZone(&#34;defaultPrivateZone&#34;, PrivateZoneArgs.builder()        
- *             .accessRegionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .accessRegionId(default_.regions()[0].id())
  *             .cenId(exampleInstanceAttachment.instanceId())
- *             .hostRegionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
- *             .hostVpcId(exampleNetwork.id())
+ *             .hostRegionId(default_.regions()[0].id())
+ *             .hostVpcId(example.id())
  *             .build());
  * 
  *     }

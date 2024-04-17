@@ -28,20 +28,20 @@ namespace Pulumi.AliCloud.Adb
     ///     var config = new Config();
     ///     var creation = config.Get("creation") ?? "ADB";
     ///     var name = config.Get("name") ?? "tfexample";
-    ///     var defaultZones = AliCloud.Adb.GetZones.Invoke();
+    ///     var @default = AliCloud.Adb.GetZones.Invoke();
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
     ///         NameRegex = "^default-NODELETING$",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Ids[0]),
     ///     });
     /// 
-    ///     var vswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]);
+    ///     var vswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]);
     /// 
     ///     var cluster = new AliCloud.Adb.DBCluster("cluster", new()
     ///     {
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Adb
     ///         Description = name,
     ///     });
     /// 
-    ///     var defaultAccount = new AliCloud.Adb.Account("defaultAccount", new()
+    ///     var defaultAccount = new AliCloud.Adb.Account("default", new()
     ///     {
     ///         DbClusterId = cluster.Id,
     ///         AccountName = name,

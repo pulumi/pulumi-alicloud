@@ -66,17 +66,19 @@ import javax.annotation.Nullable;
  *             .cidrBlock(&#34;192.168.0.0/24&#34;)
  *             .build());
  * 
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
  *         var vswitch = new Switch(&#34;vswitch&#34;, SwitchArgs.builder()        
+ *             .name(name)
  *             .cidrBlock(&#34;192.168.0.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(default_.zones()[0].id())
  *             .vpcId(vpc.id())
  *             .build());
  * 
  *         var group = new SecurityGroup(&#34;group&#34;, SecurityGroupArgs.builder()        
+ *             .name(name)
  *             .vpcId(vpc.id())
  *             .build());
  * 

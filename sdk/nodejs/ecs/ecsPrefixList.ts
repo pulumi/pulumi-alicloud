@@ -24,13 +24,13 @@ import * as utilities from "../utilities";
  *
  * const _default = new alicloud.ecs.EcsPrefixList("default", {
  *     addressFamily: "IPv4",
+ *     maxEntries: 2,
+ *     prefixListName: "tftest",
  *     description: "description",
  *     entries: [{
  *         cidr: "192.168.0.0/24",
  *         description: "description",
  *     }],
- *     maxEntries: 2,
- *     prefixListName: "tftest",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

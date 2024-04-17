@@ -51,23 +51,23 @@ import (
 //			if param := cfg.Get("instanceSeries"); param != "" {
 //				instanceSeries = param
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 //				NameRegex: pulumi.StringRef("default-NODELETING"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId: pulumi.StringRef(defaultNetworks.Ids[0]),
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId: pulumi.StringRef(defaultGetNetworks.Ids[0]),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = drds.NewInstance(ctx, "defaultInstance", &drds.InstanceArgs{
+//			_, err = drds.NewInstance(ctx, "default", &drds.InstanceArgs{
 //				Description:        pulumi.String("drds instance"),
 //				InstanceChargeType: pulumi.String("PostPaid"),
-//				ZoneId:             pulumi.String(defaultSwitches.Vswitches[0].ZoneId),
-//				VswitchId:          pulumi.String(defaultSwitches.Vswitches[0].Id),
+//				ZoneId:             pulumi.String(defaultGetSwitches.Vswitches[0].ZoneId),
+//				VswitchId:          pulumi.String(defaultGetSwitches.Vswitches[0].Id),
 //				InstanceSeries:     pulumi.String(instanceSeries),
 //				Specification:      pulumi.String("drds.sn1.4c8g.8C16G"),
 //			})

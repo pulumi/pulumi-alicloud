@@ -30,48 +30,49 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZones = AliCloud.GetZones.Invoke(new()
+    ///     var example = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "Instance",
     ///     });
     /// 
-    ///     var exampleInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     var exampleGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
-    ///         AvailabilityZone = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         AvailabilityZone = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         CpuCoreCount = 1,
     ///         MemorySize = 2,
     ///     });
     /// 
-    ///     var exampleImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     var exampleGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
     ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     var exampleNetwork = new AliCloud.Vpc.Network("example", new()
     ///     {
     ///         VpcName = "terraform-example",
     ///         CidrBlock = "172.17.3.0/24",
     ///     });
     /// 
-    ///     var exampleSwitch = new AliCloud.Vpc.Switch("exampleSwitch", new()
+    ///     var exampleSwitch = new AliCloud.Vpc.Switch("example", new()
     ///     {
     ///         VswitchName = "terraform-example",
     ///         CidrBlock = "172.17.3.0/24",
     ///         VpcId = exampleNetwork.Id,
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
-    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("exampleSecurityGroup", new()
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
     ///     {
+    ///         Name = "terraform-example",
     ///         VpcId = exampleNetwork.Id,
     ///     });
     /// 
-    ///     var exampleInstance = new AliCloud.Ecs.Instance("exampleInstance", new()
+    ///     var exampleInstance = new AliCloud.Ecs.Instance("example", new()
     ///     {
-    ///         ImageId = exampleImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-    ///         InstanceType = exampleInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
-    ///         AvailabilityZone = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ImageId = exampleGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = exampleGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         AvailabilityZone = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         SecurityGroups = new[]
     ///         {
     ///             exampleSecurityGroup.Id,
@@ -81,18 +82,18 @@ namespace Pulumi.AliCloud.Ecs
     ///         VswitchId = exampleSwitch.Id,
     ///     });
     /// 
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var exampleEcsKeyPair = new AliCloud.Ecs.EcsKeyPair("exampleEcsKeyPair", new()
+    ///     var exampleEcsKeyPair = new AliCloud.Ecs.EcsKeyPair("example", new()
     ///     {
-    ///         KeyPairName = @default.Result.Apply(result =&gt; $"tf-example-{result}"),
+    ///         KeyPairName = $"tf-example-{@default.Result}",
     ///     });
     /// 
-    ///     var exampleEcsKeyPairAttachment = new AliCloud.Ecs.EcsKeyPairAttachment("exampleEcsKeyPairAttachment", new()
+    ///     var exampleEcsKeyPairAttachment = new AliCloud.Ecs.EcsKeyPairAttachment("example", new()
     ///     {
     ///         KeyPairName = exampleEcsKeyPair.KeyPairName,
     ///         InstanceIds = new[]

@@ -33,13 +33,13 @@ namespace Pulumi.AliCloud.ThreatDetection
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.ThreatDetection.MaliciousFileWhitelistConfig("default", new()
     ///     {
-    ///         EventName = "123",
-    ///         Field = "fileMd6",
-    ///         FieldValue = "sadfas",
     ///         Operator = "strEquals",
-    ///         Source = "agentless",
-    ///         TargetType = "SELECTION_KEY",
+    ///         Field = "fileMd6",
     ///         TargetValue = "123",
+    ///         TargetType = "SELECTION_KEY",
+    ///         EventName = "123",
+    ///         Source = "agentless",
+    ///         FieldValue = "sadfas",
     ///     });
     /// 
     /// });

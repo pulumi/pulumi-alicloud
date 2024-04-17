@@ -35,13 +35,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ga.NewBasicAccelerator(ctx, "default", &ga.BasicAcceleratorArgs{
-//				AutoPay:              pulumi.Bool(true),
-//				AutoUseCoupon:        pulumi.String("true"),
-//				BandwidthBillingType: pulumi.String("BandwidthPackage"),
-//				BasicAcceleratorName: pulumi.String("tf-example-value"),
-//				Description:          pulumi.String("tf-example-value"),
 //				Duration:             pulumi.Int(1),
 //				PricingCycle:         pulumi.String("Month"),
+//				BasicAcceleratorName: pulumi.String("tf-example-value"),
+//				Description:          pulumi.String("tf-example-value"),
+//				BandwidthBillingType: pulumi.String("BandwidthPackage"),
+//				AutoPay:              pulumi.Bool(true),
+//				AutoUseCoupon:        pulumi.String("true"),
 //			})
 //			if err != nil {
 //				return err

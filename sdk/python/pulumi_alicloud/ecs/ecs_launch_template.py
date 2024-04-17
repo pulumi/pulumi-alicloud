@@ -1632,28 +1632,30 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id)
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name="terraform-example",
             cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name="terraform-example",
             cidr_block="172.17.3.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_ecs_launch_template = alicloud.ecs.EcsLaunchTemplate("defaultEcsLaunchTemplate",
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name="terraform-example",
+            vpc_id=default_network.id)
+        default_ecs_launch_template = alicloud.ecs.EcsLaunchTemplate("default",
             launch_template_name="terraform-example",
             description="terraform-example",
-            image_id=default_images.images[0].id,
+            image_id=default_get_images.images[0].id,
             host_name="terraform-example",
             instance_charge_type="PrePaid",
             instance_name="terraform-example",
-            instance_type=default_instance_types.instance_types[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
             internet_charge_type="PayByBandwidth",
             internet_max_bandwidth_in=5,
             internet_max_bandwidth_out=5,
@@ -1675,7 +1677,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             user_data="xxxxxxx",
             vswitch_id=default_switch.id,
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             template_tags={
                 "Create": "Terraform",
                 "For": "example",
@@ -1794,28 +1796,30 @@ class EcsLaunchTemplate(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id)
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name="terraform-example",
             cidr_block="172.17.3.0/24")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name="terraform-example",
             cidr_block="172.17.3.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_ecs_launch_template = alicloud.ecs.EcsLaunchTemplate("defaultEcsLaunchTemplate",
+            zone_id=default.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name="terraform-example",
+            vpc_id=default_network.id)
+        default_ecs_launch_template = alicloud.ecs.EcsLaunchTemplate("default",
             launch_template_name="terraform-example",
             description="terraform-example",
-            image_id=default_images.images[0].id,
+            image_id=default_get_images.images[0].id,
             host_name="terraform-example",
             instance_charge_type="PrePaid",
             instance_name="terraform-example",
-            instance_type=default_instance_types.instance_types[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
             internet_charge_type="PayByBandwidth",
             internet_max_bandwidth_in=5,
             internet_max_bandwidth_out=5,
@@ -1837,7 +1841,7 @@ class EcsLaunchTemplate(pulumi.CustomResource):
             user_data="xxxxxxx",
             vswitch_id=default_switch.id,
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             template_tags={
                 "Create": "Terraform",
                 "For": "example",

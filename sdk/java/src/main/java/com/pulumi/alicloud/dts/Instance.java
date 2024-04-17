@@ -55,23 +55,23 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+ *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
  *             .status(&#34;OK&#34;)
  *             .build());
  * 
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var defaultGetRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
  *             .type(&#34;sync&#34;)
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .resourceGroupId(default_.ids()[0])
  *             .paymentType(&#34;Subscription&#34;)
  *             .instanceClass(&#34;large&#34;)
  *             .sourceEndpointEngineName(&#34;MySQL&#34;)
- *             .sourceRegion(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .sourceRegion(defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
  *             .destinationEndpointEngineName(&#34;MySQL&#34;)
- *             .destinationRegion(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .destinationRegion(defaultGetRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
  *             .build());
  * 
  *     }

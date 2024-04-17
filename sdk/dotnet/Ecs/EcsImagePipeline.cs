@@ -29,58 +29,59 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke(new()
     ///     {
     ///         NameRegex = "default",
     ///     });
     /// 
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var defaultGetZones = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
     ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
     ///         MostRecent = true,
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
-    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Ids[0]),
+    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Ids[0]),
     ///     });
     /// 
-    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
+    ///     var defaultGetAccount = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = "terraform-example",
     ///         CidrBlock = "172.17.3.0/24",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VswitchName = "terraform-example",
     ///         CidrBlock = "172.17.3.0/24",
     ///         VpcId = defaultNetwork.Id,
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = defaultGetZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
-    ///     var defaultEcsImagePipeline = new AliCloud.Ecs.EcsImagePipeline("defaultEcsImagePipeline", new()
+    ///     var defaultEcsImagePipeline = new AliCloud.Ecs.EcsImagePipeline("default", new()
     ///     {
     ///         AddAccounts = new[]
     ///         {
-    ///             defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///             defaultGetAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
     ///         },
-    ///         BaseImage = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Ids[0]),
+    ///         BaseImage = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Ids[0]),
     ///         BaseImageType = "IMAGE",
     ///         BuildContent = "RUN yum update -y",
     ///         DeleteInstanceOnFailure = false,
     ///         ImageName = "terraform-example",
+    ///         Name = "terraform-example",
     ///         Description = "terraform-example",
-    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Ids[0]),
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.Ids[0]),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
     ///         InternetMaxBandwidthOut = 20,
     ///         SystemDiskSize = 40,
     ///         ToRegionIds = new[]

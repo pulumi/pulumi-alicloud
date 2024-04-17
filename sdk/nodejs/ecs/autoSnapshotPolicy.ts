@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.ecs.AutoSnapshotPolicy("example", {
+ *     name: "tf-testAcc",
  *     repeatWeekdays: [
  *         "1",
  *         "2",

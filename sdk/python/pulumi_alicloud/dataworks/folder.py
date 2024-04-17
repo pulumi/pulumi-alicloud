@@ -152,8 +152,8 @@ class Folder(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.dataworks.Folder("example",
-            folder_path="Business Flow/tfTestAcc/folderDi/tftest1",
-            project_id="320687")
+            project_id="320687",
+            folder_path="Business Flow/tfTestAcc/folderDi/tftest1")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -193,8 +193,8 @@ class Folder(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.dataworks.Folder("example",
-            folder_path="Business Flow/tfTestAcc/folderDi/tftest1",
-            project_id="320687")
+            project_id="320687",
+            folder_path="Business Flow/tfTestAcc/folderDi/tftest1")
         ```
         <!--End PulumiCodeChooser -->
 

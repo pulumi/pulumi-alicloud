@@ -50,15 +50,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			vPCID, err := vpc.NewNetwork(ctx, "vPCID", &vpc.NetworkArgs{
+//			VPCID, err := vpc.NewNetwork(ctx, "VPCID", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			vSWITCHID, err := vpc.NewSwitch(ctx, "vSWITCHID", &vpc.SwitchArgs{
-//				VpcId:       vPCID.ID(),
+//			VSWITCHID, err := vpc.NewSwitch(ctx, "VSWITCHID", &vpc.SwitchArgs{
+//				VpcId:       VPCID.ID(),
 //				ZoneId:      pulumi.String("cn-hangzhou-k"),
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
@@ -66,11 +66,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			createInstance, err := adb.NewDBClusterLakeVersion(ctx, "createInstance", &adb.DBClusterLakeVersionArgs{
+//			createInstance, err := adb.NewDBClusterLakeVersion(ctx, "CreateInstance", &adb.DBClusterLakeVersionArgs{
 //				StorageResource:      pulumi.String("0ACU"),
 //				ZoneId:               pulumi.String("cn-hangzhou-k"),
-//				VpcId:                vPCID.ID(),
-//				VswitchId:            vSWITCHID.ID(),
+//				VpcId:                VPCID.ID(),
+//				VswitchId:            VSWITCHID.ID(),
 //				DbClusterDescription: pulumi.String(name),
 //				ComputeResource:      pulumi.String("16ACU"),
 //				DbClusterVersion:     pulumi.String("5.0"),
@@ -80,7 +80,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = adb.NewLakeAccount(ctx, "defaultLakeAccount", &adb.LakeAccountArgs{
+//			_, err = adb.NewLakeAccount(ctx, "default", &adb.LakeAccountArgs{
 //				DbClusterId:     createInstance.ID(),
 //				AccountType:     pulumi.String("Super"),
 //				AccountName:     pulumi.String("tfnormal"),

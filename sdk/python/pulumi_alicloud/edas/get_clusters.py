@@ -128,7 +128,7 @@ def get_clusters(ids: Optional[Sequence[str]] = None,
     clusters = alicloud.edas.get_clusters(logical_region_id="cn-shenzhen:xxx",
         ids=["addfs-dfsasd"],
         output_file="clusters.txt")
-    pulumi.export("firstClusterName", data["alicloud_alikafka_consumer_groups"]["clusters"]["clusters"][0]["cluster_name"])
+    pulumi.export("firstClusterName", clusters_alicloud_alikafka_consumer_groups["clusters"][0]["clusterName"])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -177,7 +177,7 @@ def get_clusters_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     clusters = alicloud.edas.get_clusters(logical_region_id="cn-shenzhen:xxx",
         ids=["addfs-dfsasd"],
         output_file="clusters.txt")
-    pulumi.export("firstClusterName", data["alicloud_alikafka_consumer_groups"]["clusters"]["clusters"][0]["cluster_name"])
+    pulumi.export("firstClusterName", clusters_alicloud_alikafka_consumer_groups["clusters"][0]["clusterName"])
     ```
     <!--End PulumiCodeChooser -->
 

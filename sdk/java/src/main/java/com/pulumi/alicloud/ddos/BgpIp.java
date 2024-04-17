@@ -26,59 +26,6 @@ import javax.annotation.Nullable;
  * Basic Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
- * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceGroupsArgs;
- * import com.pulumi.alicloud.ddos.DdosBgpInstance;
- * import com.pulumi.alicloud.ddos.DdosBgpInstanceArgs;
- * import com.pulumi.alicloud.ecs.EipAddress;
- * import com.pulumi.alicloud.ecs.EipAddressArgs;
- * import com.pulumi.alicloud.ddos.BgpIp;
- * import com.pulumi.alicloud.ddos.BgpIpArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
- * 
- *         var instance = new DdosBgpInstance(&#34;instance&#34;, DdosBgpInstanceArgs.builder()        
- *             .baseBandwidth(20)
- *             .bandwidth(&#34;TODO: GenUnaryOpExpression&#34;)
- *             .ipCount(100)
- *             .ipType(&#34;IPv4&#34;)
- *             .normalBandwidth(100)
- *             .type(&#34;Enterprise&#34;)
- *             .build());
- * 
- *         var defaultEipAddress = new EipAddress(&#34;defaultEipAddress&#34;, EipAddressArgs.builder()        
- *             .addressName(name)
- *             .build());
- * 
- *         var defaultBgpIp = new BgpIp(&#34;defaultBgpIp&#34;, BgpIpArgs.builder()        
- *             .instanceId(instance.id())
- *             .ip(defaultEipAddress.ipAddress())
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
- *             .build());
- * 
- *     }
- * }
- * ```
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

@@ -37,10 +37,10 @@ namespace Pulumi.AliCloud.CloudFirewall
     ///         {
     ///             NetworkInstanceId = "vpc-xxx",
     ///         },
-    ///         MemberUid = "14151*****827022",
     ///         Status = "open",
-    ///         VpcFirewallName = "tf-vpc-firewall-name",
+    ///         MemberUid = "14151*****827022",
     ///         VpcRegion = "cn-hangzhou",
+    ///         VpcFirewallName = "tf-vpc-firewall-name",
     ///     });
     /// 
     /// });

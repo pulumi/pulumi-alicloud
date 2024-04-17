@@ -19,10 +19,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.rds.getClassDetails({
- *     classCode: "mysql.n4.medium.2c",
  *     commodityCode: "bards",
- *     engine: "MySQL",
+ *     classCode: "mysql.n4.medium.2c",
  *     engineVersion: "8.0",
+ *     engine: "MySQL",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -149,10 +149,10 @@ export interface GetClassDetailsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.rds.getClassDetails({
- *     classCode: "mysql.n4.medium.2c",
  *     commodityCode: "bards",
- *     engine: "MySQL",
+ *     classCode: "mysql.n4.medium.2c",
  *     engineVersion: "8.0",
+ *     engine: "MySQL",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

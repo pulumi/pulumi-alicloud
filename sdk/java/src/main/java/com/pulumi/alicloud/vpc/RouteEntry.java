@@ -59,38 +59,39 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         final var defaultInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
- *             .availabilityZone(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *             .availabilityZone(default_.zones()[0].id())
  *             .cpuCoreCount(1)
  *             .memorySize(2)
  *             .build());
  * 
- *         final var defaultImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
  *             .nameRegex(&#34;^ubuntu_18.*64&#34;)
  *             .mostRecent(true)
  *             .owners(&#34;system&#34;)
  *             .build());
  * 
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;RouteEntryConfig&#34;);
- *         var fooNetwork = new Network(&#34;fooNetwork&#34;, NetworkArgs.builder()        
+ *         var foo = new Network(&#34;foo&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
  *             .cidrBlock(&#34;10.1.0.0/21&#34;)
  *             .build());
  * 
  *         var fooSwitch = new Switch(&#34;fooSwitch&#34;, SwitchArgs.builder()        
- *             .vpcId(fooNetwork.id())
+ *             .vpcId(foo.id())
  *             .cidrBlock(&#34;10.1.1.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(default_.zones()[0].id())
  *             .vswitchName(name)
  *             .build());
  * 
  *         var tfTestFoo = new SecurityGroup(&#34;tfTestFoo&#34;, SecurityGroupArgs.builder()        
+ *             .name(name)
  *             .description(&#34;foo&#34;)
- *             .vpcId(fooNetwork.id())
+ *             .vpcId(foo.id())
  *             .build());
  * 
  *         var ingress = new SecurityGroupRule(&#34;ingress&#34;, SecurityGroupRuleArgs.builder()        
@@ -108,16 +109,16 @@ import javax.annotation.Nullable;
  *             .securityGroups(tfTestFoo.id())
  *             .vswitchId(fooSwitch.id())
  *             .instanceChargeType(&#34;PostPaid&#34;)
- *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+ *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
  *             .internetChargeType(&#34;PayByTraffic&#34;)
  *             .internetMaxBandwidthOut(5)
  *             .systemDiskCategory(&#34;cloud_efficiency&#34;)
- *             .imageId(defaultImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
  *             .instanceName(name)
  *             .build());
  * 
  *         var fooRouteEntry = new RouteEntry(&#34;fooRouteEntry&#34;, RouteEntryArgs.builder()        
- *             .routeTableId(fooNetwork.routeTableId())
+ *             .routeTableId(foo.routeTableId())
  *             .destinationCidrblock(&#34;172.11.1.1/32&#34;)
  *             .nexthopType(&#34;Instance&#34;)
  *             .nexthopId(fooInstance.id())

@@ -31,7 +31,7 @@ import (
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // _default, err := threatdetection.GetInstances(ctx, &threatdetection.GetInstancesArgs{
 // Ids: interface{}{
-// alicloud_threat_detection_instance.Default.Id,
+// defaultAlicloudThreatDetectionInstance.Id,
 // },
 // }, nil);
 // if err != nil {

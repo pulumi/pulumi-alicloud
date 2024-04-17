@@ -34,7 +34,7 @@ import (
 //				Ids: []string{
 //					"example_id",
 //				},
-//				VbrId: pulumi.StringRef(alicloud_express_connect_vbr_pconn_association.Default.Vbr_id),
+//				VbrId: pulumi.StringRef(defaultAlicloudExpressConnectVbrPconnAssociation.VbrId),
 //			}, nil)
 //			if err != nil {
 //				return err

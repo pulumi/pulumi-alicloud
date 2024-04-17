@@ -44,14 +44,14 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleControlPolicy, err := resourcemanager.NewControlPolicy(ctx, "exampleControlPolicy", &resourcemanager.ControlPolicyArgs{
+//			example, err := resourcemanager.NewControlPolicy(ctx, "example", &resourcemanager.ControlPolicyArgs{
 //				ControlPolicyName: pulumi.String(name),
 //				Description:       pulumi.String(name),
 //				EffectScope:       pulumi.String("RAM"),
@@ -77,16 +77,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleFolder, err := resourcemanager.NewFolder(ctx, "exampleFolder", &resourcemanager.FolderArgs{
-//				FolderName: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
+//			exampleFolder, err := resourcemanager.NewFolder(ctx, "example", &resourcemanager.FolderArgs{
+//				FolderName: pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = resourcemanager.NewControlPolicyAttachment(ctx, "exampleControlPolicyAttachment", &resourcemanager.ControlPolicyAttachmentArgs{
-//				PolicyId: exampleControlPolicy.ID(),
+//			_, err = resourcemanager.NewControlPolicyAttachment(ctx, "example", &resourcemanager.ControlPolicyAttachmentArgs{
+//				PolicyId: example.ID(),
 //				TargetId: exampleFolder.ID(),
 //			})
 //			if err != nil {

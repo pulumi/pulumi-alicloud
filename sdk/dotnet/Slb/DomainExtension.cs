@@ -30,21 +30,21 @@ namespace Pulumi.AliCloud.Slb
     /// {
     ///     var config = new Config();
     ///     var slbDomainExtensionName = config.Get("slbDomainExtensionName") ?? "forDomainExtension";
-    ///     var domainExtensionZones = AliCloud.GetZones.Invoke(new()
+    ///     var domainExtension = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var domainExtensionNetwork = new AliCloud.Vpc.Network("domainExtensionNetwork", new()
+    ///     var domainExtensionNetwork = new AliCloud.Vpc.Network("domain_extension", new()
     ///     {
     ///         VpcName = slbDomainExtensionName,
     ///     });
     /// 
-    ///     var domainExtensionSwitch = new AliCloud.Vpc.Switch("domainExtensionSwitch", new()
+    ///     var domainExtensionSwitch = new AliCloud.Vpc.Switch("domain_extension", new()
     ///     {
     ///         VpcId = domainExtensionNetwork.Id,
     ///         CidrBlock = "172.16.0.0/21",
-    ///         ZoneId = domainExtensionZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = domainExtension.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         VswitchName = slbDomainExtensionName,
     ///     });
     /// 
@@ -56,8 +56,9 @@ namespace Pulumi.AliCloud.Slb
     ///         VswitchId = domainExtensionSwitch.Id,
     ///     });
     /// 
-    ///     var domainExtensionServerCertificate = new AliCloud.Slb.ServerCertificate("domainExtensionServerCertificate", new()
+    ///     var domainExtensionServerCertificate = new AliCloud.Slb.ServerCertificate("domain_extension", new()
     ///     {
+    ///         Name = "tf-testAccSlbServerCertificate",
     ///         Certificate = @"-----BEGIN CERTIFICATE-----
     /// MIIDdjCCAl4CCQCcm+erkcKN7DANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJj
     /// bjELMAkGA1UECAwCYmoxEDAOBgNVBAcMB2JlaWppbmcxDzANBgNVBAoMBmFsaXl1

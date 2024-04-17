@@ -19,8 +19,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.ecs.getCapacityReservations({
- *     ids: [alicloud_ecs_capacity_reservation["default"].id],
- *     nameRegex: alicloud_ecs_capacity_reservation["default"].name,
+ *     ids: [defaultAlicloudEcsCapacityReservation.id],
+ *     nameRegex: defaultAlicloudEcsCapacityReservation.name,
  *     instanceType: "ecs.c6.large",
  *     platform: "linux",
  * });
@@ -150,8 +150,8 @@ export interface GetCapacityReservationsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.ecs.getCapacityReservations({
- *     ids: [alicloud_ecs_capacity_reservation["default"].id],
- *     nameRegex: alicloud_ecs_capacity_reservation["default"].name,
+ *     ids: [defaultAlicloudEcsCapacityReservation.id],
+ *     nameRegex: defaultAlicloudEcsCapacityReservation.name,
  *     instanceType: "ecs.c6.large",
  *     platform: "linux",
  * });

@@ -56,14 +56,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;testacc&#34;);
- *         final var defaultZones = NasFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = NasFunctions.getZones(GetZonesArgs.builder()
  *             .fileSystemType(&#34;extreme&#34;)
  *             .build());
  * 
  *         var defaultFileSystem = new FileSystem(&#34;defaultFileSystem&#34;, FileSystemArgs.builder()        
  *             .fileSystemType(&#34;extreme&#34;)
  *             .protocolType(&#34;NFS&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
+ *             .zoneId(default_.zones()[0].zoneId())
  *             .storageType(&#34;standard&#34;)
  *             .description(name)
  *             .capacity(100)

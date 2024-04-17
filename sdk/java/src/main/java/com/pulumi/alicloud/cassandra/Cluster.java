@@ -60,19 +60,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Cluster(&#34;default&#34;, ClusterArgs.builder()        
- *             .autoRenew(&#34;false&#34;)
  *             .clusterName(&#34;cassandra-cluster-name-tf&#34;)
  *             .dataCenterName(&#34;dc-1&#34;)
- *             .diskSize(&#34;160&#34;)
- *             .diskType(&#34;cloud_ssd&#34;)
+ *             .autoRenew(&#34;false&#34;)
  *             .instanceType(&#34;cassandra.c.large&#34;)
- *             .ipWhite(&#34;127.0.0.1&#34;)
- *             .maintainEndTime(&#34;20:00Z&#34;)
- *             .maintainStartTime(&#34;18:00Z&#34;)
  *             .majorVersion(&#34;3.11&#34;)
  *             .nodeCount(&#34;2&#34;)
  *             .payType(&#34;PayAsYouGo&#34;)
  *             .vswitchId(&#34;vsw-xxxx&#34;)
+ *             .diskSize(&#34;160&#34;)
+ *             .diskType(&#34;cloud_ssd&#34;)
+ *             .maintainStartTime(&#34;18:00Z&#34;)
+ *             .maintainEndTime(&#34;20:00Z&#34;)
+ *             .ipWhite(&#34;127.0.0.1&#34;)
  *             .build());
  * 
  *     }

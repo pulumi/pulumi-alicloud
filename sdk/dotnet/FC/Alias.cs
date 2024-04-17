@@ -29,14 +29,15 @@ namespace Pulumi.AliCloud.FC
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var defaultService = new AliCloud.FC.Service("defaultService", new()
+    ///     var defaultService = new AliCloud.FC.Service("default", new()
     ///     {
+    ///         Name = $"example-value-{@default.Result}",
     ///         Description = "example-value",
     ///         Publish = true,
     ///     });

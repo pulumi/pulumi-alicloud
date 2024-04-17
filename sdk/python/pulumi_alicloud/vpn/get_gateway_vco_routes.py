@@ -139,17 +139,18 @@ def get_gateway_vco_routes(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_instance = alicloud.cen.Instance("defaultInstance", cen_instance_name=var["name"])
-    default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter",
+    default_instance = alicloud.cen.Instance("default", cen_instance_name=name)
+    default_transit_router = alicloud.cen.TransitRouter("default",
         cen_id=default_instance.id,
         transit_router_description="desd",
-        transit_router_name=var["name"])
-    default_transit_router_available_resources = alicloud.cen.get_transit_router_available_resources()
-    default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway",
+        transit_router_name=name)
+    default = alicloud.cen.get_transit_router_available_resources()
+    default_customer_gateway = alicloud.vpn.CustomerGateway("default",
+        name=name,
         ip_address="42.104.22.210",
         asn="45014",
         description="testAccVpnConnectionDesc")
-    default_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("defaultGatewayVpnAttachment",
+    default_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("default",
         customer_gateway_id=default_customer_gateway.id,
         network_type="public",
         local_subnet="0.0.0.0/0",
@@ -188,24 +189,24 @@ def get_gateway_vco_routes(ids: Optional[Sequence[str]] = None,
         ),
         enable_dpd=True,
         enable_nat_traversal=True,
-        vpn_attachment_name=var["name"])
-    default_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment",
+        vpn_attachment_name=name)
+    default_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("default",
         auto_publish_route_enabled=False,
-        transit_router_attachment_description=var["name"],
-        transit_router_attachment_name=var["name"],
+        transit_router_attachment_description=name,
+        transit_router_attachment_name=name,
         cen_id=default_transit_router.cen_id,
         transit_router_id=default_transit_router.transit_router_id,
         vpn_id=default_gateway_vpn_attachment.id,
         zones=[alicloud.cen.TransitRouterVpnAttachmentZoneArgs(
-            zone_id=default_transit_router_available_resources.resources[0].master_zones[0],
+            zone_id=default.resources[0].master_zones[0],
         )])
-    default_gateway_vco_route = alicloud.vpn.GatewayVcoRoute("defaultGatewayVcoRoute",
+    default_gateway_vco_route = alicloud.vpn.GatewayVcoRoute("default",
         route_dest="192.168.12.0/24",
         next_hop=default_transit_router_vpn_attachment.vpn_id,
         vpn_connection_id=default_transit_router_vpn_attachment.vpn_id,
         weight=100)
-    default_gateway_vco_routes = alicloud.vpn.get_gateway_vco_routes_output(vpn_connection_id=default_transit_router_vpn_attachment.vpn_id)
-    pulumi.export("vpnGatewayVcoRouteId1", data["alicloud_vpn_gateway_vco_routes"]["ids"]["routes"][0]["id"])
+    default_get_gateway_vco_routes = alicloud.vpn.get_gateway_vco_routes_output(vpn_connection_id=default_transit_router_vpn_attachment.vpn_id)
+    pulumi.export("vpnGatewayVcoRouteId1", ids["routes"][0]["id"])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -262,17 +263,18 @@ def get_gateway_vco_routes_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_instance = alicloud.cen.Instance("defaultInstance", cen_instance_name=var["name"])
-    default_transit_router = alicloud.cen.TransitRouter("defaultTransitRouter",
+    default_instance = alicloud.cen.Instance("default", cen_instance_name=name)
+    default_transit_router = alicloud.cen.TransitRouter("default",
         cen_id=default_instance.id,
         transit_router_description="desd",
-        transit_router_name=var["name"])
-    default_transit_router_available_resources = alicloud.cen.get_transit_router_available_resources()
-    default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway",
+        transit_router_name=name)
+    default = alicloud.cen.get_transit_router_available_resources()
+    default_customer_gateway = alicloud.vpn.CustomerGateway("default",
+        name=name,
         ip_address="42.104.22.210",
         asn="45014",
         description="testAccVpnConnectionDesc")
-    default_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("defaultGatewayVpnAttachment",
+    default_gateway_vpn_attachment = alicloud.vpn.GatewayVpnAttachment("default",
         customer_gateway_id=default_customer_gateway.id,
         network_type="public",
         local_subnet="0.0.0.0/0",
@@ -311,24 +313,24 @@ def get_gateway_vco_routes_output(ids: Optional[pulumi.Input[Optional[Sequence[s
         ),
         enable_dpd=True,
         enable_nat_traversal=True,
-        vpn_attachment_name=var["name"])
-    default_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("defaultTransitRouterVpnAttachment",
+        vpn_attachment_name=name)
+    default_transit_router_vpn_attachment = alicloud.cen.TransitRouterVpnAttachment("default",
         auto_publish_route_enabled=False,
-        transit_router_attachment_description=var["name"],
-        transit_router_attachment_name=var["name"],
+        transit_router_attachment_description=name,
+        transit_router_attachment_name=name,
         cen_id=default_transit_router.cen_id,
         transit_router_id=default_transit_router.transit_router_id,
         vpn_id=default_gateway_vpn_attachment.id,
         zones=[alicloud.cen.TransitRouterVpnAttachmentZoneArgs(
-            zone_id=default_transit_router_available_resources.resources[0].master_zones[0],
+            zone_id=default.resources[0].master_zones[0],
         )])
-    default_gateway_vco_route = alicloud.vpn.GatewayVcoRoute("defaultGatewayVcoRoute",
+    default_gateway_vco_route = alicloud.vpn.GatewayVcoRoute("default",
         route_dest="192.168.12.0/24",
         next_hop=default_transit_router_vpn_attachment.vpn_id,
         vpn_connection_id=default_transit_router_vpn_attachment.vpn_id,
         weight=100)
-    default_gateway_vco_routes = alicloud.vpn.get_gateway_vco_routes_output(vpn_connection_id=default_transit_router_vpn_attachment.vpn_id)
-    pulumi.export("vpnGatewayVcoRouteId1", data["alicloud_vpn_gateway_vco_routes"]["ids"]["routes"][0]["id"])
+    default_get_gateway_vco_routes = alicloud.vpn.get_gateway_vco_routes_output(vpn_connection_id=default_transit_router_vpn_attachment.vpn_id)
+    pulumi.export("vpnGatewayVcoRouteId1", ids["routes"][0]["id"])
     ```
     <!--End PulumiCodeChooser -->
 

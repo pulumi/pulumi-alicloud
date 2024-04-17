@@ -215,7 +215,7 @@ class RocketMQTopic(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
         create_vpc = alicloud.vpc.Network("createVpc",
             description="example",
             cidr_block="172.16.0.0/12",
@@ -223,7 +223,7 @@ class RocketMQTopic(pulumi.CustomResource):
         create_vswitch = alicloud.vpc.Switch("createVswitch",
             description="example",
             vpc_id=create_vpc.id,
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             cidr_block="172.16.0.0/24",
             vswitch_name=name)
         create_instance = alicloud.rocketmq.RocketMQInstance("createInstance",
@@ -252,7 +252,7 @@ class RocketMQTopic(pulumi.CustomResource):
             series_code="professional",
             payment_type="PayAsYouGo",
             period_unit="Month")
-        default_rocket_mq_topic = alicloud.rocketmq.RocketMQTopic("defaultRocketMQTopic",
+        default_rocket_mq_topic = alicloud.rocketmq.RocketMQTopic("default",
             remark="example",
             instance_id=create_instance.id,
             message_type="NORMAL",
@@ -301,7 +301,7 @@ class RocketMQTopic(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
         create_vpc = alicloud.vpc.Network("createVpc",
             description="example",
             cidr_block="172.16.0.0/12",
@@ -309,7 +309,7 @@ class RocketMQTopic(pulumi.CustomResource):
         create_vswitch = alicloud.vpc.Switch("createVswitch",
             description="example",
             vpc_id=create_vpc.id,
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             cidr_block="172.16.0.0/24",
             vswitch_name=name)
         create_instance = alicloud.rocketmq.RocketMQInstance("createInstance",
@@ -338,7 +338,7 @@ class RocketMQTopic(pulumi.CustomResource):
             series_code="professional",
             payment_type="PayAsYouGo",
             period_unit="Month")
-        default_rocket_mq_topic = alicloud.rocketmq.RocketMQTopic("defaultRocketMQTopic",
+        default_rocket_mq_topic = alicloud.rocketmq.RocketMQTopic("default",
             remark="example",
             instance_id=create_instance.id,
             message_type="NORMAL",

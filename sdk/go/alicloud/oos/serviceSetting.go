@@ -42,21 +42,23 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultBucket, err := oss.NewBucket(ctx, "defaultBucket", &oss.BucketArgs{
+//			_, err := oss.NewBucket(ctx, "default", &oss.BucketArgs{
 //				Bucket: pulumi.String(name),
 //				Acl:    pulumi.String("public-read-write"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultProject, err := log.NewProject(ctx, "defaultProject", nil)
+//			defaultProject, err := log.NewProject(ctx, "default", &log.ProjectArgs{
+//				Name: pulumi.String(name),
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = oos.NewServiceSetting(ctx, "defaultServiceSetting", &oos.ServiceSettingArgs{
+//			_, err = oos.NewServiceSetting(ctx, "default", &oos.ServiceSettingArgs{
 //				DeliveryOssEnabled:     pulumi.Bool(true),
 //				DeliveryOssKeyPrefix:   pulumi.String("path1/"),
-//				DeliveryOssBucketName:  defaultBucket.Bucket,
+//				DeliveryOssBucketName:  _default.Bucket,
 //				DeliverySlsEnabled:     pulumi.Bool(true),
 //				DeliverySlsProjectName: defaultProject.Name,
 //			})

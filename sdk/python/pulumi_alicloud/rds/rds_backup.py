@@ -294,14 +294,14 @@ class RdsBackup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_instance = alicloud.rds.Instance("exampleInstance",
+        example = alicloud.rds.Instance("example",
             engine="MySQL",
             engine_version="5.6",
             instance_type="rds.mysql.t1.small",
             instance_storage=30,
             instance_charge_type="Postpaid",
             db_instance_storage_type="local_ssd")
-        example_rds_backup = alicloud.rds.RdsBackup("exampleRdsBackup", db_instance_id=example_instance.id)
+        example_rds_backup = alicloud.rds.RdsBackup("example", db_instance_id=example.id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -348,14 +348,14 @@ class RdsBackup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_instance = alicloud.rds.Instance("exampleInstance",
+        example = alicloud.rds.Instance("example",
             engine="MySQL",
             engine_version="5.6",
             instance_type="rds.mysql.t1.small",
             instance_storage=30,
             instance_charge_type="Postpaid",
             db_instance_storage_type="local_ssd")
-        example_rds_backup = alicloud.rds.RdsBackup("exampleRdsBackup", db_instance_id=example_instance.id)
+        example_rds_backup = alicloud.rds.RdsBackup("example", db_instance_id=example.id)
         ```
         <!--End PulumiCodeChooser -->
 

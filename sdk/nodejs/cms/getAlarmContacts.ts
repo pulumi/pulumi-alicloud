@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *         ids: ["tf-testAccCmsAlarmContact"],
  *     });
  *     return {
- *         "first-contact": data.alicloud_cms_alarm_contacts["this"].contacts,
+ *         "first-contact": _this.contacts,
  *     };
  * }
  * ```
@@ -116,7 +116,7 @@ export interface GetAlarmContactsResult {
  *         ids: ["tf-testAccCmsAlarmContact"],
  *     });
  *     return {
- *         "first-contact": data.alicloud_cms_alarm_contacts["this"].contacts,
+ *         "first-contact": _this.contacts,
  *     };
  * }
  * ```

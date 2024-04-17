@@ -30,9 +30,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudconnect"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -51,41 +48,34 @@ import (
 //			if param := cfg.GetFloat64("cenUid"); param != 0 {
 //				cenUid = param
 //			}
-//			_, err := alicloud.NewProvider(ctx, "default", &alicloud.ProviderArgs{
-//				Region: pulumi.String("cn-shanghai"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			// Method 1: Use assume_role to operate resources in the target cen account, detail see https://registry.terraform.io/providers/aliyun/alicloud/latest/docs#assume-role
-//			_, err = alicloud.NewProvider(ctx, "cenAccount", &alicloud.ProviderArgs{
-//				Region: pulumi.String("cn-hangzhou"),
-//				AssumeRole: &alicloud.ProviderAssumeRoleArgs{
-//					RoleArn: pulumi.String(fmt.Sprintf("acs:ram::%v:role/terraform-example-assume-role", cenUid)),
-//				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultNetwork, err := cloudconnect.NewNetwork(ctx, "defaultNetwork", &cloudconnect.NetworkArgs{
+//			// Method 2: Use the target cen account's access_key, secret_key
+//			//
+//			//	provider "alicloud" {
+//			//	  region     = "cn-hangzhou"
+//			//	  access_key = "access_key"
+//			//	  secret_key = "secret_key"
+//			//	  alias      = "cen_account"
+//			//	}
+//			_, err := cloudconnect.NewNetwork(ctx, "default", &cloudconnect.NetworkArgs{
+//				Name:        pulumi.String(name),
 //				Description: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.0.0/24"),
 //				IsDefault:   pulumi.Bool(true),
-//			}, pulumi.Provider(alicloud.Default))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			cen, err := cen.NewInstance(ctx, "cen", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String(name),
-//			}, pulumi.Provider(alicloud.Cen_account))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudconnect.NewNetworkGrant(ctx, "defaultNetworkGrant", &cloudconnect.NetworkGrantArgs{
-//				CcnId:  defaultNetwork.ID(),
+//			_, err = cloudconnect.NewNetworkGrant(ctx, "default", &cloudconnect.NetworkGrantArgs{
+//				CcnId:  _default.ID(),
 //				CenId:  cen.ID(),
 //				CenUid: pulumi.Float64(cenUid),
-//			}, pulumi.Provider(alicloud.Default))
+//			})
 //			if err != nil {
 //				return err
 //			}

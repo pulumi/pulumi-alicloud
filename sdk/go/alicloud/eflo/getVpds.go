@@ -31,9 +31,9 @@ import (
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // _default, err := eflo.GetVpds(ctx, &eflo.GetVpdsArgs{
 // Ids: interface{}{
-// alicloud_eflo_vpd.Default.Id,
+// defaultAlicloudEfloVpd.Id,
 // },
-// NameRegex: pulumi.StringRef(alicloud_eflo_vpd.Default.Name),
+// NameRegex: pulumi.StringRef(defaultAlicloudEfloVpd.Name),
 // VpdName: pulumi.StringRef("RMC-Terraform-Test"),
 // }, nil);
 // if err != nil {

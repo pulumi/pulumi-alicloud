@@ -11,6 +11,30 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available in v1.194.0+.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "AliyunTerraform";
+ * const _default = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const defaultAccount = new alicloud.resourcemanager.Account("default", {displayName: `${name}-${_default.result}`});
+ * const defaultInstanceMember = new alicloud.cloudfirewall.InstanceMember("default", {
+ *     memberDesc: `${name}-${_default.result}`,
+ *     memberUid: defaultAccount.id,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * Cloud Firewall Instance Member can be imported using the id, e.g.

@@ -129,8 +129,8 @@ def get_instances(description_regex: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    drds_instances_ds = alicloud.drds.get_instances(ids=["drdsabc123456"],
-        name_regex="drds-\\\\d+")
+    drds_instances_ds = alicloud.drds.get_instances(name_regex="drds-\\\\d+",
+        ids=["drdsabc123456"])
     pulumi.export("firstDbInstanceId", drds_instances_ds.instances[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -177,8 +177,8 @@ def get_instances_output(description_regex: Optional[pulumi.Input[Optional[str]]
     import pulumi
     import pulumi_alicloud as alicloud
 
-    drds_instances_ds = alicloud.drds.get_instances(ids=["drdsabc123456"],
-        name_regex="drds-\\\\d+")
+    drds_instances_ds = alicloud.drds.get_instances(name_regex="drds-\\\\d+",
+        ids=["drdsabc123456"])
     pulumi.export("firstDbInstanceId", drds_instances_ds.instances[0].id)
     ```
     <!--End PulumiCodeChooser -->

@@ -43,20 +43,20 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultMonitorGroup, err := cms.NewMonitorGroup(ctx, "defaultMonitorGroup", &cms.MonitorGroupArgs{
+//			defaultMonitorGroup, err := cms.NewMonitorGroup(ctx, "default", &cms.MonitorGroupArgs{
 //				MonitorGroupName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
@@ -68,7 +68,7 @@ import (
 //					&cms.MonitorGroupInstancesInstanceArgs{
 //						InstanceId:   defaultNetwork.ID(),
 //						InstanceName: pulumi.String(name),
-//						RegionId:     pulumi.String(defaultRegions.Regions[0].Id),
+//						RegionId:     pulumi.String(_default.Regions[0].Id),
 //						Category:     pulumi.String("vpc"),
 //					},
 //				},

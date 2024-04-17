@@ -23,7 +23,10 @@ namespace Pulumi.AliCloud.Pvtz
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var zone = new AliCloud.Pvtz.Zone("zone");
+    ///     var zone = new AliCloud.Pvtz.Zone("zone", new()
+    ///     {
+    ///         Name = "foo.test.com",
+    ///     });
     /// 
     ///     var foo = new AliCloud.Pvtz.ZoneRecord("foo", new()
     ///     {

@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example-config-name";
- * const defaultRegions = alicloud.getRegions({
+ * const default = alicloud.getRegions({
  *     current: true,
  * });
  * const rule1 = new alicloud.cfg.Rule("rule1", {
@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  *     sourceIdentifier: "ram-user-ak-create-date-expired-check",
  *     riskLevel: 1,
  *     maximumExecutionFrequency: "TwentyFour_Hours",
- *     regionIdsScope: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     regionIdsScope: _default.then(_default => _default.regions?.[0]?.id),
  *     configRuleTriggerTypes: "ScheduledNotification",
  *     resourceTypesScopes: ["ACS::RAM::User"],
  *     ruleName: "ciscompliancecheck_ram-user-ak-create-date-expired-check",
@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  *     sourceOwner: "ALIYUN",
  *     sourceIdentifier: "adb-cluster-maintain-time-check",
  *     riskLevel: 2,
- *     regionIdsScope: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     regionIdsScope: _default.then(_default => _default.regions?.[0]?.id),
  *     configRuleTriggerTypes: "ScheduledNotification",
  *     resourceTypesScopes: ["ACS::ADB::DBCluster"],
  *     ruleName: "governance-evaluation-adb-cluster-maintain-time-check",
@@ -54,7 +54,7 @@ import * as utilities from "../utilities";
  *         maintainTimes: "02:00-04:00,06:00-08:00,12:00-13:00",
  *     },
  * });
- * const defaultCompliancePack = new alicloud.cfg.CompliancePack("defaultCompliancePack", {
+ * const defaultCompliancePack = new alicloud.cfg.CompliancePack("default", {
  *     compliancePackName: name,
  *     description: "CloudGovernanceCenter evaluation",
  *     riskLevel: 2,

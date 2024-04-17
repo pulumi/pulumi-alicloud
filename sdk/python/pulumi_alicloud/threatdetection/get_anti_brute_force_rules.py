@@ -108,6 +108,29 @@ def get_anti_brute_force_rules(ids: Optional[Sequence[str]] = None,
 
     > **NOTE:** Available since v1.195.0.
 
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "example_value"
+    default_anti_brute_force_rule = alicloud.threatdetection.AntiBruteForceRule("default",
+        anti_brute_force_rule_name=name,
+        forbidden_time=360,
+        uuid_lists=["7567806c-4ec5-4597-9543-7c9543381a13"],
+        fail_count=80,
+        span=10)
+    default = default_anti_brute_force_rule.id.apply(lambda id: alicloud.threatdetection.get_anti_brute_force_rules_output(ids=[id],
+        name_regex=default_anti_brute_force_rule.name))
+    pulumi.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default.rules[0].id)
+    ```
+    <!--End PulumiCodeChooser -->
+
 
     :param Sequence[str] ids: A list of Anti-Brute Force Rule IDs.
     :param str name_regex: A regex string to filter results by the name of the defense rule.
@@ -138,6 +161,29 @@ def get_anti_brute_force_rules_output(ids: Optional[pulumi.Input[Optional[Sequen
     This data source provides Threat Detection Anti Brute Force Rule available to the user.[What is Anti Brute Force Rule](https://www.alibabacloud.com/help/en/security-center/latest/api-sas-2018-12-03-createantibruteforcerule)
 
     > **NOTE:** Available since v1.195.0.
+
+    ## Example Usage
+
+    <!--Start PulumiCodeChooser -->
+    ```python
+    import pulumi
+    import pulumi_alicloud as alicloud
+
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "example_value"
+    default_anti_brute_force_rule = alicloud.threatdetection.AntiBruteForceRule("default",
+        anti_brute_force_rule_name=name,
+        forbidden_time=360,
+        uuid_lists=["7567806c-4ec5-4597-9543-7c9543381a13"],
+        fail_count=80,
+        span=10)
+    default = default_anti_brute_force_rule.id.apply(lambda id: alicloud.threatdetection.get_anti_brute_force_rules_output(ids=[id],
+        name_regex=default_anti_brute_force_rule.name))
+    pulumi.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default.rules[0].id)
+    ```
+    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Anti-Brute Force Rule IDs.

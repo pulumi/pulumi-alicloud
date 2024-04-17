@@ -28,8 +28,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.BucketObject;
@@ -49,13 +49,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
  *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
- *             .bucket(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *             .bucket(String.format(&#34;terraform-example-%s&#34;, default_.result()))
  *             .build());
  * 
  *         // If you upload the function by OSS Bucket, you need to specify path can&#39;t upload by content.
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var example = new LayerVersion(&#34;example&#34;, LayerVersionArgs.builder()        
- *             .layerName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;terraform-example-%s&#34;, result)))
+ *             .layerName(String.format(&#34;terraform-example-%s&#34;, default_.result()))
  *             .compatibleRuntimes(&#34;python2.7&#34;)
  *             .ossBucketName(defaultBucket.bucket())
  *             .ossObjectName(defaultBucketObject.key())

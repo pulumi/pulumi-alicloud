@@ -270,7 +270,7 @@ public final class SaeFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
@@ -282,7 +282,7 @@ public final class SaeFunctions {
      *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
      *             .vpcId(vpc.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
@@ -305,11 +305,11 @@ public final class SaeFunctions {
      *             .memory(&#34;2048&#34;)
      *             .build());
      * 
-     *         final var defaultApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *         final var defaultGetApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export(&#34;saeApplicationId&#34;, defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultApplications -&gt; defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
+     *         ctx.export(&#34;saeApplicationId&#34;, defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultGetApplications -&gt; defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
      *     }
      * }
      * ```
@@ -362,7 +362,7 @@ public final class SaeFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
@@ -374,7 +374,7 @@ public final class SaeFunctions {
      *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
      *             .vpcId(vpc.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
@@ -397,11 +397,11 @@ public final class SaeFunctions {
      *             .memory(&#34;2048&#34;)
      *             .build());
      * 
-     *         final var defaultApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *         final var defaultGetApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export(&#34;saeApplicationId&#34;, defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultApplications -&gt; defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
+     *         ctx.export(&#34;saeApplicationId&#34;, defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultGetApplications -&gt; defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
      *     }
      * }
      * ```
@@ -454,7 +454,7 @@ public final class SaeFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
@@ -466,7 +466,7 @@ public final class SaeFunctions {
      *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
      *             .vpcId(vpc.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
@@ -489,11 +489,11 @@ public final class SaeFunctions {
      *             .memory(&#34;2048&#34;)
      *             .build());
      * 
-     *         final var defaultApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *         final var defaultGetApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export(&#34;saeApplicationId&#34;, defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultApplications -&gt; defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
+     *         ctx.export(&#34;saeApplicationId&#34;, defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultGetApplications -&gt; defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
      *     }
      * }
      * ```
@@ -546,7 +546,7 @@ public final class SaeFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
@@ -558,7 +558,7 @@ public final class SaeFunctions {
      *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
      *             .vpcId(vpc.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
@@ -581,11 +581,11 @@ public final class SaeFunctions {
      *             .memory(&#34;2048&#34;)
      *             .build());
      * 
-     *         final var defaultApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *         final var defaultGetApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export(&#34;saeApplicationId&#34;, defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultApplications -&gt; defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
+     *         ctx.export(&#34;saeApplicationId&#34;, defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultGetApplications -&gt; defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
      *     }
      * }
      * ```
@@ -638,7 +638,7 @@ public final class SaeFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
@@ -650,7 +650,7 @@ public final class SaeFunctions {
      *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
      *             .vpcId(vpc.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
@@ -673,11 +673,11 @@ public final class SaeFunctions {
      *             .memory(&#34;2048&#34;)
      *             .build());
      * 
-     *         final var defaultApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *         final var defaultGetApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export(&#34;saeApplicationId&#34;, defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultApplications -&gt; defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
+     *         ctx.export(&#34;saeApplicationId&#34;, defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultGetApplications -&gt; defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
      *     }
      * }
      * ```
@@ -730,7 +730,7 @@ public final class SaeFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testacc&#34;);
-     *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;VSwitch&#34;)
      *             .build());
      * 
@@ -742,7 +742,7 @@ public final class SaeFunctions {
      *         var vsw = new Switch(&#34;vsw&#34;, SwitchArgs.builder()        
      *             .vpcId(vpc.id())
      *             .cidrBlock(&#34;172.16.0.0/24&#34;)
-     *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .zoneId(default_.zones()[0].id())
      *             .vswitchName(name)
      *             .build());
      * 
@@ -765,11 +765,11 @@ public final class SaeFunctions {
      *             .memory(&#34;2048&#34;)
      *             .build());
      * 
-     *         final var defaultApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
+     *         final var defaultGetApplications = SaeFunctions.getApplications(GetApplicationsArgs.builder()
      *             .ids(defaultApplication.id())
      *             .build());
      * 
-     *         ctx.export(&#34;saeApplicationId&#34;, defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultApplications -&gt; defaultApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
+     *         ctx.export(&#34;saeApplicationId&#34;, defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult).applyValue(defaultGetApplications -&gt; defaultGetApplications.applyValue(getApplicationsResult -&gt; getApplicationsResult.applications()[0].id())));
      *     }
      * }
      * ```
@@ -817,7 +817,7 @@ public final class SaeFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var configMapName = config.get(&#34;configMapName&#34;).orElse(&#34;examplename&#34;);
-     *         var exampleNamespace = new Namespace(&#34;exampleNamespace&#34;, NamespaceArgs.builder()        
+     *         var example = new Namespace(&#34;example&#34;, NamespaceArgs.builder()        
      *             .namespaceId(&#34;cn-hangzhou:yourname&#34;)
      *             .namespaceName(&#34;example_value&#34;)
      *             .namespaceDescription(&#34;your_description&#34;)
@@ -829,11 +829,12 @@ public final class SaeFunctions {
      *                     jsonProperty(&#34;env.home&#34;, &#34;/root&#34;),
      *                     jsonProperty(&#34;env.shell&#34;, &#34;/bin/sh&#34;)
      *                 )))
-     *             .namespaceId(exampleNamespace.namespaceId())
+     *             .name(configMapName)
+     *             .namespaceId(example.namespaceId())
      *             .build());
      * 
      *         final var nameRegex = SaeFunctions.getConfigMaps(GetConfigMapsArgs.builder()
-     *             .namespaceId(exampleNamespace.namespaceId())
+     *             .namespaceId(example.namespaceId())
      *             .nameRegex(&#34;^example&#34;)
      *             .build());
      * 
@@ -885,7 +886,7 @@ public final class SaeFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var configMapName = config.get(&#34;configMapName&#34;).orElse(&#34;examplename&#34;);
-     *         var exampleNamespace = new Namespace(&#34;exampleNamespace&#34;, NamespaceArgs.builder()        
+     *         var example = new Namespace(&#34;example&#34;, NamespaceArgs.builder()        
      *             .namespaceId(&#34;cn-hangzhou:yourname&#34;)
      *             .namespaceName(&#34;example_value&#34;)
      *             .namespaceDescription(&#34;your_description&#34;)
@@ -897,11 +898,12 @@ public final class SaeFunctions {
      *                     jsonProperty(&#34;env.home&#34;, &#34;/root&#34;),
      *                     jsonProperty(&#34;env.shell&#34;, &#34;/bin/sh&#34;)
      *                 )))
-     *             .namespaceId(exampleNamespace.namespaceId())
+     *             .name(configMapName)
+     *             .namespaceId(example.namespaceId())
      *             .build());
      * 
      *         final var nameRegex = SaeFunctions.getConfigMaps(GetConfigMapsArgs.builder()
-     *             .namespaceId(exampleNamespace.namespaceId())
+     *             .namespaceId(example.namespaceId())
      *             .nameRegex(&#34;^example&#34;)
      *             .build());
      * 
@@ -953,7 +955,7 @@ public final class SaeFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var configMapName = config.get(&#34;configMapName&#34;).orElse(&#34;examplename&#34;);
-     *         var exampleNamespace = new Namespace(&#34;exampleNamespace&#34;, NamespaceArgs.builder()        
+     *         var example = new Namespace(&#34;example&#34;, NamespaceArgs.builder()        
      *             .namespaceId(&#34;cn-hangzhou:yourname&#34;)
      *             .namespaceName(&#34;example_value&#34;)
      *             .namespaceDescription(&#34;your_description&#34;)
@@ -965,11 +967,12 @@ public final class SaeFunctions {
      *                     jsonProperty(&#34;env.home&#34;, &#34;/root&#34;),
      *                     jsonProperty(&#34;env.shell&#34;, &#34;/bin/sh&#34;)
      *                 )))
-     *             .namespaceId(exampleNamespace.namespaceId())
+     *             .name(configMapName)
+     *             .namespaceId(example.namespaceId())
      *             .build());
      * 
      *         final var nameRegex = SaeFunctions.getConfigMaps(GetConfigMapsArgs.builder()
-     *             .namespaceId(exampleNamespace.namespaceId())
+     *             .namespaceId(example.namespaceId())
      *             .nameRegex(&#34;^example&#34;)
      *             .build());
      * 
@@ -1021,7 +1024,7 @@ public final class SaeFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var configMapName = config.get(&#34;configMapName&#34;).orElse(&#34;examplename&#34;);
-     *         var exampleNamespace = new Namespace(&#34;exampleNamespace&#34;, NamespaceArgs.builder()        
+     *         var example = new Namespace(&#34;example&#34;, NamespaceArgs.builder()        
      *             .namespaceId(&#34;cn-hangzhou:yourname&#34;)
      *             .namespaceName(&#34;example_value&#34;)
      *             .namespaceDescription(&#34;your_description&#34;)
@@ -1033,11 +1036,12 @@ public final class SaeFunctions {
      *                     jsonProperty(&#34;env.home&#34;, &#34;/root&#34;),
      *                     jsonProperty(&#34;env.shell&#34;, &#34;/bin/sh&#34;)
      *                 )))
-     *             .namespaceId(exampleNamespace.namespaceId())
+     *             .name(configMapName)
+     *             .namespaceId(example.namespaceId())
      *             .build());
      * 
      *         final var nameRegex = SaeFunctions.getConfigMaps(GetConfigMapsArgs.builder()
-     *             .namespaceId(exampleNamespace.namespaceId())
+     *             .namespaceId(example.namespaceId())
      *             .nameRegex(&#34;^example&#34;)
      *             .build());
      * 

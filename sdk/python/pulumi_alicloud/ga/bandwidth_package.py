@@ -631,12 +631,12 @@ class BandwidthPackage(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.ga.BandwidthPackage("example",
-            auto_pay=True,
             bandwidth=20,
+            type="Basic",
             bandwidth_type="Basic",
             duration="1",
-            ratio=30,
-            type="Basic")
+            auto_pay=True,
+            ratio=30)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -694,12 +694,12 @@ class BandwidthPackage(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.ga.BandwidthPackage("example",
-            auto_pay=True,
             bandwidth=20,
+            type="Basic",
             bandwidth_type="Basic",
             duration="1",
-            ratio=30,
-            type="Basic")
+            auto_pay=True,
+            ratio=30)
         ```
         <!--End PulumiCodeChooser -->
 

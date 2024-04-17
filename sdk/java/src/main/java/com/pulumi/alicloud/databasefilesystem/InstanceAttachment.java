@@ -62,41 +62,42 @@ import javax.annotation.Nullable;
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var zoneId = &#34;cn-hangzhou-i&#34;;
  * 
- *         final var exampleInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+ *         final var example = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
  *             .availabilityZone(zoneId)
  *             .instanceTypeFamily(&#34;ecs.g7se&#34;)
  *             .build());
  * 
- *         final var exampleImages = EcsFunctions.getImages(GetImagesArgs.builder()
- *             .instanceType(exampleInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[exampleInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()).length() - 1].id())
+ *         final var exampleGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+ *             .instanceType(example.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[example.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()).length() - 1].id())
  *             .nameRegex(&#34;^aliyun_2_1903_x64_20G_alibase_20231221.vhd&#34;)
  *             .owners(&#34;system&#34;)
  *             .build());
  * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
  *             .nameRegex(&#34;^default-NODELETING$&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(default_.ids()[0])
  *             .zoneId(zoneId)
  *             .build());
  * 
  *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .name(name)
+ *             .vpcId(default_.ids()[0])
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
  *             .availabilityZone(zoneId)
  *             .instanceName(name)
- *             .imageId(exampleImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
- *             .instanceType(exampleInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[exampleInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()).length() - 1].id())
+ *             .imageId(exampleGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+ *             .instanceType(example.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes())[example.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()).length() - 1].id())
  *             .securityGroups(exampleSecurityGroup.id())
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
  *             .systemDiskCategory(&#34;cloud_essd&#34;)
  *             .build());
  * 
- *         var defaultDatabasefilesystem_instanceInstance = new Instance(&#34;defaultDatabasefilesystem/instanceInstance&#34;, InstanceArgs.builder()        
+ *         var defaultInstance2 = new Instance(&#34;defaultInstance2&#34;, InstanceArgs.builder()        
  *             .category(&#34;enterprise&#34;)
  *             .zoneId(defaultInstance.availabilityZone())
  *             .performanceLevel(&#34;PL1&#34;)
@@ -106,7 +107,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleInstanceAttachment = new InstanceAttachment(&#34;exampleInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
  *             .ecsId(defaultInstance.id())
- *             .instanceId(defaultDatabasefilesystem / instanceInstance.id())
+ *             .instanceId(defaultInstance2.id())
  *             .build());
  * 
  *     }

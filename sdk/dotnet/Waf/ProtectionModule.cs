@@ -29,12 +29,12 @@ namespace Pulumi.AliCloud.Waf
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultInstances = AliCloud.Waf.GetInstances.Invoke();
+    ///     var @default = AliCloud.Waf.GetInstances.Invoke();
     /// 
-    ///     var defaultDomain = new AliCloud.Waf.Domain("defaultDomain", new()
+    ///     var defaultDomain = new AliCloud.Waf.Domain("default", new()
     ///     {
     ///         DomainName = "you domain",
-    ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+    ///         InstanceId = @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0])),
     ///         IsAccessProduct = "On",
     ///         SourceIps = new[]
     ///         {
@@ -66,9 +66,9 @@ namespace Pulumi.AliCloud.Waf
     ///         },
     ///     });
     /// 
-    ///     var defaultProtectionModule = new AliCloud.Waf.ProtectionModule("defaultProtectionModule", new()
+    ///     var defaultProtectionModule = new AliCloud.Waf.ProtectionModule("default", new()
     ///     {
-    ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+    ///         InstanceId = @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0])),
     ///         Domain = defaultDomain.DomainName,
     ///         DefenseType = "ac_cc",
     ///         Mode = 0,

@@ -62,17 +62,17 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         final var defaultZones = GpdbFunctions.getZones();
+ *         final var defaultGetZones = GpdbFunctions.getZones();
  * 
- *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+ *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
  *             .nameRegex(&#34;^default-NODELETING$&#34;)
  *             .build());
  * 
- *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
@@ -82,15 +82,15 @@ import javax.annotation.Nullable;
  *             .description(name)
  *             .engine(&#34;gpdb&#34;)
  *             .engineVersion(&#34;6.0&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
  *             .instanceNetworkType(&#34;VPC&#34;)
  *             .instanceSpec(&#34;2C16G&#34;)
  *             .paymentType(&#34;PayAsYouGo&#34;)
  *             .segStorageType(&#34;cloud_essd&#34;)
  *             .segNodeNum(4)
  *             .storageSize(50)
- *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
- *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+ *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+ *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
  *             .ipWhitelists(InstanceIpWhitelistArgs.builder()
  *                 .securityIpList(&#34;127.0.0.1&#34;)
  *                 .build())

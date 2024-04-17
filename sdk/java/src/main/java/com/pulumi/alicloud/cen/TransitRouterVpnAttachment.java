@@ -73,17 +73,18 @@ import javax.annotation.Nullable;
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
  *         final var default = CenFunctions.getTransitRouterAvailableResources();
  * 
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
  *             .cenInstanceName(name)
  *             .build());
  * 
  *         var exampleTransitRouter = new TransitRouter(&#34;exampleTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .cenId(exampleInstance.id())
+ *             .cenId(example.id())
  *             .transitRouterDescription(name)
  *             .transitRouterName(name)
  *             .build());
  * 
  *         var exampleCustomerGateway = new CustomerGateway(&#34;exampleCustomerGateway&#34;, CustomerGatewayArgs.builder()        
+ *             .name(name)
  *             .ipAddress(&#34;42.104.22.210&#34;)
  *             .asn(&#34;45014&#34;)
  *             .description(name)

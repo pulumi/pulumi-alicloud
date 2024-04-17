@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
- *         final var defaultHoneypotImages = ThreatdetectionFunctions.getHoneypotImages(GetHoneypotImagesArgs.builder()
+ *         final var default = ThreatdetectionFunctions.getHoneypotImages(GetHoneypotImagesArgs.builder()
  *             .nameRegex(&#34;^ruoyi&#34;)
  *             .build());
  * 
@@ -64,8 +64,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultHoneyPot = new HoneyPot(&#34;defaultHoneyPot&#34;, HoneyPotArgs.builder()        
- *             .honeypotImageName(defaultHoneypotImages.applyValue(getHoneypotImagesResult -&gt; getHoneypotImagesResult.images()[0].honeypotImageName()))
- *             .honeypotImageId(defaultHoneypotImages.applyValue(getHoneypotImagesResult -&gt; getHoneypotImagesResult.images()[0].honeypotImageId()))
+ *             .honeypotImageName(default_.images()[0].honeypotImageName())
+ *             .honeypotImageId(default_.images()[0].honeypotImageId())
  *             .honeypotName(name)
  *             .nodeId(defaultHoneypotNode.id())
  *             .build());

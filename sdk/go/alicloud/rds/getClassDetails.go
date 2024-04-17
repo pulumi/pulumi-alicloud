@@ -33,10 +33,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := rds.GetClassDetails(ctx, &rds.GetClassDetailsArgs{
-//				ClassCode:     "mysql.n4.medium.2c",
 //				CommodityCode: "bards",
-//				Engine:        "MySQL",
+//				ClassCode:     "mysql.n4.medium.2c",
 //				EngineVersion: "8.0",
+//				Engine:        "MySQL",
 //			}, nil)
 //			if err != nil {
 //				return err

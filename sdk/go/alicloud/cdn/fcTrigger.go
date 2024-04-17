@@ -38,11 +38,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAccount, err := alicloud.GetAccount(ctx, nil, nil)
+//			_default, err := alicloud.GetAccount(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			defaultGetRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
@@ -52,9 +52,9 @@ import (
 //				EventMetaName:    pulumi.String("LogFileCreated"),
 //				EventMetaVersion: pulumi.String("1.0.0"),
 //				Notes:            pulumi.String("example_value"),
-//				RoleArn:          pulumi.String(fmt.Sprintf("acs:ram::%v:role/aliyuncdneventnotificationrole", defaultAccount.Id)),
-//				SourceArn:        pulumi.String(fmt.Sprintf("acs:cdn:*:%v:domain/example.com", defaultAccount.Id)),
-//				TriggerArn:       pulumi.String(fmt.Sprintf("acs:fc:%v:%v:services/FCTestService/functions/printEvent/triggers/testtrigger", defaultRegions.Regions[0].Id, defaultAccount.Id)),
+//				RoleArn:          pulumi.String(fmt.Sprintf("acs:ram::%v:role/aliyuncdneventnotificationrole", _default.Id)),
+//				SourceArn:        pulumi.String(fmt.Sprintf("acs:cdn:*:%v:domain/example.com", _default.Id)),
+//				TriggerArn:       pulumi.String(fmt.Sprintf("acs:fc:%v:%v:services/FCTestService/functions/printEvent/triggers/testtrigger", defaultGetRegions.Regions[0].Id, _default.Id)),
 //			})
 //			if err != nil {
 //				return err

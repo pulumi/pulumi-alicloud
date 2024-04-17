@@ -54,8 +54,8 @@ import javax.annotation.Nullable;
  *             .customLineName(&#34;tf-example&#34;)
  *             .domainName(&#34;alicloud-provider.com&#34;)
  *             .ipSegmentLists(CustomLineIpSegmentListArgs.builder()
- *                 .endIp(&#34;192.0.2.125&#34;)
  *                 .startIp(&#34;192.0.2.123&#34;)
+ *                 .endIp(&#34;192.0.2.125&#34;)
  *                 .build())
  *             .build());
  * 

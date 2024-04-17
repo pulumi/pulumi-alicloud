@@ -18,14 +18,15 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tfexamplename";
- * const defaultUser = new alicloud.ram.User("defaultUser", {
+ * const _default = new alicloud.ram.User("default", {
+ *     name: name,
  *     displayName: name,
  *     mobile: "86-18688888888",
  *     email: "hello.uuu@aaa.com",
  *     comments: "example",
  * });
- * const defaultEnterpriseUser = new alicloud.dms.EnterpriseUser("defaultEnterpriseUser", {
- *     uid: defaultUser.id,
+ * const defaultEnterpriseUser = new alicloud.dms.EnterpriseUser("default", {
+ *     uid: _default.id,
  *     userName: name,
  *     roleNames: ["DBA"],
  *     mobile: "86-18688888888",

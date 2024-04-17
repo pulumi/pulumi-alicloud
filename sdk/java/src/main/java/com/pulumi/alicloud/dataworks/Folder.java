@@ -48,8 +48,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new Folder(&#34;example&#34;, FolderArgs.builder()        
- *             .folderPath(&#34;Business Flow/tfTestAcc/folderDi/tftest1&#34;)
  *             .projectId(&#34;320687&#34;)
+ *             .folderPath(&#34;Business Flow/tfTestAcc/folderDi/tftest1&#34;)
  *             .build());
  * 
  *     }

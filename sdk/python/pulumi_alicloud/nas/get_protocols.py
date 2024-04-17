@@ -99,9 +99,9 @@ def get_protocols(output_file: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.nas.get_protocols(output_file="protocols.txt",
-        type="Performance",
-        zone_id="cn-beijing-e")
+    default = alicloud.nas.get_protocols(type="Performance",
+        zone_id="cn-beijing-e",
+        output_file="protocols.txt")
     pulumi.export("nasProtocolsProtocol", default.protocols[0])
     ```
     <!--End PulumiCodeChooser -->
@@ -143,9 +143,9 @@ def get_protocols_output(output_file: Optional[pulumi.Input[Optional[str]]] = No
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.nas.get_protocols(output_file="protocols.txt",
-        type="Performance",
-        zone_id="cn-beijing-e")
+    default = alicloud.nas.get_protocols(type="Performance",
+        zone_id="cn-beijing-e",
+        output_file="protocols.txt")
     pulumi.export("nasProtocolsProtocol", default.protocols[0])
     ```
     <!--End PulumiCodeChooser -->

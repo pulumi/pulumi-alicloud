@@ -45,8 +45,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import java.util.List;
@@ -62,14 +62,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
  *         var bucket_acl = new Bucket(&#34;bucket-acl&#34;, BucketArgs.builder()        
+ *             .bucket(String.format(&#34;example-value-%s&#34;, default_.result()))
  *             .acl(&#34;private&#34;)
- *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-value-%s&#34;, result)))
  *             .build());
  * 
  *     }
@@ -86,8 +86,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.inputs.BucketWebsiteArgs;
@@ -104,16 +104,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
  *         var bucket_website = new Bucket(&#34;bucket-website&#34;, BucketArgs.builder()        
- *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-value-%s&#34;, result)))
+ *             .bucket(String.format(&#34;example-value-%s&#34;, default_.result()))
  *             .website(BucketWebsiteArgs.builder()
- *                 .errorDocument(&#34;error.html&#34;)
  *                 .indexDocument(&#34;index.html&#34;)
+ *                 .errorDocument(&#34;error.html&#34;)
  *                 .build())
  *             .build());
  * 
@@ -131,8 +131,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.inputs.BucketLoggingArgs;
@@ -149,18 +149,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
  *         var bucket_target = new Bucket(&#34;bucket-target&#34;, BucketArgs.builder()        
- *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-value-%s&#34;, result)))
+ *             .bucket(String.format(&#34;example-value-%s&#34;, default_.result()))
  *             .acl(&#34;public-read&#34;)
  *             .build());
  * 
  *         var bucket_logging = new Bucket(&#34;bucket-logging&#34;, BucketArgs.builder()        
- *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-logging-%s&#34;, result)))
+ *             .bucket(String.format(&#34;example-logging-%s&#34;, default_.result()))
  *             .logging(BucketLoggingArgs.builder()
  *                 .targetBucket(bucket_target.id())
  *                 .targetPrefix(&#34;log/&#34;)
@@ -181,8 +181,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.oss.Bucket;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.inputs.BucketRefererConfigArgs;
@@ -199,14 +199,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
  *         var bucket_referer = new Bucket(&#34;bucket-referer&#34;, BucketArgs.builder()        
+ *             .bucket(String.format(&#34;example-value-%s&#34;, default_.result()))
  *             .acl(&#34;private&#34;)
- *             .bucket(default_.result().applyValue(result -&gt; String.format(&#34;example-value-%s&#34;, result)))
  *             .refererConfig(BucketRefererConfigArgs.builder()
  *                 .allowEmpty(false)
  *                 .referers(                

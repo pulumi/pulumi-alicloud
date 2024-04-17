@@ -22,11 +22,11 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultAccounts = alicloud.resourcemanager.getAccounts({});
- * const defaultResourceShare = new alicloud.resourcemanager.ResourceShare("defaultResourceShare", {resourceShareName: name});
- * const defaultSharedTarget = new alicloud.resourcemanager.SharedTarget("defaultSharedTarget", {
+ * const default = alicloud.resourcemanager.getAccounts({});
+ * const defaultResourceShare = new alicloud.resourcemanager.ResourceShare("default", {resourceShareName: name});
+ * const defaultSharedTarget = new alicloud.resourcemanager.SharedTarget("default", {
  *     resourceShareId: defaultResourceShare.id,
- *     targetId: defaultAccounts.then(defaultAccounts => defaultAccounts.ids?.[0]),
+ *     targetId: _default.then(_default => _default.ids?.[0]),
  * });
  * const ids = alicloud.resourcemanager.getSharedTargetsOutput({
  *     ids: [defaultSharedTarget.targetId],
@@ -112,11 +112,11 @@ export interface GetSharedTargetsResult {
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultAccounts = alicloud.resourcemanager.getAccounts({});
- * const defaultResourceShare = new alicloud.resourcemanager.ResourceShare("defaultResourceShare", {resourceShareName: name});
- * const defaultSharedTarget = new alicloud.resourcemanager.SharedTarget("defaultSharedTarget", {
+ * const default = alicloud.resourcemanager.getAccounts({});
+ * const defaultResourceShare = new alicloud.resourcemanager.ResourceShare("default", {resourceShareName: name});
+ * const defaultSharedTarget = new alicloud.resourcemanager.SharedTarget("default", {
  *     resourceShareId: defaultResourceShare.id,
- *     targetId: defaultAccounts.then(defaultAccounts => defaultAccounts.ids?.[0]),
+ *     targetId: _default.then(_default => _default.ids?.[0]),
  * });
  * const ids = alicloud.resourcemanager.getSharedTargetsOutput({
  *     ids: [defaultSharedTarget.targetId],

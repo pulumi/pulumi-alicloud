@@ -17,6 +17,25 @@ import * as utilities from "../utilities";
  *   - All member accounts must be removed from the resource directory.
  *   - All folders except the root folder must be deleted from the resource directory.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * export = async () => {
+ *     const default = await alicloud.resourcemanager.getResourceDirectories({});
+ *     const defaultResourceDirectory: alicloud.resourcemanager.ResourceDirectory[] = [];
+ *     for (const range = {value: 0}; range.value < (_default.directories.length > 0 ? 0 : 1); range.value++) {
+ *         defaultResourceDirectory.push(new alicloud.resourcemanager.ResourceDirectory(`default-${range.value}`, {status: "Enabled"}));
+ *     }
+ * }
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * Resource Manager Resource Directory can be imported using the id, e.g.

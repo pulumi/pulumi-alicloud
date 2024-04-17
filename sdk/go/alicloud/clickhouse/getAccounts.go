@@ -30,55 +30,53 @@ import (
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			cfg := config.New(ctx, "")
-//			name := "testaccountname"
-//			if param := cfg.Get("name"); param != "" {
-//				name = param
-//			}
-//			pwd := "Tf-testpwd"
-//			if param := cfg.Get("pwd"); param != "" {
-//				pwd = param
-//			}
-//			defaultDbCluster, err := clickhouse.NewDbCluster(ctx, "defaultDbCluster", &clickhouse.DbClusterArgs{
-//				DbClusterVersion:     pulumi.String("20.3.10.75"),
-//				Category:             pulumi.String("Basic"),
-//				DbClusterClass:       pulumi.String("S8"),
-//				DbClusterNetworkType: pulumi.String("vpc"),
-//				DbClusterDescription: pulumi.String(name),
-//				DbNodeGroupCount:     pulumi.Int(1),
-//				PaymentType:          pulumi.String("PayAsYouGo"),
-//				DbNodeStorage:        pulumi.String("500"),
-//				StorageType:          pulumi.String("cloud_essd"),
-//				VswitchId:            pulumi.String("your_vswitch_id"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultAccount, err := clickhouse.NewAccount(ctx, "defaultAccount", &clickhouse.AccountArgs{
-//				DbClusterId:        defaultDbCluster.ID(),
-//				AccountDescription: pulumi.String("your_description"),
-//				AccountName:        pulumi.String(name),
-//				AccountPassword:    pulumi.String(pwd),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultAccounts := clickhouse.GetAccountsOutput(ctx, clickhouse.GetAccountsOutputArgs{
-//				Ids: pulumi.StringArray{
-//					defaultAccount.ID(),
-//				},
-//				DbClusterId: defaultDbCluster.ID(),
-//			}, nil)
-//			ctx.Export("accountId", defaultAccounts.ApplyT(func(defaultAccounts clickhouse.GetAccountsResult) (*string, error) {
-//				return &defaultAccounts.Ids[0], nil
-//			}).(pulumi.StringPtrOutput))
-//			return nil
-//		})
-//	}
-//
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "testaccountname";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// pwd := "Tf-testpwd";
+// if param := cfg.Get("pwd"); param != ""{
+// pwd = param
+// }
+// defaultDbCluster, err := clickhouse.NewDbCluster(ctx, "default", &clickhouse.DbClusterArgs{
+// DbClusterVersion: pulumi.String("20.3.10.75"),
+// Category: pulumi.String("Basic"),
+// DbClusterClass: pulumi.String("S8"),
+// DbClusterNetworkType: pulumi.String("vpc"),
+// DbClusterDescription: pulumi.String(name),
+// DbNodeGroupCount: pulumi.Int(1),
+// PaymentType: pulumi.String("PayAsYouGo"),
+// DbNodeStorage: pulumi.String("500"),
+// StorageType: pulumi.String("cloud_essd"),
+// VswitchId: pulumi.String("your_vswitch_id"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultAccount, err := clickhouse.NewAccount(ctx, "default", &clickhouse.AccountArgs{
+// DbClusterId: defaultDbCluster.ID(),
+// AccountDescription: pulumi.String("your_description"),
+// AccountName: pulumi.String(name),
+// AccountPassword: pulumi.String(pwd),
+// })
+// if err != nil {
+// return err
+// }
+// _default := clickhouse.GetAccountsOutput(ctx, clickhouse.GetAccountsOutputArgs{
+// Ids: pulumi.StringArray{
+// defaultAccount.ID(),
+// },
+// DbClusterId: defaultDbCluster.ID(),
+// }, nil);
+// ctx.Export("accountId", _default.ApplyT(func(_default clickhouse.GetAccountsResult) (*string, error) {
+// return &default.Ids[0], nil
+// }).(pulumi.StringPtrOutput))
+// return nil
+// })
+// }
 // ```
 // <!--End PulumiCodeChooser -->
 func GetAccounts(ctx *pulumi.Context, args *GetAccountsArgs, opts ...pulumi.InvokeOption) (*GetAccountsResult, error) {

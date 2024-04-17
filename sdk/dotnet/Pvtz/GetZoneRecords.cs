@@ -27,8 +27,8 @@ namespace Pulumi.AliCloud.Pvtz
         /// {
         ///     var recordsDs = AliCloud.Pvtz.GetZoneRecords.Invoke(new()
         ///     {
-        ///         Keyword = alicloud_pvtz_zone_record.Foo.Value,
-        ///         ZoneId = alicloud_pvtz_zone.Basic.Id,
+        ///         ZoneId = basic.Id,
+        ///         Keyword = foo.Value,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -58,8 +58,8 @@ namespace Pulumi.AliCloud.Pvtz
         /// {
         ///     var recordsDs = AliCloud.Pvtz.GetZoneRecords.Invoke(new()
         ///     {
-        ///         Keyword = alicloud_pvtz_zone_record.Foo.Value,
-        ///         ZoneId = alicloud_pvtz_zone.Basic.Id,
+        ///         ZoneId = basic.Id,
+        ///         Keyword = foo.Value,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

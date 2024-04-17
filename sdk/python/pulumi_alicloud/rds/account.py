@@ -521,14 +521,14 @@ class Account(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "dbaccountmysql"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.get_zones(available_resource_creation=creation)
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
         instance = alicloud.rds.Instance("instance",
             engine="MySQL",
@@ -539,6 +539,7 @@ class Account(pulumi.CustomResource):
             instance_name=name)
         account = alicloud.rds.Account("account",
             instance_id=instance.id,
+            name="tftestnormal",
             password="Test12345")
         ```
         <!--End PulumiCodeChooser -->
@@ -590,14 +591,14 @@ class Account(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "dbaccountmysql"
-        default_zones = alicloud.get_zones(available_resource_creation=creation)
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.get_zones(available_resource_creation=creation)
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
         instance = alicloud.rds.Instance("instance",
             engine="MySQL",
@@ -608,6 +609,7 @@ class Account(pulumi.CustomResource):
             instance_name=name)
         account = alicloud.rds.Account("account",
             instance_id=instance.id,
+            name="tftestnormal",
             password="Test12345")
         ```
         <!--End PulumiCodeChooser -->

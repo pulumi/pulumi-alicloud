@@ -18,21 +18,21 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultZones = alicloud.rds.getZones({
+ * const default = alicloud.rds.getZones({
  *     engine: "MySQL",
  *     engineVersion: "5.6",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const defaultInstance = new alicloud.rds.Instance("defaultInstance", {
+ * const defaultInstance = new alicloud.rds.Instance("default", {
  *     engine: "MySQL",
  *     engineVersion: "5.6",
  *     instanceType: "rds.mysql.s1.small",
@@ -40,7 +40,10 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  *     instanceName: name,
  * });
- * const defaultDatabase = new alicloud.rds.Database("defaultDatabase", {instanceId: defaultInstance.id});
+ * const defaultDatabase = new alicloud.rds.Database("default", {
+ *     instanceId: defaultInstance.id,
+ *     name: name,
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

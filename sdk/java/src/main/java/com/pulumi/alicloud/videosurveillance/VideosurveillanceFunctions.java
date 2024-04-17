@@ -334,11 +334,11 @@ public final class VideosurveillanceFunctions {
      *             .pushDomain(&#34;your_push_domain&#34;)
      *             .build());
      * 
-     *         final var defaultSystemGroups = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
+     *         final var default = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
      *             .ids(defaultSystemGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;vsGroup&#34;, defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult).applyValue(defaultSystemGroups -&gt; defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult.ids()[0])));
+     *         ctx.export(&#34;vsGroup&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
      *     }
      * }
      * ```
@@ -389,11 +389,11 @@ public final class VideosurveillanceFunctions {
      *             .pushDomain(&#34;your_push_domain&#34;)
      *             .build());
      * 
-     *         final var defaultSystemGroups = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
+     *         final var default = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
      *             .ids(defaultSystemGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;vsGroup&#34;, defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult).applyValue(defaultSystemGroups -&gt; defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult.ids()[0])));
+     *         ctx.export(&#34;vsGroup&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
      *     }
      * }
      * ```
@@ -444,11 +444,11 @@ public final class VideosurveillanceFunctions {
      *             .pushDomain(&#34;your_push_domain&#34;)
      *             .build());
      * 
-     *         final var defaultSystemGroups = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
+     *         final var default = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
      *             .ids(defaultSystemGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;vsGroup&#34;, defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult).applyValue(defaultSystemGroups -&gt; defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult.ids()[0])));
+     *         ctx.export(&#34;vsGroup&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
      *     }
      * }
      * ```
@@ -499,11 +499,11 @@ public final class VideosurveillanceFunctions {
      *             .pushDomain(&#34;your_push_domain&#34;)
      *             .build());
      * 
-     *         final var defaultSystemGroups = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
+     *         final var default = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
      *             .ids(defaultSystemGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;vsGroup&#34;, defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult).applyValue(defaultSystemGroups -&gt; defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult.ids()[0])));
+     *         ctx.export(&#34;vsGroup&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
      *     }
      * }
      * ```
@@ -554,11 +554,11 @@ public final class VideosurveillanceFunctions {
      *             .pushDomain(&#34;your_push_domain&#34;)
      *             .build());
      * 
-     *         final var defaultSystemGroups = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
+     *         final var default = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
      *             .ids(defaultSystemGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;vsGroup&#34;, defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult).applyValue(defaultSystemGroups -&gt; defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult.ids()[0])));
+     *         ctx.export(&#34;vsGroup&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
      *     }
      * }
      * ```
@@ -609,11 +609,11 @@ public final class VideosurveillanceFunctions {
      *             .pushDomain(&#34;your_push_domain&#34;)
      *             .build());
      * 
-     *         final var defaultSystemGroups = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
+     *         final var default = VideosurveillanceFunctions.getSystemGroups(GetSystemGroupsArgs.builder()
      *             .ids(defaultSystemGroup.id())
      *             .build());
      * 
-     *         ctx.export(&#34;vsGroup&#34;, defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult).applyValue(defaultSystemGroups -&gt; defaultSystemGroups.applyValue(getSystemGroupsResult -&gt; getSystemGroupsResult.ids()[0])));
+     *         ctx.export(&#34;vsGroup&#34;, default_.applyValue(default_ -&gt; default_.ids()[0]));
      *     }
      * }
      * ```

@@ -43,21 +43,21 @@ import (
 // if param := cfg.Get("name"); param != ""{
 // name = param
 // }
-// defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// _default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 // AvailableDiskCategory: pulumi.StringRef("cloud_efficiency"),
 // AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 // }, nil);
 // if err != nil {
 // return err
 // }
-// defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-// AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+// defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
 // InstanceTypeFamily: pulumi.StringRef("ecs.sn1ne"),
 // }, nil);
 // if err != nil {
 // return err
 // }
-// defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
 // NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
 // MostRecent: pulumi.BoolRef(true),
 // Owners: pulumi.StringRef("system"),
@@ -65,23 +65,24 @@ import (
 // if err != nil {
 // return err
 // }
-// defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+// defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 // VpcName: pulumi.String(name),
 // CidrBlock: pulumi.String("172.16.0.0/16"),
 // })
 // if err != nil {
 // return err
 // }
-// defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+// defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 // VpcId: defaultNetwork.ID(),
 // CidrBlock: pulumi.String("172.16.0.0/24"),
-// ZoneId: pulumi.String(defaultZones.Zones[0].Id),
+// ZoneId: pulumi.String(_default.Zones[0].Id),
 // VswitchName: pulumi.String(name),
 // })
 // if err != nil {
 // return err
 // }
-// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+// Name: pulumi.String(name),
 // VpcId: defaultSwitch.VpcId,
 // })
 // if err != nil {
@@ -91,14 +92,14 @@ import (
 // for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
 // splat0 = append(splat0, val0.ID())
 // }
-// defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
-// ImageId: pulumi.String(defaultImages.Images[0].Id),
-// InstanceType: pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+// defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
+// ImageId: pulumi.String(defaultGetImages.Images[0].Id),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 // InstanceName: pulumi.String(name),
 // SecurityGroups: splat0,
 // InternetChargeType: pulumi.String("PayByTraffic"),
 // InternetMaxBandwidthOut: pulumi.Int(10),
-// AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+// AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 // InstanceChargeType: pulumi.String("PostPaid"),
 // SystemDiskCategory: pulumi.String("cloud_efficiency"),
 // VswitchId: defaultSwitch.ID(),
@@ -106,7 +107,7 @@ import (
 // if err != nil {
 // return err
 // }
-// _, err = cloudmonitor.NewServiceMonitoringAgentProcess(ctx, "defaultServiceMonitoringAgentProcess", &cloudmonitor.ServiceMonitoringAgentProcessArgs{
+// _, err = cloudmonitor.NewServiceMonitoringAgentProcess(ctx, "default", &cloudmonitor.ServiceMonitoringAgentProcessArgs{
 // InstanceId: defaultInstance.ID(),
 // ProcessName: pulumi.String(name),
 // ProcessUser: pulumi.String("root"),

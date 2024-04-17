@@ -42,16 +42,16 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			_, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cddc.NewDedicatedHostGroup(ctx, "defaultDedicatedHostGroup", &cddc.DedicatedHostGroupArgs{
+//			_, err = cddc.NewDedicatedHostGroup(ctx, "default", &cddc.DedicatedHostGroupArgs{
 //				Engine:                 pulumi.String("MySQL"),
-//				VpcId:                  defaultNetwork.ID(),
+//				VpcId:                  _default.ID(),
 //				CpuAllocationRatio:     pulumi.Int(101),
 //				MemAllocationRatio:     pulumi.Int(50),
 //				DiskAllocationRatio:    pulumi.Int(200),

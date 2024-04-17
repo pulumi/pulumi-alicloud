@@ -302,10 +302,10 @@ class EipSegmentAddress(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.ecs.EipSegmentAddress("default",
-            bandwidth="5",
             eip_mask="28",
-            internet_charge_type="PayByBandwidth",
+            bandwidth="5",
             isp="BGP",
+            internet_charge_type="PayByBandwidth",
             netmode="public")
         ```
         <!--End PulumiCodeChooser -->
@@ -366,10 +366,10 @@ class EipSegmentAddress(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.ecs.EipSegmentAddress("default",
-            bandwidth="5",
             eip_mask="28",
-            internet_charge_type="PayByBandwidth",
+            bandwidth="5",
             isp="BGP",
+            internet_charge_type="PayByBandwidth",
             netmode="public")
         ```
         <!--End PulumiCodeChooser -->

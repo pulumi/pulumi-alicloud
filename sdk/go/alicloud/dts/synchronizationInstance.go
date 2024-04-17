@@ -36,18 +36,18 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dts.NewSynchronizationInstance(ctx, "defaultSynchronizationInstance", &dts.SynchronizationInstanceArgs{
+//			_, err = dts.NewSynchronizationInstance(ctx, "default", &dts.SynchronizationInstanceArgs{
 //				PaymentType:                   pulumi.String("PayAsYouGo"),
 //				SourceEndpointEngineName:      pulumi.String("MySQL"),
-//				SourceEndpointRegion:          pulumi.String(defaultRegions.Regions[0].Id),
+//				SourceEndpointRegion:          pulumi.String(_default.Regions[0].Id),
 //				DestinationEndpointEngineName: pulumi.String("MySQL"),
-//				DestinationEndpointRegion:     pulumi.String(defaultRegions.Regions[0].Id),
+//				DestinationEndpointRegion:     pulumi.String(_default.Regions[0].Id),
 //				InstanceClass:                 pulumi.String("small"),
 //				SyncArchitecture:              pulumi.String("oneway"),
 //			})

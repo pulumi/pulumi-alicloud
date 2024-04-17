@@ -33,55 +33,56 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     ///     var name = config.Get("name") ?? "tf-example";
     ///     var zoneId = "cn-hangzhou-i";
     /// 
-    ///     var exampleInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     var example = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
     ///         AvailabilityZone = zoneId,
     ///         InstanceTypeFamily = "ecs.g7se",
     ///     });
     /// 
-    ///     var exampleImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     var exampleGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
-    ///         InstanceType = exampleInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[exampleInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length - 1].Id,
+    ///         InstanceType = example.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[example.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length - 1].Id,
     ///         NameRegex = "^aliyun_2_1903_x64_20G_alibase_20231221.vhd",
     ///         Owners = "system",
     ///     });
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var @default = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
     ///         NameRegex = "^default-NODELETING$",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///         ZoneId = zoneId,
     ///     });
     /// 
-    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("exampleSecurityGroup", new()
+    ///     var exampleSecurityGroup = new AliCloud.Ecs.SecurityGroup("example", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         Name = name,
+    ///         VpcId = @default.Apply(@default =&gt; @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])),
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Ecs.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.Ecs.Instance("default", new()
     ///     {
     ///         AvailabilityZone = zoneId,
     ///         InstanceName = name,
-    ///         ImageId = exampleImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
-    ///         InstanceType = Output.Tuple(exampleInstanceTypes, exampleInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length).Apply(values =&gt;
+    ///         ImageId = exampleGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         InstanceType = Output.Tuple(example, example.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length).Apply(values =&gt;
     ///         {
-    ///             var exampleInstanceTypes = values.Item1;
+    ///             var example = values.Item1;
     ///             var length = values.Item2;
-    ///             return exampleInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[length - 1].Id;
+    ///             return example.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[length - 1].Id;
     ///         }),
     ///         SecurityGroups = new[]
     ///         {
     ///             exampleSecurityGroup.Id,
     ///         },
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
     ///         SystemDiskCategory = "cloud_essd",
     ///     });
     /// 
-    ///     var defaultDatabasefilesystem_instanceInstance = new AliCloud.DatabaseFilesystem.Instance("defaultDatabasefilesystem/instanceInstance", new()
+    ///     var defaultInstance2 = new AliCloud.DatabaseFilesystem.Instance("default", new()
     ///     {
     ///         Category = "enterprise",
     ///         ZoneId = defaultInstance.AvailabilityZone,
@@ -90,10 +91,10 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     ///         Size = 100,
     ///     });
     /// 
-    ///     var exampleInstanceAttachment = new AliCloud.DatabaseFilesystem.InstanceAttachment("exampleInstanceAttachment", new()
+    ///     var exampleInstanceAttachment = new AliCloud.DatabaseFilesystem.InstanceAttachment("example", new()
     ///     {
     ///         EcsId = defaultInstance.Id,
-    ///         InstanceId = defaultDatabasefilesystem / instanceInstance.Id,
+    ///         InstanceId = defaultInstance2.Id,
     ///     });
     /// 
     /// });

@@ -66,7 +66,7 @@ public final class ApigatewayFunctions {
      *             .outputFile(&#34;output_ApiGatawayApis&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstApiId&#34;, data.alicloud_api_gateway_apis().data_apigatway().apis()[0].id());
+     *         ctx.export(&#34;firstApiId&#34;, dataApigatway.apis()[0].id());
      *     }
      * }
      * ```
@@ -107,7 +107,7 @@ public final class ApigatewayFunctions {
      *             .outputFile(&#34;output_ApiGatawayApis&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstApiId&#34;, data.alicloud_api_gateway_apis().data_apigatway().apis()[0].id());
+     *         ctx.export(&#34;firstApiId&#34;, dataApigatway.apis()[0].id());
      *     }
      * }
      * ```
@@ -148,7 +148,7 @@ public final class ApigatewayFunctions {
      *             .outputFile(&#34;output_ApiGatawayApis&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstApiId&#34;, data.alicloud_api_gateway_apis().data_apigatway().apis()[0].id());
+     *         ctx.export(&#34;firstApiId&#34;, dataApigatway.apis()[0].id());
      *     }
      * }
      * ```
@@ -189,7 +189,7 @@ public final class ApigatewayFunctions {
      *             .outputFile(&#34;output_ApiGatawayApis&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstApiId&#34;, data.alicloud_api_gateway_apis().data_apigatway().apis()[0].id());
+     *         ctx.export(&#34;firstApiId&#34;, dataApigatway.apis()[0].id());
      *     }
      * }
      * ```
@@ -230,7 +230,7 @@ public final class ApigatewayFunctions {
      *             .outputFile(&#34;output_ApiGatawayApis&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstApiId&#34;, data.alicloud_api_gateway_apis().data_apigatway().apis()[0].id());
+     *         ctx.export(&#34;firstApiId&#34;, dataApigatway.apis()[0].id());
      *     }
      * }
      * ```
@@ -271,7 +271,7 @@ public final class ApigatewayFunctions {
      *             .outputFile(&#34;output_ApiGatawayApis&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstApiId&#34;, data.alicloud_api_gateway_apis().data_apigatway().apis()[0].id());
+     *         ctx.export(&#34;firstApiId&#34;, dataApigatway.apis()[0].id());
      *     }
      * }
      * ```

@@ -185,16 +185,16 @@ class Cluster(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_vpc = alicloud.vpc.Network("defaultVpc",
             cidr_block="172.16.0.0/12",
             vpc_name=name)
         defaulty_v_switch = alicloud.vpc.Switch("defaultyVSwitch",
             vpc_id=default_vpc.id,
             cidr_block="172.16.2.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_cluster = alicloud.ackone.Cluster("defaultCluster", network=alicloud.ackone.ClusterNetworkArgs(
+        default_cluster = alicloud.ackone.Cluster("default", network=alicloud.ackone.ClusterNetworkArgs(
             vpc_id=default_vpc.id,
             vswitches=[defaulty_v_switch.id],
         ))
@@ -241,16 +241,16 @@ class Cluster(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
         default_vpc = alicloud.vpc.Network("defaultVpc",
             cidr_block="172.16.0.0/12",
             vpc_name=name)
         defaulty_v_switch = alicloud.vpc.Switch("defaultyVSwitch",
             vpc_id=default_vpc.id,
             cidr_block="172.16.2.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_cluster = alicloud.ackone.Cluster("defaultCluster", network=alicloud.ackone.ClusterNetworkArgs(
+        default_cluster = alicloud.ackone.Cluster("default", network=alicloud.ackone.ClusterNetworkArgs(
             vpc_id=default_vpc.id,
             vswitches=[defaulty_v_switch.id],
         ))

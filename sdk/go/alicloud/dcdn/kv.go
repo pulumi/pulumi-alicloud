@@ -44,27 +44,23 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultKvNamespace, err := dcdn.NewKvNamespace(ctx, "defaultKvNamespace", &dcdn.KvNamespaceArgs{
+//			defaultKvNamespace, err := dcdn.NewKvNamespace(ctx, "default", &dcdn.KvNamespaceArgs{
 //				Description: pulumi.String(name),
-//				Namespace: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
+//				Namespace:   pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dcdn.NewKv(ctx, "defaultKv", &dcdn.KvArgs{
-//				Value: pulumi.String("example-value"),
-//				Key: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
+//			_, err = dcdn.NewKv(ctx, "default", &dcdn.KvArgs{
+//				Value:     pulumi.String("example-value"),
+//				Key:       pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
 //				Namespace: defaultKvNamespace.Namespace,
 //			})
 //			if err != nil {

@@ -31,13 +31,13 @@ namespace Pulumi.AliCloud.Eflo
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var defaultVpd = new AliCloud.Eflo.Vpd("defaultVpd", new()
+    ///     var defaultVpd = new AliCloud.Eflo.Vpd("default", new()
     ///     {
     ///         Cidr = "10.0.0.0/8",
     ///         VpdName = name,
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
     ///     });
     /// 
     /// });

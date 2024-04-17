@@ -315,9 +315,9 @@ class MonitorConfig(pulumi.CustomResource):
         domain_name = config.get("domainName")
         if domain_name is None:
             domain_name = "alicloud-provider.com"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name=name)
-        default_gtm_instance = alicloud.dns.GtmInstance("defaultGtmInstance",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("default", alarm_contact_group_name=name)
+        default_gtm_instance = alicloud.dns.GtmInstance("default",
             instance_name=name,
             payment_type="Subscription",
             period=1,
@@ -328,7 +328,7 @@ class MonitorConfig(pulumi.CustomResource):
             public_cname_mode="SYSTEM_ASSIGN",
             ttl=60,
             cname_type="PUBLIC",
-            resource_group_id=default_resource_groups.groups[0].id,
+            resource_group_id=default.groups[0].id,
             alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
             public_user_domain_name=domain_name,
             alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(
@@ -337,7 +337,7 @@ class MonitorConfig(pulumi.CustomResource):
                 email_notice=True,
                 dingtalk_notice=True,
             )])
-        default_address_pool = alicloud.dns.AddressPool("defaultAddressPool",
+        default_address_pool = alicloud.dns.AddressPool("default",
             address_pool_name=name,
             instance_id=default_gtm_instance.id,
             lba_strategy="RATIO",
@@ -349,7 +349,7 @@ class MonitorConfig(pulumi.CustomResource):
                 mode="SMART",
                 lba_weight=1,
             )])
-        default_monitor_config = alicloud.dns.MonitorConfig("defaultMonitorConfig",
+        default_monitor_config = alicloud.dns.MonitorConfig("default",
             addr_pool_id=default_address_pool.id,
             evaluation_count=1,
             interval=60,
@@ -411,9 +411,9 @@ class MonitorConfig(pulumi.CustomResource):
         domain_name = config.get("domainName")
         if domain_name is None:
             domain_name = "alicloud-provider.com"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", alarm_contact_group_name=name)
-        default_gtm_instance = alicloud.dns.GtmInstance("defaultGtmInstance",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_alarm_contact_group = alicloud.cms.AlarmContactGroup("default", alarm_contact_group_name=name)
+        default_gtm_instance = alicloud.dns.GtmInstance("default",
             instance_name=name,
             payment_type="Subscription",
             period=1,
@@ -424,7 +424,7 @@ class MonitorConfig(pulumi.CustomResource):
             public_cname_mode="SYSTEM_ASSIGN",
             ttl=60,
             cname_type="PUBLIC",
-            resource_group_id=default_resource_groups.groups[0].id,
+            resource_group_id=default.groups[0].id,
             alert_groups=[default_alarm_contact_group.alarm_contact_group_name],
             public_user_domain_name=domain_name,
             alert_configs=[alicloud.dns.GtmInstanceAlertConfigArgs(
@@ -433,7 +433,7 @@ class MonitorConfig(pulumi.CustomResource):
                 email_notice=True,
                 dingtalk_notice=True,
             )])
-        default_address_pool = alicloud.dns.AddressPool("defaultAddressPool",
+        default_address_pool = alicloud.dns.AddressPool("default",
             address_pool_name=name,
             instance_id=default_gtm_instance.id,
             lba_strategy="RATIO",
@@ -445,7 +445,7 @@ class MonitorConfig(pulumi.CustomResource):
                 mode="SMART",
                 lba_weight=1,
             )])
-        default_monitor_config = alicloud.dns.MonitorConfig("defaultMonitorConfig",
+        default_monitor_config = alicloud.dns.MonitorConfig("default",
             addr_pool_id=default_address_pool.id,
             evaluation_count=1,
             interval=60,

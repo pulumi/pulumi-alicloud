@@ -20,15 +20,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
+ * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("default", {
  *     cidrBlock: "172.16.0.0/12",
  *     desktopAccessType: "Internet",
  *     officeSiteName: "your_office_site_name",
  * });
- * const defaultBundles = alicloud.eds.getBundles({
+ * const default = alicloud.eds.getBundles({
  *     bundleType: "SYSTEM",
  * });
- * const defaultEcdPolicyGroup = new alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup", {
+ * const defaultEcdPolicyGroup = new alicloud.eds.EcdPolicyGroup("default", {
  *     policyGroupName: "your_policy_group_name",
  *     clipboard: "readwrite",
  *     localDrive: "read",
@@ -46,16 +46,16 @@ import * as utilities from "../utilities";
  *         cidrIp: "0.0.0.0/0",
  *     }],
  * });
- * const defaultUser = new alicloud.eds.User("defaultUser", {
+ * const defaultUser = new alicloud.eds.User("default", {
  *     endUserId: "your_end_user_id",
  *     email: "your_email",
  *     phone: "your_phone",
  *     password: "your_password",
  * });
- * const defaultDesktop = new alicloud.eds.Desktop("defaultDesktop", {
+ * const defaultDesktop = new alicloud.eds.Desktop("default", {
  *     officeSiteId: defaultSimpleOfficeSite.id,
  *     policyGroupId: defaultEcdPolicyGroup.id,
- *     bundleId: defaultBundles.then(defaultBundles => defaultBundles.bundles?.[0]?.id),
+ *     bundleId: _default.then(_default => _default.bundles?.[0]?.id),
  *     desktopName: "your_desktop_name",
  *     endUserIds: [defaultUser.id],
  * });
@@ -157,15 +157,15 @@ export interface GetDesktopsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite", {
+ * const defaultSimpleOfficeSite = new alicloud.eds.SimpleOfficeSite("default", {
  *     cidrBlock: "172.16.0.0/12",
  *     desktopAccessType: "Internet",
  *     officeSiteName: "your_office_site_name",
  * });
- * const defaultBundles = alicloud.eds.getBundles({
+ * const default = alicloud.eds.getBundles({
  *     bundleType: "SYSTEM",
  * });
- * const defaultEcdPolicyGroup = new alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup", {
+ * const defaultEcdPolicyGroup = new alicloud.eds.EcdPolicyGroup("default", {
  *     policyGroupName: "your_policy_group_name",
  *     clipboard: "readwrite",
  *     localDrive: "read",
@@ -183,16 +183,16 @@ export interface GetDesktopsResult {
  *         cidrIp: "0.0.0.0/0",
  *     }],
  * });
- * const defaultUser = new alicloud.eds.User("defaultUser", {
+ * const defaultUser = new alicloud.eds.User("default", {
  *     endUserId: "your_end_user_id",
  *     email: "your_email",
  *     phone: "your_phone",
  *     password: "your_password",
  * });
- * const defaultDesktop = new alicloud.eds.Desktop("defaultDesktop", {
+ * const defaultDesktop = new alicloud.eds.Desktop("default", {
  *     officeSiteId: defaultSimpleOfficeSite.id,
  *     policyGroupId: defaultEcdPolicyGroup.id,
- *     bundleId: defaultBundles.then(defaultBundles => defaultBundles.bundles?.[0]?.id),
+ *     bundleId: _default.then(_default => _default.bundles?.[0]?.id),
  *     desktopName: "your_desktop_name",
  *     endUserIds: [defaultUser.id],
  * });

@@ -50,11 +50,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultAgents = ChatbotFunctions.getAgents();
+ *         final var default = ChatbotFunctions.getAgents();
  * 
  *         var defaultPublishTask = new PublishTask(&#34;defaultPublishTask&#34;, PublishTaskArgs.builder()        
  *             .bizType(&#34;faq&#34;)
- *             .agentKey(defaultAgents.applyValue(getAgentsResult -&gt; getAgentsResult.agents()[0].agentKey()))
+ *             .agentKey(default_.agents()[0].agentKey())
  *             .build());
  * 
  *     }

@@ -36,6 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := slb.NewCaCertificate(ctx, "foo", &slb.CaCertificateArgs{
+//				CaCertificateName: pulumi.String("tf-testAccSlbCACertificate"),
 //				CaCertificate: pulumi.String(`-----BEGIN CERTIFICATE-----
 //
 // MIIDRjCCAq+gAwIBAgIJAJn3ox4K13PoMA0GCSqGSIb3DQEBBQUAMHYxCzAJBgNV
@@ -56,10 +57,8 @@ import (
 // cQzfhiiG7ASjiPakw5wXoycHt5GCvLG5htp2TKVzgv9QTliA3gtfv6oV4zRZx7X1
 // Ofi6hVgErtHaXJheuPVeW6eAW8mHBoEfvDAfU3y9waYrtUevSl07643bzKL6v+Qd
 // DUBTxOAvSYfXTtI90EAxEG/bJJyOm5LqoiA=
-// -----END CERTIFICATE-----
-// `),
+// -----END CERTIFICATE-----`),
 //
-//				CaCertificateName: pulumi.String("tf-testAccSlbCACertificate"),
 //			})
 //			if err != nil {
 //				return err
@@ -72,44 +71,6 @@ import (
 // <!--End PulumiCodeChooser -->
 //
 // * using CA certificate file
-//
-// <!--Start PulumiCodeChooser -->
-// ```go
-// package main
-//
-// import (
-//
-//	"fmt"
-//	"os"
-//
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/slb"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func readFileOrPanic(path string) pulumi.StringPtrInput {
-//		data, err := os.ReadFile(path)
-//		if err != nil {
-//			panic(err.Error())
-//		}
-//		return pulumi.String(string(data))
-//	}
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := slb.NewCaCertificate(ctx, "foo-file", &slb.CaCertificateArgs{
-//				CaCertificateName: pulumi.String("tf-testAccSlbCACertificate"),
-//				CaCertificate:     readFileOrPanic(fmt.Sprintf("%v/ca_certificate.pem", path.Module)),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

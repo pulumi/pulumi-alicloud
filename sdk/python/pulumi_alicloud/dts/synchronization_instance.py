@@ -522,13 +522,13 @@ class SynchronizationInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_regions = alicloud.get_regions(current=True)
-        default_synchronization_instance = alicloud.dts.SynchronizationInstance("defaultSynchronizationInstance",
+        default = alicloud.get_regions(current=True)
+        default_synchronization_instance = alicloud.dts.SynchronizationInstance("default",
             payment_type="PayAsYouGo",
             source_endpoint_engine_name="MySQL",
-            source_endpoint_region=default_regions.regions[0].id,
+            source_endpoint_region=default.regions[0].id,
             destination_endpoint_engine_name="MySQL",
-            destination_endpoint_region=default_regions.regions[0].id,
+            destination_endpoint_region=default.regions[0].id,
             instance_class="small",
             sync_architecture="oneway")
         ```
@@ -581,13 +581,13 @@ class SynchronizationInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_regions = alicloud.get_regions(current=True)
-        default_synchronization_instance = alicloud.dts.SynchronizationInstance("defaultSynchronizationInstance",
+        default = alicloud.get_regions(current=True)
+        default_synchronization_instance = alicloud.dts.SynchronizationInstance("default",
             payment_type="PayAsYouGo",
             source_endpoint_engine_name="MySQL",
-            source_endpoint_region=default_regions.regions[0].id,
+            source_endpoint_region=default.regions[0].id,
             destination_endpoint_engine_name="MySQL",
-            destination_endpoint_region=default_regions.regions[0].id,
+            destination_endpoint_region=default.regions[0].id,
             instance_class="small",
             sync_architecture="oneway")
         ```

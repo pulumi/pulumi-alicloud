@@ -44,13 +44,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			fooNetwork, err := vpc.NewNetwork(ctx, "fooNetwork", &vpc.NetworkArgs{
+//			fooNetwork, err := vpc.NewNetwork(ctx, "foo", &vpc.NetworkArgs{
+//				Name:      pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooSwitch, err := vpc.NewSwitch(ctx, "fooSwitch", &vpc.SwitchArgs{
+//			fooSwitch, err := vpc.NewSwitch(ctx, "foo", &vpc.SwitchArgs{
 //				VpcId:            fooNetwork.ID(),
 //				CidrBlock:        pulumi.String("172.16.0.0/21"),
 //				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
@@ -59,27 +60,28 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			fooNatGateway, err := vpc.NewNatGateway(ctx, "fooNatGateway", &vpc.NatGatewayArgs{
+//			fooNatGateway, err := vpc.NewNatGateway(ctx, "foo", &vpc.NatGatewayArgs{
 //				VpcId:         fooNetwork.ID(),
 //				Specification: pulumi.String("Small"),
+//				Name:          pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooEipAddress, err := ecs.NewEipAddress(ctx, "fooEipAddress", &ecs.EipAddressArgs{
+//			fooEipAddress, err := ecs.NewEipAddress(ctx, "foo", &ecs.EipAddressArgs{
 //				AddressName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewEipAssociation(ctx, "fooEipAssociation", &ecs.EipAssociationArgs{
+//			_, err = ecs.NewEipAssociation(ctx, "foo", &ecs.EipAssociationArgs{
 //				AllocationId: fooEipAddress.ID(),
 //				InstanceId:   fooNatGateway.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			fooSnatEntry, err := vpc.NewSnatEntry(ctx, "fooSnatEntry", &vpc.SnatEntryArgs{
+//			fooSnatEntry, err := vpc.NewSnatEntry(ctx, "foo", &vpc.SnatEntryArgs{
 //				SnatTableId:     fooNatGateway.SnatTableIds,
 //				SourceVswitchId: fooSwitch.ID(),
 //				SnatIp:          fooEipAddress.IpAddress,

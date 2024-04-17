@@ -20,17 +20,17 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_testaccmp";
- * const defaultProject = new alicloud.maxcompute.Project("defaultProject", {
+ * const defaultProject = new alicloud.maxcompute.Project("default", {
  *     defaultQuota: "默认后付费Quota",
  *     projectName: name,
  *     comment: name,
  *     productType: "PAYASYOUGO",
  * });
- * const defaultProjects = defaultProject.id.apply(id => alicloud.maxcompute.getProjectsOutput({
+ * const default = defaultProject.id.apply(id => alicloud.maxcompute.getProjectsOutput({
  *     ids: [id],
  *     nameRegex: defaultProject.name,
  * }));
- * export const alicloudMaxcomputeProjectExampleId = defaultProjects.apply(defaultProjects => defaultProjects.projects?.[0]?.id);
+ * export const alicloudMaxcomputeProjectExampleId = _default.apply(_default => _default.projects?.[0]?.id);
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -100,17 +100,17 @@ export interface GetProjectsResult {
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_testaccmp";
- * const defaultProject = new alicloud.maxcompute.Project("defaultProject", {
+ * const defaultProject = new alicloud.maxcompute.Project("default", {
  *     defaultQuota: "默认后付费Quota",
  *     projectName: name,
  *     comment: name,
  *     productType: "PAYASYOUGO",
  * });
- * const defaultProjects = defaultProject.id.apply(id => alicloud.maxcompute.getProjectsOutput({
+ * const default = defaultProject.id.apply(id => alicloud.maxcompute.getProjectsOutput({
  *     ids: [id],
  *     nameRegex: defaultProject.name,
  * }));
- * export const alicloudMaxcomputeProjectExampleId = defaultProjects.apply(defaultProjects => defaultProjects.projects?.[0]?.id);
+ * export const alicloudMaxcomputeProjectExampleId = _default.apply(_default => _default.projects?.[0]?.id);
  * ```
  * <!--End PulumiCodeChooser -->
  */

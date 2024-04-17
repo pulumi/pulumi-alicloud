@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Tag
     ///     var name = config.Get("name") ?? "tf-example";
     ///     var @default = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var examplePolicy = new AliCloud.Tag.Policy("examplePolicy", new()
+    ///     var example = new AliCloud.Tag.Policy("example", new()
     ///     {
     ///         PolicyName = name,
     ///         PolicyDesc = name,
@@ -42,9 +42,9 @@ namespace Pulumi.AliCloud.Tag
     /// ",
     ///     });
     /// 
-    ///     var examplePolicyAttachment = new AliCloud.Tag.PolicyAttachment("examplePolicyAttachment", new()
+    ///     var examplePolicyAttachment = new AliCloud.Tag.PolicyAttachment("example", new()
     ///     {
-    ///         PolicyId = examplePolicy.Id,
+    ///         PolicyId = example.Id,
     ///         TargetId = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
     ///         TargetType = "USER",
     ///     });

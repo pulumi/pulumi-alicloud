@@ -51,12 +51,14 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform_example&#34;);
- *         var exampleGroup = new Group(&#34;exampleGroup&#34;, GroupArgs.builder()        
+ *         var example = new Group(&#34;example&#34;, GroupArgs.builder()        
+ *             .name(name)
  *             .description(name)
  *             .build());
  * 
  *         var exampleApi = new Api(&#34;exampleApi&#34;, ApiArgs.builder()        
- *             .groupId(exampleGroup.id())
+ *             .groupId(example.id())
+ *             .name(name)
  *             .description(name)
  *             .authType(&#34;APP&#34;)
  *             .forceNonceCheck(false)
@@ -88,12 +90,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleApp = new App(&#34;exampleApp&#34;, AppArgs.builder()        
+ *             .name(name)
  *             .description(name)
  *             .build());
  * 
  *         var exampleAppAttachment = new AppAttachment(&#34;exampleAppAttachment&#34;, AppAttachmentArgs.builder()        
  *             .apiId(exampleApi.apiId())
- *             .groupId(exampleGroup.id())
+ *             .groupId(example.id())
  *             .appId(exampleApp.id())
  *             .stageName(&#34;PRE&#34;)
  *             .build());

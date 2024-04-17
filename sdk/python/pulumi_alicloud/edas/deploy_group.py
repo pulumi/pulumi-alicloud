@@ -132,26 +132,26 @@ class DeployGroup(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_regions = alicloud.get_regions(current=True)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
+        default = alicloud.get_regions(current=True)
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=f"{name}-{default_integer['result']}",
             cidr_block="10.4.0.0/16")
-        default_cluster = alicloud.edas.Cluster("defaultCluster",
-            cluster_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
+        default_cluster = alicloud.edas.Cluster("default",
+            cluster_name=f"{name}-{default_integer['result']}",
             cluster_type=2,
             network_mode=2,
-            logical_region_id=default_regions.regions[0].id,
+            logical_region_id=default.regions[0].id,
             vpc_id=default_network.id)
-        default_application = alicloud.edas.Application("defaultApplication",
-            application_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
+        default_application = alicloud.edas.Application("default",
+            application_name=f"{name}-{default_integer['result']}",
             cluster_id=default_cluster.id,
             package_type="JAR")
-        default_deploy_group = alicloud.edas.DeployGroup("defaultDeployGroup",
+        default_deploy_group = alicloud.edas.DeployGroup("default",
             app_id=default_application.id,
-            group_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
+            group_name=f"{name}-{default_integer['result']}")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -193,26 +193,26 @@ class DeployGroup(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default_integer = random.index.Integer("default",
             min=10000,
             max=99999)
-        default_regions = alicloud.get_regions(current=True)
-        default_network = alicloud.vpc.Network("defaultNetwork",
-            vpc_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
+        default = alicloud.get_regions(current=True)
+        default_network = alicloud.vpc.Network("default",
+            vpc_name=f"{name}-{default_integer['result']}",
             cidr_block="10.4.0.0/16")
-        default_cluster = alicloud.edas.Cluster("defaultCluster",
-            cluster_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
+        default_cluster = alicloud.edas.Cluster("default",
+            cluster_name=f"{name}-{default_integer['result']}",
             cluster_type=2,
             network_mode=2,
-            logical_region_id=default_regions.regions[0].id,
+            logical_region_id=default.regions[0].id,
             vpc_id=default_network.id)
-        default_application = alicloud.edas.Application("defaultApplication",
-            application_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"),
+        default_application = alicloud.edas.Application("default",
+            application_name=f"{name}-{default_integer['result']}",
             cluster_id=default_cluster.id,
             package_type="JAR")
-        default_deploy_group = alicloud.edas.DeployGroup("defaultDeployGroup",
+        default_deploy_group = alicloud.edas.DeployGroup("default",
             app_id=default_application.id,
-            group_name=default_random_integer.result.apply(lambda result: f"{name}-{result}"))
+            group_name=f"{name}-{default_integer['result']}")
         ```
         <!--End PulumiCodeChooser -->
 

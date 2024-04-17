@@ -50,7 +50,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
+ *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;5.6&#34;)
  *             .instanceType(&#34;rds.mysql.t1.small&#34;)
@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleRdsBackup = new RdsBackup(&#34;exampleRdsBackup&#34;, RdsBackupArgs.builder()        
- *             .dbInstanceId(exampleInstance.id())
+ *             .dbInstanceId(example.id())
  *             .build());
  * 
  *     }

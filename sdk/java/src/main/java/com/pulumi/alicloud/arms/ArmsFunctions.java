@@ -1116,28 +1116,28 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
      *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
      *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
      *             .clusterType(&#34;ecs&#34;)
      *             .grafanaInstanceId(&#34;free&#34;)
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
-     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
      *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
@@ -1202,28 +1202,28 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
      *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
      *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
      *             .clusterType(&#34;ecs&#34;)
      *             .grafanaInstanceId(&#34;free&#34;)
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
-     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
      *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
@@ -1288,28 +1288,28 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
      *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
      *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
      *             .clusterType(&#34;ecs&#34;)
      *             .grafanaInstanceId(&#34;free&#34;)
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
-     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
      *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
@@ -1374,28 +1374,28 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
      *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
      *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
      *             .clusterType(&#34;ecs&#34;)
      *             .grafanaInstanceId(&#34;free&#34;)
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
-     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
      *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
@@ -1460,28 +1460,28 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
      *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
      *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
      *             .clusterType(&#34;ecs&#34;)
      *             .grafanaInstanceId(&#34;free&#34;)
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
-     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
      *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
@@ -1546,28 +1546,28 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
      *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
      *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
      *             .clusterType(&#34;ecs&#34;)
      *             .grafanaInstanceId(&#34;free&#34;)
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
-     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
      *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
@@ -1630,28 +1630,28 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
      *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
      *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
      *             .clusterType(&#34;ecs&#34;)
      *             .grafanaInstanceId(&#34;free&#34;)
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
-     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
      *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
@@ -1714,28 +1714,28 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
      *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
      *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
      *             .clusterType(&#34;ecs&#34;)
      *             .grafanaInstanceId(&#34;free&#34;)
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
-     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
      *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
@@ -1798,28 +1798,28 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
      *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
      *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
      *             .clusterType(&#34;ecs&#34;)
      *             .grafanaInstanceId(&#34;free&#34;)
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
-     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
      *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
@@ -1882,28 +1882,28 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
      *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
      *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
      *             .clusterType(&#34;ecs&#34;)
      *             .grafanaInstanceId(&#34;free&#34;)
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
-     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
      *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
@@ -1966,28 +1966,28 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
      *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
      *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
      *             .clusterType(&#34;ecs&#34;)
      *             .grafanaInstanceId(&#34;free&#34;)
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
-     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
      *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)
@@ -2050,28 +2050,28 @@ public final class ArmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
-     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+     *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
      * 
      *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
      *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
      *             .clusterType(&#34;ecs&#34;)
      *             .grafanaInstanceId(&#34;free&#34;)
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vpcId(default_.ids()[0])
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .securityGroupId(defaultSecurityGroup.id())
-     *             .clusterName(String.format(&#34;%s-%s&#34;, name,defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0])))
-     *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
+     *             .clusterName(String.format(&#34;%s-%s&#34;, name,default_.ids()[0]))
+     *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[1].id()))
      *             .tags(Map.ofEntries(
      *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
      *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)

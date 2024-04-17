@@ -48,11 +48,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new ControlPolicy(&#34;example&#34;, ControlPolicyArgs.builder()        
- *             .aclAction(&#34;accept&#34;)
  *             .applicationName(&#34;ANY&#34;)
+ *             .aclAction(&#34;accept&#34;)
  *             .description(&#34;example&#34;)
- *             .destination(&#34;100.1.1.0/24&#34;)
  *             .destinationType(&#34;net&#34;)
+ *             .destination(&#34;100.1.1.0/24&#34;)
  *             .direction(&#34;out&#34;)
  *             .proto(&#34;ANY&#34;)
  *             .source(&#34;1.2.3.0/24&#34;)

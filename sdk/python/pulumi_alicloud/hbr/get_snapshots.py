@@ -199,21 +199,21 @@ def get_snapshots(bucket: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_ecs_backup_plans = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-tf-used-dont-delete")
-    default_oss_backup_plans = alicloud.hbr.get_oss_backup_plans(name_regex="plan-tf-used-dont-delete")
-    default_nas_backup_plans = alicloud.hbr.get_nas_backup_plans(name_regex="plan-tf-used-dont-delete")
+    default = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-tf-used-dont-delete")
+    default_get_oss_backup_plans = alicloud.hbr.get_oss_backup_plans(name_regex="plan-tf-used-dont-delete")
+    default_get_nas_backup_plans = alicloud.hbr.get_nas_backup_plans(name_regex="plan-tf-used-dont-delete")
     ecs_snapshots = alicloud.hbr.get_snapshots(source_type="ECS_FILE",
-        vault_id=default_ecs_backup_plans.plans[0].vault_id,
-        instance_id=default_ecs_backup_plans.plans[0].instance_id)
+        vault_id=default.plans[0].vault_id,
+        instance_id=default.plans[0].instance_id)
     oss_snapshots = alicloud.hbr.get_snapshots(source_type="OSS",
-        vault_id=default_oss_backup_plans.plans[0].vault_id,
-        bucket=default_oss_backup_plans.plans[0].bucket,
+        vault_id=default_get_oss_backup_plans.plans[0].vault_id,
+        bucket=default_get_oss_backup_plans.plans[0].bucket,
         complete_time="2021-07-20T14:17:15CST,2021-07-24T14:17:15CST",
         complete_time_checker="BETWEEN")
     nas_snapshots = alicloud.hbr.get_snapshots(source_type="NAS",
-        vault_id=default_nas_backup_plans.plans[0].vault_id,
-        file_system_id=default_nas_backup_plans.plans[0].file_system_id,
-        create_time=default_nas_backup_plans.plans[0].create_time,
+        vault_id=default_get_nas_backup_plans.plans[0].vault_id,
+        file_system_id=default_get_nas_backup_plans.plans[0].file_system_id,
+        create_time=default_get_nas_backup_plans.plans[0].create_time,
         complete_time="2021-08-23T14:17:15CST",
         complete_time_checker="GREATER_THAN_OR_EQUAL")
     pulumi.export("hbrSnapshotId1", nas_snapshots.snapshots[0].id)
@@ -297,21 +297,21 @@ def get_snapshots_output(bucket: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_ecs_backup_plans = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-tf-used-dont-delete")
-    default_oss_backup_plans = alicloud.hbr.get_oss_backup_plans(name_regex="plan-tf-used-dont-delete")
-    default_nas_backup_plans = alicloud.hbr.get_nas_backup_plans(name_regex="plan-tf-used-dont-delete")
+    default = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-tf-used-dont-delete")
+    default_get_oss_backup_plans = alicloud.hbr.get_oss_backup_plans(name_regex="plan-tf-used-dont-delete")
+    default_get_nas_backup_plans = alicloud.hbr.get_nas_backup_plans(name_regex="plan-tf-used-dont-delete")
     ecs_snapshots = alicloud.hbr.get_snapshots(source_type="ECS_FILE",
-        vault_id=default_ecs_backup_plans.plans[0].vault_id,
-        instance_id=default_ecs_backup_plans.plans[0].instance_id)
+        vault_id=default.plans[0].vault_id,
+        instance_id=default.plans[0].instance_id)
     oss_snapshots = alicloud.hbr.get_snapshots(source_type="OSS",
-        vault_id=default_oss_backup_plans.plans[0].vault_id,
-        bucket=default_oss_backup_plans.plans[0].bucket,
+        vault_id=default_get_oss_backup_plans.plans[0].vault_id,
+        bucket=default_get_oss_backup_plans.plans[0].bucket,
         complete_time="2021-07-20T14:17:15CST,2021-07-24T14:17:15CST",
         complete_time_checker="BETWEEN")
     nas_snapshots = alicloud.hbr.get_snapshots(source_type="NAS",
-        vault_id=default_nas_backup_plans.plans[0].vault_id,
-        file_system_id=default_nas_backup_plans.plans[0].file_system_id,
-        create_time=default_nas_backup_plans.plans[0].create_time,
+        vault_id=default_get_nas_backup_plans.plans[0].vault_id,
+        file_system_id=default_get_nas_backup_plans.plans[0].file_system_id,
+        create_time=default_get_nas_backup_plans.plans[0].create_time,
         complete_time="2021-08-23T14:17:15CST",
         complete_time_checker="GREATER_THAN_OR_EQUAL")
     pulumi.export("hbrSnapshotId1", nas_snapshots.snapshots[0].id)

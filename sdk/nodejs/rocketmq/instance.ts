@@ -25,12 +25,12 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
  * const example = new alicloud.rocketmq.Instance("example", {
- *     instanceName: pulumi.interpolate`${name}-${_default.result}`,
+ *     instanceName: `${name}-${_default.result}`,
  *     remark: name,
  * });
  * ```

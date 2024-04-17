@@ -23,19 +23,19 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.threatdetection.HoneypotProbe("default", {
- *     arp: true,
+ *     uuid: "032b618f-b220-4a0d-bd37-fbdc6ef58b6a",
+ *     probeType: "host_probe",
  *     controlNodeId: "a44e1ab3-6945-444c-889d-5bacee7056e8",
- *     displayName: "apispec",
+ *     ping: true,
  *     honeypotBindLists: [{
  *         bindPortLists: [{
- *             endPort: 80,
  *             startPort: 80,
+ *             endPort: 80,
  *         }],
  *         honeypotId: "ede59ccdb1b7a2e21735d4593a6eb5ed31883af320c5ab63ab33818e94307be9",
  *     }],
- *     ping: true,
- *     probeType: "host_probe",
- *     uuid: "032b618f-b220-4a0d-bd37-fbdc6ef58b6a",
+ *     displayName: "apispec",
+ *     arp: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

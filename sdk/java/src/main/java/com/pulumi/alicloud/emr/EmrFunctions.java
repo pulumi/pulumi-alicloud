@@ -73,15 +73,15 @@ public final class EmrFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccClusters&#34;);
-     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
      *             .status(&#34;OK&#34;)
      *             .build());
      * 
-     *         final var defaultMainVersions = EmrFunctions.getMainVersions();
+     *         final var defaultGetMainVersions = EmrFunctions.getMainVersions();
      * 
-     *         final var defaultInstanceTypes = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *         final var defaultGetInstanceTypes = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .destinationResource(&#34;InstanceType&#34;)
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .supportLocalStorage(false)
      *             .instanceChargeType(&#34;PostPaid&#34;)
      *             .supportNodeTypes(            
@@ -92,34 +92,36 @@ public final class EmrFunctions {
      * 
      *         final var dataDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
      *             .destinationResource(&#34;DataDisk&#34;)
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
      *         final var systemDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
      *             .destinationResource(&#34;SystemDisk&#34;)
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
      *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .name(name)
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
      *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
+     *             .name(name)
      *             .document(&#34;&#34;&#34;
      *     {
      *         &#34;Statement&#34;: [
@@ -142,14 +144,15 @@ public final class EmrFunctions {
      *             .build());
      * 
      *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
-     *             .emrVer(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].emrVersion()))
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .name(name)
+     *             .emrVer(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].emrVersion()))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .hostGroups(            
      *                 ClusterHostGroupArgs.builder()
      *                     .hostGroupName(&#34;master_group&#34;)
      *                     .hostGroupType(&#34;MASTER&#34;)
      *                     .nodeCount(&#34;2&#34;)
-     *                     .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
      *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
      *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .diskCount(&#34;1&#34;)
@@ -160,7 +163,7 @@ public final class EmrFunctions {
      *                     .hostGroupName(&#34;core_group&#34;)
      *                     .hostGroupType(&#34;CORE&#34;)
      *                     .nodeCount(&#34;3&#34;)
-     *                     .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
      *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
      *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .diskCount(&#34;4&#34;)
@@ -171,7 +174,7 @@ public final class EmrFunctions {
      *                     .hostGroupName(&#34;task_group&#34;)
      *                     .hostGroupType(&#34;TASK&#34;)
      *                     .nodeCount(&#34;2&#34;)
-     *                     .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
      *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
      *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .diskCount(&#34;4&#34;)
@@ -179,11 +182,11 @@ public final class EmrFunctions {
      *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .build())
      *             .highAvailabilityEnable(true)
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .isOpenPublicIp(true)
      *             .chargeType(&#34;PostPaid&#34;)
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .userDefinedEmrEcsRole(defaultRole.name())
      *             .sshEnable(true)
      *             .masterPwd(&#34;ABCtest1234!&#34;)
@@ -260,15 +263,15 @@ public final class EmrFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccClusters&#34;);
-     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
      *             .status(&#34;OK&#34;)
      *             .build());
      * 
-     *         final var defaultMainVersions = EmrFunctions.getMainVersions();
+     *         final var defaultGetMainVersions = EmrFunctions.getMainVersions();
      * 
-     *         final var defaultInstanceTypes = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *         final var defaultGetInstanceTypes = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .destinationResource(&#34;InstanceType&#34;)
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .supportLocalStorage(false)
      *             .instanceChargeType(&#34;PostPaid&#34;)
      *             .supportNodeTypes(            
@@ -279,34 +282,36 @@ public final class EmrFunctions {
      * 
      *         final var dataDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
      *             .destinationResource(&#34;DataDisk&#34;)
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
      *         final var systemDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
      *             .destinationResource(&#34;SystemDisk&#34;)
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
      *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .name(name)
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
      *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
+     *             .name(name)
      *             .document(&#34;&#34;&#34;
      *     {
      *         &#34;Statement&#34;: [
@@ -329,14 +334,15 @@ public final class EmrFunctions {
      *             .build());
      * 
      *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
-     *             .emrVer(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].emrVersion()))
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .name(name)
+     *             .emrVer(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].emrVersion()))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .hostGroups(            
      *                 ClusterHostGroupArgs.builder()
      *                     .hostGroupName(&#34;master_group&#34;)
      *                     .hostGroupType(&#34;MASTER&#34;)
      *                     .nodeCount(&#34;2&#34;)
-     *                     .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
      *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
      *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .diskCount(&#34;1&#34;)
@@ -347,7 +353,7 @@ public final class EmrFunctions {
      *                     .hostGroupName(&#34;core_group&#34;)
      *                     .hostGroupType(&#34;CORE&#34;)
      *                     .nodeCount(&#34;3&#34;)
-     *                     .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
      *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
      *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .diskCount(&#34;4&#34;)
@@ -358,7 +364,7 @@ public final class EmrFunctions {
      *                     .hostGroupName(&#34;task_group&#34;)
      *                     .hostGroupType(&#34;TASK&#34;)
      *                     .nodeCount(&#34;2&#34;)
-     *                     .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
      *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
      *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .diskCount(&#34;4&#34;)
@@ -366,11 +372,11 @@ public final class EmrFunctions {
      *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .build())
      *             .highAvailabilityEnable(true)
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .isOpenPublicIp(true)
      *             .chargeType(&#34;PostPaid&#34;)
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .userDefinedEmrEcsRole(defaultRole.name())
      *             .sshEnable(true)
      *             .masterPwd(&#34;ABCtest1234!&#34;)
@@ -447,15 +453,15 @@ public final class EmrFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccClusters&#34;);
-     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
      *             .status(&#34;OK&#34;)
      *             .build());
      * 
-     *         final var defaultMainVersions = EmrFunctions.getMainVersions();
+     *         final var defaultGetMainVersions = EmrFunctions.getMainVersions();
      * 
-     *         final var defaultInstanceTypes = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *         final var defaultGetInstanceTypes = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .destinationResource(&#34;InstanceType&#34;)
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .supportLocalStorage(false)
      *             .instanceChargeType(&#34;PostPaid&#34;)
      *             .supportNodeTypes(            
@@ -466,34 +472,36 @@ public final class EmrFunctions {
      * 
      *         final var dataDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
      *             .destinationResource(&#34;DataDisk&#34;)
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
      *         final var systemDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
      *             .destinationResource(&#34;SystemDisk&#34;)
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
      *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .name(name)
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
      *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
+     *             .name(name)
      *             .document(&#34;&#34;&#34;
      *     {
      *         &#34;Statement&#34;: [
@@ -516,14 +524,15 @@ public final class EmrFunctions {
      *             .build());
      * 
      *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
-     *             .emrVer(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].emrVersion()))
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .name(name)
+     *             .emrVer(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].emrVersion()))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .hostGroups(            
      *                 ClusterHostGroupArgs.builder()
      *                     .hostGroupName(&#34;master_group&#34;)
      *                     .hostGroupType(&#34;MASTER&#34;)
      *                     .nodeCount(&#34;2&#34;)
-     *                     .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
      *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
      *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .diskCount(&#34;1&#34;)
@@ -534,7 +543,7 @@ public final class EmrFunctions {
      *                     .hostGroupName(&#34;core_group&#34;)
      *                     .hostGroupType(&#34;CORE&#34;)
      *                     .nodeCount(&#34;3&#34;)
-     *                     .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
      *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
      *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .diskCount(&#34;4&#34;)
@@ -545,7 +554,7 @@ public final class EmrFunctions {
      *                     .hostGroupName(&#34;task_group&#34;)
      *                     .hostGroupType(&#34;TASK&#34;)
      *                     .nodeCount(&#34;2&#34;)
-     *                     .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
      *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
      *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .diskCount(&#34;4&#34;)
@@ -553,11 +562,11 @@ public final class EmrFunctions {
      *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .build())
      *             .highAvailabilityEnable(true)
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .isOpenPublicIp(true)
      *             .chargeType(&#34;PostPaid&#34;)
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .userDefinedEmrEcsRole(defaultRole.name())
      *             .sshEnable(true)
      *             .masterPwd(&#34;ABCtest1234!&#34;)
@@ -634,15 +643,15 @@ public final class EmrFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccClusters&#34;);
-     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
      *             .status(&#34;OK&#34;)
      *             .build());
      * 
-     *         final var defaultMainVersions = EmrFunctions.getMainVersions();
+     *         final var defaultGetMainVersions = EmrFunctions.getMainVersions();
      * 
-     *         final var defaultInstanceTypes = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *         final var defaultGetInstanceTypes = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .destinationResource(&#34;InstanceType&#34;)
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .supportLocalStorage(false)
      *             .instanceChargeType(&#34;PostPaid&#34;)
      *             .supportNodeTypes(            
@@ -653,34 +662,36 @@ public final class EmrFunctions {
      * 
      *         final var dataDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
      *             .destinationResource(&#34;DataDisk&#34;)
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
      *         final var systemDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
      *             .destinationResource(&#34;SystemDisk&#34;)
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
      *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .name(name)
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
      *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
+     *             .name(name)
      *             .document(&#34;&#34;&#34;
      *     {
      *         &#34;Statement&#34;: [
@@ -703,14 +714,15 @@ public final class EmrFunctions {
      *             .build());
      * 
      *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
-     *             .emrVer(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].emrVersion()))
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .name(name)
+     *             .emrVer(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].emrVersion()))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .hostGroups(            
      *                 ClusterHostGroupArgs.builder()
      *                     .hostGroupName(&#34;master_group&#34;)
      *                     .hostGroupType(&#34;MASTER&#34;)
      *                     .nodeCount(&#34;2&#34;)
-     *                     .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
      *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
      *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .diskCount(&#34;1&#34;)
@@ -721,7 +733,7 @@ public final class EmrFunctions {
      *                     .hostGroupName(&#34;core_group&#34;)
      *                     .hostGroupType(&#34;CORE&#34;)
      *                     .nodeCount(&#34;3&#34;)
-     *                     .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
      *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
      *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .diskCount(&#34;4&#34;)
@@ -732,7 +744,7 @@ public final class EmrFunctions {
      *                     .hostGroupName(&#34;task_group&#34;)
      *                     .hostGroupType(&#34;TASK&#34;)
      *                     .nodeCount(&#34;2&#34;)
-     *                     .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
      *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
      *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .diskCount(&#34;4&#34;)
@@ -740,11 +752,11 @@ public final class EmrFunctions {
      *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .build())
      *             .highAvailabilityEnable(true)
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .isOpenPublicIp(true)
      *             .chargeType(&#34;PostPaid&#34;)
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .userDefinedEmrEcsRole(defaultRole.name())
      *             .sshEnable(true)
      *             .masterPwd(&#34;ABCtest1234!&#34;)
@@ -821,15 +833,15 @@ public final class EmrFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccClusters&#34;);
-     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
      *             .status(&#34;OK&#34;)
      *             .build());
      * 
-     *         final var defaultMainVersions = EmrFunctions.getMainVersions();
+     *         final var defaultGetMainVersions = EmrFunctions.getMainVersions();
      * 
-     *         final var defaultInstanceTypes = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *         final var defaultGetInstanceTypes = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .destinationResource(&#34;InstanceType&#34;)
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .supportLocalStorage(false)
      *             .instanceChargeType(&#34;PostPaid&#34;)
      *             .supportNodeTypes(            
@@ -840,34 +852,36 @@ public final class EmrFunctions {
      * 
      *         final var dataDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
      *             .destinationResource(&#34;DataDisk&#34;)
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
      *         final var systemDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
      *             .destinationResource(&#34;SystemDisk&#34;)
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
      *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .name(name)
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
      *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
+     *             .name(name)
      *             .document(&#34;&#34;&#34;
      *     {
      *         &#34;Statement&#34;: [
@@ -890,14 +904,15 @@ public final class EmrFunctions {
      *             .build());
      * 
      *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
-     *             .emrVer(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].emrVersion()))
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .name(name)
+     *             .emrVer(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].emrVersion()))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .hostGroups(            
      *                 ClusterHostGroupArgs.builder()
      *                     .hostGroupName(&#34;master_group&#34;)
      *                     .hostGroupType(&#34;MASTER&#34;)
      *                     .nodeCount(&#34;2&#34;)
-     *                     .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
      *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
      *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .diskCount(&#34;1&#34;)
@@ -908,7 +923,7 @@ public final class EmrFunctions {
      *                     .hostGroupName(&#34;core_group&#34;)
      *                     .hostGroupType(&#34;CORE&#34;)
      *                     .nodeCount(&#34;3&#34;)
-     *                     .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
      *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
      *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .diskCount(&#34;4&#34;)
@@ -919,7 +934,7 @@ public final class EmrFunctions {
      *                     .hostGroupName(&#34;task_group&#34;)
      *                     .hostGroupType(&#34;TASK&#34;)
      *                     .nodeCount(&#34;2&#34;)
-     *                     .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
      *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
      *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .diskCount(&#34;4&#34;)
@@ -927,11 +942,11 @@ public final class EmrFunctions {
      *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .build())
      *             .highAvailabilityEnable(true)
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .isOpenPublicIp(true)
      *             .chargeType(&#34;PostPaid&#34;)
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .userDefinedEmrEcsRole(defaultRole.name())
      *             .sshEnable(true)
      *             .masterPwd(&#34;ABCtest1234!&#34;)
@@ -1008,15 +1023,15 @@ public final class EmrFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-testAccClusters&#34;);
-     *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
+     *         final var default = ResourcemanagerFunctions.getResourceGroups(GetResourceGroupsArgs.builder()
      *             .status(&#34;OK&#34;)
      *             .build());
      * 
-     *         final var defaultMainVersions = EmrFunctions.getMainVersions();
+     *         final var defaultGetMainVersions = EmrFunctions.getMainVersions();
      * 
-     *         final var defaultInstanceTypes = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *         final var defaultGetInstanceTypes = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
      *             .destinationResource(&#34;InstanceType&#34;)
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .supportLocalStorage(false)
      *             .instanceChargeType(&#34;PostPaid&#34;)
      *             .supportNodeTypes(            
@@ -1027,34 +1042,36 @@ public final class EmrFunctions {
      * 
      *         final var dataDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
      *             .destinationResource(&#34;DataDisk&#34;)
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
      *         final var systemDisk = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
      *             .destinationResource(&#34;SystemDisk&#34;)
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *             .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var defaultGetNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
      *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .name(name)
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(defaultGetNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .build());
      * 
      *         var defaultRole = new Role(&#34;defaultRole&#34;, RoleArgs.builder()        
+     *             .name(name)
      *             .document(&#34;&#34;&#34;
      *     {
      *         &#34;Statement&#34;: [
@@ -1077,14 +1094,15 @@ public final class EmrFunctions {
      *             .build());
      * 
      *         var defaultCluster = new Cluster(&#34;defaultCluster&#34;, ClusterArgs.builder()        
-     *             .emrVer(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].emrVersion()))
-     *             .clusterType(defaultMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
+     *             .name(name)
+     *             .emrVer(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].emrVersion()))
+     *             .clusterType(defaultGetMainVersions.applyValue(getMainVersionsResult -&gt; getMainVersionsResult.mainVersions()[0].clusterTypes()[0]))
      *             .hostGroups(            
      *                 ClusterHostGroupArgs.builder()
      *                     .hostGroupName(&#34;master_group&#34;)
      *                     .hostGroupType(&#34;MASTER&#34;)
      *                     .nodeCount(&#34;2&#34;)
-     *                     .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
      *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
      *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .diskCount(&#34;1&#34;)
@@ -1095,7 +1113,7 @@ public final class EmrFunctions {
      *                     .hostGroupName(&#34;core_group&#34;)
      *                     .hostGroupType(&#34;CORE&#34;)
      *                     .nodeCount(&#34;3&#34;)
-     *                     .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
      *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
      *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .diskCount(&#34;4&#34;)
@@ -1106,7 +1124,7 @@ public final class EmrFunctions {
      *                     .hostGroupName(&#34;task_group&#34;)
      *                     .hostGroupType(&#34;TASK&#34;)
      *                     .nodeCount(&#34;2&#34;)
-     *                     .instanceType(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
+     *                     .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].id()))
      *                     .diskType(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].value()))
      *                     .diskCapacity(dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? dataDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .diskCount(&#34;4&#34;)
@@ -1114,11 +1132,11 @@ public final class EmrFunctions {
      *                     .sysDiskCapacity(systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) &gt; 160 ? systemDisk.applyValue(getDiskTypesResult -&gt; getDiskTypesResult.types()[0].min()) : 160)
      *                     .build())
      *             .highAvailabilityEnable(true)
-     *             .zoneId(defaultInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
+     *             .zoneId(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.types()[0].zoneId()))
      *             .securityGroupId(defaultSecurityGroup.id())
      *             .isOpenPublicIp(true)
      *             .chargeType(&#34;PostPaid&#34;)
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .userDefinedEmrEcsRole(defaultRole.name())
      *             .sshEnable(true)
      *             .masterPwd(&#34;ABCtest1234!&#34;)
@@ -1176,9 +1194,9 @@ public final class EmrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
-     *             .clusterType(&#34;HADOOP&#34;)
      *             .destinationResource(&#34;DataDisk&#34;)
      *             .instanceChargeType(&#34;PostPaid&#34;)
+     *             .clusterType(&#34;HADOOP&#34;)
      *             .instanceType(&#34;ecs.g5.xlarge&#34;)
      *             .zoneId(&#34;cn-huhehaote-a&#34;)
      *             .build());
@@ -1224,9 +1242,9 @@ public final class EmrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
-     *             .clusterType(&#34;HADOOP&#34;)
      *             .destinationResource(&#34;DataDisk&#34;)
      *             .instanceChargeType(&#34;PostPaid&#34;)
+     *             .clusterType(&#34;HADOOP&#34;)
      *             .instanceType(&#34;ecs.g5.xlarge&#34;)
      *             .zoneId(&#34;cn-huhehaote-a&#34;)
      *             .build());
@@ -1272,9 +1290,9 @@ public final class EmrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
-     *             .clusterType(&#34;HADOOP&#34;)
      *             .destinationResource(&#34;DataDisk&#34;)
      *             .instanceChargeType(&#34;PostPaid&#34;)
+     *             .clusterType(&#34;HADOOP&#34;)
      *             .instanceType(&#34;ecs.g5.xlarge&#34;)
      *             .zoneId(&#34;cn-huhehaote-a&#34;)
      *             .build());
@@ -1320,9 +1338,9 @@ public final class EmrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EmrFunctions.getDiskTypes(GetDiskTypesArgs.builder()
-     *             .clusterType(&#34;HADOOP&#34;)
      *             .destinationResource(&#34;DataDisk&#34;)
      *             .instanceChargeType(&#34;PostPaid&#34;)
+     *             .clusterType(&#34;HADOOP&#34;)
      *             .instanceType(&#34;ecs.g5.xlarge&#34;)
      *             .zoneId(&#34;cn-huhehaote-a&#34;)
      *             .build());
@@ -1368,11 +1386,11 @@ public final class EmrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .clusterType(&#34;HADOOP&#34;)
      *             .destinationResource(&#34;InstanceType&#34;)
      *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceType(&#34;ecs.g5.2xlarge&#34;)
      *             .supportLocalStorage(false)
+     *             .clusterType(&#34;HADOOP&#34;)
+     *             .instanceType(&#34;ecs.g5.2xlarge&#34;)
      *             .supportNodeTypes(            
      *                 &#34;MASTER&#34;,
      *                 &#34;CORE&#34;)
@@ -1419,11 +1437,11 @@ public final class EmrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .clusterType(&#34;HADOOP&#34;)
      *             .destinationResource(&#34;InstanceType&#34;)
      *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceType(&#34;ecs.g5.2xlarge&#34;)
      *             .supportLocalStorage(false)
+     *             .clusterType(&#34;HADOOP&#34;)
+     *             .instanceType(&#34;ecs.g5.2xlarge&#34;)
      *             .supportNodeTypes(            
      *                 &#34;MASTER&#34;,
      *                 &#34;CORE&#34;)
@@ -1470,11 +1488,11 @@ public final class EmrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .clusterType(&#34;HADOOP&#34;)
      *             .destinationResource(&#34;InstanceType&#34;)
      *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceType(&#34;ecs.g5.2xlarge&#34;)
      *             .supportLocalStorage(false)
+     *             .clusterType(&#34;HADOOP&#34;)
+     *             .instanceType(&#34;ecs.g5.2xlarge&#34;)
      *             .supportNodeTypes(            
      *                 &#34;MASTER&#34;,
      *                 &#34;CORE&#34;)
@@ -1521,11 +1539,11 @@ public final class EmrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EmrFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .clusterType(&#34;HADOOP&#34;)
      *             .destinationResource(&#34;InstanceType&#34;)
      *             .instanceChargeType(&#34;PostPaid&#34;)
-     *             .instanceType(&#34;ecs.g5.2xlarge&#34;)
      *             .supportLocalStorage(false)
+     *             .clusterType(&#34;HADOOP&#34;)
+     *             .instanceType(&#34;ecs.g5.2xlarge&#34;)
      *             .supportNodeTypes(            
      *                 &#34;MASTER&#34;,
      *                 &#34;CORE&#34;)
@@ -1572,10 +1590,10 @@ public final class EmrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EmrFunctions.getMainVersions(GetMainVersionsArgs.builder()
+     *             .emrVersion(&#34;EMR-3.22.0&#34;)
      *             .clusterTypes(            
      *                 &#34;HADOOP&#34;,
      *                 &#34;ZOOKEEPER&#34;)
-     *             .emrVersion(&#34;EMR-3.22.0&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstMainVersion&#34;, default_.mainVersions()[0].emrVersion());
@@ -1620,10 +1638,10 @@ public final class EmrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EmrFunctions.getMainVersions(GetMainVersionsArgs.builder()
+     *             .emrVersion(&#34;EMR-3.22.0&#34;)
      *             .clusterTypes(            
      *                 &#34;HADOOP&#34;,
      *                 &#34;ZOOKEEPER&#34;)
-     *             .emrVersion(&#34;EMR-3.22.0&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstMainVersion&#34;, default_.mainVersions()[0].emrVersion());
@@ -1668,10 +1686,10 @@ public final class EmrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EmrFunctions.getMainVersions(GetMainVersionsArgs.builder()
+     *             .emrVersion(&#34;EMR-3.22.0&#34;)
      *             .clusterTypes(            
      *                 &#34;HADOOP&#34;,
      *                 &#34;ZOOKEEPER&#34;)
-     *             .emrVersion(&#34;EMR-3.22.0&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstMainVersion&#34;, default_.mainVersions()[0].emrVersion());
@@ -1716,10 +1734,10 @@ public final class EmrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EmrFunctions.getMainVersions(GetMainVersionsArgs.builder()
+     *             .emrVersion(&#34;EMR-3.22.0&#34;)
      *             .clusterTypes(            
      *                 &#34;HADOOP&#34;,
      *                 &#34;ZOOKEEPER&#34;)
-     *             .emrVersion(&#34;EMR-3.22.0&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstMainVersion&#34;, default_.mainVersions()[0].emrVersion());
@@ -1764,10 +1782,10 @@ public final class EmrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EmrFunctions.getMainVersions(GetMainVersionsArgs.builder()
+     *             .emrVersion(&#34;EMR-3.22.0&#34;)
      *             .clusterTypes(            
      *                 &#34;HADOOP&#34;,
      *                 &#34;ZOOKEEPER&#34;)
-     *             .emrVersion(&#34;EMR-3.22.0&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstMainVersion&#34;, default_.mainVersions()[0].emrVersion());
@@ -1812,10 +1830,10 @@ public final class EmrFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = EmrFunctions.getMainVersions(GetMainVersionsArgs.builder()
+     *             .emrVersion(&#34;EMR-3.22.0&#34;)
      *             .clusterTypes(            
      *                 &#34;HADOOP&#34;,
      *                 &#34;ZOOKEEPER&#34;)
-     *             .emrVersion(&#34;EMR-3.22.0&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstMainVersion&#34;, default_.mainVersions()[0].emrVersion());

@@ -31,19 +31,19 @@ namespace Pulumi.AliCloud.Cfg
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform_example";
-    ///     var defaultAccounts = AliCloud.ResourceManager.GetAccounts.Invoke(new()
+    ///     var @default = AliCloud.ResourceManager.GetAccounts.Invoke(new()
     ///     {
     ///         Status = "CreateSuccess",
     ///     });
     /// 
-    ///     var defaultAggregator = new AliCloud.Cfg.Aggregator("defaultAggregator", new()
+    ///     var defaultAggregator = new AliCloud.Cfg.Aggregator("default", new()
     ///     {
     ///         AggregatorAccounts = new[]
     ///         {
     ///             new AliCloud.Cfg.Inputs.AggregatorAggregatorAccountArgs
     ///             {
-    ///                 AccountId = defaultAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.AccountId),
-    ///                 AccountName = defaultAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.DisplayName),
+    ///                 AccountId = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.AccountId)),
+    ///                 AccountName = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Accounts[0]?.DisplayName)),
     ///                 AccountType = "ResourceDirectory",
     ///             },
     ///         },
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.Cfg
     ///         AggregatorType = "CUSTOM",
     ///     });
     /// 
-    ///     var defaultAggregateConfigRule = new AliCloud.Cfg.AggregateConfigRule("defaultAggregateConfigRule", new()
+    ///     var defaultAggregateConfigRule = new AliCloud.Cfg.AggregateConfigRule("default", new()
     ///     {
     ///         AggregateConfigRuleName = "contains-tag",
     ///         AggregatorId = defaultAggregator.Id,
@@ -72,7 +72,7 @@ namespace Pulumi.AliCloud.Cfg
     ///         },
     ///     });
     /// 
-    ///     var defaultAggregateCompliancePack = new AliCloud.Cfg.AggregateCompliancePack("defaultAggregateCompliancePack", new()
+    ///     var defaultAggregateCompliancePack = new AliCloud.Cfg.AggregateCompliancePack("default", new()
     ///     {
     ///         AggregateCompliancePackName = name,
     ///         AggregatorId = defaultAggregator.Id,

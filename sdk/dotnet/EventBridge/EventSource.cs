@@ -31,16 +31,19 @@ namespace Pulumi.AliCloud.EventBridge
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var exampleEventBus = new AliCloud.EventBridge.EventBus("exampleEventBus", new()
+    ///     var example = new AliCloud.EventBridge.EventBus("example", new()
     ///     {
     ///         EventBusName = name,
     ///     });
     /// 
-    ///     var exampleQueue = new AliCloud.Mns.Queue("exampleQueue");
-    /// 
-    ///     var exampleEventSource = new AliCloud.EventBridge.EventSource("exampleEventSource", new()
+    ///     var exampleQueue = new AliCloud.Mns.Queue("example", new()
     ///     {
-    ///         EventBusName = exampleEventBus.EventBusName,
+    ///         Name = name,
+    ///     });
+    /// 
+    ///     var exampleEventSource = new AliCloud.EventBridge.EventSource("example", new()
+    ///     {
+    ///         EventBusName = example.EventBusName,
     ///         EventSourceName = name,
     ///         Description = name,
     ///         LinkedExternalSource = true,

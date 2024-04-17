@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *
  * const default = alicloud.expressconnect.getVbrPconnAssociations({
  *     ids: ["example_id"],
- *     vbrId: alicloud_express_connect_vbr_pconn_association["default"].vbr_id,
+ *     vbrId: defaultAlicloudExpressConnectVbrPconnAssociation.vbrId,
  * });
  * export const alicloudExpressConnectVbrPconnAssociationExampleId = _default.then(_default => _default.associations?.[0]?.id);
  * ```
@@ -94,7 +94,7 @@ export interface GetVbrPconnAssociationsResult {
  *
  * const default = alicloud.expressconnect.getVbrPconnAssociations({
  *     ids: ["example_id"],
- *     vbrId: alicloud_express_connect_vbr_pconn_association["default"].vbr_id,
+ *     vbrId: defaultAlicloudExpressConnectVbrPconnAssociation.vbrId,
  * });
  * export const alicloudExpressConnectVbrPconnAssociationExampleId = _default.then(_default => _default.associations?.[0]?.id);
  * ```

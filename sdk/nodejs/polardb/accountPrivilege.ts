@@ -16,40 +16,40 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultNodeClasses = alicloud.polardb.getNodeClasses({
+ * const default = alicloud.polardb.getNodeClasses({
  *     dbType: "MySQL",
  *     dbVersion: "8.0",
  *     payType: "PostPaid",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: "terraform-example",
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
- *     zoneId: defaultNodeClasses.then(defaultNodeClasses => defaultNodeClasses.classes?.[0]?.zoneId),
+ *     zoneId: _default.then(_default => _default.classes?.[0]?.zoneId),
  *     vswitchName: "terraform-example",
  * });
- * const defaultCluster = new alicloud.polardb.Cluster("defaultCluster", {
+ * const defaultCluster = new alicloud.polardb.Cluster("default", {
  *     dbType: "MySQL",
  *     dbVersion: "8.0",
- *     dbNodeClass: defaultNodeClasses.then(defaultNodeClasses => defaultNodeClasses.classes?.[0]?.supportedEngines?.[0]?.availableResources?.[0]?.dbNodeClass),
+ *     dbNodeClass: _default.then(_default => _default.classes?.[0]?.supportedEngines?.[0]?.availableResources?.[0]?.dbNodeClass),
  *     payType: "PostPaid",
  *     vswitchId: defaultSwitch.id,
  *     description: "terraform-example",
  * });
- * const defaultAccount = new alicloud.polardb.Account("defaultAccount", {
+ * const defaultAccount = new alicloud.polardb.Account("default", {
  *     dbClusterId: defaultCluster.id,
  *     accountName: "terraform_example",
  *     accountPassword: "Example1234",
  *     accountDescription: "terraform-example",
  * });
- * const defaultDatabase = new alicloud.polardb.Database("defaultDatabase", {
+ * const defaultDatabase = new alicloud.polardb.Database("default", {
  *     dbClusterId: defaultCluster.id,
  *     dbName: "terraform-example",
  * });
- * const defaultAccountPrivilege = new alicloud.polardb.AccountPrivilege("defaultAccountPrivilege", {
+ * const defaultAccountPrivilege = new alicloud.polardb.AccountPrivilege("default", {
  *     dbClusterId: defaultCluster.id,
  *     accountName: defaultAccount.accountName,
  *     accountPrivilege: "ReadOnly",

@@ -31,32 +31,36 @@ namespace Pulumi.AliCloud.Cfg
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example-sls";
-    ///     var thisAccount = AliCloud.GetAccount.Invoke();
+    ///     var @this = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var thisRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var thisGetRegions = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultProject = new AliCloud.Log.Project("defaultProject");
-    /// 
-    ///     var defaultStore = new AliCloud.Log.Store("defaultStore", new()
+    ///     var @default = new AliCloud.Log.Project("default", new()
     ///     {
-    ///         Project = defaultProject.Name,
+    ///         Name = name,
     ///     });
     /// 
-    ///     var defaultDelivery = new AliCloud.Cfg.Delivery("defaultDelivery", new()
+    ///     var defaultStore = new AliCloud.Log.Store("default", new()
+    ///     {
+    ///         Name = name,
+    ///         Project = @default.Name,
+    ///     });
+    /// 
+    ///     var defaultDelivery = new AliCloud.Cfg.Delivery("default", new()
     ///     {
     ///         ConfigurationItemChangeNotification = true,
     ///         NonCompliantNotification = true,
     ///         DeliveryChannelName = name,
-    ///         DeliveryChannelTargetArn = Output.Tuple(thisRegions, thisAccount, defaultProject.Name, defaultStore.Name).Apply(values =&gt;
+    ///         DeliveryChannelTargetArn = Output.Tuple(thisGetRegions, @this, @default.Name, defaultStore.Name).Apply(values =&gt;
     ///         {
-    ///             var thisRegions = values.Item1;
-    ///             var thisAccount = values.Item2;
-    ///             var defaultProjectName = values.Item3;
+    ///             var thisGetRegions = values.Item1;
+    ///             var @this = values.Item2;
+    ///             var defaultName = values.Item3;
     ///             var defaultStoreName = values.Item4;
-    ///             return $"acs:log:{thisRegions.Apply(getRegionsResult =&gt; getRegionsResult.Ids[0])}:{thisAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:project/{defaultProjectName}/logstore/{defaultStoreName}";
+    ///             return $"acs:log:{thisGetRegions.Apply(getRegionsResult =&gt; getRegionsResult.Ids[0])}:{@this.Apply(getAccountResult =&gt; getAccountResult.Id)}:project/{defaultName}/logstore/{defaultStoreName}";
     ///         }),
     ///         DeliveryChannelType = "SLS",
     ///         Description = name,

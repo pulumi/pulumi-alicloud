@@ -28,11 +28,13 @@ namespace Pulumi.AliCloud.Ram
     ///     // Create a RAM Group Policy attachment.
     ///     var @group = new AliCloud.Ram.Group("group", new()
     ///     {
+    ///         Name = "groupName",
     ///         Comments = "this is a group comments.",
     ///     });
     /// 
     ///     var policy = new AliCloud.Ram.Policy("policy", new()
     ///     {
+    ///         Name = "policyName",
     ///         Document = @"    {
     ///       ""Statement"": [
     ///         {

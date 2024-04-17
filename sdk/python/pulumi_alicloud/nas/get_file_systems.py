@@ -141,8 +141,8 @@ def get_file_systems(description_regex: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    fs = alicloud.nas.get_file_systems(description_regex=alicloud_nas_file_system["foo"]["description"],
-        protocol_type="NFS")
+    fs = alicloud.nas.get_file_systems(protocol_type="NFS",
+        description_regex=foo["description"])
     pulumi.export("alicloudNasFileSystemsId", fs.systems[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -197,8 +197,8 @@ def get_file_systems_output(description_regex: Optional[pulumi.Input[Optional[st
     import pulumi
     import pulumi_alicloud as alicloud
 
-    fs = alicloud.nas.get_file_systems(description_regex=alicloud_nas_file_system["foo"]["description"],
-        protocol_type="NFS")
+    fs = alicloud.nas.get_file_systems(protocol_type="NFS",
+        description_regex=foo["description"])
     pulumi.export("alicloudNasFileSystemsId", fs.systems[0].id)
     ```
     <!--End PulumiCodeChooser -->

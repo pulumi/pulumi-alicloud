@@ -33,14 +33,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			attachmentAcl, err := slb.NewAcl(ctx, "attachmentAcl", &slb.AclArgs{
+//			attachment, err := slb.NewAcl(ctx, "attachment", &slb.AclArgs{
+//				Name:      pulumi.String("forSlbAclEntryAttachment"),
 //				IpVersion: pulumi.String("ipv4"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = slb.NewAclEntryAttachment(ctx, "attachmentAclEntryAttachment", &slb.AclEntryAttachmentArgs{
-//				AclId:   attachmentAcl.ID(),
+//			_, err = slb.NewAclEntryAttachment(ctx, "attachment", &slb.AclEntryAttachmentArgs{
+//				AclId:   attachment.ID(),
 //				Entry:   pulumi.String("168.10.10.0/24"),
 //				Comment: pulumi.String("second"),
 //			})

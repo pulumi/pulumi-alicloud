@@ -32,8 +32,9 @@ namespace Pulumi.AliCloud.Ddos
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
     ///     var domain = config.Get("domain") ?? "tf-example.alibaba.com";
-    ///     var defaultDdosCooInstance = new AliCloud.Ddos.DdosCooInstance("defaultDdosCooInstance", new()
+    ///     var @default = new AliCloud.Ddos.DdosCooInstance("default", new()
     ///     {
+    ///         Name = name,
     ///         Bandwidth = "30",
     ///         BaseBandwidth = "30",
     ///         ServiceBandwidth = "100",
@@ -43,13 +44,13 @@ namespace Pulumi.AliCloud.Ddos
     ///         ProductType = "ddoscoo",
     ///     });
     /// 
-    ///     var defaultDomainResource = new AliCloud.Ddos.DomainResource("defaultDomainResource", new()
+    ///     var defaultDomainResource = new AliCloud.Ddos.DomainResource("default", new()
     ///     {
     ///         Domain = domain,
     ///         RsType = 0,
     ///         InstanceIds = new[]
     ///         {
-    ///             defaultDdosCooInstance.Id,
+    ///             @default.Id,
     ///         },
     ///         RealServers = new[]
     ///         {

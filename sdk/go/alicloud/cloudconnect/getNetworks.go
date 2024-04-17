@@ -33,16 +33,17 @@ import (
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // _, err := cloudconnect.GetNetworks(ctx, &cloudconnect.GetNetworksArgs{
 // Ids: interface{}{
-// alicloud_cloud_connect_networks.Default.Id,
+// defaultAlicloudCloudConnectNetworks.Id,
 // },
 // NameRegex: pulumi.StringRef("^tf-testAcc.*"),
 // }, nil);
 // if err != nil {
 // return err
 // }
-// _, err = cloudconnect.NewNetwork(ctx, "defaultNetwork", &cloudconnect.NetworkArgs{
-// CidrBlock: pulumi.String("192.168.0.0/24"),
+// _, err = cloudconnect.NewNetwork(ctx, "default", &cloudconnect.NetworkArgs{
+// Name: pulumi.String("tf-testAccCloudConnectNetworkName"),
 // Description: pulumi.String("tf-testAccCloudConnectNetworkDescription"),
+// CidrBlock: pulumi.String("192.168.0.0/24"),
 // IsDefault: pulumi.Bool(true),
 // })
 // if err != nil {

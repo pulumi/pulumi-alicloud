@@ -31,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := slb.GetZones(ctx, &slb.GetZonesArgs{
-//				AvailableSlbAddressIpVersion: pulumi.StringRef("ipv4"),
 //				AvailableSlbAddressType:      pulumi.StringRef("vpc"),
+//				AvailableSlbAddressIpVersion: pulumi.StringRef("ipv4"),
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -21,11 +21,12 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
  * const example = new alicloud.log.Project("example", {
+ *     name: `terraform-example-${_default.result}`,
  *     description: "terraform-example",
  *     tags: {
  *         Created: "TF",
@@ -43,11 +44,12 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
- * const examplePolicy = new alicloud.log.Project("examplePolicy", {
+ * const examplePolicy = new alicloud.log.Project("example_policy", {
+ *     name: `terraform-example-${_default.result}`,
  *     description: "terraform-example",
  *     policy: `{
  *   "Statement": [
@@ -68,7 +70,6 @@ import * as utilities from "../utilities";
  *   ],
  *   "Version": "1"
  * }
- *
  * `,
  * });
  * ```

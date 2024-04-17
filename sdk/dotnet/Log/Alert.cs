@@ -31,20 +31,22 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     var example = new AliCloud.Log.Project("example", new()
     ///     {
+    ///         Name = $"terraform-example-{@default.Result}",
     ///         Description = "terraform-example",
     ///     });
     /// 
-    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     var exampleStore = new AliCloud.Log.Store("example", new()
     ///     {
-    ///         Project = exampleProject.Name,
+    ///         Project = example.Name,
+    ///         Name = "example-store",
     ///         RetentionPeriod = 3650,
     ///         ShardCount = 3,
     ///         AutoSplit = true,
@@ -52,9 +54,9 @@ namespace Pulumi.AliCloud.Log
     ///         AppendMeta = true,
     ///     });
     /// 
-    ///     var exampleAlert = new AliCloud.Log.Alert("exampleAlert", new()
+    ///     var exampleAlert = new AliCloud.Log.Alert("example", new()
     ///     {
-    ///         ProjectName = exampleProject.Name,
+    ///         ProjectName = example.Name,
     ///         AlertName = "example-alert",
     ///         AlertDisplayname = "example-alert",
     ///         Condition = "count&gt; 100",
@@ -126,20 +128,22 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     var example = new AliCloud.Log.Project("example", new()
     ///     {
+    ///         Name = $"terraform-example-{@default.Result}",
     ///         Description = "terraform-example",
     ///     });
     /// 
-    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     var exampleStore = new AliCloud.Log.Store("example", new()
     ///     {
-    ///         Project = exampleProject.Name,
+    ///         Project = example.Name,
+    ///         Name = "example-store",
     ///         RetentionPeriod = 3650,
     ///         ShardCount = 3,
     ///         AutoSplit = true,
@@ -151,7 +155,7 @@ namespace Pulumi.AliCloud.Log
     ///     {
     ///         Version = "2.0",
     ///         Type = "default",
-    ///         ProjectName = exampleProject.Name,
+    ///         ProjectName = example.Name,
     ///         AlertName = "example-alert",
     ///         AlertDisplayname = "example-alert",
     ///         MuteUntil = 1632486684,
@@ -175,7 +179,7 @@ namespace Pulumi.AliCloud.Log
     ///             {
     ///                 Store = exampleStore.Name,
     ///                 StoreType = "log",
-    ///                 Project = exampleProject.Name,
+    ///                 Project = example.Name,
     ///                 Region = "cn-heyuan",
     ///                 ChartTitle = "chart_title",
     ///                 Start = "-60s",
@@ -187,7 +191,7 @@ namespace Pulumi.AliCloud.Log
     ///             {
     ///                 Store = exampleStore.Name,
     ///                 StoreType = "log",
-    ///                 Project = exampleProject.Name,
+    ///                 Project = example.Name,
     ///                 Region = "cn-heyuan",
     ///                 ChartTitle = "chart_title",
     ///                 Start = "-60s",
@@ -292,20 +296,22 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     var example = new AliCloud.Log.Project("example", new()
     ///     {
+    ///         Name = $"terraform-example-{@default.Result}",
     ///         Description = "terraform-example",
     ///     });
     /// 
-    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     var exampleStore = new AliCloud.Log.Store("example", new()
     ///     {
-    ///         Project = exampleProject.Name,
+    ///         Project = example.Name,
+    ///         Name = "example-store",
     ///         RetentionPeriod = 3650,
     ///         ShardCount = 3,
     ///         AutoSplit = true,
@@ -317,7 +323,7 @@ namespace Pulumi.AliCloud.Log
     ///     {
     ///         Version = "2.0",
     ///         Type = "tpl",
-    ///         ProjectName = exampleProject.Name,
+    ///         ProjectName = example.Name,
     ///         AlertName = "example-alert",
     ///         AlertDisplayname = "example-alert",
     ///         MuteUntil = 1632486684,
@@ -342,7 +348,7 @@ namespace Pulumi.AliCloud.Log
     ///                 { "default.action_policy", "sls.app.ack.builtin" },
     ///                 { "default.severity", "6" },
     ///                 { "sendResolved", "false" },
-    ///                 { "default.project", exampleProject.Name },
+    ///                 { "default.project", example.Name },
     ///                 { "default.logstore", "k8s-event" },
     ///                 { "default.repeatInterval", "4h" },
     ///                 { "trigger_threshold", "1" },

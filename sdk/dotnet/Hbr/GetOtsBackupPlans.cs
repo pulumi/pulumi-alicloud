@@ -36,7 +36,7 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["hbrOtsBackupPlanId"] = data.Alicloud_hbr_ots_backup_plans.Plans[0].Id,
+        ///         ["hbrOtsBackupPlanId"] = plans[0].Id,
         ///     };
         /// });
         /// ```
@@ -70,7 +70,7 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["hbrOtsBackupPlanId"] = data.Alicloud_hbr_ots_backup_plans.Plans[0].Id,
+        ///         ["hbrOtsBackupPlanId"] = plans[0].Id,
         ///     };
         /// });
         /// ```

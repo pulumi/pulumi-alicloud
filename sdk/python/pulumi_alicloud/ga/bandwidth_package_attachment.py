@@ -145,19 +145,19 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_accelerator = alicloud.ga.Accelerator("exampleAccelerator",
+        example = alicloud.ga.Accelerator("example",
             duration=1,
             auto_use_coupon=True,
             spec="1")
-        example_bandwidth_package = alicloud.ga.BandwidthPackage("exampleBandwidthPackage",
+        example_bandwidth_package = alicloud.ga.BandwidthPackage("example",
             bandwidth=20,
             type="Basic",
             bandwidth_type="Basic",
             duration="1",
             auto_pay=True,
             ratio=30)
-        example_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
-            accelerator_id=example_accelerator.id,
+        example_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("example",
+            accelerator_id=example.id,
             bandwidth_package_id=example_bandwidth_package.id)
         ```
         <!--End PulumiCodeChooser -->
@@ -197,19 +197,19 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_accelerator = alicloud.ga.Accelerator("exampleAccelerator",
+        example = alicloud.ga.Accelerator("example",
             duration=1,
             auto_use_coupon=True,
             spec="1")
-        example_bandwidth_package = alicloud.ga.BandwidthPackage("exampleBandwidthPackage",
+        example_bandwidth_package = alicloud.ga.BandwidthPackage("example",
             bandwidth=20,
             type="Basic",
             bandwidth_type="Basic",
             duration="1",
             auto_pay=True,
             ratio=30)
-        example_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
-            accelerator_id=example_accelerator.id,
+        example_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("example",
+            accelerator_id=example.id,
             bandwidth_package_id=example_bandwidth_package.id)
         ```
         <!--End PulumiCodeChooser -->

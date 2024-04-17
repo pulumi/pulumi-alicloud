@@ -18,6 +18,118 @@ import (
 //
 // > **NOTE:** Available since v1.165.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/bastionhost"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "tf_example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// _default, err := bastionhost.GetInstances(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+// NameRegex: pulumi.StringRef("^default-NODELETING$"),
+// CidrBlock: pulumi.StringRef("10.4.0.0/16"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+// CidrBlock: pulumi.StringRef("10.4.0.0/24"),
+// VpcId: pulumi.StringRef(defaultGetNetworks.Ids[0]),
+// ZoneId: pulumi.StringRef(defaultGetZones.Zones[0].Id),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// var defaultSecurityGroup []*ecs.SecurityGroup
+//
+//	for index := 0; index < %!v(PANIC=Format method: fatal: A failure has occurred: unlowered conditional expression @ example.pp:23,13-44); index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := ecs.NewSecurityGroup(ctx, fmt.Sprintf("default-%v", key0), &ecs.SecurityGroupArgs{
+// VpcId: pulumi.String(defaultGetNetworks.Ids[0]),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSecurityGroup = append(defaultSecurityGroup, __res)
+// }
+// var defaultInstance []*bastionhost.Instance
+//
+//	for index := 0; index < %!v(PANIC=Format method: fatal: A failure has occurred: unlowered conditional expression @ example.pp:31,13-44); index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := bastionhost.NewInstance(ctx, fmt.Sprintf("default-%v", key0), &bastionhost.InstanceArgs{
+// Description: pulumi.String(name),
+// LicenseCode: pulumi.String("bhah_ent_50_asset"),
+// PlanCode: pulumi.String("cloudbastion"),
+// Storage: pulumi.String("5"),
+// Bandwidth: pulumi.String("5"),
+// Period: pulumi.Int(1),
+// VswitchId: pulumi.String(defaultGetSwitches.Ids[0]),
+// SecurityGroupIds: pulumi.StringArray{
+// defaultSecurityGroup[0].ID(),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// defaultInstance = append(defaultInstance, __res)
+// }
+// var tmp0 *string
+// if len(_default.Ids) > 0 {
+// tmp0 = _default.Ids[0]
+// } else {
+// tmp0 = defaultInstance[0].ID()
+// }
+// instanceId := tmp0;
+// privateKey := "LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFcEFJQkFBS0NBUUVBc25oc29SSVVwVXltSG1FVHJXUGxDbkhMa3c3N0JYTm44ZHcvbDg3eG10SUhjd2syCkRybjFDZk5jZkpJV0tSdkFaYkdKMlZTS1RiRDhPTmcyT3JvUHFGUHBLOHJ5QjJRb1NYQVRsaUVHWFhNeW1tRm8KeDBmem12THFscUxpNGZnOExhcTc5UC85aGxLU1djTWhJU0pYVTNHMS9KdEFBUmEyQXc4cXEzSVQvMkZ5NktrdwowMU9MdDdLN2pGUFRPaHhtdmNoSkZ1SVo1YXI0cW5HUlFHQnpCL2hoRHVIWEMwRlhJZ2ozd0NXMDZ4R2V2WjJyCmNCWWwwN1luL2lvZk95MU0wRjZZN0JrMU95N21vYndzM1JsalUyL2FpZlhLMmNOUlk2Qjl5WXNvd1RBZmQ5OTQKQ2YxSlF3TlhsaUZCeTZueEJLQk1YbDhIU1grS1o3L29PUlIwVXdJREFRQUJBb0lCQVFDbU5JSXR5ckhSY3oxdApJMGo0L0FQc295ZE1EL0owRkJMa2FoSUxKWjFaYW1tbmx4ZHh4WHBQUndXRnVXTEw2OTFVbDI5aUoxb1ptazU1Ci9ka2EvZlhnOUN3OUxXWVN2aExLdVlaMEZOTmhxZ3VoUEVBZy9uLytlR1ZCM2ZYZkxaZVZpK0E0L1VHMG15ZFMKVXVlQ2ZRSElZeWh4VkgvWnc3WER5WmNhVFVZVVdMUWlYcVN0Y2JRbnZFOXpwOGc5TWh5UkhBcWYwbEt2UTRqdwphUnNKTnlob3lhZWcvUXlFeHVYNGdBR1lIc1lTSDRFVmtXOHl5WE1aOHpRdk1OSUNiYXhmUkRuSngybUh6a09rCnFHczVXbFp5L3VrQk5jWTQwd2Y0eTY2bEVJaVpKbiswaFhtSTF4Tk5SdHRwMjZnY3ROOXZWbmVicTdLTnpjTDgKeFQrMXZJaEpBb0dCQU9iMVM1YlE4NVRFWDBoZTRmdXc2R3ExbnhRLzJUSU03emZhK2VhZThPQlh2eVNFV3JpdwpPZzM3RFhVUDFNVU1iTEJRenE0STl1dE5YSVZadEFLR0h6ZDR6WmtQeGxORjZPN0FyWnJEWElDNEdKZHdmSEhxCjJZcDkxUDlWekJlOVhkTVdZVGFCNkMzWVdtYzQwM08vYWdyRCtNb2JnL0hqMSt0d2xZR2hjdlV2QW9HQkFNWFMKT2VnWHc5VUF3VEZabFBtZzZKeDI3TzNXUFBHd1E3QzRnYitFZzZkR1pLRnJVR1ZId2VUUG1HaGtwN1BmYU5ESwplaFVoUWFnNm9XOTF4dkE2YldZZ29SQmczUWkxc01MblRWeTExeVN1UEVFSCtMT2s1N3d2akNLSk5XZnM0SjVyCmg1NGw0QXZ6UVhyWWN0UlZkSmYrNjFacGFnTkdZMVBvWVJMTHJMSWRBb0dBTndydzErRzJtNWJ0YW04S2hwU1QKMzVLbmRnajlkM3N6cStrcE03aGZpZWYvcXZGTU9jWHVJQlRjRVRFVHNWNlRyTFdsZkQ2d3NrVitybDFCbEhSbwpqaXpoT3dCU2NOZ3hlbTA3TXE0cXBwYTViYVltVW5QNUlwTjRwdDNJeFVPaFQ4UitxS0h2TnJYZ1hjZGlSYXl4CjFoejhkeFoxckxselpTNHd3M001MVlzQ2dZRUFpUDEwTEUySXg5Q2wrTTdZWTZZU2I0Zkx1MGhKRy9XOGFuemIKSFExZlBrOTVFRytJVlJyRUl2ZS95MHNvOTE4VzdyL0lteWxVbG5ORHFEUWZkK3grSmVNaXBuenRsRUorRGZxdgprQ3c4dUtJUUI5akZXV0l4T0JpVktyVnB6bll6ZG9Gd2dRd3BneDBKazFDZzlIblpMQWpVWUJyUDEwUy9ORFFRClJUdldjK0VDZ1lBeGRIZWxQNG1RdkJaS1oxMlNKbHlLbFVLeW43aHhzSHVkMkphMVNtS3FWeHBERDNlR0w0Y3QKZXA1QTZ5NkF4eGViZkI0aDdYNEZ0QTBBRURPdkZDR0J1QlRvZ3ZBdUNDVUtqK2JIUG1SNG53UVYzcWZ2M3loRAp0TGkwU2FHVElta2wvbUNCUDhZaW9JUys2N0xjby9kbHphUTNGVDlxTnJieFdFWjJlaS9LVlE9PQotLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQ==";
+// if param := cfg.Get("privateKey"); param != ""{
+// privateKey = param
+// }
+// _, err = bastionhost.NewHostShareKey(ctx, "default", &bastionhost.HostShareKeyArgs{
+// HostShareKeyName: pulumi.String(name),
+// InstanceId: pulumi.String(instanceId),
+// PrivateKey: pulumi.String(privateKey),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // Bastion Host Share Key can be imported using the id, e.g.

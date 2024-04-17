@@ -84,7 +84,7 @@ class Qos(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.rocketmq.Qos("default")
+        default = alicloud.rocketmq.Qos("default", name="terraform-example")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -124,7 +124,7 @@ class Qos(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.rocketmq.Qos("default")
+        default = alicloud.rocketmq.Qos("default", name="terraform-example")
         ```
         <!--End PulumiCodeChooser -->
 

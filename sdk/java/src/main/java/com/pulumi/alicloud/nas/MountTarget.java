@@ -20,6 +20,90 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available since v1.34.0.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.nas.NasFunctions;
+ * import com.pulumi.alicloud.nas.inputs.GetZonesArgs;
+ * import com.pulumi.alicloud.vpc.Network;
+ * import com.pulumi.alicloud.vpc.NetworkArgs;
+ * import com.pulumi.alicloud.vpc.Switch;
+ * import com.pulumi.alicloud.vpc.SwitchArgs;
+ * import com.pulumi.alicloud.nas.FileSystem;
+ * import com.pulumi.alicloud.nas.FileSystemArgs;
+ * import com.pulumi.alicloud.nas.AccessGroup;
+ * import com.pulumi.alicloud.nas.AccessGroupArgs;
+ * import com.pulumi.alicloud.nas.MountTarget;
+ * import com.pulumi.alicloud.nas.MountTargetArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = NasFunctions.getZones(GetZonesArgs.builder()
+ *             .fileSystemType(&#34;extreme&#34;)
+ *             .build());
+ * 
+ *         final var countSize = default_.zones().length();
+ * 
+ *         final var zoneId = default_.zones()[countSize - 1].zoneId();
+ * 
+ *         var example = new Network(&#34;example&#34;, NetworkArgs.builder()        
+ *             .vpcName(&#34;terraform-example&#34;)
+ *             .cidrBlock(&#34;172.17.3.0/24&#34;)
+ *             .build());
+ * 
+ *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
+ *             .vswitchName(example.vpcName())
+ *             .cidrBlock(example.cidrBlock())
+ *             .vpcId(example.id())
+ *             .zoneId(zoneId)
+ *             .build());
+ * 
+ *         var exampleFileSystem = new FileSystem(&#34;exampleFileSystem&#34;, FileSystemArgs.builder()        
+ *             .protocolType(&#34;NFS&#34;)
+ *             .storageType(&#34;advance&#34;)
+ *             .fileSystemType(&#34;extreme&#34;)
+ *             .capacity(&#34;100&#34;)
+ *             .zoneId(zoneId)
+ *             .build());
+ * 
+ *         var exampleAccessGroup = new AccessGroup(&#34;exampleAccessGroup&#34;, AccessGroupArgs.builder()        
+ *             .accessGroupName(&#34;access_group_xxx&#34;)
+ *             .accessGroupType(&#34;Vpc&#34;)
+ *             .description(&#34;test_access_group&#34;)
+ *             .fileSystemType(&#34;extreme&#34;)
+ *             .build());
+ * 
+ *         var exampleMountTarget = new MountTarget(&#34;exampleMountTarget&#34;, MountTargetArgs.builder()        
+ *             .fileSystemId(exampleFileSystem.id())
+ *             .accessGroupName(exampleAccessGroup.accessGroupName())
+ *             .vswitchId(exampleSwitch.id())
+ *             .vpcId(example.id())
+ *             .networkType(exampleAccessGroup.accessGroupType())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * NAS MountTarget can be imported using the id, e.g.

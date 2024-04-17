@@ -45,7 +45,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultConnection, err := eventbridge.NewConnection(ctx, "defaultConnection", &eventbridge.ConnectionArgs{
+//			_, err := eventbridge.NewConnection(ctx, "default", &eventbridge.ConnectionArgs{
 //				ConnectionName: pulumi.String(name),
 //				NetworkParameters: &eventbridge.ConnectionNetworkParametersArgs{
 //					NetworkType: pulumi.String("PublicNetwork"),
@@ -54,8 +54,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = eventbridge.NewApiDestination(ctx, "defaultApiDestination", &eventbridge.ApiDestinationArgs{
-//				ConnectionName:     defaultConnection.ConnectionName,
+//			_, err = eventbridge.NewApiDestination(ctx, "default", &eventbridge.ApiDestinationArgs{
+//				ConnectionName:     _default.ConnectionName,
 //				ApiDestinationName: pulumi.String(name),
 //				Description:        pulumi.String("test-api-destination-connection"),
 //				HttpApiParameters: &eventbridge.ApiDestinationHttpApiParametersArgs{

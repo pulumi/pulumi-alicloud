@@ -22,11 +22,11 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultAcls = alicloud.sag.getAcls({
- *     ids: [alicloud_sag_acls["default"].id],
+ * const default = alicloud.sag.getAcls({
+ *     ids: [defaultAlicloudSagAcls.id],
  *     nameRegex: "^tf-testAcc.*",
  * });
- * const defaultAcl = new alicloud.rocketmq.Acl("defaultAcl", {});
+ * const defaultAcl = new alicloud.rocketmq.Acl("default", {name: "tf-testAccSagAclName"});
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -95,11 +95,11 @@ export interface GetAclsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultAcls = alicloud.sag.getAcls({
- *     ids: [alicloud_sag_acls["default"].id],
+ * const default = alicloud.sag.getAcls({
+ *     ids: [defaultAlicloudSagAcls.id],
  *     nameRegex: "^tf-testAcc.*",
  * });
- * const defaultAcl = new alicloud.rocketmq.Acl("defaultAcl", {});
+ * const defaultAcl = new alicloud.rocketmq.Acl("default", {name: "tf-testAccSagAclName"});
  * ```
  * <!--End PulumiCodeChooser -->
  */

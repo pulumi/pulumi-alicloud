@@ -650,36 +650,37 @@ class EndpointGroup(pulumi.CustomResource):
         region = config.get("region")
         if region is None:
             region = "cn-hangzhou"
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+        default = alicloud.ga.Accelerator("default",
             duration=1,
             auto_use_coupon=True,
             spec="1")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("default",
             bandwidth=100,
             type="Basic",
             bandwidth_type="Basic",
             payment_type="PayAsYouGo",
             billing_type="PayBy95",
             ratio=30)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
+            accelerator_id=default.id,
             bandwidth_package_id=default_bandwidth_package.id)
-        default_listener = alicloud.ga.Listener("defaultListener",
+        default_listener = alicloud.ga.Listener("default",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
             port_ranges=[alicloud.ga.ListenerPortRangeArgs(
                 from_port=60,
                 to_port=70,
             )],
             client_affinity="SOURCE_IP",
-            protocol="UDP")
+            protocol="UDP",
+            name="terraform-example")
         default_eip_address = []
         for range in [{"value": i} for i in range(0, 2)]:
-            default_eip_address.append(alicloud.ecs.EipAddress(f"defaultEipAddress-{range['value']}",
+            default_eip_address.append(alicloud.ecs.EipAddress(f"default-{range['value']}",
                 bandwidth="10",
                 internet_charge_type="PayByBandwidth",
                 address_name="terraform-example"))
-        default_endpoint_group = alicloud.ga.EndpointGroup("defaultEndpointGroup",
-            accelerator_id=default_accelerator.id,
+        default_endpoint_group = alicloud.ga.EndpointGroup("default",
+            accelerator_id=default.id,
             endpoint_configurations=[
                 alicloud.ga.EndpointGroupEndpointConfigurationArgs(
                     endpoint=default_eip_address[0].ip_address,
@@ -748,36 +749,37 @@ class EndpointGroup(pulumi.CustomResource):
         region = config.get("region")
         if region is None:
             region = "cn-hangzhou"
-        default_accelerator = alicloud.ga.Accelerator("defaultAccelerator",
+        default = alicloud.ga.Accelerator("default",
             duration=1,
             auto_use_coupon=True,
             spec="1")
-        default_bandwidth_package = alicloud.ga.BandwidthPackage("defaultBandwidthPackage",
+        default_bandwidth_package = alicloud.ga.BandwidthPackage("default",
             bandwidth=100,
             type="Basic",
             bandwidth_type="Basic",
             payment_type="PayAsYouGo",
             billing_type="PayBy95",
             ratio=30)
-        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("defaultBandwidthPackageAttachment",
-            accelerator_id=default_accelerator.id,
+        default_bandwidth_package_attachment = alicloud.ga.BandwidthPackageAttachment("default",
+            accelerator_id=default.id,
             bandwidth_package_id=default_bandwidth_package.id)
-        default_listener = alicloud.ga.Listener("defaultListener",
+        default_listener = alicloud.ga.Listener("default",
             accelerator_id=default_bandwidth_package_attachment.accelerator_id,
             port_ranges=[alicloud.ga.ListenerPortRangeArgs(
                 from_port=60,
                 to_port=70,
             )],
             client_affinity="SOURCE_IP",
-            protocol="UDP")
+            protocol="UDP",
+            name="terraform-example")
         default_eip_address = []
         for range in [{"value": i} for i in range(0, 2)]:
-            default_eip_address.append(alicloud.ecs.EipAddress(f"defaultEipAddress-{range['value']}",
+            default_eip_address.append(alicloud.ecs.EipAddress(f"default-{range['value']}",
                 bandwidth="10",
                 internet_charge_type="PayByBandwidth",
                 address_name="terraform-example"))
-        default_endpoint_group = alicloud.ga.EndpointGroup("defaultEndpointGroup",
-            accelerator_id=default_accelerator.id,
+        default_endpoint_group = alicloud.ga.EndpointGroup("default",
+            accelerator_id=default.id,
             endpoint_configurations=[
                 alicloud.ga.EndpointGroupEndpointConfigurationArgs(
                     endpoint=default_eip_address[0].ip_address,

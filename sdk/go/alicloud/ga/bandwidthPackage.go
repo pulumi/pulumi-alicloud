@@ -38,12 +38,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ga.NewBandwidthPackage(ctx, "example", &ga.BandwidthPackageArgs{
-//				AutoPay:       pulumi.Bool(true),
 //				Bandwidth:     pulumi.Int(20),
+//				Type:          pulumi.String("Basic"),
 //				BandwidthType: pulumi.String("Basic"),
 //				Duration:      pulumi.String("1"),
+//				AutoPay:       pulumi.Bool(true),
 //				Ratio:         pulumi.Int(30),
-//				Type:          pulumi.String("Basic"),
 //			})
 //			if err != nil {
 //				return err

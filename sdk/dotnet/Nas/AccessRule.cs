@@ -29,16 +29,16 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var fooAccessGroup = new AliCloud.Nas.AccessGroup("fooAccessGroup", new()
+    ///     var foo = new AliCloud.Nas.AccessGroup("foo", new()
     ///     {
     ///         AccessGroupName = "tf-NasConfigName",
     ///         AccessGroupType = "Vpc",
     ///         Description = "tf-testAccNasConfig",
     ///     });
     /// 
-    ///     var fooAccessRule = new AliCloud.Nas.AccessRule("fooAccessRule", new()
+    ///     var fooAccessRule = new AliCloud.Nas.AccessRule("foo", new()
     ///     {
-    ///         AccessGroupName = fooAccessGroup.AccessGroupName,
+    ///         AccessGroupName = foo.AccessGroupName,
     ///         SourceCidrIp = "168.1.1.0/16",
     ///         RwAccessType = "RDWR",
     ///         UserAccessType = "no_squash",

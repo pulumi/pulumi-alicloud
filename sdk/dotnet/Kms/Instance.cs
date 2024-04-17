@@ -31,22 +31,22 @@ namespace Pulumi.AliCloud.Kms
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var @default = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
     ///         NameRegex = "^default-NODELETING$",
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///         ZoneId = "cn-hangzhou-k",
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.Kms.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.Kms.Instance("default", new()
     ///     {
     ///         ProductVersion = "3",
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcId = @default.Apply(@default =&gt; @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])),
     ///         ZoneIds = new[]
     ///         {
     ///             "cn-hangzhou-k",
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.Kms
     ///         },
     ///         VswitchIds = new[]
     ///         {
-    ///             defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///             defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
     ///         },
     ///         VpcNum = 1,
     ///         KeyNum = 1000,

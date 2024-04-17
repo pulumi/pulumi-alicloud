@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.AckOne
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
@@ -46,11 +46,11 @@ namespace Pulumi.AliCloud.AckOne
     ///     {
     ///         VpcId = defaultVpc.Id,
     ///         CidrBlock = "172.16.2.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var defaultCluster = new AliCloud.AckOne.Cluster("defaultCluster", new()
+    ///     var defaultCluster = new AliCloud.AckOne.Cluster("default", new()
     ///     {
     ///         Network = new AliCloud.AckOne.Inputs.ClusterNetworkArgs
     ///         {

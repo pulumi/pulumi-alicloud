@@ -39,14 +39,16 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			exampleProject, err := datahub.NewProject(ctx, "exampleProject", &datahub.ProjectArgs{
+//			example, err := datahub.NewProject(ctx, "example", &datahub.ProjectArgs{
+//				Name:    pulumi.String(name),
 //				Comment: pulumi.String("created by terraform"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleTopic, err := datahub.NewTopic(ctx, "exampleTopic", &datahub.TopicArgs{
-//				ProjectName: exampleProject.Name,
+//			exampleTopic, err := datahub.NewTopic(ctx, "example", &datahub.TopicArgs{
+//				Name:        pulumi.String(name),
+//				ProjectName: example.Name,
 //				RecordType:  pulumi.String("BLOB"),
 //				ShardCount:  pulumi.Int(3),
 //				LifeCycle:   pulumi.Int(7),
@@ -55,8 +57,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = datahub.NewSubscription(ctx, "exampleSubscription", &datahub.SubscriptionArgs{
-//				ProjectName: exampleProject.Name,
+//			_, err = datahub.NewSubscription(ctx, "example", &datahub.SubscriptionArgs{
+//				ProjectName: example.Name,
 //				TopicName:   exampleTopic.Name,
 //				Comment:     pulumi.String("created by terraform"),
 //			})

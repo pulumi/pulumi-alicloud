@@ -54,29 +54,29 @@ import (
 //			if param := cfg.Get("slbRuleName"); param != "" {
 //				slbRuleName = param
 //			}
-//			ruleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			rule, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ruleNetwork, err := vpc.NewNetwork(ctx, "ruleNetwork", &vpc.NetworkArgs{
+//			ruleNetwork, err := vpc.NewNetwork(ctx, "rule", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(slbRuleName),
 //				CidrBlock: pulumi.String("172.16.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			ruleSwitch, err := vpc.NewSwitch(ctx, "ruleSwitch", &vpc.SwitchArgs{
+//			ruleSwitch, err := vpc.NewSwitch(ctx, "rule", &vpc.SwitchArgs{
 //				VpcId:       ruleNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/16"),
-//				ZoneId:      pulumi.String(ruleZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(rule.Zones[0].Id),
 //				VswitchName: pulumi.String(slbRuleName),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			ruleApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "ruleApplicationLoadBalancer", &slb.ApplicationLoadBalancerArgs{
+//			ruleApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "rule", &slb.ApplicationLoadBalancerArgs{
 //				LoadBalancerName:   pulumi.String(slbRuleName),
 //				VswitchId:          ruleSwitch.ID(),
 //				InstanceChargeType: pulumi.String("PayByCLCU"),
@@ -84,7 +84,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ruleListener, err := slb.NewListener(ctx, "ruleListener", &slb.ListenerArgs{
+//			ruleListener, err := slb.NewListener(ctx, "rule", &slb.ListenerArgs{
 //				LoadBalancerId:         ruleApplicationLoadBalancer.ID(),
 //				BackendPort:            pulumi.Int(22),
 //				FrontendPort:           pulumi.Int(22),
@@ -95,15 +95,17 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ruleServerGroup, err := slb.NewServerGroup(ctx, "ruleServerGroup", &slb.ServerGroupArgs{
+//			ruleServerGroup, err := slb.NewServerGroup(ctx, "rule", &slb.ServerGroupArgs{
 //				LoadBalancerId: ruleApplicationLoadBalancer.ID(),
+//				Name:           pulumi.String(slbRuleName),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = slb.NewRule(ctx, "ruleRule", &slb.RuleArgs{
+//			_, err = slb.NewRule(ctx, "rule", &slb.RuleArgs{
 //				LoadBalancerId:         ruleApplicationLoadBalancer.ID(),
 //				FrontendPort:           ruleListener.FrontendPort,
+//				Name:                   pulumi.String(slbRuleName),
 //				Domain:                 pulumi.String("*.aliyun.com"),
 //				Url:                    pulumi.String("/image"),
 //				ServerGroupId:          ruleServerGroup.ID(),

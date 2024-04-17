@@ -37,6 +37,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
+//				Name: pulumi.String("tf-example-fnfflow"),
 //				Document: pulumi.String(`  {
 //	    "Statement": [
 //	      {
@@ -69,6 +70,7 @@ import (
 //
 //				RoleArn:     _default.Arn,
 //				Description: pulumi.String("Test for terraform fnf_flow."),
+//				Name:        pulumi.String("tf-example-flow"),
 //				Type:        pulumi.String("FDL"),
 //			})
 //			if err != nil {

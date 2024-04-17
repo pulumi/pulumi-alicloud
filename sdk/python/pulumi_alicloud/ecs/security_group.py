@@ -337,7 +337,9 @@ class SecurityGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ecs.SecurityGroup("default", description="New security group")
+        default = alicloud.ecs.SecurityGroup("default",
+            name="terraform-example",
+            description="New security group")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -351,7 +353,9 @@ class SecurityGroup(pulumi.CustomResource):
         vpc = alicloud.vpc.Network("vpc",
             vpc_name="terraform-example",
             cidr_block="10.1.0.0/21")
-        group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
+        group = alicloud.ecs.SecurityGroup("group",
+            name="terraform-example",
+            vpc_id=vpc.id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -407,7 +411,9 @@ class SecurityGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ecs.SecurityGroup("default", description="New security group")
+        default = alicloud.ecs.SecurityGroup("default",
+            name="terraform-example",
+            description="New security group")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -421,7 +427,9 @@ class SecurityGroup(pulumi.CustomResource):
         vpc = alicloud.vpc.Network("vpc",
             vpc_name="terraform-example",
             cidr_block="10.1.0.0/21")
-        group = alicloud.ecs.SecurityGroup("group", vpc_id=vpc.id)
+        group = alicloud.ecs.SecurityGroup("group",
+            name="terraform-example",
+            vpc_id=vpc.id)
         ```
         <!--End PulumiCodeChooser -->
 

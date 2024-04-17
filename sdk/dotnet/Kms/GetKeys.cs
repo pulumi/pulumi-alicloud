@@ -25,6 +25,7 @@ namespace Pulumi.AliCloud.Kms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var kmsKeysDs = AliCloud.Kms.GetKeys.Invoke(new()
         ///     {
         ///         DescriptionRegex = "Hello KMS",
@@ -56,6 +57,7 @@ namespace Pulumi.AliCloud.Kms
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var kmsKeysDs = AliCloud.Kms.GetKeys.Invoke(new()
         ///     {
         ///         DescriptionRegex = "Hello KMS",

@@ -36,10 +36,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := eds.NewUser(ctx, "default", &eds.UserArgs{
-//				Email:     pulumi.String("tf.example@abc.com"),
 //				EndUserId: pulumi.String("terraform_example123"),
-//				Password:  pulumi.String("Example_123"),
+//				Email:     pulumi.String("tf.example@abc.com"),
 //				Phone:     pulumi.String("18888888888"),
+//				Password:  pulumi.String("Example_123"),
 //			})
 //			if err != nil {
 //				return err

@@ -38,17 +38,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = directmail.NewDomain(ctx, "example", &directmail.DomainArgs{
-//				DomainName: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("alicloud-provider-%v.online", result), nil
-//				}).(pulumi.StringOutput),
+//				DomainName: pulumi.String(fmt.Sprintf("alicloud-provider-%v.online", _default.Result)),
 //			})
 //			if err != nil {
 //				return err

@@ -184,6 +184,26 @@ class Directory(pulumi.CustomResource):
 
         > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
 
+        ## Example Usage
+
+        Basic Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.cloudsso.get_directories()
+        default_directory = []
+        for range in [{"value": i} for i in range(0, 0 if len(default.ids) > 0 else 1)]:
+            default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         Cloud SSO Directory can be imported using the id, e.g.
@@ -215,6 +235,26 @@ class Directory(pulumi.CustomResource):
         > **NOTE:** Available since v1.135.0.
 
         > **NOTE:** Cloud SSO Only Support `cn-shanghai` And `us-west-1` Region
+
+        ## Example Usage
+
+        Basic Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.cloudsso.get_directories()
+        default_directory = []
+        for range in [{"value": i} for i in range(0, 0 if len(default.ids) > 0 else 1)]:
+            default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

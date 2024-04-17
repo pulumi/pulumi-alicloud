@@ -22,20 +22,20 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
  *     cidrBlock: "10.4.0.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const defaultRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", {
+ * const defaultRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("default", {
  *     paymentType: "Subscription",
  *     period: 1,
  *     renewPeriod: 0,
@@ -43,7 +43,7 @@ import * as utilities from "../utilities";
  *     instanceType: "Advanced",
  *     instanceName: name,
  * });
- * const defaultVpcEndpointLinkedVpc = new alicloud.cr.VpcEndpointLinkedVpc("defaultVpcEndpointLinkedVpc", {
+ * const defaultVpcEndpointLinkedVpc = new alicloud.cr.VpcEndpointLinkedVpc("default", {
  *     instanceId: defaultRegistryEnterpriseInstance.id,
  *     vpcId: defaultNetwork.id,
  *     vswitchId: defaultSwitch.id,

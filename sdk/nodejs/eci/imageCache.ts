@@ -24,19 +24,22 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultZones = alicloud.eci.getZones({});
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const default = alicloud.eci.getZones({});
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.0.0.0/8",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
  *     cidrBlock: "10.1.0.0/16",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.zoneIds?.[0]),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.zoneIds?.[0]),
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("default", {
  *     isp: "BGP",
  *     addressName: name,
  *     netmode: "public",
@@ -44,12 +47,12 @@ import * as utilities from "../utilities";
  *     securityProtectionTypes: ["AntiDDoS_Enhanced"],
  *     paymentType: "PayAsYouGo",
  * });
- * const defaultRegions = alicloud.getRegions({
+ * const defaultGetRegions = alicloud.getRegions({
  *     current: true,
  * });
- * const defaultImageCache = new alicloud.eci.ImageCache("defaultImageCache", {
+ * const defaultImageCache = new alicloud.eci.ImageCache("default", {
  *     imageCacheName: name,
- *     images: [defaultRegions.then(defaultRegions => `registry-vpc.${defaultRegions.regions?.[0]?.id}.aliyuncs.com/eci_open/nginx:alpine`)],
+ *     images: [defaultGetRegions.then(defaultGetRegions => `registry-vpc.${defaultGetRegions.regions?.[0]?.id}.aliyuncs.com/eci_open/nginx:alpine`)],
  *     securityGroupId: defaultSecurityGroup.id,
  *     vswitchId: defaultSwitch.id,
  *     eipInstanceId: defaultEipAddress.id,

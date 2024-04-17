@@ -34,7 +34,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.RocketMQ
     /// 
     ///     var example = new AliCloud.RocketMQ.Instance("example", new()
     ///     {
-    ///         InstanceName = @default.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         InstanceName = $"{name}-{@default.Result}",
     ///         Remark = name,
     ///     });
     /// 

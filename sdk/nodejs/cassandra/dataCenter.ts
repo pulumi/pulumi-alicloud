@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultCluster = new alicloud.cassandra.Cluster("defaultCluster", {
+ * const _default = new alicloud.cassandra.Cluster("default", {
  *     clusterName: "cassandra-cluster-name-tf",
  *     dataCenterName: "dc-1",
  *     autoRenew: false,
@@ -44,8 +44,8 @@ import * as utilities from "../utilities";
  *     maintainEndTime: "20:00Z",
  *     ipWhite: "127.0.0.1",
  * });
- * const defaultDataCenter = new alicloud.cassandra.DataCenter("defaultDataCenter", {
- *     clusterId: defaultCluster.id,
+ * const defaultDataCenter = new alicloud.cassandra.DataCenter("default", {
+ *     clusterId: _default.id,
  *     dataCenterName: "dc-2",
  *     autoRenew: false,
  *     instanceType: "cassandra.c.large",

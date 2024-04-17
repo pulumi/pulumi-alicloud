@@ -31,8 +31,8 @@ namespace Pulumi.AliCloud.Ga
     /// {
     ///     var example = new AliCloud.Ga.Accelerator("example", new()
     ///     {
-    ///         AutoUseCoupon = true,
     ///         Duration = 1,
+    ///         AutoUseCoupon = true,
     ///         Spec = "1",
     ///     });
     /// 

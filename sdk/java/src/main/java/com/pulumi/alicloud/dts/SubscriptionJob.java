@@ -73,11 +73,11 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var exampleRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var example = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
- *         final var exampleZones = RdsFunctions.getZones(GetZonesArgs.builder()
+ *         final var exampleGetZones = RdsFunctions.getZones(GetZonesArgs.builder()
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;8.0&#34;)
  *             .instanceChargeType(&#34;PostPaid&#34;)
@@ -85,8 +85,8 @@ import javax.annotation.Nullable;
  *             .dbInstanceStorageType(&#34;cloud_essd&#34;)
  *             .build());
  * 
- *         final var exampleInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
- *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *         final var exampleGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(exampleGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;8.0&#34;)
  *             .instanceChargeType(&#34;PostPaid&#34;)
@@ -102,19 +102,20 @@ import javax.annotation.Nullable;
  *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
  *             .vpcId(exampleNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(exampleGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .vswitchName(name)
  *             .build());
  * 
  *         var exampleSecurityGroup = new SecurityGroup(&#34;exampleSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .name(name)
  *             .vpcId(exampleNetwork.id())
  *             .build());
  * 
  *         var exampleInstance = new Instance(&#34;exampleInstance&#34;, InstanceArgs.builder()        
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;8.0&#34;)
- *             .instanceType(exampleInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
- *             .instanceStorage(exampleInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *             .instanceType(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
+ *             .instanceStorage(exampleGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
  *             .instanceChargeType(&#34;Postpaid&#34;)
  *             .instanceName(name)
  *             .vswitchId(exampleSwitch.id())
@@ -131,6 +132,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleDatabase = new Database(&#34;exampleDatabase&#34;, DatabaseArgs.builder()        
  *             .instanceId(exampleInstance.id())
+ *             .name(name)
  *             .build());
  * 
  *         var exampleAccountPrivilege = new AccountPrivilege(&#34;exampleAccountPrivilege&#34;, AccountPrivilegeArgs.builder()        
@@ -144,7 +146,7 @@ import javax.annotation.Nullable;
  *             .dtsJobName(name)
  *             .paymentType(&#34;PayAsYouGo&#34;)
  *             .sourceEndpointEngineName(&#34;MySQL&#34;)
- *             .sourceEndpointRegion(exampleRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .sourceEndpointRegion(example.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
  *             .sourceEndpointInstanceType(&#34;RDS&#34;)
  *             .sourceEndpointInstanceId(exampleInstance.id())
  *             .sourceEndpointDatabaseName(exampleDatabase.name())

@@ -155,7 +155,9 @@ def get_instances(enable_details: Optional[bool] = None,
     name = config.get("name")
     if name is None:
         name = "onsInstanceDatasourceName"
-    default = alicloud.rocketmq.Instance("default", remark="default_ons_instance_remark")
+    default = alicloud.rocketmq.Instance("default",
+        name=name,
+        remark="default_ons_instance_remark")
     instances_ds = alicloud.rocketmq.get_instances_output(ids=[default.id],
         name_regex=default.name,
         output_file="instances.txt")
@@ -217,7 +219,9 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
     name = config.get("name")
     if name is None:
         name = "onsInstanceDatasourceName"
-    default = alicloud.rocketmq.Instance("default", remark="default_ons_instance_remark")
+    default = alicloud.rocketmq.Instance("default",
+        name=name,
+        remark="default_ons_instance_remark")
     instances_ds = alicloud.rocketmq.get_instances_output(ids=[default.id],
         name_regex=default.name,
         output_file="instances.txt")

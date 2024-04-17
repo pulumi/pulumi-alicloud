@@ -165,17 +165,17 @@ class SharedResource(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tfexample"
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="192.168.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            zone_id=example_zones.zones[0].id,
+        example_switch = alicloud.vpc.Switch("example",
+            zone_id=example.zones[0].id,
             cidr_block="192.168.0.0/16",
             vpc_id=example_network.id,
             vswitch_name=name)
-        example_resource_share = alicloud.resourcemanager.ResourceShare("exampleResourceShare", resource_share_name=name)
-        example_shared_resource = alicloud.resourcemanager.SharedResource("exampleSharedResource",
+        example_resource_share = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
+        example_shared_resource = alicloud.resourcemanager.SharedResource("example",
             resource_id=example_switch.id,
             resource_share_id=example_resource_share.id,
             resource_type="VSwitch")
@@ -222,17 +222,17 @@ class SharedResource(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tfexample"
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("example",
             vpc_name=name,
             cidr_block="192.168.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            zone_id=example_zones.zones[0].id,
+        example_switch = alicloud.vpc.Switch("example",
+            zone_id=example.zones[0].id,
             cidr_block="192.168.0.0/16",
             vpc_id=example_network.id,
             vswitch_name=name)
-        example_resource_share = alicloud.resourcemanager.ResourceShare("exampleResourceShare", resource_share_name=name)
-        example_shared_resource = alicloud.resourcemanager.SharedResource("exampleSharedResource",
+        example_resource_share = alicloud.resourcemanager.ResourceShare("example", resource_share_name=name)
+        example_shared_resource = alicloud.resourcemanager.SharedResource("example",
             resource_id=example_switch.id,
             resource_share_id=example_resource_share.id,
             resource_type="VSwitch")

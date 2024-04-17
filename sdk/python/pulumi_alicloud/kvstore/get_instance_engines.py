@@ -129,13 +129,13 @@ def get_instance_engines(engine: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    resources_zones = alicloud.get_zones(available_resource_creation="KVStore")
-    resources_instance_engines = alicloud.kvstore.get_instance_engines(engine="Redis",
-        engine_version="5.0",
+    resources = alicloud.get_zones(available_resource_creation="KVStore")
+    resources_get_instance_engines = alicloud.kvstore.get_instance_engines(zone_id=resources.zones[0].id,
         instance_charge_type="PrePaid",
-        output_file="./engines.txt",
-        zone_id=resources_zones.zones[0].id)
-    pulumi.export("firstKvstoreInstanceClass", resources_instance_engines.instance_engines[0].engine)
+        engine="Redis",
+        engine_version="5.0",
+        output_file="./engines.txt")
+    pulumi.export("firstKvstoreInstanceClass", resources_get_instance_engines.instance_engines[0].engine)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -184,13 +184,13 @@ def get_instance_engines_output(engine: Optional[pulumi.Input[Optional[str]]] = 
     import pulumi
     import pulumi_alicloud as alicloud
 
-    resources_zones = alicloud.get_zones(available_resource_creation="KVStore")
-    resources_instance_engines = alicloud.kvstore.get_instance_engines(engine="Redis",
-        engine_version="5.0",
+    resources = alicloud.get_zones(available_resource_creation="KVStore")
+    resources_get_instance_engines = alicloud.kvstore.get_instance_engines(zone_id=resources.zones[0].id,
         instance_charge_type="PrePaid",
-        output_file="./engines.txt",
-        zone_id=resources_zones.zones[0].id)
-    pulumi.export("firstKvstoreInstanceClass", resources_instance_engines.instance_engines[0].engine)
+        engine="Redis",
+        engine_version="5.0",
+        output_file="./engines.txt")
+    pulumi.export("firstKvstoreInstanceClass", resources_get_instance_engines.instance_engines[0].engine)
     ```
     <!--End PulumiCodeChooser -->
 

@@ -325,7 +325,7 @@ public final class ServicemeshFunctions {
      *             .edition(&#34;Default&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;serviceMeshVersion&#34;, data.alicloud_service_mesh_versions().versions()[0].version());
+     *         ctx.export(&#34;serviceMeshVersion&#34;, versions[0].version());
      *     }
      * }
      * ```
@@ -370,7 +370,7 @@ public final class ServicemeshFunctions {
      *             .edition(&#34;Default&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;serviceMeshVersion&#34;, data.alicloud_service_mesh_versions().versions()[0].version());
+     *         ctx.export(&#34;serviceMeshVersion&#34;, versions[0].version());
      *     }
      * }
      * ```
@@ -415,7 +415,7 @@ public final class ServicemeshFunctions {
      *             .edition(&#34;Default&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;serviceMeshVersion&#34;, data.alicloud_service_mesh_versions().versions()[0].version());
+     *         ctx.export(&#34;serviceMeshVersion&#34;, versions[0].version());
      *     }
      * }
      * ```
@@ -460,7 +460,7 @@ public final class ServicemeshFunctions {
      *             .edition(&#34;Default&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;serviceMeshVersion&#34;, data.alicloud_service_mesh_versions().versions()[0].version());
+     *         ctx.export(&#34;serviceMeshVersion&#34;, versions[0].version());
      *     }
      * }
      * ```
@@ -505,7 +505,7 @@ public final class ServicemeshFunctions {
      *             .edition(&#34;Default&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;serviceMeshVersion&#34;, data.alicloud_service_mesh_versions().versions()[0].version());
+     *         ctx.export(&#34;serviceMeshVersion&#34;, versions[0].version());
      *     }
      * }
      * ```
@@ -550,7 +550,7 @@ public final class ServicemeshFunctions {
      *             .edition(&#34;Default&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;serviceMeshVersion&#34;, data.alicloud_service_mesh_versions().versions()[0].version());
+     *         ctx.export(&#34;serviceMeshVersion&#34;, versions[0].version());
      *     }
      * }
      * ```

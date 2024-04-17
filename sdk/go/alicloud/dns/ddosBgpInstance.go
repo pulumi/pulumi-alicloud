@@ -42,6 +42,7 @@ import (
 //				name = param
 //			}
 //			_, err := ddos.NewDdosBgpInstance(ctx, "instance", &ddos.DdosBgpInstanceArgs{
+//				Name:            pulumi.String(name),
 //				BaseBandwidth:   pulumi.Int(20),
 //				Bandwidth:       -1,
 //				IpCount:         pulumi.Int(100),

@@ -20,13 +20,13 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultPatchBaseline = new alicloud.oos.PatchBaseline("defaultPatchBaseline", {
+ * const _default = new alicloud.oos.PatchBaseline("default", {
  *     operationSystem: "Windows",
  *     patchBaselineName: "terraform-example",
  *     description: "terraform-example",
  *     approvalRules: "{\"PatchRules\":[{\"PatchFilterGroup\":[{\"Key\":\"PatchSet\",\"Values\":[\"OS\"]},{\"Key\":\"ProductFamily\",\"Values\":[\"Windows\"]},{\"Key\":\"Product\",\"Values\":[\"Windows 10\",\"Windows 7\"]},{\"Key\":\"Classification\",\"Values\":[\"Security Updates\",\"Updates\",\"Update Rollups\",\"Critical Updates\"]},{\"Key\":\"Severity\",\"Values\":[\"Critical\",\"Important\",\"Moderate\"]}],\"ApproveAfterDays\":7,\"EnableNonSecurity\":true,\"ComplianceLevel\":\"Medium\"}]}",
  * });
- * const defaultDefaultPatchBaseline = new alicloud.oos.DefaultPatchBaseline("defaultDefaultPatchBaseline", {patchBaselineName: defaultPatchBaseline.id});
+ * const defaultDefaultPatchBaseline = new alicloud.oos.DefaultPatchBaseline("default", {patchBaselineName: _default.id});
  * ```
  * <!--End PulumiCodeChooser -->
  *

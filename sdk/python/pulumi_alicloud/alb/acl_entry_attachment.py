@@ -162,11 +162,11 @@ class AclEntryAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_acl = alicloud.alb.Acl("defaultAcl",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_acl = alicloud.alb.Acl("default",
             acl_name=name,
-            resource_group_id=default_resource_groups.groups[0].id)
-        default_acl_entry_attachment = alicloud.alb.AclEntryAttachment("defaultAclEntryAttachment",
+            resource_group_id=default.groups[0].id)
+        default_acl_entry_attachment = alicloud.alb.AclEntryAttachment("default",
             acl_id=default_acl.id,
             entry="168.10.10.0/24",
             description=name)
@@ -209,11 +209,11 @@ class AclEntryAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_acl = alicloud.alb.Acl("defaultAcl",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_acl = alicloud.alb.Acl("default",
             acl_name=name,
-            resource_group_id=default_resource_groups.groups[0].id)
-        default_acl_entry_attachment = alicloud.alb.AclEntryAttachment("defaultAclEntryAttachment",
+            resource_group_id=default.groups[0].id)
+        default_acl_entry_attachment = alicloud.alb.AclEntryAttachment("default",
             acl_id=default_acl.id,
             entry="168.10.10.0/24",
             description=name)

@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultVault = new Vault(&#34;defaultVault&#34;, VaultArgs.builder()        
+ *         var default_ = new Vault(&#34;default&#34;, VaultArgs.builder()        
  *             .vaultName(&#34;terraform-example2&#34;)
  *             .build());
  * 
@@ -70,7 +70,7 @@ import javax.annotation.Nullable;
  *             .fileSystemId(defaultFileSystem.id())
  *             .schedule(&#34;I|1602673264|PT2H&#34;)
  *             .backupType(&#34;COMPLETE&#34;)
- *             .vaultId(defaultVault.id())
+ *             .vaultId(default_.id())
  *             .retention(&#34;2&#34;)
  *             .paths(&#34;/&#34;)
  *             .build());

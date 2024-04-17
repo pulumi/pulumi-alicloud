@@ -22,13 +22,13 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const aAP0 = new alicloud.kms.ApplicationAccessPoint("aAP0", {
+ * const AAP0 = new alicloud.kms.ApplicationAccessPoint("AAP0", {
  *     policies: ["aa"],
  *     description: "aa",
  *     applicationAccessPointName: name,
  * });
  * const _default = new alicloud.kms.ClientKey("default", {
- *     aapName: aAP0.applicationAccessPointName,
+ *     aapName: AAP0.applicationAccessPointName,
  *     password: "YouPassword123!",
  *     notBefore: "2023-09-01T14:11:22Z",
  *     notAfter: "2028-09-01T14:11:22Z",

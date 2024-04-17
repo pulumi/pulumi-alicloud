@@ -246,26 +246,26 @@ class SnatEntry(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_nat_gateway = alicloud.vpc.NatGateway("defaultNatGateway",
+        default_nat_gateway = alicloud.vpc.NatGateway("default",
             vpc_id=default_network.id,
             nat_gateway_name=name,
             payment_type="PayAsYouGo",
             vswitch_id=default_switch.id,
             nat_type="Enhanced")
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
-        default_eip_association = alicloud.ecs.EipAssociation("defaultEipAssociation",
+        default_eip_address = alicloud.ecs.EipAddress("default", address_name=name)
+        default_eip_association = alicloud.ecs.EipAssociation("default",
             allocation_id=default_eip_address.id,
             instance_id=default_nat_gateway.id)
-        default_snat_entry = alicloud.vpc.SnatEntry("defaultSnatEntry",
+        default_snat_entry = alicloud.vpc.SnatEntry("default",
             snat_table_id=default_nat_gateway.snat_table_ids,
             source_vswitch_id=default_switch.id,
             snat_ip=default_eip_address.ip_address)
@@ -312,26 +312,26 @@ class SnatEntry(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/12")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/21",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_nat_gateway = alicloud.vpc.NatGateway("defaultNatGateway",
+        default_nat_gateway = alicloud.vpc.NatGateway("default",
             vpc_id=default_network.id,
             nat_gateway_name=name,
             payment_type="PayAsYouGo",
             vswitch_id=default_switch.id,
             nat_type="Enhanced")
-        default_eip_address = alicloud.ecs.EipAddress("defaultEipAddress", address_name=name)
-        default_eip_association = alicloud.ecs.EipAssociation("defaultEipAssociation",
+        default_eip_address = alicloud.ecs.EipAddress("default", address_name=name)
+        default_eip_association = alicloud.ecs.EipAssociation("default",
             allocation_id=default_eip_address.id,
             instance_id=default_nat_gateway.id)
-        default_snat_entry = alicloud.vpc.SnatEntry("defaultSnatEntry",
+        default_snat_entry = alicloud.vpc.SnatEntry("default",
             snat_table_id=default_nat_gateway.snat_table_ids,
             source_vswitch_id=default_switch.id,
             snat_ip=default_eip_address.ip_address)

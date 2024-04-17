@@ -10,6 +10,21 @@ import * as utilities from "../utilities";
  * This data source can query the public IP of the specified KVStore DBInstance.
  *
  * > **NOTE:** Available in v1.101.0+.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Declare the data source
+ * const example = alicloud.kvstore.getConnections({
+ *     ids: "r-wer123456",
+ * });
+ * export const connectionString = example.then(example => example.connections?.[0]?.connectionString);
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getConnections(args: GetConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetConnectionsResult> {
 
@@ -56,6 +71,21 @@ export interface GetConnectionsResult {
  * This data source can query the public IP of the specified KVStore DBInstance.
  *
  * > **NOTE:** Available in v1.101.0+.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * // Declare the data source
+ * const example = alicloud.kvstore.getConnections({
+ *     ids: "r-wer123456",
+ * });
+ * export const connectionString = example.then(example => example.connections?.[0]?.connectionString);
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getConnectionsOutput(args: GetConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionsResult> {
     return pulumi.output(args).apply((a: any) => getConnections(a, opts))

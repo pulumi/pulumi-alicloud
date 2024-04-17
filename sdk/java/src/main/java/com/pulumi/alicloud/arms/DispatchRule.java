@@ -59,14 +59,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultAlertContact = new AlertContact(&#34;defaultAlertContact&#34;, AlertContactArgs.builder()        
+ *         var default_ = new AlertContact(&#34;default&#34;, AlertContactArgs.builder()        
  *             .alertContactName(&#34;example_value&#34;)
  *             .email(&#34;example_value@aaa.com&#34;)
  *             .build());
  * 
  *         var defaultAlertContactGroup = new AlertContactGroup(&#34;defaultAlertContactGroup&#34;, AlertContactGroupArgs.builder()        
  *             .alertContactGroupName(&#34;example_value&#34;)
- *             .contactIds(defaultAlertContact.id())
+ *             .contactIds(default_.id())
  *             .build());
  * 
  *         var defaultDispatchRule = new DispatchRule(&#34;defaultDispatchRule&#34;, DispatchRuleArgs.builder()        
@@ -90,7 +90,7 @@ import javax.annotation.Nullable;
  *             .notifyRules(DispatchRuleNotifyRuleArgs.builder()
  *                 .notifyObjects(                
  *                     DispatchRuleNotifyRuleNotifyObjectArgs.builder()
- *                         .notifyObjectId(defaultAlertContact.id())
+ *                         .notifyObjectId(default_.id())
  *                         .notifyType(&#34;ARMS_CONTACT&#34;)
  *                         .name(&#34;example_value&#34;)
  *                         .build(),

@@ -543,7 +543,7 @@ class DataCenter(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_cluster = alicloud.cassandra.Cluster("defaultCluster",
+        default = alicloud.cassandra.Cluster("default",
             cluster_name="cassandra-cluster-name-tf",
             data_center_name="dc-1",
             auto_renew=False,
@@ -557,8 +557,8 @@ class DataCenter(pulumi.CustomResource):
             maintain_start_time="18:00Z",
             maintain_end_time="20:00Z",
             ip_white="127.0.0.1")
-        default_data_center = alicloud.cassandra.DataCenter("defaultDataCenter",
-            cluster_id=default_cluster.id,
+        default_data_center = alicloud.cassandra.DataCenter("default",
+            cluster_id=default.id,
             data_center_name="dc-2",
             auto_renew=False,
             instance_type="cassandra.c.large",
@@ -631,7 +631,7 @@ class DataCenter(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_cluster = alicloud.cassandra.Cluster("defaultCluster",
+        default = alicloud.cassandra.Cluster("default",
             cluster_name="cassandra-cluster-name-tf",
             data_center_name="dc-1",
             auto_renew=False,
@@ -645,8 +645,8 @@ class DataCenter(pulumi.CustomResource):
             maintain_start_time="18:00Z",
             maintain_end_time="20:00Z",
             ip_white="127.0.0.1")
-        default_data_center = alicloud.cassandra.DataCenter("defaultDataCenter",
-            cluster_id=default_cluster.id,
+        default_data_center = alicloud.cassandra.DataCenter("default",
+            cluster_id=default.id,
             data_center_name="dc-2",
             auto_renew=False,
             instance_type="cassandra.c.large",

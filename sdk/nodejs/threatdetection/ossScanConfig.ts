@@ -23,28 +23,28 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const bucketRandom = defaultRandomInteger.result;
+ * const bucketRandom = _default.result;
  * const default8j4t1R = new alicloud.oss.Bucket("default8j4t1R", {
- *     bucket: pulumi.interpolate`${name}-1-${bucketRandom}`,
+ *     bucket: `${name}-1-${bucketRandom}`,
  *     storageClass: "Standard",
  * });
  * const default9HMqfT = new alicloud.oss.Bucket("default9HMqfT", {
- *     bucket: pulumi.interpolate`${name}-2-${bucketRandom}`,
+ *     bucket: `${name}-2-${bucketRandom}`,
  *     storageClass: "Standard",
  * });
  * const defaultxBXqFQ = new alicloud.oss.Bucket("defaultxBXqFQ", {
- *     bucket: pulumi.interpolate`${name}-3-${bucketRandom}`,
+ *     bucket: `${name}-3-${bucketRandom}`,
  *     storageClass: "Standard",
  * });
  * const defaulthZvCmR = new alicloud.oss.Bucket("defaulthZvCmR", {
- *     bucket: pulumi.interpolate`${name}-4-${bucketRandom}`,
+ *     bucket: `${name}-4-${bucketRandom}`,
  *     storageClass: "Standard",
  * });
- * const defaultOssScanConfig = new alicloud.threatdetection.OssScanConfig("defaultOssScanConfig", {
+ * const defaultOssScanConfig = new alicloud.threatdetection.OssScanConfig("default", {
  *     keySuffixLists: [
  *         ".jsp",
  *         ".php",

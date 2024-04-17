@@ -43,32 +43,33 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 //				NameRegex: pulumi.StringRef("^default-NODELETING$"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(_default.Ids[0]),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultGateway, err := vpn.NewGateway(ctx, "defaultGateway", &vpn.GatewayArgs{
-//				VpcId:              pulumi.String(defaultNetworks.Ids[0]),
+//			defaultGateway, err := vpn.NewGateway(ctx, "default", &vpn.GatewayArgs{
+//				Name:               pulumi.String(name),
+//				VpcId:              pulumi.String(defaultGetNetworks.Ids[0]),
 //				Bandwidth:          pulumi.Int(10),
 //				EnableSsl:          pulumi.Bool(true),
 //				Description:        pulumi.String(name),
 //				InstanceChargeType: pulumi.String("PrePaid"),
-//				VswitchId:          pulumi.String(defaultSwitches.Ids[0]),
+//				VswitchId:          pulumi.String(defaultGetSwitches.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

@@ -736,6 +736,7 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = GpdbFunctions.getZones();
      * 
      *         // Create an Gpdb instance with the first matched zone
@@ -743,7 +744,6 @@ public final class GpdbFunctions {
      *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```
@@ -784,6 +784,7 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = GpdbFunctions.getZones();
      * 
      *         // Create an Gpdb instance with the first matched zone
@@ -791,7 +792,6 @@ public final class GpdbFunctions {
      *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```
@@ -832,6 +832,7 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = GpdbFunctions.getZones();
      * 
      *         // Create an Gpdb instance with the first matched zone
@@ -839,7 +840,6 @@ public final class GpdbFunctions {
      *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```
@@ -880,6 +880,7 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = GpdbFunctions.getZones();
      * 
      *         // Create an Gpdb instance with the first matched zone
@@ -887,7 +888,6 @@ public final class GpdbFunctions {
      *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```
@@ -928,6 +928,7 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = GpdbFunctions.getZones();
      * 
      *         // Create an Gpdb instance with the first matched zone
@@ -935,7 +936,6 @@ public final class GpdbFunctions {
      *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```
@@ -976,6 +976,7 @@ public final class GpdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = GpdbFunctions.getZones();
      * 
      *         // Create an Gpdb instance with the first matched zone
@@ -983,7 +984,6 @@ public final class GpdbFunctions {
      *             .availabilityZone(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```

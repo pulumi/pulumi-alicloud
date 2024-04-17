@@ -36,6 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ecs.NewSnapshotPolicy(ctx, "sp", &ecs.SnapshotPolicyArgs{
+//				Name: pulumi.String("tf-testAcc-sp"),
 //				RepeatWeekdays: pulumi.StringArray{
 //					pulumi.String("1"),
 //					pulumi.String("2"),

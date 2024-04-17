@@ -43,22 +43,22 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = expressconnect.NewRouterInterface(ctx, "defaultRouterInterface", &expressconnect.RouterInterfaceArgs{
+//			_, err = expressconnect.NewRouterInterface(ctx, "default", &expressconnect.RouterInterfaceArgs{
 //				Description:         pulumi.String(name),
-//				OppositeRegionId:    pulumi.String(defaultRegions.Regions[0].Id),
+//				OppositeRegionId:    pulumi.String(_default.Regions[0].Id),
 //				RouterId:            defaultNetwork.RouterId,
 //				Role:                pulumi.String("InitiatingSide"),
 //				RouterType:          pulumi.String("VRouter"),

@@ -40,9 +40,9 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
@@ -61,17 +61,15 @@ import (
 //				return err
 //			}
 //			_, err = arms.NewEnvironment(ctx, "env-ecs", &arms.EnvironmentArgs{
-//				EnvironmentType: pulumi.String("ECS"),
-//				EnvironmentName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("terraform-example-%v", result), nil
-//				}).(pulumi.StringOutput),
+//				EnvironmentType:    pulumi.String("ECS"),
+//				EnvironmentName:    pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
 //				BindResourceId:     vpc.ID(),
 //				EnvironmentSubType: pulumi.String("ECS"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = arms.NewEnvCustomJob(ctx, "defaultEnvCustomJob", &arms.EnvCustomJobArgs{
+//			_, err = arms.NewEnvCustomJob(ctx, "default", &arms.EnvCustomJobArgs{
 //				Status:           pulumi.String("run"),
 //				EnvironmentId:    env_ecs.ID(),
 //				EnvCustomJobName: pulumi.String(name),

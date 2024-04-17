@@ -43,6 +43,7 @@ import (
 //				name = param
 //			}
 //			role, err := ram.NewRole(ctx, "role", &ram.RoleArgs{
+//				Name: pulumi.String(name),
 //				Document: pulumi.String(`  {
 //	    "Statement": [
 //	      {

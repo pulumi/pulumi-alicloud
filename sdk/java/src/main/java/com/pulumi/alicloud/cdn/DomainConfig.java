@@ -33,8 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.cdn.DomainNew;
  * import com.pulumi.alicloud.cdn.DomainNewArgs;
  * import com.pulumi.alicloud.cdn.inputs.DomainNewSourceArgs;
@@ -54,14 +54,14 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
  *         // Create a new Domain config.
  *         var domain = new DomainNew(&#34;domain&#34;, DomainNewArgs.builder()        
- *             .domainName(default_.result().applyValue(result -&gt; String.format(&#34;mycdndomain-%s.alicloud-provider.cn&#34;, result)))
+ *             .domainName(String.format(&#34;mycdndomain-%s.alicloud-provider.cn&#34;, default_.result()))
  *             .cdnType(&#34;web&#34;)
  *             .scope(&#34;overseas&#34;)
  *             .sources(DomainNewSourceArgs.builder()

@@ -316,10 +316,10 @@ class AlidnsDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_domain_group = alicloud.dns.DomainGroup("defaultDomainGroup", domain_group_name="tf-example")
-        default_alidns_domain = alicloud.dns.AlidnsDomain("defaultAlidnsDomain",
+        default = alicloud.dns.DomainGroup("default", domain_group_name="tf-example")
+        default_alidns_domain = alicloud.dns.AlidnsDomain("default",
             domain_name="starmove.com",
-            group_id=default_domain_group.id,
+            group_id=default.id,
             tags={
                 "Created": "TF",
                 "For": "example",
@@ -366,10 +366,10 @@ class AlidnsDomain(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_domain_group = alicloud.dns.DomainGroup("defaultDomainGroup", domain_group_name="tf-example")
-        default_alidns_domain = alicloud.dns.AlidnsDomain("defaultAlidnsDomain",
+        default = alicloud.dns.DomainGroup("default", domain_group_name="tf-example")
+        default_alidns_domain = alicloud.dns.AlidnsDomain("default",
             domain_name="starmove.com",
-            group_id=default_domain_group.id,
+            group_id=default.id,
             tags={
                 "Created": "TF",
                 "For": "example",

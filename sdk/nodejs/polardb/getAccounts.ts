@@ -19,46 +19,50 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const this = alicloud.polardb.getNodeClasses({
- *     dbType: "MySQL",
- *     dbVersion: "8.0",
- *     payType: "PostPaid",
- *     category: "Normal",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: "terraform-example",
- *     cidrBlock: "172.16.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: _this.then(_this => _this.classes?.[0]?.zoneId),
- *     vswitchName: "terraform-example",
- * });
- * const cluster = new alicloud.polardb.Cluster("cluster", {
- *     dbType: "MySQL",
- *     dbVersion: "8.0",
- *     payType: "PostPaid",
- *     dbNodeCount: 2,
- *     dbNodeClass: _this.then(_this => _this.classes?.[0]?.supportedEngines?.[0]?.availableResources?.[0]?.dbNodeClass),
- *     vswitchId: defaultSwitch.id,
- * });
- * const polardbClustersDs = alicloud.polardb.getClustersOutput({
- *     descriptionRegex: cluster.description,
- *     status: "Running",
- * });
- * const accountAccount = new alicloud.polardb.Account("accountAccount", {
- *     dbClusterId: polardbClustersDs.apply(polardbClustersDs => polardbClustersDs.clusters?.[0]?.id),
- *     accountName: "tfnormal_01",
- *     accountPassword: "Test12345",
- *     accountDescription: "tf_account_description",
- *     accountType: "Normal",
- * });
- * const defaultAccounts = pulumi.all([polardbClustersDs, accountAccount.accountName]).apply(([polardbClustersDs, accountName]) => alicloud.polardb.getAccountsOutput({
- *     dbClusterId: polardbClustersDs.clusters?.[0]?.id,
- *     nameRegex: accountName,
- * }));
- * export const account = defaultAccounts.apply(defaultAccounts => defaultAccounts.accounts?.[0]?.accountName);
+ * export = async () => {
+ *     const this = await alicloud.polardb.getNodeClasses({
+ *         dbType: "MySQL",
+ *         dbVersion: "8.0",
+ *         payType: "PostPaid",
+ *         category: "Normal",
+ *     });
+ *     const defaultNetwork = new alicloud.vpc.Network("default", {
+ *         vpcName: "terraform-example",
+ *         cidrBlock: "172.16.0.0/16",
+ *     });
+ *     const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *         vpcId: defaultNetwork.id,
+ *         cidrBlock: "172.16.0.0/24",
+ *         zoneId: _this.classes?.[0]?.zoneId,
+ *         vswitchName: "terraform-example",
+ *     });
+ *     const cluster = new alicloud.polardb.Cluster("cluster", {
+ *         dbType: "MySQL",
+ *         dbVersion: "8.0",
+ *         payType: "PostPaid",
+ *         dbNodeCount: 2,
+ *         dbNodeClass: _this.classes?.[0]?.supportedEngines?.[0]?.availableResources?.[0]?.dbNodeClass,
+ *         vswitchId: defaultSwitch.id,
+ *     });
+ *     const polardbClustersDs = alicloud.polardb.getClustersOutput({
+ *         descriptionRegex: cluster.description,
+ *         status: "Running",
+ *     });
+ *     const account = new alicloud.polardb.Account("account", {
+ *         dbClusterId: polardbClustersDs.apply(polardbClustersDs => polardbClustersDs.clusters?.[0]?.id),
+ *         accountName: "tfnormal_01",
+ *         accountPassword: "Test12345",
+ *         accountDescription: "tf_account_description",
+ *         accountType: "Normal",
+ *     });
+ *     const default = pulumi.all([polardbClustersDs, account.accountName]).apply(([polardbClustersDs, accountName]) => alicloud.polardb.getAccountsOutput({
+ *         dbClusterId: polardbClustersDs.clusters?.[0]?.id,
+ *         nameRegex: accountName,
+ *     }));
+ *     return {
+ *         account: _default.apply(_default => _default.accounts?.[0]?.accountName),
+ *     };
+ * }
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -117,46 +121,50 @@ export interface GetAccountsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const this = alicloud.polardb.getNodeClasses({
- *     dbType: "MySQL",
- *     dbVersion: "8.0",
- *     payType: "PostPaid",
- *     category: "Normal",
- * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: "terraform-example",
- *     cidrBlock: "172.16.0.0/16",
- * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     vpcId: defaultNetwork.id,
- *     cidrBlock: "172.16.0.0/24",
- *     zoneId: _this.then(_this => _this.classes?.[0]?.zoneId),
- *     vswitchName: "terraform-example",
- * });
- * const cluster = new alicloud.polardb.Cluster("cluster", {
- *     dbType: "MySQL",
- *     dbVersion: "8.0",
- *     payType: "PostPaid",
- *     dbNodeCount: 2,
- *     dbNodeClass: _this.then(_this => _this.classes?.[0]?.supportedEngines?.[0]?.availableResources?.[0]?.dbNodeClass),
- *     vswitchId: defaultSwitch.id,
- * });
- * const polardbClustersDs = alicloud.polardb.getClustersOutput({
- *     descriptionRegex: cluster.description,
- *     status: "Running",
- * });
- * const accountAccount = new alicloud.polardb.Account("accountAccount", {
- *     dbClusterId: polardbClustersDs.apply(polardbClustersDs => polardbClustersDs.clusters?.[0]?.id),
- *     accountName: "tfnormal_01",
- *     accountPassword: "Test12345",
- *     accountDescription: "tf_account_description",
- *     accountType: "Normal",
- * });
- * const defaultAccounts = pulumi.all([polardbClustersDs, accountAccount.accountName]).apply(([polardbClustersDs, accountName]) => alicloud.polardb.getAccountsOutput({
- *     dbClusterId: polardbClustersDs.clusters?.[0]?.id,
- *     nameRegex: accountName,
- * }));
- * export const account = defaultAccounts.apply(defaultAccounts => defaultAccounts.accounts?.[0]?.accountName);
+ * export = async () => {
+ *     const this = await alicloud.polardb.getNodeClasses({
+ *         dbType: "MySQL",
+ *         dbVersion: "8.0",
+ *         payType: "PostPaid",
+ *         category: "Normal",
+ *     });
+ *     const defaultNetwork = new alicloud.vpc.Network("default", {
+ *         vpcName: "terraform-example",
+ *         cidrBlock: "172.16.0.0/16",
+ *     });
+ *     const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *         vpcId: defaultNetwork.id,
+ *         cidrBlock: "172.16.0.0/24",
+ *         zoneId: _this.classes?.[0]?.zoneId,
+ *         vswitchName: "terraform-example",
+ *     });
+ *     const cluster = new alicloud.polardb.Cluster("cluster", {
+ *         dbType: "MySQL",
+ *         dbVersion: "8.0",
+ *         payType: "PostPaid",
+ *         dbNodeCount: 2,
+ *         dbNodeClass: _this.classes?.[0]?.supportedEngines?.[0]?.availableResources?.[0]?.dbNodeClass,
+ *         vswitchId: defaultSwitch.id,
+ *     });
+ *     const polardbClustersDs = alicloud.polardb.getClustersOutput({
+ *         descriptionRegex: cluster.description,
+ *         status: "Running",
+ *     });
+ *     const account = new alicloud.polardb.Account("account", {
+ *         dbClusterId: polardbClustersDs.apply(polardbClustersDs => polardbClustersDs.clusters?.[0]?.id),
+ *         accountName: "tfnormal_01",
+ *         accountPassword: "Test12345",
+ *         accountDescription: "tf_account_description",
+ *         accountType: "Normal",
+ *     });
+ *     const default = pulumi.all([polardbClustersDs, account.accountName]).apply(([polardbClustersDs, accountName]) => alicloud.polardb.getAccountsOutput({
+ *         dbClusterId: polardbClustersDs.clusters?.[0]?.id,
+ *         nameRegex: accountName,
+ *     }));
+ *     return {
+ *         account: _default.apply(_default => _default.accounts?.[0]?.accountName),
+ *     };
+ * }
  * ```
  * <!--End PulumiCodeChooser -->
  */

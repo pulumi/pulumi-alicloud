@@ -35,13 +35,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultInstances, err := waf.GetInstances(ctx, nil, nil)
+//			_default, err := waf.GetInstances(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultDomain, err := waf.NewDomain(ctx, "defaultDomain", &waf.DomainArgs{
+//			defaultDomain, err := waf.NewDomain(ctx, "default", &waf.DomainArgs{
 //				DomainName:      pulumi.String("you domain"),
-//				InstanceId:      pulumi.String(defaultInstances.Ids[0]),
+//				InstanceId:      pulumi.String(_default.Ids[0]),
 //				IsAccessProduct: pulumi.String("On"),
 //				SourceIps: pulumi.StringArray{
 //					pulumi.String("1.1.1.1"),
@@ -69,8 +69,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = waf.NewProtectionModule(ctx, "defaultProtectionModule", &waf.ProtectionModuleArgs{
-//				InstanceId:  pulumi.String(defaultInstances.Ids[0]),
+//			_, err = waf.NewProtectionModule(ctx, "default", &waf.ProtectionModuleArgs{
+//				InstanceId:  pulumi.String(_default.Ids[0]),
 //				Domain:      defaultDomain.DomainName,
 //				DefenseType: pulumi.String("ac_cc"),
 //				Mode:        pulumi.Int(0),

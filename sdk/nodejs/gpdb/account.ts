@@ -22,22 +22,22 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultZones = alicloud.gpdb.getZones({});
- * const defaultNetworks = alicloud.vpc.getNetworks({
+ * const default = alicloud.gpdb.getZones({});
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
  *     nameRegex: "^default-NODELETING$",
  * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.ids?.[0],
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.ids?.[0],
  * }));
- * const defaultInstance = new alicloud.gpdb.Instance("defaultInstance", {
+ * const defaultInstance = new alicloud.gpdb.Instance("default", {
  *     dbInstanceCategory: "HighAvailability",
  *     dbInstanceClass: "gpdb.group.segsdx1",
  *     dbInstanceMode: "StorageElastic",
  *     description: name,
  *     engine: "gpdb",
  *     engineVersion: "6.0",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.ids?.[0]),
+ *     zoneId: _default.then(_default => _default.ids?.[0]),
  *     instanceNetworkType: "VPC",
  *     instanceSpec: "2C16G",
  *     masterNodeNum: 1,
@@ -46,13 +46,13 @@ import * as utilities from "../utilities";
  *     segStorageType: "cloud_essd",
  *     segNodeNum: 4,
  *     storageSize: 50,
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
  *     ipWhitelists: [{
  *         securityIpList: "127.0.0.1",
  *     }],
  * });
- * const defaultAccount = new alicloud.gpdb.Account("defaultAccount", {
+ * const defaultAccount = new alicloud.gpdb.Account("default", {
  *     accountName: "tf_example",
  *     dbInstanceId: defaultInstance.id,
  *     accountPassword: "Example1234",

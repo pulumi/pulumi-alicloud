@@ -1053,6 +1053,7 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = AdbFunctions.getZones();
      * 
      *     }
@@ -1093,6 +1094,7 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = AdbFunctions.getZones();
      * 
      *     }
@@ -1133,6 +1135,7 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = AdbFunctions.getZones();
      * 
      *     }
@@ -1173,6 +1176,7 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = AdbFunctions.getZones();
      * 
      *     }
@@ -1213,6 +1217,7 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = AdbFunctions.getZones();
      * 
      *     }
@@ -1253,6 +1258,7 @@ public final class AdbFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = AdbFunctions.getZones();
      * 
      *     }

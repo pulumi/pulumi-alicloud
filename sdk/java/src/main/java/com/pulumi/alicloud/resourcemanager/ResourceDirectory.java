@@ -26,6 +26,49 @@ import javax.annotation.Nullable;
  *   - All member accounts must be removed from the resource directory.
  *   - All folders except the root folder must be deleted from the resource directory.
  * 
+ * ## Example Usage
+ * 
+ * Basic Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+ * import com.pulumi.alicloud.resourcemanager.inputs.GetResourceDirectoriesArgs;
+ * import com.pulumi.alicloud.resourcemanager.ResourceDirectory;
+ * import com.pulumi.alicloud.resourcemanager.ResourceDirectoryArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = ResourcemanagerFunctions.getResourceDirectories();
+ * 
+ *         for (var i = 0; i &lt; default_.directories().length() &gt; 0 ? 0 : 1; i++) {
+ *             new ResourceDirectory(&#34;defaultResourceDirectory-&#34; + i, ResourceDirectoryArgs.builder()            
+ *                 .status(&#34;Enabled&#34;)
+ *                 .build());
+ * 
+ *         
+ * }
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * Resource Manager Resource Directory can be imported using the id, e.g.

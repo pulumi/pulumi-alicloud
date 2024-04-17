@@ -283,6 +283,32 @@ class DiskReplicaGroup(pulumi.CustomResource):
 
         > **NOTE:** Available since v1.187.0.
 
+        ## Example Usage
+
+        Basic Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_regions(current=True)
+        default_get_regions = alicloud.ebs.get_regions(region_id=default.regions[0].id)
+        default_disk_replica_group = alicloud.ebs.DiskReplicaGroup("default",
+            source_region_id=default.regions[0].id,
+            source_zone_id=default_get_regions.regions[0].zones[0].zone_id,
+            destination_region_id=default.regions[0].id,
+            destination_zone_id=default_get_regions.regions[0].zones[1].zone_id,
+            group_name=name,
+            description=name,
+            rpo=900)
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         EBS Disk Replica Group can be imported using the id, e.g.
@@ -313,6 +339,32 @@ class DiskReplicaGroup(pulumi.CustomResource):
         For information about EBS Disk Replica Group and how to use it, see [What is Disk Replica Group](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/creatediskreplicagroup).
 
         > **NOTE:** Available since v1.187.0.
+
+        ## Example Usage
+
+        Basic Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "tf-example"
+        default = alicloud.get_regions(current=True)
+        default_get_regions = alicloud.ebs.get_regions(region_id=default.regions[0].id)
+        default_disk_replica_group = alicloud.ebs.DiskReplicaGroup("default",
+            source_region_id=default.regions[0].id,
+            source_zone_id=default_get_regions.regions[0].zones[0].zone_id,
+            destination_region_id=default.regions[0].id,
+            destination_zone_id=default_get_regions.regions[0].zones[1].zone_id,
+            group_name=name,
+            description=name,
+            rpo=900)
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

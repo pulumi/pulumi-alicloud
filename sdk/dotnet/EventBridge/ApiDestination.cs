@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.EventBridge
     ///     var config = new Config();
     ///     var region = config.Get("region") ?? "cn-chengdu";
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultConnection = new AliCloud.EventBridge.Connection("defaultConnection", new()
+    ///     var @default = new AliCloud.EventBridge.Connection("default", new()
     ///     {
     ///         ConnectionName = name,
     ///         NetworkParameters = new AliCloud.EventBridge.Inputs.ConnectionNetworkParametersArgs
@@ -41,9 +41,9 @@ namespace Pulumi.AliCloud.EventBridge
     ///         },
     ///     });
     /// 
-    ///     var defaultApiDestination = new AliCloud.EventBridge.ApiDestination("defaultApiDestination", new()
+    ///     var defaultApiDestination = new AliCloud.EventBridge.ApiDestination("default", new()
     ///     {
-    ///         ConnectionName = defaultConnection.ConnectionName,
+    ///         ConnectionName = @default.ConnectionName,
     ///         ApiDestinationName = name,
     ///         Description = "test-api-destination-connection",
     ///         HttpApiParameters = new AliCloud.EventBridge.Inputs.ApiDestinationHttpApiParametersArgs

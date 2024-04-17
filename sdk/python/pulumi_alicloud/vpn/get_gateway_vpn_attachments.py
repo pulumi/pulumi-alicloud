@@ -155,8 +155,8 @@ def get_gateway_vpn_attachments(ids: Optional[Sequence[str]] = None,
     pulumi.export("vpnGatewayVpnAttachmentId1", ids.attachments[0].id)
     name_regex = alicloud.vpn.get_gateway_vpn_attachments(name_regex="^my-VpnAttachment")
     pulumi.export("vpnGatewayVpnAttachmentId2", name_regex.attachments[0].id)
-    pulumi.export("localId", data["alicloud_vpn_gateway_vpn_attachments"]["vpn_attachments"]["attachments"][0]["ike_config"][0]["local_id"])
-    pulumi.export("internetIp", data["alicloud_vpn_gateway_vpn_attachments"]["vpn_attachments"]["attachments"][0]["internet_ip"])
+    pulumi.export("localId", vpn_attachments["attachments"][0]["ikeConfig"][0]["localId"])
+    pulumi.export("internetIp", vpn_attachments["attachments"][0]["internetIp"])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -218,8 +218,8 @@ def get_gateway_vpn_attachments_output(ids: Optional[pulumi.Input[Optional[Seque
     pulumi.export("vpnGatewayVpnAttachmentId1", ids.attachments[0].id)
     name_regex = alicloud.vpn.get_gateway_vpn_attachments(name_regex="^my-VpnAttachment")
     pulumi.export("vpnGatewayVpnAttachmentId2", name_regex.attachments[0].id)
-    pulumi.export("localId", data["alicloud_vpn_gateway_vpn_attachments"]["vpn_attachments"]["attachments"][0]["ike_config"][0]["local_id"])
-    pulumi.export("internetIp", data["alicloud_vpn_gateway_vpn_attachments"]["vpn_attachments"]["attachments"][0]["internet_ip"])
+    pulumi.export("localId", vpn_attachments["attachments"][0]["ikeConfig"][0]["localId"])
+    pulumi.export("internetIp", vpn_attachments["attachments"][0]["internetIp"])
     ```
     <!--End PulumiCodeChooser -->
 

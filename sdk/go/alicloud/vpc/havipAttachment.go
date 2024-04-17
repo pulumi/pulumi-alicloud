@@ -43,7 +43,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//			example, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
 //				AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
 //				CpuCoreCount:     pulumi.IntRef(1),
 //				MemorySize:       pulumi.Float64Ref(2),
@@ -51,21 +51,21 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//			exampleGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
 //				NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
 //				Owners:    pulumi.StringRef("system"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       exampleNetwork.ID(),
@@ -74,25 +74,26 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleHAVip, err := vpc.NewHAVip(ctx, "exampleHAVip", &vpc.HAVipArgs{
+//			exampleHAVip, err := vpc.NewHAVip(ctx, "example", &vpc.HAVipArgs{
 //				VswitchId:   exampleSwitch.ID(),
 //				Description: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
+//				Name:        pulumi.String(name),
 //				Description: pulumi.String(name),
 //				VpcId:       exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstance, err := ecs.NewInstance(ctx, "exampleInstance", &ecs.InstanceArgs{
+//			exampleInstance, err := ecs.NewInstance(ctx, "example", &ecs.InstanceArgs{
 //				AvailabilityZone:        pulumi.String(_default.Zones[0].Id),
 //				VswitchId:               exampleSwitch.ID(),
-//				ImageId:                 pulumi.String(exampleImages.Images[0].Id),
-//				InstanceType:            pulumi.String(exampleInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:                 pulumi.String(exampleGetImages.Images[0].Id),
+//				InstanceType:            pulumi.String(example.InstanceTypes[0].Id),
 //				SystemDiskCategory:      pulumi.String("cloud_efficiency"),
 //				InternetChargeType:      pulumi.String("PayByTraffic"),
 //				InternetMaxBandwidthOut: pulumi.Int(5),
@@ -105,7 +106,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewHAVipAttachment(ctx, "exampleHAVipAttachment", &vpc.HAVipAttachmentArgs{
+//			_, err = vpc.NewHAVipAttachment(ctx, "example", &vpc.HAVipAttachmentArgs{
 //				HavipId:    exampleHAVip.ID(),
 //				InstanceId: exampleInstance.ID(),
 //			})

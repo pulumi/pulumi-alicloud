@@ -203,8 +203,8 @@ def get_capacity_reservations(capacity_reservation_ids: Optional[Sequence[str]] 
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.ecs.get_capacity_reservations(ids=[alicloud_ecs_capacity_reservation["default"]["id"]],
-        name_regex=alicloud_ecs_capacity_reservation["default"]["name"],
+    default = alicloud.ecs.get_capacity_reservations(ids=[default_alicloud_ecs_capacity_reservation["id"]],
+        name_regex=default_alicloud_ecs_capacity_reservation["name"],
         instance_type="ecs.c6.large",
         platform="linux")
     pulumi.export("alicloudEcsCapacityReservationExampleId", default.reservations[0].id)
@@ -276,8 +276,8 @@ def get_capacity_reservations_output(capacity_reservation_ids: Optional[pulumi.I
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.ecs.get_capacity_reservations(ids=[alicloud_ecs_capacity_reservation["default"]["id"]],
-        name_regex=alicloud_ecs_capacity_reservation["default"]["name"],
+    default = alicloud.ecs.get_capacity_reservations(ids=[default_alicloud_ecs_capacity_reservation["id"]],
+        name_regex=default_alicloud_ecs_capacity_reservation["name"],
         instance_type="ecs.c6.large",
         platform="linux")
     pulumi.export("alicloudEcsCapacityReservationExampleId", default.reservations[0].id)

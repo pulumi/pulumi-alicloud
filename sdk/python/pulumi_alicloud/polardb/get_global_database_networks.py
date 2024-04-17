@@ -168,11 +168,11 @@ def get_global_database_networks(db_cluster_id: Optional[str] = None,
         db_version="8.0",
         pay_type="PostPaid",
         category="Normal")
-    default_network = alicloud.vpc.Network("defaultNetwork",
+    default = alicloud.vpc.Network("default",
         vpc_name="terraform-example",
         cidr_block="172.16.0.0/16")
-    default_switch = alicloud.vpc.Switch("defaultSwitch",
-        vpc_id=default_network.id,
+    default_switch = alicloud.vpc.Switch("default",
+        vpc_id=default.id,
         cidr_block="172.16.0.0/24",
         zone_id=this.classes[0].zone_id,
         vswitch_name="terraform-example")
@@ -183,7 +183,7 @@ def get_global_database_networks(db_cluster_id: Optional[str] = None,
         db_node_count=2,
         db_node_class=this.classes[0].supported_engines[0].available_resources[0].db_node_class,
         vswitch_id=default_switch.id)
-    default_global_database_network = alicloud.polardb.GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork",
+    default_global_database_network = alicloud.polardb.GlobalDatabaseNetwork("default",
         db_cluster_id=cluster.id,
         description=cluster.id)
     ids = alicloud.polardb.get_global_database_networks_output(ids=[default_global_database_network.id])
@@ -254,11 +254,11 @@ def get_global_database_networks_output(db_cluster_id: Optional[pulumi.Input[Opt
         db_version="8.0",
         pay_type="PostPaid",
         category="Normal")
-    default_network = alicloud.vpc.Network("defaultNetwork",
+    default = alicloud.vpc.Network("default",
         vpc_name="terraform-example",
         cidr_block="172.16.0.0/16")
-    default_switch = alicloud.vpc.Switch("defaultSwitch",
-        vpc_id=default_network.id,
+    default_switch = alicloud.vpc.Switch("default",
+        vpc_id=default.id,
         cidr_block="172.16.0.0/24",
         zone_id=this.classes[0].zone_id,
         vswitch_name="terraform-example")
@@ -269,7 +269,7 @@ def get_global_database_networks_output(db_cluster_id: Optional[pulumi.Input[Opt
         db_node_count=2,
         db_node_class=this.classes[0].supported_engines[0].available_resources[0].db_node_class,
         vswitch_id=default_switch.id)
-    default_global_database_network = alicloud.polardb.GlobalDatabaseNetwork("defaultGlobalDatabaseNetwork",
+    default_global_database_network = alicloud.polardb.GlobalDatabaseNetwork("default",
         db_cluster_id=cluster.id,
         description=cluster.id)
     ids = alicloud.polardb.get_global_database_networks_output(ids=[default_global_database_network.id])

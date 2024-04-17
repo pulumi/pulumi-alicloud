@@ -21,11 +21,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.cloudfirewall.ControlPolicy("example", {
- *     aclAction: "accept",
  *     applicationName: "ANY",
+ *     aclAction: "accept",
  *     description: "example",
- *     destination: "100.1.1.0/24",
  *     destinationType: "net",
+ *     destination: "100.1.1.0/24",
  *     direction: "out",
  *     proto: "ANY",
  *     source: "1.2.3.0/24",

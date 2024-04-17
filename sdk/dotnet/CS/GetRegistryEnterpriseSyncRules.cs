@@ -27,6 +27,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var mySyncRules = AliCloud.CS.GetRegistryEnterpriseSyncRules.Invoke(new()
         ///     {
         ///         InstanceId = "cri-xxx",
@@ -63,6 +64,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var mySyncRules = AliCloud.CS.GetRegistryEnterpriseSyncRules.Invoke(new()
         ///     {
         ///         InstanceId = "cri-xxx",

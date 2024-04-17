@@ -22,10 +22,10 @@ import * as utilities from "../utilities";
  *
  * const _default = new alicloud.threatdetection.AntiBruteForceRule("default", {
  *     antiBruteForceRuleName: "apispec_example",
- *     failCount: 80,
  *     forbiddenTime: 360,
- *     span: 10,
  *     uuidLists: ["032b618f-b220-4a0d-bd37-fbdc6ef58b6a"],
+ *     failCount: 80,
+ *     span: 10,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

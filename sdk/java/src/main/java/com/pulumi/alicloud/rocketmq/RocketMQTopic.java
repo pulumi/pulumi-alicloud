@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *         var createVswitch = new Switch(&#34;createVswitch&#34;, SwitchArgs.builder()        
  *             .description(&#34;example&#34;)
  *             .vpcId(createVpc.id())
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(default_.zones()[0].id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
  *             .vswitchName(name)
  *             .build());

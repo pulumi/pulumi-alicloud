@@ -184,15 +184,16 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example-name"
-        example_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance",
+        example = alicloud.cr.RegistryEnterpriseInstance("example",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
             instance_name=name)
-        example_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace",
-            instance_id=example_registry_enterprise_instance.id,
+        example_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("example",
+            instance_id=example.id,
+            name=name,
             auto_create=False,
             default_visibility="PUBLIC")
         ```
@@ -241,15 +242,16 @@ class RegistryEnterpriseNamespace(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example-name"
-        example_registry_enterprise_instance = alicloud.cr.RegistryEnterpriseInstance("exampleRegistryEnterpriseInstance",
+        example = alicloud.cr.RegistryEnterpriseInstance("example",
             payment_type="Subscription",
             period=1,
             renew_period=0,
             renewal_status="ManualRenewal",
             instance_type="Advanced",
             instance_name=name)
-        example_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("exampleRegistryEnterpriseNamespace",
-            instance_id=example_registry_enterprise_instance.id,
+        example_registry_enterprise_namespace = alicloud.cs.RegistryEnterpriseNamespace("example",
+            instance_id=example.id,
+            name=name,
             auto_create=False,
             default_visibility="PUBLIC")
         ```

@@ -43,19 +43,19 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cassandra.NewCluster(ctx, "default", &cassandra.ClusterArgs{
-//				AutoRenew:         pulumi.Bool(false),
 //				ClusterName:       pulumi.String("cassandra-cluster-name-tf"),
 //				DataCenterName:    pulumi.String("dc-1"),
-//				DiskSize:          pulumi.Int(160),
-//				DiskType:          pulumi.String("cloud_ssd"),
+//				AutoRenew:         pulumi.Bool(false),
 //				InstanceType:      pulumi.String("cassandra.c.large"),
-//				IpWhite:           pulumi.String("127.0.0.1"),
-//				MaintainEndTime:   pulumi.String("20:00Z"),
-//				MaintainStartTime: pulumi.String("18:00Z"),
 //				MajorVersion:      pulumi.String("3.11"),
 //				NodeCount:         pulumi.Int(2),
 //				PayType:           pulumi.String("PayAsYouGo"),
 //				VswitchId:         pulumi.String("vsw-xxxx"),
+//				DiskSize:          pulumi.Int(160),
+//				DiskType:          pulumi.String("cloud_ssd"),
+//				MaintainStartTime: pulumi.String("18:00Z"),
+//				MaintainEndTime:   pulumi.String("20:00Z"),
+//				IpWhite:           pulumi.String("127.0.0.1"),
 //			})
 //			if err != nil {
 //				return err

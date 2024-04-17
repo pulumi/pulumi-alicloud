@@ -53,11 +53,11 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var defaultInstances = WafFunctions.getInstances();
+ *         final var default = WafFunctions.getInstances();
  * 
  *         var defaultDomain = new Domain(&#34;defaultDomain&#34;, DomainArgs.builder()        
  *             .domainName(&#34;you domain&#34;)
- *             .instanceId(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.ids()[0]))
+ *             .instanceId(default_.ids()[0])
  *             .isAccessProduct(&#34;On&#34;)
  *             .sourceIps(&#34;1.1.1.1&#34;)
  *             .clusterType(&#34;PhysicalCluster&#34;)
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultProtectionModule = new ProtectionModule(&#34;defaultProtectionModule&#34;, ProtectionModuleArgs.builder()        
- *             .instanceId(defaultInstances.applyValue(getInstancesResult -&gt; getInstancesResult.ids()[0]))
+ *             .instanceId(default_.ids()[0])
  *             .domain(defaultDomain.domainName())
  *             .defenseType(&#34;ac_cc&#34;)
  *             .mode(0)

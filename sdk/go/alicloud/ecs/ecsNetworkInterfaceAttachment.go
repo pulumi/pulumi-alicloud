@@ -44,43 +44,44 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("Instance"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
 //				EniAmount:        pulumi.IntRef(3),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("192.168.0.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("192.168.0.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VpcId:       defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+//				Name:        pulumi.String(name),
 //				Description: pulumi.String("New security group"),
 //				VpcId:       defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//			defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
 //				NameRegex:  pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
 //				MostRecent: pulumi.BoolRef(true),
 //				Owners:     pulumi.StringRef("system"),
@@ -88,12 +89,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := ecs.NewInstance(ctx, "defaultInstance", &ecs.InstanceArgs{
-//				AvailabilityZone: pulumi.String(defaultZones.Zones[0].Id),
+//			defaultInstance, err := ecs.NewInstance(ctx, "default", &ecs.InstanceArgs{
+//				AvailabilityZone: pulumi.String(_default.Zones[0].Id),
 //				InstanceName:     pulumi.String(name),
 //				HostName:         pulumi.String("tf-example"),
-//				ImageId:          pulumi.String(defaultImages.Images[0].Id),
-//				InstanceType:     pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:          pulumi.String(defaultGetImages.Images[0].Id),
+//				InstanceType:     pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 //				SecurityGroups: pulumi.StringArray{
 //					defaultSecurityGroup.ID(),
 //				},
@@ -102,13 +103,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//			defaultGetResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
 //				Status: pulumi.StringRef("OK"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultEcsNetworkInterface, err := ecs.NewEcsNetworkInterface(ctx, "defaultEcsNetworkInterface", &ecs.EcsNetworkInterfaceArgs{
+//			defaultEcsNetworkInterface, err := ecs.NewEcsNetworkInterface(ctx, "default", &ecs.EcsNetworkInterfaceArgs{
 //				NetworkInterfaceName: pulumi.String(name),
 //				VswitchId:            defaultSwitch.ID(),
 //				SecurityGroupIds: pulumi.StringArray{
@@ -120,12 +121,12 @@ import (
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("example"),
 //				},
-//				ResourceGroupId: pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId: pulumi.String(defaultGetResourceGroups.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewEcsNetworkInterfaceAttachment(ctx, "defaultEcsNetworkInterfaceAttachment", &ecs.EcsNetworkInterfaceAttachmentArgs{
+//			_, err = ecs.NewEcsNetworkInterfaceAttachment(ctx, "default", &ecs.EcsNetworkInterfaceAttachmentArgs{
 //				NetworkInterfaceId: defaultEcsNetworkInterface.ID(),
 //				InstanceId:         defaultInstance.ID(),
 //			})

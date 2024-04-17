@@ -31,30 +31,30 @@ namespace Pulumi.AliCloud.BastionHost
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
     ///     {
     ///         NameRegex = "^default-NODELETING$",
     ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
     ///     {
     ///         CidrBlock = "10.4.0.0/24",
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///     });
     /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
-    ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.BastionHost.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.BastionHost.Instance("default", new()
     ///     {
     ///         Description = name,
     ///         LicenseCode = "bhah_ent_50_asset",
@@ -62,14 +62,14 @@ namespace Pulumi.AliCloud.BastionHost
     ///         Storage = "5",
     ///         Bandwidth = "5",
     ///         Period = 1,
-    ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
     ///         SecurityGroupIds = new[]
     ///         {
     ///             defaultSecurityGroup.Id,
     ///         },
     ///     });
     /// 
-    ///     var localUser = new AliCloud.BastionHost.User("localUser", new()
+    ///     var localUser = new AliCloud.BastionHost.User("local_user", new()
     ///     {
     ///         InstanceId = defaultInstance.Id,
     ///         MobileCountryCode = "CN",
@@ -81,6 +81,7 @@ namespace Pulumi.AliCloud.BastionHost
     /// 
     ///     var user = new AliCloud.Ram.User("user", new()
     ///     {
+    ///         Name = $"{name}_bastionhost_user",
     ///         DisplayName = $"{name}_bastionhost_user",
     ///         Mobile = "86-18688888888",
     ///         Email = "hello.uuu@aaa.com",
@@ -88,13 +89,13 @@ namespace Pulumi.AliCloud.BastionHost
     ///         Force = true,
     ///     });
     /// 
-    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
+    ///     var defaultGetAccount = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var ramUser = new AliCloud.BastionHost.User("ramUser", new()
+    ///     var ramUser = new AliCloud.BastionHost.User("ram_user", new()
     ///     {
     ///         InstanceId = defaultInstance.Id,
     ///         Source = "Ram",
-    ///         SourceUserId = defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         SourceUserId = defaultGetAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
     ///         UserName = user.Name,
     ///     });
     /// 

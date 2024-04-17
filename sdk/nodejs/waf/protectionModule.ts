@@ -20,10 +20,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultInstances = alicloud.waf.getInstances({});
- * const defaultDomain = new alicloud.waf.Domain("defaultDomain", {
+ * const default = alicloud.waf.getInstances({});
+ * const defaultDomain = new alicloud.waf.Domain("default", {
  *     domainName: "you domain",
- *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.ids?.[0]),
+ *     instanceId: _default.then(_default => _default.ids?.[0]),
  *     isAccessProduct: "On",
  *     sourceIps: ["1.1.1.1"],
  *     clusterType: "PhysicalCluster",
@@ -38,8 +38,8 @@ import * as utilities from "../utilities";
  *         value: "http",
  *     }],
  * });
- * const defaultProtectionModule = new alicloud.waf.ProtectionModule("defaultProtectionModule", {
- *     instanceId: defaultInstances.then(defaultInstances => defaultInstances.ids?.[0]),
+ * const defaultProtectionModule = new alicloud.waf.ProtectionModule("default", {
+ *     instanceId: _default.then(_default => _default.ids?.[0]),
  *     domain: defaultDomain.domainName,
  *     defenseType: "ac_cc",
  *     mode: 0,

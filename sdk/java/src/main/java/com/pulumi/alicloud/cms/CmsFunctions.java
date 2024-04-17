@@ -355,7 +355,7 @@ public final class CmsFunctions {
      *             .ids(&#34;tf-testAccCmsAlarmContact&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;first-contact&#34;, data.alicloud_cms_alarm_contacts().this().contacts());
+     *         ctx.export(&#34;first-contact&#34;, this_.contacts());
      *     }
      * }
      * ```
@@ -400,7 +400,7 @@ public final class CmsFunctions {
      *             .ids(&#34;tf-testAccCmsAlarmContact&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;first-contact&#34;, data.alicloud_cms_alarm_contacts().this().contacts());
+     *         ctx.export(&#34;first-contact&#34;, this_.contacts());
      *     }
      * }
      * ```
@@ -445,7 +445,7 @@ public final class CmsFunctions {
      *             .ids(&#34;tf-testAccCmsAlarmContact&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;first-contact&#34;, data.alicloud_cms_alarm_contacts().this().contacts());
+     *         ctx.export(&#34;first-contact&#34;, this_.contacts());
      *     }
      * }
      * ```
@@ -490,7 +490,7 @@ public final class CmsFunctions {
      *             .ids(&#34;tf-testAccCmsAlarmContact&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;first-contact&#34;, data.alicloud_cms_alarm_contacts().this().contacts());
+     *         ctx.export(&#34;first-contact&#34;, this_.contacts());
      *     }
      * }
      * ```
@@ -535,7 +535,7 @@ public final class CmsFunctions {
      *             .ids(&#34;tf-testAccCmsAlarmContact&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;first-contact&#34;, data.alicloud_cms_alarm_contacts().this().contacts());
+     *         ctx.export(&#34;first-contact&#34;, this_.contacts());
      *     }
      * }
      * ```
@@ -580,7 +580,7 @@ public final class CmsFunctions {
      *             .ids(&#34;tf-testAccCmsAlarmContact&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;first-contact&#34;, data.alicloud_cms_alarm_contacts().this().contacts());
+     *         ctx.export(&#34;first-contact&#34;, this_.contacts());
      *     }
      * }
      * ```
@@ -628,14 +628,14 @@ public final class CmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var defaultAlarmContactGroup = new AlarmContactGroup(&#34;defaultAlarmContactGroup&#34;, AlarmContactGroupArgs.builder()        
+     *         var default_ = new AlarmContactGroup(&#34;default&#34;, AlarmContactGroupArgs.builder()        
      *             .alarmContactGroupName(name)
      *             .describe(&#34;example_value&#34;)
      *             .enableSubscribed(true)
      *             .build());
      * 
      *         var defaultDynamicTagGroup = new DynamicTagGroup(&#34;defaultDynamicTagGroup&#34;, DynamicTagGroupArgs.builder()        
-     *             .contactGroupLists(defaultAlarmContactGroup.id())
+     *             .contactGroupLists(default_.id())
      *             .tagKey(&#34;your_tag_key&#34;)
      *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
      *                 .tagValue(&#34;your_tag_value&#34;)
@@ -695,14 +695,14 @@ public final class CmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var defaultAlarmContactGroup = new AlarmContactGroup(&#34;defaultAlarmContactGroup&#34;, AlarmContactGroupArgs.builder()        
+     *         var default_ = new AlarmContactGroup(&#34;default&#34;, AlarmContactGroupArgs.builder()        
      *             .alarmContactGroupName(name)
      *             .describe(&#34;example_value&#34;)
      *             .enableSubscribed(true)
      *             .build());
      * 
      *         var defaultDynamicTagGroup = new DynamicTagGroup(&#34;defaultDynamicTagGroup&#34;, DynamicTagGroupArgs.builder()        
-     *             .contactGroupLists(defaultAlarmContactGroup.id())
+     *             .contactGroupLists(default_.id())
      *             .tagKey(&#34;your_tag_key&#34;)
      *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
      *                 .tagValue(&#34;your_tag_value&#34;)
@@ -762,14 +762,14 @@ public final class CmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var defaultAlarmContactGroup = new AlarmContactGroup(&#34;defaultAlarmContactGroup&#34;, AlarmContactGroupArgs.builder()        
+     *         var default_ = new AlarmContactGroup(&#34;default&#34;, AlarmContactGroupArgs.builder()        
      *             .alarmContactGroupName(name)
      *             .describe(&#34;example_value&#34;)
      *             .enableSubscribed(true)
      *             .build());
      * 
      *         var defaultDynamicTagGroup = new DynamicTagGroup(&#34;defaultDynamicTagGroup&#34;, DynamicTagGroupArgs.builder()        
-     *             .contactGroupLists(defaultAlarmContactGroup.id())
+     *             .contactGroupLists(default_.id())
      *             .tagKey(&#34;your_tag_key&#34;)
      *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
      *                 .tagValue(&#34;your_tag_value&#34;)
@@ -829,14 +829,14 @@ public final class CmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var defaultAlarmContactGroup = new AlarmContactGroup(&#34;defaultAlarmContactGroup&#34;, AlarmContactGroupArgs.builder()        
+     *         var default_ = new AlarmContactGroup(&#34;default&#34;, AlarmContactGroupArgs.builder()        
      *             .alarmContactGroupName(name)
      *             .describe(&#34;example_value&#34;)
      *             .enableSubscribed(true)
      *             .build());
      * 
      *         var defaultDynamicTagGroup = new DynamicTagGroup(&#34;defaultDynamicTagGroup&#34;, DynamicTagGroupArgs.builder()        
-     *             .contactGroupLists(defaultAlarmContactGroup.id())
+     *             .contactGroupLists(default_.id())
      *             .tagKey(&#34;your_tag_key&#34;)
      *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
      *                 .tagValue(&#34;your_tag_value&#34;)
@@ -896,14 +896,14 @@ public final class CmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var defaultAlarmContactGroup = new AlarmContactGroup(&#34;defaultAlarmContactGroup&#34;, AlarmContactGroupArgs.builder()        
+     *         var default_ = new AlarmContactGroup(&#34;default&#34;, AlarmContactGroupArgs.builder()        
      *             .alarmContactGroupName(name)
      *             .describe(&#34;example_value&#34;)
      *             .enableSubscribed(true)
      *             .build());
      * 
      *         var defaultDynamicTagGroup = new DynamicTagGroup(&#34;defaultDynamicTagGroup&#34;, DynamicTagGroupArgs.builder()        
-     *             .contactGroupLists(defaultAlarmContactGroup.id())
+     *             .contactGroupLists(default_.id())
      *             .tagKey(&#34;your_tag_key&#34;)
      *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
      *                 .tagValue(&#34;your_tag_value&#34;)
@@ -963,14 +963,14 @@ public final class CmsFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;example_value&#34;);
-     *         var defaultAlarmContactGroup = new AlarmContactGroup(&#34;defaultAlarmContactGroup&#34;, AlarmContactGroupArgs.builder()        
+     *         var default_ = new AlarmContactGroup(&#34;default&#34;, AlarmContactGroupArgs.builder()        
      *             .alarmContactGroupName(name)
      *             .describe(&#34;example_value&#34;)
      *             .enableSubscribed(true)
      *             .build());
      * 
      *         var defaultDynamicTagGroup = new DynamicTagGroup(&#34;defaultDynamicTagGroup&#34;, DynamicTagGroupArgs.builder()        
-     *             .contactGroupLists(defaultAlarmContactGroup.id())
+     *             .contactGroupLists(default_.id())
      *             .tagKey(&#34;your_tag_key&#34;)
      *             .matchExpresses(DynamicTagGroupMatchExpressArgs.builder()
      *                 .tagValue(&#34;your_tag_value&#34;)
@@ -2330,12 +2330,12 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
-     *             .ids(alicloud_cms_metric_rule_black_lists.default().id())
+     *             .ids(defaultAlicloudCmsMetricRuleBlackLists.id())
      *             .category(&#34;ecs&#34;)
      *             .namespace(&#34;acs_ecs_dashboard&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, data.alicloud_cms_metric_rule_black_lists().lists()[0].id());
+     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, lists[0].id());
      *     }
      * }
      * ```
@@ -2375,12 +2375,12 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
-     *             .ids(alicloud_cms_metric_rule_black_lists.default().id())
+     *             .ids(defaultAlicloudCmsMetricRuleBlackLists.id())
      *             .category(&#34;ecs&#34;)
      *             .namespace(&#34;acs_ecs_dashboard&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, data.alicloud_cms_metric_rule_black_lists().lists()[0].id());
+     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, lists[0].id());
      *     }
      * }
      * ```
@@ -2420,12 +2420,12 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
-     *             .ids(alicloud_cms_metric_rule_black_lists.default().id())
+     *             .ids(defaultAlicloudCmsMetricRuleBlackLists.id())
      *             .category(&#34;ecs&#34;)
      *             .namespace(&#34;acs_ecs_dashboard&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, data.alicloud_cms_metric_rule_black_lists().lists()[0].id());
+     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, lists[0].id());
      *     }
      * }
      * ```
@@ -2465,12 +2465,12 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
-     *             .ids(alicloud_cms_metric_rule_black_lists.default().id())
+     *             .ids(defaultAlicloudCmsMetricRuleBlackLists.id())
      *             .category(&#34;ecs&#34;)
      *             .namespace(&#34;acs_ecs_dashboard&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, data.alicloud_cms_metric_rule_black_lists().lists()[0].id());
+     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, lists[0].id());
      *     }
      * }
      * ```
@@ -2510,12 +2510,12 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
-     *             .ids(alicloud_cms_metric_rule_black_lists.default().id())
+     *             .ids(defaultAlicloudCmsMetricRuleBlackLists.id())
      *             .category(&#34;ecs&#34;)
      *             .namespace(&#34;acs_ecs_dashboard&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, data.alicloud_cms_metric_rule_black_lists().lists()[0].id());
+     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, lists[0].id());
      *     }
      * }
      * ```
@@ -2555,12 +2555,12 @@ public final class CmsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = CmsFunctions.getMetricRuleBlackLists(GetMetricRuleBlackListsArgs.builder()
-     *             .ids(alicloud_cms_metric_rule_black_lists.default().id())
+     *             .ids(defaultAlicloudCmsMetricRuleBlackLists.id())
      *             .category(&#34;ecs&#34;)
      *             .namespace(&#34;acs_ecs_dashboard&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, data.alicloud_cms_metric_rule_black_lists().lists()[0].id());
+     *         ctx.export(&#34;alicloudCmsRuleBlackListExampleId&#34;, lists[0].id());
      *     }
      * }
      * ```

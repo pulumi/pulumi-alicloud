@@ -105,8 +105,8 @@ public final class HbaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var hbase = HbaseFunctions.getInstances(GetInstancesArgs.builder()
-     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
      *             .nameRegex(&#34;tf_testAccHBase&#34;)
+     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
      *             .build());
      * 
      *     }
@@ -149,8 +149,8 @@ public final class HbaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var hbase = HbaseFunctions.getInstances(GetInstancesArgs.builder()
-     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
      *             .nameRegex(&#34;tf_testAccHBase&#34;)
+     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
      *             .build());
      * 
      *     }
@@ -193,8 +193,8 @@ public final class HbaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var hbase = HbaseFunctions.getInstances(GetInstancesArgs.builder()
-     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
      *             .nameRegex(&#34;tf_testAccHBase&#34;)
+     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
      *             .build());
      * 
      *     }
@@ -237,8 +237,8 @@ public final class HbaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var hbase = HbaseFunctions.getInstances(GetInstancesArgs.builder()
-     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
      *             .nameRegex(&#34;tf_testAccHBase&#34;)
+     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
      *             .build());
      * 
      *     }
@@ -281,8 +281,8 @@ public final class HbaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var hbase = HbaseFunctions.getInstances(GetInstancesArgs.builder()
-     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
      *             .nameRegex(&#34;tf_testAccHBase&#34;)
+     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
      *             .build());
      * 
      *     }
@@ -325,8 +325,8 @@ public final class HbaseFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var hbase = HbaseFunctions.getInstances(GetInstancesArgs.builder()
-     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
      *             .nameRegex(&#34;tf_testAccHBase&#34;)
+     *             .availabilityZone(&#34;cn-shenzhen-b&#34;)
      *             .build());
      * 
      *     }
@@ -375,7 +375,6 @@ public final class HbaseFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```
@@ -422,7 +421,6 @@ public final class HbaseFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```
@@ -469,7 +467,6 @@ public final class HbaseFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```
@@ -516,7 +513,6 @@ public final class HbaseFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```
@@ -563,7 +559,6 @@ public final class HbaseFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```
@@ -610,7 +605,6 @@ public final class HbaseFunctions {
      *             .zoneId(zonesIds.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         // Other properties...
      *     }
      * }
      * ```

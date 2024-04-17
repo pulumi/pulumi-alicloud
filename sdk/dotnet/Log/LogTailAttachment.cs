@@ -32,20 +32,22 @@ namespace Pulumi.AliCloud.Log
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     var example = new AliCloud.Log.Project("example", new()
     ///     {
+    ///         Name = $"terraform-example-{@default.Result}",
     ///         Description = "terraform-example",
     ///     });
     /// 
-    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     var exampleStore = new AliCloud.Log.Store("example", new()
     ///     {
-    ///         Project = exampleProject.Name,
+    ///         Project = example.Name,
+    ///         Name = "example-store",
     ///         RetentionPeriod = 3650,
     ///         ShardCount = 3,
     ///         AutoSplit = true,
@@ -53,11 +55,12 @@ namespace Pulumi.AliCloud.Log
     ///         AppendMeta = true,
     ///     });
     /// 
-    ///     var exampleLogTailConfig = new AliCloud.Log.LogTailConfig("exampleLogTailConfig", new()
+    ///     var exampleLogTailConfig = new AliCloud.Log.LogTailConfig("example", new()
     ///     {
-    ///         Project = exampleProject.Name,
+    ///         Project = example.Name,
     ///         Logstore = exampleStore.Name,
     ///         InputType = "file",
+    ///         Name = "terraform-example",
     ///         OutputType = "LogService",
     ///         InputDetail = @"  	{
     /// 		""logPath"": ""/logPath"",
@@ -72,9 +75,10 @@ namespace Pulumi.AliCloud.Log
     /// ",
     ///     });
     /// 
-    ///     var exampleMachineGroup = new AliCloud.Log.MachineGroup("exampleMachineGroup", new()
+    ///     var exampleMachineGroup = new AliCloud.Log.MachineGroup("example", new()
     ///     {
-    ///         Project = exampleProject.Name,
+    ///         Project = example.Name,
+    ///         Name = "terraform-example",
     ///         IdentifyType = "ip",
     ///         Topic = "terraform",
     ///         IdentifyLists = new[]
@@ -84,9 +88,9 @@ namespace Pulumi.AliCloud.Log
     ///         },
     ///     });
     /// 
-    ///     var exampleLogTailAttachment = new AliCloud.Log.LogTailAttachment("exampleLogTailAttachment", new()
+    ///     var exampleLogTailAttachment = new AliCloud.Log.LogTailAttachment("example", new()
     ///     {
-    ///         Project = exampleProject.Name,
+    ///         Project = example.Name,
     ///         LogtailConfigName = exampleLogTailConfig.Name,
     ///         MachineGroupName = exampleMachineGroup.Name,
     ///     });

@@ -25,7 +25,8 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
  * const domain = config.get("domain") || "tf-example.alibaba.com";
- * const defaultDdosCooInstance = new alicloud.ddos.DdosCooInstance("defaultDdosCooInstance", {
+ * const _default = new alicloud.ddos.DdosCooInstance("default", {
+ *     name: name,
  *     bandwidth: "30",
  *     baseBandwidth: "30",
  *     serviceBandwidth: "100",
@@ -34,10 +35,10 @@ import * as utilities from "../utilities";
  *     period: 1,
  *     productType: "ddoscoo",
  * });
- * const defaultDomainResource = new alicloud.ddos.DomainResource("defaultDomainResource", {
+ * const defaultDomainResource = new alicloud.ddos.DomainResource("default", {
  *     domain: domain,
  *     rsType: 0,
- *     instanceIds: [defaultDdosCooInstance.id],
+ *     instanceIds: [_default.id],
  *     realServers: ["177.167.32.11"],
  *     httpsExt: "{\"Http2\":1,\"Http2https\":0,\"Https2http\":0}",
  *     proxyTypes: [{

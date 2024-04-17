@@ -29,15 +29,15 @@ namespace Pulumi.AliCloud.Ga
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultAcl = new AliCloud.Ga.Acl("defaultAcl", new()
+    ///     var @default = new AliCloud.Ga.Acl("default", new()
     ///     {
     ///         AclName = "terraform-example",
     ///         AddressIpVersion = "IPv4",
     ///     });
     /// 
-    ///     var defaultAclEntryAttachment = new AliCloud.Ga.AclEntryAttachment("defaultAclEntryAttachment", new()
+    ///     var defaultAclEntryAttachment = new AliCloud.Ga.AclEntryAttachment("default", new()
     ///     {
-    ///         AclId = defaultAcl.Id,
+    ///         AclId = @default.Id,
     ///         Entry = "192.168.1.1/32",
     ///         EntryDescription = "terraform-example",
     ///     });

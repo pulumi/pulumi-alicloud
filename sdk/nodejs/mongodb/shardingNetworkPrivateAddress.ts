@@ -24,23 +24,24 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultZones = alicloud.mongodb.getZones({});
- * const index = defaultZones.then(defaultZones => defaultZones.zones).length.then(length => length - 1);
- * const zoneId = defaultZones.then(defaultZones => defaultZones.zones[index].id);
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const default = alicloud.mongodb.getZones({});
+ * const index = _default.then(_default => _default.zones).length.then(length => length - 1);
+ * const zoneId = _default.then(_default => _default.zones[index].id);
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "172.17.3.0/24",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
  *     cidrBlock: "172.17.3.0/24",
  *     vpcId: defaultNetwork.id,
  *     zoneId: zoneId,
  * });
- * const defaultShardingInstance = new alicloud.mongodb.ShardingInstance("defaultShardingInstance", {
+ * const defaultShardingInstance = new alicloud.mongodb.ShardingInstance("default", {
  *     zoneId: zoneId,
  *     vswitchId: defaultSwitch.id,
  *     engineVersion: "4.2",
+ *     name: name,
  *     shardLists: [
  *         {
  *             nodeClass: "dds.shard.mid",
@@ -61,7 +62,7 @@ import * as utilities from "../utilities";
  *         },
  *     ],
  * });
- * const defaultShardingNetworkPrivateAddress = new alicloud.mongodb.ShardingNetworkPrivateAddress("defaultShardingNetworkPrivateAddress", {
+ * const defaultShardingNetworkPrivateAddress = new alicloud.mongodb.ShardingNetworkPrivateAddress("default", {
  *     dbInstanceId: defaultShardingInstance.id,
  *     nodeId: defaultShardingInstance.shardLists.apply(shardLists => shardLists[0].nodeId),
  *     zoneId: defaultShardingInstance.zoneId,

@@ -36,28 +36,28 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultZones, err := adb.GetZones(ctx, nil, nil)
+//			_default, err := adb.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 //				NameRegex: pulumi.StringRef("^default-NODELETING$"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
-//				ZoneId: pulumi.StringRef(defaultZones.Ids[0]),
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
+//				ZoneId: pulumi.StringRef(_default.Ids[0]),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = adb.NewDBClusterLakeVersion(ctx, "defaultDBClusterLakeVersion", &adb.DBClusterLakeVersionArgs{
+//			_, err = adb.NewDBClusterLakeVersion(ctx, "default", &adb.DBClusterLakeVersionArgs{
 //				DbClusterVersion:           pulumi.String("5.0"),
-//				VpcId:                      pulumi.String(defaultNetworks.Ids[0]),
-//				VswitchId:                  pulumi.String(defaultSwitches.Ids[0]),
-//				ZoneId:                     pulumi.String(defaultZones.Ids[0]),
+//				VpcId:                      pulumi.String(defaultGetNetworks.Ids[0]),
+//				VswitchId:                  pulumi.String(defaultGetSwitches.Ids[0]),
+//				ZoneId:                     pulumi.String(_default.Ids[0]),
 //				ComputeResource:            pulumi.String("16ACU"),
 //				StorageResource:            pulumi.String("0ACU"),
 //				PaymentType:                pulumi.String("PayAsYouGo"),

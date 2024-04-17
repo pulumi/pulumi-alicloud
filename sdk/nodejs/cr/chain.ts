@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", {
+ * const _default = new alicloud.cr.RegistryEnterpriseInstance("default", {
  *     paymentType: "Subscription",
  *     period: 1,
  *     renewPeriod: 0,
@@ -32,25 +32,78 @@ import * as utilities from "../utilities";
  *     instanceType: "Advanced",
  *     instanceName: name,
  * });
- * const defaultRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("defaultRegistryEnterpriseNamespace", {
- *     instanceId: defaultRegistryEnterpriseInstance.id,
+ * const defaultRegistryEnterpriseNamespace = new alicloud.cs.RegistryEnterpriseNamespace("default", {
+ *     instanceId: _default.id,
+ *     name: name,
  *     autoCreate: false,
  *     defaultVisibility: "PUBLIC",
  * });
- * const defaultRegistryEnterpriseRepo = new alicloud.cs.RegistryEnterpriseRepo("defaultRegistryEnterpriseRepo", {
- *     instanceId: defaultRegistryEnterpriseInstance.id,
+ * const defaultRegistryEnterpriseRepo = new alicloud.cs.RegistryEnterpriseRepo("default", {
+ *     instanceId: _default.id,
  *     namespace: defaultRegistryEnterpriseNamespace.name,
+ *     name: name,
  *     summary: "this is summary of my new repo",
  *     repoType: "PUBLIC",
  *     detail: "this is a public repo",
  * });
- * const defaultChain = new alicloud.cr.Chain("defaultChain", {
- *     chainName: name,
- *     description: name,
- *     instanceId: defaultRegistryEnterpriseNamespace.instanceId,
- *     repoName: defaultRegistryEnterpriseRepo.name,
- *     repoNamespaceName: defaultRegistryEnterpriseNamespace.name,
+ * const defaultChain = new alicloud.cr.Chain("default", {
  *     chainConfigs: [{
+ *         nodes: [
+ *             {
+ *                 nodeConfigs: [{
+ *                     denyPolicies: [{}],
+ *                 }],
+ *                 enable: true,
+ *                 nodeName: "DOCKER_IMAGE_BUILD",
+ *             },
+ *             {
+ *                 nodeConfigs: [{
+ *                     denyPolicies: [{}],
+ *                 }],
+ *                 enable: true,
+ *                 nodeName: "DOCKER_IMAGE_PUSH",
+ *             },
+ *             {
+ *                 enable: true,
+ *                 nodeName: "VULNERABILITY_SCANNING",
+ *                 nodeConfigs: [{
+ *                     denyPolicies: [{
+ *                         issueLevel: "MEDIUM",
+ *                         issueCount: "1",
+ *                         action: "BLOCK_DELETE_TAG",
+ *                         logic: "AND",
+ *                     }],
+ *                 }],
+ *             },
+ *             {
+ *                 nodeConfigs: [{
+ *                     denyPolicies: [{}],
+ *                 }],
+ *                 enable: true,
+ *                 nodeName: "ACTIVATE_REPLICATION",
+ *             },
+ *             {
+ *                 nodeConfigs: [{
+ *                     denyPolicies: [{}],
+ *                 }],
+ *                 enable: true,
+ *                 nodeName: "TRIGGER",
+ *             },
+ *             {
+ *                 nodeConfigs: [{
+ *                     denyPolicies: [{}],
+ *                 }],
+ *                 enable: false,
+ *                 nodeName: "SNAPSHOT",
+ *             },
+ *             {
+ *                 nodeConfigs: [{
+ *                     denyPolicies: [{}],
+ *                 }],
+ *                 enable: false,
+ *                 nodeName: "TRIGGER_SNAPSHOT",
+ *             },
+ *         ],
  *         routers: [
  *             {
  *                 froms: [{
@@ -101,63 +154,12 @@ import * as utilities from "../utilities";
  *                 }],
  *             },
  *         ],
- *         nodes: [
- *             {
- *                 enable: true,
- *                 nodeName: "DOCKER_IMAGE_BUILD",
- *                 nodeConfigs: [{
- *                     denyPolicies: [{}],
- *                 }],
- *             },
- *             {
- *                 enable: true,
- *                 nodeName: "DOCKER_IMAGE_PUSH",
- *                 nodeConfigs: [{
- *                     denyPolicies: [{}],
- *                 }],
- *             },
- *             {
- *                 enable: true,
- *                 nodeName: "VULNERABILITY_SCANNING",
- *                 nodeConfigs: [{
- *                     denyPolicies: [{
- *                         issueLevel: "MEDIUM",
- *                         issueCount: "1",
- *                         action: "BLOCK_DELETE_TAG",
- *                         logic: "AND",
- *                     }],
- *                 }],
- *             },
- *             {
- *                 enable: true,
- *                 nodeName: "ACTIVATE_REPLICATION",
- *                 nodeConfigs: [{
- *                     denyPolicies: [{}],
- *                 }],
- *             },
- *             {
- *                 enable: true,
- *                 nodeName: "TRIGGER",
- *                 nodeConfigs: [{
- *                     denyPolicies: [{}],
- *                 }],
- *             },
- *             {
- *                 enable: false,
- *                 nodeName: "SNAPSHOT",
- *                 nodeConfigs: [{
- *                     denyPolicies: [{}],
- *                 }],
- *             },
- *             {
- *                 enable: false,
- *                 nodeName: "TRIGGER_SNAPSHOT",
- *                 nodeConfigs: [{
- *                     denyPolicies: [{}],
- *                 }],
- *             },
- *         ],
  *     }],
+ *     chainName: name,
+ *     description: name,
+ *     instanceId: defaultRegistryEnterpriseNamespace.instanceId,
+ *     repoName: defaultRegistryEnterpriseRepo.name,
+ *     repoNamespaceName: defaultRegistryEnterpriseNamespace.name,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

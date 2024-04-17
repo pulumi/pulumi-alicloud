@@ -22,18 +22,21 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const exampleVpcEndpointService = new alicloud.privatelink.VpcEndpointService("exampleVpcEndpointService", {
+ * const example = new alicloud.privatelink.VpcEndpointService("example", {
  *     serviceDescription: name,
  *     connectBandwidth: 103,
  *     autoAcceptConnection: false,
  * });
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ * const exampleNetwork = new alicloud.vpc.Network("example", {
  *     vpcName: name,
  *     cidrBlock: "10.0.0.0/8",
  * });
- * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("exampleSecurityGroup", {vpcId: exampleNetwork.id});
- * const exampleVpcEndpoint = new alicloud.privatelink.VpcEndpoint("exampleVpcEndpoint", {
- *     serviceId: exampleVpcEndpointService.id,
+ * const exampleSecurityGroup = new alicloud.ecs.SecurityGroup("example", {
+ *     name: name,
+ *     vpcId: exampleNetwork.id,
+ * });
+ * const exampleVpcEndpoint = new alicloud.privatelink.VpcEndpoint("example", {
+ *     serviceId: example.id,
  *     securityGroupIds: [exampleSecurityGroup.id],
  *     vpcId: exampleNetwork.id,
  *     vpcEndpointName: name,

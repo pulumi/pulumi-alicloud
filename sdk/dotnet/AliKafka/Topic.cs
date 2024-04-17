@@ -33,36 +33,37 @@ namespace Pulumi.AliCloud.AliKafka
     /// {
     ///     var config = new Config();
     ///     var instanceName = config.Get("instanceName") ?? "tf-example";
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         CidrBlock = "172.16.0.0/12",
     ///     });
     /// 
-    ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+    ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///         CidrBlock = "172.16.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///     });
     /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
     ///     {
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 
-    ///     var defaultInstance = new AliCloud.AliKafka.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.AliKafka.Instance("default", new()
     ///     {
+    ///         Name = $"{instanceName}-{defaultInteger.Result}",
     ///         PartitionNum = 50,
     ///         DiskType = 1,
     ///         DiskSize = 500,
@@ -72,7 +73,7 @@ namespace Pulumi.AliCloud.AliKafka
     ///         SecurityGroup = defaultSecurityGroup.Id,
     ///     });
     /// 
-    ///     var defaultTopic = new AliCloud.AliKafka.Topic("defaultTopic", new()
+    ///     var defaultTopic = new AliCloud.AliKafka.Topic("default", new()
     ///     {
     ///         InstanceId = defaultInstance.Id,
     ///         TopicName = "example-topic",

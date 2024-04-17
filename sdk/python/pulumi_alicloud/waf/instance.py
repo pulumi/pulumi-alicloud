@@ -600,6 +600,32 @@ class Instance(pulumi.CustomResource):
 
         > **NOTE:** Available in 1.83.0+ .
 
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.waf.get_instances()
+        default_instance = []
+        for range in [{"value": i} for i in range(0, 0 if len(default.instances) > 0 else 1)]:
+            default_instance.append(alicloud.waf.Instance(f"default-{range['value']}",
+                big_screen="0",
+                exclusive_ip_package="1",
+                ext_bandwidth="50",
+                ext_domain_package="1",
+                package_code="version_3",
+                prefessional_service="false",
+                subscription_type="Subscription",
+                period=1,
+                waf_log="false",
+                log_storage="3",
+                log_time="180",
+                resource_group_id="rs-abc12345"))
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         WAF instance can be imported using the id, e.g.
@@ -647,6 +673,32 @@ class Instance(pulumi.CustomResource):
         For information about WAF and how to use it, see [What is Alibaba Cloud WAF](https://www.alibabacloud.com/help/doc-detail/28517.htm).
 
         > **NOTE:** Available in 1.83.0+ .
+
+        ## Example Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.waf.get_instances()
+        default_instance = []
+        for range in [{"value": i} for i in range(0, 0 if len(default.instances) > 0 else 1)]:
+            default_instance.append(alicloud.waf.Instance(f"default-{range['value']}",
+                big_screen="0",
+                exclusive_ip_package="1",
+                ext_bandwidth="50",
+                ext_domain_package="1",
+                package_code="version_3",
+                prefessional_service="false",
+                subscription_type="Subscription",
+                period=1,
+                waf_log="false",
+                log_storage="3",
+                log_time="180",
+                resource_group_id="rs-abc12345"))
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

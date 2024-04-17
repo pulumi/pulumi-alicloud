@@ -26,22 +26,22 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "tf-example";
  * const region = "cn-hangzhou";
  * const zoneId = "cn-hangzhou-h";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetworks = alicloud.vpc.getNetworks({
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
  *     nameRegex: "^default-NODELETING$",
  * });
- * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
+ * const defaultGetSwitches = defaultGetNetworks.then(defaultGetNetworks => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
  *     zoneId: zoneId,
  * }));
- * const defaultInstance = new alicloud.lindorm.Instance("defaultInstance", {
+ * const defaultInstance = new alicloud.lindorm.Instance("default", {
  *     diskCategory: "cloud_efficiency",
  *     paymentType: "PayAsYouGo",
  *     zoneId: zoneId,
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
  *     instanceName: name,
  *     tableEngineSpecification: "lindorm.g.4xlarge",
  *     tableEngineNodeCount: 2,

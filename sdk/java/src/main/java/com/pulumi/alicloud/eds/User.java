@@ -49,10 +49,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new User(&#34;default&#34;, UserArgs.builder()        
- *             .email(&#34;tf.example@abc.com&#34;)
  *             .endUserId(&#34;terraform_example123&#34;)
- *             .password(&#34;Example_123&#34;)
+ *             .email(&#34;tf.example@abc.com&#34;)
  *             .phone(&#34;18888888888&#34;)
+ *             .password(&#34;Example_123&#34;)
  *             .build());
  * 
  *     }

@@ -38,14 +38,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := sddp.NewInstance(ctx, "default", &sddp.InstanceArgs{
-//				Dataphin:    pulumi.String("yes"),
 //				PaymentType: pulumi.String("Subscription"),
-//				Period:      pulumi.Int(1),
-//				SdCbool:     pulumi.String("yes"),
-//				Sdc:         pulumi.String("3"),
 //				SddpVersion: pulumi.String("version_company"),
+//				SdCbool:     pulumi.String("yes"),
+//				Period:      pulumi.Int(1),
+//				Sdc:         pulumi.String("3"),
 //				UdCbool:     pulumi.String("yes"),
 //				Udc:         pulumi.String("2000"),
+//				Dataphin:    pulumi.String("yes"),
 //			})
 //			if err != nil {
 //				return err

@@ -43,26 +43,22 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultyk84Hc, err := hbr.NewVault(ctx, "defaultyk84Hc", &hbr.VaultArgs{
 //				VaultType: pulumi.String("STANDARD"),
-//				VaultName: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("example-value-%v", result), nil
-//				}).(pulumi.StringOutput),
+//				VaultName: pulumi.String(fmt.Sprintf("example-value-%v", _default.Result)),
 //			})
 //			if err != nil {
 //				return err
 //			}
 //			_, err = hbr.NewPolicy(ctx, "defaultoqWvHQ", &hbr.PolicyArgs{
-//				PolicyName: _default.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("example-value-%v", result), nil
-//				}).(pulumi.StringOutput),
+//				PolicyName: pulumi.String(fmt.Sprintf("example-value-%v", _default.Result)),
 //				Rules: hbr.PolicyRuleArray{
 //					&hbr.PolicyRuleArgs{
 //						RuleType:    pulumi.String("BACKUP"),

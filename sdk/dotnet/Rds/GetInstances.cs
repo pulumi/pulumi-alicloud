@@ -34,8 +34,8 @@ namespace Pulumi.AliCloud.Rds
         ///         Status = "Running",
         ///         Tags = 
         ///         {
-        ///             { "size", "tiny" },
         ///             { "type", "database" },
+        ///             { "size", "tiny" },
         ///         },
         ///     });
         /// 
@@ -73,8 +73,8 @@ namespace Pulumi.AliCloud.Rds
         ///         Status = "Running",
         ///         Tags = 
         ///         {
-        ///             { "size", "tiny" },
         ///             { "type", "database" },
+        ///             { "size", "tiny" },
         ///         },
         ///     });
         /// 

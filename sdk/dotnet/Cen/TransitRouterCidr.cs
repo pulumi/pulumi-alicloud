@@ -29,19 +29,19 @@ namespace Pulumi.AliCloud.Cen
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     var example = new AliCloud.Cen.Instance("example", new()
     ///     {
     ///         CenInstanceName = "tf_example",
     ///         Description = "an example for cen",
     ///     });
     /// 
-    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
+    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("example", new()
     ///     {
     ///         TransitRouterName = "tf_example",
-    ///         CenId = exampleInstance.Id,
+    ///         CenId = example.Id,
     ///     });
     /// 
-    ///     var exampleTransitRouterCidr = new AliCloud.Cen.TransitRouterCidr("exampleTransitRouterCidr", new()
+    ///     var exampleTransitRouterCidr = new AliCloud.Cen.TransitRouterCidr("example", new()
     ///     {
     ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
     ///         Cidr = "192.168.0.0/16",

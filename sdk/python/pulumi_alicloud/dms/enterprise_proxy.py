@@ -183,34 +183,36 @@ class EnterpriseProxy(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         current = alicloud.get_account()
-        default_regions = alicloud.get_regions(current=True)
-        default_user_tenants = alicloud.dms.get_user_tenants(status="ACTIVE")
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
+        default = alicloud.get_regions(current=True)
+        default_get_user_tenants = alicloud.dms.get_user_tenants(status="ACTIVE")
+        default_get_zones = alicloud.rds.get_zones(engine="MySQL",
             engine_version="8.0",
             instance_charge_type="PostPaid",
             category="HighAvailability",
             db_instance_storage_type="cloud_essd")
-        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.zones[0].id,
+        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_get_zones.zones[0].id,
             engine="MySQL",
             engine_version="8.0",
             category="HighAvailability",
             db_instance_storage_type="cloud_essd",
             instance_charge_type="PostPaid")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.rds.Instance("defaultInstance",
+            zone_id=default_get_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_instance = alicloud.rds.Instance("default",
             engine="MySQL",
             engine_version="8.0",
             db_instance_storage_type="cloud_essd",
-            instance_type=default_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
+            instance_type=default_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
             vswitch_id=default_switch.id,
             instance_name=name,
             security_ips=[
@@ -221,13 +223,13 @@ class EnterpriseProxy(pulumi.CustomResource):
                 "Created": "TF",
                 "For": "example",
             })
-        default_account = alicloud.rds.Account("defaultAccount",
+        default_account = alicloud.rds.Account("default",
             db_instance_id=default_instance.id,
             account_name="tfexamplename",
             account_password="Example12345",
             account_type="Normal")
-        default_enterprise_instance = alicloud.dms.EnterpriseInstance("defaultEnterpriseInstance",
-            tid=default_user_tenants.ids[0],
+        default_enterprise_instance = alicloud.dms.EnterpriseInstance("default",
+            tid=default_get_user_tenants.ids[0],
             instance_type="mysql",
             instance_source="RDS",
             network_type="VPC",
@@ -241,12 +243,12 @@ class EnterpriseProxy(pulumi.CustomResource):
             safe_rule="自由操作",
             query_timeout=60,
             export_timeout=600,
-            ecs_region=default_regions.regions[0].id)
-        default_enterprise_proxy = alicloud.dms.EnterpriseProxy("defaultEnterpriseProxy",
+            ecs_region=default.regions[0].id)
+        default_enterprise_proxy = alicloud.dms.EnterpriseProxy("default",
             instance_id=default_enterprise_instance.instance_id,
             password="Example12345",
             username="tfexamplename",
-            tid=default_user_tenants.ids[0])
+            tid=default_get_user_tenants.ids[0])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -292,34 +294,36 @@ class EnterpriseProxy(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         current = alicloud.get_account()
-        default_regions = alicloud.get_regions(current=True)
-        default_user_tenants = alicloud.dms.get_user_tenants(status="ACTIVE")
-        default_zones = alicloud.rds.get_zones(engine="MySQL",
+        default = alicloud.get_regions(current=True)
+        default_get_user_tenants = alicloud.dms.get_user_tenants(status="ACTIVE")
+        default_get_zones = alicloud.rds.get_zones(engine="MySQL",
             engine_version="8.0",
             instance_charge_type="PostPaid",
             category="HighAvailability",
             db_instance_storage_type="cloud_essd")
-        default_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_zones.zones[0].id,
+        default_get_instance_classes = alicloud.rds.get_instance_classes(zone_id=default_get_zones.zones[0].id,
             engine="MySQL",
             engine_version="8.0",
             category="HighAvailability",
             db_instance_storage_type="cloud_essd",
             instance_charge_type="PostPaid")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="10.4.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vswitch_name=name,
             cidr_block="10.4.0.0/24",
             vpc_id=default_network.id,
-            zone_id=default_zones.zones[0].id)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_network.id)
-        default_instance = alicloud.rds.Instance("defaultInstance",
+            zone_id=default_get_zones.zones[0].id)
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_network.id)
+        default_instance = alicloud.rds.Instance("default",
             engine="MySQL",
             engine_version="8.0",
             db_instance_storage_type="cloud_essd",
-            instance_type=default_instance_classes.instance_classes[0].instance_class,
-            instance_storage=default_instance_classes.instance_classes[0].storage_range.min,
+            instance_type=default_get_instance_classes.instance_classes[0].instance_class,
+            instance_storage=default_get_instance_classes.instance_classes[0].storage_range.min,
             vswitch_id=default_switch.id,
             instance_name=name,
             security_ips=[
@@ -330,13 +334,13 @@ class EnterpriseProxy(pulumi.CustomResource):
                 "Created": "TF",
                 "For": "example",
             })
-        default_account = alicloud.rds.Account("defaultAccount",
+        default_account = alicloud.rds.Account("default",
             db_instance_id=default_instance.id,
             account_name="tfexamplename",
             account_password="Example12345",
             account_type="Normal")
-        default_enterprise_instance = alicloud.dms.EnterpriseInstance("defaultEnterpriseInstance",
-            tid=default_user_tenants.ids[0],
+        default_enterprise_instance = alicloud.dms.EnterpriseInstance("default",
+            tid=default_get_user_tenants.ids[0],
             instance_type="mysql",
             instance_source="RDS",
             network_type="VPC",
@@ -350,12 +354,12 @@ class EnterpriseProxy(pulumi.CustomResource):
             safe_rule="自由操作",
             query_timeout=60,
             export_timeout=600,
-            ecs_region=default_regions.regions[0].id)
-        default_enterprise_proxy = alicloud.dms.EnterpriseProxy("defaultEnterpriseProxy",
+            ecs_region=default.regions[0].id)
+        default_enterprise_proxy = alicloud.dms.EnterpriseProxy("default",
             instance_id=default_enterprise_instance.instance_id,
             password="Example12345",
             username="tfexamplename",
-            tid=default_user_tenants.ids[0])
+            tid=default_get_user_tenants.ids[0])
         ```
         <!--End PulumiCodeChooser -->
 

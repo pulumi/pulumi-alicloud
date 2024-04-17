@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.Dcdn
     ///         },
     ///     });
     /// 
-    ///     var ipAllowListSet = new AliCloud.Dcdn.DomainConfig("ipAllowListSet", new()
+    ///     var ipAllowListSet = new AliCloud.Dcdn.DomainConfig("ip_allow_list_set", new()
     ///     {
     ///         DomainName = example.DomainName,
     ///         FunctionName = "ip_allow_list_set",
@@ -63,7 +63,7 @@ namespace Pulumi.AliCloud.Dcdn
     ///         },
     ///     });
     /// 
-    ///     var refererWhiteListSet = new AliCloud.Dcdn.DomainConfig("refererWhiteListSet", new()
+    ///     var refererWhiteListSet = new AliCloud.Dcdn.DomainConfig("referer_white_list_set", new()
     ///     {
     ///         DomainName = example.DomainName,
     ///         FunctionName = "referer_white_list_set",
@@ -77,7 +77,7 @@ namespace Pulumi.AliCloud.Dcdn
     ///         },
     ///     });
     /// 
-    ///     var filetypeBasedTtlSet = new AliCloud.Dcdn.DomainConfig("filetypeBasedTtlSet", new()
+    ///     var filetypeBasedTtlSet = new AliCloud.Dcdn.DomainConfig("filetype_based_ttl_set", new()
     ///     {
     ///         DomainName = example.DomainName,
     ///         FunctionName = "filetype_based_ttl_set",

@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := securitycenter.NewServiceLinkedRole(ctx, "serviceLinkedRole", nil)
+//			_, err := securitycenter.NewServiceLinkedRole(ctx, "service_linked_role", nil)
 //			if err != nil {
 //				return err
 //			}

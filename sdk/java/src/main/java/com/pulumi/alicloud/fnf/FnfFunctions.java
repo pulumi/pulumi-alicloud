@@ -61,7 +61,7 @@ public final class FnfFunctions {
      *                 &#34;my-Execution-2&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;fnfExecutionId1&#34;, data.alicloud_fn_f_executions().ids().executions()[0].id());
+     *         ctx.export(&#34;fnfExecutionId1&#34;, idsAlicloudFnFExecutions.executions()[0].id());
      *     }
      * }
      * ```
@@ -109,7 +109,7 @@ public final class FnfFunctions {
      *                 &#34;my-Execution-2&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;fnfExecutionId1&#34;, data.alicloud_fn_f_executions().ids().executions()[0].id());
+     *         ctx.export(&#34;fnfExecutionId1&#34;, idsAlicloudFnFExecutions.executions()[0].id());
      *     }
      * }
      * ```
@@ -157,7 +157,7 @@ public final class FnfFunctions {
      *                 &#34;my-Execution-2&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;fnfExecutionId1&#34;, data.alicloud_fn_f_executions().ids().executions()[0].id());
+     *         ctx.export(&#34;fnfExecutionId1&#34;, idsAlicloudFnFExecutions.executions()[0].id());
      *     }
      * }
      * ```
@@ -205,7 +205,7 @@ public final class FnfFunctions {
      *                 &#34;my-Execution-2&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;fnfExecutionId1&#34;, data.alicloud_fn_f_executions().ids().executions()[0].id());
+     *         ctx.export(&#34;fnfExecutionId1&#34;, idsAlicloudFnFExecutions.executions()[0].id());
      *     }
      * }
      * ```

@@ -22,8 +22,9 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const default = alicloud.resourcemanager.getResourceGroups({});
  * const instance = new alicloud.ddos.DdosBgpInstance("instance", {
+ *     name: name,
  *     baseBandwidth: 20,
  *     bandwidth: -1,
  *     ipCount: 100,
@@ -31,11 +32,11 @@ import * as utilities from "../utilities";
  *     normalBandwidth: 100,
  *     type: "Enterprise",
  * });
- * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {addressName: name});
- * const defaultBgpIp = new alicloud.ddos.BgpIp("defaultBgpIp", {
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("default", {addressName: name});
+ * const defaultBgpIp = new alicloud.ddos.BgpIp("default", {
  *     instanceId: instance.id,
  *     ip: defaultEipAddress.ipAddress,
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

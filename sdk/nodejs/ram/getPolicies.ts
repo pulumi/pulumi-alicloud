@@ -19,10 +19,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const policiesDs = alicloud.ram.getPolicies({
- *     groupName: "group1",
  *     outputFile: "policies.txt",
- *     type: "System",
  *     userName: "user1",
+ *     groupName: "group1",
+ *     type: "System",
  * });
  * export const firstPolicyName = policiesDs.then(policiesDs => policiesDs.policies?.[0]?.name);
  * ```
@@ -126,10 +126,10 @@ export interface GetPoliciesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const policiesDs = alicloud.ram.getPolicies({
- *     groupName: "group1",
  *     outputFile: "policies.txt",
- *     type: "System",
  *     userName: "user1",
+ *     groupName: "group1",
+ *     type: "System",
  * });
  * export const firstPolicyName = policiesDs.then(policiesDs => policiesDs.policies?.[0]?.name);
  * ```

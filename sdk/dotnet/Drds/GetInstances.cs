@@ -30,11 +30,11 @@ namespace Pulumi.AliCloud.Drds
         /// {
         ///     var drdsInstancesDs = AliCloud.Drds.GetInstances.Invoke(new()
         ///     {
+        ///         NameRegex = "drds-\\d+",
         ///         Ids = new[]
         ///         {
         ///             "drdsabc123456",
         ///         },
-        ///         NameRegex = "drds-\\d+",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -67,11 +67,11 @@ namespace Pulumi.AliCloud.Drds
         /// {
         ///     var drdsInstancesDs = AliCloud.Drds.GetInstances.Invoke(new()
         ///     {
+        ///         NameRegex = "drds-\\d+",
         ///         Ids = new[]
         ///         {
         ///             "drdsabc123456",
         ///         },
-        ///         NameRegex = "drds-\\d+",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

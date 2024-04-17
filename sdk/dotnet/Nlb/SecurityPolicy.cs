@@ -31,11 +31,11 @@ namespace Pulumi.AliCloud.Nlb
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var defaultSecurityPolicy = new AliCloud.Nlb.SecurityPolicy("defaultSecurityPolicy", new()
+    ///     var defaultSecurityPolicy = new AliCloud.Nlb.SecurityPolicy("default", new()
     ///     {
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
     ///         SecurityPolicyName = name,
     ///         Ciphers = new[]
     ///         {

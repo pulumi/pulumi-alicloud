@@ -36,17 +36,17 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudfirewall.NewAddressBook(ctx, "example", &cloudfirewall.AddressBookArgs{
-//				AutoAddTagEcs: pulumi.Int(0),
 //				Description:   pulumi.String("example_value"),
+//				GroupName:     pulumi.String("example_value"),
+//				GroupType:     pulumi.String("tag"),
+//				TagRelation:   pulumi.String("and"),
+//				AutoAddTagEcs: pulumi.Int(0),
 //				EcsTags: cloudfirewall.AddressBookEcsTagArray{
 //					&cloudfirewall.AddressBookEcsTagArgs{
 //						TagKey:   pulumi.String("created"),
 //						TagValue: pulumi.String("tfTestAcc0"),
 //					},
 //				},
-//				GroupName:   pulumi.String("example_value"),
-//				GroupType:   pulumi.String("tag"),
-//				TagRelation: pulumi.String("and"),
 //			})
 //			if err != nil {
 //				return err

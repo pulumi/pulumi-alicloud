@@ -47,55 +47,55 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := slb.GetZones(ctx, &slb.GetZonesArgs{
+//			_default, err := slb.GetZones(ctx, &slb.GetZonesArgs{
 //				AvailableSlbAddressType: pulumi.StringRef("vpc"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.0.0.0/8"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.1.0.0/16"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "defaultApplicationLoadBalancer", &slb.ApplicationLoadBalancerArgs{
+//			defaultApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "default", &slb.ApplicationLoadBalancerArgs{
 //				AddressType:      pulumi.String("intranet"),
 //				VswitchId:        defaultSwitch.ID(),
 //				LoadBalancerName: pulumi.String(name),
 //				LoadBalancerSpec: pulumi.String("slb.s1.small"),
-//				MasterZoneId:     pulumi.String(defaultZones.Zones[0].Id),
+//				MasterZoneId:     pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultAnycastEipAddress, err := eipanycast.NewAnycastEipAddress(ctx, "defaultAnycastEipAddress", &eipanycast.AnycastEipAddressArgs{
+//			defaultAnycastEipAddress, err := eipanycast.NewAnycastEipAddress(ctx, "default", &eipanycast.AnycastEipAddressArgs{
 //				AnycastEipAddressName: pulumi.String(name),
 //				ServiceLocation:       pulumi.String("ChineseMainland"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			defaultGetRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = eipanycast.NewAnycastEipAddressAttachment(ctx, "defaultAnycastEipAddressAttachment", &eipanycast.AnycastEipAddressAttachmentArgs{
+//			_, err = eipanycast.NewAnycastEipAddressAttachment(ctx, "default", &eipanycast.AnycastEipAddressAttachmentArgs{
 //				BindInstanceId:       defaultApplicationLoadBalancer.ID(),
 //				BindInstanceType:     pulumi.String("SlbInstance"),
-//				BindInstanceRegionId: pulumi.String(defaultRegions.Regions[0].Id),
+//				BindInstanceRegionId: pulumi.String(defaultGetRegions.Regions[0].Id),
 //				AnycastId:            defaultAnycastEipAddress.ID(),
 //			})
 //			if err != nil {
@@ -136,26 +136,14 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := alicloud.NewProvider(ctx, "beijing", &alicloud.ProviderArgs{
-//				Region: pulumi.String("cn-beijing"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = alicloud.NewProvider(ctx, "hangzhou", &alicloud.ProviderArgs{
-//				Region: pulumi.String("cn-hangzhou"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//			defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
 //				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
 //				MostRecent: pulumi.BoolRef(true),
 //				Owners:     pulumi.StringRef("system"),
@@ -163,8 +151,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(defaultZones.Zones[0].Id),
+//			defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
 //				CpuCoreCount:     pulumi.IntRef(1),
 //				MemorySize:       pulumi.Float64Ref(2),
 //			}, nil)
@@ -174,27 +162,27 @@ import (
 //			defaultVpc, err := vpc.NewNetwork(ctx, "defaultVpc", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
-//			}, pulumi.Provider("alicloud.beijing"))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultVsw, err := vpc.NewSwitch(ctx, "defaultVsw", &vpc.SwitchArgs{
 //				VpcId:     defaultVpc.ID(),
 //				CidrBlock: pulumi.String("192.168.0.0/24"),
-//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
-//			}, pulumi.Provider("alicloud.beijing"))
+//				ZoneId:    pulumi.String(_default.Zones[0].Id),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultuBsECI, err := ecs.NewSecurityGroup(ctx, "defaultuBsECI", &ecs.SecurityGroupArgs{
 //				VpcId: defaultVpc.ID(),
-//			}, pulumi.Provider("alicloud.beijing"))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			default9KDlN7, err := ecs.NewInstance(ctx, "default9KDlN7", &ecs.InstanceArgs{
-//				ImageId:      pulumi.String(defaultImages.Images[0].Id),
-//				InstanceType: pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//				ImageId:      pulumi.String(defaultGetImages.Images[0].Id),
+//				InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 //				InstanceName: pulumi.String(name),
 //				SecurityGroups: pulumi.StringArray{
 //					defaultuBsECI.ID(),
@@ -203,31 +191,31 @@ import (
 //				InstanceChargeType: pulumi.String("PostPaid"),
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),
 //				VswitchId:          defaultVsw.ID(),
-//			}, pulumi.Provider("alicloud.beijing"))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultXkpFRs, err := eipanycast.NewAnycastEipAddress(ctx, "defaultXkpFRs", &eipanycast.AnycastEipAddressArgs{
 //				ServiceLocation: pulumi.String("ChineseMainland"),
-//			}, pulumi.Provider("alicloud.hangzhou"))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultVpc2, err := vpc.NewNetwork(ctx, "defaultVpc2", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(fmt.Sprintf("%v6", name)),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
-//			}, pulumi.Provider("alicloud.hangzhou"))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			default2Zones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			default2, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableDiskCategory:     pulumi.StringRef("cloud_efficiency"),
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			default2Images, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+//			default2GetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
 //				NameRegex:  pulumi.StringRef("^ubuntu_18.*64"),
 //				MostRecent: pulumi.BoolRef(true),
 //				Owners:     pulumi.StringRef("system"),
@@ -235,8 +223,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			default2InstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone: pulumi.StringRef(default2Zones.Zones[0].Id),
+//			default2GetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone: pulumi.StringRef(default2.Zones[0].Id),
 //				CpuCoreCount:     pulumi.IntRef(1),
 //				MemorySize:       pulumi.Float64Ref(2),
 //			}, nil)
@@ -246,20 +234,20 @@ import (
 //			defaultdsVsw2, err := vpc.NewSwitch(ctx, "defaultdsVsw2", &vpc.SwitchArgs{
 //				VpcId:     defaultVpc2.ID(),
 //				CidrBlock: pulumi.String("192.168.0.0/24"),
-//				ZoneId:    pulumi.String(default2Zones.Zones[1].Id),
-//			}, pulumi.Provider("alicloud.hangzhou"))
+//				ZoneId:    pulumi.String(default2.Zones[1].Id),
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultuBsECI2, err := ecs.NewSecurityGroup(ctx, "defaultuBsECI2", &ecs.SecurityGroupArgs{
 //				VpcId: defaultVpc2.ID(),
-//			}, pulumi.Provider("alicloud.hangzhou"))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			defaultEcs2, err := ecs.NewInstance(ctx, "defaultEcs2", &ecs.InstanceArgs{
-//				ImageId:      pulumi.String(default2Images.Images[0].Id),
-//				InstanceType: pulumi.String(default2InstanceTypes.InstanceTypes[0].Id),
+//				ImageId:      pulumi.String(default2GetImages.Images[0].Id),
+//				InstanceType: pulumi.String(default2GetInstanceTypes.InstanceTypes[0].Id),
 //				InstanceName: pulumi.String(name),
 //				SecurityGroups: pulumi.StringArray{
 //					defaultuBsECI2.ID(),
@@ -268,7 +256,7 @@ import (
 //				InstanceChargeType: pulumi.String("PostPaid"),
 //				SystemDiskCategory: pulumi.String("cloud_efficiency"),
 //				VswitchId:          defaultdsVsw2.ID(),
-//			}, pulumi.Provider("alicloud.hangzhou"))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -278,7 +266,7 @@ import (
 //				BindInstanceRegionId: pulumi.String("cn-beijing"),
 //				AnycastId:            defaultXkpFRs.ID(),
 //				AssociationMode:      pulumi.String("Default"),
-//			}, pulumi.Provider("alicloud.beijing"))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -287,7 +275,7 @@ import (
 //				BindInstanceType:     pulumi.String("NetworkInterface"),
 //				BindInstanceRegionId: pulumi.String("cn-hangzhou"),
 //				AnycastId:            defaultEfYBJY.AnycastId,
-//			}, pulumi.Provider("alicloud.hangzhou"))
+//			})
 //			if err != nil {
 //				return err
 //			}

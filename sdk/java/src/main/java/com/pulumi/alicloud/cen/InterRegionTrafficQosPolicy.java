@@ -32,8 +32,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.alicloud.Provider;
- * import com.pulumi.alicloud.ProviderArgs;
  * import com.pulumi.alicloud.cen.Instance;
  * import com.pulumi.alicloud.cen.InstanceArgs;
  * import com.pulumi.alicloud.cen.BandwidthPackage;
@@ -46,7 +44,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.cen.TransitRouterPeerAttachmentArgs;
  * import com.pulumi.alicloud.cen.InterRegionTrafficQosPolicy;
  * import com.pulumi.alicloud.cen.InterRegionTrafficQosPolicyArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -60,66 +57,44 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var bj = new Provider(&#34;bj&#34;, ProviderArgs.builder()        
- *             .region(&#34;cn-beijing&#34;)
- *             .build());
- * 
- *         var hz = new Provider(&#34;hz&#34;, ProviderArgs.builder()        
- *             .region(&#34;cn-hangzhou&#34;)
- *             .build());
- * 
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
  *             .cenInstanceName(&#34;tf-example&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *             .build());
  * 
  *         var defaultBandwidthPackage = new BandwidthPackage(&#34;defaultBandwidthPackage&#34;, BandwidthPackageArgs.builder()        
  *             .bandwidth(5)
  *             .geographicRegionAId(&#34;China&#34;)
  *             .geographicRegionBId(&#34;China&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *             .build());
  * 
  *         var defaultBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;defaultBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
- *             .instanceId(defaultInstance.id())
+ *             .instanceId(default_.id())
  *             .bandwidthPackageId(defaultBandwidthPackage.id())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *             .build());
  * 
- *         var hzTransitRouter = new TransitRouter(&#34;hzTransitRouter&#34;, TransitRouterArgs.builder()        
+ *         var hz = new TransitRouter(&#34;hz&#34;, TransitRouterArgs.builder()        
  *             .cenId(defaultBandwidthPackageAttachment.instanceId())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *             .build());
  * 
- *         var bjTransitRouter = new TransitRouter(&#34;bjTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .cenId(hzTransitRouter.cenId())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.bj())
- *                 .build());
+ *         var bj = new TransitRouter(&#34;bj&#34;, TransitRouterArgs.builder()        
+ *             .cenId(hz.cenId())
+ *             .build());
  * 
  *         var defaultTransitRouterPeerAttachment = new TransitRouterPeerAttachment(&#34;defaultTransitRouterPeerAttachment&#34;, TransitRouterPeerAttachmentArgs.builder()        
- *             .cenId(defaultInstance.id())
- *             .transitRouterId(hzTransitRouter.transitRouterId())
+ *             .cenId(default_.id())
+ *             .transitRouterId(hz.transitRouterId())
  *             .peerTransitRouterRegionId(&#34;cn-beijing&#34;)
- *             .peerTransitRouterId(bjTransitRouter.transitRouterId())
+ *             .peerTransitRouterId(bj.transitRouterId())
  *             .cenBandwidthPackageId(defaultBandwidthPackageAttachment.bandwidthPackageId())
  *             .bandwidth(5)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *             .build());
  * 
  *         var defaultInterRegionTrafficQosPolicy = new InterRegionTrafficQosPolicy(&#34;defaultInterRegionTrafficQosPolicy&#34;, InterRegionTrafficQosPolicyArgs.builder()        
- *             .transitRouterId(hzTransitRouter.transitRouterId())
+ *             .transitRouterId(hz.transitRouterId())
  *             .transitRouterAttachmentId(defaultTransitRouterPeerAttachment.transitRouterAttachmentId())
  *             .interRegionTrafficQosPolicyName(&#34;tf-example-name&#34;)
  *             .interRegionTrafficQosPolicyDescription(&#34;tf-example-description&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.hz())
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

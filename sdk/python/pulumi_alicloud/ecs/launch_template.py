@@ -1553,6 +1553,7 @@ class LaunchTemplate(pulumi.CustomResource):
         images = alicloud.ecs.get_images(owners="system")
         instances = alicloud.ecs.get_instances()
         template = alicloud.ecs.LaunchTemplate("template",
+            name="tf-test-template",
             description="test1",
             image_id=images.images[0].id,
             host_name="tf-test-host",
@@ -1684,6 +1685,7 @@ class LaunchTemplate(pulumi.CustomResource):
         images = alicloud.ecs.get_images(owners="system")
         instances = alicloud.ecs.get_instances()
         template = alicloud.ecs.LaunchTemplate("template",
+            name="tf-test-template",
             description="test1",
             image_id=images.images[0].id,
             host_name="tf-test-host",

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.threatdetection.getHoneypotPresets({
- *     ids: [alicloud_threat_detection_honeypot_preset["default"].id],
+ *     ids: [defaultAlicloudThreatDetectionHoneypotPreset.id],
  *     honeypotImageName: "shiro",
  *     nodeId: "example_value",
  *     presetName: "apiapec_test",
@@ -131,7 +131,7 @@ export interface GetHoneypotPresetsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.threatdetection.getHoneypotPresets({
- *     ids: [alicloud_threat_detection_honeypot_preset["default"].id],
+ *     ids: [defaultAlicloudThreatDetectionHoneypotPreset.id],
  *     honeypotImageName: "shiro",
  *     nodeId: "example_value",
  *     presetName: "apiapec_test",

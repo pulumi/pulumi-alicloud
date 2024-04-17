@@ -27,6 +27,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ots"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -41,14 +43,15 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			_, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := ots.NewInstance(ctx, "defaultInstance", &ots.InstanceArgs{
+//			defaultInstance, err := ots.NewInstance(ctx, "default", &ots.InstanceArgs{
+//				Name:        pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
 //				Description: pulumi.String(name),
 //				AccessedBy:  pulumi.String("Any"),
 //				Tags: pulumi.Map{
@@ -59,7 +62,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ots.NewTable(ctx, "defaultTable", &ots.TableArgs{
+//			_, err = ots.NewTable(ctx, "default", &ots.TableArgs{
 //				InstanceName: defaultInstance.Name,
 //				TableName:    pulumi.String("tf_example"),
 //				TimeToLive:   -1,

@@ -20,16 +20,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ * const example = new alicloud.cen.Instance("example", {
  *     cenInstanceName: "tf_example",
  *     description: "an example for cen",
  * });
- * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("example", {
  *     transitRouterName: "tf_example",
- *     cenId: exampleInstance.id,
+ *     cenId: example.id,
  * });
- * const exampleTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("exampleTransitRouterRouteTable", {transitRouterId: exampleTransitRouter.transitRouterId});
- * const exampleTransitRouteTableAggregation = new alicloud.cen.TransitRouteTableAggregation("exampleTransitRouteTableAggregation", {
+ * const exampleTransitRouterRouteTable = new alicloud.cen.TransitRouterRouteTable("example", {transitRouterId: exampleTransitRouter.transitRouterId});
+ * const exampleTransitRouteTableAggregation = new alicloud.cen.TransitRouteTableAggregation("example", {
  *     transitRouteTableId: exampleTransitRouterRouteTable.transitRouterRouteTableId,
  *     transitRouteTableAggregationCidr: "10.0.0.0/8",
  *     transitRouteTableAggregationScope: "VPC",

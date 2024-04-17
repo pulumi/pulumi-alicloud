@@ -118,7 +118,7 @@ class InstanceSecurityGroupAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_instance = alicloud.ens.Instance("defaultInstance",
+        default = alicloud.ens.Instance("default",
             system_disk=alicloud.ens.InstanceSystemDiskArgs(
                 size=20,
             ),
@@ -133,11 +133,11 @@ class InstanceSecurityGroupAttachment(pulumi.CustomResource):
             public_ip_identification=True,
             ens_region_id="cn-chenzhou-telecom_unicom_cmcc",
             period_unit="Month")
-        default_security_group = alicloud.ens.SecurityGroup("defaultSecurityGroup",
+        default_security_group = alicloud.ens.SecurityGroup("default",
             description="InstanceSecurityGroupAttachment_Description",
             security_group_name=name)
-        default_instance_security_group_attachment = alicloud.ens.InstanceSecurityGroupAttachment("defaultInstanceSecurityGroupAttachment",
-            instance_id=default_instance.id,
+        default_instance_security_group_attachment = alicloud.ens.InstanceSecurityGroupAttachment("default",
+            instance_id=default.id,
             security_group_id=default_security_group.id)
         ```
         <!--End PulumiCodeChooser -->
@@ -181,7 +181,7 @@ class InstanceSecurityGroupAttachment(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_instance = alicloud.ens.Instance("defaultInstance",
+        default = alicloud.ens.Instance("default",
             system_disk=alicloud.ens.InstanceSystemDiskArgs(
                 size=20,
             ),
@@ -196,11 +196,11 @@ class InstanceSecurityGroupAttachment(pulumi.CustomResource):
             public_ip_identification=True,
             ens_region_id="cn-chenzhou-telecom_unicom_cmcc",
             period_unit="Month")
-        default_security_group = alicloud.ens.SecurityGroup("defaultSecurityGroup",
+        default_security_group = alicloud.ens.SecurityGroup("default",
             description="InstanceSecurityGroupAttachment_Description",
             security_group_name=name)
-        default_instance_security_group_attachment = alicloud.ens.InstanceSecurityGroupAttachment("defaultInstanceSecurityGroupAttachment",
-            instance_id=default_instance.id,
+        default_instance_security_group_attachment = alicloud.ens.InstanceSecurityGroupAttachment("default",
+            instance_id=default.id,
             security_group_id=default_security_group.id)
         ```
         <!--End PulumiCodeChooser -->

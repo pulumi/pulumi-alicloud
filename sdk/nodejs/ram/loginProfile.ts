@@ -21,6 +21,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const user = new alicloud.ram.User("user", {
+ *     name: "terraform_example",
  *     displayName: "terraform_example",
  *     mobile: "86-18688888888",
  *     email: "hello.uuu@aaa.com",

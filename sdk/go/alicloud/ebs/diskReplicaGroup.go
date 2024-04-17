@@ -18,6 +18,61 @@ import (
 //
 // > **NOTE:** Available since v1.187.0.
 //
+// ## Example Usage
+//
+// # Basic Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ebs"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cfg := config.New(ctx, "")
+//			name := "tf-example"
+//			if param := cfg.Get("name"); param != "" {
+//				name = param
+//			}
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//				Current: pulumi.BoolRef(true),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultGetRegions, err := ebs.GetRegions(ctx, &ebs.GetRegionsArgs{
+//				RegionId: pulumi.StringRef(_default.Regions[0].Id),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = ebs.NewDiskReplicaGroup(ctx, "default", &ebs.DiskReplicaGroupArgs{
+//				SourceRegionId:      pulumi.String(_default.Regions[0].Id),
+//				SourceZoneId:        pulumi.String(defaultGetRegions.Regions[0].Zones[0].ZoneId),
+//				DestinationRegionId: pulumi.String(_default.Regions[0].Id),
+//				DestinationZoneId:   pulumi.String(defaultGetRegions.Regions[0].Zones[1].ZoneId),
+//				GroupName:           pulumi.String(name),
+//				Description:         pulumi.String(name),
+//				Rpo:                 pulumi.Int(900),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // EBS Disk Replica Group can be imported using the id, e.g.

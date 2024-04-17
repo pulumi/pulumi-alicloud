@@ -38,13 +38,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultLaunchOptions, err := servicecatalog.GetLaunchOptions(ctx, &servicecatalog.GetLaunchOptionsArgs{
+//			defaultGetLaunchOptions, err := servicecatalog.GetLaunchOptions(ctx, &servicecatalog.GetLaunchOptionsArgs{
 //				ProductId: "data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("alicloudServiceCatalogLaunchOptionExampleId", defaultLaunchOptions.LaunchOptions[0].Id)
+//			ctx.Export("alicloudServiceCatalogLaunchOptionExampleId", defaultGetLaunchOptions.LaunchOptions[0].Id)
 //			return nil
 //		})
 //	}

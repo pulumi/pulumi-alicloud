@@ -86,6 +86,7 @@ def get_character_set_names(engine: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     names = alicloud.rds.get_character_set_names(engine="MySQL")
     pulumi.export("firstRdsCharacterSetNames", names.names[0])
     ```
@@ -123,6 +124,7 @@ def get_character_set_names_output(engine: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     names = alicloud.rds.get_character_set_names(engine="MySQL")
     pulumi.export("firstRdsCharacterSetNames", names.names[0])
     ```

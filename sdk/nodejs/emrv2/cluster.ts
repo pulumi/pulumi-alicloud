@@ -25,32 +25,36 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({
+ * const default = alicloud.resourcemanager.getResourceGroups({
  *     status: "OK",
  * });
- * const defaultKeys = alicloud.kms.getKeys({
+ * const defaultGetKeys = alicloud.kms.getKeys({
  *     status: "Enabled",
  * });
- * const defaultZones = alicloud.getZones({
+ * const defaultGetZones = alicloud.getZones({
  *     availableInstanceType: "ecs.g7.xlarge",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/12",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const defaultInteger = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
- * const defaultEcsKeyPair = new alicloud.ecs.EcsKeyPair("defaultEcsKeyPair", {keyPairName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`});
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultRole = new alicloud.ram.Role("defaultRole", {
+ * const defaultEcsKeyPair = new alicloud.ecs.EcsKeyPair("default", {keyPairName: `${name}-${defaultInteger.result}`});
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultRole = new alicloud.ram.Role("default", {
+ *     name: name,
  *     document: `    {
  *         "Statement": [
  *         {
@@ -70,7 +74,7 @@ import * as utilities from "../utilities";
  *     description: "this is a role example.",
  *     force: true,
  * });
- * const defaultCluster = new alicloud.emrv2.Cluster("defaultCluster", {
+ * const defaultCluster = new alicloud.emrv2.Cluster("default", {
  *     nodeGroups: [
  *         {
  *             vswitchIds: [defaultSwitch.id],
@@ -132,10 +136,10 @@ import * as utilities from "../utilities";
  *         "YARN",
  *     ],
  *     nodeAttributes: [{
- *         zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *         zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
  *         keyPairName: defaultEcsKeyPair.id,
  *         dataDiskEncrypted: true,
- *         dataDiskKmsKeyId: defaultKeys.then(defaultKeys => defaultKeys.ids?.[0]),
+ *         dataDiskKmsKeyId: defaultGetKeys.then(defaultGetKeys => defaultGetKeys.ids?.[0]),
  *         vpcId: defaultNetwork.id,
  *         ramRole: defaultRole.name,
  *         securityGroupId: defaultSecurityGroup.id,
@@ -144,7 +148,7 @@ import * as utilities from "../utilities";
  *         open: ["all"],
  *         close: [""],
  *     }),
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.ids?.[0]),
+ *     resourceGroupId: _default.then(_default => _default.ids?.[0]),
  *     clusterName: name,
  *     paymentType: "PayAsYouGo",
  *     clusterType: "DATAFLOW",

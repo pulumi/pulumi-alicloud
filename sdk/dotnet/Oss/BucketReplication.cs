@@ -30,24 +30,25 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var bucketSrc = new AliCloud.Oss.Bucket("bucketSrc", new()
+    ///     var bucketSrc = new AliCloud.Oss.Bucket("bucket_src", new()
     ///     {
-    ///         BucketName = @default.Result.Apply(result =&gt; $"example-src-{result}"),
+    ///         BucketName = $"example-src-{@default.Result}",
     ///     });
     /// 
-    ///     var bucketDest = new AliCloud.Oss.Bucket("bucketDest", new()
+    ///     var bucketDest = new AliCloud.Oss.Bucket("bucket_dest", new()
     ///     {
-    ///         BucketName = @default.Result.Apply(result =&gt; $"example-dest-{result}"),
+    ///         BucketName = $"example-dest-{@default.Result}",
     ///     });
     /// 
     ///     var role = new AliCloud.Ram.Role("role", new()
     ///     {
+    ///         Name = $"example-role-{@default.Result}",
     ///         Document = @"		{
     /// 		  ""Statement"": [
     /// 			{
@@ -69,7 +70,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     ///     var policy = new AliCloud.Ram.Policy("policy", new()
     ///     {
-    ///         PolicyName = @default.Result.Apply(result =&gt; $"example-policy-{result}"),
+    ///         PolicyName = $"example-policy-{@default.Result}",
     ///         PolicyDocument = @"		{
     /// 		  ""Statement"": [
     /// 			{

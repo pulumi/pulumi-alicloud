@@ -217,6 +217,41 @@ public final class KvstoreFunctions {
      * 
      * &gt; **NOTE:** Available in v1.101.0+.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetConnectionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var example = KvstoreFunctions.getConnections(GetConnectionsArgs.builder()
+     *             .ids(&#34;r-wer123456&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;connectionString&#34;, example.applyValue(getConnectionsResult -&gt; getConnectionsResult.connections()[0].connectionString()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetConnectionsResult> getConnections(GetConnectionsArgs args) {
         return getConnections(args, InvokeOptions.Empty);
@@ -225,6 +260,41 @@ public final class KvstoreFunctions {
      * This data source can query the public IP of the specified KVStore DBInstance.
      * 
      * &gt; **NOTE:** Available in v1.101.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetConnectionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var example = KvstoreFunctions.getConnections(GetConnectionsArgs.builder()
+     *             .ids(&#34;r-wer123456&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;connectionString&#34;, example.applyValue(getConnectionsResult -&gt; getConnectionsResult.connections()[0].connectionString()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConnectionsResult> getConnectionsPlain(GetConnectionsPlainArgs args) {
@@ -235,6 +305,41 @@ public final class KvstoreFunctions {
      * 
      * &gt; **NOTE:** Available in v1.101.0+.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetConnectionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var example = KvstoreFunctions.getConnections(GetConnectionsArgs.builder()
+     *             .ids(&#34;r-wer123456&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;connectionString&#34;, example.applyValue(getConnectionsResult -&gt; getConnectionsResult.connections()[0].connectionString()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetConnectionsResult> getConnections(GetConnectionsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:kvstore/getConnections:getConnections", TypeShape.of(GetConnectionsResult.class), args, Utilities.withVersion(options));
@@ -243,6 +348,41 @@ public final class KvstoreFunctions {
      * This data source can query the public IP of the specified KVStore DBInstance.
      * 
      * &gt; **NOTE:** Available in v1.101.0+.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.kvstore.KvstoreFunctions;
+     * import com.pulumi.alicloud.kvstore.inputs.GetConnectionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         // Declare the data source
+     *         final var example = KvstoreFunctions.getConnections(GetConnectionsArgs.builder()
+     *             .ids(&#34;r-wer123456&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;connectionString&#34;, example.applyValue(getConnectionsResult -&gt; getConnectionsResult.connections()[0].connectionString()));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetConnectionsResult> getConnectionsPlain(GetConnectionsPlainArgs args, InvokeOptions options) {
@@ -279,19 +419,19 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var resources = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;KVStore&#34;)
      *             .build());
      * 
-     *         final var resourcesInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+     *         final var resourcesGetInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+     *             .zoneId(resources.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .instanceChargeType(&#34;PrePaid&#34;)
      *             .engine(&#34;Redis&#34;)
      *             .engineVersion(&#34;5.0&#34;)
-     *             .instanceChargeType(&#34;PrePaid&#34;)
      *             .outputFile(&#34;./classes.txt&#34;)
-     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()));
+     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()));
      *     }
      * }
      * ```
@@ -332,19 +472,19 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var resources = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;KVStore&#34;)
      *             .build());
      * 
-     *         final var resourcesInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+     *         final var resourcesGetInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+     *             .zoneId(resources.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .instanceChargeType(&#34;PrePaid&#34;)
      *             .engine(&#34;Redis&#34;)
      *             .engineVersion(&#34;5.0&#34;)
-     *             .instanceChargeType(&#34;PrePaid&#34;)
      *             .outputFile(&#34;./classes.txt&#34;)
-     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()));
+     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()));
      *     }
      * }
      * ```
@@ -385,19 +525,19 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var resources = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;KVStore&#34;)
      *             .build());
      * 
-     *         final var resourcesInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+     *         final var resourcesGetInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+     *             .zoneId(resources.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .instanceChargeType(&#34;PrePaid&#34;)
      *             .engine(&#34;Redis&#34;)
      *             .engineVersion(&#34;5.0&#34;)
-     *             .instanceChargeType(&#34;PrePaid&#34;)
      *             .outputFile(&#34;./classes.txt&#34;)
-     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()));
+     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()));
      *     }
      * }
      * ```
@@ -438,19 +578,19 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var resources = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;KVStore&#34;)
      *             .build());
      * 
-     *         final var resourcesInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+     *         final var resourcesGetInstanceClasses = KvstoreFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+     *             .zoneId(resources.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .instanceChargeType(&#34;PrePaid&#34;)
      *             .engine(&#34;Redis&#34;)
      *             .engineVersion(&#34;5.0&#34;)
-     *             .instanceChargeType(&#34;PrePaid&#34;)
      *             .outputFile(&#34;./classes.txt&#34;)
-     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()));
+     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()));
      *     }
      * }
      * ```
@@ -491,19 +631,19 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var resources = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;KVStore&#34;)
      *             .build());
      * 
-     *         final var resourcesInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
+     *         final var resourcesGetInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
+     *             .zoneId(resources.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .instanceChargeType(&#34;PrePaid&#34;)
      *             .engine(&#34;Redis&#34;)
      *             .engineVersion(&#34;5.0&#34;)
-     *             .instanceChargeType(&#34;PrePaid&#34;)
      *             .outputFile(&#34;./engines.txt&#34;)
-     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesInstanceEngines.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].engine()));
+     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesGetInstanceEngines.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].engine()));
      *     }
      * }
      * ```
@@ -544,19 +684,19 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var resources = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;KVStore&#34;)
      *             .build());
      * 
-     *         final var resourcesInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
+     *         final var resourcesGetInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
+     *             .zoneId(resources.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .instanceChargeType(&#34;PrePaid&#34;)
      *             .engine(&#34;Redis&#34;)
      *             .engineVersion(&#34;5.0&#34;)
-     *             .instanceChargeType(&#34;PrePaid&#34;)
      *             .outputFile(&#34;./engines.txt&#34;)
-     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesInstanceEngines.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].engine()));
+     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesGetInstanceEngines.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].engine()));
      *     }
      * }
      * ```
@@ -597,19 +737,19 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var resources = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;KVStore&#34;)
      *             .build());
      * 
-     *         final var resourcesInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
+     *         final var resourcesGetInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
+     *             .zoneId(resources.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .instanceChargeType(&#34;PrePaid&#34;)
      *             .engine(&#34;Redis&#34;)
      *             .engineVersion(&#34;5.0&#34;)
-     *             .instanceChargeType(&#34;PrePaid&#34;)
      *             .outputFile(&#34;./engines.txt&#34;)
-     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesInstanceEngines.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].engine()));
+     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesGetInstanceEngines.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].engine()));
      *     }
      * }
      * ```
@@ -650,19 +790,19 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var resourcesZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *         final var resources = AlicloudFunctions.getZones(GetZonesArgs.builder()
      *             .availableResourceCreation(&#34;KVStore&#34;)
      *             .build());
      * 
-     *         final var resourcesInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
+     *         final var resourcesGetInstanceEngines = KvstoreFunctions.getInstanceEngines(GetInstanceEnginesArgs.builder()
+     *             .zoneId(resources.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+     *             .instanceChargeType(&#34;PrePaid&#34;)
      *             .engine(&#34;Redis&#34;)
      *             .engineVersion(&#34;5.0&#34;)
-     *             .instanceChargeType(&#34;PrePaid&#34;)
      *             .outputFile(&#34;./engines.txt&#34;)
-     *             .zoneId(resourcesZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
      *             .build());
      * 
-     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesInstanceEngines.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].engine()));
+     *         ctx.export(&#34;firstKvstoreInstanceClass&#34;, resourcesGetInstanceEngines.applyValue(getInstanceEnginesResult -&gt; getInstanceEnginesResult.instanceEngines()[0].engine()));
      *     }
      * }
      * ```
@@ -1229,6 +1369,7 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
      *             .instanceChargeType(&#34;PostPaid&#34;)
      *             .build());
@@ -1271,6 +1412,7 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
      *             .instanceChargeType(&#34;PostPaid&#34;)
      *             .build());
@@ -1313,6 +1455,7 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
      *             .instanceChargeType(&#34;PostPaid&#34;)
      *             .build());
@@ -1355,6 +1498,7 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
      *             .instanceChargeType(&#34;PostPaid&#34;)
      *             .build());
@@ -1397,6 +1541,7 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
      *             .instanceChargeType(&#34;PostPaid&#34;)
      *             .build());
@@ -1439,6 +1584,7 @@ public final class KvstoreFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = KvstoreFunctions.getZones(GetZonesArgs.builder()
      *             .instanceChargeType(&#34;PostPaid&#34;)
      *             .build());

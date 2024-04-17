@@ -122,12 +122,13 @@ class NetworkAttachment(pulumi.CustomResource):
         sag_id = config.get("sagId")
         if sag_id is None:
             sag_id = "sag-9bifkf***"
-        default_network = alicloud.cloudconnect.Network("defaultNetwork",
+        default = alicloud.cloudconnect.Network("default",
+            name=name,
             description=name,
             cidr_block="192.168.0.0/24",
             is_default=True)
-        default_network_attachment = alicloud.cloudconnect.NetworkAttachment("defaultNetworkAttachment",
-            ccn_id=default_network.id,
+        default_network_attachment = alicloud.cloudconnect.NetworkAttachment("default",
+            ccn_id=default.id,
             sag_id=sag_id)
         ```
         <!--End PulumiCodeChooser -->
@@ -176,12 +177,13 @@ class NetworkAttachment(pulumi.CustomResource):
         sag_id = config.get("sagId")
         if sag_id is None:
             sag_id = "sag-9bifkf***"
-        default_network = alicloud.cloudconnect.Network("defaultNetwork",
+        default = alicloud.cloudconnect.Network("default",
+            name=name,
             description=name,
             cidr_block="192.168.0.0/24",
             is_default=True)
-        default_network_attachment = alicloud.cloudconnect.NetworkAttachment("defaultNetworkAttachment",
-            ccn_id=default_network.id,
+        default_network_attachment = alicloud.cloudconnect.NetworkAttachment("default",
+            ccn_id=default.id,
             sag_id=sag_id)
         ```
         <!--End PulumiCodeChooser -->

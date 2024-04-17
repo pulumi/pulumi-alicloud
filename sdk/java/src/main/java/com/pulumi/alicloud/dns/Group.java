@@ -28,6 +28,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.dns.Group;
+ * import com.pulumi.alicloud.dns.GroupArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -42,7 +43,9 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Add a new Domain group.
- *         var group = new Group(&#34;group&#34;);
+ *         var group = new Group(&#34;group&#34;, GroupArgs.builder()        
+ *             .name(&#34;testgroup&#34;)
+ *             .build());
  * 
  *     }
  * }

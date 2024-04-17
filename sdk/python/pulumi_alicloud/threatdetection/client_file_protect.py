@@ -313,14 +313,14 @@ class ClientFileProtect(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.threatdetection.ClientFileProtect("default",
-            alert_level=0,
-            file_ops=["CREATE"],
-            file_paths=["/usr/local"],
-            proc_paths=["/usr/local"],
-            rule_action="pass",
-            rule_name="rule_example",
             status=0,
-            switch_id="FILE_PROTECT_RULE_SWITCH_TYPE_1693474122929")
+            file_paths=["/usr/local"],
+            file_ops=["CREATE"],
+            rule_action="pass",
+            proc_paths=["/usr/local"],
+            alert_level=0,
+            switch_id="FILE_PROTECT_RULE_SWITCH_TYPE_1693474122929",
+            rule_name="rule_example")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -370,14 +370,14 @@ class ClientFileProtect(pulumi.CustomResource):
         if name is None:
             name = "terraform-example"
         default = alicloud.threatdetection.ClientFileProtect("default",
-            alert_level=0,
-            file_ops=["CREATE"],
-            file_paths=["/usr/local"],
-            proc_paths=["/usr/local"],
-            rule_action="pass",
-            rule_name="rule_example",
             status=0,
-            switch_id="FILE_PROTECT_RULE_SWITCH_TYPE_1693474122929")
+            file_paths=["/usr/local"],
+            file_ops=["CREATE"],
+            rule_action="pass",
+            proc_paths=["/usr/local"],
+            alert_level=0,
+            switch_id="FILE_PROTECT_RULE_SWITCH_TYPE_1693474122929",
+            rule_name="rule_example")
         ```
         <!--End PulumiCodeChooser -->
 

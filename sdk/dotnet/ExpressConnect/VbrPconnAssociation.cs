@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var examplePhysicalConnections = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
+    ///     var example = AliCloud.ExpressConnect.GetPhysicalConnections.Invoke(new()
     ///     {
     ///         NameRegex = "^preserved-NODELETING",
     ///     });
@@ -41,7 +41,7 @@ namespace Pulumi.AliCloud.ExpressConnect
     ///         LocalGatewayIp = "10.0.0.1",
     ///         PeerGatewayIp = "10.0.0.2",
     ///         PeeringSubnetMask = "255.255.255.252",
-    ///         PhysicalConnectionId = examplePhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
+    ///         PhysicalConnectionId = example.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[0]?.Id),
     ///         VirtualBorderRouterName = name,
     ///         VlanId = 110,
     ///         MinRxInterval = 1000,
@@ -53,11 +53,11 @@ namespace Pulumi.AliCloud.ExpressConnect
     ///         PeeringIpv6SubnetMask = "2408:4004:cc:400::/56",
     ///     });
     /// 
-    ///     var exampleVbrPconnAssociation = new AliCloud.ExpressConnect.VbrPconnAssociation("exampleVbrPconnAssociation", new()
+    ///     var exampleVbrPconnAssociation = new AliCloud.ExpressConnect.VbrPconnAssociation("example", new()
     ///     {
     ///         PeerGatewayIp = "10.0.0.6",
     ///         LocalGatewayIp = "10.0.0.5",
-    ///         PhysicalConnectionId = examplePhysicalConnections.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[2]?.Id),
+    ///         PhysicalConnectionId = example.Apply(getPhysicalConnectionsResult =&gt; getPhysicalConnectionsResult.Connections[2]?.Id),
     ///         VbrId = @default.Id,
     ///         PeeringSubnetMask = "255.255.255.252",
     ///         VlanId = 1122,

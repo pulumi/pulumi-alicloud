@@ -31,6 +31,7 @@ namespace Pulumi.AliCloud.Ram
     /// {
     ///     var user = new AliCloud.Ram.User("user", new()
     ///     {
+    ///         Name = "terraform_example",
     ///         DisplayName = "terraform_example",
     ///         Mobile = "86-18688888888",
     ///         Email = "hello.uuu@aaa.com",

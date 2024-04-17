@@ -41,10 +41,10 @@ import (
 // }
 // ids, err := hbr.GetEcsBackupClients(ctx, &hbr.GetEcsBackupClientsArgs{
 // Ids: interface{}{
-// alicloud_hbr_ecs_backup_client.Default.Id,
+// defaultAlicloudHbrEcsBackupClient.Id,
 // },
 // InstanceIds: interface{}{
-// alicloud_hbr_ecs_backup_client.Default.Instance_id,
+// defaultAlicloudHbrEcsBackupClient.InstanceId,
 // },
 // }, nil);
 // if err != nil {

@@ -29,11 +29,11 @@ namespace Pulumi.AliCloud.ActionTrail
         /// {
         ///     var saslAclsDs = AliCloud.ActionTrail.GetSaslAcls.Invoke(new()
         ///     {
-        ///         AclResourceName = "testTopic",
-        ///         AclResourceType = "Topic",
         ///         InstanceId = "xxx",
-        ///         OutputFile = "saslAcls.txt",
         ///         Username = "username",
+        ///         AclResourceType = "Topic",
+        ///         AclResourceName = "testTopic",
+        ///         OutputFile = "saslAcls.txt",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -65,11 +65,11 @@ namespace Pulumi.AliCloud.ActionTrail
         /// {
         ///     var saslAclsDs = AliCloud.ActionTrail.GetSaslAcls.Invoke(new()
         ///     {
-        ///         AclResourceName = "testTopic",
-        ///         AclResourceType = "Topic",
         ///         InstanceId = "xxx",
-        ///         OutputFile = "saslAcls.txt",
         ///         Username = "username",
+        ///         AclResourceType = "Topic",
+        ///         AclResourceName = "testTopic",
+        ///         OutputFile = "saslAcls.txt",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

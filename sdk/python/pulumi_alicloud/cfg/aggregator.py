@@ -201,11 +201,11 @@ class Aggregator(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_accounts = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
-        default_aggregator = alicloud.cfg.Aggregator("defaultAggregator",
+        default = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
+        default_aggregator = alicloud.cfg.Aggregator("default",
             aggregator_accounts=[alicloud.cfg.AggregatorAggregatorAccountArgs(
-                account_id=default_accounts.accounts[0].account_id,
-                account_name=default_accounts.accounts[0].display_name,
+                account_id=default.accounts[0].account_id,
+                account_name=default.accounts[0].display_name,
                 account_type="ResourceDirectory",
             )],
             aggregator_name=name,
@@ -255,11 +255,11 @@ class Aggregator(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_accounts = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
-        default_aggregator = alicloud.cfg.Aggregator("defaultAggregator",
+        default = alicloud.resourcemanager.get_accounts(status="CreateSuccess")
+        default_aggregator = alicloud.cfg.Aggregator("default",
             aggregator_accounts=[alicloud.cfg.AggregatorAggregatorAccountArgs(
-                account_id=default_accounts.accounts[0].account_id,
-                account_name=default_accounts.accounts[0].display_name,
+                account_id=default.accounts[0].account_id,
+                account_name=default.accounts[0].display_name,
                 account_type="ResourceDirectory",
             )],
             aggregator_name=name,

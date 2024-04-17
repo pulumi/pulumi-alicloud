@@ -58,7 +58,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example-config-name&#34;);
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .sourceIdentifier(&#34;ram-user-ak-create-date-expired-check&#34;)
  *             .riskLevel(1)
  *             .maximumExecutionFrequency(&#34;TwentyFour_Hours&#34;)
- *             .regionIdsScope(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .regionIdsScope(default_.regions()[0].id())
  *             .configRuleTriggerTypes(&#34;ScheduledNotification&#34;)
  *             .resourceTypesScopes(&#34;ACS::RAM::User&#34;)
  *             .ruleName(&#34;ciscompliancecheck_ram-user-ak-create-date-expired-check&#34;)
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *             .sourceOwner(&#34;ALIYUN&#34;)
  *             .sourceIdentifier(&#34;adb-cluster-maintain-time-check&#34;)
  *             .riskLevel(2)
- *             .regionIdsScope(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .regionIdsScope(default_.regions()[0].id())
  *             .configRuleTriggerTypes(&#34;ScheduledNotification&#34;)
  *             .resourceTypesScopes(&#34;ACS::ADB::DBCluster&#34;)
  *             .ruleName(&#34;governance-evaluation-adb-cluster-maintain-time-check&#34;)

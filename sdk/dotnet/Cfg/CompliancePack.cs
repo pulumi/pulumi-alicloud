@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Cfg
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example-config-name";
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
@@ -43,7 +43,7 @@ namespace Pulumi.AliCloud.Cfg
     ///         SourceIdentifier = "ram-user-ak-create-date-expired-check",
     ///         RiskLevel = 1,
     ///         MaximumExecutionFrequency = "TwentyFour_Hours",
-    ///         RegionIdsScope = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         RegionIdsScope = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
     ///         ConfigRuleTriggerTypes = "ScheduledNotification",
     ///         ResourceTypesScopes = new[]
     ///         {
@@ -62,7 +62,7 @@ namespace Pulumi.AliCloud.Cfg
     ///         SourceOwner = "ALIYUN",
     ///         SourceIdentifier = "adb-cluster-maintain-time-check",
     ///         RiskLevel = 2,
-    ///         RegionIdsScope = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         RegionIdsScope = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
     ///         ConfigRuleTriggerTypes = "ScheduledNotification",
     ///         ResourceTypesScopes = new[]
     ///         {
@@ -75,7 +75,7 @@ namespace Pulumi.AliCloud.Cfg
     ///         },
     ///     });
     /// 
-    ///     var defaultCompliancePack = new AliCloud.Cfg.CompliancePack("defaultCompliancePack", new()
+    ///     var defaultCompliancePack = new AliCloud.Cfg.CompliancePack("default", new()
     ///     {
     ///         CompliancePackName = name,
     ///         Description = "CloudGovernanceCenter evaluation",

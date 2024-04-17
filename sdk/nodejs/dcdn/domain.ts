@@ -29,12 +29,12 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const domainName = config.get("domainName") || "tf-example.com";
- * const _default = new random.RandomInteger("default", {
- *     max: 99999,
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
+ *     max: 99999,
  * });
  * const example = new alicloud.dcdn.Domain("example", {
- *     domainName: pulumi.interpolate`${domainName}-${_default.result}`,
+ *     domainName: `${domainName}-${_default.result}`,
  *     scope: "overseas",
  *     sources: [{
  *         content: "1.1.1.1",

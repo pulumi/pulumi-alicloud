@@ -33,14 +33,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//			example, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String("tf_example"),
 //				Description:     pulumi.String("an example for cen"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleBandwidthPackage, err := cen.NewBandwidthPackage(ctx, "exampleBandwidthPackage", &cen.BandwidthPackageArgs{
+//			exampleBandwidthPackage, err := cen.NewBandwidthPackage(ctx, "example", &cen.BandwidthPackageArgs{
 //				Bandwidth:               pulumi.Int(5),
 //				CenBandwidthPackageName: pulumi.String("tf_example"),
 //				GeographicRegionAId:     pulumi.String("China"),
@@ -49,8 +49,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewBandwidthPackageAttachment(ctx, "exampleBandwidthPackageAttachment", &cen.BandwidthPackageAttachmentArgs{
-//				InstanceId:         exampleInstance.ID(),
+//			_, err = cen.NewBandwidthPackageAttachment(ctx, "example", &cen.BandwidthPackageAttachmentArgs{
+//				InstanceId:         example.ID(),
 //				BandwidthPackageId: exampleBandwidthPackage.ID(),
 //			})
 //			if err != nil {

@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.dfs.DfsFunctions;
  * import com.pulumi.alicloud.dfs.inputs.GetZonesArgs;
  * import com.pulumi.alicloud.dfs.FileSystem;
@@ -55,21 +55,21 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
  * 
- *         final var defaultZones = DfsFunctions.getZones();
+ *         final var default = DfsFunctions.getZones();
  * 
- *         final var zoneId = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId());
+ *         final var zoneId = default_.zones()[0].zoneId();
  * 
- *         final var storageType = defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].options()[0].storageType());
+ *         final var storageType = default_.zones()[0].options()[0].storageType();
  * 
  *         var defaultFileSystem = new FileSystem(&#34;defaultFileSystem&#34;, FileSystemArgs.builder()        
  *             .protocolType(&#34;HDFS&#34;)
  *             .description(name)
- *             .fileSystemName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
+ *             .fileSystemName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
  *             .spaceCapacity(&#34;1024&#34;)
  *             .throughputMode(&#34;Provisioned&#34;)
  *             .provisionedThroughputInMiBps(&#34;512&#34;)

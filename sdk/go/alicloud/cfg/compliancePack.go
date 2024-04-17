@@ -42,7 +42,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
@@ -54,7 +54,7 @@ import (
 //				SourceIdentifier:          pulumi.String("ram-user-ak-create-date-expired-check"),
 //				RiskLevel:                 pulumi.Int(1),
 //				MaximumExecutionFrequency: pulumi.String("TwentyFour_Hours"),
-//				RegionIdsScope:            pulumi.String(defaultRegions.Regions[0].Id),
+//				RegionIdsScope:            pulumi.String(_default.Regions[0].Id),
 //				ConfigRuleTriggerTypes:    pulumi.String("ScheduledNotification"),
 //				ResourceTypesScopes: pulumi.StringArray{
 //					pulumi.String("ACS::RAM::User"),
@@ -72,7 +72,7 @@ import (
 //				SourceOwner:            pulumi.String("ALIYUN"),
 //				SourceIdentifier:       pulumi.String("adb-cluster-maintain-time-check"),
 //				RiskLevel:              pulumi.Int(2),
-//				RegionIdsScope:         pulumi.String(defaultRegions.Regions[0].Id),
+//				RegionIdsScope:         pulumi.String(_default.Regions[0].Id),
 //				ConfigRuleTriggerTypes: pulumi.String("ScheduledNotification"),
 //				ResourceTypesScopes: pulumi.StringArray{
 //					pulumi.String("ACS::ADB::DBCluster"),
@@ -85,7 +85,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cfg.NewCompliancePack(ctx, "defaultCompliancePack", &cfg.CompliancePackArgs{
+//			_, err = cfg.NewCompliancePack(ctx, "default", &cfg.CompliancePackArgs{
 //				CompliancePackName: pulumi.String(name),
 //				Description:        pulumi.String("CloudGovernanceCenter evaluation"),
 //				RiskLevel:          pulumi.Int(2),

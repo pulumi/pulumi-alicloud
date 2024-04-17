@@ -314,12 +314,13 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_account = alicloud.get_account()
-        default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = alicloud.get_account()
+        default_get_regions = alicloud.get_regions(current=True)
+        default_integer = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_role = alicloud.ram.Role("defaultRole",
+        default_role = alicloud.ram.Role("default",
+            name=f"examplerole{default_integer['result']}",
             document=\"\"\"	{
         		"Statement": [
         		  {
@@ -337,8 +338,8 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         \"\"\",
             description="this is a example",
             force=True)
-        default_policy = alicloud.ram.Policy("defaultPolicy",
-            policy_name=default_random_integer.result.apply(lambda result: f"examplepolicy{result}"),
+        default_policy = alicloud.ram.Policy("default",
+            policy_name=f"examplepolicy{default_integer['result']}",
             policy_document=\"\"\"	{
         		"Version": "1",
         		"Statement": [
@@ -350,17 +351,18 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         		]
         	  }
         \"\"\")
-        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
+        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("default",
             role_name=default_role.name,
             policy_name=default_policy.name,
             policy_type="Custom")
-        default_service = alicloud.fc.Service("defaultService",
+        default_service = alicloud.fc.Service("default",
+            name=f"example-value-{default_integer['result']}",
             description="example-value",
             role=default_role.arn,
             internet_access=False)
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        default_bucket = alicloud.oss.Bucket("default", bucket=f"terraform-example-{default_integer['result']}")
         # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+        default_bucket_object = alicloud.oss.BucketObject("default",
             bucket=default_bucket.id,
             key="index.py",
             content=\"\"\"import logging 
@@ -368,25 +370,26 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         logger = logging.getLogger() 
         logger.info('hello world') 
         return 'hello world'\"\"\")
-        default_function = alicloud.fc.Function("defaultFunction",
+        default_function = alicloud.fc.Function("default",
             service=default_service.name,
+            name=f"terraform-example-{default_integer['result']}",
             description="example",
             oss_bucket=default_bucket.id,
             oss_key=default_bucket_object.key,
             memory_size=512,
             runtime="python3.10",
             handler="hello.handler")
-        default_queue = alicloud.mns.Queue("defaultQueue")
-        default_topic = alicloud.mns.Topic("defaultTopic")
-        default_function_async_invoke_config = alicloud.fc.FunctionAsyncInvokeConfig("defaultFunctionAsyncInvokeConfig",
+        default_queue = alicloud.mns.Queue("default", name=f"terraform-example-{default_integer['result']}")
+        default_topic = alicloud.mns.Topic("default", name=f"terraform-example-{default_integer['result']}")
+        default_function_async_invoke_config = alicloud.fc.FunctionAsyncInvokeConfig("default",
             service_name=default_service.name,
             function_name=default_function.name,
             destination_config=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigArgs(
                 on_failure=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs(
-                    destination=default_queue.name.apply(lambda name: f"acs:mns:{default_regions.regions[0].id}:{default_account.id}:/queues/{name}/messages"),
+                    destination=default_queue.name.apply(lambda name: f"acs:mns:{default_get_regions.regions[0].id}:{default.id}:/queues/{name}/messages"),
                 ),
                 on_success=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs(
-                    destination=default_topic.name.apply(lambda name: f"acs:mns:{default_regions.regions[0].id}:{default_account.id}:/topics/{name}/messages"),
+                    destination=default_topic.name.apply(lambda name: f"acs:mns:{default_get_regions.regions[0].id}:{default.id}:/topics/{name}/messages"),
                 ),
             ),
             maximum_event_age_in_seconds=60,
@@ -438,12 +441,13 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_account = alicloud.get_account()
-        default_regions = alicloud.get_regions(current=True)
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
+        default = alicloud.get_account()
+        default_get_regions = alicloud.get_regions(current=True)
+        default_integer = random.index.Integer("default",
             max=99999,
             min=10000)
-        default_role = alicloud.ram.Role("defaultRole",
+        default_role = alicloud.ram.Role("default",
+            name=f"examplerole{default_integer['result']}",
             document=\"\"\"	{
         		"Statement": [
         		  {
@@ -461,8 +465,8 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         \"\"\",
             description="this is a example",
             force=True)
-        default_policy = alicloud.ram.Policy("defaultPolicy",
-            policy_name=default_random_integer.result.apply(lambda result: f"examplepolicy{result}"),
+        default_policy = alicloud.ram.Policy("default",
+            policy_name=f"examplepolicy{default_integer['result']}",
             policy_document=\"\"\"	{
         		"Version": "1",
         		"Statement": [
@@ -474,17 +478,18 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         		]
         	  }
         \"\"\")
-        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("defaultRolePolicyAttachment",
+        default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("default",
             role_name=default_role.name,
             policy_name=default_policy.name,
             policy_type="Custom")
-        default_service = alicloud.fc.Service("defaultService",
+        default_service = alicloud.fc.Service("default",
+            name=f"example-value-{default_integer['result']}",
             description="example-value",
             role=default_role.arn,
             internet_access=False)
-        default_bucket = alicloud.oss.Bucket("defaultBucket", bucket=default_random_integer.result.apply(lambda result: f"terraform-example-{result}"))
+        default_bucket = alicloud.oss.Bucket("default", bucket=f"terraform-example-{default_integer['result']}")
         # If you upload the function by OSS Bucket, you need to specify path can't upload by content.
-        default_bucket_object = alicloud.oss.BucketObject("defaultBucketObject",
+        default_bucket_object = alicloud.oss.BucketObject("default",
             bucket=default_bucket.id,
             key="index.py",
             content=\"\"\"import logging 
@@ -492,25 +497,26 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
         logger = logging.getLogger() 
         logger.info('hello world') 
         return 'hello world'\"\"\")
-        default_function = alicloud.fc.Function("defaultFunction",
+        default_function = alicloud.fc.Function("default",
             service=default_service.name,
+            name=f"terraform-example-{default_integer['result']}",
             description="example",
             oss_bucket=default_bucket.id,
             oss_key=default_bucket_object.key,
             memory_size=512,
             runtime="python3.10",
             handler="hello.handler")
-        default_queue = alicloud.mns.Queue("defaultQueue")
-        default_topic = alicloud.mns.Topic("defaultTopic")
-        default_function_async_invoke_config = alicloud.fc.FunctionAsyncInvokeConfig("defaultFunctionAsyncInvokeConfig",
+        default_queue = alicloud.mns.Queue("default", name=f"terraform-example-{default_integer['result']}")
+        default_topic = alicloud.mns.Topic("default", name=f"terraform-example-{default_integer['result']}")
+        default_function_async_invoke_config = alicloud.fc.FunctionAsyncInvokeConfig("default",
             service_name=default_service.name,
             function_name=default_function.name,
             destination_config=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigArgs(
                 on_failure=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs(
-                    destination=default_queue.name.apply(lambda name: f"acs:mns:{default_regions.regions[0].id}:{default_account.id}:/queues/{name}/messages"),
+                    destination=default_queue.name.apply(lambda name: f"acs:mns:{default_get_regions.regions[0].id}:{default.id}:/queues/{name}/messages"),
                 ),
                 on_success=alicloud.fc.FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs(
-                    destination=default_topic.name.apply(lambda name: f"acs:mns:{default_regions.regions[0].id}:{default_account.id}:/topics/{name}/messages"),
+                    destination=default_topic.name.apply(lambda name: f"acs:mns:{default_get_regions.regions[0].id}:{default.id}:/topics/{name}/messages"),
                 ),
             ),
             maximum_event_age_in_seconds=60,

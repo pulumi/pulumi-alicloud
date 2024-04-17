@@ -43,11 +43,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var queue = new Queue(&#34;queue&#34;, QueueArgs.builder()        
+ *             .name(&#34;tf-example-mnsqueue&#34;)
  *             .delaySeconds(0)
  *             .maximumMessageSize(65536)
  *             .messageRetentionPeriod(345600)
- *             .pollingWaitSeconds(0)
  *             .visibilityTimeout(30)
+ *             .pollingWaitSeconds(0)
  *             .build());
  * 
  *     }

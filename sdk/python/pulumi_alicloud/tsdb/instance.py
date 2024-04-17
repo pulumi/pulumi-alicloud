@@ -479,13 +479,15 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_zones = alicloud.tsdb.get_zones()
-        example_network = alicloud.vpc.Network("exampleNetwork", cidr_block="192.168.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            availability_zone=example_zones.ids[0],
+        example = alicloud.tsdb.get_zones()
+        example_network = alicloud.vpc.Network("example",
+            cidr_block="192.168.0.0/16",
+            name="tf-testaccTsdbInstance")
+        example_switch = alicloud.vpc.Switch("example",
+            availability_zone=example.ids[0],
             cidr_block="192.168.1.0/24",
             vpc_id=example_network.id)
-        example_instance = alicloud.tsdb.Instance("exampleInstance",
+        example_instance = alicloud.tsdb.Instance("example",
             payment_type="PayAsYouGo",
             vswitch_id=example_switch.id,
             instance_storage="50",
@@ -560,13 +562,15 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_zones = alicloud.tsdb.get_zones()
-        example_network = alicloud.vpc.Network("exampleNetwork", cidr_block="192.168.0.0/16")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
-            availability_zone=example_zones.ids[0],
+        example = alicloud.tsdb.get_zones()
+        example_network = alicloud.vpc.Network("example",
+            cidr_block="192.168.0.0/16",
+            name="tf-testaccTsdbInstance")
+        example_switch = alicloud.vpc.Switch("example",
+            availability_zone=example.ids[0],
             cidr_block="192.168.1.0/24",
             vpc_id=example_network.id)
-        example_instance = alicloud.tsdb.Instance("exampleInstance",
+        example_instance = alicloud.tsdb.Instance("example",
             payment_type="PayAsYouGo",
             vswitch_id=example_switch.id,
             instance_storage="50",

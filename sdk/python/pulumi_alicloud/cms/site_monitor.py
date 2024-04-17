@@ -328,6 +328,8 @@ class SiteMonitor(pulumi.CustomResource):
 
         basic = alicloud.cms.SiteMonitor("basic",
             address="http://www.alibabacloud.com",
+            task_name="tf-example",
+            task_type="HTTP",
             interval=5,
             isp_cities=[alicloud.cms.SiteMonitorIspCityArgs(
                 city="546",
@@ -348,10 +350,7 @@ class SiteMonitor(pulumi.CustomResource):
             ],
             "time_out": 30000
         }
-
-        \"\"\",
-            task_name="tf-example",
-            task_type="HTTP")
+        \"\"\")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -396,6 +395,8 @@ class SiteMonitor(pulumi.CustomResource):
 
         basic = alicloud.cms.SiteMonitor("basic",
             address="http://www.alibabacloud.com",
+            task_name="tf-example",
+            task_type="HTTP",
             interval=5,
             isp_cities=[alicloud.cms.SiteMonitorIspCityArgs(
                 city="546",
@@ -416,10 +417,7 @@ class SiteMonitor(pulumi.CustomResource):
             ],
             "time_out": 30000
         }
-
-        \"\"\",
-            task_name="tf-example",
-            task_type="HTTP")
+        \"\"\")
         ```
         <!--End PulumiCodeChooser -->
 

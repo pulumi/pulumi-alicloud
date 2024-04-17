@@ -27,6 +27,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var k8sClusters = AliCloud.CS.GetEdgeKubernetesClusters.Invoke(new()
         ///     {
         ///         NameRegex = "my-first-k8s",
@@ -60,6 +61,7 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var k8sClusters = AliCloud.CS.GetEdgeKubernetesClusters.Invoke(new()
         ///     {
         ///         NameRegex = "my-first-k8s",

@@ -130,19 +130,6 @@ def get_certificates(enable_details: Optional[bool] = None,
 
     This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
 
-    ## Example Usage
-
-    <!--Start PulumiCodeChooser -->
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    certs = alicloud.cas.get_certificates(name_regex="^cas",
-        output_file=f"{path['module']}/cas_certificates.json")
-    pulumi.export("cert", certs.certificates[0].id)
-    ```
-    <!--End PulumiCodeChooser -->
-
 
     :param Sequence[str] ids: A list of cert IDs.
     :param str name_regex: A regex string to filter results by the certificate name.
@@ -180,19 +167,6 @@ def get_certificates_output(enable_details: Optional[pulumi.Input[Optional[bool]
     > **DEPRECATED:**  This datasource has been deprecated from version `1.129.0`. Please use new datasource alicloud_ssl_certificates_service_certificates.
 
     This data source provides a list of CAS Certificates in an Alibaba Cloud account according to the specified filters.
-
-    ## Example Usage
-
-    <!--Start PulumiCodeChooser -->
-    ```python
-    import pulumi
-    import pulumi_alicloud as alicloud
-
-    certs = alicloud.cas.get_certificates(name_regex="^cas",
-        output_file=f"{path['module']}/cas_certificates.json")
-    pulumi.export("cert", certs.certificates[0].id)
-    ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of cert IDs.

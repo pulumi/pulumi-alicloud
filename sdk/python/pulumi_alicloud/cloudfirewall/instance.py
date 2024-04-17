@@ -686,12 +686,12 @@ class Instance(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.cloudfirewall.Instance("default",
+            payment_type="PayAsYouGo",
+            spec="ultimate_version",
+            ip_number=400,
             band_width=200,
             cfw_log=True,
-            cfw_log_storage=1000,
-            ip_number=400,
-            payment_type="PayAsYouGo",
-            spec="ultimate_version")
+            cfw_log_storage=1000)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -747,12 +747,12 @@ class Instance(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.cloudfirewall.Instance("default",
+            payment_type="PayAsYouGo",
+            spec="ultimate_version",
+            ip_number=400,
             band_width=200,
             cfw_log=True,
-            cfw_log_storage=1000,
-            ip_number=400,
-            payment_type="PayAsYouGo",
-            spec="ultimate_version")
+            cfw_log_storage=1000)
         ```
         <!--End PulumiCodeChooser -->
 

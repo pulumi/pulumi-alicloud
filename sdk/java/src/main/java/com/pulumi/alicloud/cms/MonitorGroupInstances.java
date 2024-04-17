@@ -66,7 +66,7 @@ import javax.annotation.Nullable;
  *             .monitorGroupName(name)
  *             .build());
  * 
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *             .instances(MonitorGroupInstancesInstanceArgs.builder()
  *                 .instanceId(defaultNetwork.id())
  *                 .instanceName(name)
- *                 .regionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *                 .regionId(default_.regions()[0].id())
  *                 .category(&#34;vpc&#34;)
  *                 .build())
  *             .build());

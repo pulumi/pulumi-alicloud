@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultInstance = new alicloud.amqp.Instance("defaultInstance", {
+ * const _default = new alicloud.amqp.Instance("default", {
  *     instanceType: "professional",
  *     maxTps: "1000",
  *     queueCapacity: "50",
@@ -29,15 +29,15 @@ import * as utilities from "../utilities";
  *     paymentType: "Subscription",
  *     period: 1,
  * });
- * const defaultVirtualHost = new alicloud.amqp.VirtualHost("defaultVirtualHost", {
- *     instanceId: defaultInstance.id,
+ * const defaultVirtualHost = new alicloud.amqp.VirtualHost("default", {
+ *     instanceId: _default.id,
  *     virtualHostName: "tf-example",
  * });
- * const defaultExchange = new alicloud.amqp.Exchange("defaultExchange", {
+ * const defaultExchange = new alicloud.amqp.Exchange("default", {
  *     autoDeleteState: false,
  *     exchangeName: "tf-example",
  *     exchangeType: "DIRECT",
- *     instanceId: defaultInstance.id,
+ *     instanceId: _default.id,
  *     internal: false,
  *     virtualHostName: defaultVirtualHost.virtualHostName,
  * });

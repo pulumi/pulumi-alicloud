@@ -44,27 +44,27 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := cddc.GetZones(ctx, nil, nil)
+//			_default, err := cddc.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultZones.Ids[0]),
+//				ZoneId:      pulumi.String(_default.Ids[0]),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultDedicatedHostGroup, err := cddc.NewDedicatedHostGroup(ctx, "defaultDedicatedHostGroup", &cddc.DedicatedHostGroupArgs{
+//			defaultDedicatedHostGroup, err := cddc.NewDedicatedHostGroup(ctx, "default", &cddc.DedicatedHostGroupArgs{
 //				Engine:                 pulumi.String("MySQL"),
 //				VpcId:                  defaultNetwork.ID(),
 //				CpuAllocationRatio:     pulumi.Int(101),
@@ -78,19 +78,19 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultHostEcsLevelInfos, err := cddc.GetHostEcsLevelInfos(ctx, &cddc.GetHostEcsLevelInfosArgs{
+//			defaultGetHostEcsLevelInfos, err := cddc.GetHostEcsLevelInfos(ctx, &cddc.GetHostEcsLevelInfosArgs{
 //				DbType:      "mysql",
-//				ZoneId:      defaultZones.Ids[0],
+//				ZoneId:      _default.Ids[0],
 //				StorageType: "cloud_essd",
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultDedicatedHost, err := cddc.NewDedicatedHost(ctx, "defaultDedicatedHost", &cddc.DedicatedHostArgs{
+//			defaultDedicatedHost, err := cddc.NewDedicatedHost(ctx, "default", &cddc.DedicatedHostArgs{
 //				HostName:             pulumi.String(name),
 //				DedicatedHostGroupId: defaultDedicatedHostGroup.ID(),
-//				HostClass:            pulumi.String(defaultHostEcsLevelInfos.Infos[0].ResClassCode),
-//				ZoneId:               pulumi.String(defaultZones.Ids[0]),
+//				HostClass:            pulumi.String(defaultGetHostEcsLevelInfos.Infos[0].ResClassCode),
+//				ZoneId:               pulumi.String(_default.Ids[0]),
 //				VswitchId:            defaultSwitch.ID(),
 //				PaymentType:          pulumi.String("Subscription"),
 //				Tags: pulumi.Map{
@@ -101,7 +101,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cddc.NewDedicatedHostAccount(ctx, "defaultDedicatedHostAccount", &cddc.DedicatedHostAccountArgs{
+//			_, err = cddc.NewDedicatedHostAccount(ctx, "default", &cddc.DedicatedHostAccountArgs{
 //				AccountName:     pulumi.String(name),
 //				AccountPassword: pulumi.String("Password1234"),
 //				DedicatedHostId: defaultDedicatedHost.DedicatedHostId,

@@ -245,14 +245,14 @@ class HoneyPot(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tfexample"
-        default_honeypot_images = alicloud.threatdetection.get_honeypot_images(name_regex="^ruoyi")
-        default_honeypot_node = alicloud.threatdetection.HoneypotNode("defaultHoneypotNode",
+        default = alicloud.threatdetection.get_honeypot_images(name_regex="^ruoyi")
+        default_honeypot_node = alicloud.threatdetection.HoneypotNode("default",
             node_name=name,
             available_probe_num=20,
             security_group_probe_ip_lists=["0.0.0.0/0"])
-        default_honey_pot = alicloud.threatdetection.HoneyPot("defaultHoneyPot",
-            honeypot_image_name=default_honeypot_images.images[0].honeypot_image_name,
-            honeypot_image_id=default_honeypot_images.images[0].honeypot_image_id,
+        default_honey_pot = alicloud.threatdetection.HoneyPot("default",
+            honeypot_image_name=default.images[0].honeypot_image_name,
+            honeypot_image_id=default.images[0].honeypot_image_id,
             honeypot_name=name,
             node_id=default_honeypot_node.id)
         ```
@@ -299,14 +299,14 @@ class HoneyPot(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tfexample"
-        default_honeypot_images = alicloud.threatdetection.get_honeypot_images(name_regex="^ruoyi")
-        default_honeypot_node = alicloud.threatdetection.HoneypotNode("defaultHoneypotNode",
+        default = alicloud.threatdetection.get_honeypot_images(name_regex="^ruoyi")
+        default_honeypot_node = alicloud.threatdetection.HoneypotNode("default",
             node_name=name,
             available_probe_num=20,
             security_group_probe_ip_lists=["0.0.0.0/0"])
-        default_honey_pot = alicloud.threatdetection.HoneyPot("defaultHoneyPot",
-            honeypot_image_name=default_honeypot_images.images[0].honeypot_image_name,
-            honeypot_image_id=default_honeypot_images.images[0].honeypot_image_id,
+        default_honey_pot = alicloud.threatdetection.HoneyPot("default",
+            honeypot_image_name=default.images[0].honeypot_image_name,
+            honeypot_image_id=default.images[0].honeypot_image_id,
             honeypot_name=name,
             node_id=default_honeypot_node.id)
         ```

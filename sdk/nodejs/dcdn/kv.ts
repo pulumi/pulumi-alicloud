@@ -23,17 +23,17 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const defaultKvNamespace = new alicloud.dcdn.KvNamespace("defaultKvNamespace", {
+ * const defaultKvNamespace = new alicloud.dcdn.KvNamespace("default", {
  *     description: name,
- *     namespace: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
+ *     namespace: `${name}-${_default.result}`,
  * });
- * const defaultKv = new alicloud.dcdn.Kv("defaultKv", {
+ * const defaultKv = new alicloud.dcdn.Kv("default", {
  *     value: "example-value",
- *     key: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
+ *     key: `${name}-${_default.result}`,
  *     namespace: defaultKvNamespace.namespace,
  * });
  * ```

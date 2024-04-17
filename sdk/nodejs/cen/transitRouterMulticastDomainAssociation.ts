@@ -24,36 +24,36 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "tf_example";
  * const default = alicloud.cen.getTransitRouterAvailableResources({});
  * const zone = _default.then(_default => _default.resources?.[0]?.masterZones?.[1]);
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ * const example = new alicloud.vpc.Network("example", {
  *     vpcName: name,
  *     cidrBlock: "192.168.0.0/16",
  * });
- * const exampleSwitch = new alicloud.vpc.Switch("exampleSwitch", {
+ * const exampleSwitch = new alicloud.vpc.Switch("example", {
  *     vswitchName: name,
  *     cidrBlock: "192.168.1.0/24",
- *     vpcId: exampleNetwork.id,
+ *     vpcId: example.id,
  *     zoneId: zone,
  * });
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {cenInstanceName: name});
- * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
+ * const exampleInstance = new alicloud.cen.Instance("example", {cenInstanceName: name});
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("example", {
  *     transitRouterName: name,
  *     cenId: exampleInstance.id,
  *     supportMulticast: true,
  * });
- * const exampleTransitRouterMulticastDomain = new alicloud.cen.TransitRouterMulticastDomain("exampleTransitRouterMulticastDomain", {
+ * const exampleTransitRouterMulticastDomain = new alicloud.cen.TransitRouterMulticastDomain("example", {
  *     transitRouterId: exampleTransitRouter.transitRouterId,
  *     transitRouterMulticastDomainName: name,
  * });
- * const exampleTransitRouterVpcAttachment = new alicloud.cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment", {
+ * const exampleTransitRouterVpcAttachment = new alicloud.cen.TransitRouterVpcAttachment("example", {
  *     cenId: exampleTransitRouter.cenId,
  *     transitRouterId: exampleTransitRouterMulticastDomain.transitRouterId,
- *     vpcId: exampleNetwork.id,
+ *     vpcId: example.id,
  *     zoneMappings: [{
  *         zoneId: zone,
  *         vswitchId: exampleSwitch.id,
  *     }],
  * });
- * const exampleTransitRouterMulticastDomainAssociation = new alicloud.cen.TransitRouterMulticastDomainAssociation("exampleTransitRouterMulticastDomainAssociation", {
+ * const exampleTransitRouterMulticastDomainAssociation = new alicloud.cen.TransitRouterMulticastDomainAssociation("example", {
  *     transitRouterMulticastDomainId: exampleTransitRouterMulticastDomain.id,
  *     transitRouterAttachmentId: exampleTransitRouterVpcAttachment.transitRouterAttachmentId,
  *     vswitchId: exampleSwitch.id,

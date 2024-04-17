@@ -21,13 +21,13 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "onsInstanceName";
  * const topic = config.get("topic") || "onsTopicDatasourceName";
- * const defaultInstance = new alicloud.rocketmq.Instance("defaultInstance", {
+ * const _default = new alicloud.rocketmq.Instance("default", {
  *     instanceName: name,
  *     remark: "default_ons_instance_remark",
  * });
- * const defaultTopic = new alicloud.rocketmq.Topic("defaultTopic", {
+ * const defaultTopic = new alicloud.rocketmq.Topic("default", {
  *     topicName: topic,
- *     instanceId: defaultInstance.id,
+ *     instanceId: _default.id,
  *     messageType: 0,
  *     remark: "dafault_ons_topic_remark",
  * });
@@ -121,13 +121,13 @@ export interface GetTopicsResult {
  * const config = new pulumi.Config();
  * const name = config.get("name") || "onsInstanceName";
  * const topic = config.get("topic") || "onsTopicDatasourceName";
- * const defaultInstance = new alicloud.rocketmq.Instance("defaultInstance", {
+ * const _default = new alicloud.rocketmq.Instance("default", {
  *     instanceName: name,
  *     remark: "default_ons_instance_remark",
  * });
- * const defaultTopic = new alicloud.rocketmq.Topic("defaultTopic", {
+ * const defaultTopic = new alicloud.rocketmq.Topic("default", {
  *     topicName: topic,
- *     instanceId: defaultInstance.id,
+ *     instanceId: _default.id,
  *     messageType: 0,
  *     remark: "dafault_ons_topic_remark",
  * });

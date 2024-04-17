@@ -38,25 +38,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cdn.NewDomainNew(ctx, "defaultDomainNew", &cdn.DomainNewArgs{
-//				CdnType: pulumi.String("web"),
-//				DomainName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("mycdndomain-%v.alicloud-provider.cn", result), nil
-//				}).(pulumi.StringOutput),
-//				Scope: pulumi.String("overseas"),
+//			_, err = cdn.NewDomainNew(ctx, "default", &cdn.DomainNewArgs{
+//				Scope:      pulumi.String("overseas"),
+//				DomainName: pulumi.String(fmt.Sprintf("mycdndomain-%v.alicloud-provider.cn", _default.Result)),
+//				CdnType:    pulumi.String("web"),
 //				Sources: cdn.DomainNewSourceArray{
 //					&cdn.DomainNewSourceArgs{
-//						Content:  pulumi.String("1.1.1.1"),
-//						Port:     pulumi.Int(80),
-//						Priority: pulumi.Int(20),
 //						Type:     pulumi.String("ipaddr"),
+//						Content:  pulumi.String("1.1.1.1"),
+//						Priority: pulumi.Int(20),
+//						Port:     pulumi.Int(80),
 //						Weight:   pulumi.Int(15),
 //					},
 //				},

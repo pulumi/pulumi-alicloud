@@ -29,15 +29,15 @@ namespace Pulumi.AliCloud.ThreatDetection
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultAssets = AliCloud.ThreatDetection.GetAssets.Invoke(new()
+    ///     var @default = AliCloud.ThreatDetection.GetAssets.Invoke(new()
     ///     {
     ///         MachineTypes = "ecs",
     ///     });
     /// 
-    ///     var defaultWebLockConfig = new AliCloud.ThreatDetection.WebLockConfig("defaultWebLockConfig", new()
+    ///     var defaultWebLockConfig = new AliCloud.ThreatDetection.WebLockConfig("default", new()
     ///     {
     ///         InclusiveFileType = "php;jsp;asp;aspx;js;cgi;html;htm;xml;shtml;shtm;jpg",
-    ///         Uuid = defaultAssets.Apply(getAssetsResult =&gt; getAssetsResult.Ids[0]),
+    ///         Uuid = @default.Apply(@default =&gt; @default.Apply(getAssetsResult =&gt; getAssetsResult.Ids[0])),
     ///         Mode = "whitelist",
     ///         LocalBackupDir = "/usr/local/aegis/bak",
     ///         Dir = "/tmp/",

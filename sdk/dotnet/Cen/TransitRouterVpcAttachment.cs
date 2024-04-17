@@ -35,45 +35,45 @@ namespace Pulumi.AliCloud.Cen
     /// 
     ///     var slaveZone = @default.Apply(@default =&gt; @default.Apply(getTransitRouterAvailableResourcesResult =&gt; getTransitRouterAvailableResourcesResult.Resources[0]?.SlaveZones[1]));
     /// 
-    ///     var exampleNetwork = new AliCloud.Vpc.Network("exampleNetwork", new()
+    ///     var example = new AliCloud.Vpc.Network("example", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "192.168.0.0/16",
     ///     });
     /// 
-    ///     var exampleMaster = new AliCloud.Vpc.Switch("exampleMaster", new()
+    ///     var exampleMaster = new AliCloud.Vpc.Switch("example_master", new()
     ///     {
     ///         VswitchName = name,
     ///         CidrBlock = "192.168.1.0/24",
-    ///         VpcId = exampleNetwork.Id,
+    ///         VpcId = example.Id,
     ///         ZoneId = masterZone,
     ///     });
     /// 
-    ///     var exampleSlave = new AliCloud.Vpc.Switch("exampleSlave", new()
+    ///     var exampleSlave = new AliCloud.Vpc.Switch("example_slave", new()
     ///     {
     ///         VswitchName = name,
     ///         CidrBlock = "192.168.2.0/24",
-    ///         VpcId = exampleNetwork.Id,
+    ///         VpcId = example.Id,
     ///         ZoneId = slaveZone,
     ///     });
     /// 
-    ///     var exampleInstance = new AliCloud.Cen.Instance("exampleInstance", new()
+    ///     var exampleInstance = new AliCloud.Cen.Instance("example", new()
     ///     {
     ///         CenInstanceName = name,
     ///         ProtectionLevel = "REDUCED",
     ///     });
     /// 
-    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("exampleTransitRouter", new()
+    ///     var exampleTransitRouter = new AliCloud.Cen.TransitRouter("example", new()
     ///     {
     ///         TransitRouterName = name,
     ///         CenId = exampleInstance.Id,
     ///     });
     /// 
-    ///     var exampleTransitRouterVpcAttachment = new AliCloud.Cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment", new()
+    ///     var exampleTransitRouterVpcAttachment = new AliCloud.Cen.TransitRouterVpcAttachment("example", new()
     ///     {
     ///         CenId = exampleInstance.Id,
     ///         TransitRouterId = exampleTransitRouter.TransitRouterId,
-    ///         VpcId = exampleNetwork.Id,
+    ///         VpcId = example.Id,
     ///         ZoneMappings = new[]
     ///         {
     ///             new AliCloud.Cen.Inputs.TransitRouterVpcAttachmentZoneMappingArgs

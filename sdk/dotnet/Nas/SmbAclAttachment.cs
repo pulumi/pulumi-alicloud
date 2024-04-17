@@ -28,22 +28,22 @@ namespace Pulumi.AliCloud.Nas
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleZones = AliCloud.Nas.GetZones.Invoke(new()
+    ///     var example = AliCloud.Nas.GetZones.Invoke(new()
     ///     {
     ///         FileSystemType = "standard",
     ///     });
     /// 
-    ///     var exampleFileSystem = new AliCloud.Nas.FileSystem("exampleFileSystem", new()
+    ///     var exampleFileSystem = new AliCloud.Nas.FileSystem("example", new()
     ///     {
     ///         ProtocolType = "SMB",
     ///         StorageType = "Capacity",
     ///         Description = "terraform-example",
     ///         EncryptType = 0,
     ///         FileSystemType = "standard",
-    ///         ZoneId = exampleZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
+    ///         ZoneId = example.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
     ///     });
     /// 
-    ///     var exampleSmbAclAttachment = new AliCloud.Nas.SmbAclAttachment("exampleSmbAclAttachment", new()
+    ///     var exampleSmbAclAttachment = new AliCloud.Nas.SmbAclAttachment("example", new()
     ///     {
     ///         FileSystemId = exampleFileSystem.Id,
     ///         Keytab = "BQIAAABHAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAAQAIqIx6v7p11oUAAABHAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAAwAIqIx6v7p11oUAAABPAAIADUFMSUFEVEVTVC5DT00ABGNpZnMAGXNtYnNlcnZlcjI0LmFsaWFkdGVzdC5jb20AAAABAAAAAAEAFwAQnQZWB3RAPHU7PMIJyBWePAAAAF8AAgANQUxJQURURVNULkNPTQAEY2lmcwAZc21ic2VydmVyMjQuYWxpYWR0ZXN0LmNvbQAAAAEAAAAAAQASACAGJ7F0s+bcBjf6jD5HlvlRLmPSOW+qDZe0Qk0lQcf8WwAAAE8AAgANQUxJQURURVNULkNPTQAEY2lmcwAZc21ic2VydmVyMjQuYWxpYWR0ZXN0LmNvbQAAAAEAAAAAAQARABDdFmanrSIatnDDhoOXYadj",

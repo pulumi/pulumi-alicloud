@@ -664,11 +664,11 @@ class ServerlessInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.mongodb.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default = alicloud.mongodb.get_zones()
+        default_get_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.zones[0].id)
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
         example = alicloud.mongodb.ServerlessInstance("example",
             account_password="Abc12345",
             db_instance_description="example_value",
@@ -676,13 +676,13 @@ class ServerlessInstance(pulumi.CustomResource):
             storage_engine="WiredTiger",
             capacity_unit=100,
             engine="MongoDB",
-            resource_group_id=default_resource_groups.groups[0].id,
+            resource_group_id=default_get_resource_groups.groups[0].id,
             engine_version="4.2",
             period=1,
             period_price_type="Month",
-            vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id,
-            vswitch_id=default_switches.ids[0],
+            vpc_id=default_get_networks.ids[0],
+            zone_id=default.zones[0].id,
+            vswitch_id=default_get_switches.ids[0],
             tags={
                 "Created": "MongodbServerlessInstance",
                 "For": "TF",
@@ -750,11 +750,11 @@ class ServerlessInstance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.mongodb.get_zones()
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id)
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
+        default = alicloud.mongodb.get_zones()
+        default_get_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.zones[0].id)
+        default_get_resource_groups = alicloud.resourcemanager.get_resource_groups()
         example = alicloud.mongodb.ServerlessInstance("example",
             account_password="Abc12345",
             db_instance_description="example_value",
@@ -762,13 +762,13 @@ class ServerlessInstance(pulumi.CustomResource):
             storage_engine="WiredTiger",
             capacity_unit=100,
             engine="MongoDB",
-            resource_group_id=default_resource_groups.groups[0].id,
+            resource_group_id=default_get_resource_groups.groups[0].id,
             engine_version="4.2",
             period=1,
             period_price_type="Month",
-            vpc_id=default_networks.ids[0],
-            zone_id=default_zones.zones[0].id,
-            vswitch_id=default_switches.ids[0],
+            vpc_id=default_get_networks.ids[0],
+            zone_id=default.zones[0].id,
+            vswitch_id=default_get_switches.ids[0],
             tags={
                 "Created": "MongodbServerlessInstance",
                 "For": "TF",

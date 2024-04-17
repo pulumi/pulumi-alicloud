@@ -29,9 +29,9 @@ namespace Pulumi.AliCloud.Ram
         /// {
         ///     var groupsDs = AliCloud.Ram.GetGroups.Invoke(new()
         ///     {
-        ///         NameRegex = "^group[0-9]*",
         ///         OutputFile = "groups.txt",
         ///         UserName = "user1",
+        ///         NameRegex = "^group[0-9]*",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -63,9 +63,9 @@ namespace Pulumi.AliCloud.Ram
         /// {
         ///     var groupsDs = AliCloud.Ram.GetGroups.Invoke(new()
         ///     {
-        ///         NameRegex = "^group[0-9]*",
         ///         OutputFile = "groups.txt",
         ///         UserName = "user1",
+        ///         NameRegex = "^group[0-9]*",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

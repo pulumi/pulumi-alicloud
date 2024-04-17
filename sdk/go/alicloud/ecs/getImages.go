@@ -30,8 +30,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			imagesDs, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
-//				NameRegex: pulumi.StringRef("^centos_6"),
 //				Owners:    pulumi.StringRef("system"),
+//				NameRegex: pulumi.StringRef("^centos_6"),
 //			}, nil)
 //			if err != nil {
 //				return err

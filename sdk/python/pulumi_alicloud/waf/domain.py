@@ -651,21 +651,21 @@ class Domain(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         domain = alicloud.waf.Domain("domain",
-            cluster_type="PhysicalCluster",
             domain_name="alicloud-provider.cn",
-            http2_ports=["443"],
-            http_ports=["80"],
-            http_to_user_ip="Off",
-            https_ports=["443"],
-            https_redirect="Off",
             instance_id="waf-123455",
             is_access_product="On",
+            source_ips=["1.1.1.1"],
+            cluster_type="PhysicalCluster",
+            http2_ports=["443"],
+            http_ports=["80"],
+            https_ports=["443"],
+            http_to_user_ip="Off",
+            https_redirect="Off",
             load_balancing="IpHash",
             log_headers=[alicloud.waf.DomainLogHeaderArgs(
                 key="foo",
                 value="http",
-            )],
-            source_ips=["1.1.1.1"])
+            )])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -723,21 +723,21 @@ class Domain(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         domain = alicloud.waf.Domain("domain",
-            cluster_type="PhysicalCluster",
             domain_name="alicloud-provider.cn",
-            http2_ports=["443"],
-            http_ports=["80"],
-            http_to_user_ip="Off",
-            https_ports=["443"],
-            https_redirect="Off",
             instance_id="waf-123455",
             is_access_product="On",
+            source_ips=["1.1.1.1"],
+            cluster_type="PhysicalCluster",
+            http2_ports=["443"],
+            http_ports=["80"],
+            https_ports=["443"],
+            http_to_user_ip="Off",
+            https_redirect="Off",
             load_balancing="IpHash",
             log_headers=[alicloud.waf.DomainLogHeaderArgs(
                 key="foo",
                 value="http",
-            )],
-            source_ips=["1.1.1.1"])
+            )])
         ```
         <!--End PulumiCodeChooser -->
 

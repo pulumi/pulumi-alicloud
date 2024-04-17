@@ -35,8 +35,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := log.LookupAlertResource(ctx, &log.LookupAlertResourceArgs{
-//				Lang: pulumi.StringRef("cn"),
 //				Type: "user",
+//				Lang: pulumi.StringRef("cn"),
 //			}, nil)
 //			if err != nil {
 //				return err

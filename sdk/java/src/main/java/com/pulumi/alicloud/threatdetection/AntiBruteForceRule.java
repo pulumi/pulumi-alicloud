@@ -51,10 +51,10 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new AntiBruteForceRule(&#34;default&#34;, AntiBruteForceRuleArgs.builder()        
  *             .antiBruteForceRuleName(&#34;apispec_example&#34;)
- *             .failCount(80)
  *             .forbiddenTime(360)
- *             .span(10)
  *             .uuidLists(&#34;032b618f-b220-4a0d-bd37-fbdc6ef58b6a&#34;)
+ *             .failCount(80)
+ *             .span(10)
  *             .build());
  * 
  *     }

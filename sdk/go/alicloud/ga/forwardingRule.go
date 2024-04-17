@@ -53,7 +53,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleAccelerator, err := ga.NewAccelerator(ctx, "exampleAccelerator", &ga.AcceleratorArgs{
+//			example, err := ga.NewAccelerator(ctx, "example", &ga.AcceleratorArgs{
 //				Duration:          pulumi.Int(3),
 //				Spec:              pulumi.String("2"),
 //				AcceleratorName:   pulumi.String(name),
@@ -65,7 +65,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "exampleBandwidthPackage", &ga.BandwidthPackageArgs{
+//			exampleBandwidthPackage, err := ga.NewBandwidthPackage(ctx, "example", &ga.BandwidthPackageArgs{
 //				Type:                 pulumi.String("Basic"),
 //				Bandwidth:            pulumi.Int(20),
 //				BandwidthType:        pulumi.String("Basic"),
@@ -79,17 +79,18 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "exampleBandwidthPackageAttachment", &ga.BandwidthPackageAttachmentArgs{
-//				AcceleratorId:      exampleAccelerator.ID(),
+//			exampleBandwidthPackageAttachment, err := ga.NewBandwidthPackageAttachment(ctx, "example", &ga.BandwidthPackageAttachmentArgs{
+//				AcceleratorId:      example.ID(),
 //				BandwidthPackageId: exampleBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleListener, err := ga.NewListener(ctx, "exampleListener", &ga.ListenerArgs{
+//			exampleListener, err := ga.NewListener(ctx, "example", &ga.ListenerArgs{
 //				AcceleratorId:  exampleBandwidthPackageAttachment.AcceleratorId,
 //				ClientAffinity: pulumi.String("SOURCE_IP"),
 //				Description:    pulumi.String(name),
+//				Name:           pulumi.String(name),
 //				Protocol:       pulumi.String("HTTP"),
 //				ProxyProtocol:  pulumi.Bool(true),
 //				PortRanges: ga.ListenerPortRangeArray{
@@ -102,7 +103,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleEipAddress, err := ecs.NewEipAddress(ctx, "exampleEipAddress", &ecs.EipAddressArgs{
+//			exampleEipAddress, err := ecs.NewEipAddress(ctx, "example", &ecs.EipAddressArgs{
 //				Bandwidth:          pulumi.String("10"),
 //				InternetChargeType: pulumi.String("PayByBandwidth"),
 //			})
@@ -110,7 +111,7 @@ import (
 //				return err
 //			}
 //			virtual, err := ga.NewEndpointGroup(ctx, "virtual", &ga.EndpointGroupArgs{
-//				AcceleratorId: exampleAccelerator.ID(),
+//				AcceleratorId: example.ID(),
 //				EndpointConfigurations: ga.EndpointGroupEndpointConfigurationArray{
 //					&ga.EndpointGroupEndpointConfigurationArgs{
 //						Endpoint:                   exampleEipAddress.IpAddress,
@@ -126,6 +127,7 @@ import (
 //				EndpointRequestProtocol:    pulumi.String("HTTPS"),
 //				HealthCheckIntervalSeconds: pulumi.Int(4),
 //				HealthCheckPath:            pulumi.String("/path"),
+//				Name:                       pulumi.String(name),
 //				ThresholdCount:             pulumi.Int(4),
 //				TrafficPercentage:          pulumi.Int(20),
 //				PortOverrides: &ga.EndpointGroupPortOverridesArgs{
@@ -136,8 +138,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ga.NewForwardingRule(ctx, "exampleForwardingRule", &ga.ForwardingRuleArgs{
-//				AcceleratorId: exampleAccelerator.ID(),
+//			_, err = ga.NewForwardingRule(ctx, "example", &ga.ForwardingRuleArgs{
+//				AcceleratorId: example.ID(),
 //				ListenerId:    exampleListener.ID(),
 //				RuleConditions: ga.ForwardingRuleRuleConditionArray{
 //					&ga.ForwardingRuleRuleConditionArgs{

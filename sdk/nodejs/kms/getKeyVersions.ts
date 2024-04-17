@@ -18,9 +18,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const alicloudKmsKeyVersionsDs = alicloud.kms.getKeyVersions({
- *     ids: ["d89e8a53-b708-41aa-8c67-6873axxx"],
  *     keyId: "08438c-b4d5-4d05-928c-07b7xxxx",
+ *     ids: ["d89e8a53-b708-41aa-8c67-6873axxx"],
  * });
  * export const allVersions = alicloudKmsKeyVersionsDs.then(alicloudKmsKeyVersionsDs => alicloudKmsKeyVersionsDs.versions);
  * ```
@@ -88,9 +89,10 @@ export interface GetKeyVersionsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const alicloudKmsKeyVersionsDs = alicloud.kms.getKeyVersions({
- *     ids: ["d89e8a53-b708-41aa-8c67-6873axxx"],
  *     keyId: "08438c-b4d5-4d05-928c-07b7xxxx",
+ *     ids: ["d89e8a53-b708-41aa-8c67-6873axxx"],
  * });
  * export const allVersions = alicloudKmsKeyVersionsDs.then(alicloudKmsKeyVersionsDs => alicloudKmsKeyVersionsDs.versions);
  * ```

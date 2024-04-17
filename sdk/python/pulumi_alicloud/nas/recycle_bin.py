@@ -130,14 +130,14 @@ class RecycleBin(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_zones = alicloud.nas.get_zones(file_system_type="standard")
-        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
+        example = alicloud.nas.get_zones(file_system_type="standard")
+        example_file_system = alicloud.nas.FileSystem("example",
             protocol_type="NFS",
             storage_type="Performance",
             description="terraform-example",
             encrypt_type=1,
-            zone_id=example_zones.zones[0].zone_id)
-        example_recycle_bin = alicloud.nas.RecycleBin("exampleRecycleBin",
+            zone_id=example.zones[0].zone_id)
+        example_recycle_bin = alicloud.nas.RecycleBin("example",
             file_system_id=example_file_system.id,
             reserved_days=3)
         ```
@@ -178,14 +178,14 @@ class RecycleBin(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_zones = alicloud.nas.get_zones(file_system_type="standard")
-        example_file_system = alicloud.nas.FileSystem("exampleFileSystem",
+        example = alicloud.nas.get_zones(file_system_type="standard")
+        example_file_system = alicloud.nas.FileSystem("example",
             protocol_type="NFS",
             storage_type="Performance",
             description="terraform-example",
             encrypt_type=1,
-            zone_id=example_zones.zones[0].zone_id)
-        example_recycle_bin = alicloud.nas.RecycleBin("exampleRecycleBin",
+            zone_id=example.zones[0].zone_id)
+        example_recycle_bin = alicloud.nas.RecycleBin("example",
             file_system_id=example_file_system.id,
             reserved_days=3)
         ```

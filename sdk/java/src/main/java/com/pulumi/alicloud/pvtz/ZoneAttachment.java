@@ -145,12 +145,9 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.pvtz.ZoneArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
- * import com.pulumi.alicloud.Provider;
- * import com.pulumi.alicloud.ProviderArgs;
  * import com.pulumi.alicloud.pvtz.ZoneAttachment;
  * import com.pulumi.alicloud.pvtz.ZoneAttachmentArgs;
  * import com.pulumi.alicloud.pvtz.inputs.ZoneAttachmentVpcArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -178,16 +175,10 @@ import javax.annotation.Nullable;
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
  *             .build());
  * 
- *         var eu = new Provider(&#34;eu&#34;, ProviderArgs.builder()        
- *             .region(&#34;eu-central-1&#34;)
- *             .build());
- * 
  *         var third = new Network(&#34;third&#34;, NetworkArgs.builder()        
  *             .vpcName(&#34;the-third-vpc&#34;)
  *             .cidrBlock(&#34;172.16.0.0/16&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(alicloud.eu())
- *                 .build());
+ *             .build());
  * 
  *         var zone_attachment = new ZoneAttachment(&#34;zone-attachment&#34;, ZoneAttachmentArgs.builder()        
  *             .zoneId(zone.id())

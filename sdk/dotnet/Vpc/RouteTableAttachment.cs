@@ -31,9 +31,10 @@ namespace Pulumi.AliCloud.Vpc
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
+    ///     var foo = new AliCloud.Vpc.Network("foo", new()
     ///     {
     ///         CidrBlock = "172.16.0.0/12",
+    ///         Name = name,
     ///     });
     /// 
     ///     var @default = AliCloud.GetZones.Invoke(new()
@@ -41,21 +42,22 @@ namespace Pulumi.AliCloud.Vpc
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
+    ///     var fooSwitch = new AliCloud.Vpc.Switch("foo", new()
     ///     {
-    ///         VpcId = fooNetwork.Id,
+    ///         VpcId = foo.Id,
     ///         CidrBlock = "172.16.0.0/21",
     ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+    ///         Name = name,
     ///     });
     /// 
-    ///     var fooRouteTable = new AliCloud.Vpc.RouteTable("fooRouteTable", new()
+    ///     var fooRouteTable = new AliCloud.Vpc.RouteTable("foo", new()
     ///     {
-    ///         VpcId = fooNetwork.Id,
+    ///         VpcId = foo.Id,
     ///         RouteTableName = name,
     ///         Description = "route_table_attachment",
     ///     });
     /// 
-    ///     var fooRouteTableAttachment = new AliCloud.Vpc.RouteTableAttachment("fooRouteTableAttachment", new()
+    ///     var fooRouteTableAttachment = new AliCloud.Vpc.RouteTableAttachment("foo", new()
     ///     {
     ///         VswitchId = fooSwitch.Id,
     ///         RouteTableId = fooRouteTable.Id,

@@ -51,51 +51,49 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			defaultGetZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(defaultGetZones.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "defaultSecurityGroup", &ecs.SecurityGroupArgs{
+//			defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
 //				VpcId: defaultNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultNamespace, err := sae.NewNamespace(ctx, "defaultNamespace", &sae.NamespaceArgs{
-//				NamespaceId: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v:example%v", defaultRegions.Regions[0].Id, result), nil
-//				}).(pulumi.StringOutput),
+//			defaultNamespace, err := sae.NewNamespace(ctx, "default", &sae.NamespaceArgs{
+//				NamespaceId:             pulumi.String(fmt.Sprintf("%v:example%v", _default.Regions[0].Id, defaultInteger.Result)),
 //				NamespaceName:           pulumi.String(name),
 //				NamespaceDescription:    pulumi.String(name),
 //				EnableMicroRegistration: pulumi.Bool(false),
@@ -103,13 +101,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = sae.NewApplication(ctx, "defaultApplication", &sae.ApplicationArgs{
-//				AppDescription: pulumi.String(name),
-//				AppName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
+//			_, err = sae.NewApplication(ctx, "default", &sae.ApplicationArgs{
+//				AppDescription:  pulumi.String(name),
+//				AppName:         pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
 //				NamespaceId:     defaultNamespace.ID(),
-//				ImageUrl:        pulumi.String(fmt.Sprintf("registry-vpc.%v.aliyuncs.com/sae-demo-image/consumer:1.0", defaultRegions.Regions[0].Id)),
+//				ImageUrl:        pulumi.String(fmt.Sprintf("registry-vpc.%v.aliyuncs.com/sae-demo-image/consumer:1.0", _default.Regions[0].Id)),
 //				PackageType:     pulumi.String("Image"),
 //				SecurityGroupId: defaultSecurityGroup.ID(),
 //				VpcId:           defaultNetwork.ID(),

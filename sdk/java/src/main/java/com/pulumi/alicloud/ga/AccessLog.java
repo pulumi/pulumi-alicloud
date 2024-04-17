@@ -31,9 +31,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.log.Project;
+ * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
  * import com.pulumi.alicloud.log.StoreArgs;
  * import com.pulumi.alicloud.ga.Accelerator;
@@ -67,15 +68,18 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-hangzhou&#34;);
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var defaultProject = new Project(&#34;defaultProject&#34;);
+ *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
+ *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
+ *             .build());
  * 
  *         var defaultStore = new Store(&#34;defaultStore&#34;, StoreArgs.builder()        
  *             .project(defaultProject.name())
+ *             .name(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var defaultAccelerator = new Accelerator(&#34;defaultAccelerator&#34;, AcceleratorArgs.builder()        
@@ -102,6 +106,7 @@ import javax.annotation.Nullable;
  *             .acceleratorId(defaultBandwidthPackageAttachment.acceleratorId())
  *             .clientAffinity(&#34;SOURCE_IP&#34;)
  *             .protocol(&#34;HTTP&#34;)
+ *             .name(&#34;terraform-example&#34;)
  *             .portRanges(ListenerPortRangeArgs.builder()
  *                 .fromPort(70)
  *                 .toPort(70)

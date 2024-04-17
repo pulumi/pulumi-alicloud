@@ -16,32 +16,37 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetworks = alicloud.vpc.getNetworks({
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
  *     nameRegex: "^default-NODELETING$",
  * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.ids?.[0],
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.ids?.[0],
  * }));
- * const defaultGateway = new alicloud.vpn.Gateway("defaultGateway", {
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
+ * const defaultGateway = new alicloud.vpn.Gateway("default", {
+ *     name: "terraform-example",
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
  *     bandwidth: 10,
  *     instanceChargeType: "PrePaid",
  *     enableSsl: false,
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
  * });
- * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("defaultCustomerGateway", {ipAddress: "192.168.1.1"});
- * const defaultConnection = new alicloud.vpn.Connection("defaultConnection", {
+ * const defaultCustomerGateway = new alicloud.vpn.CustomerGateway("default", {
+ *     name: name,
+ *     ipAddress: "192.168.1.1",
+ * });
+ * const defaultConnection = new alicloud.vpn.Connection("default", {
+ *     name: name,
  *     customerGatewayId: defaultCustomerGateway.id,
  *     vpnGatewayId: defaultGateway.id,
  *     localSubnets: ["192.168.2.0/24"],
  *     remoteSubnets: ["192.168.3.0/24"],
  * });
- * const defaultRouteEntry = new alicloud.vpn.RouteEntry("defaultRouteEntry", {
+ * const defaultRouteEntry = new alicloud.vpn.RouteEntry("default", {
  *     vpnGatewayId: defaultGateway.id,
  *     routeDest: "10.0.0.0/24",
  *     nextHop: defaultConnection.id,

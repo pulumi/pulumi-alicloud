@@ -10,6 +10,50 @@ import * as utilities from "../utilities";
  * This data source provides Quotas Template Applications available to the user.[What is Template Applications](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplicationsfortemplate)
  *
  * > **NOTE:** Available since v1.214.0.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.resourcemanager.getAccounts({
+ *     status: "CreateSuccess",
+ * });
+ * const defaultTemplateApplications = new alicloud.quotas.TemplateApplications("default", {
+ *     quotaActionCode: "vpc_whitelist/ha_vip_whitelist",
+ *     productCode: "vpc",
+ *     quotaCategory: "FlowControl",
+ *     aliyunUids: [_default.then(_default => _default.ids?.[0])],
+ *     desireValue: 6,
+ *     noticeType: 0,
+ *     envLanguage: "zh",
+ *     reason: "example",
+ *     dimensions: [
+ *         {
+ *             key: "apiName",
+ *             value: "GetProductQuotaDimension",
+ *         },
+ *         {
+ *             key: "apiVersion",
+ *             value: "2020-05-10",
+ *         },
+ *         {
+ *             key: "regionId",
+ *             value: "cn-hangzhou",
+ *         },
+ *     ],
+ * });
+ * const defaultGetTemplateApplications = alicloud.quotas.getTemplateApplicationsOutput({
+ *     ids: [defaultTemplateApplications.id],
+ *     productCode: "vpc",
+ *     quotaActionCode: "vpc_whitelist/ha_vip_whitelist",
+ *     quotaCategory: "FlowControl",
+ * });
+ * export const alicloudQuotasTemplateApplicationsExampleId = defaultGetTemplateApplications.apply(defaultGetTemplateApplications => defaultGetTemplateApplications.applications?.[0]?.id);
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTemplateApplications(args?: GetTemplateApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplateApplicationsResult> {
     args = args || {};
@@ -93,6 +137,50 @@ export interface GetTemplateApplicationsResult {
  * This data source provides Quotas Template Applications available to the user.[What is Template Applications](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplicationsfortemplate)
  *
  * > **NOTE:** Available since v1.214.0.
+ *
+ * ## Example Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const default = alicloud.resourcemanager.getAccounts({
+ *     status: "CreateSuccess",
+ * });
+ * const defaultTemplateApplications = new alicloud.quotas.TemplateApplications("default", {
+ *     quotaActionCode: "vpc_whitelist/ha_vip_whitelist",
+ *     productCode: "vpc",
+ *     quotaCategory: "FlowControl",
+ *     aliyunUids: [_default.then(_default => _default.ids?.[0])],
+ *     desireValue: 6,
+ *     noticeType: 0,
+ *     envLanguage: "zh",
+ *     reason: "example",
+ *     dimensions: [
+ *         {
+ *             key: "apiName",
+ *             value: "GetProductQuotaDimension",
+ *         },
+ *         {
+ *             key: "apiVersion",
+ *             value: "2020-05-10",
+ *         },
+ *         {
+ *             key: "regionId",
+ *             value: "cn-hangzhou",
+ *         },
+ *     ],
+ * });
+ * const defaultGetTemplateApplications = alicloud.quotas.getTemplateApplicationsOutput({
+ *     ids: [defaultTemplateApplications.id],
+ *     productCode: "vpc",
+ *     quotaActionCode: "vpc_whitelist/ha_vip_whitelist",
+ *     quotaCategory: "FlowControl",
+ * });
+ * export const alicloudQuotasTemplateApplicationsExampleId = defaultGetTemplateApplications.apply(defaultGetTemplateApplications => defaultGetTemplateApplications.applications?.[0]?.id);
+ * ```
+ * <!--End PulumiCodeChooser -->
  */
 export function getTemplateApplicationsOutput(args?: GetTemplateApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplateApplicationsResult> {
     return pulumi.output(args).apply((a: any) => getTemplateApplications(a, opts))

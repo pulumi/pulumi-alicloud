@@ -22,10 +22,10 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const exampleEventBus = new alicloud.eventbridge.EventBus("exampleEventBus", {eventBusName: name});
- * const exampleQueue = new alicloud.mns.Queue("exampleQueue", {});
- * const exampleEventSource = new alicloud.eventbridge.EventSource("exampleEventSource", {
- *     eventBusName: exampleEventBus.eventBusName,
+ * const example = new alicloud.eventbridge.EventBus("example", {eventBusName: name});
+ * const exampleQueue = new alicloud.mns.Queue("example", {name: name});
+ * const exampleEventSource = new alicloud.eventbridge.EventSource("example", {
+ *     eventBusName: example.eventBusName,
  *     eventSourceName: name,
  *     description: name,
  *     linkedExternalSource: true,

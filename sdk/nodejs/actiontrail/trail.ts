@@ -23,25 +23,25 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const exampleRegions = alicloud.getRegions({
+ * const example = alicloud.getRegions({
  *     current: true,
  * });
- * const exampleAccount = alicloud.getAccount({});
- * const exampleProject = new alicloud.log.Project("exampleProject", {
- *     projectName: pulumi.interpolate`${name}-${_default.result}`,
+ * const exampleGetAccount = alicloud.getAccount({});
+ * const exampleProject = new alicloud.log.Project("example", {
+ *     projectName: `${name}-${_default.result}`,
  *     description: "tf actiontrail example",
  * });
- * const exampleRoles = alicloud.ram.getRoles({
+ * const exampleGetRoles = alicloud.ram.getRoles({
  *     nameRegex: "AliyunServiceRoleForActionTrail",
  * });
- * const exampleTrail = new alicloud.actiontrail.Trail("exampleTrail", {
+ * const exampleTrail = new alicloud.actiontrail.Trail("example", {
  *     trailName: name,
- *     slsWriteRoleArn: exampleRoles.then(exampleRoles => exampleRoles.roles?.[0]?.arn),
- *     slsProjectArn: pulumi.all([exampleRegions, exampleAccount, exampleProject.name]).apply(([exampleRegions, exampleAccount, name]) => `acs:log:${exampleRegions.regions?.[0]?.id}:${exampleAccount.id}:project/${name}`),
+ *     slsWriteRoleArn: exampleGetRoles.then(exampleGetRoles => exampleGetRoles.roles?.[0]?.arn),
+ *     slsProjectArn: pulumi.all([example, exampleGetAccount, exampleProject.name]).apply(([example, exampleGetAccount, name]) => `acs:log:${example.regions?.[0]?.id}:${exampleGetAccount.id}:project/${name}`),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

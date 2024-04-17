@@ -42,20 +42,20 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := mongodb.GetZones(ctx, nil, nil)
+//			_default, err := mongodb.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			index := len(defaultZones.Zones) - 1
-//			zoneId := defaultZones.Zones[index].Id
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			index := len(_default.Zones) - 1
+//			zoneId := _default.Zones[index].Id
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("172.17.3.0/24"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("172.17.3.0/24"),
 //				VpcId:       defaultNetwork.ID(),
@@ -64,7 +64,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstance, err := mongodb.NewInstance(ctx, "defaultInstance", &mongodb.InstanceArgs{
+//			defaultInstance, err := mongodb.NewInstance(ctx, "default", &mongodb.InstanceArgs{
 //				EngineVersion:     pulumi.String("4.2"),
 //				DbInstanceClass:   pulumi.String("dds.mongo.mid"),
 //				DbInstanceStorage: pulumi.Int(10),
@@ -73,6 +73,7 @@ import (
 //					pulumi.String("10.168.1.12"),
 //					pulumi.String("100.69.7.112"),
 //				},
+//				Name: pulumi.String(name),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("example"),
@@ -81,7 +82,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = mongodb.NewAccount(ctx, "defaultAccount", &mongodb.AccountArgs{
+//			_, err = mongodb.NewAccount(ctx, "default", &mongodb.AccountArgs{
 //				AccountName:        pulumi.String("root"),
 //				AccountPassword:    pulumi.String("Example_123"),
 //				InstanceId:         defaultInstance.ID(),

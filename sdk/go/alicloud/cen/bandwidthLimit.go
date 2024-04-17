@@ -30,7 +30,6 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -49,33 +48,21 @@ import (
 //			if param := cfg.Get("region2"); param != "" {
 //				region2 = param
 //			}
-//			_, err := alicloud.NewProvider(ctx, "ec", &alicloud.ProviderArgs{
-//				Region: pulumi.String(region1),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = alicloud.NewProvider(ctx, "as", &alicloud.ProviderArgs{
-//				Region: pulumi.String(region2),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			vpc1, err := vpc.NewNetwork(ctx, "vpc1", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("tf-example"),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
-//			}, pulumi.Provider(alicloud.Ec))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			vpc2, err := vpc.NewNetwork(ctx, "vpc2", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String("tf-example"),
 //				CidrBlock: pulumi.String("172.16.0.0/12"),
-//			}, pulumi.Provider(alicloud.As))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//			example, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String("tf_example"),
 //				Description:     pulumi.String("an example for cen"),
 //			})
@@ -83,7 +70,7 @@ import (
 //				return err
 //			}
 //			example1, err := cen.NewInstanceAttachment(ctx, "example1", &cen.InstanceAttachmentArgs{
-//				InstanceId:            exampleInstance.ID(),
+//				InstanceId:            example.ID(),
 //				ChildInstanceId:       vpc1.ID(),
 //				ChildInstanceType:     pulumi.String("VPC"),
 //				ChildInstanceRegionId: pulumi.String(region1),
@@ -92,7 +79,7 @@ import (
 //				return err
 //			}
 //			example2, err := cen.NewInstanceAttachment(ctx, "example2", &cen.InstanceAttachmentArgs{
-//				InstanceId:            exampleInstance.ID(),
+//				InstanceId:            example.ID(),
 //				ChildInstanceId:       vpc2.ID(),
 //				ChildInstanceType:     pulumi.String("VPC"),
 //				ChildInstanceRegionId: pulumi.String(region2),
@@ -100,7 +87,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleBandwidthPackage, err := cen.NewBandwidthPackage(ctx, "exampleBandwidthPackage", &cen.BandwidthPackageArgs{
+//			exampleBandwidthPackage, err := cen.NewBandwidthPackage(ctx, "example", &cen.BandwidthPackageArgs{
 //				Bandwidth:               pulumi.Int(5),
 //				CenBandwidthPackageName: pulumi.String("tf_example"),
 //				GeographicRegionAId:     pulumi.String("Europe"),
@@ -109,14 +96,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleBandwidthPackageAttachment, err := cen.NewBandwidthPackageAttachment(ctx, "exampleBandwidthPackageAttachment", &cen.BandwidthPackageAttachmentArgs{
-//				InstanceId:         exampleInstance.ID(),
+//			exampleBandwidthPackageAttachment, err := cen.NewBandwidthPackageAttachment(ctx, "example", &cen.BandwidthPackageAttachmentArgs{
+//				InstanceId:         example.ID(),
 //				BandwidthPackageId: exampleBandwidthPackage.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewBandwidthLimit(ctx, "exampleBandwidthLimit", &cen.BandwidthLimitArgs{
+//			_, err = cen.NewBandwidthLimit(ctx, "example", &cen.BandwidthLimitArgs{
 //				InstanceId: exampleBandwidthPackageAttachment.InstanceId,
 //				RegionIds: pulumi.StringArray{
 //					example1.ChildInstanceRegionId,

@@ -43,28 +43,28 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//			example, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
 //				VpcName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
-//				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
+//				VpcId:       example.ID(),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				CidrBlock:   pulumi.String("172.16.0.0/24"),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = drds.NewPolardbxInstance(ctx, "defaultPolardbxInstance", &drds.PolardbxInstanceArgs{
+//			_, err = drds.NewPolardbxInstance(ctx, "default", &drds.PolardbxInstanceArgs{
 //				TopologyType:  pulumi.String("3azones"),
 //				VswitchId:     exampleSwitch.ID(),
 //				PrimaryZone:   pulumi.String("ap-southeast-1a"),
@@ -74,7 +74,7 @@ import (
 //				DnNodeCount:   pulumi.Int(2),
 //				SecondaryZone: pulumi.String("ap-southeast-1b"),
 //				TertiaryZone:  pulumi.String("ap-southeast-1c"),
-//				VpcId:         exampleNetwork.ID(),
+//				VpcId:         example.ID(),
 //			})
 //			if err != nil {
 //				return err

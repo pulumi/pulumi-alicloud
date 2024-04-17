@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *         var example = new Network(&#34;example&#34;, NetworkArgs.builder()        
  *             .vpcName(&#34;tf_example&#34;)
  *             .cidrBlock(&#34;172.17.3.0/24&#34;)
  *             .build());
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  * 
  *         var exampleInstanceAttachment = new InstanceAttachment(&#34;exampleInstanceAttachment&#34;, InstanceAttachmentArgs.builder()        
  *             .instanceId(exampleInstance.id())
- *             .childInstanceId(exampleNetwork.id())
+ *             .childInstanceId(example.id())
  *             .childInstanceType(&#34;VPC&#34;)
  *             .childInstanceRegionId(default_.regions()[0].id())
  *             .build());

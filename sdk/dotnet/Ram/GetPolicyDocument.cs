@@ -256,6 +256,7 @@ namespace Pulumi.AliCloud.Ram
         /// 
         ///     var role = new AliCloud.Ram.Role("role", new()
         ///     {
+        ///         Name = "tf-example-role-ram",
         ///         Document = ramExample.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Document),
         ///         Force = true,
         ///     });
@@ -322,6 +323,7 @@ namespace Pulumi.AliCloud.Ram
         /// 
         ///     var role = new AliCloud.Ram.Role("role", new()
         ///     {
+        ///         Name = "tf-example-role-service",
         ///         Document = serviceExample.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Document),
         ///         Force = true,
         ///     });
@@ -400,6 +402,7 @@ namespace Pulumi.AliCloud.Ram
         /// 
         ///     var role = new AliCloud.Ram.Role("role", new()
         ///     {
+        ///         Name = "tf-example-role-federated",
         ///         Document = federatedExample.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Document),
         ///         Force = true,
         ///     });
@@ -680,6 +683,7 @@ namespace Pulumi.AliCloud.Ram
         /// 
         ///     var role = new AliCloud.Ram.Role("role", new()
         ///     {
+        ///         Name = "tf-example-role-ram",
         ///         Document = ramExample.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Document),
         ///         Force = true,
         ///     });
@@ -746,6 +750,7 @@ namespace Pulumi.AliCloud.Ram
         /// 
         ///     var role = new AliCloud.Ram.Role("role", new()
         ///     {
+        ///         Name = "tf-example-role-service",
         ///         Document = serviceExample.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Document),
         ///         Force = true,
         ///     });
@@ -824,6 +829,7 @@ namespace Pulumi.AliCloud.Ram
         /// 
         ///     var role = new AliCloud.Ram.Role("role", new()
         ///     {
+        ///         Name = "tf-example-role-federated",
         ///         Document = federatedExample.Apply(getPolicyDocumentResult =&gt; getPolicyDocumentResult.Document),
         ///         Force = true,
         ///     });

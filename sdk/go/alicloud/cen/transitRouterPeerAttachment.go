@@ -26,7 +26,6 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cen"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
@@ -48,55 +47,43 @@ import (
 //			if param := cfg.Get("peerRegion"); param != "" {
 //				peerRegion = param
 //			}
-//			_, err := alicloud.NewProvider(ctx, "hz", &alicloud.ProviderArgs{
-//				Region: pulumi.String(region),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = alicloud.NewProvider(ctx, "bj", &alicloud.ProviderArgs{
-//				Region: pulumi.String(peerRegion),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			exampleInstance, err := cen.NewInstance(ctx, "exampleInstance", &cen.InstanceArgs{
+//			example, err := cen.NewInstance(ctx, "example", &cen.InstanceArgs{
 //				CenInstanceName: pulumi.String(name),
 //				ProtectionLevel: pulumi.String("REDUCED"),
-//			}, pulumi.Provider(alicloud.Bj))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleBandwidthPackage, err := cen.NewBandwidthPackage(ctx, "exampleBandwidthPackage", &cen.BandwidthPackageArgs{
+//			exampleBandwidthPackage, err := cen.NewBandwidthPackage(ctx, "example", &cen.BandwidthPackageArgs{
 //				Bandwidth:               pulumi.Int(5),
 //				CenBandwidthPackageName: pulumi.String("tf_example"),
 //				GeographicRegionAId:     pulumi.String("China"),
 //				GeographicRegionBId:     pulumi.String("China"),
-//			}, pulumi.Provider(alicloud.Bj))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleBandwidthPackageAttachment, err := cen.NewBandwidthPackageAttachment(ctx, "exampleBandwidthPackageAttachment", &cen.BandwidthPackageAttachmentArgs{
-//				InstanceId:         exampleInstance.ID(),
+//			exampleBandwidthPackageAttachment, err := cen.NewBandwidthPackageAttachment(ctx, "example", &cen.BandwidthPackageAttachmentArgs{
+//				InstanceId:         example.ID(),
 //				BandwidthPackageId: exampleBandwidthPackage.ID(),
-//			}, pulumi.Provider(alicloud.Bj))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "exampleTransitRouter", &cen.TransitRouterArgs{
+//			exampleTransitRouter, err := cen.NewTransitRouter(ctx, "example", &cen.TransitRouterArgs{
 //				CenId: exampleBandwidthPackageAttachment.InstanceId,
-//			}, pulumi.Provider(alicloud.Hz))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			peer, err := cen.NewTransitRouter(ctx, "peer", &cen.TransitRouterArgs{
 //				CenId: exampleTransitRouter.CenId,
-//			}, pulumi.Provider(alicloud.Bj))
+//			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cen.NewTransitRouterPeerAttachment(ctx, "exampleTransitRouterPeerAttachment", &cen.TransitRouterPeerAttachmentArgs{
-//				CenId:                              exampleInstance.ID(),
+//			_, err = cen.NewTransitRouterPeerAttachment(ctx, "example", &cen.TransitRouterPeerAttachmentArgs{
+//				CenId:                              example.ID(),
 //				TransitRouterId:                    exampleTransitRouter.TransitRouterId,
 //				PeerTransitRouterRegionId:          pulumi.String(peerRegion),
 //				PeerTransitRouterId:                peer.TransitRouterId,
@@ -104,7 +91,7 @@ import (
 //				Bandwidth:                          pulumi.Int(5),
 //				TransitRouterAttachmentDescription: pulumi.String(name),
 //				TransitRouterAttachmentName:        pulumi.String(name),
-//			}, pulumi.Provider(alicloud.Hz))
+//			})
 //			if err != nil {
 //				return err
 //			}

@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.ResourceManager
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tfexample";
-    ///     var examplePolicy = new AliCloud.ResourceManager.Policy("examplePolicy", new()
+    ///     var example = new AliCloud.ResourceManager.Policy("example", new()
     ///     {
     ///         PolicyName = name,
     ///         PolicyDocument = @"		{
@@ -46,9 +46,9 @@ namespace Pulumi.AliCloud.ResourceManager
     /// ",
     ///     });
     /// 
-    ///     var examplePolicyVersion = new AliCloud.ResourceManager.PolicyVersion("examplePolicyVersion", new()
+    ///     var examplePolicyVersion = new AliCloud.ResourceManager.PolicyVersion("example", new()
     ///     {
-    ///         PolicyName = examplePolicy.PolicyName,
+    ///         PolicyName = example.PolicyName,
     ///         PolicyDocument = @"		{
     /// 			""Statement"": [{
     /// 				""Action"": [""oss:*""],

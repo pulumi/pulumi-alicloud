@@ -28,6 +28,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/fc"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -36,14 +38,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultService, err := fc.NewService(ctx, "defaultService", &fc.ServiceArgs{
+//			defaultService, err := fc.NewService(ctx, "default", &fc.ServiceArgs{
+//				Name:        pulumi.String(fmt.Sprintf("example-value-%v", _default.Result)),
 //				Description: pulumi.String("example-value"),
 //				Publish:     pulumi.Bool(true),
 //			})

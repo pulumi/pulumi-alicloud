@@ -22,21 +22,21 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("defaultRegistryEnterpriseInstance", {
+ * const defaultRegistryEnterpriseInstance = new alicloud.cr.RegistryEnterpriseInstance("default", {
  *     paymentType: "Subscription",
  *     period: 1,
  *     renewalStatus: "ManualRenewal",
  *     instanceType: "Advanced",
  *     instanceName: name,
  * });
- * const defaultEndpointAclService = alicloud.cr.getEndpointAclServiceOutput({
+ * const default = alicloud.cr.getEndpointAclServiceOutput({
  *     endpointType: "internet",
  *     enable: true,
  *     instanceId: defaultRegistryEnterpriseInstance.id,
  *     moduleName: "Registry",
  * });
- * const defaultEndpointAclPolicy = new alicloud.cr.EndpointAclPolicy("defaultEndpointAclPolicy", {
- *     instanceId: defaultEndpointAclService.apply(defaultEndpointAclService => defaultEndpointAclService.instanceId),
+ * const defaultEndpointAclPolicy = new alicloud.cr.EndpointAclPolicy("default", {
+ *     instanceId: _default.apply(_default => _default.instanceId),
  *     entry: "192.168.1.0/24",
  *     description: name,
  *     moduleName: "Registry",

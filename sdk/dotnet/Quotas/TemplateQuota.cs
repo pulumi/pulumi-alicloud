@@ -33,7 +33,9 @@ namespace Pulumi.AliCloud.Quotas
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.Quotas.TemplateQuota("default", new()
     ///     {
-    ///         DesireValue = 1001,
+    ///         QuotaActionCode = "q_desktop-count",
+    ///         ProductCode = "gws",
+    ///         NoticeType = 3,
     ///         Dimensions = new[]
     ///         {
     ///             new AliCloud.Quotas.Inputs.TemplateQuotaDimensionArgs
@@ -42,10 +44,8 @@ namespace Pulumi.AliCloud.Quotas
     ///                 Value = "cn-hangzhou",
     ///             },
     ///         },
+    ///         DesireValue = 1001,
     ///         EnvLanguage = "zh",
-    ///         NoticeType = 3,
-    ///         ProductCode = "gws",
-    ///         QuotaActionCode = "q_desktop-count",
     ///         QuotaCategory = "CommonQuota",
     ///     });
     /// 

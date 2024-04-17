@@ -35,7 +35,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultAccelerator, err := ga.NewAccelerator(ctx, "defaultAccelerator", &ga.AcceleratorArgs{
+//			_, err := ga.NewAccelerator(ctx, "default", &ga.AcceleratorArgs{
 //				Duration:      pulumi.Int(1),
 //				AutoUseCoupon: pulumi.Bool(true),
 //				Spec:          pulumi.String("1"),
@@ -43,9 +43,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ga.NewDomain(ctx, "defaultDomain", &ga.DomainArgs{
+//			_, err = ga.NewDomain(ctx, "default", &ga.DomainArgs{
 //				Domain:        pulumi.String("changes.com.cn"),
-//				AcceleratorId: defaultAccelerator.ID(),
+//				AcceleratorId: _default.ID(),
 //			})
 //			if err != nil {
 //				return err

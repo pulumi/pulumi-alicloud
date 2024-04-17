@@ -58,13 +58,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
  *             .cenInstanceName(name)
  *             .protectionLevel(&#34;REDUCED&#34;)
  *             .build());
  * 
  *         var defaultTransitRouter = new TransitRouter(&#34;defaultTransitRouter&#34;, TransitRouterArgs.builder()        
- *             .cenId(defaultInstance.id())
+ *             .cenId(default_.id())
  *             .build());
  * 
  *         final var nameRegex = ExpressconnectFunctions.getPhysicalConnections(GetPhysicalConnectionsArgs.builder()
@@ -88,7 +88,7 @@ import javax.annotation.Nullable;
  *             .transitRouterAttachmentName(&#34;example&#34;)
  *             .transitRouterAttachmentDescription(&#34;example&#34;)
  *             .vbrId(defaultVirtualBorderRouter.id())
- *             .cenId(defaultInstance.id())
+ *             .cenId(default_.id())
  *             .build());
  * 
  *     }

@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -38,8 +38,8 @@ namespace Pulumi.AliCloud.Oss
     /// 
     ///     var bucket_acl = new AliCloud.Oss.Bucket("bucket-acl", new()
     ///     {
+    ///         BucketName = $"example-value-{@default.Result}",
     ///         Acl = "private",
-    ///         BucketName = @default.Result.Apply(result =&gt; $"example-value-{result}"),
     ///     });
     /// 
     /// });
@@ -58,7 +58,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -66,11 +66,11 @@ namespace Pulumi.AliCloud.Oss
     /// 
     ///     var bucket_website = new AliCloud.Oss.Bucket("bucket-website", new()
     ///     {
-    ///         BucketName = @default.Result.Apply(result =&gt; $"example-value-{result}"),
+    ///         BucketName = $"example-value-{@default.Result}",
     ///         Website = new AliCloud.Oss.Inputs.BucketWebsiteArgs
     ///         {
-    ///             ErrorDocument = "error.html",
     ///             IndexDocument = "index.html",
+    ///             ErrorDocument = "error.html",
     ///         },
     ///     });
     /// 
@@ -90,7 +90,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -98,13 +98,13 @@ namespace Pulumi.AliCloud.Oss
     /// 
     ///     var bucket_target = new AliCloud.Oss.Bucket("bucket-target", new()
     ///     {
-    ///         BucketName = @default.Result.Apply(result =&gt; $"example-value-{result}"),
+    ///         BucketName = $"example-value-{@default.Result}",
     ///         Acl = "public-read",
     ///     });
     /// 
     ///     var bucket_logging = new AliCloud.Oss.Bucket("bucket-logging", new()
     ///     {
-    ///         BucketName = @default.Result.Apply(result =&gt; $"example-logging-{result}"),
+    ///         BucketName = $"example-logging-{@default.Result}",
     ///         Logging = new AliCloud.Oss.Inputs.BucketLoggingArgs
     ///         {
     ///             TargetBucket = bucket_target.Id,
@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -136,8 +136,8 @@ namespace Pulumi.AliCloud.Oss
     /// 
     ///     var bucket_referer = new AliCloud.Oss.Bucket("bucket-referer", new()
     ///     {
+    ///         BucketName = $"example-value-{@default.Result}",
     ///         Acl = "private",
-    ///         BucketName = @default.Result.Apply(result =&gt; $"example-value-{result}"),
     ///         RefererConfig = new AliCloud.Oss.Inputs.BucketRefererConfigArgs
     ///         {
     ///             AllowEmpty = false,

@@ -197,8 +197,8 @@ def get_vpds(enable_details: Optional[bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.eflo.get_vpds(ids=[alicloud_eflo_vpd["default"]["id"]],
-        name_regex=alicloud_eflo_vpd["default"]["name"],
+    default = alicloud.eflo.get_vpds(ids=[default_alicloud_eflo_vpd["id"]],
+        name_regex=default_alicloud_eflo_vpd["name"],
         vpd_name="RMC-Terraform-Test")
     pulumi.export("alicloudEfloVpdExampleId", default.vpds[0].id)
     ```
@@ -268,8 +268,8 @@ def get_vpds_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = Non
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.eflo.get_vpds(ids=[alicloud_eflo_vpd["default"]["id"]],
-        name_regex=alicloud_eflo_vpd["default"]["name"],
+    default = alicloud.eflo.get_vpds(ids=[default_alicloud_eflo_vpd["id"]],
+        name_regex=default_alicloud_eflo_vpd["name"],
         vpd_name="RMC-Terraform-Test")
     pulumi.export("alicloudEfloVpdExampleId", default.vpds[0].id)
     ```

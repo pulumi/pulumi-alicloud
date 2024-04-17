@@ -53,13 +53,13 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var default_ = new EcsPrefixList(&#34;default&#34;, EcsPrefixListArgs.builder()        
  *             .addressFamily(&#34;IPv4&#34;)
+ *             .maxEntries(2)
+ *             .prefixListName(&#34;tftest&#34;)
  *             .description(&#34;description&#34;)
  *             .entries(EcsPrefixListEntryArgs.builder()
  *                 .cidr(&#34;192.168.0.0/24&#34;)
  *                 .description(&#34;description&#34;)
  *                 .build())
- *             .maxEntries(2)
- *             .prefixListName(&#34;tftest&#34;)
  *             .build());
  * 
  *     }

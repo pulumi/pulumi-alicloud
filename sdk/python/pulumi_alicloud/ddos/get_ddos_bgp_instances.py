@@ -119,15 +119,16 @@ def get_ddos_bgp_instances(ids: Optional[Sequence[str]] = None,
     name = config.get("name")
     if name is None:
         name = "tf-example"
-    instance_ddos_bgp_instance = alicloud.ddos.DdosBgpInstance("instanceDdosBgpInstance",
+    instance_ddos_bgp_instance = alicloud.ddos.DdosBgpInstance("instance",
+        name=name,
         base_bandwidth=20,
         bandwidth=-1,
         ip_count=100,
         ip_type="IPv4",
         normal_bandwidth=100,
         type="Enterprise")
-    instance_ddos_bgp_instances = alicloud.ddos.get_ddos_bgp_instances(name_regex="ddosbgp")
-    pulumi.export("instance", [__item.id for __item in [instance_ddos_bgp_instances]])
+    instance = alicloud.ddos.get_ddos_bgp_instances(name_regex="ddosbgp")
+    pulumi.export("instance", [__item.id for __item in [instance]])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -173,15 +174,16 @@ def get_ddos_bgp_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     name = config.get("name")
     if name is None:
         name = "tf-example"
-    instance_ddos_bgp_instance = alicloud.ddos.DdosBgpInstance("instanceDdosBgpInstance",
+    instance_ddos_bgp_instance = alicloud.ddos.DdosBgpInstance("instance",
+        name=name,
         base_bandwidth=20,
         bandwidth=-1,
         ip_count=100,
         ip_type="IPv4",
         normal_bandwidth=100,
         type="Enterprise")
-    instance_ddos_bgp_instances = alicloud.ddos.get_ddos_bgp_instances(name_regex="ddosbgp")
-    pulumi.export("instance", [__item.id for __item in [instance_ddos_bgp_instances]])
+    instance = alicloud.ddos.get_ddos_bgp_instances(name_regex="ddosbgp")
+    pulumi.export("instance", [__item.id for __item in [instance]])
     ```
     <!--End PulumiCodeChooser -->
 

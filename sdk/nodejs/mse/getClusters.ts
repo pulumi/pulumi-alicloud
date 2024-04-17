@@ -18,6 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const example = alicloud.mse.getClusters({
  *     ids: ["mse-cn-0d9xxxx"],
  *     status: "INIT_SUCCESS",
@@ -111,6 +112,7 @@ export interface GetClustersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
+ * // Declare the data source
  * const example = alicloud.mse.getClusters({
  *     ids: ["mse-cn-0d9xxxx"],
  *     status: "INIT_SUCCESS",

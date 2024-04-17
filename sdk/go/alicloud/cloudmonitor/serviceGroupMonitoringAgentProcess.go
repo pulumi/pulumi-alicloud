@@ -42,7 +42,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "defaultAlarmContactGroup", &cms.AlarmContactGroupArgs{
+//			_, err := cms.NewAlarmContactGroup(ctx, "default", &cms.AlarmContactGroupArgs{
 //				AlarmContactGroupName: pulumi.String(name),
 //				Contacts: pulumi.StringArray{
 //					pulumi.String("user"),
@@ -53,16 +53,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultMonitorGroup, err := cms.NewMonitorGroup(ctx, "defaultMonitorGroup", &cms.MonitorGroupArgs{
+//			defaultMonitorGroup, err := cms.NewMonitorGroup(ctx, "default", &cms.MonitorGroupArgs{
 //				MonitorGroupName: pulumi.String(name),
 //				ContactGroups: pulumi.StringArray{
-//					defaultAlarmContactGroup.ID(),
+//					_default.ID(),
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudmonitor.NewServiceGroupMonitoringAgentProcess(ctx, "defaultServiceGroupMonitoringAgentProcess", &cloudmonitor.ServiceGroupMonitoringAgentProcessArgs{
+//			_, err = cloudmonitor.NewServiceGroupMonitoringAgentProcess(ctx, "default", &cloudmonitor.ServiceGroupMonitoringAgentProcessArgs{
 //				GroupId:                    defaultMonitorGroup.ID(),
 //				ProcessName:                pulumi.String(name),
 //				MatchExpressFilterRelation: pulumi.String("or"),

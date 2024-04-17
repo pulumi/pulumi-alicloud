@@ -28,24 +28,31 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "NetworkAclEntries";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/12"});
- * const defaultNetworkAcl = new alicloud.vpc.NetworkAcl("defaultNetworkAcl", {vpcId: defaultNetwork.id});
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     name: name,
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const defaultNetworkAcl = new alicloud.vpc.NetworkAcl("default", {
+ *     vpcId: defaultNetwork.id,
+ *     name: name,
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     name: name,
  * });
- * const defaultNetworkAclAttachment = new alicloud.vpc.NetworkAclAttachment("defaultNetworkAclAttachment", {
+ * const defaultNetworkAclAttachment = new alicloud.vpc.NetworkAclAttachment("default", {
  *     networkAclId: defaultNetworkAcl.id,
  *     resources: [{
  *         resourceId: defaultSwitch.id,
  *         resourceType: "VSwitch",
  *     }],
  * });
- * const defaultNetworkAclEntries = new alicloud.vpc.NetworkAclEntries("defaultNetworkAclEntries", {
+ * const defaultNetworkAclEntries = new alicloud.vpc.NetworkAclEntries("default", {
  *     networkAclId: defaultNetworkAcl.id,
  *     ingresses: [{
  *         protocol: "all",

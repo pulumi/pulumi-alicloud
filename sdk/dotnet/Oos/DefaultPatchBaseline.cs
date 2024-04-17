@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.Oos
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultPatchBaseline = new AliCloud.Oos.PatchBaseline("defaultPatchBaseline", new()
+    ///     var @default = new AliCloud.Oos.PatchBaseline("default", new()
     ///     {
     ///         OperationSystem = "Windows",
     ///         PatchBaselineName = "terraform-example",
@@ -37,9 +37,9 @@ namespace Pulumi.AliCloud.Oos
     ///         ApprovalRules = "{\"PatchRules\":[{\"PatchFilterGroup\":[{\"Key\":\"PatchSet\",\"Values\":[\"OS\"]},{\"Key\":\"ProductFamily\",\"Values\":[\"Windows\"]},{\"Key\":\"Product\",\"Values\":[\"Windows 10\",\"Windows 7\"]},{\"Key\":\"Classification\",\"Values\":[\"Security Updates\",\"Updates\",\"Update Rollups\",\"Critical Updates\"]},{\"Key\":\"Severity\",\"Values\":[\"Critical\",\"Important\",\"Moderate\"]}],\"ApproveAfterDays\":7,\"EnableNonSecurity\":true,\"ComplianceLevel\":\"Medium\"}]}",
     ///     });
     /// 
-    ///     var defaultDefaultPatchBaseline = new AliCloud.Oos.DefaultPatchBaseline("defaultDefaultPatchBaseline", new()
+    ///     var defaultDefaultPatchBaseline = new AliCloud.Oos.DefaultPatchBaseline("default", new()
     ///     {
-    ///         PatchBaselineName = defaultPatchBaseline.Id,
+    ///         PatchBaselineName = @default.Id,
     ///     });
     /// 
     /// });

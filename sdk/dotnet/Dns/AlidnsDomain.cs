@@ -27,15 +27,15 @@ namespace Pulumi.AliCloud.Dns
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultDomainGroup = new AliCloud.Dns.DomainGroup("defaultDomainGroup", new()
+    ///     var @default = new AliCloud.Dns.DomainGroup("default", new()
     ///     {
     ///         DomainGroupName = "tf-example",
     ///     });
     /// 
-    ///     var defaultAlidnsDomain = new AliCloud.Dns.AlidnsDomain("defaultAlidnsDomain", new()
+    ///     var defaultAlidnsDomain = new AliCloud.Dns.AlidnsDomain("default", new()
     ///     {
     ///         DomainName = "starmove.com",
-    ///         GroupId = defaultDomainGroup.Id,
+    ///         GroupId = @default.Id,
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },

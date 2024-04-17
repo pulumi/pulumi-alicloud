@@ -22,21 +22,25 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {cidrBlock: "172.16.0.0/12"});
+ * const foo = new alicloud.vpc.Network("foo", {
+ *     cidrBlock: "172.16.0.0/12",
+ *     name: name,
+ * });
  * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
- *     vpcId: fooNetwork.id,
+ * const fooSwitch = new alicloud.vpc.Switch("foo", {
+ *     vpcId: foo.id,
  *     cidrBlock: "172.16.0.0/21",
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     name: name,
  * });
- * const fooRouteTable = new alicloud.vpc.RouteTable("fooRouteTable", {
- *     vpcId: fooNetwork.id,
+ * const fooRouteTable = new alicloud.vpc.RouteTable("foo", {
+ *     vpcId: foo.id,
  *     routeTableName: name,
  *     description: "route_table_attachment",
  * });
- * const fooRouteTableAttachment = new alicloud.vpc.RouteTableAttachment("fooRouteTableAttachment", {
+ * const fooRouteTableAttachment = new alicloud.vpc.RouteTableAttachment("foo", {
  *     vswitchId: fooSwitch.id,
  *     routeTableId: fooRouteTable.id,
  * });

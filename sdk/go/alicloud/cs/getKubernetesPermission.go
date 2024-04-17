@@ -31,17 +31,19 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultUsers, err := ram.GetUsers(ctx, nil, nil)
+//			// Declare the data source
+//			_default, err := ram.GetUsers(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultKubernetesPermission, err := cs.LookupKubernetesPermission(ctx, &cs.LookupKubernetesPermissionArgs{
-//				Uid: defaultUsers.Users[0].Id,
+//			// permissions
+//			defaultGetKubernetesPermission, err := cs.LookupKubernetesPermission(ctx, &cs.LookupKubernetesPermissionArgs{
+//				Uid: _default.Users[0].Id,
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("permissions", defaultKubernetesPermission.Permissions)
+//			ctx.Export("permissions", defaultGetKubernetesPermission.Permissions)
 //			return nil
 //		})
 //	}

@@ -37,24 +37,26 @@ namespace Pulumi.AliCloud.Vpc
     ///         CidrBlock = "192.168.0.0/24",
     ///     });
     /// 
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
     ///     var vswitch = new AliCloud.Vpc.Switch("vswitch", new()
     ///     {
+    ///         Name = name,
     ///         CidrBlock = "192.168.0.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         VpcId = vpc.Id,
     ///     });
     /// 
     ///     var @group = new AliCloud.Ecs.SecurityGroup("group", new()
     ///     {
+    ///         Name = name,
     ///         VpcId = vpc.Id,
     ///     });
     /// 
-    ///     var defaultNetworkInterface = new AliCloud.Vpc.NetworkInterface("defaultNetworkInterface", new()
+    ///     var defaultNetworkInterface = new AliCloud.Vpc.NetworkInterface("default", new()
     ///     {
     ///         NetworkInterfaceName = name,
     ///         VswitchId = vswitch.Id,

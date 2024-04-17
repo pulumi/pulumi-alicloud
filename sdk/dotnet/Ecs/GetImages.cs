@@ -28,8 +28,8 @@ namespace Pulumi.AliCloud.Ecs
         /// {
         ///     var imagesDs = AliCloud.Ecs.GetImages.Invoke(new()
         ///     {
-        ///         NameRegex = "^centos_6",
         ///         Owners = "system",
+        ///         NameRegex = "^centos_6",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -60,8 +60,8 @@ namespace Pulumi.AliCloud.Ecs
         /// {
         ///     var imagesDs = AliCloud.Ecs.GetImages.Invoke(new()
         ///     {
-        ///         NameRegex = "^centos_6",
         ///         Owners = "system",
+        ///         NameRegex = "^centos_6",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

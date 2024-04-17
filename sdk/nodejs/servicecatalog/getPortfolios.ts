@@ -19,8 +19,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.servicecatalog.getPortfolios({
- *     ids: [alicloud_service_catalog_portfolio["default"].id],
- *     nameRegex: alicloud_service_catalog_portfolio["default"].name,
+ *     ids: [defaultAlicloudServiceCatalogPortfolio.id],
+ *     nameRegex: defaultAlicloudServiceCatalogPortfolio.name,
  * });
  * export const alicloudServiceCatalogPortfolioExampleId = _default.then(_default => _default.portfolios?.[0]?.id);
  * ```
@@ -121,8 +121,8 @@ export interface GetPortfoliosResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.servicecatalog.getPortfolios({
- *     ids: [alicloud_service_catalog_portfolio["default"].id],
- *     nameRegex: alicloud_service_catalog_portfolio["default"].name,
+ *     ids: [defaultAlicloudServiceCatalogPortfolio.id],
+ *     nameRegex: defaultAlicloudServiceCatalogPortfolio.name,
  * });
  * export const alicloudServiceCatalogPortfolioExampleId = _default.then(_default => _default.portfolios?.[0]?.id);
  * ```

@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *         var example = new Network(&#34;example&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
  *             .cidrBlock(&#34;10.4.0.0/16&#34;)
  *             .build());
@@ -76,12 +76,12 @@ import javax.annotation.Nullable;
  *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
  *             .vswitchName(name)
  *             .cidrBlock(&#34;10.4.0.0/24&#34;)
- *             .vpcId(exampleNetwork.id())
+ *             .vpcId(example.id())
  *             .zoneId(default_.zones()[0].id())
  *             .build());
  * 
  *         var exampleNetworkAcl = new NetworkAcl(&#34;exampleNetworkAcl&#34;, NetworkAclArgs.builder()        
- *             .vpcId(exampleNetwork.id())
+ *             .vpcId(example.id())
  *             .networkAclName(name)
  *             .description(name)
  *             .ingressAclEntries(NetworkAclIngressAclEntryArgs.builder()

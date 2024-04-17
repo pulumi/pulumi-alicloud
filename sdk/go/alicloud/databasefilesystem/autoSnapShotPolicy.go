@@ -36,13 +36,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := databasefilesystem.NewAutoSnapShotPolicy(ctx, "default", &databasefilesystem.AutoSnapShotPolicyArgs{
-//				PolicyName: pulumi.String("tf-example"),
-//				RepeatWeekdays: pulumi.StringArray{
-//					pulumi.String("2"),
-//				},
-//				RetentionDays: pulumi.Int(1),
 //				TimePoints: pulumi.StringArray{
 //					pulumi.String("01"),
+//				},
+//				PolicyName:    pulumi.String("tf-example"),
+//				RetentionDays: pulumi.Int(1),
+//				RepeatWeekdays: pulumi.StringArray{
+//					pulumi.String("2"),
 //				},
 //			})
 //			if err != nil {

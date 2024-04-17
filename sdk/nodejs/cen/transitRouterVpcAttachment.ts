@@ -25,34 +25,34 @@ import * as utilities from "../utilities";
  * const default = alicloud.cen.getTransitRouterAvailableResources({});
  * const masterZone = _default.then(_default => _default.resources?.[0]?.masterZones?.[0]);
  * const slaveZone = _default.then(_default => _default.resources?.[0]?.slaveZones?.[1]);
- * const exampleNetwork = new alicloud.vpc.Network("exampleNetwork", {
+ * const example = new alicloud.vpc.Network("example", {
  *     vpcName: name,
  *     cidrBlock: "192.168.0.0/16",
  * });
- * const exampleMaster = new alicloud.vpc.Switch("exampleMaster", {
+ * const exampleMaster = new alicloud.vpc.Switch("example_master", {
  *     vswitchName: name,
  *     cidrBlock: "192.168.1.0/24",
- *     vpcId: exampleNetwork.id,
+ *     vpcId: example.id,
  *     zoneId: masterZone,
  * });
- * const exampleSlave = new alicloud.vpc.Switch("exampleSlave", {
+ * const exampleSlave = new alicloud.vpc.Switch("example_slave", {
  *     vswitchName: name,
  *     cidrBlock: "192.168.2.0/24",
- *     vpcId: exampleNetwork.id,
+ *     vpcId: example.id,
  *     zoneId: slaveZone,
  * });
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ * const exampleInstance = new alicloud.cen.Instance("example", {
  *     cenInstanceName: name,
  *     protectionLevel: "REDUCED",
  * });
- * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("example", {
  *     transitRouterName: name,
  *     cenId: exampleInstance.id,
  * });
- * const exampleTransitRouterVpcAttachment = new alicloud.cen.TransitRouterVpcAttachment("exampleTransitRouterVpcAttachment", {
+ * const exampleTransitRouterVpcAttachment = new alicloud.cen.TransitRouterVpcAttachment("example", {
  *     cenId: exampleInstance.id,
  *     transitRouterId: exampleTransitRouter.transitRouterId,
- *     vpcId: exampleNetwork.id,
+ *     vpcId: example.id,
  *     zoneMappings: [
  *         {
  *             zoneId: masterZone,

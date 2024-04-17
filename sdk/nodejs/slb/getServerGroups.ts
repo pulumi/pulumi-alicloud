@@ -18,25 +18,25 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "slbservergroups";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/16",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
+ * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("default", {
  *     loadBalancerName: name,
  *     vswitchId: defaultSwitch.id,
  * });
- * const defaultServerGroup = new alicloud.slb.ServerGroup("defaultServerGroup", {loadBalancerId: defaultApplicationLoadBalancer.id});
+ * const defaultServerGroup = new alicloud.slb.ServerGroup("default", {loadBalancerId: defaultApplicationLoadBalancer.id});
  * const sampleDs = alicloud.slb.getServerGroupsOutput({
  *     loadBalancerId: defaultApplicationLoadBalancer.id,
  * });
@@ -113,25 +113,25 @@ export interface GetServerGroupsResult {
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "slbservergroups";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/16",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
+ * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("default", {
  *     loadBalancerName: name,
  *     vswitchId: defaultSwitch.id,
  * });
- * const defaultServerGroup = new alicloud.slb.ServerGroup("defaultServerGroup", {loadBalancerId: defaultApplicationLoadBalancer.id});
+ * const defaultServerGroup = new alicloud.slb.ServerGroup("default", {loadBalancerId: defaultApplicationLoadBalancer.id});
  * const sampleDs = alicloud.slb.getServerGroupsOutput({
  *     loadBalancerId: defaultApplicationLoadBalancer.id,
  * });

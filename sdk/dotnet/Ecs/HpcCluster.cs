@@ -31,6 +31,7 @@ namespace Pulumi.AliCloud.Ecs
     /// {
     ///     var example = new AliCloud.Ecs.HpcCluster("example", new()
     ///     {
+    ///         Name = "tf-testAcc",
     ///         Description = "For Terraform Test",
     ///     });
     /// 

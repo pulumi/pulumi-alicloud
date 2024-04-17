@@ -32,8 +32,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.fc.Service;
  * import com.pulumi.alicloud.fc.ServiceArgs;
  * import com.pulumi.alicloud.fc.Alias;
@@ -51,12 +51,13 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
  *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
+ *             .name(String.format(&#34;example-value-%s&#34;, default_.result()))
  *             .description(&#34;example-value&#34;)
  *             .publish(&#34;true&#34;)
  *             .build());

@@ -102,6 +102,7 @@ def get_zones(multi: Optional[bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     zones_ids = alicloud.adb.get_zones()
     ```
     <!--End PulumiCodeChooser -->
@@ -140,6 +141,7 @@ def get_zones_output(multi: Optional[pulumi.Input[Optional[bool]]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     zones_ids = alicloud.adb.get_zones()
     ```
     <!--End PulumiCodeChooser -->

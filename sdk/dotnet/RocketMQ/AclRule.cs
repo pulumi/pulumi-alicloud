@@ -33,11 +33,14 @@ namespace Pulumi.AliCloud.RocketMQ
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var defaultAcl = new AliCloud.RocketMQ.Acl("defaultAcl");
-    /// 
-    ///     var defaultAclRule = new AliCloud.RocketMQ.AclRule("defaultAclRule", new()
+    ///     var @default = new AliCloud.RocketMQ.Acl("default", new()
     ///     {
-    ///         AclId = defaultAcl.Id,
+    ///         Name = name,
+    ///     });
+    /// 
+    ///     var defaultAclRule = new AliCloud.RocketMQ.AclRule("default", new()
+    ///     {
+    ///         AclId = @default.Id,
     ///         Description = name,
     ///         Policy = "accept",
     ///         IpProtocol = "ALL",

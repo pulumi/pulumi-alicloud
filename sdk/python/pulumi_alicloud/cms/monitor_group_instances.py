@@ -119,17 +119,17 @@ class MonitorGroupInstances(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="192.168.0.0/16")
-        default_monitor_group = alicloud.cms.MonitorGroup("defaultMonitorGroup", monitor_group_name=name)
-        default_regions = alicloud.get_regions(current=True)
+        default_monitor_group = alicloud.cms.MonitorGroup("default", monitor_group_name=name)
+        default = alicloud.get_regions(current=True)
         example = alicloud.cms.MonitorGroupInstances("example",
             group_id=default_monitor_group.id,
             instances=[alicloud.cms.MonitorGroupInstancesInstanceArgs(
                 instance_id=default_network.id,
                 instance_name=name,
-                region_id=default_regions.regions[0].id,
+                region_id=default.regions[0].id,
                 category="vpc",
             )])
         ```
@@ -174,17 +174,17 @@ class MonitorGroupInstances(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf_example"
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="192.168.0.0/16")
-        default_monitor_group = alicloud.cms.MonitorGroup("defaultMonitorGroup", monitor_group_name=name)
-        default_regions = alicloud.get_regions(current=True)
+        default_monitor_group = alicloud.cms.MonitorGroup("default", monitor_group_name=name)
+        default = alicloud.get_regions(current=True)
         example = alicloud.cms.MonitorGroupInstances("example",
             group_id=default_monitor_group.id,
             instances=[alicloud.cms.MonitorGroupInstancesInstanceArgs(
                 instance_id=default_network.id,
                 instance_name=name,
-                region_id=default_regions.regions[0].id,
+                region_id=default.regions[0].id,
                 category="vpc",
             )])
         ```

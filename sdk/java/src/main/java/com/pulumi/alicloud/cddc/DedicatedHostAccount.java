@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
- *         final var defaultZones = CddcFunctions.getZones();
+ *         final var default = CddcFunctions.getZones();
  * 
  *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
@@ -74,7 +74,7 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock(&#34;10.4.0.0/24&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *             .zoneId(default_.ids()[0])
  *             .build());
  * 
  *         var defaultDedicatedHostGroup = new DedicatedHostGroup(&#34;defaultDedicatedHostGroup&#34;, DedicatedHostGroupArgs.builder()        
@@ -89,17 +89,17 @@ import javax.annotation.Nullable;
  *             .openPermission(true)
  *             .build());
  * 
- *         final var defaultHostEcsLevelInfos = CddcFunctions.getHostEcsLevelInfos(GetHostEcsLevelInfosArgs.builder()
+ *         final var defaultGetHostEcsLevelInfos = CddcFunctions.getHostEcsLevelInfos(GetHostEcsLevelInfosArgs.builder()
  *             .dbType(&#34;mysql&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *             .zoneId(default_.ids()[0])
  *             .storageType(&#34;cloud_essd&#34;)
  *             .build());
  * 
  *         var defaultDedicatedHost = new DedicatedHost(&#34;defaultDedicatedHost&#34;, DedicatedHostArgs.builder()        
  *             .hostName(name)
  *             .dedicatedHostGroupId(defaultDedicatedHostGroup.id())
- *             .hostClass(defaultHostEcsLevelInfos.applyValue(getHostEcsLevelInfosResult -&gt; getHostEcsLevelInfosResult.infos()[0].resClassCode()))
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *             .hostClass(defaultGetHostEcsLevelInfos.applyValue(getHostEcsLevelInfosResult -&gt; getHostEcsLevelInfosResult.infos()[0].resClassCode()))
+ *             .zoneId(default_.ids()[0])
  *             .vswitchId(defaultSwitch.id())
  *             .paymentType(&#34;Subscription&#34;)
  *             .tags(Map.ofEntries(

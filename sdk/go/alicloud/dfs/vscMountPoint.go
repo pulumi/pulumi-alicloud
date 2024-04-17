@@ -44,25 +44,23 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultZones, err := dfs.GetZones(ctx, nil, nil)
+//			_default, err := dfs.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			zoneId := defaultZones.Zones[0].ZoneId
-//			storageType := defaultZones.Zones[0].Options[0].StorageType
-//			_, err = dfs.NewFileSystem(ctx, "defaultFileSystem", &dfs.FileSystemArgs{
-//				ProtocolType: pulumi.String("HDFS"),
-//				Description:  pulumi.String(name),
-//				FileSystemName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
+//			zoneId := _default.Zones[0].ZoneId
+//			storageType := _default.Zones[0].Options[0].StorageType
+//			_, err = dfs.NewFileSystem(ctx, "default", &dfs.FileSystemArgs{
+//				ProtocolType:                 pulumi.String("HDFS"),
+//				Description:                  pulumi.String(name),
+//				FileSystemName:               pulumi.String(fmt.Sprintf("%v-%v", name, defaultInteger.Result)),
 //				SpaceCapacity:                pulumi.Int(1024),
 //				ThroughputMode:               pulumi.String("Provisioned"),
 //				ProvisionedThroughputInMiBps: pulumi.Int(512),

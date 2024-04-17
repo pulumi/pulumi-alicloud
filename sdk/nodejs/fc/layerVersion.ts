@@ -15,13 +15,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const _default = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
- * const defaultBucket = new alicloud.oss.Bucket("defaultBucket", {bucket: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`});
+ * const defaultBucket = new alicloud.oss.Bucket("default", {bucket: `terraform-example-${_default.result}`});
  * // If you upload the function by OSS Bucket, you need to specify path can't upload by content.
- * const defaultBucketObject = new alicloud.oss.BucketObject("defaultBucketObject", {
+ * const defaultBucketObject = new alicloud.oss.BucketObject("default", {
  *     bucket: defaultBucket.id,
  *     key: "index.py",
  *     content: `import logging 
@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  * return 'hello world'`,
  * });
  * const example = new alicloud.fc.LayerVersion("example", {
- *     layerName: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`,
+ *     layerName: `terraform-example-${_default.result}`,
  *     compatibleRuntimes: ["python2.7"],
  *     ossBucketName: defaultBucket.bucket,
  *     ossObjectName: defaultBucketObject.key,

@@ -29,16 +29,16 @@ namespace Pulumi.AliCloud.Eds
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultSimpleOfficeSites = AliCloud.Eds.GetSimpleOfficeSites.Invoke(new()
+    ///     var @default = AliCloud.Eds.GetSimpleOfficeSites.Invoke(new()
     ///     {
     ///         Status = "REGISTERED",
     ///         NameRegex = "default",
     ///     });
     /// 
-    ///     var defaultNetworkPackage = new AliCloud.Eds.NetworkPackage("defaultNetworkPackage", new()
+    ///     var defaultNetworkPackage = new AliCloud.Eds.NetworkPackage("default", new()
     ///     {
     ///         Bandwidth = 10,
-    ///         OfficeSiteId = defaultSimpleOfficeSites.Apply(getSimpleOfficeSitesResult =&gt; getSimpleOfficeSitesResult.Ids[0]),
+    ///         OfficeSiteId = @default.Apply(@default =&gt; @default.Apply(getSimpleOfficeSitesResult =&gt; getSimpleOfficeSitesResult.Ids[0])),
     ///     });
     /// 
     /// });

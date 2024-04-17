@@ -62,7 +62,7 @@ public final class FcFunctions {
      *             .nameRegex(&#34;sample_fc_custom_domain&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcCustomDomainName&#34;, data.alicloud_fc_custom_domains().fc_domains_ds().domains()[0].domain_name());
+     *         ctx.export(&#34;firstFcCustomDomainName&#34;, fcDomainsDs.domains()[0].domainName());
      *     }
      * }
      * ```
@@ -105,7 +105,7 @@ public final class FcFunctions {
      *             .nameRegex(&#34;sample_fc_custom_domain&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcCustomDomainName&#34;, data.alicloud_fc_custom_domains().fc_domains_ds().domains()[0].domain_name());
+     *         ctx.export(&#34;firstFcCustomDomainName&#34;, fcDomainsDs.domains()[0].domainName());
      *     }
      * }
      * ```
@@ -148,7 +148,7 @@ public final class FcFunctions {
      *             .nameRegex(&#34;sample_fc_custom_domain&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcCustomDomainName&#34;, data.alicloud_fc_custom_domains().fc_domains_ds().domains()[0].domain_name());
+     *         ctx.export(&#34;firstFcCustomDomainName&#34;, fcDomainsDs.domains()[0].domainName());
      *     }
      * }
      * ```
@@ -191,7 +191,7 @@ public final class FcFunctions {
      *             .nameRegex(&#34;sample_fc_custom_domain&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcCustomDomainName&#34;, data.alicloud_fc_custom_domains().fc_domains_ds().domains()[0].domain_name());
+     *         ctx.export(&#34;firstFcCustomDomainName&#34;, fcDomainsDs.domains()[0].domainName());
      *     }
      * }
      * ```
@@ -234,7 +234,7 @@ public final class FcFunctions {
      *             .nameRegex(&#34;sample_fc_custom_domain&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcCustomDomainName&#34;, data.alicloud_fc_custom_domains().fc_domains_ds().domains()[0].domain_name());
+     *         ctx.export(&#34;firstFcCustomDomainName&#34;, fcDomainsDs.domains()[0].domainName());
      *     }
      * }
      * ```
@@ -277,7 +277,7 @@ public final class FcFunctions {
      *             .nameRegex(&#34;sample_fc_custom_domain&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstFcCustomDomainName&#34;, data.alicloud_fc_custom_domains().fc_domains_ds().domains()[0].domain_name());
+     *         ctx.export(&#34;firstFcCustomDomainName&#34;, fcDomainsDs.domains()[0].domainName());
      *     }
      * }
      * ```
@@ -315,8 +315,8 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var functionsDs = FcFunctions.getFunctions(GetFunctionsArgs.builder()
-     *             .nameRegex(&#34;sample_fc_function&#34;)
      *             .serviceName(&#34;sample_service&#34;)
+     *             .nameRegex(&#34;sample_fc_function&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstFcFunctionName&#34;, functionsDs.applyValue(getFunctionsResult -&gt; getFunctionsResult.functions()[0].name()));
@@ -357,8 +357,8 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var functionsDs = FcFunctions.getFunctions(GetFunctionsArgs.builder()
-     *             .nameRegex(&#34;sample_fc_function&#34;)
      *             .serviceName(&#34;sample_service&#34;)
+     *             .nameRegex(&#34;sample_fc_function&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstFcFunctionName&#34;, functionsDs.applyValue(getFunctionsResult -&gt; getFunctionsResult.functions()[0].name()));
@@ -399,8 +399,8 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var functionsDs = FcFunctions.getFunctions(GetFunctionsArgs.builder()
-     *             .nameRegex(&#34;sample_fc_function&#34;)
      *             .serviceName(&#34;sample_service&#34;)
+     *             .nameRegex(&#34;sample_fc_function&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstFcFunctionName&#34;, functionsDs.applyValue(getFunctionsResult -&gt; getFunctionsResult.functions()[0].name()));
@@ -441,8 +441,8 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var functionsDs = FcFunctions.getFunctions(GetFunctionsArgs.builder()
-     *             .nameRegex(&#34;sample_fc_function&#34;)
      *             .serviceName(&#34;sample_service&#34;)
+     *             .nameRegex(&#34;sample_fc_function&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstFcFunctionName&#34;, functionsDs.applyValue(getFunctionsResult -&gt; getFunctionsResult.functions()[0].name()));
@@ -993,9 +993,9 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fcTriggersDs = FcFunctions.getTriggers(GetTriggersArgs.builder()
+     *             .serviceName(&#34;sample_service&#34;)
      *             .functionName(&#34;sample_function&#34;)
      *             .nameRegex(&#34;sample_fc_trigger&#34;)
-     *             .serviceName(&#34;sample_service&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstFcTriggerName&#34;, fcTriggersDs.applyValue(getTriggersResult -&gt; getTriggersResult.triggers()[0].name()));
@@ -1036,9 +1036,9 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fcTriggersDs = FcFunctions.getTriggers(GetTriggersArgs.builder()
+     *             .serviceName(&#34;sample_service&#34;)
      *             .functionName(&#34;sample_function&#34;)
      *             .nameRegex(&#34;sample_fc_trigger&#34;)
-     *             .serviceName(&#34;sample_service&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstFcTriggerName&#34;, fcTriggersDs.applyValue(getTriggersResult -&gt; getTriggersResult.triggers()[0].name()));
@@ -1079,9 +1079,9 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fcTriggersDs = FcFunctions.getTriggers(GetTriggersArgs.builder()
+     *             .serviceName(&#34;sample_service&#34;)
      *             .functionName(&#34;sample_function&#34;)
      *             .nameRegex(&#34;sample_fc_trigger&#34;)
-     *             .serviceName(&#34;sample_service&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstFcTriggerName&#34;, fcTriggersDs.applyValue(getTriggersResult -&gt; getTriggersResult.triggers()[0].name()));
@@ -1122,9 +1122,9 @@ public final class FcFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var fcTriggersDs = FcFunctions.getTriggers(GetTriggersArgs.builder()
+     *             .serviceName(&#34;sample_service&#34;)
      *             .functionName(&#34;sample_function&#34;)
      *             .nameRegex(&#34;sample_fc_trigger&#34;)
-     *             .serviceName(&#34;sample_service&#34;)
      *             .build());
      * 
      *         ctx.export(&#34;firstFcTriggerName&#34;, fcTriggersDs.applyValue(getTriggersResult -&gt; getTriggersResult.triggers()[0].name()));
@@ -1166,6 +1166,7 @@ public final class FcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = FcFunctions.getZones();
      * 
      *     }
@@ -1206,6 +1207,7 @@ public final class FcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = FcFunctions.getZones();
      * 
      *     }
@@ -1246,6 +1248,7 @@ public final class FcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = FcFunctions.getZones();
      * 
      *     }
@@ -1286,6 +1289,7 @@ public final class FcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = FcFunctions.getZones();
      * 
      *     }
@@ -1326,6 +1330,7 @@ public final class FcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = FcFunctions.getZones();
      * 
      *     }
@@ -1366,6 +1371,7 @@ public final class FcFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = FcFunctions.getZones();
      * 
      *     }

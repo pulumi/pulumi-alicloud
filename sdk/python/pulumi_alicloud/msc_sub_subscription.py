@@ -355,10 +355,10 @@ class MscSubSubscription(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.MscSubSubscription("example",
-            email_status=1,
             item_name="Notifications of Product Expiration",
-            pmsg_status=1,
             sms_status=1,
+            email_status=1,
+            pmsg_status=1,
             tts_status=1,
             webhook_status=0)
         ```
@@ -407,10 +407,10 @@ class MscSubSubscription(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.MscSubSubscription("example",
-            email_status=1,
             item_name="Notifications of Product Expiration",
-            pmsg_status=1,
             sms_status=1,
+            email_status=1,
+            pmsg_status=1,
             tts_status=1,
             webhook_status=0)
         ```

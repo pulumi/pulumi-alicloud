@@ -42,17 +42,17 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultAccounts, err := resourcemanager.GetAccounts(ctx, &resourcemanager.GetAccountsArgs{
+//			_default, err := resourcemanager.GetAccounts(ctx, &resourcemanager.GetAccountsArgs{
 //				Status: pulumi.StringRef("CreateSuccess"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cfg.NewAggregator(ctx, "defaultAggregator", &cfg.AggregatorArgs{
+//			_, err = cfg.NewAggregator(ctx, "default", &cfg.AggregatorArgs{
 //				AggregatorAccounts: cfg.AggregatorAggregatorAccountArray{
 //					&cfg.AggregatorAggregatorAccountArgs{
-//						AccountId:   pulumi.String(defaultAccounts.Accounts[0].AccountId),
-//						AccountName: pulumi.String(defaultAccounts.Accounts[0].DisplayName),
+//						AccountId:   pulumi.String(_default.Accounts[0].AccountId),
+//						AccountName: pulumi.String(_default.Accounts[0].DisplayName),
 //						AccountType: pulumi.String("ResourceDirectory"),
 //					},
 //				},

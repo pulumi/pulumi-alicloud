@@ -25,19 +25,19 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+    ///     var @default = AliCloud.GetZones.Invoke(new()
     ///     {
     ///         AvailableResourceCreation = "VSwitch",
     ///     });
     /// 
-    ///     var defaultInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+    ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
     ///     {
-    ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
     ///         CpuCoreCount = 1,
     ///         MemorySize = 2,
     ///     });
     /// 
-    ///     var defaultImages = AliCloud.Ecs.GetImages.Invoke(new()
+    ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
     ///     {
     ///         NameRegex = "^ubuntu_18.*64",
     ///         MostRecent = true,
@@ -46,24 +46,25 @@ namespace Pulumi.AliCloud.Vpc
     /// 
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "RouteEntryConfig";
-    ///     var fooNetwork = new AliCloud.Vpc.Network("fooNetwork", new()
+    ///     var foo = new AliCloud.Vpc.Network("foo", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.1.0.0/21",
     ///     });
     /// 
-    ///     var fooSwitch = new AliCloud.Vpc.Switch("fooSwitch", new()
+    ///     var fooSwitch = new AliCloud.Vpc.Switch("foo", new()
     ///     {
-    ///         VpcId = fooNetwork.Id,
+    ///         VpcId = foo.Id,
     ///         CidrBlock = "10.1.1.0/24",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
     ///         VswitchName = name,
     ///     });
     /// 
-    ///     var tfTestFoo = new AliCloud.Ecs.SecurityGroup("tfTestFoo", new()
+    ///     var tfTestFoo = new AliCloud.Ecs.SecurityGroup("tf_test_foo", new()
     ///     {
+    ///         Name = name,
     ///         Description = "foo",
-    ///         VpcId = fooNetwork.Id,
+    ///         VpcId = foo.Id,
     ///     });
     /// 
     ///     var ingress = new AliCloud.Ecs.SecurityGroupRule("ingress", new()
@@ -78,7 +79,7 @@ namespace Pulumi.AliCloud.Vpc
     ///         CidrIp = "0.0.0.0/0",
     ///     });
     /// 
-    ///     var fooInstance = new AliCloud.Ecs.Instance("fooInstance", new()
+    ///     var fooInstance = new AliCloud.Ecs.Instance("foo", new()
     ///     {
     ///         SecurityGroups = new[]
     ///         {
@@ -86,17 +87,17 @@ namespace Pulumi.AliCloud.Vpc
     ///         },
     ///         VswitchId = fooSwitch.Id,
     ///         InstanceChargeType = "PostPaid",
-    ///         InstanceType = defaultInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+    ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
     ///         InternetChargeType = "PayByTraffic",
     ///         InternetMaxBandwidthOut = 5,
     ///         SystemDiskCategory = "cloud_efficiency",
-    ///         ImageId = defaultImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+    ///         ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
     ///         InstanceName = name,
     ///     });
     /// 
-    ///     var fooRouteEntry = new AliCloud.Vpc.RouteEntry("fooRouteEntry", new()
+    ///     var fooRouteEntry = new AliCloud.Vpc.RouteEntry("foo", new()
     ///     {
-    ///         RouteTableId = fooNetwork.RouteTableId,
+    ///         RouteTableId = foo.RouteTableId,
     ///         DestinationCidrblock = "172.11.1.1/32",
     ///         NexthopType = "Instance",
     ///         NexthopId = fooInstance.Id,

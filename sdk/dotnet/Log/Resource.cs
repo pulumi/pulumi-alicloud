@@ -31,6 +31,8 @@ namespace Pulumi.AliCloud.Log
     /// {
     ///     var example = new AliCloud.Log.Resource("example", new()
     ///     {
+    ///         Type = "userdefine",
+    ///         Name = "user.tf.resource",
     ///         Description = "user tf resource desc",
     ///         ExtInfo = "{}",
     ///         Schema = @"    {
@@ -52,9 +54,7 @@ namespace Pulumi.AliCloud.Log
     ///         }
     ///       ]
     ///     }
-    ///   
     /// ",
-    ///         Type = "userdefine",
     ///     });
     /// 
     /// });

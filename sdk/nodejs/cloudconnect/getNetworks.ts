@@ -20,13 +20,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultNetworks = alicloud.cloudconnect.getNetworks({
- *     ids: [alicloud_cloud_connect_networks["default"].id],
+ * const default = alicloud.cloudconnect.getNetworks({
+ *     ids: [defaultAlicloudCloudConnectNetworks.id],
  *     nameRegex: "^tf-testAcc.*",
  * });
- * const defaultNetwork = new alicloud.cloudconnect.Network("defaultNetwork", {
- *     cidrBlock: "192.168.0.0/24",
+ * const defaultNetwork = new alicloud.cloudconnect.Network("default", {
+ *     name: "tf-testAccCloudConnectNetworkName",
  *     description: "tf-testAccCloudConnectNetworkDescription",
+ *     cidrBlock: "192.168.0.0/24",
  *     isDefault: true,
  * });
  * ```
@@ -95,13 +96,14 @@ export interface GetNetworksResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultNetworks = alicloud.cloudconnect.getNetworks({
- *     ids: [alicloud_cloud_connect_networks["default"].id],
+ * const default = alicloud.cloudconnect.getNetworks({
+ *     ids: [defaultAlicloudCloudConnectNetworks.id],
  *     nameRegex: "^tf-testAcc.*",
  * });
- * const defaultNetwork = new alicloud.cloudconnect.Network("defaultNetwork", {
- *     cidrBlock: "192.168.0.0/24",
+ * const defaultNetwork = new alicloud.cloudconnect.Network("default", {
+ *     name: "tf-testAccCloudConnectNetworkName",
  *     description: "tf-testAccCloudConnectNetworkDescription",
+ *     cidrBlock: "192.168.0.0/24",
  *     isDefault: true,
  * });
  * ```

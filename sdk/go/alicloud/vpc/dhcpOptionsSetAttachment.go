@@ -41,14 +41,14 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//			example, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleDhcpOptionsSet, err := vpc.NewDhcpOptionsSet(ctx, "exampleDhcpOptionsSet", &vpc.DhcpOptionsSetArgs{
+//			exampleDhcpOptionsSet, err := vpc.NewDhcpOptionsSet(ctx, "example", &vpc.DhcpOptionsSetArgs{
 //				DhcpOptionsSetName:        pulumi.String(name),
 //				DhcpOptionsSetDescription: pulumi.String(name),
 //				DomainName:                pulumi.String("example.com"),
@@ -57,8 +57,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewDhcpOptionsSetAttachment(ctx, "exampleDhcpOptionsSetAttachment", &vpc.DhcpOptionsSetAttachmentArgs{
-//				VpcId:            exampleNetwork.ID(),
+//			_, err = vpc.NewDhcpOptionsSetAttachment(ctx, "example", &vpc.DhcpOptionsSetAttachmentArgs{
+//				VpcId:            example.ID(),
 //				DhcpOptionsSetId: exampleDhcpOptionsSet.ID(),
 //			})
 //			if err != nil {

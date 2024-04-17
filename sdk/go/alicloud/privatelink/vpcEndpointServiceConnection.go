@@ -45,13 +45,13 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			example, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleVpcEndpointService, err := privatelink.NewVpcEndpointService(ctx, "exampleVpcEndpointService", &privatelink.VpcEndpointServiceArgs{
+//			exampleVpcEndpointService, err := privatelink.NewVpcEndpointService(ctx, "example", &privatelink.VpcEndpointServiceArgs{
 //				ServiceDescription:   pulumi.String(name),
 //				ConnectBandwidth:     pulumi.Int(103),
 //				AutoAcceptConnection: pulumi.Bool(false),
@@ -59,29 +59,30 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.0.0.0/8"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.1.0.0/16"),
 //				VpcId:       exampleNetwork.ID(),
-//				ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(example.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "exampleSecurityGroup", &ecs.SecurityGroupArgs{
+//			exampleSecurityGroup, err := ecs.NewSecurityGroup(ctx, "example", &ecs.SecurityGroupArgs{
+//				Name:  pulumi.String(name),
 //				VpcId: exampleNetwork.ID(),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "exampleApplicationLoadBalancer", &slb.ApplicationLoadBalancerArgs{
+//			exampleApplicationLoadBalancer, err := slb.NewApplicationLoadBalancer(ctx, "example", &slb.ApplicationLoadBalancerArgs{
 //				LoadBalancerName: pulumi.String(name),
 //				VswitchId:        exampleSwitch.ID(),
 //				LoadBalancerSpec: pulumi.String("slb.s2.small"),
@@ -90,7 +91,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleVpcEndpointServiceResource, err := privatelink.NewVpcEndpointServiceResource(ctx, "exampleVpcEndpointServiceResource", &privatelink.VpcEndpointServiceResourceArgs{
+//			exampleVpcEndpointServiceResource, err := privatelink.NewVpcEndpointServiceResource(ctx, "example", &privatelink.VpcEndpointServiceResourceArgs{
 //				ServiceId:    exampleVpcEndpointService.ID(),
 //				ResourceId:   exampleApplicationLoadBalancer.ID(),
 //				ResourceType: pulumi.String("slb"),
@@ -98,7 +99,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleVpcEndpoint, err := privatelink.NewVpcEndpoint(ctx, "exampleVpcEndpoint", &privatelink.VpcEndpointArgs{
+//			exampleVpcEndpoint, err := privatelink.NewVpcEndpoint(ctx, "example", &privatelink.VpcEndpointArgs{
 //				ServiceId: exampleVpcEndpointServiceResource.ServiceId,
 //				SecurityGroupIds: pulumi.StringArray{
 //					exampleSecurityGroup.ID(),
@@ -109,7 +110,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = privatelink.NewVpcEndpointServiceConnection(ctx, "exampleVpcEndpointServiceConnection", &privatelink.VpcEndpointServiceConnectionArgs{
+//			_, err = privatelink.NewVpcEndpointServiceConnection(ctx, "example", &privatelink.VpcEndpointServiceConnectionArgs{
 //				EndpointId: exampleVpcEndpoint.ID(),
 //				ServiceId:  exampleVpcEndpoint.ServiceId,
 //				Bandwidth:  pulumi.Int(1024),

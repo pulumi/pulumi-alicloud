@@ -1773,8 +1773,8 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .descriptionRegex(&#34;tftest_policy&#34;)
      *             .nameRegex(&#34;tftest&#34;)
+     *             .descriptionRegex(&#34;tftest_policy&#34;)
      *             .policyType(&#34;Custom&#34;)
      *             .build());
      * 
@@ -1818,8 +1818,8 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .descriptionRegex(&#34;tftest_policy&#34;)
      *             .nameRegex(&#34;tftest&#34;)
+     *             .descriptionRegex(&#34;tftest_policy&#34;)
      *             .policyType(&#34;Custom&#34;)
      *             .build());
      * 
@@ -1863,8 +1863,8 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .descriptionRegex(&#34;tftest_policy&#34;)
      *             .nameRegex(&#34;tftest&#34;)
+     *             .descriptionRegex(&#34;tftest_policy&#34;)
      *             .policyType(&#34;Custom&#34;)
      *             .build());
      * 
@@ -1908,8 +1908,8 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .descriptionRegex(&#34;tftest_policy&#34;)
      *             .nameRegex(&#34;tftest&#34;)
+     *             .descriptionRegex(&#34;tftest_policy&#34;)
      *             .policyType(&#34;Custom&#34;)
      *             .build());
      * 
@@ -1953,8 +1953,8 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .descriptionRegex(&#34;tftest_policy&#34;)
      *             .nameRegex(&#34;tftest&#34;)
+     *             .descriptionRegex(&#34;tftest_policy&#34;)
      *             .policyType(&#34;Custom&#34;)
      *             .build());
      * 
@@ -1998,8 +1998,8 @@ public final class ResourcemanagerFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = ResourcemanagerFunctions.getPolicies(GetPoliciesArgs.builder()
-     *             .descriptionRegex(&#34;tftest_policy&#34;)
      *             .nameRegex(&#34;tftest&#34;)
+     *             .descriptionRegex(&#34;tftest_policy&#34;)
      *             .policyType(&#34;Custom&#34;)
      *             .build());
      * 
@@ -3489,7 +3489,7 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultAccounts = ResourcemanagerFunctions.getAccounts();
+     *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
      *         var defaultResourceShare = new ResourceShare(&#34;defaultResourceShare&#34;, ResourceShareArgs.builder()        
      *             .resourceShareName(name)
@@ -3497,7 +3497,7 @@ public final class ResourcemanagerFunctions {
      * 
      *         var defaultSharedTarget = new SharedTarget(&#34;defaultSharedTarget&#34;, SharedTargetArgs.builder()        
      *             .resourceShareId(defaultResourceShare.id())
-     *             .targetId(defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.ids()[0]))
+     *             .targetId(default_.ids()[0])
      *             .build());
      * 
      *         final var ids = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
@@ -3557,7 +3557,7 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultAccounts = ResourcemanagerFunctions.getAccounts();
+     *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
      *         var defaultResourceShare = new ResourceShare(&#34;defaultResourceShare&#34;, ResourceShareArgs.builder()        
      *             .resourceShareName(name)
@@ -3565,7 +3565,7 @@ public final class ResourcemanagerFunctions {
      * 
      *         var defaultSharedTarget = new SharedTarget(&#34;defaultSharedTarget&#34;, SharedTargetArgs.builder()        
      *             .resourceShareId(defaultResourceShare.id())
-     *             .targetId(defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.ids()[0]))
+     *             .targetId(default_.ids()[0])
      *             .build());
      * 
      *         final var ids = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
@@ -3625,7 +3625,7 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultAccounts = ResourcemanagerFunctions.getAccounts();
+     *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
      *         var defaultResourceShare = new ResourceShare(&#34;defaultResourceShare&#34;, ResourceShareArgs.builder()        
      *             .resourceShareName(name)
@@ -3633,7 +3633,7 @@ public final class ResourcemanagerFunctions {
      * 
      *         var defaultSharedTarget = new SharedTarget(&#34;defaultSharedTarget&#34;, SharedTargetArgs.builder()        
      *             .resourceShareId(defaultResourceShare.id())
-     *             .targetId(defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.ids()[0]))
+     *             .targetId(default_.ids()[0])
      *             .build());
      * 
      *         final var ids = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
@@ -3693,7 +3693,7 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultAccounts = ResourcemanagerFunctions.getAccounts();
+     *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
      *         var defaultResourceShare = new ResourceShare(&#34;defaultResourceShare&#34;, ResourceShareArgs.builder()        
      *             .resourceShareName(name)
@@ -3701,7 +3701,7 @@ public final class ResourcemanagerFunctions {
      * 
      *         var defaultSharedTarget = new SharedTarget(&#34;defaultSharedTarget&#34;, SharedTargetArgs.builder()        
      *             .resourceShareId(defaultResourceShare.id())
-     *             .targetId(defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.ids()[0]))
+     *             .targetId(default_.ids()[0])
      *             .build());
      * 
      *         final var ids = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
@@ -3761,7 +3761,7 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultAccounts = ResourcemanagerFunctions.getAccounts();
+     *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
      *         var defaultResourceShare = new ResourceShare(&#34;defaultResourceShare&#34;, ResourceShareArgs.builder()        
      *             .resourceShareName(name)
@@ -3769,7 +3769,7 @@ public final class ResourcemanagerFunctions {
      * 
      *         var defaultSharedTarget = new SharedTarget(&#34;defaultSharedTarget&#34;, SharedTargetArgs.builder()        
      *             .resourceShareId(defaultResourceShare.id())
-     *             .targetId(defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.ids()[0]))
+     *             .targetId(default_.ids()[0])
      *             .build());
      * 
      *         final var ids = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()
@@ -3829,7 +3829,7 @@ public final class ResourcemanagerFunctions {
      *     public static void stack(Context ctx) {
      *         final var config = ctx.config();
      *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
-     *         final var defaultAccounts = ResourcemanagerFunctions.getAccounts();
+     *         final var default = ResourcemanagerFunctions.getAccounts();
      * 
      *         var defaultResourceShare = new ResourceShare(&#34;defaultResourceShare&#34;, ResourceShareArgs.builder()        
      *             .resourceShareName(name)
@@ -3837,7 +3837,7 @@ public final class ResourcemanagerFunctions {
      * 
      *         var defaultSharedTarget = new SharedTarget(&#34;defaultSharedTarget&#34;, SharedTargetArgs.builder()        
      *             .resourceShareId(defaultResourceShare.id())
-     *             .targetId(defaultAccounts.applyValue(getAccountsResult -&gt; getAccountsResult.ids()[0]))
+     *             .targetId(default_.ids()[0])
      *             .build());
      * 
      *         final var ids = ResourcemanagerFunctions.getSharedTargets(GetSharedTargetsArgs.builder()

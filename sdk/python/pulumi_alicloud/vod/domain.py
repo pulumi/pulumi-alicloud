@@ -392,16 +392,16 @@ class Domain(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_domain = alicloud.vod.Domain("defaultDomain",
-            domain_name=default_random_integer.result.apply(lambda result: f"example-{result}.com"),
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_domain = alicloud.vod.Domain("default",
+            domain_name=f"example-{default['result']}.com",
             scope="domestic",
             sources=[alicloud.vod.DomainSourceArgs(
+                source_type="domain",
                 source_content="outin-c7405446108111ec9a7100163e0eb78b.oss-cn-beijing.aliyuncs.com",
                 source_port="443",
-                source_type="domain",
             )],
             tags={
                 "Created": "terraform",
@@ -450,16 +450,16 @@ class Domain(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default_random_integer = random.RandomInteger("defaultRandomInteger",
-            max=99999,
-            min=10000)
-        default_domain = alicloud.vod.Domain("defaultDomain",
-            domain_name=default_random_integer.result.apply(lambda result: f"example-{result}.com"),
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_domain = alicloud.vod.Domain("default",
+            domain_name=f"example-{default['result']}.com",
             scope="domestic",
             sources=[alicloud.vod.DomainSourceArgs(
+                source_type="domain",
                 source_content="outin-c7405446108111ec9a7100163e0eb78b.oss-cn-beijing.aliyuncs.com",
                 source_port="443",
-                source_type="domain",
             )],
             tags={
                 "Created": "terraform",

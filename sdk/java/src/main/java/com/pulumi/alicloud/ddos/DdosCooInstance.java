@@ -57,6 +57,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         var default_ = new DdosCooInstance(&#34;default&#34;, DdosCooInstanceArgs.builder()        
+ *             .name(name)
  *             .baseBandwidth(&#34;30&#34;)
  *             .bandwidth(&#34;30&#34;)
  *             .serviceBandwidth(&#34;100&#34;)

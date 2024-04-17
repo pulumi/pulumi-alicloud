@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ens
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultInstance = new AliCloud.Ens.Instance("defaultInstance", new()
+    ///     var @default = new AliCloud.Ens.Instance("default", new()
     ///     {
     ///         SystemDisk = new AliCloud.Ens.Inputs.InstanceSystemDiskArgs
     ///         {
@@ -50,15 +50,15 @@ namespace Pulumi.AliCloud.Ens
     ///         PeriodUnit = "Month",
     ///     });
     /// 
-    ///     var defaultSecurityGroup = new AliCloud.Ens.SecurityGroup("defaultSecurityGroup", new()
+    ///     var defaultSecurityGroup = new AliCloud.Ens.SecurityGroup("default", new()
     ///     {
     ///         Description = "InstanceSecurityGroupAttachment_Description",
     ///         SecurityGroupName = name,
     ///     });
     /// 
-    ///     var defaultInstanceSecurityGroupAttachment = new AliCloud.Ens.InstanceSecurityGroupAttachment("defaultInstanceSecurityGroupAttachment", new()
+    ///     var defaultInstanceSecurityGroupAttachment = new AliCloud.Ens.InstanceSecurityGroupAttachment("default", new()
     ///     {
-    ///         InstanceId = defaultInstance.Id,
+    ///         InstanceId = @default.Id,
     ///         SecurityGroupId = defaultSecurityGroup.Id,
     ///     });
     /// 

@@ -30,11 +30,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Declare the data source
 //			dmsEnterpriseInstancesDs, err := dms.GetEnterpriseInstances(ctx, &dms.GetEnterpriseInstancesArgs{
-//				EnvType:      pulumi.StringRef("test"),
-//				InstanceType: pulumi.StringRef("mysql"),
-//				NameRegex:    pulumi.StringRef("tf_testAcc"),
 //				NetType:      pulumi.StringRef("CLASSIC"),
+//				InstanceType: pulumi.StringRef("mysql"),
+//				EnvType:      pulumi.StringRef("test"),
+//				NameRegex:    pulumi.StringRef("tf_testAcc"),
 //				OutputFile:   pulumi.StringRef("dms_enterprise_instances.json"),
 //			}, nil)
 //			if err != nil {

@@ -30,23 +30,23 @@ namespace Pulumi.AliCloud.Vod
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
-    ///         Max = 99999,
     ///         Min = 10000,
+    ///         Max = 99999,
     ///     });
     /// 
-    ///     var defaultDomain = new AliCloud.Vod.Domain("defaultDomain", new()
+    ///     var defaultDomain = new AliCloud.Vod.Domain("default", new()
     ///     {
-    ///         DomainName = defaultRandomInteger.Result.Apply(result =&gt; $"example-{result}.com"),
+    ///         DomainName = $"example-{@default.Result}.com",
     ///         Scope = "domestic",
     ///         Sources = new[]
     ///         {
     ///             new AliCloud.Vod.Inputs.DomainSourceArgs
     ///             {
+    ///                 SourceType = "domain",
     ///                 SourceContent = "outin-c7405446108111ec9a7100163e0eb78b.oss-cn-beijing.aliyuncs.com",
     ///                 SourcePort = "443",
-    ///                 SourceType = "domain",
     ///             },
     ///         },
     ///         Tags = 

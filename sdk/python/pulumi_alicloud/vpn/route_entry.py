@@ -239,24 +239,28 @@ class RouteEntry(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.ids[0])
-        default_gateway = alicloud.vpn.Gateway("defaultGateway",
-            vpc_id=default_networks.ids[0],
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[0])
+        default_gateway = alicloud.vpn.Gateway("default",
+            name="terraform-example",
+            vpc_id=default_get_networks.ids[0],
             bandwidth=10,
             instance_charge_type="PrePaid",
             enable_ssl=False,
-            vswitch_id=default_switches.ids[0])
-        default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway", ip_address="192.168.1.1")
-        default_connection = alicloud.vpn.Connection("defaultConnection",
+            vswitch_id=default_get_switches.ids[0])
+        default_customer_gateway = alicloud.vpn.CustomerGateway("default",
+            name=name,
+            ip_address="192.168.1.1")
+        default_connection = alicloud.vpn.Connection("default",
+            name=name,
             customer_gateway_id=default_customer_gateway.id,
             vpn_gateway_id=default_gateway.id,
             local_subnets=["192.168.2.0/24"],
             remote_subnets=["192.168.3.0/24"])
-        default_route_entry = alicloud.vpn.RouteEntry("defaultRouteEntry",
+        default_route_entry = alicloud.vpn.RouteEntry("default",
             vpn_gateway_id=default_gateway.id,
             route_dest="10.0.0.0/24",
             next_hop=default_connection.id,
@@ -301,24 +305,28 @@ class RouteEntry(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-            zone_id=default_zones.ids[0])
-        default_gateway = alicloud.vpn.Gateway("defaultGateway",
-            vpc_id=default_networks.ids[0],
+        default_get_networks = alicloud.vpc.get_networks(name_regex="^default-NODELETING$")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+            zone_id=default.ids[0])
+        default_gateway = alicloud.vpn.Gateway("default",
+            name="terraform-example",
+            vpc_id=default_get_networks.ids[0],
             bandwidth=10,
             instance_charge_type="PrePaid",
             enable_ssl=False,
-            vswitch_id=default_switches.ids[0])
-        default_customer_gateway = alicloud.vpn.CustomerGateway("defaultCustomerGateway", ip_address="192.168.1.1")
-        default_connection = alicloud.vpn.Connection("defaultConnection",
+            vswitch_id=default_get_switches.ids[0])
+        default_customer_gateway = alicloud.vpn.CustomerGateway("default",
+            name=name,
+            ip_address="192.168.1.1")
+        default_connection = alicloud.vpn.Connection("default",
+            name=name,
             customer_gateway_id=default_customer_gateway.id,
             vpn_gateway_id=default_gateway.id,
             local_subnets=["192.168.2.0/24"],
             remote_subnets=["192.168.3.0/24"])
-        default_route_entry = alicloud.vpn.RouteEntry("defaultRouteEntry",
+        default_route_entry = alicloud.vpn.RouteEntry("default",
             vpn_gateway_id=default_gateway.id,
             route_dest="10.0.0.0/24",
             next_hop=default_connection.id,

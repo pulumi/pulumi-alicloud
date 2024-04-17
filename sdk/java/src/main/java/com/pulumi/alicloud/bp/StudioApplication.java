@@ -58,16 +58,16 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         final var defaultInstances = EcsFunctions.getInstances(GetInstancesArgs.builder()
+ *         final var defaultGetInstances = EcsFunctions.getInstances(GetInstancesArgs.builder()
  *             .status(&#34;Running&#34;)
  *             .build());
  * 
  *         var defaultStudioApplication = new StudioApplication(&#34;defaultStudioApplication&#34;, StudioApplicationArgs.builder()        
  *             .applicationName(name)
  *             .templateId(&#34;YAUUQIYRSV1CMFGX&#34;)
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .resourceGroupId(default_.groups()[0].id())
  *             .areaId(&#34;cn-hangzhou&#34;)
  *             .instances(StudioApplicationInstanceArgs.builder()
  *                 .id(&#34;data.alicloud_instances.default.instances.0.id&#34;)

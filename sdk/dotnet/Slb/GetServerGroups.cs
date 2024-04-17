@@ -27,33 +27,33 @@ namespace Pulumi.AliCloud.Slb
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "slbservergroups";
-        ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+        ///     var @default = AliCloud.GetZones.Invoke(new()
         ///     {
         ///         AvailableDiskCategory = "cloud_efficiency",
         ///         AvailableResourceCreation = "VSwitch",
         ///     });
         /// 
-        ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
         ///     {
         ///         VpcName = name,
         ///         CidrBlock = "172.16.0.0/16",
         ///     });
         /// 
-        ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
         ///     {
         ///         VpcId = defaultNetwork.Id,
         ///         CidrBlock = "172.16.0.0/16",
-        ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
         ///         VswitchName = name,
         ///     });
         /// 
-        ///     var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", new()
+        ///     var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("default", new()
         ///     {
         ///         LoadBalancerName = name,
         ///         VswitchId = defaultSwitch.Id,
         ///     });
         /// 
-        ///     var defaultServerGroup = new AliCloud.Slb.ServerGroup("defaultServerGroup", new()
+        ///     var defaultServerGroup = new AliCloud.Slb.ServerGroup("default", new()
         ///     {
         ///         LoadBalancerId = defaultApplicationLoadBalancer.Id,
         ///     });
@@ -90,33 +90,33 @@ namespace Pulumi.AliCloud.Slb
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "slbservergroups";
-        ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+        ///     var @default = AliCloud.GetZones.Invoke(new()
         ///     {
         ///         AvailableDiskCategory = "cloud_efficiency",
         ///         AvailableResourceCreation = "VSwitch",
         ///     });
         /// 
-        ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
         ///     {
         ///         VpcName = name,
         ///         CidrBlock = "172.16.0.0/16",
         ///     });
         /// 
-        ///     var defaultSwitch = new AliCloud.Vpc.Switch("defaultSwitch", new()
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
         ///     {
         ///         VpcId = defaultNetwork.Id,
         ///         CidrBlock = "172.16.0.0/16",
-        ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
         ///         VswitchName = name,
         ///     });
         /// 
-        ///     var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", new()
+        ///     var defaultApplicationLoadBalancer = new AliCloud.Slb.ApplicationLoadBalancer("default", new()
         ///     {
         ///         LoadBalancerName = name,
         ///         VswitchId = defaultSwitch.Id,
         ///     });
         /// 
-        ///     var defaultServerGroup = new AliCloud.Slb.ServerGroup("defaultServerGroup", new()
+        ///     var defaultServerGroup = new AliCloud.Slb.ServerGroup("default", new()
         ///     {
         ///         LoadBalancerId = defaultApplicationLoadBalancer.Id,
         ///     });

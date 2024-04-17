@@ -149,20 +149,20 @@ class BasicAccelerateIp(pulumi.CustomResource):
         region = config.get("region")
         if region is None:
             region = "cn-hangzhou"
-        default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
+        default = alicloud.ga.BasicAccelerator("default",
             duration=1,
             basic_accelerator_name="terraform-example",
             description="terraform-example",
             bandwidth_billing_type="CDT",
             auto_use_coupon="true",
             auto_pay=True)
-        default_basic_ip_set = alicloud.ga.BasicIpSet("defaultBasicIpSet",
-            accelerator_id=default_basic_accelerator.id,
+        default_basic_ip_set = alicloud.ga.BasicIpSet("default",
+            accelerator_id=default.id,
             accelerate_region_id=region,
             isp_type="BGP",
             bandwidth=5)
-        default_basic_accelerate_ip = alicloud.ga.BasicAccelerateIp("defaultBasicAccelerateIp",
-            accelerator_id=default_basic_accelerator.id,
+        default_basic_accelerate_ip = alicloud.ga.BasicAccelerateIp("default",
+            accelerator_id=default.id,
             ip_set_id=default_basic_ip_set.id)
         ```
         <!--End PulumiCodeChooser -->
@@ -206,20 +206,20 @@ class BasicAccelerateIp(pulumi.CustomResource):
         region = config.get("region")
         if region is None:
             region = "cn-hangzhou"
-        default_basic_accelerator = alicloud.ga.BasicAccelerator("defaultBasicAccelerator",
+        default = alicloud.ga.BasicAccelerator("default",
             duration=1,
             basic_accelerator_name="terraform-example",
             description="terraform-example",
             bandwidth_billing_type="CDT",
             auto_use_coupon="true",
             auto_pay=True)
-        default_basic_ip_set = alicloud.ga.BasicIpSet("defaultBasicIpSet",
-            accelerator_id=default_basic_accelerator.id,
+        default_basic_ip_set = alicloud.ga.BasicIpSet("default",
+            accelerator_id=default.id,
             accelerate_region_id=region,
             isp_type="BGP",
             bandwidth=5)
-        default_basic_accelerate_ip = alicloud.ga.BasicAccelerateIp("defaultBasicAccelerateIp",
-            accelerator_id=default_basic_accelerator.id,
+        default_basic_accelerate_ip = alicloud.ga.BasicAccelerateIp("default",
+            accelerator_id=default.id,
             ip_set_id=default_basic_ip_set.id)
         ```
         <!--End PulumiCodeChooser -->

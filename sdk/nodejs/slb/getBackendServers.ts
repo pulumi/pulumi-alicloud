@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const sampleDs = alicloud.slb.getBackendServers({
- *     loadBalancerId: alicloud_slb_load_balancer.sample_slb.id,
+ *     loadBalancerId: sampleSlb.id,
  * });
  * export const firstSlbBackendServerId = sampleDs.then(sampleDs => sampleDs.backendServers?.[0]?.id);
  * ```
@@ -79,7 +79,7 @@ export interface GetBackendServersResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const sampleDs = alicloud.slb.getBackendServers({
- *     loadBalancerId: alicloud_slb_load_balancer.sample_slb.id,
+ *     loadBalancerId: sampleSlb.id,
  * });
  * export const firstSlbBackendServerId = sampleDs.then(sampleDs => sampleDs.backendServers?.[0]?.id);
  * ```

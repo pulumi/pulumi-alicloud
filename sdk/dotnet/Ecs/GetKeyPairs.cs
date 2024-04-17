@@ -28,12 +28,12 @@ namespace Pulumi.AliCloud.Ecs
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Declare the data source
-        ///     var defaultKeyPair = new AliCloud.Ecs.KeyPair("defaultKeyPair", new()
+        ///     var defaultKeyPair = new AliCloud.Ecs.KeyPair("default", new()
         ///     {
         ///         KeyName = "keyPairDatasource",
         ///     });
         /// 
-        ///     var defaultKeyPairs = AliCloud.Ecs.GetKeyPairs.Invoke(new()
+        ///     var @default = AliCloud.Ecs.GetKeyPairs.Invoke(new()
         ///     {
         ///         NameRegex = defaultKeyPair.KeyName,
         ///     });
@@ -62,12 +62,12 @@ namespace Pulumi.AliCloud.Ecs
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
         ///     // Declare the data source
-        ///     var defaultKeyPair = new AliCloud.Ecs.KeyPair("defaultKeyPair", new()
+        ///     var defaultKeyPair = new AliCloud.Ecs.KeyPair("default", new()
         ///     {
         ///         KeyName = "keyPairDatasource",
         ///     });
         /// 
-        ///     var defaultKeyPairs = AliCloud.Ecs.GetKeyPairs.Invoke(new()
+        ///     var @default = AliCloud.Ecs.GetKeyPairs.Invoke(new()
         ///     {
         ///         NameRegex = defaultKeyPair.KeyName,
         ///     });

@@ -53,14 +53,15 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var sagId = config.get(&#34;sagId&#34;).orElse(&#34;sag-9bifkf***&#34;);
- *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+ *         var default_ = new Network(&#34;default&#34;, NetworkArgs.builder()        
+ *             .name(name)
  *             .description(name)
  *             .cidrBlock(&#34;192.168.0.0/24&#34;)
  *             .isDefault(true)
  *             .build());
  * 
  *         var defaultNetworkAttachment = new NetworkAttachment(&#34;defaultNetworkAttachment&#34;, NetworkAttachmentArgs.builder()        
- *             .ccnId(defaultNetwork.id())
+ *             .ccnId(default_.id())
  *             .sagId(sagId)
  *             .build());
  * 

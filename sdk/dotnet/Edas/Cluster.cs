@@ -29,23 +29,23 @@ namespace Pulumi.AliCloud.Edas
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "10.4.0.0/16",
     ///     });
     /// 
-    ///     var defaultCluster = new AliCloud.Edas.Cluster("defaultCluster", new()
+    ///     var defaultCluster = new AliCloud.Edas.Cluster("default", new()
     ///     {
     ///         ClusterName = name,
     ///         ClusterType = 2,
     ///         NetworkMode = 2,
-    ///         LogicalRegionId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         LogicalRegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
     ///         VpcId = defaultNetwork.Id,
     ///     });
     /// 

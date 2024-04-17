@@ -23,17 +23,17 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _this = new alicloud.ecs.ImageImport("this", {
- *     architecture: "x86_64",
  *     description: "test import image",
+ *     architecture: "x86_64",
+ *     imageName: "test-import-image",
+ *     licenseType: "Auto",
+ *     platform: "Ubuntu",
+ *     osType: "linux",
  *     diskDeviceMappings: [{
  *         diskImageSize: 5,
  *         ossBucket: "testimportimage",
  *         ossObject: "root.img",
  *     }],
- *     imageName: "test-import-image",
- *     licenseType: "Auto",
- *     osType: "linux",
- *     platform: "Ubuntu",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

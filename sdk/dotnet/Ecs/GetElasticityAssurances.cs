@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Ecs
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_ecs_elasticity_assurance.Default.Id,
+        ///             defaultAlicloudEcsElasticityAssurance.Id,
         ///         },
         ///     });
         /// 
@@ -66,7 +66,7 @@ namespace Pulumi.AliCloud.Ecs
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_ecs_elasticity_assurance.Default.Id,
+        ///             defaultAlicloudEcsElasticityAssurance.Id,
         ///         },
         ///     });
         /// 

@@ -64,6 +64,7 @@ public final class ElasticsearchFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = ElasticsearchFunctions.getZones();
      * 
      *     }
@@ -104,6 +105,7 @@ public final class ElasticsearchFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = ElasticsearchFunctions.getZones();
      * 
      *     }
@@ -144,6 +146,7 @@ public final class ElasticsearchFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = ElasticsearchFunctions.getZones();
      * 
      *     }
@@ -184,6 +187,7 @@ public final class ElasticsearchFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = ElasticsearchFunctions.getZones();
      * 
      *     }
@@ -224,6 +228,7 @@ public final class ElasticsearchFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = ElasticsearchFunctions.getZones();
      * 
      *     }
@@ -264,6 +269,7 @@ public final class ElasticsearchFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         // Declare the data source
      *         final var zonesIds = ElasticsearchFunctions.getZones();
      * 
      *     }

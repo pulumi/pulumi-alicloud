@@ -34,8 +34,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.dfs.DfsFunctions;
  * import com.pulumi.alicloud.dfs.inputs.GetZonesArgs;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.vpc.Network;
  * import com.pulumi.alicloud.vpc.NetworkArgs;
  * import com.pulumi.alicloud.vpc.Switch;
@@ -61,9 +61,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultZones = DfsFunctions.getZones();
+ *         final var default = DfsFunctions.getZones();
  * 
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
+ *         var defaultInteger = new Integer(&#34;defaultInteger&#34;, IntegerArgs.builder()        
  *             .min(10000)
  *             .max(99999)
  *             .build());
@@ -78,29 +78,29 @@ import javax.annotation.Nullable;
  *             .vpcId(defaultVPC.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
  *             .vswitchName(name)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
+ *             .zoneId(default_.zones()[0].zoneId())
  *             .build());
  * 
  *         var defaultAccessGroup = new AccessGroup(&#34;defaultAccessGroup&#34;, AccessGroupArgs.builder()        
  *             .description(&#34;AccessGroup resource manager center example&#34;)
  *             .networkType(&#34;VPC&#34;)
- *             .accessGroupName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
+ *             .accessGroupName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
  *             .build());
  * 
  *         var updateAccessGroup = new AccessGroup(&#34;updateAccessGroup&#34;, AccessGroupArgs.builder()        
  *             .description(&#34;Second AccessGroup resource manager center example&#34;)
  *             .networkType(&#34;VPC&#34;)
- *             .accessGroupName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-update-%s&#34;, name,result)))
+ *             .accessGroupName(String.format(&#34;%s-update-%s&#34;, name,defaultInteger.result()))
  *             .build());
  * 
  *         var defaultFs = new FileSystem(&#34;defaultFs&#34;, FileSystemArgs.builder()        
  *             .spaceCapacity(&#34;1024&#34;)
  *             .description(&#34;for mountpoint  example&#34;)
  *             .storageType(&#34;STANDARD&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
+ *             .zoneId(default_.zones()[0].zoneId())
  *             .protocolType(&#34;HDFS&#34;)
  *             .dataRedundancyType(&#34;LRS&#34;)
- *             .fileSystemName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;%s-%s&#34;, name,result)))
+ *             .fileSystemName(String.format(&#34;%s-%s&#34;, name,defaultInteger.result()))
  *             .build());
  * 
  *         var defaultMountPoint = new MountPoint(&#34;defaultMountPoint&#34;, MountPointArgs.builder()        

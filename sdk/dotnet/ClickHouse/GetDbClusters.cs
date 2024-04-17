@@ -29,7 +29,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new()
+        ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("default", new()
         ///     {
         ///         DbClusterVersion = "20.3.10.75",
         ///         Category = "Basic",
@@ -42,7 +42,7 @@ namespace Pulumi.AliCloud.ClickHouse
         ///         VswitchId = "your_vswitch_id",
         ///     });
         /// 
-        ///     var defaultDbClusters = AliCloud.ClickHouse.GetDbClusters.Invoke(new()
+        ///     var @default = AliCloud.ClickHouse.GetDbClusters.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -52,7 +52,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dbCluster"] = defaultDbClusters.Apply(getDbClustersResult =&gt; getDbClustersResult.Ids[0]),
+        ///         ["dbCluster"] = @default.Apply(@default =&gt; @default.Apply(getDbClustersResult =&gt; getDbClustersResult.Ids[0])),
         ///     };
         /// });
         /// ```
@@ -79,7 +79,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new()
+        ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("default", new()
         ///     {
         ///         DbClusterVersion = "20.3.10.75",
         ///         Category = "Basic",
@@ -92,7 +92,7 @@ namespace Pulumi.AliCloud.ClickHouse
         ///         VswitchId = "your_vswitch_id",
         ///     });
         /// 
-        ///     var defaultDbClusters = AliCloud.ClickHouse.GetDbClusters.Invoke(new()
+        ///     var @default = AliCloud.ClickHouse.GetDbClusters.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -102,7 +102,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["dbCluster"] = defaultDbClusters.Apply(getDbClustersResult =&gt; getDbClustersResult.Ids[0]),
+        ///         ["dbCluster"] = @default.Apply(@default =&gt; @default.Apply(getDbClustersResult =&gt; getDbClustersResult.Ids[0])),
         ///     };
         /// });
         /// ```

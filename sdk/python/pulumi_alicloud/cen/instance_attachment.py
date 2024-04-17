@@ -266,15 +266,15 @@ class InstanceAttachment(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.get_regions(current=True)
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.vpc.Network("example",
             vpc_name="tf_example",
             cidr_block="172.17.3.0/24")
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example_instance = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
             description="an example for cen")
-        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
+        example_instance_attachment = alicloud.cen.InstanceAttachment("example",
             instance_id=example_instance.id,
-            child_instance_id=example_network.id,
+            child_instance_id=example.id,
             child_instance_type="VPC",
             child_instance_region_id=default.regions[0].id)
         ```
@@ -320,15 +320,15 @@ class InstanceAttachment(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.get_regions(current=True)
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.vpc.Network("example",
             vpc_name="tf_example",
             cidr_block="172.17.3.0/24")
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example_instance = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
             description="an example for cen")
-        example_instance_attachment = alicloud.cen.InstanceAttachment("exampleInstanceAttachment",
+        example_instance_attachment = alicloud.cen.InstanceAttachment("example",
             instance_id=example_instance.id,
-            child_instance_id=example_network.id,
+            child_instance_id=example.id,
             child_instance_type="VPC",
             child_instance_region_id=default.regions[0].id)
         ```

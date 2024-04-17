@@ -116,7 +116,7 @@ def get_custom_domains(ids: Optional[Sequence[str]] = None,
     import pulumi_alicloud as alicloud
 
     fc_domains = alicloud.fc.get_custom_domains(name_regex="sample_fc_custom_domain")
-    pulumi.export("firstFcCustomDomainName", data["alicloud_fc_custom_domains"]["fc_domains_ds"]["domains"][0]["domain_name"])
+    pulumi.export("firstFcCustomDomainName", fc_domains_ds["domains"][0]["domainName"])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -159,7 +159,7 @@ def get_custom_domains_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     import pulumi_alicloud as alicloud
 
     fc_domains = alicloud.fc.get_custom_domains(name_regex="sample_fc_custom_domain")
-    pulumi.export("firstFcCustomDomainName", data["alicloud_fc_custom_domains"]["fc_domains_ds"]["domains"][0]["domain_name"])
+    pulumi.export("firstFcCustomDomainName", fc_domains_ds["domains"][0]["domainName"])
     ```
     <!--End PulumiCodeChooser -->
 

@@ -22,20 +22,20 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultRegions = alicloud.clickhouse.getRegions({
+ * const default = alicloud.clickhouse.getRegions({
  *     current: true,
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
  *     cidrBlock: "10.4.0.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.zoneIds?.[0]?.zoneId),
+ *     zoneId: _default.then(_default => _default.regions?.[0]?.zoneIds?.[0]?.zoneId),
  * });
- * const defaultDbCluster = new alicloud.clickhouse.DbCluster("defaultDbCluster", {
+ * const defaultDbCluster = new alicloud.clickhouse.DbCluster("default", {
  *     dbClusterVersion: "22.8.5.29",
  *     category: "Basic",
  *     dbClusterClass: "S8",
@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  *     vswitchId: defaultSwitch.id,
  *     vpcId: defaultNetwork.id,
  * });
- * const defaultAccount = new alicloud.clickhouse.Account("defaultAccount", {
+ * const defaultAccount = new alicloud.clickhouse.Account("default", {
  *     dbClusterId: defaultDbCluster.id,
  *     accountDescription: "tf-example-description",
  *     accountName: "examplename",

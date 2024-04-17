@@ -23,13 +23,13 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const _default = new random.RandomInteger("default", {
- *     max: 99999,
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
+ *     max: 99999,
  * });
  * const example = new alicloud.dcdn.WafPolicy("example", {
  *     defenseScene: "waf_group",
- *     policyName: pulumi.interpolate`${name}_${_default.result}`,
+ *     policyName: `${name}_${_default.result}`,
  *     policyType: "custom",
  *     status: "on",
  * });

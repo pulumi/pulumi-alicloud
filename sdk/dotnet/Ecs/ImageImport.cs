@@ -31,8 +31,12 @@ namespace Pulumi.AliCloud.Ecs
     /// {
     ///     var @this = new AliCloud.Ecs.ImageImport("this", new()
     ///     {
-    ///         Architecture = "x86_64",
     ///         Description = "test import image",
+    ///         Architecture = "x86_64",
+    ///         ImageName = "test-import-image",
+    ///         LicenseType = "Auto",
+    ///         Platform = "Ubuntu",
+    ///         OsType = "linux",
     ///         DiskDeviceMappings = new[]
     ///         {
     ///             new AliCloud.Ecs.Inputs.ImageImportDiskDeviceMappingArgs
@@ -42,10 +46,6 @@ namespace Pulumi.AliCloud.Ecs
     ///                 OssObject = "root.img",
     ///             },
     ///         },
-    ///         ImageName = "test-import-image",
-    ///         LicenseType = "Auto",
-    ///         OsType = "linux",
-    ///         Platform = "Ubuntu",
     ///     });
     /// 
     /// });

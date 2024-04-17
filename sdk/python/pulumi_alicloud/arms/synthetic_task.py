@@ -445,8 +445,8 @@ class SyntheticTask(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_synthetic_task = alicloud.arms.SyntheticTask("defaultSyntheticTask",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_synthetic_task = alicloud.arms.SyntheticTask("default",
             monitors=[alicloud.arms.SyntheticTaskMonitorArgs(
                 city_code="1200101",
                 operator_code="246",
@@ -614,7 +614,7 @@ class SyntheticTask(pulumi.CustomResource):
                 is_open_trace=True,
                 trace_client_type=1,
             ),
-            resource_group_id=default_resource_groups.ids[1])
+            resource_group_id=default.ids[1])
         ```
         <!--End PulumiCodeChooser -->
 
@@ -667,8 +667,8 @@ class SyntheticTask(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_synthetic_task = alicloud.arms.SyntheticTask("defaultSyntheticTask",
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_synthetic_task = alicloud.arms.SyntheticTask("default",
             monitors=[alicloud.arms.SyntheticTaskMonitorArgs(
                 city_code="1200101",
                 operator_code="246",
@@ -836,7 +836,7 @@ class SyntheticTask(pulumi.CustomResource):
                 is_open_trace=True,
                 trace_client_type=1,
             ),
-            resource_group_id=default_resource_groups.ids[1])
+            resource_group_id=default.ids[1])
         ```
         <!--End PulumiCodeChooser -->
 

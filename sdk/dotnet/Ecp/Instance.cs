@@ -17,6 +17,91 @@ namespace Pulumi.AliCloud.Ecp
     /// 
     /// &gt; **NOTE:** Available since v1.158.0.
     /// 
+    /// ## Example Usage
+    /// 
+    /// Basic Usage
+    /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// using Random = Pulumi.Random;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var config = new Config();
+    ///     var name = config.Get("name") ?? "tf-example";
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
+    ///     {
+    ///         Min = 10000,
+    ///         Max = 99999,
+    ///     });
+    /// 
+    ///     var @default = AliCloud.Ecp.GetZones.Invoke();
+    /// 
+    ///     var defaultGetInstanceTypes = AliCloud.Ecp.GetInstanceTypes.Invoke();
+    /// 
+    ///     var countSize = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones)).Length;
+    /// 
+    ///     var zoneId = Output.Tuple(@default, countSize).Apply(values =&gt;
+    ///     {
+    ///         var @default = values.Item1;
+    ///         var countSize = values.Item2;
+    ///         return @default.Apply(getZonesResult =&gt; getZonesResult.Zones)[countSize - 1].ZoneId;
+    ///     });
+    /// 
+    ///     var instanceTypeCountSize = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes).Length;
+    /// 
+    ///     var instanceType = Output.Tuple(defaultGetInstanceTypes, instanceTypeCountSize).Apply(values =&gt;
+    ///     {
+    ///         var defaultGetInstanceTypes = values.Item1;
+    ///         var instanceTypeCountSize = values.Item2;
+    ///         return defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes)[instanceTypeCountSize - 1].InstanceType;
+    ///     });
+    /// 
+    ///     var defaultGetNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+    ///     {
+    ///         NameRegex = "^default-NODELETING$",
+    ///     });
+    /// 
+    ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+    ///     {
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///         ZoneId = zoneId,
+    ///     });
+    /// 
+    ///     var @group = new AliCloud.Ecs.SecurityGroup("group", new()
+    ///     {
+    ///         Name = name,
+    ///         VpcId = defaultGetNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+    ///     });
+    /// 
+    ///     var defaultKeyPair = new AliCloud.Ecp.KeyPair("default", new()
+    ///     {
+    ///         KeyPairName = $"{name}-{defaultInteger.Result}",
+    ///         PublicKeyBody = "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
+    ///     });
+    /// 
+    ///     var defaultInstance = new AliCloud.Ecp.Instance("default", new()
+    ///     {
+    ///         InstanceName = name,
+    ///         Description = name,
+    ///         KeyPairName = defaultKeyPair.KeyPairName,
+    ///         SecurityGroupId = @group.Id,
+    ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+    ///         ImageId = "android_9_0_0_release_2851157_20211201.vhd",
+    ///         InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[1]?.InstanceType),
+    ///         VncPassword = "Ecp123",
+    ///         PaymentType = "PayAsYouGo",
+    ///         Force = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
+    /// 
     /// ## Import
     /// 
     /// Elastic Cloud Phone (ECP) Instance can be imported using the id, e.g.

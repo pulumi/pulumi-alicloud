@@ -138,8 +138,8 @@ def get_scheduled_tasks(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ds = alicloud.ess.get_scheduled_tasks(name_regex="scheduled_task_name",
-        scheduled_task_id="scheduled_task_id")
+    ds = alicloud.ess.get_scheduled_tasks(scheduled_task_id="scheduled_task_id",
+        name_regex="scheduled_task_name")
     pulumi.export("firstScheduledTask", ds.tasks[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -190,8 +190,8 @@ def get_scheduled_tasks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     import pulumi
     import pulumi_alicloud as alicloud
 
-    ds = alicloud.ess.get_scheduled_tasks(name_regex="scheduled_task_name",
-        scheduled_task_id="scheduled_task_id")
+    ds = alicloud.ess.get_scheduled_tasks(scheduled_task_id="scheduled_task_id",
+        name_regex="scheduled_task_name")
     pulumi.export("firstScheduledTask", ds.tasks[0].id)
     ```
     <!--End PulumiCodeChooser -->

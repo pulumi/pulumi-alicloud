@@ -290,8 +290,8 @@ def get_images(action_type: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    images_ds = alicloud.ecs.get_images(name_regex="^centos_6",
-        owners="system")
+    images_ds = alicloud.ecs.get_images(owners="system",
+        name_regex="^centos_6")
     pulumi.export("firstImageId", images_ds.images[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -403,8 +403,8 @@ def get_images_output(action_type: Optional[pulumi.Input[Optional[str]]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    images_ds = alicloud.ecs.get_images(name_regex="^centos_6",
-        owners="system")
+    images_ds = alicloud.ecs.get_images(owners="system",
+        name_regex="^centos_6")
     pulumi.export("firstImageId", images_ds.images[0].id)
     ```
     <!--End PulumiCodeChooser -->

@@ -32,7 +32,7 @@ namespace Pulumi.AliCloud.ClickHouse
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "testaccountname";
         ///     var pwd = config.Get("pwd") ?? "Tf-testpwd";
-        ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new()
+        ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("default", new()
         ///     {
         ///         DbClusterVersion = "20.3.10.75",
         ///         Category = "Basic",
@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.ClickHouse
         ///         VswitchId = "your_vswitch_id",
         ///     });
         /// 
-        ///     var defaultAccount = new AliCloud.ClickHouse.Account("defaultAccount", new()
+        ///     var defaultAccount = new AliCloud.ClickHouse.Account("default", new()
         ///     {
         ///         DbClusterId = defaultDbCluster.Id,
         ///         AccountDescription = "your_description",
@@ -54,7 +54,7 @@ namespace Pulumi.AliCloud.ClickHouse
         ///         AccountPassword = pwd,
         ///     });
         /// 
-        ///     var defaultAccounts = AliCloud.ClickHouse.GetAccounts.Invoke(new()
+        ///     var @default = AliCloud.ClickHouse.GetAccounts.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -65,7 +65,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["accountId"] = defaultAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0]),
+        ///         ["accountId"] = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0])),
         ///     };
         /// });
         /// ```
@@ -95,7 +95,7 @@ namespace Pulumi.AliCloud.ClickHouse
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "testaccountname";
         ///     var pwd = config.Get("pwd") ?? "Tf-testpwd";
-        ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("defaultDbCluster", new()
+        ///     var defaultDbCluster = new AliCloud.ClickHouse.DbCluster("default", new()
         ///     {
         ///         DbClusterVersion = "20.3.10.75",
         ///         Category = "Basic",
@@ -109,7 +109,7 @@ namespace Pulumi.AliCloud.ClickHouse
         ///         VswitchId = "your_vswitch_id",
         ///     });
         /// 
-        ///     var defaultAccount = new AliCloud.ClickHouse.Account("defaultAccount", new()
+        ///     var defaultAccount = new AliCloud.ClickHouse.Account("default", new()
         ///     {
         ///         DbClusterId = defaultDbCluster.Id,
         ///         AccountDescription = "your_description",
@@ -117,7 +117,7 @@ namespace Pulumi.AliCloud.ClickHouse
         ///         AccountPassword = pwd,
         ///     });
         /// 
-        ///     var defaultAccounts = AliCloud.ClickHouse.GetAccounts.Invoke(new()
+        ///     var @default = AliCloud.ClickHouse.GetAccounts.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -128,7 +128,7 @@ namespace Pulumi.AliCloud.ClickHouse
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["accountId"] = defaultAccounts.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0]),
+        ///         ["accountId"] = @default.Apply(@default =&gt; @default.Apply(getAccountsResult =&gt; getAccountsResult.Ids[0])),
         ///     };
         /// });
         /// ```

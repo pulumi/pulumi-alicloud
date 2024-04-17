@@ -166,34 +166,36 @@ class ServiceMonitoringAgentProcess(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             instance_type_family="ecs.sn1ne")
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             most_recent=True,
             owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_switch.vpc_id)
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_switch.vpc_id)
+        default_instance = alicloud.ecs.Instance("default",
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
             instance_name=name,
             security_groups=[__item.id for __item in [default_security_group]],
             internet_charge_type="PayByTraffic",
             internet_max_bandwidth_out=10,
-            availability_zone=default_zones.zones[0].id,
+            availability_zone=default.zones[0].id,
             instance_charge_type="PostPaid",
             system_disk_category="cloud_efficiency",
             vswitch_id=default_switch.id)
-        default_service_monitoring_agent_process = alicloud.cloudmonitor.ServiceMonitoringAgentProcess("defaultServiceMonitoringAgentProcess",
+        default_service_monitoring_agent_process = alicloud.cloudmonitor.ServiceMonitoringAgentProcess("default",
             instance_id=default_instance.id,
             process_name=name,
             process_user="root")
@@ -240,34 +242,36 @@ class ServiceMonitoringAgentProcess(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_zones = alicloud.get_zones(available_disk_category="cloud_efficiency",
+        default = alicloud.get_zones(available_disk_category="cloud_efficiency",
             available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             instance_type_family="ecs.sn1ne")
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
             most_recent=True,
             owners="system")
-        default_network = alicloud.vpc.Network("defaultNetwork",
+        default_network = alicloud.vpc.Network("default",
             vpc_name=name,
             cidr_block="172.16.0.0/16")
-        default_switch = alicloud.vpc.Switch("defaultSwitch",
+        default_switch = alicloud.vpc.Switch("default",
             vpc_id=default_network.id,
             cidr_block="172.16.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
-        default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_switch.vpc_id)
-        default_instance = alicloud.ecs.Instance("defaultInstance",
-            image_id=default_images.images[0].id,
-            instance_type=default_instance_types.instance_types[0].id,
+        default_security_group = alicloud.ecs.SecurityGroup("default",
+            name=name,
+            vpc_id=default_switch.vpc_id)
+        default_instance = alicloud.ecs.Instance("default",
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
             instance_name=name,
             security_groups=[__item.id for __item in [default_security_group]],
             internet_charge_type="PayByTraffic",
             internet_max_bandwidth_out=10,
-            availability_zone=default_zones.zones[0].id,
+            availability_zone=default.zones[0].id,
             instance_charge_type="PostPaid",
             system_disk_category="cloud_efficiency",
             vswitch_id=default_switch.id)
-        default_service_monitoring_agent_process = alicloud.cloudmonitor.ServiceMonitoringAgentProcess("defaultServiceMonitoringAgentProcess",
+        default_service_monitoring_agent_process = alicloud.cloudmonitor.ServiceMonitoringAgentProcess("default",
             instance_id=default_instance.id,
             process_name=name,
             process_user="root")

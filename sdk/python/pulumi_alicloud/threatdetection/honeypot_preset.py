@@ -199,15 +199,15 @@ class HoneypotPreset(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tfexample"
-        default_honeypot_images = alicloud.threatdetection.get_honeypot_images(name_regex="^ruoyi")
-        default_honeypot_node = alicloud.threatdetection.HoneypotNode("defaultHoneypotNode",
+        default = alicloud.threatdetection.get_honeypot_images(name_regex="^ruoyi")
+        default_honeypot_node = alicloud.threatdetection.HoneypotNode("default",
             node_name=name,
             available_probe_num=20,
             security_group_probe_ip_lists=["0.0.0.0/0"])
-        default_honeypot_preset = alicloud.threatdetection.HoneypotPreset("defaultHoneypotPreset",
+        default_honeypot_preset = alicloud.threatdetection.HoneypotPreset("default",
             preset_name=name,
             node_id=default_honeypot_node.id,
-            honeypot_image_name=default_honeypot_images.images[0].honeypot_image_name,
+            honeypot_image_name=default.images[0].honeypot_image_name,
             meta=alicloud.threatdetection.HoneypotPresetMetaArgs(
                 portrait_option=True,
                 burp="open",
@@ -256,15 +256,15 @@ class HoneypotPreset(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tfexample"
-        default_honeypot_images = alicloud.threatdetection.get_honeypot_images(name_regex="^ruoyi")
-        default_honeypot_node = alicloud.threatdetection.HoneypotNode("defaultHoneypotNode",
+        default = alicloud.threatdetection.get_honeypot_images(name_regex="^ruoyi")
+        default_honeypot_node = alicloud.threatdetection.HoneypotNode("default",
             node_name=name,
             available_probe_num=20,
             security_group_probe_ip_lists=["0.0.0.0/0"])
-        default_honeypot_preset = alicloud.threatdetection.HoneypotPreset("defaultHoneypotPreset",
+        default_honeypot_preset = alicloud.threatdetection.HoneypotPreset("default",
             preset_name=name,
             node_id=default_honeypot_node.id,
-            honeypot_image_name=default_honeypot_images.images[0].honeypot_image_name,
+            honeypot_image_name=default.images[0].honeypot_image_name,
             meta=alicloud.threatdetection.HoneypotPresetMetaArgs(
                 portrait_option=True,
                 burp="open",

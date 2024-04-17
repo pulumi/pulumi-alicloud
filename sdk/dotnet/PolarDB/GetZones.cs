@@ -27,6 +27,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var zonesIds = AliCloud.PolarDB.GetZones.Invoke();
         /// 
         /// });
@@ -52,6 +53,7 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var zonesIds = AliCloud.PolarDB.GetZones.Invoke();
         /// 
         /// });

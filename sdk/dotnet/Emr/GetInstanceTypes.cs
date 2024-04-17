@@ -30,11 +30,11 @@ namespace Pulumi.AliCloud.Emr
         /// {
         ///     var @default = AliCloud.Emr.GetInstanceTypes.Invoke(new()
         ///     {
-        ///         ClusterType = "HADOOP",
         ///         DestinationResource = "InstanceType",
         ///         InstanceChargeType = "PostPaid",
-        ///         InstanceType = "ecs.g5.2xlarge",
         ///         SupportLocalStorage = false,
+        ///         ClusterType = "HADOOP",
+        ///         InstanceType = "ecs.g5.2xlarge",
         ///         SupportNodeTypes = new[]
         ///         {
         ///             "MASTER",
@@ -72,11 +72,11 @@ namespace Pulumi.AliCloud.Emr
         /// {
         ///     var @default = AliCloud.Emr.GetInstanceTypes.Invoke(new()
         ///     {
-        ///         ClusterType = "HADOOP",
         ///         DestinationResource = "InstanceType",
         ///         InstanceChargeType = "PostPaid",
-        ///         InstanceType = "ecs.g5.2xlarge",
         ///         SupportLocalStorage = false,
+        ///         ClusterType = "HADOOP",
+        ///         InstanceType = "ecs.g5.2xlarge",
         ///         SupportNodeTypes = new[]
         ///         {
         ///             "MASTER",

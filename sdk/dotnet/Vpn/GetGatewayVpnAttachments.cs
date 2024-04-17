@@ -40,8 +40,8 @@ namespace Pulumi.AliCloud.Vpn
         ///     {
         ///         ["vpnGatewayVpnAttachmentId1"] = ids.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.Id),
         ///         ["vpnGatewayVpnAttachmentId2"] = nameRegex.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.Id),
-        ///         ["localId"] = data.Alicloud_vpn_gateway_vpn_attachments.Vpn_attachments.Attachments[0].Ike_config[0].Local_id,
-        ///         ["internetIp"] = data.Alicloud_vpn_gateway_vpn_attachments.Vpn_attachments.Attachments[0].Internet_ip,
+        ///         ["localId"] = vpnAttachments.Attachments[0].IkeConfig[0].LocalId,
+        ///         ["internetIp"] = vpnAttachments.Attachments[0].InternetIp,
         ///     };
         /// });
         /// ```
@@ -79,8 +79,8 @@ namespace Pulumi.AliCloud.Vpn
         ///     {
         ///         ["vpnGatewayVpnAttachmentId1"] = ids.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.Id),
         ///         ["vpnGatewayVpnAttachmentId2"] = nameRegex.Apply(getGatewayVpnAttachmentsResult =&gt; getGatewayVpnAttachmentsResult.Attachments[0]?.Id),
-        ///         ["localId"] = data.Alicloud_vpn_gateway_vpn_attachments.Vpn_attachments.Attachments[0].Ike_config[0].Local_id,
-        ///         ["internetIp"] = data.Alicloud_vpn_gateway_vpn_attachments.Vpn_attachments.Attachments[0].Internet_ip,
+        ///         ["localId"] = vpnAttachments.Attachments[0].IkeConfig[0].LocalId,
+        ///         ["internetIp"] = vpnAttachments.Attachments[0].InternetIp,
         ///     };
         /// });
         /// ```

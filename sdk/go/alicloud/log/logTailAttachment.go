@@ -30,6 +30,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/log"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -38,21 +40,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := random.NewRandomInteger(ctx, "default", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(99999),
-//				Min: pulumi.Int(10000),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Max: 99999,
+//				Min: 10000,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleProject, err := log.NewProject(ctx, "exampleProject", &log.ProjectArgs{
+//			example, err := log.NewProject(ctx, "example", &log.ProjectArgs{
+//				Name:        pulumi.String(fmt.Sprintf("terraform-example-%v", _default.Result)),
 //				Description: pulumi.String("terraform-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleStore, err := log.NewStore(ctx, "exampleStore", &log.StoreArgs{
-//				Project:            exampleProject.Name,
+//			exampleStore, err := log.NewStore(ctx, "example", &log.StoreArgs{
+//				Project:            example.Name,
+//				Name:               pulumi.String("example-store"),
 //				RetentionPeriod:    pulumi.Int(3650),
 //				ShardCount:         pulumi.Int(3),
 //				AutoSplit:          pulumi.Bool(true),
@@ -62,10 +66,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleLogTailConfig, err := log.NewLogTailConfig(ctx, "exampleLogTailConfig", &log.LogTailConfigArgs{
-//				Project:    exampleProject.Name,
+//			exampleLogTailConfig, err := log.NewLogTailConfig(ctx, "example", &log.LogTailConfigArgs{
+//				Project:    example.Name,
 //				Logstore:   exampleStore.Name,
 //				InputType:  pulumi.String("file"),
+//				Name:       pulumi.String("terraform-example"),
 //				OutputType: pulumi.String("LogService"),
 //				InputDetail: pulumi.String(`  	{
 //			"logPath": "/logPath",
@@ -84,8 +89,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleMachineGroup, err := log.NewMachineGroup(ctx, "exampleMachineGroup", &log.MachineGroupArgs{
-//				Project:      exampleProject.Name,
+//			exampleMachineGroup, err := log.NewMachineGroup(ctx, "example", &log.MachineGroupArgs{
+//				Project:      example.Name,
+//				Name:         pulumi.String("terraform-example"),
 //				IdentifyType: pulumi.String("ip"),
 //				Topic:        pulumi.String("terraform"),
 //				IdentifyLists: pulumi.StringArray{
@@ -96,8 +102,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = log.NewLogTailAttachment(ctx, "exampleLogTailAttachment", &log.LogTailAttachmentArgs{
-//				Project:           exampleProject.Name,
+//			_, err = log.NewLogTailAttachment(ctx, "example", &log.LogTailAttachmentArgs{
+//				Project:           example.Name,
 //				LogtailConfigName: exampleLogTailConfig.Name,
 //				MachineGroupName:  exampleMachineGroup.Name,
 //			})

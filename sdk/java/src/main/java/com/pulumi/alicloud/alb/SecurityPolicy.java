@@ -52,11 +52,11 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new SecurityPolicy(&#34;default&#34;, SecurityPolicyArgs.builder()        
+ *             .securityPolicyName(&#34;tf_example&#34;)
+ *             .tlsVersions(&#34;TLSv1.0&#34;)
  *             .ciphers(            
  *                 &#34;ECDHE-ECDSA-AES128-SHA&#34;,
  *                 &#34;AES256-SHA&#34;)
- *             .securityPolicyName(&#34;tf_example&#34;)
- *             .tlsVersions(&#34;TLSv1.0&#34;)
  *             .build());
  * 
  *     }

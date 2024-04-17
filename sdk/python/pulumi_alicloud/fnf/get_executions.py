@@ -143,7 +143,7 @@ def get_executions(enable_details: Optional[bool] = None,
             "my-Execution-1",
             "my-Execution-2",
         ])
-    pulumi.export("fnfExecutionId1", data["alicloud_fn_f_executions"]["ids"]["executions"][0]["id"])
+    pulumi.export("fnfExecutionId1", ids_alicloud_fn_f_executions["executions"][0]["id"])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -204,7 +204,7 @@ def get_executions_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
             "my-Execution-1",
             "my-Execution-2",
         ])
-    pulumi.export("fnfExecutionId1", data["alicloud_fn_f_executions"]["ids"]["executions"][0]["id"])
+    pulumi.export("fnfExecutionId1", ids_alicloud_fn_f_executions["executions"][0]["id"])
     ```
     <!--End PulumiCodeChooser -->
 

@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.Cassandra
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultCluster = new AliCloud.Cassandra.Cluster("defaultCluster", new()
+    ///     var @default = new AliCloud.Cassandra.Cluster("default", new()
     ///     {
     ///         ClusterName = "cassandra-cluster-name-tf",
     ///         DataCenterName = "dc-1",
@@ -55,9 +55,9 @@ namespace Pulumi.AliCloud.Cassandra
     ///         IpWhite = "127.0.0.1",
     ///     });
     /// 
-    ///     var defaultDataCenter = new AliCloud.Cassandra.DataCenter("defaultDataCenter", new()
+    ///     var defaultDataCenter = new AliCloud.Cassandra.DataCenter("default", new()
     ///     {
-    ///         ClusterId = defaultCluster.Id,
+    ///         ClusterId = @default.Id,
     ///         DataCenterName = "dc-2",
     ///         AutoRenew = false,
     ///         InstanceType = "cassandra.c.large",

@@ -14,6 +14,36 @@ import (
 // This data source can query the public IP of the specified KVStore DBInstance.
 //
 // > **NOTE:** Available in v1.101.0+.
+//
+// ## Example Usage
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/kvstore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Declare the data source
+//			example, err := kvstore.GetConnections(ctx, &kvstore.GetConnectionsArgs{
+//				Ids: "r-wer123456",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("connectionString", example.Connections[0].ConnectionString)
+//			return nil
+//		})
+//	}
+//
+// ```
+// <!--End PulumiCodeChooser -->
 func GetConnections(ctx *pulumi.Context, args *GetConnectionsArgs, opts ...pulumi.InvokeOption) (*GetConnectionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetConnectionsResult

@@ -31,13 +31,13 @@ namespace Pulumi.AliCloud.Arms
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var defaultGrafanaWorkspace = new AliCloud.Arms.GrafanaWorkspace("defaultGrafanaWorkspace", new()
+    ///     var defaultGrafanaWorkspace = new AliCloud.Arms.GrafanaWorkspace("default", new()
     ///     {
     ///         GrafanaVersion = "9.0.x",
     ///         Description = name,
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0]),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[0])),
     ///         GrafanaWorkspaceEdition = "standard",
     ///         GrafanaWorkspaceName = name,
     ///         Tags = 

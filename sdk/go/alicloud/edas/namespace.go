@@ -44,16 +44,16 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRegions, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
+//			_default, err := alicloud.GetRegions(ctx, &alicloud.GetRegionsArgs{
 //				Current: pulumi.BoolRef(true),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = edas.NewNamespace(ctx, "defaultNamespace", &edas.NamespaceArgs{
+//			_, err = edas.NewNamespace(ctx, "default", &edas.NamespaceArgs{
 //				DebugEnable:        pulumi.Bool(false),
 //				Description:        pulumi.String(name),
-//				NamespaceLogicalId: pulumi.String(fmt.Sprintf("%v:example", defaultRegions.Regions[0].Id)),
+//				NamespaceLogicalId: pulumi.String(fmt.Sprintf("%v:example", _default.Regions[0].Id)),
 //				NamespaceName:      pulumi.String(name),
 //			})
 //			if err != nil {

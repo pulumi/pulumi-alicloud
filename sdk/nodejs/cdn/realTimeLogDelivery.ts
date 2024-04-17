@@ -21,13 +21,13 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const defaultInteger = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
- * const defaultDomainNew = new alicloud.cdn.DomainNew("defaultDomainNew", {
+ * const defaultDomainNew = new alicloud.cdn.DomainNew("default", {
  *     scope: "overseas",
- *     domainName: pulumi.interpolate`mycdndomain-${defaultRandomInteger.result}.alicloud-provider.cn`,
+ *     domainName: `mycdndomain-${defaultInteger.result}.alicloud-provider.cn`,
  *     cdnType: "web",
  *     sources: [{
  *         type: "ipaddr",
@@ -37,11 +37,11 @@ import * as utilities from "../utilities";
  *         weight: 15,
  *     }],
  * });
- * const defaultProject = new alicloud.log.Project("defaultProject", {
- *     projectName: pulumi.interpolate`terraform-example-${defaultRandomInteger.result}`,
+ * const defaultProject = new alicloud.log.Project("default", {
+ *     projectName: `terraform-example-${defaultInteger.result}`,
  *     description: "terraform-example",
  * });
- * const defaultStore = new alicloud.log.Store("defaultStore", {
+ * const defaultStore = new alicloud.log.Store("default", {
  *     projectName: defaultProject.name,
  *     logstoreName: "example-store",
  *     shardCount: 3,
@@ -49,14 +49,14 @@ import * as utilities from "../utilities";
  *     maxSplitShardCount: 60,
  *     appendMeta: true,
  * });
- * const defaultRegions = alicloud.getRegions({
+ * const default = alicloud.getRegions({
  *     current: true,
  * });
- * const defaultRealTimeLogDelivery = new alicloud.cdn.RealTimeLogDelivery("defaultRealTimeLogDelivery", {
+ * const defaultRealTimeLogDelivery = new alicloud.cdn.RealTimeLogDelivery("default", {
  *     domain: defaultDomainNew.domainName,
  *     logstore: defaultStore.logstoreName,
  *     project: defaultProject.projectName,
- *     slsRegion: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     slsRegion: _default.then(_default => _default.regions?.[0]?.id),
  * });
  * ```
  * <!--End PulumiCodeChooser -->

@@ -104,6 +104,7 @@ def get_plaintext(ciphertext_blob: Optional[str] = None,
     encrypted = alicloud.kms.Ciphertext("encrypted",
         key_id=key.id,
         plaintext="example")
+    # Decrypt encrypted ciphertext
     plaintext = alicloud.kms.get_plaintext_output(ciphertext_blob=encrypted.ciphertext_blob)
     pulumi.export("decrypted", plaintext.plaintext)
     ```
@@ -146,6 +147,7 @@ def get_plaintext_output(ciphertext_blob: Optional[pulumi.Input[str]] = None,
     encrypted = alicloud.kms.Ciphertext("encrypted",
         key_id=key.id,
         plaintext="example")
+    # Decrypt encrypted ciphertext
     plaintext = alicloud.kms.get_plaintext_output(ciphertext_blob=encrypted.ciphertext_blob)
     pulumi.export("decrypted", plaintext.plaintext)
     ```

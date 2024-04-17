@@ -1113,8 +1113,8 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
-     *             .ids(alicloud_router_interface.default().id())
-     *             .nameRegex(alicloud_router_interface.default().name())
+     *             .ids(defaultAlicloudRouterInterface.id())
+     *             .nameRegex(defaultAlicloudRouterInterface.name())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudRouterInterfaceExampleId&#34;, default_.interfaces()[0].id());
@@ -1157,8 +1157,8 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
-     *             .ids(alicloud_router_interface.default().id())
-     *             .nameRegex(alicloud_router_interface.default().name())
+     *             .ids(defaultAlicloudRouterInterface.id())
+     *             .nameRegex(defaultAlicloudRouterInterface.name())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudRouterInterfaceExampleId&#34;, default_.interfaces()[0].id());
@@ -1201,8 +1201,8 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
-     *             .ids(alicloud_router_interface.default().id())
-     *             .nameRegex(alicloud_router_interface.default().name())
+     *             .ids(defaultAlicloudRouterInterface.id())
+     *             .nameRegex(defaultAlicloudRouterInterface.name())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudRouterInterfaceExampleId&#34;, default_.interfaces()[0].id());
@@ -1245,8 +1245,8 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
-     *             .ids(alicloud_router_interface.default().id())
-     *             .nameRegex(alicloud_router_interface.default().name())
+     *             .ids(defaultAlicloudRouterInterface.id())
+     *             .nameRegex(defaultAlicloudRouterInterface.name())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudRouterInterfaceExampleId&#34;, default_.interfaces()[0].id());
@@ -1289,8 +1289,8 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
-     *             .ids(alicloud_router_interface.default().id())
-     *             .nameRegex(alicloud_router_interface.default().name())
+     *             .ids(defaultAlicloudRouterInterface.id())
+     *             .nameRegex(defaultAlicloudRouterInterface.name())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudRouterInterfaceExampleId&#34;, default_.interfaces()[0].id());
@@ -1333,8 +1333,8 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getRouterInterfaces(GetRouterInterfacesArgs.builder()
-     *             .ids(alicloud_router_interface.default().id())
-     *             .nameRegex(alicloud_router_interface.default().name())
+     *             .ids(defaultAlicloudRouterInterface.id())
+     *             .nameRegex(defaultAlicloudRouterInterface.name())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudRouterInterfaceExampleId&#34;, default_.interfaces()[0].id());
@@ -1378,7 +1378,7 @@ public final class ExpressconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVbrPconnAssociations(GetVbrPconnAssociationsArgs.builder()
      *             .ids(&#34;example_id&#34;)
-     *             .vbrId(alicloud_express_connect_vbr_pconn_association.default().vbr_id())
+     *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.vbrId())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudExpressConnectVbrPconnAssociationExampleId&#34;, default_.associations()[0].id());
@@ -1422,7 +1422,7 @@ public final class ExpressconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVbrPconnAssociations(GetVbrPconnAssociationsArgs.builder()
      *             .ids(&#34;example_id&#34;)
-     *             .vbrId(alicloud_express_connect_vbr_pconn_association.default().vbr_id())
+     *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.vbrId())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudExpressConnectVbrPconnAssociationExampleId&#34;, default_.associations()[0].id());
@@ -1466,7 +1466,7 @@ public final class ExpressconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVbrPconnAssociations(GetVbrPconnAssociationsArgs.builder()
      *             .ids(&#34;example_id&#34;)
-     *             .vbrId(alicloud_express_connect_vbr_pconn_association.default().vbr_id())
+     *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.vbrId())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudExpressConnectVbrPconnAssociationExampleId&#34;, default_.associations()[0].id());
@@ -1510,7 +1510,7 @@ public final class ExpressconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVbrPconnAssociations(GetVbrPconnAssociationsArgs.builder()
      *             .ids(&#34;example_id&#34;)
-     *             .vbrId(alicloud_express_connect_vbr_pconn_association.default().vbr_id())
+     *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.vbrId())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudExpressConnectVbrPconnAssociationExampleId&#34;, default_.associations()[0].id());
@@ -1554,7 +1554,7 @@ public final class ExpressconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVbrPconnAssociations(GetVbrPconnAssociationsArgs.builder()
      *             .ids(&#34;example_id&#34;)
-     *             .vbrId(alicloud_express_connect_vbr_pconn_association.default().vbr_id())
+     *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.vbrId())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudExpressConnectVbrPconnAssociationExampleId&#34;, default_.associations()[0].id());
@@ -1598,7 +1598,7 @@ public final class ExpressconnectFunctions {
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVbrPconnAssociations(GetVbrPconnAssociationsArgs.builder()
      *             .ids(&#34;example_id&#34;)
-     *             .vbrId(alicloud_express_connect_vbr_pconn_association.default().vbr_id())
+     *             .vbrId(defaultAlicloudExpressConnectVbrPconnAssociation.vbrId())
      *             .build());
      * 
      *         ctx.export(&#34;alicloudExpressConnectVbrPconnAssociationExampleId&#34;, default_.associations()[0].id());
@@ -2019,9 +2019,9 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs.builder()
-     *             .ids(alicloud_express_connect_virtual_physical_connection.default().id())
-     *             .nameRegex(alicloud_express_connect_virtual_physical_connection.default().name())
-     *             .parentPhysicalConnectionId(alicloud_express_connect_virtual_physical_connection.default().parent_physical_connection_id())
+     *             .ids(defaultAlicloudExpressConnectVirtualPhysicalConnection.id())
+     *             .nameRegex(defaultAlicloudExpressConnectVirtualPhysicalConnection.name())
+     *             .parentPhysicalConnectionId(defaultAlicloudExpressConnectVirtualPhysicalConnection.parentPhysicalConnectionId())
      *             .vlanId(789)
      *             .vpconnAliUid(1234567890)
      *             .build());
@@ -2066,9 +2066,9 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs.builder()
-     *             .ids(alicloud_express_connect_virtual_physical_connection.default().id())
-     *             .nameRegex(alicloud_express_connect_virtual_physical_connection.default().name())
-     *             .parentPhysicalConnectionId(alicloud_express_connect_virtual_physical_connection.default().parent_physical_connection_id())
+     *             .ids(defaultAlicloudExpressConnectVirtualPhysicalConnection.id())
+     *             .nameRegex(defaultAlicloudExpressConnectVirtualPhysicalConnection.name())
+     *             .parentPhysicalConnectionId(defaultAlicloudExpressConnectVirtualPhysicalConnection.parentPhysicalConnectionId())
      *             .vlanId(789)
      *             .vpconnAliUid(1234567890)
      *             .build());
@@ -2113,9 +2113,9 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs.builder()
-     *             .ids(alicloud_express_connect_virtual_physical_connection.default().id())
-     *             .nameRegex(alicloud_express_connect_virtual_physical_connection.default().name())
-     *             .parentPhysicalConnectionId(alicloud_express_connect_virtual_physical_connection.default().parent_physical_connection_id())
+     *             .ids(defaultAlicloudExpressConnectVirtualPhysicalConnection.id())
+     *             .nameRegex(defaultAlicloudExpressConnectVirtualPhysicalConnection.name())
+     *             .parentPhysicalConnectionId(defaultAlicloudExpressConnectVirtualPhysicalConnection.parentPhysicalConnectionId())
      *             .vlanId(789)
      *             .vpconnAliUid(1234567890)
      *             .build());
@@ -2160,9 +2160,9 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs.builder()
-     *             .ids(alicloud_express_connect_virtual_physical_connection.default().id())
-     *             .nameRegex(alicloud_express_connect_virtual_physical_connection.default().name())
-     *             .parentPhysicalConnectionId(alicloud_express_connect_virtual_physical_connection.default().parent_physical_connection_id())
+     *             .ids(defaultAlicloudExpressConnectVirtualPhysicalConnection.id())
+     *             .nameRegex(defaultAlicloudExpressConnectVirtualPhysicalConnection.name())
+     *             .parentPhysicalConnectionId(defaultAlicloudExpressConnectVirtualPhysicalConnection.parentPhysicalConnectionId())
      *             .vlanId(789)
      *             .vpconnAliUid(1234567890)
      *             .build());
@@ -2207,9 +2207,9 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs.builder()
-     *             .ids(alicloud_express_connect_virtual_physical_connection.default().id())
-     *             .nameRegex(alicloud_express_connect_virtual_physical_connection.default().name())
-     *             .parentPhysicalConnectionId(alicloud_express_connect_virtual_physical_connection.default().parent_physical_connection_id())
+     *             .ids(defaultAlicloudExpressConnectVirtualPhysicalConnection.id())
+     *             .nameRegex(defaultAlicloudExpressConnectVirtualPhysicalConnection.name())
+     *             .parentPhysicalConnectionId(defaultAlicloudExpressConnectVirtualPhysicalConnection.parentPhysicalConnectionId())
      *             .vlanId(789)
      *             .vpconnAliUid(1234567890)
      *             .build());
@@ -2254,9 +2254,9 @@ public final class ExpressconnectFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var default = ExpressconnectFunctions.getVirtualPhysicalConnections(GetVirtualPhysicalConnectionsArgs.builder()
-     *             .ids(alicloud_express_connect_virtual_physical_connection.default().id())
-     *             .nameRegex(alicloud_express_connect_virtual_physical_connection.default().name())
-     *             .parentPhysicalConnectionId(alicloud_express_connect_virtual_physical_connection.default().parent_physical_connection_id())
+     *             .ids(defaultAlicloudExpressConnectVirtualPhysicalConnection.id())
+     *             .nameRegex(defaultAlicloudExpressConnectVirtualPhysicalConnection.name())
+     *             .parentPhysicalConnectionId(defaultAlicloudExpressConnectVirtualPhysicalConnection.parentPhysicalConnectionId())
      *             .vlanId(789)
      *             .vpconnAliUid(1234567890)
      *             .build());

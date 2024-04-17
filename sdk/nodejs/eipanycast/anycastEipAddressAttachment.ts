@@ -27,37 +27,37 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultZones = alicloud.slb.getZones({
+ * const default = alicloud.slb.getZones({
  *     availableSlbAddressType: "vpc",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.0.0.0/8",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
  *     cidrBlock: "10.1.0.0/16",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("defaultApplicationLoadBalancer", {
+ * const defaultApplicationLoadBalancer = new alicloud.slb.ApplicationLoadBalancer("default", {
  *     addressType: "intranet",
  *     vswitchId: defaultSwitch.id,
  *     loadBalancerName: name,
  *     loadBalancerSpec: "slb.s1.small",
- *     masterZoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     masterZoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const defaultAnycastEipAddress = new alicloud.eipanycast.AnycastEipAddress("defaultAnycastEipAddress", {
+ * const defaultAnycastEipAddress = new alicloud.eipanycast.AnycastEipAddress("default", {
  *     anycastEipAddressName: name,
  *     serviceLocation: "ChineseMainland",
  * });
- * const defaultRegions = alicloud.getRegions({
+ * const defaultGetRegions = alicloud.getRegions({
  *     current: true,
  * });
- * const defaultAnycastEipAddressAttachment = new alicloud.eipanycast.AnycastEipAddressAttachment("defaultAnycastEipAddressAttachment", {
+ * const defaultAnycastEipAddressAttachment = new alicloud.eipanycast.AnycastEipAddressAttachment("default", {
  *     bindInstanceId: defaultApplicationLoadBalancer.id,
  *     bindInstanceType: "SlbInstance",
- *     bindInstanceRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     bindInstanceRegionId: defaultGetRegions.then(defaultGetRegions => defaultGetRegions.regions?.[0]?.id),
  *     anycastId: defaultAnycastEipAddress.id,
  * });
  * ```
@@ -74,94 +74,74 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const beijing = new alicloud.Provider("beijing", {region: "cn-beijing"});
- * const hangzhou = new alicloud.Provider("hangzhou", {region: "cn-hangzhou"});
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultImages = alicloud.ecs.getImages({
+ * const defaultGetImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_18.*64",
  *     mostRecent: true,
  *     owners: "system",
  * });
- * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?.[0]?.id,
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
  *     cpuCoreCount: 1,
  *     memorySize: 2,
  * }));
  * const defaultVpc = new alicloud.vpc.Network("defaultVpc", {
  *     vpcName: name,
  *     cidrBlock: "192.168.0.0/16",
- * }, {
- *     provider: "alicloud.beijing",
  * });
  * const defaultVsw = new alicloud.vpc.Switch("defaultVsw", {
  *     vpcId: defaultVpc.id,
  *     cidrBlock: "192.168.0.0/24",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- * }, {
- *     provider: "alicloud.beijing",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
- * const defaultuBsECI = new alicloud.ecs.SecurityGroup("defaultuBsECI", {vpcId: defaultVpc.id}, {
- *     provider: "alicloud.beijing",
- * });
+ * const defaultuBsECI = new alicloud.ecs.SecurityGroup("defaultuBsECI", {vpcId: defaultVpc.id});
  * const default9KDlN7 = new alicloud.ecs.Instance("default9KDlN7", {
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
  *     instanceName: name,
  *     securityGroups: [defaultuBsECI.id],
  *     availabilityZone: defaultVsw.zoneId,
  *     instanceChargeType: "PostPaid",
  *     systemDiskCategory: "cloud_efficiency",
  *     vswitchId: defaultVsw.id,
- * }, {
- *     provider: "alicloud.beijing",
  * });
- * const defaultXkpFRs = new alicloud.eipanycast.AnycastEipAddress("defaultXkpFRs", {serviceLocation: "ChineseMainland"}, {
- *     provider: "alicloud.hangzhou",
- * });
+ * const defaultXkpFRs = new alicloud.eipanycast.AnycastEipAddress("defaultXkpFRs", {serviceLocation: "ChineseMainland"});
  * const defaultVpc2 = new alicloud.vpc.Network("defaultVpc2", {
  *     vpcName: `${name}6`,
  *     cidrBlock: "192.168.0.0/16",
- * }, {
- *     provider: "alicloud.hangzhou",
  * });
- * const default2Zones = alicloud.getZones({
+ * const default2 = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * });
- * const default2Images = alicloud.ecs.getImages({
+ * const default2GetImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_18.*64",
  *     mostRecent: true,
  *     owners: "system",
  * });
- * const default2InstanceTypes = default2Zones.then(default2Zones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: default2Zones.zones?.[0]?.id,
+ * const default2GetInstanceTypes = default2.then(default2 => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: default2.zones?.[0]?.id,
  *     cpuCoreCount: 1,
  *     memorySize: 2,
  * }));
  * const defaultdsVsw2 = new alicloud.vpc.Switch("defaultdsVsw2", {
  *     vpcId: defaultVpc2.id,
  *     cidrBlock: "192.168.0.0/24",
- *     zoneId: default2Zones.then(default2Zones => default2Zones.zones?.[1]?.id),
- * }, {
- *     provider: "alicloud.hangzhou",
+ *     zoneId: default2.then(default2 => default2.zones?.[1]?.id),
  * });
- * const defaultuBsECI2 = new alicloud.ecs.SecurityGroup("defaultuBsECI2", {vpcId: defaultVpc2.id}, {
- *     provider: "alicloud.hangzhou",
- * });
+ * const defaultuBsECI2 = new alicloud.ecs.SecurityGroup("defaultuBsECI2", {vpcId: defaultVpc2.id});
  * const defaultEcs2 = new alicloud.ecs.Instance("defaultEcs2", {
- *     imageId: default2Images.then(default2Images => default2Images.images?.[0]?.id),
- *     instanceType: default2InstanceTypes.then(default2InstanceTypes => default2InstanceTypes.instanceTypes?.[0]?.id),
+ *     imageId: default2GetImages.then(default2GetImages => default2GetImages.images?.[0]?.id),
+ *     instanceType: default2GetInstanceTypes.then(default2GetInstanceTypes => default2GetInstanceTypes.instanceTypes?.[0]?.id),
  *     instanceName: name,
  *     securityGroups: [defaultuBsECI2.id],
  *     availabilityZone: defaultdsVsw2.zoneId,
  *     instanceChargeType: "PostPaid",
  *     systemDiskCategory: "cloud_efficiency",
  *     vswitchId: defaultdsVsw2.id,
- * }, {
- *     provider: "alicloud.hangzhou",
  * });
  * const defaultEfYBJY = new alicloud.eipanycast.AnycastEipAddressAttachment("defaultEfYBJY", {
  *     bindInstanceId: default9KDlN7.networkInterfaceId,
@@ -169,16 +149,12 @@ import * as utilities from "../utilities";
  *     bindInstanceRegionId: "cn-beijing",
  *     anycastId: defaultXkpFRs.id,
  *     associationMode: "Default",
- * }, {
- *     provider: "alicloud.beijing",
  * });
  * const normal = new alicloud.eipanycast.AnycastEipAddressAttachment("normal", {
  *     bindInstanceId: defaultEcs2.networkInterfaceId,
  *     bindInstanceType: "NetworkInterface",
  *     bindInstanceRegionId: "cn-hangzhou",
  *     anycastId: defaultEfYBJY.anycastId,
- * }, {
- *     provider: "alicloud.hangzhou",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

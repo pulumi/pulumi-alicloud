@@ -27,6 +27,7 @@ namespace Pulumi.AliCloud.Mse
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var example = AliCloud.Mse.GetClusters.Invoke(new()
         ///     {
         ///         Ids = new[]
@@ -63,6 +64,7 @@ namespace Pulumi.AliCloud.Mse
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var example = AliCloud.Mse.GetClusters.Invoke(new()
         ///     {
         ///         Ids = new[]

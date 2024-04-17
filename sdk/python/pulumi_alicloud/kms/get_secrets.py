@@ -158,6 +158,7 @@ def get_secrets(enable_details: Optional[bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     kms_secrets_ds = alicloud.kms.get_secrets(fetch_tags=True,
         name_regex="name_regex",
         tags={
@@ -223,6 +224,7 @@ def get_secrets_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = 
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     kms_secrets_ds = alicloud.kms.get_secrets(fetch_tags=True,
         name_regex="name_regex",
         tags={

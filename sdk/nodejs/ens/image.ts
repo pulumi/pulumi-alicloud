@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultInstance = new alicloud.ens.Instance("defaultInstance", {
+ * const _default = new alicloud.ens.Instance("default", {
  *     systemDisk: {
  *         size: 20,
  *     },
@@ -38,9 +38,9 @@ import * as utilities from "../utilities";
  *     instanceType: "ens.sn1.stiny",
  *     status: "Stopped",
  * });
- * const defaultImage = new alicloud.ens.Image("defaultImage", {
+ * const defaultImage = new alicloud.ens.Image("default", {
  *     imageName: name,
- *     instanceId: defaultInstance.id,
+ *     instanceId: _default.id,
  *     deleteAfterImageUpload: "false",
  * });
  * ```

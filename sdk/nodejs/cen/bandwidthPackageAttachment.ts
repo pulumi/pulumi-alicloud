@@ -18,18 +18,18 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ * const example = new alicloud.cen.Instance("example", {
  *     cenInstanceName: "tf_example",
  *     description: "an example for cen",
  * });
- * const exampleBandwidthPackage = new alicloud.cen.BandwidthPackage("exampleBandwidthPackage", {
+ * const exampleBandwidthPackage = new alicloud.cen.BandwidthPackage("example", {
  *     bandwidth: 5,
  *     cenBandwidthPackageName: "tf_example",
  *     geographicRegionAId: "China",
  *     geographicRegionBId: "China",
  * });
- * const exampleBandwidthPackageAttachment = new alicloud.cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", {
- *     instanceId: exampleInstance.id,
+ * const exampleBandwidthPackageAttachment = new alicloud.cen.BandwidthPackageAttachment("example", {
+ *     instanceId: example.id,
  *     bandwidthPackageId: exampleBandwidthPackage.id,
  * });
  * ```

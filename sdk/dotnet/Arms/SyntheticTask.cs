@@ -31,9 +31,9 @@ namespace Pulumi.AliCloud.Arms
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var defaultSyntheticTask = new AliCloud.Arms.SyntheticTask("defaultSyntheticTask", new()
+    ///     var defaultSyntheticTask = new AliCloud.Arms.SyntheticTask("default", new()
     ///     {
     ///         Monitors = new[]
     ///         {
@@ -236,7 +236,7 @@ namespace Pulumi.AliCloud.Arms
     ///             IsOpenTrace = true,
     ///             TraceClientType = 1,
     ///         },
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[1]),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Ids[1])),
     ///     });
     /// 
     /// });

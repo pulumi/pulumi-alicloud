@@ -33,22 +33,22 @@ namespace Pulumi.AliCloud.Nas
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "testacc";
-    ///     var defaultZones = AliCloud.Nas.GetZones.Invoke(new()
+    ///     var @default = AliCloud.Nas.GetZones.Invoke(new()
     ///     {
     ///         FileSystemType = "extreme",
     ///     });
     /// 
-    ///     var defaultFileSystem = new AliCloud.Nas.FileSystem("defaultFileSystem", new()
+    ///     var defaultFileSystem = new AliCloud.Nas.FileSystem("default", new()
     ///     {
     ///         FileSystemType = "extreme",
     ///         ProtocolType = "NFS",
-    ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId),
+    ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.ZoneId)),
     ///         StorageType = "standard",
     ///         Description = name,
     ///         Capacity = 100,
     ///     });
     /// 
-    ///     var defaultSnapshot = new AliCloud.Nas.Snapshot("defaultSnapshot", new()
+    ///     var defaultSnapshot = new AliCloud.Nas.Snapshot("default", new()
     ///     {
     ///         FileSystemId = defaultFileSystem.Id,
     ///         Description = name,

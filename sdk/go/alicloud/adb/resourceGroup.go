@@ -43,33 +43,33 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := adb.GetZones(ctx, nil, nil)
+//			_default, err := adb.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
+//			defaultGetResourceGroups, err := resourcemanager.GetResourceGroups(ctx, &resourcemanager.GetResourceGroupsArgs{
 //				Status: pulumi.StringRef("OK"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VpcId:       defaultNetwork.ID(),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //				VswitchName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultDBCluster, err := adb.NewDBCluster(ctx, "defaultDBCluster", &adb.DBClusterArgs{
+//			defaultDBCluster, err := adb.NewDBCluster(ctx, "default", &adb.DBClusterArgs{
 //				ComputeResource:   pulumi.String("48Core192GBNEW"),
 //				DbClusterCategory: pulumi.String("MixedStorage"),
 //				DbClusterVersion:  pulumi.String("3.0"),
@@ -81,14 +81,14 @@ import (
 //				MaintainTime:      pulumi.String("04:00Z-05:00Z"),
 //				Mode:              pulumi.String("flexible"),
 //				PaymentType:       pulumi.String("PayAsYouGo"),
-//				ResourceGroupId:   pulumi.String(defaultResourceGroups.Ids[0]),
+//				ResourceGroupId:   pulumi.String(defaultGetResourceGroups.Ids[0]),
 //				SecurityIps: pulumi.StringArray{
 //					pulumi.String("10.168.1.12"),
 //					pulumi.String("10.168.1.11"),
 //				},
 //				VpcId:     defaultNetwork.ID(),
 //				VswitchId: defaultSwitch.ID(),
-//				ZoneId:    pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:    pulumi.String(_default.Zones[0].Id),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("example"),
@@ -97,7 +97,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = adb.NewResourceGroup(ctx, "defaultResourceGroup", &adb.ResourceGroupArgs{
+//			_, err = adb.NewResourceGroup(ctx, "default", &adb.ResourceGroupArgs{
 //				GroupName:   pulumi.String("TF_EXAMPLE"),
 //				GroupType:   pulumi.String("batch"),
 //				NodeNum:     pulumi.Int(1),

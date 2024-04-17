@@ -21,8 +21,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = new alicloud.ram.SecurityPreference("example", {
- *     allowUserToChangePassword: true,
  *     enableSaveMfaTicket: false,
+ *     allowUserToChangePassword: true,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

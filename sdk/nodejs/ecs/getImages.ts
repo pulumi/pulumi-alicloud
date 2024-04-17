@@ -18,8 +18,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const imagesDs = alicloud.ecs.getImages({
- *     nameRegex: "^centos_6",
  *     owners: "system",
+ *     nameRegex: "^centos_6",
  * });
  * export const firstImageId = imagesDs.then(imagesDs => imagesDs.images?.[0]?.id);
  * ```
@@ -199,8 +199,8 @@ export interface GetImagesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const imagesDs = alicloud.ecs.getImages({
- *     nameRegex: "^centos_6",
  *     owners: "system",
+ *     nameRegex: "^centos_6",
  * });
  * export const firstImageId = imagesDs.then(imagesDs => imagesDs.images?.[0]?.id);
  * ```

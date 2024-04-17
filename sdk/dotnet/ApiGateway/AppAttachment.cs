@@ -25,14 +25,16 @@ namespace Pulumi.AliCloud.ApiGateway
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform_example";
-    ///     var exampleGroup = new AliCloud.ApiGateway.Group("exampleGroup", new()
+    ///     var example = new AliCloud.ApiGateway.Group("example", new()
     ///     {
+    ///         Name = name,
     ///         Description = name,
     ///     });
     /// 
-    ///     var exampleApi = new AliCloud.ApiGateway.Api("exampleApi", new()
+    ///     var exampleApi = new AliCloud.ApiGateway.Api("example", new()
     ///     {
-    ///         GroupId = exampleGroup.Id,
+    ///         GroupId = example.Id,
+    ///         Name = name,
     ///         Description = name,
     ///         AuthType = "APP",
     ///         ForceNonceCheck = false,
@@ -71,15 +73,16 @@ namespace Pulumi.AliCloud.ApiGateway
     ///         },
     ///     });
     /// 
-    ///     var exampleApp = new AliCloud.ApiGateway.App("exampleApp", new()
+    ///     var exampleApp = new AliCloud.ApiGateway.App("example", new()
     ///     {
+    ///         Name = name,
     ///         Description = name,
     ///     });
     /// 
-    ///     var exampleAppAttachment = new AliCloud.ApiGateway.AppAttachment("exampleAppAttachment", new()
+    ///     var exampleAppAttachment = new AliCloud.ApiGateway.AppAttachment("example", new()
     ///     {
     ///         ApiId = exampleApi.ApiId,
-    ///         GroupId = exampleGroup.Id,
+    ///         GroupId = example.Id,
     ///         AppId = exampleApp.Id,
     ///         StageName = "PRE",
     ///     });

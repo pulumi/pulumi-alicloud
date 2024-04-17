@@ -31,14 +31,14 @@ namespace Pulumi.AliCloud.Dns
     /// {
     ///     var config = new Config();
     ///     var domainName = config.Get("domainName") ?? "alicloud-provider.com";
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
-    ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("defaultAlarmContactGroup", new()
+    ///     var defaultAlarmContactGroup = new AliCloud.Cms.AlarmContactGroup("default", new()
     ///     {
     ///         AlarmContactGroupName = "tf_example",
     ///     });
     /// 
-    ///     var defaultGtmInstance = new AliCloud.Dns.GtmInstance("defaultGtmInstance", new()
+    ///     var defaultGtmInstance = new AliCloud.Dns.GtmInstance("default", new()
     ///     {
     ///         InstanceName = "tf_example",
     ///         PaymentType = "Subscription",
@@ -50,7 +50,7 @@ namespace Pulumi.AliCloud.Dns
     ///         PublicCnameMode = "SYSTEM_ASSIGN",
     ///         Ttl = 60,
     ///         CnameType = "PUBLIC",
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
     ///         AlertGroups = new[]
     ///         {
     ///             defaultAlarmContactGroup.AlarmContactGroupName,

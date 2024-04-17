@@ -567,6 +567,7 @@ class DdosCooInstance(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.ddos.DdosCooInstance("default",
+            name=name,
             base_bandwidth="30",
             bandwidth="30",
             service_bandwidth="100",
@@ -634,6 +635,7 @@ class DdosCooInstance(pulumi.CustomResource):
         if name is None:
             name = "tf-example"
         default = alicloud.ddos.DdosCooInstance("default",
+            name=name,
             base_bandwidth="30",
             bandwidth="30",
             service_bandwidth="100",

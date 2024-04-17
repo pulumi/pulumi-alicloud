@@ -148,7 +148,7 @@ def get_instances(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.dts.get_instances(ids=[alicloud_dts_instance["default"]["id"]],
+    default = alicloud.dts.get_instances(ids=[default_alicloud_dts_instance["id"]],
         resource_group_id="example_value")
     pulumi.export("alicloudDtsInstanceExampleId", default.instances[0].id)
     ```
@@ -202,7 +202,7 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.dts.get_instances(ids=[alicloud_dts_instance["default"]["id"]],
+    default = alicloud.dts.get_instances(ids=[default_alicloud_dts_instance["id"]],
         resource_group_id="example_value")
     pulumi.export("alicloudDtsInstanceExampleId", default.instances[0].id)
     ```

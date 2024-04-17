@@ -22,20 +22,20 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultZones = alicloud.mongodb.getZones({});
- * const index = defaultZones.then(defaultZones => defaultZones.zones).length.then(length => length - 1);
- * const zoneId = defaultZones.then(defaultZones => defaultZones.zones[index].id);
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const default = alicloud.mongodb.getZones({});
+ * const index = _default.then(_default => _default.zones).length.then(length => length - 1);
+ * const zoneId = _default.then(_default => _default.zones[index].id);
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "172.17.3.0/24",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
  *     cidrBlock: "172.17.3.0/24",
  *     vpcId: defaultNetwork.id,
  *     zoneId: zoneId,
  * });
- * const defaultInstance = new alicloud.mongodb.Instance("defaultInstance", {
+ * const defaultInstance = new alicloud.mongodb.Instance("default", {
  *     engineVersion: "4.2",
  *     dbInstanceClass: "dds.mongo.mid",
  *     dbInstanceStorage: 10,
@@ -44,12 +44,13 @@ import * as utilities from "../utilities";
  *         "10.168.1.12",
  *         "100.69.7.112",
  *     ],
+ *     name: name,
  *     tags: {
  *         Created: "TF",
  *         For: "example",
  *     },
  * });
- * const defaultAccount = new alicloud.mongodb.Account("defaultAccount", {
+ * const defaultAccount = new alicloud.mongodb.Account("default", {
  *     accountName: "root",
  *     accountPassword: "Example_123",
  *     instanceId: defaultInstance.id,

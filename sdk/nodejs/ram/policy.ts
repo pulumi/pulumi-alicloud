@@ -26,7 +26,7 @@ import * as utilities from "../utilities";
  *
  * // Create a new RAM Policy.
  * const policy = new alicloud.ram.Policy("policy", {
- *     description: "this is a policy test",
+ *     policyName: "policyName",
  *     policyDocument: `  {
  *     "Statement": [
  *       {
@@ -43,9 +43,8 @@ import * as utilities from "../utilities";
  *     ],
  *       "Version": "1"
  *   }
- *   
  * `,
- *     policyName: "policyName",
+ *     description: "this is a policy test",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

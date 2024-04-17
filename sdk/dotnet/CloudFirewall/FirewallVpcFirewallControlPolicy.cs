@@ -31,9 +31,9 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultAccount = AliCloud.GetAccount.Invoke();
+    ///     var @default = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var defaultInstance = new AliCloud.Cen.Instance("defaultInstance", new()
+    ///     var defaultInstance = new AliCloud.Cen.Instance("default", new()
     ///     {
     ///         CenInstanceName = name,
     ///         Description = "example_value",
@@ -44,7 +44,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     ///         },
     ///     });
     /// 
-    ///     var defaultFirewallVpcFirewallControlPolicy = new AliCloud.CloudFirewall.FirewallVpcFirewallControlPolicy("defaultFirewallVpcFirewallControlPolicy", new()
+    ///     var defaultFirewallVpcFirewallControlPolicy = new AliCloud.CloudFirewall.FirewallVpcFirewallControlPolicy("default", new()
     ///     {
     ///         Order = 1,
     ///         Destination = "127.0.0.2/32",
@@ -59,7 +59,7 @@ namespace Pulumi.AliCloud.CloudFirewall
     ///         DestPortType = "port",
     ///         Proto = "TCP",
     ///         Release = true,
-    ///         MemberUid = defaultAccount.Apply(getAccountResult =&gt; getAccountResult.Id),
+    ///         MemberUid = @default.Apply(@default =&gt; @default.Apply(getAccountResult =&gt; getAccountResult.Id)),
     ///         VpcFirewallId = defaultInstance.Id,
     ///     });
     /// 

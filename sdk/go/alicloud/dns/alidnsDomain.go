@@ -33,15 +33,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultDomainGroup, err := dns.NewDomainGroup(ctx, "defaultDomainGroup", &dns.DomainGroupArgs{
+//			_, err := dns.NewDomainGroup(ctx, "default", &dns.DomainGroupArgs{
 //				DomainGroupName: pulumi.String("tf-example"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dns.NewAlidnsDomain(ctx, "defaultAlidnsDomain", &dns.AlidnsDomainArgs{
+//			_, err = dns.NewAlidnsDomain(ctx, "default", &dns.AlidnsDomainArgs{
 //				DomainName: pulumi.String("starmove.com"),
-//				GroupId:    defaultDomainGroup.ID(),
+//				GroupId:    _default.ID(),
 //				Tags: pulumi.Map{
 //					"Created": pulumi.Any("TF"),
 //					"For":     pulumi.Any("example"),

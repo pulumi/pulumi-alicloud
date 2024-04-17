@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultAccount = AlicloudFunctions.getAccount();
+ *         final var default = AlicloudFunctions.getAccount();
  * 
  *         var defaultNamespace = new Namespace(&#34;defaultNamespace&#34;, NamespaceArgs.builder()        
  *             .description(name)
@@ -80,7 +80,7 @@ import javax.annotation.Nullable;
  *     - MySQL_QPS
  *     - MySQL_TPS
  *             &#34;&#34;&#34;)
- *             .targetUserId(defaultAccount.applyValue(getAccountResult -&gt; getAccountResult.id()))
+ *             .targetUserId(default_.id())
  *             .build());
  * 
  *     }

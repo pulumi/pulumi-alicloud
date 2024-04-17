@@ -20,7 +20,6 @@ import * as utilities from "../utilities";
  *
  * const zonesIds = alicloud.hbase.getZones({});
  * const hbase = new alicloud.hbase.Instance("hbase", {zoneId: zonesIds.then(zonesIds => zonesIds.zones?.[0]?.id)});
- * // Other properties...
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -75,7 +74,6 @@ export interface GetZonesResult {
  *
  * const zonesIds = alicloud.hbase.getZones({});
  * const hbase = new alicloud.hbase.Instance("hbase", {zoneId: zonesIds.then(zonesIds => zonesIds.zones?.[0]?.id)});
- * // Other properties...
  * ```
  * <!--End PulumiCodeChooser -->
  */

@@ -37,7 +37,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := ros.NewStackGroup(ctx, "example", &ros.StackGroupArgs{
 //				StackGroupName: pulumi.String("example_value"),
-//				TemplateBody:   pulumi.String("    {\n    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n    }\n    \n"),
+//				TemplateBody:   pulumi.String("    {\n    	\"ROSTemplateFormatVersion\": \"2015-09-01\"\n    }\n"),
 //			})
 //			if err != nil {
 //				return err

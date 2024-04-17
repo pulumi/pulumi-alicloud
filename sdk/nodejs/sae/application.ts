@@ -26,38 +26,38 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const region = config.get("region") || "cn-hangzhou";
  * const name = config.get("name") || "tf-example";
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const defaultInteger = new random.index.Integer("default", {
  *     max: 99999,
  *     min: 10000,
  * });
- * const defaultRegions = alicloud.getRegions({
+ * const default = alicloud.getRegions({
  *     current: true,
  * });
- * const defaultZones = alicloud.getZones({
+ * const defaultGetZones = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
  *     cidrBlock: "10.4.0.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultNamespace = new alicloud.sae.Namespace("defaultNamespace", {
- *     namespaceId: pulumi.all([defaultRegions, defaultRandomInteger.result]).apply(([defaultRegions, result]) => `${defaultRegions.regions?.[0]?.id}:example${result}`),
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {vpcId: defaultNetwork.id});
+ * const defaultNamespace = new alicloud.sae.Namespace("default", {
+ *     namespaceId: _default.then(_default => `${_default.regions?.[0]?.id}:example${defaultInteger.result}`),
  *     namespaceName: name,
  *     namespaceDescription: name,
  *     enableMicroRegistration: false,
  * });
- * const defaultApplication = new alicloud.sae.Application("defaultApplication", {
+ * const defaultApplication = new alicloud.sae.Application("default", {
  *     appDescription: name,
- *     appName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
+ *     appName: `${name}-${defaultInteger.result}`,
  *     namespaceId: defaultNamespace.id,
- *     imageUrl: defaultRegions.then(defaultRegions => `registry-vpc.${defaultRegions.regions?.[0]?.id}.aliyuncs.com/sae-demo-image/consumer:1.0`),
+ *     imageUrl: _default.then(_default => `registry-vpc.${_default.regions?.[0]?.id}.aliyuncs.com/sae-demo-image/consumer:1.0`),
  *     packageType: "Image",
  *     securityGroupId: defaultSecurityGroup.id,
  *     vpcId: defaultNetwork.id,

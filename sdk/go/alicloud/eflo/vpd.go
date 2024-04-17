@@ -42,14 +42,14 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = eflo.NewVpd(ctx, "defaultVpd", &eflo.VpdArgs{
+//			_, err = eflo.NewVpd(ctx, "default", &eflo.VpdArgs{
 //				Cidr:            pulumi.String("10.0.0.0/8"),
 //				VpdName:         pulumi.String(name),
-//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
 //			})
 //			if err != nil {
 //				return err

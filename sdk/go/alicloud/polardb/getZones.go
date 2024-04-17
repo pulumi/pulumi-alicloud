@@ -30,6 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Declare the data source
 //			_, err := polardb.GetZones(ctx, nil, nil)
 //			if err != nil {
 //				return err

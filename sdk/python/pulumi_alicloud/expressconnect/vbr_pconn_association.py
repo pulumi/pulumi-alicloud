@@ -420,12 +420,12 @@ class VbrPconnAssociation(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        example_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        example = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
         default = alicloud.expressconnect.VirtualBorderRouter("default",
             local_gateway_ip="10.0.0.1",
             peer_gateway_ip="10.0.0.2",
             peering_subnet_mask="255.255.255.252",
-            physical_connection_id=example_physical_connections.connections[0].id,
+            physical_connection_id=example.connections[0].id,
             virtual_border_router_name=name,
             vlan_id=110,
             min_rx_interval=1000,
@@ -435,10 +435,10 @@ class VbrPconnAssociation(pulumi.CustomResource):
             local_ipv6_gateway_ip="2408:4004:cc:400::1",
             peer_ipv6_gateway_ip="2408:4004:cc:400::2",
             peering_ipv6_subnet_mask="2408:4004:cc:400::/56")
-        example_vbr_pconn_association = alicloud.expressconnect.VbrPconnAssociation("exampleVbrPconnAssociation",
+        example_vbr_pconn_association = alicloud.expressconnect.VbrPconnAssociation("example",
             peer_gateway_ip="10.0.0.6",
             local_gateway_ip="10.0.0.5",
-            physical_connection_id=example_physical_connections.connections[2].id,
+            physical_connection_id=example.connections[2].id,
             vbr_id=default.id,
             peering_subnet_mask="255.255.255.252",
             vlan_id=1122,
@@ -498,12 +498,12 @@ class VbrPconnAssociation(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        example_physical_connections = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
+        example = alicloud.expressconnect.get_physical_connections(name_regex="^preserved-NODELETING")
         default = alicloud.expressconnect.VirtualBorderRouter("default",
             local_gateway_ip="10.0.0.1",
             peer_gateway_ip="10.0.0.2",
             peering_subnet_mask="255.255.255.252",
-            physical_connection_id=example_physical_connections.connections[0].id,
+            physical_connection_id=example.connections[0].id,
             virtual_border_router_name=name,
             vlan_id=110,
             min_rx_interval=1000,
@@ -513,10 +513,10 @@ class VbrPconnAssociation(pulumi.CustomResource):
             local_ipv6_gateway_ip="2408:4004:cc:400::1",
             peer_ipv6_gateway_ip="2408:4004:cc:400::2",
             peering_ipv6_subnet_mask="2408:4004:cc:400::/56")
-        example_vbr_pconn_association = alicloud.expressconnect.VbrPconnAssociation("exampleVbrPconnAssociation",
+        example_vbr_pconn_association = alicloud.expressconnect.VbrPconnAssociation("example",
             peer_gateway_ip="10.0.0.6",
             local_gateway_ip="10.0.0.5",
-            physical_connection_id=example_physical_connections.connections[2].id,
+            physical_connection_id=example.connections[2].id,
             vbr_id=default.id,
             peering_subnet_mask="255.255.255.252",
             vlan_id=1122,

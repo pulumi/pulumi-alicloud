@@ -134,8 +134,8 @@ def get_consumer_groups(consumer_id_regex: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    consumer_groups_ds = alicloud.actiontrail.get_consumer_groups(consumer_id_regex="CID-alikafkaGroupDatasourceName",
-        instance_id="xxx",
+    consumer_groups_ds = alicloud.actiontrail.get_consumer_groups(instance_id="xxx",
+        consumer_id_regex="CID-alikafkaGroupDatasourceName",
         output_file="consumerGroups.txt")
     pulumi.export("firstGroupName", consumer_groups_ds.consumer_ids[0])
     ```
@@ -184,8 +184,8 @@ def get_consumer_groups_output(consumer_id_regex: Optional[pulumi.Input[Optional
     import pulumi
     import pulumi_alicloud as alicloud
 
-    consumer_groups_ds = alicloud.actiontrail.get_consumer_groups(consumer_id_regex="CID-alikafkaGroupDatasourceName",
-        instance_id="xxx",
+    consumer_groups_ds = alicloud.actiontrail.get_consumer_groups(instance_id="xxx",
+        consumer_id_regex="CID-alikafkaGroupDatasourceName",
         output_file="consumerGroups.txt")
     pulumi.export("firstGroupName", consumer_groups_ds.consumer_ids[0])
     ```

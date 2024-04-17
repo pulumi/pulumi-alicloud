@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.EventBridge
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var serviceLinkedRole = new AliCloud.EventBridge.ServiceLinkedRole("serviceLinkedRole", new()
+    ///     var serviceLinkedRole = new AliCloud.EventBridge.ServiceLinkedRole("service_linked_role", new()
     ///     {
     ///         ProductName = "AliyunServiceRoleForEventBridgeSourceRocketMQ",
     ///     });

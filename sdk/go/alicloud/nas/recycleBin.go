@@ -35,23 +35,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZones, err := nas.GetZones(ctx, &nas.GetZonesArgs{
+//			example, err := nas.GetZones(ctx, &nas.GetZonesArgs{
 //				FileSystemType: pulumi.StringRef("standard"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleFileSystem, err := nas.NewFileSystem(ctx, "exampleFileSystem", &nas.FileSystemArgs{
+//			exampleFileSystem, err := nas.NewFileSystem(ctx, "example", &nas.FileSystemArgs{
 //				ProtocolType: pulumi.String("NFS"),
 //				StorageType:  pulumi.String("Performance"),
 //				Description:  pulumi.String("terraform-example"),
 //				EncryptType:  pulumi.Int(1),
-//				ZoneId:       pulumi.String(exampleZones.Zones[0].ZoneId),
+//				ZoneId:       pulumi.String(example.Zones[0].ZoneId),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = nas.NewRecycleBin(ctx, "exampleRecycleBin", &nas.RecycleBinArgs{
+//			_, err = nas.NewRecycleBin(ctx, "example", &nas.RecycleBinArgs{
 //				FileSystemId: exampleFileSystem.ID(),
 //				ReservedDays: pulumi.Int(3),
 //			})

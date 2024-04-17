@@ -44,23 +44,21 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
+//			_, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			createBucket, err := oss.NewBucket(ctx, "createBucket", &oss.BucketArgs{
+//			createBucket, err := oss.NewBucket(ctx, "CreateBucket", &oss.BucketArgs{
 //				StorageClass: pulumi.String("Standard"),
-//				Bucket: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("%v-%v", name, result), nil
-//				}).(pulumi.StringOutput),
+//				Bucket:       pulumi.String(fmt.Sprintf("%v-%v", name, _default.Result)),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = oss.NewBucketReferer(ctx, "defaultBucketReferer", &oss.BucketRefererArgs{
+//			_, err = oss.NewBucketReferer(ctx, "default", &oss.BucketRefererArgs{
 //				AllowEmptyReferer: pulumi.Bool(true),
 //				RefererBlacklists: pulumi.StringArray{
 //					pulumi.String("*.forbidden.com"),

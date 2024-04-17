@@ -163,7 +163,7 @@ class PolicyVersion(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tfexample"
-        example_policy = alicloud.resourcemanager.Policy("examplePolicy",
+        example = alicloud.resourcemanager.Policy("example",
             policy_name=name,
             policy_document=\"\"\"		{
         			"Statement": [{
@@ -174,8 +174,8 @@ class PolicyVersion(pulumi.CustomResource):
         			"Version": "1"
         		}
         \"\"\")
-        example_policy_version = alicloud.resourcemanager.PolicyVersion("examplePolicyVersion",
-            policy_name=example_policy.policy_name,
+        example_policy_version = alicloud.resourcemanager.PolicyVersion("example",
+            policy_name=example.policy_name,
             policy_document=\"\"\"		{
         			"Statement": [{
         				"Action": ["oss:*"],
@@ -229,7 +229,7 @@ class PolicyVersion(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tfexample"
-        example_policy = alicloud.resourcemanager.Policy("examplePolicy",
+        example = alicloud.resourcemanager.Policy("example",
             policy_name=name,
             policy_document=\"\"\"		{
         			"Statement": [{
@@ -240,8 +240,8 @@ class PolicyVersion(pulumi.CustomResource):
         			"Version": "1"
         		}
         \"\"\")
-        example_policy_version = alicloud.resourcemanager.PolicyVersion("examplePolicyVersion",
-            policy_name=example_policy.policy_name,
+        example_policy_version = alicloud.resourcemanager.PolicyVersion("example",
+            policy_name=example.policy_name,
             policy_document=\"\"\"		{
         			"Statement": [{
         				"Action": ["oss:*"],

@@ -254,28 +254,29 @@ class RouteEntry(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
             memory_size=2)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "RouteEntryConfig"
-        foo_network = alicloud.vpc.Network("fooNetwork",
+        foo = alicloud.vpc.Network("foo",
             vpc_name=name,
             cidr_block="10.1.0.0/21")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vpc_id=foo_network.id,
+        foo_switch = alicloud.vpc.Switch("foo",
+            vpc_id=foo.id,
             cidr_block="10.1.1.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
-        tf_test_foo = alicloud.ecs.SecurityGroup("tfTestFoo",
+        tf_test_foo = alicloud.ecs.SecurityGroup("tf_test_foo",
+            name=name,
             description="foo",
-            vpc_id=foo_network.id)
+            vpc_id=foo.id)
         ingress = alicloud.ecs.SecurityGroupRule("ingress",
             type="ingress",
             ip_protocol="tcp",
@@ -285,18 +286,18 @@ class RouteEntry(pulumi.CustomResource):
             priority=1,
             security_group_id=tf_test_foo.id,
             cidr_ip="0.0.0.0/0")
-        foo_instance = alicloud.ecs.Instance("fooInstance",
+        foo_instance = alicloud.ecs.Instance("foo",
             security_groups=[tf_test_foo.id],
             vswitch_id=foo_switch.id,
             instance_charge_type="PostPaid",
-            instance_type=default_instance_types.instance_types[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
             internet_charge_type="PayByTraffic",
             internet_max_bandwidth_out=5,
             system_disk_category="cloud_efficiency",
-            image_id=default_images.images[0].id,
+            image_id=default_get_images.images[0].id,
             instance_name=name)
-        foo_route_entry = alicloud.vpc.RouteEntry("fooRouteEntry",
-            route_table_id=foo_network.route_table_id,
+        foo_route_entry = alicloud.vpc.RouteEntry("foo",
+            route_table_id=foo.route_table_id,
             destination_cidrblock="172.11.1.1/32",
             nexthop_type="Instance",
             nexthop_id=foo_instance.id)
@@ -343,28 +344,29 @@ class RouteEntry(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        default_instance_types = alicloud.ecs.get_instance_types(availability_zone=default_zones.zones[0].id,
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
+        default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
             cpu_core_count=1,
             memory_size=2)
-        default_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
+        default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_18.*64",
             most_recent=True,
             owners="system")
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
             name = "RouteEntryConfig"
-        foo_network = alicloud.vpc.Network("fooNetwork",
+        foo = alicloud.vpc.Network("foo",
             vpc_name=name,
             cidr_block="10.1.0.0/21")
-        foo_switch = alicloud.vpc.Switch("fooSwitch",
-            vpc_id=foo_network.id,
+        foo_switch = alicloud.vpc.Switch("foo",
+            vpc_id=foo.id,
             cidr_block="10.1.1.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default.zones[0].id,
             vswitch_name=name)
-        tf_test_foo = alicloud.ecs.SecurityGroup("tfTestFoo",
+        tf_test_foo = alicloud.ecs.SecurityGroup("tf_test_foo",
+            name=name,
             description="foo",
-            vpc_id=foo_network.id)
+            vpc_id=foo.id)
         ingress = alicloud.ecs.SecurityGroupRule("ingress",
             type="ingress",
             ip_protocol="tcp",
@@ -374,18 +376,18 @@ class RouteEntry(pulumi.CustomResource):
             priority=1,
             security_group_id=tf_test_foo.id,
             cidr_ip="0.0.0.0/0")
-        foo_instance = alicloud.ecs.Instance("fooInstance",
+        foo_instance = alicloud.ecs.Instance("foo",
             security_groups=[tf_test_foo.id],
             vswitch_id=foo_switch.id,
             instance_charge_type="PostPaid",
-            instance_type=default_instance_types.instance_types[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
             internet_charge_type="PayByTraffic",
             internet_max_bandwidth_out=5,
             system_disk_category="cloud_efficiency",
-            image_id=default_images.images[0].id,
+            image_id=default_get_images.images[0].id,
             instance_name=name)
-        foo_route_entry = alicloud.vpc.RouteEntry("fooRouteEntry",
-            route_table_id=foo_network.route_table_id,
+        foo_route_entry = alicloud.vpc.RouteEntry("foo",
+            route_table_id=foo.route_table_id,
             destination_cidrblock="172.11.1.1/32",
             nexthop_type="Instance",
             nexthop_id=foo_instance.id)

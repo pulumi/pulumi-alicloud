@@ -32,31 +32,31 @@ namespace Pulumi.AliCloud.ApiGateway
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     var example = new AliCloud.Log.Project("example", new()
     ///     {
-    ///         ProjectName = @default.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         ProjectName = $"{name}-{@default.Result}",
     ///         Description = name,
     ///     });
     /// 
-    ///     var exampleStore = new AliCloud.Log.Store("exampleStore", new()
+    ///     var exampleStore = new AliCloud.Log.Store("example", new()
     ///     {
-    ///         ProjectName = exampleProject.ProjectName,
-    ///         LogstoreName = @default.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         ProjectName = example.ProjectName,
+    ///         LogstoreName = $"{name}-{@default.Result}",
     ///         ShardCount = 3,
     ///         AutoSplit = true,
     ///         MaxSplitShardCount = 60,
     ///         AppendMeta = true,
     ///     });
     /// 
-    ///     var exampleLogConfig = new AliCloud.ApiGateway.LogConfig("exampleLogConfig", new()
+    ///     var exampleLogConfig = new AliCloud.ApiGateway.LogConfig("example", new()
     ///     {
-    ///         SlsProject = exampleProject.ProjectName,
+    ///         SlsProject = example.ProjectName,
     ///         SlsLogStore = exampleStore.LogstoreName,
     ///         LogType = "PROVIDER",
     ///     });

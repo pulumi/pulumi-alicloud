@@ -35,8 +35,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cr.GetEndpointAclService(ctx, &cr.GetEndpointAclServiceArgs{
-//				Enable:       true,
 //				EndpointType: "internet",
+//				Enable:       true,
 //				InstanceId:   "example_id",
 //				ModuleName:   pulumi.StringRef("Registry"),
 //			}, nil)

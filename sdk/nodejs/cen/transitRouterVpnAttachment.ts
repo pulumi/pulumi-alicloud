@@ -25,18 +25,19 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
  * const default = alicloud.cen.getTransitRouterAvailableResources({});
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {cenInstanceName: name});
- * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
- *     cenId: exampleInstance.id,
+ * const example = new alicloud.cen.Instance("example", {cenInstanceName: name});
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("example", {
+ *     cenId: example.id,
  *     transitRouterDescription: name,
  *     transitRouterName: name,
  * });
- * const exampleCustomerGateway = new alicloud.vpn.CustomerGateway("exampleCustomerGateway", {
+ * const exampleCustomerGateway = new alicloud.vpn.CustomerGateway("example", {
+ *     name: name,
  *     ipAddress: "42.104.22.210",
  *     asn: "45014",
  *     description: name,
  * });
- * const exampleGatewayVpnAttachment = new alicloud.vpn.GatewayVpnAttachment("exampleGatewayVpnAttachment", {
+ * const exampleGatewayVpnAttachment = new alicloud.vpn.GatewayVpnAttachment("example", {
  *     customerGatewayId: exampleCustomerGateway.id,
  *     networkType: "public",
  *     localSubnet: "0.0.0.0/0",
@@ -77,14 +78,14 @@ import * as utilities from "../utilities";
  *     enableNatTraversal: true,
  *     vpnAttachmentName: name,
  * });
- * const exampleTransitRouterCidr = new alicloud.cen.TransitRouterCidr("exampleTransitRouterCidr", {
+ * const exampleTransitRouterCidr = new alicloud.cen.TransitRouterCidr("example", {
  *     transitRouterId: exampleTransitRouter.transitRouterId,
  *     cidr: "192.168.0.0/16",
  *     transitRouterCidrName: name,
  *     description: name,
  *     publishCidrRoute: true,
  * });
- * const exampleTransitRouterVpnAttachment = new alicloud.cen.TransitRouterVpnAttachment("exampleTransitRouterVpnAttachment", {
+ * const exampleTransitRouterVpnAttachment = new alicloud.cen.TransitRouterVpnAttachment("example", {
  *     autoPublishRouteEnabled: false,
  *     transitRouterAttachmentDescription: name,
  *     transitRouterAttachmentName: name,

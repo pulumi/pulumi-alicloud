@@ -31,10 +31,11 @@ namespace Pulumi.AliCloud.Ddos
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+    ///     var @default = AliCloud.ResourceManager.GetResourceGroups.Invoke();
     /// 
     ///     var instance = new AliCloud.Ddos.DdosBgpInstance("instance", new()
     ///     {
+    ///         Name = name,
     ///         BaseBandwidth = 20,
     ///         Bandwidth = -1,
     ///         IpCount = 100,
@@ -43,16 +44,16 @@ namespace Pulumi.AliCloud.Ddos
     ///         Type = "Enterprise",
     ///     });
     /// 
-    ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("defaultEipAddress", new()
+    ///     var defaultEipAddress = new AliCloud.Ecs.EipAddress("default", new()
     ///     {
     ///         AddressName = name,
     ///     });
     /// 
-    ///     var defaultBgpIp = new AliCloud.Ddos.BgpIp("defaultBgpIp", new()
+    ///     var defaultBgpIp = new AliCloud.Ddos.BgpIp("default", new()
     ///     {
     ///         InstanceId = instance.Id,
     ///         Ip = defaultEipAddress.IpAddress,
-    ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id),
+    ///         ResourceGroupId = @default.Apply(@default =&gt; @default.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[0]?.Id)),
     ///     });
     /// 
     /// });

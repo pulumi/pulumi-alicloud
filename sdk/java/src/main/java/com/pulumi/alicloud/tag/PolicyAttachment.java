@@ -53,7 +53,7 @@ import javax.annotation.Nullable;
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var default = AlicloudFunctions.getAccount();
  * 
- *         var examplePolicy = new Policy(&#34;examplePolicy&#34;, PolicyArgs.builder()        
+ *         var example = new Policy(&#34;example&#34;, PolicyArgs.builder()        
  *             .policyName(name)
  *             .policyDesc(name)
  *             .userType(&#34;USER&#34;)
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var examplePolicyAttachment = new PolicyAttachment(&#34;examplePolicyAttachment&#34;, PolicyAttachmentArgs.builder()        
- *             .policyId(examplePolicy.id())
+ *             .policyId(example.id())
  *             .targetId(default_.id())
  *             .targetType(&#34;USER&#34;)
  *             .build());

@@ -57,14 +57,14 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone:   pulumi.StringRef(defaultZones.Zones[0].Id),
+//			defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone:   pulumi.StringRef(_default.Zones[0].Id),
 //				CpuCoreCount:       pulumi.IntRef(4),
 //				MemorySize:         pulumi.Float64Ref(8),
 //				KubernetesNodeRole: pulumi.StringRef("Master"),
@@ -72,28 +72,29 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cs.NewEdgeKubernetes(ctx, "defaultEdgeKubernetes", &cs.EdgeKubernetesArgs{
+//			_, err = cs.NewEdgeKubernetes(ctx, "default", &cs.EdgeKubernetesArgs{
+//				Name: pulumi.String(name),
 //				WorkerVswitchIds: pulumi.StringArray{
 //					defaultSwitch.ID(),
 //				},
 //				WorkerInstanceTypes: pulumi.StringArray{
-//					pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//					pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 //				},
 //				WorkerNumber:              pulumi.Int(1),
 //				Password:                  pulumi.String("Test12345"),
@@ -147,14 +148,14 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			_default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				AvailabilityZone:   pulumi.StringRef(defaultZones.Zones[0].Id),
+//			defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+//				AvailabilityZone:   pulumi.StringRef(_default.Zones[0].Id),
 //				CpuCoreCount:       pulumi.IntRef(4),
 //				MemorySize:         pulumi.Float64Ref(8),
 //				KubernetesNodeRole: pulumi.StringRef("Master"),
@@ -162,28 +163,29 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetwork, err := vpc.NewNetwork(ctx, "defaultNetwork", &vpc.NetworkArgs{
+//			defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("10.4.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitch, err := vpc.NewSwitch(ctx, "defaultSwitch", &vpc.SwitchArgs{
+//			defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
 //				VswitchName: pulumi.String(name),
 //				CidrBlock:   pulumi.String("10.4.0.0/24"),
 //				VpcId:       defaultNetwork.ID(),
-//				ZoneId:      pulumi.String(defaultZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(_default.Zones[0].Id),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cs.NewEdgeKubernetes(ctx, "defaultEdgeKubernetes", &cs.EdgeKubernetesArgs{
+//			_, err = cs.NewEdgeKubernetes(ctx, "default", &cs.EdgeKubernetesArgs{
+//				Name: pulumi.String(name),
 //				WorkerVswitchIds: pulumi.StringArray{
 //					defaultSwitch.ID(),
 //				},
 //				WorkerInstanceTypes: pulumi.StringArray{
-//					pulumi.String(defaultInstanceTypes.InstanceTypes[0].Id),
+//					pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
 //				},
 //				ClusterSpec:               pulumi.String("ack.pro.small"),
 //				WorkerNumber:              pulumi.Int(1),

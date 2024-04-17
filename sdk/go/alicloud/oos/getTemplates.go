@@ -30,14 +30,15 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Declare the data source
 //			example, err := oos.GetTemplates(ctx, &oos.GetTemplatesArgs{
-//				HasTrigger: pulumi.BoolRef(false),
-//				NameRegex:  pulumi.StringRef("test"),
-//				ShareType:  pulumi.StringRef("Private"),
+//				NameRegex: pulumi.StringRef("test"),
 //				Tags: map[string]interface{}{
 //					"Created": "TF",
 //					"For":     "template Test",
 //				},
+//				ShareType:  pulumi.StringRef("Private"),
+//				HasTrigger: pulumi.BoolRef(false),
 //			}, nil)
 //			if err != nil {
 //				return err

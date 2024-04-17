@@ -36,8 +36,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.vod.Domain;
  * import com.pulumi.alicloud.vod.DomainArgs;
  * import com.pulumi.alicloud.vod.inputs.DomainSourceArgs;
@@ -54,18 +54,18 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultRandomInteger = new RandomInteger(&#34;defaultRandomInteger&#34;, RandomIntegerArgs.builder()        
- *             .max(99999)
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .min(10000)
+ *             .max(99999)
  *             .build());
  * 
  *         var defaultDomain = new Domain(&#34;defaultDomain&#34;, DomainArgs.builder()        
- *             .domainName(defaultRandomInteger.result().applyValue(result -&gt; String.format(&#34;example-%s.com&#34;, result)))
+ *             .domainName(String.format(&#34;example-%s.com&#34;, default_.result()))
  *             .scope(&#34;domestic&#34;)
  *             .sources(DomainSourceArgs.builder()
+ *                 .sourceType(&#34;domain&#34;)
  *                 .sourceContent(&#34;outin-c7405446108111ec9a7100163e0eb78b.oss-cn-beijing.aliyuncs.com&#34;)
  *                 .sourcePort(&#34;443&#34;)
- *                 .sourceType(&#34;domain&#34;)
  *                 .build())
  *             .tags(Map.ofEntries(
  *                 Map.entry(&#34;Created&#34;, &#34;terraform&#34;),

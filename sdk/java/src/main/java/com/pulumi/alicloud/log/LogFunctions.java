@@ -57,8 +57,8 @@ public final class LogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleUser = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
-     *             .lang(&#34;cn&#34;)
      *             .type(&#34;user&#34;)
+     *             .lang(&#34;cn&#34;)
      *             .build());
      * 
      *     }
@@ -104,8 +104,8 @@ public final class LogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleUser = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
-     *             .lang(&#34;cn&#34;)
      *             .type(&#34;user&#34;)
+     *             .lang(&#34;cn&#34;)
      *             .build());
      * 
      *     }
@@ -151,8 +151,8 @@ public final class LogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleUser = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
-     *             .lang(&#34;cn&#34;)
      *             .type(&#34;user&#34;)
+     *             .lang(&#34;cn&#34;)
      *             .build());
      * 
      *     }
@@ -198,8 +198,8 @@ public final class LogFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var exampleUser = LogFunctions.getAlertResource(GetAlertResourceArgs.builder()
-     *             .lang(&#34;cn&#34;)
      *             .type(&#34;user&#34;)
+     *             .lang(&#34;cn&#34;)
      *             .build());
      * 
      *     }

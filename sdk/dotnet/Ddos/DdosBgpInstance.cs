@@ -33,6 +33,7 @@ namespace Pulumi.AliCloud.Ddos
     ///     var name = config.Get("name") ?? "tf-example";
     ///     var instance = new AliCloud.Ddos.DdosBgpInstance("instance", new()
     ///     {
+    ///         Name = name,
     ///         BaseBandwidth = 20,
     ///         Bandwidth = -1,
     ///         IpCount = 100,

@@ -253,10 +253,10 @@ def get_clusters(cluster_name: Optional[str] = None,
     name = config.get("name")
     if name is None:
         name = "tf-testAccClusters"
-    default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-    default_main_versions = alicloud.emr.get_main_versions()
-    default_instance_types = alicloud.emr.get_instance_types(destination_resource="InstanceType",
-        cluster_type=default_main_versions.main_versions[0].cluster_types[0],
+    default = alicloud.resourcemanager.get_resource_groups(status="OK")
+    default_get_main_versions = alicloud.emr.get_main_versions()
+    default_get_instance_types = alicloud.emr.get_instance_types(destination_resource="InstanceType",
+        cluster_type=default_get_main_versions.main_versions[0].cluster_types[0],
         support_local_storage=False,
         instance_charge_type="PostPaid",
         support_node_types=[
@@ -265,20 +265,23 @@ def get_clusters(cluster_name: Optional[str] = None,
             "TASK",
         ])
     data_disk = alicloud.emr.get_disk_types(destination_resource="DataDisk",
-        cluster_type=default_main_versions.main_versions[0].cluster_types[0],
+        cluster_type=default_get_main_versions.main_versions[0].cluster_types[0],
         instance_charge_type="PostPaid",
-        instance_type=default_instance_types.types[0].id,
-        zone_id=default_instance_types.types[0].zone_id)
+        instance_type=default_get_instance_types.types[0].id,
+        zone_id=default_get_instance_types.types[0].zone_id)
     system_disk = alicloud.emr.get_disk_types(destination_resource="SystemDisk",
-        cluster_type=default_main_versions.main_versions[0].cluster_types[0],
+        cluster_type=default_get_main_versions.main_versions[0].cluster_types[0],
         instance_charge_type="PostPaid",
-        instance_type=default_instance_types.types[0].id,
-        zone_id=default_instance_types.types[0].zone_id)
-    default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-    default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
-    default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-        zone_id=default_instance_types.types[0].zone_id)
-    default_role = alicloud.ram.Role("defaultRole",
+        instance_type=default_get_instance_types.types[0].id,
+        zone_id=default_get_instance_types.types[0].zone_id)
+    default_get_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+    default_security_group = alicloud.ecs.SecurityGroup("default",
+        name=name,
+        vpc_id=default_get_networks.ids[0])
+    default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+        zone_id=default_get_instance_types.types[0].zone_id)
+    default_role = alicloud.ram.Role("default",
+        name=name,
         document=\"\"\"    {
             "Statement": [
             {
@@ -297,15 +300,16 @@ def get_clusters(cluster_name: Optional[str] = None,
     \"\"\",
         description="this is a role test.",
         force=True)
-    default_cluster = alicloud.emr.Cluster("defaultCluster",
-        emr_ver=default_main_versions.main_versions[0].emr_version,
-        cluster_type=default_main_versions.main_versions[0].cluster_types[0],
+    default_cluster = alicloud.emr.Cluster("default",
+        name=name,
+        emr_ver=default_get_main_versions.main_versions[0].emr_version,
+        cluster_type=default_get_main_versions.main_versions[0].cluster_types[0],
         host_groups=[
             alicloud.emr.ClusterHostGroupArgs(
                 host_group_name="master_group",
                 host_group_type="MASTER",
                 node_count="2",
-                instance_type=default_instance_types.types[0].id,
+                instance_type=default_get_instance_types.types[0].id,
                 disk_type=data_disk.types[0].value,
                 disk_capacity=data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
                 disk_count="1",
@@ -316,7 +320,7 @@ def get_clusters(cluster_name: Optional[str] = None,
                 host_group_name="core_group",
                 host_group_type="CORE",
                 node_count="3",
-                instance_type=default_instance_types.types[0].id,
+                instance_type=default_get_instance_types.types[0].id,
                 disk_type=data_disk.types[0].value,
                 disk_capacity=data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
                 disk_count="4",
@@ -327,7 +331,7 @@ def get_clusters(cluster_name: Optional[str] = None,
                 host_group_name="task_group",
                 host_group_type="TASK",
                 node_count="2",
-                instance_type=default_instance_types.types[0].id,
+                instance_type=default_get_instance_types.types[0].id,
                 disk_type=data_disk.types[0].value,
                 disk_capacity=data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
                 disk_count="4",
@@ -336,11 +340,11 @@ def get_clusters(cluster_name: Optional[str] = None,
             ),
         ],
         high_availability_enable=True,
-        zone_id=default_instance_types.types[0].zone_id,
+        zone_id=default_get_instance_types.types[0].zone_id,
         security_group_id=default_security_group.id,
         is_open_public_ip=True,
         charge_type="PostPaid",
-        vswitch_id=default_switches.ids[0],
+        vswitch_id=default_get_switches.ids[0],
         user_defined_emr_ecs_role=default_role.name,
         ssh_enable=True,
         master_pwd="ABCtest1234!",
@@ -452,10 +456,10 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
     name = config.get("name")
     if name is None:
         name = "tf-testAccClusters"
-    default_resource_groups = alicloud.resourcemanager.get_resource_groups(status="OK")
-    default_main_versions = alicloud.emr.get_main_versions()
-    default_instance_types = alicloud.emr.get_instance_types(destination_resource="InstanceType",
-        cluster_type=default_main_versions.main_versions[0].cluster_types[0],
+    default = alicloud.resourcemanager.get_resource_groups(status="OK")
+    default_get_main_versions = alicloud.emr.get_main_versions()
+    default_get_instance_types = alicloud.emr.get_instance_types(destination_resource="InstanceType",
+        cluster_type=default_get_main_versions.main_versions[0].cluster_types[0],
         support_local_storage=False,
         instance_charge_type="PostPaid",
         support_node_types=[
@@ -464,20 +468,23 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
             "TASK",
         ])
     data_disk = alicloud.emr.get_disk_types(destination_resource="DataDisk",
-        cluster_type=default_main_versions.main_versions[0].cluster_types[0],
+        cluster_type=default_get_main_versions.main_versions[0].cluster_types[0],
         instance_charge_type="PostPaid",
-        instance_type=default_instance_types.types[0].id,
-        zone_id=default_instance_types.types[0].zone_id)
+        instance_type=default_get_instance_types.types[0].id,
+        zone_id=default_get_instance_types.types[0].zone_id)
     system_disk = alicloud.emr.get_disk_types(destination_resource="SystemDisk",
-        cluster_type=default_main_versions.main_versions[0].cluster_types[0],
+        cluster_type=default_get_main_versions.main_versions[0].cluster_types[0],
         instance_charge_type="PostPaid",
-        instance_type=default_instance_types.types[0].id,
-        zone_id=default_instance_types.types[0].zone_id)
-    default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-    default_security_group = alicloud.ecs.SecurityGroup("defaultSecurityGroup", vpc_id=default_networks.ids[0])
-    default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0],
-        zone_id=default_instance_types.types[0].zone_id)
-    default_role = alicloud.ram.Role("defaultRole",
+        instance_type=default_get_instance_types.types[0].id,
+        zone_id=default_get_instance_types.types[0].zone_id)
+    default_get_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+    default_security_group = alicloud.ecs.SecurityGroup("default",
+        name=name,
+        vpc_id=default_get_networks.ids[0])
+    default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0],
+        zone_id=default_get_instance_types.types[0].zone_id)
+    default_role = alicloud.ram.Role("default",
+        name=name,
         document=\"\"\"    {
             "Statement": [
             {
@@ -496,15 +503,16 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
     \"\"\",
         description="this is a role test.",
         force=True)
-    default_cluster = alicloud.emr.Cluster("defaultCluster",
-        emr_ver=default_main_versions.main_versions[0].emr_version,
-        cluster_type=default_main_versions.main_versions[0].cluster_types[0],
+    default_cluster = alicloud.emr.Cluster("default",
+        name=name,
+        emr_ver=default_get_main_versions.main_versions[0].emr_version,
+        cluster_type=default_get_main_versions.main_versions[0].cluster_types[0],
         host_groups=[
             alicloud.emr.ClusterHostGroupArgs(
                 host_group_name="master_group",
                 host_group_type="MASTER",
                 node_count="2",
-                instance_type=default_instance_types.types[0].id,
+                instance_type=default_get_instance_types.types[0].id,
                 disk_type=data_disk.types[0].value,
                 disk_capacity=data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
                 disk_count="1",
@@ -515,7 +523,7 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
                 host_group_name="core_group",
                 host_group_type="CORE",
                 node_count="3",
-                instance_type=default_instance_types.types[0].id,
+                instance_type=default_get_instance_types.types[0].id,
                 disk_type=data_disk.types[0].value,
                 disk_capacity=data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
                 disk_count="4",
@@ -526,7 +534,7 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
                 host_group_name="task_group",
                 host_group_type="TASK",
                 node_count="2",
-                instance_type=default_instance_types.types[0].id,
+                instance_type=default_get_instance_types.types[0].id,
                 disk_type=data_disk.types[0].value,
                 disk_capacity=data_disk.types[0].min if data_disk.types[0].min > 160 else "160",
                 disk_count="4",
@@ -535,11 +543,11 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
             ),
         ],
         high_availability_enable=True,
-        zone_id=default_instance_types.types[0].zone_id,
+        zone_id=default_get_instance_types.types[0].zone_id,
         security_group_id=default_security_group.id,
         is_open_public_ip=True,
         charge_type="PostPaid",
-        vswitch_id=default_switches.ids[0],
+        vswitch_id=default_get_switches.ids[0],
         user_defined_emr_ecs_role=default_role.name,
         ssh_enable=True,
         master_pwd="ABCtest1234!",

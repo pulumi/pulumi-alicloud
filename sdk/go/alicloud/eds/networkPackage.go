@@ -35,16 +35,16 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultSimpleOfficeSites, err := eds.GetSimpleOfficeSites(ctx, &eds.GetSimpleOfficeSitesArgs{
+//			_default, err := eds.GetSimpleOfficeSites(ctx, &eds.GetSimpleOfficeSitesArgs{
 //				Status:    pulumi.StringRef("REGISTERED"),
 //				NameRegex: pulumi.StringRef("default"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = eds.NewNetworkPackage(ctx, "defaultNetworkPackage", &eds.NetworkPackageArgs{
+//			_, err = eds.NewNetworkPackage(ctx, "default", &eds.NetworkPackageArgs{
 //				Bandwidth:    pulumi.Int(10),
-//				OfficeSiteId: pulumi.String(defaultSimpleOfficeSites.Ids[0]),
+//				OfficeSiteId: pulumi.String(_default.Ids[0]),
 //			})
 //			if err != nil {
 //				return err

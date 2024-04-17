@@ -20,26 +20,26 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultNetworks = alicloud.vpc.getNetworks({
+ * const default = alicloud.vpc.getNetworks({
  *     nameRegex: "default-NODELETING",
  * });
- * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
+ * const defaultGetSwitches = _default.then(_default => alicloud.vpc.getSwitches({
+ *     vpcId: _default.ids?.[0],
  * }));
  * const example = new alicloud.cloudstoragegateway.StorageBundle("example", {storageBundleName: "example_value"});
- * const defaultGateway = new alicloud.cloudstoragegateway.Gateway("defaultGateway", {
+ * const defaultGateway = new alicloud.cloudstoragegateway.Gateway("default", {
  *     description: "tf-acctestDesalone",
  *     gatewayClass: "Standard",
  *     type: "File",
  *     paymentType: "PayAsYouGo",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
  *     releaseAfterExpiration: false,
  *     publicNetworkBandwidth: 40,
  *     storageBundleId: example.id,
  *     location: "Cloud",
  *     gatewayName: "example_value",
  * });
- * const defaultGatewaySmbUser = new alicloud.cloudstoragegateway.GatewaySmbUser("defaultGatewaySmbUser", {
+ * const defaultGatewaySmbUser = new alicloud.cloudstoragegateway.GatewaySmbUser("default", {
  *     username: "your_username",
  *     password: "password",
  *     gatewayId: defaultGateway.id,
@@ -113,26 +113,26 @@ export interface GetGatewaySmbUsersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultNetworks = alicloud.vpc.getNetworks({
+ * const default = alicloud.vpc.getNetworks({
  *     nameRegex: "default-NODELETING",
  * });
- * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
+ * const defaultGetSwitches = _default.then(_default => alicloud.vpc.getSwitches({
+ *     vpcId: _default.ids?.[0],
  * }));
  * const example = new alicloud.cloudstoragegateway.StorageBundle("example", {storageBundleName: "example_value"});
- * const defaultGateway = new alicloud.cloudstoragegateway.Gateway("defaultGateway", {
+ * const defaultGateway = new alicloud.cloudstoragegateway.Gateway("default", {
  *     description: "tf-acctestDesalone",
  *     gatewayClass: "Standard",
  *     type: "File",
  *     paymentType: "PayAsYouGo",
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
  *     releaseAfterExpiration: false,
  *     publicNetworkBandwidth: 40,
  *     storageBundleId: example.id,
  *     location: "Cloud",
  *     gatewayName: "example_value",
  * });
- * const defaultGatewaySmbUser = new alicloud.cloudstoragegateway.GatewaySmbUser("defaultGatewaySmbUser", {
+ * const defaultGatewaySmbUser = new alicloud.cloudstoragegateway.GatewaySmbUser("default", {
  *     username: "your_username",
  *     password: "password",
  *     gatewayId: defaultGateway.id,

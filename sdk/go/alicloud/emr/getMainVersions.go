@@ -32,11 +32,11 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_default, err := emr.GetMainVersions(ctx, &emr.GetMainVersionsArgs{
+//				EmrVersion: pulumi.StringRef("EMR-3.22.0"),
 //				ClusterTypes: []string{
 //					"HADOOP",
 //					"ZOOKEEPER",
 //				},
-//				EmrVersion: pulumi.StringRef("EMR-3.22.0"),
 //			}, nil)
 //			if err != nil {
 //				return err

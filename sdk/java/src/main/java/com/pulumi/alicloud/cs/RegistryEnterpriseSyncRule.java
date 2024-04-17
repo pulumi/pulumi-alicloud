@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var sourceRegistryEnterpriseInstance = new RegistryEnterpriseInstance(&#34;sourceRegistryEnterpriseInstance&#34;, RegistryEnterpriseInstanceArgs.builder()        
+ *         var source = new RegistryEnterpriseInstance(&#34;source&#34;, RegistryEnterpriseInstanceArgs.builder()        
  *             .paymentType(&#34;Subscription&#34;)
  *             .period(1)
  *             .renewPeriod(0)
@@ -68,7 +68,7 @@ import javax.annotation.Nullable;
  *             .instanceName(String.format(&#34;%s-source&#34;, name))
  *             .build());
  * 
- *         var targetRegistryEnterpriseInstance = new RegistryEnterpriseInstance(&#34;targetRegistryEnterpriseInstance&#34;, RegistryEnterpriseInstanceArgs.builder()        
+ *         var target = new RegistryEnterpriseInstance(&#34;target&#34;, RegistryEnterpriseInstanceArgs.builder()        
  *             .paymentType(&#34;Subscription&#34;)
  *             .period(1)
  *             .renewPeriod(0)
@@ -78,42 +78,47 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var sourceRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace(&#34;sourceRegistryEnterpriseNamespace&#34;, RegistryEnterpriseNamespaceArgs.builder()        
- *             .instanceId(sourceRegistryEnterpriseInstance.id())
+ *             .instanceId(source.id())
+ *             .name(name)
  *             .autoCreate(false)
  *             .defaultVisibility(&#34;PUBLIC&#34;)
  *             .build());
  * 
  *         var targetRegistryEnterpriseNamespace = new RegistryEnterpriseNamespace(&#34;targetRegistryEnterpriseNamespace&#34;, RegistryEnterpriseNamespaceArgs.builder()        
- *             .instanceId(targetRegistryEnterpriseInstance.id())
+ *             .instanceId(target.id())
+ *             .name(name)
  *             .autoCreate(false)
  *             .defaultVisibility(&#34;PUBLIC&#34;)
  *             .build());
  * 
  *         var sourceRegistryEnterpriseRepo = new RegistryEnterpriseRepo(&#34;sourceRegistryEnterpriseRepo&#34;, RegistryEnterpriseRepoArgs.builder()        
- *             .instanceId(sourceRegistryEnterpriseInstance.id())
+ *             .instanceId(source.id())
  *             .namespace(sourceRegistryEnterpriseNamespace.name())
+ *             .name(name)
  *             .summary(&#34;this is summary of my new repo&#34;)
  *             .repoType(&#34;PUBLIC&#34;)
  *             .detail(&#34;this is a public repo&#34;)
  *             .build());
  * 
  *         var targetRegistryEnterpriseRepo = new RegistryEnterpriseRepo(&#34;targetRegistryEnterpriseRepo&#34;, RegistryEnterpriseRepoArgs.builder()        
- *             .instanceId(targetRegistryEnterpriseInstance.id())
+ *             .instanceId(target.id())
  *             .namespace(targetRegistryEnterpriseNamespace.name())
+ *             .name(name)
  *             .summary(&#34;this is summary of my new repo&#34;)
  *             .repoType(&#34;PUBLIC&#34;)
  *             .detail(&#34;this is a public repo&#34;)
  *             .build());
  * 
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
  *         var defaultRegistryEnterpriseSyncRule = new RegistryEnterpriseSyncRule(&#34;defaultRegistryEnterpriseSyncRule&#34;, RegistryEnterpriseSyncRuleArgs.builder()        
- *             .instanceId(sourceRegistryEnterpriseInstance.id())
+ *             .instanceId(source.id())
  *             .namespaceName(sourceRegistryEnterpriseNamespace.name())
- *             .targetRegionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
- *             .targetInstanceId(targetRegistryEnterpriseInstance.id())
+ *             .name(name)
+ *             .targetRegionId(default_.regions()[0].id())
+ *             .targetInstanceId(target.id())
  *             .targetNamespaceName(targetRegistryEnterpriseNamespace.name())
  *             .tagFilter(&#34;.*&#34;)
  *             .repoName(sourceRegistryEnterpriseRepo.name())

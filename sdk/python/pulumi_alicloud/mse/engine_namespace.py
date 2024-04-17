@@ -182,15 +182,15 @@ class EngineNamespace(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
+        example_switch = alicloud.vpc.Switch("example",
             vswitch_name="terraform-example",
             cidr_block="172.17.3.0/24",
             vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
+            zone_id=example.zones[0].id)
         default = alicloud.mse.Cluster("default",
             connection_type="slb",
             net_type="privatenet",
@@ -202,7 +202,7 @@ class EngineNamespace(pulumi.CustomResource):
             cluster_alias_name=name,
             mse_version="mse_dev",
             cluster_type="Nacos-Ans")
-        example_engine_namespace = alicloud.mse.EngineNamespace("exampleEngineNamespace",
+        example_engine_namespace = alicloud.mse.EngineNamespace("example",
             cluster_id=default.id,
             namespace_show_name=name,
             namespace_id=name)
@@ -250,15 +250,15 @@ class EngineNamespace(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        example_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        example_network = alicloud.vpc.Network("exampleNetwork",
+        example = alicloud.get_zones(available_resource_creation="VSwitch")
+        example_network = alicloud.vpc.Network("example",
             vpc_name="terraform-example",
             cidr_block="172.17.3.0/24")
-        example_switch = alicloud.vpc.Switch("exampleSwitch",
+        example_switch = alicloud.vpc.Switch("example",
             vswitch_name="terraform-example",
             cidr_block="172.17.3.0/24",
             vpc_id=example_network.id,
-            zone_id=example_zones.zones[0].id)
+            zone_id=example.zones[0].id)
         default = alicloud.mse.Cluster("default",
             connection_type="slb",
             net_type="privatenet",
@@ -270,7 +270,7 @@ class EngineNamespace(pulumi.CustomResource):
             cluster_alias_name=name,
             mse_version="mse_dev",
             cluster_type="Nacos-Ans")
-        example_engine_namespace = alicloud.mse.EngineNamespace("exampleEngineNamespace",
+        example_engine_namespace = alicloud.mse.EngineNamespace("example",
             cluster_id=default.id,
             namespace_show_name=name,
             namespace_id=name)

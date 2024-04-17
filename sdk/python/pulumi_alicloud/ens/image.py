@@ -183,7 +183,7 @@ class Image(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_instance = alicloud.ens.Instance("defaultInstance",
+        default = alicloud.ens.Instance("default",
             system_disk=alicloud.ens.InstanceSystemDiskArgs(
                 size=20,
             ),
@@ -198,9 +198,9 @@ class Image(pulumi.CustomResource):
             period_unit="Month",
             instance_type="ens.sn1.stiny",
             status="Stopped")
-        default_image = alicloud.ens.Image("defaultImage",
+        default_image = alicloud.ens.Image("default",
             image_name=name,
-            instance_id=default_instance.id,
+            instance_id=default.id,
             delete_after_image_upload="false")
         ```
         <!--End PulumiCodeChooser -->
@@ -245,7 +245,7 @@ class Image(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_instance = alicloud.ens.Instance("defaultInstance",
+        default = alicloud.ens.Instance("default",
             system_disk=alicloud.ens.InstanceSystemDiskArgs(
                 size=20,
             ),
@@ -260,9 +260,9 @@ class Image(pulumi.CustomResource):
             period_unit="Month",
             instance_type="ens.sn1.stiny",
             status="Stopped")
-        default_image = alicloud.ens.Image("defaultImage",
+        default_image = alicloud.ens.Image("default",
             image_name=name,
-            instance_id=default_instance.id,
+            instance_id=default.id,
             delete_after_image_upload="false")
         ```
         <!--End PulumiCodeChooser -->

@@ -228,10 +228,10 @@ def get_class_details(class_code: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.rds.get_class_details(class_code="mysql.n4.medium.2c",
-        commodity_code="bards",
-        engine="MySQL",
-        engine_version="8.0")
+    default = alicloud.rds.get_class_details(commodity_code="bards",
+        class_code="mysql.n4.medium.2c",
+        engine_version="8.0",
+        engine="MySQL")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -299,10 +299,10 @@ def get_class_details_output(class_code: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default = alicloud.rds.get_class_details(class_code="mysql.n4.medium.2c",
-        commodity_code="bards",
-        engine="MySQL",
-        engine_version="8.0")
+    default = alicloud.rds.get_class_details(commodity_code="bards",
+        class_code="mysql.n4.medium.2c",
+        engine_version="8.0",
+        engine="MySQL")
     ```
     <!--End PulumiCodeChooser -->
 

@@ -20,11 +20,11 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.emr.getMainVersions({
+ *     emrVersion: "EMR-3.22.0",
  *     clusterTypes: [
  *         "HADOOP",
  *         "ZOOKEEPER",
  *     ],
- *     emrVersion: "EMR-3.22.0",
  * });
  * export const firstMainVersion = _default.then(_default => _default.mainVersions?.[0]?.emrVersion);
  * export const thisClusterTypes = _default.then(_default => _default.mainVersions?.[0]?.clusterTypes);
@@ -98,11 +98,11 @@ export interface GetMainVersionsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.emr.getMainVersions({
+ *     emrVersion: "EMR-3.22.0",
  *     clusterTypes: [
  *         "HADOOP",
  *         "ZOOKEEPER",
  *     ],
- *     emrVersion: "EMR-3.22.0",
  * });
  * export const firstMainVersion = _default.then(_default => _default.mainVersions?.[0]?.emrVersion);
  * export const thisClusterTypes = _default.then(_default => _default.mainVersions?.[0]?.clusterTypes);

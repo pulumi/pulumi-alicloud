@@ -87,7 +87,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        service_linked_role = alicloud.eventbridge.ServiceLinkedRole("serviceLinkedRole", product_name="AliyunServiceRoleForEventBridgeSourceRocketMQ")
+        service_linked_role = alicloud.eventbridge.ServiceLinkedRole("service_linked_role", product_name="AliyunServiceRoleForEventBridgeSourceRocketMQ")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -125,7 +125,7 @@ class ServiceLinkedRole(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        service_linked_role = alicloud.eventbridge.ServiceLinkedRole("serviceLinkedRole", product_name="AliyunServiceRoleForEventBridgeSourceRocketMQ")
+        service_linked_role = alicloud.eventbridge.ServiceLinkedRole("service_linked_role", product_name="AliyunServiceRoleForEventBridgeSourceRocketMQ")
         ```
         <!--End PulumiCodeChooser -->
 

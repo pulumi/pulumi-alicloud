@@ -42,6 +42,7 @@ namespace Pulumi.AliCloud.Vpc
     ///         RouterId = foo.RouterId,
     ///         Role = "InitiatingSide",
     ///         Specification = "Large.2",
+    ///         Name = "test1",
     ///         Description = "test1",
     ///     });
     /// 

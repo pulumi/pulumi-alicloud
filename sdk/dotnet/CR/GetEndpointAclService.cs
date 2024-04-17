@@ -33,8 +33,8 @@ namespace Pulumi.AliCloud.CR
         /// {
         ///     var example = AliCloud.CR.GetEndpointAclService.Invoke(new()
         ///     {
-        ///         Enable = true,
         ///         EndpointType = "internet",
+        ///         Enable = true,
         ///         InstanceId = "example_id",
         ///         ModuleName = "Registry",
         ///     });
@@ -68,8 +68,8 @@ namespace Pulumi.AliCloud.CR
         /// {
         ///     var example = AliCloud.CR.GetEndpointAclService.Invoke(new()
         ///     {
-        ///         Enable = true,
         ///         EndpointType = "internet",
+        ///         Enable = true,
         ///         InstanceId = "example_id",
         ///         ModuleName = "Registry",
         ///     });

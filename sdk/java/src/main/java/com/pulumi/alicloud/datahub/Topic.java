@@ -53,10 +53,12 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example&#34;);
  *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
+ *             .name(name)
  *             .comment(&#34;created by terraform&#34;)
  *             .build());
  * 
  *         var exampleBlob = new Topic(&#34;exampleBlob&#34;, TopicArgs.builder()        
+ *             .name(String.format(&#34;%s_blob&#34;, name))
  *             .projectName(example.name())
  *             .recordType(&#34;BLOB&#34;)
  *             .shardCount(3)
@@ -65,6 +67,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleTuple = new Topic(&#34;exampleTuple&#34;, TopicArgs.builder()        
+ *             .name(String.format(&#34;%s_tuple&#34;, name))
  *             .projectName(example.name())
  *             .recordType(&#34;TUPLE&#34;)
  *             .recordSchema(Map.ofEntries(

@@ -20,15 +20,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultFaceConfig = new alicloud.cloudauth.FaceConfig("defaultFaceConfig", {
+ * const defaultFaceConfig = new alicloud.cloudauth.FaceConfig("default", {
  *     bizName: "example-value",
  *     bizType: "example-value",
  * });
- * const defaultFaceConfigs = alicloud.cloudauth.getFaceConfigsOutput({
+ * const default = alicloud.cloudauth.getFaceConfigsOutput({
  *     ids: [defaultFaceConfig.id],
  *     nameRegex: defaultFaceConfig.bizName,
  * });
- * export const faceConfig = defaultFaceConfigs.apply(defaultFaceConfigs => defaultFaceConfigs.configs?.[0]);
+ * export const faceConfig = _default.apply(_default => _default.configs?.[0]);
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -89,15 +89,15 @@ export interface GetFaceConfigsResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultFaceConfig = new alicloud.cloudauth.FaceConfig("defaultFaceConfig", {
+ * const defaultFaceConfig = new alicloud.cloudauth.FaceConfig("default", {
  *     bizName: "example-value",
  *     bizType: "example-value",
  * });
- * const defaultFaceConfigs = alicloud.cloudauth.getFaceConfigsOutput({
+ * const default = alicloud.cloudauth.getFaceConfigsOutput({
  *     ids: [defaultFaceConfig.id],
  *     nameRegex: defaultFaceConfig.bizName,
  * });
- * export const faceConfig = defaultFaceConfigs.apply(defaultFaceConfigs => defaultFaceConfigs.configs?.[0]);
+ * export const faceConfig = _default.apply(_default => _default.configs?.[0]);
  * ```
  * <!--End PulumiCodeChooser -->
  */

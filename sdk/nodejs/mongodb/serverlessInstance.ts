@@ -24,15 +24,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultZones = alicloud.mongodb.getZones({});
- * const defaultNetworks = alicloud.vpc.getNetworks({
+ * const default = alicloud.mongodb.getZones({});
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
  *     nameRegex: "default-NODELETING",
  * });
- * const defaultSwitches = Promise.all([defaultNetworks, defaultZones]).then(([defaultNetworks, defaultZones]) => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
- *     zoneId: defaultZones.zones?.[0]?.id,
+ * const defaultGetSwitches = Promise.all([defaultGetNetworks, _default]).then(([defaultGetNetworks, _default]) => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: _default.zones?.[0]?.id,
  * }));
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({});
  * const example = new alicloud.mongodb.ServerlessInstance("example", {
  *     accountPassword: "Abc12345",
  *     dbInstanceDescription: "example_value",
@@ -40,13 +40,13 @@ import * as utilities from "../utilities";
  *     storageEngine: "WiredTiger",
  *     capacityUnit: 100,
  *     engine: "MongoDB",
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.groups?.[0]?.id),
  *     engineVersion: "4.2",
  *     period: 1,
  *     periodPriceType: "Month",
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
- *     vswitchId: defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0]),
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
  *     tags: {
  *         Created: "MongodbServerlessInstance",
  *         For: "TF",

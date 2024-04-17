@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  * const default = alicloud.getRegions({
  *     current: true,
  * });
- * const exampleAccelerator = new alicloud.ga.Accelerator("exampleAccelerator", {
+ * const example = new alicloud.ga.Accelerator("example", {
  *     duration: 3,
  *     spec: "2",
  *     acceleratorName: name,
@@ -37,7 +37,7 @@ import * as utilities from "../utilities";
  *     autoRenewDuration: 2,
  *     renewalStatus: "AutoRenewal",
  * });
- * const exampleBandwidthPackage = new alicloud.ga.BandwidthPackage("exampleBandwidthPackage", {
+ * const exampleBandwidthPackage = new alicloud.ga.BandwidthPackage("example", {
  *     type: "Basic",
  *     bandwidth: 20,
  *     bandwidthType: "Basic",
@@ -48,14 +48,15 @@ import * as utilities from "../utilities";
  *     bandwidthPackageName: name,
  *     description: name,
  * });
- * const exampleBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", {
- *     acceleratorId: exampleAccelerator.id,
+ * const exampleBandwidthPackageAttachment = new alicloud.ga.BandwidthPackageAttachment("example", {
+ *     acceleratorId: example.id,
  *     bandwidthPackageId: exampleBandwidthPackage.id,
  * });
- * const exampleListener = new alicloud.ga.Listener("exampleListener", {
+ * const exampleListener = new alicloud.ga.Listener("example", {
  *     acceleratorId: exampleBandwidthPackageAttachment.acceleratorId,
  *     clientAffinity: "SOURCE_IP",
  *     description: name,
+ *     name: name,
  *     protocol: "HTTP",
  *     proxyProtocol: true,
  *     portRanges: [{
@@ -63,12 +64,12 @@ import * as utilities from "../utilities";
  *         toPort: 60,
  *     }],
  * });
- * const exampleEipAddress = new alicloud.ecs.EipAddress("exampleEipAddress", {
+ * const exampleEipAddress = new alicloud.ecs.EipAddress("example", {
  *     bandwidth: "10",
  *     internetChargeType: "PayByBandwidth",
  * });
  * const virtual = new alicloud.ga.EndpointGroup("virtual", {
- *     acceleratorId: exampleAccelerator.id,
+ *     acceleratorId: example.id,
  *     endpointConfigurations: [{
  *         endpoint: exampleEipAddress.ipAddress,
  *         type: "PublicIp",
@@ -82,6 +83,7 @@ import * as utilities from "../utilities";
  *     endpointRequestProtocol: "HTTPS",
  *     healthCheckIntervalSeconds: 4,
  *     healthCheckPath: "/path",
+ *     name: name,
  *     thresholdCount: 4,
  *     trafficPercentage: 20,
  *     portOverrides: {
@@ -89,8 +91,8 @@ import * as utilities from "../utilities";
  *         listenerPort: 60,
  *     },
  * });
- * const exampleForwardingRule = new alicloud.ga.ForwardingRule("exampleForwardingRule", {
- *     acceleratorId: exampleAccelerator.id,
+ * const exampleForwardingRule = new alicloud.ga.ForwardingRule("example", {
+ *     acceleratorId: example.id,
  *     listenerId: exampleListener.id,
  *     ruleConditions: [
  *         {

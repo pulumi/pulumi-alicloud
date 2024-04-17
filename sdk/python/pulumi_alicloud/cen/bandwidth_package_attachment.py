@@ -111,16 +111,16 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
             description="an example for cen")
-        example_bandwidth_package = alicloud.cen.BandwidthPackage("exampleBandwidthPackage",
+        example_bandwidth_package = alicloud.cen.BandwidthPackage("example",
             bandwidth=5,
             cen_bandwidth_package_name="tf_example",
             geographic_region_a_id="China",
             geographic_region_b_id="China")
-        example_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
-            instance_id=example_instance.id,
+        example_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("example",
+            instance_id=example.id,
             bandwidth_package_id=example_bandwidth_package.id)
         ```
         <!--End PulumiCodeChooser -->
@@ -158,16 +158,16 @@ class BandwidthPackageAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example_instance = alicloud.cen.Instance("exampleInstance",
+        example = alicloud.cen.Instance("example",
             cen_instance_name="tf_example",
             description="an example for cen")
-        example_bandwidth_package = alicloud.cen.BandwidthPackage("exampleBandwidthPackage",
+        example_bandwidth_package = alicloud.cen.BandwidthPackage("example",
             bandwidth=5,
             cen_bandwidth_package_name="tf_example",
             geographic_region_a_id="China",
             geographic_region_b_id="China")
-        example_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment",
-            instance_id=example_instance.id,
+        example_bandwidth_package_attachment = alicloud.cen.BandwidthPackageAttachment("example",
+            instance_id=example.id,
             bandwidth_package_id=example_bandwidth_package.id)
         ```
         <!--End PulumiCodeChooser -->

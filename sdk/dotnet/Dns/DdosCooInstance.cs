@@ -37,6 +37,7 @@ namespace Pulumi.AliCloud.Dns
     ///     var name = config.Get("name") ?? "tf-example";
     ///     var @default = new AliCloud.Ddos.DdosCooInstance("default", new()
     ///     {
+    ///         Name = name,
     ///         BaseBandwidth = "30",
     ///         Bandwidth = "30",
     ///         ServiceBandwidth = "100",

@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.databasefilesystem.getAutoSnapShotPolicies({
- *     ids: [alicloud_dbfs_auto_snap_shot_policy["default"].id],
+ *     ids: [defaultAlicloudDbfsAutoSnapShotPolicy.id],
  * });
  * export const alicloudDbfsAutoSnapShotPolicyExampleId = _default.then(_default => _default.autoSnapShotPolicies?.[0]?.id);
  * ```
@@ -96,7 +96,7 @@ export interface GetAutoSnapShotPoliciesResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const default = alicloud.databasefilesystem.getAutoSnapShotPolicies({
- *     ids: [alicloud_dbfs_auto_snap_shot_policy["default"].id],
+ *     ids: [defaultAlicloudDbfsAutoSnapShotPolicy.id],
  * });
  * export const alicloudDbfsAutoSnapShotPolicyExampleId = _default.then(_default => _default.autoSnapShotPolicies?.[0]?.id);
  * ```

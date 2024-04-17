@@ -46,8 +46,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -70,17 +70,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
+ *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
+ *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
  *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
- *             .project(exampleProject.name())
+ *             .project(example.name())
+ *             .name(&#34;example-store&#34;)
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -89,7 +91,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleAlert = new Alert(&#34;exampleAlert&#34;, AlertArgs.builder()        
- *             .projectName(exampleProject.name())
+ *             .projectName(example.name())
  *             .alertName(&#34;example-alert&#34;)
  *             .alertDisplayname(&#34;example-alert&#34;)
  *             .condition(&#34;count&gt; 100&#34;)
@@ -145,8 +147,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -174,17 +176,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
+ *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
+ *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
  *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
- *             .project(exampleProject.name())
+ *             .project(example.name())
+ *             .name(&#34;example-store&#34;)
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -195,7 +199,7 @@ import javax.annotation.Nullable;
  *         var example_2 = new Alert(&#34;example-2&#34;, AlertArgs.builder()        
  *             .version(&#34;2.0&#34;)
  *             .type(&#34;default&#34;)
- *             .projectName(exampleProject.name())
+ *             .projectName(example.name())
  *             .alertName(&#34;example-alert&#34;)
  *             .alertDisplayname(&#34;example-alert&#34;)
  *             .muteUntil(&#34;1632486684&#34;)
@@ -216,7 +220,7 @@ import javax.annotation.Nullable;
  *                 AlertQueryListArgs.builder()
  *                     .store(exampleStore.name())
  *                     .storeType(&#34;log&#34;)
- *                     .project(exampleProject.name())
+ *                     .project(example.name())
  *                     .region(&#34;cn-heyuan&#34;)
  *                     .chartTitle(&#34;chart_title&#34;)
  *                     .start(&#34;-60s&#34;)
@@ -227,7 +231,7 @@ import javax.annotation.Nullable;
  *                 AlertQueryListArgs.builder()
  *                     .store(exampleStore.name())
  *                     .storeType(&#34;log&#34;)
- *                     .project(exampleProject.name())
+ *                     .project(example.name())
  *                     .region(&#34;cn-heyuan&#34;)
  *                     .chartTitle(&#34;chart_title&#34;)
  *                     .start(&#34;-60s&#34;)
@@ -303,8 +307,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.random.RandomInteger;
- * import com.pulumi.random.RandomIntegerArgs;
+ * import com.pulumi.random.integer;
+ * import com.pulumi.random.IntegerArgs;
  * import com.pulumi.alicloud.log.Project;
  * import com.pulumi.alicloud.log.ProjectArgs;
  * import com.pulumi.alicloud.log.Store;
@@ -326,17 +330,19 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new RandomInteger(&#34;default&#34;, RandomIntegerArgs.builder()        
+ *         var default_ = new Integer(&#34;default&#34;, IntegerArgs.builder()        
  *             .max(99999)
  *             .min(10000)
  *             .build());
  * 
- *         var exampleProject = new Project(&#34;exampleProject&#34;, ProjectArgs.builder()        
+ *         var example = new Project(&#34;example&#34;, ProjectArgs.builder()        
+ *             .name(String.format(&#34;terraform-example-%s&#34;, default_.result()))
  *             .description(&#34;terraform-example&#34;)
  *             .build());
  * 
  *         var exampleStore = new Store(&#34;exampleStore&#34;, StoreArgs.builder()        
- *             .project(exampleProject.name())
+ *             .project(example.name())
+ *             .name(&#34;example-store&#34;)
  *             .retentionPeriod(3650)
  *             .shardCount(3)
  *             .autoSplit(true)
@@ -347,7 +353,7 @@ import javax.annotation.Nullable;
  *         var example_3 = new Alert(&#34;example-3&#34;, AlertArgs.builder()        
  *             .version(&#34;2.0&#34;)
  *             .type(&#34;tpl&#34;)
- *             .projectName(exampleProject.name())
+ *             .projectName(example.name())
  *             .alertName(&#34;example-alert&#34;)
  *             .alertDisplayname(&#34;example-alert&#34;)
  *             .muteUntil(&#34;1632486684&#34;)
@@ -369,7 +375,7 @@ import javax.annotation.Nullable;
  *                     Map.entry(&#34;default.action_policy&#34;, &#34;sls.app.ack.builtin&#34;),
  *                     Map.entry(&#34;default.severity&#34;, &#34;6&#34;),
  *                     Map.entry(&#34;sendResolved&#34;, &#34;false&#34;),
- *                     Map.entry(&#34;default.project&#34;, exampleProject.name()),
+ *                     Map.entry(&#34;default.project&#34;, example.name()),
  *                     Map.entry(&#34;default.logstore&#34;, &#34;k8s-event&#34;),
  *                     Map.entry(&#34;default.repeatInterval&#34;, &#34;4h&#34;),
  *                     Map.entry(&#34;trigger_threshold&#34;, &#34;1&#34;),

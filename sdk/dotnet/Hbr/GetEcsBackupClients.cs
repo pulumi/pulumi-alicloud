@@ -39,11 +39,11 @@ namespace Pulumi.AliCloud.Hbr
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_hbr_ecs_backup_client.Default.Id,
+        ///             defaultAlicloudHbrEcsBackupClient.Id,
         ///         },
         ///         InstanceIds = new[]
         ///         {
-        ///             alicloud_hbr_ecs_backup_client.Default.Instance_id,
+        ///             defaultAlicloudHbrEcsBackupClient.InstanceId,
         ///         },
         ///     });
         /// 
@@ -86,11 +86,11 @@ namespace Pulumi.AliCloud.Hbr
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_hbr_ecs_backup_client.Default.Id,
+        ///             defaultAlicloudHbrEcsBackupClient.Id,
         ///         },
         ///         InstanceIds = new[]
         ///         {
-        ///             alicloud_hbr_ecs_backup_client.Default.Instance_id,
+        ///             defaultAlicloudHbrEcsBackupClient.InstanceId,
         ///         },
         ///     });
         /// 

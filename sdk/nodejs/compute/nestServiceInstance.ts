@@ -24,46 +24,46 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tfexample";
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultGetZones = alicloud.getZones({
  *     availableDiskCategory: "cloud_efficiency",
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultInstanceTypes = defaultZones.then(defaultZones => alicloud.ecs.getInstanceTypes({
- *     availabilityZone: defaultZones.zones?.[0]?.id,
+ * const defaultGetInstanceTypes = defaultGetZones.then(defaultGetZones => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: defaultGetZones.zones?.[0]?.id,
  *     instanceTypeFamily: "ecs.sn1ne",
  * }));
- * const defaultImages = alicloud.ecs.getImages({
+ * const defaultGetImages = alicloud.ecs.getImages({
  *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
  *     owners: "system",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.0.0.0/8",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
  *     cidrBlock: "10.1.0.0/16",
  *     vpcId: defaultNetwork.id,
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultInstance = new alicloud.ecs.Instance("defaultInstance", {
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
- *     instanceType: defaultInstanceTypes.then(defaultInstanceTypes => defaultInstanceTypes.instanceTypes?.[0]?.id),
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {vpcId: defaultNetwork.id});
+ * const defaultInstance = new alicloud.ecs.Instance("default", {
+ *     imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
  *     securityGroups: [defaultSecurityGroup].map(__item => __item.id),
  *     internetChargeType: "PayByTraffic",
  *     internetMaxBandwidthOut: 10,
- *     availabilityZone: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     availabilityZone: defaultGetZones.then(defaultGetZones => defaultGetZones.zones?.[0]?.id),
  *     instanceChargeType: "PostPaid",
  *     systemDiskCategory: "cloud_efficiency",
  *     vswitchId: defaultSwitch.id,
  * });
- * const defaultNestServiceInstance = new alicloud.compute.NestServiceInstance("defaultNestServiceInstance", {
+ * const defaultNestServiceInstance = new alicloud.compute.NestServiceInstance("default", {
  *     serviceId: "service-dd475e6e468348799f0f",
  *     serviceVersion: "1",
  *     serviceInstanceName: name,
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     resourceGroupId: _default.then(_default => _default.groups?.[0]?.id),
  *     paymentType: "Permanent",
  *     operationMetadata: {
  *         operationStartTime: "1681281179000",

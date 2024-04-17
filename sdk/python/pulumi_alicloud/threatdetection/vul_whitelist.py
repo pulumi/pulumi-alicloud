@@ -148,9 +148,9 @@ class VulWhitelist(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.threatdetection.VulWhitelist("default",
-            reason="tf-example-reason",
+            whitelist="[{\\"aliasName\\":\\"RHSA-2021:2260: libwebp 安全更新\\",\\"name\\":\\"RHSA-2021:2260: libwebp 安全更新\\",\\"type\\":\\"cve\\"}]",
             target_info="{\\"type\\":\\"GroupId\\",\\"uuids\\":[],\\"groupIds\\":[10782678]}",
-            whitelist="[{\\"aliasName\\":\\"RHSA-2021:2260: libwebp 安全更新\\",\\"name\\":\\"RHSA-2021:2260: libwebp 安全更新\\",\\"type\\":\\"cve\\"}]")
+            reason="tf-example-reason")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -191,9 +191,9 @@ class VulWhitelist(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         default = alicloud.threatdetection.VulWhitelist("default",
-            reason="tf-example-reason",
+            whitelist="[{\\"aliasName\\":\\"RHSA-2021:2260: libwebp 安全更新\\",\\"name\\":\\"RHSA-2021:2260: libwebp 安全更新\\",\\"type\\":\\"cve\\"}]",
             target_info="{\\"type\\":\\"GroupId\\",\\"uuids\\":[],\\"groupIds\\":[10782678]}",
-            whitelist="[{\\"aliasName\\":\\"RHSA-2021:2260: libwebp 安全更新\\",\\"name\\":\\"RHSA-2021:2260: libwebp 安全更新\\",\\"type\\":\\"cve\\"}]")
+            reason="tf-example-reason")
         ```
         <!--End PulumiCodeChooser -->
 

@@ -41,7 +41,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultImages, err := eds.GetImages(ctx, &eds.GetImagesArgs{
+//			_default, err := eds.GetImages(ctx, &eds.GetImagesArgs{
 //				ImageType:           pulumi.StringRef("SYSTEM"),
 //				OsType:              pulumi.StringRef("Windows"),
 //				DesktopInstanceType: pulumi.StringRef("eds.hf.4c8g"),
@@ -49,7 +49,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultDesktopTypes, err := eds.GetDesktopTypes(ctx, &eds.GetDesktopTypesArgs{
+//			defaultGetDesktopTypes, err := eds.GetDesktopTypes(ctx, &eds.GetDesktopTypesArgs{
 //				InstanceTypeFamily: pulumi.StringRef("eds.hf"),
 //				CpuCount:           pulumi.IntRef(4),
 //				MemorySize:         pulumi.IntRef(8192),
@@ -57,11 +57,11 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = eds.NewBundle(ctx, "defaultBundle", &eds.BundleArgs{
+//			_, err = eds.NewBundle(ctx, "default", &eds.BundleArgs{
 //				Description: pulumi.String(name),
-//				DesktopType: pulumi.String(defaultDesktopTypes.Ids[0]),
+//				DesktopType: pulumi.String(defaultGetDesktopTypes.Ids[0]),
 //				BundleName:  pulumi.String(name),
-//				ImageId:     pulumi.String(defaultImages.Ids[0]),
+//				ImageId:     pulumi.String(_default.Ids[0]),
 //				UserDiskSizeGibs: pulumi.IntArray{
 //					pulumi.Int(70),
 //				},

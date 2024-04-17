@@ -22,7 +22,9 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example-fnfflow";
- * const defaultRole = new alicloud.ram.Role("defaultRole", {document: `  {
+ * const _default = new alicloud.ram.Role("default", {
+ *     name: name,
+ *     document: `  {
  *     "Statement": [
  *       {
  *         "Action": "sts:AssumeRole",
@@ -36,8 +38,9 @@ import * as utilities from "../utilities";
  *     ],
  *     "Version": "1"
  *   }
- * `});
- * const defaultFlow = new alicloud.fnf.Flow("defaultFlow", {
+ * `,
+ * });
+ * const defaultFlow = new alicloud.fnf.Flow("default", {
  *     definition: `  version: v1beta1
  *   type: flow
  *   steps:
@@ -45,11 +48,12 @@ import * as utilities from "../utilities";
  *       name: custom_wait
  *       duration: $.wait
  * `,
- *     roleArn: defaultRole.arn,
+ *     roleArn: _default.arn,
  *     description: "Test for terraform fnf_flow.",
+ *     name: name,
  *     type: "FDL",
  * });
- * const defaultExecution = new alicloud.fnf.Execution("defaultExecution", {
+ * const defaultExecution = new alicloud.fnf.Execution("default", {
  *     executionName: name,
  *     flowName: defaultFlow.name,
  *     input: "{\"wait\": 600}",

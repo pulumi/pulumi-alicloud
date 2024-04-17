@@ -130,18 +130,10 @@ namespace Pulumi.AliCloud.Pvtz
     ///         CidrBlock = "172.16.0.0/16",
     ///     });
     /// 
-    ///     var eu = new AliCloud.Provider("eu", new()
-    ///     {
-    ///         Region = "eu-central-1",
-    ///     });
-    /// 
     ///     var third = new AliCloud.Vpc.Network("third", new()
     ///     {
     ///         VpcName = "the-third-vpc",
     ///         CidrBlock = "172.16.0.0/16",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = alicloud.Eu,
     ///     });
     /// 
     ///     var zone_attachment = new AliCloud.Pvtz.ZoneAttachment("zone-attachment", new()

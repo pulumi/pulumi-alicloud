@@ -22,20 +22,21 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const configMapName = config.get("configMapName") || "examplename";
- * const exampleNamespace = new alicloud.sae.Namespace("exampleNamespace", {
+ * const example = new alicloud.sae.Namespace("example", {
  *     namespaceId: "cn-hangzhou:yourname",
  *     namespaceName: "example_value",
  *     namespaceDescription: "your_description",
  * });
- * const exampleConfigMap = new alicloud.sae.ConfigMap("exampleConfigMap", {
+ * const exampleConfigMap = new alicloud.sae.ConfigMap("example", {
  *     data: JSON.stringify({
  *         "env.home": "/root",
  *         "env.shell": "/bin/sh",
  *     }),
- *     namespaceId: exampleNamespace.namespaceId,
+ *     name: configMapName,
+ *     namespaceId: example.namespaceId,
  * });
  * const nameRegex = alicloud.sae.getConfigMapsOutput({
- *     namespaceId: exampleNamespace.namespaceId,
+ *     namespaceId: example.namespaceId,
  *     nameRegex: "^example",
  * });
  * export const saeConfigMapId = nameRegex.apply(nameRegex => nameRegex.maps?.[0]?.id);
@@ -106,20 +107,21 @@ export interface GetConfigMapsResult {
  *
  * const config = new pulumi.Config();
  * const configMapName = config.get("configMapName") || "examplename";
- * const exampleNamespace = new alicloud.sae.Namespace("exampleNamespace", {
+ * const example = new alicloud.sae.Namespace("example", {
  *     namespaceId: "cn-hangzhou:yourname",
  *     namespaceName: "example_value",
  *     namespaceDescription: "your_description",
  * });
- * const exampleConfigMap = new alicloud.sae.ConfigMap("exampleConfigMap", {
+ * const exampleConfigMap = new alicloud.sae.ConfigMap("example", {
  *     data: JSON.stringify({
  *         "env.home": "/root",
  *         "env.shell": "/bin/sh",
  *     }),
- *     namespaceId: exampleNamespace.namespaceId,
+ *     name: configMapName,
+ *     namespaceId: example.namespaceId,
  * });
  * const nameRegex = alicloud.sae.getConfigMapsOutput({
- *     namespaceId: exampleNamespace.namespaceId,
+ *     namespaceId: example.namespaceId,
  *     nameRegex: "^example",
  * });
  * export const saeConfigMapId = nameRegex.apply(nameRegex => nameRegex.maps?.[0]?.id);

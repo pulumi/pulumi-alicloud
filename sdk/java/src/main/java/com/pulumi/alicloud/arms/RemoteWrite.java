@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
@@ -73,14 +73,15 @@ import javax.annotation.Nullable;
  *             .vswitchName(name)
  *             .cidrBlock(&#34;10.4.0.0/24&#34;)
  *             .vpcId(defaultNetwork.id())
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones())[defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()).length() - 1].id())
+ *             .zoneId(default_.zones()[default_.zones().length() - 1].id())
  *             .build());
  * 
  *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+ *             .name(name)
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var defaultPrometheus = new Prometheus(&#34;defaultPrometheus&#34;, PrometheusArgs.builder()        
  *             .clusterType(&#34;ecs&#34;)
@@ -89,7 +90,7 @@ import javax.annotation.Nullable;
  *             .vswitchId(defaultSwitch.id())
  *             .securityGroupId(defaultSecurityGroup.id())
  *             .clusterName(defaultNetwork.id().applyValue(id -&gt; String.format(&#34;%s-%s&#34;, name,id)))
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
  *             .tags(Map.ofEntries(
  *                 Map.entry(&#34;Created&#34;, &#34;TF&#34;),
  *                 Map.entry(&#34;For&#34;, &#34;Prometheus&#34;)

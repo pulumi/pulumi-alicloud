@@ -24,12 +24,12 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const domainName = config.get("domainName") || "tf-example.com";
  * const name = config.get("name") || "tf_example";
- * const _default = new random.RandomInteger("default", {
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const exampleDomain = new alicloud.dcdn.Domain("exampleDomain", {
- *     domainName: pulumi.interpolate`${domainName}-${_default.result}`,
+ * const example = new alicloud.dcdn.Domain("example", {
+ *     domainName: `${domainName}-${_default.result}`,
  *     scope: "overseas",
  *     sources: [{
  *         content: "1.1.1.1",
@@ -39,17 +39,17 @@ import * as utilities from "../utilities";
  *         weight: "10",
  *     }],
  * });
- * const exampleWafDomain = new alicloud.dcdn.WafDomain("exampleWafDomain", {
- *     domainName: exampleDomain.domainName,
+ * const exampleWafDomain = new alicloud.dcdn.WafDomain("example", {
+ *     domainName: example.domainName,
  *     clientIpTag: "X-Forwarded-For",
  * });
- * const exampleWafPolicy = new alicloud.dcdn.WafPolicy("exampleWafPolicy", {
+ * const exampleWafPolicy = new alicloud.dcdn.WafPolicy("example", {
  *     defenseScene: "waf_group",
- *     policyName: pulumi.interpolate`${name}_${_default.result}`,
+ *     policyName: `${name}_${_default.result}`,
  *     policyType: "custom",
  *     status: "on",
  * });
- * const exampleWafPolicyDomainAttachment = new alicloud.dcdn.WafPolicyDomainAttachment("exampleWafPolicyDomainAttachment", {
+ * const exampleWafPolicyDomainAttachment = new alicloud.dcdn.WafPolicyDomainAttachment("example", {
  *     domainName: exampleWafDomain.domainName,
  *     policyId: exampleWafPolicy.id,
  * });

@@ -49,15 +49,14 @@ namespace Pulumi.AliCloud.Oos
     ///         ""Action"": ""ACS::ExecuteApi""
     ///       }]
     ///   }
-    ///   
     /// ",
+    ///         TemplateName = "test-name",
+    ///         VersionName = "test",
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
     ///             { "For", "acceptance Test" },
     ///         },
-    ///         TemplateName = "test-name",
-    ///         VersionName = "test",
     ///     });
     /// 
     /// });

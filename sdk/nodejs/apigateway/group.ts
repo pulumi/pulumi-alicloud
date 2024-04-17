@@ -14,7 +14,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.apigateway.Group("default", {description: "tf_example"});
+ * const _default = new alicloud.apigateway.Group("default", {
+ *     name: "tf_example",
+ *     description: "tf_example",
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

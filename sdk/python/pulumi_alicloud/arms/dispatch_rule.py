@@ -261,13 +261,13 @@ class DispatchRule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_alert_contact = alicloud.arms.AlertContact("defaultAlertContact",
+        default = alicloud.arms.AlertContact("default",
             alert_contact_name="example_value",
             email="example_value@aaa.com")
-        default_alert_contact_group = alicloud.arms.AlertContactGroup("defaultAlertContactGroup",
+        default_alert_contact_group = alicloud.arms.AlertContactGroup("default",
             alert_contact_group_name="example_value",
-            contact_ids=[default_alert_contact.id])
-        default_dispatch_rule = alicloud.arms.DispatchRule("defaultDispatchRule",
+            contact_ids=[default.id])
+        default_dispatch_rule = alicloud.arms.DispatchRule("default",
             dispatch_rule_name="example_value",
             dispatch_type="CREATE_ALERT",
             group_rules=[alicloud.arms.DispatchRuleGroupRuleArgs(
@@ -288,7 +288,7 @@ class DispatchRule(pulumi.CustomResource):
             notify_rules=[alicloud.arms.DispatchRuleNotifyRuleArgs(
                 notify_objects=[
                     alicloud.arms.DispatchRuleNotifyRuleNotifyObjectArgs(
-                        notify_object_id=default_alert_contact.id,
+                        notify_object_id=default.id,
                         notify_type="ARMS_CONTACT",
                         name="example_value",
                     ),
@@ -345,13 +345,13 @@ class DispatchRule(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_alert_contact = alicloud.arms.AlertContact("defaultAlertContact",
+        default = alicloud.arms.AlertContact("default",
             alert_contact_name="example_value",
             email="example_value@aaa.com")
-        default_alert_contact_group = alicloud.arms.AlertContactGroup("defaultAlertContactGroup",
+        default_alert_contact_group = alicloud.arms.AlertContactGroup("default",
             alert_contact_group_name="example_value",
-            contact_ids=[default_alert_contact.id])
-        default_dispatch_rule = alicloud.arms.DispatchRule("defaultDispatchRule",
+            contact_ids=[default.id])
+        default_dispatch_rule = alicloud.arms.DispatchRule("default",
             dispatch_rule_name="example_value",
             dispatch_type="CREATE_ALERT",
             group_rules=[alicloud.arms.DispatchRuleGroupRuleArgs(
@@ -372,7 +372,7 @@ class DispatchRule(pulumi.CustomResource):
             notify_rules=[alicloud.arms.DispatchRuleNotifyRuleArgs(
                 notify_objects=[
                     alicloud.arms.DispatchRuleNotifyRuleNotifyObjectArgs(
-                        notify_object_id=default_alert_contact.id,
+                        notify_object_id=default.id,
                         notify_type="ARMS_CONTACT",
                         name="example_value",
                     ),

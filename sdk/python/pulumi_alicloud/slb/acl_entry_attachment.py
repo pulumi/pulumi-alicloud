@@ -144,9 +144,11 @@ class AclEntryAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        attachment_acl = alicloud.slb.Acl("attachmentAcl", ip_version="ipv4")
-        attachment_acl_entry_attachment = alicloud.slb.AclEntryAttachment("attachmentAclEntryAttachment",
-            acl_id=attachment_acl.id,
+        attachment = alicloud.slb.Acl("attachment",
+            name="forSlbAclEntryAttachment",
+            ip_version="ipv4")
+        attachment_acl_entry_attachment = alicloud.slb.AclEntryAttachment("attachment",
+            acl_id=attachment.id,
             entry="168.10.10.0/24",
             comment="second")
         ```
@@ -186,9 +188,11 @@ class AclEntryAttachment(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        attachment_acl = alicloud.slb.Acl("attachmentAcl", ip_version="ipv4")
-        attachment_acl_entry_attachment = alicloud.slb.AclEntryAttachment("attachmentAclEntryAttachment",
-            acl_id=attachment_acl.id,
+        attachment = alicloud.slb.Acl("attachment",
+            name="forSlbAclEntryAttachment",
+            ip_version="ipv4")
+        attachment_acl_entry_attachment = alicloud.slb.AclEntryAttachment("attachment",
+            acl_id=attachment.id,
             entry="168.10.10.0/24",
             comment="second")
         ```

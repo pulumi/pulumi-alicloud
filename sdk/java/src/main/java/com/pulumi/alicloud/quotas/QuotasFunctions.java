@@ -360,7 +360,7 @@ public final class QuotasFunctions {
      *             .quotaCategory(&#34;WhiteListLabel&#34;)
      *             .build());
      * 
-     *         final var defaultQuotaApplications = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *         final var default = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
      *             .productCode(&#34;vpc&#34;)
      *             .enableDetails(&#34;true&#34;)
      *             .quotaCategory(defaultQuotaApplication.quotaCategory())
@@ -422,7 +422,7 @@ public final class QuotasFunctions {
      *             .quotaCategory(&#34;WhiteListLabel&#34;)
      *             .build());
      * 
-     *         final var defaultQuotaApplications = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *         final var default = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
      *             .productCode(&#34;vpc&#34;)
      *             .enableDetails(&#34;true&#34;)
      *             .quotaCategory(defaultQuotaApplication.quotaCategory())
@@ -484,7 +484,7 @@ public final class QuotasFunctions {
      *             .quotaCategory(&#34;WhiteListLabel&#34;)
      *             .build());
      * 
-     *         final var defaultQuotaApplications = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *         final var default = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
      *             .productCode(&#34;vpc&#34;)
      *             .enableDetails(&#34;true&#34;)
      *             .quotaCategory(defaultQuotaApplication.quotaCategory())
@@ -546,7 +546,7 @@ public final class QuotasFunctions {
      *             .quotaCategory(&#34;WhiteListLabel&#34;)
      *             .build());
      * 
-     *         final var defaultQuotaApplications = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
+     *         final var default = QuotasFunctions.getQuotaApplications(GetQuotaApplicationsArgs.builder()
      *             .productCode(&#34;vpc&#34;)
      *             .enableDetails(&#34;true&#34;)
      *             .quotaCategory(defaultQuotaApplication.quotaCategory())
@@ -751,6 +751,76 @@ public final class QuotasFunctions {
      * 
      * &gt; **NOTE:** Available since v1.214.0.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.quotas.TemplateApplications;
+     * import com.pulumi.alicloud.quotas.TemplateApplicationsArgs;
+     * import com.pulumi.alicloud.quotas.inputs.TemplateApplicationsDimensionArgs;
+     * import com.pulumi.alicloud.quotas.QuotasFunctions;
+     * import com.pulumi.alicloud.quotas.inputs.GetTemplateApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .status(&#34;CreateSuccess&#34;)
+     *             .build());
+     * 
+     *         var defaultTemplateApplications = new TemplateApplications(&#34;defaultTemplateApplications&#34;, TemplateApplicationsArgs.builder()        
+     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
+     *             .productCode(&#34;vpc&#34;)
+     *             .quotaCategory(&#34;FlowControl&#34;)
+     *             .aliyunUids(default_.ids()[0])
+     *             .desireValue(6)
+     *             .noticeType(&#34;0&#34;)
+     *             .envLanguage(&#34;zh&#34;)
+     *             .reason(&#34;example&#34;)
+     *             .dimensions(            
+     *                 TemplateApplicationsDimensionArgs.builder()
+     *                     .key(&#34;apiName&#34;)
+     *                     .value(&#34;GetProductQuotaDimension&#34;)
+     *                     .build(),
+     *                 TemplateApplicationsDimensionArgs.builder()
+     *                     .key(&#34;apiVersion&#34;)
+     *                     .value(&#34;2020-05-10&#34;)
+     *                     .build(),
+     *                 TemplateApplicationsDimensionArgs.builder()
+     *                     .key(&#34;regionId&#34;)
+     *                     .value(&#34;cn-hangzhou&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         final var defaultGetTemplateApplications = QuotasFunctions.getTemplateApplications(GetTemplateApplicationsArgs.builder()
+     *             .ids(defaultTemplateApplications.id())
+     *             .productCode(&#34;vpc&#34;)
+     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
+     *             .quotaCategory(&#34;FlowControl&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudQuotasTemplateApplicationsExampleId&#34;, defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -&gt; defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult.applications()[0].id())));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetTemplateApplicationsResult> getTemplateApplications() {
         return getTemplateApplications(GetTemplateApplicationsArgs.Empty, InvokeOptions.Empty);
@@ -759,6 +829,76 @@ public final class QuotasFunctions {
      * This data source provides Quotas Template Applications available to the user.[What is Template Applications](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplicationsfortemplate)
      * 
      * &gt; **NOTE:** Available since v1.214.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.quotas.TemplateApplications;
+     * import com.pulumi.alicloud.quotas.TemplateApplicationsArgs;
+     * import com.pulumi.alicloud.quotas.inputs.TemplateApplicationsDimensionArgs;
+     * import com.pulumi.alicloud.quotas.QuotasFunctions;
+     * import com.pulumi.alicloud.quotas.inputs.GetTemplateApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .status(&#34;CreateSuccess&#34;)
+     *             .build());
+     * 
+     *         var defaultTemplateApplications = new TemplateApplications(&#34;defaultTemplateApplications&#34;, TemplateApplicationsArgs.builder()        
+     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
+     *             .productCode(&#34;vpc&#34;)
+     *             .quotaCategory(&#34;FlowControl&#34;)
+     *             .aliyunUids(default_.ids()[0])
+     *             .desireValue(6)
+     *             .noticeType(&#34;0&#34;)
+     *             .envLanguage(&#34;zh&#34;)
+     *             .reason(&#34;example&#34;)
+     *             .dimensions(            
+     *                 TemplateApplicationsDimensionArgs.builder()
+     *                     .key(&#34;apiName&#34;)
+     *                     .value(&#34;GetProductQuotaDimension&#34;)
+     *                     .build(),
+     *                 TemplateApplicationsDimensionArgs.builder()
+     *                     .key(&#34;apiVersion&#34;)
+     *                     .value(&#34;2020-05-10&#34;)
+     *                     .build(),
+     *                 TemplateApplicationsDimensionArgs.builder()
+     *                     .key(&#34;regionId&#34;)
+     *                     .value(&#34;cn-hangzhou&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         final var defaultGetTemplateApplications = QuotasFunctions.getTemplateApplications(GetTemplateApplicationsArgs.builder()
+     *             .ids(defaultTemplateApplications.id())
+     *             .productCode(&#34;vpc&#34;)
+     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
+     *             .quotaCategory(&#34;FlowControl&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudQuotasTemplateApplicationsExampleId&#34;, defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -&gt; defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult.applications()[0].id())));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTemplateApplicationsResult> getTemplateApplicationsPlain() {
@@ -769,6 +909,76 @@ public final class QuotasFunctions {
      * 
      * &gt; **NOTE:** Available since v1.214.0.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.quotas.TemplateApplications;
+     * import com.pulumi.alicloud.quotas.TemplateApplicationsArgs;
+     * import com.pulumi.alicloud.quotas.inputs.TemplateApplicationsDimensionArgs;
+     * import com.pulumi.alicloud.quotas.QuotasFunctions;
+     * import com.pulumi.alicloud.quotas.inputs.GetTemplateApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .status(&#34;CreateSuccess&#34;)
+     *             .build());
+     * 
+     *         var defaultTemplateApplications = new TemplateApplications(&#34;defaultTemplateApplications&#34;, TemplateApplicationsArgs.builder()        
+     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
+     *             .productCode(&#34;vpc&#34;)
+     *             .quotaCategory(&#34;FlowControl&#34;)
+     *             .aliyunUids(default_.ids()[0])
+     *             .desireValue(6)
+     *             .noticeType(&#34;0&#34;)
+     *             .envLanguage(&#34;zh&#34;)
+     *             .reason(&#34;example&#34;)
+     *             .dimensions(            
+     *                 TemplateApplicationsDimensionArgs.builder()
+     *                     .key(&#34;apiName&#34;)
+     *                     .value(&#34;GetProductQuotaDimension&#34;)
+     *                     .build(),
+     *                 TemplateApplicationsDimensionArgs.builder()
+     *                     .key(&#34;apiVersion&#34;)
+     *                     .value(&#34;2020-05-10&#34;)
+     *                     .build(),
+     *                 TemplateApplicationsDimensionArgs.builder()
+     *                     .key(&#34;regionId&#34;)
+     *                     .value(&#34;cn-hangzhou&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         final var defaultGetTemplateApplications = QuotasFunctions.getTemplateApplications(GetTemplateApplicationsArgs.builder()
+     *             .ids(defaultTemplateApplications.id())
+     *             .productCode(&#34;vpc&#34;)
+     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
+     *             .quotaCategory(&#34;FlowControl&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudQuotasTemplateApplicationsExampleId&#34;, defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -&gt; defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult.applications()[0].id())));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetTemplateApplicationsResult> getTemplateApplications(GetTemplateApplicationsArgs args) {
         return getTemplateApplications(args, InvokeOptions.Empty);
@@ -777,6 +987,76 @@ public final class QuotasFunctions {
      * This data source provides Quotas Template Applications available to the user.[What is Template Applications](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplicationsfortemplate)
      * 
      * &gt; **NOTE:** Available since v1.214.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.quotas.TemplateApplications;
+     * import com.pulumi.alicloud.quotas.TemplateApplicationsArgs;
+     * import com.pulumi.alicloud.quotas.inputs.TemplateApplicationsDimensionArgs;
+     * import com.pulumi.alicloud.quotas.QuotasFunctions;
+     * import com.pulumi.alicloud.quotas.inputs.GetTemplateApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .status(&#34;CreateSuccess&#34;)
+     *             .build());
+     * 
+     *         var defaultTemplateApplications = new TemplateApplications(&#34;defaultTemplateApplications&#34;, TemplateApplicationsArgs.builder()        
+     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
+     *             .productCode(&#34;vpc&#34;)
+     *             .quotaCategory(&#34;FlowControl&#34;)
+     *             .aliyunUids(default_.ids()[0])
+     *             .desireValue(6)
+     *             .noticeType(&#34;0&#34;)
+     *             .envLanguage(&#34;zh&#34;)
+     *             .reason(&#34;example&#34;)
+     *             .dimensions(            
+     *                 TemplateApplicationsDimensionArgs.builder()
+     *                     .key(&#34;apiName&#34;)
+     *                     .value(&#34;GetProductQuotaDimension&#34;)
+     *                     .build(),
+     *                 TemplateApplicationsDimensionArgs.builder()
+     *                     .key(&#34;apiVersion&#34;)
+     *                     .value(&#34;2020-05-10&#34;)
+     *                     .build(),
+     *                 TemplateApplicationsDimensionArgs.builder()
+     *                     .key(&#34;regionId&#34;)
+     *                     .value(&#34;cn-hangzhou&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         final var defaultGetTemplateApplications = QuotasFunctions.getTemplateApplications(GetTemplateApplicationsArgs.builder()
+     *             .ids(defaultTemplateApplications.id())
+     *             .productCode(&#34;vpc&#34;)
+     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
+     *             .quotaCategory(&#34;FlowControl&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudQuotasTemplateApplicationsExampleId&#34;, defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -&gt; defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult.applications()[0].id())));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTemplateApplicationsResult> getTemplateApplicationsPlain(GetTemplateApplicationsPlainArgs args) {
@@ -787,6 +1067,76 @@ public final class QuotasFunctions {
      * 
      * &gt; **NOTE:** Available since v1.214.0.
      * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.quotas.TemplateApplications;
+     * import com.pulumi.alicloud.quotas.TemplateApplicationsArgs;
+     * import com.pulumi.alicloud.quotas.inputs.TemplateApplicationsDimensionArgs;
+     * import com.pulumi.alicloud.quotas.QuotasFunctions;
+     * import com.pulumi.alicloud.quotas.inputs.GetTemplateApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .status(&#34;CreateSuccess&#34;)
+     *             .build());
+     * 
+     *         var defaultTemplateApplications = new TemplateApplications(&#34;defaultTemplateApplications&#34;, TemplateApplicationsArgs.builder()        
+     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
+     *             .productCode(&#34;vpc&#34;)
+     *             .quotaCategory(&#34;FlowControl&#34;)
+     *             .aliyunUids(default_.ids()[0])
+     *             .desireValue(6)
+     *             .noticeType(&#34;0&#34;)
+     *             .envLanguage(&#34;zh&#34;)
+     *             .reason(&#34;example&#34;)
+     *             .dimensions(            
+     *                 TemplateApplicationsDimensionArgs.builder()
+     *                     .key(&#34;apiName&#34;)
+     *                     .value(&#34;GetProductQuotaDimension&#34;)
+     *                     .build(),
+     *                 TemplateApplicationsDimensionArgs.builder()
+     *                     .key(&#34;apiVersion&#34;)
+     *                     .value(&#34;2020-05-10&#34;)
+     *                     .build(),
+     *                 TemplateApplicationsDimensionArgs.builder()
+     *                     .key(&#34;regionId&#34;)
+     *                     .value(&#34;cn-hangzhou&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         final var defaultGetTemplateApplications = QuotasFunctions.getTemplateApplications(GetTemplateApplicationsArgs.builder()
+     *             .ids(defaultTemplateApplications.id())
+     *             .productCode(&#34;vpc&#34;)
+     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
+     *             .quotaCategory(&#34;FlowControl&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudQuotasTemplateApplicationsExampleId&#34;, defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -&gt; defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult.applications()[0].id())));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
      */
     public static Output<GetTemplateApplicationsResult> getTemplateApplications(GetTemplateApplicationsArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:quotas/getTemplateApplications:getTemplateApplications", TypeShape.of(GetTemplateApplicationsResult.class), args, Utilities.withVersion(options));
@@ -795,6 +1145,76 @@ public final class QuotasFunctions {
      * This data source provides Quotas Template Applications available to the user.[What is Template Applications](https://www.alibabacloud.com/help/en/quota-center/developer-reference/api-quotas-2020-05-10-createquotaapplicationsfortemplate)
      * 
      * &gt; **NOTE:** Available since v1.214.0.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.resourcemanager.ResourcemanagerFunctions;
+     * import com.pulumi.alicloud.resourcemanager.inputs.GetAccountsArgs;
+     * import com.pulumi.alicloud.quotas.TemplateApplications;
+     * import com.pulumi.alicloud.quotas.TemplateApplicationsArgs;
+     * import com.pulumi.alicloud.quotas.inputs.TemplateApplicationsDimensionArgs;
+     * import com.pulumi.alicloud.quotas.QuotasFunctions;
+     * import com.pulumi.alicloud.quotas.inputs.GetTemplateApplicationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = ResourcemanagerFunctions.getAccounts(GetAccountsArgs.builder()
+     *             .status(&#34;CreateSuccess&#34;)
+     *             .build());
+     * 
+     *         var defaultTemplateApplications = new TemplateApplications(&#34;defaultTemplateApplications&#34;, TemplateApplicationsArgs.builder()        
+     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
+     *             .productCode(&#34;vpc&#34;)
+     *             .quotaCategory(&#34;FlowControl&#34;)
+     *             .aliyunUids(default_.ids()[0])
+     *             .desireValue(6)
+     *             .noticeType(&#34;0&#34;)
+     *             .envLanguage(&#34;zh&#34;)
+     *             .reason(&#34;example&#34;)
+     *             .dimensions(            
+     *                 TemplateApplicationsDimensionArgs.builder()
+     *                     .key(&#34;apiName&#34;)
+     *                     .value(&#34;GetProductQuotaDimension&#34;)
+     *                     .build(),
+     *                 TemplateApplicationsDimensionArgs.builder()
+     *                     .key(&#34;apiVersion&#34;)
+     *                     .value(&#34;2020-05-10&#34;)
+     *                     .build(),
+     *                 TemplateApplicationsDimensionArgs.builder()
+     *                     .key(&#34;regionId&#34;)
+     *                     .value(&#34;cn-hangzhou&#34;)
+     *                     .build())
+     *             .build());
+     * 
+     *         final var defaultGetTemplateApplications = QuotasFunctions.getTemplateApplications(GetTemplateApplicationsArgs.builder()
+     *             .ids(defaultTemplateApplications.id())
+     *             .productCode(&#34;vpc&#34;)
+     *             .quotaActionCode(&#34;vpc_whitelist/ha_vip_whitelist&#34;)
+     *             .quotaCategory(&#34;FlowControl&#34;)
+     *             .build());
+     * 
+     *         ctx.export(&#34;alicloudQuotasTemplateApplicationsExampleId&#34;, defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult).applyValue(defaultGetTemplateApplications -&gt; defaultGetTemplateApplications.applyValue(getTemplateApplicationsResult -&gt; getTemplateApplicationsResult.applications()[0].id())));
+     *     }
+     * }
+     * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetTemplateApplicationsResult> getTemplateApplicationsPlain(GetTemplateApplicationsPlainArgs args, InvokeOptions options) {

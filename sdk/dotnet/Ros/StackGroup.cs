@@ -35,7 +35,6 @@ namespace Pulumi.AliCloud.Ros
     ///         TemplateBody = @"    {
     ///     	""ROSTemplateFormatVersion"": ""2015-09-01""
     ///     }
-    ///     
     /// ",
     ///     });
     /// 

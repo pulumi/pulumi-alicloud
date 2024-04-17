@@ -31,11 +31,13 @@ namespace Pulumi.AliCloud.Datahub
     ///     var name = config.Get("name") ?? "tf_example";
     ///     var example = new AliCloud.Datahub.Project("example", new()
     ///     {
+    ///         Name = name,
     ///         Comment = "created by terraform",
     ///     });
     /// 
-    ///     var exampleBlob = new AliCloud.Datahub.Topic("exampleBlob", new()
+    ///     var exampleBlob = new AliCloud.Datahub.Topic("example_blob", new()
     ///     {
+    ///         Name = $"{name}_blob",
     ///         ProjectName = example.Name,
     ///         RecordType = "BLOB",
     ///         ShardCount = 3,
@@ -43,8 +45,9 @@ namespace Pulumi.AliCloud.Datahub
     ///         Comment = "created by terraform",
     ///     });
     /// 
-    ///     var exampleTuple = new AliCloud.Datahub.Topic("exampleTuple", new()
+    ///     var exampleTuple = new AliCloud.Datahub.Topic("example_tuple", new()
     ///     {
+    ///         Name = $"{name}_tuple",
     ///         ProjectName = example.Name,
     ///         RecordType = "TUPLE",
     ///         RecordSchema = 

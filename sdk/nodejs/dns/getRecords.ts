@@ -20,10 +20,10 @@ import * as utilities from "../utilities";
  *
  * const recordsDs = alicloud.dns.getRecords({
  *     domainName: "xiaozhu.top",
- *     hostRecordRegex: "^@",
  *     isLocked: false,
- *     outputFile: "records.txt",
  *     type: "A",
+ *     hostRecordRegex: "^@",
+ *     outputFile: "records.txt",
  * });
  * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.recordId);
  * ```
@@ -142,10 +142,10 @@ export interface GetRecordsResult {
  *
  * const recordsDs = alicloud.dns.getRecords({
  *     domainName: "xiaozhu.top",
- *     hostRecordRegex: "^@",
  *     isLocked: false,
- *     outputFile: "records.txt",
  *     type: "A",
+ *     hostRecordRegex: "^@",
+ *     outputFile: "records.txt",
  * });
  * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.recordId);
  * ```

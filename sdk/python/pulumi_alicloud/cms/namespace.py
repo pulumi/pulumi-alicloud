@@ -172,9 +172,9 @@ class Namespace(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.cms.Namespace("example",
-            description="tf-example",
             namespace="tf-example",
-            specification="cms.s1.large")
+            specification="cms.s1.large",
+            description="tf-example")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -221,9 +221,9 @@ class Namespace(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.cms.Namespace("example",
-            description="tf-example",
             namespace="tf-example",
-            specification="cms.s1.large")
+            specification="cms.s1.large",
+            description="tf-example")
         ```
         <!--End PulumiCodeChooser -->
 

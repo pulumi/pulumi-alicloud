@@ -213,19 +213,20 @@ class DomainExtension(pulumi.CustomResource):
         slb_domain_extension_name = config.get("slbDomainExtensionName")
         if slb_domain_extension_name is None:
             slb_domain_extension_name = "forDomainExtension"
-        domain_extension_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        domain_extension_network = alicloud.vpc.Network("domainExtensionNetwork", vpc_name=slb_domain_extension_name)
-        domain_extension_switch = alicloud.vpc.Switch("domainExtensionSwitch",
+        domain_extension = alicloud.get_zones(available_resource_creation="VSwitch")
+        domain_extension_network = alicloud.vpc.Network("domain_extension", vpc_name=slb_domain_extension_name)
+        domain_extension_switch = alicloud.vpc.Switch("domain_extension",
             vpc_id=domain_extension_network.id,
             cidr_block="172.16.0.0/21",
-            zone_id=domain_extension_zones.zones[0].id,
+            zone_id=domain_extension.zones[0].id,
             vswitch_name=slb_domain_extension_name)
         instance = alicloud.slb.ApplicationLoadBalancer("instance",
             load_balancer_name=slb_domain_extension_name,
             address_type="intranet",
             load_balancer_spec="slb.s2.small",
             vswitch_id=domain_extension_switch.id)
-        domain_extension_server_certificate = alicloud.slb.ServerCertificate("domainExtensionServerCertificate",
+        domain_extension_server_certificate = alicloud.slb.ServerCertificate("domain_extension",
+            name="tf-testAccSlbServerCertificate",
             server_certificate=\"\"\"-----BEGIN CERTIFICATE-----
         MIIDdjCCAl4CCQCcm+erkcKN7DANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJj
         bjELMAkGA1UECAwCYmoxEDAOBgNVBAcMB2JlaWppbmcxDzANBgNVBAoMBmFsaXl1
@@ -342,19 +343,20 @@ class DomainExtension(pulumi.CustomResource):
         slb_domain_extension_name = config.get("slbDomainExtensionName")
         if slb_domain_extension_name is None:
             slb_domain_extension_name = "forDomainExtension"
-        domain_extension_zones = alicloud.get_zones(available_resource_creation="VSwitch")
-        domain_extension_network = alicloud.vpc.Network("domainExtensionNetwork", vpc_name=slb_domain_extension_name)
-        domain_extension_switch = alicloud.vpc.Switch("domainExtensionSwitch",
+        domain_extension = alicloud.get_zones(available_resource_creation="VSwitch")
+        domain_extension_network = alicloud.vpc.Network("domain_extension", vpc_name=slb_domain_extension_name)
+        domain_extension_switch = alicloud.vpc.Switch("domain_extension",
             vpc_id=domain_extension_network.id,
             cidr_block="172.16.0.0/21",
-            zone_id=domain_extension_zones.zones[0].id,
+            zone_id=domain_extension.zones[0].id,
             vswitch_name=slb_domain_extension_name)
         instance = alicloud.slb.ApplicationLoadBalancer("instance",
             load_balancer_name=slb_domain_extension_name,
             address_type="intranet",
             load_balancer_spec="slb.s2.small",
             vswitch_id=domain_extension_switch.id)
-        domain_extension_server_certificate = alicloud.slb.ServerCertificate("domainExtensionServerCertificate",
+        domain_extension_server_certificate = alicloud.slb.ServerCertificate("domain_extension",
+            name="tf-testAccSlbServerCertificate",
             server_certificate=\"\"\"-----BEGIN CERTIFICATE-----
         MIIDdjCCAl4CCQCcm+erkcKN7DANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJj
         bjELMAkGA1UECAwCYmoxEDAOBgNVBAcMB2JlaWppbmcxDzANBgNVBAoMBmFsaXl1

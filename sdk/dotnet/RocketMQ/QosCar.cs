@@ -33,11 +33,15 @@ namespace Pulumi.AliCloud.RocketMQ
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var defaultQos = new AliCloud.RocketMQ.Qos("defaultQos");
-    /// 
-    ///     var defaultQosCar = new AliCloud.RocketMQ.QosCar("defaultQosCar", new()
+    ///     var @default = new AliCloud.RocketMQ.Qos("default", new()
     ///     {
-    ///         QosId = defaultQos.Id,
+    ///         Name = name,
+    ///     });
+    /// 
+    ///     var defaultQosCar = new AliCloud.RocketMQ.QosCar("default", new()
+    ///     {
+    ///         QosId = @default.Id,
+    ///         Name = name,
     ///         Description = name,
     ///         Priority = 1,
     ///         LimitType = "Absolute",

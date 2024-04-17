@@ -30,7 +30,6 @@ import (
 //
 //	"fmt"
 //
-//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/hbr"
 //	"github.com/pulumi/pulumi-random/sdk/v4/go/random"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -45,44 +44,30 @@ import (
 //			if param := cfg.Get("sourceRegion"); param != "" {
 //				sourceRegion = param
 //			}
-//			_, err := alicloud.NewProvider(ctx, "source", &alicloud.ProviderArgs{
-//				Region: pulumi.String(sourceRegion),
+//			_, err := hbr.GetReplicationVaultRegions(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultReplicationVaultRegions, err := hbr.GetReplicationVaultRegions(ctx, nil, nil)
-//			if err != nil {
-//				return err
-//			}
-//			_, err = alicloud.NewProvider(ctx, "replication", &alicloud.ProviderArgs{
-//				Region: pulumi.String(defaultReplicationVaultRegions.Regions[0].ReplicationRegionId),
+//			defaultVault, err := hbr.NewVault(ctx, "default", &hbr.VaultArgs{
+//				VaultName: pulumi.String(fmt.Sprintf("terraform-example-%v", defaultInteger.Result)),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			defaultVault, err := hbr.NewVault(ctx, "defaultVault", &hbr.VaultArgs{
-//				VaultName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("terraform-example-%v", result), nil
-//				}).(pulumi.StringOutput),
-//			}, pulumi.Provider(alicloud.Source))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = hbr.NewReplicationVault(ctx, "defaultReplicationVault", &hbr.ReplicationVaultArgs{
+//			_, err = hbr.NewReplicationVault(ctx, "default", &hbr.ReplicationVaultArgs{
 //				ReplicationSourceRegionId: pulumi.String(sourceRegion),
 //				ReplicationSourceVaultId:  defaultVault.ID(),
 //				VaultName:                 pulumi.String("terraform-example"),
 //				VaultStorageClass:         pulumi.String("STANDARD"),
 //				Description:               pulumi.String("terraform-example"),
-//			}, pulumi.Provider(alicloud.Replication))
+//			})
 //			if err != nil {
 //				return err
 //			}

@@ -18,12 +18,14 @@ import * as utilities from "../utilities";
  *
  * // Create a RAM User Policy attachment.
  * const user = new alicloud.ram.User("user", {
+ *     name: "userName",
  *     displayName: "user_display_name",
  *     mobile: "86-18688888888",
  *     email: "hello.uuu@aaa.com",
  *     comments: "yoyoyo",
  * });
  * const policy = new alicloud.ram.Policy("policy", {
+ *     name: "policyName",
  *     document: `  {
  *     "Statement": [
  *       {

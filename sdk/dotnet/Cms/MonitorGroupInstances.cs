@@ -31,18 +31,18 @@ namespace Pulumi.AliCloud.Cms
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf_example";
-    ///     var defaultNetwork = new AliCloud.Vpc.Network("defaultNetwork", new()
+    ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
     ///     {
     ///         VpcName = name,
     ///         CidrBlock = "192.168.0.0/16",
     ///     });
     /// 
-    ///     var defaultMonitorGroup = new AliCloud.Cms.MonitorGroup("defaultMonitorGroup", new()
+    ///     var defaultMonitorGroup = new AliCloud.Cms.MonitorGroup("default", new()
     ///     {
     ///         MonitorGroupName = name,
     ///     });
     /// 
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
@@ -56,7 +56,7 @@ namespace Pulumi.AliCloud.Cms
     ///             {
     ///                 InstanceId = defaultNetwork.Id,
     ///                 InstanceName = name,
-    ///                 RegionId = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///                 RegionId = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
     ///                 Category = "vpc",
     ///             },
     ///         },

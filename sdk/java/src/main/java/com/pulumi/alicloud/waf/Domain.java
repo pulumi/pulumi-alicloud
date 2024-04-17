@@ -52,21 +52,21 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var domain = new Domain(&#34;domain&#34;, DomainArgs.builder()        
- *             .clusterType(&#34;PhysicalCluster&#34;)
  *             .domainName(&#34;alicloud-provider.cn&#34;)
- *             .http2Ports(443)
- *             .httpPorts(80)
- *             .httpToUserIp(&#34;Off&#34;)
- *             .httpsPorts(443)
- *             .httpsRedirect(&#34;Off&#34;)
  *             .instanceId(&#34;waf-123455&#34;)
  *             .isAccessProduct(&#34;On&#34;)
+ *             .sourceIps(&#34;1.1.1.1&#34;)
+ *             .clusterType(&#34;PhysicalCluster&#34;)
+ *             .http2Ports(443)
+ *             .httpPorts(80)
+ *             .httpsPorts(443)
+ *             .httpToUserIp(&#34;Off&#34;)
+ *             .httpsRedirect(&#34;Off&#34;)
  *             .loadBalancing(&#34;IpHash&#34;)
  *             .logHeaders(DomainLogHeaderArgs.builder()
  *                 .key(&#34;foo&#34;)
  *                 .value(&#34;http&#34;)
  *                 .build())
- *             .sourceIps(&#34;1.1.1.1&#34;)
  *             .build());
  * 
  *     }

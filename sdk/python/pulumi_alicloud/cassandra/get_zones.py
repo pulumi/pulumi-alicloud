@@ -104,10 +104,10 @@ def get_zones(multi: Optional[bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     zones_ids = alicloud.cassandra.get_zones()
     # Create an Cassandra cluster with the first matched zone
     cassandra = alicloud.cassandra.Cluster("cassandra", zone_id=zones_ids.zones[0].id)
-    # Other properties...
     ```
     <!--End PulumiCodeChooser -->
 
@@ -147,10 +147,10 @@ def get_zones_output(multi: Optional[pulumi.Input[Optional[bool]]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
+    # Declare the data source
     zones_ids = alicloud.cassandra.get_zones()
     # Create an Cassandra cluster with the first matched zone
     cassandra = alicloud.cassandra.Cluster("cassandra", zone_id=zones_ids.zones[0].id)
-    # Other properties...
     ```
     <!--End PulumiCodeChooser -->
 

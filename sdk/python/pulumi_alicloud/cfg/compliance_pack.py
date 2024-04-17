@@ -278,14 +278,14 @@ class CompliancePack(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example-config-name"
-        default_regions = alicloud.get_regions(current=True)
+        default = alicloud.get_regions(current=True)
         rule1 = alicloud.cfg.Rule("rule1",
             description=name,
             source_owner="ALIYUN",
             source_identifier="ram-user-ak-create-date-expired-check",
             risk_level=1,
             maximum_execution_frequency="TwentyFour_Hours",
-            region_ids_scope=default_regions.regions[0].id,
+            region_ids_scope=default.regions[0].id,
             config_rule_trigger_types="ScheduledNotification",
             resource_types_scopes=["ACS::RAM::User"],
             rule_name="ciscompliancecheck_ram-user-ak-create-date-expired-check",
@@ -297,14 +297,14 @@ class CompliancePack(pulumi.CustomResource):
             source_owner="ALIYUN",
             source_identifier="adb-cluster-maintain-time-check",
             risk_level=2,
-            region_ids_scope=default_regions.regions[0].id,
+            region_ids_scope=default.regions[0].id,
             config_rule_trigger_types="ScheduledNotification",
             resource_types_scopes=["ACS::ADB::DBCluster"],
             rule_name="governance-evaluation-adb-cluster-maintain-time-check",
             input_parameters={
                 "maintainTimes": "02:00-04:00,06:00-08:00,12:00-13:00",
             })
-        default_compliance_pack = alicloud.cfg.CompliancePack("defaultCompliancePack",
+        default_compliance_pack = alicloud.cfg.CompliancePack("default",
             compliance_pack_name=name,
             description="CloudGovernanceCenter evaluation",
             risk_level=2,
@@ -362,14 +362,14 @@ class CompliancePack(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example-config-name"
-        default_regions = alicloud.get_regions(current=True)
+        default = alicloud.get_regions(current=True)
         rule1 = alicloud.cfg.Rule("rule1",
             description=name,
             source_owner="ALIYUN",
             source_identifier="ram-user-ak-create-date-expired-check",
             risk_level=1,
             maximum_execution_frequency="TwentyFour_Hours",
-            region_ids_scope=default_regions.regions[0].id,
+            region_ids_scope=default.regions[0].id,
             config_rule_trigger_types="ScheduledNotification",
             resource_types_scopes=["ACS::RAM::User"],
             rule_name="ciscompliancecheck_ram-user-ak-create-date-expired-check",
@@ -381,14 +381,14 @@ class CompliancePack(pulumi.CustomResource):
             source_owner="ALIYUN",
             source_identifier="adb-cluster-maintain-time-check",
             risk_level=2,
-            region_ids_scope=default_regions.regions[0].id,
+            region_ids_scope=default.regions[0].id,
             config_rule_trigger_types="ScheduledNotification",
             resource_types_scopes=["ACS::ADB::DBCluster"],
             rule_name="governance-evaluation-adb-cluster-maintain-time-check",
             input_parameters={
                 "maintainTimes": "02:00-04:00,06:00-08:00,12:00-13:00",
             })
-        default_compliance_pack = alicloud.cfg.CompliancePack("defaultCompliancePack",
+        default_compliance_pack = alicloud.cfg.CompliancePack("default",
             compliance_pack_name=name,
             description="CloudGovernanceCenter evaluation",
             risk_level=2,

@@ -29,10 +29,10 @@ namespace Pulumi.AliCloud.Eflo
         /// {
         ///     var @default = AliCloud.Eflo.GetSubnets.Invoke(new()
         ///     {
-        ///         NameRegex = alicloud_eflo_subnet.Default.Name,
+        ///         NameRegex = defaultAlicloudEfloSubnet.Name,
         ///         SubnetName = "SubnetTestForTerraform",
-        ///         VpdId = @var.VpdId,
-        ///         ZoneId = @var.ZoneId,
+        ///         VpdId = vpdId,
+        ///         ZoneId = zoneId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -64,10 +64,10 @@ namespace Pulumi.AliCloud.Eflo
         /// {
         ///     var @default = AliCloud.Eflo.GetSubnets.Invoke(new()
         ///     {
-        ///         NameRegex = alicloud_eflo_subnet.Default.Name,
+        ///         NameRegex = defaultAlicloudEfloSubnet.Name,
         ///         SubnetName = "SubnetTestForTerraform",
-        ///         VpdId = @var.VpdId,
-        ///         ZoneId = @var.ZoneId,
+        ///         VpdId = vpdId,
+        ///         ZoneId = zoneId,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

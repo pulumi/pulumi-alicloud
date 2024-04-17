@@ -116,14 +116,14 @@ def get_enterprise_proxy_accesses(enable_details: Optional[bool] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_enterprise_proxy_access = alicloud.dms.EnterpriseProxyAccess("defaultEnterpriseProxyAccess",
+    default_enterprise_proxy_access = alicloud.dms.EnterpriseProxyAccess("default",
         indep_password="PASSWORD-DEMO",
         proxy_id="1881",
         indep_account="dmstest",
         user_id="104442")
-    default_enterprise_proxy_accesses = alicloud.dms.get_enterprise_proxy_accesses_output(ids=[default_enterprise_proxy_access.id],
+    default = alicloud.dms.get_enterprise_proxy_accesses_output(ids=[default_enterprise_proxy_access.id],
         proxy_id="1881")
-    pulumi.export("alicloudDmsProxyAccesesExampleId", default_enterprise_proxy_accesses.accesses[0].id)
+    pulumi.export("alicloudDmsProxyAccesesExampleId", default.accesses[0].id)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -167,14 +167,14 @@ def get_enterprise_proxy_accesses_output(enable_details: Optional[pulumi.Input[O
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_enterprise_proxy_access = alicloud.dms.EnterpriseProxyAccess("defaultEnterpriseProxyAccess",
+    default_enterprise_proxy_access = alicloud.dms.EnterpriseProxyAccess("default",
         indep_password="PASSWORD-DEMO",
         proxy_id="1881",
         indep_account="dmstest",
         user_id="104442")
-    default_enterprise_proxy_accesses = alicloud.dms.get_enterprise_proxy_accesses_output(ids=[default_enterprise_proxy_access.id],
+    default = alicloud.dms.get_enterprise_proxy_accesses_output(ids=[default_enterprise_proxy_access.id],
         proxy_id="1881")
-    pulumi.export("alicloudDmsProxyAccesesExampleId", default_enterprise_proxy_accesses.accesses[0].id)
+    pulumi.export("alicloudDmsProxyAccesesExampleId", default.accesses[0].id)
     ```
     <!--End PulumiCodeChooser -->
 

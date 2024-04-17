@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultRegions = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
+ *         final var default = AlicloudFunctions.getRegions(GetRegionsArgs.builder()
  *             .current(true)
  *             .build());
  * 
@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *             .clusterName(name)
  *             .clusterType(&#34;2&#34;)
  *             .networkMode(&#34;2&#34;)
- *             .logicalRegionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].id()))
+ *             .logicalRegionId(default_.regions()[0].id())
  *             .vpcId(defaultNetwork.id())
  *             .build());
  * 

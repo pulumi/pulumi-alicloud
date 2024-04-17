@@ -203,13 +203,13 @@ class ApiDestination(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_connection = alicloud.eventbridge.Connection("defaultConnection",
+        default = alicloud.eventbridge.Connection("default",
             connection_name=name,
             network_parameters=alicloud.eventbridge.ConnectionNetworkParametersArgs(
                 network_type="PublicNetwork",
             ))
-        default_api_destination = alicloud.eventbridge.ApiDestination("defaultApiDestination",
-            connection_name=default_connection.connection_name,
+        default_api_destination = alicloud.eventbridge.ApiDestination("default",
+            connection_name=default.connection_name,
             api_destination_name=name,
             description="test-api-destination-connection",
             http_api_parameters=alicloud.eventbridge.ApiDestinationHttpApiParametersArgs(
@@ -263,13 +263,13 @@ class ApiDestination(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_connection = alicloud.eventbridge.Connection("defaultConnection",
+        default = alicloud.eventbridge.Connection("default",
             connection_name=name,
             network_parameters=alicloud.eventbridge.ConnectionNetworkParametersArgs(
                 network_type="PublicNetwork",
             ))
-        default_api_destination = alicloud.eventbridge.ApiDestination("defaultApiDestination",
-            connection_name=default_connection.connection_name,
+        default_api_destination = alicloud.eventbridge.ApiDestination("default",
+            connection_name=default.connection_name,
             api_destination_name=name,
             description="test-api-destination-connection",
             http_api_parameters=alicloud.eventbridge.ApiDestinationHttpApiParametersArgs(

@@ -308,7 +308,8 @@ class DomainResource(pulumi.CustomResource):
         domain = config.get("domain")
         if domain is None:
             domain = "tf-example.alibaba.com"
-        default_ddos_coo_instance = alicloud.ddos.DdosCooInstance("defaultDdosCooInstance",
+        default = alicloud.ddos.DdosCooInstance("default",
+            name=name,
             bandwidth="30",
             base_bandwidth="30",
             service_bandwidth="100",
@@ -316,10 +317,10 @@ class DomainResource(pulumi.CustomResource):
             domain_count="50",
             period=1,
             product_type="ddoscoo")
-        default_domain_resource = alicloud.ddos.DomainResource("defaultDomainResource",
+        default_domain_resource = alicloud.ddos.DomainResource("default",
             domain=domain,
             rs_type=0,
-            instance_ids=[default_ddos_coo_instance.id],
+            instance_ids=[default.id],
             real_servers=["177.167.32.11"],
             https_ext="{\\"Http2\\":1,\\"Http2https\\":0,\\"Https2http\\":0}",
             proxy_types=[alicloud.ddos.DomainResourceProxyTypeArgs(
@@ -378,7 +379,8 @@ class DomainResource(pulumi.CustomResource):
         domain = config.get("domain")
         if domain is None:
             domain = "tf-example.alibaba.com"
-        default_ddos_coo_instance = alicloud.ddos.DdosCooInstance("defaultDdosCooInstance",
+        default = alicloud.ddos.DdosCooInstance("default",
+            name=name,
             bandwidth="30",
             base_bandwidth="30",
             service_bandwidth="100",
@@ -386,10 +388,10 @@ class DomainResource(pulumi.CustomResource):
             domain_count="50",
             period=1,
             product_type="ddoscoo")
-        default_domain_resource = alicloud.ddos.DomainResource("defaultDomainResource",
+        default_domain_resource = alicloud.ddos.DomainResource("default",
             domain=domain,
             rs_type=0,
-            instance_ids=[default_ddos_coo_instance.id],
+            instance_ids=[default.id],
             real_servers=["177.167.32.11"],
             https_ext="{\\"Http2\\":1,\\"Http2https\\":0,\\"Https2http\\":0}",
             proxy_types=[alicloud.ddos.DomainResourceProxyTypeArgs(

@@ -31,6 +31,7 @@ namespace Pulumi.AliCloud.Ecs
     /// {
     ///     var example = new AliCloud.Ecs.AutoSnapshotPolicy("example", new()
     ///     {
+    ///         Name = "tf-testAcc",
     ///         RepeatWeekdays = new[]
     ///         {
     ///             "1",

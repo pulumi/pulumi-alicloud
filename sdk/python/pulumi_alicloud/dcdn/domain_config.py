@@ -227,21 +227,21 @@ class DomainConfig(pulumi.CustomResource):
                 port=80,
                 weight="10",
             )])
-        ip_allow_list_set = alicloud.dcdn.DomainConfig("ipAllowListSet",
+        ip_allow_list_set = alicloud.dcdn.DomainConfig("ip_allow_list_set",
             domain_name=example.domain_name,
             function_name="ip_allow_list_set",
             function_args=[alicloud.dcdn.DomainConfigFunctionArgArgs(
                 arg_name="ip_list",
                 arg_value="192.168.0.1",
             )])
-        referer_white_list_set = alicloud.dcdn.DomainConfig("refererWhiteListSet",
+        referer_white_list_set = alicloud.dcdn.DomainConfig("referer_white_list_set",
             domain_name=example.domain_name,
             function_name="referer_white_list_set",
             function_args=[alicloud.dcdn.DomainConfigFunctionArgArgs(
                 arg_name="refer_domain_allow_list",
                 arg_value="110.110.110.110",
             )])
-        filetype_based_ttl_set = alicloud.dcdn.DomainConfig("filetypeBasedTtlSet",
+        filetype_based_ttl_set = alicloud.dcdn.DomainConfig("filetype_based_ttl_set",
             domain_name=example.domain_name,
             function_name="filetype_based_ttl_set",
             function_args=[
@@ -313,21 +313,21 @@ class DomainConfig(pulumi.CustomResource):
                 port=80,
                 weight="10",
             )])
-        ip_allow_list_set = alicloud.dcdn.DomainConfig("ipAllowListSet",
+        ip_allow_list_set = alicloud.dcdn.DomainConfig("ip_allow_list_set",
             domain_name=example.domain_name,
             function_name="ip_allow_list_set",
             function_args=[alicloud.dcdn.DomainConfigFunctionArgArgs(
                 arg_name="ip_list",
                 arg_value="192.168.0.1",
             )])
-        referer_white_list_set = alicloud.dcdn.DomainConfig("refererWhiteListSet",
+        referer_white_list_set = alicloud.dcdn.DomainConfig("referer_white_list_set",
             domain_name=example.domain_name,
             function_name="referer_white_list_set",
             function_args=[alicloud.dcdn.DomainConfigFunctionArgArgs(
                 arg_name="refer_domain_allow_list",
                 arg_value="110.110.110.110",
             )])
-        filetype_based_ttl_set = alicloud.dcdn.DomainConfig("filetypeBasedTtlSet",
+        filetype_based_ttl_set = alicloud.dcdn.DomainConfig("filetype_based_ttl_set",
             domain_name=example.domain_name,
             function_name="filetype_based_ttl_set",
             function_args=[

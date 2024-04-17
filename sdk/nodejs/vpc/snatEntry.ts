@@ -20,32 +20,32 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "172.16.0.0/12",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const defaultNatGateway = new alicloud.vpc.NatGateway("defaultNatGateway", {
+ * const defaultNatGateway = new alicloud.vpc.NatGateway("default", {
  *     vpcId: defaultNetwork.id,
  *     natGatewayName: name,
  *     paymentType: "PayAsYouGo",
  *     vswitchId: defaultSwitch.id,
  *     natType: "Enhanced",
  * });
- * const defaultEipAddress = new alicloud.ecs.EipAddress("defaultEipAddress", {addressName: name});
- * const defaultEipAssociation = new alicloud.ecs.EipAssociation("defaultEipAssociation", {
+ * const defaultEipAddress = new alicloud.ecs.EipAddress("default", {addressName: name});
+ * const defaultEipAssociation = new alicloud.ecs.EipAssociation("default", {
  *     allocationId: defaultEipAddress.id,
  *     instanceId: defaultNatGateway.id,
  * });
- * const defaultSnatEntry = new alicloud.vpc.SnatEntry("defaultSnatEntry", {
+ * const defaultSnatEntry = new alicloud.vpc.SnatEntry("default", {
  *     snatTableId: defaultNatGateway.snatTableIds,
  *     sourceVswitchId: defaultSwitch.id,
  *     snatIp: defaultEipAddress.ipAddress,

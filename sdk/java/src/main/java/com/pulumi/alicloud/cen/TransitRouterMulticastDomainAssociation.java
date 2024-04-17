@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  * 
  *         final var zone = default_.resources()[0].masterZones()[1];
  * 
- *         var exampleNetwork = new Network(&#34;exampleNetwork&#34;, NetworkArgs.builder()        
+ *         var example = new Network(&#34;example&#34;, NetworkArgs.builder()        
  *             .vpcName(name)
  *             .cidrBlock(&#34;192.168.0.0/16&#34;)
  *             .build());
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *         var exampleSwitch = new Switch(&#34;exampleSwitch&#34;, SwitchArgs.builder()        
  *             .vswitchName(name)
  *             .cidrBlock(&#34;192.168.1.0/24&#34;)
- *             .vpcId(exampleNetwork.id())
+ *             .vpcId(example.id())
  *             .zoneId(zone)
  *             .build());
  * 
@@ -97,7 +97,7 @@ import javax.annotation.Nullable;
  *         var exampleTransitRouterVpcAttachment = new TransitRouterVpcAttachment(&#34;exampleTransitRouterVpcAttachment&#34;, TransitRouterVpcAttachmentArgs.builder()        
  *             .cenId(exampleTransitRouter.cenId())
  *             .transitRouterId(exampleTransitRouterMulticastDomain.transitRouterId())
- *             .vpcId(exampleNetwork.id())
+ *             .vpcId(example.id())
  *             .zoneMappings(TransitRouterVpcAttachmentZoneMappingArgs.builder()
  *                 .zoneId(zone)
  *                 .vswitchId(exampleSwitch.id())

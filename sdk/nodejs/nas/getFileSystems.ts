@@ -19,8 +19,8 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const fs = alicloud.nas.getFileSystems({
- *     descriptionRegex: alicloud_nas_file_system.foo.description,
  *     protocolType: "NFS",
+ *     descriptionRegex: foo.description,
  * });
  * export const alicloudNasFileSystemsId = fs.then(fs => fs.systems?.[0]?.id);
  * ```
@@ -113,8 +113,8 @@ export interface GetFileSystemsResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const fs = alicloud.nas.getFileSystems({
- *     descriptionRegex: alicloud_nas_file_system.foo.description,
  *     protocolType: "NFS",
+ *     descriptionRegex: foo.description,
  * });
  * export const alicloudNasFileSystemsId = fs.then(fs => fs.systems?.[0]?.id);
  * ```

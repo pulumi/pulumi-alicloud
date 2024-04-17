@@ -22,35 +22,38 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
  *     vpcName: name,
  *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
  *     vswitchName: name,
  *     cidrBlock: "10.4.0.0/24",
  *     vpcId: defaultNetwork.id,
- *     zoneId: Promise.all([defaultZones, defaultZones.then(defaultZones => defaultZones.zones).length]).then(([defaultZones, length]) => defaultZones.zones[length - 1].id),
+ *     zoneId: Promise.all([_default, _default.then(_default => _default.zones).length]).then(([_default, length]) => _default.zones[length - 1].id),
  * });
- * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("defaultSecurityGroup", {vpcId: defaultNetwork.id});
- * const defaultResourceGroups = alicloud.resourcemanager.getResourceGroups({});
- * const defaultPrometheus = new alicloud.arms.Prometheus("defaultPrometheus", {
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultGetResourceGroups = alicloud.resourcemanager.getResourceGroups({});
+ * const defaultPrometheus = new alicloud.arms.Prometheus("default", {
  *     clusterType: "ecs",
  *     grafanaInstanceId: "free",
  *     vpcId: defaultNetwork.id,
  *     vswitchId: defaultSwitch.id,
  *     securityGroupId: defaultSecurityGroup.id,
  *     clusterName: pulumi.interpolate`${name}-${defaultNetwork.id}`,
- *     resourceGroupId: defaultResourceGroups.then(defaultResourceGroups => defaultResourceGroups.groups?.[0]?.id),
+ *     resourceGroupId: defaultGetResourceGroups.then(defaultGetResourceGroups => defaultGetResourceGroups.groups?.[0]?.id),
  *     tags: {
  *         Created: "TF",
  *         For: "Prometheus",
  *     },
  * });
- * const defaultIntegrationExporter = new alicloud.arms.IntegrationExporter("defaultIntegrationExporter", {
+ * const defaultIntegrationExporter = new alicloud.arms.IntegrationExporter("default", {
  *     clusterId: defaultPrometheus.id,
  *     integrationType: "kafka",
  *     param: "{\"tls_insecure-skip-tls-verify\":\"none=tls.insecure-skip-tls-verify\",\"tls_enabled\":\"none=tls.enabled\",\"sasl_mechanism\":\"\",\"name\":\"kafka1\",\"sasl_enabled\":\"none=sasl.enabled\",\"ip_ports\":\"abc:888\",\"scrape_interval\":30,\"version\":\"0.10.1.0\"}",

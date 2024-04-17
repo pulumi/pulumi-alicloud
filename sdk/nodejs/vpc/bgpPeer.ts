@@ -23,25 +23,25 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const examplePhysicalConnections = alicloud.expressconnect.getPhysicalConnections({
+ * const example = alicloud.expressconnect.getPhysicalConnections({
  *     nameRegex: "^preserved-NODELETING",
  * });
- * const vlanId = new random.RandomInteger("vlanId", {
+ * const vlanId = new random.index.Integer("vlan_id", {
  *     max: 2999,
  *     min: 1,
  * });
- * const exampleVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("exampleVirtualBorderRouter", {
+ * const exampleVirtualBorderRouter = new alicloud.expressconnect.VirtualBorderRouter("example", {
  *     localGatewayIp: "10.0.0.1",
  *     peerGatewayIp: "10.0.0.2",
  *     peeringSubnetMask: "255.255.255.252",
- *     physicalConnectionId: examplePhysicalConnections.then(examplePhysicalConnections => examplePhysicalConnections.connections?.[0]?.id),
+ *     physicalConnectionId: example.then(example => example.connections?.[0]?.id),
  *     virtualBorderRouterName: name,
  *     vlanId: vlanId.id,
  *     minRxInterval: 1000,
  *     minTxInterval: 1000,
  *     detectMultiplier: 10,
  * });
- * const exampleBgpGroup = new alicloud.vpc.BgpGroup("exampleBgpGroup", {
+ * const exampleBgpGroup = new alicloud.vpc.BgpGroup("example", {
  *     authKey: "YourPassword+12345678",
  *     bgpGroupName: name,
  *     description: name,
@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  *     routerId: exampleVirtualBorderRouter.id,
  *     isFakeAsn: true,
  * });
- * const exampleBgpPeer = new alicloud.vpc.BgpPeer("exampleBgpPeer", {
+ * const exampleBgpPeer = new alicloud.vpc.BgpPeer("example", {
  *     bfdMultiHop: 10,
  *     bgpGroupId: exampleBgpGroup.id,
  *     enableBfd: true,

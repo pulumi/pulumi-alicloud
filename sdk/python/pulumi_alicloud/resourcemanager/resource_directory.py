@@ -160,6 +160,22 @@ class ResourceDirectory(pulumi.CustomResource):
           - All member accounts must be removed from the resource directory.
           - All folders except the root folder must be deleted from the resource directory.
 
+        ## Example Usage
+
+        Basic Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.resourcemanager.get_resource_directories()
+        default_resource_directory = []
+        for range in [{"value": i} for i in range(0, 0 if len(default.directories) > 0 else 1)]:
+            default_resource_directory.append(alicloud.resourcemanager.ResourceDirectory(f"default-{range['value']}", status="Enabled"))
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         Resource Manager Resource Directory can be imported using the id, e.g.
@@ -191,6 +207,22 @@ class ResourceDirectory(pulumi.CustomResource):
         > **NOTE:** Before you destroy the resource, make sure that the following requirements are met:
           - All member accounts must be removed from the resource directory.
           - All folders except the root folder must be deleted from the resource directory.
+
+        ## Example Usage
+
+        Basic Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        default = alicloud.resourcemanager.get_resource_directories()
+        default_resource_directory = []
+        for range in [{"value": i} for i in range(0, 0 if len(default.directories) > 0 else 1)]:
+            default_resource_directory.append(alicloud.resourcemanager.ResourceDirectory(f"default-{range['value']}", status="Enabled"))
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

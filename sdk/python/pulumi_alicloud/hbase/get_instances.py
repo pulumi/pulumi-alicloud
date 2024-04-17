@@ -139,8 +139,8 @@ def get_instances(availability_zone: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    hbase = alicloud.hbase.get_instances(availability_zone="cn-shenzhen-b",
-        name_regex="tf_testAccHBase")
+    hbase = alicloud.hbase.get_instances(name_regex="tf_testAccHBase",
+        availability_zone="cn-shenzhen-b")
     ```
     <!--End PulumiCodeChooser -->
 
@@ -191,8 +191,8 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
     import pulumi
     import pulumi_alicloud as alicloud
 
-    hbase = alicloud.hbase.get_instances(availability_zone="cn-shenzhen-b",
-        name_regex="tf_testAccHBase")
+    hbase = alicloud.hbase.get_instances(name_regex="tf_testAccHBase",
+        availability_zone="cn-shenzhen-b")
     ```
     <!--End PulumiCodeChooser -->
 

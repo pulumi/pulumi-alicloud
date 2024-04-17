@@ -29,6 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := apigateway.NewApp(ctx, "example", &apigateway.AppArgs{
+//				Name:        pulumi.String("tf_example"),
 //				Description: pulumi.String("tf_example"),
 //			})
 //			if err != nil {

@@ -31,18 +31,18 @@ namespace Pulumi.AliCloud.Waf
     /// {
     ///     var @default = new AliCloud.Waf.Certificate("default", new()
     ///     {
-    ///         CertificateContents = "your_certificate",
     ///         CertificateName = "your_certificate_name",
-    ///         Domain = "your_domain_name",
     ///         InstanceId = "your_instance_id",
+    ///         Domain = "your_domain_name",
     ///         PrivateKey = "your_private_key",
+    ///         CertificateContents = "your_certificate",
     ///     });
     /// 
     ///     var default2 = new AliCloud.Waf.Certificate("default2", new()
     ///     {
-    ///         CertificateId = "your_certificate_id",
-    ///         Domain = "your_domain_name",
     ///         InstanceId = "your_instance_id",
+    ///         Domain = "your_domain_name",
+    ///         CertificateId = "your_certificate_id",
     ///     });
     /// 
     /// });

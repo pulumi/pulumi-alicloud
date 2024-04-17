@@ -33,7 +33,7 @@ namespace Pulumi.AliCloud.Ebs
         ///         {
         ///             "example_id",
         ///         },
-        ///         NameRegex = alicloud_ebs_dedicated_block_storage_cluster.Default.Name,
+        ///         NameRegex = defaultAlicloudEbsDedicatedBlockStorageCluster.Name,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.Ebs
         ///         {
         ///             "example_id",
         ///         },
-        ///         NameRegex = alicloud_ebs_dedicated_block_storage_cluster.Default.Name,
+        ///         NameRegex = defaultAlicloudEbsDedicatedBlockStorageCluster.Name,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

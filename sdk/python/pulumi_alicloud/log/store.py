@@ -611,12 +611,15 @@ class Store(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
+        example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
+            description="terraform-example")
+        example_store = alicloud.log.Store("example",
+            project=example.name,
+            name="example-store",
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
@@ -633,20 +636,24 @@ class Store(pulumi.CustomResource):
         import pulumi_random as random
 
         config = pulumi.Config()
+        # The region of kms key.
         region = config.get("region")
         if region is None:
             region = "cn-hangzhou"
-        example_account = alicloud.get_account()
-        default = random.RandomInteger("default",
+        example = alicloud.get_account()
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_key = alicloud.kms.Key("exampleKey",
+        example_key = alicloud.kms.Key("example",
             description="terraform-example",
             pending_window_in_days=7,
             status="Enabled")
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
+        example_project = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
+            description="terraform-example")
+        example_store = alicloud.log.Store("example",
             project=example_project.name,
+            name="example-store",
             shard_count=1,
             auto_split=True,
             max_split_shard_count=60,
@@ -655,7 +662,7 @@ class Store(pulumi.CustomResource):
                 encrypt_type="default",
                 user_cmk_info=alicloud.log.StoreEncryptConfUserCmkInfoArgs(
                     cmk_key_id=example_key.id,
-                    arn=f"acs:ram::{example_account.id}:role/aliyunlogdefaultrole",
+                    arn=f"acs:ram::{example.id}:role/aliyunlogdefaultrole",
                     region_id=region,
                 ),
             ))
@@ -718,12 +725,15 @@ class Store(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
+        example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
+            description="terraform-example")
+        example_store = alicloud.log.Store("example",
+            project=example.name,
+            name="example-store",
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
@@ -740,20 +750,24 @@ class Store(pulumi.CustomResource):
         import pulumi_random as random
 
         config = pulumi.Config()
+        # The region of kms key.
         region = config.get("region")
         if region is None:
             region = "cn-hangzhou"
-        example_account = alicloud.get_account()
-        default = random.RandomInteger("default",
+        example = alicloud.get_account()
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_key = alicloud.kms.Key("exampleKey",
+        example_key = alicloud.kms.Key("example",
             description="terraform-example",
             pending_window_in_days=7,
             status="Enabled")
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_store = alicloud.log.Store("exampleStore",
+        example_project = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
+            description="terraform-example")
+        example_store = alicloud.log.Store("example",
             project=example_project.name,
+            name="example-store",
             shard_count=1,
             auto_split=True,
             max_split_shard_count=60,
@@ -762,7 +776,7 @@ class Store(pulumi.CustomResource):
                 encrypt_type="default",
                 user_cmk_info=alicloud.log.StoreEncryptConfUserCmkInfoArgs(
                     cmk_key_id=example_key.id,
-                    arn=f"acs:ram::{example_account.id}:role/aliyunlogdefaultrole",
+                    arn=f"acs:ram::{example.id}:role/aliyunlogdefaultrole",
                     region_id=region,
                 ),
             ))

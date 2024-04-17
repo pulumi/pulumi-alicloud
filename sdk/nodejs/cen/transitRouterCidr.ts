@@ -20,15 +20,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ * const example = new alicloud.cen.Instance("example", {
  *     cenInstanceName: "tf_example",
  *     description: "an example for cen",
  * });
- * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("example", {
  *     transitRouterName: "tf_example",
- *     cenId: exampleInstance.id,
+ *     cenId: example.id,
  * });
- * const exampleTransitRouterCidr = new alicloud.cen.TransitRouterCidr("exampleTransitRouterCidr", {
+ * const exampleTransitRouterCidr = new alicloud.cen.TransitRouterCidr("example", {
  *     transitRouterId: exampleTransitRouter.transitRouterId,
  *     cidr: "192.168.0.0/16",
  *     transitRouterCidrName: "tf_example",

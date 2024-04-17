@@ -350,15 +350,15 @@ class AccountPasswordPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         corporate = alicloud.ram.AccountPasswordPolicy("corporate",
-            hard_expiry=True,
-            max_login_attempts=3,
-            max_password_age=12,
             minimum_password_length=9,
-            password_reuse_prevention=5,
             require_lowercase_characters=False,
+            require_uppercase_characters=False,
             require_numbers=False,
             require_symbols=False,
-            require_uppercase_characters=False)
+            hard_expiry=True,
+            max_password_age=12,
+            password_reuse_prevention=5,
+            max_login_attempts=3)
         ```
         <!--End PulumiCodeChooser -->
         For not specified values sets defaults.
@@ -411,15 +411,15 @@ class AccountPasswordPolicy(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         corporate = alicloud.ram.AccountPasswordPolicy("corporate",
-            hard_expiry=True,
-            max_login_attempts=3,
-            max_password_age=12,
             minimum_password_length=9,
-            password_reuse_prevention=5,
             require_lowercase_characters=False,
+            require_uppercase_characters=False,
             require_numbers=False,
             require_symbols=False,
-            require_uppercase_characters=False)
+            hard_expiry=True,
+            max_password_age=12,
+            password_reuse_prevention=5,
+            max_login_attempts=3)
         ```
         <!--End PulumiCodeChooser -->
         For not specified values sets defaults.

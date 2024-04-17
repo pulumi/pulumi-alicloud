@@ -214,13 +214,14 @@ class ParameterGroup(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.polardb.ParameterGroup("example",
+            name="example_value",
             db_type="MySQL",
             db_version="8.0",
-            description="example_value",
             parameters=[alicloud.polardb.ParameterGroupParameterArgs(
                 param_name="wait_timeout",
                 param_value="86400",
-            )])
+            )],
+            description="example_value")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -263,13 +264,14 @@ class ParameterGroup(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
 
         example = alicloud.polardb.ParameterGroup("example",
+            name="example_value",
             db_type="MySQL",
             db_version="8.0",
-            description="example_value",
             parameters=[alicloud.polardb.ParameterGroupParameterArgs(
                 param_name="wait_timeout",
                 param_value="86400",
-            )])
+            )],
+            description="example_value")
         ```
         <!--End PulumiCodeChooser -->
 

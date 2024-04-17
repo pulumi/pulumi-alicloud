@@ -210,12 +210,15 @@ class MachineGroup(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_machine_group = alicloud.log.MachineGroup("exampleMachineGroup",
-            project=example_project.name,
+        example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
+            description="terraform-example")
+        example_machine_group = alicloud.log.MachineGroup("example",
+            project=example.name,
+            name="terraform-example",
             identify_type="ip",
             topic="terraform",
             identify_lists=[
@@ -266,12 +269,15 @@ class MachineGroup(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject", description="terraform-example")
-        example_machine_group = alicloud.log.MachineGroup("exampleMachineGroup",
-            project=example_project.name,
+        example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
+            description="terraform-example")
+        example_machine_group = alicloud.log.MachineGroup("example",
+            project=example.name,
+            name="terraform-example",
             identify_type="ip",
             topic="terraform",
             identify_lists=[

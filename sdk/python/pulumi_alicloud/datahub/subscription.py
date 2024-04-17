@@ -196,15 +196,18 @@ class Subscription(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform_example"
-        example_project = alicloud.datahub.Project("exampleProject", comment="created by terraform")
-        example_topic = alicloud.datahub.Topic("exampleTopic",
-            project_name=example_project.name,
+        example = alicloud.datahub.Project("example",
+            name=name,
+            comment="created by terraform")
+        example_topic = alicloud.datahub.Topic("example",
+            name=name,
+            project_name=example.name,
             record_type="BLOB",
             shard_count=3,
             life_cycle=7,
             comment="created by terraform")
-        example_subscription = alicloud.datahub.Subscription("exampleSubscription",
-            project_name=example_project.name,
+        example_subscription = alicloud.datahub.Subscription("example",
+            project_name=example.name,
             topic_name=example_topic.name,
             comment="created by terraform")
         ```
@@ -248,15 +251,18 @@ class Subscription(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform_example"
-        example_project = alicloud.datahub.Project("exampleProject", comment="created by terraform")
-        example_topic = alicloud.datahub.Topic("exampleTopic",
-            project_name=example_project.name,
+        example = alicloud.datahub.Project("example",
+            name=name,
+            comment="created by terraform")
+        example_topic = alicloud.datahub.Topic("example",
+            name=name,
+            project_name=example.name,
             record_type="BLOB",
             shard_count=3,
             life_cycle=7,
             comment="created by terraform")
-        example_subscription = alicloud.datahub.Subscription("exampleSubscription",
-            project_name=example_project.name,
+        example_subscription = alicloud.datahub.Subscription("example",
+            project_name=example.name,
             topic_name=example_topic.name,
             comment="created by terraform")
         ```

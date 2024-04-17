@@ -27,16 +27,17 @@ namespace Pulumi.AliCloud.Oos
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var example = AliCloud.Oos.GetTemplates.Invoke(new()
         ///     {
-        ///         HasTrigger = false,
         ///         NameRegex = "test",
-        ///         ShareType = "Private",
         ///         Tags = 
         ///         {
         ///             { "Created", "TF" },
         ///             { "For", "template Test" },
         ///         },
+        ///         ShareType = "Private",
+        ///         HasTrigger = false,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
@@ -66,16 +67,17 @@ namespace Pulumi.AliCloud.Oos
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     // Declare the data source
         ///     var example = AliCloud.Oos.GetTemplates.Invoke(new()
         ///     {
-        ///         HasTrigger = false,
         ///         NameRegex = "test",
-        ///         ShareType = "Private",
         ///         Tags = 
         ///         {
         ///             { "Created", "TF" },
         ///             { "For", "template Test" },
         ///         },
+        ///         ShareType = "Private",
+        ///         HasTrigger = false,
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;

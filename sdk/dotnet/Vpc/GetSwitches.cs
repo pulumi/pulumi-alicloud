@@ -27,7 +27,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "vswitchDatasourceName";
-        ///     var defaultZones = AliCloud.GetZones.Invoke();
+        ///     var @default = AliCloud.GetZones.Invoke();
         /// 
         ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
         ///     {
@@ -37,13 +37,13 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         ///     var vswitch = new AliCloud.Vpc.Switch("vswitch", new()
         ///     {
-        ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         VswitchName = name,
         ///         CidrBlock = "172.16.0.0/24",
         ///         VpcId = vpc.Id,
-        ///         VswitchName = name,
+        ///         AvailabilityZone = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
         ///     });
         /// 
-        ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
         ///     {
         ///         NameRegex = vswitch.VswitchName,
         ///     });
@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Vpc
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "vswitchDatasourceName";
-        ///     var defaultZones = AliCloud.GetZones.Invoke();
+        ///     var @default = AliCloud.GetZones.Invoke();
         /// 
         ///     var vpc = new AliCloud.Vpc.Network("vpc", new()
         ///     {
@@ -81,13 +81,13 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         ///     var vswitch = new AliCloud.Vpc.Switch("vswitch", new()
         ///     {
-        ///         AvailabilityZone = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         VswitchName = name,
         ///         CidrBlock = "172.16.0.0/24",
         ///         VpcId = vpc.Id,
-        ///         VswitchName = name,
+        ///         AvailabilityZone = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
         ///     });
         /// 
-        ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
         ///     {
         ///         NameRegex = vswitch.VswitchName,
         ///     });

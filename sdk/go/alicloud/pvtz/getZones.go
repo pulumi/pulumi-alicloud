@@ -29,7 +29,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			pvtzZonesDs, err := pvtz.GetZones(ctx, &pvtz.GetZonesArgs{
-//				Keyword: pulumi.StringRef(alicloud_pvtz_zone.Basic.Zone_name),
+//				Keyword: pulumi.StringRef(basic.ZoneName),
 //			}, nil)
 //			if err != nil {
 //				return err

@@ -38,7 +38,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("hbrOtsBackupPlanId", data.Alicloud_hbr_ots_backup_plans.Plans[0].Id)
+//			ctx.Export("hbrOtsBackupPlanId", plans[0].Id)
 //			return nil
 //		})
 //	}

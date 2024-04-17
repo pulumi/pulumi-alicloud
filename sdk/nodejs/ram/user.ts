@@ -24,10 +24,11 @@ import * as utilities from "../utilities";
  *
  * // Create a new RAM user.
  * const user = new alicloud.ram.User("user", {
- *     comments: "yoyoyo",
+ *     name: "terraform-example",
  *     displayName: "user_display_name",
- *     email: "hello.uuu@aaa.com",
  *     mobile: "86-18688888888",
+ *     email: "hello.uuu@aaa.com",
+ *     comments: "yoyoyo",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

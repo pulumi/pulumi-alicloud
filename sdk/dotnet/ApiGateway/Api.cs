@@ -23,14 +23,16 @@ namespace Pulumi.AliCloud.ApiGateway
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleGroup = new AliCloud.ApiGateway.Group("exampleGroup", new()
+    ///     var example = new AliCloud.ApiGateway.Group("example", new()
     ///     {
+    ///         Name = "tf-example",
     ///         Description = "tf-example",
     ///     });
     /// 
-    ///     var exampleApi = new AliCloud.ApiGateway.Api("exampleApi", new()
+    ///     var exampleApi = new AliCloud.ApiGateway.Api("example", new()
     ///     {
-    ///         GroupId = exampleGroup.Id,
+    ///         GroupId = example.Id,
+    ///         Name = "tf-example",
     ///         Description = "tf-example",
     ///         AuthType = "APP",
     ///         ForceNonceCheck = false,

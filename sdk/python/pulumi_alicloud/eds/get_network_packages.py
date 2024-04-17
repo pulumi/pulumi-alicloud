@@ -99,15 +99,15 @@ def get_network_packages(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+    default_simple_office_site = alicloud.eds.SimpleOfficeSite("default",
         cidr_block="172.16.0.0/12",
         desktop_access_type="Internet",
         office_site_name="example_value")
-    default_network_package = alicloud.eds.NetworkPackage("defaultNetworkPackage",
+    default_network_package = alicloud.eds.NetworkPackage("default",
         bandwidth=10,
         office_site_id=default_simple_office_site.id)
-    default_network_packages = alicloud.eds.get_network_packages_output(ids=[default_network_package.id])
-    pulumi.export("ecdNetworkPackageId1", default_network_packages.packages[0].id)
+    default = alicloud.eds.get_network_packages_output(ids=[default_network_package.id])
+    pulumi.export("ecdNetworkPackageId1", default.packages[0].id)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -150,15 +150,15 @@ def get_network_packages_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+    default_simple_office_site = alicloud.eds.SimpleOfficeSite("default",
         cidr_block="172.16.0.0/12",
         desktop_access_type="Internet",
         office_site_name="example_value")
-    default_network_package = alicloud.eds.NetworkPackage("defaultNetworkPackage",
+    default_network_package = alicloud.eds.NetworkPackage("default",
         bandwidth=10,
         office_site_id=default_simple_office_site.id)
-    default_network_packages = alicloud.eds.get_network_packages_output(ids=[default_network_package.id])
-    pulumi.export("ecdNetworkPackageId1", default_network_packages.packages[0].id)
+    default = alicloud.eds.get_network_packages_output(ids=[default_network_package.id])
+    pulumi.export("ecdNetworkPackageId1", default.packages[0].id)
     ```
     <!--End PulumiCodeChooser -->
 

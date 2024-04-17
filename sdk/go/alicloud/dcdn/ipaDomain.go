@@ -39,22 +39,20 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			defaultRandomInteger, err := random.NewRandomInteger(ctx, "defaultRandomInteger", &random.RandomIntegerArgs{
-//				Min: pulumi.Int(10000),
-//				Max: pulumi.Int(99999),
+//			defaultInteger, err := random.NewInteger(ctx, "default", &random.IntegerArgs{
+//				Min: 10000,
+//				Max: 99999,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			defaultResourceGroups, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
+//			_default, err := resourcemanager.GetResourceGroups(ctx, nil, nil)
 //			if err != nil {
 //				return err
 //			}
 //			_, err = dcdn.NewIpaDomain(ctx, "example", &dcdn.IpaDomainArgs{
-//				DomainName: defaultRandomInteger.Result.ApplyT(func(result int) (string, error) {
-//					return fmt.Sprintf("example-%v.com", result), nil
-//				}).(pulumi.StringOutput),
-//				ResourceGroupId: pulumi.String(defaultResourceGroups.Groups[0].Id),
+//				DomainName:      pulumi.String(fmt.Sprintf("example-%v.com", defaultInteger.Result)),
+//				ResourceGroupId: pulumi.String(_default.Groups[0].Id),
 //				Scope:           pulumi.String("overseas"),
 //				Status:          pulumi.String("online"),
 //				Sources: dcdn.IpaDomainSourceArray{

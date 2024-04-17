@@ -18,21 +18,23 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultGroup = new alicloud.ram.Group("defaultGroup", {
+ * const _default = new alicloud.ram.Group("default", {
+ *     name: "group1",
  *     comments: "group comments",
  *     force: true,
  * });
- * const defaultUser = new alicloud.ram.User("defaultUser", {
+ * const defaultUser = new alicloud.ram.User("default", {
+ *     name: "user-example",
  *     displayName: "displayname",
  *     mobile: "86-18888888888",
  *     email: "hello.uuu@aaa.com",
  *     comments: "yoyoyo",
  * });
- * const defaultGroupMembership = new alicloud.ram.GroupMembership("defaultGroupMembership", {
- *     groupName: defaultGroup.name,
+ * const defaultGroupMembership = new alicloud.ram.GroupMembership("default", {
+ *     groupName: _default.name,
  *     userNames: [defaultUser.name],
  * });
- * const defaultPolicy = new alicloud.ram.Policy("defaultPolicy", {
+ * const defaultPolicy = new alicloud.ram.Policy("default", {
  *     policyName: "ram-policy-example",
  *     policyDocument: `			{
  * 				"Statement": [
@@ -54,14 +56,14 @@ import * as utilities from "../utilities";
  *     description: "this is a policy example",
  *     force: true,
  * });
- * const defaultUserPolicyAttachment = new alicloud.ram.UserPolicyAttachment("defaultUserPolicyAttachment", {
+ * const defaultUserPolicyAttachment = new alicloud.ram.UserPolicyAttachment("default", {
  *     policyName: defaultPolicy.policyName,
  *     userName: defaultUser.name,
  *     policyType: defaultPolicy.type,
  * });
  * const usersDs = alicloud.ram.getUsersOutput({
  *     outputFile: "users.txt",
- *     groupName: defaultGroup.name,
+ *     groupName: _default.name,
  *     policyName: defaultPolicy.policyName,
  *     policyType: "Custom",
  *     nameRegex: defaultUser.name,
@@ -152,21 +154,23 @@ export interface GetUsersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultGroup = new alicloud.ram.Group("defaultGroup", {
+ * const _default = new alicloud.ram.Group("default", {
+ *     name: "group1",
  *     comments: "group comments",
  *     force: true,
  * });
- * const defaultUser = new alicloud.ram.User("defaultUser", {
+ * const defaultUser = new alicloud.ram.User("default", {
+ *     name: "user-example",
  *     displayName: "displayname",
  *     mobile: "86-18888888888",
  *     email: "hello.uuu@aaa.com",
  *     comments: "yoyoyo",
  * });
- * const defaultGroupMembership = new alicloud.ram.GroupMembership("defaultGroupMembership", {
- *     groupName: defaultGroup.name,
+ * const defaultGroupMembership = new alicloud.ram.GroupMembership("default", {
+ *     groupName: _default.name,
  *     userNames: [defaultUser.name],
  * });
- * const defaultPolicy = new alicloud.ram.Policy("defaultPolicy", {
+ * const defaultPolicy = new alicloud.ram.Policy("default", {
  *     policyName: "ram-policy-example",
  *     policyDocument: `			{
  * 				"Statement": [
@@ -188,14 +192,14 @@ export interface GetUsersResult {
  *     description: "this is a policy example",
  *     force: true,
  * });
- * const defaultUserPolicyAttachment = new alicloud.ram.UserPolicyAttachment("defaultUserPolicyAttachment", {
+ * const defaultUserPolicyAttachment = new alicloud.ram.UserPolicyAttachment("default", {
  *     policyName: defaultPolicy.policyName,
  *     userName: defaultUser.name,
  *     policyType: defaultPolicy.type,
  * });
  * const usersDs = alicloud.ram.getUsersOutput({
  *     outputFile: "users.txt",
- *     groupName: defaultGroup.name,
+ *     groupName: _default.name,
  *     policyName: defaultPolicy.policyName,
  *     policyType: "Custom",
  *     nameRegex: defaultUser.name,

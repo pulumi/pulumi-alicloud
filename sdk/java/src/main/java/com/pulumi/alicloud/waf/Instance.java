@@ -24,6 +24,58 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available in 1.83.0+ .
  * 
+ * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.waf.WafFunctions;
+ * import com.pulumi.alicloud.waf.inputs.GetInstancesArgs;
+ * import com.pulumi.alicloud.waf.Instance;
+ * import com.pulumi.alicloud.waf.InstanceArgs;
+ * import com.pulumi.codegen.internal.KeyedValue;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var default = WafFunctions.getInstances();
+ * 
+ *         for (var i = 0; i &lt; default_.instances().length() &gt; 0 ? 0 : 1; i++) {
+ *             new Instance(&#34;defaultInstance-&#34; + i, InstanceArgs.builder()            
+ *                 .bigScreen(&#34;0&#34;)
+ *                 .exclusiveIpPackage(&#34;1&#34;)
+ *                 .extBandwidth(&#34;50&#34;)
+ *                 .extDomainPackage(&#34;1&#34;)
+ *                 .packageCode(&#34;version_3&#34;)
+ *                 .prefessionalService(&#34;false&#34;)
+ *                 .subscriptionType(&#34;Subscription&#34;)
+ *                 .period(1)
+ *                 .wafLog(&#34;false&#34;)
+ *                 .logStorage(&#34;3&#34;)
+ *                 .logTime(&#34;180&#34;)
+ *                 .resourceGroupId(&#34;rs-abc12345&#34;)
+ *                 .build());
+ * 
+ *         
+ * }
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * WAF instance can be imported using the id, e.g.

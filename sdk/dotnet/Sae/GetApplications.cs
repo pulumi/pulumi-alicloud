@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.Sae
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "tf-testacc";
-        ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+        ///     var @default = AliCloud.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "VSwitch",
         ///     });
@@ -46,18 +46,18 @@ namespace Pulumi.AliCloud.Sae
         ///     {
         ///         VpcId = vpc.Id,
         ///         CidrBlock = "172.16.0.0/24",
-        ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
         ///         VswitchName = name,
         ///     });
         /// 
-        ///     var defaultNamespace = new AliCloud.Sae.Namespace("defaultNamespace", new()
+        ///     var defaultNamespace = new AliCloud.Sae.Namespace("default", new()
         ///     {
         ///         NamespaceDescription = name,
         ///         NamespaceId = "cn-hangzhou:tfacctest",
         ///         NamespaceName = name,
         ///     });
         /// 
-        ///     var defaultApplication = new AliCloud.Sae.Application("defaultApplication", new()
+        ///     var defaultApplication = new AliCloud.Sae.Application("default", new()
         ///     {
         ///         AppDescription = "tf-testaccDescription",
         ///         AppName = "tf-testaccAppName131",
@@ -71,7 +71,7 @@ namespace Pulumi.AliCloud.Sae
         ///         Memory = 2048,
         ///     });
         /// 
-        ///     var defaultApplications = AliCloud.Sae.GetApplications.Invoke(new()
+        ///     var defaultGetApplications = AliCloud.Sae.GetApplications.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -81,7 +81,7 @@ namespace Pulumi.AliCloud.Sae
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["saeApplicationId"] = defaultApplications.Apply(getApplicationsResult =&gt; getApplicationsResult.Applications[0]?.Id),
+        ///         ["saeApplicationId"] = defaultGetApplications.Apply(getApplicationsResult =&gt; getApplicationsResult.Applications[0]?.Id),
         ///     };
         /// });
         /// ```
@@ -110,7 +110,7 @@ namespace Pulumi.AliCloud.Sae
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "tf-testacc";
-        ///     var defaultZones = AliCloud.GetZones.Invoke(new()
+        ///     var @default = AliCloud.GetZones.Invoke(new()
         ///     {
         ///         AvailableResourceCreation = "VSwitch",
         ///     });
@@ -125,18 +125,18 @@ namespace Pulumi.AliCloud.Sae
         ///     {
         ///         VpcId = vpc.Id,
         ///         CidrBlock = "172.16.0.0/24",
-        ///         ZoneId = defaultZones.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
         ///         VswitchName = name,
         ///     });
         /// 
-        ///     var defaultNamespace = new AliCloud.Sae.Namespace("defaultNamespace", new()
+        ///     var defaultNamespace = new AliCloud.Sae.Namespace("default", new()
         ///     {
         ///         NamespaceDescription = name,
         ///         NamespaceId = "cn-hangzhou:tfacctest",
         ///         NamespaceName = name,
         ///     });
         /// 
-        ///     var defaultApplication = new AliCloud.Sae.Application("defaultApplication", new()
+        ///     var defaultApplication = new AliCloud.Sae.Application("default", new()
         ///     {
         ///         AppDescription = "tf-testaccDescription",
         ///         AppName = "tf-testaccAppName131",
@@ -150,7 +150,7 @@ namespace Pulumi.AliCloud.Sae
         ///         Memory = 2048,
         ///     });
         /// 
-        ///     var defaultApplications = AliCloud.Sae.GetApplications.Invoke(new()
+        ///     var defaultGetApplications = AliCloud.Sae.GetApplications.Invoke(new()
         ///     {
         ///         Ids = new[]
         ///         {
@@ -160,7 +160,7 @@ namespace Pulumi.AliCloud.Sae
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["saeApplicationId"] = defaultApplications.Apply(getApplicationsResult =&gt; getApplicationsResult.Applications[0]?.Id),
+        ///         ["saeApplicationId"] = defaultGetApplications.Apply(getApplicationsResult =&gt; getApplicationsResult.Applications[0]?.Id),
         ///     };
         /// });
         /// ```

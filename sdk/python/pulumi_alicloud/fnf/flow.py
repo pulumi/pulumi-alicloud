@@ -243,7 +243,9 @@ class Flow(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ram.Role("default", document=\"\"\"  {
+        default = alicloud.ram.Role("default",
+            name="tf-example-fnfflow",
+            document=\"\"\"  {
             "Statement": [
               {
                 "Action": "sts:AssumeRole",
@@ -267,6 +269,7 @@ class Flow(pulumi.CustomResource):
         \"\"\",
             role_arn=default.arn,
             description="Test for terraform fnf_flow.",
+            name="tf-example-flow",
             type="FDL")
         ```
         <!--End PulumiCodeChooser -->
@@ -309,7 +312,9 @@ class Flow(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.ram.Role("default", document=\"\"\"  {
+        default = alicloud.ram.Role("default",
+            name="tf-example-fnfflow",
+            document=\"\"\"  {
             "Statement": [
               {
                 "Action": "sts:AssumeRole",
@@ -333,6 +338,7 @@ class Flow(pulumi.CustomResource):
         \"\"\",
             role_arn=default.arn,
             description="Test for terraform fnf_flow.",
+            name="tf-example-flow",
             type="FDL")
         ```
         <!--End PulumiCodeChooser -->

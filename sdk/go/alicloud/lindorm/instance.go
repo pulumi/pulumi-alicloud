@@ -53,25 +53,25 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
+//			defaultGetNetworks, err := vpc.GetNetworks(ctx, &vpc.GetNetworksArgs{
 //				NameRegex: pulumi.StringRef("^default-NODELETING$"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			defaultSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
-//				VpcId:  pulumi.StringRef(defaultNetworks.Ids[0]),
+//			defaultGetSwitches, err := vpc.GetSwitches(ctx, &vpc.GetSwitchesArgs{
+//				VpcId:  pulumi.StringRef(defaultGetNetworks.Ids[0]),
 //				ZoneId: pulumi.StringRef(zoneId),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = lindorm.NewInstance(ctx, "defaultInstance", &lindorm.InstanceArgs{
+//			_, err = lindorm.NewInstance(ctx, "default", &lindorm.InstanceArgs{
 //				DiskCategory:             pulumi.String("cloud_efficiency"),
 //				PaymentType:              pulumi.String("PayAsYouGo"),
 //				ZoneId:                   pulumi.String(zoneId),
-//				VswitchId:                pulumi.String(defaultSwitches.Ids[0]),
-//				VpcId:                    pulumi.String(defaultNetworks.Ids[0]),
+//				VswitchId:                pulumi.String(defaultGetSwitches.Ids[0]),
+//				VpcId:                    pulumi.String(defaultGetNetworks.Ids[0]),
 //				InstanceName:             pulumi.String(name),
 //				TableEngineSpecification: pulumi.String("lindorm.g.4xlarge"),
 //				TableEngineNodeCount:     pulumi.Int(2),

@@ -31,12 +31,12 @@ namespace Pulumi.AliCloud.Wafv3
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultInstances = AliCloud.Wafv3.GetInstances.Invoke();
+    ///     var @default = AliCloud.Wafv3.GetInstances.Invoke();
     /// 
-    ///     var defaultDefenseTemplate = new AliCloud.Wafv3.DefenseTemplate("defaultDefenseTemplate", new()
+    ///     var defaultDefenseTemplate = new AliCloud.Wafv3.DefenseTemplate("default", new()
     ///     {
     ///         Status = "1",
-    ///         InstanceId = defaultInstances.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0]),
+    ///         InstanceId = @default.Apply(@default =&gt; @default.Apply(getInstancesResult =&gt; getInstancesResult.Ids[0])),
     ///         DefenseTemplateName = name,
     ///         TemplateType = "user_custom",
     ///         TemplateOrigin = "custom",

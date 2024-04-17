@@ -37,13 +37,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			example, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleKey, err := kms.NewKey(ctx, "exampleKey", &kms.KeyArgs{
+//			exampleKey, err := kms.NewKey(ctx, "example", &kms.KeyArgs{
 //				Description:         pulumi.String("terraform-example"),
 //				PendingWindowInDays: pulumi.Int(7),
 //				Status:              pulumi.String("Enabled"),
@@ -51,7 +51,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleAutoSnapshotPolicy, err := ecs.NewAutoSnapshotPolicy(ctx, "exampleAutoSnapshotPolicy", &ecs.AutoSnapshotPolicyArgs{
+//			exampleAutoSnapshotPolicy, err := ecs.NewAutoSnapshotPolicy(ctx, "example", &ecs.AutoSnapshotPolicyArgs{
+//				Name: pulumi.String("terraform-example"),
 //				RepeatWeekdays: pulumi.StringArray{
 //					pulumi.String("1"),
 //					pulumi.String("2"),
@@ -67,8 +68,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleEcsDisk, err := ecs.NewEcsDisk(ctx, "exampleEcsDisk", &ecs.EcsDiskArgs{
-//				ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
+//			exampleEcsDisk, err := ecs.NewEcsDisk(ctx, "example", &ecs.EcsDiskArgs{
+//				ZoneId:      pulumi.String(example.Zones[0].Id),
 //				DiskName:    pulumi.String("terraform-example"),
 //				Description: pulumi.String("Hello ecs disk."),
 //				Category:    pulumi.String("cloud_efficiency"),
@@ -82,7 +83,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ecs.NewEcsAutoSnapshotPolicyAttachment(ctx, "exampleEcsAutoSnapshotPolicyAttachment", &ecs.EcsAutoSnapshotPolicyAttachmentArgs{
+//			_, err = ecs.NewEcsAutoSnapshotPolicyAttachment(ctx, "example", &ecs.EcsAutoSnapshotPolicyAttachmentArgs{
 //				AutoSnapshotPolicyId: exampleAutoSnapshotPolicy.ID(),
 //				DiskId:               exampleEcsDisk.ID(),
 //			})

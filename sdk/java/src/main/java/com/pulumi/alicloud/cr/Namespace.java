@@ -50,6 +50,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
  *         var example = new Namespace(&#34;example&#34;, NamespaceArgs.builder()        
+ *             .name(name)
  *             .autoCreate(false)
  *             .defaultVisibility(&#34;PUBLIC&#34;)
  *             .build());

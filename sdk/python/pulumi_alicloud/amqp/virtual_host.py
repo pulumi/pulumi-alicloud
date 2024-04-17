@@ -113,7 +113,7 @@ class VirtualHost(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_instance = alicloud.amqp.Instance("defaultInstance",
+        default = alicloud.amqp.Instance("default",
             instance_type="professional",
             max_tps="1000",
             queue_capacity="50",
@@ -121,8 +121,8 @@ class VirtualHost(pulumi.CustomResource):
             max_eip_tps="128",
             payment_type="Subscription",
             period=1)
-        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
-            instance_id=default_instance.id,
+        default_virtual_host = alicloud.amqp.VirtualHost("default",
+            instance_id=default.id,
             virtual_host_name="tf-example")
         ```
         <!--End PulumiCodeChooser -->
@@ -162,7 +162,7 @@ class VirtualHost(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_instance = alicloud.amqp.Instance("defaultInstance",
+        default = alicloud.amqp.Instance("default",
             instance_type="professional",
             max_tps="1000",
             queue_capacity="50",
@@ -170,8 +170,8 @@ class VirtualHost(pulumi.CustomResource):
             max_eip_tps="128",
             payment_type="Subscription",
             period=1)
-        default_virtual_host = alicloud.amqp.VirtualHost("defaultVirtualHost",
-            instance_id=default_instance.id,
+        default_virtual_host = alicloud.amqp.VirtualHost("default",
+            instance_id=default.id,
             virtual_host_name="tf-example")
         ```
         <!--End PulumiCodeChooser -->

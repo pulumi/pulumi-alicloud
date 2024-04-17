@@ -32,8 +32,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := hbase.GetInstances(ctx, &hbase.GetInstancesArgs{
-//				AvailabilityZone: pulumi.StringRef("cn-shenzhen-b"),
 //				NameRegex:        pulumi.StringRef("tf_testAccHBase"),
+//				AvailabilityZone: pulumi.StringRef("cn-shenzhen-b"),
 //			}, nil)
 //			if err != nil {
 //				return err

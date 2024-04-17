@@ -51,6 +51,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tfexample&#34;);
  *         var role = new Role(&#34;role&#34;, RoleArgs.builder()        
+ *             .name(name)
  *             .document(&#34;&#34;&#34;
  *   {
  *     &#34;Statement&#34;: [

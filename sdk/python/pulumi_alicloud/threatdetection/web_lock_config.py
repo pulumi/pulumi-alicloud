@@ -341,10 +341,10 @@ class WebLockConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_assets = alicloud.threatdetection.get_assets(machine_types="ecs")
-        default_web_lock_config = alicloud.threatdetection.WebLockConfig("defaultWebLockConfig",
+        default = alicloud.threatdetection.get_assets(machine_types="ecs")
+        default_web_lock_config = alicloud.threatdetection.WebLockConfig("default",
             inclusive_file_type="php;jsp;asp;aspx;js;cgi;html;htm;xml;shtml;shtm;jpg",
-            uuid=default_assets.ids[0],
+            uuid=default.ids[0],
             mode="whitelist",
             local_backup_dir="/usr/local/aegis/bak",
             dir="/tmp/",
@@ -394,10 +394,10 @@ class WebLockConfig(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_assets = alicloud.threatdetection.get_assets(machine_types="ecs")
-        default_web_lock_config = alicloud.threatdetection.WebLockConfig("defaultWebLockConfig",
+        default = alicloud.threatdetection.get_assets(machine_types="ecs")
+        default_web_lock_config = alicloud.threatdetection.WebLockConfig("default",
             inclusive_file_type="php;jsp;asp;aspx;js;cgi;html;htm;xml;shtml;shtm;jpg",
-            uuid=default_assets.ids[0],
+            uuid=default.ids[0],
             mode="whitelist",
             local_backup_dir="/usr/local/aegis/bak",
             dir="/tmp/",

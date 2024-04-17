@@ -56,7 +56,7 @@ import javax.annotation.Nullable;
  *         final var config = ctx.config();
  *         final var region = config.get(&#34;region&#34;).orElse(&#34;cn-chengdu&#34;);
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         var defaultConnection = new Connection(&#34;defaultConnection&#34;, ConnectionArgs.builder()        
+ *         var default_ = new Connection(&#34;default&#34;, ConnectionArgs.builder()        
  *             .connectionName(name)
  *             .networkParameters(ConnectionNetworkParametersArgs.builder()
  *                 .networkType(&#34;PublicNetwork&#34;)
@@ -64,7 +64,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultApiDestination = new ApiDestination(&#34;defaultApiDestination&#34;, ApiDestinationArgs.builder()        
- *             .connectionName(defaultConnection.connectionName())
+ *             .connectionName(default_.connectionName())
  *             .apiDestinationName(name)
  *             .description(&#34;test-api-destination-connection&#34;)
  *             .httpApiParameters(ApiDestinationHttpApiParametersArgs.builder()

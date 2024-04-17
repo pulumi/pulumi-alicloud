@@ -21,26 +21,26 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
+ * const defaultInteger = new random.index.Integer("default", {
  *     min: 10000,
  *     max: 99999,
  * });
- * const defaultRegions = alicloud.getRegions({
+ * const default = alicloud.getRegions({
  *     current: true,
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {
- *     vpcName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: `${name}-${defaultInteger.result}`,
  *     cidrBlock: "10.4.0.0/16",
  * });
- * const defaultCluster = new alicloud.edas.Cluster("defaultCluster", {
- *     clusterName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
+ * const defaultCluster = new alicloud.edas.Cluster("default", {
+ *     clusterName: `${name}-${defaultInteger.result}`,
  *     clusterType: 2,
  *     networkMode: 2,
- *     logicalRegionId: defaultRegions.then(defaultRegions => defaultRegions.regions?.[0]?.id),
+ *     logicalRegionId: _default.then(_default => _default.regions?.[0]?.id),
  *     vpcId: defaultNetwork.id,
  * });
- * const defaultApplication = new alicloud.edas.Application("defaultApplication", {
- *     applicationName: pulumi.interpolate`${name}-${defaultRandomInteger.result}`,
+ * const defaultApplication = new alicloud.edas.Application("default", {
+ *     applicationName: `${name}-${defaultInteger.result}`,
  *     clusterId: defaultCluster.id,
  *     packageType: "JAR",
  * });

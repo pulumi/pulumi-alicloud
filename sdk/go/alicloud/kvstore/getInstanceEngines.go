@@ -31,23 +31,23 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			resourcesZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			resources, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("KVStore"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			resourcesInstanceEngines, err := kvstore.GetInstanceEngines(ctx, &kvstore.GetInstanceEnginesArgs{
+//			resourcesGetInstanceEngines, err := kvstore.GetInstanceEngines(ctx, &kvstore.GetInstanceEnginesArgs{
+//				ZoneId:             resources.Zones[0].Id,
+//				InstanceChargeType: pulumi.StringRef("PrePaid"),
 //				Engine:             pulumi.StringRef("Redis"),
 //				EngineVersion:      pulumi.StringRef("5.0"),
-//				InstanceChargeType: pulumi.StringRef("PrePaid"),
 //				OutputFile:         pulumi.StringRef("./engines.txt"),
-//				ZoneId:             resourcesZones.Zones[0].Id,
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			ctx.Export("firstKvstoreInstanceClass", resourcesInstanceEngines.InstanceEngines[0].Engine)
+//			ctx.Export("firstKvstoreInstanceClass", resourcesGetInstanceEngines.InstanceEngines[0].Engine)
 //			return nil
 //		})
 //	}

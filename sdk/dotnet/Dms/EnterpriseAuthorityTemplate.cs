@@ -31,14 +31,14 @@ namespace Pulumi.AliCloud.Dms
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "terraform-example";
-    ///     var defaultUserTenants = AliCloud.Dms.GetUserTenants.Invoke(new()
+    ///     var @default = AliCloud.Dms.GetUserTenants.Invoke(new()
     ///     {
     ///         Status = "ACTIVE",
     ///     });
     /// 
-    ///     var defaultEnterpriseAuthorityTemplate = new AliCloud.Dms.EnterpriseAuthorityTemplate("defaultEnterpriseAuthorityTemplate", new()
+    ///     var defaultEnterpriseAuthorityTemplate = new AliCloud.Dms.EnterpriseAuthorityTemplate("default", new()
     ///     {
-    ///         Tid = defaultUserTenants.Apply(getUserTenantsResult =&gt; getUserTenantsResult.Ids[0]),
+    ///         Tid = @default.Apply(@default =&gt; @default.Apply(getUserTenantsResult =&gt; getUserTenantsResult.Ids[0])),
     ///         AuthorityTemplateName = name,
     ///         Description = name,
     ///     });

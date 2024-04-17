@@ -38,7 +38,7 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultAlarmContactGroup, err := cms.NewAlarmContactGroup(ctx, "defaultAlarmContactGroup", &cms.AlarmContactGroupArgs{
+//			_, err := cms.NewAlarmContactGroup(ctx, "default", &cms.AlarmContactGroupArgs{
 //				AlarmContactGroupName: pulumi.String(name),
 //				Describe:              pulumi.String("example_value"),
 //				EnableSubscribed:      pulumi.Bool(true),
@@ -46,9 +46,9 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			defaultDynamicTagGroup, err := cms.NewDynamicTagGroup(ctx, "defaultDynamicTagGroup", &cms.DynamicTagGroupArgs{
+//			defaultDynamicTagGroup, err := cms.NewDynamicTagGroup(ctx, "default", &cms.DynamicTagGroupArgs{
 //				ContactGroupLists: pulumi.StringArray{
-//					defaultAlarmContactGroup.ID(),
+//					_default.ID(),
 //				},
 //				TagKey: pulumi.String("your_tag_key"),
 //				MatchExpresses: cms.DynamicTagGroupMatchExpressArray{

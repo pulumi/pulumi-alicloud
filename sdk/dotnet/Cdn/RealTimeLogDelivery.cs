@@ -30,16 +30,16 @@ namespace Pulumi.AliCloud.Cdn
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var defaultInteger = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
     ///     });
     /// 
-    ///     var defaultDomainNew = new AliCloud.Cdn.DomainNew("defaultDomainNew", new()
+    ///     var defaultDomainNew = new AliCloud.Cdn.DomainNew("default", new()
     ///     {
     ///         Scope = "overseas",
-    ///         DomainName = defaultRandomInteger.Result.Apply(result =&gt; $"mycdndomain-{result}.alicloud-provider.cn"),
+    ///         DomainName = $"mycdndomain-{defaultInteger.Result}.alicloud-provider.cn",
     ///         CdnType = "web",
     ///         Sources = new[]
     ///         {
@@ -54,13 +54,13 @@ namespace Pulumi.AliCloud.Cdn
     ///         },
     ///     });
     /// 
-    ///     var defaultProject = new AliCloud.Log.Project("defaultProject", new()
+    ///     var defaultProject = new AliCloud.Log.Project("default", new()
     ///     {
-    ///         ProjectName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         ProjectName = $"terraform-example-{defaultInteger.Result}",
     ///         Description = "terraform-example",
     ///     });
     /// 
-    ///     var defaultStore = new AliCloud.Log.Store("defaultStore", new()
+    ///     var defaultStore = new AliCloud.Log.Store("default", new()
     ///     {
     ///         ProjectName = defaultProject.Name,
     ///         LogstoreName = "example-store",
@@ -70,17 +70,17 @@ namespace Pulumi.AliCloud.Cdn
     ///         AppendMeta = true,
     ///     });
     /// 
-    ///     var defaultRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var @default = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var defaultRealTimeLogDelivery = new AliCloud.Cdn.RealTimeLogDelivery("defaultRealTimeLogDelivery", new()
+    ///     var defaultRealTimeLogDelivery = new AliCloud.Cdn.RealTimeLogDelivery("default", new()
     ///     {
     ///         Domain = defaultDomainNew.DomainName,
     ///         Logstore = defaultStore.LogstoreName,
     ///         Project = defaultProject.ProjectName,
-    ///         SlsRegion = defaultRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id),
+    ///         SlsRegion = @default.Apply(@default =&gt; @default.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)),
     ///     });
     /// 
     /// });

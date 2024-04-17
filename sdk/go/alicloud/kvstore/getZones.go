@@ -30,6 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Declare the data source
 //			_, err := kvstore.GetZones(ctx, &kvstore.GetZonesArgs{
 //				InstanceChargeType: pulumi.StringRef("PostPaid"),
 //			}, nil)

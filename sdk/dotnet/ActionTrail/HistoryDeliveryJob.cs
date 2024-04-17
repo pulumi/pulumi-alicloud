@@ -38,38 +38,38 @@ namespace Pulumi.AliCloud.ActionTrail
     /// {
     ///     var config = new Config();
     ///     var name = config.Get("name") ?? "tf-example";
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var exampleRegions = AliCloud.GetRegions.Invoke(new()
+    ///     var example = AliCloud.GetRegions.Invoke(new()
     ///     {
     ///         Current = true,
     ///     });
     /// 
-    ///     var exampleAccount = AliCloud.GetAccount.Invoke();
+    ///     var exampleGetAccount = AliCloud.GetAccount.Invoke();
     /// 
-    ///     var exampleProject = new AliCloud.Log.Project("exampleProject", new()
+    ///     var exampleProject = new AliCloud.Log.Project("example", new()
     ///     {
-    ///         ProjectName = @default.Result.Apply(result =&gt; $"{name}-{result}"),
+    ///         ProjectName = $"{name}-{@default.Result}",
     ///         Description = "tf actiontrail example",
     ///     });
     /// 
-    ///     var exampleTrail = new AliCloud.ActionTrail.Trail("exampleTrail", new()
+    ///     var exampleTrail = new AliCloud.ActionTrail.Trail("example", new()
     ///     {
-    ///         TrailName = @default.Result.Apply(result =&gt; $"{name}-{result}"),
-    ///         SlsProjectArn = Output.Tuple(exampleRegions, exampleAccount, exampleProject.Name).Apply(values =&gt;
+    ///         TrailName = $"{name}-{@default.Result}",
+    ///         SlsProjectArn = Output.Tuple(example, exampleGetAccount, exampleProject.Name).Apply(values =&gt;
     ///         {
-    ///             var exampleRegions = values.Item1;
-    ///             var exampleAccount = values.Item2;
+    ///             var example = values.Item1;
+    ///             var exampleGetAccount = values.Item2;
     ///             var name = values.Item3;
-    ///             return $"acs:log:{exampleRegions.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{exampleAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:project/{name}";
+    ///             return $"acs:log:{example.Apply(getRegionsResult =&gt; getRegionsResult.Regions[0]?.Id)}:{exampleGetAccount.Apply(getAccountResult =&gt; getAccountResult.Id)}:project/{name}";
     ///         }),
     ///     });
     /// 
-    ///     var exampleHistoryDeliveryJob = new AliCloud.ActionTrail.HistoryDeliveryJob("exampleHistoryDeliveryJob", new()
+    ///     var exampleHistoryDeliveryJob = new AliCloud.ActionTrail.HistoryDeliveryJob("example", new()
     ///     {
     ///         TrailName = exampleTrail.Id,
     ///     });

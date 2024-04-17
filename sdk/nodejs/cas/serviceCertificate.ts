@@ -21,11 +21,12 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  * import * as random from "@pulumi/random";
  *
- * const defaultRandomInteger = new random.RandomInteger("defaultRandomInteger", {
- *     max: 99999,
+ * const _default = new random.index.Integer("default", {
  *     min: 10000,
+ *     max: 99999,
  * });
- * const defaultServiceCertificate = new alicloud.cas.ServiceCertificate("defaultServiceCertificate", {
+ * const defaultServiceCertificate = new alicloud.cas.ServiceCertificate("default", {
+ *     certificateName: `tf-example-${_default.result}`,
  *     cert: `-----BEGIN CERTIFICATE-----
  * MIIDeDCCAmCgAwIBAgIEN3ZT6zANBgkqhkiG9w0BAQsFADBVMQswCQYDVQQGEwJD
  * TjEVMBMGA1UEAwwMKi50ZnRlc3QudG9wMRAwDgYDVQQIDAdCZWlKaW5nMRAwDgYD
@@ -47,9 +48,7 @@ import * as utilities from "../utilities";
  * TTc40xwvQROekWUyxeJL7xaHuylUHE0bxsiIfx5bZsBizRjprIwGlj85CSPuTZyP
  * DPfaiZAN/61h5HNAnxLltOZfqabKYYw7l9LBDg==
  * -----END CERTIFICATE-----
- *
  * `,
- *     certificateName: pulumi.interpolate`tf-example-${defaultRandomInteger.result}`,
  *     key: `-----BEGIN PRIVATE KEY-----
  * MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDOST00lQfs8tJA
  * rhFGsZBjl1Wx+2SGcqH0eEjrKueWjBYgM9LU9kc5T/mBDvE9Q8Z0pBXlLvHzBE6c
@@ -78,7 +77,6 @@ import * as utilities from "../utilities";
  * CIFqfEL5NriQelqrFsvgHsmD+MpvDoSWm5C8IrTubtlNyWUzXSVT4OIwzPobzPqG
  * LILJ+e7bLw8RrM0HfgFnl8c=
  * -----END PRIVATE KEY-----
- *
  * `,
  * });
  * ```

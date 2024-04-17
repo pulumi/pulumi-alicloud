@@ -265,8 +265,8 @@ class Ipv6Address(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_get_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         vpc = alicloud.vpc.Network("vpc",
             ipv6_isp="BGP",
             cidr_block="172.168.0.0/16",
@@ -275,11 +275,11 @@ class Ipv6Address(pulumi.CustomResource):
         vswich = alicloud.vpc.Switch("vswich",
             vpc_id=vpc.id,
             cidr_block="172.168.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default_get_zones.zones[0].id,
             vswitch_name=name,
             ipv6_cidr_block_mask=1)
-        default_ipv6_address = alicloud.vpc.Ipv6Address("defaultIpv6Address",
-            resource_group_id=default_resource_groups.ids[0],
+        default_ipv6_address = alicloud.vpc.Ipv6Address("default",
+            resource_group_id=default.ids[0],
             vswitch_id=vswich.id,
             ipv6_address_description="create_description",
             ipv6_address_name=name)
@@ -328,8 +328,8 @@ class Ipv6Address(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "terraform-example"
-        default_resource_groups = alicloud.resourcemanager.get_resource_groups()
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default = alicloud.resourcemanager.get_resource_groups()
+        default_get_zones = alicloud.get_zones(available_resource_creation="VSwitch")
         vpc = alicloud.vpc.Network("vpc",
             ipv6_isp="BGP",
             cidr_block="172.168.0.0/16",
@@ -338,11 +338,11 @@ class Ipv6Address(pulumi.CustomResource):
         vswich = alicloud.vpc.Switch("vswich",
             vpc_id=vpc.id,
             cidr_block="172.168.0.0/24",
-            zone_id=default_zones.zones[0].id,
+            zone_id=default_get_zones.zones[0].id,
             vswitch_name=name,
             ipv6_cidr_block_mask=1)
-        default_ipv6_address = alicloud.vpc.Ipv6Address("defaultIpv6Address",
-            resource_group_id=default_resource_groups.ids[0],
+        default_ipv6_address = alicloud.vpc.Ipv6Address("default",
+            resource_group_id=default.ids[0],
             vswitch_id=vswich.id,
             ipv6_address_description="create_description",
             ipv6_address_name=name)

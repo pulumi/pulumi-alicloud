@@ -169,6 +169,30 @@ class InstanceMember(pulumi.CustomResource):
 
         > **NOTE:** Available in v1.194.0+.
 
+        ## Example Usage
+
+        Basic Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "AliyunTerraform"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_account = alicloud.resourcemanager.Account("default", display_name=f"{name}-{default['result']}")
+        default_instance_member = alicloud.cloudfirewall.InstanceMember("default",
+            member_desc=f"{name}-{default['result']}",
+            member_uid=default_account.id)
+        ```
+        <!--End PulumiCodeChooser -->
+
         ## Import
 
         Cloud Firewall Instance Member can be imported using the id, e.g.
@@ -194,6 +218,30 @@ class InstanceMember(pulumi.CustomResource):
         For information about Cloud Firewall Instance Member and how to use it, see [What is Instance Member](https://www.alibabacloud.com/help/en/server-load-balancer/latest/createloadbalancer).
 
         > **NOTE:** Available in v1.194.0+.
+
+        ## Example Usage
+
+        Basic Usage
+
+        <!--Start PulumiCodeChooser -->
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+        import pulumi_random as random
+
+        config = pulumi.Config()
+        name = config.get("name")
+        if name is None:
+            name = "AliyunTerraform"
+        default = random.index.Integer("default",
+            min=10000,
+            max=99999)
+        default_account = alicloud.resourcemanager.Account("default", display_name=f"{name}-{default['result']}")
+        default_instance_member = alicloud.cloudfirewall.InstanceMember("default",
+            member_desc=f"{name}-{default['result']}",
+            member_uid=default_account.id)
+        ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 

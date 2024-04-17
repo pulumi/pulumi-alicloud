@@ -386,18 +386,18 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
         config = pulumi.Config()
         instance_series = config.get("instanceSeries")
         if instance_series is None:
             instance_series = "drds.sn1.4c8g"
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
-        default_instance = alicloud.drds.Instance("defaultInstance",
+        default_get_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0])
+        default_instance = alicloud.drds.Instance("default",
             description="drds instance",
             instance_charge_type="PostPaid",
-            zone_id=default_switches.vswitches[0].zone_id,
-            vswitch_id=default_switches.vswitches[0].id,
+            zone_id=default_get_switches.vswitches[0].zone_id,
+            vswitch_id=default_get_switches.vswitches[0].id,
             instance_series=instance_series,
             specification="drds.sn1.4c8g.8C16G")
         ```
@@ -457,18 +457,18 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default_zones = alicloud.get_zones(available_resource_creation="VSwitch")
+        default = alicloud.get_zones(available_resource_creation="VSwitch")
         config = pulumi.Config()
         instance_series = config.get("instanceSeries")
         if instance_series is None:
             instance_series = "drds.sn1.4c8g"
-        default_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
-        default_switches = alicloud.vpc.get_switches(vpc_id=default_networks.ids[0])
-        default_instance = alicloud.drds.Instance("defaultInstance",
+        default_get_networks = alicloud.vpc.get_networks(name_regex="default-NODELETING")
+        default_get_switches = alicloud.vpc.get_switches(vpc_id=default_get_networks.ids[0])
+        default_instance = alicloud.drds.Instance("default",
             description="drds instance",
             instance_charge_type="PostPaid",
-            zone_id=default_switches.vswitches[0].zone_id,
-            vswitch_id=default_switches.vswitches[0].id,
+            zone_id=default_get_switches.vswitches[0].zone_id,
+            vswitch_id=default_get_switches.vswitches[0].id,
             instance_series=instance_series,
             specification="drds.sn1.4c8g.8C16G")
         ```

@@ -173,7 +173,9 @@ class Group(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.apigateway.Group("default", description="tf_example")
+        default = alicloud.apigateway.Group("default",
+            name="tf_example",
+            description="tf_example")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -207,7 +209,9 @@ class Group(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.apigateway.Group("default", description="tf_example")
+        default = alicloud.apigateway.Group("default",
+            name="tf_example",
+            description="tf_example")
         ```
         <!--End PulumiCodeChooser -->
 

@@ -22,17 +22,17 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf_example";
- * const defaultImages = alicloud.simpleapplicationserver.getImages({});
- * const defaultServerPlans = alicloud.simpleapplicationserver.getServerPlans({});
- * const defaultInstance = new alicloud.simpleapplicationserver.Instance("defaultInstance", {
+ * const default = alicloud.simpleapplicationserver.getImages({});
+ * const defaultGetServerPlans = alicloud.simpleapplicationserver.getServerPlans({});
+ * const defaultInstance = new alicloud.simpleapplicationserver.Instance("default", {
  *     paymentType: "Subscription",
- *     planId: defaultServerPlans.then(defaultServerPlans => defaultServerPlans.plans?.[0]?.id),
+ *     planId: defaultGetServerPlans.then(defaultGetServerPlans => defaultGetServerPlans.plans?.[0]?.id),
  *     instanceName: name,
- *     imageId: defaultImages.then(defaultImages => defaultImages.images?.[0]?.id),
+ *     imageId: _default.then(_default => _default.images?.[0]?.id),
  *     period: 1,
  *     dataDiskSize: 100,
  * });
- * const defaultFirewallRule = new alicloud.simpleapplicationserver.FirewallRule("defaultFirewallRule", {
+ * const defaultFirewallRule = new alicloud.simpleapplicationserver.FirewallRule("default", {
  *     instanceId: defaultInstance.id,
  *     ruleProtocol: "Tcp",
  *     port: "9999",

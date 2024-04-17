@@ -42,22 +42,22 @@ import (
 //			if param := cfg.Get("slbDomainExtensionName"); param != "" {
 //				slbDomainExtensionName = param
 //			}
-//			domainExtensionZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			domainExtension, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			domainExtensionNetwork, err := vpc.NewNetwork(ctx, "domainExtensionNetwork", &vpc.NetworkArgs{
+//			domainExtensionNetwork, err := vpc.NewNetwork(ctx, "domain_extension", &vpc.NetworkArgs{
 //				VpcName: pulumi.String(slbDomainExtensionName),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			domainExtensionSwitch, err := vpc.NewSwitch(ctx, "domainExtensionSwitch", &vpc.SwitchArgs{
+//			domainExtensionSwitch, err := vpc.NewSwitch(ctx, "domain_extension", &vpc.SwitchArgs{
 //				VpcId:       domainExtensionNetwork.ID(),
 //				CidrBlock:   pulumi.String("172.16.0.0/21"),
-//				ZoneId:      pulumi.String(domainExtensionZones.Zones[0].Id),
+//				ZoneId:      pulumi.String(domainExtension.Zones[0].Id),
 //				VswitchName: pulumi.String(slbDomainExtensionName),
 //			})
 //			if err != nil {
@@ -72,7 +72,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			domainExtensionServerCertificate, err := slb.NewServerCertificate(ctx, "domainExtensionServerCertificate", &slb.ServerCertificateArgs{
+//			domainExtensionServerCertificate, err := slb.NewServerCertificate(ctx, "domain_extension", &slb.ServerCertificateArgs{
+//				Name: pulumi.String("tf-testAccSlbServerCertificate"),
 //				ServerCertificate: pulumi.String(`-----BEGIN CERTIFICATE-----
 //
 // MIIDdjCCAl4CCQCcm+erkcKN7DANBgkqhkiG9w0BAQsFADB9MQswCQYDVQQGEwJj

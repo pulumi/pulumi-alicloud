@@ -36,6 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			user, err := ram.NewUser(ctx, "user", &ram.UserArgs{
+//				Name:        pulumi.String("terraform_example"),
 //				DisplayName: pulumi.String("terraform_example"),
 //				Mobile:      pulumi.String("86-18688888888"),
 //				Email:       pulumi.String("hello.uuu@aaa.com"),

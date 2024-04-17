@@ -52,7 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
  *             .instanceType(&#34;professional&#34;)
  *             .maxTps(1000)
  *             .queueCapacity(50)
@@ -63,7 +63,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var defaultVirtualHost = new VirtualHost(&#34;defaultVirtualHost&#34;, VirtualHostArgs.builder()        
- *             .instanceId(defaultInstance.id())
+ *             .instanceId(default_.id())
  *             .virtualHostName(&#34;tf-example&#34;)
  *             .build());
  * 
@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .autoDeleteState(false)
  *             .exchangeName(&#34;tf-example&#34;)
  *             .exchangeType(&#34;DIRECT&#34;)
- *             .instanceId(defaultInstance.id())
+ *             .instanceId(default_.id())
  *             .internal(false)
  *             .virtualHostName(defaultVirtualHost.virtualHostName())
  *             .build());

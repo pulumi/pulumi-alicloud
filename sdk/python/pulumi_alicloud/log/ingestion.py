@@ -339,24 +339,26 @@ class Ingestion(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject",
+        example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
             description="terraform-example",
             tags={
                 "Created": "TF",
                 "For": "example",
             })
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
+        example_store = alicloud.log.Store("example",
+            project=example.name,
+            name="example-store",
             retention_period=3650,
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        example_ingestion = alicloud.log.Ingestion("exampleIngestion",
-            project=example_project.name,
+        example_ingestion = alicloud.log.Ingestion("example",
+            project=example.name,
             logstore=example_store.name,
             ingestion_name="terraform-example",
             display_name="terraform-example",
@@ -432,24 +434,26 @@ class Ingestion(pulumi.CustomResource):
         import pulumi_alicloud as alicloud
         import pulumi_random as random
 
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             max=99999,
             min=10000)
-        example_project = alicloud.log.Project("exampleProject",
+        example = alicloud.log.Project("example",
+            name=f"terraform-example-{default['result']}",
             description="terraform-example",
             tags={
                 "Created": "TF",
                 "For": "example",
             })
-        example_store = alicloud.log.Store("exampleStore",
-            project=example_project.name,
+        example_store = alicloud.log.Store("example",
+            project=example.name,
+            name="example-store",
             retention_period=3650,
             shard_count=3,
             auto_split=True,
             max_split_shard_count=60,
             append_meta=True)
-        example_ingestion = alicloud.log.Ingestion("exampleIngestion",
-            project=example_project.name,
+        example_ingestion = alicloud.log.Ingestion("example",
+            project=example.name,
             logstore=example_store.name,
             ingestion_name="terraform-example",
             display_name="terraform-example",

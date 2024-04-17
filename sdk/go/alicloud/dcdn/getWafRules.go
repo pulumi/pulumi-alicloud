@@ -31,7 +31,7 @@ import (
 // pulumi.Run(func(ctx *pulumi.Context) error {
 // _default, err := dcdn.GetWafRules(ctx, &dcdn.GetWafRulesArgs{
 // Ids: interface{}{
-// alicloud_dcdn_waf_rule.Default.Id,
+// defaultAlicloudDcdnWafRule.Id,
 // },
 // }, nil);
 // if err != nil {

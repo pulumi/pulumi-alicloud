@@ -32,15 +32,15 @@ namespace Pulumi.AliCloud.Dcdn
     /// {
     ///     var config = new Config();
     ///     var domainName = config.Get("domainName") ?? "tf-example.com";
-    ///     var @default = new Random.RandomInteger("default", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Min = 10000,
     ///         Max = 99999,
     ///     });
     /// 
-    ///     var exampleDomain = new AliCloud.Dcdn.Domain("exampleDomain", new()
+    ///     var example = new AliCloud.Dcdn.Domain("example", new()
     ///     {
-    ///         DomainName = @default.Result.Apply(result =&gt; $"{domainName}-{result}"),
+    ///         DomainName = $"{domainName}-{@default.Result}",
     ///         Scope = "overseas",
     ///         Sources = new[]
     ///         {
@@ -55,9 +55,9 @@ namespace Pulumi.AliCloud.Dcdn
     ///         },
     ///     });
     /// 
-    ///     var exampleWafDomain = new AliCloud.Dcdn.WafDomain("exampleWafDomain", new()
+    ///     var exampleWafDomain = new AliCloud.Dcdn.WafDomain("example", new()
     ///     {
-    ///         DomainName = exampleDomain.DomainName,
+    ///         DomainName = example.DomainName,
     ///         ClientIpTag = "X-Forwarded-For",
     ///     });
     /// 

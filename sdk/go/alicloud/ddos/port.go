@@ -41,7 +41,8 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			defaultDdosCooInstance, err := ddos.NewDdosCooInstance(ctx, "defaultDdosCooInstance", &ddos.DdosCooInstanceArgs{
+//			_, err := ddos.NewDdosCooInstance(ctx, "default", &ddos.DdosCooInstanceArgs{
+//				Name:             pulumi.String(name),
 //				Bandwidth:        pulumi.String("30"),
 //				BaseBandwidth:    pulumi.String("30"),
 //				ServiceBandwidth: pulumi.String("100"),
@@ -53,8 +54,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = ddos.NewPort(ctx, "defaultPort", &ddos.PortArgs{
-//				InstanceId:       defaultDdosCooInstance.ID(),
+//			_, err = ddos.NewPort(ctx, "default", &ddos.PortArgs{
+//				InstanceId:       _default.ID(),
 //				FrontendPort:     pulumi.String("7001"),
 //				BackendPort:      pulumi.String("7002"),
 //				FrontendProtocol: pulumi.String("tcp"),

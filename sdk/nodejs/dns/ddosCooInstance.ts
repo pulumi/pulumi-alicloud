@@ -27,6 +27,7 @@ import * as utilities from "../utilities";
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
  * const _default = new alicloud.ddos.DdosCooInstance("default", {
+ *     name: name,
  *     baseBandwidth: "30",
  *     bandwidth: "30",
  *     serviceBandwidth: "100",

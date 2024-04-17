@@ -519,19 +519,19 @@ class Trail(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        example_regions = alicloud.get_regions(current=True)
-        example_account = alicloud.get_account()
-        example_project = alicloud.log.Project("exampleProject",
-            project_name=default.result.apply(lambda result: f"{name}-{result}"),
+        example = alicloud.get_regions(current=True)
+        example_get_account = alicloud.get_account()
+        example_project = alicloud.log.Project("example",
+            project_name=f"{name}-{default['result']}",
             description="tf actiontrail example")
-        example_roles = alicloud.ram.get_roles(name_regex="AliyunServiceRoleForActionTrail")
-        example_trail = alicloud.actiontrail.Trail("exampleTrail",
+        example_get_roles = alicloud.ram.get_roles(name_regex="AliyunServiceRoleForActionTrail")
+        example_trail = alicloud.actiontrail.Trail("example",
             trail_name=name,
-            sls_write_role_arn=example_roles.roles[0].arn,
-            sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example_regions.regions[0].id}:{example_account.id}:project/{name}"))
+            sls_write_role_arn=example_get_roles.roles[0].arn,
+            sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example.regions[0].id}:{example_get_account.id}:project/{name}"))
         ```
         <!--End PulumiCodeChooser -->
 
@@ -586,19 +586,19 @@ class Trail(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default = random.RandomInteger("default",
+        default = random.index.Integer("default",
             min=10000,
             max=99999)
-        example_regions = alicloud.get_regions(current=True)
-        example_account = alicloud.get_account()
-        example_project = alicloud.log.Project("exampleProject",
-            project_name=default.result.apply(lambda result: f"{name}-{result}"),
+        example = alicloud.get_regions(current=True)
+        example_get_account = alicloud.get_account()
+        example_project = alicloud.log.Project("example",
+            project_name=f"{name}-{default['result']}",
             description="tf actiontrail example")
-        example_roles = alicloud.ram.get_roles(name_regex="AliyunServiceRoleForActionTrail")
-        example_trail = alicloud.actiontrail.Trail("exampleTrail",
+        example_get_roles = alicloud.ram.get_roles(name_regex="AliyunServiceRoleForActionTrail")
+        example_trail = alicloud.actiontrail.Trail("example",
             trail_name=name,
-            sls_write_role_arn=example_roles.roles[0].arn,
-            sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example_regions.regions[0].id}:{example_account.id}:project/{name}"))
+            sls_write_role_arn=example_get_roles.roles[0].arn,
+            sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example.regions[0].id}:{example_get_account.id}:project/{name}"))
         ```
         <!--End PulumiCodeChooser -->
 

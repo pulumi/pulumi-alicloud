@@ -55,19 +55,19 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultZones = AlicloudFunctions.getZones();
+ *         final var default = AlicloudFunctions.getZones();
  * 
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var defaultGetResourceGroups = ResourcemanagerFunctions.getResourceGroups();
  * 
  *         var defaultVpd = new Vpd(&#34;defaultVpd&#34;, VpdArgs.builder()        
  *             .cidr(&#34;10.0.0.0/8&#34;)
  *             .vpdName(name)
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
+ *             .resourceGroupId(defaultGetResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.groups()[0].id()))
  *             .build());
  * 
  *         var defaultSubnet = new Subnet(&#34;defaultSubnet&#34;, SubnetArgs.builder()        
  *             .subnetName(name)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(default_.zones()[0].id())
  *             .cidr(&#34;10.0.0.0/16&#34;)
  *             .vpdId(defaultVpd.id())
  *             .build());

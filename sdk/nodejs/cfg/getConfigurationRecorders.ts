@@ -21,7 +21,7 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.cfg.getConfigurationRecorders({});
- * export const listOfResourceTypes = data.alicloud_config_configuration_recorders["this"].recorders[0].resource_types;
+ * export const listOfResourceTypes = _this.recorders[0].resourceTypes;
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -73,7 +73,7 @@ export interface GetConfigurationRecordersResult {
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.cfg.getConfigurationRecorders({});
- * export const listOfResourceTypes = data.alicloud_config_configuration_recorders["this"].recorders[0].resource_types;
+ * export const listOfResourceTypes = _this.recorders[0].resourceTypes;
  * ```
  * <!--End PulumiCodeChooser -->
  */

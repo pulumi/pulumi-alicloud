@@ -20,10 +20,14 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const instanceInstances = alicloud.bastionhost.getInstances({
- *     descriptionRegex: "^bastionhost",
- * });
- * export const instance = alicloud_bastionhost_instances.instance.map(__item => __item.id);
+ * export = async () => {
+ *     const instance = await alicloud.bastionhost.getInstances({
+ *         descriptionRegex: "^bastionhost",
+ *     });
+ *     return {
+ *         instance: instanceAlicloudBastionhostInstances.map(__item => __item.id),
+ *     };
+ * }
  * ```
  * <!--End PulumiCodeChooser -->
  */
@@ -108,10 +112,14 @@ export interface GetInstancesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const instanceInstances = alicloud.bastionhost.getInstances({
- *     descriptionRegex: "^bastionhost",
- * });
- * export const instance = alicloud_bastionhost_instances.instance.map(__item => __item.id);
+ * export = async () => {
+ *     const instance = await alicloud.bastionhost.getInstances({
+ *         descriptionRegex: "^bastionhost",
+ *     });
+ *     return {
+ *         instance: instanceAlicloudBastionhostInstances.map(__item => __item.id),
+ *     };
+ * }
  * ```
  * <!--End PulumiCodeChooser -->
  */

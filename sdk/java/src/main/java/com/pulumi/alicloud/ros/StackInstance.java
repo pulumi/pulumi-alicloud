@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
  *         final var this = AlicloudFunctions.getAccount();
  * 
- *         final var defaultRegions = RosFunctions.getRegions();
+ *         final var default = RosFunctions.getRegions();
  * 
  *         var defaultStackGroup = new StackGroup(&#34;defaultStackGroup&#34;, StackGroupArgs.builder()        
  *             .stackGroupName(name)
@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *         var example = new StackInstance(&#34;example&#34;, StackInstanceArgs.builder()        
  *             .stackGroupName(defaultStackGroup.stackGroupName())
  *             .stackInstanceAccountId(this_.id())
- *             .stackInstanceRegionId(defaultRegions.applyValue(getRegionsResult -&gt; getRegionsResult.regions()[0].regionId()))
+ *             .stackInstanceRegionId(default_.regions()[0].regionId())
  *             .operationPreferences(&#34;{\&#34;FailureToleranceCount\&#34;: 1, \&#34;MaxConcurrentCount\&#34;: 2}&#34;)
  *             .timeoutInMinutes(&#34;60&#34;)
  *             .operationDescription(&#34;tf-example&#34;)

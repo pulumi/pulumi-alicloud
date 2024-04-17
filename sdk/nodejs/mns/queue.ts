@@ -15,11 +15,12 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const queue = new alicloud.mns.Queue("queue", {
+ *     name: "tf-example-mnsqueue",
  *     delaySeconds: 0,
  *     maximumMessageSize: 65536,
  *     messageRetentionPeriod: 345600,
- *     pollingWaitSeconds: 0,
  *     visibilityTimeout: 30,
+ *     pollingWaitSeconds: 0,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

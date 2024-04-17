@@ -60,14 +60,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         var defaultCustomerGateway = new CustomerGateway(&#34;defaultCustomerGateway&#34;, CustomerGatewayArgs.builder()        
+ *         var default_ = new CustomerGateway(&#34;default&#34;, CustomerGatewayArgs.builder()        
+ *             .name(name)
  *             .ipAddress(&#34;42.104.22.210&#34;)
  *             .asn(&#34;45014&#34;)
  *             .description(name)
  *             .build());
  * 
  *         var defaultGatewayVpnAttachment = new GatewayVpnAttachment(&#34;defaultGatewayVpnAttachment&#34;, GatewayVpnAttachmentArgs.builder()        
- *             .customerGatewayId(defaultCustomerGateway.id())
+ *             .customerGatewayId(default_.id())
  *             .networkType(&#34;public&#34;)
  *             .localSubnet(&#34;0.0.0.0/0&#34;)
  *             .remoteSubnet(&#34;0.0.0.0/0&#34;)

@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         final var exampleZones = NasFunctions.getZones(GetZonesArgs.builder()
+ *         final var example = NasFunctions.getZones(GetZonesArgs.builder()
  *             .fileSystemType(&#34;standard&#34;)
  *             .build());
  * 
@@ -61,7 +61,7 @@ import javax.annotation.Nullable;
  *             .description(&#34;terraform-example&#34;)
  *             .encryptType(&#34;0&#34;)
  *             .fileSystemType(&#34;standard&#34;)
- *             .zoneId(exampleZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
+ *             .zoneId(example.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].zoneId()))
  *             .build());
  * 
  *         var exampleSmbAclAttachment = new SmbAclAttachment(&#34;exampleSmbAclAttachment&#34;, SmbAclAttachmentArgs.builder()        

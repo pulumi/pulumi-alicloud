@@ -1026,12 +1026,12 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
      *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
@@ -1043,7 +1043,7 @@ public final class CloudstoragegatewayFunctions {
      *             .gatewayClass(&#34;Standard&#34;)
      *             .type(&#34;File&#34;)
      *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .releaseAfterExpiration(false)
      *             .publicNetworkBandwidth(40)
      *             .storageBundleId(example.id())
@@ -1112,12 +1112,12 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
      *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
@@ -1129,7 +1129,7 @@ public final class CloudstoragegatewayFunctions {
      *             .gatewayClass(&#34;Standard&#34;)
      *             .type(&#34;File&#34;)
      *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .releaseAfterExpiration(false)
      *             .publicNetworkBandwidth(40)
      *             .storageBundleId(example.id())
@@ -1198,12 +1198,12 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
      *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
@@ -1215,7 +1215,7 @@ public final class CloudstoragegatewayFunctions {
      *             .gatewayClass(&#34;Standard&#34;)
      *             .type(&#34;File&#34;)
      *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .releaseAfterExpiration(false)
      *             .publicNetworkBandwidth(40)
      *             .storageBundleId(example.id())
@@ -1284,12 +1284,12 @@ public final class CloudstoragegatewayFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var defaultNetworks = VpcFunctions.getNetworks(GetNetworksArgs.builder()
+     *         final var default = VpcFunctions.getNetworks(GetNetworksArgs.builder()
      *             .nameRegex(&#34;default-NODELETING&#34;)
      *             .build());
      * 
-     *         final var defaultSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
-     *             .vpcId(defaultNetworks.applyValue(getNetworksResult -&gt; getNetworksResult.ids()[0]))
+     *         final var defaultGetSwitches = VpcFunctions.getSwitches(GetSwitchesArgs.builder()
+     *             .vpcId(default_.ids()[0])
      *             .build());
      * 
      *         var example = new StorageBundle(&#34;example&#34;, StorageBundleArgs.builder()        
@@ -1301,7 +1301,7 @@ public final class CloudstoragegatewayFunctions {
      *             .gatewayClass(&#34;Standard&#34;)
      *             .type(&#34;File&#34;)
      *             .paymentType(&#34;PayAsYouGo&#34;)
-     *             .vswitchId(defaultSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
+     *             .vswitchId(defaultGetSwitches.applyValue(getSwitchesResult -&gt; getSwitchesResult.ids()[0]))
      *             .releaseAfterExpiration(false)
      *             .publicNetworkBandwidth(40)
      *             .storageBundleId(example.id())

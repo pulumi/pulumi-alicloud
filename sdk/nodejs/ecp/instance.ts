@@ -12,6 +12,58 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** Available since v1.158.0.
  *
+ * ## Example Usage
+ *
+ * Basic Usage
+ *
+ * <!--Start PulumiCodeChooser -->
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ * import * as random from "@pulumi/random";
+ *
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "tf-example";
+ * const defaultInteger = new random.index.Integer("default", {
+ *     min: 10000,
+ *     max: 99999,
+ * });
+ * const default = alicloud.ecp.getZones({});
+ * const defaultGetInstanceTypes = alicloud.ecp.getInstanceTypes({});
+ * const countSize = _default.then(_default => _default.zones).length;
+ * const zoneId = Promise.all([_default, countSize]).then(([_default, countSize]) => _default.zones[countSize - 1].zoneId);
+ * const instanceTypeCountSize = defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes).length;
+ * const instanceType = Promise.all([defaultGetInstanceTypes, instanceTypeCountSize]).then(([defaultGetInstanceTypes, instanceTypeCountSize]) => defaultGetInstanceTypes.instanceTypes[instanceTypeCountSize - 1].instanceType);
+ * const defaultGetNetworks = alicloud.vpc.getNetworks({
+ *     nameRegex: "^default-NODELETING$",
+ * });
+ * const defaultGetSwitches = defaultGetNetworks.then(defaultGetNetworks => alicloud.vpc.getSwitches({
+ *     vpcId: defaultGetNetworks.ids?.[0],
+ *     zoneId: zoneId,
+ * }));
+ * const group = new alicloud.ecs.SecurityGroup("group", {
+ *     name: name,
+ *     vpcId: defaultGetNetworks.then(defaultGetNetworks => defaultGetNetworks.ids?.[0]),
+ * });
+ * const defaultKeyPair = new alicloud.ecp.KeyPair("default", {
+ *     keyPairName: `${name}-${defaultInteger.result}`,
+ *     publicKeyBody: "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
+ * });
+ * const defaultInstance = new alicloud.ecp.Instance("default", {
+ *     instanceName: name,
+ *     description: name,
+ *     keyPairName: defaultKeyPair.keyPairName,
+ *     securityGroupId: group.id,
+ *     vswitchId: defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0]),
+ *     imageId: "android_9_0_0_release_2851157_20211201.vhd",
+ *     instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[1]?.instanceType),
+ *     vncPassword: "Ecp123",
+ *     paymentType: "PayAsYouGo",
+ *     force: true,
+ * });
+ * ```
+ * <!--End PulumiCodeChooser -->
+ *
  * ## Import
  *
  * Elastic Cloud Phone (ECP) Instance can be imported using the id, e.g.

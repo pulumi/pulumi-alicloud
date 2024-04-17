@@ -142,7 +142,9 @@ class App(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.apigateway.App("example", description="tf_example")
+        example = alicloud.apigateway.App("example",
+            name="tf_example",
+            description="tf_example")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -176,7 +178,9 @@ class App(pulumi.CustomResource):
         import pulumi
         import pulumi_alicloud as alicloud
 
-        example = alicloud.apigateway.App("example", description="tf_example")
+        example = alicloud.apigateway.App("example",
+            name="tf_example",
+            description="tf_example")
         ```
         <!--End PulumiCodeChooser -->
 

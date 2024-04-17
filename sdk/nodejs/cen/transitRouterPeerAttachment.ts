@@ -22,36 +22,24 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "tf_example";
  * const region = config.get("region") || "cn-hangzhou";
  * const peerRegion = config.get("peerRegion") || "cn-beijing";
- * const hz = new alicloud.Provider("hz", {region: region});
- * const bj = new alicloud.Provider("bj", {region: peerRegion});
- * const exampleInstance = new alicloud.cen.Instance("exampleInstance", {
+ * const example = new alicloud.cen.Instance("example", {
  *     cenInstanceName: name,
  *     protectionLevel: "REDUCED",
- * }, {
- *     provider: alicloud.bj,
  * });
- * const exampleBandwidthPackage = new alicloud.cen.BandwidthPackage("exampleBandwidthPackage", {
+ * const exampleBandwidthPackage = new alicloud.cen.BandwidthPackage("example", {
  *     bandwidth: 5,
  *     cenBandwidthPackageName: "tf_example",
  *     geographicRegionAId: "China",
  *     geographicRegionBId: "China",
- * }, {
- *     provider: alicloud.bj,
  * });
- * const exampleBandwidthPackageAttachment = new alicloud.cen.BandwidthPackageAttachment("exampleBandwidthPackageAttachment", {
- *     instanceId: exampleInstance.id,
+ * const exampleBandwidthPackageAttachment = new alicloud.cen.BandwidthPackageAttachment("example", {
+ *     instanceId: example.id,
  *     bandwidthPackageId: exampleBandwidthPackage.id,
- * }, {
- *     provider: alicloud.bj,
  * });
- * const exampleTransitRouter = new alicloud.cen.TransitRouter("exampleTransitRouter", {cenId: exampleBandwidthPackageAttachment.instanceId}, {
- *     provider: alicloud.hz,
- * });
- * const peer = new alicloud.cen.TransitRouter("peer", {cenId: exampleTransitRouter.cenId}, {
- *     provider: alicloud.bj,
- * });
- * const exampleTransitRouterPeerAttachment = new alicloud.cen.TransitRouterPeerAttachment("exampleTransitRouterPeerAttachment", {
- *     cenId: exampleInstance.id,
+ * const exampleTransitRouter = new alicloud.cen.TransitRouter("example", {cenId: exampleBandwidthPackageAttachment.instanceId});
+ * const peer = new alicloud.cen.TransitRouter("peer", {cenId: exampleTransitRouter.cenId});
+ * const exampleTransitRouterPeerAttachment = new alicloud.cen.TransitRouterPeerAttachment("example", {
+ *     cenId: example.id,
  *     transitRouterId: exampleTransitRouter.transitRouterId,
  *     peerTransitRouterRegionId: peerRegion,
  *     peerTransitRouterId: peer.transitRouterId,
@@ -59,8 +47,6 @@ import * as utilities from "../utilities";
  *     bandwidth: 5,
  *     transitRouterAttachmentDescription: name,
  *     transitRouterAttachmentName: name,
- * }, {
- *     provider: alicloud.hz,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

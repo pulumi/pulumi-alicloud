@@ -33,23 +33,23 @@ namespace Pulumi.AliCloud.ThreatDetection
     ///     var name = config.Get("name") ?? "terraform-example";
     ///     var @default = new AliCloud.ThreatDetection.ClientFileProtect("default", new()
     ///     {
-    ///         AlertLevel = 0,
-    ///         FileOps = new[]
-    ///         {
-    ///             "CREATE",
-    ///         },
+    ///         Status = 0,
     ///         FilePaths = new[]
     ///         {
     ///             "/usr/local",
     ///         },
+    ///         FileOps = new[]
+    ///         {
+    ///             "CREATE",
+    ///         },
+    ///         RuleAction = "pass",
     ///         ProcPaths = new[]
     ///         {
     ///             "/usr/local",
     ///         },
-    ///         RuleAction = "pass",
-    ///         RuleName = "rule_example",
-    ///         Status = 0,
+    ///         AlertLevel = 0,
     ///         SwitchId = "FILE_PROTECT_RULE_SWITCH_TYPE_1693474122929",
+    ///         RuleName = "rule_example",
     ///     });
     /// 
     /// });

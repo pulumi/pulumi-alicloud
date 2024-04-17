@@ -24,22 +24,22 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "terraform-example";
- * const defaultNetworks = alicloud.vpc.getNetworks({
+ * const default = alicloud.vpc.getNetworks({
  *     nameRegex: "^default-NODELETING$",
  *     cidrBlock: "172.16.0.0/16",
  * });
- * const defaultSwitches = defaultNetworks.then(defaultNetworks => alicloud.vpc.getSwitches({
- *     vpcId: defaultNetworks.ids?.[0],
+ * const defaultGetSwitches = _default.then(_default => alicloud.vpc.getSwitches({
+ *     vpcId: _default.ids?.[0],
  *     zoneId: "cn-hangzhou-k",
  * }));
- * const defaultInstance = new alicloud.kms.Instance("defaultInstance", {
+ * const defaultInstance = new alicloud.kms.Instance("default", {
  *     productVersion: "3",
- *     vpcId: defaultNetworks.then(defaultNetworks => defaultNetworks.ids?.[0]),
+ *     vpcId: _default.then(_default => _default.ids?.[0]),
  *     zoneIds: [
  *         "cn-hangzhou-k",
  *         "cn-hangzhou-j",
  *     ],
- *     vswitchIds: [defaultSwitches.then(defaultSwitches => defaultSwitches.ids?.[0])],
+ *     vswitchIds: [defaultGetSwitches.then(defaultGetSwitches => defaultGetSwitches.ids?.[0])],
  *     vpcNum: 1,
  *     keyNum: 1000,
  *     secretNum: 0,

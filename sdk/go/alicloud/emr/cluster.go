@@ -20,6 +20,1061 @@ import (
 //
 // ## Example Usage
 //
+// ### 1. Create A Cluster
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/emr"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _default, err := emr.GetMainVersions(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetInstanceTypes, err := emr.GetInstanceTypes(ctx, &emr.GetInstanceTypesArgs{
+// DestinationResource: "InstanceType",
+// ClusterType: _default.MainVersions[0].ClusterTypes[0],
+// SupportLocalStorage: pulumi.BoolRef(false),
+// InstanceChargeType: "PostPaid",
+// SupportNodeTypes: []string{
+// "MASTER",
+// "CORE",
+// "TASK",
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// dataDisk, err := emr.GetDiskTypes(ctx, &emr.GetDiskTypesArgs{
+// DestinationResource: "DataDisk",
+// ClusterType: _default.MainVersions[0].ClusterTypes[0],
+// InstanceChargeType: "PostPaid",
+// InstanceType: defaultGetInstanceTypes.Types[0].Id,
+// ZoneId: pulumi.StringRef(defaultGetInstanceTypes.Types[0].ZoneId),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// systemDisk, err := emr.GetDiskTypes(ctx, &emr.GetDiskTypesArgs{
+// DestinationResource: "SystemDisk",
+// ClusterType: _default.MainVersions[0].ClusterTypes[0],
+// InstanceChargeType: "PostPaid",
+// InstanceType: defaultGetInstanceTypes.Types[0].Id,
+// ZoneId: pulumi.StringRef(defaultGetInstanceTypes.Types[0].ZoneId),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// var tmp0 float64
+// if vpcId == "" {
+// tmp0 = 1
+// } else {
+// tmp0 = 0
+// }
+// var vpc []*vpc.Network
+//
+//	for index := 0; index < tmp0; index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := vpc.NewNetwork(ctx, fmt.Sprintf("vpc-%v", key0), &vpc.NetworkArgs{
+// Name: pulumi.Any(vpcName),
+// CidrBlock: pulumi.Any(vpcCidr),
+// })
+// if err != nil {
+// return err
+// }
+// vpc = append(vpc, __res)
+// }
+// var tmp1 pulumi.String
+// if vpcId == "" {
+// tmp1 = vpc[0].ID()
+// } else {
+// tmp1 = pulumi.Any(vpcId)
+// }
+// var tmp2 float64
+// if securityGroupId == "" {
+// tmp2 = 1
+// } else {
+// tmp2 = 0
+// }
+// var defaultSecurityGroup []*ecs.SecurityGroup
+//
+//	for index := 0; index < tmp2; index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := ecs.NewSecurityGroup(ctx, fmt.Sprintf("default-%v", key0), &ecs.SecurityGroupArgs{
+// Name: pulumi.Any(securityGroupName),
+// VpcId: pulumi.String(tmp1),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSecurityGroup = append(defaultSecurityGroup, __res)
+// }
+// var tmp3 pulumi.String
+// if availabilityZone == "" {
+// tmp3 = pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId)
+// } else {
+// tmp3 = pulumi.Any(availabilityZone)
+// }
+// var tmp4 pulumi.String
+// if vpcId == "" {
+// tmp4 = vpc[0].ID()
+// } else {
+// tmp4 = pulumi.Any(vpcId)
+// }
+// // VSwitch Resource for Module
+// var tmp5 float64
+// if vswitchId == "" {
+// tmp5 = 1
+// } else {
+// tmp5 = 0
+// }
+// var vswitch []*vpc.Switch
+//
+//	for index := 0; index < tmp5; index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("vswitch-%v", key0), &vpc.SwitchArgs{
+// AvailabilityZone: pulumi.String(tmp3),
+// VswitchName: pulumi.Any(vswitchName),
+// CidrBlock: pulumi.Any(vswitchCidr),
+// VpcId: pulumi.String(tmp4),
+// })
+// if err != nil {
+// return err
+// }
+// vswitch = append(vswitch, __res)
+// }
+// // Ram role Resource for Module
+// defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
+// Name: pulumi.Any(ramName),
+//
+//	Document: pulumi.String(`    {
+//	        "Statement": [
+//	        {
+//	            "Action": "sts:AssumeRole",
+//	            "Effect": "Allow",
+//	            "Principal": {
+//	            "Service": [
+//	                "emr.aliyuncs.com",
+//	                "ecs.aliyuncs.com"
+//	            ]
+//	            }
+//	        }
+//	        ],
+//	        "Version": "1"
+//	    }
+//
+// `),
+// Description: pulumi.String("this is a role test."),
+// Force: pulumi.Bool(true),
+// })
+// if err != nil {
+// return err
+// }
+// var tmp6 pulumi.String
+// if securityGroupId == "" {
+// tmp6 = defaultSecurityGroup[0].ID()
+// } else {
+// tmp6 = pulumi.Any(securityGroupId)
+// }
+// var tmp7 pulumi.String
+// if vswitchId == "" {
+// tmp7 = vswitch[0].ID()
+// } else {
+// tmp7 = pulumi.Any(vswitchId)
+// }
+// _, err = emr.NewCluster(ctx, "default", &emr.ClusterArgs{
+// Name: pulumi.String("terraform-create-cluster-test"),
+// EmrVer: pulumi.String(_default.MainVersions[0].EmrVersion),
+// ClusterType: pulumi.String(_default.MainVersions[0].ClusterTypes[0]),
+// HostGroups: emr.ClusterHostGroupArray{
+// var tmp8 pulumi.String
+// if dataDisk.Types[0].Min > 160 {
+// tmp8 = pulumi.Int(dataDisk.Types[0].Min)
+// } else {
+// tmp8 = pulumi.String("160")
+// }
+// var tmp9 pulumi.String
+// if systemDisk.Types[0].Min > 160 {
+// tmp9 = pulumi.Int(systemDisk.Types[0].Min)
+// } else {
+// tmp9 = pulumi.String("160")
+// }
+// &emr.ClusterHostGroupArgs{
+// HostGroupName: pulumi.String("master_group"),
+// HostGroupType: pulumi.String("MASTER"),
+// NodeCount: pulumi.String("2"),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.Types[0].Id),
+// DiskType: pulumi.String(dataDisk.Types[0].Value),
+// DiskCapacity: pulumi.String(tmp8),
+// DiskCount: pulumi.String("1"),
+// SysDiskType: pulumi.String(systemDisk.Types[0].Value),
+// SysDiskCapacity: pulumi.String(tmp9),
+// },
+// var tmp10 pulumi.String
+// if dataDisk.Types[0].Min > 160 {
+// tmp10 = pulumi.Int(dataDisk.Types[0].Min)
+// } else {
+// tmp10 = pulumi.String("160")
+// }
+// var tmp11 pulumi.String
+// if systemDisk.Types[0].Min > 160 {
+// tmp11 = pulumi.Int(systemDisk.Types[0].Min)
+// } else {
+// tmp11 = pulumi.String("160")
+// }
+// &emr.ClusterHostGroupArgs{
+// HostGroupName: pulumi.String("core_group"),
+// HostGroupType: pulumi.String("CORE"),
+// NodeCount: pulumi.String("3"),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.Types[0].Id),
+// DiskType: pulumi.String(dataDisk.Types[0].Value),
+// DiskCapacity: pulumi.String(tmp10),
+// DiskCount: pulumi.String("4"),
+// SysDiskType: pulumi.String(systemDisk.Types[0].Value),
+// SysDiskCapacity: pulumi.String(tmp11),
+// },
+// var tmp12 pulumi.String
+// if dataDisk.Types[0].Min > 160 {
+// tmp12 = pulumi.Int(dataDisk.Types[0].Min)
+// } else {
+// tmp12 = pulumi.String("160")
+// }
+// var tmp13 pulumi.String
+// if systemDisk.Types[0].Min > 160 {
+// tmp13 = pulumi.Int(systemDisk.Types[0].Min)
+// } else {
+// tmp13 = pulumi.String("160")
+// }
+// &emr.ClusterHostGroupArgs{
+// HostGroupName: pulumi.String("task_group"),
+// HostGroupType: pulumi.String("TASK"),
+// NodeCount: pulumi.String("2"),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.Types[0].Id),
+// DiskType: pulumi.String(dataDisk.Types[0].Value),
+// DiskCapacity: pulumi.String(tmp12),
+// DiskCount: pulumi.String("4"),
+// SysDiskType: pulumi.String(systemDisk.Types[0].Value),
+// SysDiskCapacity: pulumi.String(tmp13),
+// },
+// },
+// HighAvailabilityEnable: pulumi.Bool(true),
+// ZoneId: pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId),
+// SecurityGroupId: pulumi.String(tmp6),
+// IsOpenPublicIp: pulumi.Bool(true),
+// ChargeType: pulumi.String("PostPaid"),
+// VswitchId: pulumi.String(tmp7),
+// UserDefinedEmrEcsRole: defaultRole.Name,
+// SshEnable: pulumi.Bool(true),
+// MasterPwd: pulumi.String("ABCtest1234!"),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ### 2. Scale Up
+// The hosts of EMR Cluster are orginized as host group. Scaling up/down is operating host group.
+//
+// In the case of scaling up cluster, we should add the nodeCount of some host group.
+//
+// > **NOTE:** Scaling up is only applicable to CORE and TASK group. Cost time of scaling up will vary with the number of scaling-up nodes.
+// Scaling down is only applicable to TASK group. If you want to scale down CORE group, please submit tickets or contact EMR support team.
+//
+// As the following case, we scale up the TASK group 2 nodes by increasing host_group.node_count by 2.
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/emr"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _default, err := emr.GetMainVersions(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetInstanceTypes, err := emr.GetInstanceTypes(ctx, &emr.GetInstanceTypesArgs{
+// DestinationResource: "InstanceType",
+// ClusterType: _default.MainVersions[0].ClusterTypes[0],
+// SupportLocalStorage: pulumi.BoolRef(false),
+// InstanceChargeType: "PostPaid",
+// SupportNodeTypes: []string{
+// "MASTER",
+// "CORE",
+// "TASK",
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// dataDisk, err := emr.GetDiskTypes(ctx, &emr.GetDiskTypesArgs{
+// DestinationResource: "DataDisk",
+// ClusterType: _default.MainVersions[0].ClusterTypes[0],
+// InstanceChargeType: "PostPaid",
+// InstanceType: defaultGetInstanceTypes.Types[0].Id,
+// ZoneId: pulumi.StringRef(defaultGetInstanceTypes.Types[0].ZoneId),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// systemDisk, err := emr.GetDiskTypes(ctx, &emr.GetDiskTypesArgs{
+// DestinationResource: "SystemDisk",
+// ClusterType: _default.MainVersions[0].ClusterTypes[0],
+// InstanceChargeType: "PostPaid",
+// InstanceType: defaultGetInstanceTypes.Types[0].Id,
+// ZoneId: pulumi.StringRef(defaultGetInstanceTypes.Types[0].ZoneId),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// var tmp0 float64
+// if vpcId == "" {
+// tmp0 = 1
+// } else {
+// tmp0 = 0
+// }
+// var vpc []*vpc.Network
+//
+//	for index := 0; index < tmp0; index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := vpc.NewNetwork(ctx, fmt.Sprintf("vpc-%v", key0), &vpc.NetworkArgs{
+// Name: pulumi.Any(vpcName),
+// CidrBlock: pulumi.Any(vpcCidr),
+// })
+// if err != nil {
+// return err
+// }
+// vpc = append(vpc, __res)
+// }
+// var tmp1 pulumi.String
+// if vpcId == "" {
+// tmp1 = vpc[0].ID()
+// } else {
+// tmp1 = pulumi.Any(vpcId)
+// }
+// var tmp2 float64
+// if securityGroupId == "" {
+// tmp2 = 1
+// } else {
+// tmp2 = 0
+// }
+// var defaultSecurityGroup []*ecs.SecurityGroup
+//
+//	for index := 0; index < tmp2; index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := ecs.NewSecurityGroup(ctx, fmt.Sprintf("default-%v", key0), &ecs.SecurityGroupArgs{
+// Name: pulumi.Any(securityGroupName),
+// VpcId: pulumi.String(tmp1),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSecurityGroup = append(defaultSecurityGroup, __res)
+// }
+// var tmp3 pulumi.String
+// if availabilityZone == "" {
+// tmp3 = pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId)
+// } else {
+// tmp3 = pulumi.Any(availabilityZone)
+// }
+// var tmp4 pulumi.String
+// if vpcId == "" {
+// tmp4 = vpc[0].ID()
+// } else {
+// tmp4 = pulumi.Any(vpcId)
+// }
+// // VSwitch Resource for Module
+// var tmp5 float64
+// if vswitchId == "" {
+// tmp5 = 1
+// } else {
+// tmp5 = 0
+// }
+// var vswitch []*vpc.Switch
+//
+//	for index := 0; index < tmp5; index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("vswitch-%v", key0), &vpc.SwitchArgs{
+// AvailabilityZone: pulumi.String(tmp3),
+// VswitchName: pulumi.Any(vswitchName),
+// CidrBlock: pulumi.Any(vswitchCidr),
+// VpcId: pulumi.String(tmp4),
+// })
+// if err != nil {
+// return err
+// }
+// vswitch = append(vswitch, __res)
+// }
+// // Ram role Resource for Module
+// defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
+// Name: pulumi.Any(ramName),
+//
+//	Document: pulumi.String(`    {
+//	        "Statement": [
+//	        {
+//	            "Action": "sts:AssumeRole",
+//	            "Effect": "Allow",
+//	            "Principal": {
+//	            "Service": [
+//	                "emr.aliyuncs.com",
+//	                "ecs.aliyuncs.com"
+//	            ]
+//	            }
+//	        }
+//	        ],
+//	        "Version": "1"
+//	    }
+//
+// `),
+// Description: pulumi.String("this is a role test."),
+// Force: pulumi.Bool(true),
+// })
+// if err != nil {
+// return err
+// }
+// var tmp6 pulumi.String
+// if securityGroupId == "" {
+// tmp6 = defaultSecurityGroup[0].ID()
+// } else {
+// tmp6 = pulumi.Any(securityGroupId)
+// }
+// var tmp7 pulumi.String
+// if vswitchId == "" {
+// tmp7 = vswitch[0].ID()
+// } else {
+// tmp7 = pulumi.Any(vswitchId)
+// }
+// _, err = emr.NewCluster(ctx, "default", &emr.ClusterArgs{
+// Name: pulumi.String("terraform-resize-cluster-test"),
+// EmrVer: pulumi.String(_default.MainVersions[0].EmrVersion),
+// ClusterType: pulumi.String(_default.MainVersions[0].ClusterTypes[0]),
+// HostGroups: emr.ClusterHostGroupArray{
+// var tmp8 pulumi.String
+// if dataDisk.Types[0].Min > 160 {
+// tmp8 = pulumi.Int(dataDisk.Types[0].Min)
+// } else {
+// tmp8 = pulumi.String("160")
+// }
+// var tmp9 pulumi.String
+// if systemDisk.Types[0].Min > 160 {
+// tmp9 = pulumi.Int(systemDisk.Types[0].Min)
+// } else {
+// tmp9 = pulumi.String("160")
+// }
+// &emr.ClusterHostGroupArgs{
+// HostGroupName: pulumi.String("master_group"),
+// HostGroupType: pulumi.String("MASTER"),
+// NodeCount: pulumi.String("2"),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.Types[0].Id),
+// DiskType: pulumi.String(dataDisk.Types[0].Value),
+// DiskCapacity: pulumi.String(tmp8),
+// DiskCount: pulumi.String("1"),
+// SysDiskType: pulumi.String(systemDisk.Types[0].Value),
+// SysDiskCapacity: pulumi.String(tmp9),
+// },
+// var tmp10 pulumi.String
+// if dataDisk.Types[0].Min > 160 {
+// tmp10 = pulumi.Int(dataDisk.Types[0].Min)
+// } else {
+// tmp10 = pulumi.String("160")
+// }
+// var tmp11 pulumi.String
+// if systemDisk.Types[0].Min > 160 {
+// tmp11 = pulumi.Int(systemDisk.Types[0].Min)
+// } else {
+// tmp11 = pulumi.String("160")
+// }
+// &emr.ClusterHostGroupArgs{
+// HostGroupName: pulumi.String("core_group"),
+// HostGroupType: pulumi.String("CORE"),
+// NodeCount: pulumi.String("3"),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.Types[0].Id),
+// DiskType: pulumi.String(dataDisk.Types[0].Value),
+// DiskCapacity: pulumi.String(tmp10),
+// DiskCount: pulumi.String("4"),
+// SysDiskType: pulumi.String(systemDisk.Types[0].Value),
+// SysDiskCapacity: pulumi.String(tmp11),
+// },
+// var tmp12 pulumi.String
+// if dataDisk.Types[0].Min > 160 {
+// tmp12 = pulumi.Int(dataDisk.Types[0].Min)
+// } else {
+// tmp12 = pulumi.String("160")
+// }
+// var tmp13 pulumi.String
+// if systemDisk.Types[0].Min > 160 {
+// tmp13 = pulumi.Int(systemDisk.Types[0].Min)
+// } else {
+// tmp13 = pulumi.String("160")
+// }
+// &emr.ClusterHostGroupArgs{
+// HostGroupName: pulumi.String("task_group"),
+// HostGroupType: pulumi.String("TASK"),
+// NodeCount: pulumi.String("4"),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.Types[0].Id),
+// DiskType: pulumi.String(dataDisk.Types[0].Value),
+// DiskCapacity: pulumi.String(tmp12),
+// DiskCount: pulumi.String("4"),
+// SysDiskType: pulumi.String(systemDisk.Types[0].Value),
+// SysDiskCapacity: pulumi.String(tmp13),
+// },
+// },
+// HighAvailabilityEnable: pulumi.Bool(true),
+// ZoneId: pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId),
+// SecurityGroupId: pulumi.String(tmp6),
+// IsOpenPublicIp: pulumi.Bool(true),
+// ChargeType: pulumi.String("PostPaid"),
+// VswitchId: pulumi.String(tmp7),
+// UserDefinedEmrEcsRole: defaultRole.Name,
+// SshEnable: pulumi.Bool(true),
+// MasterPwd: pulumi.String("ABCtest1234!"),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ### 3. Scale Down
+//
+// In the case of scaling down a cluster, we need to specified the host group and the instance list.
+//
+// > **NOTE:** Graceful decommission of hadoop cluster has been supported Available in 1.168.0+.
+//
+// The following is an example. We scale down the cluster by decreasing the node count by 2, and specifying the scale-down instance list.
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/emr"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _default, err := emr.GetMainVersions(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetInstanceTypes, err := emr.GetInstanceTypes(ctx, &emr.GetInstanceTypesArgs{
+// DestinationResource: "InstanceType",
+// ClusterType: _default.MainVersions[0].ClusterTypes[0],
+// SupportLocalStorage: pulumi.BoolRef(false),
+// InstanceChargeType: "PostPaid",
+// SupportNodeTypes: []string{
+// "MASTER",
+// "CORE",
+// "TASK",
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// dataDisk, err := emr.GetDiskTypes(ctx, &emr.GetDiskTypesArgs{
+// DestinationResource: "DataDisk",
+// ClusterType: _default.MainVersions[0].ClusterTypes[0],
+// InstanceChargeType: "PostPaid",
+// InstanceType: defaultGetInstanceTypes.Types[0].Id,
+// ZoneId: pulumi.StringRef(defaultGetInstanceTypes.Types[0].ZoneId),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// systemDisk, err := emr.GetDiskTypes(ctx, &emr.GetDiskTypesArgs{
+// DestinationResource: "SystemDisk",
+// ClusterType: _default.MainVersions[0].ClusterTypes[0],
+// InstanceChargeType: "PostPaid",
+// InstanceType: defaultGetInstanceTypes.Types[0].Id,
+// ZoneId: pulumi.StringRef(defaultGetInstanceTypes.Types[0].ZoneId),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// var tmp0 float64
+// if vpcId == "" {
+// tmp0 = 1
+// } else {
+// tmp0 = 0
+// }
+// var vpc []*vpc.Network
+//
+//	for index := 0; index < tmp0; index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := vpc.NewNetwork(ctx, fmt.Sprintf("vpc-%v", key0), &vpc.NetworkArgs{
+// Name: pulumi.Any(vpcName),
+// CidrBlock: pulumi.Any(vpcCidr),
+// })
+// if err != nil {
+// return err
+// }
+// vpc = append(vpc, __res)
+// }
+// var tmp1 pulumi.String
+// if vpcId == "" {
+// tmp1 = vpc[0].ID()
+// } else {
+// tmp1 = pulumi.Any(vpcId)
+// }
+// var tmp2 float64
+// if securityGroupId == "" {
+// tmp2 = 1
+// } else {
+// tmp2 = 0
+// }
+// var defaultSecurityGroup []*ecs.SecurityGroup
+//
+//	for index := 0; index < tmp2; index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := ecs.NewSecurityGroup(ctx, fmt.Sprintf("default-%v", key0), &ecs.SecurityGroupArgs{
+// Name: pulumi.Any(securityGroupName),
+// VpcId: pulumi.String(tmp1),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSecurityGroup = append(defaultSecurityGroup, __res)
+// }
+// var tmp3 pulumi.String
+// if availabilityZone == "" {
+// tmp3 = pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId)
+// } else {
+// tmp3 = pulumi.Any(availabilityZone)
+// }
+// var tmp4 pulumi.String
+// if vpcId == "" {
+// tmp4 = vpc[0].ID()
+// } else {
+// tmp4 = pulumi.Any(vpcId)
+// }
+// // VSwitch Resource for Module
+// var tmp5 float64
+// if vswitchId == "" {
+// tmp5 = 1
+// } else {
+// tmp5 = 0
+// }
+// var vswitch []*vpc.Switch
+//
+//	for index := 0; index < tmp5; index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("vswitch-%v", key0), &vpc.SwitchArgs{
+// AvailabilityZone: pulumi.String(tmp3),
+// VswitchName: pulumi.Any(vswitchName),
+// CidrBlock: pulumi.Any(vswitchCidr),
+// VpcId: pulumi.String(tmp4),
+// })
+// if err != nil {
+// return err
+// }
+// vswitch = append(vswitch, __res)
+// }
+// // Ram role Resource for Module
+// defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
+// Name: pulumi.Any(ramName),
+//
+//	Document: pulumi.String(`    {
+//	        "Statement": [
+//	        {
+//	            "Action": "sts:AssumeRole",
+//	            "Effect": "Allow",
+//	            "Principal": {
+//	            "Service": [
+//	                "emr.aliyuncs.com",
+//	                "ecs.aliyuncs.com"
+//	            ]
+//	            }
+//	        }
+//	        ],
+//	        "Version": "1"
+//	    }
+//
+// `),
+// Description: pulumi.String("this is a role test."),
+// Force: pulumi.Bool(true),
+// })
+// if err != nil {
+// return err
+// }
+// var tmp6 pulumi.String
+// if securityGroupId == "" {
+// tmp6 = defaultSecurityGroup[0].ID()
+// } else {
+// tmp6 = pulumi.Any(securityGroupId)
+// }
+// var tmp7 pulumi.String
+// if vswitchId == "" {
+// tmp7 = vswitch[0].ID()
+// } else {
+// tmp7 = pulumi.Any(vswitchId)
+// }
+// _, err = emr.NewCluster(ctx, "default", &emr.ClusterArgs{
+// Name: pulumi.String("terraform-resize-cluster-test"),
+// EmrVer: pulumi.String(_default.MainVersions[0].EmrVersion),
+// ClusterType: pulumi.String(_default.MainVersions[0].ClusterTypes[0]),
+// HostGroups: emr.ClusterHostGroupArray{
+// var tmp8 pulumi.String
+// if dataDisk.Types[0].Min > 160 {
+// tmp8 = pulumi.Int(dataDisk.Types[0].Min)
+// } else {
+// tmp8 = pulumi.String("160")
+// }
+// var tmp9 pulumi.String
+// if systemDisk.Types[0].Min > 160 {
+// tmp9 = pulumi.Int(systemDisk.Types[0].Min)
+// } else {
+// tmp9 = pulumi.String("160")
+// }
+// &emr.ClusterHostGroupArgs{
+// HostGroupName: pulumi.String("master_group"),
+// HostGroupType: pulumi.String("MASTER"),
+// NodeCount: pulumi.String("2"),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.Types[0].Id),
+// DiskType: pulumi.String(dataDisk.Types[0].Value),
+// DiskCapacity: pulumi.String(tmp8),
+// DiskCount: pulumi.String("1"),
+// SysDiskType: pulumi.String(systemDisk.Types[0].Value),
+// SysDiskCapacity: pulumi.String(tmp9),
+// },
+// var tmp10 pulumi.String
+// if dataDisk.Types[0].Min > 160 {
+// tmp10 = pulumi.Int(dataDisk.Types[0].Min)
+// } else {
+// tmp10 = pulumi.String("160")
+// }
+// var tmp11 pulumi.String
+// if systemDisk.Types[0].Min > 160 {
+// tmp11 = pulumi.Int(systemDisk.Types[0].Min)
+// } else {
+// tmp11 = pulumi.String("160")
+// }
+// &emr.ClusterHostGroupArgs{
+// HostGroupName: pulumi.String("core_group"),
+// HostGroupType: pulumi.String("CORE"),
+// NodeCount: pulumi.String("3"),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.Types[0].Id),
+// DiskType: pulumi.String(dataDisk.Types[0].Value),
+// DiskCapacity: pulumi.String(tmp10),
+// DiskCount: pulumi.String("4"),
+// SysDiskType: pulumi.String(systemDisk.Types[0].Value),
+// SysDiskCapacity: pulumi.String(tmp11),
+// },
+// var tmp12 pulumi.String
+// if dataDisk.Types[0].Min > 160 {
+// tmp12 = pulumi.Int(dataDisk.Types[0].Min)
+// } else {
+// tmp12 = pulumi.String("160")
+// }
+// var tmp13 pulumi.String
+// if systemDisk.Types[0].Min > 160 {
+// tmp13 = pulumi.Int(systemDisk.Types[0].Min)
+// } else {
+// tmp13 = pulumi.String("160")
+// }
+// &emr.ClusterHostGroupArgs{
+// HostGroupName: pulumi.String("task_group"),
+// HostGroupType: pulumi.String("TASK"),
+// NodeCount: pulumi.String("2"),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.Types[0].Id),
+// DiskType: pulumi.String(dataDisk.Types[0].Value),
+// DiskCapacity: pulumi.String(tmp12),
+// DiskCount: pulumi.String("4"),
+// SysDiskType: pulumi.String(systemDisk.Types[0].Value),
+// SysDiskCapacity: pulumi.String(tmp13),
+// },
+// },
+// HighAvailabilityEnable: pulumi.Bool(true),
+// ZoneId: pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId),
+// SecurityGroupId: pulumi.String(tmp6),
+// IsOpenPublicIp: pulumi.Bool(true),
+// ChargeType: pulumi.String("PostPaid"),
+// VswitchId: pulumi.String(tmp7),
+// UserDefinedEmrEcsRole: defaultRole.Name,
+// SshEnable: pulumi.Bool(true),
+// MasterPwd: pulumi.String("ABCtest1234!"),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+// <!--End PulumiCodeChooser -->
+//
+// ### 4. Create a emr gateway cluster
+//
+// <!--Start PulumiCodeChooser -->
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/emr"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ram"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// _default, err := emr.GetMainVersions(ctx, nil, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetInstanceTypes, err := emr.GetInstanceTypes(ctx, &emr.GetInstanceTypesArgs{
+// DestinationResource: "InstanceType",
+// ClusterType: _default.MainVersions[0].ClusterTypes[0],
+// SupportLocalStorage: pulumi.BoolRef(false),
+// InstanceChargeType: "PostPaid",
+// SupportNodeTypes: []string{
+// "GATEWAY",
+// },
+// }, nil);
+// if err != nil {
+// return err
+// }
+// dataDisk, err := emr.GetDiskTypes(ctx, &emr.GetDiskTypesArgs{
+// DestinationResource: "DataDisk",
+// ClusterType: _default.MainVersions[0].ClusterTypes[0],
+// InstanceChargeType: "PostPaid",
+// InstanceType: defaultGetInstanceTypes.Types[0].Id,
+// ZoneId: pulumi.StringRef(defaultGetInstanceTypes.Types[0].ZoneId),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// systemDisk, err := emr.GetDiskTypes(ctx, &emr.GetDiskTypesArgs{
+// DestinationResource: "SystemDisk",
+// ClusterType: _default.MainVersions[0].ClusterTypes[0],
+// InstanceChargeType: "PostPaid",
+// InstanceType: defaultGetInstanceTypes.Types[0].Id,
+// ZoneId: pulumi.StringRef(defaultGetInstanceTypes.Types[0].ZoneId),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// var tmp0 float64
+// if vpcId == "" {
+// tmp0 = 1
+// } else {
+// tmp0 = 0
+// }
+// var vpc []*vpc.Network
+//
+//	for index := 0; index < tmp0; index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := vpc.NewNetwork(ctx, fmt.Sprintf("vpc-%v", key0), &vpc.NetworkArgs{
+// Name: pulumi.Any(vpcName),
+// CidrBlock: pulumi.Any(vpcCidr),
+// })
+// if err != nil {
+// return err
+// }
+// vpc = append(vpc, __res)
+// }
+// var tmp1 pulumi.String
+// if vpcId == "" {
+// tmp1 = vpc[0].ID()
+// } else {
+// tmp1 = pulumi.Any(vpcId)
+// }
+// var tmp2 float64
+// if securityGroupId == "" {
+// tmp2 = 1
+// } else {
+// tmp2 = 0
+// }
+// var defaultSecurityGroup []*ecs.SecurityGroup
+//
+//	for index := 0; index < tmp2; index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := ecs.NewSecurityGroup(ctx, fmt.Sprintf("default-%v", key0), &ecs.SecurityGroupArgs{
+// Name: pulumi.Any(securityGroupName),
+// VpcId: pulumi.String(tmp1),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSecurityGroup = append(defaultSecurityGroup, __res)
+// }
+// var tmp3 pulumi.String
+// if availabilityZone == "" {
+// tmp3 = pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId)
+// } else {
+// tmp3 = pulumi.Any(availabilityZone)
+// }
+// var tmp4 pulumi.String
+// if vpcId == "" {
+// tmp4 = vpc[0].ID()
+// } else {
+// tmp4 = pulumi.Any(vpcId)
+// }
+// // VSwitch Resource for Module
+// var tmp5 float64
+// if vswitchId == "" {
+// tmp5 = 1
+// } else {
+// tmp5 = 0
+// }
+// var vswitch []*vpc.Switch
+//
+//	for index := 0; index < tmp5; index++ {
+//	    key0 := index
+//	    _ := index
+//
+// __res, err := vpc.NewSwitch(ctx, fmt.Sprintf("vswitch-%v", key0), &vpc.SwitchArgs{
+// AvailabilityZone: pulumi.String(tmp3),
+// VswitchName: pulumi.Any(vswitchName),
+// CidrBlock: pulumi.Any(vswitchCidr),
+// VpcId: pulumi.String(tmp4),
+// })
+// if err != nil {
+// return err
+// }
+// vswitch = append(vswitch, __res)
+// }
+// // Ram role Resource for Module
+// defaultRole, err := ram.NewRole(ctx, "default", &ram.RoleArgs{
+// Name: pulumi.Any(ramName),
+//
+//	Document: pulumi.String(`    {
+//	        "Statement": [
+//	        {
+//	            "Action": "sts:AssumeRole",
+//	            "Effect": "Allow",
+//	            "Principal": {
+//	            "Service": [
+//	                "emr.aliyuncs.com",
+//	                "ecs.aliyuncs.com"
+//	            ]
+//	            }
+//	        }
+//	        ],
+//	        "Version": "1"
+//	    }
+//
+// `),
+// Description: pulumi.String("this is a role test."),
+// Force: pulumi.Bool(true),
+// })
+// if err != nil {
+// return err
+// }
+// var tmp6 pulumi.String
+// if securityGroupId == "" {
+// tmp6 = defaultSecurityGroup[0].ID()
+// } else {
+// tmp6 = pulumi.Any(securityGroupId)
+// }
+// var tmp7 pulumi.String
+// if vswitchId == "" {
+// tmp7 = vswitch[0].ID()
+// } else {
+// tmp7 = pulumi.Any(vswitchId)
+// }
+// _, err = emr.NewCluster(ctx, "gateway", &emr.ClusterArgs{
+// Name: pulumi.String("terraform-gateway-cluster-test"),
+// EmrVer: pulumi.String(_default.MainVersions[0].EmrVersion),
+// ClusterType: pulumi.String("GATEWAY"),
+// HostGroups: emr.ClusterHostGroupArray{
+// var tmp8 pulumi.String
+// if dataDisk.Types[0].Min > 160 {
+// tmp8 = pulumi.Int(dataDisk.Types[0].Min)
+// } else {
+// tmp8 = pulumi.String("160")
+// }
+// var tmp9 pulumi.String
+// if systemDisk.Types[0].Min > 160 {
+// tmp9 = pulumi.Int(systemDisk.Types[0].Min)
+// } else {
+// tmp9 = pulumi.String("160")
+// }
+// &emr.ClusterHostGroupArgs{
+// HostGroupName: pulumi.String("master_group"),
+// HostGroupType: pulumi.String("GATEWAY"),
+// NodeCount: pulumi.String("1"),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.Types[0].Id),
+// DiskType: pulumi.String(dataDisk.Types[0].Value),
+// DiskCapacity: pulumi.String(tmp8),
+// DiskCount: pulumi.String("1"),
+// SysDiskType: pulumi.String(systemDisk.Types[0].Value),
+// SysDiskCapacity: pulumi.String(tmp9),
+// },
+// },
+// HighAvailabilityEnable: pulumi.Bool(true),
+// ZoneId: pulumi.String(defaultGetInstanceTypes.Types[0].ZoneId),
+// SecurityGroupId: pulumi.String(tmp6),
+// IsOpenPublicIp: pulumi.Bool(true),
+// ChargeType: pulumi.String("PostPaid"),
+// VswitchId: pulumi.String(tmp7),
+// UserDefinedEmrEcsRole: defaultRole.Name,
+// SshEnable: pulumi.Bool(true),
+// MasterPwd: pulumi.String("ABCtest1234!"),
+// RelatedClusterId: pulumi.Any(relatedClusterId),
+// })
+// if err != nil {
+// return err
+// }
+// return nil
+// })
+// }
+// ```
+// <!--End PulumiCodeChooser -->
+//
 // ## Import
 //
 // Aliclioud E-MapReduce cluster can be imported using the id e.g.

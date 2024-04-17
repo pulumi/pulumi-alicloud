@@ -25,17 +25,19 @@ namespace Pulumi.AliCloud.Mns
     /// {
     ///     var topic = new AliCloud.Mns.Topic("topic", new()
     ///     {
-    ///         LoggingEnabled = false,
+    ///         Name = "tf-example-mnstopic",
     ///         MaximumMessageSize = 65536,
+    ///         LoggingEnabled = false,
     ///     });
     /// 
     ///     var subscription = new AliCloud.Mns.TopicSubscription("subscription", new()
     ///     {
-    ///         Endpoint = "http://www.xxx.com/xxx",
-    ///         FilterTag = "test",
-    ///         NotifyContentFormat = "XML",
-    ///         NotifyStrategy = "BACKOFF_RETRY",
     ///         TopicName = "tf-example-mnstopic",
+    ///         Name = "tf-example-mnstopic-sub",
+    ///         FilterTag = "test",
+    ///         Endpoint = "http://www.xxx.com/xxx",
+    ///         NotifyStrategy = "BACKOFF_RETRY",
+    ///         NotifyContentFormat = "XML",
     ///     });
     /// 
     /// });

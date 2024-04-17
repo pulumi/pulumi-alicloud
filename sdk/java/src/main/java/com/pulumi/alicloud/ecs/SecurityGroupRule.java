@@ -35,6 +35,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
  * import com.pulumi.alicloud.ecs.SecurityGroup;
+ * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
  * import com.pulumi.alicloud.ecs.SecurityGroupRule;
  * import com.pulumi.alicloud.ecs.SecurityGroupRuleArgs;
  * import java.util.List;
@@ -50,7 +51,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new SecurityGroup(&#34;default&#34;);
+ *         var default_ = new SecurityGroup(&#34;default&#34;, SecurityGroupArgs.builder()        
+ *             .name(&#34;default&#34;)
+ *             .build());
  * 
  *         var allowAllTcp = new SecurityGroupRule(&#34;allowAllTcp&#34;, SecurityGroupRuleArgs.builder()        
  *             .type(&#34;ingress&#34;)

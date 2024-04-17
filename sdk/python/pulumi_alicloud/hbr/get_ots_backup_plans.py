@@ -139,7 +139,7 @@ def get_ots_backup_plans(ids: Optional[Sequence[str]] = None,
     import pulumi_alicloud as alicloud
 
     ids = alicloud.hbr.get_ots_backup_plans(name_regex="^my-otsBackupPlan")
-    pulumi.export("hbrOtsBackupPlanId", data["alicloud_hbr_ots_backup_plans"]["plans"][0]["id"])
+    pulumi.export("hbrOtsBackupPlanId", plans[0]["id"])
     ```
     <!--End PulumiCodeChooser -->
 
@@ -196,7 +196,7 @@ def get_ots_backup_plans_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     import pulumi_alicloud as alicloud
 
     ids = alicloud.hbr.get_ots_backup_plans(name_regex="^my-otsBackupPlan")
-    pulumi.export("hbrOtsBackupPlanId", data["alicloud_hbr_ots_backup_plans"]["plans"][0]["id"])
+    pulumi.export("hbrOtsBackupPlanId", plans[0]["id"])
     ```
     <!--End PulumiCodeChooser -->
 

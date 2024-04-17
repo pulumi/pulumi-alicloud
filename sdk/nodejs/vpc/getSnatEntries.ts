@@ -23,28 +23,32 @@ import * as utilities from "../utilities";
  * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {cidrBlock: "172.16.0.0/12"});
- * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
+ * const fooNetwork = new alicloud.vpc.Network("foo", {
+ *     name: name,
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const fooSwitch = new alicloud.vpc.Switch("foo", {
  *     vpcId: fooNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
  *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const fooNatGateway = new alicloud.vpc.NatGateway("fooNatGateway", {
+ * const fooNatGateway = new alicloud.vpc.NatGateway("foo", {
  *     vpcId: fooNetwork.id,
  *     specification: "Small",
+ *     name: name,
  * });
- * const fooEipAddress = new alicloud.ecs.EipAddress("fooEipAddress", {addressName: name});
- * const fooEipAssociation = new alicloud.ecs.EipAssociation("fooEipAssociation", {
+ * const fooEipAddress = new alicloud.ecs.EipAddress("foo", {addressName: name});
+ * const fooEipAssociation = new alicloud.ecs.EipAssociation("foo", {
  *     allocationId: fooEipAddress.id,
  *     instanceId: fooNatGateway.id,
  * });
- * const fooSnatEntry = new alicloud.vpc.SnatEntry("fooSnatEntry", {
+ * const fooSnatEntry = new alicloud.vpc.SnatEntry("foo", {
  *     snatTableId: fooNatGateway.snatTableIds,
  *     sourceVswitchId: fooSwitch.id,
  *     snatIp: fooEipAddress.ipAddress,
  * });
- * const fooSnatEntries = alicloud.vpc.getSnatEntriesOutput({
+ * const foo = alicloud.vpc.getSnatEntriesOutput({
  *     snatTableId: fooSnatEntry.snatTableId,
  * });
  * ```
@@ -166,28 +170,32 @@ export interface GetSnatEntriesResult {
  * const default = alicloud.getZones({
  *     availableResourceCreation: "VSwitch",
  * });
- * const fooNetwork = new alicloud.vpc.Network("fooNetwork", {cidrBlock: "172.16.0.0/12"});
- * const fooSwitch = new alicloud.vpc.Switch("fooSwitch", {
+ * const fooNetwork = new alicloud.vpc.Network("foo", {
+ *     name: name,
+ *     cidrBlock: "172.16.0.0/12",
+ * });
+ * const fooSwitch = new alicloud.vpc.Switch("foo", {
  *     vpcId: fooNetwork.id,
  *     cidrBlock: "172.16.0.0/21",
  *     availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
  *     vswitchName: name,
  * });
- * const fooNatGateway = new alicloud.vpc.NatGateway("fooNatGateway", {
+ * const fooNatGateway = new alicloud.vpc.NatGateway("foo", {
  *     vpcId: fooNetwork.id,
  *     specification: "Small",
+ *     name: name,
  * });
- * const fooEipAddress = new alicloud.ecs.EipAddress("fooEipAddress", {addressName: name});
- * const fooEipAssociation = new alicloud.ecs.EipAssociation("fooEipAssociation", {
+ * const fooEipAddress = new alicloud.ecs.EipAddress("foo", {addressName: name});
+ * const fooEipAssociation = new alicloud.ecs.EipAssociation("foo", {
  *     allocationId: fooEipAddress.id,
  *     instanceId: fooNatGateway.id,
  * });
- * const fooSnatEntry = new alicloud.vpc.SnatEntry("fooSnatEntry", {
+ * const fooSnatEntry = new alicloud.vpc.SnatEntry("foo", {
  *     snatTableId: fooNatGateway.snatTableIds,
  *     sourceVswitchId: fooSwitch.id,
  *     snatIp: fooEipAddress.ipAddress,
  * });
- * const fooSnatEntries = alicloud.vpc.getSnatEntriesOutput({
+ * const foo = alicloud.vpc.getSnatEntriesOutput({
  *     snatTableId: fooSnatEntry.snatTableId,
  * });
  * ```

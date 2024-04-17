@@ -42,20 +42,20 @@ import (
 //				name = param
 //			}
 //			_, err := threatdetection.NewClientFileProtect(ctx, "default", &threatdetection.ClientFileProtectArgs{
-//				AlertLevel: pulumi.Int(0),
-//				FileOps: pulumi.StringArray{
-//					pulumi.String("CREATE"),
-//				},
+//				Status: pulumi.Int(0),
 //				FilePaths: pulumi.StringArray{
 //					pulumi.String("/usr/local"),
 //				},
+//				FileOps: pulumi.StringArray{
+//					pulumi.String("CREATE"),
+//				},
+//				RuleAction: pulumi.String("pass"),
 //				ProcPaths: pulumi.StringArray{
 //					pulumi.String("/usr/local"),
 //				},
-//				RuleAction: pulumi.String("pass"),
-//				RuleName:   pulumi.String("rule_example"),
-//				Status:     pulumi.Int(0),
+//				AlertLevel: pulumi.Int(0),
 //				SwitchId:   pulumi.String("FILE_PROTECT_RULE_SWITCH_TYPE_1693474122929"),
+//				RuleName:   pulumi.String("rule_example"),
 //			})
 //			if err != nil {
 //				return err

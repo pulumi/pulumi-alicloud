@@ -49,10 +49,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new AutoSnapShotPolicy(&#34;default&#34;, AutoSnapShotPolicyArgs.builder()        
- *             .policyName(&#34;tf-example&#34;)
- *             .repeatWeekdays(&#34;2&#34;)
- *             .retentionDays(1)
  *             .timePoints(&#34;01&#34;)
+ *             .policyName(&#34;tf-example&#34;)
+ *             .retentionDays(1)
+ *             .repeatWeekdays(&#34;2&#34;)
  *             .build());
  * 
  *     }

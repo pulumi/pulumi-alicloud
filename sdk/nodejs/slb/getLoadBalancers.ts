@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.slb.LoadBalancer("default", {});
+ * const _default = new alicloud.slb.LoadBalancer("default", {name: "sample_slb"});
  * const slbsDs = alicloud.slb.getLoadBalancers({
  *     nameRegex: "sample_slb",
  * });
@@ -203,7 +203,7 @@ export interface GetLoadBalancersResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.slb.LoadBalancer("default", {});
+ * const _default = new alicloud.slb.LoadBalancer("default", {name: "sample_slb"});
  * const slbsDs = alicloud.slb.getLoadBalancers({
  *     nameRegex: "sample_slb",
  * });

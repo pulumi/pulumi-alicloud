@@ -19,7 +19,10 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * // Add a new Domain.
- * const dns = new alicloud.dns.Domain("dns", {groupId: "85ab8713-4a30-4de4-9d20-155ff830f651"});
+ * const dns = new alicloud.dns.Domain("dns", {
+ *     name: "starmove.com",
+ *     groupId: "85ab8713-4a30-4de4-9d20-155ff830f651",
+ * });
  * ```
  * <!--End PulumiCodeChooser -->
  *

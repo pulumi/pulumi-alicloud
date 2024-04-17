@@ -43,26 +43,26 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			examplePhysicalConnections, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
+//			example, err := expressconnect.GetPhysicalConnections(ctx, &expressconnect.GetPhysicalConnectionsArgs{
 //				NameRegex: pulumi.StringRef("^preserved-NODELETING"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			vlanId, err := random.NewRandomInteger(ctx, "vlanId", &random.RandomIntegerArgs{
-//				Max: pulumi.Int(2999),
-//				Min: pulumi.Int(1),
+//			vlanId, err := random.NewInteger(ctx, "vlan_id", &random.IntegerArgs{
+//				Max: 2999,
+//				Min: 1,
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "exampleVirtualBorderRouter", &expressconnect.VirtualBorderRouterArgs{
+//			exampleVirtualBorderRouter, err := expressconnect.NewVirtualBorderRouter(ctx, "example", &expressconnect.VirtualBorderRouterArgs{
 //				LocalGatewayIp:          pulumi.String("10.0.0.1"),
 //				PeerGatewayIp:           pulumi.String("10.0.0.2"),
 //				PeeringSubnetMask:       pulumi.String("255.255.255.252"),
-//				PhysicalConnectionId:    pulumi.String(examplePhysicalConnections.Connections[0].Id),
+//				PhysicalConnectionId:    pulumi.String(example.Connections[0].Id),
 //				VirtualBorderRouterName: pulumi.String(name),
-//				VlanId:                  vlanId.ID(),
+//				VlanId:                  vlanId.Id,
 //				MinRxInterval:           pulumi.Int(1000),
 //				MinTxInterval:           pulumi.Int(1000),
 //				DetectMultiplier:        pulumi.Int(10),
@@ -70,7 +70,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleBgpGroup, err := vpc.NewBgpGroup(ctx, "exampleBgpGroup", &vpc.BgpGroupArgs{
+//			exampleBgpGroup, err := vpc.NewBgpGroup(ctx, "example", &vpc.BgpGroupArgs{
 //				AuthKey:      pulumi.String("YourPassword+12345678"),
 //				BgpGroupName: pulumi.String(name),
 //				Description:  pulumi.String(name),
@@ -81,7 +81,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vpc.NewBgpPeer(ctx, "exampleBgpPeer", &vpc.BgpPeerArgs{
+//			_, err = vpc.NewBgpPeer(ctx, "example", &vpc.BgpPeerArgs{
 //				BfdMultiHop:   pulumi.Int(10),
 //				BgpGroupId:    exampleBgpGroup.ID(),
 //				EnableBfd:     pulumi.Bool(true),

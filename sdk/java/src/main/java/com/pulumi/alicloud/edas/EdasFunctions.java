@@ -325,7 +325,7 @@ public final class EdasFunctions {
      *             .outputFile(&#34;clusters.txt&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstClusterName&#34;, data.alicloud_alikafka_consumer_groups().clusters().clusters()[0].cluster_name());
+     *         ctx.export(&#34;firstClusterName&#34;, clustersAlicloudAlikafkaConsumerGroups.clusters()[0].clusterName());
      *     }
      * }
      * ```
@@ -370,7 +370,7 @@ public final class EdasFunctions {
      *             .outputFile(&#34;clusters.txt&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstClusterName&#34;, data.alicloud_alikafka_consumer_groups().clusters().clusters()[0].cluster_name());
+     *         ctx.export(&#34;firstClusterName&#34;, clustersAlicloudAlikafkaConsumerGroups.clusters()[0].clusterName());
      *     }
      * }
      * ```
@@ -415,7 +415,7 @@ public final class EdasFunctions {
      *             .outputFile(&#34;clusters.txt&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstClusterName&#34;, data.alicloud_alikafka_consumer_groups().clusters().clusters()[0].cluster_name());
+     *         ctx.export(&#34;firstClusterName&#34;, clustersAlicloudAlikafkaConsumerGroups.clusters()[0].clusterName());
      *     }
      * }
      * ```
@@ -460,7 +460,7 @@ public final class EdasFunctions {
      *             .outputFile(&#34;clusters.txt&#34;)
      *             .build());
      * 
-     *         ctx.export(&#34;firstClusterName&#34;, data.alicloud_alikafka_consumer_groups().clusters().clusters()[0].cluster_name());
+     *         ctx.export(&#34;firstClusterName&#34;, clustersAlicloudAlikafkaConsumerGroups.clusters()[0].clusterName());
      *     }
      * }
      * ```

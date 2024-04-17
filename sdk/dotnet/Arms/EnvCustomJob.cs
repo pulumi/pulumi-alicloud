@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Arms
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var defaultRandomInteger = new Random.RandomInteger("defaultRandomInteger", new()
+    ///     var @default = new Random.Index.Integer("default", new()
     ///     {
     ///         Max = 99999,
     ///         Min = 10000,
@@ -48,12 +48,12 @@ namespace Pulumi.AliCloud.Arms
     ///     var env_ecs = new AliCloud.Arms.Environment("env-ecs", new()
     ///     {
     ///         EnvironmentType = "ECS",
-    ///         EnvironmentName = defaultRandomInteger.Result.Apply(result =&gt; $"terraform-example-{result}"),
+    ///         EnvironmentName = $"terraform-example-{@default.Result}",
     ///         BindResourceId = vpc.Id,
     ///         EnvironmentSubType = "ECS",
     ///     });
     /// 
-    ///     var defaultEnvCustomJob = new AliCloud.Arms.EnvCustomJob("defaultEnvCustomJob", new()
+    ///     var defaultEnvCustomJob = new AliCloud.Arms.EnvCustomJob("default", new()
     ///     {
     ///         Status = "run",
     ///         EnvironmentId = env_ecs.Id,

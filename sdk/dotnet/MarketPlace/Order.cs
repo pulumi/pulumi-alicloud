@@ -25,13 +25,13 @@ namespace Pulumi.AliCloud.MarketPlace
     /// {
     ///     var order = new AliCloud.MarketPlace.Order("order", new()
     ///     {
-    ///         CouponId = "",
-    ///         Duration = 1,
-    ///         PackageVersion = "yuncode2713600001",
-    ///         PayType = "prepay",
-    ///         PricingCycle = "Month",
     ///         ProductCode = "cmapi033136",
+    ///         PayType = "prepay",
     ///         Quantity = 1,
+    ///         Duration = 1,
+    ///         PricingCycle = "Month",
+    ///         PackageVersion = "yuncode2713600001",
+    ///         CouponId = "",
     ///     });
     /// 
     /// });

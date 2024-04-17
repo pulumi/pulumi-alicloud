@@ -129,13 +129,13 @@ def get_commands(command_type: Optional[str] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+    default_simple_office_site = alicloud.eds.SimpleOfficeSite("default",
         cidr_block="172.16.0.0/12",
         desktop_access_type="Internet",
         office_site_name="your_office_site_name")
-    default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM",
+    default = alicloud.eds.get_bundles(bundle_type="SYSTEM",
         name_regex="windows")
-    default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
+    default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("default",
         policy_group_name="your_policy_group_name",
         clipboard="readwrite",
         local_drive="read",
@@ -152,12 +152,12 @@ def get_commands(command_type: Optional[str] = None,
             priority="1",
             cidr_ip="0.0.0.0/0",
         )])
-    default_desktop = alicloud.eds.Desktop("defaultDesktop",
+    default_desktop = alicloud.eds.Desktop("default",
         office_site_id=default_simple_office_site.id,
         policy_group_id=default_ecd_policy_group.id,
-        bundle_id=default_bundles.bundles[0].id,
-        desktop_name=var["name"])
-    default_command = alicloud.eds.Command("defaultCommand",
+        bundle_id=default.bundles[0].id,
+        desktop_name=name)
+    default_command = alicloud.eds.Command("default",
         command_content="ipconfig",
         command_type="RunPowerShellScript",
         desktop_id=default_desktop.id)
@@ -217,13 +217,13 @@ def get_commands_output(command_type: Optional[pulumi.Input[Optional[str]]] = No
     import pulumi
     import pulumi_alicloud as alicloud
 
-    default_simple_office_site = alicloud.eds.SimpleOfficeSite("defaultSimpleOfficeSite",
+    default_simple_office_site = alicloud.eds.SimpleOfficeSite("default",
         cidr_block="172.16.0.0/12",
         desktop_access_type="Internet",
         office_site_name="your_office_site_name")
-    default_bundles = alicloud.eds.get_bundles(bundle_type="SYSTEM",
+    default = alicloud.eds.get_bundles(bundle_type="SYSTEM",
         name_regex="windows")
-    default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("defaultEcdPolicyGroup",
+    default_ecd_policy_group = alicloud.eds.EcdPolicyGroup("default",
         policy_group_name="your_policy_group_name",
         clipboard="readwrite",
         local_drive="read",
@@ -240,12 +240,12 @@ def get_commands_output(command_type: Optional[pulumi.Input[Optional[str]]] = No
             priority="1",
             cidr_ip="0.0.0.0/0",
         )])
-    default_desktop = alicloud.eds.Desktop("defaultDesktop",
+    default_desktop = alicloud.eds.Desktop("default",
         office_site_id=default_simple_office_site.id,
         policy_group_id=default_ecd_policy_group.id,
-        bundle_id=default_bundles.bundles[0].id,
-        desktop_name=var["name"])
-    default_command = alicloud.eds.Command("defaultCommand",
+        bundle_id=default.bundles[0].id,
+        desktop_name=name)
+    default_command = alicloud.eds.Command("default",
         command_content="ipconfig",
         command_type="RunPowerShellScript",
         desktop_id=default_desktop.id)

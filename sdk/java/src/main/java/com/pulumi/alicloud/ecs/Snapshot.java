@@ -50,7 +50,8 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var snapshot = new Snapshot(&#34;snapshot&#34;, SnapshotArgs.builder()        
- *             .diskId(alicloud_disk_attachment.instance-attachment().disk_id())
+ *             .diskId(instance_attachment.diskId())
+ *             .name(&#34;test-snapshot&#34;)
  *             .description(&#34;this snapshot is created for testing&#34;)
  *             .tags(Map.of(&#34;version&#34;, &#34;1.2&#34;))
  *             .build());

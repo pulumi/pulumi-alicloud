@@ -33,32 +33,32 @@ namespace Pulumi.AliCloud.Arms
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "tf-example";
-        ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+        ///     var @default = AliCloud.Vpc.GetNetworks.Invoke(new()
         ///     {
         ///         NameRegex = "default-NODELETING",
         ///     });
         /// 
-        ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
         ///     {
-        ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
         ///     });
         /// 
-        ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+        ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
         /// 
-        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
         ///     {
-        ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         VpcId = @default.Apply(@default =&gt; @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])),
         ///     });
         /// 
-        ///     var defaultPrometheus = new AliCloud.Arms.Prometheus("defaultPrometheus", new()
+        ///     var defaultPrometheus = new AliCloud.Arms.Prometheus("default", new()
         ///     {
         ///         ClusterType = "ecs",
         ///         GrafanaInstanceId = "free",
-        ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-        ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+        ///         VpcId = @default.Apply(@default =&gt; @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])),
+        ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
         ///         SecurityGroupId = defaultSecurityGroup.Id,
-        ///         ClusterName = $"{name}-{defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])}",
-        ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[1]?.Id),
+        ///         ClusterName = @default.Apply(@default =&gt; $"{name}-{@default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])}"),
+        ///         ResourceGroupId = defaultGetResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[1]?.Id),
         ///         Tags = 
         ///         {
         ///             { "Created", "TF" },
@@ -104,32 +104,32 @@ namespace Pulumi.AliCloud.Arms
         /// {
         ///     var config = new Config();
         ///     var name = config.Get("name") ?? "tf-example";
-        ///     var defaultNetworks = AliCloud.Vpc.GetNetworks.Invoke(new()
+        ///     var @default = AliCloud.Vpc.GetNetworks.Invoke(new()
         ///     {
         ///         NameRegex = "default-NODELETING",
         ///     });
         /// 
-        ///     var defaultSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
+        ///     var defaultGetSwitches = AliCloud.Vpc.GetSwitches.Invoke(new()
         ///     {
-        ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         VpcId = @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
         ///     });
         /// 
-        ///     var defaultResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
+        ///     var defaultGetResourceGroups = AliCloud.ResourceManager.GetResourceGroups.Invoke();
         /// 
-        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("defaultSecurityGroup", new()
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
         ///     {
-        ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
+        ///         VpcId = @default.Apply(@default =&gt; @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])),
         ///     });
         /// 
-        ///     var defaultPrometheus = new AliCloud.Arms.Prometheus("defaultPrometheus", new()
+        ///     var defaultPrometheus = new AliCloud.Arms.Prometheus("default", new()
         ///     {
         ///         ClusterType = "ecs",
         ///         GrafanaInstanceId = "free",
-        ///         VpcId = defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0]),
-        ///         VswitchId = defaultSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
+        ///         VpcId = @default.Apply(@default =&gt; @default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])),
+        ///         VswitchId = defaultGetSwitches.Apply(getSwitchesResult =&gt; getSwitchesResult.Ids[0]),
         ///         SecurityGroupId = defaultSecurityGroup.Id,
-        ///         ClusterName = $"{name}-{defaultNetworks.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])}",
-        ///         ResourceGroupId = defaultResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[1]?.Id),
+        ///         ClusterName = @default.Apply(@default =&gt; $"{name}-{@default.Apply(getNetworksResult =&gt; getNetworksResult.Ids[0])}"),
+        ///         ResourceGroupId = defaultGetResourceGroups.Apply(getResourceGroupsResult =&gt; getResourceGroupsResult.Groups[1]?.Id),
         ///         Tags = 
         ///         {
         ///             { "Created", "TF" },

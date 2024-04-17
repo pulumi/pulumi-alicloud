@@ -34,9 +34,9 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Add a Resource Manager handshake.
 //			_, err := resourcemanager.NewHandshake(ctx, "example", &resourcemanager.HandshakeArgs{
-//				Note:         pulumi.String("test resource manager handshake"),
 //				TargetEntity: pulumi.String("1182775234******"),
 //				TargetType:   pulumi.String("Account"),
+//				Note:         pulumi.String("test resource manager handshake"),
 //			})
 //			if err != nil {
 //				return err

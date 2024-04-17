@@ -21,17 +21,20 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const defaultZones = alicloud.getZones({
+ * const default = alicloud.getZones({
  *     availableResourceCreation: "Gpdb",
  * });
- * const defaultNetwork = new alicloud.vpc.Network("defaultNetwork", {cidrBlock: "172.16.0.0/16"});
- * const defaultSwitch = new alicloud.vpc.Switch("defaultSwitch", {
- *     zoneId: defaultZones.then(defaultZones => defaultZones.zones?.[0]?.id),
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     name: "vpc-123456",
+ *     cidrBlock: "172.16.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  *     vpcId: defaultNetwork.id,
  *     cidrBlock: "172.16.0.0/24",
  *     vswitchName: "vpc-123456",
  * });
- * const adbPgInstance = new alicloud.gpdb.ElasticInstance("adbPgInstance", {
+ * const adbPgInstance = new alicloud.gpdb.ElasticInstance("adb_pg_instance", {
  *     engine: "gpdb",
  *     engineVersion: "6.0",
  *     segStorageType: "cloud_essd",

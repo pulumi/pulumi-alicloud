@@ -166,12 +166,12 @@ class HybridMonitorFcTask(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_account = alicloud.get_account()
-        default_namespace = alicloud.cms.Namespace("defaultNamespace",
+        default = alicloud.get_account()
+        default_namespace = alicloud.cms.Namespace("default",
             description=name,
             namespace=name,
             specification="cms.s1.large")
-        default_hybrid_monitor_fc_task = alicloud.cms.HybridMonitorFcTask("defaultHybridMonitorFcTask",
+        default_hybrid_monitor_fc_task = alicloud.cms.HybridMonitorFcTask("default",
             namespace=default_namespace.id,
             yarm_config=\"\"\"products:
         - namespace: acs_ecs_dashboard
@@ -191,7 +191,7 @@ class HybridMonitorFcTask(pulumi.CustomResource):
             - MySQL_QPS
             - MySQL_TPS
         \"\"\",
-            target_user_id=default_account.id)
+            target_user_id=default.id)
         ```
         <!--End PulumiCodeChooser -->
 
@@ -235,12 +235,12 @@ class HybridMonitorFcTask(pulumi.CustomResource):
         name = config.get("name")
         if name is None:
             name = "tf-example"
-        default_account = alicloud.get_account()
-        default_namespace = alicloud.cms.Namespace("defaultNamespace",
+        default = alicloud.get_account()
+        default_namespace = alicloud.cms.Namespace("default",
             description=name,
             namespace=name,
             specification="cms.s1.large")
-        default_hybrid_monitor_fc_task = alicloud.cms.HybridMonitorFcTask("defaultHybridMonitorFcTask",
+        default_hybrid_monitor_fc_task = alicloud.cms.HybridMonitorFcTask("default",
             namespace=default_namespace.id,
             yarm_config=\"\"\"products:
         - namespace: acs_ecs_dashboard
@@ -260,7 +260,7 @@ class HybridMonitorFcTask(pulumi.CustomResource):
             - MySQL_QPS
             - MySQL_TPS
         \"\"\",
-            target_user_id=default_account.id)
+            target_user_id=default.id)
         ```
         <!--End PulumiCodeChooser -->
 

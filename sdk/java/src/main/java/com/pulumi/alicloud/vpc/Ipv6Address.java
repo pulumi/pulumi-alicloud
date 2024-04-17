@@ -59,9 +59,9 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
- *         final var defaultResourceGroups = ResourcemanagerFunctions.getResourceGroups();
+ *         final var default = ResourcemanagerFunctions.getResourceGroups();
  * 
- *         final var defaultZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
+ *         final var defaultGetZones = AlicloudFunctions.getZones(GetZonesArgs.builder()
  *             .availableResourceCreation(&#34;VSwitch&#34;)
  *             .build());
  * 
@@ -75,13 +75,13 @@ import javax.annotation.Nullable;
  *         var vswich = new Switch(&#34;vswich&#34;, SwitchArgs.builder()        
  *             .vpcId(vpc.id())
  *             .cidrBlock(&#34;172.168.0.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
+ *             .zoneId(defaultGetZones.applyValue(getZonesResult -&gt; getZonesResult.zones()[0].id()))
  *             .vswitchName(name)
  *             .ipv6CidrBlockMask(&#34;1&#34;)
  *             .build());
  * 
  *         var defaultIpv6Address = new Ipv6Address(&#34;defaultIpv6Address&#34;, Ipv6AddressArgs.builder()        
- *             .resourceGroupId(defaultResourceGroups.applyValue(getResourceGroupsResult -&gt; getResourceGroupsResult.ids()[0]))
+ *             .resourceGroupId(default_.ids()[0])
  *             .vswitchId(vswich.id())
  *             .ipv6AddressDescription(&#34;create_description&#34;)
  *             .ipv6AddressName(name)

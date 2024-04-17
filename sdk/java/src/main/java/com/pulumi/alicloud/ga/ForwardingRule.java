@@ -79,7 +79,7 @@ import javax.annotation.Nullable;
  *             .current(true)
  *             .build());
  * 
- *         var exampleAccelerator = new Accelerator(&#34;exampleAccelerator&#34;, AcceleratorArgs.builder()        
+ *         var example = new Accelerator(&#34;example&#34;, AcceleratorArgs.builder()        
  *             .duration(3)
  *             .spec(&#34;2&#34;)
  *             .acceleratorName(name)
@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleBandwidthPackageAttachment = new BandwidthPackageAttachment(&#34;exampleBandwidthPackageAttachment&#34;, BandwidthPackageAttachmentArgs.builder()        
- *             .acceleratorId(exampleAccelerator.id())
+ *             .acceleratorId(example.id())
  *             .bandwidthPackageId(exampleBandwidthPackage.id())
  *             .build());
  * 
@@ -110,6 +110,7 @@ import javax.annotation.Nullable;
  *             .acceleratorId(exampleBandwidthPackageAttachment.acceleratorId())
  *             .clientAffinity(&#34;SOURCE_IP&#34;)
  *             .description(name)
+ *             .name(name)
  *             .protocol(&#34;HTTP&#34;)
  *             .proxyProtocol(true)
  *             .portRanges(ListenerPortRangeArgs.builder()
@@ -124,7 +125,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var virtual = new EndpointGroup(&#34;virtual&#34;, EndpointGroupArgs.builder()        
- *             .acceleratorId(exampleAccelerator.id())
+ *             .acceleratorId(example.id())
  *             .endpointConfigurations(EndpointGroupEndpointConfigurationArgs.builder()
  *                 .endpoint(exampleEipAddress.ipAddress())
  *                 .type(&#34;PublicIp&#34;)
@@ -138,6 +139,7 @@ import javax.annotation.Nullable;
  *             .endpointRequestProtocol(&#34;HTTPS&#34;)
  *             .healthCheckIntervalSeconds(4)
  *             .healthCheckPath(&#34;/path&#34;)
+ *             .name(name)
  *             .thresholdCount(4)
  *             .trafficPercentage(20)
  *             .portOverrides(EndpointGroupPortOverridesArgs.builder()
@@ -147,7 +149,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleForwardingRule = new ForwardingRule(&#34;exampleForwardingRule&#34;, ForwardingRuleArgs.builder()        
- *             .acceleratorId(exampleAccelerator.id())
+ *             .acceleratorId(example.id())
  *             .listenerId(exampleListener.id())
  *             .ruleConditions(            
  *                 ForwardingRuleRuleConditionArgs.builder()

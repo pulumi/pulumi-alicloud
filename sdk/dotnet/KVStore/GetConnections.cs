@@ -15,6 +15,31 @@ namespace Pulumi.AliCloud.KVStore
         /// This data source can query the public IP of the specified KVStore DBInstance.
         ///  
         /// &gt; **NOTE:** Available in v1.101.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var example = AliCloud.KVStore.GetConnections.Invoke(new()
+        ///     {
+        ///         Ids = "r-wer123456",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["connectionString"] = example.Apply(getConnectionsResult =&gt; getConnectionsResult.Connections[0]?.ConnectionString),
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetConnectionsResult> InvokeAsync(GetConnectionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConnectionsResult>("alicloud:kvstore/getConnections:getConnections", args ?? new GetConnectionsArgs(), options.WithDefaults());
@@ -23,6 +48,31 @@ namespace Pulumi.AliCloud.KVStore
         /// This data source can query the public IP of the specified KVStore DBInstance.
         ///  
         /// &gt; **NOTE:** Available in v1.101.0+.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using AliCloud = Pulumi.AliCloud;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // Declare the data source
+        ///     var example = AliCloud.KVStore.GetConnections.Invoke(new()
+        ///     {
+        ///         Ids = "r-wer123456",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["connectionString"] = example.Apply(getConnectionsResult =&gt; getConnectionsResult.Connections[0]?.ConnectionString),
+        ///     };
+        /// });
+        /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetConnectionsResult> Invoke(GetConnectionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionsResult>("alicloud:kvstore/getConnections:getConnections", args ?? new GetConnectionsInvokeArgs(), options.WithDefaults());

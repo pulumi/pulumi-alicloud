@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_threat_detection_honeypot_preset.Default.Id,
+        ///             defaultAlicloudThreatDetectionHoneypotPreset.Id,
         ///         },
         ///         HoneypotImageName = "shiro",
         ///         NodeId = "example_value",
@@ -69,7 +69,7 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///     {
         ///         Ids = new[]
         ///         {
-        ///             alicloud_threat_detection_honeypot_preset.Default.Id,
+        ///             defaultAlicloudThreatDetectionHoneypotPreset.Id,
         ///         },
         ///         HoneypotImageName = "shiro",
         ///         NodeId = "example_value",

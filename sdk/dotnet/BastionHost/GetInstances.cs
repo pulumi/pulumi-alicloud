@@ -29,14 +29,14 @@ namespace Pulumi.AliCloud.BastionHost
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var instanceInstances = AliCloud.BastionHost.GetInstances.Invoke(new()
+        ///     var instance = AliCloud.BastionHost.GetInstances.Invoke(new()
         ///     {
         ///         DescriptionRegex = "^bastionhost",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["instance"] = alicloud_bastionhost_instances.Instance.Select(__item =&gt; __item.Id).ToList(),
+        ///         ["instance"] = instanceAlicloudBastionhostInstances.Select(__item =&gt; __item.Id).ToList(),
         ///     };
         /// });
         /// ```
@@ -63,14 +63,14 @@ namespace Pulumi.AliCloud.BastionHost
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var instanceInstances = AliCloud.BastionHost.GetInstances.Invoke(new()
+        ///     var instance = AliCloud.BastionHost.GetInstances.Invoke(new()
         ///     {
         ///         DescriptionRegex = "^bastionhost",
         ///     });
         /// 
         ///     return new Dictionary&lt;string, object?&gt;
         ///     {
-        ///         ["instance"] = alicloud_bastionhost_instances.Instance.Select(__item =&gt; __item.Id).ToList(),
+        ///         ["instance"] = instanceAlicloudBastionhostInstances.Select(__item =&gt; __item.Id).ToList(),
         ///     };
         /// });
         /// ```

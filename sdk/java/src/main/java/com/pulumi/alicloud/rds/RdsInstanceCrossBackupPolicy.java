@@ -57,15 +57,15 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
  *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example&#34;);
- *         final var defaultZones = RdsFunctions.getZones(GetZonesArgs.builder()
+ *         final var default = RdsFunctions.getZones(GetZonesArgs.builder()
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;8.0&#34;)
  *             .dbInstanceStorageType(&#34;local_ssd&#34;)
  *             .category(&#34;HighAvailability&#34;)
  *             .build());
  * 
- *         final var defaultInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *         final var defaultGetInstanceClasses = RdsFunctions.getInstanceClasses(GetInstanceClassesArgs.builder()
+ *             .zoneId(default_.ids()[0])
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;8.0&#34;)
  *             .dbInstanceStorageType(&#34;local_ssd&#34;)
@@ -82,15 +82,15 @@ import javax.annotation.Nullable;
  *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
  *             .vpcId(defaultNetwork.id())
  *             .cidrBlock(&#34;172.16.0.0/24&#34;)
- *             .zoneId(defaultZones.applyValue(getZonesResult -&gt; getZonesResult.ids()[0]))
+ *             .zoneId(default_.ids()[0])
  *             .vswitchName(name)
  *             .build());
  * 
  *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
  *             .engine(&#34;MySQL&#34;)
  *             .engineVersion(&#34;8.0&#34;)
- *             .instanceType(defaultInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
- *             .instanceStorage(defaultInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
+ *             .instanceType(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].instanceClass()))
+ *             .instanceStorage(defaultGetInstanceClasses.applyValue(getInstanceClassesResult -&gt; getInstanceClassesResult.instanceClasses()[0].storageRange().min()))
  *             .instanceChargeType(&#34;Postpaid&#34;)
  *             .category(&#34;HighAvailability&#34;)
  *             .instanceName(name)

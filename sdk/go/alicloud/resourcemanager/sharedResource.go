@@ -43,21 +43,21 @@ import (
 //			if param := cfg.Get("name"); param != "" {
 //				name = param
 //			}
-//			exampleZones, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+//			example, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
 //				AvailableResourceCreation: pulumi.StringRef("VSwitch"),
 //			}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			exampleNetwork, err := vpc.NewNetwork(ctx, "exampleNetwork", &vpc.NetworkArgs{
+//			exampleNetwork, err := vpc.NewNetwork(ctx, "example", &vpc.NetworkArgs{
 //				VpcName:   pulumi.String(name),
 //				CidrBlock: pulumi.String("192.168.0.0/16"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			exampleSwitch, err := vpc.NewSwitch(ctx, "exampleSwitch", &vpc.SwitchArgs{
-//				ZoneId:      pulumi.String(exampleZones.Zones[0].Id),
+//			exampleSwitch, err := vpc.NewSwitch(ctx, "example", &vpc.SwitchArgs{
+//				ZoneId:      pulumi.String(example.Zones[0].Id),
 //				CidrBlock:   pulumi.String("192.168.0.0/16"),
 //				VpcId:       exampleNetwork.ID(),
 //				VswitchName: pulumi.String(name),
@@ -65,13 +65,13 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			exampleResourceShare, err := resourcemanager.NewResourceShare(ctx, "exampleResourceShare", &resourcemanager.ResourceShareArgs{
+//			exampleResourceShare, err := resourcemanager.NewResourceShare(ctx, "example", &resourcemanager.ResourceShareArgs{
 //				ResourceShareName: pulumi.String(name),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = resourcemanager.NewSharedResource(ctx, "exampleSharedResource", &resourcemanager.SharedResourceArgs{
+//			_, err = resourcemanager.NewSharedResource(ctx, "example", &resourcemanager.SharedResourceArgs{
 //				ResourceId:      exampleSwitch.ID(),
 //				ResourceShareId: exampleResourceShare.ID(),
 //				ResourceType:    pulumi.String("VSwitch"),

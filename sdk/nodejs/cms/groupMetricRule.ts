@@ -24,13 +24,13 @@ import * as utilities from "../utilities";
  *
  * const config = new pulumi.Config();
  * const name = config.get("name") || "tf-example";
- * const defaultAlarmContactGroup = new alicloud.cms.AlarmContactGroup("defaultAlarmContactGroup", {
+ * const _default = new alicloud.cms.AlarmContactGroup("default", {
  *     alarmContactGroupName: name,
  *     describe: name,
  * });
- * const defaultMonitorGroup = new alicloud.cms.MonitorGroup("defaultMonitorGroup", {
+ * const defaultMonitorGroup = new alicloud.cms.MonitorGroup("default", {
  *     monitorGroupName: name,
- *     contactGroups: [defaultAlarmContactGroup.id],
+ *     contactGroups: [_default.id],
  * });
  * const _this = new alicloud.cms.GroupMetricRule("this", {
  *     groupId: defaultMonitorGroup.id,
