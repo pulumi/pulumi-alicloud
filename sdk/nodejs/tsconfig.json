@@ -973,6 +973,8 @@
         "hbr/nasBackupPlan.ts",
         "hbr/ossBackupPlan.ts",
         "hbr/otsBackupPlan.ts",
+        "hbr/policy.ts",
+        "hbr/policyBinding.ts",
         "hbr/replicationVault.ts",
         "hbr/restoreJob.ts",
         "hbr/serverBackupPlan.ts",

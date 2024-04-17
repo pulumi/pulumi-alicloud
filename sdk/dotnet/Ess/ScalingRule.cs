@@ -196,6 +196,24 @@ namespace Pulumi.AliCloud.Ess
         public Output<string?> MetricName { get; private set; } = null!;
 
         /// <summary>
+        /// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+        /// </summary>
+        [Output("minAdjustmentMagnitude")]
+        public Output<int?> MinAdjustmentMagnitude { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+        /// </summary>
+        [Output("scaleInEvaluationCount")]
+        public Output<int> ScaleInEvaluationCount { get; private set; } = null!;
+
+        /// <summary>
+        /// The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+        /// </summary>
+        [Output("scaleOutEvaluationCount")]
+        public Output<int> ScaleOutEvaluationCount { get; private set; } = null!;
+
+        /// <summary>
         /// ID of the scaling group of a scaling rule.
         /// </summary>
         [Output("scalingGroupId")]
@@ -320,6 +338,24 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? MetricName { get; set; }
 
         /// <summary>
+        /// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+        /// </summary>
+        [Input("minAdjustmentMagnitude")]
+        public Input<int>? MinAdjustmentMagnitude { get; set; }
+
+        /// <summary>
+        /// The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+        /// </summary>
+        [Input("scaleInEvaluationCount")]
+        public Input<int>? ScaleInEvaluationCount { get; set; }
+
+        /// <summary>
+        /// The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+        /// </summary>
+        [Input("scaleOutEvaluationCount")]
+        public Input<int>? ScaleOutEvaluationCount { get; set; }
+
+        /// <summary>
         /// ID of the scaling group of a scaling rule.
         /// </summary>
         [Input("scalingGroupId", required: true)]
@@ -416,6 +452,24 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("metricName")]
         public Input<string>? MetricName { get; set; }
+
+        /// <summary>
+        /// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+        /// </summary>
+        [Input("minAdjustmentMagnitude")]
+        public Input<int>? MinAdjustmentMagnitude { get; set; }
+
+        /// <summary>
+        /// The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+        /// </summary>
+        [Input("scaleInEvaluationCount")]
+        public Input<int>? ScaleInEvaluationCount { get; set; }
+
+        /// <summary>
+        /// The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+        /// </summary>
+        [Input("scaleOutEvaluationCount")]
+        public Input<int>? ScaleOutEvaluationCount { get; set; }
 
         /// <summary>
         /// ID of the scaling group of a scaling rule.

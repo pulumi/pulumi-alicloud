@@ -106,14 +106,14 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
+     * Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
      * 
      */
     @Import(name="healthCheckInterval")
     private @Nullable Output<Integer> healthCheckInterval;
 
     /**
-     * @return Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
+     * @return Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
      * 
      */
     public Optional<Output<Integer>> healthCheckInterval() {
@@ -153,14 +153,14 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
+     * After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
      * 
      */
     @Import(name="healthyThreshold")
     private @Nullable Output<Integer> healthyThreshold;
 
     /**
-     * @return After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
+     * @return After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
      * 
      */
     public Optional<Output<Integer>> healthyThreshold() {
@@ -362,7 +362,7 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckInterval Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
+         * @param healthCheckInterval Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
          * 
          * @return builder
          * 
@@ -373,7 +373,7 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthCheckInterval Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
+         * @param healthCheckInterval Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthyThreshold After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
+         * @param healthyThreshold After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
          * 
          * @return builder
          * 
@@ -438,7 +438,7 @@ public final class ServerGroupHealthCheckArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param healthyThreshold After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
+         * @param healthyThreshold After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
          * 
          * @return builder
          * 

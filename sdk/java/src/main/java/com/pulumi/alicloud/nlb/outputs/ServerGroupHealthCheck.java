@@ -46,7 +46,7 @@ public final class ServerGroupHealthCheck {
      */
     private @Nullable List<String> healthCheckHttpCodes;
     /**
-     * @return Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
+     * @return Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
      * 
      */
     private @Nullable Integer healthCheckInterval;
@@ -62,7 +62,7 @@ public final class ServerGroupHealthCheck {
      */
     private @Nullable String healthCheckUrl;
     /**
-     * @return After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
+     * @return After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
      * 
      */
     private @Nullable Integer healthyThreshold;
@@ -121,7 +121,7 @@ public final class ServerGroupHealthCheck {
         return this.healthCheckHttpCodes == null ? List.of() : this.healthCheckHttpCodes;
     }
     /**
-     * @return Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
+     * @return Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
      * 
      */
     public Optional<Integer> healthCheckInterval() {
@@ -143,7 +143,7 @@ public final class ServerGroupHealthCheck {
         return Optional.ofNullable(this.healthCheckUrl);
     }
     /**
-     * @return After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
+     * @return After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
      * 
      */
     public Optional<Integer> healthyThreshold() {

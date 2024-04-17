@@ -243,6 +243,602 @@ func (o OtsBackupPlanRuleArrayOutput) Index(i pulumi.IntInput) OtsBackupPlanRule
 	}).(OtsBackupPlanRuleOutput)
 }
 
+type PolicyBindingAdvancedOptions struct {
+	// ECS Backup Advanced options. See `udmDetail` below.
+	UdmDetail *PolicyBindingAdvancedOptionsUdmDetail `pulumi:"udmDetail"`
+}
+
+// PolicyBindingAdvancedOptionsInput is an input type that accepts PolicyBindingAdvancedOptionsArgs and PolicyBindingAdvancedOptionsOutput values.
+// You can construct a concrete instance of `PolicyBindingAdvancedOptionsInput` via:
+//
+//	PolicyBindingAdvancedOptionsArgs{...}
+type PolicyBindingAdvancedOptionsInput interface {
+	pulumi.Input
+
+	ToPolicyBindingAdvancedOptionsOutput() PolicyBindingAdvancedOptionsOutput
+	ToPolicyBindingAdvancedOptionsOutputWithContext(context.Context) PolicyBindingAdvancedOptionsOutput
+}
+
+type PolicyBindingAdvancedOptionsArgs struct {
+	// ECS Backup Advanced options. See `udmDetail` below.
+	UdmDetail PolicyBindingAdvancedOptionsUdmDetailPtrInput `pulumi:"udmDetail"`
+}
+
+func (PolicyBindingAdvancedOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyBindingAdvancedOptions)(nil)).Elem()
+}
+
+func (i PolicyBindingAdvancedOptionsArgs) ToPolicyBindingAdvancedOptionsOutput() PolicyBindingAdvancedOptionsOutput {
+	return i.ToPolicyBindingAdvancedOptionsOutputWithContext(context.Background())
+}
+
+func (i PolicyBindingAdvancedOptionsArgs) ToPolicyBindingAdvancedOptionsOutputWithContext(ctx context.Context) PolicyBindingAdvancedOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyBindingAdvancedOptionsOutput)
+}
+
+func (i PolicyBindingAdvancedOptionsArgs) ToPolicyBindingAdvancedOptionsPtrOutput() PolicyBindingAdvancedOptionsPtrOutput {
+	return i.ToPolicyBindingAdvancedOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyBindingAdvancedOptionsArgs) ToPolicyBindingAdvancedOptionsPtrOutputWithContext(ctx context.Context) PolicyBindingAdvancedOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyBindingAdvancedOptionsOutput).ToPolicyBindingAdvancedOptionsPtrOutputWithContext(ctx)
+}
+
+// PolicyBindingAdvancedOptionsPtrInput is an input type that accepts PolicyBindingAdvancedOptionsArgs, PolicyBindingAdvancedOptionsPtr and PolicyBindingAdvancedOptionsPtrOutput values.
+// You can construct a concrete instance of `PolicyBindingAdvancedOptionsPtrInput` via:
+//
+//	        PolicyBindingAdvancedOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PolicyBindingAdvancedOptionsPtrInput interface {
+	pulumi.Input
+
+	ToPolicyBindingAdvancedOptionsPtrOutput() PolicyBindingAdvancedOptionsPtrOutput
+	ToPolicyBindingAdvancedOptionsPtrOutputWithContext(context.Context) PolicyBindingAdvancedOptionsPtrOutput
+}
+
+type policyBindingAdvancedOptionsPtrType PolicyBindingAdvancedOptionsArgs
+
+func PolicyBindingAdvancedOptionsPtr(v *PolicyBindingAdvancedOptionsArgs) PolicyBindingAdvancedOptionsPtrInput {
+	return (*policyBindingAdvancedOptionsPtrType)(v)
+}
+
+func (*policyBindingAdvancedOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyBindingAdvancedOptions)(nil)).Elem()
+}
+
+func (i *policyBindingAdvancedOptionsPtrType) ToPolicyBindingAdvancedOptionsPtrOutput() PolicyBindingAdvancedOptionsPtrOutput {
+	return i.ToPolicyBindingAdvancedOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *policyBindingAdvancedOptionsPtrType) ToPolicyBindingAdvancedOptionsPtrOutputWithContext(ctx context.Context) PolicyBindingAdvancedOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyBindingAdvancedOptionsPtrOutput)
+}
+
+type PolicyBindingAdvancedOptionsOutput struct{ *pulumi.OutputState }
+
+func (PolicyBindingAdvancedOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyBindingAdvancedOptions)(nil)).Elem()
+}
+
+func (o PolicyBindingAdvancedOptionsOutput) ToPolicyBindingAdvancedOptionsOutput() PolicyBindingAdvancedOptionsOutput {
+	return o
+}
+
+func (o PolicyBindingAdvancedOptionsOutput) ToPolicyBindingAdvancedOptionsOutputWithContext(ctx context.Context) PolicyBindingAdvancedOptionsOutput {
+	return o
+}
+
+func (o PolicyBindingAdvancedOptionsOutput) ToPolicyBindingAdvancedOptionsPtrOutput() PolicyBindingAdvancedOptionsPtrOutput {
+	return o.ToPolicyBindingAdvancedOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyBindingAdvancedOptionsOutput) ToPolicyBindingAdvancedOptionsPtrOutputWithContext(ctx context.Context) PolicyBindingAdvancedOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyBindingAdvancedOptions) *PolicyBindingAdvancedOptions {
+		return &v
+	}).(PolicyBindingAdvancedOptionsPtrOutput)
+}
+
+// ECS Backup Advanced options. See `udmDetail` below.
+func (o PolicyBindingAdvancedOptionsOutput) UdmDetail() PolicyBindingAdvancedOptionsUdmDetailPtrOutput {
+	return o.ApplyT(func(v PolicyBindingAdvancedOptions) *PolicyBindingAdvancedOptionsUdmDetail { return v.UdmDetail }).(PolicyBindingAdvancedOptionsUdmDetailPtrOutput)
+}
+
+type PolicyBindingAdvancedOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyBindingAdvancedOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyBindingAdvancedOptions)(nil)).Elem()
+}
+
+func (o PolicyBindingAdvancedOptionsPtrOutput) ToPolicyBindingAdvancedOptionsPtrOutput() PolicyBindingAdvancedOptionsPtrOutput {
+	return o
+}
+
+func (o PolicyBindingAdvancedOptionsPtrOutput) ToPolicyBindingAdvancedOptionsPtrOutputWithContext(ctx context.Context) PolicyBindingAdvancedOptionsPtrOutput {
+	return o
+}
+
+func (o PolicyBindingAdvancedOptionsPtrOutput) Elem() PolicyBindingAdvancedOptionsOutput {
+	return o.ApplyT(func(v *PolicyBindingAdvancedOptions) PolicyBindingAdvancedOptions {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyBindingAdvancedOptions
+		return ret
+	}).(PolicyBindingAdvancedOptionsOutput)
+}
+
+// ECS Backup Advanced options. See `udmDetail` below.
+func (o PolicyBindingAdvancedOptionsPtrOutput) UdmDetail() PolicyBindingAdvancedOptionsUdmDetailPtrOutput {
+	return o.ApplyT(func(v *PolicyBindingAdvancedOptions) *PolicyBindingAdvancedOptionsUdmDetail {
+		if v == nil {
+			return nil
+		}
+		return v.UdmDetail
+	}).(PolicyBindingAdvancedOptionsUdmDetailPtrOutput)
+}
+
+type PolicyBindingAdvancedOptionsUdmDetail struct {
+	// Custom KMS key ID of encrypted copy.
+	DestinationKmsKeyId *string `pulumi:"destinationKmsKeyId"`
+	// The list of backup disks. If it is empty, all disks are backed up.
+	DiskIdLists []string `pulumi:"diskIdLists"`
+	// List of cloud disk IDs that are not backed up.
+	ExcludeDiskIdLists []string `pulumi:"excludeDiskIdLists"`
+}
+
+// PolicyBindingAdvancedOptionsUdmDetailInput is an input type that accepts PolicyBindingAdvancedOptionsUdmDetailArgs and PolicyBindingAdvancedOptionsUdmDetailOutput values.
+// You can construct a concrete instance of `PolicyBindingAdvancedOptionsUdmDetailInput` via:
+//
+//	PolicyBindingAdvancedOptionsUdmDetailArgs{...}
+type PolicyBindingAdvancedOptionsUdmDetailInput interface {
+	pulumi.Input
+
+	ToPolicyBindingAdvancedOptionsUdmDetailOutput() PolicyBindingAdvancedOptionsUdmDetailOutput
+	ToPolicyBindingAdvancedOptionsUdmDetailOutputWithContext(context.Context) PolicyBindingAdvancedOptionsUdmDetailOutput
+}
+
+type PolicyBindingAdvancedOptionsUdmDetailArgs struct {
+	// Custom KMS key ID of encrypted copy.
+	DestinationKmsKeyId pulumi.StringPtrInput `pulumi:"destinationKmsKeyId"`
+	// The list of backup disks. If it is empty, all disks are backed up.
+	DiskIdLists pulumi.StringArrayInput `pulumi:"diskIdLists"`
+	// List of cloud disk IDs that are not backed up.
+	ExcludeDiskIdLists pulumi.StringArrayInput `pulumi:"excludeDiskIdLists"`
+}
+
+func (PolicyBindingAdvancedOptionsUdmDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyBindingAdvancedOptionsUdmDetail)(nil)).Elem()
+}
+
+func (i PolicyBindingAdvancedOptionsUdmDetailArgs) ToPolicyBindingAdvancedOptionsUdmDetailOutput() PolicyBindingAdvancedOptionsUdmDetailOutput {
+	return i.ToPolicyBindingAdvancedOptionsUdmDetailOutputWithContext(context.Background())
+}
+
+func (i PolicyBindingAdvancedOptionsUdmDetailArgs) ToPolicyBindingAdvancedOptionsUdmDetailOutputWithContext(ctx context.Context) PolicyBindingAdvancedOptionsUdmDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyBindingAdvancedOptionsUdmDetailOutput)
+}
+
+func (i PolicyBindingAdvancedOptionsUdmDetailArgs) ToPolicyBindingAdvancedOptionsUdmDetailPtrOutput() PolicyBindingAdvancedOptionsUdmDetailPtrOutput {
+	return i.ToPolicyBindingAdvancedOptionsUdmDetailPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyBindingAdvancedOptionsUdmDetailArgs) ToPolicyBindingAdvancedOptionsUdmDetailPtrOutputWithContext(ctx context.Context) PolicyBindingAdvancedOptionsUdmDetailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyBindingAdvancedOptionsUdmDetailOutput).ToPolicyBindingAdvancedOptionsUdmDetailPtrOutputWithContext(ctx)
+}
+
+// PolicyBindingAdvancedOptionsUdmDetailPtrInput is an input type that accepts PolicyBindingAdvancedOptionsUdmDetailArgs, PolicyBindingAdvancedOptionsUdmDetailPtr and PolicyBindingAdvancedOptionsUdmDetailPtrOutput values.
+// You can construct a concrete instance of `PolicyBindingAdvancedOptionsUdmDetailPtrInput` via:
+//
+//	        PolicyBindingAdvancedOptionsUdmDetailArgs{...}
+//
+//	or:
+//
+//	        nil
+type PolicyBindingAdvancedOptionsUdmDetailPtrInput interface {
+	pulumi.Input
+
+	ToPolicyBindingAdvancedOptionsUdmDetailPtrOutput() PolicyBindingAdvancedOptionsUdmDetailPtrOutput
+	ToPolicyBindingAdvancedOptionsUdmDetailPtrOutputWithContext(context.Context) PolicyBindingAdvancedOptionsUdmDetailPtrOutput
+}
+
+type policyBindingAdvancedOptionsUdmDetailPtrType PolicyBindingAdvancedOptionsUdmDetailArgs
+
+func PolicyBindingAdvancedOptionsUdmDetailPtr(v *PolicyBindingAdvancedOptionsUdmDetailArgs) PolicyBindingAdvancedOptionsUdmDetailPtrInput {
+	return (*policyBindingAdvancedOptionsUdmDetailPtrType)(v)
+}
+
+func (*policyBindingAdvancedOptionsUdmDetailPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyBindingAdvancedOptionsUdmDetail)(nil)).Elem()
+}
+
+func (i *policyBindingAdvancedOptionsUdmDetailPtrType) ToPolicyBindingAdvancedOptionsUdmDetailPtrOutput() PolicyBindingAdvancedOptionsUdmDetailPtrOutput {
+	return i.ToPolicyBindingAdvancedOptionsUdmDetailPtrOutputWithContext(context.Background())
+}
+
+func (i *policyBindingAdvancedOptionsUdmDetailPtrType) ToPolicyBindingAdvancedOptionsUdmDetailPtrOutputWithContext(ctx context.Context) PolicyBindingAdvancedOptionsUdmDetailPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyBindingAdvancedOptionsUdmDetailPtrOutput)
+}
+
+type PolicyBindingAdvancedOptionsUdmDetailOutput struct{ *pulumi.OutputState }
+
+func (PolicyBindingAdvancedOptionsUdmDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyBindingAdvancedOptionsUdmDetail)(nil)).Elem()
+}
+
+func (o PolicyBindingAdvancedOptionsUdmDetailOutput) ToPolicyBindingAdvancedOptionsUdmDetailOutput() PolicyBindingAdvancedOptionsUdmDetailOutput {
+	return o
+}
+
+func (o PolicyBindingAdvancedOptionsUdmDetailOutput) ToPolicyBindingAdvancedOptionsUdmDetailOutputWithContext(ctx context.Context) PolicyBindingAdvancedOptionsUdmDetailOutput {
+	return o
+}
+
+func (o PolicyBindingAdvancedOptionsUdmDetailOutput) ToPolicyBindingAdvancedOptionsUdmDetailPtrOutput() PolicyBindingAdvancedOptionsUdmDetailPtrOutput {
+	return o.ToPolicyBindingAdvancedOptionsUdmDetailPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyBindingAdvancedOptionsUdmDetailOutput) ToPolicyBindingAdvancedOptionsUdmDetailPtrOutputWithContext(ctx context.Context) PolicyBindingAdvancedOptionsUdmDetailPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyBindingAdvancedOptionsUdmDetail) *PolicyBindingAdvancedOptionsUdmDetail {
+		return &v
+	}).(PolicyBindingAdvancedOptionsUdmDetailPtrOutput)
+}
+
+// Custom KMS key ID of encrypted copy.
+func (o PolicyBindingAdvancedOptionsUdmDetailOutput) DestinationKmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyBindingAdvancedOptionsUdmDetail) *string { return v.DestinationKmsKeyId }).(pulumi.StringPtrOutput)
+}
+
+// The list of backup disks. If it is empty, all disks are backed up.
+func (o PolicyBindingAdvancedOptionsUdmDetailOutput) DiskIdLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PolicyBindingAdvancedOptionsUdmDetail) []string { return v.DiskIdLists }).(pulumi.StringArrayOutput)
+}
+
+// List of cloud disk IDs that are not backed up.
+func (o PolicyBindingAdvancedOptionsUdmDetailOutput) ExcludeDiskIdLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PolicyBindingAdvancedOptionsUdmDetail) []string { return v.ExcludeDiskIdLists }).(pulumi.StringArrayOutput)
+}
+
+type PolicyBindingAdvancedOptionsUdmDetailPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyBindingAdvancedOptionsUdmDetailPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyBindingAdvancedOptionsUdmDetail)(nil)).Elem()
+}
+
+func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) ToPolicyBindingAdvancedOptionsUdmDetailPtrOutput() PolicyBindingAdvancedOptionsUdmDetailPtrOutput {
+	return o
+}
+
+func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) ToPolicyBindingAdvancedOptionsUdmDetailPtrOutputWithContext(ctx context.Context) PolicyBindingAdvancedOptionsUdmDetailPtrOutput {
+	return o
+}
+
+func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) Elem() PolicyBindingAdvancedOptionsUdmDetailOutput {
+	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsUdmDetail) PolicyBindingAdvancedOptionsUdmDetail {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyBindingAdvancedOptionsUdmDetail
+		return ret
+	}).(PolicyBindingAdvancedOptionsUdmDetailOutput)
+}
+
+// Custom KMS key ID of encrypted copy.
+func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) DestinationKmsKeyId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsUdmDetail) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationKmsKeyId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The list of backup disks. If it is empty, all disks are backed up.
+func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) DiskIdLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsUdmDetail) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DiskIdLists
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of cloud disk IDs that are not backed up.
+func (o PolicyBindingAdvancedOptionsUdmDetailPtrOutput) ExcludeDiskIdLists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PolicyBindingAdvancedOptionsUdmDetail) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeDiskIdLists
+	}).(pulumi.StringArrayOutput)
+}
+
+type PolicyRule struct {
+	// This parameter is required only when the value of **RuleType** is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+	ArchiveDays *int `pulumi:"archiveDays"`
+	// This parameter is required only when the **RuleType** value is **BACKUP. Backup Type.
+	BackupType *string `pulumi:"backupType"`
+	// This parameter is required only when **RuleType** is set to **BACKUP**.
+	KeepLatestSnapshots *int `pulumi:"keepLatestSnapshots"`
+	// Only when the **RuleType** value is.
+	ReplicationRegionId *string `pulumi:"replicationRegionId"`
+	// Retention time, in days.
+	Retention *int `pulumi:"retention"`
+	// This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retentionRules` below.
+	RetentionRules []PolicyRuleRetentionRule `pulumi:"retentionRules"`
+	// Rule ID.
+	RuleId *string `pulumi:"ruleId"`
+	// Rule Type.
+	RuleType string `pulumi:"ruleType"`
+	// This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+	Schedule *string `pulumi:"schedule"`
+	// Vault ID.
+	VaultId *string `pulumi:"vaultId"`
+}
+
+// PolicyRuleInput is an input type that accepts PolicyRuleArgs and PolicyRuleOutput values.
+// You can construct a concrete instance of `PolicyRuleInput` via:
+//
+//	PolicyRuleArgs{...}
+type PolicyRuleInput interface {
+	pulumi.Input
+
+	ToPolicyRuleOutput() PolicyRuleOutput
+	ToPolicyRuleOutputWithContext(context.Context) PolicyRuleOutput
+}
+
+type PolicyRuleArgs struct {
+	// This parameter is required only when the value of **RuleType** is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+	ArchiveDays pulumi.IntPtrInput `pulumi:"archiveDays"`
+	// This parameter is required only when the **RuleType** value is **BACKUP. Backup Type.
+	BackupType pulumi.StringPtrInput `pulumi:"backupType"`
+	// This parameter is required only when **RuleType** is set to **BACKUP**.
+	KeepLatestSnapshots pulumi.IntPtrInput `pulumi:"keepLatestSnapshots"`
+	// Only when the **RuleType** value is.
+	ReplicationRegionId pulumi.StringPtrInput `pulumi:"replicationRegionId"`
+	// Retention time, in days.
+	Retention pulumi.IntPtrInput `pulumi:"retention"`
+	// This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retentionRules` below.
+	RetentionRules PolicyRuleRetentionRuleArrayInput `pulumi:"retentionRules"`
+	// Rule ID.
+	RuleId pulumi.StringPtrInput `pulumi:"ruleId"`
+	// Rule Type.
+	RuleType pulumi.StringInput `pulumi:"ruleType"`
+	// This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+	Schedule pulumi.StringPtrInput `pulumi:"schedule"`
+	// Vault ID.
+	VaultId pulumi.StringPtrInput `pulumi:"vaultId"`
+}
+
+func (PolicyRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyRule)(nil)).Elem()
+}
+
+func (i PolicyRuleArgs) ToPolicyRuleOutput() PolicyRuleOutput {
+	return i.ToPolicyRuleOutputWithContext(context.Background())
+}
+
+func (i PolicyRuleArgs) ToPolicyRuleOutputWithContext(ctx context.Context) PolicyRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyRuleOutput)
+}
+
+// PolicyRuleArrayInput is an input type that accepts PolicyRuleArray and PolicyRuleArrayOutput values.
+// You can construct a concrete instance of `PolicyRuleArrayInput` via:
+//
+//	PolicyRuleArray{ PolicyRuleArgs{...} }
+type PolicyRuleArrayInput interface {
+	pulumi.Input
+
+	ToPolicyRuleArrayOutput() PolicyRuleArrayOutput
+	ToPolicyRuleArrayOutputWithContext(context.Context) PolicyRuleArrayOutput
+}
+
+type PolicyRuleArray []PolicyRuleInput
+
+func (PolicyRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyRule)(nil)).Elem()
+}
+
+func (i PolicyRuleArray) ToPolicyRuleArrayOutput() PolicyRuleArrayOutput {
+	return i.ToPolicyRuleArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyRuleArray) ToPolicyRuleArrayOutputWithContext(ctx context.Context) PolicyRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyRuleArrayOutput)
+}
+
+type PolicyRuleOutput struct{ *pulumi.OutputState }
+
+func (PolicyRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyRule)(nil)).Elem()
+}
+
+func (o PolicyRuleOutput) ToPolicyRuleOutput() PolicyRuleOutput {
+	return o
+}
+
+func (o PolicyRuleOutput) ToPolicyRuleOutputWithContext(ctx context.Context) PolicyRuleOutput {
+	return o
+}
+
+// This parameter is required only when the value of **RuleType** is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+func (o PolicyRuleOutput) ArchiveDays() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicyRule) *int { return v.ArchiveDays }).(pulumi.IntPtrOutput)
+}
+
+// This parameter is required only when the **RuleType** value is **BACKUP. Backup Type.
+func (o PolicyRuleOutput) BackupType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyRule) *string { return v.BackupType }).(pulumi.StringPtrOutput)
+}
+
+// This parameter is required only when **RuleType** is set to **BACKUP**.
+func (o PolicyRuleOutput) KeepLatestSnapshots() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicyRule) *int { return v.KeepLatestSnapshots }).(pulumi.IntPtrOutput)
+}
+
+// Only when the **RuleType** value is.
+func (o PolicyRuleOutput) ReplicationRegionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyRule) *string { return v.ReplicationRegionId }).(pulumi.StringPtrOutput)
+}
+
+// Retention time, in days.
+func (o PolicyRuleOutput) Retention() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicyRule) *int { return v.Retention }).(pulumi.IntPtrOutput)
+}
+
+// This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retentionRules` below.
+func (o PolicyRuleOutput) RetentionRules() PolicyRuleRetentionRuleArrayOutput {
+	return o.ApplyT(func(v PolicyRule) []PolicyRuleRetentionRule { return v.RetentionRules }).(PolicyRuleRetentionRuleArrayOutput)
+}
+
+// Rule ID.
+func (o PolicyRuleOutput) RuleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyRule) *string { return v.RuleId }).(pulumi.StringPtrOutput)
+}
+
+// Rule Type.
+func (o PolicyRuleOutput) RuleType() pulumi.StringOutput {
+	return o.ApplyT(func(v PolicyRule) string { return v.RuleType }).(pulumi.StringOutput)
+}
+
+// This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+func (o PolicyRuleOutput) Schedule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyRule) *string { return v.Schedule }).(pulumi.StringPtrOutput)
+}
+
+// Vault ID.
+func (o PolicyRuleOutput) VaultId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyRule) *string { return v.VaultId }).(pulumi.StringPtrOutput)
+}
+
+type PolicyRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyRule)(nil)).Elem()
+}
+
+func (o PolicyRuleArrayOutput) ToPolicyRuleArrayOutput() PolicyRuleArrayOutput {
+	return o
+}
+
+func (o PolicyRuleArrayOutput) ToPolicyRuleArrayOutputWithContext(ctx context.Context) PolicyRuleArrayOutput {
+	return o
+}
+
+func (o PolicyRuleArrayOutput) Index(i pulumi.IntInput) PolicyRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyRule {
+		return vs[0].([]PolicyRule)[vs[1].(int)]
+	}).(PolicyRuleOutput)
+}
+
+type PolicyRuleRetentionRule struct {
+	// Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+	AdvancedRetentionType *string `pulumi:"advancedRetentionType"`
+	// Retention time, in days.
+	Retention *int `pulumi:"retention"`
+}
+
+// PolicyRuleRetentionRuleInput is an input type that accepts PolicyRuleRetentionRuleArgs and PolicyRuleRetentionRuleOutput values.
+// You can construct a concrete instance of `PolicyRuleRetentionRuleInput` via:
+//
+//	PolicyRuleRetentionRuleArgs{...}
+type PolicyRuleRetentionRuleInput interface {
+	pulumi.Input
+
+	ToPolicyRuleRetentionRuleOutput() PolicyRuleRetentionRuleOutput
+	ToPolicyRuleRetentionRuleOutputWithContext(context.Context) PolicyRuleRetentionRuleOutput
+}
+
+type PolicyRuleRetentionRuleArgs struct {
+	// Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+	AdvancedRetentionType pulumi.StringPtrInput `pulumi:"advancedRetentionType"`
+	// Retention time, in days.
+	Retention pulumi.IntPtrInput `pulumi:"retention"`
+}
+
+func (PolicyRuleRetentionRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyRuleRetentionRule)(nil)).Elem()
+}
+
+func (i PolicyRuleRetentionRuleArgs) ToPolicyRuleRetentionRuleOutput() PolicyRuleRetentionRuleOutput {
+	return i.ToPolicyRuleRetentionRuleOutputWithContext(context.Background())
+}
+
+func (i PolicyRuleRetentionRuleArgs) ToPolicyRuleRetentionRuleOutputWithContext(ctx context.Context) PolicyRuleRetentionRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyRuleRetentionRuleOutput)
+}
+
+// PolicyRuleRetentionRuleArrayInput is an input type that accepts PolicyRuleRetentionRuleArray and PolicyRuleRetentionRuleArrayOutput values.
+// You can construct a concrete instance of `PolicyRuleRetentionRuleArrayInput` via:
+//
+//	PolicyRuleRetentionRuleArray{ PolicyRuleRetentionRuleArgs{...} }
+type PolicyRuleRetentionRuleArrayInput interface {
+	pulumi.Input
+
+	ToPolicyRuleRetentionRuleArrayOutput() PolicyRuleRetentionRuleArrayOutput
+	ToPolicyRuleRetentionRuleArrayOutputWithContext(context.Context) PolicyRuleRetentionRuleArrayOutput
+}
+
+type PolicyRuleRetentionRuleArray []PolicyRuleRetentionRuleInput
+
+func (PolicyRuleRetentionRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyRuleRetentionRule)(nil)).Elem()
+}
+
+func (i PolicyRuleRetentionRuleArray) ToPolicyRuleRetentionRuleArrayOutput() PolicyRuleRetentionRuleArrayOutput {
+	return i.ToPolicyRuleRetentionRuleArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyRuleRetentionRuleArray) ToPolicyRuleRetentionRuleArrayOutputWithContext(ctx context.Context) PolicyRuleRetentionRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyRuleRetentionRuleArrayOutput)
+}
+
+type PolicyRuleRetentionRuleOutput struct{ *pulumi.OutputState }
+
+func (PolicyRuleRetentionRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyRuleRetentionRule)(nil)).Elem()
+}
+
+func (o PolicyRuleRetentionRuleOutput) ToPolicyRuleRetentionRuleOutput() PolicyRuleRetentionRuleOutput {
+	return o
+}
+
+func (o PolicyRuleRetentionRuleOutput) ToPolicyRuleRetentionRuleOutputWithContext(ctx context.Context) PolicyRuleRetentionRuleOutput {
+	return o
+}
+
+// Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+func (o PolicyRuleRetentionRuleOutput) AdvancedRetentionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyRuleRetentionRule) *string { return v.AdvancedRetentionType }).(pulumi.StringPtrOutput)
+}
+
+// Retention time, in days.
+func (o PolicyRuleRetentionRuleOutput) Retention() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PolicyRuleRetentionRule) *int { return v.Retention }).(pulumi.IntPtrOutput)
+}
+
+type PolicyRuleRetentionRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyRuleRetentionRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyRuleRetentionRule)(nil)).Elem()
+}
+
+func (o PolicyRuleRetentionRuleArrayOutput) ToPolicyRuleRetentionRuleArrayOutput() PolicyRuleRetentionRuleArrayOutput {
+	return o
+}
+
+func (o PolicyRuleRetentionRuleArrayOutput) ToPolicyRuleRetentionRuleArrayOutputWithContext(ctx context.Context) PolicyRuleRetentionRuleArrayOutput {
+	return o
+}
+
+func (o PolicyRuleRetentionRuleArrayOutput) Index(i pulumi.IntInput) PolicyRuleRetentionRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyRuleRetentionRule {
+		return vs[0].([]PolicyRuleRetentionRule)[vs[1].(int)]
+	}).(PolicyRuleRetentionRuleOutput)
+}
+
 type RestoreJobOtsDetail struct {
 	// Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
 	OverwriteExisting *bool `pulumi:"overwriteExisting"`
@@ -4867,6 +5463,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OtsBackupPlanOtsDetailArrayInput)(nil)).Elem(), OtsBackupPlanOtsDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OtsBackupPlanRuleInput)(nil)).Elem(), OtsBackupPlanRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OtsBackupPlanRuleArrayInput)(nil)).Elem(), OtsBackupPlanRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBindingAdvancedOptionsInput)(nil)).Elem(), PolicyBindingAdvancedOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBindingAdvancedOptionsPtrInput)(nil)).Elem(), PolicyBindingAdvancedOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBindingAdvancedOptionsUdmDetailInput)(nil)).Elem(), PolicyBindingAdvancedOptionsUdmDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyBindingAdvancedOptionsUdmDetailPtrInput)(nil)).Elem(), PolicyBindingAdvancedOptionsUdmDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRuleInput)(nil)).Elem(), PolicyRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRuleArrayInput)(nil)).Elem(), PolicyRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRuleRetentionRuleInput)(nil)).Elem(), PolicyRuleRetentionRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyRuleRetentionRuleArrayInput)(nil)).Elem(), PolicyRuleRetentionRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RestoreJobOtsDetailInput)(nil)).Elem(), RestoreJobOtsDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RestoreJobOtsDetailPtrInput)(nil)).Elem(), RestoreJobOtsDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerBackupPlanDetailInput)(nil)).Elem(), ServerBackupPlanDetailArgs{})
@@ -4915,6 +5519,14 @@ func init() {
 	pulumi.RegisterOutputType(OtsBackupPlanOtsDetailArrayOutput{})
 	pulumi.RegisterOutputType(OtsBackupPlanRuleOutput{})
 	pulumi.RegisterOutputType(OtsBackupPlanRuleArrayOutput{})
+	pulumi.RegisterOutputType(PolicyBindingAdvancedOptionsOutput{})
+	pulumi.RegisterOutputType(PolicyBindingAdvancedOptionsPtrOutput{})
+	pulumi.RegisterOutputType(PolicyBindingAdvancedOptionsUdmDetailOutput{})
+	pulumi.RegisterOutputType(PolicyBindingAdvancedOptionsUdmDetailPtrOutput{})
+	pulumi.RegisterOutputType(PolicyRuleOutput{})
+	pulumi.RegisterOutputType(PolicyRuleArrayOutput{})
+	pulumi.RegisterOutputType(PolicyRuleRetentionRuleOutput{})
+	pulumi.RegisterOutputType(PolicyRuleRetentionRuleArrayOutput{})
 	pulumi.RegisterOutputType(RestoreJobOtsDetailOutput{})
 	pulumi.RegisterOutputType(RestoreJobOtsDetailPtrOutput{})
 	pulumi.RegisterOutputType(ServerBackupPlanDetailOutput{})

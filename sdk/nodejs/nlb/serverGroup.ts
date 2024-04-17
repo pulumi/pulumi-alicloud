@@ -99,9 +99,7 @@ export class ServerGroup extends pulumi.CustomResource {
     }
 
     /**
-     * Protocol version. Value:
-     * - **ipv4**:IPv4 type.
-     * - **DualStack**: Double Stack type.
+     * The protocol version. Valid values: `Ipv4` (default), `DualStack`.
      */
     public readonly addressIpVersion!: pulumi.Output<string>;
     /**
@@ -115,9 +113,7 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     public readonly connectionDrain!: pulumi.Output<boolean>;
     /**
-     * Whether to open the connection gracefully interrupted. Value:
-     * - **true**: on.
-     * - **false**: closed.
+     * Specifies whether to enable connection draining.
      */
     public readonly connectionDrainEnabled!: pulumi.Output<boolean>;
     /**
@@ -129,36 +125,27 @@ export class ServerGroup extends pulumi.CustomResource {
      */
     public readonly healthCheck!: pulumi.Output<outputs.nlb.ServerGroupHealthCheck>;
     /**
-     * Whether to enable the client address retention function. Value:
-     * - **true**: on.
-     * - **false**: closed.
-     * > **NOTE:**  special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer * *.
+     * Indicates whether client address retention is enabled. Special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer.
      */
     public readonly preserveClientIpEnabled!: pulumi.Output<boolean>;
     /**
-     * The backend Forwarding Protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+     * The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
      */
     public readonly protocol!: pulumi.Output<string>;
     /**
-     * The ID of the resource group to which the server group belongs.
+     * The ID of the resource group to which the security group belongs.
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * Scheduling algorithm. Value:
-     * - **Wrr**: Weighted polling. The higher the weight of the backend server, the higher the probability of being polled.
-     * - **Rr**: polls external requests are distributed to backend servers in sequence according to the access order. sch: Source IP hash: The same source address is scheduled to the same backend server.
-     * - **Tch**: Quadruple hash, based on the consistent hash of the Quad (source IP, Destination IP, source port, and destination port), the same stream is scheduled to the same backend server.
-     * - **Qch**: a QUIC ID hash that allows you to hash requests with the same QUIC ID to the same backend server.
+     * The routing algorithm. Valid values:
      */
     public readonly scheduler!: pulumi.Output<string>;
     /**
-     * The name of the server group.
+     * The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      */
     public readonly serverGroupName!: pulumi.Output<string>;
     /**
-     * Server group type. Value:
-     * - **Instance**: The server type. You can add **Ecs**, **Ens**, and **Eci** instances to the server group.
-     * - **Ip**: Ip address type. You can add Ip addresses to a server group of this type.
+     * The type of the server group. Valid values:
      */
     public readonly serverGroupType!: pulumi.Output<string>;
     /**
@@ -238,9 +225,7 @@ export class ServerGroup extends pulumi.CustomResource {
  */
 export interface ServerGroupState {
     /**
-     * Protocol version. Value:
-     * - **ipv4**:IPv4 type.
-     * - **DualStack**: Double Stack type.
+     * The protocol version. Valid values: `Ipv4` (default), `DualStack`.
      */
     addressIpVersion?: pulumi.Input<string>;
     /**
@@ -254,9 +239,7 @@ export interface ServerGroupState {
      */
     connectionDrain?: pulumi.Input<boolean>;
     /**
-     * Whether to open the connection gracefully interrupted. Value:
-     * - **true**: on.
-     * - **false**: closed.
+     * Specifies whether to enable connection draining.
      */
     connectionDrainEnabled?: pulumi.Input<boolean>;
     /**
@@ -268,36 +251,27 @@ export interface ServerGroupState {
      */
     healthCheck?: pulumi.Input<inputs.nlb.ServerGroupHealthCheck>;
     /**
-     * Whether to enable the client address retention function. Value:
-     * - **true**: on.
-     * - **false**: closed.
-     * > **NOTE:**  special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer * *.
+     * Indicates whether client address retention is enabled. Special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer.
      */
     preserveClientIpEnabled?: pulumi.Input<boolean>;
     /**
-     * The backend Forwarding Protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+     * The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
      */
     protocol?: pulumi.Input<string>;
     /**
-     * The ID of the resource group to which the server group belongs.
+     * The ID of the resource group to which the security group belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Scheduling algorithm. Value:
-     * - **Wrr**: Weighted polling. The higher the weight of the backend server, the higher the probability of being polled.
-     * - **Rr**: polls external requests are distributed to backend servers in sequence according to the access order. sch: Source IP hash: The same source address is scheduled to the same backend server.
-     * - **Tch**: Quadruple hash, based on the consistent hash of the Quad (source IP, Destination IP, source port, and destination port), the same stream is scheduled to the same backend server.
-     * - **Qch**: a QUIC ID hash that allows you to hash requests with the same QUIC ID to the same backend server.
+     * The routing algorithm. Valid values:
      */
     scheduler?: pulumi.Input<string>;
     /**
-     * The name of the server group.
+     * The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      */
     serverGroupName?: pulumi.Input<string>;
     /**
-     * Server group type. Value:
-     * - **Instance**: The server type. You can add **Ecs**, **Ens**, and **Eci** instances to the server group.
-     * - **Ip**: Ip address type. You can add Ip addresses to a server group of this type.
+     * The type of the server group. Valid values:
      */
     serverGroupType?: pulumi.Input<string>;
     /**
@@ -321,9 +295,7 @@ export interface ServerGroupState {
  */
 export interface ServerGroupArgs {
     /**
-     * Protocol version. Value:
-     * - **ipv4**:IPv4 type.
-     * - **DualStack**: Double Stack type.
+     * The protocol version. Valid values: `Ipv4` (default), `DualStack`.
      */
     addressIpVersion?: pulumi.Input<string>;
     /**
@@ -337,9 +309,7 @@ export interface ServerGroupArgs {
      */
     connectionDrain?: pulumi.Input<boolean>;
     /**
-     * Whether to open the connection gracefully interrupted. Value:
-     * - **true**: on.
-     * - **false**: closed.
+     * Specifies whether to enable connection draining.
      */
     connectionDrainEnabled?: pulumi.Input<boolean>;
     /**
@@ -351,36 +321,27 @@ export interface ServerGroupArgs {
      */
     healthCheck?: pulumi.Input<inputs.nlb.ServerGroupHealthCheck>;
     /**
-     * Whether to enable the client address retention function. Value:
-     * - **true**: on.
-     * - **false**: closed.
-     * > **NOTE:**  special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer * *.
+     * Indicates whether client address retention is enabled. Special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer.
      */
     preserveClientIpEnabled?: pulumi.Input<boolean>;
     /**
-     * The backend Forwarding Protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+     * The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
      */
     protocol?: pulumi.Input<string>;
     /**
-     * The ID of the resource group to which the server group belongs.
+     * The ID of the resource group to which the security group belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Scheduling algorithm. Value:
-     * - **Wrr**: Weighted polling. The higher the weight of the backend server, the higher the probability of being polled.
-     * - **Rr**: polls external requests are distributed to backend servers in sequence according to the access order. sch: Source IP hash: The same source address is scheduled to the same backend server.
-     * - **Tch**: Quadruple hash, based on the consistent hash of the Quad (source IP, Destination IP, source port, and destination port), the same stream is scheduled to the same backend server.
-     * - **Qch**: a QUIC ID hash that allows you to hash requests with the same QUIC ID to the same backend server.
+     * The routing algorithm. Valid values:
      */
     scheduler?: pulumi.Input<string>;
     /**
-     * The name of the server group.
+     * The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
      */
     serverGroupName: pulumi.Input<string>;
     /**
-     * Server group type. Value:
-     * - **Instance**: The server type. You can add **Ecs**, **Ens**, and **Eci** instances to the server group.
-     * - **Ip**: Ip address type. You can add Ip addresses to a server group of this type.
+     * The type of the server group. Valid values:
      */
     serverGroupType?: pulumi.Input<string>;
     /**

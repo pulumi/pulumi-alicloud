@@ -96,9 +96,9 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * Whether to PreCheck this request only. Value:
-     * - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
+     * Whether to PreCheck only this request. Value:
+     * - **true**: The check request is sent without creating a VPC. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+     * - **false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates a VPC.
      */
     public readonly dryRun!: pulumi.Output<boolean | undefined>;
     /**
@@ -107,6 +107,7 @@ export class Network extends pulumi.CustomResource {
      * - **true**: on.
      */
     public readonly enableIpv6!: pulumi.Output<boolean | undefined>;
+    public readonly ipv4IpamPoolId!: pulumi.Output<string | undefined>;
     /**
      * The IPv6 CIDR block of the VPC.
      */
@@ -125,9 +126,9 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly ipv6Isp!: pulumi.Output<string | undefined>;
     /**
-     * Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+     * . Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
      *
-     * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -143,19 +144,19 @@ export class Network extends pulumi.CustomResource {
      */
     public /*out*/ readonly routerId!: pulumi.Output<string>;
     /**
-     * (Deprecated since v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+     * Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
      *
-     * @deprecated Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+     * @deprecated Field 'router_table_id' has been deprecated since provider version 1.221.0. New field 'route_table_id' instead.
      */
     public /*out*/ readonly routerTableId!: pulumi.Output<string>;
     /**
      * Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      *
-     * @deprecated Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+     * @deprecated Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      */
     public readonly secondaryCidrBlocks!: pulumi.Output<string[]>;
     /**
-     * The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
+     * The status of the VPC.   **Pending**: The VPC is being configured. **Available**: The VPC is available.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -192,6 +193,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["dryRun"] = state ? state.dryRun : undefined;
             resourceInputs["enableIpv6"] = state ? state.enableIpv6 : undefined;
+            resourceInputs["ipv4IpamPoolId"] = state ? state.ipv4IpamPoolId : undefined;
             resourceInputs["ipv6CidrBlock"] = state ? state.ipv6CidrBlock : undefined;
             resourceInputs["ipv6CidrBlocks"] = state ? state.ipv6CidrBlocks : undefined;
             resourceInputs["ipv6Isp"] = state ? state.ipv6Isp : undefined;
@@ -212,6 +214,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["dryRun"] = args ? args.dryRun : undefined;
             resourceInputs["enableIpv6"] = args ? args.enableIpv6 : undefined;
+            resourceInputs["ipv4IpamPoolId"] = args ? args.ipv4IpamPoolId : undefined;
             resourceInputs["ipv6Isp"] = args ? args.ipv6Isp : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["resourceGroupId"] = args ? args.resourceGroupId : undefined;
@@ -253,9 +256,9 @@ export interface NetworkState {
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether to PreCheck this request only. Value:
-     * - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
+     * Whether to PreCheck only this request. Value:
+     * - **true**: The check request is sent without creating a VPC. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+     * - **false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates a VPC.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -264,6 +267,7 @@ export interface NetworkState {
      * - **true**: on.
      */
     enableIpv6?: pulumi.Input<boolean>;
+    ipv4IpamPoolId?: pulumi.Input<string>;
     /**
      * The IPv6 CIDR block of the VPC.
      */
@@ -282,9 +286,9 @@ export interface NetworkState {
      */
     ipv6Isp?: pulumi.Input<string>;
     /**
-     * Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+     * . Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
      *
-     * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
@@ -300,19 +304,19 @@ export interface NetworkState {
      */
     routerId?: pulumi.Input<string>;
     /**
-     * (Deprecated since v1.206.0+) Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+     * Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
      *
-     * @deprecated Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead.
+     * @deprecated Field 'router_table_id' has been deprecated since provider version 1.221.0. New field 'route_table_id' instead.
      */
     routerTableId?: pulumi.Input<string>;
     /**
      * Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      *
-     * @deprecated Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+     * @deprecated Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      */
     secondaryCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
+     * The status of the VPC.   **Pending**: The VPC is being configured. **Available**: The VPC is available.
      */
     status?: pulumi.Input<string>;
     /**
@@ -348,9 +352,9 @@ export interface NetworkArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Whether to PreCheck this request only. Value:
-     * - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
-     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
+     * Whether to PreCheck only this request. Value:
+     * - **true**: The check request is sent without creating a VPC. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code 'DryRunOperation' is returned '.
+     * - **false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates a VPC.
      */
     dryRun?: pulumi.Input<boolean>;
     /**
@@ -359,6 +363,7 @@ export interface NetworkArgs {
      * - **true**: on.
      */
     enableIpv6?: pulumi.Input<boolean>;
+    ipv4IpamPoolId?: pulumi.Input<string>;
     /**
      * The IPv6 address segment type of the VPC. Value:
      * - **BGP** (default): Alibaba Cloud BGP IPv6.
@@ -369,9 +374,9 @@ export interface NetworkArgs {
      */
     ipv6Isp?: pulumi.Input<string>;
     /**
-     * Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+     * . Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
      *
-     * @deprecated Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
@@ -381,7 +386,7 @@ export interface NetworkArgs {
     /**
      * Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      *
-     * @deprecated Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+     * @deprecated Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondaryCidrBlocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      */
     secondaryCidrBlocks?: pulumi.Input<pulumi.Input<string>[]>;
     /**

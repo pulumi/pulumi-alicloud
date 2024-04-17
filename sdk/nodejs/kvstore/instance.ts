@@ -106,7 +106,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly connectionStringPrefix!: pulumi.Output<string | undefined>;
     /**
-     * The coupon code.
+     * The coupon code. **NOTE:** The default value `youhuiquanPromotionOptionIdForBlank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
      */
     public readonly couponNo!: pulumi.Output<string | undefined>;
     /**
@@ -546,7 +546,7 @@ export interface InstanceState {
      */
     connectionStringPrefix?: pulumi.Input<string>;
     /**
-     * The coupon code.
+     * The coupon code. **NOTE:** The default value `youhuiquanPromotionOptionIdForBlank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
      */
     couponNo?: pulumi.Input<string>;
     /**
@@ -820,7 +820,7 @@ export interface InstanceArgs {
      */
     connectionStringPrefix?: pulumi.Input<string>;
     /**
-     * The coupon code.
+     * The coupon code. **NOTE:** The default value `youhuiquanPromotionOptionIdForBlank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
      */
     couponNo?: pulumi.Input<string>;
     /**

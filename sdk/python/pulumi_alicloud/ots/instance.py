@@ -18,6 +18,9 @@ class InstanceArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_source_acls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 network_type_acls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Instance resource.
@@ -25,6 +28,10 @@ class InstanceArgs:
         :param pulumi.Input[str] description: The description of the instance. Currently, it does not support modifying.
         :param pulumi.Input[str] instance_type: The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
         :param pulumi.Input[str] name: The name of the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_source_acls: The set of request sources that are allowed access. Valid optional values:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_type_acls: The set of network types that are allowed access. Valid optional values:
+        :param pulumi.Input[str] resource_group_id: The resource group the instance belongs to.
+               Default to Alibaba Cloud default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the instance.
         """
         if accessed_by is not None:
@@ -35,6 +42,12 @@ class InstanceArgs:
             pulumi.set(__self__, "instance_type", instance_type)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_source_acls is not None:
+            pulumi.set(__self__, "network_source_acls", network_source_acls)
+        if network_type_acls is not None:
+            pulumi.set(__self__, "network_type_acls", network_type_acls)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -85,6 +98,43 @@ class InstanceArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkSourceAcls")
+    def network_source_acls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of request sources that are allowed access. Valid optional values:
+        """
+        return pulumi.get(self, "network_source_acls")
+
+    @network_source_acls.setter
+    def network_source_acls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "network_source_acls", value)
+
+    @property
+    @pulumi.getter(name="networkTypeAcls")
+    def network_type_acls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of network types that are allowed access. Valid optional values:
+        """
+        return pulumi.get(self, "network_type_acls")
+
+    @network_type_acls.setter
+    def network_type_acls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "network_type_acls", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource group the instance belongs to.
+        Default to Alibaba Cloud default resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
 
     @property
     @pulumi.getter
@@ -106,6 +156,9 @@ class _InstanceState:
                  description: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_source_acls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 network_type_acls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
@@ -113,6 +166,10 @@ class _InstanceState:
         :param pulumi.Input[str] description: The description of the instance. Currently, it does not support modifying.
         :param pulumi.Input[str] instance_type: The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
         :param pulumi.Input[str] name: The name of the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_source_acls: The set of request sources that are allowed access. Valid optional values:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_type_acls: The set of network types that are allowed access. Valid optional values:
+        :param pulumi.Input[str] resource_group_id: The resource group the instance belongs to.
+               Default to Alibaba Cloud default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the instance.
         """
         if accessed_by is not None:
@@ -123,6 +180,12 @@ class _InstanceState:
             pulumi.set(__self__, "instance_type", instance_type)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if network_source_acls is not None:
+            pulumi.set(__self__, "network_source_acls", network_source_acls)
+        if network_type_acls is not None:
+            pulumi.set(__self__, "network_type_acls", network_type_acls)
+        if resource_group_id is not None:
+            pulumi.set(__self__, "resource_group_id", resource_group_id)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -173,6 +236,43 @@ class _InstanceState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="networkSourceAcls")
+    def network_source_acls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of request sources that are allowed access. Valid optional values:
+        """
+        return pulumi.get(self, "network_source_acls")
+
+    @network_source_acls.setter
+    def network_source_acls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "network_source_acls", value)
+
+    @property
+    @pulumi.getter(name="networkTypeAcls")
+    def network_type_acls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The set of network types that are allowed access. Valid optional values:
+        """
+        return pulumi.get(self, "network_type_acls")
+
+    @network_type_acls.setter
+    def network_type_acls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "network_type_acls", value)
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource group the instance belongs to.
+        Default to Alibaba Cloud default resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
+
+    @resource_group_id.setter
+    def resource_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group_id", value)
 
     @property
     @pulumi.getter
@@ -196,6 +296,9 @@ class Instance(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_source_acls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 network_type_acls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         """
@@ -221,7 +324,7 @@ class Instance(pulumi.CustomResource):
             max=99999)
         default_instance = alicloud.ots.Instance("defaultInstance",
             description=name,
-            accessed_by="Vpc",
+            network_type_acls=["VPC"],
             tags={
                 "Created": "TF",
                 "For": "Building table",
@@ -243,6 +346,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the instance. Currently, it does not support modifying.
         :param pulumi.Input[str] instance_type: The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
         :param pulumi.Input[str] name: The name of the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_source_acls: The set of request sources that are allowed access. Valid optional values:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_type_acls: The set of network types that are allowed access. Valid optional values:
+        :param pulumi.Input[str] resource_group_id: The resource group the instance belongs to.
+               Default to Alibaba Cloud default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the instance.
         """
         ...
@@ -274,7 +381,7 @@ class Instance(pulumi.CustomResource):
             max=99999)
         default_instance = alicloud.ots.Instance("defaultInstance",
             description=name,
-            accessed_by="Vpc",
+            network_type_acls=["VPC"],
             tags={
                 "Created": "TF",
                 "For": "Building table",
@@ -309,6 +416,9 @@ class Instance(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 network_source_acls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 network_type_acls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 resource_group_id: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -323,6 +433,9 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["name"] = name
+            __props__.__dict__["network_source_acls"] = network_source_acls
+            __props__.__dict__["network_type_acls"] = network_type_acls
+            __props__.__dict__["resource_group_id"] = resource_group_id
             __props__.__dict__["tags"] = tags
         super(Instance, __self__).__init__(
             'alicloud:ots/instance:Instance',
@@ -338,6 +451,9 @@ class Instance(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            network_source_acls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            network_type_acls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            resource_group_id: Optional[pulumi.Input[str]] = None,
             tags: Optional[pulumi.Input[Mapping[str, Any]]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
@@ -350,6 +466,10 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the instance. Currently, it does not support modifying.
         :param pulumi.Input[str] instance_type: The type of instance. Valid values are "Capacity" and "HighPerformance". Default to "HighPerformance".
         :param pulumi.Input[str] name: The name of the instance.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_source_acls: The set of request sources that are allowed access. Valid optional values:
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] network_type_acls: The set of network types that are allowed access. Valid optional values:
+        :param pulumi.Input[str] resource_group_id: The resource group the instance belongs to.
+               Default to Alibaba Cloud default resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -360,12 +480,15 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["name"] = name
+        __props__.__dict__["network_source_acls"] = network_source_acls
+        __props__.__dict__["network_type_acls"] = network_type_acls
+        __props__.__dict__["resource_group_id"] = resource_group_id
         __props__.__dict__["tags"] = tags
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter(name="accessedBy")
-    def accessed_by(self) -> pulumi.Output[Optional[str]]:
+    def accessed_by(self) -> pulumi.Output[str]:
         """
         The network limitation of accessing instance. Valid values:
         """
@@ -394,6 +517,31 @@ class Instance(pulumi.CustomResource):
         The name of the instance.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="networkSourceAcls")
+    def network_source_acls(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The set of request sources that are allowed access. Valid optional values:
+        """
+        return pulumi.get(self, "network_source_acls")
+
+    @property
+    @pulumi.getter(name="networkTypeAcls")
+    def network_type_acls(self) -> pulumi.Output[Sequence[str]]:
+        """
+        The set of network types that are allowed access. Valid optional values:
+        """
+        return pulumi.get(self, "network_type_acls")
+
+    @property
+    @pulumi.getter(name="resourceGroupId")
+    def resource_group_id(self) -> pulumi.Output[str]:
+        """
+        The resource group the instance belongs to.
+        Default to Alibaba Cloud default resource group.
+        """
+        return pulumi.get(self, "resource_group_id")
 
     @property
     @pulumi.getter

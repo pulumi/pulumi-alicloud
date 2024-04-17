@@ -4584,18 +4584,28 @@ type GetInstancesInstance struct {
 	CreateTime string `pulumi:"createTime"`
 	// The description of the instance.
 	Description string `pulumi:"description"`
-	// The instance quota which indicating the maximum number of tables.
+	// (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
 	EntityQuota int `pulumi:"entityQuota"`
 	// ID of the instance.
 	Id string `pulumi:"id"`
 	// Instance name.
 	Name string `pulumi:"name"`
-	// The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
+	// (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
 	Network string `pulumi:"network"`
-	// The maximum adjustable read capacity unit of the instance.
-	ReadCapacity int `pulumi:"readCapacity"`
+	// (Available since v1.221.0) The set of request sources that are allowed access. Possible values: `TRUST_PROXY`.
+	NetworkSourceAcls []string `pulumi:"networkSourceAcls"`
+	// (Available since v1.221.0) The set of network types that are allowed access. Possible values: `CLASSIC`, `VPC`, `INTERNET`.
+	NetworkTypeAcls []string `pulumi:"networkTypeAcls"`
+	// (Available since v1.221.0) instance policy, json string.
+	Policy string `pulumi:"policy"`
+	// (Available since v1.221.0) instance policy version.
+	PolicyVersion int `pulumi:"policyVersion"`
+	// (Available since v1.221.0) The resource group the instance belongs to.
+	ResourceGroupId string `pulumi:"resourceGroupId"`
 	// Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
 	Status string `pulumi:"status"`
+	// (Available since v1.221.0) The instance quota which indicating the maximum number of tables.
+	TableQuota int `pulumi:"tableQuota"`
 	// A map of tags assigned to the instance. It must be in the format:
 	// <!--Start PulumiCodeChooser -->
 	// ```go
@@ -4625,8 +4635,6 @@ type GetInstancesInstance struct {
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The user id of the instance.
 	UserId string `pulumi:"userId"`
-	// The maximum adjustable write capacity unit of the instance.
-	WriteCapacity int `pulumi:"writeCapacity"`
 }
 
 // GetInstancesInstanceInput is an input type that accepts GetInstancesInstanceArgs and GetInstancesInstanceOutput values.
@@ -4647,18 +4655,28 @@ type GetInstancesInstanceArgs struct {
 	CreateTime pulumi.StringInput `pulumi:"createTime"`
 	// The description of the instance.
 	Description pulumi.StringInput `pulumi:"description"`
-	// The instance quota which indicating the maximum number of tables.
+	// (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
 	EntityQuota pulumi.IntInput `pulumi:"entityQuota"`
 	// ID of the instance.
 	Id pulumi.StringInput `pulumi:"id"`
 	// Instance name.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
+	// (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
 	Network pulumi.StringInput `pulumi:"network"`
-	// The maximum adjustable read capacity unit of the instance.
-	ReadCapacity pulumi.IntInput `pulumi:"readCapacity"`
+	// (Available since v1.221.0) The set of request sources that are allowed access. Possible values: `TRUST_PROXY`.
+	NetworkSourceAcls pulumi.StringArrayInput `pulumi:"networkSourceAcls"`
+	// (Available since v1.221.0) The set of network types that are allowed access. Possible values: `CLASSIC`, `VPC`, `INTERNET`.
+	NetworkTypeAcls pulumi.StringArrayInput `pulumi:"networkTypeAcls"`
+	// (Available since v1.221.0) instance policy, json string.
+	Policy pulumi.StringInput `pulumi:"policy"`
+	// (Available since v1.221.0) instance policy version.
+	PolicyVersion pulumi.IntInput `pulumi:"policyVersion"`
+	// (Available since v1.221.0) The resource group the instance belongs to.
+	ResourceGroupId pulumi.StringInput `pulumi:"resourceGroupId"`
 	// Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
 	Status pulumi.StringInput `pulumi:"status"`
+	// (Available since v1.221.0) The instance quota which indicating the maximum number of tables.
+	TableQuota pulumi.IntInput `pulumi:"tableQuota"`
 	// A map of tags assigned to the instance. It must be in the format:
 	// <!--Start PulumiCodeChooser -->
 	// ```go
@@ -4688,8 +4706,6 @@ type GetInstancesInstanceArgs struct {
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// The user id of the instance.
 	UserId pulumi.StringInput `pulumi:"userId"`
-	// The maximum adjustable write capacity unit of the instance.
-	WriteCapacity pulumi.IntInput `pulumi:"writeCapacity"`
 }
 
 func (GetInstancesInstanceArgs) ElementType() reflect.Type {
@@ -4758,7 +4774,7 @@ func (o GetInstancesInstanceOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The instance quota which indicating the maximum number of tables.
+// (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
 func (o GetInstancesInstanceOutput) EntityQuota() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstancesInstance) int { return v.EntityQuota }).(pulumi.IntOutput)
 }
@@ -4773,19 +4789,44 @@ func (o GetInstancesInstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
+// (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
 func (o GetInstancesInstanceOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Network }).(pulumi.StringOutput)
 }
 
-// The maximum adjustable read capacity unit of the instance.
-func (o GetInstancesInstanceOutput) ReadCapacity() pulumi.IntOutput {
-	return o.ApplyT(func(v GetInstancesInstance) int { return v.ReadCapacity }).(pulumi.IntOutput)
+// (Available since v1.221.0) The set of request sources that are allowed access. Possible values: `TRUST_PROXY`.
+func (o GetInstancesInstanceOutput) NetworkSourceAcls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []string { return v.NetworkSourceAcls }).(pulumi.StringArrayOutput)
+}
+
+// (Available since v1.221.0) The set of network types that are allowed access. Possible values: `CLASSIC`, `VPC`, `INTERNET`.
+func (o GetInstancesInstanceOutput) NetworkTypeAcls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstancesInstance) []string { return v.NetworkTypeAcls }).(pulumi.StringArrayOutput)
+}
+
+// (Available since v1.221.0) instance policy, json string.
+func (o GetInstancesInstanceOutput) Policy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.Policy }).(pulumi.StringOutput)
+}
+
+// (Available since v1.221.0) instance policy version.
+func (o GetInstancesInstanceOutput) PolicyVersion() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.PolicyVersion }).(pulumi.IntOutput)
+}
+
+// (Available since v1.221.0) The resource group the instance belongs to.
+func (o GetInstancesInstanceOutput) ResourceGroupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstancesInstance) string { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
 // Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
 func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// (Available since v1.221.0) The instance quota which indicating the maximum number of tables.
+func (o GetInstancesInstanceOutput) TableQuota() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancesInstance) int { return v.TableQuota }).(pulumi.IntOutput)
 }
 
 // A map of tags assigned to the instance. It must be in the format:
@@ -4824,11 +4865,6 @@ func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
 // The user id of the instance.
 func (o GetInstancesInstanceOutput) UserId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.UserId }).(pulumi.StringOutput)
-}
-
-// The maximum adjustable write capacity unit of the instance.
-func (o GetInstancesInstanceOutput) WriteCapacity() pulumi.IntOutput {
-	return o.ApplyT(func(v GetInstancesInstance) int { return v.WriteCapacity }).(pulumi.IntOutput)
 }
 
 type GetInstancesInstanceArrayOutput struct{ *pulumi.OutputState }

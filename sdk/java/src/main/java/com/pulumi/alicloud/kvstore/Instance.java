@@ -241,14 +241,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.connectionStringPrefix);
     }
     /**
-     * The coupon code.
+     * The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
      * 
      */
     @Export(name="couponNo", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> couponNo;
 
     /**
-     * @return The coupon code.
+     * @return The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
      * 
      */
     public Output<Optional<String>> couponNo() {

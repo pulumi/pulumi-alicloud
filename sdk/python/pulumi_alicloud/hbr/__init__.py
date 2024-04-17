@@ -29,6 +29,8 @@ from .hana_instance import *
 from .nas_backup_plan import *
 from .oss_backup_plan import *
 from .ots_backup_plan import *
+from .policy import *
+from .policy_binding import *
 from .replication_vault import *
 from .restore_job import *
 from .server_backup_plan import *

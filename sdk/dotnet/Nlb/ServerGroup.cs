@@ -90,9 +90,7 @@ namespace Pulumi.AliCloud.Nlb
     public partial class ServerGroup : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Protocol version. Value:
-        /// - **ipv4**:IPv4 type.
-        /// - **DualStack**: Double Stack type.
+        /// The protocol version. Valid values: `Ipv4` (default), `DualStack`.
         /// </summary>
         [Output("addressIpVersion")]
         public Output<string> AddressIpVersion { get; private set; } = null!;
@@ -110,9 +108,7 @@ namespace Pulumi.AliCloud.Nlb
         public Output<bool> ConnectionDrain { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to open the connection gracefully interrupted. Value:
-        /// - **true**: on.
-        /// - **false**: closed.
+        /// Specifies whether to enable connection draining.
         /// </summary>
         [Output("connectionDrainEnabled")]
         public Output<bool> ConnectionDrainEnabled { get; private set; } = null!;
@@ -130,46 +126,37 @@ namespace Pulumi.AliCloud.Nlb
         public Output<Outputs.ServerGroupHealthCheck> HealthCheck { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to enable the client address retention function. Value:
-        /// - **true**: on.
-        /// - **false**: closed.
-        /// &gt; **NOTE:**  special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer * *.
+        /// Indicates whether client address retention is enabled. Special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer.
         /// </summary>
         [Output("preserveClientIpEnabled")]
         public Output<bool> PreserveClientIpEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The backend Forwarding Protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+        /// The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
         /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the resource group to which the server group belongs.
+        /// The ID of the resource group to which the security group belongs.
         /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Scheduling algorithm. Value:
-        /// - **Wrr**: Weighted polling. The higher the weight of the backend server, the higher the probability of being polled.
-        /// - **Rr**: polls external requests are distributed to backend servers in sequence according to the access order. sch: Source IP hash: The same source address is scheduled to the same backend server.
-        /// - **Tch**: Quadruple hash, based on the consistent hash of the Quad (source IP, Destination IP, source port, and destination port), the same stream is scheduled to the same backend server.
-        /// - **Qch**: a QUIC ID hash that allows you to hash requests with the same QUIC ID to the same backend server.
+        /// The routing algorithm. Valid values:
         /// </summary>
         [Output("scheduler")]
         public Output<string> Scheduler { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the server group.
+        /// The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Output("serverGroupName")]
         public Output<string> ServerGroupName { get; private set; } = null!;
 
         /// <summary>
-        /// Server group type. Value:
-        /// - **Instance**: The server type. You can add **Ecs**, **Ens**, and **Eci** instances to the server group.
-        /// - **Ip**: Ip address type. You can add Ip addresses to a server group of this type.
+        /// The type of the server group. Valid values:
         /// </summary>
         [Output("serverGroupType")]
         public Output<string> ServerGroupType { get; private set; } = null!;
@@ -241,9 +228,7 @@ namespace Pulumi.AliCloud.Nlb
     public sealed class ServerGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Protocol version. Value:
-        /// - **ipv4**:IPv4 type.
-        /// - **DualStack**: Double Stack type.
+        /// The protocol version. Valid values: `Ipv4` (default), `DualStack`.
         /// </summary>
         [Input("addressIpVersion")]
         public Input<string>? AddressIpVersion { get; set; }
@@ -261,9 +246,7 @@ namespace Pulumi.AliCloud.Nlb
         public Input<bool>? ConnectionDrain { get; set; }
 
         /// <summary>
-        /// Whether to open the connection gracefully interrupted. Value:
-        /// - **true**: on.
-        /// - **false**: closed.
+        /// Specifies whether to enable connection draining.
         /// </summary>
         [Input("connectionDrainEnabled")]
         public Input<bool>? ConnectionDrainEnabled { get; set; }
@@ -281,46 +264,37 @@ namespace Pulumi.AliCloud.Nlb
         public Input<Inputs.ServerGroupHealthCheckArgs>? HealthCheck { get; set; }
 
         /// <summary>
-        /// Whether to enable the client address retention function. Value:
-        /// - **true**: on.
-        /// - **false**: closed.
-        /// &gt; **NOTE:**  special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer * *.
+        /// Indicates whether client address retention is enabled. Special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer.
         /// </summary>
         [Input("preserveClientIpEnabled")]
         public Input<bool>? PreserveClientIpEnabled { get; set; }
 
         /// <summary>
-        /// The backend Forwarding Protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+        /// The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The ID of the resource group to which the server group belongs.
+        /// The ID of the resource group to which the security group belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Scheduling algorithm. Value:
-        /// - **Wrr**: Weighted polling. The higher the weight of the backend server, the higher the probability of being polled.
-        /// - **Rr**: polls external requests are distributed to backend servers in sequence according to the access order. sch: Source IP hash: The same source address is scheduled to the same backend server.
-        /// - **Tch**: Quadruple hash, based on the consistent hash of the Quad (source IP, Destination IP, source port, and destination port), the same stream is scheduled to the same backend server.
-        /// - **Qch**: a QUIC ID hash that allows you to hash requests with the same QUIC ID to the same backend server.
+        /// The routing algorithm. Valid values:
         /// </summary>
         [Input("scheduler")]
         public Input<string>? Scheduler { get; set; }
 
         /// <summary>
-        /// The name of the server group.
+        /// The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Input("serverGroupName", required: true)]
         public Input<string> ServerGroupName { get; set; } = null!;
 
         /// <summary>
-        /// Server group type. Value:
-        /// - **Instance**: The server type. You can add **Ecs**, **Ens**, and **Eci** instances to the server group.
-        /// - **Ip**: Ip address type. You can add Ip addresses to a server group of this type.
+        /// The type of the server group. Valid values:
         /// </summary>
         [Input("serverGroupType")]
         public Input<string>? ServerGroupType { get; set; }
@@ -354,9 +328,7 @@ namespace Pulumi.AliCloud.Nlb
     public sealed class ServerGroupState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Protocol version. Value:
-        /// - **ipv4**:IPv4 type.
-        /// - **DualStack**: Double Stack type.
+        /// The protocol version. Valid values: `Ipv4` (default), `DualStack`.
         /// </summary>
         [Input("addressIpVersion")]
         public Input<string>? AddressIpVersion { get; set; }
@@ -374,9 +346,7 @@ namespace Pulumi.AliCloud.Nlb
         public Input<bool>? ConnectionDrain { get; set; }
 
         /// <summary>
-        /// Whether to open the connection gracefully interrupted. Value:
-        /// - **true**: on.
-        /// - **false**: closed.
+        /// Specifies whether to enable connection draining.
         /// </summary>
         [Input("connectionDrainEnabled")]
         public Input<bool>? ConnectionDrainEnabled { get; set; }
@@ -394,46 +364,37 @@ namespace Pulumi.AliCloud.Nlb
         public Input<Inputs.ServerGroupHealthCheckGetArgs>? HealthCheck { get; set; }
 
         /// <summary>
-        /// Whether to enable the client address retention function. Value:
-        /// - **true**: on.
-        /// - **false**: closed.
-        /// &gt; **NOTE:**  special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer * *.
+        /// Indicates whether client address retention is enabled. Special instructions: When **AddressIPVersion** is of the **ipv4** type, the default value is **true**. **Addrestipversion** can only be **false** when the value of **ipv6** is **ipv6**, and can be **true** when supported by the underlying layer.
         /// </summary>
         [Input("preserveClientIpEnabled")]
         public Input<bool>? PreserveClientIpEnabled { get; set; }
 
         /// <summary>
-        /// The backend Forwarding Protocol. Valid values: **TCP**, **UDP**, or **TCPSSL**.
+        /// The backend protocol. Valid values: `TCP` (default), `UDP`, and `TCPSSL`.
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
         /// <summary>
-        /// The ID of the resource group to which the server group belongs.
+        /// The ID of the resource group to which the security group belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Scheduling algorithm. Value:
-        /// - **Wrr**: Weighted polling. The higher the weight of the backend server, the higher the probability of being polled.
-        /// - **Rr**: polls external requests are distributed to backend servers in sequence according to the access order. sch: Source IP hash: The same source address is scheduled to the same backend server.
-        /// - **Tch**: Quadruple hash, based on the consistent hash of the Quad (source IP, Destination IP, source port, and destination port), the same stream is scheduled to the same backend server.
-        /// - **Qch**: a QUIC ID hash that allows you to hash requests with the same QUIC ID to the same backend server.
+        /// The routing algorithm. Valid values:
         /// </summary>
         [Input("scheduler")]
         public Input<string>? Scheduler { get; set; }
 
         /// <summary>
-        /// The name of the server group.
+        /// The name of the server group. The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name must start with a letter.
         /// </summary>
         [Input("serverGroupName")]
         public Input<string>? ServerGroupName { get; set; }
 
         /// <summary>
-        /// Server group type. Value:
-        /// - **Instance**: The server type. You can add **Ecs**, **Ens**, and **Eci** instances to the server group.
-        /// - **Ip**: Ip address type. You can add Ip addresses to a server group of this type.
+        /// The type of the server group. Valid values:
         /// </summary>
         [Input("serverGroupType")]
         public Input<string>? ServerGroupType { get; set; }

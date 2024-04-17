@@ -4531,6 +4531,46 @@
                     }
                 }
             },
+            "alicloud_hbr_policy": {
+                "current": "alicloud:hbr/policy:Policy",
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "retention_rules": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "alicloud_hbr_policy_binding": {
+                "current": "alicloud:hbr/policyBinding:PolicyBinding",
+                "fields": {
+                    "advanced_options": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "udm_detail": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "disk_id_list": {
+                                                "maxItemsOne": false
+                                            },
+                                            "exclude_disk_id_list": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "alicloud_hbr_replication_vault": {
                 "current": "alicloud:hbr/replicationVault:ReplicationVault"
             },
@@ -5499,7 +5539,15 @@
                 }
             },
             "alicloud_ots_instance": {
-                "current": "alicloud:ots/instance:Instance"
+                "current": "alicloud:ots/instance:Instance",
+                "fields": {
+                    "network_source_acl": {
+                        "maxItemsOne": false
+                    },
+                    "network_type_acl": {
+                        "maxItemsOne": false
+                    }
+                }
             },
             "alicloud_ots_instance_attachment": {
                 "current": "alicloud:ots/instanceAttachment:InstanceAttachment"
@@ -16029,7 +16077,17 @@
                         "maxItemsOne": false
                     },
                     "instances": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "network_source_acl": {
+                                    "maxItemsOne": false
+                                },
+                                "network_type_acl": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "names": {
                         "maxItemsOne": false
@@ -16043,7 +16101,17 @@
                         "maxItemsOne": false
                     },
                     "instances": {
-                        "maxItemsOne": false
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "network_source_acl": {
+                                    "maxItemsOne": false
+                                },
+                                "network_type_acl": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     },
                     "names": {
                         "maxItemsOne": false
@@ -19178,6 +19246,11 @@
             "alicloud_gpdb_db_instance_plan": {
                 "maxItemsOneOverrides": {
                     "plan_config": false
+                }
+            },
+            "alicloud_instance": {
+                "maxItemsOneOverrides": {
+                    "network_interfaces": true
                 }
             },
             "alicloud_rds_clone_db_instance": {

@@ -15,7 +15,7 @@ import (
 //
 // For information about Express Connect and how to use it, see [What is Express Connect](https://www.alibabacloud.com/help/doc-detail/275179.htm).
 //
-// > **NOTE:** Available in v1.132.0+
+// > **NOTE:** Available since v1.132.0
 //
 // ## Example Usage
 //

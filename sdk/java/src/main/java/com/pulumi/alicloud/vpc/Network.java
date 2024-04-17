@@ -144,18 +144,18 @@ public class Network extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * Whether to PreCheck this request only. Value:
-     * - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
+     * Whether to PreCheck only this request. Value:
+     * - **true**: The check request is sent without creating a VPC. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates a VPC.
      * 
      */
     @Export(name="dryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> dryRun;
 
     /**
-     * @return Whether to PreCheck this request only. Value:
-     * - **true**: sends a check request and does not create a VPC. Check items include whether required parameters, request format, and business restrictions have been filled in. If the check fails, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
-     * - **false** (default): Sends a normal request, returns the HTTP 2xx status code after the check, and directly creates a VPC.
+     * @return Whether to PreCheck only this request. Value:
+     * - **true**: The check request is sent without creating a VPC. Check items include whether required parameters, request format, and business restrictions are filled in. If the check does not pass, the corresponding error is returned. If the check passes, the error code &#39;DryRunOperation&#39; is returned &#39;.
+     * - **false** (default): Sends a normal request, returns an HTTP 2xx status code and directly creates a VPC.
      * 
      */
     public Output<Optional<Boolean>> dryRun() {
@@ -178,6 +178,12 @@ public class Network extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> enableIpv6() {
         return Codegen.optional(this.enableIpv6);
+    }
+    @Export(name="ipv4IpamPoolId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> ipv4IpamPoolId;
+
+    public Output<Optional<String>> ipv4IpamPoolId() {
+        return Codegen.optional(this.ipv4IpamPoolId);
     }
     /**
      * The IPv6 CIDR block of the VPC.
@@ -232,18 +238,18 @@ public class Network extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ipv6Isp);
     }
     /**
-     * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.119.0. New field &#39;vpc_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated from provider version 1.119.0. New field 'vpc_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.119.0. New field 'vpc_name' instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.119.0. New field &#39;vpc_name&#39; instead.
      * 
      */
     public Output<String> name() {
@@ -292,18 +298,18 @@ public class Network extends com.pulumi.resources.CustomResource {
         return this.routerId;
     }
     /**
-     * (Deprecated since v1.206.0+) Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
-     * 
-     * @deprecated
      * Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
      * 
+     * @deprecated
+     * Field &#39;router_table_id&#39; has been deprecated since provider version 1.221.0. New field &#39;route_table_id&#39; instead.
+     * 
      */
-    @Deprecated /* Field 'router_table_id' has been deprecated from provider version 1.206.0. New field 'route_table_id' instead. */
+    @Deprecated /* Field 'router_table_id' has been deprecated since provider version 1.221.0. New field 'route_table_id' instead. */
     @Export(name="routerTableId", refs={String.class}, tree="[0]")
     private Output<String> routerTableId;
 
     /**
-     * @return (Deprecated since v1.206.0+) Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
+     * @return Field &#39;router_table_id&#39; has been deprecated from provider version 1.206.0. New field &#39;route_table_id&#39; instead.
      * 
      */
     public Output<String> routerTableId() {
@@ -313,10 +319,10 @@ public class Network extends com.pulumi.resources.CustomResource {
      * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      * 
      * @deprecated
-     * Field &#39;SecondaryCidrBlocks&#39; has been deprecated from provider version 1.206.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
+     * Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0. Field &#39;secondary_cidr_blocks&#39; has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource &#39;alicloud_vpc_ipv4_cidr_block&#39;. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time.
      * 
      */
-    @Deprecated /* Field 'SecondaryCidrBlocks' has been deprecated from provider version 1.206.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
+    @Deprecated /* Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0. Field 'secondary_cidr_blocks' has been deprecated from provider version 1.185.0 and it will be removed in the future version. Please use the new resource 'alicloud_vpc_ipv4_cidr_block'. `secondary_cidr_blocks` attributes and `alicloud.vpc.Ipv4CidrBlock` resource cannot be used at the same time. */
     @Export(name="secondaryCidrBlocks", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> secondaryCidrBlocks;
 
@@ -328,14 +334,14 @@ public class Network extends com.pulumi.resources.CustomResource {
         return this.secondaryCidrBlocks;
     }
     /**
-     * The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
+     * The status of the VPC.   **Pending**: The VPC is being configured. **Available**: The VPC is available.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the VPC. Valid values:  **Pending**: The VPC is being configured. **Available**: The VPC is available.
+     * @return The status of the VPC.   **Pending**: The VPC is being configured. **Available**: The VPC is available.
      * 
      */
     public Output<String> status() {

@@ -540,14 +540,14 @@ type ServerGroupHealthCheck struct {
 	// Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
 	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
 	HealthCheckHttpCodes []string `pulumi:"healthCheckHttpCodes"`
-	// Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
+	// Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
 	HealthCheckInterval *int `pulumi:"healthCheckInterval"`
 	// Health check protocol. Valid values: **TCP** or **HTTP**.
 	HealthCheckType *string `pulumi:"healthCheckType"`
 	// Health check path.
 	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
 	HealthCheckUrl *string `pulumi:"healthCheckUrl"`
-	// After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
+	// After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
 	// The health check method. Valid values: **GET** or **HEAD**.
 	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
@@ -584,14 +584,14 @@ type ServerGroupHealthCheckArgs struct {
 	// Health status return code. Multiple status codes are separated by commas (,). Valid values: **http\_2xx**, **http\_3xx**, **http\_4xx**, and **http\_5xx**.
 	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
 	HealthCheckHttpCodes pulumi.StringArrayInput `pulumi:"healthCheckHttpCodes"`
-	// Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
+	// Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
 	HealthCheckInterval pulumi.IntPtrInput `pulumi:"healthCheckInterval"`
 	// Health check protocol. Valid values: **TCP** or **HTTP**.
 	HealthCheckType pulumi.StringPtrInput `pulumi:"healthCheckType"`
 	// Health check path.
 	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
 	HealthCheckUrl pulumi.StringPtrInput `pulumi:"healthCheckUrl"`
-	// After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
+	// After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
 	HealthyThreshold pulumi.IntPtrInput `pulumi:"healthyThreshold"`
 	// The health check method. Valid values: **GET** or **HEAD**.
 	// > **NOTE:**  This parameter takes effect only when **HealthCheckType** is **HTTP**.
@@ -708,7 +708,7 @@ func (o ServerGroupHealthCheckOutput) HealthCheckHttpCodes() pulumi.StringArrayO
 	return o.ApplyT(func(v ServerGroupHealthCheck) []string { return v.HealthCheckHttpCodes }).(pulumi.StringArrayOutput)
 }
 
-// Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
+// Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
 func (o ServerGroupHealthCheckOutput) HealthCheckInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *int { return v.HealthCheckInterval }).(pulumi.IntPtrOutput)
 }
@@ -724,7 +724,7 @@ func (o ServerGroupHealthCheckOutput) HealthCheckUrl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *string { return v.HealthCheckUrl }).(pulumi.StringPtrOutput)
 }
 
-// After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
+// After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
 func (o ServerGroupHealthCheckOutput) HealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServerGroupHealthCheck) *int { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
 }
@@ -820,7 +820,7 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckHttpCodes() pulumi.StringArr
 	}).(pulumi.StringArrayOutput)
 }
 
-// Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
+// Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
 func (o ServerGroupHealthCheckPtrOutput) HealthCheckInterval() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *int {
 		if v == nil {
@@ -851,7 +851,7 @@ func (o ServerGroupHealthCheckPtrOutput) HealthCheckUrl() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
+// After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
 func (o ServerGroupHealthCheckPtrOutput) HealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServerGroupHealthCheck) *int {
 		if v == nil {

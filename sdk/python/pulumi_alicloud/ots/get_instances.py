@@ -119,6 +119,8 @@ def get_instances(ids: Optional[Sequence[str]] = None,
     """
     This data source provides the ots instances of the current Alibaba Cloud user.
 
+    > **NOTE:** Available since v1.40.0.
+
     ## Example Usage
 
     <!--Start PulumiCodeChooser -->
@@ -126,8 +128,7 @@ def get_instances(ids: Optional[Sequence[str]] = None,
     import pulumi
     import pulumi_alicloud as alicloud
 
-    instances_ds = alicloud.ots.get_instances(name_regex="sample-instance",
-        output_file="instances.txt")
+    instances_ds = alicloud.ots.get_instances(output_file="instances.txt")
     pulumi.export("firstInstanceId", instances_ds.instances[0].id)
     ```
     <!--End PulumiCodeChooser -->
@@ -176,6 +177,8 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     """
     This data source provides the ots instances of the current Alibaba Cloud user.
 
+    > **NOTE:** Available since v1.40.0.
+
     ## Example Usage
 
     <!--Start PulumiCodeChooser -->
@@ -183,8 +186,7 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     import pulumi
     import pulumi_alicloud as alicloud
 
-    instances_ds = alicloud.ots.get_instances(name_regex="sample-instance",
-        output_file="instances.txt")
+    instances_ds = alicloud.ots.get_instances(output_file="instances.txt")
     pulumi.export("firstInstanceId", instances_ds.instances[0].id)
     ```
     <!--End PulumiCodeChooser -->

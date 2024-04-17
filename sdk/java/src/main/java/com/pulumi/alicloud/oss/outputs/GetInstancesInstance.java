@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.Object;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -29,7 +30,7 @@ public final class GetInstancesInstance {
      */
     private String description;
     /**
-     * @return The instance quota which indicating the maximum number of tables.
+     * @return (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
      * 
      */
     private Integer entityQuota;
@@ -44,20 +45,45 @@ public final class GetInstancesInstance {
      */
     private String name;
     /**
-     * @return The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
+     * @return (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
      * 
      */
     private String network;
     /**
-     * @return The maximum adjustable read capacity unit of the instance.
+     * @return (Available since v1.221.0) The set of request sources that are allowed access. Possible values: `TRUST_PROXY`.
      * 
      */
-    private Integer readCapacity;
+    private List<String> networkSourceAcls;
+    /**
+     * @return (Available since v1.221.0) The set of network types that are allowed access. Possible values: `CLASSIC`, `VPC`, `INTERNET`.
+     * 
+     */
+    private List<String> networkTypeAcls;
+    /**
+     * @return (Available since v1.221.0) instance policy, json string.
+     * 
+     */
+    private String policy;
+    /**
+     * @return (Available since v1.221.0) instance policy version.
+     * 
+     */
+    private Integer policyVersion;
+    /**
+     * @return (Available since v1.221.0) The resource group the instance belongs to.
+     * 
+     */
+    private String resourceGroupId;
     /**
      * @return Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
      * 
      */
     private String status;
+    /**
+     * @return (Available since v1.221.0) The instance quota which indicating the maximum number of tables.
+     * 
+     */
+    private Integer tableQuota;
     /**
      * @return A map of tags assigned to the instance. It must be in the format:
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -101,11 +127,6 @@ public final class GetInstancesInstance {
      * 
      */
     private String userId;
-    /**
-     * @return The maximum adjustable write capacity unit of the instance.
-     * 
-     */
-    private Integer writeCapacity;
 
     private GetInstancesInstance() {}
     /**
@@ -130,7 +151,7 @@ public final class GetInstancesInstance {
         return this.description;
     }
     /**
-     * @return The instance quota which indicating the maximum number of tables.
+     * @return (Removed since v1.221.0) The instance quota which indicating the maximum number of tables.
      * 
      */
     public Integer entityQuota() {
@@ -151,18 +172,46 @@ public final class GetInstancesInstance {
         return this.name;
     }
     /**
-     * @return The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
+     * @return (Removed since v1.221.0) The network type of the instance. Possible values: `NORMAL`, `VPC`, `VPC_CONSOLE`.
      * 
      */
     public String network() {
         return this.network;
     }
     /**
-     * @return The maximum adjustable read capacity unit of the instance.
+     * @return (Available since v1.221.0) The set of request sources that are allowed access. Possible values: `TRUST_PROXY`.
      * 
      */
-    public Integer readCapacity() {
-        return this.readCapacity;
+    public List<String> networkSourceAcls() {
+        return this.networkSourceAcls;
+    }
+    /**
+     * @return (Available since v1.221.0) The set of network types that are allowed access. Possible values: `CLASSIC`, `VPC`, `INTERNET`.
+     * 
+     */
+    public List<String> networkTypeAcls() {
+        return this.networkTypeAcls;
+    }
+    /**
+     * @return (Available since v1.221.0) instance policy, json string.
+     * 
+     */
+    public String policy() {
+        return this.policy;
+    }
+    /**
+     * @return (Available since v1.221.0) instance policy version.
+     * 
+     */
+    public Integer policyVersion() {
+        return this.policyVersion;
+    }
+    /**
+     * @return (Available since v1.221.0) The resource group the instance belongs to.
+     * 
+     */
+    public String resourceGroupId() {
+        return this.resourceGroupId;
     }
     /**
      * @return Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
@@ -170,6 +219,13 @@ public final class GetInstancesInstance {
      */
     public String status() {
         return this.status;
+    }
+    /**
+     * @return (Available since v1.221.0) The instance quota which indicating the maximum number of tables.
+     * 
+     */
+    public Integer tableQuota() {
+        return this.tableQuota;
     }
     /**
      * @return A map of tags assigned to the instance. It must be in the format:
@@ -218,13 +274,6 @@ public final class GetInstancesInstance {
     public String userId() {
         return this.userId;
     }
-    /**
-     * @return The maximum adjustable write capacity unit of the instance.
-     * 
-     */
-    public Integer writeCapacity() {
-        return this.writeCapacity;
-    }
 
     public static Builder builder() {
         return new Builder();
@@ -242,11 +291,15 @@ public final class GetInstancesInstance {
         private String id;
         private String name;
         private String network;
-        private Integer readCapacity;
+        private List<String> networkSourceAcls;
+        private List<String> networkTypeAcls;
+        private String policy;
+        private Integer policyVersion;
+        private String resourceGroupId;
         private String status;
+        private Integer tableQuota;
         private Map<String,Object> tags;
         private String userId;
-        private Integer writeCapacity;
         public Builder() {}
         public Builder(GetInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
@@ -257,11 +310,15 @@ public final class GetInstancesInstance {
     	      this.id = defaults.id;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
-    	      this.readCapacity = defaults.readCapacity;
+    	      this.networkSourceAcls = defaults.networkSourceAcls;
+    	      this.networkTypeAcls = defaults.networkTypeAcls;
+    	      this.policy = defaults.policy;
+    	      this.policyVersion = defaults.policyVersion;
+    	      this.resourceGroupId = defaults.resourceGroupId;
     	      this.status = defaults.status;
+    	      this.tableQuota = defaults.tableQuota;
     	      this.tags = defaults.tags;
     	      this.userId = defaults.userId;
-    	      this.writeCapacity = defaults.writeCapacity;
         }
 
         @CustomType.Setter
@@ -321,11 +378,49 @@ public final class GetInstancesInstance {
             return this;
         }
         @CustomType.Setter
-        public Builder readCapacity(Integer readCapacity) {
-            if (readCapacity == null) {
-              throw new MissingRequiredPropertyException("GetInstancesInstance", "readCapacity");
+        public Builder networkSourceAcls(List<String> networkSourceAcls) {
+            if (networkSourceAcls == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "networkSourceAcls");
             }
-            this.readCapacity = readCapacity;
+            this.networkSourceAcls = networkSourceAcls;
+            return this;
+        }
+        public Builder networkSourceAcls(String... networkSourceAcls) {
+            return networkSourceAcls(List.of(networkSourceAcls));
+        }
+        @CustomType.Setter
+        public Builder networkTypeAcls(List<String> networkTypeAcls) {
+            if (networkTypeAcls == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "networkTypeAcls");
+            }
+            this.networkTypeAcls = networkTypeAcls;
+            return this;
+        }
+        public Builder networkTypeAcls(String... networkTypeAcls) {
+            return networkTypeAcls(List.of(networkTypeAcls));
+        }
+        @CustomType.Setter
+        public Builder policy(String policy) {
+            if (policy == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "policy");
+            }
+            this.policy = policy;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder policyVersion(Integer policyVersion) {
+            if (policyVersion == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "policyVersion");
+            }
+            this.policyVersion = policyVersion;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder resourceGroupId(String resourceGroupId) {
+            if (resourceGroupId == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "resourceGroupId");
+            }
+            this.resourceGroupId = resourceGroupId;
             return this;
         }
         @CustomType.Setter
@@ -334,6 +429,14 @@ public final class GetInstancesInstance {
               throw new MissingRequiredPropertyException("GetInstancesInstance", "status");
             }
             this.status = status;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder tableQuota(Integer tableQuota) {
+            if (tableQuota == null) {
+              throw new MissingRequiredPropertyException("GetInstancesInstance", "tableQuota");
+            }
+            this.tableQuota = tableQuota;
             return this;
         }
         @CustomType.Setter
@@ -352,14 +455,6 @@ public final class GetInstancesInstance {
             this.userId = userId;
             return this;
         }
-        @CustomType.Setter
-        public Builder writeCapacity(Integer writeCapacity) {
-            if (writeCapacity == null) {
-              throw new MissingRequiredPropertyException("GetInstancesInstance", "writeCapacity");
-            }
-            this.writeCapacity = writeCapacity;
-            return this;
-        }
         public GetInstancesInstance build() {
             final var _resultValue = new GetInstancesInstance();
             _resultValue.clusterType = clusterType;
@@ -369,11 +464,15 @@ public final class GetInstancesInstance {
             _resultValue.id = id;
             _resultValue.name = name;
             _resultValue.network = network;
-            _resultValue.readCapacity = readCapacity;
+            _resultValue.networkSourceAcls = networkSourceAcls;
+            _resultValue.networkTypeAcls = networkTypeAcls;
+            _resultValue.policy = policy;
+            _resultValue.policyVersion = policyVersion;
+            _resultValue.resourceGroupId = resourceGroupId;
             _resultValue.status = status;
+            _resultValue.tableQuota = tableQuota;
             _resultValue.tags = tags;
             _resultValue.userId = userId;
-            _resultValue.writeCapacity = writeCapacity;
             return _resultValue;
         }
     }

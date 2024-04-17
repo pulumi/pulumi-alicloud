@@ -207,6 +207,8 @@ public final class OtsFunctions {
     /**
      * This data source provides the ots instances of the current Alibaba Cloud user.
      * 
+     * &gt; **NOTE:** Available since v1.40.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -232,7 +234,6 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;sample-instance&#34;)
      *             .outputFile(&#34;instances.txt&#34;)
      *             .build());
      * 
@@ -249,6 +250,8 @@ public final class OtsFunctions {
     /**
      * This data source provides the ots instances of the current Alibaba Cloud user.
      * 
+     * &gt; **NOTE:** Available since v1.40.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -274,7 +277,6 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;sample-instance&#34;)
      *             .outputFile(&#34;instances.txt&#34;)
      *             .build());
      * 
@@ -291,6 +293,8 @@ public final class OtsFunctions {
     /**
      * This data source provides the ots instances of the current Alibaba Cloud user.
      * 
+     * &gt; **NOTE:** Available since v1.40.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -316,7 +320,6 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;sample-instance&#34;)
      *             .outputFile(&#34;instances.txt&#34;)
      *             .build());
      * 
@@ -333,6 +336,8 @@ public final class OtsFunctions {
     /**
      * This data source provides the ots instances of the current Alibaba Cloud user.
      * 
+     * &gt; **NOTE:** Available since v1.40.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -358,7 +363,6 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;sample-instance&#34;)
      *             .outputFile(&#34;instances.txt&#34;)
      *             .build());
      * 
@@ -375,6 +379,8 @@ public final class OtsFunctions {
     /**
      * This data source provides the ots instances of the current Alibaba Cloud user.
      * 
+     * &gt; **NOTE:** Available since v1.40.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -400,7 +406,6 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;sample-instance&#34;)
      *             .outputFile(&#34;instances.txt&#34;)
      *             .build());
      * 
@@ -417,6 +422,8 @@ public final class OtsFunctions {
     /**
      * This data source provides the ots instances of the current Alibaba Cloud user.
      * 
+     * &gt; **NOTE:** Available since v1.40.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -442,7 +449,6 @@ public final class OtsFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var instancesDs = OtsFunctions.getInstances(GetInstancesArgs.builder()
-     *             .nameRegex(&#34;sample-instance&#34;)
      *             .outputFile(&#34;instances.txt&#34;)
      *             .build());
      * 

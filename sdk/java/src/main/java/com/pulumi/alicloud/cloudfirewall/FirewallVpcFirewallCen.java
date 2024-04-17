@@ -49,15 +49,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // These resource primary keys should be replaced with your actual values.
  *         var default_ = new FirewallVpcFirewallCen(&#34;default&#34;, FirewallVpcFirewallCenArgs.builder()        
- *             .cenId(&#34;cen-cjok7uyb5w2b27573v&#34;)
+ *             .cenId(&#34;cen-xxx&#34;)
  *             .localVpc(FirewallVpcFirewallCenLocalVpcArgs.builder()
- *                 .networkInstanceId(&#34;vpc-a2d4wzzfuumzuq6uog5w4&#34;)
+ *                 .networkInstanceId(&#34;vpc-xxx&#34;)
  *                 .build())
- *             .memberUid(&#34;1415189284827022&#34;)
+ *             .memberUid(&#34;14151*****827022&#34;)
  *             .status(&#34;open&#34;)
  *             .vpcFirewallName(&#34;tf-vpc-firewall-name&#34;)
- *             .vpcRegion(&#34;ap-south-1&#34;)
+ *             .vpcRegion(&#34;cn-hangzhou&#34;)
  *             .build());
  * 
  *     }

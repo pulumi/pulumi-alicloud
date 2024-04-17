@@ -168,6 +168,18 @@ export class ScalingRule extends pulumi.CustomResource {
      */
     public readonly metricName!: pulumi.Output<string | undefined>;
     /**
+     * The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+     */
+    public readonly minAdjustmentMagnitude!: pulumi.Output<number | undefined>;
+    /**
+     * The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+     */
+    public readonly scaleInEvaluationCount!: pulumi.Output<number>;
+    /**
+     * The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+     */
+    public readonly scaleOutEvaluationCount!: pulumi.Output<number>;
+    /**
      * ID of the scaling group of a scaling rule.
      */
     public readonly scalingGroupId!: pulumi.Output<string>;
@@ -209,6 +221,9 @@ export class ScalingRule extends pulumi.CustomResource {
             resourceInputs["disableScaleIn"] = state ? state.disableScaleIn : undefined;
             resourceInputs["estimatedInstanceWarmup"] = state ? state.estimatedInstanceWarmup : undefined;
             resourceInputs["metricName"] = state ? state.metricName : undefined;
+            resourceInputs["minAdjustmentMagnitude"] = state ? state.minAdjustmentMagnitude : undefined;
+            resourceInputs["scaleInEvaluationCount"] = state ? state.scaleInEvaluationCount : undefined;
+            resourceInputs["scaleOutEvaluationCount"] = state ? state.scaleOutEvaluationCount : undefined;
             resourceInputs["scalingGroupId"] = state ? state.scalingGroupId : undefined;
             resourceInputs["scalingRuleName"] = state ? state.scalingRuleName : undefined;
             resourceInputs["scalingRuleType"] = state ? state.scalingRuleType : undefined;
@@ -226,6 +241,9 @@ export class ScalingRule extends pulumi.CustomResource {
             resourceInputs["disableScaleIn"] = args ? args.disableScaleIn : undefined;
             resourceInputs["estimatedInstanceWarmup"] = args ? args.estimatedInstanceWarmup : undefined;
             resourceInputs["metricName"] = args ? args.metricName : undefined;
+            resourceInputs["minAdjustmentMagnitude"] = args ? args.minAdjustmentMagnitude : undefined;
+            resourceInputs["scaleInEvaluationCount"] = args ? args.scaleInEvaluationCount : undefined;
+            resourceInputs["scaleOutEvaluationCount"] = args ? args.scaleOutEvaluationCount : undefined;
             resourceInputs["scalingGroupId"] = args ? args.scalingGroupId : undefined;
             resourceInputs["scalingRuleName"] = args ? args.scalingRuleName : undefined;
             resourceInputs["scalingRuleType"] = args ? args.scalingRuleType : undefined;
@@ -280,6 +298,18 @@ export interface ScalingRuleState {
      * A CloudMonitor metric name.
      */
     metricName?: pulumi.Input<string>;
+    /**
+     * The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+     */
+    minAdjustmentMagnitude?: pulumi.Input<number>;
+    /**
+     * The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+     */
+    scaleInEvaluationCount?: pulumi.Input<number>;
+    /**
+     * The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+     */
+    scaleOutEvaluationCount?: pulumi.Input<number>;
     /**
      * ID of the scaling group of a scaling rule.
      */
@@ -340,6 +370,18 @@ export interface ScalingRuleArgs {
      * A CloudMonitor metric name.
      */
     metricName?: pulumi.Input<string>;
+    /**
+     * The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+     */
+    minAdjustmentMagnitude?: pulumi.Input<number>;
+    /**
+     * The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+     */
+    scaleInEvaluationCount?: pulumi.Input<number>;
+    /**
+     * The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+     */
+    scaleOutEvaluationCount?: pulumi.Input<number>;
     /**
      * ID of the scaling group of a scaling rule.
      */

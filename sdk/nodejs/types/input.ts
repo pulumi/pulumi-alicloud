@@ -8947,6 +8947,82 @@ export namespace hbr {
         schedule?: pulumi.Input<string>;
     }
 
+    export interface PolicyBindingAdvancedOptions {
+        /**
+         * ECS Backup Advanced options. See `udmDetail` below.
+         */
+        udmDetail?: pulumi.Input<inputs.hbr.PolicyBindingAdvancedOptionsUdmDetail>;
+    }
+
+    export interface PolicyBindingAdvancedOptionsUdmDetail {
+        /**
+         * Custom KMS key ID of encrypted copy.
+         */
+        destinationKmsKeyId?: pulumi.Input<string>;
+        /**
+         * The list of backup disks. If it is empty, all disks are backed up.
+         */
+        diskIdLists?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of cloud disk IDs that are not backed up.
+         */
+        excludeDiskIdLists?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface PolicyRule {
+        /**
+         * This parameter is required only when the value of **RuleType** is **TRANSITION. The minimum value is 30, and the Retention-ArchiveDays needs to be greater than or equal to 60.
+         */
+        archiveDays?: pulumi.Input<number>;
+        /**
+         * This parameter is required only when the **RuleType** value is **BACKUP. Backup Type.
+         */
+        backupType?: pulumi.Input<string>;
+        /**
+         * This parameter is required only when **RuleType** is set to **BACKUP**.
+         */
+        keepLatestSnapshots?: pulumi.Input<number>;
+        /**
+         * Only when the **RuleType** value is.
+         */
+        replicationRegionId?: pulumi.Input<string>;
+        /**
+         * Retention time, in days.
+         */
+        retention?: pulumi.Input<number>;
+        /**
+         * This parameter is required only when the value of **RuleType** is **TRANSITION**. See `retentionRules` below.
+         */
+        retentionRules?: pulumi.Input<pulumi.Input<inputs.hbr.PolicyRuleRetentionRule>[]>;
+        /**
+         * Rule ID.
+         */
+        ruleId?: pulumi.Input<string>;
+        /**
+         * Rule Type.
+         */
+        ruleType: pulumi.Input<string>;
+        /**
+         * This parameter is required only if you set the **RuleType** parameter to **BACKUP**. This parameter specifies the backup schedule settings. Format: `I|{startTime}|{interval}`. The system runs the first backup job at a point in time that is specified in the {startTime} parameter and the subsequent backup jobs at an interval that is specified in the {interval} parameter. The system does not run a backup job before the specified point in time. Each backup job, except the first one, starts only after the previous backup job is complete. For example, `I|1631685600|P1D` specifies that the system runs the first backup job at 14:00:00 on September 15, 2021 and the subsequent backup jobs once a day.  *   startTime: the time at which the system starts to run a backup job. The time must follow the UNIX time format. Unit: seconds. *   interval: the interval at which the system runs a backup job. The interval must follow the ISO 8601 standard. For example, PT1H specifies an interval of one hour. P1D specifies an interval of one day.
+         */
+        schedule?: pulumi.Input<string>;
+        /**
+         * Vault ID.
+         */
+        vaultId?: pulumi.Input<string>;
+    }
+
+    export interface PolicyRuleRetentionRule {
+        /**
+         * Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
+         */
+        advancedRetentionType?: pulumi.Input<string>;
+        /**
+         * Retention time, in days.
+         */
+        retention?: pulumi.Input<number>;
+    }
+
     export interface RestoreJobOtsDetail {
         /**
          * Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
@@ -9961,7 +10037,7 @@ export namespace nlb {
          */
         healthCheckHttpCodes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Time interval of health examination. Unit: seconds.Valid values: **5** ~ **50**.
+         * Time interval of health examination. Unit: seconds.  Valid values: **5** ~ **50**.
          */
         healthCheckInterval?: pulumi.Input<number>;
         /**
@@ -9974,7 +10050,7 @@ export namespace nlb {
          */
         healthCheckUrl?: pulumi.Input<string>;
         /**
-         * After the health check is successful, the health check status of the backend server is determined from **failed** to **successful * *.Valid values: **2** to **10 * *.
+         * After the health check is successful, the health check status of the backend server is determined from **failed** to **successful**.  Valid values: **2** to **10**.
          */
         healthyThreshold?: pulumi.Input<number>;
         /**

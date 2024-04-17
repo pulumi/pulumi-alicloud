@@ -140,6 +140,51 @@ public final class ScalingRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+     * 
+     */
+    @Import(name="minAdjustmentMagnitude")
+    private @Nullable Output<Integer> minAdjustmentMagnitude;
+
+    /**
+     * @return The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+     * 
+     */
+    public Optional<Output<Integer>> minAdjustmentMagnitude() {
+        return Optional.ofNullable(this.minAdjustmentMagnitude);
+    }
+
+    /**
+     * The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+     * 
+     */
+    @Import(name="scaleInEvaluationCount")
+    private @Nullable Output<Integer> scaleInEvaluationCount;
+
+    /**
+     * @return The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+     * 
+     */
+    public Optional<Output<Integer>> scaleInEvaluationCount() {
+        return Optional.ofNullable(this.scaleInEvaluationCount);
+    }
+
+    /**
+     * The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+     * 
+     */
+    @Import(name="scaleOutEvaluationCount")
+    private @Nullable Output<Integer> scaleOutEvaluationCount;
+
+    /**
+     * @return The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+     * 
+     */
+    public Optional<Output<Integer>> scaleOutEvaluationCount() {
+        return Optional.ofNullable(this.scaleOutEvaluationCount);
+    }
+
+    /**
      * ID of the scaling group of a scaling rule.
      * 
      */
@@ -224,6 +269,9 @@ public final class ScalingRuleArgs extends com.pulumi.resources.ResourceArgs {
         this.disableScaleIn = $.disableScaleIn;
         this.estimatedInstanceWarmup = $.estimatedInstanceWarmup;
         this.metricName = $.metricName;
+        this.minAdjustmentMagnitude = $.minAdjustmentMagnitude;
+        this.scaleInEvaluationCount = $.scaleInEvaluationCount;
+        this.scaleOutEvaluationCount = $.scaleOutEvaluationCount;
         this.scalingGroupId = $.scalingGroupId;
         this.scalingRuleName = $.scalingRuleName;
         this.scalingRuleType = $.scalingRuleType;
@@ -406,6 +454,69 @@ public final class ScalingRuleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder metricName(String metricName) {
             return metricName(Output.of(metricName));
+        }
+
+        /**
+         * @param minAdjustmentMagnitude The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minAdjustmentMagnitude(@Nullable Output<Integer> minAdjustmentMagnitude) {
+            $.minAdjustmentMagnitude = minAdjustmentMagnitude;
+            return this;
+        }
+
+        /**
+         * @param minAdjustmentMagnitude The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minAdjustmentMagnitude(Integer minAdjustmentMagnitude) {
+            return minAdjustmentMagnitude(Output.of(minAdjustmentMagnitude));
+        }
+
+        /**
+         * @param scaleInEvaluationCount The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleInEvaluationCount(@Nullable Output<Integer> scaleInEvaluationCount) {
+            $.scaleInEvaluationCount = scaleInEvaluationCount;
+            return this;
+        }
+
+        /**
+         * @param scaleInEvaluationCount The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleInEvaluationCount(Integer scaleInEvaluationCount) {
+            return scaleInEvaluationCount(Output.of(scaleInEvaluationCount));
+        }
+
+        /**
+         * @param scaleOutEvaluationCount The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleOutEvaluationCount(@Nullable Output<Integer> scaleOutEvaluationCount) {
+            $.scaleOutEvaluationCount = scaleOutEvaluationCount;
+            return this;
+        }
+
+        /**
+         * @param scaleOutEvaluationCount The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder scaleOutEvaluationCount(Integer scaleOutEvaluationCount) {
+            return scaleOutEvaluationCount(Output.of(scaleOutEvaluationCount));
         }
 
         /**

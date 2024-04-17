@@ -190,6 +190,12 @@ type ScalingRule struct {
 	EstimatedInstanceWarmup pulumi.IntOutput `pulumi:"estimatedInstanceWarmup"`
 	// A CloudMonitor metric name.
 	MetricName pulumi.StringPtrOutput `pulumi:"metricName"`
+	// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+	MinAdjustmentMagnitude pulumi.IntPtrOutput `pulumi:"minAdjustmentMagnitude"`
+	// The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+	ScaleInEvaluationCount pulumi.IntOutput `pulumi:"scaleInEvaluationCount"`
+	// The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+	ScaleOutEvaluationCount pulumi.IntOutput `pulumi:"scaleOutEvaluationCount"`
 	// ID of the scaling group of a scaling rule.
 	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
 	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
@@ -257,6 +263,12 @@ type scalingRuleState struct {
 	EstimatedInstanceWarmup *int `pulumi:"estimatedInstanceWarmup"`
 	// A CloudMonitor metric name.
 	MetricName *string `pulumi:"metricName"`
+	// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+	MinAdjustmentMagnitude *int `pulumi:"minAdjustmentMagnitude"`
+	// The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+	ScaleInEvaluationCount *int `pulumi:"scaleInEvaluationCount"`
+	// The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+	ScaleOutEvaluationCount *int `pulumi:"scaleOutEvaluationCount"`
 	// ID of the scaling group of a scaling rule.
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
 	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
@@ -292,6 +304,12 @@ type ScalingRuleState struct {
 	EstimatedInstanceWarmup pulumi.IntPtrInput
 	// A CloudMonitor metric name.
 	MetricName pulumi.StringPtrInput
+	// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+	MinAdjustmentMagnitude pulumi.IntPtrInput
+	// The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+	ScaleInEvaluationCount pulumi.IntPtrInput
+	// The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+	ScaleOutEvaluationCount pulumi.IntPtrInput
 	// ID of the scaling group of a scaling rule.
 	ScalingGroupId pulumi.StringPtrInput
 	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
@@ -329,6 +347,12 @@ type scalingRuleArgs struct {
 	EstimatedInstanceWarmup *int `pulumi:"estimatedInstanceWarmup"`
 	// A CloudMonitor metric name.
 	MetricName *string `pulumi:"metricName"`
+	// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+	MinAdjustmentMagnitude *int `pulumi:"minAdjustmentMagnitude"`
+	// The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+	ScaleInEvaluationCount *int `pulumi:"scaleInEvaluationCount"`
+	// The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+	ScaleOutEvaluationCount *int `pulumi:"scaleOutEvaluationCount"`
 	// ID of the scaling group of a scaling rule.
 	ScalingGroupId string `pulumi:"scalingGroupId"`
 	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
@@ -363,6 +387,12 @@ type ScalingRuleArgs struct {
 	EstimatedInstanceWarmup pulumi.IntPtrInput
 	// A CloudMonitor metric name.
 	MetricName pulumi.StringPtrInput
+	// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+	MinAdjustmentMagnitude pulumi.IntPtrInput
+	// The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+	ScaleInEvaluationCount pulumi.IntPtrInput
+	// The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+	ScaleOutEvaluationCount pulumi.IntPtrInput
 	// ID of the scaling group of a scaling rule.
 	ScalingGroupId pulumi.StringInput
 	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
@@ -506,6 +536,21 @@ func (o ScalingRuleOutput) EstimatedInstanceWarmup() pulumi.IntOutput {
 // A CloudMonitor metric name.
 func (o ScalingRuleOutput) MetricName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingRule) pulumi.StringPtrOutput { return v.MetricName }).(pulumi.StringPtrOutput)
+}
+
+// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+func (o ScalingRuleOutput) MinAdjustmentMagnitude() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ScalingRule) pulumi.IntPtrOutput { return v.MinAdjustmentMagnitude }).(pulumi.IntPtrOutput)
+}
+
+// The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+func (o ScalingRuleOutput) ScaleInEvaluationCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *ScalingRule) pulumi.IntOutput { return v.ScaleInEvaluationCount }).(pulumi.IntOutput)
+}
+
+// The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
+func (o ScalingRuleOutput) ScaleOutEvaluationCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *ScalingRule) pulumi.IntOutput { return v.ScaleOutEvaluationCount }).(pulumi.IntOutput)
 }
 
 // ID of the scaling group of a scaling rule.

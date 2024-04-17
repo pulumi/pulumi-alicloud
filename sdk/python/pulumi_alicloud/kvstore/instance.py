@@ -88,7 +88,7 @@ class InstanceArgs:
         :param pulumi.Input[int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
         :param pulumi.Input[Mapping[str, Any]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
         :param pulumi.Input[str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
-        :param pulumi.Input[str] coupon_no: The coupon code.
+        :param pulumi.Input[str] coupon_no: The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         :param pulumi.Input[str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
         :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck the request. Valid values:
@@ -425,7 +425,7 @@ class InstanceArgs:
     @pulumi.getter(name="couponNo")
     def coupon_no(self) -> Optional[pulumi.Input[str]]:
         """
-        The coupon code.
+        The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         """
         return pulumi.get(self, "coupon_no")
 
@@ -1103,7 +1103,7 @@ class _InstanceState:
         :param pulumi.Input[str] connection_domain: Intranet connection address of the KVStore instance.
         :param pulumi.Input[str] connection_string: Indicates whether the address is a private endpoint.
         :param pulumi.Input[str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
-        :param pulumi.Input[str] coupon_no: The coupon code.
+        :param pulumi.Input[str] coupon_no: The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         :param pulumi.Input[str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
         :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck the request. Valid values:
@@ -1497,7 +1497,7 @@ class _InstanceState:
     @pulumi.getter(name="couponNo")
     def coupon_no(self) -> Optional[pulumi.Input[str]]:
         """
-        The coupon code.
+        The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         """
         return pulumi.get(self, "coupon_no")
 
@@ -2214,7 +2214,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] capacity: The storage capacity of the KVStore DBInstance. Unit: MB.
         :param pulumi.Input[Mapping[str, Any]] config: The configuration of the KVStore DBInstance. Available parameters can refer to the latest docs [Instance configurations table](https://www.alibabacloud.com/help/en/redis/user-guide/supported-parameters).
         :param pulumi.Input[str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
-        :param pulumi.Input[str] coupon_no: The coupon code.
+        :param pulumi.Input[str] coupon_no: The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         :param pulumi.Input[str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
         :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck the request. Valid values:
@@ -2530,7 +2530,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] connection_domain: Intranet connection address of the KVStore instance.
         :param pulumi.Input[str] connection_string: Indicates whether the address is a private endpoint.
         :param pulumi.Input[str] connection_string_prefix: It has been deprecated from provider version 1.101.0 and resource `kvstore.Connection` instead.
-        :param pulumi.Input[str] coupon_no: The coupon code.
+        :param pulumi.Input[str] coupon_no: The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         :param pulumi.Input[str] db_instance_name: The name of KVStore DBInstance. It is a string of 2 to 256 characters.
         :param pulumi.Input[str] dedicated_host_group_id: The ID of the dedicated cluster. This parameter is required when you create an ApsaraDB for Redis instance in a dedicated cluster.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck the request. Valid values:
@@ -2784,7 +2784,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="couponNo")
     def coupon_no(self) -> pulumi.Output[Optional[str]]:
         """
-        The coupon code.
+        The coupon code. **NOTE:** The default value `youhuiquan_promotion_option_id_for_blank` removed since v1.216.0, this can cause your status file to change even if it has not been modified, so please review your change plan before apply change plan.
         """
         return pulumi.get(self, "coupon_no")
 

@@ -38,7 +38,10 @@ namespace Pulumi.AliCloud.Ots
     ///     var defaultInstance = new AliCloud.Ots.Instance("defaultInstance", new()
     ///     {
     ///         Description = name,
-    ///         AccessedBy = "Vpc",
+    ///         NetworkTypeAcls = new[]
+    ///         {
+    ///             "VPC",
+    ///         },
     ///         Tags = 
     ///         {
     ///             { "Created", "TF" },
@@ -65,7 +68,7 @@ namespace Pulumi.AliCloud.Ots
         /// The network limitation of accessing instance. Valid values:
         /// </summary>
         [Output("accessedBy")]
-        public Output<string?> AccessedBy { get; private set; } = null!;
+        public Output<string> AccessedBy { get; private set; } = null!;
 
         /// <summary>
         /// The description of the instance. Currently, it does not support modifying.
@@ -84,6 +87,25 @@ namespace Pulumi.AliCloud.Ots
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// The set of request sources that are allowed access. Valid optional values:
+        /// </summary>
+        [Output("networkSourceAcls")]
+        public Output<ImmutableArray<string>> NetworkSourceAcls { get; private set; } = null!;
+
+        /// <summary>
+        /// The set of network types that are allowed access. Valid optional values:
+        /// </summary>
+        [Output("networkTypeAcls")]
+        public Output<ImmutableArray<string>> NetworkTypeAcls { get; private set; } = null!;
+
+        /// <summary>
+        /// The resource group the instance belongs to.
+        /// Default to Alibaba Cloud default resource group.
+        /// </summary>
+        [Output("resourceGroupId")]
+        public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
         /// A mapping of tags to assign to the instance.
@@ -161,6 +183,37 @@ namespace Pulumi.AliCloud.Ots
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("networkSourceAcls")]
+        private InputList<string>? _networkSourceAcls;
+
+        /// <summary>
+        /// The set of request sources that are allowed access. Valid optional values:
+        /// </summary>
+        public InputList<string> NetworkSourceAcls
+        {
+            get => _networkSourceAcls ?? (_networkSourceAcls = new InputList<string>());
+            set => _networkSourceAcls = value;
+        }
+
+        [Input("networkTypeAcls")]
+        private InputList<string>? _networkTypeAcls;
+
+        /// <summary>
+        /// The set of network types that are allowed access. Valid optional values:
+        /// </summary>
+        public InputList<string> NetworkTypeAcls
+        {
+            get => _networkTypeAcls ?? (_networkTypeAcls = new InputList<string>());
+            set => _networkTypeAcls = value;
+        }
+
+        /// <summary>
+        /// The resource group the instance belongs to.
+        /// Default to Alibaba Cloud default resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
+
         [Input("tags")]
         private InputMap<object>? _tags;
 
@@ -204,6 +257,37 @@ namespace Pulumi.AliCloud.Ots
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("networkSourceAcls")]
+        private InputList<string>? _networkSourceAcls;
+
+        /// <summary>
+        /// The set of request sources that are allowed access. Valid optional values:
+        /// </summary>
+        public InputList<string> NetworkSourceAcls
+        {
+            get => _networkSourceAcls ?? (_networkSourceAcls = new InputList<string>());
+            set => _networkSourceAcls = value;
+        }
+
+        [Input("networkTypeAcls")]
+        private InputList<string>? _networkTypeAcls;
+
+        /// <summary>
+        /// The set of network types that are allowed access. Valid optional values:
+        /// </summary>
+        public InputList<string> NetworkTypeAcls
+        {
+            get => _networkTypeAcls ?? (_networkTypeAcls = new InputList<string>());
+            set => _networkTypeAcls = value;
+        }
+
+        /// <summary>
+        /// The resource group the instance belongs to.
+        /// Default to Alibaba Cloud default resource group.
+        /// </summary>
+        [Input("resourceGroupId")]
+        public Input<string>? ResourceGroupId { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
