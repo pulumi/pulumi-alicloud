@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstSaslUsername = saslUsersDs.then(saslUsersDs => saslUsersDs.users?.[0]?.username);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSaslUsers(args: GetSaslUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetSaslUsersResult> {
 
@@ -82,7 +80,6 @@ export interface GetSaslUsersResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -94,7 +91,6 @@ export interface GetSaslUsersResult {
  * });
  * export const firstSaslUsername = saslUsersDs.then(saslUsersDs => saslUsersDs.users?.[0]?.username);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSaslUsersOutput(args: GetSaslUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSaslUsersResult> {
     return pulumi.output(args).apply((a: any) => getSaslUsers(a, opts))

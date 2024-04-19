@@ -125,7 +125,6 @@ def get_groups(directory_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -140,7 +139,6 @@ def get_groups(directory_id: Optional[str] = None,
         name_regex="^my-Group")
     pulumi.export("cloudSsoGroupId2", name_regex.groups[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str directory_id: The ID of the Directory.
@@ -187,7 +185,6 @@ def get_groups_output(directory_id: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -202,7 +199,6 @@ def get_groups_output(directory_id: Optional[pulumi.Input[str]] = None,
         name_regex="^my-Group")
     pulumi.export("cloudSsoGroupId2", name_regex.groups[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str directory_id: The ID of the Directory.

@@ -134,7 +134,6 @@ def get_apis(api_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -142,7 +141,6 @@ def get_apis(api_id: Optional[str] = None,
     data_apigatway_apis = alicloud.apigateway.get_apis(output_file="output_ApiGatawayApis")
     pulumi.export("firstApiId", data_apigatway["apis"][0]["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str api_id: (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.
@@ -183,7 +181,6 @@ def get_apis_output(api_id: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -191,7 +188,6 @@ def get_apis_output(api_id: Optional[pulumi.Input[Optional[str]]] = None,
     data_apigatway_apis = alicloud.apigateway.get_apis(output_file="output_ApiGatawayApis")
     pulumi.export("firstApiId", data_apigatway["apis"][0]["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str api_id: (It has been deprecated from version 1.52.2, and use field 'ids' to replace.) ID of the specified API.

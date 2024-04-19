@@ -255,7 +255,6 @@ class SecurityPolicy(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -268,7 +267,6 @@ class SecurityPolicy(pulumi.CustomResource):
                 "AES256-SHA",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -304,7 +302,6 @@ class SecurityPolicy(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -317,7 +314,6 @@ class SecurityPolicy(pulumi.CustomResource):
                 "AES256-SHA",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

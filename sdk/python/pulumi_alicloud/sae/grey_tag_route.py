@@ -209,7 +209,6 @@ class GreyTagRoute(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -281,7 +280,6 @@ class GreyTagRoute(pulumi.CustomResource):
                 version="1.0.0",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -316,7 +314,6 @@ class GreyTagRoute(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -388,7 +385,6 @@ class GreyTagRoute(pulumi.CustomResource):
                 version="1.0.0",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

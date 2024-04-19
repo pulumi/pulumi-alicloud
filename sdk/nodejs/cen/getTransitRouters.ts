@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstTransitRoutersType = _default.then(_default => _default.transitRouters?.[0]?.type);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTransitRouters(args: GetTransitRoutersArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRoutersResult> {
 
@@ -113,7 +111,6 @@ export interface GetTransitRoutersResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -123,7 +120,6 @@ export interface GetTransitRoutersResult {
  * });
  * export const firstTransitRoutersType = _default.then(_default => _default.transitRouters?.[0]?.type);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTransitRoutersOutput(args: GetTransitRoutersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRoutersResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouters(a, opts))

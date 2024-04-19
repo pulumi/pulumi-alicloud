@@ -123,14 +123,12 @@ def get_bundles(bundle_ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     default = alicloud.eds.get_bundles(bundle_type="SYSTEM")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] bundle_ids: The bundle id of the bundle.
@@ -175,14 +173,12 @@ def get_bundles_output(bundle_ids: Optional[pulumi.Input[Optional[Sequence[str]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     default = alicloud.eds.get_bundles(bundle_type="SYSTEM")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] bundle_ids: The bundle id of the bundle.

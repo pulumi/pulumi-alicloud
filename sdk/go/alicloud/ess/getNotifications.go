@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,7 +41,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetNotifications(ctx *pulumi.Context, args *GetNotificationsArgs, opts ...pulumi.InvokeOption) (*GetNotificationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNotificationsResult

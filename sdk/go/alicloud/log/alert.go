@@ -23,7 +23,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -120,11 +119,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // # Basic Usage for new alert
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -279,11 +276,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // # Basic Usage for alert template
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -366,7 +361,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

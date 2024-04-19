@@ -79,14 +79,12 @@ class Qos(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         default = alicloud.rocketmq.Qos("default", name="terraform-example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -119,14 +117,12 @@ class Qos(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         default = alicloud.rocketmq.Qos("default", name="terraform-example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

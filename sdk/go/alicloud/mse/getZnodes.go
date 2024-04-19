@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,7 +57,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetZnodes(ctx *pulumi.Context, args *GetZnodesArgs, opts ...pulumi.InvokeOption) (*GetZnodesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetZnodesResult

@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,7 +41,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancesResult
@@ -78,7 +76,6 @@ type GetInstancesArgs struct {
 	// Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -102,7 +99,6 @@ type GetInstancesArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Tags map[string]interface{} `pulumi:"tags"`
 	// ID of the VPC linked to the instances.
 	VpcId *string `pulumi:"vpcId"`
@@ -183,7 +179,6 @@ type GetInstancesOutputArgs struct {
 	// Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -207,7 +202,6 @@ type GetInstancesOutputArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// ID of the VPC linked to the instances.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`

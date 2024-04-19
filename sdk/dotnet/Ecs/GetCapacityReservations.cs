@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCapacityReservationsResult> InvokeAsync(GetCapacityReservationsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCapacityReservationsResult>("alicloud:ecs/getCapacityReservations:getCapacityReservations", args ?? new GetCapacityReservationsArgs(), options.WithDefaults());
@@ -56,7 +54,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -82,7 +79,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCapacityReservationsResult> Invoke(GetCapacityReservationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCapacityReservationsResult>("alicloud:ecs/getCapacityReservations:getCapacityReservations", args ?? new GetCapacityReservationsInvokeArgs(), options.WithDefaults());

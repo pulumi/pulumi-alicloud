@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,7 +55,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetHostShareKeys(ctx *pulumi.Context, args *GetHostShareKeysArgs, opts ...pulumi.InvokeOption) (*GetHostShareKeysResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHostShareKeysResult

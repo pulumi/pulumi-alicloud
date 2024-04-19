@@ -107,14 +107,12 @@ class IndustrialPidOrganization(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         example = alicloud.brain.IndustrialPidOrganization("example", pid_organization_name="tf-testAcc")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -144,14 +142,12 @@ class IndustrialPidOrganization(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         example = alicloud.brain.IndustrialPidOrganization("example", pid_organization_name="tf-testAcc")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

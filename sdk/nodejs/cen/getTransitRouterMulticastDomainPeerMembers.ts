@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudCenTransitRouterMulticastDomainPeerMemberExampleId = _default.then(_default => _default.members?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTransitRouterMulticastDomainPeerMembers(args: GetTransitRouterMulticastDomainPeerMembersArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterMulticastDomainPeerMembersResult> {
 
@@ -109,7 +107,6 @@ export interface GetTransitRouterMulticastDomainPeerMembersResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -119,7 +116,6 @@ export interface GetTransitRouterMulticastDomainPeerMembersResult {
  * });
  * export const alicloudCenTransitRouterMulticastDomainPeerMemberExampleId = _default.then(_default => _default.members?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTransitRouterMulticastDomainPeerMembersOutput(args: GetTransitRouterMulticastDomainPeerMembersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterMulticastDomainPeerMembersResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouterMulticastDomainPeerMembers(a, opts))

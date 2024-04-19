@@ -324,7 +324,6 @@ class Project(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -339,7 +338,6 @@ class Project(pulumi.CustomResource):
             comment=name,
             product_type="PayAsYouGo")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -368,7 +366,6 @@ class Project(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -383,7 +380,6 @@ class Project(pulumi.CustomResource):
             comment=name,
             product_type="PayAsYouGo")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.

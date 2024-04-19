@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -52,7 +51,6 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGatewayBlockVolumesResult> InvokeAsync(GetGatewayBlockVolumesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewayBlockVolumesResult>("alicloud:cloudstoragegateway/getGatewayBlockVolumes:getGatewayBlockVolumes", args ?? new GetGatewayBlockVolumesArgs(), options.WithDefaults());
@@ -66,7 +64,6 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -98,7 +95,6 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGatewayBlockVolumesResult> Invoke(GetGatewayBlockVolumesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayBlockVolumesResult>("alicloud:cloudstoragegateway/getGatewayBlockVolumes:getGatewayBlockVolumes", args ?? new GetGatewayBlockVolumesInvokeArgs(), options.WithDefaults());

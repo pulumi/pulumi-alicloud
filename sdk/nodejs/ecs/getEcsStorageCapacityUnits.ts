@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const ecsStorageCapacityUnitId2 = nameRegex.then(nameRegex => nameRegex.units?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEcsStorageCapacityUnits(args?: GetEcsStorageCapacityUnitsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsStorageCapacityUnitsResult> {
     args = args || {};
@@ -87,7 +85,6 @@ export interface GetEcsStorageCapacityUnitsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -99,7 +96,6 @@ export interface GetEcsStorageCapacityUnitsResult {
  * });
  * export const ecsStorageCapacityUnitId2 = nameRegex.then(nameRegex => nameRegex.units?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEcsStorageCapacityUnitsOutput(args?: GetEcsStorageCapacityUnitsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsStorageCapacityUnitsResult> {
     return pulumi.output(args).apply((a: any) => getEcsStorageCapacityUnits(a, opts))

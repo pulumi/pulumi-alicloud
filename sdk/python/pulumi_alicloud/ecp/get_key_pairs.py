@@ -113,7 +113,6 @@ def get_key_pairs(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -123,7 +122,6 @@ def get_key_pairs(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.ecp.get_key_pairs(name_regex="^my-KeyPair")
     pulumi.export("ecpKeyPairId2", name_regex.pairs[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Key Pair IDs. Its element value is same as Key Pair Name.
@@ -164,7 +162,6 @@ def get_key_pairs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -174,7 +171,6 @@ def get_key_pairs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     name_regex = alicloud.ecp.get_key_pairs(name_regex="^my-KeyPair")
     pulumi.export("ecpKeyPairId2", name_regex.pairs[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Key Pair IDs. Its element value is same as Key Pair Name.

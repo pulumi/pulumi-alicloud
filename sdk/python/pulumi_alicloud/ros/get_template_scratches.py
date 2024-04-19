@@ -114,7 +114,6 @@ def get_template_scratches(enable_details: Optional[bool] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -126,7 +125,6 @@ def get_template_scratches(enable_details: Optional[bool] = None,
     template_scratch_type = alicloud.ros.get_template_scratches(template_scratch_type="ResourceImport")
     pulumi.export("rosTemplateScratchId3", template_scratch_type.scratches[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -170,7 +168,6 @@ def get_template_scratches_output(enable_details: Optional[pulumi.Input[Optional
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -182,7 +179,6 @@ def get_template_scratches_output(enable_details: Optional[pulumi.Input[Optional
     template_scratch_type = alicloud.ros.get_template_scratches(template_scratch_type="ResourceImport")
     pulumi.export("rosTemplateScratchId3", template_scratch_type.scratches[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

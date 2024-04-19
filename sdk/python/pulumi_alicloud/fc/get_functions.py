@@ -118,7 +118,6 @@ def get_functions(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -127,7 +126,6 @@ def get_functions(ids: Optional[Sequence[str]] = None,
         name_regex="sample_fc_function")
     pulumi.export("firstFcFunctionName", functions_ds.functions[0].name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of functions ids.
@@ -164,7 +162,6 @@ def get_functions_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -173,7 +170,6 @@ def get_functions_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
         name_regex="sample_fc_function")
     pulumi.export("firstFcFunctionName", functions_ds.functions[0].name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of functions ids.

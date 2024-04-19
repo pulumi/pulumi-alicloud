@@ -122,7 +122,6 @@ class DeployGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -153,7 +152,6 @@ class DeployGroup(pulumi.CustomResource):
             app_id=default_application.id,
             group_name=f"{name}-{default_integer['result']}")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -183,7 +181,6 @@ class DeployGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -214,7 +211,6 @@ class DeployGroup(pulumi.CustomResource):
             app_id=default_application.id,
             group_name=f"{name}-{default_integer['result']}")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

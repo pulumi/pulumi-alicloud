@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,7 +27,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstDatabaseInstanceId = dmsEnterpriseInstancesDs.then(dmsEnterpriseInstancesDs => dmsEnterpriseInstancesDs.instances?.[0]?.instanceId);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEnterpriseInstances(args?: GetEnterpriseInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseInstancesResult> {
     args = args || {};
@@ -144,7 +142,6 @@ export interface GetEnterpriseInstancesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -159,7 +156,6 @@ export interface GetEnterpriseInstancesResult {
  * });
  * export const firstDatabaseInstanceId = dmsEnterpriseInstancesDs.then(dmsEnterpriseInstancesDs => dmsEnterpriseInstancesDs.instances?.[0]?.instanceId);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEnterpriseInstancesOutput(args?: GetEnterpriseInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseInstancesResult> {
     return pulumi.output(args).apply((a: any) => getEnterpriseInstances(a, opts))

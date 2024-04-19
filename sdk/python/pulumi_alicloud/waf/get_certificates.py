@@ -123,7 +123,6 @@ def get_certificates(domain: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -133,7 +132,6 @@ def get_certificates(domain: Optional[str] = None,
         domain="your_domain_name")
     pulumi.export("wafCertificate", default.certificates[0])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str domain: The domain that you want to add to WAF.
@@ -178,7 +176,6 @@ def get_certificates_output(domain: Optional[pulumi.Input[Optional[str]]] = None
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -188,7 +185,6 @@ def get_certificates_output(domain: Optional[pulumi.Input[Optional[str]]] = None
         domain="your_domain_name")
     pulumi.export("wafCertificate", default.certificates[0])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str domain: The domain that you want to add to WAF.

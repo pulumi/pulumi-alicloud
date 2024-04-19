@@ -104,7 +104,6 @@ def get_ecs_backup_clients(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -115,7 +114,6 @@ def get_ecs_backup_clients(ids: Optional[Sequence[str]] = None,
         instance_ids=[default_alicloud_hbr_ecs_backup_client["instanceId"]])
     pulumi.export("hbrEcsBackupClientId1", ids.clients[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ecs Backup Client IDs.
@@ -155,7 +153,6 @@ def get_ecs_backup_clients_output(ids: Optional[pulumi.Input[Optional[Sequence[s
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -166,7 +163,6 @@ def get_ecs_backup_clients_output(ids: Optional[pulumi.Input[Optional[Sequence[s
         instance_ids=[default_alicloud_hbr_ecs_backup_client["instanceId"]])
     pulumi.export("hbrEcsBackupClientId1", ids.clients[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ecs Backup Client IDs.

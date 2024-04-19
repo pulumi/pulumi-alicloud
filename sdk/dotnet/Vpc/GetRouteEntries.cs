@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -113,7 +112,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRouteEntriesResult> InvokeAsync(GetRouteEntriesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRouteEntriesResult>("alicloud:vpc/getRouteEntries:getRouteEntries", args ?? new GetRouteEntriesArgs(), options.WithDefaults());
@@ -125,7 +123,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -220,7 +217,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRouteEntriesResult> Invoke(GetRouteEntriesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRouteEntriesResult>("alicloud:vpc/getRouteEntries:getRouteEntries", args ?? new GetRouteEntriesInvokeArgs(), options.WithDefaults());

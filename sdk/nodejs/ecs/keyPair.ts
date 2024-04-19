@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  *     publicKey: "ssh-rsa AAAAB3Nza12345678qwertyuudsfsg",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -368,7 +368,6 @@ class TemplateQuota(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -389,7 +388,6 @@ class TemplateQuota(pulumi.CustomResource):
             env_language="zh",
             quota_category="CommonQuota")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -435,7 +433,6 @@ class TemplateQuota(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -456,7 +453,6 @@ class TemplateQuota(pulumi.CustomResource):
             env_language="zh",
             quota_category="CommonQuota")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

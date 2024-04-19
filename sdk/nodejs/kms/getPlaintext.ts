@@ -7,7 +7,6 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const decrypted = plaintext.apply(plaintext => plaintext.plaintext);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPlaintext(args: GetPlaintextArgs, opts?: pulumi.InvokeOptions): Promise<GetPlaintextResult> {
 
@@ -74,7 +72,6 @@ export interface GetPlaintextResult {
 /**
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -94,7 +91,6 @@ export interface GetPlaintextResult {
  * });
  * export const decrypted = plaintext.apply(plaintext => plaintext.plaintext);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPlaintextOutput(args: GetPlaintextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPlaintextResult> {
     return pulumi.output(args).apply((a: any) => getPlaintext(a, opts))

@@ -142,7 +142,6 @@ class ServiceTopic(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -156,7 +155,6 @@ class ServiceTopic(pulumi.CustomResource):
             max_message_size=12357,
             logging_enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -189,7 +187,6 @@ class ServiceTopic(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -203,7 +200,6 @@ class ServiceTopic(pulumi.CustomResource):
             max_message_size=12357,
             logging_enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

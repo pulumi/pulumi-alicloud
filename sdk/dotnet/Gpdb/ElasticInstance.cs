@@ -21,7 +21,6 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     /// ### Create a AnalyticDB for PostgreSQL instance
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -65,7 +64,6 @@ namespace Pulumi.AliCloud.Gpdb
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

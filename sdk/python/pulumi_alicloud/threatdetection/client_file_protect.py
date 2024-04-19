@@ -303,7 +303,6 @@ class ClientFileProtect(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -322,7 +321,6 @@ class ClientFileProtect(pulumi.CustomResource):
             switch_id="FILE_PROTECT_RULE_SWITCH_TYPE_1693474122929",
             rule_name="rule_example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -360,7 +358,6 @@ class ClientFileProtect(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -379,7 +376,6 @@ class ClientFileProtect(pulumi.CustomResource):
             switch_id="FILE_PROTECT_RULE_SWITCH_TYPE_1693474122929",
             rule_name="rule_example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

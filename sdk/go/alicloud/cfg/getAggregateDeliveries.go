@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,7 +47,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetAggregateDeliveries(ctx *pulumi.Context, args *GetAggregateDeliveriesArgs, opts ...pulumi.InvokeOption) (*GetAggregateDeliveriesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAggregateDeliveriesResult

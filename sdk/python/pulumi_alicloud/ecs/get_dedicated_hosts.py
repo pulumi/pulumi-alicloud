@@ -209,7 +209,6 @@ def get_dedicated_hosts(dedicated_host_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -220,7 +219,6 @@ def get_dedicated_hosts(dedicated_host_id: Optional[str] = None,
         status="Available")
     pulumi.export("firstDedicatedHostsId", dedicated_hosts_ds.hosts[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str dedicated_host_id: The ID of ECS Dedicated Host.
@@ -287,7 +285,6 @@ def get_dedicated_hosts_output(dedicated_host_id: Optional[pulumi.Input[Optional
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -298,7 +295,6 @@ def get_dedicated_hosts_output(dedicated_host_id: Optional[pulumi.Input[Optional
         status="Available")
     pulumi.export("firstDedicatedHostsId", dedicated_hosts_ds.hosts[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str dedicated_host_id: The ID of ECS Dedicated Host.

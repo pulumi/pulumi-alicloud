@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,7 +27,6 @@ import * as utilities from "../utilities";
  *     ids: [fooCommonBandwithPackage.id],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Public ip addresses Block
  *
@@ -136,7 +134,6 @@ export interface GetCommonBandwidthPackagesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -151,7 +148,6 @@ export interface GetCommonBandwidthPackagesResult {
  *     ids: [fooCommonBandwithPackage.id],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Public ip addresses Block
  *

@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -70,7 +69,6 @@ import * as utilities from "../utilities";
  * export const alicloudHbrBackupJobsDefault1 = defaultGetBackupJobs.then(defaultGetBackupJobs => defaultGetBackupJobs.jobs?.[0]?.id);
  * export const alicloudHbrBackupJobsExample1 = example.then(example => example.jobs?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBackupJobs(args: GetBackupJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupJobsResult> {
 
@@ -137,7 +135,6 @@ export interface GetBackupJobsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -192,7 +189,6 @@ export interface GetBackupJobsResult {
  * export const alicloudHbrBackupJobsDefault1 = defaultGetBackupJobs.then(defaultGetBackupJobs => defaultGetBackupJobs.jobs?.[0]?.id);
  * export const alicloudHbrBackupJobsExample1 = example.then(example => example.jobs?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBackupJobsOutput(args: GetBackupJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupJobsResult> {
     return pulumi.output(args).apply((a: any) => getBackupJobs(a, opts))

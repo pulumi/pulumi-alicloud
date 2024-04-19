@@ -224,7 +224,6 @@ class DynamicTagGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -241,7 +240,6 @@ class DynamicTagGroup(pulumi.CustomResource):
                 tag_value_match_function="all",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -276,7 +274,6 @@ class DynamicTagGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -293,7 +290,6 @@ class DynamicTagGroup(pulumi.CustomResource):
                 tag_value_match_function="all",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

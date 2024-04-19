@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -36,7 +35,6 @@ import * as utilities from "../utilities";
  * });
  * export const dbCluster = _default.apply(_default => _default.ids?.[0]);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDbClusters(args?: GetDbClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetDbClustersResult> {
     args = args || {};
@@ -101,7 +99,6 @@ export interface GetDbClustersResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -122,7 +119,6 @@ export interface GetDbClustersResult {
  * });
  * export const dbCluster = _default.apply(_default => _default.ids?.[0]);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDbClustersOutput(args?: GetDbClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbClustersResult> {
     return pulumi.output(args).apply((a: any) => getDbClusters(a, opts))

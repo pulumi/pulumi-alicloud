@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstGaIpSetId = example.then(example => example.sets?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getIpSets(args: GetIpSetsArgs, opts?: pulumi.InvokeOptions): Promise<GetIpSetsResult> {
 
@@ -84,7 +82,6 @@ export interface GetIpSetsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -95,7 +92,6 @@ export interface GetIpSetsResult {
  * });
  * export const firstGaIpSetId = example.then(example => example.sets?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getIpSetsOutput(args: GetIpSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIpSetsResult> {
     return pulumi.output(args).apply((a: any) => getIpSets(a, opts))

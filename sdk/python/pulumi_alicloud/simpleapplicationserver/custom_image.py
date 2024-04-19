@@ -214,7 +214,6 @@ class CustomImage(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -243,7 +242,6 @@ class CustomImage(pulumi.CustomResource):
             status="Share",
             description=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -280,7 +278,6 @@ class CustomImage(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -309,7 +306,6 @@ class CustomImage(pulumi.CustomResource):
             status="Share",
             description=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

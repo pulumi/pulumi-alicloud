@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Nlb
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.AliCloud.Nlb
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServerGroupServerAttachmentsResult> InvokeAsync(GetServerGroupServerAttachmentsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerGroupServerAttachmentsResult>("alicloud:nlb/getServerGroupServerAttachments:getServerGroupServerAttachments", args ?? new GetServerGroupServerAttachmentsArgs(), options.WithDefaults());
@@ -57,7 +55,6 @@ namespace Pulumi.AliCloud.Nlb
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Pulumi.AliCloud.Nlb
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServerGroupServerAttachmentsResult> Invoke(GetServerGroupServerAttachmentsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerGroupServerAttachmentsResult>("alicloud:nlb/getServerGroupServerAttachments:getServerGroupServerAttachments", args ?? new GetServerGroupServerAttachmentsInvokeArgs(), options.WithDefaults());

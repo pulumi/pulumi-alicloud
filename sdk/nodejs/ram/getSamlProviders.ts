@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstRamSamlProviderId = example.then(example => example.providers?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSamlProviders(args?: GetSamlProvidersArgs, opts?: pulumi.InvokeOptions): Promise<GetSamlProvidersResult> {
     args = args || {};
@@ -92,7 +90,6 @@ export interface GetSamlProvidersResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -103,7 +100,6 @@ export interface GetSamlProvidersResult {
  * });
  * export const firstRamSamlProviderId = example.then(example => example.providers?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSamlProvidersOutput(args?: GetSamlProvidersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSamlProvidersResult> {
     return pulumi.output(args).apply((a: any) => getSamlProviders(a, opts))

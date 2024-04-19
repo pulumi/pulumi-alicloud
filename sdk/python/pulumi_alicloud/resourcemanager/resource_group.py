@@ -237,7 +237,6 @@ class ResourceGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -250,7 +249,6 @@ class ResourceGroup(pulumi.CustomResource):
             display_name=name,
             resource_group_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -284,7 +282,6 @@ class ResourceGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -297,7 +294,6 @@ class ResourceGroup(pulumi.CustomResource):
             display_name=name,
             resource_group_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

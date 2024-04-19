@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = _default.then(_default => _default.propagations?.[0]?.resourceType);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTransitRouterRouteTablePropagations(args: GetTransitRouterRouteTablePropagationsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouterRouteTablePropagationsResult> {
 
@@ -91,7 +89,6 @@ export interface GetTransitRouterRouteTablePropagationsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -101,7 +98,6 @@ export interface GetTransitRouterRouteTablePropagationsResult {
  * });
  * export const firstTransitRouterPeerAttachmentsTransitRouterAttachmentResourceType = _default.then(_default => _default.propagations?.[0]?.resourceType);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTransitRouterRouteTablePropagationsOutput(args: GetTransitRouterRouteTablePropagationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouterRouteTablePropagationsResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouterRouteTablePropagations(a, opts))

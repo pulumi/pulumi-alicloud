@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,7 +48,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetIpv4Gateways(ctx *pulumi.Context, args *GetIpv4GatewaysArgs, opts ...pulumi.InvokeOption) (*GetIpv4GatewaysResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpv4GatewaysResult

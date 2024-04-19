@@ -225,7 +225,6 @@ class ProtectionModule(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -254,7 +253,6 @@ class ProtectionModule(pulumi.CustomResource):
             mode=0,
             status=0)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -294,7 +292,6 @@ class ProtectionModule(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -323,7 +320,6 @@ class ProtectionModule(pulumi.CustomResource):
             mode=0,
             status=0)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

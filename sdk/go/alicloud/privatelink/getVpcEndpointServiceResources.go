@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetVpcEndpointServiceResources(ctx *pulumi.Context, args *GetVpcEndpointServiceResourcesArgs, opts ...pulumi.InvokeOption) (*GetVpcEndpointServiceResourcesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpcEndpointServiceResourcesResult

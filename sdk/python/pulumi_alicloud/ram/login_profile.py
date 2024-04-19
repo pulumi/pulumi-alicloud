@@ -174,7 +174,6 @@ class LoginProfile(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -190,7 +189,6 @@ class LoginProfile(pulumi.CustomResource):
             user_name=user.name,
             password="Example_1234")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -224,7 +222,6 @@ class LoginProfile(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -240,7 +237,6 @@ class LoginProfile(pulumi.CustomResource):
             user_name=user.name,
             password="Example_1234")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

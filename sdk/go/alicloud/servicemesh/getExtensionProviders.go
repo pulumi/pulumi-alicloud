@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,7 +56,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetExtensionProviders(ctx *pulumi.Context, args *GetExtensionProvidersArgs, opts ...pulumi.InvokeOption) (*GetExtensionProvidersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetExtensionProvidersResult

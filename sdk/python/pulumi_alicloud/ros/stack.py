@@ -721,7 +721,6 @@ class Stack(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -729,20 +728,19 @@ class Stack(pulumi.CustomResource):
         example = alicloud.ros.Stack("example",
             stack_name="tf-testaccstack",
             template_body=\"\"\"    {
-            	"ROSTemplateFormatVersion": "2015-09-01"
+            \\x09"ROSTemplateFormatVersion": "2015-09-01"
             }
         \"\"\",
             stack_policy_body=\"\"\"    {
-            	"Statement": [{
-            		"Action": "Update:Delete",
-            		"Resource": "*",
-            		"Effect": "Allow",
-            		"Principal": "*"
-            	}]
+            \\x09"Statement": [{
+            \\x09\\x09"Action": "Update:Delete",
+            \\x09\\x09"Resource": "*",
+            \\x09\\x09"Effect": "Allow",
+            \\x09\\x09"Principal": "*"
+            \\x09}]
             }
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -792,7 +790,6 @@ class Stack(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -800,20 +797,19 @@ class Stack(pulumi.CustomResource):
         example = alicloud.ros.Stack("example",
             stack_name="tf-testaccstack",
             template_body=\"\"\"    {
-            	"ROSTemplateFormatVersion": "2015-09-01"
+            \\x09"ROSTemplateFormatVersion": "2015-09-01"
             }
         \"\"\",
             stack_policy_body=\"\"\"    {
-            	"Statement": [{
-            		"Action": "Update:Delete",
-            		"Resource": "*",
-            		"Effect": "Allow",
-            		"Principal": "*"
-            	}]
+            \\x09"Statement": [{
+            \\x09\\x09"Action": "Update:Delete",
+            \\x09\\x09"Resource": "*",
+            \\x09\\x09"Effect": "Allow",
+            \\x09\\x09"Principal": "*"
+            \\x09}]
             }
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -268,7 +268,6 @@ def get_eip_addresses(address_name: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -277,7 +276,6 @@ def get_eip_addresses(address_name: Optional[str] = None,
         name_regex="the_resource_name")
     pulumi.export("firstEipAddressId", example.addresses[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str address_name: The name of the EIP.
@@ -374,7 +372,6 @@ def get_eip_addresses_output(address_name: Optional[pulumi.Input[Optional[str]]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -383,7 +380,6 @@ def get_eip_addresses_output(address_name: Optional[pulumi.Input[Optional[str]]]
         name_regex="the_resource_name")
     pulumi.export("firstEipAddressId", example.addresses[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str address_name: The name of the EIP.

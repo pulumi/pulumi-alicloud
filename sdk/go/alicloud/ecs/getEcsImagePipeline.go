@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,7 +52,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupEcsImagePipeline(ctx *pulumi.Context, args *LookupEcsImagePipelineArgs, opts ...pulumi.InvokeOption) (*LookupEcsImagePipelineResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupEcsImagePipelineResult

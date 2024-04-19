@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// * using server_certificate/private content as string example
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -67,7 +66,6 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// * using server_certificate/private file example
     /// 

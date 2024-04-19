@@ -605,7 +605,6 @@ class Store(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -625,11 +624,9 @@ class Store(pulumi.CustomResource):
             max_split_shard_count=60,
             append_meta=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         Encrypt Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -667,7 +664,6 @@ class Store(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 
@@ -719,7 +715,6 @@ class Store(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -739,11 +734,9 @@ class Store(pulumi.CustomResource):
             max_split_shard_count=60,
             append_meta=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         Encrypt Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -781,7 +774,6 @@ class Store(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 

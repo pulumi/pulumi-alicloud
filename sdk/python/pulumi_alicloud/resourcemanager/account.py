@@ -352,7 +352,6 @@ class Account(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -373,7 +372,6 @@ class Account(pulumi.CustomResource):
             display_name=f"{display_name}-{default['result']}",
             folder_id=example.ids[0])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Deleting `resourcemanager.Account` or removing it from your configuration
 
@@ -419,7 +417,6 @@ class Account(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -440,7 +437,6 @@ class Account(pulumi.CustomResource):
             display_name=f"{display_name}-{default['result']}",
             folder_id=example.ids[0])
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Deleting `resourcemanager.Account` or removing it from your configuration
 

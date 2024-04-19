@@ -55,7 +55,6 @@ namespace Pulumi.AliCloud.Slb.Outputs
         public readonly string Status;
         /// <summary>
         /// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -75,7 +74,6 @@ namespace Pulumi.AliCloud.Slb.Outputs
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public readonly ImmutableDictionary<string, object> Tags;
         /// <summary>

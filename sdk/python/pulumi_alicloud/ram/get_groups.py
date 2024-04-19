@@ -127,7 +127,6 @@ def get_groups(name_regex: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -137,7 +136,6 @@ def get_groups(name_regex: Optional[str] = None,
         name_regex="^group[0-9]*")
     pulumi.export("firstGroupName", groups_ds.groups[0].name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name_regex: A regex string to filter the returned groups by their names.
@@ -180,7 +178,6 @@ def get_groups_output(name_regex: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -190,7 +187,6 @@ def get_groups_output(name_regex: Optional[pulumi.Input[Optional[str]]] = None,
         name_regex="^group[0-9]*")
     pulumi.export("firstGroupName", groups_ds.groups[0].name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name_regex: A regex string to filter the returned groups by their names.

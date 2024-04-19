@@ -1103,7 +1103,6 @@ class RouterInterface(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1126,7 +1125,6 @@ class RouterInterface(pulumi.CustomResource):
             router_interface_name=name,
             spec="Mini.2")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1180,7 +1178,6 @@ class RouterInterface(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1203,7 +1200,6 @@ class RouterInterface(pulumi.CustomResource):
             router_interface_name=name,
             spec="Mini.2")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

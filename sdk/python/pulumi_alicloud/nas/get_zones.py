@@ -85,7 +85,6 @@ def get_zones(file_system_type: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -93,7 +92,6 @@ def get_zones(file_system_type: Optional[str] = None,
     default = alicloud.nas.get_zones()
     pulumi.export("alicloudNasZonesId", default.zones[0].zone_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str file_system_type: The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.
@@ -123,7 +121,6 @@ def get_zones_output(file_system_type: Optional[pulumi.Input[Optional[str]]] = N
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -131,7 +128,6 @@ def get_zones_output(file_system_type: Optional[pulumi.Input[Optional[str]]] = N
     default = alicloud.nas.get_zones()
     pulumi.export("alicloudNasZonesId", default.zones[0].zone_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str file_system_type: The type of the file system.  Valid values: `standard`, `extreme`, `cpfs`.

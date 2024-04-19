@@ -372,7 +372,6 @@ class Prometheus(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -407,7 +406,6 @@ class Prometheus(pulumi.CustomResource):
                 "For": "Prometheus",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -447,7 +445,6 @@ class Prometheus(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -482,7 +479,6 @@ class Prometheus(pulumi.CustomResource):
                 "For": "Prometheus",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

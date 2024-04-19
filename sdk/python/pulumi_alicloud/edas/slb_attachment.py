@@ -268,7 +268,6 @@ class SlbAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -328,7 +327,6 @@ class SlbAttachment(pulumi.CustomResource):
             slb_ip=default_application_load_balancer.address,
             type=default_application_load_balancer.address_type)
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -354,7 +352,6 @@ class SlbAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -414,7 +411,6 @@ class SlbAttachment(pulumi.CustomResource):
             slb_ip=default_application_load_balancer.address,
             type=default_application_load_balancer.address_type)
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param SlbAttachmentArgs args: The arguments to use to populate this resource's properties.

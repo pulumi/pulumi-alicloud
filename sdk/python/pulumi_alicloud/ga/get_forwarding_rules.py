@@ -114,7 +114,6 @@ def get_forwarding_rules(accelerator_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -124,7 +123,6 @@ def get_forwarding_rules(accelerator_id: Optional[str] = None,
         ids=["example_value"])
     pulumi.export("firstGaForwardingRuleId", example.forwarding_rules[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The ID of the Global Accelerator instance.
@@ -168,7 +166,6 @@ def get_forwarding_rules_output(accelerator_id: Optional[pulumi.Input[str]] = No
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -178,7 +175,6 @@ def get_forwarding_rules_output(accelerator_id: Optional[pulumi.Input[str]] = No
         ids=["example_value"])
     pulumi.export("firstGaForwardingRuleId", example.forwarding_rules[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The ID of the Global Accelerator instance.

@@ -191,7 +191,6 @@ class BackupPolicy(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -230,7 +229,6 @@ class BackupPolicy(pulumi.CustomResource):
             preferred_backup_time="00:00Z-01:00Z",
             backup_retention_period=7)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -266,7 +264,6 @@ class BackupPolicy(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -305,7 +302,6 @@ class BackupPolicy(pulumi.CustomResource):
             preferred_backup_time="00:00Z-01:00Z",
             backup_retention_period=7)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

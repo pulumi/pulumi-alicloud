@@ -1530,7 +1530,6 @@ class Listener(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1588,7 +1587,6 @@ class Listener(pulumi.CustomResource):
             entry="168.10.10.0/24",
             comment="second")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1673,7 +1671,6 @@ class Listener(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1731,7 +1728,6 @@ class Listener(pulumi.CustomResource):
             entry="168.10.10.0/24",
             comment="second")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

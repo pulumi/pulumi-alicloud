@@ -140,7 +140,6 @@ def get_child_instance_route_entry_to_attachments(cen_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -149,7 +148,6 @@ def get_child_instance_route_entry_to_attachments(cen_id: Optional[str] = None,
         transit_router_attachment_id="tr-attach-f1fd1y50rql00emvej")
     pulumi.export("alicloudCenChildInstanceRouteEntryToAttachmentExampleId", default.attachments[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cen_id: The ID of the CEN instance.
@@ -195,7 +193,6 @@ def get_child_instance_route_entry_to_attachments_output(cen_id: Optional[pulumi
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -204,7 +201,6 @@ def get_child_instance_route_entry_to_attachments_output(cen_id: Optional[pulumi
         transit_router_attachment_id="tr-attach-f1fd1y50rql00emvej")
     pulumi.export("alicloudCenChildInstanceRouteEntryToAttachmentExampleId", default.attachments[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cen_id: The ID of the CEN instance.

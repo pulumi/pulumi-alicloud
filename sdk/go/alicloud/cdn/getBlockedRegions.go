@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,7 +42,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetBlockedRegions(ctx *pulumi.Context, args *GetBlockedRegionsArgs, opts ...pulumi.InvokeOption) (*GetBlockedRegionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBlockedRegionsResult

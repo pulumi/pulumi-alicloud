@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -54,7 +53,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetVirtualNodes(ctx *pulumi.Context, args *GetVirtualNodesArgs, opts ...pulumi.InvokeOption) (*GetVirtualNodesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVirtualNodesResult

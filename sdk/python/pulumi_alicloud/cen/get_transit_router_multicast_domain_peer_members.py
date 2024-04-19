@@ -140,7 +140,6 @@ def get_transit_router_multicast_domain_peer_members(ids: Optional[Sequence[str]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -148,7 +147,6 @@ def get_transit_router_multicast_domain_peer_members(ids: Optional[Sequence[str]
     default = alicloud.cen.get_transit_router_multicast_domain_peer_members(transit_router_multicast_domain_id="tr-mcast-domain-2d9oq455uk533zfrxx")
     pulumi.export("alicloudCenTransitRouterMulticastDomainPeerMemberExampleId", default.members[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Cen Transit Router Multicast Domain Peer Member IDs.
@@ -202,7 +200,6 @@ def get_transit_router_multicast_domain_peer_members_output(ids: Optional[pulumi
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -210,7 +207,6 @@ def get_transit_router_multicast_domain_peer_members_output(ids: Optional[pulumi
     default = alicloud.cen.get_transit_router_multicast_domain_peer_members(transit_router_multicast_domain_id="tr-mcast-domain-2d9oq455uk533zfrxx")
     pulumi.export("alicloudCenTransitRouterMulticastDomainPeerMemberExampleId", default.members[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Cen Transit Router Multicast Domain Peer Member IDs.

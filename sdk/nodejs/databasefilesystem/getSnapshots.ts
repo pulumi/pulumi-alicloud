@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -33,7 +32,6 @@ import * as utilities from "../utilities";
  * });
  * export const dbfsSnapshotId3 = status.then(status => status.snapshots?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotsResult> {
     args = args || {};
@@ -93,7 +91,6 @@ export interface GetSnapshotsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -111,7 +108,6 @@ export interface GetSnapshotsResult {
  * });
  * export const dbfsSnapshotId3 = status.then(status => status.snapshots?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSnapshotsOutput(args?: GetSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotsResult> {
     return pulumi.output(args).apply((a: any) => getSnapshots(a, opts))

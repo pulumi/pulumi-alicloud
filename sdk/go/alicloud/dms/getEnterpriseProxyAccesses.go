@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,7 +50,6 @@ import (
 // })
 // }
 // ```
-// <!--End PulumiCodeChooser -->
 func GetEnterpriseProxyAccesses(ctx *pulumi.Context, args *GetEnterpriseProxyAccessesArgs, opts ...pulumi.InvokeOption) (*GetEnterpriseProxyAccessesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEnterpriseProxyAccessesResult

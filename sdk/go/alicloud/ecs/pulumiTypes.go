@@ -4763,7 +4763,6 @@ type GetDisksDisk struct {
 	// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the disks. It must be in the format:
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -4787,7 +4786,6 @@ type GetDisksDisk struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Disk type. Possible values: `system` and `data`.
 	Type   string `pulumi:"type"`
@@ -4860,7 +4858,6 @@ type GetDisksDiskArgs struct {
 	// Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the disks. It must be in the format:
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -4884,7 +4881,6 @@ type GetDisksDiskArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// Disk type. Possible values: `system` and `data`.
 	Type   pulumi.StringInput `pulumi:"type"`
@@ -5107,7 +5103,6 @@ func (o GetDisksDiskOutput) Status() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the disks. It must be in the format:
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -5134,7 +5129,6 @@ func (o GetDisksDiskOutput) Status() pulumi.StringOutput {
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o GetDisksDiskOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetDisksDisk) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
@@ -13209,7 +13203,6 @@ type GetInstancesInstance struct {
 	// Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
 	Status string `pulumi:"status"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -13233,7 +13226,6 @@ type GetInstancesInstance struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Tags map[string]interface{} `pulumi:"tags"`
 	// ID of the VPC linked to the instances.
 	VpcId string `pulumi:"vpcId"`
@@ -13296,7 +13288,6 @@ type GetInstancesInstanceArgs struct {
 	// Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
 	Status pulumi.StringInput `pulumi:"status"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -13320,7 +13311,6 @@ type GetInstancesInstanceArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// ID of the VPC linked to the instances.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -13485,7 +13475,6 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the ECS instances. It must be in the format:
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -13512,7 +13501,6 @@ func (o GetInstancesInstanceOutput) Status() pulumi.StringOutput {
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }
@@ -14959,7 +14947,6 @@ type GetSecurityGroupsGroup struct {
 	// The type of the security group.
 	SecurityGroupType string `pulumi:"securityGroupType"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -14983,7 +14970,6 @@ type GetSecurityGroupsGroup struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Used to retrieve security groups that belong to the specified VPC ID.
 	VpcId string `pulumi:"vpcId"`
@@ -15016,7 +15002,6 @@ type GetSecurityGroupsGroupArgs struct {
 	// The type of the security group.
 	SecurityGroupType pulumi.StringInput `pulumi:"securityGroupType"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -15040,7 +15025,6 @@ type GetSecurityGroupsGroupArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// Used to retrieve security groups that belong to the specified VPC ID.
 	VpcId pulumi.StringInput `pulumi:"vpcId"`
@@ -15133,7 +15117,6 @@ func (o GetSecurityGroupsGroupOutput) SecurityGroupType() pulumi.StringOutput {
 }
 
 // A map of tags assigned to the ECS instances. It must be in the format:
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -15160,7 +15143,6 @@ func (o GetSecurityGroupsGroupOutput) SecurityGroupType() pulumi.StringOutput {
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o GetSecurityGroupsGroupOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetSecurityGroupsGroup) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }

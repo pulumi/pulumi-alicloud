@@ -790,7 +790,6 @@ class Rule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -845,7 +844,6 @@ class Rule(pulumi.CustomResource):
             health_check_domain="test",
             health_check="on")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -911,7 +909,6 @@ class Rule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -966,7 +963,6 @@ class Rule(pulumi.CustomResource):
             health_check_domain="test",
             health_check="on")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

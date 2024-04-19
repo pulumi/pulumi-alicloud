@@ -193,7 +193,6 @@ def get_instances(enable_details: Optional[bool] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -223,7 +222,6 @@ def get_instances(enable_details: Optional[bool] = None,
         instance_type=default_get_instance_types.instance_types[instance_type_count_size - 1].instance_type,
         payment_type="PayAsYouGo")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ecp Instances IDs.
@@ -294,7 +292,6 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -324,7 +321,6 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
         instance_type=default_get_instance_types.instance_types[instance_type_count_size - 1].instance_type,
         payment_type="PayAsYouGo")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ecp Instances IDs.

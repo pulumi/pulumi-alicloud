@@ -171,7 +171,6 @@ def get_aggregate_config_rules(aggregate_config_rule_name: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -181,7 +180,6 @@ def get_aggregate_config_rules(aggregate_config_rule_name: Optional[str] = None,
         name_regex="the_resource_name")
     pulumi.export("firstConfigAggregateConfigRuleId", example.rules[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str aggregate_config_rule_name: The config rule name.
@@ -238,7 +236,6 @@ def get_aggregate_config_rules_output(aggregate_config_rule_name: Optional[pulum
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -248,7 +245,6 @@ def get_aggregate_config_rules_output(aggregate_config_rule_name: Optional[pulum
         name_regex="the_resource_name")
     pulumi.export("firstConfigAggregateConfigRuleId", example.rules[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str aggregate_config_rule_name: The config rule name.

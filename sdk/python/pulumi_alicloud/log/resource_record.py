@@ -172,7 +172,6 @@ class ResourceRecord(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -212,7 +211,6 @@ class ResourceRecord(pulumi.CustomResource):
             }
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -246,7 +244,6 @@ class ResourceRecord(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -286,7 +283,6 @@ class ResourceRecord(pulumi.CustomResource):
             }
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

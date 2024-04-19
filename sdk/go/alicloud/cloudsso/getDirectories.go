@@ -21,7 +21,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,7 +54,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDirectories(ctx *pulumi.Context, args *GetDirectoriesArgs, opts ...pulumi.InvokeOption) (*GetDirectoriesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDirectoriesResult

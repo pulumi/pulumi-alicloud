@@ -74,7 +74,6 @@ def get_instances(output_file: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -82,7 +81,6 @@ def get_instances(output_file: Optional[str] = None,
     default = alicloud.sddp.get_instances()
     pulumi.export("sddpInstanceId", default.instances[0])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -110,7 +108,6 @@ def get_instances_output(output_file: Optional[pulumi.Input[Optional[str]]] = No
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -118,7 +115,6 @@ def get_instances_output(output_file: Optional[pulumi.Input[Optional[str]]] = No
     default = alicloud.sddp.get_instances()
     pulumi.export("sddpInstanceId", default.instances[0])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

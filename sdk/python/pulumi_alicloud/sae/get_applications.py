@@ -164,7 +164,6 @@ def get_applications(app_name: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -200,7 +199,6 @@ def get_applications(app_name: Optional[str] = None,
     default_get_applications = alicloud.sae.get_applications_output(ids=[default_application.id])
     pulumi.export("saeApplicationId", default_get_applications.applications[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str app_name: Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
@@ -264,7 +262,6 @@ def get_applications_output(app_name: Optional[pulumi.Input[Optional[str]]] = No
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -300,7 +297,6 @@ def get_applications_output(app_name: Optional[pulumi.Input[Optional[str]]] = No
     default_get_applications = alicloud.sae.get_applications_output(ids=[default_application.id])
     pulumi.export("saeApplicationId", default_get_applications.applications[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str app_name: Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.

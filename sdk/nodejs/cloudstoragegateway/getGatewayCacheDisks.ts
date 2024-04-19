@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -38,7 +37,6 @@ import * as utilities from "../utilities";
  * });
  * export const cloudStorageGatewayGatewayCacheDiskId2 = status.then(status => status.disks?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGatewayCacheDisks(args: GetGatewayCacheDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayCacheDisksResult> {
 
@@ -96,7 +94,6 @@ export interface GetGatewayCacheDisksResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -119,7 +116,6 @@ export interface GetGatewayCacheDisksResult {
  * });
  * export const cloudStorageGatewayGatewayCacheDiskId2 = status.then(status => status.disks?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGatewayCacheDisksOutput(args: GetGatewayCacheDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayCacheDisksResult> {
     return pulumi.output(args).apply((a: any) => getGatewayCacheDisks(a, opts))

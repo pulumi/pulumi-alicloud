@@ -74,7 +74,6 @@ def get_transit_router_available_resources(output_file: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -83,7 +82,6 @@ def get_transit_router_available_resources(output_file: Optional[str] = None,
     pulumi.export("masterId", default["resources"][0]["masterZones"])
     pulumi.export("slaveId", default["resources"][0]["slaveZones"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -111,7 +109,6 @@ def get_transit_router_available_resources_output(output_file: Optional[pulumi.I
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -120,7 +117,6 @@ def get_transit_router_available_resources_output(output_file: Optional[pulumi.I
     pulumi.export("masterId", default["resources"][0]["masterZones"])
     pulumi.export("slaveId", default["resources"][0]["slaveZones"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -67,7 +66,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetEcsSnapshotGroups(ctx *pulumi.Context, args *GetEcsSnapshotGroupsArgs, opts ...pulumi.InvokeOption) (*GetEcsSnapshotGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsSnapshotGroupsResult

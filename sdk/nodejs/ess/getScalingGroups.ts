@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstScalingGroup = scalinggroupsDs.then(scalinggroupsDs => scalinggroupsDs.groups?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getScalingGroups(args?: GetScalingGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetScalingGroupsResult> {
     args = args || {};
@@ -84,7 +82,6 @@ export interface GetScalingGroupsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -98,7 +95,6 @@ export interface GetScalingGroupsResult {
  * });
  * export const firstScalingGroup = scalinggroupsDs.then(scalinggroupsDs => scalinggroupsDs.groups?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getScalingGroupsOutput(args?: GetScalingGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScalingGroupsResult> {
     return pulumi.output(args).apply((a: any) => getScalingGroups(a, opts))

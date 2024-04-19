@@ -319,7 +319,6 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -331,7 +330,6 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
             proxy_id=ids.proxies[0].id,
             user_id=dms_enterprise_users_ds.users[0].user_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -366,7 +364,6 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -378,7 +375,6 @@ class EnterpriseProxyAccess(pulumi.CustomResource):
             proxy_id=ids.proxies[0].id,
             user_id=dms_enterprise_users_ds.users[0].user_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

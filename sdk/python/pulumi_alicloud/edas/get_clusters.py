@@ -120,7 +120,6 @@ def get_clusters(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -130,7 +129,6 @@ def get_clusters(ids: Optional[Sequence[str]] = None,
         output_file="clusters.txt")
     pulumi.export("firstClusterName", clusters_alicloud_alikafka_consumer_groups["clusters"][0]["clusterName"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: An ids string to filter results by the cluster id.
@@ -169,7 +167,6 @@ def get_clusters_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -179,7 +176,6 @@ def get_clusters_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
         output_file="clusters.txt")
     pulumi.export("firstClusterName", clusters_alicloud_alikafka_consumer_groups["clusters"][0]["clusterName"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: An ids string to filter results by the cluster id.

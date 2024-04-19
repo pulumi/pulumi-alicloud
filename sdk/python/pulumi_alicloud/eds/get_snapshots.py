@@ -123,7 +123,6 @@ def get_snapshots(desktop_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -131,7 +130,6 @@ def get_snapshots(desktop_id: Optional[str] = None,
     ids = alicloud.eds.get_snapshots()
     pulumi.export("ecdSnapshotId1", ids.snapshots[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str desktop_id: The ID of the cloud desktop to which the snapshot belongs.
@@ -176,7 +174,6 @@ def get_snapshots_output(desktop_id: Optional[pulumi.Input[Optional[str]]] = Non
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -184,7 +181,6 @@ def get_snapshots_output(desktop_id: Optional[pulumi.Input[Optional[str]]] = Non
     ids = alicloud.eds.get_snapshots()
     pulumi.export("ecdSnapshotId1", ids.snapshots[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str desktop_id: The ID of the cloud desktop to which the snapshot belongs.

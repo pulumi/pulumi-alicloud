@@ -382,7 +382,6 @@ class ServerCertificate(pulumi.CustomResource):
 
         * using server_certificate/private content as string example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -421,7 +420,6 @@ class ServerCertificate(pulumi.CustomResource):
         V4JpNm8dpi4CiMWLasF6TYlVMgX+aPxYRUWc/qqf1/Q=
         -----END RSA PRIVATE KEY-----\"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         * using server_certificate/private file example
 
@@ -461,7 +459,6 @@ class ServerCertificate(pulumi.CustomResource):
 
         * using server_certificate/private content as string example
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -500,7 +497,6 @@ class ServerCertificate(pulumi.CustomResource):
         V4JpNm8dpi4CiMWLasF6TYlVMgX+aPxYRUWc/qqf1/Q=
         -----END RSA PRIVATE KEY-----\"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         * using server_certificate/private file example
 

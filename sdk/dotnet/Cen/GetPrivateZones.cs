@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPrivateZonesResult> InvokeAsync(GetPrivateZonesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrivateZonesResult>("alicloud:cen/getPrivateZones:getPrivateZones", args ?? new GetPrivateZonesArgs(), options.WithDefaults());
@@ -55,7 +53,6 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPrivateZonesResult> Invoke(GetPrivateZonesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateZonesResult>("alicloud:cen/getPrivateZones:getPrivateZones", args ?? new GetPrivateZonesInvokeArgs(), options.WithDefaults());

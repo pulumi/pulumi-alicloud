@@ -426,14 +426,12 @@ class Zone(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         foo = alicloud.pvtz.Zone("foo", zone_name="foo.example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -470,14 +468,12 @@ class Zone(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         foo = alicloud.pvtz.Zone("foo", zone_name="foo.example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

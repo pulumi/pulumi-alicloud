@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * ### 1. Create A Cluster
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -144,7 +143,6 @@ import * as utilities from "../utilities";
  *     masterPwd: "ABCtest1234!",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### 2. Scale Up
  * The hosts of EMR Cluster are orginized as host group. Scaling up/down is operating host group.
@@ -156,7 +154,6 @@ import * as utilities from "../utilities";
  *
  * As the following case, we scale up the TASK group 2 nodes by increasing host_group.node_count by 2.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -283,7 +280,6 @@ import * as utilities from "../utilities";
  *     masterPwd: "ABCtest1234!",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### 3. Scale Down
  *
@@ -293,7 +289,6 @@ import * as utilities from "../utilities";
  *
  * The following is an example. We scale down the cluster by decreasing the node count by 2, and specifying the scale-down instance list.
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -420,11 +415,9 @@ import * as utilities from "../utilities";
  *     masterPwd: "ABCtest1234!",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### 4. Create a emr gateway cluster
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -524,7 +517,6 @@ import * as utilities from "../utilities";
  *     relatedClusterId: relatedClusterId,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

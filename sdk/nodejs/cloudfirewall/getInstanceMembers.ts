@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudCloudFirewallInstanceMemberExampleId = _default.then(_default => _default.members?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstanceMembers(args?: GetInstanceMembersArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceMembersResult> {
     args = args || {};
@@ -83,7 +81,6 @@ export interface GetInstanceMembersResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -93,7 +90,6 @@ export interface GetInstanceMembersResult {
  * });
  * export const alicloudCloudFirewallInstanceMemberExampleId = _default.then(_default => _default.members?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstanceMembersOutput(args?: GetInstanceMembersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceMembersResult> {
     return pulumi.output(args).apply((a: any) => getInstanceMembers(a, opts))

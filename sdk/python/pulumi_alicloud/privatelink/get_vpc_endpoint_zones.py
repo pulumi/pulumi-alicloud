@@ -103,7 +103,6 @@ def get_vpc_endpoint_zones(endpoint_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -111,7 +110,6 @@ def get_vpc_endpoint_zones(endpoint_id: Optional[str] = None,
     example = alicloud.privatelink.get_vpc_endpoint_zones(endpoint_id="ep-gw8boxxxxx")
     pulumi.export("firstPrivatelinkVpcEndpointZoneId", example.zones[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str endpoint_id: The ID of the Vpc Endpoint.
@@ -148,7 +146,6 @@ def get_vpc_endpoint_zones_output(endpoint_id: Optional[pulumi.Input[str]] = Non
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -156,7 +153,6 @@ def get_vpc_endpoint_zones_output(endpoint_id: Optional[pulumi.Input[str]] = Non
     example = alicloud.privatelink.get_vpc_endpoint_zones(endpoint_id="ep-gw8boxxxxx")
     pulumi.export("firstPrivatelinkVpcEndpointZoneId", example.zones[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str endpoint_id: The ID of the Vpc Endpoint.

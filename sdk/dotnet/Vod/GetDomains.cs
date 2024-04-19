@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Vod
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -68,7 +67,6 @@ namespace Pulumi.AliCloud.Vod
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:vod/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
@@ -82,7 +80,6 @@ namespace Pulumi.AliCloud.Vod
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -130,7 +127,6 @@ namespace Pulumi.AliCloud.Vod
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:vod/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());

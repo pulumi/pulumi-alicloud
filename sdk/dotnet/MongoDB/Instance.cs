@@ -25,7 +25,6 @@ namespace Pulumi.AliCloud.MongoDB
     /// 
     /// ### Create a Mongodb instance
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -77,7 +76,6 @@ namespace Pulumi.AliCloud.MongoDB
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Module Support
     /// 

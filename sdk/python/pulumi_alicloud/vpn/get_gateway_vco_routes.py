@@ -134,7 +134,6 @@ def get_gateway_vco_routes(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -208,7 +207,6 @@ def get_gateway_vco_routes(ids: Optional[Sequence[str]] = None,
     default_get_gateway_vco_routes = alicloud.vpn.get_gateway_vco_routes_output(vpn_connection_id=default_transit_router_vpn_attachment.vpn_id)
     pulumi.export("vpnGatewayVcoRouteId1", ids["routes"][0]["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Vco Route IDs.
@@ -258,7 +256,6 @@ def get_gateway_vco_routes_output(ids: Optional[pulumi.Input[Optional[Sequence[s
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -332,7 +329,6 @@ def get_gateway_vco_routes_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     default_get_gateway_vco_routes = alicloud.vpn.get_gateway_vco_routes_output(vpn_connection_id=default_transit_router_vpn_attachment.vpn_id)
     pulumi.export("vpnGatewayVcoRouteId1", ids["routes"][0]["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Vco Route IDs.

@@ -464,7 +464,6 @@ class Image(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -507,7 +506,6 @@ class Image(pulumi.CustomResource):
                 "FinanceDept": "FinanceDeptJoshua",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -555,7 +553,6 @@ class Image(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -598,7 +595,6 @@ class Image(pulumi.CustomResource):
                 "FinanceDept": "FinanceDeptJoshua",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

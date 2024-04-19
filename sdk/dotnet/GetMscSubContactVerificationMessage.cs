@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.AliCloud
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetMscSubContactVerificationMessageResult> InvokeAsync(GetMscSubContactVerificationMessageArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMscSubContactVerificationMessageResult>("alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage", args ?? new GetMscSubContactVerificationMessageArgs(), options.WithDefaults());
@@ -55,7 +53,6 @@ namespace Pulumi.AliCloud
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Pulumi.AliCloud
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetMscSubContactVerificationMessageResult> Invoke(GetMscSubContactVerificationMessageInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMscSubContactVerificationMessageResult>("alicloud:index/getMscSubContactVerificationMessage:getMscSubContactVerificationMessage", args ?? new GetMscSubContactVerificationMessageInvokeArgs(), options.WithDefaults());

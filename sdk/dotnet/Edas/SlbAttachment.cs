@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Edas
     /// 
     /// Basic Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -131,7 +130,6 @@ namespace Pulumi.AliCloud.Edas
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [AliCloudResourceType("alicloud:edas/slbAttachment:SlbAttachment")]
     public partial class SlbAttachment : global::Pulumi.CustomResource

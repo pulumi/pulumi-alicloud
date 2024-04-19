@@ -183,7 +183,6 @@ def get_anycast_eip_addresses(anycast_eip_address_name: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -192,7 +191,6 @@ def get_anycast_eip_addresses(anycast_eip_address_name: Optional[str] = None,
         name_regex="the_resource_name")
     pulumi.export("firstEipanycastAnycastEipAddressId", example.addresses[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str anycast_eip_address_name: Anycast EIP instance name.
@@ -261,7 +259,6 @@ def get_anycast_eip_addresses_output(anycast_eip_address_name: Optional[pulumi.I
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -270,7 +267,6 @@ def get_anycast_eip_addresses_output(anycast_eip_address_name: Optional[pulumi.I
         name_regex="the_resource_name")
     pulumi.export("firstEipanycastAnycastEipAddressId", example.addresses[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str anycast_eip_address_name: Anycast EIP instance name.

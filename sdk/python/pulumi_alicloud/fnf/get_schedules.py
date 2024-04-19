@@ -123,7 +123,6 @@ def get_schedules(flow_name: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -133,7 +132,6 @@ def get_schedules(flow_name: Optional[str] = None,
         name_regex="the_resource_name")
     pulumi.export("firstFnfScheduleId", example.schedules[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str flow_name: The name of the flow bound to the time-based schedule you want to create.
@@ -178,7 +176,6 @@ def get_schedules_output(flow_name: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -188,7 +185,6 @@ def get_schedules_output(flow_name: Optional[pulumi.Input[str]] = None,
         name_regex="the_resource_name")
     pulumi.export("firstFnfScheduleId", example.schedules[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str flow_name: The name of the flow bound to the time-based schedule you want to create.

@@ -335,16 +335,13 @@ class AccountPasswordPolicy(pulumi.CustomResource):
 
         Empty resource sets defaults values for every property.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         default = alicloud.ram.AccountPasswordPolicy("default")
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -360,7 +357,6 @@ class AccountPasswordPolicy(pulumi.CustomResource):
             password_reuse_prevention=5,
             max_login_attempts=3)
         ```
-        <!--End PulumiCodeChooser -->
         For not specified values sets defaults.
 
         ## Import
@@ -396,16 +392,13 @@ class AccountPasswordPolicy(pulumi.CustomResource):
 
         Empty resource sets defaults values for every property.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         default = alicloud.ram.AccountPasswordPolicy("default")
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -421,7 +414,6 @@ class AccountPasswordPolicy(pulumi.CustomResource):
             password_reuse_prevention=5,
             max_login_attempts=3)
         ```
-        <!--End PulumiCodeChooser -->
         For not specified values sets defaults.
 
         ## Import

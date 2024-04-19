@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  *     regionId: "cn-hangzhou",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
     args = args || {};
@@ -80,7 +78,6 @@ export interface GetRegionsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -92,7 +89,6 @@ export interface GetRegionsResult {
  *     regionId: "cn-hangzhou",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
     return pulumi.output(args).apply((a: any) => getRegions(a, opts))

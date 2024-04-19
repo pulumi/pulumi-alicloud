@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Dns
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -52,7 +51,6 @@ namespace Pulumi.AliCloud.Dns
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAddressPoolsResult> InvokeAsync(GetAddressPoolsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAddressPoolsResult>("alicloud:dns/getAddressPools:getAddressPools", args ?? new GetAddressPoolsArgs(), options.WithDefaults());
@@ -66,7 +64,6 @@ namespace Pulumi.AliCloud.Dns
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -98,7 +95,6 @@ namespace Pulumi.AliCloud.Dns
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAddressPoolsResult> Invoke(GetAddressPoolsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAddressPoolsResult>("alicloud:dns/getAddressPools:getAddressPools", args ?? new GetAddressPoolsInvokeArgs(), options.WithDefaults());

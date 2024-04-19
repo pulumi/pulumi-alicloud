@@ -19,7 +19,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetTunnels(ctx *pulumi.Context, args *GetTunnelsArgs, opts ...pulumi.InvokeOption) (*GetTunnelsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTunnelsResult

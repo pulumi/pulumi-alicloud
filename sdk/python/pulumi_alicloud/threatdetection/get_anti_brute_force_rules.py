@@ -110,7 +110,6 @@ def get_anti_brute_force_rules(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -129,7 +128,6 @@ def get_anti_brute_force_rules(ids: Optional[Sequence[str]] = None,
         name_regex=default_anti_brute_force_rule.name))
     pulumi.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default.rules[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Anti-Brute Force Rule IDs.
@@ -164,7 +162,6 @@ def get_anti_brute_force_rules_output(ids: Optional[pulumi.Input[Optional[Sequen
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -183,7 +180,6 @@ def get_anti_brute_force_rules_output(ids: Optional[pulumi.Input[Optional[Sequen
         name_regex=default_anti_brute_force_rule.name))
     pulumi.export("alicloudThreatDetectionAntiBruteForceRuleExampleId", default.rules[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Anti-Brute Force Rule IDs.

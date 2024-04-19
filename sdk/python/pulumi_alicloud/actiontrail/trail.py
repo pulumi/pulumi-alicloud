@@ -509,7 +509,6 @@ class Trail(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -533,7 +532,6 @@ class Trail(pulumi.CustomResource):
             sls_write_role_arn=example_get_roles.roles[0].arn,
             sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example.regions[0].id}:{example_get_account.id}:project/{name}"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -576,7 +574,6 @@ class Trail(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -600,7 +597,6 @@ class Trail(pulumi.CustomResource):
             sls_write_role_arn=example_get_roles.roles[0].arn,
             sls_project_arn=example_project.name.apply(lambda name: f"acs:log:{example.regions[0].id}:{example_get_account.id}:project/{name}"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDdosCooPorts(ctx *pulumi.Context, args *GetDdosCooPortsArgs, opts ...pulumi.InvokeOption) (*GetDdosCooPortsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDdosCooPortsResult

@@ -95,7 +95,6 @@ def get_buckets(name_regex: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -103,7 +102,6 @@ def get_buckets(name_regex: Optional[str] = None,
     oss_buckets_ds = alicloud.oss.get_buckets(name_regex="sample_oss_bucket")
     pulumi.export("firstOssBucketName", oss_buckets_ds.buckets[0].name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name_regex: A regex string to filter results by bucket name.
@@ -132,7 +130,6 @@ def get_buckets_output(name_regex: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -140,7 +137,6 @@ def get_buckets_output(name_regex: Optional[pulumi.Input[Optional[str]]] = None,
     oss_buckets_ds = alicloud.oss.get_buckets(name_regex="sample_oss_bucket")
     pulumi.export("firstOssBucketName", oss_buckets_ds.buckets[0].name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name_regex: A regex string to filter results by bucket name.

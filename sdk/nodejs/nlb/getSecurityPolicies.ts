@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const nlbSecurityPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSecurityPolicies(args?: GetSecurityPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetSecurityPoliciesResult> {
     args = args || {};
@@ -105,7 +103,6 @@ export interface GetSecurityPoliciesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -117,7 +114,6 @@ export interface GetSecurityPoliciesResult {
  * });
  * export const nlbSecurityPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSecurityPoliciesOutput(args?: GetSecurityPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getSecurityPolicies(a, opts))

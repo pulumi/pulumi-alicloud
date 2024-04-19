@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Mse
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -55,7 +54,6 @@ namespace Pulumi.AliCloud.Mse
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGatewaysResult> InvokeAsync(GetGatewaysArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewaysResult>("alicloud:mse/getGateways:getGateways", args ?? new GetGatewaysArgs(), options.WithDefaults());
@@ -69,7 +67,6 @@ namespace Pulumi.AliCloud.Mse
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -104,7 +101,6 @@ namespace Pulumi.AliCloud.Mse
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGatewaysResult> Invoke(GetGatewaysInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:mse/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithDefaults());

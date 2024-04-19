@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -40,7 +39,6 @@ import * as utilities from "../utilities";
  * });
  * export const vpcBgpPeerId4 = status.then(status => status.peers?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBgpPeers(args?: GetBgpPeersArgs, opts?: pulumi.InvokeOptions): Promise<GetBgpPeersResult> {
     args = args || {};
@@ -105,7 +103,6 @@ export interface GetBgpPeersResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -130,7 +127,6 @@ export interface GetBgpPeersResult {
  * });
  * export const vpcBgpPeerId4 = status.then(status => status.peers?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBgpPeersOutput(args?: GetBgpPeersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBgpPeersResult> {
     return pulumi.output(args).apply((a: any) => getBgpPeers(a, opts))

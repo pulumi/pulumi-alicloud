@@ -123,7 +123,6 @@ def get_accounts(db_cluster_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -155,7 +154,6 @@ def get_accounts(db_cluster_id: Optional[str] = None,
         db_cluster_id=default_db_cluster.id)
     pulumi.export("accountId", default.ids[0])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str db_cluster_id: The DBCluster id.
@@ -200,7 +198,6 @@ def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -232,7 +229,6 @@ def get_accounts_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
         db_cluster_id=default_db_cluster.id)
     pulumi.export("accountId", default.ids[0])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str db_cluster_id: The DBCluster id.

@@ -24,7 +24,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -95,7 +94,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [AliCloudResourceType("alicloud:ecs/ecsInstanceSet:EcsInstanceSet")]
     public partial class EcsInstanceSet : global::Pulumi.CustomResource

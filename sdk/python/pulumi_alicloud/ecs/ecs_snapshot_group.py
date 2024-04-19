@@ -357,7 +357,6 @@ class EcsSnapshotGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -407,7 +406,6 @@ class EcsSnapshotGroup(pulumi.CustomResource):
                 "For": "Acceptance",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -446,7 +444,6 @@ class EcsSnapshotGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -496,7 +493,6 @@ class EcsSnapshotGroup(pulumi.CustomResource):
                 "For": "Acceptance",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

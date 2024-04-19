@@ -130,7 +130,6 @@ class Alias(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -140,7 +139,6 @@ class Alias(pulumi.CustomResource):
             alias_name="alias/example_kms_alias",
             key_id=this.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -176,7 +174,6 @@ class Alias(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -186,7 +183,6 @@ class Alias(pulumi.CustomResource):
             alias_name="alias/example_kms_alias",
             key_id=this.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -133,7 +133,6 @@ def get_ipv4_gateways(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -143,7 +142,6 @@ def get_ipv4_gateways(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.vpc.get_ipv4_gateways(name_regex="^my-Ipv4Gateway")
     pulumi.export("vpcIpv4GatewayId2", name_regex.gateways[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ipv4 Gateway IDs.
@@ -192,7 +190,6 @@ def get_ipv4_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -202,7 +199,6 @@ def get_ipv4_gateways_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     name_regex = alicloud.vpc.get_ipv4_gateways(name_regex="^my-Ipv4Gateway")
     pulumi.export("vpcIpv4GatewayId2", name_regex.gateways[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ipv4 Gateway IDs.

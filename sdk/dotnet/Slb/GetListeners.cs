@@ -16,7 +16,6 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,7 +59,6 @@ namespace Pulumi.AliCloud.Slb
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetListenersResult> InvokeAsync(GetListenersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetListenersResult>("alicloud:slb/getListeners:getListeners", args ?? new GetListenersArgs(), options.WithDefaults());
@@ -70,7 +68,6 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -114,7 +111,6 @@ namespace Pulumi.AliCloud.Slb
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetListenersResult> Invoke(GetListenersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetListenersResult>("alicloud:slb/getListeners:getListeners", args ?? new GetListenersInvokeArgs(), options.WithDefaults());

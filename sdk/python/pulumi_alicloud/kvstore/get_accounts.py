@@ -132,7 +132,6 @@ def get_accounts(account_name: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -140,7 +139,6 @@ def get_accounts(account_name: Optional[str] = None,
     example = alicloud.kvstore.get_accounts(instance_id="example_value")
     pulumi.export("firstKvstoreAccountId", example.accounts[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str account_name: The name of the account.
@@ -185,7 +183,6 @@ def get_accounts_output(account_name: Optional[pulumi.Input[Optional[str]]] = No
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -193,7 +190,6 @@ def get_accounts_output(account_name: Optional[pulumi.Input[Optional[str]]] = No
     example = alicloud.kvstore.get_accounts(instance_id="example_value")
     pulumi.export("firstKvstoreAccountId", example.accounts[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str account_name: The name of the account.

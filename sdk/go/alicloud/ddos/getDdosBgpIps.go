@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,7 +47,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDdosBgpIps(ctx *pulumi.Context, args *GetDdosBgpIpsArgs, opts ...pulumi.InvokeOption) (*GetDdosBgpIpsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDdosBgpIpsResult

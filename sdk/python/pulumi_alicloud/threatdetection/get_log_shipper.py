@@ -138,14 +138,12 @@ def get_log_shipper(enable: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     open = alicloud.threatdetection.get_log_shipper(enable="On")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str enable: Setting the value to `On` to enable the service. Valid values: `On` or `Off`. Default to `Off`.
@@ -182,14 +180,12 @@ def get_log_shipper_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     open = alicloud.threatdetection.get_log_shipper(enable="On")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str enable: Setting the value to `On` to enable the service. Valid values: `On` or `Off`. Default to `Off`.

@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  * const eipsDs = alicloud.ecs.getEips({});
  * export const firstEipId = eipsDs.then(eipsDs => eipsDs.eips?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 /** @deprecated This function has been deprecated in favour of the getEipAddresses function */
 export function getEips(args?: GetEipsArgs, opts?: pulumi.InvokeOptions): Promise<GetEipsResult> {
@@ -158,7 +156,6 @@ export interface GetEipsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -166,7 +163,6 @@ export interface GetEipsResult {
  * const eipsDs = alicloud.ecs.getEips({});
  * export const firstEipId = eipsDs.then(eipsDs => eipsDs.eips?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 /** @deprecated This function has been deprecated in favour of the getEipAddresses function */
 export function getEipsOutput(args?: GetEipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEipsResult> {

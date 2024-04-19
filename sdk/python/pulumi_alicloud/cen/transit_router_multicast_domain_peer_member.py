@@ -195,7 +195,6 @@ class TransitRouterMulticastDomainPeerMember(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -241,7 +240,6 @@ class TransitRouterMulticastDomainPeerMember(pulumi.CustomResource):
             peer_transit_router_multicast_domain_id=peer_transit_router_multicast_domain.id,
             group_ip_address="224.0.0.1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -275,7 +273,6 @@ class TransitRouterMulticastDomainPeerMember(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -321,7 +318,6 @@ class TransitRouterMulticastDomainPeerMember(pulumi.CustomResource):
             peer_transit_router_multicast_domain_id=peer_transit_router_multicast_domain.id,
             group_ip_address="224.0.0.1")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

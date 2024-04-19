@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,7 +47,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetAcceleratorSpareIpAttachments(ctx *pulumi.Context, args *GetAcceleratorSpareIpAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetAcceleratorSpareIpAttachmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAcceleratorSpareIpAttachmentsResult

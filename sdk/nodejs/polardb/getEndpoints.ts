@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -52,7 +51,6 @@ import * as utilities from "../utilities";
  * }));
  * export const endpoint = _default.apply(_default => _default.endpoints?.[0]?.dbEndpointId);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEndpoints(args: GetEndpointsArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointsResult> {
 
@@ -103,7 +101,6 @@ export interface GetEndpointsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -141,7 +138,6 @@ export interface GetEndpointsResult {
  * }));
  * export const endpoint = _default.apply(_default => _default.endpoints?.[0]?.dbEndpointId);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEndpointsOutput(args: GetEndpointsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointsResult> {
     return pulumi.output(args).apply((a: any) => getEndpoints(a, opts))

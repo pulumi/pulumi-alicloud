@@ -139,7 +139,6 @@ class AclEntryAttachment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -152,7 +151,6 @@ class AclEntryAttachment(pulumi.CustomResource):
             entry="168.10.10.0/24",
             comment="second")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -183,7 +181,6 @@ class AclEntryAttachment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -196,7 +193,6 @@ class AclEntryAttachment(pulumi.CustomResource):
             entry="168.10.10.0/24",
             comment="second")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

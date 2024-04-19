@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -50,7 +49,6 @@ namespace Pulumi.AliCloud.Slb
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTlsCipherPoliciesResult> InvokeAsync(GetTlsCipherPoliciesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTlsCipherPoliciesResult>("alicloud:slb/getTlsCipherPolicies:getTlsCipherPolicies", args ?? new GetTlsCipherPoliciesArgs(), options.WithDefaults());
@@ -64,7 +62,6 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -94,7 +91,6 @@ namespace Pulumi.AliCloud.Slb
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTlsCipherPoliciesResult> Invoke(GetTlsCipherPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTlsCipherPoliciesResult>("alicloud:slb/getTlsCipherPolicies:getTlsCipherPolicies", args ?? new GetTlsCipherPoliciesInvokeArgs(), options.WithDefaults());

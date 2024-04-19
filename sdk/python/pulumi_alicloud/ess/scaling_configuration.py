@@ -1550,7 +1550,6 @@ class ScalingConfiguration(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1609,7 +1608,6 @@ class ScalingConfiguration(pulumi.CustomResource):
             force_delete=True,
             active=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 
@@ -1701,7 +1699,6 @@ class ScalingConfiguration(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1760,7 +1757,6 @@ class ScalingConfiguration(pulumi.CustomResource):
             force_delete=True,
             active=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 

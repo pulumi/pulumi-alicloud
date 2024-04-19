@@ -124,7 +124,6 @@ class Snapshot(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -147,7 +146,6 @@ class Snapshot(pulumi.CustomResource):
             disk_id=default_get_server_disks.ids[0],
             snapshot_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -179,7 +177,6 @@ class Snapshot(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -202,7 +199,6 @@ class Snapshot(pulumi.CustomResource):
             disk_id=default_get_server_disks.ids[0],
             snapshot_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

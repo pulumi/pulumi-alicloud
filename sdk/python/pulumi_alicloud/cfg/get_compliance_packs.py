@@ -132,7 +132,6 @@ def get_compliance_packs(enable_details: Optional[bool] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -141,7 +140,6 @@ def get_compliance_packs(enable_details: Optional[bool] = None,
         name_regex="the_resource_name")
     pulumi.export("firstConfigCompliancePackId", example.packs[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -186,7 +184,6 @@ def get_compliance_packs_output(enable_details: Optional[pulumi.Input[Optional[b
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -195,7 +192,6 @@ def get_compliance_packs_output(enable_details: Optional[pulumi.Input[Optional[b
         name_regex="the_resource_name")
     pulumi.export("firstConfigCompliancePackId", example.packs[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

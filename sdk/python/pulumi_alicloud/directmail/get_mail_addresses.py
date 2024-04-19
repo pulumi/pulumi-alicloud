@@ -114,7 +114,6 @@ def get_mail_addresses(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -122,7 +121,6 @@ def get_mail_addresses(ids: Optional[Sequence[str]] = None,
     ids = alicloud.directmail.get_mail_addresses(ids=["example_id"])
     pulumi.export("directMailMailAddressId1", ids.addresses[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Mail Address IDs.
@@ -166,7 +164,6 @@ def get_mail_addresses_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -174,7 +171,6 @@ def get_mail_addresses_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     ids = alicloud.directmail.get_mail_addresses(ids=["example_id"])
     pulumi.export("directMailMailAddressId1", ids.addresses[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Mail Address IDs.

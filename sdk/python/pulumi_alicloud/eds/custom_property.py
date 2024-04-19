@@ -113,7 +113,6 @@ class CustomProperty(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -124,7 +123,6 @@ class CustomProperty(pulumi.CustomResource):
                 property_value="example_value",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -158,7 +156,6 @@ class CustomProperty(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -169,7 +166,6 @@ class CustomProperty(pulumi.CustomResource):
                 property_value="example_value",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

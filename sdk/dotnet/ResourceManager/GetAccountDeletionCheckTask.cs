@@ -24,7 +24,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Pulumi.AliCloud.ResourceManager
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccountDeletionCheckTaskResult> InvokeAsync(GetAccountDeletionCheckTaskArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccountDeletionCheckTaskResult>("alicloud:resourcemanager/getAccountDeletionCheckTask:getAccountDeletionCheckTask", args ?? new GetAccountDeletionCheckTaskArgs(), options.WithDefaults());
@@ -62,7 +60,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -82,7 +79,6 @@ namespace Pulumi.AliCloud.ResourceManager
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccountDeletionCheckTaskResult> Invoke(GetAccountDeletionCheckTaskInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountDeletionCheckTaskResult>("alicloud:resourcemanager/getAccountDeletionCheckTask:getAccountDeletionCheckTask", args ?? new GetAccountDeletionCheckTaskInvokeArgs(), options.WithDefaults());

@@ -420,7 +420,6 @@ class PolicyBinding(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -458,7 +457,6 @@ class PolicyBinding(pulumi.CustomResource):
             policy_binding_description="policy binding example (update)",
             source="prefix-example-update/")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -505,7 +503,6 @@ class PolicyBinding(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -543,7 +540,6 @@ class PolicyBinding(pulumi.CustomResource):
             policy_binding_description="policy binding example (update)",
             source="prefix-example-update/")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

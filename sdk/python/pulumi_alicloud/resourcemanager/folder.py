@@ -110,7 +110,6 @@ class Folder(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -125,7 +124,6 @@ class Folder(pulumi.CustomResource):
             max=99999)
         example = alicloud.resourcemanager.Folder("example", folder_name=f"{name}-{default['result']}")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -158,7 +156,6 @@ class Folder(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -173,7 +170,6 @@ class Folder(pulumi.CustomResource):
             max=99999)
         example = alicloud.resourcemanager.Folder("example", folder_name=f"{name}-{default['result']}")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

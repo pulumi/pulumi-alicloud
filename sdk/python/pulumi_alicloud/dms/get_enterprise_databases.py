@@ -113,7 +113,6 @@ def get_enterprise_databases(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -122,7 +121,6 @@ def get_enterprise_databases(ids: Optional[Sequence[str]] = None,
         instance_id="2195118")
     pulumi.export("alicloudDmsEnterpriseDatabaseExampleId", default.databases[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Database IDs.
@@ -162,7 +160,6 @@ def get_enterprise_databases_output(ids: Optional[pulumi.Input[Optional[Sequence
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -171,7 +168,6 @@ def get_enterprise_databases_output(ids: Optional[pulumi.Input[Optional[Sequence
         instance_id="2195118")
     pulumi.export("alicloudDmsEnterpriseDatabaseExampleId", default.databases[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Database IDs.

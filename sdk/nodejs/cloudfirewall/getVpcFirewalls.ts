@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudCfwVpcFirewallExampleId = _default.then(_default => _default.firewalls?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVpcFirewalls(args?: GetVpcFirewallsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcFirewallsResult> {
     args = args || {};
@@ -147,7 +145,6 @@ export interface GetVpcFirewallsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -160,7 +157,6 @@ export interface GetVpcFirewallsResult {
  * });
  * export const alicloudCfwVpcFirewallExampleId = _default.then(_default => _default.firewalls?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVpcFirewallsOutput(args?: GetVpcFirewallsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcFirewallsResult> {
     return pulumi.output(args).apply((a: any) => getVpcFirewalls(a, opts))

@@ -153,7 +153,6 @@ def get_acls(acl_ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -163,7 +162,6 @@ def get_acls(acl_ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.alb.get_acls(name_regex="^my-Acl")
     pulumi.export("albAclId2", name_regex.acls[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] acl_ids: The acl ids.
@@ -220,7 +218,6 @@ def get_acls_output(acl_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -230,7 +227,6 @@ def get_acls_output(acl_ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     name_regex = alicloud.alb.get_acls(name_regex="^my-Acl")
     pulumi.export("albAclId2", name_regex.acls[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] acl_ids: The acl ids.

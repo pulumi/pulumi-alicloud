@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudEbsDedicatedBlockStorageClusterExampleId = _default.then(_default => _default.clusters?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDedicatedBlockStorageClusters(args?: GetDedicatedBlockStorageClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetDedicatedBlockStorageClustersResult> {
     args = args || {};
@@ -85,7 +83,6 @@ export interface GetDedicatedBlockStorageClustersResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -96,7 +93,6 @@ export interface GetDedicatedBlockStorageClustersResult {
  * });
  * export const alicloudEbsDedicatedBlockStorageClusterExampleId = _default.then(_default => _default.clusters?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDedicatedBlockStorageClustersOutput(args?: GetDedicatedBlockStorageClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDedicatedBlockStorageClustersResult> {
     return pulumi.output(args).apply((a: any) => getDedicatedBlockStorageClusters(a, opts))

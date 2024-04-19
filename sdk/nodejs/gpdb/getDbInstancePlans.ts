@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -31,7 +30,6 @@ import * as utilities from "../utilities";
  * });
  * export const gpdbDbInstancePlanId2 = nameRegex.then(nameRegex => nameRegex.plans?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDbInstancePlans(args: GetDbInstancePlansArgs, opts?: pulumi.InvokeOptions): Promise<GetDbInstancePlansResult> {
 
@@ -108,7 +106,6 @@ export interface GetDbInstancePlansResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -124,7 +121,6 @@ export interface GetDbInstancePlansResult {
  * });
  * export const gpdbDbInstancePlanId2 = nameRegex.then(nameRegex => nameRegex.plans?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDbInstancePlansOutput(args: GetDbInstancePlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbInstancePlansResult> {
     return pulumi.output(args).apply((a: any) => getDbInstancePlans(a, opts))

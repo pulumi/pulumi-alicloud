@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,7 +48,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetEndpointAclPolicies(ctx *pulumi.Context, args *GetEndpointAclPoliciesArgs, opts ...pulumi.InvokeOption) (*GetEndpointAclPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEndpointAclPoliciesResult

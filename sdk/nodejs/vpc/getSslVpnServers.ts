@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  *     nameRegex: "^foo",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSslVpnServers(args?: GetSslVpnServersArgs, opts?: pulumi.InvokeOptions): Promise<GetSslVpnServersResult> {
     args = args || {};
@@ -91,7 +89,6 @@ export interface GetSslVpnServersResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -103,7 +100,6 @@ export interface GetSslVpnServersResult {
  *     nameRegex: "^foo",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSslVpnServersOutput(args?: GetSslVpnServersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSslVpnServersResult> {
     return pulumi.output(args).apply((a: any) => getSslVpnServers(a, opts))

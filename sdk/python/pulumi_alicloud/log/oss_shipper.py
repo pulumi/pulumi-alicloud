@@ -656,7 +656,6 @@ class OssShipper(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -692,7 +691,6 @@ class OssShipper(pulumi.CustomResource):
             format="json",
             json_enable_tag=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -746,7 +744,6 @@ class OssShipper(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -782,7 +779,6 @@ class OssShipper(pulumi.CustomResource):
             format="json",
             json_enable_tag=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

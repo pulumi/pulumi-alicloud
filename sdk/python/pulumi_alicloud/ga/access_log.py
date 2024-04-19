@@ -252,7 +252,6 @@ class AccessLog(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -313,7 +312,6 @@ class AccessLog(pulumi.CustomResource):
             sls_log_store_name=default_store.name,
             sls_region_id=region)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -349,7 +347,6 @@ class AccessLog(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -410,7 +407,6 @@ class AccessLog(pulumi.CustomResource):
             sls_log_store_name=default_store.name,
             sls_region_id=region)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

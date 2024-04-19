@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  *     nameRegex: "tf-testacc",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAlarmContactGroups(args?: GetAlarmContactGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlarmContactGroupsResult> {
     args = args || {};
@@ -78,7 +76,6 @@ export interface GetAlarmContactGroupsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -87,7 +84,6 @@ export interface GetAlarmContactGroupsResult {
  *     nameRegex: "tf-testacc",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAlarmContactGroupsOutput(args?: GetAlarmContactGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlarmContactGroupsResult> {
     return pulumi.output(args).apply((a: any) => getAlarmContactGroups(a, opts))

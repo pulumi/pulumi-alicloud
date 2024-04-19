@@ -156,7 +156,6 @@ class SharedResource(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -180,7 +179,6 @@ class SharedResource(pulumi.CustomResource):
             resource_share_id=example_resource_share.id,
             resource_type="VSwitch")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -213,7 +211,6 @@ class SharedResource(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -237,7 +234,6 @@ class SharedResource(pulumi.CustomResource):
             resource_share_id=example_resource_share.id,
             resource_type="VSwitch")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

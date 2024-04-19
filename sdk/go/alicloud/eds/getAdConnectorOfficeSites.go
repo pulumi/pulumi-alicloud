@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,7 +48,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetAdConnectorOfficeSites(ctx *pulumi.Context, args *GetAdConnectorOfficeSitesArgs, opts ...pulumi.InvokeOption) (*GetAdConnectorOfficeSitesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAdConnectorOfficeSitesResult

@@ -93,7 +93,6 @@ def get_region_route_entries(instance_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -102,7 +101,6 @@ def get_region_route_entries(instance_id: Optional[str] = None,
         region_id="cn-beijing")
     pulumi.export("firstRegionRouteEntriesRouteEntryCidrBlock", entry.entries[0].cidr_block)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str instance_id: ID of the CEN instance.
@@ -133,7 +131,6 @@ def get_region_route_entries_output(instance_id: Optional[pulumi.Input[str]] = N
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -142,7 +139,6 @@ def get_region_route_entries_output(instance_id: Optional[pulumi.Input[str]] = N
         region_id="cn-beijing")
     pulumi.export("firstRegionRouteEntriesRouteEntryCidrBlock", entry.entries[0].cidr_block)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str instance_id: ID of the CEN instance.

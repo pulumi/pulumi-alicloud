@@ -680,7 +680,6 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -693,7 +692,6 @@ class Instance(pulumi.CustomResource):
             cfw_log=True,
             cfw_log_storage=1000)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -741,7 +739,6 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -754,7 +751,6 @@ class Instance(pulumi.CustomResource):
             cfw_log=True,
             cfw_log_storage=1000)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

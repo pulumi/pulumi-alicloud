@@ -159,7 +159,6 @@ def get_image_caches(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-     <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -167,7 +166,6 @@ def get_image_caches(ids: Optional[Sequence[str]] = None,
     example = alicloud.eci.get_image_caches(ids=["imc-bp1ef0dyp7ldhb1d****"])
     pulumi.export("imageCache", example.caches[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list ids of ECI Image Cache.
@@ -218,7 +216,6 @@ def get_image_caches_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     ## Example Usage
 
-     <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -226,7 +223,6 @@ def get_image_caches_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     example = alicloud.eci.get_image_caches(ids=["imc-bp1ef0dyp7ldhb1d****"])
     pulumi.export("imageCache", example.caches[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list ids of ECI Image Cache.

@@ -22,7 +22,6 @@ import (
 //
 // ### Create a RDS PostgreSQL upgrade instance
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -112,7 +111,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

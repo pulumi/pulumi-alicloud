@@ -2087,7 +2087,6 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
 
         ### Create a RDS PostgreSQL upgrade instance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -2135,7 +2134,6 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
             db_instance_description="terraform-example",
             vswitch_id=example_switch.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -2282,7 +2280,6 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
 
         ### Create a RDS PostgreSQL upgrade instance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -2330,7 +2327,6 @@ class RdsUpgradeDbInstance(pulumi.CustomResource):
             db_instance_description="terraform-example",
             vswitch_id=example_switch.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

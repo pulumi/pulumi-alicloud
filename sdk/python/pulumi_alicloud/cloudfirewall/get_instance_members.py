@@ -118,7 +118,6 @@ def get_instance_members(current_page: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -126,7 +125,6 @@ def get_instance_members(current_page: Optional[str] = None,
     default = alicloud.cloudfirewall.get_instance_members(ids=[default_alicloud_cloud_firewall_instance_member["id"]])
     pulumi.export("alicloudCloudFirewallInstanceMemberExampleId", default.members[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Instance Member IDs.
@@ -165,7 +163,6 @@ def get_instance_members_output(current_page: Optional[pulumi.Input[Optional[str
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -173,7 +170,6 @@ def get_instance_members_output(current_page: Optional[pulumi.Input[Optional[str
     default = alicloud.cloudfirewall.get_instance_members(ids=[default_alicloud_cloud_firewall_instance_member["id"]])
     pulumi.export("alicloudCloudFirewallInstanceMemberExampleId", default.members[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Instance Member IDs.

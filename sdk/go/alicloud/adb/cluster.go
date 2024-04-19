@@ -24,7 +24,6 @@ import (
 //
 // ### Create a ADB MySQL cluster
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -89,7 +88,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

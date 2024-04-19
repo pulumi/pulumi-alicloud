@@ -22,7 +22,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -139,10 +138,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // Multiple accounts Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -182,10 +179,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // Resource Directory Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -222,8 +217,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -261,7 +254,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

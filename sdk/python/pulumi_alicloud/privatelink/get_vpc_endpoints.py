@@ -163,7 +163,6 @@ def get_vpc_endpoints(connection_status: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -172,7 +171,6 @@ def get_vpc_endpoints(connection_status: Optional[str] = None,
         name_regex="the_resource_name")
     pulumi.export("firstPrivatelinkVpcEndpointId", example.endpoints[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str connection_status: The status of Connection.
@@ -233,7 +231,6 @@ def get_vpc_endpoints_output(connection_status: Optional[pulumi.Input[Optional[s
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -242,7 +239,6 @@ def get_vpc_endpoints_output(connection_status: Optional[pulumi.Input[Optional[s
         name_regex="the_resource_name")
     pulumi.export("firstPrivatelinkVpcEndpointId", example.endpoints[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str connection_status: The status of Connection.

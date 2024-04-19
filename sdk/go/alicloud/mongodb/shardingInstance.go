@@ -27,7 +27,6 @@ import (
 //
 // ### Create a Mongodb Sharding instance
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -102,7 +101,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Module Support
 //

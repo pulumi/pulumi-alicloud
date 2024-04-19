@@ -13,17 +13,15 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *  <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.dcdn.getDomains({
- *     ids: ["example.com"],
+ *    ids: ["example.com"],
  * });
  * export const domainId = example.then(example => example.domains?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDomains(args?: GetDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainsResult> {
     args = args || {};
@@ -135,17 +133,15 @@ export interface GetDomainsResult {
  *
  * ## Example Usage
  *
- *  <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.dcdn.getDomains({
- *     ids: ["example.com"],
+ *    ids: ["example.com"],
  * });
  * export const domainId = example.then(example => example.domains?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDomainsOutput(args?: GetDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainsResult> {
     return pulumi.output(args).apply((a: any) => getDomains(a, opts))

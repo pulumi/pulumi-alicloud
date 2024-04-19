@@ -108,7 +108,6 @@ def get_groups(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -116,7 +115,6 @@ def get_groups(ids: Optional[Sequence[str]] = None,
     data_apigatway = alicloud.apigateway.get_groups(output_file="outgroups")
     pulumi.export("firstGroupId", data_apigatway.groups[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of api group IDs.
@@ -149,7 +147,6 @@ def get_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -157,7 +154,6 @@ def get_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
     data_apigatway = alicloud.apigateway.get_groups(output_file="outgroups")
     pulumi.export("firstGroupId", data_apigatway.groups[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of api group IDs.

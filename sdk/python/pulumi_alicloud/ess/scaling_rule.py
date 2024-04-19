@@ -578,7 +578,6 @@ class ScalingRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -640,7 +639,6 @@ class ScalingRule(pulumi.CustomResource):
             adjustment_type="TotalCapacity",
             adjustment_value=1)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 
@@ -694,7 +692,6 @@ class ScalingRule(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -756,7 +753,6 @@ class ScalingRule(pulumi.CustomResource):
             adjustment_type="TotalCapacity",
             adjustment_value=1)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 

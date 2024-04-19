@@ -92,7 +92,6 @@ def get_plaintext(ciphertext_blob: Optional[str] = None,
     """
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -108,7 +107,6 @@ def get_plaintext(ciphertext_blob: Optional[str] = None,
     plaintext = alicloud.kms.get_plaintext_output(ciphertext_blob=encrypted.ciphertext_blob)
     pulumi.export("decrypted", plaintext.plaintext)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str ciphertext_blob: The ciphertext to be decrypted.
@@ -135,7 +133,6 @@ def get_plaintext_output(ciphertext_blob: Optional[pulumi.Input[str]] = None,
     """
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -151,7 +148,6 @@ def get_plaintext_output(ciphertext_blob: Optional[pulumi.Input[str]] = None,
     plaintext = alicloud.kms.get_plaintext_output(ciphertext_blob=encrypted.ciphertext_blob)
     pulumi.export("decrypted", plaintext.plaintext)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str ciphertext_blob: The ciphertext to be decrypted.

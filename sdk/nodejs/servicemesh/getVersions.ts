@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const serviceMeshVersion = versions[0].version;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVersions(args?: GetVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetVersionsResult> {
     args = args || {};
@@ -78,7 +76,6 @@ export interface GetVersionsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -88,7 +85,6 @@ export interface GetVersionsResult {
  * });
  * export const serviceMeshVersion = versions[0].version;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVersionsOutput(args?: GetVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVersionsResult> {
     return pulumi.output(args).apply((a: any) => getVersions(a, opts))

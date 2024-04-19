@@ -175,7 +175,6 @@ class DedicatedHostAccount(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -223,7 +222,6 @@ class DedicatedHostAccount(pulumi.CustomResource):
             dedicated_host_id=default_dedicated_host.dedicated_host_id,
             account_type="Normal")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -259,7 +257,6 @@ class DedicatedHostAccount(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -307,7 +304,6 @@ class DedicatedHostAccount(pulumi.CustomResource):
             dedicated_host_id=default_dedicated_host.dedicated_host_id,
             account_type="Normal")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

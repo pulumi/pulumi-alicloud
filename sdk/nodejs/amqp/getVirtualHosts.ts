@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -34,7 +33,6 @@ import * as utilities from "../utilities";
  * });
  * export const amqpVirtualHostId2 = nameRegex.then(nameRegex => nameRegex.hosts?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVirtualHosts(args: GetVirtualHostsArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualHostsResult> {
 
@@ -93,7 +91,6 @@ export interface GetVirtualHostsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -112,7 +109,6 @@ export interface GetVirtualHostsResult {
  * });
  * export const amqpVirtualHostId2 = nameRegex.then(nameRegex => nameRegex.hosts?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVirtualHostsOutput(args: GetVirtualHostsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualHostsResult> {
     return pulumi.output(args).apply((a: any) => getVirtualHosts(a, opts))

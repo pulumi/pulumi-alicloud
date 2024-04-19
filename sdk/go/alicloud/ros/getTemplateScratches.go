@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -60,7 +59,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetTemplateScratches(ctx *pulumi.Context, args *GetTemplateScratchesArgs, opts ...pulumi.InvokeOption) (*GetTemplateScratchesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTemplateScratchesResult

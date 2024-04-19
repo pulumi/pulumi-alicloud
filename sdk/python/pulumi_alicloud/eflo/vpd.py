@@ -189,7 +189,6 @@ class Vpd(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -204,7 +203,6 @@ class Vpd(pulumi.CustomResource):
             vpd_name=name,
             resource_group_id=default.groups[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -237,7 +235,6 @@ class Vpd(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -252,7 +249,6 @@ class Vpd(pulumi.CustomResource):
             vpd_name=name,
             resource_group_id=default.groups[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

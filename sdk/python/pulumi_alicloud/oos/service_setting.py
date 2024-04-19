@@ -209,7 +209,6 @@ class ServiceSetting(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -229,7 +228,6 @@ class ServiceSetting(pulumi.CustomResource):
             delivery_sls_enabled=True,
             delivery_sls_project_name=default_project.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -264,7 +262,6 @@ class ServiceSetting(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -284,7 +281,6 @@ class ServiceSetting(pulumi.CustomResource):
             delivery_sls_enabled=True,
             delivery_sls_project_name=default_project.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

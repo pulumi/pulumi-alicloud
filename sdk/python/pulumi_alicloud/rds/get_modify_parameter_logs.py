@@ -104,7 +104,6 @@ def get_modify_parameter_logs(db_instance_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -113,7 +112,6 @@ def get_modify_parameter_logs(db_instance_id: Optional[str] = None,
         start_time="2022-06-04T13:56Z",
         end_time="2022-06-08T13:56Z")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str db_instance_id: The db instance id.
@@ -153,7 +151,6 @@ def get_modify_parameter_logs_output(db_instance_id: Optional[pulumi.Input[str]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -162,7 +159,6 @@ def get_modify_parameter_logs_output(db_instance_id: Optional[pulumi.Input[str]]
         start_time="2022-06-04T13:56Z",
         end_time="2022-06-08T13:56Z")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str db_instance_id: The db instance id.

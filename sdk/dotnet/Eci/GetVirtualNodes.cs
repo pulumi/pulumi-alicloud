@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Eci
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -50,7 +49,6 @@ namespace Pulumi.AliCloud.Eci
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVirtualNodesResult> InvokeAsync(GetVirtualNodesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVirtualNodesResult>("alicloud:eci/getVirtualNodes:getVirtualNodes", args ?? new GetVirtualNodesArgs(), options.WithDefaults());
@@ -64,7 +62,6 @@ namespace Pulumi.AliCloud.Eci
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -94,7 +91,6 @@ namespace Pulumi.AliCloud.Eci
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVirtualNodesResult> Invoke(GetVirtualNodesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVirtualNodesResult>("alicloud:eci/getVirtualNodes:getVirtualNodes", args ?? new GetVirtualNodesInvokeArgs(), options.WithDefaults());

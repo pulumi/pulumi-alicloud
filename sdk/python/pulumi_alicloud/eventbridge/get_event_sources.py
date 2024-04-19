@@ -103,7 +103,6 @@ def get_event_sources(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -112,7 +111,6 @@ def get_event_sources(ids: Optional[Sequence[str]] = None,
         name_regex="the_resource_name")
     pulumi.export("firstEventBridgeEventSourceId", example.sources[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Event Source IDs.
@@ -149,7 +147,6 @@ def get_event_sources_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -158,7 +155,6 @@ def get_event_sources_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
         name_regex="the_resource_name")
     pulumi.export("firstEventBridgeEventSourceId", example.sources[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Event Source IDs.

@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudThreatDetectionHoneypotPresetExampleId = _default.then(_default => _default.presets?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHoneypotPresets(args?: GetHoneypotPresetsArgs, opts?: pulumi.InvokeOptions): Promise<GetHoneypotPresetsResult> {
     args = args || {};
@@ -125,7 +123,6 @@ export interface GetHoneypotPresetsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -138,7 +135,6 @@ export interface GetHoneypotPresetsResult {
  * });
  * export const alicloudThreatDetectionHoneypotPresetExampleId = _default.then(_default => _default.presets?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHoneypotPresetsOutput(args?: GetHoneypotPresetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHoneypotPresetsResult> {
     return pulumi.output(args).apply((a: any) => getHoneypotPresets(a, opts))

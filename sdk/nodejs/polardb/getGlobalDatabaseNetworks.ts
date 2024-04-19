@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -57,7 +56,6 @@ import * as utilities from "../utilities";
  * });
  * export const polardbGlobalDatabaseNetworkId2 = description.apply(description => description.networks?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGlobalDatabaseNetworks(args?: GetGlobalDatabaseNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetGlobalDatabaseNetworksResult> {
     args = args || {};
@@ -149,7 +147,6 @@ export interface GetGlobalDatabaseNetworksResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -191,7 +188,6 @@ export interface GetGlobalDatabaseNetworksResult {
  * });
  * export const polardbGlobalDatabaseNetworkId2 = description.apply(description => description.networks?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGlobalDatabaseNetworksOutput(args?: GetGlobalDatabaseNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalDatabaseNetworksResult> {
     return pulumi.output(args).apply((a: any) => getGlobalDatabaseNetworks(a, opts))

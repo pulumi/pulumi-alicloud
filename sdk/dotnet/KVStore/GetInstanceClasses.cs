@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -47,7 +46,6 @@ namespace Pulumi.AliCloud.KVStore
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstanceClassesResult> InvokeAsync(GetInstanceClassesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceClassesResult>("alicloud:kvstore/getInstanceClasses:getInstanceClasses", args ?? new GetInstanceClassesArgs(), options.WithDefaults());
@@ -59,7 +57,6 @@ namespace Pulumi.AliCloud.KVStore
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -88,7 +85,6 @@ namespace Pulumi.AliCloud.KVStore
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstanceClassesResult> Invoke(GetInstanceClassesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceClassesResult>("alicloud:kvstore/getInstanceClasses:getInstanceClasses", args ?? new GetInstanceClassesInvokeArgs(), options.WithDefaults());

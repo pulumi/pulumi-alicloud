@@ -602,7 +602,6 @@ class GetInstancesInstanceResult(dict):
         :param str status: Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
         :param int table_quota: (Available since v1.221.0) The instance quota which indicating the maximum number of tables.
         :param Mapping[str, Any] tags: A map of tags assigned to the instance. It must be in the format:
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_alicloud as alicloud
@@ -612,7 +611,6 @@ class GetInstancesInstanceResult(dict):
                    "tagKey2": "tagValue2",
                })
                ```
-               <!--End PulumiCodeChooser -->
         :param str user_id: The user id of the instance.
         """
         pulumi.set(__self__, "cluster_type", cluster_type)
@@ -749,7 +747,6 @@ class GetInstancesInstanceResult(dict):
     def tags(self) -> Mapping[str, Any]:
         """
         A map of tags assigned to the instance. It must be in the format:
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -759,7 +756,6 @@ class GetInstancesInstanceResult(dict):
             "tagKey2": "tagValue2",
         })
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "tags")
 

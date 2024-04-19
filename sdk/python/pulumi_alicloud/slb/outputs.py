@@ -1823,7 +1823,6 @@ class GetLoadBalancersBalancerResult(dict):
         :param str resource_group_id: The Id of resource group which SLB belongs.
         :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
         :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_alicloud as alicloud
@@ -1833,7 +1832,6 @@ class GetLoadBalancersBalancerResult(dict):
                    "tagKey2": "tagValue2",
                })
                ```
-               <!--End PulumiCodeChooser -->
         :param str vpc_id: ID of the VPC linked to the SLBs.
         :param str vswitch_id: ID of the VSwitch linked to the SLBs.
         """
@@ -2035,7 +2033,6 @@ class GetLoadBalancersBalancerResult(dict):
     def tags(self) -> Mapping[str, Any]:
         """
         A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -2045,7 +2042,6 @@ class GetLoadBalancersBalancerResult(dict):
             "tagKey2": "tagValue2",
         })
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "tags")
 
@@ -2186,7 +2182,6 @@ class GetLoadBalancersSlbResult(dict):
         :param str slave_availability_zone: Slave availability zone of the SLBs.
         :param str status: SLB current status. Possible values: `inactive`, `active` and `locked`.
         :param Mapping[str, Any] tags: A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_alicloud as alicloud
@@ -2196,7 +2191,6 @@ class GetLoadBalancersSlbResult(dict):
                    "tagKey2": "tagValue2",
                })
                ```
-               <!--End PulumiCodeChooser -->
         :param str vpc_id: ID of the VPC linked to the SLBs.
         :param str vswitch_id: ID of the VSwitch linked to the SLBs.
         """
@@ -2299,7 +2293,6 @@ class GetLoadBalancersSlbResult(dict):
     def tags(self) -> Mapping[str, Any]:
         """
         A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -2309,7 +2302,6 @@ class GetLoadBalancersSlbResult(dict):
             "tagKey2": "tagValue2",
         })
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "tags")
 

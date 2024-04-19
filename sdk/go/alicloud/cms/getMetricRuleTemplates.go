@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -67,7 +66,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetMetricRuleTemplates(ctx *pulumi.Context, args *GetMetricRuleTemplatesArgs, opts ...pulumi.InvokeOption) (*GetMetricRuleTemplatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMetricRuleTemplatesResult

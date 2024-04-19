@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,7 +41,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetReplicationVaultRegions(ctx *pulumi.Context, args *GetReplicationVaultRegionsArgs, opts ...pulumi.InvokeOption) (*GetReplicationVaultRegionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetReplicationVaultRegionsResult

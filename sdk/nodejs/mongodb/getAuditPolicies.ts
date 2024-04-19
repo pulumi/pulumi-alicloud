@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const mongodbAuditPolicyId1 = example.then(example => example.policies?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAuditPolicies(args: GetAuditPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetAuditPoliciesResult> {
 
@@ -71,7 +69,6 @@ export interface GetAuditPoliciesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -81,7 +78,6 @@ export interface GetAuditPoliciesResult {
  * });
  * export const mongodbAuditPolicyId1 = example.then(example => example.policies?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAuditPoliciesOutput(args: GetAuditPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuditPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getAuditPolicies(a, opts))

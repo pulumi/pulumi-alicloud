@@ -114,7 +114,6 @@ def get_db_clusters(db_cluster_description: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -132,7 +131,6 @@ def get_db_clusters(db_cluster_description: Optional[str] = None,
     default = alicloud.clickhouse.get_db_clusters_output(ids=[default_db_cluster.id])
     pulumi.export("dbCluster", default.ids[0])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str db_cluster_description: The DBCluster description.
@@ -176,7 +174,6 @@ def get_db_clusters_output(db_cluster_description: Optional[pulumi.Input[Optiona
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -194,7 +191,6 @@ def get_db_clusters_output(db_cluster_description: Optional[pulumi.Input[Optiona
     default = alicloud.clickhouse.get_db_clusters_output(ids=[default_db_cluster.id])
     pulumi.export("dbCluster", default.ids[0])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str db_cluster_description: The DBCluster description.

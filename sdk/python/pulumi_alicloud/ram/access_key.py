@@ -227,7 +227,6 @@ class AccessKey(pulumi.CustomResource):
         ## Example Usage
 
         Output the secret to a file.
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -244,10 +243,8 @@ class AccessKey(pulumi.CustomResource):
             user_name=user.name,
             secret_file="/xxx/xxx/xxx.txt")
         ```
-        <!--End PulumiCodeChooser -->
 
         Using `pgp_key` to encrypt the secret.
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -291,7 +288,6 @@ class AccessKey(pulumi.CustomResource):
         \"\"\")
         pulumi.export("secret", encrypt.encrypted_secret)
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -318,7 +314,6 @@ class AccessKey(pulumi.CustomResource):
         ## Example Usage
 
         Output the secret to a file.
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -335,10 +330,8 @@ class AccessKey(pulumi.CustomResource):
             user_name=user.name,
             secret_file="/xxx/xxx/xxx.txt")
         ```
-        <!--End PulumiCodeChooser -->
 
         Using `pgp_key` to encrypt the secret.
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -382,7 +375,6 @@ class AccessKey(pulumi.CustomResource):
         \"\"\")
         pulumi.export("secret", encrypt.encrypted_secret)
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param AccessKeyArgs args: The arguments to use to populate this resource's properties.

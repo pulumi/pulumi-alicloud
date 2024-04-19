@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const outputId = example.then(example => example.lists?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEcsPrefixLists(args?: GetEcsPrefixListsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsPrefixListsResult> {
     args = args || {};
@@ -89,7 +87,6 @@ export interface GetEcsPrefixListsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -100,7 +97,6 @@ export interface GetEcsPrefixListsResult {
  * });
  * export const outputId = example.then(example => example.lists?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEcsPrefixListsOutput(args?: GetEcsPrefixListsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsPrefixListsResult> {
     return pulumi.output(args).apply((a: any) => getEcsPrefixLists(a, opts))

@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  * });
  * export const nasFilesetId1 = ids.then(ids => ids.filesets?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFilesets(args: GetFilesetsArgs, opts?: pulumi.InvokeOptions): Promise<GetFilesetsResult> {
 
@@ -87,7 +85,6 @@ export interface GetFilesetsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -101,7 +98,6 @@ export interface GetFilesetsResult {
  * });
  * export const nasFilesetId1 = ids.then(ids => ids.filesets?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFilesetsOutput(args: GetFilesetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFilesetsResult> {
     return pulumi.output(args).apply((a: any) => getFilesets(a, opts))

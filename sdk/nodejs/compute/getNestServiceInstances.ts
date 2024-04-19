@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  * });
  * export const armsPrometheisId2 = nameRegex.then(nameRegex => nameRegex.serviceInstances?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNestServiceInstances(args?: GetNestServiceInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetNestServiceInstancesResult> {
     args = args || {};
@@ -113,7 +111,6 @@ export interface GetNestServiceInstancesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -127,7 +124,6 @@ export interface GetNestServiceInstancesResult {
  * });
  * export const armsPrometheisId2 = nameRegex.then(nameRegex => nameRegex.serviceInstances?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNestServiceInstancesOutput(args?: GetNestServiceInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNestServiceInstancesResult> {
     return pulumi.output(args).apply((a: any) => getNestServiceInstances(a, opts))

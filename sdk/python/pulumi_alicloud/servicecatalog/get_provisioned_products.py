@@ -187,7 +187,6 @@ def get_provisioned_products(access_level_filter: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -196,7 +195,6 @@ def get_provisioned_products(access_level_filter: Optional[str] = None,
         name_regex="NameRegexExample")
     pulumi.export("alicloudServiceCatalogProvisionedProductExampleId", default.provisioned_products[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str access_level_filter: The access filter.
@@ -256,7 +254,6 @@ def get_provisioned_products_output(access_level_filter: Optional[pulumi.Input[O
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -265,7 +262,6 @@ def get_provisioned_products_output(access_level_filter: Optional[pulumi.Input[O
         name_regex="NameRegexExample")
     pulumi.export("alicloudServiceCatalogProvisionedProductExampleId", default.provisioned_products[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str access_level_filter: The access filter.

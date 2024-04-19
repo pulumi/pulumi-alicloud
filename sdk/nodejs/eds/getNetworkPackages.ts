@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -34,7 +33,6 @@ import * as utilities from "../utilities";
  * });
  * export const ecdNetworkPackageId1 = _default.apply(_default => _default.packages?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNetworkPackages(args?: GetNetworkPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkPackagesResult> {
     args = args || {};
@@ -87,7 +85,6 @@ export interface GetNetworkPackagesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -106,7 +103,6 @@ export interface GetNetworkPackagesResult {
  * });
  * export const ecdNetworkPackageId1 = _default.apply(_default => _default.packages?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNetworkPackagesOutput(args?: GetNetworkPackagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkPackagesResult> {
     return pulumi.output(args).apply((a: any) => getNetworkPackages(a, opts))

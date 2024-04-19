@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstPrivatelinkVpcEndpointServiceId = example.then(example => example.services?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVpcEndpointServices(args?: GetVpcEndpointServicesArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointServicesResult> {
     args = args || {};
@@ -104,7 +102,6 @@ export interface GetVpcEndpointServicesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -115,7 +112,6 @@ export interface GetVpcEndpointServicesResult {
  * });
  * export const firstPrivatelinkVpcEndpointServiceId = example.then(example => example.services?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVpcEndpointServicesOutput(args?: GetVpcEndpointServicesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointServicesResult> {
     return pulumi.output(args).apply((a: any) => getVpcEndpointServices(a, opts))

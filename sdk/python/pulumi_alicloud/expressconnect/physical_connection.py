@@ -465,7 +465,6 @@ class PhysicalConnection(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -489,7 +488,6 @@ class PhysicalConnection(pulumi.CustomResource):
             port_type="1000Base-LX",
             bandwidth="100")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -545,7 +543,6 @@ class PhysicalConnection(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -569,7 +566,6 @@ class PhysicalConnection(pulumi.CustomResource):
             port_type="1000Base-LX",
             bandwidth="100")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

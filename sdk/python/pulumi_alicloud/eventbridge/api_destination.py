@@ -191,7 +191,6 @@ class ApiDestination(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -217,7 +216,6 @@ class ApiDestination(pulumi.CustomResource):
                 method="POST",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -251,7 +249,6 @@ class ApiDestination(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -277,7 +274,6 @@ class ApiDestination(pulumi.CustomResource):
                 method="POST",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

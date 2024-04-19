@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  *     nameRegex: defaultKeyPair.keyName,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKeyPairs(args?: GetKeyPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPairsResult> {
     args = args || {};
@@ -112,7 +110,6 @@ export interface GetKeyPairsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -123,7 +120,6 @@ export interface GetKeyPairsResult {
  *     nameRegex: defaultKeyPair.keyName,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKeyPairsOutput(args?: GetKeyPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyPairsResult> {
     return pulumi.output(args).apply((a: any) => getKeyPairs(a, opts))

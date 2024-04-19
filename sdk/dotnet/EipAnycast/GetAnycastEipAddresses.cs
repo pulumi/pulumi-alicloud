@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.EipAnycast
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Pulumi.AliCloud.EipAnycast
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAnycastEipAddressesResult> InvokeAsync(GetAnycastEipAddressesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAnycastEipAddressesResult>("alicloud:eipanycast/getAnycastEipAddresses:getAnycastEipAddresses", args ?? new GetAnycastEipAddressesArgs(), options.WithDefaults());
@@ -58,7 +56,6 @@ namespace Pulumi.AliCloud.EipAnycast
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -82,7 +79,6 @@ namespace Pulumi.AliCloud.EipAnycast
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAnycastEipAddressesResult> Invoke(GetAnycastEipAddressesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAnycastEipAddressesResult>("alicloud:eipanycast/getAnycastEipAddresses:getAnycastEipAddresses", args ?? new GetAnycastEipAddressesInvokeArgs(), options.WithDefaults());

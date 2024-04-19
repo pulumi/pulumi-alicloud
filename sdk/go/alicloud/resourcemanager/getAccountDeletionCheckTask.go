@@ -23,7 +23,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,7 +51,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetAccountDeletionCheckTask(ctx *pulumi.Context, args *GetAccountDeletionCheckTaskArgs, opts ...pulumi.InvokeOption) (*GetAccountDeletionCheckTaskResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccountDeletionCheckTaskResult

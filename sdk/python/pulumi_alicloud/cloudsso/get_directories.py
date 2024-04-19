@@ -115,7 +115,6 @@ def get_directories(enable_details: Optional[bool] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -125,7 +124,6 @@ def get_directories(enable_details: Optional[bool] = None,
     name_regex = alicloud.cloudsso.get_directories(name_regex="^my-Directory")
     pulumi.export("cloudSsoDirectoryId2", name_regex.directories[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -168,7 +166,6 @@ def get_directories_output(enable_details: Optional[pulumi.Input[Optional[bool]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -178,7 +175,6 @@ def get_directories_output(enable_details: Optional[pulumi.Input[Optional[bool]]
     name_regex = alicloud.cloudsso.get_directories(name_regex="^my-Directory")
     pulumi.export("cloudSsoDirectoryId2", name_regex.directories[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

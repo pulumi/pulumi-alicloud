@@ -373,7 +373,6 @@ class BucketReplication(pulumi.CustomResource):
 
         Set bucket replication configuration
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -386,39 +385,39 @@ class BucketReplication(pulumi.CustomResource):
         bucket_dest = alicloud.oss.Bucket("bucket_dest", bucket=f"example-dest-{default['result']}")
         role = alicloud.ram.Role("role",
             name=f"example-role-{default['result']}",
-            document=\"\"\"		{
-        		  "Statement": [
-        			{
-        			  "Action": "sts:AssumeRole",
-        			  "Effect": "Allow",
-        			  "Principal": {
-        				"Service": [
-        				  "oss.aliyuncs.com"
-        				]
-        			  }
-        			}
-        		  ],
-        		  "Version": "1"
-        		}
+            document=\"\"\"\\x09\\x09{
+        \\x09\\x09  "Statement": [
+        \\x09\\x09\\x09{
+        \\x09\\x09\\x09  "Action": "sts:AssumeRole",
+        \\x09\\x09\\x09  "Effect": "Allow",
+        \\x09\\x09\\x09  "Principal": {
+        \\x09\\x09\\x09\\x09"Service": [
+        \\x09\\x09\\x09\\x09  "oss.aliyuncs.com"
+        \\x09\\x09\\x09\\x09]
+        \\x09\\x09\\x09  }
+        \\x09\\x09\\x09}
+        \\x09\\x09  ],
+        \\x09\\x09  "Version": "1"
+        \\x09\\x09}
         \"\"\",
             description="this is a test",
             force=True)
         policy = alicloud.ram.Policy("policy",
             policy_name=f"example-policy-{default['result']}",
-            policy_document=\"\"\"		{
-        		  "Statement": [
-        			{
-        			  "Action": [
-        				"*"
-        			  ],
-        			  "Effect": "Allow",
-        			  "Resource": [
-        				"*"
-        			  ]
-        			}
-        		  ],
-        			"Version": "1"
-        		}
+            policy_document=\"\"\"\\x09\\x09{
+        \\x09\\x09  "Statement": [
+        \\x09\\x09\\x09{
+        \\x09\\x09\\x09  "Action": [
+        \\x09\\x09\\x09\\x09"*"
+        \\x09\\x09\\x09  ],
+        \\x09\\x09\\x09  "Effect": "Allow",
+        \\x09\\x09\\x09  "Resource": [
+        \\x09\\x09\\x09\\x09"*"
+        \\x09\\x09\\x09  ]
+        \\x09\\x09\\x09}
+        \\x09\\x09  ],
+        \\x09\\x09\\x09"Version": "1"
+        \\x09\\x09}
         \"\"\",
             description="this is a policy test",
             force=True)
@@ -454,7 +453,6 @@ class BucketReplication(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -493,7 +491,6 @@ class BucketReplication(pulumi.CustomResource):
 
         Set bucket replication configuration
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -506,39 +503,39 @@ class BucketReplication(pulumi.CustomResource):
         bucket_dest = alicloud.oss.Bucket("bucket_dest", bucket=f"example-dest-{default['result']}")
         role = alicloud.ram.Role("role",
             name=f"example-role-{default['result']}",
-            document=\"\"\"		{
-        		  "Statement": [
-        			{
-        			  "Action": "sts:AssumeRole",
-        			  "Effect": "Allow",
-        			  "Principal": {
-        				"Service": [
-        				  "oss.aliyuncs.com"
-        				]
-        			  }
-        			}
-        		  ],
-        		  "Version": "1"
-        		}
+            document=\"\"\"\\x09\\x09{
+        \\x09\\x09  "Statement": [
+        \\x09\\x09\\x09{
+        \\x09\\x09\\x09  "Action": "sts:AssumeRole",
+        \\x09\\x09\\x09  "Effect": "Allow",
+        \\x09\\x09\\x09  "Principal": {
+        \\x09\\x09\\x09\\x09"Service": [
+        \\x09\\x09\\x09\\x09  "oss.aliyuncs.com"
+        \\x09\\x09\\x09\\x09]
+        \\x09\\x09\\x09  }
+        \\x09\\x09\\x09}
+        \\x09\\x09  ],
+        \\x09\\x09  "Version": "1"
+        \\x09\\x09}
         \"\"\",
             description="this is a test",
             force=True)
         policy = alicloud.ram.Policy("policy",
             policy_name=f"example-policy-{default['result']}",
-            policy_document=\"\"\"		{
-        		  "Statement": [
-        			{
-        			  "Action": [
-        				"*"
-        			  ],
-        			  "Effect": "Allow",
-        			  "Resource": [
-        				"*"
-        			  ]
-        			}
-        		  ],
-        			"Version": "1"
-        		}
+            policy_document=\"\"\"\\x09\\x09{
+        \\x09\\x09  "Statement": [
+        \\x09\\x09\\x09{
+        \\x09\\x09\\x09  "Action": [
+        \\x09\\x09\\x09\\x09"*"
+        \\x09\\x09\\x09  ],
+        \\x09\\x09\\x09  "Effect": "Allow",
+        \\x09\\x09\\x09  "Resource": [
+        \\x09\\x09\\x09\\x09"*"
+        \\x09\\x09\\x09  ]
+        \\x09\\x09\\x09}
+        \\x09\\x09  ],
+        \\x09\\x09\\x09"Version": "1"
+        \\x09\\x09}
         \"\"\",
             description="this is a policy test",
             force=True)
@@ -574,7 +571,6 @@ class BucketReplication(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

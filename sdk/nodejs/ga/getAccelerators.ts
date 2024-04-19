@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstGaAcceleratorId = example.then(example => example.accelerators?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAccelerators(args?: GetAcceleratorsArgs, opts?: pulumi.InvokeOptions): Promise<GetAcceleratorsResult> {
     args = args || {};
@@ -100,7 +98,6 @@ export interface GetAcceleratorsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -110,7 +107,6 @@ export interface GetAcceleratorsResult {
  * });
  * export const firstGaAcceleratorId = example.then(example => example.accelerators?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAcceleratorsOutput(args?: GetAcceleratorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAcceleratorsResult> {
     return pulumi.output(args).apply((a: any) => getAccelerators(a, opts))

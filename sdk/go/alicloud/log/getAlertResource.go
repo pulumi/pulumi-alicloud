@@ -21,7 +21,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,7 +45,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupAlertResource(ctx *pulumi.Context, args *LookupAlertResourceArgs, opts ...pulumi.InvokeOption) (*LookupAlertResourceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupAlertResourceResult

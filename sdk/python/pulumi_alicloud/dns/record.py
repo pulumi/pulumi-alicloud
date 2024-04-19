@@ -298,7 +298,6 @@ class Record(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -310,7 +309,6 @@ class Record(pulumi.CustomResource):
             type="A",
             value="192.168.99.99")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -345,7 +343,6 @@ class Record(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -357,7 +354,6 @@ class Record(pulumi.CustomResource):
             type="A",
             value="192.168.99.99")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

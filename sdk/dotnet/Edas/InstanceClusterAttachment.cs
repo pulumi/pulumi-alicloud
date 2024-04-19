@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Edas
     /// 
     /// Basic Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -104,7 +103,6 @@ namespace Pulumi.AliCloud.Edas
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [AliCloudResourceType("alicloud:edas/instanceClusterAttachment:InstanceClusterAttachment")]
     public partial class InstanceClusterAttachment : global::Pulumi.CustomResource

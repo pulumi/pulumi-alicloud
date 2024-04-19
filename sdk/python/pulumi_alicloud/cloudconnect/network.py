@@ -177,7 +177,6 @@ class Network(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -192,7 +191,6 @@ class Network(pulumi.CustomResource):
             cidr_block="192.168.0.0/24",
             is_default=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -228,7 +226,6 @@ class Network(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -243,7 +240,6 @@ class Network(pulumi.CustomResource):
             cidr_block="192.168.0.0/24",
             is_default=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

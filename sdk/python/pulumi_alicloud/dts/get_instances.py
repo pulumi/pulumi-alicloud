@@ -143,7 +143,6 @@ def get_instances(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -152,7 +151,6 @@ def get_instances(ids: Optional[Sequence[str]] = None,
         resource_group_id="example_value")
     pulumi.export("alicloudDtsInstanceExampleId", default.instances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Instance IDs.
@@ -197,7 +195,6 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -206,7 +203,6 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
         resource_group_id="example_value")
     pulumi.export("alicloudDtsInstanceExampleId", default.instances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Instance IDs.

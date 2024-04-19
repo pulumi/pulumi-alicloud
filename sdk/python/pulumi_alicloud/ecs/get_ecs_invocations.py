@@ -134,7 +134,6 @@ def get_ecs_invocations(command_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -142,7 +141,6 @@ def get_ecs_invocations(command_id: Optional[str] = None,
     ids = alicloud.ecs.get_ecs_invocations(ids=["example-id"])
     pulumi.export("ecsInvocationId1", ids.invocations[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str command_id: The ID of the command.
@@ -192,7 +190,6 @@ def get_ecs_invocations_output(command_id: Optional[pulumi.Input[Optional[str]]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -200,7 +197,6 @@ def get_ecs_invocations_output(command_id: Optional[pulumi.Input[Optional[str]]]
     ids = alicloud.ecs.get_ecs_invocations(ids=["example-id"])
     pulumi.export("ecsInvocationId1", ids.invocations[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str command_id: The ID of the command.

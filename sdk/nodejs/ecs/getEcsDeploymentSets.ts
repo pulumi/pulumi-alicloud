@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  * });
  * export const ecsDeploymentSetId2 = nameRegex.then(nameRegex => nameRegex.sets?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEcsDeploymentSets(args?: GetEcsDeploymentSetsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsDeploymentSetsResult> {
     args = args || {};
@@ -95,7 +93,6 @@ export interface GetEcsDeploymentSetsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -109,7 +106,6 @@ export interface GetEcsDeploymentSetsResult {
  * });
  * export const ecsDeploymentSetId2 = nameRegex.then(nameRegex => nameRegex.sets?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEcsDeploymentSetsOutput(args?: GetEcsDeploymentSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsDeploymentSetsResult> {
     return pulumi.output(args).apply((a: any) => getEcsDeploymentSets(a, opts))

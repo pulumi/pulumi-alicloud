@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -80,7 +79,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDhcpOptionsSets(ctx *pulumi.Context, args *GetDhcpOptionsSetsArgs, opts ...pulumi.InvokeOption) (*GetDhcpOptionsSetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDhcpOptionsSetsResult

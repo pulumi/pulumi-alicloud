@@ -641,7 +641,6 @@ class EndpointGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -696,7 +695,6 @@ class EndpointGroup(pulumi.CustomResource):
             endpoint_group_region=region,
             listener_id=default_listener.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -740,7 +738,6 @@ class EndpointGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -795,7 +792,6 @@ class EndpointGroup(pulumi.CustomResource):
             endpoint_group_region=region,
             listener_id=default_listener.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

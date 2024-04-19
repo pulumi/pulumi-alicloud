@@ -379,7 +379,6 @@ def get_ecs_disks(additional_attributes: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -388,7 +387,6 @@ def get_ecs_disks(additional_attributes: Optional[Sequence[str]] = None,
         name_regex="tf-test")
     pulumi.export("firstEcsDiskId", example.disks[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] additional_attributes: Other attribute values. Currently, only the incoming value of IOPS is supported, which means to query the IOPS upper limit of the current disk.
@@ -527,7 +525,6 @@ def get_ecs_disks_output(additional_attributes: Optional[pulumi.Input[Optional[S
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -536,7 +533,6 @@ def get_ecs_disks_output(additional_attributes: Optional[pulumi.Input[Optional[S
         name_regex="tf-test")
     pulumi.export("firstEcsDiskId", example.disks[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] additional_attributes: Other attribute values. Currently, only the incoming value of IOPS is supported, which means to query the IOPS upper limit of the current disk.

@@ -668,7 +668,6 @@ class Desktop(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -712,7 +711,6 @@ class Desktop(pulumi.CustomResource):
             bundle_id=default.bundles[1].id,
             desktop_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -761,7 +759,6 @@ class Desktop(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -805,7 +802,6 @@ class Desktop(pulumi.CustomResource):
             bundle_id=default.bundles[1].id,
             desktop_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPhysicalConnectionServiceResult> InvokeAsync(GetPhysicalConnectionServiceArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPhysicalConnectionServiceResult>("alicloud:expressconnect/getPhysicalConnectionService:getPhysicalConnectionService", args ?? new GetPhysicalConnectionServiceArgs(), options.WithDefaults());
@@ -50,7 +48,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -66,7 +63,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPhysicalConnectionServiceResult> Invoke(GetPhysicalConnectionServiceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPhysicalConnectionServiceResult>("alicloud:expressconnect/getPhysicalConnectionService:getPhysicalConnectionService", args ?? new GetPhysicalConnectionServiceInvokeArgs(), options.WithDefaults());

@@ -35,7 +35,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -122,11 +121,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // You could create a professional kubernetes edge cluster now.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -215,7 +212,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

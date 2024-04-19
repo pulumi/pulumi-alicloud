@@ -338,7 +338,6 @@ class VswitchCidrReservation(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -364,7 +363,6 @@ class VswitchCidrReservation(pulumi.CustomResource):
             vswitch_cidr_reservation_name=name,
             cidr_reservation_type="Prefix")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -401,7 +399,6 @@ class VswitchCidrReservation(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -427,7 +424,6 @@ class VswitchCidrReservation(pulumi.CustomResource):
             vswitch_cidr_reservation_name=name,
             cidr_reservation_type="Prefix")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

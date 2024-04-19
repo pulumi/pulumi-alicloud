@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -39,7 +38,6 @@ import * as utilities from "../utilities";
  *     ids: [id],
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getQuotaApplications(args: GetQuotaApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetQuotaApplicationsResult> {
 
@@ -124,7 +122,6 @@ export interface GetQuotaApplicationsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -148,7 +145,6 @@ export interface GetQuotaApplicationsResult {
  *     ids: [id],
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getQuotaApplicationsOutput(args: GetQuotaApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotaApplicationsResult> {
     return pulumi.output(args).apply((a: any) => getQuotaApplications(a, opts))

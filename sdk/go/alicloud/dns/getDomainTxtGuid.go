@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDomainTxtGuid(ctx *pulumi.Context, args *GetDomainTxtGuidArgs, opts ...pulumi.InvokeOption) (*GetDomainTxtGuidResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainTxtGuidResult

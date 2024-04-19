@@ -154,7 +154,6 @@ def get_transit_router_prefix_list_associations(ids: Optional[Sequence[str]] = N
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -163,7 +162,6 @@ def get_transit_router_prefix_list_associations(ids: Optional[Sequence[str]] = N
         transit_router_table_id="vtb-6ehgc262hr170qgyc****")
     pulumi.export("cenTransitRouterPrefixListAssociationId", default.associations[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Cen Transit Router Prefix List Association IDs.
@@ -221,7 +219,6 @@ def get_transit_router_prefix_list_associations_output(ids: Optional[pulumi.Inpu
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -230,7 +227,6 @@ def get_transit_router_prefix_list_associations_output(ids: Optional[pulumi.Inpu
         transit_router_table_id="vtb-6ehgc262hr170qgyc****")
     pulumi.export("cenTransitRouterPrefixListAssociationId", default.associations[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Cen Transit Router Prefix List Association IDs.

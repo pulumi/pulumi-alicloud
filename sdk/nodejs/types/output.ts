@@ -4809,7 +4809,6 @@ export namespace bastionhost {
         securityGroupIds: string[];
         /**
          * A map of tags assigned to the bastionhost instance. It must be in the format:
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -4820,7 +4819,6 @@ export namespace bastionhost {
          *     },
          * });
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         tags?: {[key: string]: any};
         /**
@@ -20900,7 +20898,6 @@ export namespace ecs {
         status: string;
         /**
          * A map of tags assigned to the disks. It must be in the format:
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -20912,7 +20909,6 @@ export namespace ecs {
          *     },
          * });
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         tags: {[key: string]: any};
         /**
@@ -22875,7 +22871,6 @@ export namespace ecs {
         status: string;
         /**
          * A map of tags assigned to the ECS instances. It must be in the format:
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -22887,7 +22882,6 @@ export namespace ecs {
          *     },
          * });
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         tags?: {[key: string]: any};
         /**
@@ -23220,7 +23214,6 @@ export namespace ecs {
         securityGroupType: string;
         /**
          * A map of tags assigned to the ECS instances. It must be in the format:
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -23232,7 +23225,6 @@ export namespace ecs {
          *     },
          * });
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         tags?: {[key: string]: any};
         /**
@@ -37656,7 +37648,6 @@ export namespace oss {
         tableQuota: number;
         /**
          * A map of tags assigned to the instance. It must be in the format:
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -37668,7 +37659,6 @@ export namespace oss {
          *     },
          * });
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         tags: {[key: string]: any};
         /**
@@ -37808,7 +37798,6 @@ export namespace ots {
         tableQuota: number;
         /**
          * A map of tags assigned to the instance. It must be in the format:
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -37820,7 +37809,6 @@ export namespace ots {
          *     },
          * });
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         tags: {[key: string]: any};
         /**
@@ -46015,7 +46003,6 @@ export namespace slb {
         status: string;
         /**
          * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -46027,7 +46014,6 @@ export namespace slb {
          *     },
          * });
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         tags: {[key: string]: any};
         /**
@@ -46103,7 +46089,6 @@ export namespace slb {
         status: string;
         /**
          * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -46115,7 +46100,6 @@ export namespace slb {
          *     },
          * });
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         tags: {[key: string]: any};
         /**

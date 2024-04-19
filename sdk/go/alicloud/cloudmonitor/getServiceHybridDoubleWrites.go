@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -72,7 +71,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetServiceHybridDoubleWrites(ctx *pulumi.Context, args *GetServiceHybridDoubleWritesArgs, opts ...pulumi.InvokeOption) (*GetServiceHybridDoubleWritesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceHybridDoubleWritesResult

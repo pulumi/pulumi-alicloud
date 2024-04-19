@@ -453,7 +453,6 @@ class MetricRuleBlackList(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -497,7 +496,6 @@ class MetricRuleBlackList(pulumi.CustomResource):
             enable_start_time="1689243209000",
             metric_rule_black_list_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -538,7 +536,6 @@ class MetricRuleBlackList(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -582,7 +579,6 @@ class MetricRuleBlackList(pulumi.CustomResource):
             enable_start_time="1689243209000",
             metric_rule_black_list_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

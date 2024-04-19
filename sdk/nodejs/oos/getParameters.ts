@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -42,7 +41,6 @@ import * as utilities from "../utilities";
  * });
  * export const oosParameterId4 = tags.then(tags => tags.parameters?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getParameters(args?: GetParametersArgs, opts?: pulumi.InvokeOptions): Promise<GetParametersResult> {
     args = args || {};
@@ -132,7 +130,6 @@ export interface GetParametersResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -159,7 +156,6 @@ export interface GetParametersResult {
  * });
  * export const oosParameterId4 = tags.then(tags => tags.parameters?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getParametersOutput(args?: GetParametersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetParametersResult> {
     return pulumi.output(args).apply((a: any) => getParameters(a, opts))

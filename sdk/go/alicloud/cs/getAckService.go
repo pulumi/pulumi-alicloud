@@ -19,7 +19,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetAckService(ctx *pulumi.Context, args *GetAckServiceArgs, opts ...pulumi.InvokeOption) (*GetAckServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAckServiceResult

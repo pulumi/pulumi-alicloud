@@ -108,7 +108,6 @@ def get_groups(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -117,7 +116,6 @@ def get_groups(ids: Optional[Sequence[str]] = None,
         output_file="groups.txt")
     pulumi.export("firstGroupName", groups_ds.groups[0].group_name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of group IDs.
@@ -150,7 +148,6 @@ def get_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -159,7 +156,6 @@ def get_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
         output_file="groups.txt")
     pulumi.export("firstGroupName", groups_ds.groups[0].group_name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of group IDs.

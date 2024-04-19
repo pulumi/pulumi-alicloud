@@ -17,7 +17,6 @@ namespace Pulumi.AliCloud.Oss
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,7 +38,6 @@ namespace Pulumi.AliCloud.Oss
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstanceAttachmentsResult> InvokeAsync(GetInstanceAttachmentsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceAttachmentsResult>("alicloud:oss/getInstanceAttachments:getInstanceAttachments", args ?? new GetInstanceAttachmentsArgs(), options.WithDefaults());
@@ -49,7 +47,6 @@ namespace Pulumi.AliCloud.Oss
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -71,7 +68,6 @@ namespace Pulumi.AliCloud.Oss
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstanceAttachmentsResult> Invoke(GetInstanceAttachmentsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceAttachmentsResult>("alicloud:oss/getInstanceAttachments:getInstanceAttachments", args ?? new GetInstanceAttachmentsInvokeArgs(), options.WithDefaults());

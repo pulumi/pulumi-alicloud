@@ -280,7 +280,6 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -293,7 +292,6 @@ class Instance(pulumi.CustomResource):
             renewal_status="ManualRenewal",
             version_code="version_personal")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -329,7 +327,6 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -342,7 +339,6 @@ class Instance(pulumi.CustomResource):
             renewal_status="ManualRenewal",
             version_code="version_personal")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -66,7 +65,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDdosBgpInstances(ctx *pulumi.Context, args *GetDdosBgpInstancesArgs, opts ...pulumi.InvokeOption) (*GetDdosBgpInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDdosBgpInstancesResult

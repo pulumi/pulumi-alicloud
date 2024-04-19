@@ -133,7 +133,6 @@ def get_dhcp_options_sets(dhcp_options_set_name: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -151,7 +150,6 @@ def get_dhcp_options_sets(dhcp_options_set_name: Optional[str] = None,
         status="Available")
     pulumi.export("vpcDhcpOptionsSetId5", status.sets[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str dhcp_options_set_name: The root domain, for example, example.com. After a DHCP options set is associated with a
@@ -204,7 +202,6 @@ def get_dhcp_options_sets_output(dhcp_options_set_name: Optional[pulumi.Input[Op
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -222,7 +219,6 @@ def get_dhcp_options_sets_output(dhcp_options_set_name: Optional[pulumi.Input[Op
         status="Available")
     pulumi.export("vpcDhcpOptionsSetId5", status.sets[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str dhcp_options_set_name: The root domain, for example, example.com. After a DHCP options set is associated with a

@@ -123,7 +123,6 @@ def get_vpc_endpoint_connections(endpoint_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -132,7 +131,6 @@ def get_vpc_endpoint_connections(endpoint_id: Optional[str] = None,
         status="Connected")
     pulumi.export("firstPrivatelinkVpcEndpointConnectionId", example.connections[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str endpoint_id: The ID of the Vpc Endpoint.
@@ -177,7 +175,6 @@ def get_vpc_endpoint_connections_output(endpoint_id: Optional[pulumi.Input[Optio
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -186,7 +183,6 @@ def get_vpc_endpoint_connections_output(endpoint_id: Optional[pulumi.Input[Optio
         status="Connected")
     pulumi.export("firstPrivatelinkVpcEndpointConnectionId", example.connections[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str endpoint_id: The ID of the Vpc Endpoint.

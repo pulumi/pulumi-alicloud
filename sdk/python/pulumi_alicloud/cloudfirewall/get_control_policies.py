@@ -200,14 +200,12 @@ def get_control_policies(acl_action: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     example = alicloud.cloudfirewall.get_control_policies(direction="in")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.
@@ -272,14 +270,12 @@ def get_control_policies_output(acl_action: Optional[pulumi.Input[Optional[str]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     example = alicloud.cloudfirewall.get_control_policies(direction="in")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str acl_action: The action that Cloud Firewall performs on the traffic. Valid values: `accept`, `drop`, `log`.

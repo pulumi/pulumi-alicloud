@@ -123,7 +123,6 @@ def get_ipa_domains(domain_name: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -137,7 +136,6 @@ def get_ipa_domains(domain_name: Optional[str] = None,
     status = alicloud.dcdn.get_ipa_domains(status="online")
     pulumi.export("dcdnIpaDomainId2", status.domains[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str domain_name: The accelerated domain names.
@@ -182,7 +180,6 @@ def get_ipa_domains_output(domain_name: Optional[pulumi.Input[Optional[str]]] = 
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -196,7 +193,6 @@ def get_ipa_domains_output(domain_name: Optional[pulumi.Input[Optional[str]]] = 
     status = alicloud.dcdn.get_ipa_domains(status="online")
     pulumi.export("dcdnIpaDomainId2", status.domains[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str domain_name: The accelerated domain names.

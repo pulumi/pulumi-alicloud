@@ -120,7 +120,6 @@ def get_instances(enable_details: Optional[bool] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -147,7 +146,6 @@ def get_instances(enable_details: Optional[bool] = None,
         output_file="instances.txt")
     pulumi.export("firstInstanceName", instances_ds.instances[0].name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of instance IDs to filter results.
@@ -185,7 +183,6 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -212,7 +209,6 @@ def get_instances_output(enable_details: Optional[pulumi.Input[Optional[bool]]] 
         output_file="instances.txt")
     pulumi.export("firstInstanceName", instances_ds.instances[0].name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of instance IDs to filter results.

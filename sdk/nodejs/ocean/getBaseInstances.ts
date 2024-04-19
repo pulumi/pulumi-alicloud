@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const oceanBaseInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBaseInstances(args?: GetBaseInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetBaseInstancesResult> {
     args = args || {};
@@ -120,7 +118,6 @@ export interface GetBaseInstancesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -132,7 +129,6 @@ export interface GetBaseInstancesResult {
  * });
  * export const oceanBaseInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBaseInstancesOutput(args?: GetBaseInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBaseInstancesResult> {
     return pulumi.output(args).apply((a: any) => getBaseInstances(a, opts))

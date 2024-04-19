@@ -108,7 +108,6 @@ def get_services(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -116,7 +115,6 @@ def get_services(ids: Optional[Sequence[str]] = None,
     fc_services_ds = alicloud.fc.get_services(name_regex="sample_fc_service")
     pulumi.export("firstFcServiceName", fc_services_ds.services[0].name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of FC services ids.
@@ -149,7 +147,6 @@ def get_services_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -157,7 +154,6 @@ def get_services_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     fc_services_ds = alicloud.fc.get_services(name_regex="sample_fc_service")
     pulumi.export("firstFcServiceName", fc_services_ds.services[0].name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of FC services ids.

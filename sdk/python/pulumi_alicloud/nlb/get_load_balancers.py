@@ -213,7 +213,6 @@ def get_load_balancers(address_ip_version: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -223,7 +222,6 @@ def get_load_balancers(address_ip_version: Optional[str] = None,
     name_regex = alicloud.nlb.get_load_balancers(name_regex="^my-LoadBalancer")
     pulumi.export("nlbLoadBalancerId2", name_regex.balancers[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str address_ip_version: The IP version.
@@ -304,7 +302,6 @@ def get_load_balancers_output(address_ip_version: Optional[pulumi.Input[Optional
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -314,7 +311,6 @@ def get_load_balancers_output(address_ip_version: Optional[pulumi.Input[Optional
     name_regex = alicloud.nlb.get_load_balancers(name_regex="^my-LoadBalancer")
     pulumi.export("nlbLoadBalancerId2", name_regex.balancers[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str address_ip_version: The IP version.

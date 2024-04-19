@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,21 +24,20 @@ import * as utilities from "../utilities";
  * const example = new alicloud.ros.Stack("example", {
  *     stackName: "tf-testaccstack",
  *     templateBody: `    {
- *     	"ROSTemplateFormatVersion": "2015-09-01"
+ *     \x09"ROSTemplateFormatVersion": "2015-09-01"
  *     }
  * `,
  *     stackPolicyBody: `    {
- *     	"Statement": [{
- *     		"Action": "Update:Delete",
- *     		"Resource": "*",
- *     		"Effect": "Allow",
- *     		"Principal": "*"
- *     	}]
+ *     \x09"Statement": [{
+ *     \x09\x09"Action": "Update:Delete",
+ *     \x09\x09"Resource": "*",
+ *     \x09\x09"Effect": "Allow",
+ *     \x09\x09"Principal": "*"
+ *     \x09}]
  *     }
  * `,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

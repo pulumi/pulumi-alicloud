@@ -143,7 +143,6 @@ def get_prometheus_alert_rules(cluster_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -158,7 +157,6 @@ def get_prometheus_alert_rules(cluster_id: Optional[str] = None,
         name_regex="^my-PrometheusAlertRule")
     pulumi.export("armsPrometheusAlertRuleId2", name_regex.rules[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The ID of the cluster.
@@ -210,7 +208,6 @@ def get_prometheus_alert_rules_output(cluster_id: Optional[pulumi.Input[str]] = 
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -225,7 +222,6 @@ def get_prometheus_alert_rules_output(cluster_id: Optional[pulumi.Input[str]] = 
         name_regex="^my-PrometheusAlertRule")
     pulumi.export("armsPrometheusAlertRuleId2", name_regex.rules[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The ID of the cluster.

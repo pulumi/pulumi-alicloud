@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.MongoDB
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,7 +41,6 @@ namespace Pulumi.AliCloud.MongoDB
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetShardingNetworkPublicAddressesResult> InvokeAsync(GetShardingNetworkPublicAddressesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetShardingNetworkPublicAddressesResult>("alicloud:mongodb/getShardingNetworkPublicAddresses:getShardingNetworkPublicAddresses", args ?? new GetShardingNetworkPublicAddressesArgs(), options.WithDefaults());
@@ -56,7 +54,6 @@ namespace Pulumi.AliCloud.MongoDB
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -78,7 +75,6 @@ namespace Pulumi.AliCloud.MongoDB
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetShardingNetworkPublicAddressesResult> Invoke(GetShardingNetworkPublicAddressesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetShardingNetworkPublicAddressesResult>("alicloud:mongodb/getShardingNetworkPublicAddresses:getShardingNetworkPublicAddresses", args ?? new GetShardingNetworkPublicAddressesInvokeArgs(), options.WithDefaults());

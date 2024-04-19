@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,7 +47,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetChartRepositories(ctx *pulumi.Context, args *GetChartRepositoriesArgs, opts ...pulumi.InvokeOption) (*GetChartRepositoriesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetChartRepositoriesResult

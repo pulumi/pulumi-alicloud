@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -72,7 +71,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetIpv6EgressRules(ctx *pulumi.Context, args *GetIpv6EgressRulesArgs, opts ...pulumi.InvokeOption) (*GetIpv6EgressRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpv6EgressRulesResult

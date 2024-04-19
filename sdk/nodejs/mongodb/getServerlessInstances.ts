@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -37,7 +36,6 @@ import * as utilities from "../utilities";
  * });
  * export const mongodbServerlessInstanceId1 = example.then(example => example.instances?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServerlessInstances(args?: GetServerlessInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetServerlessInstancesResult> {
     args = args || {};
@@ -144,7 +142,6 @@ export interface GetServerlessInstancesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -166,7 +163,6 @@ export interface GetServerlessInstancesResult {
  * });
  * export const mongodbServerlessInstanceId1 = example.then(example => example.instances?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServerlessInstancesOutput(args?: GetServerlessInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerlessInstancesResult> {
     return pulumi.output(args).apply((a: any) => getServerlessInstances(a, opts))

@@ -294,7 +294,6 @@ class Project(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -311,11 +310,9 @@ class Project(pulumi.CustomResource):
                 "For": "example",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         Project With Policy Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -348,7 +345,6 @@ class Project(pulumi.CustomResource):
         }
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 
@@ -391,7 +387,6 @@ class Project(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -408,11 +403,9 @@ class Project(pulumi.CustomResource):
                 "For": "example",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         Project With Policy Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -445,7 +438,6 @@ class Project(pulumi.CustomResource):
         }
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 

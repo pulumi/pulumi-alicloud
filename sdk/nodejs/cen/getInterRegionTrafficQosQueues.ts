@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudCenInterRegionTrafficQosQueueExampleId = _default.then(_default => _default.queues?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInterRegionTrafficQosQueues(args: GetInterRegionTrafficQosQueuesArgs, opts?: pulumi.InvokeOptions): Promise<GetInterRegionTrafficQosQueuesResult> {
 
@@ -94,7 +92,6 @@ export interface GetInterRegionTrafficQosQueuesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -106,7 +103,6 @@ export interface GetInterRegionTrafficQosQueuesResult {
  * });
  * export const alicloudCenInterRegionTrafficQosQueueExampleId = _default.then(_default => _default.queues?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInterRegionTrafficQosQueuesOutput(args: GetInterRegionTrafficQosQueuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInterRegionTrafficQosQueuesResult> {
     return pulumi.output(args).apply((a: any) => getInterRegionTrafficQosQueues(a, opts))

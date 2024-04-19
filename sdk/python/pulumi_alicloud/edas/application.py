@@ -402,7 +402,6 @@ class Application(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -430,7 +429,6 @@ class Application(pulumi.CustomResource):
             cluster_id=default_cluster.id,
             package_type="JAR")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -469,7 +467,6 @@ class Application(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -497,7 +494,6 @@ class Application(pulumi.CustomResource):
             cluster_id=default_cluster.id,
             package_type="JAR")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

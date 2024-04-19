@@ -286,7 +286,6 @@ class LogTailConfig(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -312,19 +311,18 @@ class LogTailConfig(pulumi.CustomResource):
             input_type="file",
             name="terraform-example",
             output_type="LogService",
-            input_detail=\"\"\"  	{
-        		"logPath": "/logPath",
-        		"filePattern": "access.log",
-        		"logType": "json_log",
-        		"topicFormat": "default",
-        		"discardUnmatch": false,
-        		"enableRawLog": true,
-        		"fileEncoding": "gbk",
-        		"maxDepth": 10
-        	}
+            input_detail=\"\"\"  \\x09{
+        \\x09\\x09"logPath": "/logPath",
+        \\x09\\x09"filePattern": "access.log",
+        \\x09\\x09"logType": "json_log",
+        \\x09\\x09"topicFormat": "default",
+        \\x09\\x09"discardUnmatch": false,
+        \\x09\\x09"enableRawLog": true,
+        \\x09\\x09"fileEncoding": "gbk",
+        \\x09\\x09"maxDepth": 10
+        \\x09}
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 
@@ -366,7 +364,6 @@ class LogTailConfig(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -392,19 +389,18 @@ class LogTailConfig(pulumi.CustomResource):
             input_type="file",
             name="terraform-example",
             output_type="LogService",
-            input_detail=\"\"\"  	{
-        		"logPath": "/logPath",
-        		"filePattern": "access.log",
-        		"logType": "json_log",
-        		"topicFormat": "default",
-        		"discardUnmatch": false,
-        		"enableRawLog": true,
-        		"fileEncoding": "gbk",
-        		"maxDepth": 10
-        	}
+            input_detail=\"\"\"  \\x09{
+        \\x09\\x09"logPath": "/logPath",
+        \\x09\\x09"filePattern": "access.log",
+        \\x09\\x09"logType": "json_log",
+        \\x09\\x09"topicFormat": "default",
+        \\x09\\x09"discardUnmatch": false,
+        \\x09\\x09"enableRawLog": true,
+        \\x09\\x09"fileEncoding": "gbk",
+        \\x09\\x09"maxDepth": 10
+        \\x09}
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 

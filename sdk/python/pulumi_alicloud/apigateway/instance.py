@@ -496,7 +496,6 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -514,7 +513,6 @@ class Instance(pulumi.CustomResource):
             user_vpc_id="1709116870",
             instance_type="normal")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -563,7 +561,6 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -581,7 +578,6 @@ class Instance(pulumi.CustomResource):
             user_vpc_id="1709116870",
             instance_type="normal")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

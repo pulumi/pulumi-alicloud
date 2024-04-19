@@ -545,7 +545,6 @@ class EcsImagePipeline(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -588,7 +587,6 @@ class EcsImagePipeline(pulumi.CustomResource):
                 "For": "Acceptance-test",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -635,7 +633,6 @@ class EcsImagePipeline(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -678,7 +675,6 @@ class EcsImagePipeline(pulumi.CustomResource):
                 "For": "Acceptance-test",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

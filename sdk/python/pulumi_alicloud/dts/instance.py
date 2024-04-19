@@ -1040,7 +1040,6 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1057,7 +1056,6 @@ class Instance(pulumi.CustomResource):
             destination_endpoint_engine_name="MySQL",
             destination_region=default_get_regions.regions[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1175,7 +1173,6 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1192,7 +1189,6 @@ class Instance(pulumi.CustomResource):
             destination_endpoint_engine_name="MySQL",
             destination_region=default_get_regions.regions[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -301,7 +301,6 @@ class PublicIpAddressPool(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -317,7 +316,6 @@ class PublicIpAddressPool(pulumi.CustomResource):
             isp="BGP",
             resource_group_id=default.ids[0])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -352,7 +350,6 @@ class PublicIpAddressPool(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -368,7 +365,6 @@ class PublicIpAddressPool(pulumi.CustomResource):
             isp="BGP",
             resource_group_id=default.ids[0])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

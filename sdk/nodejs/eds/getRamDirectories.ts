@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  * });
  * export const ecdRamDirectoryId2 = nameRegex.then(nameRegex => nameRegex.directories?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRamDirectories(args?: GetRamDirectoriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRamDirectoriesResult> {
     args = args || {};
@@ -89,7 +87,6 @@ export interface GetRamDirectoriesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -103,7 +100,6 @@ export interface GetRamDirectoriesResult {
  * });
  * export const ecdRamDirectoryId2 = nameRegex.then(nameRegex => nameRegex.directories?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRamDirectoriesOutput(args?: GetRamDirectoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRamDirectoriesResult> {
     return pulumi.output(args).apply((a: any) => getRamDirectories(a, opts))

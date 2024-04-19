@@ -599,7 +599,6 @@ class ClientUserDefineRule(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -620,7 +619,6 @@ class ClientUserDefineRule(pulumi.CustomResource):
             parent_cmdline="bash",
             registry_key="123")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -677,7 +675,6 @@ class ClientUserDefineRule(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -698,7 +695,6 @@ class ClientUserDefineRule(pulumi.CustomResource):
             parent_cmdline="bash",
             registry_key="123")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

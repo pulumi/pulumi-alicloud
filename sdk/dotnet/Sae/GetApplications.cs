@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Sae
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -85,7 +84,6 @@ namespace Pulumi.AliCloud.Sae
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetApplicationsResult> InvokeAsync(GetApplicationsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationsResult>("alicloud:sae/getApplications:getApplications", args ?? new GetApplicationsArgs(), options.WithDefaults());
@@ -99,7 +97,6 @@ namespace Pulumi.AliCloud.Sae
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -164,7 +161,6 @@ namespace Pulumi.AliCloud.Sae
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetApplicationsResult> Invoke(GetApplicationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationsResult>("alicloud:sae/getApplications:getApplications", args ?? new GetApplicationsInvokeArgs(), options.WithDefaults());

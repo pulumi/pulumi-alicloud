@@ -84,7 +84,6 @@ def get_stocks(gateway_class: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -92,7 +91,6 @@ def get_stocks(gateway_class: Optional[str] = None,
     default = alicloud.cloudstoragegateway.get_stocks(gateway_class="Advanced")
     pulumi.export("zoneId", default.stocks[0].zone_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str gateway_class: The gateway class. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.
@@ -124,7 +122,6 @@ def get_stocks_output(gateway_class: Optional[pulumi.Input[Optional[str]]] = Non
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -132,7 +129,6 @@ def get_stocks_output(gateway_class: Optional[pulumi.Input[Optional[str]]] = Non
     default = alicloud.cloudstoragegateway.get_stocks(gateway_class="Advanced")
     pulumi.export("zoneId", default.stocks[0].zone_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str gateway_class: The gateway class. Valid values: `Basic`, `Standard`,`Enhanced`,`Advanced`.

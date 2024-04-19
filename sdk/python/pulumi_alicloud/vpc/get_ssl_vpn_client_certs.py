@@ -121,7 +121,6 @@ def get_ssl_vpn_client_certs(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -131,7 +130,6 @@ def get_ssl_vpn_client_certs(ids: Optional[Sequence[str]] = None,
         output_file="/tmp/clientcert",
         name_regex="^foo")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: IDs of the SSL-VPN client certificates.
@@ -168,7 +166,6 @@ def get_ssl_vpn_client_certs_output(ids: Optional[pulumi.Input[Optional[Sequence
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -178,7 +175,6 @@ def get_ssl_vpn_client_certs_output(ids: Optional[pulumi.Input[Optional[Sequence
         output_file="/tmp/clientcert",
         name_regex="^foo")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: IDs of the SSL-VPN client certificates.

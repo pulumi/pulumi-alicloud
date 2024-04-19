@@ -104,14 +104,12 @@ def get_ots_snapshots(end_time: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     snapshots = alicloud.hbr.get_ots_snapshots()
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str end_time: The end time of the backup. This value must be a UNIX timestamp. Unit: milliseconds
@@ -150,14 +148,12 @@ def get_ots_snapshots_output(end_time: Optional[pulumi.Input[Optional[str]]] = N
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     snapshots = alicloud.hbr.get_ots_snapshots()
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str end_time: The end time of the backup. This value must be a UNIX timestamp. Unit: milliseconds

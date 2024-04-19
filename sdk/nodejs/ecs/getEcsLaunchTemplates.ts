@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstEcsLaunchTemplateId = example.then(example => example.templates?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEcsLaunchTemplates(args?: GetEcsLaunchTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsLaunchTemplatesResult> {
     args = args || {};
@@ -104,7 +102,6 @@ export interface GetEcsLaunchTemplatesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -115,7 +112,6 @@ export interface GetEcsLaunchTemplatesResult {
  * });
  * export const firstEcsLaunchTemplateId = example.then(example => example.templates?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEcsLaunchTemplatesOutput(args?: GetEcsLaunchTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsLaunchTemplatesResult> {
     return pulumi.output(args).apply((a: any) => getEcsLaunchTemplates(a, opts))

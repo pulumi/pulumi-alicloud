@@ -31,7 +31,6 @@ import (
 //
 // ### Create a cassandra dataCenter
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -81,7 +80,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // This is a example for class netType dataCenter. You can find more detail with the examples/cassandra_data_center dir.
 //

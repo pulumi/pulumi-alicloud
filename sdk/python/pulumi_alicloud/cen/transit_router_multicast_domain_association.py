@@ -156,7 +156,6 @@ class TransitRouterMulticastDomainAssociation(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -196,7 +195,6 @@ class TransitRouterMulticastDomainAssociation(pulumi.CustomResource):
             transit_router_attachment_id=example_transit_router_vpc_attachment.transit_router_attachment_id,
             vswitch_id=example_switch.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -229,7 +227,6 @@ class TransitRouterMulticastDomainAssociation(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -269,7 +266,6 @@ class TransitRouterMulticastDomainAssociation(pulumi.CustomResource):
             transit_router_attachment_id=example_transit_router_vpc_attachment.transit_router_attachment_id,
             vswitch_id=example_switch.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

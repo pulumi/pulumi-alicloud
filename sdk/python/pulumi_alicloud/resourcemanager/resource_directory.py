@@ -164,7 +164,6 @@ class ResourceDirectory(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -174,7 +173,6 @@ class ResourceDirectory(pulumi.CustomResource):
         for range in [{"value": i} for i in range(0, 0 if len(default.directories) > 0 else 1)]:
             default_resource_directory.append(alicloud.resourcemanager.ResourceDirectory(f"default-{range['value']}", status="Enabled"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -212,7 +210,6 @@ class ResourceDirectory(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -222,7 +219,6 @@ class ResourceDirectory(pulumi.CustomResource):
         for range in [{"value": i} for i in range(0, 0 if len(default.directories) > 0 else 1)]:
             default_resource_directory.append(alicloud.resourcemanager.ResourceDirectory(f"default-{range['value']}", status="Enabled"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

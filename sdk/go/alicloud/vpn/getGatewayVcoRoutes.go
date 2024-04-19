@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -138,7 +137,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetGatewayVcoRoutes(ctx *pulumi.Context, args *GetGatewayVcoRoutesArgs, opts ...pulumi.InvokeOption) (*GetGatewayVcoRoutesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGatewayVcoRoutesResult

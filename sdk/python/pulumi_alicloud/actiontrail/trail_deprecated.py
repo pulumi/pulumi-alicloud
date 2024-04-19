@@ -472,7 +472,6 @@ class TrailDeprecated(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -485,7 +484,6 @@ class TrailDeprecated(pulumi.CustomResource):
             role_name=attach["roleName"],
             oss_key_prefix="at-product-account-audit-B")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -522,7 +520,6 @@ class TrailDeprecated(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -535,7 +532,6 @@ class TrailDeprecated(pulumi.CustomResource):
             role_name=attach["roleName"],
             oss_key_prefix="at-product-account-audit-B")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstPrivatelinkVpcEndpointConnectionId = example.then(example => example.connections?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVpcEndpointConnections(args: GetVpcEndpointConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointConnectionsResult> {
 
@@ -91,7 +89,6 @@ export interface GetVpcEndpointConnectionsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -102,7 +99,6 @@ export interface GetVpcEndpointConnectionsResult {
  * });
  * export const firstPrivatelinkVpcEndpointConnectionId = example.then(example => example.connections?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVpcEndpointConnectionsOutput(args: GetVpcEndpointConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointConnectionsResult> {
     return pulumi.output(args).apply((a: any) => getVpcEndpointConnections(a, opts))

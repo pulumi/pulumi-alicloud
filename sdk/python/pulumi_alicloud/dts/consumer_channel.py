@@ -188,7 +188,6 @@ class ConsumerChannel(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -264,7 +263,6 @@ class ConsumerChannel(pulumi.CustomResource):
             consumer_group_user_name="example",
             consumer_group_password="example1234")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -298,7 +296,6 @@ class ConsumerChannel(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -374,7 +371,6 @@ class ConsumerChannel(pulumi.CustomResource):
             consumer_group_user_name="example",
             consumer_group_password="example1234")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

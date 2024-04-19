@@ -215,7 +215,6 @@ class Database(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -245,7 +244,6 @@ class Database(pulumi.CustomResource):
             instance_id=default_instance.id,
             name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -286,7 +284,6 @@ class Database(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -316,7 +313,6 @@ class Database(pulumi.CustomResource):
             instance_id=default_instance.id,
             name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -541,7 +541,6 @@ class ElasticityAssurance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -561,7 +560,6 @@ class ElasticityAssurance(pulumi.CustomResource):
             assurance_times="Unlimited",
             resource_group_id=default.ids[0])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -605,7 +603,6 @@ class ElasticityAssurance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -625,7 +622,6 @@ class ElasticityAssurance(pulumi.CustomResource):
             assurance_times="Unlimited",
             resource_group_id=default.ids[0])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

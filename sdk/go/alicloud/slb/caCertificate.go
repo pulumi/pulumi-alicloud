@@ -22,7 +22,6 @@ import (
 //
 // * using CA certificate content
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,7 +67,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // * using CA certificate file
 //

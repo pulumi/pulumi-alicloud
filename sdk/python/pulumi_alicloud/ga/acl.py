@@ -238,7 +238,6 @@ class Acl(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -251,7 +250,6 @@ class Acl(pulumi.CustomResource):
             entry="192.168.1.1/32",
             entry_description="terraform-example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -286,7 +284,6 @@ class Acl(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -299,7 +296,6 @@ class Acl(pulumi.CustomResource):
             entry="192.168.1.1/32",
             entry_description="terraform-example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

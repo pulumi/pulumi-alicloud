@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const albSystemSecurityPolicyId1 = defaults.then(defaults => defaults.policies?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSystemSecurityPolicies(args?: GetSystemSecurityPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetSystemSecurityPoliciesResult> {
     args = args || {};
@@ -81,7 +79,6 @@ export interface GetSystemSecurityPoliciesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -91,7 +88,6 @@ export interface GetSystemSecurityPoliciesResult {
  * });
  * export const albSystemSecurityPolicyId1 = defaults.then(defaults => defaults.policies?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSystemSecurityPoliciesOutput(args?: GetSystemSecurityPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSystemSecurityPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getSystemSecurityPolicies(a, opts))

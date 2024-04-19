@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstKeyId = kmsKeysDs.then(kmsKeysDs => kmsKeysDs.keys?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKeys(args?: GetKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetKeysResult> {
     args = args || {};
@@ -97,7 +95,6 @@ export interface GetKeysResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -109,7 +106,6 @@ export interface GetKeysResult {
  * });
  * export const firstKeyId = kmsKeysDs.then(kmsKeysDs => kmsKeysDs.keys?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKeysOutput(args?: GetKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeysResult> {
     return pulumi.output(args).apply((a: any) => getKeys(a, opts))

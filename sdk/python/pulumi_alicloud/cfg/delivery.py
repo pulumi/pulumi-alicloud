@@ -392,7 +392,6 @@ class Delivery(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -415,7 +414,6 @@ class Delivery(pulumi.CustomResource):
             delivery_channel_type="SLS",
             description=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -460,7 +458,6 @@ class Delivery(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -483,7 +480,6 @@ class Delivery(pulumi.CustomResource):
             delivery_channel_type="SLS",
             description=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

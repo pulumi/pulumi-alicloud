@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -34,7 +33,6 @@ import * as utilities from "../utilities";
  * });
  * export const bastionhostHostShareKeyId2 = nameRegex.then(nameRegex => nameRegex.keys?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHostShareKeys(args: GetHostShareKeysArgs, opts?: pulumi.InvokeOptions): Promise<GetHostShareKeysResult> {
 
@@ -99,7 +97,6 @@ export interface GetHostShareKeysResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -118,7 +115,6 @@ export interface GetHostShareKeysResult {
  * });
  * export const bastionhostHostShareKeyId2 = nameRegex.then(nameRegex => nameRegex.keys?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHostShareKeysOutput(args: GetHostShareKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostShareKeysResult> {
     return pulumi.output(args).apply((a: any) => getHostShareKeys(a, opts))

@@ -23,7 +23,6 @@ import (
 //
 // ### Create a AnalyticDB for PostgreSQL instance
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -80,7 +79,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

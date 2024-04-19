@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -87,7 +86,6 @@ namespace Pulumi.AliCloud.PolarDB
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGlobalDatabaseNetworksResult> InvokeAsync(GetGlobalDatabaseNetworksArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGlobalDatabaseNetworksResult>("alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks", args ?? new GetGlobalDatabaseNetworksArgs(), options.WithDefaults());
@@ -101,7 +99,6 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -168,7 +165,6 @@ namespace Pulumi.AliCloud.PolarDB
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGlobalDatabaseNetworksResult> Invoke(GetGlobalDatabaseNetworksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGlobalDatabaseNetworksResult>("alicloud:polardb/getGlobalDatabaseNetworks:getGlobalDatabaseNetworks", args ?? new GetGlobalDatabaseNetworksInvokeArgs(), options.WithDefaults());

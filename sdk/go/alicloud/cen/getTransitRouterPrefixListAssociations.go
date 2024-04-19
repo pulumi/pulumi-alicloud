@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,7 +44,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetTransitRouterPrefixListAssociations(ctx *pulumi.Context, args *GetTransitRouterPrefixListAssociationsArgs, opts ...pulumi.InvokeOption) (*GetTransitRouterPrefixListAssociationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTransitRouterPrefixListAssociationsResult

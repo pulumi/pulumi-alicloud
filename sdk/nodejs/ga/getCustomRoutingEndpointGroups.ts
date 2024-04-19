@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -31,7 +30,6 @@ import * as utilities from "../utilities";
  * });
  * export const gaCustomRoutingEndpointGroupsId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCustomRoutingEndpointGroups(args: GetCustomRoutingEndpointGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomRoutingEndpointGroupsResult> {
 
@@ -132,7 +130,6 @@ export interface GetCustomRoutingEndpointGroupsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -148,7 +145,6 @@ export interface GetCustomRoutingEndpointGroupsResult {
  * });
  * export const gaCustomRoutingEndpointGroupsId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCustomRoutingEndpointGroupsOutput(args: GetCustomRoutingEndpointGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomRoutingEndpointGroupsResult> {
     return pulumi.output(args).apply((a: any) => getCustomRoutingEndpointGroups(a, opts))

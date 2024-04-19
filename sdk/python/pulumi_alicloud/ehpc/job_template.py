@@ -603,7 +603,6 @@ class JobTemplate(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -612,7 +611,6 @@ class JobTemplate(pulumi.CustomResource):
             job_template_name="example_value",
             command_line="./LammpsTest/lammps.pbs")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -659,7 +657,6 @@ class JobTemplate(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -668,7 +665,6 @@ class JobTemplate(pulumi.CustomResource):
             job_template_name="example_value",
             command_line="./LammpsTest/lammps.pbs")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

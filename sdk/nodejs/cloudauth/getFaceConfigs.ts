@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -30,7 +29,6 @@ import * as utilities from "../utilities";
  * });
  * export const faceConfig = _default.apply(_default => _default.configs?.[0]);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFaceConfigs(args?: GetFaceConfigsArgs, opts?: pulumi.InvokeOptions): Promise<GetFaceConfigsResult> {
     args = args || {};
@@ -84,7 +82,6 @@ export interface GetFaceConfigsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -99,7 +96,6 @@ export interface GetFaceConfigsResult {
  * });
  * export const faceConfig = _default.apply(_default => _default.configs?.[0]);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFaceConfigsOutput(args?: GetFaceConfigsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFaceConfigsResult> {
     return pulumi.output(args).apply((a: any) => getFaceConfigs(a, opts))

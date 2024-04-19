@@ -740,7 +740,6 @@ class Function(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -809,7 +808,6 @@ class Function(pulumi.CustomResource):
                 "prefix": "terraform",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 
@@ -866,7 +864,6 @@ class Function(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -935,7 +932,6 @@ class Function(pulumi.CustomResource):
                 "prefix": "terraform",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 

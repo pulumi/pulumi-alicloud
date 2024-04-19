@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -20,7 +19,6 @@ import * as utilities from "../utilities";
  *     status: "online",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKvAccount(args?: GetKvAccountArgs, opts?: pulumi.InvokeOptions): Promise<GetKvAccountResult> {
     args = args || {};
@@ -61,7 +59,6 @@ export interface GetKvAccountResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -70,7 +67,6 @@ export interface GetKvAccountResult {
  *     status: "online",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKvAccountOutput(args?: GetKvAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKvAccountResult> {
     return pulumi.output(args).apply((a: any) => getKvAccount(a, opts))

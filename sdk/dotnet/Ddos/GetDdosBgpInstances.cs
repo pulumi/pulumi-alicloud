@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Ddos
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -54,7 +53,6 @@ namespace Pulumi.AliCloud.Ddos
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDdosBgpInstancesResult> InvokeAsync(GetDdosBgpInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDdosBgpInstancesResult>("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", args ?? new GetDdosBgpInstancesArgs(), options.WithDefaults());
@@ -66,7 +64,6 @@ namespace Pulumi.AliCloud.Ddos
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -102,7 +99,6 @@ namespace Pulumi.AliCloud.Ddos
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDdosBgpInstancesResult> Invoke(GetDdosBgpInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDdosBgpInstancesResult>("alicloud:ddos/getDdosBgpInstances:getDdosBgpInstances", args ?? new GetDdosBgpInstancesInvokeArgs(), options.WithDefaults());

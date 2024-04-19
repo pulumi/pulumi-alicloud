@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstSaslAclUsername = saslAclsDs.then(saslAclsDs => saslAclsDs.acls?.[0]?.username);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSaslAcls(args: GetSaslAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetSaslAclsResult> {
 
@@ -101,7 +99,6 @@ export interface GetSaslAclsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -115,7 +112,6 @@ export interface GetSaslAclsResult {
  * });
  * export const firstSaslAclUsername = saslAclsDs.then(saslAclsDs => saslAclsDs.acls?.[0]?.username);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSaslAclsOutput(args: GetSaslAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSaslAclsResult> {
     return pulumi.output(args).apply((a: any) => getSaslAcls(a, opts))

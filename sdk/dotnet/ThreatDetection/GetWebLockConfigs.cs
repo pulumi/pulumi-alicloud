@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,7 +40,6 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetWebLockConfigsResult> InvokeAsync(GetWebLockConfigsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetWebLockConfigsResult>("alicloud:threatdetection/getWebLockConfigs:getWebLockConfigs", args ?? new GetWebLockConfigsArgs(), options.WithDefaults());
@@ -53,7 +51,6 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,7 +73,6 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetWebLockConfigsResult> Invoke(GetWebLockConfigsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebLockConfigsResult>("alicloud:threatdetection/getWebLockConfigs:getWebLockConfigs", args ?? new GetWebLockConfigsInvokeArgs(), options.WithDefaults());

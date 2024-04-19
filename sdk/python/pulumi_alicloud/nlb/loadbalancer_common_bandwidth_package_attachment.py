@@ -124,7 +124,6 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -181,7 +180,6 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
             bandwidth_package_id=default_common_bandwith_package.id,
             load_balancer_id=default_load_balancer.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -213,7 +211,6 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -270,7 +267,6 @@ class LoadbalancerCommonBandwidthPackageAttachment(pulumi.CustomResource):
             bandwidth_package_id=default_common_bandwith_package.id,
             load_balancer_id=default_load_balancer.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

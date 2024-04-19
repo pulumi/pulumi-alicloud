@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  * });
  * export const ehpcClusterId2 = nameRegex.then(nameRegex => nameRegex.clusters?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClusters(args?: GetClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetClustersResult> {
     args = args || {};
@@ -95,7 +93,6 @@ export interface GetClustersResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -109,7 +106,6 @@ export interface GetClustersResult {
  * });
  * export const ehpcClusterId2 = nameRegex.then(nameRegex => nameRegex.clusters?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getClustersOutput(args?: GetClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClustersResult> {
     return pulumi.output(args).apply((a: any) => getClusters(a, opts))

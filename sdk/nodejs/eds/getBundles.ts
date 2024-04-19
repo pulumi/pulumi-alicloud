@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  *     bundleType: "SYSTEM",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBundles(args?: GetBundlesArgs, opts?: pulumi.InvokeOptions): Promise<GetBundlesResult> {
     args = args || {};
@@ -90,7 +88,6 @@ export interface GetBundlesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -99,7 +96,6 @@ export interface GetBundlesResult {
  *     bundleType: "SYSTEM",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBundlesOutput(args?: GetBundlesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBundlesResult> {
     return pulumi.output(args).apply((a: any) => getBundles(a, opts))

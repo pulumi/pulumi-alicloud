@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetSamlProviders(ctx *pulumi.Context, args *GetSamlProvidersArgs, opts ...pulumi.InvokeOption) (*GetSamlProvidersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSamlProvidersResult

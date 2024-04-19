@@ -133,7 +133,6 @@ def get_transit_router_vpn_attachments(cen_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -141,7 +140,6 @@ def get_transit_router_vpn_attachments(cen_id: Optional[str] = None,
     ids = alicloud.cen.get_transit_router_vpn_attachments(cen_id="example_value")
     pulumi.export("cenTransitRouterVpnAttachmentId1", ids.attachments[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cen_id: The id of the cen.
@@ -189,7 +187,6 @@ def get_transit_router_vpn_attachments_output(cen_id: Optional[pulumi.Input[str]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -197,7 +194,6 @@ def get_transit_router_vpn_attachments_output(cen_id: Optional[pulumi.Input[str]
     ids = alicloud.cen.get_transit_router_vpn_attachments(cen_id="example_value")
     pulumi.export("cenTransitRouterVpnAttachmentId1", ids.attachments[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cen_id: The id of the cen.

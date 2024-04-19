@@ -90,14 +90,12 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         service_linked_role = alicloud.databasefilesystem.ServiceLinkedRole("service_linked_role", product_name="AliyunServiceRoleForDbfs")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -126,14 +124,12 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         service_linked_role = alicloud.databasefilesystem.ServiceLinkedRole("service_linked_role", product_name="AliyunServiceRoleForDbfs")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

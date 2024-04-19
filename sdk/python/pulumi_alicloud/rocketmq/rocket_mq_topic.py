@@ -206,7 +206,6 @@ class RocketMQTopic(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -258,7 +257,6 @@ class RocketMQTopic(pulumi.CustomResource):
             message_type="NORMAL",
             topic_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -292,7 +290,6 @@ class RocketMQTopic(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -344,7 +341,6 @@ class RocketMQTopic(pulumi.CustomResource):
             message_type="NORMAL",
             topic_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

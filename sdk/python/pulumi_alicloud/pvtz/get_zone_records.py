@@ -159,7 +159,6 @@ def get_zone_records(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -168,7 +167,6 @@ def get_zone_records(ids: Optional[Sequence[str]] = None,
         keyword=foo["value"])
     pulumi.export("firstRecordId", records_ds.records[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Private Zone Record IDs.
@@ -228,7 +226,6 @@ def get_zone_records_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -237,7 +234,6 @@ def get_zone_records_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
         keyword=foo["value"])
     pulumi.export("firstRecordId", records_ds.records[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Private Zone Record IDs.

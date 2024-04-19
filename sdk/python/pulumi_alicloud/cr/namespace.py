@@ -141,7 +141,6 @@ class Namespace(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -155,7 +154,6 @@ class Namespace(pulumi.CustomResource):
             auto_create=False,
             default_visibility="PUBLIC")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -188,7 +186,6 @@ class Namespace(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -202,7 +199,6 @@ class Namespace(pulumi.CustomResource):
             auto_create=False,
             default_visibility="PUBLIC")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

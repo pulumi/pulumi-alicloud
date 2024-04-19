@@ -207,7 +207,6 @@ class Audit(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -304,10 +303,8 @@ class Audit(pulumi.CustomResource):
                 "k8s_ingress_ttl": "180",
             })
         ```
-        <!--End PulumiCodeChooser -->
         Multiple accounts Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -327,10 +324,8 @@ class Audit(pulumi.CustomResource):
                 "12345678912300123",
             ])
         ```
-        <!--End PulumiCodeChooser -->
         Resource Directory Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -347,8 +342,6 @@ class Audit(pulumi.CustomResource):
             },
             resource_directory_type="all")
         ```
-        <!--End PulumiCodeChooser -->
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -366,7 +359,6 @@ class Audit(pulumi.CustomResource):
             multi_accounts=[],
             resource_directory_type="custom")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -401,7 +393,6 @@ class Audit(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -498,10 +489,8 @@ class Audit(pulumi.CustomResource):
                 "k8s_ingress_ttl": "180",
             })
         ```
-        <!--End PulumiCodeChooser -->
         Multiple accounts Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -521,10 +510,8 @@ class Audit(pulumi.CustomResource):
                 "12345678912300123",
             ])
         ```
-        <!--End PulumiCodeChooser -->
         Resource Directory Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -541,8 +528,6 @@ class Audit(pulumi.CustomResource):
             },
             resource_directory_type="all")
         ```
-        <!--End PulumiCodeChooser -->
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -560,7 +545,6 @@ class Audit(pulumi.CustomResource):
             multi_accounts=[],
             resource_directory_type="custom")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

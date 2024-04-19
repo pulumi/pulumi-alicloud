@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.AliCloud.ResourceManager
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetControlPolicyAttachmentsResult> InvokeAsync(GetControlPolicyAttachmentsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetControlPolicyAttachmentsResult>("alicloud:resourcemanager/getControlPolicyAttachments:getControlPolicyAttachments", args ?? new GetControlPolicyAttachmentsArgs(), options.WithDefaults());
@@ -54,7 +52,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.AliCloud.ResourceManager
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetControlPolicyAttachmentsResult> Invoke(GetControlPolicyAttachmentsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetControlPolicyAttachmentsResult>("alicloud:resourcemanager/getControlPolicyAttachments:getControlPolicyAttachments", args ?? new GetControlPolicyAttachmentsInvokeArgs(), options.WithDefaults());

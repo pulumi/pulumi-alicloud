@@ -1123,7 +1123,6 @@ type GetInstancesInstance struct {
 	// (Available since v1.221.0) The instance quota which indicating the maximum number of tables.
 	TableQuota int `pulumi:"tableQuota"`
 	// A map of tags assigned to the instance. It must be in the format:
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -1147,7 +1146,6 @@ type GetInstancesInstance struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The user id of the instance.
 	UserId string `pulumi:"userId"`
@@ -1194,7 +1192,6 @@ type GetInstancesInstanceArgs struct {
 	// (Available since v1.221.0) The instance quota which indicating the maximum number of tables.
 	TableQuota pulumi.IntInput `pulumi:"tableQuota"`
 	// A map of tags assigned to the instance. It must be in the format:
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -1218,7 +1215,6 @@ type GetInstancesInstanceArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// The user id of the instance.
 	UserId pulumi.StringInput `pulumi:"userId"`
@@ -1346,7 +1342,6 @@ func (o GetInstancesInstanceOutput) TableQuota() pulumi.IntOutput {
 }
 
 // A map of tags assigned to the instance. It must be in the format:
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1373,7 +1368,6 @@ func (o GetInstancesInstanceOutput) TableQuota() pulumi.IntOutput {
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }

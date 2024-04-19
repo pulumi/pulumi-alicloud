@@ -110,7 +110,6 @@ def get_dedicated_block_storage_clusters(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -119,7 +118,6 @@ def get_dedicated_block_storage_clusters(ids: Optional[Sequence[str]] = None,
         name_regex=default_alicloud_ebs_dedicated_block_storage_cluster["name"])
     pulumi.export("alicloudEbsDedicatedBlockStorageClusterExampleId", default.clusters[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Dedicated Block Storage Cluster IDs.
@@ -154,7 +152,6 @@ def get_dedicated_block_storage_clusters_output(ids: Optional[pulumi.Input[Optio
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -163,7 +160,6 @@ def get_dedicated_block_storage_clusters_output(ids: Optional[pulumi.Input[Optio
         name_regex=default_alicloud_ebs_dedicated_block_storage_cluster["name"])
     pulumi.export("alicloudEbsDedicatedBlockStorageClusterExampleId", default.clusters[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Dedicated Block Storage Cluster IDs.

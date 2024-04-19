@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,7 +44,6 @@ import (
 // })
 // }
 // ```
-// <!--End PulumiCodeChooser -->
 func GetHoneypotPresets(ctx *pulumi.Context, args *GetHoneypotPresetsArgs, opts ...pulumi.InvokeOption) (*GetHoneypotPresetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHoneypotPresetsResult

@@ -123,7 +123,6 @@ def get_waf_policies(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -131,7 +130,6 @@ def get_waf_policies(ids: Optional[Sequence[str]] = None,
     ids = alicloud.dcdn.get_waf_policies()
     pulumi.export("dcdnWafPolicyId1", ids.policies[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Waf Policy IDs.
@@ -175,7 +173,6 @@ def get_waf_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -183,7 +180,6 @@ def get_waf_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     ids = alicloud.dcdn.get_waf_policies()
     pulumi.export("dcdnWafPolicyId1", ids.policies[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Waf Policy IDs.

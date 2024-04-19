@@ -79,14 +79,12 @@ class Acl(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         default = alicloud.rocketmq.Acl("default", name="terraform-example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -119,14 +117,12 @@ class Acl(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         default = alicloud.rocketmq.Acl("default", name="terraform-example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

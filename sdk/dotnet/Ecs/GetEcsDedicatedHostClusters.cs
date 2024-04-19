@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,7 +69,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetEcsDedicatedHostClustersResult> InvokeAsync(GetEcsDedicatedHostClustersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsDedicatedHostClustersResult>("alicloud:ecs/getEcsDedicatedHostClusters:getEcsDedicatedHostClusters", args ?? new GetEcsDedicatedHostClustersArgs(), options.WithDefaults());
@@ -84,7 +82,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -134,7 +131,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetEcsDedicatedHostClustersResult> Invoke(GetEcsDedicatedHostClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEcsDedicatedHostClustersResult>("alicloud:ecs/getEcsDedicatedHostClusters:getEcsDedicatedHostClusters", args ?? new GetEcsDedicatedHostClustersInvokeArgs(), options.WithDefaults());

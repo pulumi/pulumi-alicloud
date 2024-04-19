@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -95,7 +94,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetGlobalDatabaseNetworks(ctx *pulumi.Context, args *GetGlobalDatabaseNetworksArgs, opts ...pulumi.InvokeOption) (*GetGlobalDatabaseNetworksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGlobalDatabaseNetworksResult

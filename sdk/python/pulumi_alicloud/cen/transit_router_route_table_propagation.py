@@ -163,7 +163,6 @@ class TransitRouterRouteTablePropagation(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -215,7 +214,6 @@ class TransitRouterRouteTablePropagation(pulumi.CustomResource):
             transit_router_route_table_id=example_transit_router_route_table.transit_router_route_table_id,
             transit_router_attachment_id=example_transit_router_vpc_attachment.transit_router_attachment_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -248,7 +246,6 @@ class TransitRouterRouteTablePropagation(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -300,7 +297,6 @@ class TransitRouterRouteTablePropagation(pulumi.CustomResource):
             transit_router_route_table_id=example_transit_router_route_table.transit_router_route_table_id,
             transit_router_attachment_id=example_transit_router_vpc_attachment.transit_router_attachment_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

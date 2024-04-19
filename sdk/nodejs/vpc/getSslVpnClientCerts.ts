@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  *     nameRegex: "^foo",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSslVpnClientCerts(args?: GetSslVpnClientCertsArgs, opts?: pulumi.InvokeOptions): Promise<GetSslVpnClientCertsResult> {
     args = args || {};
@@ -91,7 +89,6 @@ export interface GetSslVpnClientCertsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -103,7 +100,6 @@ export interface GetSslVpnClientCertsResult {
  *     nameRegex: "^foo",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSslVpnClientCertsOutput(args?: GetSslVpnClientCertsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSslVpnClientCertsResult> {
     return pulumi.output(args).apply((a: any) => getSslVpnClientCerts(a, opts))

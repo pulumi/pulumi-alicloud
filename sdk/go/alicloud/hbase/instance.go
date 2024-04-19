@@ -28,7 +28,6 @@ import (
 //
 // ### Create a hbase instance
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -89,7 +88,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // this is a example for class netType instance. you can find more detail with the examples/hbase dir.
 //

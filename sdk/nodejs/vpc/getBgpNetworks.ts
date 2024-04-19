@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -33,7 +32,6 @@ import * as utilities from "../utilities";
  * });
  * export const vpcBgpNetworkId3 = status.then(status => status.networks?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBgpNetworks(args?: GetBgpNetworksArgs, opts?: pulumi.InvokeOptions): Promise<GetBgpNetworksResult> {
     args = args || {};
@@ -92,7 +90,6 @@ export interface GetBgpNetworksResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -110,7 +107,6 @@ export interface GetBgpNetworksResult {
  * });
  * export const vpcBgpNetworkId3 = status.then(status => status.networks?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBgpNetworksOutput(args?: GetBgpNetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBgpNetworksResult> {
     return pulumi.output(args).apply((a: any) => getBgpNetworks(a, opts))

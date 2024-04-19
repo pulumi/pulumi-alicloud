@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstRdsBackupId = example.then(example => example.backups?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRdsBackups(args: GetRdsBackupsArgs, opts?: pulumi.InvokeOptions): Promise<GetRdsBackupsResult> {
 
@@ -108,7 +106,6 @@ export interface GetRdsBackupsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -118,7 +115,6 @@ export interface GetRdsBackupsResult {
  * });
  * export const firstRdsBackupId = example.then(example => example.backups?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRdsBackupsOutput(args: GetRdsBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRdsBackupsResult> {
     return pulumi.output(args).apply((a: any) => getRdsBackups(a, opts))

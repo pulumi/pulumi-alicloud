@@ -198,7 +198,6 @@ def get_capacity_reservations(capacity_reservation_ids: Optional[Sequence[str]] 
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -209,7 +208,6 @@ def get_capacity_reservations(capacity_reservation_ids: Optional[Sequence[str]] 
         platform="linux")
     pulumi.export("alicloudEcsCapacityReservationExampleId", default.reservations[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Capacity Reservation IDs.
@@ -271,7 +269,6 @@ def get_capacity_reservations_output(capacity_reservation_ids: Optional[pulumi.I
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -282,7 +279,6 @@ def get_capacity_reservations_output(capacity_reservation_ids: Optional[pulumi.I
         platform="linux")
     pulumi.export("alicloudEcsCapacityReservationExampleId", default.reservations[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Capacity Reservation IDs.

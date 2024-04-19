@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,7 +44,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServerFirewallRulesResult> InvokeAsync(GetServerFirewallRulesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerFirewallRulesResult>("alicloud:simpleapplicationserver/getServerFirewallRules:getServerFirewallRules", args ?? new GetServerFirewallRulesArgs(), options.WithDefaults());
@@ -59,7 +57,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -84,7 +81,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServerFirewallRulesResult> Invoke(GetServerFirewallRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerFirewallRulesResult>("alicloud:simpleapplicationserver/getServerFirewallRules:getServerFirewallRules", args ?? new GetServerFirewallRulesInvokeArgs(), options.WithDefaults());

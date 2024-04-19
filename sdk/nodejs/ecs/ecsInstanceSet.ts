@@ -21,7 +21,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -70,7 +69,6 @@ import * as utilities from "../utilities";
  *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class EcsInstanceSet extends pulumi.CustomResource {
     /**

@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const hbrEcsBackupPlanId = ids.then(ids => ids.plans?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEcsBackupPlans(args?: GetEcsBackupPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsBackupPlansResult> {
     args = args || {};
@@ -91,7 +89,6 @@ export interface GetEcsBackupPlansResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -101,7 +98,6 @@ export interface GetEcsBackupPlansResult {
  * });
  * export const hbrEcsBackupPlanId = ids.then(ids => ids.plans?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEcsBackupPlansOutput(args?: GetEcsBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsBackupPlansResult> {
     return pulumi.output(args).apply((a: any) => getEcsBackupPlans(a, opts))

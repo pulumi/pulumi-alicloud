@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudAlbAscriptExampleId = _default.then(_default => _default.ascripts?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAscripts(args?: GetAscriptsArgs, opts?: pulumi.InvokeOptions): Promise<GetAscriptsResult> {
     args = args || {};
@@ -108,7 +106,6 @@ export interface GetAscriptsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -121,7 +118,6 @@ export interface GetAscriptsResult {
  * });
  * export const alicloudAlbAscriptExampleId = _default.then(_default => _default.ascripts?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAscriptsOutput(args?: GetAscriptsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAscriptsResult> {
     return pulumi.output(args).apply((a: any) => getAscripts(a, opts))

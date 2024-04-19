@@ -143,7 +143,6 @@ def get_ipv6_egress_rules(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -164,7 +163,6 @@ def get_ipv6_egress_rules(ids: Optional[Sequence[str]] = None,
         ipv6_egress_rule_name="example_value")
     pulumi.export("vpcIpv6EgressRuleId4", ipv6_egress_rule_name.rules[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ipv6 Egress Rule IDs.
@@ -217,7 +215,6 @@ def get_ipv6_egress_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[st
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -238,7 +235,6 @@ def get_ipv6_egress_rules_output(ids: Optional[pulumi.Input[Optional[Sequence[st
         ipv6_egress_rule_name="example_value")
     pulumi.export("vpcIpv6EgressRuleId4", ipv6_egress_rule_name.rules[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ipv6 Egress Rule IDs.

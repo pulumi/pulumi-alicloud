@@ -113,7 +113,6 @@ def get_integration_exporters(cluster_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -123,7 +122,6 @@ def get_integration_exporters(cluster_id: Optional[str] = None,
         integration_type="kafka")
     pulumi.export("armsIntegrationExportersId1", ids.integration_exporters[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The ID of the Prometheus instance.
@@ -163,7 +161,6 @@ def get_integration_exporters_output(cluster_id: Optional[pulumi.Input[str]] = N
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -173,7 +170,6 @@ def get_integration_exporters_output(cluster_id: Optional[pulumi.Input[str]] = N
         integration_type="kafka")
     pulumi.export("armsIntegrationExportersId1", ids.integration_exporters[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The ID of the Prometheus instance.

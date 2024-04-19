@@ -110,7 +110,6 @@ def get_topic_subscriptions(name_prefix: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -119,7 +118,6 @@ def get_topic_subscriptions(name_prefix: Optional[str] = None,
         name_prefix="tf-")
     pulumi.export("firstTopicSubscriptionId", subscriptions.subscriptions[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name_prefix: A string to filter resulting subscriptions of the topic by their name prefixs.
@@ -154,7 +152,6 @@ def get_topic_subscriptions_output(name_prefix: Optional[pulumi.Input[Optional[s
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -163,7 +160,6 @@ def get_topic_subscriptions_output(name_prefix: Optional[pulumi.Input[Optional[s
         name_prefix="tf-")
     pulumi.export("firstTopicSubscriptionId", subscriptions.subscriptions[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name_prefix: A string to filter resulting subscriptions of the topic by their name prefixs.

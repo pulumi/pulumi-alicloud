@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstScalingRule = scalingrulesDs.then(scalingrulesDs => scalingrulesDs.rules?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getScalingRules(args?: GetScalingRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetScalingRulesResult> {
     args = args || {};
@@ -103,7 +101,6 @@ export interface GetScalingRulesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -118,7 +115,6 @@ export interface GetScalingRulesResult {
  * });
  * export const firstScalingRule = scalingrulesDs.then(scalingrulesDs => scalingrulesDs.rules?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getScalingRulesOutput(args?: GetScalingRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScalingRulesResult> {
     return pulumi.output(args).apply((a: any) => getScalingRules(a, opts))

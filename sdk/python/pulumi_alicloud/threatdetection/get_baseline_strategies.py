@@ -132,7 +132,6 @@ def get_baseline_strategies(custom_type: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -150,7 +149,6 @@ def get_baseline_strategies(custom_type: Optional[str] = None,
         custom_type="custom"))
     pulumi.export("alicloudThreatDetectionBaselineStrategyExampleId", default_alicloud_threat_detection_baseline_strategys["strategys"][0]["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str custom_type: The type of policy. Value:-**common**: standard policy-**custom**: custom policy
@@ -192,7 +190,6 @@ def get_baseline_strategies_output(custom_type: Optional[pulumi.Input[Optional[s
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -210,7 +207,6 @@ def get_baseline_strategies_output(custom_type: Optional[pulumi.Input[Optional[s
         custom_type="custom"))
     pulumi.export("alicloudThreatDetectionBaselineStrategyExampleId", default_alicloud_threat_detection_baseline_strategys["strategys"][0]["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str custom_type: The type of policy. Value:-**common**: standard policy-**custom**: custom policy

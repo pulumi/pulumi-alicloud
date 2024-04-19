@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -66,7 +65,6 @@ import * as utilities from "../utilities";
  *     instanceIds: [defaultInstance.id],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class InstanceClusterAttachment extends pulumi.CustomResource {
     /**

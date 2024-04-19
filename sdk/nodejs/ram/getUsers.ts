@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -36,22 +35,22 @@ import * as utilities from "../utilities";
  * });
  * const defaultPolicy = new alicloud.ram.Policy("default", {
  *     policyName: "ram-policy-example",
- *     policyDocument: `			{
- * 				"Statement": [
- * 				 {
- * 					"Action": [
- * 					"oss:ListObjects",
- * 					"oss:ListObjects"
- * 			  		],
- * 			  		"Effect": "Deny",
- * 			  		"Resource": [
- * 						"acs:oss:*:*:mybucket",
- * 						"acs:oss:*:*:mybucket/*"
- * 			  		]
- * 				 }
- * 		  		],
- * 				"Version": "1"
- * 			}
+ *     policyDocument: `\x09\x09\x09{
+ * \x09\x09\x09\x09"Statement": [
+ * \x09\x09\x09\x09 {
+ * \x09\x09\x09\x09\x09"Action": [
+ * \x09\x09\x09\x09\x09"oss:ListObjects",
+ * \x09\x09\x09\x09\x09"oss:ListObjects"
+ * \x09\x09\x09  \x09\x09],
+ * \x09\x09\x09  \x09\x09"Effect": "Deny",
+ * \x09\x09\x09  \x09\x09"Resource": [
+ * \x09\x09\x09\x09\x09\x09"acs:oss:*:*:mybucket",
+ * \x09\x09\x09\x09\x09\x09"acs:oss:*:*:mybucket/*"
+ * \x09\x09\x09  \x09\x09]
+ * \x09\x09\x09\x09 }
+ * \x09\x09  \x09\x09],
+ * \x09\x09\x09\x09"Version": "1"
+ * \x09\x09\x09}
  * `,
  *     description: "this is a policy example",
  *     force: true,
@@ -70,7 +69,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstUserId = usersDs.apply(usersDs => usersDs.users?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
     args = args || {};
@@ -149,7 +147,6 @@ export interface GetUsersResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -172,22 +169,22 @@ export interface GetUsersResult {
  * });
  * const defaultPolicy = new alicloud.ram.Policy("default", {
  *     policyName: "ram-policy-example",
- *     policyDocument: `			{
- * 				"Statement": [
- * 				 {
- * 					"Action": [
- * 					"oss:ListObjects",
- * 					"oss:ListObjects"
- * 			  		],
- * 			  		"Effect": "Deny",
- * 			  		"Resource": [
- * 						"acs:oss:*:*:mybucket",
- * 						"acs:oss:*:*:mybucket/*"
- * 			  		]
- * 				 }
- * 		  		],
- * 				"Version": "1"
- * 			}
+ *     policyDocument: `\x09\x09\x09{
+ * \x09\x09\x09\x09"Statement": [
+ * \x09\x09\x09\x09 {
+ * \x09\x09\x09\x09\x09"Action": [
+ * \x09\x09\x09\x09\x09"oss:ListObjects",
+ * \x09\x09\x09\x09\x09"oss:ListObjects"
+ * \x09\x09\x09  \x09\x09],
+ * \x09\x09\x09  \x09\x09"Effect": "Deny",
+ * \x09\x09\x09  \x09\x09"Resource": [
+ * \x09\x09\x09\x09\x09\x09"acs:oss:*:*:mybucket",
+ * \x09\x09\x09\x09\x09\x09"acs:oss:*:*:mybucket/*"
+ * \x09\x09\x09  \x09\x09]
+ * \x09\x09\x09\x09 }
+ * \x09\x09  \x09\x09],
+ * \x09\x09\x09\x09"Version": "1"
+ * \x09\x09\x09}
  * `,
  *     description: "this is a policy example",
  *     force: true,
@@ -206,7 +203,6 @@ export interface GetUsersResult {
  * });
  * export const firstUserId = usersDs.apply(usersDs => usersDs.users?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
     return pulumi.output(args).apply((a: any) => getUsers(a, opts))

@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -34,7 +33,6 @@ import * as utilities from "../utilities";
  * });
  * export const nasLifecyclePolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getLifecyclePolicies(args: GetLifecyclePoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetLifecyclePoliciesResult> {
 
@@ -93,7 +91,6 @@ export interface GetLifecyclePoliciesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -112,7 +109,6 @@ export interface GetLifecyclePoliciesResult {
  * });
  * export const nasLifecyclePolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getLifecyclePoliciesOutput(args: GetLifecyclePoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLifecyclePoliciesResult> {
     return pulumi.output(args).apply((a: any) => getLifecyclePolicies(a, opts))

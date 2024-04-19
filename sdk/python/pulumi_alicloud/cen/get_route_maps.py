@@ -150,7 +150,6 @@ def get_route_maps(cen_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -163,7 +162,6 @@ def get_route_maps(cen_id: Optional[str] = None,
         status="Active")
     pulumi.export("firstCenRouteMapId", this.maps[0].route_map_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cen_id: The ID of the CEN instance.
@@ -213,7 +211,6 @@ def get_route_maps_output(cen_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -226,7 +223,6 @@ def get_route_maps_output(cen_id: Optional[pulumi.Input[str]] = None,
         status="Active")
     pulumi.export("firstCenRouteMapId", this.maps[0].route_map_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cen_id: The ID of the CEN instance.

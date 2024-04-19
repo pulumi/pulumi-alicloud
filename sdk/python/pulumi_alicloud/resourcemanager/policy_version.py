@@ -154,7 +154,6 @@ class PolicyVersion(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -165,28 +164,27 @@ class PolicyVersion(pulumi.CustomResource):
             name = "tfexample"
         example = alicloud.resourcemanager.Policy("example",
             policy_name=name,
-            policy_document=\"\"\"		{
-        			"Statement": [{
-        				"Action": ["oss:*"],
-        				"Effect": "Allow",
-        				"Resource": ["acs:oss:*:*:*"]
-        			}],
-        			"Version": "1"
-        		}
+            policy_document=\"\"\"\\x09\\x09{
+        \\x09\\x09\\x09"Statement": [{
+        \\x09\\x09\\x09\\x09"Action": ["oss:*"],
+        \\x09\\x09\\x09\\x09"Effect": "Allow",
+        \\x09\\x09\\x09\\x09"Resource": ["acs:oss:*:*:*"]
+        \\x09\\x09\\x09}],
+        \\x09\\x09\\x09"Version": "1"
+        \\x09\\x09}
         \"\"\")
         example_policy_version = alicloud.resourcemanager.PolicyVersion("example",
             policy_name=example.policy_name,
-            policy_document=\"\"\"		{
-        			"Statement": [{
-        				"Action": ["oss:*"],
-        				"Effect": "Allow",
-        				"Resource": ["acs:oss:*:*:myphotos"]
-        			}],
-        			"Version": "1"
-        		}
+            policy_document=\"\"\"\\x09\\x09{
+        \\x09\\x09\\x09"Statement": [{
+        \\x09\\x09\\x09\\x09"Action": ["oss:*"],
+        \\x09\\x09\\x09\\x09"Effect": "Allow",
+        \\x09\\x09\\x09\\x09"Resource": ["acs:oss:*:*:myphotos"]
+        \\x09\\x09\\x09}],
+        \\x09\\x09\\x09"Version": "1"
+        \\x09\\x09}
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -220,7 +218,6 @@ class PolicyVersion(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -231,28 +228,27 @@ class PolicyVersion(pulumi.CustomResource):
             name = "tfexample"
         example = alicloud.resourcemanager.Policy("example",
             policy_name=name,
-            policy_document=\"\"\"		{
-        			"Statement": [{
-        				"Action": ["oss:*"],
-        				"Effect": "Allow",
-        				"Resource": ["acs:oss:*:*:*"]
-        			}],
-        			"Version": "1"
-        		}
+            policy_document=\"\"\"\\x09\\x09{
+        \\x09\\x09\\x09"Statement": [{
+        \\x09\\x09\\x09\\x09"Action": ["oss:*"],
+        \\x09\\x09\\x09\\x09"Effect": "Allow",
+        \\x09\\x09\\x09\\x09"Resource": ["acs:oss:*:*:*"]
+        \\x09\\x09\\x09}],
+        \\x09\\x09\\x09"Version": "1"
+        \\x09\\x09}
         \"\"\")
         example_policy_version = alicloud.resourcemanager.PolicyVersion("example",
             policy_name=example.policy_name,
-            policy_document=\"\"\"		{
-        			"Statement": [{
-        				"Action": ["oss:*"],
-        				"Effect": "Allow",
-        				"Resource": ["acs:oss:*:*:myphotos"]
-        			}],
-        			"Version": "1"
-        		}
+            policy_document=\"\"\"\\x09\\x09{
+        \\x09\\x09\\x09"Statement": [{
+        \\x09\\x09\\x09\\x09"Action": ["oss:*"],
+        \\x09\\x09\\x09\\x09"Effect": "Allow",
+        \\x09\\x09\\x09\\x09"Resource": ["acs:oss:*:*:myphotos"]
+        \\x09\\x09\\x09}],
+        \\x09\\x09\\x09"Version": "1"
+        \\x09\\x09}
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

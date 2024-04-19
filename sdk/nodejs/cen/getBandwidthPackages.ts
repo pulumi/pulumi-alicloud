@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,7 +21,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstCenBandwidthPackageId = example.then(example => example.packages?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBandwidthPackages(args?: GetBandwidthPackagesArgs, opts?: pulumi.InvokeOptions): Promise<GetBandwidthPackagesResult> {
     args = args || {};
@@ -105,7 +103,6 @@ export interface GetBandwidthPackagesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -116,7 +113,6 @@ export interface GetBandwidthPackagesResult {
  * });
  * export const firstCenBandwidthPackageId = example.then(example => example.packages?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBandwidthPackagesOutput(args?: GetBandwidthPackagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBandwidthPackagesResult> {
     return pulumi.output(args).apply((a: any) => getBandwidthPackages(a, opts))

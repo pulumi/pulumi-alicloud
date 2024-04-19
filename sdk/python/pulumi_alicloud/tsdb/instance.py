@@ -474,7 +474,6 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -495,7 +494,6 @@ class Instance(pulumi.CustomResource):
             engine_type="tsdb_tsdb",
             instance_alias="tf-testaccTsdbInstance")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -557,7 +555,6 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -578,7 +575,6 @@ class Instance(pulumi.CustomResource):
             engine_type="tsdb_tsdb",
             instance_alias="tf-testaccTsdbInstance")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
