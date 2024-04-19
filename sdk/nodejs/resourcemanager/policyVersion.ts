@@ -25,26 +25,26 @@ import * as utilities from "../utilities";
  * const name = config.get("name") || "tfexample";
  * const example = new alicloud.resourcemanager.Policy("example", {
  *     policyName: name,
- *     policyDocument: `		{
- * 			"Statement": [{
- * 				"Action": ["oss:*"],
- * 				"Effect": "Allow",
- * 				"Resource": ["acs:oss:*:*:*"]
- * 			}],
- * 			"Version": "1"
- * 		}
+ *     policyDocument: `\x09\x09{
+ * \x09\x09\x09"Statement": [{
+ * \x09\x09\x09\x09"Action": ["oss:*"],
+ * \x09\x09\x09\x09"Effect": "Allow",
+ * \x09\x09\x09\x09"Resource": ["acs:oss:*:*:*"]
+ * \x09\x09\x09}],
+ * \x09\x09\x09"Version": "1"
+ * \x09\x09}
  * `,
  * });
  * const examplePolicyVersion = new alicloud.resourcemanager.PolicyVersion("example", {
  *     policyName: example.policyName,
- *     policyDocument: `		{
- * 			"Statement": [{
- * 				"Action": ["oss:*"],
- * 				"Effect": "Allow",
- * 				"Resource": ["acs:oss:*:*:myphotos"]
- * 			}],
- * 			"Version": "1"
- * 		}
+ *     policyDocument: `\x09\x09{
+ * \x09\x09\x09"Statement": [{
+ * \x09\x09\x09\x09"Action": ["oss:*"],
+ * \x09\x09\x09\x09"Effect": "Allow",
+ * \x09\x09\x09\x09"Resource": ["acs:oss:*:*:myphotos"]
+ * \x09\x09\x09}],
+ * \x09\x09\x09"Version": "1"
+ * \x09\x09}
  * `,
  * });
  * ```

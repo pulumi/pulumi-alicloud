@@ -160,22 +160,22 @@ def get_users(group_name: Optional[str] = None,
         user_names=[default_user.name])
     default_policy = alicloud.ram.Policy("default",
         policy_name="ram-policy-example",
-        policy_document=\"\"\"			{
-    				"Statement": [
-    				 {
-    					"Action": [
-    					"oss:ListObjects",
-    					"oss:ListObjects"
-    			  		],
-    			  		"Effect": "Deny",
-    			  		"Resource": [
-    						"acs:oss:*:*:mybucket",
-    						"acs:oss:*:*:mybucket/*"
-    			  		]
-    				 }
-    		  		],
-    				"Version": "1"
-    			}
+        policy_document=\"\"\"\\x09\\x09\\x09{
+    \\x09\\x09\\x09\\x09"Statement": [
+    \\x09\\x09\\x09\\x09 {
+    \\x09\\x09\\x09\\x09\\x09"Action": [
+    \\x09\\x09\\x09\\x09\\x09"oss:ListObjects",
+    \\x09\\x09\\x09\\x09\\x09"oss:ListObjects"
+    \\x09\\x09\\x09  \\x09\\x09],
+    \\x09\\x09\\x09  \\x09\\x09"Effect": "Deny",
+    \\x09\\x09\\x09  \\x09\\x09"Resource": [
+    \\x09\\x09\\x09\\x09\\x09\\x09"acs:oss:*:*:mybucket",
+    \\x09\\x09\\x09\\x09\\x09\\x09"acs:oss:*:*:mybucket/*"
+    \\x09\\x09\\x09  \\x09\\x09]
+    \\x09\\x09\\x09\\x09 }
+    \\x09\\x09  \\x09\\x09],
+    \\x09\\x09\\x09\\x09"Version": "1"
+    \\x09\\x09\\x09}
     \"\"\",
         description="this is a policy example",
         force=True)
@@ -257,22 +257,22 @@ def get_users_output(group_name: Optional[pulumi.Input[Optional[str]]] = None,
         user_names=[default_user.name])
     default_policy = alicloud.ram.Policy("default",
         policy_name="ram-policy-example",
-        policy_document=\"\"\"			{
-    				"Statement": [
-    				 {
-    					"Action": [
-    					"oss:ListObjects",
-    					"oss:ListObjects"
-    			  		],
-    			  		"Effect": "Deny",
-    			  		"Resource": [
-    						"acs:oss:*:*:mybucket",
-    						"acs:oss:*:*:mybucket/*"
-    			  		]
-    				 }
-    		  		],
-    				"Version": "1"
-    			}
+        policy_document=\"\"\"\\x09\\x09\\x09{
+    \\x09\\x09\\x09\\x09"Statement": [
+    \\x09\\x09\\x09\\x09 {
+    \\x09\\x09\\x09\\x09\\x09"Action": [
+    \\x09\\x09\\x09\\x09\\x09"oss:ListObjects",
+    \\x09\\x09\\x09\\x09\\x09"oss:ListObjects"
+    \\x09\\x09\\x09  \\x09\\x09],
+    \\x09\\x09\\x09  \\x09\\x09"Effect": "Deny",
+    \\x09\\x09\\x09  \\x09\\x09"Resource": [
+    \\x09\\x09\\x09\\x09\\x09\\x09"acs:oss:*:*:mybucket",
+    \\x09\\x09\\x09\\x09\\x09\\x09"acs:oss:*:*:mybucket/*"
+    \\x09\\x09\\x09  \\x09\\x09]
+    \\x09\\x09\\x09\\x09 }
+    \\x09\\x09  \\x09\\x09],
+    \\x09\\x09\\x09\\x09"Version": "1"
+    \\x09\\x09\\x09}
     \"\"\",
         description="this is a policy example",
         force=True)

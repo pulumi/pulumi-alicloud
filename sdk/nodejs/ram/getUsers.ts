@@ -36,22 +36,22 @@ import * as utilities from "../utilities";
  * });
  * const defaultPolicy = new alicloud.ram.Policy("default", {
  *     policyName: "ram-policy-example",
- *     policyDocument: `			{
- * 				"Statement": [
- * 				 {
- * 					"Action": [
- * 					"oss:ListObjects",
- * 					"oss:ListObjects"
- * 			  		],
- * 			  		"Effect": "Deny",
- * 			  		"Resource": [
- * 						"acs:oss:*:*:mybucket",
- * 						"acs:oss:*:*:mybucket/*"
- * 			  		]
- * 				 }
- * 		  		],
- * 				"Version": "1"
- * 			}
+ *     policyDocument: `\x09\x09\x09{
+ * \x09\x09\x09\x09"Statement": [
+ * \x09\x09\x09\x09 {
+ * \x09\x09\x09\x09\x09"Action": [
+ * \x09\x09\x09\x09\x09"oss:ListObjects",
+ * \x09\x09\x09\x09\x09"oss:ListObjects"
+ * \x09\x09\x09  \x09\x09],
+ * \x09\x09\x09  \x09\x09"Effect": "Deny",
+ * \x09\x09\x09  \x09\x09"Resource": [
+ * \x09\x09\x09\x09\x09\x09"acs:oss:*:*:mybucket",
+ * \x09\x09\x09\x09\x09\x09"acs:oss:*:*:mybucket/*"
+ * \x09\x09\x09  \x09\x09]
+ * \x09\x09\x09\x09 }
+ * \x09\x09  \x09\x09],
+ * \x09\x09\x09\x09"Version": "1"
+ * \x09\x09\x09}
  * `,
  *     description: "this is a policy example",
  *     force: true,
@@ -172,22 +172,22 @@ export interface GetUsersResult {
  * });
  * const defaultPolicy = new alicloud.ram.Policy("default", {
  *     policyName: "ram-policy-example",
- *     policyDocument: `			{
- * 				"Statement": [
- * 				 {
- * 					"Action": [
- * 					"oss:ListObjects",
- * 					"oss:ListObjects"
- * 			  		],
- * 			  		"Effect": "Deny",
- * 			  		"Resource": [
- * 						"acs:oss:*:*:mybucket",
- * 						"acs:oss:*:*:mybucket/*"
- * 			  		]
- * 				 }
- * 		  		],
- * 				"Version": "1"
- * 			}
+ *     policyDocument: `\x09\x09\x09{
+ * \x09\x09\x09\x09"Statement": [
+ * \x09\x09\x09\x09 {
+ * \x09\x09\x09\x09\x09"Action": [
+ * \x09\x09\x09\x09\x09"oss:ListObjects",
+ * \x09\x09\x09\x09\x09"oss:ListObjects"
+ * \x09\x09\x09  \x09\x09],
+ * \x09\x09\x09  \x09\x09"Effect": "Deny",
+ * \x09\x09\x09  \x09\x09"Resource": [
+ * \x09\x09\x09\x09\x09\x09"acs:oss:*:*:mybucket",
+ * \x09\x09\x09\x09\x09\x09"acs:oss:*:*:mybucket/*"
+ * \x09\x09\x09  \x09\x09]
+ * \x09\x09\x09\x09 }
+ * \x09\x09  \x09\x09],
+ * \x09\x09\x09\x09"Version": "1"
+ * \x09\x09\x09}
  * `,
  *     description: "this is a policy example",
  *     force: true,

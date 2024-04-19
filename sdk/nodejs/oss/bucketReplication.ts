@@ -31,40 +31,40 @@ import * as utilities from "../utilities";
  * const bucketDest = new alicloud.oss.Bucket("bucket_dest", {bucket: `example-dest-${_default.result}`});
  * const role = new alicloud.ram.Role("role", {
  *     name: `example-role-${_default.result}`,
- *     document: `		{
- * 		  "Statement": [
- * 			{
- * 			  "Action": "sts:AssumeRole",
- * 			  "Effect": "Allow",
- * 			  "Principal": {
- * 				"Service": [
- * 				  "oss.aliyuncs.com"
- * 				]
- * 			  }
- * 			}
- * 		  ],
- * 		  "Version": "1"
- * 		}
+ *     document: `\x09\x09{
+ * \x09\x09  "Statement": [
+ * \x09\x09\x09{
+ * \x09\x09\x09  "Action": "sts:AssumeRole",
+ * \x09\x09\x09  "Effect": "Allow",
+ * \x09\x09\x09  "Principal": {
+ * \x09\x09\x09\x09"Service": [
+ * \x09\x09\x09\x09  "oss.aliyuncs.com"
+ * \x09\x09\x09\x09]
+ * \x09\x09\x09  }
+ * \x09\x09\x09}
+ * \x09\x09  ],
+ * \x09\x09  "Version": "1"
+ * \x09\x09}
  * `,
  *     description: "this is a test",
  *     force: true,
  * });
  * const policy = new alicloud.ram.Policy("policy", {
  *     policyName: `example-policy-${_default.result}`,
- *     policyDocument: `		{
- * 		  "Statement": [
- * 			{
- * 			  "Action": [
- * 				"*"
- * 			  ],
- * 			  "Effect": "Allow",
- * 			  "Resource": [
- * 				"*"
- * 			  ]
- * 			}
- * 		  ],
- * 			"Version": "1"
- * 		}
+ *     policyDocument: `\x09\x09{
+ * \x09\x09  "Statement": [
+ * \x09\x09\x09{
+ * \x09\x09\x09  "Action": [
+ * \x09\x09\x09\x09"*"
+ * \x09\x09\x09  ],
+ * \x09\x09\x09  "Effect": "Allow",
+ * \x09\x09\x09  "Resource": [
+ * \x09\x09\x09\x09"*"
+ * \x09\x09\x09  ]
+ * \x09\x09\x09}
+ * \x09\x09  ],
+ * \x09\x09\x09"Version": "1"
+ * \x09\x09}
  * `,
  *     description: "this is a policy test",
  *     force: true,

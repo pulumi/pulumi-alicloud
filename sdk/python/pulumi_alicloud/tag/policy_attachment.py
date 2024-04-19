@@ -154,7 +154,7 @@ class PolicyAttachment(pulumi.CustomResource):
             policy_name=name,
             policy_desc=name,
             user_type="USER",
-            policy_content="		{\\"tags\\":{\\"CostCenter\\":{\\"tag_value\\":{\\"@@assign\\":[\\"Beijing\\",\\"Shanghai\\"]},\\"tag_key\\":{\\"@@assign\\":\\"CostCenter\\"}}}}\\n")
+            policy_content="\\x09\\x09{\\"tags\\":{\\"CostCenter\\":{\\"tag_value\\":{\\"@@assign\\":[\\"Beijing\\",\\"Shanghai\\"]},\\"tag_key\\":{\\"@@assign\\":\\"CostCenter\\"}}}}\\n")
         example_policy_attachment = alicloud.tag.PolicyAttachment("example",
             policy_id=example.id,
             target_id=default.id,
@@ -207,7 +207,7 @@ class PolicyAttachment(pulumi.CustomResource):
             policy_name=name,
             policy_desc=name,
             user_type="USER",
-            policy_content="		{\\"tags\\":{\\"CostCenter\\":{\\"tag_value\\":{\\"@@assign\\":[\\"Beijing\\",\\"Shanghai\\"]},\\"tag_key\\":{\\"@@assign\\":\\"CostCenter\\"}}}}\\n")
+            policy_content="\\x09\\x09{\\"tags\\":{\\"CostCenter\\":{\\"tag_value\\":{\\"@@assign\\":[\\"Beijing\\",\\"Shanghai\\"]},\\"tag_key\\":{\\"@@assign\\":\\"CostCenter\\"}}}}\\n")
         example_policy_attachment = alicloud.tag.PolicyAttachment("example",
             policy_id=example.id,
             target_id=default.id,

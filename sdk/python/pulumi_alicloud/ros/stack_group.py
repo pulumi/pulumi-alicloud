@@ -481,7 +481,7 @@ class StackGroup(pulumi.CustomResource):
         example = alicloud.ros.StackGroup("example",
             stack_group_name="example_value",
             template_body=\"\"\"    {
-            	"ROSTemplateFormatVersion": "2015-09-01"
+            \\x09"ROSTemplateFormatVersion": "2015-09-01"
             }
         \"\"\")
         ```
@@ -535,7 +535,7 @@ class StackGroup(pulumi.CustomResource):
         example = alicloud.ros.StackGroup("example",
             stack_group_name="example_value",
             template_body=\"\"\"    {
-            	"ROSTemplateFormatVersion": "2015-09-01"
+            \\x09"ROSTemplateFormatVersion": "2015-09-01"
             }
         \"\"\")
         ```
