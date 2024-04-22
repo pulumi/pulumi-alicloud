@@ -46,7 +46,7 @@ import * as utilities from "../utilities";
  *   steps:
  *     - type: wait
  *       name: custom_wait
- *       duration: $.wait
+ *       duration: .wait
  * `,
  *     roleArn: _default.arn,
  *     description: "Test for terraform fnf_flow.",

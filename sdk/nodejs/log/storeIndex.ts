@@ -41,15 +41,15 @@ import * as utilities from "../utilities";
  *     logstore: exampleStore.name,
  *     fullText: {
  *         caseSensitive: true,
- *         token: ` #$^*
- * 	`,
+ *         token: ` #^*\x0d
+ * \x09`,
  *     },
  *     fieldSearches: [{
  *         name: "terraform-example",
  *         enableAnalytics: true,
  *         type: "text",
- *         token: ` #$^*
- * 	`,
+ *         token: ` #^*\x0d
+ * \x09`,
  *     }],
  * });
  * ```

@@ -216,7 +216,7 @@ class Template(pulumi.CustomResource):
         example = alicloud.ros.Template("example",
             template_name="example_value",
             template_body=\"\"\"    {
-            	"ROSTemplateFormatVersion": "2015-09-01"
+            \\x09"ROSTemplateFormatVersion": "2015-09-01"
             }
         \"\"\")
         ```
@@ -263,7 +263,7 @@ class Template(pulumi.CustomResource):
         example = alicloud.ros.Template("example",
             template_name="example_value",
             template_body=\"\"\"    {
-            	"ROSTemplateFormatVersion": "2015-09-01"
+            \\x09"ROSTemplateFormatVersion": "2015-09-01"
             }
         \"\"\")
         ```

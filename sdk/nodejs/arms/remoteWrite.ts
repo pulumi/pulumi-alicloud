@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  *   - source_labels: [instance_id]
  *     separator: ;
  *     regex: si-6e2ca86444db4e55a7c1
- *     replacement: $1
+ *     replacement: 1
  *     action: keep
  * `,
  * });

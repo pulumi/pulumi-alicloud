@@ -566,7 +566,7 @@ class Execution(pulumi.CustomResource):
         example = alicloud.oos.Execution("example",
             template_name=default.template_name,
             description="From TF Test",
-            parameters="				{\\"Status\\":\\"Running\\"}\\n")
+            parameters="\\x09\\x09\\x09\\x09{\\"Status\\":\\"Running\\"}\\n")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -641,7 +641,7 @@ class Execution(pulumi.CustomResource):
         example = alicloud.oos.Execution("example",
             template_name=default.template_name,
             description="From TF Test",
-            parameters="				{\\"Status\\":\\"Running\\"}\\n")
+            parameters="\\x09\\x09\\x09\\x09{\\"Status\\":\\"Running\\"}\\n")
         ```
         <!--End PulumiCodeChooser -->
 

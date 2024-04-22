@@ -50,7 +50,7 @@ import * as utilities from "../utilities";
  * const example = new alicloud.oos.Execution("example", {
  *     templateName: _default.templateName,
  *     description: "From TF Test",
- *     parameters: "				{\"Status\":\"Running\"}\n",
+ *     parameters: "\x09\x09\x09\x09{\"Status\":\"Running\"}\n",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

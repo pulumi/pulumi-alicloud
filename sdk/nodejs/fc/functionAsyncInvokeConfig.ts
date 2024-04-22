@@ -34,36 +34,36 @@ import * as utilities from "../utilities";
  * });
  * const defaultRole = new alicloud.ram.Role("default", {
  *     name: `examplerole${defaultInteger.result}`,
- *     document: `	{
- * 		"Statement": [
- * 		  {
- * 			"Action": "sts:AssumeRole",
- * 			"Effect": "Allow",
- * 			"Principal": {
- * 			  "Service": [
- * 				"fc.aliyuncs.com"
- * 			  ]
- * 			}
- * 		  }
- * 		],
- * 		"Version": "1"
- * 	}
+ *     document: `\x09{
+ * \x09\x09"Statement": [
+ * \x09\x09  {
+ * \x09\x09\x09"Action": "sts:AssumeRole",
+ * \x09\x09\x09"Effect": "Allow",
+ * \x09\x09\x09"Principal": {
+ * \x09\x09\x09  "Service": [
+ * \x09\x09\x09\x09"fc.aliyuncs.com"
+ * \x09\x09\x09  ]
+ * \x09\x09\x09}
+ * \x09\x09  }
+ * \x09\x09],
+ * \x09\x09"Version": "1"
+ * \x09}
  * `,
  *     description: "this is a example",
  *     force: true,
  * });
  * const defaultPolicy = new alicloud.ram.Policy("default", {
  *     policyName: `examplepolicy${defaultInteger.result}`,
- *     policyDocument: `	{
- * 		"Version": "1",
- * 		"Statement": [
- * 		  {
- * 			"Action": "mns:*",
- * 			"Resource": "*",
- * 			"Effect": "Allow"
- * 		  }
- * 		]
- * 	  }
+ *     policyDocument: `\x09{
+ * \x09\x09"Version": "1",
+ * \x09\x09"Statement": [
+ * \x09\x09  {
+ * \x09\x09\x09"Action": "mns:*",
+ * \x09\x09\x09"Resource": "*",
+ * \x09\x09\x09"Effect": "Allow"
+ * \x09\x09  }
+ * \x09\x09]
+ * \x09  }
  * `,
  * });
  * const defaultRolePolicyAttachment = new alicloud.ram.RolePolicyAttachment("default", {

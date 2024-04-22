@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * const example = new alicloud.ros.StackGroup("example", {
  *     stackGroupName: "example_value",
  *     templateBody: `    {
- *     	"ROSTemplateFormatVersion": "2015-09-01"
+ *     \x09"ROSTemplateFormatVersion": "2015-09-01"
  *     }
  * `,
  * });

@@ -87,7 +87,7 @@ namespace Pulumi.AliCloud.Vpc
     ///     {
     ///         DependsOn =
     ///         {
-    ///             barRouterInterfaceConnection, 
+    ///             barRouterInterfaceConnection,
     ///         },
     ///     });
     /// 
