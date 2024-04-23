@@ -26,7 +26,6 @@ namespace Pulumi.AliCloud.Hbase
     /// 
     /// ### Create a hbase instance
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -70,7 +69,6 @@ namespace Pulumi.AliCloud.Hbase
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// this is a example for class netType instance. you can find more detail with the examples/hbase dir.
     /// 

@@ -30,32 +30,16 @@ public final class ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs exten
         return Optional.ofNullable(this.bgpStatus);
     }
 
-    /**
-     * Local asn.
-     * 
-     */
     @Import(name="localAsn")
     private @Nullable Output<String> localAsn;
 
-    /**
-     * @return Local asn.
-     * 
-     */
     public Optional<Output<String>> localAsn() {
         return Optional.ofNullable(this.localAsn);
     }
 
-    /**
-     * Local bgp IP.
-     * 
-     */
     @Import(name="localBgpIp")
     private @Nullable Output<String> localBgpIp;
 
-    /**
-     * @return Local bgp IP.
-     * 
-     */
     public Optional<Output<String>> localBgpIp() {
         return Optional.ofNullable(this.localBgpIp);
     }
@@ -90,17 +74,9 @@ public final class ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs exten
         return Optional.ofNullable(this.peerBgpIp);
     }
 
-    /**
-     * IPSec tunnel Cidr.
-     * 
-     */
     @Import(name="tunnelCidr")
     private @Nullable Output<String> tunnelCidr;
 
-    /**
-     * @return IPSec tunnel Cidr.
-     * 
-     */
     public Optional<Output<String>> tunnelCidr() {
         return Optional.ofNullable(this.tunnelCidr);
     }
@@ -155,44 +131,20 @@ public final class ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs exten
             return bgpStatus(Output.of(bgpStatus));
         }
 
-        /**
-         * @param localAsn Local asn.
-         * 
-         * @return builder
-         * 
-         */
         public Builder localAsn(@Nullable Output<String> localAsn) {
             $.localAsn = localAsn;
             return this;
         }
 
-        /**
-         * @param localAsn Local asn.
-         * 
-         * @return builder
-         * 
-         */
         public Builder localAsn(String localAsn) {
             return localAsn(Output.of(localAsn));
         }
 
-        /**
-         * @param localBgpIp Local bgp IP.
-         * 
-         * @return builder
-         * 
-         */
         public Builder localBgpIp(@Nullable Output<String> localBgpIp) {
             $.localBgpIp = localBgpIp;
             return this;
         }
 
-        /**
-         * @param localBgpIp Local bgp IP.
-         * 
-         * @return builder
-         * 
-         */
         public Builder localBgpIp(String localBgpIp) {
             return localBgpIp(Output.of(localBgpIp));
         }
@@ -239,23 +191,11 @@ public final class ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs exten
             return peerBgpIp(Output.of(peerBgpIp));
         }
 
-        /**
-         * @param tunnelCidr IPSec tunnel Cidr.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tunnelCidr(@Nullable Output<String> tunnelCidr) {
             $.tunnelCidr = tunnelCidr;
             return this;
         }
 
-        /**
-         * @param tunnelCidr IPSec tunnel Cidr.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tunnelCidr(String tunnelCidr) {
             return tunnelCidr(Output.of(tunnelCidr));
         }

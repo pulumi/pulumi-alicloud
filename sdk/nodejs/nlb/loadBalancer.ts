@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -65,7 +64,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -184,7 +182,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly securityGroupIds!: pulumi.Output<string[]>;
     /**
-     * ON.
+     * The status of the resource.
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -359,7 +357,7 @@ export interface LoadBalancerState {
      */
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * ON.
+     * The status of the resource.
      */
     status?: pulumi.Input<string>;
     /**

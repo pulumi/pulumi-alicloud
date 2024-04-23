@@ -11,71 +11,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DomainCertInfo {
-    /**
-     * @return If You Enable HTTPS Here Certificate Name.
-     * 
-     */
     private @Nullable String certName;
-    /**
-     * @return Certificate Type. Value Range:
-     * * upload: Certificate
-     * * cas: Certificate Authority Certificate.
-     * * free: Free Certificate.
-     * 
-     */
     private @Nullable String certType;
-    /**
-     * @return Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
-     * 
-     */
     private @Nullable String sslPri;
-    /**
-     * @return Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
-     * 
-     */
     private @Nullable String sslProtocol;
-    /**
-     * @return If You Enable HTTPS Here Key.
-     * 
-     */
     private @Nullable String sslPub;
 
     private DomainCertInfo() {}
-    /**
-     * @return If You Enable HTTPS Here Certificate Name.
-     * 
-     */
     public Optional<String> certName() {
         return Optional.ofNullable(this.certName);
     }
-    /**
-     * @return Certificate Type. Value Range:
-     * * upload: Certificate
-     * * cas: Certificate Authority Certificate.
-     * * free: Free Certificate.
-     * 
-     */
     public Optional<String> certType() {
         return Optional.ofNullable(this.certType);
     }
-    /**
-     * @return Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
-     * 
-     */
     public Optional<String> sslPri() {
         return Optional.ofNullable(this.sslPri);
     }
-    /**
-     * @return Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
-     * 
-     */
     public Optional<String> sslProtocol() {
         return Optional.ofNullable(this.sslProtocol);
     }
-    /**
-     * @return If You Enable HTTPS Here Key.
-     * 
-     */
     public Optional<String> sslPub() {
         return Optional.ofNullable(this.sslPub);
     }

@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Emr
     /// 
     /// ### 1. Create A Cluster
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -207,7 +206,6 @@ namespace Pulumi.AliCloud.Emr
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### 2. Scale Up
     /// The hosts of EMR Cluster are orginized as host group. Scaling up/down is operating host group.
@@ -219,7 +217,6 @@ namespace Pulumi.AliCloud.Emr
     /// 
     /// As the following case, we scale up the TASK group 2 nodes by increasing host_group.node_count by 2.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -406,7 +403,6 @@ namespace Pulumi.AliCloud.Emr
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### 3. Scale Down
     /// 
@@ -416,7 +412,6 @@ namespace Pulumi.AliCloud.Emr
     /// 
     /// The following is an example. We scale down the cluster by decreasing the node count by 2, and specifying the scale-down instance list.
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -603,11 +598,9 @@ namespace Pulumi.AliCloud.Emr
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ### 4. Create a emr gateway cluster
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -749,7 +742,6 @@ namespace Pulumi.AliCloud.Emr
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

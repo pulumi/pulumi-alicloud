@@ -170,7 +170,6 @@ def get_portfolios(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -179,7 +178,6 @@ def get_portfolios(ids: Optional[Sequence[str]] = None,
         name_regex=default_alicloud_service_catalog_portfolio["name"])
     pulumi.export("alicloudServiceCatalogPortfolioExampleId", default.portfolios[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Portfolio IDs.
@@ -236,7 +234,6 @@ def get_portfolios_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -245,7 +242,6 @@ def get_portfolios_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
         name_regex=default_alicloud_service_catalog_portfolio["name"])
     pulumi.export("alicloudServiceCatalogPortfolioExampleId", default.portfolios[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Portfolio IDs.

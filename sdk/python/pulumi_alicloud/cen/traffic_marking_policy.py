@@ -271,7 +271,6 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -288,7 +287,6 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
             traffic_marking_policy_name="tf_example",
             transit_router_id=example_transit_router.transit_router_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -324,7 +322,6 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -341,7 +338,6 @@ class TrafficMarkingPolicy(pulumi.CustomResource):
             traffic_marking_policy_name="tf_example",
             transit_router_id=example_transit_router.transit_router_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

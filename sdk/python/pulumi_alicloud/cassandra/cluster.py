@@ -747,7 +747,6 @@ class Cluster(pulumi.CustomResource):
 
         ### Create a cassandra cluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -767,7 +766,6 @@ class Cluster(pulumi.CustomResource):
             maintain_end_time="20:00Z",
             ip_white="127.0.0.1")
         ```
-        <!--End PulumiCodeChooser -->
 
         This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.
 
@@ -827,7 +825,6 @@ class Cluster(pulumi.CustomResource):
 
         ### Create a cassandra cluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -847,7 +844,6 @@ class Cluster(pulumi.CustomResource):
             maintain_end_time="20:00Z",
             ip_white="127.0.0.1")
         ```
-        <!--End PulumiCodeChooser -->
 
         This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.
 

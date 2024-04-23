@@ -299,7 +299,6 @@ class Order(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -313,7 +312,6 @@ class Order(pulumi.CustomResource):
             package_version="yuncode2713600001",
             coupon_id="")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -345,7 +343,6 @@ class Order(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -359,7 +356,6 @@ class Order(pulumi.CustomResource):
             package_version="yuncode2713600001",
             coupon_id="")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

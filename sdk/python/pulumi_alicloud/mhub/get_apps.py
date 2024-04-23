@@ -133,7 +133,6 @@ def get_apps(enable_details: Optional[bool] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -152,7 +151,6 @@ def get_apps(enable_details: Optional[bool] = None,
     name_regex = alicloud.mhub.get_apps(name_regex="^my-App")
     pulumi.export("mhubAppId2", name_regex.apps[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -201,7 +199,6 @@ def get_apps_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = Non
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -220,7 +217,6 @@ def get_apps_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = Non
     name_regex = alicloud.mhub.get_apps(name_regex="^my-App")
     pulumi.export("mhubAppId2", name_regex.apps[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

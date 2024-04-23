@@ -365,9 +365,7 @@ func (o ClusterParameterArrayOutput) Index(i pulumi.IntInput) ClusterParameterOu
 }
 
 type ParameterGroupParameter struct {
-	// The name of a parameter in the parameter template.
-	ParamName string `pulumi:"paramName"`
-	// The value of a parameter in the parameter template.
+	ParamName  string `pulumi:"paramName"`
 	ParamValue string `pulumi:"paramValue"`
 }
 
@@ -383,9 +381,7 @@ type ParameterGroupParameterInput interface {
 }
 
 type ParameterGroupParameterArgs struct {
-	// The name of a parameter in the parameter template.
-	ParamName pulumi.StringInput `pulumi:"paramName"`
-	// The value of a parameter in the parameter template.
+	ParamName  pulumi.StringInput `pulumi:"paramName"`
 	ParamValue pulumi.StringInput `pulumi:"paramValue"`
 }
 
@@ -440,12 +436,10 @@ func (o ParameterGroupParameterOutput) ToParameterGroupParameterOutputWithContex
 	return o
 }
 
-// The name of a parameter in the parameter template.
 func (o ParameterGroupParameterOutput) ParamName() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterGroupParameter) string { return v.ParamName }).(pulumi.StringOutput)
 }
 
-// The value of a parameter in the parameter template.
 func (o ParameterGroupParameterOutput) ParamValue() pulumi.StringOutput {
 	return o.ApplyT(func(v ParameterGroupParameter) string { return v.ParamValue }).(pulumi.StringOutput)
 }

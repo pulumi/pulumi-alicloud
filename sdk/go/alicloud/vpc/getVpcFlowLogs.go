@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetVpcFlowLogs(ctx *pulumi.Context, args *GetVpcFlowLogsArgs, opts ...pulumi.InvokeOption) (*GetVpcFlowLogsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVpcFlowLogsResult

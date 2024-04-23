@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -57,7 +56,6 @@ import * as utilities from "../utilities";
  * });
  * export const saeApplicationId = defaultGetApplications.apply(defaultGetApplications => defaultGetApplications.applications?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getApplications(args?: GetApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationsResult> {
     args = args || {};
@@ -118,7 +116,7 @@ export interface GetApplicationsArgs {
      */
     reverse?: boolean;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `RUNNING`, `STOPPED`,`UNKNOWN`.
      */
     status?: string;
 }
@@ -152,7 +150,6 @@ export interface GetApplicationsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -194,7 +191,6 @@ export interface GetApplicationsResult {
  * });
  * export const saeApplicationId = defaultGetApplications.apply(defaultGetApplications => defaultGetApplications.applications?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getApplicationsOutput(args?: GetApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationsResult> {
     return pulumi.output(args).apply((a: any) => getApplications(a, opts))
@@ -241,7 +237,7 @@ export interface GetApplicationsOutputArgs {
      */
     reverse?: pulumi.Input<boolean>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `RUNNING`, `STOPPED`,`UNKNOWN`.
      */
     status?: pulumi.Input<string>;
 }

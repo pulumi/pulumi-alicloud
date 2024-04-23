@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetEcsPrefixLists(ctx *pulumi.Context, args *GetEcsPrefixListsArgs, opts ...pulumi.InvokeOption) (*GetEcsPrefixListsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsPrefixListsResult
@@ -60,7 +58,7 @@ func GetEcsPrefixLists(ctx *pulumi.Context, args *GetEcsPrefixListsArgs, opts ..
 
 // A collection of arguments for invoking getEcsPrefixLists.
 type GetEcsPrefixListsArgs struct {
-	// The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+	// The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
 	AddressFamily *string `pulumi:"addressFamily"`
 	EnableDetails *bool   `pulumi:"enableDetails"`
 	// A list of Prefix List IDs.
@@ -99,7 +97,7 @@ func GetEcsPrefixListsOutput(ctx *pulumi.Context, args GetEcsPrefixListsOutputAr
 
 // A collection of arguments for invoking getEcsPrefixLists.
 type GetEcsPrefixListsOutputArgs struct {
-	// The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+	// The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
 	AddressFamily pulumi.StringPtrInput `pulumi:"addressFamily"`
 	EnableDetails pulumi.BoolPtrInput   `pulumi:"enableDetails"`
 	// A list of Prefix List IDs.

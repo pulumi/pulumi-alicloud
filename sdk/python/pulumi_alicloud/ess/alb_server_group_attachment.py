@@ -213,7 +213,6 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -279,7 +278,6 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
             weight=50,
             force_attach=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -319,7 +317,6 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -385,7 +382,6 @@ class AlbServerGroupAttachment(pulumi.CustomResource):
             weight=50,
             force_attach=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

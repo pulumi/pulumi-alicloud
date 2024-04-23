@@ -184,7 +184,6 @@ def get_serverless_instances(db_instance_class: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -204,18 +203,17 @@ def get_serverless_instances(db_instance_class: Optional[str] = None,
         })
     pulumi.export("mongodbServerlessInstanceId1", example.instances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str db_instance_class: The db instance class.
     :param str db_instance_description: The db instance description.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Serverless Instance IDs.
-    :param str network_type: The network type of the instance.
+    :param str network_type: The network type of the instance. Valid values: `Classic` or `VPC`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
-    :param str status: The status of the instance.
-    :param Mapping[str, Any] tags: The tag of the resource.
+    :param str status: The instance status. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardSwitching`, `HASwitching`, `Importing`, `ImportingFromOthers`, `LinkSwitching`, `MinorVersionUpgrading`, `NodeCreating`, `NodeDeleting`, `Rebooting`, `Restoring`, `Running`, `SSLModifying`, `TDEModifying`, `TempDBInstanceCreating`, `Transing`, `TransingToOthers`, `released`.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     :param str vpc_id: The ID of the VPC network.
     :param str vswitch_id: The id of the vswitch.
     :param str zone_id: The ID of the zone.
@@ -276,7 +274,6 @@ def get_serverless_instances_output(db_instance_class: Optional[pulumi.Input[Opt
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -296,18 +293,17 @@ def get_serverless_instances_output(db_instance_class: Optional[pulumi.Input[Opt
         })
     pulumi.export("mongodbServerlessInstanceId1", example.instances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str db_instance_class: The db instance class.
     :param str db_instance_description: The db instance description.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Serverless Instance IDs.
-    :param str network_type: The network type of the instance.
+    :param str network_type: The network type of the instance. Valid values: `Classic` or `VPC`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
-    :param str status: The status of the instance.
-    :param Mapping[str, Any] tags: The tag of the resource.
+    :param str status: The instance status. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardSwitching`, `HASwitching`, `Importing`, `ImportingFromOthers`, `LinkSwitching`, `MinorVersionUpgrading`, `NodeCreating`, `NodeDeleting`, `Rebooting`, `Restoring`, `Running`, `SSLModifying`, `TDEModifying`, `TempDBInstanceCreating`, `Transing`, `TransingToOthers`, `released`.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     :param str vpc_id: The ID of the VPC network.
     :param str vswitch_id: The id of the vswitch.
     :param str zone_id: The ID of the zone.

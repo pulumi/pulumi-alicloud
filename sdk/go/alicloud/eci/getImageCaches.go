@@ -17,8 +17,6 @@ import (
 //
 // ## Example Usage
 //
-//	<!--Start PulumiCodeChooser -->
-//
 // ```go
 // package main
 //
@@ -30,22 +28,21 @@ import (
 // )
 //
 //	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := eci.GetImageCaches(ctx, &eci.GetImageCachesArgs{
-//				Ids: []string{
-//					"imc-bp1ef0dyp7ldhb1d****",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("imageCache", example.Caches[0].Id)
-//			return nil
-//		})
+//	   pulumi.Run(func(ctx *pulumi.Context) error {
+//	       example, err := eci.GetImageCaches(ctx, &eci.GetImageCachesArgs{
+//	           Ids: []string{
+//	               "imc-bp1ef0dyp7ldhb1d****",
+//	           },
+//	       }, nil)
+//	       if err != nil {
+//	           return err
+//	       }
+//	       ctx.Export("imageCache", example.Caches[0].Id)
+//	       return nil
+//	   })
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetImageCaches(ctx *pulumi.Context, args *GetImageCachesArgs, opts ...pulumi.InvokeOption) (*GetImageCachesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetImageCachesResult

@@ -12,21 +12,12 @@ namespace Pulumi.AliCloud.Bp.Inputs
 
     public sealed class StudioApplicationInstanceArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The id of the instance.
-        /// </summary>
         [Input("id")]
         public Input<string>? Id { get; set; }
 
-        /// <summary>
-        /// The name of the instance.
-        /// </summary>
         [Input("nodeName")]
         public Input<string>? NodeName { get; set; }
 
-        /// <summary>
-        /// The type of the instance.
-        /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
 

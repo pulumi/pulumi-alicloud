@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.AliCloud.CR
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNamespacesResult> InvokeAsync(GetNamespacesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNamespacesResult>("alicloud:cr/getNamespaces:getNamespaces", args ?? new GetNamespacesArgs(), options.WithDefaults());
@@ -52,7 +50,6 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.AliCloud.CR
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNamespacesResult> Invoke(GetNamespacesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNamespacesResult>("alicloud:cr/getNamespaces:getNamespaces", args ?? new GetNamespacesInvokeArgs(), options.WithDefaults());

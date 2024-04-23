@@ -12,21 +12,12 @@ namespace Pulumi.AliCloud.Arms.Inputs
 
     public sealed class DispatchRuleNotifyRuleNotifyObjectGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the contact or contact group.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the contact or contact group.
-        /// </summary>
         [Input("notifyObjectId", required: true)]
         public Input<string> NotifyObjectId { get; set; } = null!;
 
-        /// <summary>
-        /// The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
-        /// </summary>
         [Input("notifyType", required: true)]
         public Input<string> NotifyType { get; set; } = null!;
 

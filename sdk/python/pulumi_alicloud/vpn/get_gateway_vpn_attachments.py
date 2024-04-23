@@ -146,7 +146,6 @@ def get_gateway_vpn_attachments(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -158,7 +157,6 @@ def get_gateway_vpn_attachments(ids: Optional[Sequence[str]] = None,
     pulumi.export("localId", vpn_attachments["attachments"][0]["ikeConfig"][0]["localId"])
     pulumi.export("internetIp", vpn_attachments["attachments"][0]["internetIp"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Vpn Attachment IDs.
@@ -209,7 +207,6 @@ def get_gateway_vpn_attachments_output(ids: Optional[pulumi.Input[Optional[Seque
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -221,7 +218,6 @@ def get_gateway_vpn_attachments_output(ids: Optional[pulumi.Input[Optional[Seque
     pulumi.export("localId", vpn_attachments["attachments"][0]["ikeConfig"][0]["localId"])
     pulumi.export("internetIp", vpn_attachments["attachments"][0]["internetIp"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Vpn Attachment IDs.

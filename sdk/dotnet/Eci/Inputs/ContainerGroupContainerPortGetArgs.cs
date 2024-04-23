@@ -12,15 +12,9 @@ namespace Pulumi.AliCloud.Eci.Inputs
 
     public sealed class ContainerGroupContainerPortGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// When using the HTTP request method for health check, the port number for HTTP Get request detection.
-        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
-        /// <summary>
-        /// The type of the protocol. Valid values: `TCP` and `UDP`.
-        /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 

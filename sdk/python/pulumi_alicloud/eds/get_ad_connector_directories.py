@@ -113,7 +113,6 @@ def get_ad_connector_directories(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -121,13 +120,12 @@ def get_ad_connector_directories(ids: Optional[Sequence[str]] = None,
     ids = alicloud.eds.get_ad_connector_directories(ids=["example_id"])
     pulumi.export("ecdAdConnectorDirectoryId1", ids.directories[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ad Connector Directory IDs.
     :param str name_regex: A regex string to filter results by Ad Connector Directory name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of directory.
+    :param str status: The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -162,7 +160,6 @@ def get_ad_connector_directories_output(ids: Optional[pulumi.Input[Optional[Sequ
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -170,12 +167,11 @@ def get_ad_connector_directories_output(ids: Optional[pulumi.Input[Optional[Sequ
     ids = alicloud.eds.get_ad_connector_directories(ids=["example_id"])
     pulumi.export("ecdAdConnectorDirectoryId1", ids.directories[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ad Connector Directory IDs.
     :param str name_regex: A regex string to filter results by Ad Connector Directory name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of directory.
+    :param str status: The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
     """
     ...

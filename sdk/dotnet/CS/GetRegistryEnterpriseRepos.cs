@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,7 +40,6 @@ namespace Pulumi.AliCloud.CS
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRegistryEnterpriseReposResult> InvokeAsync(GetRegistryEnterpriseReposArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegistryEnterpriseReposResult>("alicloud:cs/getRegistryEnterpriseRepos:getRegistryEnterpriseRepos", args ?? new GetRegistryEnterpriseReposArgs(), options.WithDefaults());
@@ -53,7 +51,6 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,7 +73,6 @@ namespace Pulumi.AliCloud.CS
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRegistryEnterpriseReposResult> Invoke(GetRegistryEnterpriseReposInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegistryEnterpriseReposResult>("alicloud:cs/getRegistryEnterpriseRepos:getRegistryEnterpriseRepos", args ?? new GetRegistryEnterpriseReposInvokeArgs(), options.WithDefaults());

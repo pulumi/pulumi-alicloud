@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,7 +57,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetExchanges(ctx *pulumi.Context, args *GetExchangesArgs, opts ...pulumi.InvokeOption) (*GetExchangesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetExchangesResult

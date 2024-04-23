@@ -141,7 +141,6 @@ class ControlPolicyOrder(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -161,7 +160,6 @@ class ControlPolicyOrder(pulumi.CustomResource):
             direction=example1.direction,
             order=1)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -194,7 +192,6 @@ class ControlPolicyOrder(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -214,7 +211,6 @@ class ControlPolicyOrder(pulumi.CustomResource):
             direction=example1.direction,
             order=1)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

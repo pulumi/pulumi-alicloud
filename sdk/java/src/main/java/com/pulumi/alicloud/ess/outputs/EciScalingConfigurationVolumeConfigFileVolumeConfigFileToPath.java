@@ -11,29 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath {
-    /**
-     * @return The content of the configuration file. Maximum size: 32 KB.
-     * 
-     */
     private @Nullable String content;
-    /**
-     * @return The relative file path.
-     * 
-     */
     private @Nullable String path;
 
     private EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath() {}
-    /**
-     * @return The content of the configuration file. Maximum size: 32 KB.
-     * 
-     */
     public Optional<String> content() {
         return Optional.ofNullable(this.content);
     }
-    /**
-     * @return The relative file path.
-     * 
-     */
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }

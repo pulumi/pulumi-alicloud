@@ -136,7 +136,6 @@ def get_connections(customer_gateway_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -146,7 +145,6 @@ def get_connections(customer_gateway_id: Optional[str] = None,
         customer_gateway_id="fake-cgw-id",
         output_file="/tmp/vpnconn")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str customer_gateway_id: Use the VPN customer gateway ID as the search key.
@@ -189,7 +187,6 @@ def get_connections_output(customer_gateway_id: Optional[pulumi.Input[Optional[s
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -199,7 +196,6 @@ def get_connections_output(customer_gateway_id: Optional[pulumi.Input[Optional[s
         customer_gateway_id="fake-cgw-id",
         output_file="/tmp/vpnconn")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str customer_gateway_id: Use the VPN customer gateway ID as the search key.

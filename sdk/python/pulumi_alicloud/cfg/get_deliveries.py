@@ -113,7 +113,6 @@ def get_deliveries(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -121,7 +120,6 @@ def get_deliveries(ids: Optional[Sequence[str]] = None,
     ids = alicloud.cfg.get_deliveries(ids=["example_id"])
     pulumi.export("configDeliveryId1", ids.deliveries[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Delivery IDs.
@@ -162,7 +160,6 @@ def get_deliveries_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -170,7 +167,6 @@ def get_deliveries_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] =
     ids = alicloud.cfg.get_deliveries(ids=["example_id"])
     pulumi.export("configDeliveryId1", ids.deliveries[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Delivery IDs.

@@ -16,7 +16,6 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -128,7 +127,6 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [AliCloudResourceType("alicloud:ram/roleAttachment:RoleAttachment")]
     public partial class RoleAttachment : global::Pulumi.CustomResource

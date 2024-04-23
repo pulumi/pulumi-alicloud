@@ -140,14 +140,14 @@ public class Acl extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * The status of the ACL entry. Valid values:
+     * The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return The status of the ACL entry. Valid values:
+     * @return The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
      * 
      */
     public Output<String> status() {

@@ -161,7 +161,6 @@ def get_instance_types(cluster_type: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -177,7 +176,6 @@ def get_instance_types(cluster_type: Optional[str] = None,
         ])
     pulumi.export("firstInstanceType", default.types[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_type: The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.
@@ -234,7 +232,6 @@ def get_instance_types_output(cluster_type: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -250,7 +247,6 @@ def get_instance_types_output(cluster_type: Optional[pulumi.Input[str]] = None,
         ])
     pulumi.export("firstInstanceType", default.types[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_type: The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.

@@ -11,29 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SyntheticTaskMonitorConfApiHttpRequestBody {
-    /**
-     * @return The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
-     * 
-     */
     private @Nullable String content;
-    /**
-     * @return Assertion type, including: httpresead, httpresead, HttpResBody, HttpResBodyJson, httpressetime, IcmpPackLoss (packet loss rate), IcmpPackMaxLatency (maximum packet delay ms), icmppackwebscreen, fmppackavglatency (average delay rendering), TraceRouteHops (number of hops), dnsarecname, websiteOnload (full load time), see the supplement below for specific use.
-     * 
-     */
     private @Nullable String type;
 
     private SyntheticTaskMonitorConfApiHttpRequestBody() {}
-    /**
-     * @return The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
-     * 
-     */
     public Optional<String> content() {
         return Optional.ofNullable(this.content);
     }
-    /**
-     * @return Assertion type, including: httpresead, httpresead, HttpResBody, HttpResBodyJson, httpressetime, IcmpPackLoss (packet loss rate), IcmpPackMaxLatency (maximum packet delay ms), icmppackwebscreen, fmppackavglatency (average delay rendering), TraceRouteHops (number of hops), dnsarecname, websiteOnload (full load time), see the supplement below for specific use.
-     * 
-     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }

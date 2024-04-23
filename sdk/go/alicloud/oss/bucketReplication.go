@@ -22,7 +22,6 @@ import (
 //
 // # Set bucket replication configuration
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -157,7 +156,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -187,7 +185,7 @@ type BucketReplication struct {
 	RuleId pulumi.StringOutput `pulumi:"ruleId"`
 	// Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
 	SourceSelectionCriteria BucketReplicationSourceSelectionCriteriaPtrOutput `pulumi:"sourceSelectionCriteria"`
-	// Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+	// The status of the data replication task. Can be starting, doing and closing.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
 	SyncRole pulumi.StringPtrOutput `pulumi:"syncRole"`
@@ -247,7 +245,7 @@ type bucketReplicationState struct {
 	RuleId *string `pulumi:"ruleId"`
 	// Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
 	SourceSelectionCriteria *BucketReplicationSourceSelectionCriteria `pulumi:"sourceSelectionCriteria"`
-	// Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+	// The status of the data replication task. Can be starting, doing and closing.
 	Status *string `pulumi:"status"`
 	// Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
 	SyncRole *string `pulumi:"syncRole"`
@@ -272,7 +270,7 @@ type BucketReplicationState struct {
 	RuleId pulumi.StringPtrInput
 	// Specifies other conditions used to filter the source objects to replicate. See `sourceSelectionCriteria` below.
 	SourceSelectionCriteria BucketReplicationSourceSelectionCriteriaPtrInput
-	// Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+	// The status of the data replication task. Can be starting, doing and closing.
 	Status pulumi.StringPtrInput
 	// Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
 	SyncRole pulumi.StringPtrInput
@@ -461,7 +459,7 @@ func (o BucketReplicationOutput) SourceSelectionCriteria() BucketReplicationSour
 	}).(BucketReplicationSourceSelectionCriteriaPtrOutput)
 }
 
-// Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+// The status of the data replication task. Can be starting, doing and closing.
 func (o BucketReplicationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *BucketReplication) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

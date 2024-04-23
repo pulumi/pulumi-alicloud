@@ -13,29 +13,11 @@ namespace Pulumi.AliCloud.Sae.Outputs
     [OutputType]
     public sealed class GetApplicationScalingRulesRuleScalingRuleMetricResult
     {
-        /// <summary>
-        /// The maximum number of instances.
-        /// </summary>
         public readonly int MaxReplicas;
-        /// <summary>
-        /// The auto scaling list of monitoring indicators.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricResult> Metrics;
-        /// <summary>
-        /// Monitor indicator elasticity status.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusResult> MetricsStatuses;
-        /// <summary>
-        /// The minimum number of instances.
-        /// </summary>
         public readonly int MinReplicas;
-        /// <summary>
-        /// The shrink rule.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleResult> ScaleDownRules;
-        /// <summary>
-        /// The expansion rules.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleResult> ScaleUpRules;
 
         [OutputConstructor]

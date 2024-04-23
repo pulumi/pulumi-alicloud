@@ -104,7 +104,6 @@ def get_ip_sets(accelerator_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -113,7 +112,6 @@ def get_ip_sets(accelerator_id: Optional[str] = None,
         ids=["example_value"])
     pulumi.export("firstGaIpSetId", example.sets[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The ID of the Global Accelerator (GA) instance.
@@ -153,7 +151,6 @@ def get_ip_sets_output(accelerator_id: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -162,7 +159,6 @@ def get_ip_sets_output(accelerator_id: Optional[pulumi.Input[str]] = None,
         ids=["example_value"])
     pulumi.export("firstGaIpSetId", example.sets[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The ID of the Global Accelerator (GA) instance.

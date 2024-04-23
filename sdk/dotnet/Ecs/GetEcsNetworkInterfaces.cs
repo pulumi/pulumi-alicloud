@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetEcsNetworkInterfacesResult> InvokeAsync(GetEcsNetworkInterfacesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsNetworkInterfacesResult>("alicloud:ecs/getEcsNetworkInterfaces:getEcsNetworkInterfaces", args ?? new GetEcsNetworkInterfacesArgs(), options.WithDefaults());
@@ -58,7 +56,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -82,7 +79,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetEcsNetworkInterfacesResult> Invoke(GetEcsNetworkInterfacesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEcsNetworkInterfacesResult>("alicloud:ecs/getEcsNetworkInterfaces:getEcsNetworkInterfaces", args ?? new GetEcsNetworkInterfacesInvokeArgs(), options.WithDefaults());
@@ -110,7 +106,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? InstanceId { get; set; }
 
         /// <summary>
-        /// The network interface name.
+        /// Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
@@ -140,7 +136,7 @@ namespace Pulumi.AliCloud.Ecs
         public string? PrimaryIpAddress { get; set; }
 
         /// <summary>
-        /// The primary private IP address of the ENI.
+        /// Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
         /// </summary>
         [Input("privateIp")]
         public string? PrivateIp { get; set; }
@@ -164,7 +160,7 @@ namespace Pulumi.AliCloud.Ecs
         public bool? ServiceManaged { get; set; }
 
         /// <summary>
-        /// The status of the ENI.
+        /// The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -173,7 +169,7 @@ namespace Pulumi.AliCloud.Ecs
         private Dictionary<string, object>? _tags;
 
         /// <summary>
-        /// The tags.
+        /// A map of tags assigned to ENIs.
         /// </summary>
         public Dictionary<string, object> Tags
         {
@@ -182,13 +178,13 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The type of the ENI.
+        /// The type of ENI. Valid Values: `Primary`, `Secondary`.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
 
         /// <summary>
-        /// The Vpc Id.
+        /// The vpc id.
         /// </summary>
         [Input("vpcId")]
         public string? VpcId { get; set; }
@@ -226,7 +222,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceId { get; set; }
 
         /// <summary>
-        /// The network interface name.
+        /// Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -256,7 +252,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? PrimaryIpAddress { get; set; }
 
         /// <summary>
-        /// The primary private IP address of the ENI.
+        /// Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
         /// </summary>
         [Input("privateIp")]
         public Input<string>? PrivateIp { get; set; }
@@ -280,7 +276,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? ServiceManaged { get; set; }
 
         /// <summary>
-        /// The status of the ENI.
+        /// The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -289,7 +285,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The tags.
+        /// A map of tags assigned to ENIs.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -298,13 +294,13 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The type of the ENI.
+        /// The type of ENI. Valid Values: `Primary`, `Secondary`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The Vpc Id.
+        /// The vpc id.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

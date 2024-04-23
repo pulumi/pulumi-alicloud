@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudDmsEnterpriseDatabaseExampleId = _default.then(_default => _default.databases?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEnterpriseDatabases(args: GetEnterpriseDatabasesArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseDatabasesResult> {
 
@@ -93,7 +91,6 @@ export interface GetEnterpriseDatabasesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -104,7 +101,6 @@ export interface GetEnterpriseDatabasesResult {
  * });
  * export const alicloudDmsEnterpriseDatabaseExampleId = _default.then(_default => _default.databases?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEnterpriseDatabasesOutput(args: GetEnterpriseDatabasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseDatabasesResult> {
     return pulumi.output(args).apply((a: any) => getEnterpriseDatabases(a, opts))

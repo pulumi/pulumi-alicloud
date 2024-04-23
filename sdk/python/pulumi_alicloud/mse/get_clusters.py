@@ -153,7 +153,6 @@ def get_clusters(cluster_alias_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -163,7 +162,6 @@ def get_clusters(cluster_alias_name: Optional[str] = None,
         status="INIT_SUCCESS")
     pulumi.export("clusterId", example.clusters[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_alias_name: The alias name of MSE Cluster.
@@ -212,7 +210,6 @@ def get_clusters_output(cluster_alias_name: Optional[pulumi.Input[Optional[str]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -222,7 +219,6 @@ def get_clusters_output(cluster_alias_name: Optional[pulumi.Input[Optional[str]]
         status="INIT_SUCCESS")
     pulumi.export("clusterId", example.clusters[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_alias_name: The alias name of MSE Cluster.

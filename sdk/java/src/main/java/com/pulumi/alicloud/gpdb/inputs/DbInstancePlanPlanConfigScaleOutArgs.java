@@ -15,47 +15,23 @@ public final class DbInstancePlanPlanConfigScaleOutArgs extends com.pulumi.resou
 
     public static final DbInstancePlanPlanConfigScaleOutArgs Empty = new DbInstancePlanPlanConfigScaleOutArgs();
 
-    /**
-     * The executed time of the Plan.
-     * 
-     */
     @Import(name="executeTime")
     private @Nullable Output<String> executeTime;
 
-    /**
-     * @return The executed time of the Plan.
-     * 
-     */
     public Optional<Output<String>> executeTime() {
         return Optional.ofNullable(this.executeTime);
     }
 
-    /**
-     * The Cron Time of the plan.
-     * 
-     */
     @Import(name="planCronTime")
     private @Nullable Output<String> planCronTime;
 
-    /**
-     * @return The Cron Time of the plan.
-     * 
-     */
     public Optional<Output<String>> planCronTime() {
         return Optional.ofNullable(this.planCronTime);
     }
 
-    /**
-     * The segment Node Num of the Plan.
-     * 
-     */
     @Import(name="segmentNodeNum")
     private @Nullable Output<String> segmentNodeNum;
 
-    /**
-     * @return The segment Node Num of the Plan.
-     * 
-     */
     public Optional<Output<String>> segmentNodeNum() {
         return Optional.ofNullable(this.segmentNodeNum);
     }
@@ -86,65 +62,29 @@ public final class DbInstancePlanPlanConfigScaleOutArgs extends com.pulumi.resou
             $ = new DbInstancePlanPlanConfigScaleOutArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param executeTime The executed time of the Plan.
-         * 
-         * @return builder
-         * 
-         */
         public Builder executeTime(@Nullable Output<String> executeTime) {
             $.executeTime = executeTime;
             return this;
         }
 
-        /**
-         * @param executeTime The executed time of the Plan.
-         * 
-         * @return builder
-         * 
-         */
         public Builder executeTime(String executeTime) {
             return executeTime(Output.of(executeTime));
         }
 
-        /**
-         * @param planCronTime The Cron Time of the plan.
-         * 
-         * @return builder
-         * 
-         */
         public Builder planCronTime(@Nullable Output<String> planCronTime) {
             $.planCronTime = planCronTime;
             return this;
         }
 
-        /**
-         * @param planCronTime The Cron Time of the plan.
-         * 
-         * @return builder
-         * 
-         */
         public Builder planCronTime(String planCronTime) {
             return planCronTime(Output.of(planCronTime));
         }
 
-        /**
-         * @param segmentNodeNum The segment Node Num of the Plan.
-         * 
-         * @return builder
-         * 
-         */
         public Builder segmentNodeNum(@Nullable Output<String> segmentNodeNum) {
             $.segmentNodeNum = segmentNodeNum;
             return this;
         }
 
-        /**
-         * @param segmentNodeNum The segment Node Num of the Plan.
-         * 
-         * @return builder
-         * 
-         */
         public Builder segmentNodeNum(String segmentNodeNum) {
             return segmentNodeNum(Output.of(segmentNodeNum));
         }

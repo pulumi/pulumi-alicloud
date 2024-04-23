@@ -206,7 +206,6 @@ class EnvCustomJob(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -245,7 +244,6 @@ class EnvCustomJob(pulumi.CustomResource):
         \"\"\",
             aliyun_lang="en")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -280,7 +278,6 @@ class EnvCustomJob(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -319,7 +316,6 @@ class EnvCustomJob(pulumi.CustomResource):
         \"\"\",
             aliyun_lang="en")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

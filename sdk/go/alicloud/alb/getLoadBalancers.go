@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,7 +48,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetLoadBalancers(ctx *pulumi.Context, args *GetLoadBalancersArgs, opts ...pulumi.InvokeOption) (*GetLoadBalancersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLoadBalancersResult
@@ -62,15 +60,16 @@ func GetLoadBalancers(ctx *pulumi.Context, args *GetLoadBalancersArgs, opts ...p
 
 // A collection of arguments for invoking getLoadBalancers.
 type GetLoadBalancersArgs struct {
-	// The type of IP address that the ALB instance uses to provide services.
+	// The type of IP address that the ALB instance uses to provide services. Valid
+	// values: `Intranet`, `Internet`.
 	AddressType *string `pulumi:"addressType"`
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Load Balancer IDs.
 	Ids []string `pulumi:"ids"`
-	// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+	// Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
 	LoadBalancerBusinessStatus *string `pulumi:"loadBalancerBusinessStatus"`
-	// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
+	// Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0. Use 'load_balancer_business_status' replaces it.
 	//
 	// Deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.
 	LoadBalancerBussinessStatus *string `pulumi:"loadBalancerBussinessStatus"`
@@ -84,15 +83,14 @@ type GetLoadBalancersArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
-	Status *string `pulumi:"status"`
-	// The tag of the resource.
-	Tags map[string]interface{} `pulumi:"tags"`
+	// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+	Status *string                `pulumi:"status"`
+	Tags   map[string]interface{} `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId *string `pulumi:"vpcId"`
 	// The vpc ids.
 	VpcIds []string `pulumi:"vpcIds"`
-	// The ID of the zone to which the ALB instance belongs.
+	// The zone ID of the resource.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -135,15 +133,16 @@ func GetLoadBalancersOutput(ctx *pulumi.Context, args GetLoadBalancersOutputArgs
 
 // A collection of arguments for invoking getLoadBalancers.
 type GetLoadBalancersOutputArgs struct {
-	// The type of IP address that the ALB instance uses to provide services.
+	// The type of IP address that the ALB instance uses to provide services. Valid
+	// values: `Intranet`, `Internet`.
 	AddressType pulumi.StringPtrInput `pulumi:"addressType"`
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Load Balancer IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+	// Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
 	LoadBalancerBusinessStatus pulumi.StringPtrInput `pulumi:"loadBalancerBusinessStatus"`
-	// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
+	// Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0. Use 'load_balancer_business_status' replaces it.
 	//
 	// Deprecated: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.
 	LoadBalancerBussinessStatus pulumi.StringPtrInput `pulumi:"loadBalancerBussinessStatus"`
@@ -157,15 +156,14 @@ type GetLoadBalancersOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+	// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The tag of the resource.
-	Tags pulumi.MapInput `pulumi:"tags"`
+	Tags   pulumi.MapInput       `pulumi:"tags"`
 	// The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 	// The vpc ids.
 	VpcIds pulumi.StringArrayInput `pulumi:"vpcIds"`
-	// The ID of the zone to which the ALB instance belongs.
+	// The zone ID of the resource.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 

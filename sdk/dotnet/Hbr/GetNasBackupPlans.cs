@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.AliCloud.Hbr
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNasBackupPlansResult> InvokeAsync(GetNasBackupPlansArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNasBackupPlansResult>("alicloud:hbr/getNasBackupPlans:getNasBackupPlans", args ?? new GetNasBackupPlansArgs(), options.WithDefaults());
@@ -54,7 +52,6 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.AliCloud.Hbr
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNasBackupPlansResult> Invoke(GetNasBackupPlansInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNasBackupPlansResult>("alicloud:hbr/getNasBackupPlans:getNasBackupPlans", args ?? new GetNasBackupPlansInvokeArgs(), options.WithDefaults());
@@ -84,7 +80,7 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class GetNasBackupPlansArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The File System ID of Nas.
+        /// The Nas fileSystem instance ID of the EcsBackupPlan used.
         /// </summary>
         [Input("fileSystemId")]
         public string? FileSystemId { get; set; }
@@ -114,7 +110,7 @@ namespace Pulumi.AliCloud.Hbr
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of backup vault.
+        /// The backup vault ID of the NasBackupPlan used.
         /// </summary>
         [Input("vaultId")]
         public string? VaultId { get; set; }
@@ -128,7 +124,7 @@ namespace Pulumi.AliCloud.Hbr
     public sealed class GetNasBackupPlansInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The File System ID of Nas.
+        /// The Nas fileSystem instance ID of the EcsBackupPlan used.
         /// </summary>
         [Input("fileSystemId")]
         public Input<string>? FileSystemId { get; set; }
@@ -158,7 +154,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of backup vault.
+        /// The backup vault ID of the NasBackupPlan used.
         /// </summary>
         [Input("vaultId")]
         public Input<string>? VaultId { get; set; }

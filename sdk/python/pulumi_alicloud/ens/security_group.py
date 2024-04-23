@@ -110,7 +110,6 @@ class SecurityGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -123,7 +122,6 @@ class SecurityGroup(pulumi.CustomResource):
             description=name,
             security_group_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -155,7 +153,6 @@ class SecurityGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -168,7 +165,6 @@ class SecurityGroup(pulumi.CustomResource):
             description=name,
             security_group_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

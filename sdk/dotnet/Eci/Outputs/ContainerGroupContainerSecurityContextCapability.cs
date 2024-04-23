@@ -13,9 +13,6 @@ namespace Pulumi.AliCloud.Eci.Outputs
     [OutputType]
     public sealed class ContainerGroupContainerSecurityContextCapability
     {
-        /// <summary>
-        /// The permissions that you want to grant to the processes in the containers.
-        /// </summary>
         public readonly ImmutableArray<string> Adds;
 
         [OutputConstructor]

@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -91,7 +90,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancesResult
@@ -109,11 +107,14 @@ type GetInstancesArgs struct {
 	Ids []string `pulumi:"ids"`
 	// The ID Of The Image.
 	ImageId *string `pulumi:"imageId"`
-	// Instance Name.
+	// The name of the instance. It must be 2 to 128 characters in length and must start with an
+	// uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
+	// half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
+	// the instance.
 	InstanceName *string `pulumi:"instanceName"`
 	// Instance Type.
 	InstanceType *string `pulumi:"instanceType"`
-	// The Key Name.
+	// The name of the key pair of the mobile phone instance.
 	KeyPairName *string `pulumi:"keyPairName"`
 	// A regex string to filter results by mobile phone name.
 	NameRegex *string `pulumi:"nameRegex"`
@@ -121,9 +122,10 @@ type GetInstancesArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The payment type.Valid values: `PayAsYouGo`,`Subscription`
 	PaymentType *string `pulumi:"paymentType"`
-	// Resolution.
+	// The selected resolution for the cloud mobile phone instance.
 	Resolution *string `pulumi:"resolution"`
-	// Instance Status.
+	// Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
+	// .
 	Status *string `pulumi:"status"`
 	ZoneId *string `pulumi:"zoneId"`
 }
@@ -168,11 +170,14 @@ type GetInstancesOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The ID Of The Image.
 	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
-	// Instance Name.
+	// The name of the instance. It must be 2 to 128 characters in length and must start with an
+	// uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
+	// half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
+	// the instance.
 	InstanceName pulumi.StringPtrInput `pulumi:"instanceName"`
 	// Instance Type.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
-	// The Key Name.
+	// The name of the key pair of the mobile phone instance.
 	KeyPairName pulumi.StringPtrInput `pulumi:"keyPairName"`
 	// A regex string to filter results by mobile phone name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
@@ -180,9 +185,10 @@ type GetInstancesOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The payment type.Valid values: `PayAsYouGo`,`Subscription`
 	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
-	// Resolution.
+	// The selected resolution for the cloud mobile phone instance.
 	Resolution pulumi.StringPtrInput `pulumi:"resolution"`
-	// Instance Status.
+	// Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
+	// .
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }

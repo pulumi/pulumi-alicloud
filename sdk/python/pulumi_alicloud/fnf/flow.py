@@ -238,7 +238,6 @@ class Flow(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -272,7 +271,6 @@ class Flow(pulumi.CustomResource):
             name="tf-example-flow",
             type="FDL")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -307,7 +305,6 @@ class Flow(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -341,7 +338,6 @@ class Flow(pulumi.CustomResource):
             name="tf-example-flow",
             type="FDL")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

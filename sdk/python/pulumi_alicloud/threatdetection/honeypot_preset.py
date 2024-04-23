@@ -190,7 +190,6 @@ class HoneypotPreset(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -213,7 +212,6 @@ class HoneypotPreset(pulumi.CustomResource):
                 burp="open",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -247,7 +245,6 @@ class HoneypotPreset(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -270,7 +267,6 @@ class HoneypotPreset(pulumi.CustomResource):
                 burp="open",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

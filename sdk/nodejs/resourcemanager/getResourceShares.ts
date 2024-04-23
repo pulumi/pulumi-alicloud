@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstResourceManagerResourceShareId = example.then(example => example.shares?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getResourceShares(args: GetResourceSharesArgs, opts?: pulumi.InvokeOptions): Promise<GetResourceSharesResult> {
 
@@ -98,7 +96,6 @@ export interface GetResourceSharesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -110,7 +107,6 @@ export interface GetResourceSharesResult {
  * });
  * export const firstResourceManagerResourceShareId = example.then(example => example.shares?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getResourceSharesOutput(args: GetResourceSharesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResourceSharesResult> {
     return pulumi.output(args).apply((a: any) => getResourceShares(a, opts))

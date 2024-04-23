@@ -289,7 +289,6 @@ class RdsBackup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -303,7 +302,6 @@ class RdsBackup(pulumi.CustomResource):
             db_instance_storage_type="local_ssd")
         example_rds_backup = alicloud.rds.RdsBackup("example", db_instance_id=example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -343,7 +341,6 @@ class RdsBackup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -357,7 +354,6 @@ class RdsBackup(pulumi.CustomResource):
             db_instance_storage_type="local_ssd")
         example_rds_backup = alicloud.rds.RdsBackup("example", db_instance_id=example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

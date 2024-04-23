@@ -107,7 +107,6 @@ def get_sasl_users(instance_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -117,7 +116,6 @@ def get_sasl_users(instance_id: Optional[str] = None,
         output_file="saslUsers.txt")
     pulumi.export("firstSaslUsername", sasl_users_ds.users[0].username)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str instance_id: ID of the ALIKAFKA Instance that owns the sasl users.
@@ -152,7 +150,6 @@ def get_sasl_users_output(instance_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -162,7 +159,6 @@ def get_sasl_users_output(instance_id: Optional[pulumi.Input[str]] = None,
         output_file="saslUsers.txt")
     pulumi.export("firstSaslUsername", sasl_users_ds.users[0].username)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str instance_id: ID of the ALIKAFKA Instance that owns the sasl users.

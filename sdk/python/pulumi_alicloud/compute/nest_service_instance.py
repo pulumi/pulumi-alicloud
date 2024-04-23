@@ -489,7 +489,6 @@ class NestServiceInstance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -549,7 +548,6 @@ class NestServiceInstance(pulumi.CustomResource):
                 "For": "ServiceInstance",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -592,7 +590,6 @@ class NestServiceInstance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -652,7 +649,6 @@ class NestServiceInstance(pulumi.CustomResource):
                 "For": "ServiceInstance",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

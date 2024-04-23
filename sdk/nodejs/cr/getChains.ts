@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -36,7 +35,6 @@ import * as utilities from "../utilities";
  * });
  * export const crChainId2 = nameRegex.then(nameRegex => nameRegex.chains?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getChains(args: GetChainsArgs, opts?: pulumi.InvokeOptions): Promise<GetChainsResult> {
 
@@ -124,7 +122,6 @@ export interface GetChainsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -143,7 +140,6 @@ export interface GetChainsResult {
  * });
  * export const crChainId2 = nameRegex.then(nameRegex => nameRegex.chains?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getChainsOutput(args: GetChainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChainsResult> {
     return pulumi.output(args).apply((a: any) => getChains(a, opts))

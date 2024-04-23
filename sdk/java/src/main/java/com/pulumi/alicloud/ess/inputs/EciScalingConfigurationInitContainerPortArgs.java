@@ -16,32 +16,16 @@ public final class EciScalingConfigurationInitContainerPortArgs extends com.pulu
 
     public static final EciScalingConfigurationInitContainerPortArgs Empty = new EciScalingConfigurationInitContainerPortArgs();
 
-    /**
-     * The port number. Valid values: 1 to 65535.
-     * 
-     */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
-    /**
-     * @return The port number. Valid values: 1 to 65535.
-     * 
-     */
     public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
     }
 
-    /**
-     * Valid values: TCP and UDP.
-     * 
-     */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
-    /**
-     * @return Valid values: TCP and UDP.
-     * 
-     */
     public Optional<Output<String>> protocol() {
         return Optional.ofNullable(this.protocol);
     }
@@ -71,44 +55,20 @@ public final class EciScalingConfigurationInitContainerPortArgs extends com.pulu
             $ = new EciScalingConfigurationInitContainerPortArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param port The port number. Valid values: 1 to 65535.
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
 
-        /**
-         * @param port The port number. Valid values: 1 to 65535.
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }
 
-        /**
-         * @param protocol Valid values: TCP and UDP.
-         * 
-         * @return builder
-         * 
-         */
         public Builder protocol(@Nullable Output<String> protocol) {
             $.protocol = protocol;
             return this;
         }
 
-        /**
-         * @param protocol Valid values: TCP and UDP.
-         * 
-         * @return builder
-         * 
-         */
         public Builder protocol(String protocol) {
             return protocol(Output.of(protocol));
         }

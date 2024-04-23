@@ -395,14 +395,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.securityGroupIds;
     }
     /**
-     * ON.
+     * The status of the resource.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return ON.
+     * @return The status of the resource.
      * 
      */
     public Output<String> status() {

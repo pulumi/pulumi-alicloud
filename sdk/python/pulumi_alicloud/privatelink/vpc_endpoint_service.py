@@ -506,7 +506,6 @@ class VpcEndpointService(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -520,7 +519,6 @@ class VpcEndpointService(pulumi.CustomResource):
             connect_bandwidth=103,
             auto_accept_connection=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -573,7 +571,6 @@ class VpcEndpointService(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -587,7 +584,6 @@ class VpcEndpointService(pulumi.CustomResource):
             connect_bandwidth=103,
             auto_accept_connection=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

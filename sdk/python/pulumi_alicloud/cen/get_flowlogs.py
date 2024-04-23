@@ -174,7 +174,6 @@ def get_flowlogs(cen_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -183,7 +182,6 @@ def get_flowlogs(cen_id: Optional[str] = None,
         name_regex="^foo")
     pulumi.export("firstCenFlowlogId", default_alicloud_cen_instances["flowlogs"][0]["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cen_id: The ID of the CEN Instance.
@@ -240,7 +238,6 @@ def get_flowlogs_output(cen_id: Optional[pulumi.Input[Optional[str]]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -249,7 +246,6 @@ def get_flowlogs_output(cen_id: Optional[pulumi.Input[Optional[str]]] = None,
         name_regex="^foo")
     pulumi.export("firstCenFlowlogId", default_alicloud_cen_instances["flowlogs"][0]["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cen_id: The ID of the CEN Instance.

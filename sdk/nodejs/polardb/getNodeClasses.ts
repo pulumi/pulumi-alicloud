@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * export const polardbNodeClasses = resources.then(resources => resources.classes);
  * export const polardbAvailableZoneId = resources.then(resources => resources.classes?.[0]?.zoneId);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNodeClasses(args: GetNodeClassesArgs, opts?: pulumi.InvokeOptions): Promise<GetNodeClassesResult> {
 
@@ -115,7 +113,6 @@ export interface GetNodeClassesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -128,7 +125,6 @@ export interface GetNodeClassesResult {
  * export const polardbNodeClasses = resources.then(resources => resources.classes);
  * export const polardbAvailableZoneId = resources.then(resources => resources.classes?.[0]?.zoneId);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNodeClassesOutput(args: GetNodeClassesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeClassesResult> {
     return pulumi.output(args).apply((a: any) => getNodeClasses(a, opts))

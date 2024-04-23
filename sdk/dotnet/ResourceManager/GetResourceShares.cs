@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,7 +44,6 @@ namespace Pulumi.AliCloud.ResourceManager
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetResourceSharesResult> InvokeAsync(GetResourceSharesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetResourceSharesResult>("alicloud:resourcemanager/getResourceShares:getResourceShares", args ?? new GetResourceSharesArgs(), options.WithDefaults());
@@ -59,7 +57,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -84,7 +81,6 @@ namespace Pulumi.AliCloud.ResourceManager
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetResourceSharesResult> Invoke(GetResourceSharesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetResourceSharesResult>("alicloud:resourcemanager/getResourceShares:getResourceShares", args ?? new GetResourceSharesInvokeArgs(), options.WithDefaults());

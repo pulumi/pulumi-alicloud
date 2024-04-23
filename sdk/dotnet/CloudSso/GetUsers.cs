@@ -22,7 +22,6 @@ namespace Pulumi.AliCloud.CloudSso
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,7 +75,6 @@ namespace Pulumi.AliCloud.CloudSso
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetUsersResult> InvokeAsync(GetUsersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUsersResult>("alicloud:cloudsso/getUsers:getUsers", args ?? new GetUsersArgs(), options.WithDefaults());
@@ -92,7 +90,6 @@ namespace Pulumi.AliCloud.CloudSso
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -146,7 +143,6 @@ namespace Pulumi.AliCloud.CloudSso
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetUsersResult> Invoke(GetUsersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUsersResult>("alicloud:cloudsso/getUsers:getUsers", args ?? new GetUsersInvokeArgs(), options.WithDefaults());
@@ -192,13 +188,13 @@ namespace Pulumi.AliCloud.CloudSso
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// ProvisionType.
+        /// ProvisionType. Valid values: `Manual`, `Synchronized`.
         /// </summary>
         [Input("provisionType")]
         public string? ProvisionType { get; set; }
 
         /// <summary>
-        /// User status. Valid values: `Enabled` and `Disabled`.
+        /// The status of user. Valid values: `Disabled`, `Enabled`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -248,13 +244,13 @@ namespace Pulumi.AliCloud.CloudSso
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// ProvisionType.
+        /// ProvisionType. Valid values: `Manual`, `Synchronized`.
         /// </summary>
         [Input("provisionType")]
         public Input<string>? ProvisionType { get; set; }
 
         /// <summary>
-        /// User status. Valid values: `Enabled` and `Disabled`.
+        /// The status of user. Valid values: `Disabled`, `Enabled`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

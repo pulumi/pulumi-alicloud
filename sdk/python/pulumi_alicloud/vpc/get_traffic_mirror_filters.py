@@ -123,7 +123,6 @@ def get_traffic_mirror_filters(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -137,7 +136,6 @@ def get_traffic_mirror_filters(ids: Optional[Sequence[str]] = None,
     status = alicloud.vpc.get_traffic_mirror_filters(status="^my-TrafficMirrorFilter")
     pulumi.export("vpcTrafficMirrorFilterId4", status.filters[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Traffic Mirror Filter IDs.
@@ -182,7 +180,6 @@ def get_traffic_mirror_filters_output(ids: Optional[pulumi.Input[Optional[Sequen
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -196,7 +193,6 @@ def get_traffic_mirror_filters_output(ids: Optional[pulumi.Input[Optional[Sequen
     status = alicloud.vpc.get_traffic_mirror_filters(status="^my-TrafficMirrorFilter")
     pulumi.export("vpcTrafficMirrorFilterId4", status.filters[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Traffic Mirror Filter IDs.

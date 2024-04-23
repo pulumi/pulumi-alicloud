@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Cms
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -49,7 +48,6 @@ namespace Pulumi.AliCloud.Cms
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetEventRulesResult> InvokeAsync(GetEventRulesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEventRulesResult>("alicloud:cms/getEventRules:getEventRules", args ?? new GetEventRulesArgs(), options.WithDefaults());
@@ -63,7 +61,6 @@ namespace Pulumi.AliCloud.Cms
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -92,7 +89,6 @@ namespace Pulumi.AliCloud.Cms
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetEventRulesResult> Invoke(GetEventRulesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEventRulesResult>("alicloud:cms/getEventRules:getEventRules", args ?? new GetEventRulesInvokeArgs(), options.WithDefaults());

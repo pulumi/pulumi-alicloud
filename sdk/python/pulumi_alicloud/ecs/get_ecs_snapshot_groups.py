@@ -143,7 +143,6 @@ def get_ecs_snapshot_groups(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -157,7 +156,6 @@ def get_ecs_snapshot_groups(ids: Optional[Sequence[str]] = None,
     instance_id = alicloud.ecs.get_ecs_snapshot_groups(instance_id="example-instance_id")
     pulumi.export("ecsSnapshotGroupId4", instance_id.groups[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Snapshot Group IDs.
@@ -165,8 +163,8 @@ def get_ecs_snapshot_groups(ids: Optional[Sequence[str]] = None,
     :param str name_regex: A regex string to filter results by Snapshot Group name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str snapshot_group_name: The name of the snapshot-consistent group.
-    :param str status: The status of the resource.
-    :param Mapping[str, Any] tags: List of label key-value pairs.
+    :param str status: The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the snapshot group.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -210,7 +208,6 @@ def get_ecs_snapshot_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -224,7 +221,6 @@ def get_ecs_snapshot_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[
     instance_id = alicloud.ecs.get_ecs_snapshot_groups(instance_id="example-instance_id")
     pulumi.export("ecsSnapshotGroupId4", instance_id.groups[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Snapshot Group IDs.
@@ -232,7 +228,7 @@ def get_ecs_snapshot_groups_output(ids: Optional[pulumi.Input[Optional[Sequence[
     :param str name_regex: A regex string to filter results by Snapshot Group name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str snapshot_group_name: The name of the snapshot-consistent group.
-    :param str status: The status of the resource.
-    :param Mapping[str, Any] tags: List of label key-value pairs.
+    :param str status: The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the snapshot group.
     """
     ...

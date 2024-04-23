@@ -13,18 +13,8 @@ namespace Pulumi.AliCloud.Ess.Outputs
     [OutputType]
     public sealed class EciScalingConfigurationInitContainerVolumeMount
     {
-        /// <summary>
-        /// The directory of the mounted volume. Data under this directory will be overwritten by the
-        /// data in the volume.
-        /// </summary>
         public readonly string? MountPath;
-        /// <summary>
-        /// The name of the mounted volume.
-        /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// Default to `false`.
-        /// </summary>
         public readonly bool? ReadOnly;
 
         [OutputConstructor]

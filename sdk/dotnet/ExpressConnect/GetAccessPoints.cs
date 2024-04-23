@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -49,7 +48,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccessPointsResult> InvokeAsync(GetAccessPointsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessPointsResult>("alicloud:expressconnect/getAccessPoints:getAccessPoints", args ?? new GetAccessPointsArgs(), options.WithDefaults());
@@ -63,7 +61,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -92,7 +89,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccessPointsResult> Invoke(GetAccessPointsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessPointsResult>("alicloud:expressconnect/getAccessPoints:getAccessPoints", args ?? new GetAccessPointsInvokeArgs(), options.WithDefaults());

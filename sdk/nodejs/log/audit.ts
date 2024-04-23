@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -113,10 +112,8 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * Multiple accounts Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -137,10 +134,8 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  * Resource Directory Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -158,8 +153,6 @@ import * as utilities from "../utilities";
  *     resourceDirectoryType: "all",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -178,7 +171,6 @@ import * as utilities from "../utilities";
  *     resourceDirectoryType: "custom",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

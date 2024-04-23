@@ -22,7 +22,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -105,7 +104,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -179,7 +177,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies a snapshot that is used to create a combined custom image.
+        /// Specifies a snapshot that is used to create a custom image.
         /// </summary>
         [Output("snapshotId")]
         public Output<string?> SnapshotId { get; private set; } = null!;
@@ -303,7 +301,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Specifies a snapshot that is used to create a combined custom image.
+        /// Specifies a snapshot that is used to create a custom image.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
@@ -395,7 +393,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Specifies a snapshot that is used to create a combined custom image.
+        /// Specifies a snapshot that is used to create a custom image.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }

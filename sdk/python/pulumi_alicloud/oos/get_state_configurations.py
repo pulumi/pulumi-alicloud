@@ -104,7 +104,6 @@ def get_state_configurations(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -112,7 +111,6 @@ def get_state_configurations(ids: Optional[Sequence[str]] = None,
     ids = alicloud.oos.get_state_configurations()
     pulumi.export("oosStateConfigurationId1", ids.configurations[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of State Configuration IDs.
@@ -152,7 +150,6 @@ def get_state_configurations_output(ids: Optional[pulumi.Input[Optional[Sequence
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -160,7 +157,6 @@ def get_state_configurations_output(ids: Optional[pulumi.Input[Optional[Sequence
     ids = alicloud.oos.get_state_configurations()
     pulumi.export("oosStateConfigurationId1", ids.configurations[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of State Configuration IDs.

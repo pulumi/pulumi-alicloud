@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,7 +44,6 @@ namespace Pulumi.AliCloud.Nas
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetFilesetsResult> InvokeAsync(GetFilesetsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFilesetsResult>("alicloud:nas/getFilesets:getFilesets", args ?? new GetFilesetsArgs(), options.WithDefaults());
@@ -59,7 +57,6 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -84,7 +81,6 @@ namespace Pulumi.AliCloud.Nas
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetFilesetsResult> Invoke(GetFilesetsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFilesetsResult>("alicloud:nas/getFilesets:getFilesets", args ?? new GetFilesetsInvokeArgs(), options.WithDefaults());

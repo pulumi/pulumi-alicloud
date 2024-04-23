@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -34,7 +33,6 @@ import * as utilities from "../utilities";
  * });
  * export const bastionhostUserGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getUserGroups(args: GetUserGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetUserGroupsResult> {
 
@@ -99,7 +97,6 @@ export interface GetUserGroupsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -118,7 +115,6 @@ export interface GetUserGroupsResult {
  * });
  * export const bastionhostUserGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getUserGroupsOutput(args: GetUserGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserGroupsResult> {
     return pulumi.output(args).apply((a: any) => getUserGroups(a, opts))

@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,7 +41,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetStateConfigurations(ctx *pulumi.Context, args *GetStateConfigurationsArgs, opts ...pulumi.InvokeOption) (*GetStateConfigurationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetStateConfigurationsResult

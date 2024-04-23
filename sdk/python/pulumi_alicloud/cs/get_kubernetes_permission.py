@@ -78,7 +78,6 @@ def get_kubernetes_permission(uid: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -89,7 +88,6 @@ def get_kubernetes_permission(uid: Optional[str] = None,
     default_get_kubernetes_permission = alicloud.cs.get_kubernetes_permission(uid=default.users[0].id)
     pulumi.export("permissions", default_get_kubernetes_permission.permissions)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str uid: The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.
@@ -115,7 +113,6 @@ def get_kubernetes_permission_output(uid: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -126,7 +123,6 @@ def get_kubernetes_permission_output(uid: Optional[pulumi.Input[str]] = None,
     default_get_kubernetes_permission = alicloud.cs.get_kubernetes_permission(uid=default.users[0].id)
     pulumi.export("permissions", default_get_kubernetes_permission.permissions)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str uid: The ID of the RAM user. If you want to query the permissions of a RAM role, specify the ID of the RAM role.

@@ -174,7 +174,6 @@ class ChartNamespace(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -194,7 +193,6 @@ class ChartNamespace(pulumi.CustomResource):
             instance_id=example.id,
             namespace_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -228,7 +226,6 @@ class ChartNamespace(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -248,7 +245,6 @@ class ChartNamespace(pulumi.CustomResource):
             instance_id=example.id,
             namespace_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -19,301 +19,135 @@ public final class SyntheticTaskMonitorConfWebsiteArgs extends com.pulumi.resour
 
     public static final SyntheticTaskMonitorConfWebsiteArgs Empty = new SyntheticTaskMonitorConfWebsiteArgs();
 
-    /**
-     * Whether to support automatic scrolling screen, loading page.
-     * - 0 (default): No
-     *   1: Yes.
-     * 
-     */
     @Import(name="automaticScrolling")
     private @Nullable Output<Integer> automaticScrolling;
 
-    /**
-     * @return Whether to support automatic scrolling screen, loading page.
-     * - 0 (default): No
-     *   1: Yes.
-     * 
-     */
     public Optional<Output<Integer>> automaticScrolling() {
         return Optional.ofNullable(this.automaticScrolling);
     }
 
-    /**
-     * Custom header.
-     * - 0 (default): Off
-     * - 1: Modify the first package
-     * - 2: Modify all packages.
-     * 
-     */
     @Import(name="customHeader")
     private @Nullable Output<Integer> customHeader;
 
-    /**
-     * @return Custom header.
-     * - 0 (default): Off
-     * - 1: Modify the first package
-     * - 2: Modify all packages.
-     * 
-     */
     public Optional<Output<Integer>> customHeader() {
         return Optional.ofNullable(this.customHeader);
     }
 
-    /**
-     * Custom header, in JSON Map format.
-     * 
-     */
     @Import(name="customHeaderContent")
     private @Nullable Output<Map<String,Object>> customHeaderContent;
 
-    /**
-     * @return Custom header, in JSON Map format.
-     * 
-     */
     public Optional<Output<Map<String,Object>>> customHeaderContent() {
         return Optional.ofNullable(this.customHeaderContent);
     }
 
-    /**
-     * Whether to disable caching.
-     * - 0: not disabled
-     * - 1 (default): Disabled.
-     * 
-     */
     @Import(name="disableCache")
     private @Nullable Output<Integer> disableCache;
 
-    /**
-     * @return Whether to disable caching.
-     * - 0: not disabled
-     * - 1 (default): Disabled.
-     * 
-     */
     public Optional<Output<Integer>> disableCache() {
         return Optional.ofNullable(this.disableCache);
     }
 
-    /**
-     * The Accept-Encoding field is used to determine whether to Accept compressed files. 0-do not disable, 1-disable, the default is 0.
-     * 
-     */
     @Import(name="disableCompression")
     private @Nullable Output<Integer> disableCompression;
 
-    /**
-     * @return The Accept-Encoding field is used to determine whether to Accept compressed files. 0-do not disable, 1-disable, the default is 0.
-     * 
-     */
     public Optional<Output<Integer>> disableCompression() {
         return Optional.ofNullable(this.disableCompression);
     }
 
-    /**
-     * When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
-     * 
-     */
     @Import(name="dnsHijackWhitelist")
     private @Nullable Output<String> dnsHijackWhitelist;
 
-    /**
-     * @return When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
-     * 
-     */
     public Optional<Output<String>> dnsHijackWhitelist() {
         return Optional.ofNullable(this.dnsHijackWhitelist);
     }
 
-    /**
-     * If an element configured in the element blacklist appears during page loading, the element is not requested to be loaded.
-     * 
-     */
     @Import(name="elementBlacklist")
     private @Nullable Output<String> elementBlacklist;
 
-    /**
-     * @return If an element configured in the element blacklist appears during page loading, the element is not requested to be loaded.
-     * 
-     */
     public Optional<Output<String>> elementBlacklist() {
         return Optional.ofNullable(this.elementBlacklist);
     }
 
-    /**
-     * Whether to filter invalid IP parameters. 0: filter, 1: do not filter. The default value is 0.
-     * 
-     */
     @Import(name="filterInvalidIp")
     private @Nullable Output<Integer> filterInvalidIp;
 
-    /**
-     * @return Whether to filter invalid IP parameters. 0: filter, 1: do not filter. The default value is 0.
-     * 
-     */
     public Optional<Output<Integer>> filterInvalidIp() {
         return Optional.ofNullable(this.filterInvalidIp);
     }
 
-    /**
-     * Identify elements: Set the total number of elements on the Browse page.
-     * 
-     */
     @Import(name="flowHijackJumpTimes")
     private @Nullable Output<Integer> flowHijackJumpTimes;
 
-    /**
-     * @return Identify elements: Set the total number of elements on the Browse page.
-     * 
-     */
     public Optional<Output<Integer>> flowHijackJumpTimes() {
         return Optional.ofNullable(this.flowHijackJumpTimes);
     }
 
-    /**
-     * Hijacking ID: Set the matching key information. Enter the hijacking keyword or key element, with an asterisk (*) allowed.
-     * 
-     */
     @Import(name="flowHijackLogo")
     private @Nullable Output<String> flowHijackLogo;
 
-    /**
-     * @return Hijacking ID: Set the matching key information. Enter the hijacking keyword or key element, with an asterisk (*) allowed.
-     * 
-     */
     public Optional<Output<String>> flowHijackLogo() {
         return Optional.ofNullable(this.flowHijackLogo);
     }
 
-    /**
-     * Whether to ignore certificate errors during certificate verification in SSL Handshake and continue browsing. 0-do not ignore, 1-ignore. The default value is 1.
-     * 
-     */
     @Import(name="ignoreCertificateError")
     private @Nullable Output<Integer> ignoreCertificateError;
 
-    /**
-     * @return Whether to ignore certificate errors during certificate verification in SSL Handshake and continue browsing. 0-do not ignore, 1-ignore. The default value is 1.
-     * 
-     */
     public Optional<Output<Integer>> ignoreCertificateError() {
         return Optional.ofNullable(this.ignoreCertificateError);
     }
 
-    /**
-     * Monitoring timeout, in ms. Not required, 20000 by default.
-     * 
-     */
     @Import(name="monitorTimeout")
     private @Nullable Output<Integer> monitorTimeout;
 
-    /**
-     * @return Monitoring timeout, in ms. Not required, 20000 by default.
-     * 
-     */
     public Optional<Output<Integer>> monitorTimeout() {
         return Optional.ofNullable(this.monitorTimeout);
     }
 
-    /**
-     * Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
-     * 
-     */
     @Import(name="pageTamper")
     private @Nullable Output<String> pageTamper;
 
-    /**
-     * @return Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
-     * 
-     */
     public Optional<Output<String>> pageTamper() {
         return Optional.ofNullable(this.pageTamper);
     }
 
-    /**
-     * When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
-     * 
-     */
     @Import(name="redirection")
     private @Nullable Output<Integer> redirection;
 
-    /**
-     * @return When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
-     * 
-     */
     public Optional<Output<Integer>> redirection() {
         return Optional.ofNullable(this.redirection);
     }
 
-    /**
-     * The slow element threshold, in ms, is 5000 by default and can be selected from 1 to 300000ms.
-     * 
-     */
     @Import(name="slowElementThreshold")
     private @Nullable Output<Integer> slowElementThreshold;
 
-    /**
-     * @return The slow element threshold, in ms, is 5000 by default and can be selected from 1 to 300000ms.
-     * 
-     */
     public Optional<Output<Integer>> slowElementThreshold() {
         return Optional.ofNullable(this.slowElementThreshold);
     }
 
-    /**
-     * The target URL.
-     * 
-     */
     @Import(name="targetUrl", required=true)
     private Output<String> targetUrl;
 
-    /**
-     * @return The target URL.
-     * 
-     */
     public Output<String> targetUrl() {
         return this.targetUrl;
     }
 
-    /**
-     * The verification string is an arbitrary string in the source code of the monitoring page. If the source code returned by the client contains any of the blacklisted strings, 650 error is returned. Multiple strings are separated by a vertical bar (|).
-     * 
-     */
     @Import(name="verifyStringBlacklist")
     private @Nullable Output<String> verifyStringBlacklist;
 
-    /**
-     * @return The verification string is an arbitrary string in the source code of the monitoring page. If the source code returned by the client contains any of the blacklisted strings, 650 error is returned. Multiple strings are separated by a vertical bar (|).
-     * 
-     */
     public Optional<Output<String>> verifyStringBlacklist() {
         return Optional.ofNullable(this.verifyStringBlacklist);
     }
 
-    /**
-     * The verification string is an arbitrary string in the source code of the monitoring page. The source code returned by the client must contain all the strings in the whitelist. Otherwise, 650 error is returned. Multiple strings are separated by a vertical bar (|).
-     * 
-     */
     @Import(name="verifyStringWhitelist")
     private @Nullable Output<String> verifyStringWhitelist;
 
-    /**
-     * @return The verification string is an arbitrary string in the source code of the monitoring page. The source code returned by the client must contain all the strings in the whitelist. Otherwise, 650 error is returned. Multiple strings are separated by a vertical bar (|).
-     * 
-     */
     public Optional<Output<String>> verifyStringWhitelist() {
         return Optional.ofNullable(this.verifyStringWhitelist);
     }
 
-    /**
-     * The maximum waiting time, in ms, is 5000 by default and can be selected from 5000 ms to 300000ms.
-     * 
-     */
     @Import(name="waitCompletionTime")
     private @Nullable Output<Integer> waitCompletionTime;
 
-    /**
-     * @return The maximum waiting time, in ms, is 5000 by default and can be selected from 5000 ms to 300000ms.
-     * 
-     */
     public Optional<Output<Integer>> waitCompletionTime() {
         return Optional.ofNullable(this.waitCompletionTime);
     }
@@ -360,415 +194,173 @@ public final class SyntheticTaskMonitorConfWebsiteArgs extends com.pulumi.resour
             $ = new SyntheticTaskMonitorConfWebsiteArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param automaticScrolling Whether to support automatic scrolling screen, loading page.
-         * - 0 (default): No
-         *   1: Yes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder automaticScrolling(@Nullable Output<Integer> automaticScrolling) {
             $.automaticScrolling = automaticScrolling;
             return this;
         }
 
-        /**
-         * @param automaticScrolling Whether to support automatic scrolling screen, loading page.
-         * - 0 (default): No
-         *   1: Yes.
-         * 
-         * @return builder
-         * 
-         */
         public Builder automaticScrolling(Integer automaticScrolling) {
             return automaticScrolling(Output.of(automaticScrolling));
         }
 
-        /**
-         * @param customHeader Custom header.
-         * - 0 (default): Off
-         * - 1: Modify the first package
-         * - 2: Modify all packages.
-         * 
-         * @return builder
-         * 
-         */
         public Builder customHeader(@Nullable Output<Integer> customHeader) {
             $.customHeader = customHeader;
             return this;
         }
 
-        /**
-         * @param customHeader Custom header.
-         * - 0 (default): Off
-         * - 1: Modify the first package
-         * - 2: Modify all packages.
-         * 
-         * @return builder
-         * 
-         */
         public Builder customHeader(Integer customHeader) {
             return customHeader(Output.of(customHeader));
         }
 
-        /**
-         * @param customHeaderContent Custom header, in JSON Map format.
-         * 
-         * @return builder
-         * 
-         */
         public Builder customHeaderContent(@Nullable Output<Map<String,Object>> customHeaderContent) {
             $.customHeaderContent = customHeaderContent;
             return this;
         }
 
-        /**
-         * @param customHeaderContent Custom header, in JSON Map format.
-         * 
-         * @return builder
-         * 
-         */
         public Builder customHeaderContent(Map<String,Object> customHeaderContent) {
             return customHeaderContent(Output.of(customHeaderContent));
         }
 
-        /**
-         * @param disableCache Whether to disable caching.
-         * - 0: not disabled
-         * - 1 (default): Disabled.
-         * 
-         * @return builder
-         * 
-         */
         public Builder disableCache(@Nullable Output<Integer> disableCache) {
             $.disableCache = disableCache;
             return this;
         }
 
-        /**
-         * @param disableCache Whether to disable caching.
-         * - 0: not disabled
-         * - 1 (default): Disabled.
-         * 
-         * @return builder
-         * 
-         */
         public Builder disableCache(Integer disableCache) {
             return disableCache(Output.of(disableCache));
         }
 
-        /**
-         * @param disableCompression The Accept-Encoding field is used to determine whether to Accept compressed files. 0-do not disable, 1-disable, the default is 0.
-         * 
-         * @return builder
-         * 
-         */
         public Builder disableCompression(@Nullable Output<Integer> disableCompression) {
             $.disableCompression = disableCompression;
             return this;
         }
 
-        /**
-         * @param disableCompression The Accept-Encoding field is used to determine whether to Accept compressed files. 0-do not disable, 1-disable, the default is 0.
-         * 
-         * @return builder
-         * 
-         */
         public Builder disableCompression(Integer disableCompression) {
             return disableCompression(Output.of(disableCompression));
         }
 
-        /**
-         * @param dnsHijackWhitelist When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dnsHijackWhitelist(@Nullable Output<String> dnsHijackWhitelist) {
             $.dnsHijackWhitelist = dnsHijackWhitelist;
             return this;
         }
 
-        /**
-         * @param dnsHijackWhitelist When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
-         * 
-         * @return builder
-         * 
-         */
         public Builder dnsHijackWhitelist(String dnsHijackWhitelist) {
             return dnsHijackWhitelist(Output.of(dnsHijackWhitelist));
         }
 
-        /**
-         * @param elementBlacklist If an element configured in the element blacklist appears during page loading, the element is not requested to be loaded.
-         * 
-         * @return builder
-         * 
-         */
         public Builder elementBlacklist(@Nullable Output<String> elementBlacklist) {
             $.elementBlacklist = elementBlacklist;
             return this;
         }
 
-        /**
-         * @param elementBlacklist If an element configured in the element blacklist appears during page loading, the element is not requested to be loaded.
-         * 
-         * @return builder
-         * 
-         */
         public Builder elementBlacklist(String elementBlacklist) {
             return elementBlacklist(Output.of(elementBlacklist));
         }
 
-        /**
-         * @param filterInvalidIp Whether to filter invalid IP parameters. 0: filter, 1: do not filter. The default value is 0.
-         * 
-         * @return builder
-         * 
-         */
         public Builder filterInvalidIp(@Nullable Output<Integer> filterInvalidIp) {
             $.filterInvalidIp = filterInvalidIp;
             return this;
         }
 
-        /**
-         * @param filterInvalidIp Whether to filter invalid IP parameters. 0: filter, 1: do not filter. The default value is 0.
-         * 
-         * @return builder
-         * 
-         */
         public Builder filterInvalidIp(Integer filterInvalidIp) {
             return filterInvalidIp(Output.of(filterInvalidIp));
         }
 
-        /**
-         * @param flowHijackJumpTimes Identify elements: Set the total number of elements on the Browse page.
-         * 
-         * @return builder
-         * 
-         */
         public Builder flowHijackJumpTimes(@Nullable Output<Integer> flowHijackJumpTimes) {
             $.flowHijackJumpTimes = flowHijackJumpTimes;
             return this;
         }
 
-        /**
-         * @param flowHijackJumpTimes Identify elements: Set the total number of elements on the Browse page.
-         * 
-         * @return builder
-         * 
-         */
         public Builder flowHijackJumpTimes(Integer flowHijackJumpTimes) {
             return flowHijackJumpTimes(Output.of(flowHijackJumpTimes));
         }
 
-        /**
-         * @param flowHijackLogo Hijacking ID: Set the matching key information. Enter the hijacking keyword or key element, with an asterisk (*) allowed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder flowHijackLogo(@Nullable Output<String> flowHijackLogo) {
             $.flowHijackLogo = flowHijackLogo;
             return this;
         }
 
-        /**
-         * @param flowHijackLogo Hijacking ID: Set the matching key information. Enter the hijacking keyword or key element, with an asterisk (*) allowed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder flowHijackLogo(String flowHijackLogo) {
             return flowHijackLogo(Output.of(flowHijackLogo));
         }
 
-        /**
-         * @param ignoreCertificateError Whether to ignore certificate errors during certificate verification in SSL Handshake and continue browsing. 0-do not ignore, 1-ignore. The default value is 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ignoreCertificateError(@Nullable Output<Integer> ignoreCertificateError) {
             $.ignoreCertificateError = ignoreCertificateError;
             return this;
         }
 
-        /**
-         * @param ignoreCertificateError Whether to ignore certificate errors during certificate verification in SSL Handshake and continue browsing. 0-do not ignore, 1-ignore. The default value is 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ignoreCertificateError(Integer ignoreCertificateError) {
             return ignoreCertificateError(Output.of(ignoreCertificateError));
         }
 
-        /**
-         * @param monitorTimeout Monitoring timeout, in ms. Not required, 20000 by default.
-         * 
-         * @return builder
-         * 
-         */
         public Builder monitorTimeout(@Nullable Output<Integer> monitorTimeout) {
             $.monitorTimeout = monitorTimeout;
             return this;
         }
 
-        /**
-         * @param monitorTimeout Monitoring timeout, in ms. Not required, 20000 by default.
-         * 
-         * @return builder
-         * 
-         */
         public Builder monitorTimeout(Integer monitorTimeout) {
             return monitorTimeout(Output.of(monitorTimeout));
         }
 
-        /**
-         * @param pageTamper Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
-         * 
-         * @return builder
-         * 
-         */
         public Builder pageTamper(@Nullable Output<String> pageTamper) {
             $.pageTamper = pageTamper;
             return this;
         }
 
-        /**
-         * @param pageTamper Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
-         * 
-         * @return builder
-         * 
-         */
         public Builder pageTamper(String pageTamper) {
             return pageTamper(Output.of(pageTamper));
         }
 
-        /**
-         * @param redirection When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder redirection(@Nullable Output<Integer> redirection) {
             $.redirection = redirection;
             return this;
         }
 
-        /**
-         * @param redirection When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder redirection(Integer redirection) {
             return redirection(Output.of(redirection));
         }
 
-        /**
-         * @param slowElementThreshold The slow element threshold, in ms, is 5000 by default and can be selected from 1 to 300000ms.
-         * 
-         * @return builder
-         * 
-         */
         public Builder slowElementThreshold(@Nullable Output<Integer> slowElementThreshold) {
             $.slowElementThreshold = slowElementThreshold;
             return this;
         }
 
-        /**
-         * @param slowElementThreshold The slow element threshold, in ms, is 5000 by default and can be selected from 1 to 300000ms.
-         * 
-         * @return builder
-         * 
-         */
         public Builder slowElementThreshold(Integer slowElementThreshold) {
             return slowElementThreshold(Output.of(slowElementThreshold));
         }
 
-        /**
-         * @param targetUrl The target URL.
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetUrl(Output<String> targetUrl) {
             $.targetUrl = targetUrl;
             return this;
         }
 
-        /**
-         * @param targetUrl The target URL.
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetUrl(String targetUrl) {
             return targetUrl(Output.of(targetUrl));
         }
 
-        /**
-         * @param verifyStringBlacklist The verification string is an arbitrary string in the source code of the monitoring page. If the source code returned by the client contains any of the blacklisted strings, 650 error is returned. Multiple strings are separated by a vertical bar (|).
-         * 
-         * @return builder
-         * 
-         */
         public Builder verifyStringBlacklist(@Nullable Output<String> verifyStringBlacklist) {
             $.verifyStringBlacklist = verifyStringBlacklist;
             return this;
         }
 
-        /**
-         * @param verifyStringBlacklist The verification string is an arbitrary string in the source code of the monitoring page. If the source code returned by the client contains any of the blacklisted strings, 650 error is returned. Multiple strings are separated by a vertical bar (|).
-         * 
-         * @return builder
-         * 
-         */
         public Builder verifyStringBlacklist(String verifyStringBlacklist) {
             return verifyStringBlacklist(Output.of(verifyStringBlacklist));
         }
 
-        /**
-         * @param verifyStringWhitelist The verification string is an arbitrary string in the source code of the monitoring page. The source code returned by the client must contain all the strings in the whitelist. Otherwise, 650 error is returned. Multiple strings are separated by a vertical bar (|).
-         * 
-         * @return builder
-         * 
-         */
         public Builder verifyStringWhitelist(@Nullable Output<String> verifyStringWhitelist) {
             $.verifyStringWhitelist = verifyStringWhitelist;
             return this;
         }
 
-        /**
-         * @param verifyStringWhitelist The verification string is an arbitrary string in the source code of the monitoring page. The source code returned by the client must contain all the strings in the whitelist. Otherwise, 650 error is returned. Multiple strings are separated by a vertical bar (|).
-         * 
-         * @return builder
-         * 
-         */
         public Builder verifyStringWhitelist(String verifyStringWhitelist) {
             return verifyStringWhitelist(Output.of(verifyStringWhitelist));
         }
 
-        /**
-         * @param waitCompletionTime The maximum waiting time, in ms, is 5000 by default and can be selected from 5000 ms to 300000ms.
-         * 
-         * @return builder
-         * 
-         */
         public Builder waitCompletionTime(@Nullable Output<Integer> waitCompletionTime) {
             $.waitCompletionTime = waitCompletionTime;
             return this;
         }
 
-        /**
-         * @param waitCompletionTime The maximum waiting time, in ms, is 5000 by default and can be selected from 5000 ms to 300000ms.
-         * 
-         * @return builder
-         * 
-         */
         public Builder waitCompletionTime(Integer waitCompletionTime) {
             return waitCompletionTime(Output.of(waitCompletionTime));
         }

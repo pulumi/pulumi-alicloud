@@ -224,7 +224,6 @@ class EditingProject(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -253,7 +252,6 @@ class EditingProject(pulumi.CustomResource):
             cover_url="https://demo.aliyundoc.com/6AB4D0E1E1C74468883516C2349D1FC2-6-2.png",
             division=default.regions[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -288,7 +286,6 @@ class EditingProject(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -317,7 +314,6 @@ class EditingProject(pulumi.CustomResource):
             cover_url="https://demo.aliyundoc.com/6AB4D0E1E1C74468883516C2349D1FC2-6-2.png",
             division=default.regions[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

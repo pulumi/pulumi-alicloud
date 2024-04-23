@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Ga
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Pulumi.AliCloud.Ga
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetBasicAccelerateIpEndpointRelationsResult> InvokeAsync(GetBasicAccelerateIpEndpointRelationsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBasicAccelerateIpEndpointRelationsResult>("alicloud:ga/getBasicAccelerateIpEndpointRelations:getBasicAccelerateIpEndpointRelations", args ?? new GetBasicAccelerateIpEndpointRelationsArgs(), options.WithDefaults());
@@ -58,7 +56,6 @@ namespace Pulumi.AliCloud.Ga
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -82,7 +79,6 @@ namespace Pulumi.AliCloud.Ga
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetBasicAccelerateIpEndpointRelationsResult> Invoke(GetBasicAccelerateIpEndpointRelationsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBasicAccelerateIpEndpointRelationsResult>("alicloud:ga/getBasicAccelerateIpEndpointRelations:getBasicAccelerateIpEndpointRelations", args ?? new GetBasicAccelerateIpEndpointRelationsInvokeArgs(), options.WithDefaults());

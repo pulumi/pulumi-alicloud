@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -55,7 +54,6 @@ namespace Pulumi.AliCloud.PolarDB
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetParameterGroupsResult> InvokeAsync(GetParameterGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetParameterGroupsResult>("alicloud:polardb/getParameterGroups:getParameterGroups", args ?? new GetParameterGroupsArgs(), options.WithDefaults());
@@ -69,7 +67,6 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -104,7 +101,6 @@ namespace Pulumi.AliCloud.PolarDB
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetParameterGroupsResult> Invoke(GetParameterGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetParameterGroupsResult>("alicloud:polardb/getParameterGroups:getParameterGroups", args ?? new GetParameterGroupsInvokeArgs(), options.WithDefaults());

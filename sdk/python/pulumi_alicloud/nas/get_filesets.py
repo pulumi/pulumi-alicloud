@@ -104,7 +104,6 @@ def get_filesets(file_system_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -116,7 +115,6 @@ def get_filesets(file_system_id: Optional[str] = None,
         ])
     pulumi.export("nasFilesetId1", ids.filesets[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str file_system_id: The ID of the file system.
@@ -156,7 +154,6 @@ def get_filesets_output(file_system_id: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -168,7 +165,6 @@ def get_filesets_output(file_system_id: Optional[pulumi.Input[str]] = None,
         ])
     pulumi.export("nasFilesetId1", ids.filesets[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str file_system_id: The ID of the file system.

@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.OpenSearch
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +57,6 @@ namespace Pulumi.AliCloud.OpenSearch
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAppGroupsResult> InvokeAsync(GetAppGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAppGroupsResult>("alicloud:opensearch/getAppGroups:getAppGroups", args ?? new GetAppGroupsArgs(), options.WithDefaults());
@@ -72,7 +70,6 @@ namespace Pulumi.AliCloud.OpenSearch
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -110,7 +107,6 @@ namespace Pulumi.AliCloud.OpenSearch
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAppGroupsResult> Invoke(GetAppGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppGroupsResult>("alicloud:opensearch/getAppGroups:getAppGroups", args ?? new GetAppGroupsInvokeArgs(), options.WithDefaults());

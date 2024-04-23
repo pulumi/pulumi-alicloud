@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -73,7 +72,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetServerSnapshots(ctx *pulumi.Context, args *GetServerSnapshotsArgs, opts ...pulumi.InvokeOption) (*GetServerSnapshotsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerSnapshotsResult

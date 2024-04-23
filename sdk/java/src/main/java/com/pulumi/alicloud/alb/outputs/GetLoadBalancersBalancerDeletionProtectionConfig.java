@@ -11,29 +11,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLoadBalancersBalancerDeletionProtectionConfig {
-    /**
-     * @return Remove the Protection Status.
-     * 
-     */
     private Boolean enabled;
-    /**
-     * @return Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm:SSZ.
-     * 
-     */
     private String enabledTime;
 
     private GetLoadBalancersBalancerDeletionProtectionConfig() {}
-    /**
-     * @return Remove the Protection Status.
-     * 
-     */
     public Boolean enabled() {
         return this.enabled;
     }
-    /**
-     * @return Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm:SSZ.
-     * 
-     */
     public String enabledTime() {
         return this.enabledTime;
     }

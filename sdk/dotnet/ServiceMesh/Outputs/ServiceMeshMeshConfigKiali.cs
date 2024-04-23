@@ -13,9 +13,6 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     [OutputType]
     public sealed class ServiceMeshMeshConfigKiali
     {
-        /// <summary>
-        /// Enable CNI.
-        /// </summary>
         public readonly bool? Enabled;
         /// <summary>
         /// Grid topology service address.

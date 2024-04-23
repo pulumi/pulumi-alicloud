@@ -563,7 +563,6 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -611,7 +610,6 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
             transit_router_attachment_name=name,
             transit_router_attachment_description=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -654,7 +652,6 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -702,7 +699,6 @@ class TransitRouterVpcAttachment(pulumi.CustomResource):
             transit_router_attachment_name=name,
             transit_router_attachment_description=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

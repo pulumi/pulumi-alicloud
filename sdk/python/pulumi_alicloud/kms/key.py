@@ -720,7 +720,6 @@ class Key(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -730,7 +729,6 @@ class Key(pulumi.CustomResource):
             pending_window_in_days=7,
             status="Enabled")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -785,7 +783,6 @@ class Key(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -795,7 +792,6 @@ class Key(pulumi.CustomResource):
             pending_window_in_days=7,
             status="Enabled")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

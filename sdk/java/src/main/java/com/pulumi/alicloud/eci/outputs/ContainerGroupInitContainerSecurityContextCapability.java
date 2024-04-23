@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerGroupInitContainerSecurityContextCapability {
-    /**
-     * @return The permissions that you want to grant to the processes in the containers.
-     * 
-     */
     private @Nullable List<String> adds;
 
     private ContainerGroupInitContainerSecurityContextCapability() {}
-    /**
-     * @return The permissions that you want to grant to the processes in the containers.
-     * 
-     */
     public List<String> adds() {
         return this.adds == null ? List.of() : this.adds;
     }

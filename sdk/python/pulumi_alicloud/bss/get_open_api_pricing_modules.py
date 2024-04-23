@@ -137,7 +137,6 @@ def get_open_api_pricing_modules(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -148,7 +147,6 @@ def get_open_api_pricing_modules(ids: Optional[Sequence[str]] = None,
         subscription_type="PayAsYouGo")
     pulumi.export("alicloudBssOpenapiPricingModuleExampleId", default.modules[0].code)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name_regex: A regex string to filter results by Property name.
@@ -196,7 +194,6 @@ def get_open_api_pricing_modules_output(ids: Optional[pulumi.Input[Optional[Sequ
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -207,7 +204,6 @@ def get_open_api_pricing_modules_output(ids: Optional[pulumi.Input[Optional[Sequ
         subscription_type="PayAsYouGo")
     pulumi.export("alicloudBssOpenapiPricingModuleExampleId", default.modules[0].code)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name_regex: A regex string to filter results by Property name.

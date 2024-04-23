@@ -19,7 +19,6 @@ namespace Pulumi.AliCloud.Emr
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -48,7 +47,6 @@ namespace Pulumi.AliCloud.Emr
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstanceTypesResult> InvokeAsync(GetInstanceTypesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstanceTypesResult>("alicloud:emr/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesArgs(), options.WithDefaults());
@@ -61,7 +59,6 @@ namespace Pulumi.AliCloud.Emr
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -90,7 +87,6 @@ namespace Pulumi.AliCloud.Emr
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstanceTypesResult> Invoke(GetInstanceTypesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceTypesResult>("alicloud:emr/getInstanceTypes:getInstanceTypes", args ?? new GetInstanceTypesInvokeArgs(), options.WithDefaults());

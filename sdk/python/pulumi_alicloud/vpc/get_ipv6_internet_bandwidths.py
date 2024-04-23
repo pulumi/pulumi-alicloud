@@ -114,7 +114,6 @@ def get_ipv6_internet_bandwidths(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -128,7 +127,6 @@ def get_ipv6_internet_bandwidths(ids: Optional[Sequence[str]] = None,
     status = alicloud.vpc.get_ipv6_internet_bandwidths(status="Normal")
     pulumi.export("vpcIpv6InternetBandwidthId4", status.bandwidths[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ipv6 Internet Bandwidth IDs.
@@ -172,7 +170,6 @@ def get_ipv6_internet_bandwidths_output(ids: Optional[pulumi.Input[Optional[Sequ
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -186,7 +183,6 @@ def get_ipv6_internet_bandwidths_output(ids: Optional[pulumi.Input[Optional[Sequ
     status = alicloud.vpc.get_ipv6_internet_bandwidths(status="Normal")
     pulumi.export("vpcIpv6InternetBandwidthId4", status.bandwidths[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ipv6 Internet Bandwidth IDs.

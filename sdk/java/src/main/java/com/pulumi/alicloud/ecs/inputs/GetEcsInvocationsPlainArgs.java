@@ -17,14 +17,14 @@ public final class GetEcsInvocationsPlainArgs extends com.pulumi.resources.Invok
     public static final GetEcsInvocationsPlainArgs Empty = new GetEcsInvocationsPlainArgs();
 
     /**
-     * The ID of the command.
+     * The execution ID of the command.
      * 
      */
     @Import(name="commandId")
     private @Nullable String commandId;
 
     /**
-     * @return The ID of the command.
+     * @return The execution ID of the command.
      * 
      */
     public Optional<String> commandId() {
@@ -62,14 +62,14 @@ public final class GetEcsInvocationsPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+     * The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances. Valid values: `Running`, `Finished`, `Failed`, `PartialFailed`, `Stopped`.
      * 
      */
     @Import(name="invokeStatus")
     private @Nullable String invokeStatus;
 
     /**
-     * @return The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+     * @return The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances. Valid values: `Running`, `Finished`, `Failed`, `PartialFailed`, `Stopped`.
      * 
      */
     public Optional<String> invokeStatus() {
@@ -136,7 +136,7 @@ public final class GetEcsInvocationsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param commandId The ID of the command.
+         * @param commandId The execution ID of the command.
          * 
          * @return builder
          * 
@@ -179,7 +179,7 @@ public final class GetEcsInvocationsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param invokeStatus The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+         * @param invokeStatus The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances. Valid values: `Running`, `Finished`, `Failed`, `PartialFailed`, `Stopped`.
          * 
          * @return builder
          * 

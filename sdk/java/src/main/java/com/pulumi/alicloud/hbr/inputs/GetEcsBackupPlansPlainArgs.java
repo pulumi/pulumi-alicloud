@@ -31,14 +31,14 @@ public final class GetEcsBackupPlansPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The ID of ECS instance.
+     * The ECS instance ID of the EcsBackupPlan used.
      * 
      */
     @Import(name="instanceId")
     private @Nullable String instanceId;
 
     /**
-     * @return The ID of ECS instance.
+     * @return The ECS instance ID of the EcsBackupPlan used.
      * 
      */
     public Optional<String> instanceId() {
@@ -76,14 +76,14 @@ public final class GetEcsBackupPlansPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The ID of Backup vault.
+     * The Vault ID of the EcsBackupPlan used.
      * 
      */
     @Import(name="vaultId")
     private @Nullable String vaultId;
 
     /**
-     * @return The ID of Backup vault.
+     * @return The Vault ID of the EcsBackupPlan used.
      * 
      */
     public Optional<String> vaultId() {
@@ -140,7 +140,7 @@ public final class GetEcsBackupPlansPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param instanceId The ID of ECS instance.
+         * @param instanceId The ECS instance ID of the EcsBackupPlan used.
          * 
          * @return builder
          * 
@@ -173,7 +173,7 @@ public final class GetEcsBackupPlansPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param vaultId The ID of Backup vault.
+         * @param vaultId The Vault ID of the EcsBackupPlan used.
          * 
          * @return builder
          * 

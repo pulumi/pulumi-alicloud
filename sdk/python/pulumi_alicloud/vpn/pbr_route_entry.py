@@ -252,7 +252,6 @@ class PbrRouteEntry(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -279,7 +278,6 @@ class PbrRouteEntry(pulumi.CustomResource):
             weight=0,
             publish_vpc=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -315,7 +313,6 @@ class PbrRouteEntry(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -342,7 +339,6 @@ class PbrRouteEntry(pulumi.CustomResource):
             weight=0,
             publish_vpc=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPrometheusAlertRulesRuleLabel {
-    /**
-     * @return The name of the label.
-     * 
-     */
     private String name;
-    /**
-     * @return The value of the label.
-     * 
-     */
     private String value;
 
     private GetPrometheusAlertRulesRuleLabel() {}
-    /**
-     * @return The name of the label.
-     * 
-     */
     public String name() {
         return this.name;
     }
-    /**
-     * @return The value of the label.
-     * 
-     */
     public String value() {
         return this.value;
     }

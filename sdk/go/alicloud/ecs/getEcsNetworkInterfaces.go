@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetEcsNetworkInterfaces(ctx *pulumi.Context, args *GetEcsNetworkInterfacesArgs, opts ...pulumi.InvokeOption) (*GetEcsNetworkInterfacesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsNetworkInterfacesResult
@@ -64,7 +62,7 @@ type GetEcsNetworkInterfacesArgs struct {
 	Ids []string `pulumi:"ids"`
 	// The instance id.
 	InstanceId *string `pulumi:"instanceId"`
-	// The network interface name.
+	// Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
 	Name *string `pulumi:"name"`
@@ -76,7 +74,7 @@ type GetEcsNetworkInterfacesArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The primary private IP address of the ENI.
 	PrimaryIpAddress *string `pulumi:"primaryIpAddress"`
-	// The primary private IP address of the ENI.
+	// Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
 	//
 	// Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
 	PrivateIp *string `pulumi:"privateIp"`
@@ -86,13 +84,13 @@ type GetEcsNetworkInterfacesArgs struct {
 	SecurityGroupId *string `pulumi:"securityGroupId"`
 	// Whether the user of the elastic network card is a cloud product or a virtual vendor.
 	ServiceManaged *bool `pulumi:"serviceManaged"`
-	// The status of the ENI.
+	// The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
 	Status *string `pulumi:"status"`
-	// The tags.
+	// A map of tags assigned to ENIs.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The type of the ENI.
+	// The type of ENI. Valid Values: `Primary`, `Secondary`.
 	Type *string `pulumi:"type"`
-	// The Vpc Id.
+	// The vpc id.
 	VpcId *string `pulumi:"vpcId"`
 	// The vswitch id.
 	VswitchId *string `pulumi:"vswitchId"`
@@ -143,7 +141,7 @@ type GetEcsNetworkInterfacesOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The instance id.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
-	// The network interface name.
+	// Field `name` has been deprecated from provider version 1.123.1. New field `networkInterfaceName` instead
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -155,7 +153,7 @@ type GetEcsNetworkInterfacesOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The primary private IP address of the ENI.
 	PrimaryIpAddress pulumi.StringPtrInput `pulumi:"primaryIpAddress"`
-	// The primary private IP address of the ENI.
+	// Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
 	//
 	// Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
 	PrivateIp pulumi.StringPtrInput `pulumi:"privateIp"`
@@ -165,13 +163,13 @@ type GetEcsNetworkInterfacesOutputArgs struct {
 	SecurityGroupId pulumi.StringPtrInput `pulumi:"securityGroupId"`
 	// Whether the user of the elastic network card is a cloud product or a virtual vendor.
 	ServiceManaged pulumi.BoolPtrInput `pulumi:"serviceManaged"`
-	// The status of the ENI.
+	// The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The tags.
+	// A map of tags assigned to ENIs.
 	Tags pulumi.MapInput `pulumi:"tags"`
-	// The type of the ENI.
+	// The type of ENI. Valid Values: `Primary`, `Secondary`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The Vpc Id.
+	// The vpc id.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`
 	// The vswitch id.
 	VswitchId pulumi.StringPtrInput `pulumi:"vswitchId"`

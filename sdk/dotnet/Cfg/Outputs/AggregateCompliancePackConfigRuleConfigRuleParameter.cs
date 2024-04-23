@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Cfg.Outputs
     [OutputType]
     public sealed class AggregateCompliancePackConfigRuleConfigRuleParameter
     {
-        /// <summary>
-        /// The Parameter Name.
-        /// </summary>
         public readonly string? ParameterName;
-        /// <summary>
-        /// The Parameter Value.
-        /// </summary>
         public readonly string? ParameterValue;
 
         [OutputConstructor]

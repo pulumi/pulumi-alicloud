@@ -13,9 +13,6 @@ namespace Pulumi.AliCloud.Eci.Outputs
     [OutputType]
     public sealed class ContainerGroupInitContainerEnvironmentVarFieldRef
     {
-        /// <summary>
-        /// The path of the reference.
-        /// </summary>
         public readonly string? FieldPath;
 
         [OutputConstructor]

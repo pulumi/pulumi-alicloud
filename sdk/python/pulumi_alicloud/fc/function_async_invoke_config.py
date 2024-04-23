@@ -308,7 +308,6 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
 
         > **NOTE** Ensure the FC Function RAM Role has necessary permissions for the destination, such as `mns:SendMessage`, `mns:PublishMessage` or `fc:InvokeFunction`, otherwise the API will return a generic error.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -321,35 +320,35 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
             min=10000)
         default_role = alicloud.ram.Role("default",
             name=f"examplerole{default_integer['result']}",
-            document=\"\"\"	{
-        		"Statement": [
-        		  {
-        			"Action": "sts:AssumeRole",
-        			"Effect": "Allow",
-        			"Principal": {
-        			  "Service": [
-        				"fc.aliyuncs.com"
-        			  ]
-        			}
-        		  }
-        		],
-        		"Version": "1"
-        	}
+            document=\"\"\"\\x09{
+        \\x09\\x09"Statement": [
+        \\x09\\x09  {
+        \\x09\\x09\\x09"Action": "sts:AssumeRole",
+        \\x09\\x09\\x09"Effect": "Allow",
+        \\x09\\x09\\x09"Principal": {
+        \\x09\\x09\\x09  "Service": [
+        \\x09\\x09\\x09\\x09"fc.aliyuncs.com"
+        \\x09\\x09\\x09  ]
+        \\x09\\x09\\x09}
+        \\x09\\x09  }
+        \\x09\\x09],
+        \\x09\\x09"Version": "1"
+        \\x09}
         \"\"\",
             description="this is a example",
             force=True)
         default_policy = alicloud.ram.Policy("default",
             policy_name=f"examplepolicy{default_integer['result']}",
-            policy_document=\"\"\"	{
-        		"Version": "1",
-        		"Statement": [
-        		  {
-        			"Action": "mns:*",
-        			"Resource": "*",
-        			"Effect": "Allow"
-        		  }
-        		]
-        	  }
+            policy_document=\"\"\"\\x09{
+        \\x09\\x09"Version": "1",
+        \\x09\\x09"Statement": [
+        \\x09\\x09  {
+        \\x09\\x09\\x09"Action": "mns:*",
+        \\x09\\x09\\x09"Resource": "*",
+        \\x09\\x09\\x09"Effect": "Allow"
+        \\x09\\x09  }
+        \\x09\\x09]
+        \\x09  }
         \"\"\")
         default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("default",
             role_name=default_role.name,
@@ -397,7 +396,6 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
             stateful_invocation=True,
             qualifier="LATEST")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -435,7 +433,6 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
 
         > **NOTE** Ensure the FC Function RAM Role has necessary permissions for the destination, such as `mns:SendMessage`, `mns:PublishMessage` or `fc:InvokeFunction`, otherwise the API will return a generic error.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -448,35 +445,35 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
             min=10000)
         default_role = alicloud.ram.Role("default",
             name=f"examplerole{default_integer['result']}",
-            document=\"\"\"	{
-        		"Statement": [
-        		  {
-        			"Action": "sts:AssumeRole",
-        			"Effect": "Allow",
-        			"Principal": {
-        			  "Service": [
-        				"fc.aliyuncs.com"
-        			  ]
-        			}
-        		  }
-        		],
-        		"Version": "1"
-        	}
+            document=\"\"\"\\x09{
+        \\x09\\x09"Statement": [
+        \\x09\\x09  {
+        \\x09\\x09\\x09"Action": "sts:AssumeRole",
+        \\x09\\x09\\x09"Effect": "Allow",
+        \\x09\\x09\\x09"Principal": {
+        \\x09\\x09\\x09  "Service": [
+        \\x09\\x09\\x09\\x09"fc.aliyuncs.com"
+        \\x09\\x09\\x09  ]
+        \\x09\\x09\\x09}
+        \\x09\\x09  }
+        \\x09\\x09],
+        \\x09\\x09"Version": "1"
+        \\x09}
         \"\"\",
             description="this is a example",
             force=True)
         default_policy = alicloud.ram.Policy("default",
             policy_name=f"examplepolicy{default_integer['result']}",
-            policy_document=\"\"\"	{
-        		"Version": "1",
-        		"Statement": [
-        		  {
-        			"Action": "mns:*",
-        			"Resource": "*",
-        			"Effect": "Allow"
-        		  }
-        		]
-        	  }
+            policy_document=\"\"\"\\x09{
+        \\x09\\x09"Version": "1",
+        \\x09\\x09"Statement": [
+        \\x09\\x09  {
+        \\x09\\x09\\x09"Action": "mns:*",
+        \\x09\\x09\\x09"Resource": "*",
+        \\x09\\x09\\x09"Effect": "Allow"
+        \\x09\\x09  }
+        \\x09\\x09]
+        \\x09  }
         \"\"\")
         default_role_policy_attachment = alicloud.ram.RolePolicyAttachment("default",
             role_name=default_role.name,
@@ -524,7 +521,6 @@ class FunctionAsyncInvokeConfig(pulumi.CustomResource):
             stateful_invocation=True,
             qualifier="LATEST")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

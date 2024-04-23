@@ -96,7 +96,6 @@ def get_instance_keywords(key: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -105,7 +104,6 @@ def get_instance_keywords(key: Optional[str] = None,
         output_file="./classes.txt")
     pulumi.export("accountKeywords", resources.keywords[0])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str key: The type of reserved keyword to query. Valid values: `account`, `database`.
@@ -136,7 +134,6 @@ def get_instance_keywords_output(key: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -145,7 +142,6 @@ def get_instance_keywords_output(key: Optional[pulumi.Input[str]] = None,
         output_file="./classes.txt")
     pulumi.export("accountKeywords", resources.keywords[0])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str key: The type of reserved keyword to query. Valid values: `account`, `database`.

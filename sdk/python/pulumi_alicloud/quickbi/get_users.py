@@ -104,7 +104,6 @@ def get_users(enable_details: Optional[bool] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -112,7 +111,6 @@ def get_users(enable_details: Optional[bool] = None,
     ids = alicloud.quickbi.get_users(ids=["example_id"])
     pulumi.export("quickBiUserId1", ids.users[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -152,7 +150,6 @@ def get_users_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -160,7 +157,6 @@ def get_users_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
     ids = alicloud.quickbi.get_users(ids=["example_id"])
     pulumi.export("quickBiUserId1", ids.users[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

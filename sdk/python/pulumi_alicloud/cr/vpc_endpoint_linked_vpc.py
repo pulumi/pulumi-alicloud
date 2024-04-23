@@ -221,7 +221,6 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -253,7 +252,6 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
             module_name="Registry",
             enable_create_dns_record_in_pvzt=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -288,7 +286,6 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -320,7 +317,6 @@ class VpcEndpointLinkedVpc(pulumi.CustomResource):
             module_name="Registry",
             enable_create_dns_record_in_pvzt=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

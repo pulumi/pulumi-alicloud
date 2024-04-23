@@ -295,7 +295,6 @@ class MaliciousFileWhitelistConfig(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -313,7 +312,6 @@ class MaliciousFileWhitelistConfig(pulumi.CustomResource):
             source="agentless",
             field_value="sadfas")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -351,7 +349,6 @@ class MaliciousFileWhitelistConfig(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -369,7 +366,6 @@ class MaliciousFileWhitelistConfig(pulumi.CustomResource):
             source="agentless",
             field_value="sadfas")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

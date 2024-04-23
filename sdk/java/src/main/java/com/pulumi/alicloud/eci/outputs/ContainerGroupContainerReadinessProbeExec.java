@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerGroupContainerReadinessProbeExec {
-    /**
-     * @return Commands to be executed inside the container when performing health checks using the command line method.
-     * 
-     */
     private @Nullable List<String> commands;
 
     private ContainerGroupContainerReadinessProbeExec() {}
-    /**
-     * @return Commands to be executed inside the container when performing health checks using the command line method.
-     * 
-     */
     public List<String> commands() {
         return this.commands == null ? List.of() : this.commands;
     }

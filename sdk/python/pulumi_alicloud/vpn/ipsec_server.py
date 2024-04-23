@@ -373,7 +373,6 @@ class IpsecServer(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -401,7 +400,6 @@ class IpsecServer(pulumi.CustomResource):
             vpn_gateway_id=default_gateway.id,
             psk_enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -441,7 +439,6 @@ class IpsecServer(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -469,7 +466,6 @@ class IpsecServer(pulumi.CustomResource):
             vpn_gateway_id=default_gateway.id,
             psk_enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

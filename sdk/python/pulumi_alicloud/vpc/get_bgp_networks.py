@@ -104,7 +104,6 @@ def get_bgp_networks(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -116,7 +115,6 @@ def get_bgp_networks(ids: Optional[Sequence[str]] = None,
     status = alicloud.vpc.get_bgp_networks(status="Available")
     pulumi.export("vpcBgpNetworkId3", status.networks[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Bgp Network IDs.
@@ -156,7 +154,6 @@ def get_bgp_networks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -168,7 +165,6 @@ def get_bgp_networks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     status = alicloud.vpc.get_bgp_networks(status="Available")
     pulumi.export("vpcBgpNetworkId3", status.networks[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Bgp Network IDs.

@@ -13,13 +13,9 @@ import java.util.Objects;
 @CustomType
 public final class GetLoadBalancersBalancerZoneMapping {
     private List<GetLoadBalancersBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses;
-    /**
-     * @return The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
-     * 
-     */
     private String vswitchId;
     /**
-     * @return The ID of the zone to which the ALB instance belongs.
+     * @return The zone ID of the resource.
      * 
      */
     private String zoneId;
@@ -28,15 +24,11 @@ public final class GetLoadBalancersBalancerZoneMapping {
     public List<GetLoadBalancersBalancerZoneMappingLoadBalancerAddress> loadBalancerAddresses() {
         return this.loadBalancerAddresses;
     }
-    /**
-     * @return The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
-     * 
-     */
     public String vswitchId() {
         return this.vswitchId;
     }
     /**
-     * @return The ID of the zone to which the ALB instance belongs.
+     * @return The zone ID of the resource.
      * 
      */
     public String zoneId() {

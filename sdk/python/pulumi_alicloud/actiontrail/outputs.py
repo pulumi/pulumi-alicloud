@@ -210,7 +210,6 @@ class GetHistoryDeliveryJobsJobJobStatusResult(dict):
                  region: str,
                  status: int):
         """
-        :param str region: The region of the delivery job.
         :param int status: The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
         """
         pulumi.set(__self__, "region", region)
@@ -219,9 +218,6 @@ class GetHistoryDeliveryJobsJobJobStatusResult(dict):
     @property
     @pulumi.getter
     def region(self) -> str:
-        """
-        The region of the delivery job.
-        """
         return pulumi.get(self, "region")
 
     @property

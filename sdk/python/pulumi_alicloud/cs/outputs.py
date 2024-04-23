@@ -282,8 +282,10 @@ class EdgeKubernetesCertificateAuthority(dict):
                  client_key: Optional[str] = None,
                  cluster_cert: Optional[str] = None):
         """
-        :param str client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
-        :param str client_key: The path of client key, like `~/.kube/client-key.pem`.
+        :param str client_cert: The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
+        :param str client_key: The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
+               
+               *Network params*
         :param str cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
         """
         if client_cert is not None:
@@ -297,7 +299,7 @@ class EdgeKubernetesCertificateAuthority(dict):
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> Optional[str]:
         """
-        The path of client certificate, like `~/.kube/client-cert.pem`.
+        The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
         """
         return pulumi.get(self, "client_cert")
 
@@ -305,7 +307,9 @@ class EdgeKubernetesCertificateAuthority(dict):
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[str]:
         """
-        The path of client key, like `~/.kube/client-key.pem`.
+        The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
+
+        *Network params*
         """
         return pulumi.get(self, "client_key")
 
@@ -1214,8 +1218,8 @@ class ManagedKubernetesCertificateAuthority(dict):
                  client_key: Optional[str] = None,
                  cluster_cert: Optional[str] = None):
         """
-        :param str client_cert: The path of client certificate, like `~/.kube/client-cert.pem`.
-        :param str client_key: The path of client key, like `~/.kube/client-key.pem`.
+        :param str client_cert: The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
+        :param str client_key: The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
         :param str cluster_cert: The base64 encoded cluster certificate data required to communicate with your cluster. Add this to the certificate-authority-data section of the kubeconfig file for your cluster.
         """
         if client_cert is not None:
@@ -1229,7 +1233,7 @@ class ManagedKubernetesCertificateAuthority(dict):
     @pulumi.getter(name="clientCert")
     def client_cert(self) -> Optional[str]:
         """
-        The path of client certificate, like `~/.kube/client-cert.pem`.
+        The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
         """
         return pulumi.get(self, "client_cert")
 
@@ -1237,7 +1241,7 @@ class ManagedKubernetesCertificateAuthority(dict):
     @pulumi.getter(name="clientKey")
     def client_key(self) -> Optional[str]:
         """
-        The path of client key, like `~/.kube/client-key.pem`.
+        The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
         """
         return pulumi.get(self, "client_key")
 
@@ -2163,18 +2167,12 @@ class NodePoolManagementAutoRepairPolicy(dict):
 
     def __init__(__self__, *,
                  restart_node: Optional[bool] = None):
-        """
-        :param bool restart_node: Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
-        """
         if restart_node is not None:
             pulumi.set(__self__, "restart_node", restart_node)
 
     @property
     @pulumi.getter(name="restartNode")
     def restart_node(self) -> Optional[bool]:
-        """
-        Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
-        """
         return pulumi.get(self, "restart_node")
 
 
@@ -2199,18 +2197,12 @@ class NodePoolManagementAutoUpgradePolicy(dict):
 
     def __init__(__self__, *,
                  auto_upgrade_kubelet: Optional[bool] = None):
-        """
-        :param bool auto_upgrade_kubelet: Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
-        """
         if auto_upgrade_kubelet is not None:
             pulumi.set(__self__, "auto_upgrade_kubelet", auto_upgrade_kubelet)
 
     @property
     @pulumi.getter(name="autoUpgradeKubelet")
     def auto_upgrade_kubelet(self) -> Optional[bool]:
-        """
-        Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
-        """
         return pulumi.get(self, "auto_upgrade_kubelet")
 
 
@@ -2238,10 +2230,6 @@ class NodePoolManagementAutoVulFixPolicy(dict):
     def __init__(__self__, *,
                  restart_node: Optional[bool] = None,
                  vul_level: Optional[str] = None):
-        """
-        :param bool restart_node: Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
-        :param str vul_level: The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
-        """
         if restart_node is not None:
             pulumi.set(__self__, "restart_node", restart_node)
         if vul_level is not None:
@@ -2250,17 +2238,11 @@ class NodePoolManagementAutoVulFixPolicy(dict):
     @property
     @pulumi.getter(name="restartNode")
     def restart_node(self) -> Optional[bool]:
-        """
-        Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
-        """
         return pulumi.get(self, "restart_node")
 
     @property
     @pulumi.getter(name="vulLevel")
     def vul_level(self) -> Optional[str]:
-        """
-        The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
-        """
         return pulumi.get(self, "vul_level")
 
 

@@ -15,32 +15,16 @@ public final class GetQuotaApplicationsDimensionArgs extends com.pulumi.resource
 
     public static final GetQuotaApplicationsDimensionArgs Empty = new GetQuotaApplicationsDimensionArgs();
 
-    /**
-     * The key of dimensions.
-     * 
-     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
-    /**
-     * @return The key of dimensions.
-     * 
-     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
 
-    /**
-     * The value of dimensions.
-     * 
-     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
-    /**
-     * @return The value of dimensions.
-     * 
-     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -70,44 +54,20 @@ public final class GetQuotaApplicationsDimensionArgs extends com.pulumi.resource
             $ = new GetQuotaApplicationsDimensionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param key The key of dimensions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
-        /**
-         * @param key The key of dimensions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
-        /**
-         * @param value The value of dimensions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value The value of dimensions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

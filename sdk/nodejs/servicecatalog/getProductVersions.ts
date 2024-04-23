@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudServiceCatalogProductVersionExampleId = _default.then(_default => _default.productVersions?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProductVersions(args: GetProductVersionsArgs, opts?: pulumi.InvokeOptions): Promise<GetProductVersionsResult> {
 
@@ -97,7 +95,6 @@ export interface GetProductVersionsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -108,7 +105,6 @@ export interface GetProductVersionsResult {
  * });
  * export const alicloudServiceCatalogProductVersionExampleId = _default.then(_default => _default.productVersions?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProductVersionsOutput(args: GetProductVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductVersionsResult> {
     return pulumi.output(args).apply((a: any) => getProductVersions(a, opts))

@@ -134,7 +134,6 @@ def get_acls(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -142,7 +141,6 @@ def get_acls(ids: Optional[Sequence[str]] = None,
     sample_ds = alicloud.slb.get_acls()
     pulumi.export("firstSlbAclId", sample_ds.acls[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Entry Block
 
@@ -199,7 +197,6 @@ def get_acls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -207,7 +204,6 @@ def get_acls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
     sample_ds = alicloud.slb.get_acls()
     pulumi.export("firstSlbAclId", sample_ds.acls[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Entry Block
 

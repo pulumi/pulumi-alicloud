@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -85,7 +84,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetForwardEntriesResult> InvokeAsync(GetForwardEntriesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetForwardEntriesResult>("alicloud:vpc/getForwardEntries:getForwardEntries", args ?? new GetForwardEntriesArgs(), options.WithDefaults());
@@ -97,7 +95,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -164,7 +161,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetForwardEntriesResult> Invoke(GetForwardEntriesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetForwardEntriesResult>("alicloud:vpc/getForwardEntries:getForwardEntries", args ?? new GetForwardEntriesInvokeArgs(), options.WithDefaults());

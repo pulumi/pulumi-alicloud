@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,7 +52,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetEcsDeploymentSets(ctx *pulumi.Context, args *GetEcsDeploymentSetsArgs, opts ...pulumi.InvokeOption) (*GetEcsDeploymentSetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsDeploymentSetsResult

@@ -97,7 +97,6 @@ def get_slots(db_instance_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -105,7 +104,6 @@ def get_slots(db_instance_id: Optional[str] = None,
     example = alicloud.rds.get_slots(db_instance_id="example_value")
     pulumi.export("firstRdsSlotsName", example.slots[0].slot_name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str db_instance_id: The db instance id.
@@ -141,7 +139,6 @@ def get_slots_output(db_instance_id: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -149,7 +146,6 @@ def get_slots_output(db_instance_id: Optional[pulumi.Input[str]] = None,
     example = alicloud.rds.get_slots(db_instance_id="example_value")
     pulumi.export("firstRdsSlotsName", example.slots[0].slot_name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str db_instance_id: The db instance id.

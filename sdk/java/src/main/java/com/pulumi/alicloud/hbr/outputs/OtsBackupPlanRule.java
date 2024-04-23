@@ -27,10 +27,6 @@ public final class OtsBackupPlanRule {
      * 
      */
     private @Nullable String retention;
-    /**
-     * @return The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
-     * 
-     */
     private @Nullable String ruleName;
     /**
      * @return Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
@@ -60,10 +56,6 @@ public final class OtsBackupPlanRule {
     public Optional<String> retention() {
         return Optional.ofNullable(this.retention);
     }
-    /**
-     * @return The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
-     * 
-     */
     public Optional<String> ruleName() {
         return Optional.ofNullable(this.ruleName);
     }

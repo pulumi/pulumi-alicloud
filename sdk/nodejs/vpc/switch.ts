@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -36,9 +35,7 @@ import * as utilities from "../utilities";
  *     zoneId: foo.then(foo => foo.zones?.[0]?.id),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -67,11 +64,9 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Create a switch associated with the additional network segment
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -93,7 +88,6 @@ import * as utilities from "../utilities";
  *     zoneId: foo.then(foo => foo.zones?.[0]?.id),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

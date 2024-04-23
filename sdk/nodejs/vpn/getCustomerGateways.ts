@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  *     outputFile: "/tmp/cgws",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCustomerGateways(args?: GetCustomerGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomerGatewaysResult> {
     args = args || {};
@@ -84,7 +82,6 @@ export interface GetCustomerGatewaysResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -98,7 +95,6 @@ export interface GetCustomerGatewaysResult {
  *     outputFile: "/tmp/cgws",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCustomerGatewaysOutput(args?: GetCustomerGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomerGatewaysResult> {
     return pulumi.output(args).apply((a: any) => getCustomerGateways(a, opts))

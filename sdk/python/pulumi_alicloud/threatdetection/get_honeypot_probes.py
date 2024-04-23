@@ -144,7 +144,6 @@ def get_honeypot_probes(display_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -173,7 +172,6 @@ def get_honeypot_probes(display_name: Optional[str] = None,
         enable_details=True)
     pulumi.export("alicloudThreatDetectionHoneypotProbeExampleId", default.probes[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str display_name: Probe name
@@ -222,7 +220,6 @@ def get_honeypot_probes_output(display_name: Optional[pulumi.Input[Optional[str]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -251,7 +248,6 @@ def get_honeypot_probes_output(display_name: Optional[pulumi.Input[Optional[str]
         enable_details=True)
     pulumi.export("alicloudThreatDetectionHoneypotProbeExampleId", default.probes[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str display_name: Probe name

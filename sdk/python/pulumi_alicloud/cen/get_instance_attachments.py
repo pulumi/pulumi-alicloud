@@ -139,7 +139,6 @@ def get_instance_attachments(child_instance_region_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -147,7 +146,6 @@ def get_instance_attachments(child_instance_region_id: Optional[str] = None,
     example = alicloud.cen.get_instance_attachments(instance_id="cen-o40h17ll9w********")
     pulumi.export("theFirstAttachmentedInstanceId", example.attachments[0].child_instance_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str child_instance_region_id: The region to which the network to be queried belongs.
@@ -190,7 +188,6 @@ def get_instance_attachments_output(child_instance_region_id: Optional[pulumi.In
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -198,7 +195,6 @@ def get_instance_attachments_output(child_instance_region_id: Optional[pulumi.In
     example = alicloud.cen.get_instance_attachments(instance_id="cen-o40h17ll9w********")
     pulumi.export("theFirstAttachmentedInstanceId", example.attachments[0].child_instance_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str child_instance_region_id: The region to which the network to be queried belongs.

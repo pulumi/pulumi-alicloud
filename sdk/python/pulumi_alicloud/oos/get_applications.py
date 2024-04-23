@@ -113,7 +113,6 @@ def get_applications(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -123,13 +122,12 @@ def get_applications(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.oos.get_applications(name_regex="^my-Application")
     pulumi.export("oosApplicationId2", name_regex.applications[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Application IDs. Its element value is same as Application Name.
     :param str name_regex: A regex string to filter results by Application name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Mapping[str, Any] tags: The tag of the resource.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -164,7 +162,6 @@ def get_applications_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -174,12 +171,11 @@ def get_applications_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     name_regex = alicloud.oos.get_applications(name_regex="^my-Application")
     pulumi.export("oosApplicationId2", name_regex.applications[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Application IDs. Its element value is same as Application Name.
     :param str name_regex: A regex string to filter results by Application name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param Mapping[str, Any] tags: The tag of the resource.
+    :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     ...

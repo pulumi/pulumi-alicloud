@@ -331,7 +331,6 @@ class QuotaAlarm(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -355,7 +354,6 @@ class QuotaAlarm(pulumi.CustomResource):
             quota_alarm_name=f"{name}-{default['result']}",
             threshold_type="used")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -395,7 +393,6 @@ class QuotaAlarm(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -419,7 +416,6 @@ class QuotaAlarm(pulumi.CustomResource):
             quota_alarm_name=f"{name}-{default['result']}",
             threshold_type="used")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

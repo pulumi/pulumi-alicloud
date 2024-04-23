@@ -10,65 +10,25 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGreyTagRoutesRouteScRuleItem {
-    /**
-     * @return The comparison operator.
-     * 
-     */
     private String cond;
-    /**
-     * @return The name of the parameter.
-     * 
-     */
     private String name;
-    /**
-     * @return The operator.
-     * 
-     */
     private String operator;
-    /**
-     * @return The Compare types.
-     * 
-     */
     private String type;
-    /**
-     * @return The value of the parameter.
-     * 
-     */
     private String value;
 
     private GetGreyTagRoutesRouteScRuleItem() {}
-    /**
-     * @return The comparison operator.
-     * 
-     */
     public String cond() {
         return this.cond;
     }
-    /**
-     * @return The name of the parameter.
-     * 
-     */
     public String name() {
         return this.name;
     }
-    /**
-     * @return The operator.
-     * 
-     */
     public String operator() {
         return this.operator;
     }
-    /**
-     * @return The Compare types.
-     * 
-     */
     public String type() {
         return this.type;
     }
-    /**
-     * @return The value of the parameter.
-     * 
-     */
     public String value() {
         return this.value;
     }

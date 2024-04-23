@@ -13,9 +13,6 @@ namespace Pulumi.AliCloud.Sae.Outputs
     [OutputType]
     public sealed class ApplicationLivenessV2TcpSocket
     {
-        /// <summary>
-        /// The port.
-        /// </summary>
         public readonly int? Port;
 
         [OutputConstructor]

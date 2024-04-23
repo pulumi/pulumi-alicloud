@@ -16,14 +16,18 @@ public final class GetVersionsPlainArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetVersionsPlainArgs Empty = new GetVersionsPlainArgs();
 
     /**
-     * The edition of the ASM instance.
+     * The edition of the ASM instance. Valid values:
+     * - Default: Standard Edition
+     * - Pro: Professional Edition
      * 
      */
     @Import(name="edition")
     private @Nullable String edition;
 
     /**
-     * @return The edition of the ASM instance.
+     * @return The edition of the ASM instance. Valid values:
+     * - Default: Standard Edition
+     * - Pro: Professional Edition
      * 
      */
     public Optional<String> edition() {
@@ -87,7 +91,9 @@ public final class GetVersionsPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param edition The edition of the ASM instance.
+         * @param edition The edition of the ASM instance. Valid values:
+         * - Default: Standard Edition
+         * - Pro: Professional Edition
          * 
          * @return builder
          * 

@@ -119,7 +119,6 @@ def get_listeners(description_regex: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -144,7 +143,6 @@ def get_listeners(description_regex: Optional[str] = None,
     sample_ds = alicloud.slb.get_listeners_output(load_balancer_id=default.id)
     pulumi.export("firstSlbListenerProtocol", sample_ds.slb_listeners[0].protocol)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description_regex: A regex string to filter results by SLB listener description.
@@ -184,7 +182,6 @@ def get_listeners_output(description_regex: Optional[pulumi.Input[Optional[str]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -209,7 +206,6 @@ def get_listeners_output(description_regex: Optional[pulumi.Input[Optional[str]]
     sample_ds = alicloud.slb.get_listeners_output(load_balancer_id=default.id)
     pulumi.export("firstSlbListenerProtocol", sample_ds.slb_listeners[0].protocol)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description_regex: A regex string to filter results by SLB listener description.

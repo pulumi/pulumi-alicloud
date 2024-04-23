@@ -305,14 +305,14 @@ public class BucketReplication extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.sourceSelectionCriteria);
     }
     /**
-     * Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+     * The status of the data replication task. Can be starting, doing and closing.
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+     * @return The status of the data replication task. Can be starting, doing and closing.
      * 
      */
     public Output<String> status() {

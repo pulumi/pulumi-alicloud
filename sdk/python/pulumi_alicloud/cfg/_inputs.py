@@ -63,10 +63,6 @@ class AggregateCompliancePackConfigRuleConfigRuleParameterArgs:
     def __init__(__self__, *,
                  parameter_name: Optional[pulumi.Input[str]] = None,
                  parameter_value: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] parameter_name: The Parameter Name.
-        :param pulumi.Input[str] parameter_value: The Parameter Value.
-        """
         if parameter_name is not None:
             pulumi.set(__self__, "parameter_name", parameter_name)
         if parameter_value is not None:
@@ -75,9 +71,6 @@ class AggregateCompliancePackConfigRuleConfigRuleParameterArgs:
     @property
     @pulumi.getter(name="parameterName")
     def parameter_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Parameter Name.
-        """
         return pulumi.get(self, "parameter_name")
 
     @parameter_name.setter
@@ -87,9 +80,6 @@ class AggregateCompliancePackConfigRuleConfigRuleParameterArgs:
     @property
     @pulumi.getter(name="parameterValue")
     def parameter_value(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Parameter Value.
-        """
         return pulumi.get(self, "parameter_value")
 
     @parameter_value.setter
@@ -215,10 +205,6 @@ class CompliancePackConfigRuleConfigRuleParameterArgs:
     def __init__(__self__, *,
                  parameter_name: Optional[pulumi.Input[str]] = None,
                  parameter_value: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] parameter_name: The parameter name.
-        :param pulumi.Input[str] parameter_value: The parameter value.
-        """
         if parameter_name is not None:
             pulumi.set(__self__, "parameter_name", parameter_name)
         if parameter_value is not None:
@@ -227,9 +213,6 @@ class CompliancePackConfigRuleConfigRuleParameterArgs:
     @property
     @pulumi.getter(name="parameterName")
     def parameter_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The parameter name.
-        """
         return pulumi.get(self, "parameter_name")
 
     @parameter_name.setter
@@ -239,9 +222,6 @@ class CompliancePackConfigRuleConfigRuleParameterArgs:
     @property
     @pulumi.getter(name="parameterValue")
     def parameter_value(self) -> Optional[pulumi.Input[str]]:
-        """
-        The parameter value.
-        """
         return pulumi.get(self, "parameter_value")
 
     @parameter_value.setter

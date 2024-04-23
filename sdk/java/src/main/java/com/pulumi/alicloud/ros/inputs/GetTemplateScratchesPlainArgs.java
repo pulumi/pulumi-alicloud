@@ -62,14 +62,14 @@ public final class GetTemplateScratchesPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
      * 
      */
     public Optional<String> status() {
@@ -77,14 +77,14 @@ public final class GetTemplateScratchesPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * The type of the Template Scratch.
+     * The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
      * 
      */
     @Import(name="templateScratchType")
     private @Nullable String templateScratchType;
 
     /**
-     * @return The type of the Template Scratch.
+     * @return The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
      * 
      */
     public Optional<String> templateScratchType() {
@@ -163,7 +163,7 @@ public final class GetTemplateScratchesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class GetTemplateScratchesPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param templateScratchType The type of the Template Scratch.
+         * @param templateScratchType The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
          * 
          * @return builder
          * 

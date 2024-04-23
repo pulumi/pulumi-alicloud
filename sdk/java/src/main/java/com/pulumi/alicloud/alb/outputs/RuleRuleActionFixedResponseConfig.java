@@ -12,41 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RuleRuleActionFixedResponseConfig {
-    /**
-     * @return The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
-     * 
-     */
     private String content;
-    /**
-     * @return The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
-     * 
-     */
     private @Nullable String contentType;
-    /**
-     * @return The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
-     * 
-     */
     private @Nullable String httpCode;
 
     private RuleRuleActionFixedResponseConfig() {}
-    /**
-     * @return The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
-     * 
-     */
     public String content() {
         return this.content;
     }
-    /**
-     * @return The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
-     * 
-     */
     public Optional<String> contentType() {
         return Optional.ofNullable(this.contentType);
     }
-    /**
-     * @return The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
-     * 
-     */
     public Optional<String> httpCode() {
         return Optional.ofNullable(this.httpCode);
     }

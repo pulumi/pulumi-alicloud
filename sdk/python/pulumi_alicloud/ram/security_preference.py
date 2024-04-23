@@ -287,7 +287,6 @@ class SecurityPreference(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -296,7 +295,6 @@ class SecurityPreference(pulumi.CustomResource):
             enable_save_mfa_ticket=False,
             allow_user_to_change_password=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -336,7 +334,6 @@ class SecurityPreference(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -345,7 +342,6 @@ class SecurityPreference(pulumi.CustomResource):
             enable_save_mfa_ticket=False,
             allow_user_to_change_password=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

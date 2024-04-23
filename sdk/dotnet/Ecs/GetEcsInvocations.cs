@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetEcsInvocationsResult> InvokeAsync(GetEcsInvocationsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsInvocationsResult>("alicloud:ecs/getEcsInvocations:getEcsInvocations", args ?? new GetEcsInvocationsArgs(), options.WithDefaults());
@@ -57,7 +55,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetEcsInvocationsResult> Invoke(GetEcsInvocationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEcsInvocationsResult>("alicloud:ecs/getEcsInvocations:getEcsInvocations", args ?? new GetEcsInvocationsInvokeArgs(), options.WithDefaults());
@@ -90,7 +86,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetEcsInvocationsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the command.
+        /// The execution ID of the command.
         /// </summary>
         [Input("commandId")]
         public string? CommandId { get; set; }
@@ -114,7 +110,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+        /// The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances. Valid values: `Running`, `Finished`, `Failed`, `PartialFailed`, `Stopped`.
         /// </summary>
         [Input("invokeStatus")]
         public string? InvokeStatus { get; set; }
@@ -140,7 +136,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetEcsInvocationsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the command.
+        /// The execution ID of the command.
         /// </summary>
         [Input("commandId")]
         public Input<string>? CommandId { get; set; }
@@ -164,7 +160,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
+        /// The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances. Valid values: `Running`, `Finished`, `Failed`, `PartialFailed`, `Stopped`.
         /// </summary>
         [Input("invokeStatus")]
         public Input<string>? InvokeStatus { get; set; }

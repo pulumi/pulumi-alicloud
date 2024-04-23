@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Mns
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.AliCloud.Mns
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTopicsResult> InvokeAsync(GetTopicsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTopicsResult>("alicloud:mns/getTopics:getTopics", args ?? new GetTopicsArgs(), options.WithDefaults());
@@ -50,7 +48,6 @@ namespace Pulumi.AliCloud.Mns
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,7 +67,6 @@ namespace Pulumi.AliCloud.Mns
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTopicsResult> Invoke(GetTopicsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTopicsResult>("alicloud:mns/getTopics:getTopics", args ?? new GetTopicsInvokeArgs(), options.WithDefaults());

@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -43,7 +42,6 @@ import * as utilities from "../utilities";
  * });
  * export const vpcDhcpOptionsSetId5 = status.then(status => status.sets?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDhcpOptionsSets(args?: GetDhcpOptionsSetsArgs, opts?: pulumi.InvokeOptions): Promise<GetDhcpOptionsSetsResult> {
     args = args || {};
@@ -64,15 +62,11 @@ export function getDhcpOptionsSets(args?: GetDhcpOptionsSetsArgs, opts?: pulumi.
  */
 export interface GetDhcpOptionsSetsArgs {
     /**
-     * The root domain, for example, example.com. After a DHCP options set is associated with a
-     * Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
-     * ECS instances in the VPC network.
+     * The name of the DHCP options set.The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
      */
     dhcpOptionsSetName?: string;
     /**
-     * The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
-     * Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
-     * instances in the VPC network.
+     * The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
      */
     domainName?: string;
     /**
@@ -119,7 +113,6 @@ export interface GetDhcpOptionsSetsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -147,7 +140,6 @@ export interface GetDhcpOptionsSetsResult {
  * });
  * export const vpcDhcpOptionsSetId5 = status.then(status => status.sets?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDhcpOptionsSetsOutput(args?: GetDhcpOptionsSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDhcpOptionsSetsResult> {
     return pulumi.output(args).apply((a: any) => getDhcpOptionsSets(a, opts))
@@ -158,15 +150,11 @@ export function getDhcpOptionsSetsOutput(args?: GetDhcpOptionsSetsOutputArgs, op
  */
 export interface GetDhcpOptionsSetsOutputArgs {
     /**
-     * The root domain, for example, example.com. After a DHCP options set is associated with a
-     * Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
-     * ECS instances in the VPC network.
+     * The name of the DHCP options set.The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
      */
     dhcpOptionsSetName?: pulumi.Input<string>;
     /**
-     * The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
-     * Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
-     * instances in the VPC network.
+     * The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
      */
     domainName?: pulumi.Input<string>;
     /**

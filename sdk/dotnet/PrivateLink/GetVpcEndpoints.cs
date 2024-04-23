@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.PrivateLink
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Pulumi.AliCloud.PrivateLink
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVpcEndpointsResult> InvokeAsync(GetVpcEndpointsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointsResult>("alicloud:privatelink/getVpcEndpoints:getVpcEndpoints", args ?? new GetVpcEndpointsArgs(), options.WithDefaults());
@@ -58,7 +56,6 @@ namespace Pulumi.AliCloud.PrivateLink
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -82,7 +79,6 @@ namespace Pulumi.AliCloud.PrivateLink
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVpcEndpointsResult> Invoke(GetVpcEndpointsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcEndpointsResult>("alicloud:privatelink/getVpcEndpoints:getVpcEndpoints", args ?? new GetVpcEndpointsInvokeArgs(), options.WithDefaults());

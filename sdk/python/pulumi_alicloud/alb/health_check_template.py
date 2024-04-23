@@ -472,14 +472,12 @@ class HealthCheckTemplate(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         example = alicloud.alb.HealthCheckTemplate("example", health_check_template_name="example_name")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -522,14 +520,12 @@ class HealthCheckTemplate(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         example = alicloud.alb.HealthCheckTemplate("example", health_check_template_name="example_name")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

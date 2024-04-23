@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,7 +55,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetHostGroups(ctx *pulumi.Context, args *GetHostGroupsArgs, opts ...pulumi.InvokeOption) (*GetHostGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHostGroupsResult

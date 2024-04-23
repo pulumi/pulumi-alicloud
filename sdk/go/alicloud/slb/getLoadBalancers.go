@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,7 +47,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetLoadBalancers(ctx *pulumi.Context, args *GetLoadBalancersArgs, opts ...pulumi.InvokeOption) (*GetLoadBalancersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLoadBalancersResult
@@ -88,7 +86,6 @@ type GetLoadBalancersArgs struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status *string `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -112,7 +109,6 @@ type GetLoadBalancersArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Tags map[string]interface{} `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId *string `pulumi:"vpcId"`
@@ -205,7 +201,6 @@ type GetLoadBalancersOutputArgs struct {
 	// SLB current status. Possible values: `inactive`, `active` and `locked`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -229,7 +224,6 @@ type GetLoadBalancersOutputArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// ID of the VPC linked to the SLBs.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`

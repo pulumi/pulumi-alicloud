@@ -516,7 +516,6 @@ class User(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -562,7 +561,6 @@ class User(pulumi.CustomResource):
             source_user_id=default_get_account.id,
             user_name=user.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -627,7 +625,6 @@ class User(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -673,7 +670,6 @@ class User(pulumi.CustomResource):
             source_user_id=default_get_account.id,
             user_name=user.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

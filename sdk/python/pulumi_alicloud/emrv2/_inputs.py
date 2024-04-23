@@ -275,13 +275,6 @@ class ClusterBootstrapScriptNodeSelectorArgs:
                  node_group_name: Optional[pulumi.Input[str]] = None,
                  node_group_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  node_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] node_select_type: The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
-        :param pulumi.Input[str] node_group_id: The configuration effected which node group id of emr cluster.
-        :param pulumi.Input[str] node_group_name: The configuration effected which node group name of emr cluster.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] node_group_types: The bootstrap scripts execution target node group types.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] node_names: The bootstrap scripts execution target node names.
-        """
         pulumi.set(__self__, "node_select_type", node_select_type)
         if node_group_id is not None:
             pulumi.set(__self__, "node_group_id", node_group_id)
@@ -295,9 +288,6 @@ class ClusterBootstrapScriptNodeSelectorArgs:
     @property
     @pulumi.getter(name="nodeSelectType")
     def node_select_type(self) -> pulumi.Input[str]:
-        """
-        The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
-        """
         return pulumi.get(self, "node_select_type")
 
     @node_select_type.setter
@@ -307,9 +297,6 @@ class ClusterBootstrapScriptNodeSelectorArgs:
     @property
     @pulumi.getter(name="nodeGroupId")
     def node_group_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The configuration effected which node group id of emr cluster.
-        """
         return pulumi.get(self, "node_group_id")
 
     @node_group_id.setter
@@ -319,9 +306,6 @@ class ClusterBootstrapScriptNodeSelectorArgs:
     @property
     @pulumi.getter(name="nodeGroupName")
     def node_group_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The configuration effected which node group name of emr cluster.
-        """
         return pulumi.get(self, "node_group_name")
 
     @node_group_name.setter
@@ -331,9 +315,6 @@ class ClusterBootstrapScriptNodeSelectorArgs:
     @property
     @pulumi.getter(name="nodeGroupTypes")
     def node_group_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The bootstrap scripts execution target node group types.
-        """
         return pulumi.get(self, "node_group_types")
 
     @node_group_types.setter
@@ -343,9 +324,6 @@ class ClusterBootstrapScriptNodeSelectorArgs:
     @property
     @pulumi.getter(name="nodeNames")
     def node_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The bootstrap scripts execution target node names.
-        """
         return pulumi.get(self, "node_names")
 
     @node_names.setter
@@ -746,11 +724,6 @@ class ClusterNodeGroupCostOptimizedConfigArgs:
                  on_demand_base_capacity: pulumi.Input[int],
                  on_demand_percentage_above_base_capacity: pulumi.Input[int],
                  spot_instance_pools: pulumi.Input[int]):
-        """
-        :param pulumi.Input[int] on_demand_base_capacity: The cost optimized configuration which on demand based capacity.
-        :param pulumi.Input[int] on_demand_percentage_above_base_capacity: The cost optimized configuration which on demand percentage above based capacity.
-        :param pulumi.Input[int] spot_instance_pools: The cost optimized configuration with spot instance pools.
-        """
         pulumi.set(__self__, "on_demand_base_capacity", on_demand_base_capacity)
         pulumi.set(__self__, "on_demand_percentage_above_base_capacity", on_demand_percentage_above_base_capacity)
         pulumi.set(__self__, "spot_instance_pools", spot_instance_pools)
@@ -758,9 +731,6 @@ class ClusterNodeGroupCostOptimizedConfigArgs:
     @property
     @pulumi.getter(name="onDemandBaseCapacity")
     def on_demand_base_capacity(self) -> pulumi.Input[int]:
-        """
-        The cost optimized configuration which on demand based capacity.
-        """
         return pulumi.get(self, "on_demand_base_capacity")
 
     @on_demand_base_capacity.setter
@@ -770,9 +740,6 @@ class ClusterNodeGroupCostOptimizedConfigArgs:
     @property
     @pulumi.getter(name="onDemandPercentageAboveBaseCapacity")
     def on_demand_percentage_above_base_capacity(self) -> pulumi.Input[int]:
-        """
-        The cost optimized configuration which on demand percentage above based capacity.
-        """
         return pulumi.get(self, "on_demand_percentage_above_base_capacity")
 
     @on_demand_percentage_above_base_capacity.setter
@@ -782,9 +749,6 @@ class ClusterNodeGroupCostOptimizedConfigArgs:
     @property
     @pulumi.getter(name="spotInstancePools")
     def spot_instance_pools(self) -> pulumi.Input[int]:
-        """
-        The cost optimized configuration with spot instance pools.
-        """
         return pulumi.get(self, "spot_instance_pools")
 
     @spot_instance_pools.setter
@@ -799,12 +763,6 @@ class ClusterNodeGroupDataDiskArgs:
                  size: pulumi.Input[int],
                  count: Optional[pulumi.Input[int]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] category: The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
-        :param pulumi.Input[int] size: The size of a data disk, at least 40. Unit: GiB.
-        :param pulumi.Input[int] count: The count of a data disk.
-        :param pulumi.Input[str] performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
-        """
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "size", size)
         if count is not None:
@@ -815,9 +773,6 @@ class ClusterNodeGroupDataDiskArgs:
     @property
     @pulumi.getter
     def category(self) -> pulumi.Input[str]:
-        """
-        The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
-        """
         return pulumi.get(self, "category")
 
     @category.setter
@@ -827,9 +782,6 @@ class ClusterNodeGroupDataDiskArgs:
     @property
     @pulumi.getter
     def size(self) -> pulumi.Input[int]:
-        """
-        The size of a data disk, at least 40. Unit: GiB.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -839,9 +791,6 @@ class ClusterNodeGroupDataDiskArgs:
     @property
     @pulumi.getter
     def count(self) -> Optional[pulumi.Input[int]]:
-        """
-        The count of a data disk.
-        """
         return pulumi.get(self, "count")
 
     @count.setter
@@ -851,9 +800,6 @@ class ClusterNodeGroupDataDiskArgs:
     @property
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[pulumi.Input[str]]:
-        """
-        Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
-        """
         return pulumi.get(self, "performance_level")
 
     @performance_level.setter
@@ -866,19 +812,12 @@ class ClusterNodeGroupSpotBidPriceArgs:
     def __init__(__self__, *,
                  bid_price: pulumi.Input[int],
                  instance_type: pulumi.Input[str]):
-        """
-        :param pulumi.Input[int] bid_price: The spot bid price of a PayAsYouGo instance.
-        :param pulumi.Input[str] instance_type: Host Ecs instance type.
-        """
         pulumi.set(__self__, "bid_price", bid_price)
         pulumi.set(__self__, "instance_type", instance_type)
 
     @property
     @pulumi.getter(name="bidPrice")
     def bid_price(self) -> pulumi.Input[int]:
-        """
-        The spot bid price of a PayAsYouGo instance.
-        """
         return pulumi.get(self, "bid_price")
 
     @bid_price.setter
@@ -888,9 +827,6 @@ class ClusterNodeGroupSpotBidPriceArgs:
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> pulumi.Input[str]:
-        """
-        Host Ecs instance type.
-        """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
@@ -1006,12 +942,6 @@ class ClusterNodeGroupSystemDiskArgs:
                  size: pulumi.Input[int],
                  count: Optional[pulumi.Input[int]] = None,
                  performance_level: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] category: The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
-        :param pulumi.Input[int] size: The size of a data disk, at least 40. Unit: GiB.
-        :param pulumi.Input[int] count: The count of a data disk.
-        :param pulumi.Input[str] performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
-        """
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "size", size)
         if count is not None:
@@ -1022,9 +952,6 @@ class ClusterNodeGroupSystemDiskArgs:
     @property
     @pulumi.getter
     def category(self) -> pulumi.Input[str]:
-        """
-        The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
-        """
         return pulumi.get(self, "category")
 
     @category.setter
@@ -1034,9 +961,6 @@ class ClusterNodeGroupSystemDiskArgs:
     @property
     @pulumi.getter
     def size(self) -> pulumi.Input[int]:
-        """
-        The size of a data disk, at least 40. Unit: GiB.
-        """
         return pulumi.get(self, "size")
 
     @size.setter
@@ -1046,9 +970,6 @@ class ClusterNodeGroupSystemDiskArgs:
     @property
     @pulumi.getter
     def count(self) -> Optional[pulumi.Input[int]]:
-        """
-        The count of a data disk.
-        """
         return pulumi.get(self, "count")
 
     @count.setter
@@ -1058,9 +979,6 @@ class ClusterNodeGroupSystemDiskArgs:
     @property
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[pulumi.Input[str]]:
-        """
-        Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
-        """
         return pulumi.get(self, "performance_level")
 
     @performance_level.setter

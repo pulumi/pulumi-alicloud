@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Cddc
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.AliCloud.Cddc
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDedicatedHostGroupsResult> InvokeAsync(GetDedicatedHostGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedHostGroupsResult>("alicloud:cddc/getDedicatedHostGroups:getDedicatedHostGroups", args ?? new GetDedicatedHostGroupsArgs(), options.WithDefaults());
@@ -54,7 +52,6 @@ namespace Pulumi.AliCloud.Cddc
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.AliCloud.Cddc
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDedicatedHostGroupsResult> Invoke(GetDedicatedHostGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDedicatedHostGroupsResult>("alicloud:cddc/getDedicatedHostGroups:getDedicatedHostGroups", args ?? new GetDedicatedHostGroupsInvokeArgs(), options.WithDefaults());

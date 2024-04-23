@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,7 +54,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetIpaDomains(ctx *pulumi.Context, args *GetIpaDomainsArgs, opts ...pulumi.InvokeOption) (*GetIpaDomainsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpaDomainsResult

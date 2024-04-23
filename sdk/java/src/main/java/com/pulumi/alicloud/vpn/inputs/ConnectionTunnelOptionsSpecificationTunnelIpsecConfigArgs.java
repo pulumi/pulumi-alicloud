@@ -16,62 +16,30 @@ public final class ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs ext
 
     public static final ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs Empty = new ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs();
 
-    /**
-     * IPsec authentication algorithm. sha1 and md5 are supported.
-     * 
-     */
     @Import(name="ipsecAuthAlg")
     private @Nullable Output<String> ipsecAuthAlg;
 
-    /**
-     * @return IPsec authentication algorithm. sha1 and md5 are supported.
-     * 
-     */
     public Optional<Output<String>> ipsecAuthAlg() {
         return Optional.ofNullable(this.ipsecAuthAlg);
     }
 
-    /**
-     * IPsec Encript algorithm.
-     * 
-     */
     @Import(name="ipsecEncAlg")
     private @Nullable Output<String> ipsecEncAlg;
 
-    /**
-     * @return IPsec Encript algorithm.
-     * 
-     */
     public Optional<Output<String>> ipsecEncAlg() {
         return Optional.ofNullable(this.ipsecEncAlg);
     }
 
-    /**
-     * IPsec lifetime.
-     * 
-     */
     @Import(name="ipsecLifetime")
     private @Nullable Output<Integer> ipsecLifetime;
 
-    /**
-     * @return IPsec lifetime.
-     * 
-     */
     public Optional<Output<Integer>> ipsecLifetime() {
         return Optional.ofNullable(this.ipsecLifetime);
     }
 
-    /**
-     * DH Group.
-     * 
-     */
     @Import(name="ipsecPfs")
     private @Nullable Output<String> ipsecPfs;
 
-    /**
-     * @return DH Group.
-     * 
-     */
     public Optional<Output<String>> ipsecPfs() {
         return Optional.ofNullable(this.ipsecPfs);
     }
@@ -103,86 +71,38 @@ public final class ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs ext
             $ = new ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param ipsecAuthAlg IPsec authentication algorithm. sha1 and md5 are supported.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipsecAuthAlg(@Nullable Output<String> ipsecAuthAlg) {
             $.ipsecAuthAlg = ipsecAuthAlg;
             return this;
         }
 
-        /**
-         * @param ipsecAuthAlg IPsec authentication algorithm. sha1 and md5 are supported.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipsecAuthAlg(String ipsecAuthAlg) {
             return ipsecAuthAlg(Output.of(ipsecAuthAlg));
         }
 
-        /**
-         * @param ipsecEncAlg IPsec Encript algorithm.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipsecEncAlg(@Nullable Output<String> ipsecEncAlg) {
             $.ipsecEncAlg = ipsecEncAlg;
             return this;
         }
 
-        /**
-         * @param ipsecEncAlg IPsec Encript algorithm.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipsecEncAlg(String ipsecEncAlg) {
             return ipsecEncAlg(Output.of(ipsecEncAlg));
         }
 
-        /**
-         * @param ipsecLifetime IPsec lifetime.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipsecLifetime(@Nullable Output<Integer> ipsecLifetime) {
             $.ipsecLifetime = ipsecLifetime;
             return this;
         }
 
-        /**
-         * @param ipsecLifetime IPsec lifetime.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipsecLifetime(Integer ipsecLifetime) {
             return ipsecLifetime(Output.of(ipsecLifetime));
         }
 
-        /**
-         * @param ipsecPfs DH Group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipsecPfs(@Nullable Output<String> ipsecPfs) {
             $.ipsecPfs = ipsecPfs;
             return this;
         }
 
-        /**
-         * @param ipsecPfs DH Group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ipsecPfs(String ipsecPfs) {
             return ipsecPfs(Output.of(ipsecPfs));
         }

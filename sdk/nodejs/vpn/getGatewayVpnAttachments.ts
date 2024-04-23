@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  * export const localId = vpnAttachments.attachments[0].ikeConfig[0].localId;
  * export const internetIp = vpnAttachments.attachments[0].internetIp;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGatewayVpnAttachments(args?: GetGatewayVpnAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayVpnAttachmentsResult> {
     args = args || {};
@@ -106,7 +104,6 @@ export interface GetGatewayVpnAttachmentsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -120,7 +117,6 @@ export interface GetGatewayVpnAttachmentsResult {
  * export const localId = vpnAttachments.attachments[0].ikeConfig[0].localId;
  * export const internetIp = vpnAttachments.attachments[0].internetIp;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGatewayVpnAttachmentsOutput(args?: GetGatewayVpnAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayVpnAttachmentsResult> {
     return pulumi.output(args).apply((a: any) => getGatewayVpnAttachments(a, opts))

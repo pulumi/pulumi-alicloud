@@ -865,7 +865,6 @@ class OssExport(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -907,7 +906,6 @@ class OssExport(pulumi.CustomResource):
             log_read_role_arn="role_arn_for_sls_read",
             time_zone="+0800")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -962,7 +960,6 @@ class OssExport(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1004,7 +1001,6 @@ class OssExport(pulumi.CustomResource):
             log_read_role_arn="role_arn_for_sls_read",
             time_zone="+0800")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

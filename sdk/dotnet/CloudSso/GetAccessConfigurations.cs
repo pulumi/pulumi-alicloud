@@ -22,7 +22,6 @@ namespace Pulumi.AliCloud.CloudSso
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -54,7 +53,6 @@ namespace Pulumi.AliCloud.CloudSso
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccessConfigurationsResult> InvokeAsync(GetAccessConfigurationsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessConfigurationsResult>("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", args ?? new GetAccessConfigurationsArgs(), options.WithDefaults());
@@ -70,7 +68,6 @@ namespace Pulumi.AliCloud.CloudSso
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -102,7 +99,6 @@ namespace Pulumi.AliCloud.CloudSso
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccessConfigurationsResult> Invoke(GetAccessConfigurationsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessConfigurationsResult>("alicloud:cloudsso/getAccessConfigurations:getAccessConfigurations", args ?? new GetAccessConfigurationsInvokeArgs(), options.WithDefaults());

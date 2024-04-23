@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudThreatDetectionHoneyPotExampleId = _default.then(_default => _default.pots?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHoneyPots(args?: GetHoneyPotsArgs, opts?: pulumi.InvokeOptions): Promise<GetHoneyPotsResult> {
     args = args || {};
@@ -119,7 +117,6 @@ export interface GetHoneyPotsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -131,7 +128,6 @@ export interface GetHoneyPotsResult {
  * });
  * export const alicloudThreatDetectionHoneyPotExampleId = _default.then(_default => _default.pots?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHoneyPotsOutput(args?: GetHoneyPotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHoneyPotsResult> {
     return pulumi.output(args).apply((a: any) => getHoneyPots(a, opts))

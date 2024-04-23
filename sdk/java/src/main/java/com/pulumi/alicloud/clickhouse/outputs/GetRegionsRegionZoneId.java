@@ -11,29 +11,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRegionsRegionZoneId {
-    /**
-     * @return Whether to support vpc network.
-     * 
-     */
     private Boolean vpcEnabled;
-    /**
-     * @return The zone ID.
-     * 
-     */
     private String zoneId;
 
     private GetRegionsRegionZoneId() {}
-    /**
-     * @return Whether to support vpc network.
-     * 
-     */
     public Boolean vpcEnabled() {
         return this.vpcEnabled;
     }
-    /**
-     * @return The zone ID.
-     * 
-     */
     public String zoneId() {
         return this.zoneId;
     }

@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -52,7 +51,6 @@ namespace Pulumi.AliCloud.Nas
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetLifecyclePoliciesResult> InvokeAsync(GetLifecyclePoliciesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLifecyclePoliciesResult>("alicloud:nas/getLifecyclePolicies:getLifecyclePolicies", args ?? new GetLifecyclePoliciesArgs(), options.WithDefaults());
@@ -66,7 +64,6 @@ namespace Pulumi.AliCloud.Nas
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -98,7 +95,6 @@ namespace Pulumi.AliCloud.Nas
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetLifecyclePoliciesResult> Invoke(GetLifecyclePoliciesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLifecyclePoliciesResult>("alicloud:nas/getLifecyclePolicies:getLifecyclePolicies", args ?? new GetLifecyclePoliciesInvokeArgs(), options.WithDefaults());

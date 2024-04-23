@@ -12,17 +12,9 @@ namespace Pulumi.AliCloud.Imp.Inputs
 
     public sealed class AppTemplateConfigListArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Configuration item key. Valid values: ["config.appCallbackAuthKey","config.appCallbackUrl","config.callbackClass.live","config.callbackClass.user","config.livePullDomain","config.livePushDomain","config.multipleClientsLogin","config.regionId","config.streamChangeCallbackUrl"].
-        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
-        /// <summary>
-        /// Configuration item content.
-        /// 
-        /// &gt; **NOTE:**  By default, the attribute `config_list` will return all of nine keys with empty value. If you want to set one or more of the key's value, you had better also set other keys, otherwise, there will be a diff.
-        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

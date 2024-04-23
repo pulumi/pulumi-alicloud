@@ -167,7 +167,6 @@ class VpcAccess(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -203,7 +202,6 @@ class VpcAccess(pulumi.CustomResource):
             instance_id=example_instance.id,
             port=8080)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -231,7 +229,6 @@ class VpcAccess(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -267,7 +264,6 @@ class VpcAccess(pulumi.CustomResource):
             instance_id=example_instance.id,
             port=8080)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  *     enable: "On",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPermission(args?: GetPermissionArgs, opts?: pulumi.InvokeOptions): Promise<GetPermissionResult> {
     args = args || {};
@@ -70,7 +68,6 @@ export interface GetPermissionResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -79,7 +76,6 @@ export interface GetPermissionResult {
  *     enable: "On",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPermissionOutput(args?: GetPermissionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPermissionResult> {
     return pulumi.output(args).apply((a: any) => getPermission(a, opts))

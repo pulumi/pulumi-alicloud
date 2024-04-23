@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// ### Basic Example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -59,7 +58,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
         /// 
@@ -81,7 +79,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// ### Example Multiple Condition Keys and Values
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -171,7 +168,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
         /// 
@@ -219,7 +215,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// ### Example Assume-Role Policy with RAM Principal
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -263,7 +258,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
         /// 
@@ -286,7 +280,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// ### Example Assume-Role Policy with Service Principal
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -330,7 +323,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
         /// 
@@ -353,7 +345,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// ### Example Assume-Role Policy with Federated Principal
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -409,7 +400,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
         /// 
@@ -447,7 +437,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// ### Basic Example
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -486,7 +475,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
         /// 
@@ -508,7 +496,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// ### Example Multiple Condition Keys and Values
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -598,7 +585,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
         /// 
@@ -646,7 +632,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// ### Example Assume-Role Policy with RAM Principal
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -690,7 +675,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
         /// 
@@ -713,7 +697,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// ### Example Assume-Role Policy with Service Principal
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -757,7 +740,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
         /// 
@@ -780,7 +762,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// ### Example Assume-Role Policy with Federated Principal
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -836,7 +817,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
         /// 

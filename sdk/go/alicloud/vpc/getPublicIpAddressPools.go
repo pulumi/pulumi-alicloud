@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,7 +52,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetPublicIpAddressPools(ctx *pulumi.Context, args *GetPublicIpAddressPoolsArgs, opts ...pulumi.InvokeOption) (*GetPublicIpAddressPoolsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPublicIpAddressPoolsResult

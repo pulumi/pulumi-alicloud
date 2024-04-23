@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
     [OutputType]
     public sealed class FirewallVpcFirewallLocalVpcLocalVpcCidrTableList
     {
-        /// <summary>
-        /// The list of route entries of the local VPC. See `local_route_entry_list` below.
-        /// </summary>
         public readonly ImmutableArray<Outputs.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList> LocalRouteEntryLists;
-        /// <summary>
-        /// The ID of the route table of the local VPC.
-        /// </summary>
         public readonly string LocalRouteTableId;
 
         [OutputConstructor]

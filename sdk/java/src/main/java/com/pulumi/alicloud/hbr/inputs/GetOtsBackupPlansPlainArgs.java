@@ -91,14 +91,14 @@ public final class GetOtsBackupPlansPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The ID of backup vault.
+     * The ID of backup vault the OtsBackupPlan used.
      * 
      */
     @Import(name="vaultId")
     private @Nullable String vaultId;
 
     /**
-     * @return The ID of backup vault.
+     * @return The ID of backup vault the OtsBackupPlan used.
      * 
      */
     public Optional<String> vaultId() {
@@ -200,7 +200,7 @@ public final class GetOtsBackupPlansPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param vaultId The ID of backup vault.
+         * @param vaultId The ID of backup vault the OtsBackupPlan used.
          * 
          * @return builder
          * 

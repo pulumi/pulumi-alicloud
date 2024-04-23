@@ -21,7 +21,6 @@ import (
 //
 // # Private Bucket
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,11 +55,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // # Static Website
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -98,11 +95,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // # Enable Logging
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -147,11 +142,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // # Referer configuration
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -193,7 +186,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // # Set lifecycle rule
 //

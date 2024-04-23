@@ -13,21 +13,9 @@ namespace Pulumi.AliCloud.Sae.Outputs
     [OutputType]
     public sealed class GetApplicationsApplicationOssMountDetailResult
     {
-        /// <summary>
-        /// The name of the bucket.
-        /// </summary>
         public readonly string BucketName;
-        /// <summary>
-        /// The path of the bucket.
-        /// </summary>
         public readonly string BucketPath;
-        /// <summary>
-        /// The Container mount path.
-        /// </summary>
         public readonly string MountPath;
-        /// <summary>
-        /// Whether the container path has readable permission to mount directory resources.
-        /// </summary>
         public readonly bool ReadOnly;
 
         [OutputConstructor]

@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Ros
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Pulumi.AliCloud.Ros
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetStackGroupsResult> InvokeAsync(GetStackGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetStackGroupsResult>("alicloud:ros/getStackGroups:getStackGroups", args ?? new GetStackGroupsArgs(), options.WithDefaults());
@@ -58,7 +56,6 @@ namespace Pulumi.AliCloud.Ros
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -82,7 +79,6 @@ namespace Pulumi.AliCloud.Ros
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetStackGroupsResult> Invoke(GetStackGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStackGroupsResult>("alicloud:ros/getStackGroups:getStackGroups", args ?? new GetStackGroupsInvokeArgs(), options.WithDefaults());

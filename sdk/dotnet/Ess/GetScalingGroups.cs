@@ -16,7 +16,6 @@ namespace Pulumi.AliCloud.Ess
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,7 +40,6 @@ namespace Pulumi.AliCloud.Ess
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetScalingGroupsResult> InvokeAsync(GetScalingGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetScalingGroupsResult>("alicloud:ess/getScalingGroups:getScalingGroups", args ?? new GetScalingGroupsArgs(), options.WithDefaults());
@@ -51,7 +49,6 @@ namespace Pulumi.AliCloud.Ess
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,7 +73,6 @@ namespace Pulumi.AliCloud.Ess
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetScalingGroupsResult> Invoke(GetScalingGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetScalingGroupsResult>("alicloud:ess/getScalingGroups:getScalingGroups", args ?? new GetScalingGroupsInvokeArgs(), options.WithDefaults());

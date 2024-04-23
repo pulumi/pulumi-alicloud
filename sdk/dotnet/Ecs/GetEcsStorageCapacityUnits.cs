@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetEcsStorageCapacityUnitsResult> InvokeAsync(GetEcsStorageCapacityUnitsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsStorageCapacityUnitsResult>("alicloud:ecs/getEcsStorageCapacityUnits:getEcsStorageCapacityUnits", args ?? new GetEcsStorageCapacityUnitsArgs(), options.WithDefaults());
@@ -57,7 +55,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetEcsStorageCapacityUnitsResult> Invoke(GetEcsStorageCapacityUnitsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEcsStorageCapacityUnitsResult>("alicloud:ecs/getEcsStorageCapacityUnits:getEcsStorageCapacityUnits", args ?? new GetEcsStorageCapacityUnitsInvokeArgs(), options.WithDefaults());

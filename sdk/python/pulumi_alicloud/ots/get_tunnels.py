@@ -138,7 +138,6 @@ def get_tunnels(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -149,7 +148,6 @@ def get_tunnels(ids: Optional[Sequence[str]] = None,
         output_file="tunnels.txt")
     pulumi.export("firstTunnelId", tunnels_ds.tunnels[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of tunnel IDs.
@@ -194,7 +192,6 @@ def get_tunnels_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -205,7 +202,6 @@ def get_tunnels_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
         output_file="tunnels.txt")
     pulumi.export("firstTunnelId", tunnels_ds.tunnels[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of tunnel IDs.

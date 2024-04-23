@@ -123,7 +123,6 @@ def get_inter_region_traffic_qos_queues(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -133,7 +132,6 @@ def get_inter_region_traffic_qos_queues(ids: Optional[Sequence[str]] = None,
         traffic_qos_policy_id="qos-xxxxxxx")
     pulumi.export("alicloudCenInterRegionTrafficQosQueueExampleId", default.queues[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Inter Region Traffic Qos Queue IDs.
@@ -172,7 +170,6 @@ def get_inter_region_traffic_qos_queues_output(ids: Optional[pulumi.Input[Option
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -182,7 +179,6 @@ def get_inter_region_traffic_qos_queues_output(ids: Optional[pulumi.Input[Option
         traffic_qos_policy_id="qos-xxxxxxx")
     pulumi.export("alicloudCenInterRegionTrafficQosQueueExampleId", default.queues[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Inter Region Traffic Qos Queue IDs.

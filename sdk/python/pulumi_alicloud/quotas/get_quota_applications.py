@@ -155,7 +155,6 @@ def get_quota_applications(dimensions: Optional[Sequence[pulumi.InputType['GetQu
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -176,7 +175,6 @@ def get_quota_applications(dimensions: Optional[Sequence[pulumi.InputType['GetQu
         quota_category=quota_category,
         ids=[id]))
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetQuotaApplicationsDimensionArgs']] dimensions: The quota dimensions.
@@ -184,9 +182,9 @@ def get_quota_applications(dimensions: Optional[Sequence[pulumi.InputType['GetQu
     :param Sequence[str] ids: A list of Application Info IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_code: The product code.
-    :param str quota_action_code: The ID of quota action..
+    :param str quota_action_code: The ID of quota action.
     :param str quota_category: The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
-    :param str status: The status of the quota application.
+    :param str status: The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
     """
     __args__ = dict()
     __args__['dimensions'] = dimensions
@@ -235,7 +233,6 @@ def get_quota_applications_output(dimensions: Optional[pulumi.Input[Optional[Seq
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -256,7 +253,6 @@ def get_quota_applications_output(dimensions: Optional[pulumi.Input[Optional[Seq
         quota_category=quota_category,
         ids=[id]))
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetQuotaApplicationsDimensionArgs']] dimensions: The quota dimensions.
@@ -264,8 +260,8 @@ def get_quota_applications_output(dimensions: Optional[pulumi.Input[Optional[Seq
     :param Sequence[str] ids: A list of Application Info IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str product_code: The product code.
-    :param str quota_action_code: The ID of quota action..
+    :param str quota_action_code: The ID of quota action.
     :param str quota_category: The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
-    :param str status: The status of the quota application.
+    :param str status: The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
     """
     ...

@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
     [OutputType]
     public sealed class BucketLifecycleRuleFilterNot
     {
-        /// <summary>
-        /// The prefix in the names of the objects to which the lifecycle rule does not apply.
-        /// </summary>
         public readonly string? Prefix;
-        /// <summary>
-        /// The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
-        /// </summary>
         public readonly Outputs.BucketLifecycleRuleFilterNotTag? Tag;
 
         [OutputConstructor]

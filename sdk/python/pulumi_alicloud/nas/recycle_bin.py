@@ -125,7 +125,6 @@ class RecycleBin(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -141,7 +140,6 @@ class RecycleBin(pulumi.CustomResource):
             file_system_id=example_file_system.id,
             reserved_days=3)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -173,7 +171,6 @@ class RecycleBin(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -189,7 +186,6 @@ class RecycleBin(pulumi.CustomResource):
             file_system_id=example_file_system.id,
             reserved_days=3)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

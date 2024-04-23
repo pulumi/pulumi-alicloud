@@ -662,7 +662,6 @@ class Network(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -678,7 +677,6 @@ class Network(pulumi.CustomResource):
             vpc_name=name,
             enable_ipv6=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -740,7 +738,6 @@ class Network(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -756,7 +753,6 @@ class Network(pulumi.CustomResource):
             vpc_name=name,
             enable_ipv6=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -76,14 +76,12 @@ def get_service(enable: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     open = alicloud.dcdn.get_service(enable="On")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.
@@ -113,14 +111,12 @@ def get_service_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     open = alicloud.dcdn.get_service(enable="On")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Valid values: `On` or `Off`. Default to `Off`.

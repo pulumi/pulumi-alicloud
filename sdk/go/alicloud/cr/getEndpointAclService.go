@@ -21,7 +21,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,7 +47,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetEndpointAclService(ctx *pulumi.Context, args *GetEndpointAclServiceArgs, opts ...pulumi.InvokeOption) (*GetEndpointAclServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEndpointAclServiceResult

@@ -261,7 +261,6 @@ def get_instances(availability_zone: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -271,7 +270,6 @@ def get_instances(availability_zone: Optional[str] = None,
     pulumi.export("firstInstanceId", instances_ds.instances[0].id)
     pulumi.export("instanceIds", instances_ds.ids)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str availability_zone: Availability zone where instances are located.
@@ -285,7 +283,6 @@ def get_instances(availability_zone: Optional[str] = None,
     :param str resource_group_id: The ID of resource group which the instance belongs.
     :param str status: Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
     :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
-           <!--Start PulumiCodeChooser -->
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -295,7 +292,6 @@ def get_instances(availability_zone: Optional[str] = None,
                "tagKey2": "tagValue2",
            })
            ```
-           <!--End PulumiCodeChooser -->
     :param str vpc_id: ID of the VPC linked to the instances.
     :param str vswitch_id: ID of the VSwitch linked to the instances.
     """
@@ -362,7 +358,6 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -372,7 +367,6 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
     pulumi.export("firstInstanceId", instances_ds.instances[0].id)
     pulumi.export("instanceIds", instances_ds.ids)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str availability_zone: Availability zone where instances are located.
@@ -386,7 +380,6 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
     :param str resource_group_id: The ID of resource group which the instance belongs.
     :param str status: Instance status. Valid values: "Creating", "Starting", "Running", "Stopping" and "Stopped". If undefined, all statuses are considered.
     :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
-           <!--Start PulumiCodeChooser -->
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -396,7 +389,6 @@ def get_instances_output(availability_zone: Optional[pulumi.Input[Optional[str]]
                "tagKey2": "tagValue2",
            })
            ```
-           <!--End PulumiCodeChooser -->
     :param str vpc_id: ID of the VPC linked to the instances.
     :param str vswitch_id: ID of the VSwitch linked to the instances.
     """

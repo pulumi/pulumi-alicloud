@@ -11,65 +11,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GreyTagRouteScRuleItem {
-    /**
-     * @return The comparison operator. Valid values: `&gt;`, `&lt;`, `&gt;=`, `&lt;=`, `==`, `!=`.
-     * 
-     */
     private @Nullable String cond;
-    /**
-     * @return The name of the parameter.
-     * 
-     */
     private @Nullable String name;
-    /**
-     * @return The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
-     * 
-     */
     private @Nullable String operator;
-    /**
-     * @return The compare types. Valid values: `param`, `cookie`, `header`.
-     * 
-     */
     private @Nullable String type;
-    /**
-     * @return The value of the parameter.
-     * 
-     */
     private @Nullable String value;
 
     private GreyTagRouteScRuleItem() {}
-    /**
-     * @return The comparison operator. Valid values: `&gt;`, `&lt;`, `&gt;=`, `&lt;=`, `==`, `!=`.
-     * 
-     */
     public Optional<String> cond() {
         return Optional.ofNullable(this.cond);
     }
-    /**
-     * @return The name of the parameter.
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
-    /**
-     * @return The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
-     * 
-     */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
-    /**
-     * @return The compare types. Valid values: `param`, `cookie`, `header`.
-     * 
-     */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
-    /**
-     * @return The value of the parameter.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

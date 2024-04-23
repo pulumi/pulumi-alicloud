@@ -222,7 +222,6 @@ class CustomRoutingEndpointGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -259,7 +258,6 @@ class CustomRoutingEndpointGroup(pulumi.CustomResource):
             custom_routing_endpoint_group_name="terraform-example",
             description="terraform-example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -294,7 +292,6 @@ class CustomRoutingEndpointGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -331,7 +328,6 @@ class CustomRoutingEndpointGroup(pulumi.CustomResource):
             custom_routing_endpoint_group_name="terraform-example",
             description="terraform-example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

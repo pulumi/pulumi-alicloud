@@ -237,7 +237,6 @@ class ChildInstanceRouteEntryToAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -294,7 +293,6 @@ class ChildInstanceRouteEntryToAttachment(pulumi.CustomResource):
             destination_cidr_block="10.0.0.0/24",
             child_instance_route_table_id=example_route_table.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -329,7 +327,6 @@ class ChildInstanceRouteEntryToAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -386,7 +383,6 @@ class ChildInstanceRouteEntryToAttachment(pulumi.CustomResource):
             destination_cidr_block="10.0.0.0/24",
             child_instance_route_table_id=example_route_table.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

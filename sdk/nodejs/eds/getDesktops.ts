@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -68,7 +67,6 @@ import * as utilities from "../utilities";
  * }));
  * export const ecdDesktopId2 = nameRegex.apply(nameRegex => nameRegex.desktops?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDesktops(args?: GetDesktopsArgs, opts?: pulumi.InvokeOptions): Promise<GetDesktopsResult> {
     args = args || {};
@@ -152,7 +150,6 @@ export interface GetDesktopsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -205,7 +202,6 @@ export interface GetDesktopsResult {
  * }));
  * export const ecdDesktopId2 = nameRegex.apply(nameRegex => nameRegex.desktops?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDesktopsOutput(args?: GetDesktopsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDesktopsResult> {
     return pulumi.output(args).apply((a: any) => getDesktops(a, opts))

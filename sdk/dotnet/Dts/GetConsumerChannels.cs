@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Dts
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,7 +36,6 @@ namespace Pulumi.AliCloud.Dts
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetConsumerChannelsResult> InvokeAsync(GetConsumerChannelsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConsumerChannelsResult>("alicloud:dts/getConsumerChannels:getConsumerChannels", args ?? new GetConsumerChannelsArgs(), options.WithDefaults());
@@ -51,7 +49,6 @@ namespace Pulumi.AliCloud.Dts
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -68,7 +65,6 @@ namespace Pulumi.AliCloud.Dts
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetConsumerChannelsResult> Invoke(GetConsumerChannelsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConsumerChannelsResult>("alicloud:dts/getConsumerChannels:getConsumerChannels", args ?? new GetConsumerChannelsInvokeArgs(), options.WithDefaults());

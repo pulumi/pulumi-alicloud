@@ -13,41 +13,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerGroupInitContainerEnvironmentVar {
-    /**
-     * @return The reference of the environment variable. See `field_ref` below.
-     * 
-     */
     private @Nullable List<ContainerGroupInitContainerEnvironmentVarFieldRef> fieldReves;
-    /**
-     * @return The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
-     * 
-     */
     private @Nullable String key;
-    /**
-     * @return The value of the variable. The value can be 0 to 256 characters in length.
-     * 
-     */
     private @Nullable String value;
 
     private ContainerGroupInitContainerEnvironmentVar() {}
-    /**
-     * @return The reference of the environment variable. See `field_ref` below.
-     * 
-     */
     public List<ContainerGroupInitContainerEnvironmentVarFieldRef> fieldReves() {
         return this.fieldReves == null ? List.of() : this.fieldReves;
     }
-    /**
-     * @return The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
-     * 
-     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
-    /**
-     * @return The value of the variable. The value can be 0 to 256 characters in length.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

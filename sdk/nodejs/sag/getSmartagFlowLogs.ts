@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  * });
  * export const smartagFlowLogId2 = nameRegex.then(nameRegex => nameRegex.logs?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSmartagFlowLogs(args?: GetSmartagFlowLogsArgs, opts?: pulumi.InvokeOptions): Promise<GetSmartagFlowLogsResult> {
     args = args || {};
@@ -101,7 +99,6 @@ export interface GetSmartagFlowLogsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -115,7 +112,6 @@ export interface GetSmartagFlowLogsResult {
  * });
  * export const smartagFlowLogId2 = nameRegex.then(nameRegex => nameRegex.logs?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSmartagFlowLogsOutput(args?: GetSmartagFlowLogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSmartagFlowLogsResult> {
     return pulumi.output(args).apply((a: any) => getSmartagFlowLogs(a, opts))

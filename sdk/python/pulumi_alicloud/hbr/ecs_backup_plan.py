@@ -611,7 +611,6 @@ class EcsBackupPlan(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -657,7 +656,6 @@ class EcsBackupPlan(pulumi.CustomResource):
             exclude="  [\\"/home/exclude\\"]\\n",
             include="  [\\"/home/include\\"]\\n")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Notice
 
@@ -722,7 +720,6 @@ class EcsBackupPlan(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -768,7 +765,6 @@ class EcsBackupPlan(pulumi.CustomResource):
             exclude="  [\\"/home/exclude\\"]\\n",
             include="  [\\"/home/include\\"]\\n")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Notice
 

@@ -10,41 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterNodeGroupCostOptimizedConfig {
-    /**
-     * @return The cost optimized configuration which on demand based capacity.
-     * 
-     */
     private Integer onDemandBaseCapacity;
-    /**
-     * @return The cost optimized configuration which on demand percentage above based capacity.
-     * 
-     */
     private Integer onDemandPercentageAboveBaseCapacity;
-    /**
-     * @return The cost optimized configuration with spot instance pools.
-     * 
-     */
     private Integer spotInstancePools;
 
     private ClusterNodeGroupCostOptimizedConfig() {}
-    /**
-     * @return The cost optimized configuration which on demand based capacity.
-     * 
-     */
     public Integer onDemandBaseCapacity() {
         return this.onDemandBaseCapacity;
     }
-    /**
-     * @return The cost optimized configuration which on demand percentage above based capacity.
-     * 
-     */
     public Integer onDemandPercentageAboveBaseCapacity() {
         return this.onDemandPercentageAboveBaseCapacity;
     }
-    /**
-     * @return The cost optimized configuration with spot instance pools.
-     * 
-     */
     public Integer spotInstancePools() {
         return this.spotInstancePools;
     }

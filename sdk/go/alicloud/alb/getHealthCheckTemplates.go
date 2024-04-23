@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,7 +52,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetHealthCheckTemplates(ctx *pulumi.Context, args *GetHealthCheckTemplatesArgs, opts ...pulumi.InvokeOption) (*GetHealthCheckTemplatesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHealthCheckTemplatesResult

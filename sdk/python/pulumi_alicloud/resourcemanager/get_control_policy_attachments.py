@@ -113,7 +113,6 @@ def get_control_policy_attachments(language: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -121,7 +120,6 @@ def get_control_policy_attachments(language: Optional[str] = None,
     example = alicloud.resourcemanager.get_control_policy_attachments(target_id="example_value")
     pulumi.export("firstResourceManagerControlPolicyAttachmentId", example.attachments[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str language: The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`
@@ -162,7 +160,6 @@ def get_control_policy_attachments_output(language: Optional[pulumi.Input[Option
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -170,7 +167,6 @@ def get_control_policy_attachments_output(language: Optional[pulumi.Input[Option
     example = alicloud.resourcemanager.get_control_policy_attachments(target_id="example_value")
     pulumi.export("firstResourceManagerControlPolicyAttachmentId", example.attachments[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str language: The language. Valid value `zh-CN`, `en`, and `ja`. Default value `zh-CN`

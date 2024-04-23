@@ -16,7 +16,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.AliCloud.Vpc
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNetworksResult> InvokeAsync(GetNetworksArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworksResult>("alicloud:vpc/getNetworks:getNetworks", args ?? new GetNetworksArgs(), options.WithDefaults());
@@ -48,7 +46,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,7 +67,6 @@ namespace Pulumi.AliCloud.Vpc
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNetworksResult> Invoke(GetNetworksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworksResult>("alicloud:vpc/getNetworks:getNetworks", args ?? new GetNetworksInvokeArgs(), options.WithDefaults());

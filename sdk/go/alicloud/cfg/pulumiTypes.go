@@ -122,9 +122,7 @@ func (o AggregateCompliancePackConfigRuleArrayOutput) Index(i pulumi.IntInput) A
 }
 
 type AggregateCompliancePackConfigRuleConfigRuleParameter struct {
-	// The Parameter Name.
-	ParameterName *string `pulumi:"parameterName"`
-	// The Parameter Value.
+	ParameterName  *string `pulumi:"parameterName"`
 	ParameterValue *string `pulumi:"parameterValue"`
 }
 
@@ -140,9 +138,7 @@ type AggregateCompliancePackConfigRuleConfigRuleParameterInput interface {
 }
 
 type AggregateCompliancePackConfigRuleConfigRuleParameterArgs struct {
-	// The Parameter Name.
-	ParameterName pulumi.StringPtrInput `pulumi:"parameterName"`
-	// The Parameter Value.
+	ParameterName  pulumi.StringPtrInput `pulumi:"parameterName"`
 	ParameterValue pulumi.StringPtrInput `pulumi:"parameterValue"`
 }
 
@@ -197,12 +193,10 @@ func (o AggregateCompliancePackConfigRuleConfigRuleParameterOutput) ToAggregateC
 	return o
 }
 
-// The Parameter Name.
 func (o AggregateCompliancePackConfigRuleConfigRuleParameterOutput) ParameterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AggregateCompliancePackConfigRuleConfigRuleParameter) *string { return v.ParameterName }).(pulumi.StringPtrOutput)
 }
 
-// The Parameter Value.
 func (o AggregateCompliancePackConfigRuleConfigRuleParameterOutput) ParameterValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AggregateCompliancePackConfigRuleConfigRuleParameter) *string { return v.ParameterValue }).(pulumi.StringPtrOutput)
 }
@@ -548,9 +542,7 @@ func (o CompliancePackConfigRuleArrayOutput) Index(i pulumi.IntInput) Compliance
 }
 
 type CompliancePackConfigRuleConfigRuleParameter struct {
-	// The parameter name.
-	ParameterName *string `pulumi:"parameterName"`
-	// The parameter value.
+	ParameterName  *string `pulumi:"parameterName"`
 	ParameterValue *string `pulumi:"parameterValue"`
 }
 
@@ -566,9 +558,7 @@ type CompliancePackConfigRuleConfigRuleParameterInput interface {
 }
 
 type CompliancePackConfigRuleConfigRuleParameterArgs struct {
-	// The parameter name.
-	ParameterName pulumi.StringPtrInput `pulumi:"parameterName"`
-	// The parameter value.
+	ParameterName  pulumi.StringPtrInput `pulumi:"parameterName"`
 	ParameterValue pulumi.StringPtrInput `pulumi:"parameterValue"`
 }
 
@@ -623,12 +613,10 @@ func (o CompliancePackConfigRuleConfigRuleParameterOutput) ToCompliancePackConfi
 	return o
 }
 
-// The parameter name.
 func (o CompliancePackConfigRuleConfigRuleParameterOutput) ParameterName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CompliancePackConfigRuleConfigRuleParameter) *string { return v.ParameterName }).(pulumi.StringPtrOutput)
 }
 
-// The parameter value.
 func (o CompliancePackConfigRuleConfigRuleParameterOutput) ParameterValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CompliancePackConfigRuleConfigRuleParameter) *string { return v.ParameterValue }).(pulumi.StringPtrOutput)
 }

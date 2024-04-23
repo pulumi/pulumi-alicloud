@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,7 +27,6 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudServiceCatalogLaunchOptionExampleId = defaultGetLaunchOptions.then(defaultGetLaunchOptions => defaultGetLaunchOptions.launchOptions?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getLaunchOptions(args: GetLaunchOptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetLaunchOptionsResult> {
 
@@ -95,7 +93,6 @@ export interface GetLaunchOptionsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -108,7 +105,6 @@ export interface GetLaunchOptionsResult {
  * });
  * export const alicloudServiceCatalogLaunchOptionExampleId = defaultGetLaunchOptions.then(defaultGetLaunchOptions => defaultGetLaunchOptions.launchOptions?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getLaunchOptionsOutput(args: GetLaunchOptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLaunchOptionsResult> {
     return pulumi.output(args).apply((a: any) => getLaunchOptions(a, opts))

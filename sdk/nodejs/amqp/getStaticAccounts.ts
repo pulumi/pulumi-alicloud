@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudAmqpStaticAccountExampleId = _default.then(_default => _default.accounts?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getStaticAccounts(args?: GetStaticAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetStaticAccountsResult> {
     args = args || {};
@@ -80,7 +78,6 @@ export interface GetStaticAccountsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -90,7 +87,6 @@ export interface GetStaticAccountsResult {
  * });
  * export const alicloudAmqpStaticAccountExampleId = _default.then(_default => _default.accounts?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getStaticAccountsOutput(args?: GetStaticAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStaticAccountsResult> {
     return pulumi.output(args).apply((a: any) => getStaticAccounts(a, opts))

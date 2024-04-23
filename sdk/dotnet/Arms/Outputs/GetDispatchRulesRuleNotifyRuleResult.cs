@@ -13,9 +13,6 @@ namespace Pulumi.AliCloud.Arms.Outputs
     [OutputType]
     public sealed class GetDispatchRulesRuleNotifyRuleResult
     {
-        /// <summary>
-        /// The notification method.
-        /// </summary>
         public readonly ImmutableArray<string> NotifyChannels;
         /// <summary>
         /// Sets the notification object.

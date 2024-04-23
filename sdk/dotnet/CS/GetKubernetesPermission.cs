@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,7 +41,6 @@ namespace Pulumi.AliCloud.CS
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetKubernetesPermissionResult> InvokeAsync(GetKubernetesPermissionArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesPermissionResult>("alicloud:cs/getKubernetesPermission:getKubernetesPermission", args ?? new GetKubernetesPermissionArgs(), options.WithDefaults());
@@ -54,7 +52,6 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -78,7 +75,6 @@ namespace Pulumi.AliCloud.CS
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetKubernetesPermissionResult> Invoke(GetKubernetesPermissionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesPermissionResult>("alicloud:cs/getKubernetesPermission:getKubernetesPermission", args ?? new GetKubernetesPermissionInvokeArgs(), options.WithDefaults());

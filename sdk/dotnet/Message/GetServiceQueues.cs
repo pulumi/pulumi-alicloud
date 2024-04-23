@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Message
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -47,7 +46,6 @@ namespace Pulumi.AliCloud.Message
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServiceQueuesResult> InvokeAsync(GetServiceQueuesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceQueuesResult>("alicloud:message/getServiceQueues:getServiceQueues", args ?? new GetServiceQueuesArgs(), options.WithDefaults());
@@ -59,7 +57,6 @@ namespace Pulumi.AliCloud.Message
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -88,7 +85,6 @@ namespace Pulumi.AliCloud.Message
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServiceQueuesResult> Invoke(GetServiceQueuesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceQueuesResult>("alicloud:message/getServiceQueues:getServiceQueues", args ?? new GetServiceQueuesInvokeArgs(), options.WithDefaults());

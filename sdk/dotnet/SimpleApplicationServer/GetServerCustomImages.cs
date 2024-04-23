@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -49,7 +48,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServerCustomImagesResult> InvokeAsync(GetServerCustomImagesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerCustomImagesResult>("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", args ?? new GetServerCustomImagesArgs(), options.WithDefaults());
@@ -63,7 +61,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -92,7 +89,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServerCustomImagesResult> Invoke(GetServerCustomImagesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerCustomImagesResult>("alicloud:simpleapplicationserver/getServerCustomImages:getServerCustomImages", args ?? new GetServerCustomImagesInvokeArgs(), options.WithDefaults());

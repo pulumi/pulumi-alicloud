@@ -312,7 +312,6 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -345,7 +344,6 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
             weight=100,
             server_ip="10.0.0.0")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -384,7 +382,6 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -417,7 +414,6 @@ class ServerGroupServerAttachment(pulumi.CustomResource):
             weight=100,
             server_ip="10.0.0.0")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

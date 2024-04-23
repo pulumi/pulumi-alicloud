@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Dns
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,7 +36,6 @@ namespace Pulumi.AliCloud.Dns
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGtmInstancesResult> InvokeAsync(GetGtmInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGtmInstancesResult>("alicloud:dns/getGtmInstances:getGtmInstances", args ?? new GetGtmInstancesArgs(), options.WithDefaults());
@@ -51,7 +49,6 @@ namespace Pulumi.AliCloud.Dns
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -68,7 +65,6 @@ namespace Pulumi.AliCloud.Dns
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGtmInstancesResult> Invoke(GetGtmInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGtmInstancesResult>("alicloud:dns/getGtmInstances:getGtmInstances", args ?? new GetGtmInstancesInvokeArgs(), options.WithDefaults());

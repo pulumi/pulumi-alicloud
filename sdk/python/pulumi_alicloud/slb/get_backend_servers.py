@@ -92,7 +92,6 @@ def get_backend_servers(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -100,7 +99,6 @@ def get_backend_servers(ids: Optional[Sequence[str]] = None,
     sample_ds = alicloud.slb.get_backend_servers(load_balancer_id=sample_slb["id"])
     pulumi.export("firstSlbBackendServerId", sample_ds.backend_servers[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: List of attached ECS instance IDs.
@@ -134,7 +132,6 @@ def get_backend_servers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -142,7 +139,6 @@ def get_backend_servers_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     sample_ds = alicloud.slb.get_backend_servers(load_balancer_id=sample_slb["id"])
     pulumi.export("firstSlbBackendServerId", sample_ds.backend_servers[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: List of attached ECS instance IDs.

@@ -13,9 +13,6 @@ namespace Pulumi.AliCloud.Alb.Outputs
     [OutputType]
     public sealed class GetListenersListenerCertificateResult
     {
-        /// <summary>
-        /// The ID of the Certificate.
-        /// </summary>
         public readonly string CertificateId;
 
         [OutputConstructor]

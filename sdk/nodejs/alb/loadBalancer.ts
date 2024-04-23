@@ -112,7 +112,7 @@ export class LoadBalancer extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string>;
     /**
-     * Load Balancing Modify the Protection Status.
+     * Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
@@ -269,7 +269,7 @@ export interface LoadBalancerState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Load Balancing Modify the Protection Status.
+     * Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
      */
     status?: pulumi.Input<string>;
     /**

@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstNetworkAclId = example.then(example => example.acls?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNetworkAcls(args?: GetNetworkAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetNetworkAclsResult> {
     args = args || {};
@@ -110,7 +108,6 @@ export interface GetNetworkAclsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -121,7 +118,6 @@ export interface GetNetworkAclsResult {
  * });
  * export const firstNetworkAclId = example.then(example => example.acls?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNetworkAclsOutput(args?: GetNetworkAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkAclsResult> {
     return pulumi.output(args).apply((a: any) => getNetworkAcls(a, opts))

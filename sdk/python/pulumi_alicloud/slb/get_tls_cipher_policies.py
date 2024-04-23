@@ -133,7 +133,6 @@ def get_tls_cipher_policies(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -146,7 +145,6 @@ def get_tls_cipher_policies(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.slb.get_tls_cipher_policies(name_regex="^My-TlsCipherPolicy")
     pulumi.export("slbTlsCipherPolicyId2", name_regex.policies[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Tls Cipher Policy IDs.
@@ -195,7 +193,6 @@ def get_tls_cipher_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -208,7 +205,6 @@ def get_tls_cipher_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[
     name_regex = alicloud.slb.get_tls_cipher_policies(name_regex="^My-TlsCipherPolicy")
     pulumi.export("slbTlsCipherPolicyId2", name_regex.policies[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Tls Cipher Policy IDs.

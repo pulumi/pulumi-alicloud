@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,7 +36,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetActivationsResult> InvokeAsync(GetActivationsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetActivationsResult>("alicloud:ecs/getActivations:getActivations", args ?? new GetActivationsArgs(), options.WithDefaults());
@@ -51,7 +49,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -68,7 +65,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetActivationsResult> Invoke(GetActivationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetActivationsResult>("alicloud:ecs/getActivations:getActivations", args ?? new GetActivationsInvokeArgs(), options.WithDefaults());

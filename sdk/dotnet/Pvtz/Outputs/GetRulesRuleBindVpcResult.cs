@@ -13,21 +13,9 @@ namespace Pulumi.AliCloud.Pvtz.Outputs
     [OutputType]
     public sealed class GetRulesRuleBindVpcResult
     {
-        /// <summary>
-        /// The region ID of the vpc.
-        /// </summary>
         public readonly string RegionId;
-        /// <summary>
-        /// The Region Name of the vpc.
-        /// </summary>
         public readonly string RegionName;
-        /// <summary>
-        /// The ID of the VPC.
-        /// </summary>
         public readonly string VpcId;
-        /// <summary>
-        /// The Name of the VPC.
-        /// </summary>
         public readonly string VpcName;
 
         [OutputConstructor]

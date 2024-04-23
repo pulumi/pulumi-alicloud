@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Dms
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,7 +38,6 @@ namespace Pulumi.AliCloud.Dms
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetUserTenantsResult> InvokeAsync(GetUserTenantsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserTenantsResult>("alicloud:dms/getUserTenants:getUserTenants", args ?? new GetUserTenantsArgs(), options.WithDefaults());
@@ -51,7 +49,6 @@ namespace Pulumi.AliCloud.Dms
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -72,7 +69,6 @@ namespace Pulumi.AliCloud.Dms
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetUserTenantsResult> Invoke(GetUserTenantsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserTenantsResult>("alicloud:dms/getUserTenants:getUserTenants", args ?? new GetUserTenantsInvokeArgs(), options.WithDefaults());

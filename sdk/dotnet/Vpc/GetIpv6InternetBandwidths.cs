@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,7 +60,6 @@ namespace Pulumi.AliCloud.Vpc
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetIpv6InternetBandwidthsResult> InvokeAsync(GetIpv6InternetBandwidthsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIpv6InternetBandwidthsResult>("alicloud:vpc/getIpv6InternetBandwidths:getIpv6InternetBandwidths", args ?? new GetIpv6InternetBandwidthsArgs(), options.WithDefaults());
@@ -75,7 +73,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -116,7 +113,6 @@ namespace Pulumi.AliCloud.Vpc
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetIpv6InternetBandwidthsResult> Invoke(GetIpv6InternetBandwidthsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIpv6InternetBandwidthsResult>("alicloud:vpc/getIpv6InternetBandwidths:getIpv6InternetBandwidths", args ?? new GetIpv6InternetBandwidthsInvokeArgs(), options.WithDefaults());

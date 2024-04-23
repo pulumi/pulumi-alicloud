@@ -1126,16 +1126,13 @@ func (o ConnectionTunnelOptionsSpecificationArrayOutput) Index(i pulumi.IntInput
 
 type ConnectionTunnelOptionsSpecificationTunnelBgpConfig struct {
 	// Whether BGP function is turned on.
-	BgpStatus *string `pulumi:"bgpStatus"`
-	// Local asn.
-	LocalAsn *string `pulumi:"localAsn"`
-	// Local bgp IP.
+	BgpStatus  *string `pulumi:"bgpStatus"`
+	LocalAsn   *string `pulumi:"localAsn"`
 	LocalBgpIp *string `pulumi:"localBgpIp"`
 	// Peer asn.
 	PeerAsn *string `pulumi:"peerAsn"`
 	// Peer bgp ip.
-	PeerBgpIp *string `pulumi:"peerBgpIp"`
-	// IPSec tunnel Cidr.
+	PeerBgpIp  *string `pulumi:"peerBgpIp"`
 	TunnelCidr *string `pulumi:"tunnelCidr"`
 }
 
@@ -1152,16 +1149,13 @@ type ConnectionTunnelOptionsSpecificationTunnelBgpConfigInput interface {
 
 type ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs struct {
 	// Whether BGP function is turned on.
-	BgpStatus pulumi.StringPtrInput `pulumi:"bgpStatus"`
-	// Local asn.
-	LocalAsn pulumi.StringPtrInput `pulumi:"localAsn"`
-	// Local bgp IP.
+	BgpStatus  pulumi.StringPtrInput `pulumi:"bgpStatus"`
+	LocalAsn   pulumi.StringPtrInput `pulumi:"localAsn"`
 	LocalBgpIp pulumi.StringPtrInput `pulumi:"localBgpIp"`
 	// Peer asn.
 	PeerAsn pulumi.StringPtrInput `pulumi:"peerAsn"`
 	// Peer bgp ip.
-	PeerBgpIp pulumi.StringPtrInput `pulumi:"peerBgpIp"`
-	// IPSec tunnel Cidr.
+	PeerBgpIp  pulumi.StringPtrInput `pulumi:"peerBgpIp"`
 	TunnelCidr pulumi.StringPtrInput `pulumi:"tunnelCidr"`
 }
 
@@ -1247,12 +1241,10 @@ func (o ConnectionTunnelOptionsSpecificationTunnelBgpConfigOutput) BgpStatus() p
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelBgpConfig) *string { return v.BgpStatus }).(pulumi.StringPtrOutput)
 }
 
-// Local asn.
 func (o ConnectionTunnelOptionsSpecificationTunnelBgpConfigOutput) LocalAsn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelBgpConfig) *string { return v.LocalAsn }).(pulumi.StringPtrOutput)
 }
 
-// Local bgp IP.
 func (o ConnectionTunnelOptionsSpecificationTunnelBgpConfigOutput) LocalBgpIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelBgpConfig) *string { return v.LocalBgpIp }).(pulumi.StringPtrOutput)
 }
@@ -1267,7 +1259,6 @@ func (o ConnectionTunnelOptionsSpecificationTunnelBgpConfigOutput) PeerBgpIp() p
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelBgpConfig) *string { return v.PeerBgpIp }).(pulumi.StringPtrOutput)
 }
 
-// IPSec tunnel Cidr.
 func (o ConnectionTunnelOptionsSpecificationTunnelBgpConfigOutput) TunnelCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelBgpConfig) *string { return v.TunnelCidr }).(pulumi.StringPtrOutput)
 }
@@ -1306,7 +1297,6 @@ func (o ConnectionTunnelOptionsSpecificationTunnelBgpConfigPtrOutput) BgpStatus(
 	}).(pulumi.StringPtrOutput)
 }
 
-// Local asn.
 func (o ConnectionTunnelOptionsSpecificationTunnelBgpConfigPtrOutput) LocalAsn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionTunnelOptionsSpecificationTunnelBgpConfig) *string {
 		if v == nil {
@@ -1316,7 +1306,6 @@ func (o ConnectionTunnelOptionsSpecificationTunnelBgpConfigPtrOutput) LocalAsn()
 	}).(pulumi.StringPtrOutput)
 }
 
-// Local bgp IP.
 func (o ConnectionTunnelOptionsSpecificationTunnelBgpConfigPtrOutput) LocalBgpIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionTunnelOptionsSpecificationTunnelBgpConfig) *string {
 		if v == nil {
@@ -1346,7 +1335,6 @@ func (o ConnectionTunnelOptionsSpecificationTunnelBgpConfigPtrOutput) PeerBgpIp(
 	}).(pulumi.StringPtrOutput)
 }
 
-// IPSec tunnel Cidr.
 func (o ConnectionTunnelOptionsSpecificationTunnelBgpConfigPtrOutput) TunnelCidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionTunnelOptionsSpecificationTunnelBgpConfig) *string {
 		if v == nil {
@@ -1357,24 +1345,15 @@ func (o ConnectionTunnelOptionsSpecificationTunnelBgpConfigPtrOutput) TunnelCidr
 }
 
 type ConnectionTunnelOptionsSpecificationTunnelIkeConfig struct {
-	// IKE auth Algorithm.
-	IkeAuthAlg *string `pulumi:"ikeAuthAlg"`
-	// IKE encript algorithm.
-	IkeEncAlg *string `pulumi:"ikeEncAlg"`
-	// IKE lifetime.
-	IkeLifetime *int `pulumi:"ikeLifetime"`
-	// IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
-	IkeMode *string `pulumi:"ikeMode"`
-	// DH group.
-	IkePfs *string `pulumi:"ikePfs"`
-	// IKE version.
-	IkeVersion *string `pulumi:"ikeVersion"`
-	// The local Id.
-	LocalId *string `pulumi:"localId"`
-	// Preshared secret key.
-	Psk *string `pulumi:"psk"`
-	// Remote ID.
-	RemoteId *string `pulumi:"remoteId"`
+	IkeAuthAlg  *string `pulumi:"ikeAuthAlg"`
+	IkeEncAlg   *string `pulumi:"ikeEncAlg"`
+	IkeLifetime *int    `pulumi:"ikeLifetime"`
+	IkeMode     *string `pulumi:"ikeMode"`
+	IkePfs      *string `pulumi:"ikePfs"`
+	IkeVersion  *string `pulumi:"ikeVersion"`
+	LocalId     *string `pulumi:"localId"`
+	Psk         *string `pulumi:"psk"`
+	RemoteId    *string `pulumi:"remoteId"`
 }
 
 // ConnectionTunnelOptionsSpecificationTunnelIkeConfigInput is an input type that accepts ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs and ConnectionTunnelOptionsSpecificationTunnelIkeConfigOutput values.
@@ -1389,24 +1368,15 @@ type ConnectionTunnelOptionsSpecificationTunnelIkeConfigInput interface {
 }
 
 type ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs struct {
-	// IKE auth Algorithm.
-	IkeAuthAlg pulumi.StringPtrInput `pulumi:"ikeAuthAlg"`
-	// IKE encript algorithm.
-	IkeEncAlg pulumi.StringPtrInput `pulumi:"ikeEncAlg"`
-	// IKE lifetime.
-	IkeLifetime pulumi.IntPtrInput `pulumi:"ikeLifetime"`
-	// IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
-	IkeMode pulumi.StringPtrInput `pulumi:"ikeMode"`
-	// DH group.
-	IkePfs pulumi.StringPtrInput `pulumi:"ikePfs"`
-	// IKE version.
-	IkeVersion pulumi.StringPtrInput `pulumi:"ikeVersion"`
-	// The local Id.
-	LocalId pulumi.StringPtrInput `pulumi:"localId"`
-	// Preshared secret key.
-	Psk pulumi.StringPtrInput `pulumi:"psk"`
-	// Remote ID.
-	RemoteId pulumi.StringPtrInput `pulumi:"remoteId"`
+	IkeAuthAlg  pulumi.StringPtrInput `pulumi:"ikeAuthAlg"`
+	IkeEncAlg   pulumi.StringPtrInput `pulumi:"ikeEncAlg"`
+	IkeLifetime pulumi.IntPtrInput    `pulumi:"ikeLifetime"`
+	IkeMode     pulumi.StringPtrInput `pulumi:"ikeMode"`
+	IkePfs      pulumi.StringPtrInput `pulumi:"ikePfs"`
+	IkeVersion  pulumi.StringPtrInput `pulumi:"ikeVersion"`
+	LocalId     pulumi.StringPtrInput `pulumi:"localId"`
+	Psk         pulumi.StringPtrInput `pulumi:"psk"`
+	RemoteId    pulumi.StringPtrInput `pulumi:"remoteId"`
 }
 
 func (ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs) ElementType() reflect.Type {
@@ -1486,47 +1456,38 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigOutput) ToConnectionT
 	}).(ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput)
 }
 
-// IKE auth Algorithm.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigOutput) IkeAuthAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.IkeAuthAlg }).(pulumi.StringPtrOutput)
 }
 
-// IKE encript algorithm.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigOutput) IkeEncAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.IkeEncAlg }).(pulumi.StringPtrOutput)
 }
 
-// IKE lifetime.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigOutput) IkeLifetime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *int { return v.IkeLifetime }).(pulumi.IntPtrOutput)
 }
 
-// IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigOutput) IkeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.IkeMode }).(pulumi.StringPtrOutput)
 }
 
-// DH group.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigOutput) IkePfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.IkePfs }).(pulumi.StringPtrOutput)
 }
 
-// IKE version.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigOutput) IkeVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.IkeVersion }).(pulumi.StringPtrOutput)
 }
 
-// The local Id.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigOutput) LocalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.LocalId }).(pulumi.StringPtrOutput)
 }
 
-// Preshared secret key.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigOutput) Psk() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.Psk }).(pulumi.StringPtrOutput)
 }
 
-// Remote ID.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigOutput) RemoteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string { return v.RemoteId }).(pulumi.StringPtrOutput)
 }
@@ -1555,7 +1516,6 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) Elem() Con
 	}).(ConnectionTunnelOptionsSpecificationTunnelIkeConfigOutput)
 }
 
-// IKE auth Algorithm.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) IkeAuthAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string {
 		if v == nil {
@@ -1565,7 +1525,6 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) IkeAuthAlg
 	}).(pulumi.StringPtrOutput)
 }
 
-// IKE encript algorithm.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) IkeEncAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string {
 		if v == nil {
@@ -1575,7 +1534,6 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) IkeEncAlg(
 	}).(pulumi.StringPtrOutput)
 }
 
-// IKE lifetime.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) IkeLifetime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *int {
 		if v == nil {
@@ -1585,7 +1543,6 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) IkeLifetim
 	}).(pulumi.IntPtrOutput)
 }
 
-// IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) IkeMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string {
 		if v == nil {
@@ -1595,7 +1552,6 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) IkeMode() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// DH group.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) IkePfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string {
 		if v == nil {
@@ -1605,7 +1561,6 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) IkePfs() p
 	}).(pulumi.StringPtrOutput)
 }
 
-// IKE version.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) IkeVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string {
 		if v == nil {
@@ -1615,7 +1570,6 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) IkeVersion
 	}).(pulumi.StringPtrOutput)
 }
 
-// The local Id.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) LocalId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string {
 		if v == nil {
@@ -1625,7 +1579,6 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) LocalId() 
 	}).(pulumi.StringPtrOutput)
 }
 
-// Preshared secret key.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) Psk() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string {
 		if v == nil {
@@ -1635,7 +1588,6 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) Psk() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Remote ID.
 func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) RemoteId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionTunnelOptionsSpecificationTunnelIkeConfig) *string {
 		if v == nil {
@@ -1646,14 +1598,10 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIkeConfigPtrOutput) RemoteId()
 }
 
 type ConnectionTunnelOptionsSpecificationTunnelIpsecConfig struct {
-	// IPsec authentication algorithm. sha1 and md5 are supported.
-	IpsecAuthAlg *string `pulumi:"ipsecAuthAlg"`
-	// IPsec Encript algorithm.
-	IpsecEncAlg *string `pulumi:"ipsecEncAlg"`
-	// IPsec lifetime.
-	IpsecLifetime *int `pulumi:"ipsecLifetime"`
-	// DH Group.
-	IpsecPfs *string `pulumi:"ipsecPfs"`
+	IpsecAuthAlg  *string `pulumi:"ipsecAuthAlg"`
+	IpsecEncAlg   *string `pulumi:"ipsecEncAlg"`
+	IpsecLifetime *int    `pulumi:"ipsecLifetime"`
+	IpsecPfs      *string `pulumi:"ipsecPfs"`
 }
 
 // ConnectionTunnelOptionsSpecificationTunnelIpsecConfigInput is an input type that accepts ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs and ConnectionTunnelOptionsSpecificationTunnelIpsecConfigOutput values.
@@ -1668,14 +1616,10 @@ type ConnectionTunnelOptionsSpecificationTunnelIpsecConfigInput interface {
 }
 
 type ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs struct {
-	// IPsec authentication algorithm. sha1 and md5 are supported.
-	IpsecAuthAlg pulumi.StringPtrInput `pulumi:"ipsecAuthAlg"`
-	// IPsec Encript algorithm.
-	IpsecEncAlg pulumi.StringPtrInput `pulumi:"ipsecEncAlg"`
-	// IPsec lifetime.
-	IpsecLifetime pulumi.IntPtrInput `pulumi:"ipsecLifetime"`
-	// DH Group.
-	IpsecPfs pulumi.StringPtrInput `pulumi:"ipsecPfs"`
+	IpsecAuthAlg  pulumi.StringPtrInput `pulumi:"ipsecAuthAlg"`
+	IpsecEncAlg   pulumi.StringPtrInput `pulumi:"ipsecEncAlg"`
+	IpsecLifetime pulumi.IntPtrInput    `pulumi:"ipsecLifetime"`
+	IpsecPfs      pulumi.StringPtrInput `pulumi:"ipsecPfs"`
 }
 
 func (ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs) ElementType() reflect.Type {
@@ -1755,22 +1699,18 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIpsecConfigOutput) ToConnectio
 	}).(ConnectionTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput)
 }
 
-// IPsec authentication algorithm. sha1 and md5 are supported.
 func (o ConnectionTunnelOptionsSpecificationTunnelIpsecConfigOutput) IpsecAuthAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelIpsecConfig) *string { return v.IpsecAuthAlg }).(pulumi.StringPtrOutput)
 }
 
-// IPsec Encript algorithm.
 func (o ConnectionTunnelOptionsSpecificationTunnelIpsecConfigOutput) IpsecEncAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelIpsecConfig) *string { return v.IpsecEncAlg }).(pulumi.StringPtrOutput)
 }
 
-// IPsec lifetime.
 func (o ConnectionTunnelOptionsSpecificationTunnelIpsecConfigOutput) IpsecLifetime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelIpsecConfig) *int { return v.IpsecLifetime }).(pulumi.IntPtrOutput)
 }
 
-// DH Group.
 func (o ConnectionTunnelOptionsSpecificationTunnelIpsecConfigOutput) IpsecPfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionTunnelOptionsSpecificationTunnelIpsecConfig) *string { return v.IpsecPfs }).(pulumi.StringPtrOutput)
 }
@@ -1799,7 +1739,6 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput) Elem() C
 	}).(ConnectionTunnelOptionsSpecificationTunnelIpsecConfigOutput)
 }
 
-// IPsec authentication algorithm. sha1 and md5 are supported.
 func (o ConnectionTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput) IpsecAuthAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionTunnelOptionsSpecificationTunnelIpsecConfig) *string {
 		if v == nil {
@@ -1809,7 +1748,6 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput) IpsecAut
 	}).(pulumi.StringPtrOutput)
 }
 
-// IPsec Encript algorithm.
 func (o ConnectionTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput) IpsecEncAlg() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionTunnelOptionsSpecificationTunnelIpsecConfig) *string {
 		if v == nil {
@@ -1819,7 +1757,6 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput) IpsecEnc
 	}).(pulumi.StringPtrOutput)
 }
 
-// IPsec lifetime.
 func (o ConnectionTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput) IpsecLifetime() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConnectionTunnelOptionsSpecificationTunnelIpsecConfig) *int {
 		if v == nil {
@@ -1829,7 +1766,6 @@ func (o ConnectionTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput) IpsecLif
 	}).(pulumi.IntPtrOutput)
 }
 
-// DH Group.
 func (o ConnectionTunnelOptionsSpecificationTunnelIpsecConfigPtrOutput) IpsecPfs() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionTunnelOptionsSpecificationTunnelIpsecConfig) *string {
 		if v == nil {
@@ -4673,8 +4609,7 @@ type GetGatewayVpnAttachmentsAttachment struct {
 	Id string `pulumi:"id"`
 	// Configuration negotiated in the second stage.
 	IkeConfigs []GetGatewayVpnAttachmentsAttachmentIkeConfig `pulumi:"ikeConfigs"`
-	// The internet ip of the resource. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
-	InternetIp string `pulumi:"internetIp"`
+	InternetIp string                                        `pulumi:"internetIp"`
 	// The configuration of Phase 2 negotiations.
 	IpsecConfigs []GetGatewayVpnAttachmentsAttachmentIpsecConfig `pulumi:"ipsecConfigs"`
 	// The CIDR block of the virtual private cloud (VPC).
@@ -4719,8 +4654,7 @@ type GetGatewayVpnAttachmentsAttachmentArgs struct {
 	Id pulumi.StringInput `pulumi:"id"`
 	// Configuration negotiated in the second stage.
 	IkeConfigs GetGatewayVpnAttachmentsAttachmentIkeConfigArrayInput `pulumi:"ikeConfigs"`
-	// The internet ip of the resource. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
-	InternetIp pulumi.StringInput `pulumi:"internetIp"`
+	InternetIp pulumi.StringInput                                    `pulumi:"internetIp"`
 	// The configuration of Phase 2 negotiations.
 	IpsecConfigs GetGatewayVpnAttachmentsAttachmentIpsecConfigArrayInput `pulumi:"ipsecConfigs"`
 	// The CIDR block of the virtual private cloud (VPC).
@@ -4834,7 +4768,6 @@ func (o GetGatewayVpnAttachmentsAttachmentOutput) IkeConfigs() GetGatewayVpnAtta
 	}).(GetGatewayVpnAttachmentsAttachmentIkeConfigArrayOutput)
 }
 
-// The internet ip of the resource. The cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
 func (o GetGatewayVpnAttachmentsAttachmentOutput) InternetIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewayVpnAttachmentsAttachment) string { return v.InternetIp }).(pulumi.StringOutput)
 }

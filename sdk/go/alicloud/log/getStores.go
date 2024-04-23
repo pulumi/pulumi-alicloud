@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetStores(ctx *pulumi.Context, args *GetStoresArgs, opts ...pulumi.InvokeOption) (*GetStoresResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetStoresResult

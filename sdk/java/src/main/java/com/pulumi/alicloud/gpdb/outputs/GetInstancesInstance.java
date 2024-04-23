@@ -37,15 +37,7 @@ public final class GetInstancesInstance {
      */
     private String createTime;
     private String creationTime;
-    /**
-     * @return The db instance category. Valid values: `HighAvailability`, `Basic`.
-     * 
-     */
     private String dbInstanceCategory;
-    /**
-     * @return The db instance class.
-     * 
-     */
     private String dbInstanceClass;
     /**
      * @return The db instance id.
@@ -112,10 +104,6 @@ public final class GetInstancesInstance {
      * 
      */
     private String paymentType;
-    /**
-     * @return Region ID the instance belongs to.
-     * 
-     */
     private String regionId;
     /**
      * @return Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
@@ -193,17 +181,9 @@ public final class GetInstancesInstance {
     public String creationTime() {
         return this.creationTime;
     }
-    /**
-     * @return The db instance category. Valid values: `HighAvailability`, `Basic`.
-     * 
-     */
     public String dbInstanceCategory() {
         return this.dbInstanceCategory;
     }
-    /**
-     * @return The db instance class.
-     * 
-     */
     public String dbInstanceClass() {
         return this.dbInstanceClass;
     }
@@ -298,10 +278,6 @@ public final class GetInstancesInstance {
     public String paymentType() {
         return this.paymentType;
     }
-    /**
-     * @return Region ID the instance belongs to.
-     * 
-     */
     public String regionId() {
         return this.regionId;
     }

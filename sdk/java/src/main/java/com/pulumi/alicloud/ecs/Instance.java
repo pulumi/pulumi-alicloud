@@ -759,14 +759,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.memory;
     }
     /**
-     * The ID of the secondary ENI.
+     * The ID of the ENI.
      * 
      */
     @Export(name="networkInterfaceId", refs={String.class}, tree="[0]")
     private Output<String> networkInterfaceId;
 
     /**
-     * @return The ID of the secondary ENI.
+     * @return The ID of the ENI.
      * 
      */
     public Output<String> networkInterfaceId() {

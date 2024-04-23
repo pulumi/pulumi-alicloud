@@ -14,10 +14,6 @@ namespace Pulumi.AliCloud.Eci.Inputs
     {
         [Input("adds")]
         private InputList<string>? _adds;
-
-        /// <summary>
-        /// The permissions that you want to grant to the processes in the containers.
-        /// </summary>
         public InputList<string> Adds
         {
             get => _adds ?? (_adds = new InputList<string>());

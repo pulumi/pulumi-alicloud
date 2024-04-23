@@ -309,14 +309,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * ON.
+     * The status of the resource.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return ON.
+     * @return The status of the resource.
      * 
      */
     public Optional<Output<String>> status() {
@@ -818,7 +818,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status ON.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 
@@ -829,7 +829,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status ON.
+         * @param status The status of the resource.
          * 
          * @return builder
          * 

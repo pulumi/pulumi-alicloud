@@ -141,7 +141,6 @@ class ApplicationAccessPoint(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -159,7 +158,6 @@ class ApplicationAccessPoint(pulumi.CustomResource):
                 "hfc",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -192,7 +190,6 @@ class ApplicationAccessPoint(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -210,7 +207,6 @@ class ApplicationAccessPoint(pulumi.CustomResource):
                 "hfc",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

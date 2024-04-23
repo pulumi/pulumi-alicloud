@@ -144,7 +144,6 @@ def get_instances(app_key: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -152,7 +151,6 @@ def get_instances(app_key: Optional[str] = None,
     example = alicloud.tsdb.get_instances(ids=["example_value"])
     pulumi.export("firstTsdbInstanceId", example.instances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str app_key: The app key.
@@ -208,7 +206,6 @@ def get_instances_output(app_key: Optional[pulumi.Input[Optional[str]]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -216,7 +213,6 @@ def get_instances_output(app_key: Optional[pulumi.Input[Optional[str]]] = None,
     example = alicloud.tsdb.get_instances(ids=["example_value"])
     pulumi.export("firstTsdbInstanceId", example.instances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str app_key: The app key.

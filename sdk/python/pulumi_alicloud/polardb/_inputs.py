@@ -188,19 +188,12 @@ class ParameterGroupParameterArgs:
     def __init__(__self__, *,
                  param_name: pulumi.Input[str],
                  param_value: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] param_name: The name of a parameter in the parameter template.
-        :param pulumi.Input[str] param_value: The value of a parameter in the parameter template.
-        """
         pulumi.set(__self__, "param_name", param_name)
         pulumi.set(__self__, "param_value", param_value)
 
     @property
     @pulumi.getter(name="paramName")
     def param_name(self) -> pulumi.Input[str]:
-        """
-        The name of a parameter in the parameter template.
-        """
         return pulumi.get(self, "param_name")
 
     @param_name.setter
@@ -210,9 +203,6 @@ class ParameterGroupParameterArgs:
     @property
     @pulumi.getter(name="paramValue")
     def param_value(self) -> pulumi.Input[str]:
-        """
-        The value of a parameter in the parameter template.
-        """
         return pulumi.get(self, "param_value")
 
     @param_value.setter

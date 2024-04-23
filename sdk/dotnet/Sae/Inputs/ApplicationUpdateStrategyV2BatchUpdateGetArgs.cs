@@ -12,9 +12,6 @@ namespace Pulumi.AliCloud.Sae.Inputs
 
     public sealed class ApplicationUpdateStrategyV2BatchUpdateGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The number of batches in which you want to release the instances.
-        /// </summary>
         [Input("batch")]
         public Input<int>? Batch { get; set; }
 
@@ -24,9 +21,6 @@ namespace Pulumi.AliCloud.Sae.Inputs
         [Input("batchWaitTime")]
         public Input<int>? BatchWaitTime { get; set; }
 
-        /// <summary>
-        /// The processing method for the batches. Valid values: `auto` and `manual`.
-        /// </summary>
         [Input("releaseType")]
         public Input<string>? ReleaseType { get; set; }
 

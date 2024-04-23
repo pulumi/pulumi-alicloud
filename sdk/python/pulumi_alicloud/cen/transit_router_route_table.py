@@ -254,7 +254,6 @@ class TransitRouterRouteTable(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -267,7 +266,6 @@ class TransitRouterRouteTable(pulumi.CustomResource):
             cen_id=example.id)
         example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("example", transit_router_id=example_transit_router.transit_router_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -300,7 +298,6 @@ class TransitRouterRouteTable(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -313,7 +310,6 @@ class TransitRouterRouteTable(pulumi.CustomResource):
             cen_id=example.id)
         example_transit_router_route_table = alicloud.cen.TransitRouterRouteTable("example", transit_router_id=example_transit_router.transit_router_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

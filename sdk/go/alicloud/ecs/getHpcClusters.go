@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetHpcClusters(ctx *pulumi.Context, args *GetHpcClustersArgs, opts ...pulumi.InvokeOption) (*GetHpcClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHpcClustersResult

@@ -39,11 +39,6 @@ class StudioApplicationInstance(dict):
                  id: Optional[str] = None,
                  node_name: Optional[str] = None,
                  node_type: Optional[str] = None):
-        """
-        :param str id: The id of the instance.
-        :param str node_name: The name of the instance.
-        :param str node_type: The type of the instance.
-        """
         if id is not None:
             pulumi.set(__self__, "id", id)
         if node_name is not None:
@@ -54,25 +49,16 @@ class StudioApplicationInstance(dict):
     @property
     @pulumi.getter
     def id(self) -> Optional[str]:
-        """
-        The id of the instance.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[str]:
-        """
-        The name of the instance.
-        """
         return pulumi.get(self, "node_name")
 
     @property
     @pulumi.getter(name="nodeType")
     def node_type(self) -> Optional[str]:
-        """
-        The type of the instance.
-        """
         return pulumi.get(self, "node_type")
 
 

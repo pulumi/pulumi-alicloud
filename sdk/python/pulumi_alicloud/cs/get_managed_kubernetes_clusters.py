@@ -132,7 +132,6 @@ def get_managed_kubernetes_clusters(enable_details: Optional[bool] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -143,7 +142,6 @@ def get_managed_kubernetes_clusters(enable_details: Optional[bool] = None,
         kube_config_file_prefix="~/.kube/managed")
     pulumi.export("output", k8s_clusters.clusters)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: Cluster IDs to filter.
@@ -187,7 +185,6 @@ def get_managed_kubernetes_clusters_output(enable_details: Optional[pulumi.Input
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -198,7 +195,6 @@ def get_managed_kubernetes_clusters_output(enable_details: Optional[pulumi.Input
         kube_config_file_prefix="~/.kube/managed")
     pulumi.export("output", k8s_clusters.clusters)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: Cluster IDs to filter.

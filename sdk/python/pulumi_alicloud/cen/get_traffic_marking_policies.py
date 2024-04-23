@@ -133,7 +133,6 @@ def get_traffic_marking_policies(description: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -148,7 +147,6 @@ def get_traffic_marking_policies(description: Optional[str] = None,
         name_regex="^my-TrafficMarkingPolicy")
     pulumi.export("cenTrafficMarkingPolicyId2", name_regex.policies[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: The description of the Traffic Marking Policy.
@@ -197,7 +195,6 @@ def get_traffic_marking_policies_output(description: Optional[pulumi.Input[Optio
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -212,7 +209,6 @@ def get_traffic_marking_policies_output(description: Optional[pulumi.Input[Optio
         name_regex="^my-TrafficMarkingPolicy")
     pulumi.export("cenTrafficMarkingPolicyId2", name_regex.policies[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: The description of the Traffic Marking Policy.

@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,7 +57,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetServerlessInstances(ctx *pulumi.Context, args *GetServerlessInstancesArgs, opts ...pulumi.InvokeOption) (*GetServerlessInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerlessInstancesResult
@@ -79,15 +77,15 @@ type GetServerlessInstancesArgs struct {
 	EnableDetails *bool `pulumi:"enableDetails"`
 	// A list of Serverless Instance IDs.
 	Ids []string `pulumi:"ids"`
-	// The network type of the instance.
+	// The network type of the instance. Valid values: `Classic` or `VPC`.
 	NetworkType *string `pulumi:"networkType"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The status of the instance.
+	// The instance status. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardSwitching`, `HASwitching`, `Importing`, `ImportingFromOthers`, `LinkSwitching`, `MinorVersionUpgrading`, `NodeCreating`, `NodeDeleting`, `Rebooting`, `Restoring`, `Running`, `SSLModifying`, `TDEModifying`, `TempDBInstanceCreating`, `Transing`, `TransingToOthers`, `released`.
 	Status *string `pulumi:"status"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The ID of the VPC network.
 	VpcId *string `pulumi:"vpcId"`
@@ -139,15 +137,15 @@ type GetServerlessInstancesOutputArgs struct {
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
 	// A list of Serverless Instance IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The network type of the instance.
+	// The network type of the instance. Valid values: `Classic` or `VPC`.
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// The status of the instance.
+	// The instance status. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardSwitching`, `HASwitching`, `Importing`, `ImportingFromOthers`, `LinkSwitching`, `MinorVersionUpgrading`, `NodeCreating`, `NodeDeleting`, `Rebooting`, `Restoring`, `Running`, `SSLModifying`, `TDEModifying`, `TempDBInstanceCreating`, `Transing`, `TransingToOthers`, `released`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// The ID of the VPC network.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`

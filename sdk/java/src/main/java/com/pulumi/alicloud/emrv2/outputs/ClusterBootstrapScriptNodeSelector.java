@@ -13,65 +13,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterBootstrapScriptNodeSelector {
-    /**
-     * @return The configuration effected which node group id of emr cluster.
-     * 
-     */
     private @Nullable String nodeGroupId;
-    /**
-     * @return The configuration effected which node group name of emr cluster.
-     * 
-     */
     private @Nullable String nodeGroupName;
-    /**
-     * @return The bootstrap scripts execution target node group types.
-     * 
-     */
     private @Nullable List<String> nodeGroupTypes;
-    /**
-     * @return The bootstrap scripts execution target node names.
-     * 
-     */
     private @Nullable List<String> nodeNames;
-    /**
-     * @return The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
-     * 
-     */
     private String nodeSelectType;
 
     private ClusterBootstrapScriptNodeSelector() {}
-    /**
-     * @return The configuration effected which node group id of emr cluster.
-     * 
-     */
     public Optional<String> nodeGroupId() {
         return Optional.ofNullable(this.nodeGroupId);
     }
-    /**
-     * @return The configuration effected which node group name of emr cluster.
-     * 
-     */
     public Optional<String> nodeGroupName() {
         return Optional.ofNullable(this.nodeGroupName);
     }
-    /**
-     * @return The bootstrap scripts execution target node group types.
-     * 
-     */
     public List<String> nodeGroupTypes() {
         return this.nodeGroupTypes == null ? List.of() : this.nodeGroupTypes;
     }
-    /**
-     * @return The bootstrap scripts execution target node names.
-     * 
-     */
     public List<String> nodeNames() {
         return this.nodeNames == null ? List.of() : this.nodeNames;
     }
-    /**
-     * @return The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
-     * 
-     */
     public String nodeSelectType() {
         return this.nodeSelectType;
     }

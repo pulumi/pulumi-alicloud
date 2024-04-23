@@ -48,11 +48,6 @@ class GetVirtualBorderRoutersFilterArgs:
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
-        """
-        :param str key: The key of the field to filter by, as defined by
-               [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
-        :param Sequence[str] values: Set of values that are accepted for the given field.
-        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if values is not None:
@@ -61,10 +56,6 @@ class GetVirtualBorderRoutersFilterArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[str]:
-        """
-        The key of the field to filter by, as defined by
-        [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
-        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -74,9 +65,6 @@ class GetVirtualBorderRoutersFilterArgs:
     @property
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
-        """
-        Set of values that are accepted for the given field.
-        """
         return pulumi.get(self, "values")
 
     @values.setter

@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,7 +52,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetMscSubWebhooks(ctx *pulumi.Context, args *GetMscSubWebhooksArgs, opts ...pulumi.InvokeOption) (*GetMscSubWebhooksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMscSubWebhooksResult

@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.ApiGateway
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -50,7 +49,6 @@ namespace Pulumi.AliCloud.ApiGateway
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetModelsResult> InvokeAsync(GetModelsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetModelsResult>("alicloud:apigateway/getModels:getModels", args ?? new GetModelsArgs(), options.WithDefaults());
@@ -64,7 +62,6 @@ namespace Pulumi.AliCloud.ApiGateway
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -94,7 +91,6 @@ namespace Pulumi.AliCloud.ApiGateway
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetModelsResult> Invoke(GetModelsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetModelsResult>("alicloud:apigateway/getModels:getModels", args ?? new GetModelsInvokeArgs(), options.WithDefaults());

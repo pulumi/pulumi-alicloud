@@ -578,12 +578,6 @@ class GetRulesRuleBindVpcResult(dict):
                  region_name: str,
                  vpc_id: str,
                  vpc_name: str):
-        """
-        :param str region_id: The region ID of the vpc.
-        :param str region_name: The Region Name of the vpc.
-        :param str vpc_id: The ID of the VPC.
-        :param str vpc_name: The Name of the VPC.
-        """
         pulumi.set(__self__, "region_id", region_id)
         pulumi.set(__self__, "region_name", region_name)
         pulumi.set(__self__, "vpc_id", vpc_id)
@@ -592,33 +586,21 @@ class GetRulesRuleBindVpcResult(dict):
     @property
     @pulumi.getter(name="regionId")
     def region_id(self) -> str:
-        """
-        The region ID of the vpc.
-        """
         return pulumi.get(self, "region_id")
 
     @property
     @pulumi.getter(name="regionName")
     def region_name(self) -> str:
-        """
-        The Region Name of the vpc.
-        """
         return pulumi.get(self, "region_name")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
-        """
-        The ID of the VPC.
-        """
         return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="vpcName")
     def vpc_name(self) -> str:
-        """
-        The Name of the VPC.
-        """
         return pulumi.get(self, "vpc_name")
 
 

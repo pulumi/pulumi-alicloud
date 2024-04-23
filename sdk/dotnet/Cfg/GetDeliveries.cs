@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Cfg
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.AliCloud.Cfg
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDeliveriesResult> InvokeAsync(GetDeliveriesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDeliveriesResult>("alicloud:cfg/getDeliveries:getDeliveries", args ?? new GetDeliveriesArgs(), options.WithDefaults());
@@ -57,7 +55,6 @@ namespace Pulumi.AliCloud.Cfg
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Pulumi.AliCloud.Cfg
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDeliveriesResult> Invoke(GetDeliveriesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDeliveriesResult>("alicloud:cfg/getDeliveries:getDeliveries", args ?? new GetDeliveriesInvokeArgs(), options.WithDefaults());

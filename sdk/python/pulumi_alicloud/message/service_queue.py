@@ -274,7 +274,6 @@ class ServiceQueue(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -292,7 +291,6 @@ class ServiceQueue(pulumi.CustomResource):
             polling_wait_seconds=3,
             logging_enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -329,7 +327,6 @@ class ServiceQueue(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -347,7 +344,6 @@ class ServiceQueue(pulumi.CustomResource):
             polling_wait_seconds=3,
             logging_enabled=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

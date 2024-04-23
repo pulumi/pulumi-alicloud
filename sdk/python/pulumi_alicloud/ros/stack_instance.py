@@ -323,7 +323,6 @@ class StackInstance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -361,7 +360,6 @@ class StackInstance(pulumi.CustomResource):
                 parameter_key="VpcName",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -399,7 +397,6 @@ class StackInstance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -437,7 +434,6 @@ class StackInstance(pulumi.CustomResource):
                 parameter_key="VpcName",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -56,7 +55,6 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAntiBruteForceRulesResult> InvokeAsync(GetAntiBruteForceRulesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAntiBruteForceRulesResult>("alicloud:threatdetection/getAntiBruteForceRules:getAntiBruteForceRules", args ?? new GetAntiBruteForceRulesArgs(), options.WithDefaults());
@@ -68,7 +66,6 @@ namespace Pulumi.AliCloud.ThreatDetection
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -106,7 +103,6 @@ namespace Pulumi.AliCloud.ThreatDetection
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAntiBruteForceRulesResult> Invoke(GetAntiBruteForceRulesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAntiBruteForceRulesResult>("alicloud:threatdetection/getAntiBruteForceRules:getAntiBruteForceRules", args ?? new GetAntiBruteForceRulesInvokeArgs(), options.WithDefaults());

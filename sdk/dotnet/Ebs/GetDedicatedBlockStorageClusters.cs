@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Ebs
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,7 +41,6 @@ namespace Pulumi.AliCloud.Ebs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDedicatedBlockStorageClustersResult> InvokeAsync(GetDedicatedBlockStorageClustersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedBlockStorageClustersResult>("alicloud:ebs/getDedicatedBlockStorageClusters:getDedicatedBlockStorageClusters", args ?? new GetDedicatedBlockStorageClustersArgs(), options.WithDefaults());
@@ -54,7 +52,6 @@ namespace Pulumi.AliCloud.Ebs
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -78,7 +75,6 @@ namespace Pulumi.AliCloud.Ebs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDedicatedBlockStorageClustersResult> Invoke(GetDedicatedBlockStorageClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDedicatedBlockStorageClustersResult>("alicloud:ebs/getDedicatedBlockStorageClusters:getDedicatedBlockStorageClusters", args ?? new GetDedicatedBlockStorageClustersInvokeArgs(), options.WithDefaults());

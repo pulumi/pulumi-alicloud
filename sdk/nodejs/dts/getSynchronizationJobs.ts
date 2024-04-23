@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * const ids = alicloud.dts.getSynchronizationJobs({});
  * export const dtsSynchronizationJobId1 = ids.then(ids => ids.jobs?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSynchronizationJobs(args?: GetSynchronizationJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetSynchronizationJobsResult> {
     args = args || {};
@@ -85,7 +83,6 @@ export interface GetSynchronizationJobsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -93,7 +90,6 @@ export interface GetSynchronizationJobsResult {
  * const ids = alicloud.dts.getSynchronizationJobs({});
  * export const dtsSynchronizationJobId1 = ids.then(ids => ids.jobs?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSynchronizationJobsOutput(args?: GetSynchronizationJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSynchronizationJobsResult> {
     return pulumi.output(args).apply((a: any) => getSynchronizationJobs(a, opts))

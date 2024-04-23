@@ -123,7 +123,6 @@ def get_exchanges(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -140,7 +139,6 @@ def get_exchanges(ids: Optional[Sequence[str]] = None,
         name_regex="^my-Exchange")
     pulumi.export("amqpExchangeId2", name_regex.exchanges[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Exchange IDs. Its element value is same as Exchange Name.
@@ -185,7 +183,6 @@ def get_exchanges_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -202,7 +199,6 @@ def get_exchanges_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
         name_regex="^my-Exchange")
     pulumi.export("amqpExchangeId2", name_regex.exchanges[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Exchange IDs. Its element value is same as Exchange Name.

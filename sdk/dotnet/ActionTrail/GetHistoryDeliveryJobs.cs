@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -53,7 +52,6 @@ namespace Pulumi.AliCloud.ActionTrail
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetHistoryDeliveryJobsResult> InvokeAsync(GetHistoryDeliveryJobsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHistoryDeliveryJobsResult>("alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs", args ?? new GetHistoryDeliveryJobsArgs(), options.WithDefaults());
@@ -67,7 +65,6 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -100,7 +97,6 @@ namespace Pulumi.AliCloud.ActionTrail
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetHistoryDeliveryJobsResult> Invoke(GetHistoryDeliveryJobsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHistoryDeliveryJobsResult>("alicloud:actiontrail/getHistoryDeliveryJobs:getHistoryDeliveryJobs", args ?? new GetHistoryDeliveryJobsInvokeArgs(), options.WithDefaults());

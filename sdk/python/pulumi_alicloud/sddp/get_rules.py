@@ -203,7 +203,6 @@ def get_rules(category: Optional[int] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -217,7 +216,6 @@ def get_rules(category: Optional[int] = None,
     default = alicloud.sddp.get_rules_output(ids=[default_rule.id])
     pulumi.export("sddpRuleId", default.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int category: Sensitive Data Identification Rules for the Type of.
@@ -293,7 +291,6 @@ def get_rules_output(category: Optional[pulumi.Input[Optional[int]]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -307,7 +304,6 @@ def get_rules_output(category: Optional[pulumi.Input[Optional[int]]] = None,
     default = alicloud.sddp.get_rules_output(ids=[default_rule.id])
     pulumi.export("sddpRuleId", default.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int category: Sensitive Data Identification Rules for the Type of.

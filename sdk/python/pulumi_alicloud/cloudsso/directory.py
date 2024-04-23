@@ -188,7 +188,6 @@ class Directory(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -202,7 +201,6 @@ class Directory(pulumi.CustomResource):
         for range in [{"value": i} for i in range(0, 0 if len(default.ids) > 0 else 1)]:
             default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -240,7 +238,6 @@ class Directory(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -254,7 +251,6 @@ class Directory(pulumi.CustomResource):
         for range in [{"value": i} for i in range(0, 0 if len(default.ids) > 0 else 1)]:
             default_directory.append(alicloud.cloudsso.Directory(f"default-{range['value']}", directory_name=name))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

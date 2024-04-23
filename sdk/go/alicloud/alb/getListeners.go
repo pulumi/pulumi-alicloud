@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,7 +45,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetListeners(ctx *pulumi.Context, args *GetListenersArgs, opts ...pulumi.InvokeOption) (*GetListenersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetListenersResult
@@ -71,7 +69,7 @@ type GetListenersArgs struct {
 	LoadBalancerIds []string `pulumi:"loadBalancerIds"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+	// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status *string `pulumi:"status"`
 }
 
@@ -116,7 +114,7 @@ type GetListenersOutputArgs struct {
 	LoadBalancerIds pulumi.StringArrayInput `pulumi:"loadBalancerIds"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+	// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

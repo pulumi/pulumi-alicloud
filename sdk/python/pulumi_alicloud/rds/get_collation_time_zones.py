@@ -85,7 +85,6 @@ def get_collation_time_zones(collation_time_zones: Optional[Sequence[pulumi.Inpu
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -93,7 +92,6 @@ def get_collation_time_zones(collation_time_zones: Optional[Sequence[pulumi.Inpu
     zones = alicloud.rds.get_collation_time_zones(output_file="./classes.txt")
     pulumi.export("firstRdsCollationTimeZones", zones.collation_time_zones[0])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetCollationTimeZonesCollationTimeZoneArgs']] collation_time_zones: An array that consists of the character set collations and time zones that are available for
@@ -126,7 +124,6 @@ def get_collation_time_zones_output(collation_time_zones: Optional[pulumi.Input[
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -134,7 +131,6 @@ def get_collation_time_zones_output(collation_time_zones: Optional[pulumi.Input[
     zones = alicloud.rds.get_collation_time_zones(output_file="./classes.txt")
     pulumi.export("firstRdsCollationTimeZones", zones.collation_time_zones[0])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetCollationTimeZonesCollationTimeZoneArgs']] collation_time_zones: An array that consists of the character set collations and time zones that are available for

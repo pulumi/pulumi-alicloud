@@ -18,8 +18,6 @@ import (
 //
 // ## Example Usage
 //
-//	<!--Start PulumiCodeChooser -->
-//
 // ```go
 // package main
 //
@@ -31,23 +29,22 @@ import (
 // )
 //
 //	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			drdsInstancesDs, err := drds.GetInstances(ctx, &drds.GetInstancesArgs{
-//				NameRegex: pulumi.StringRef("drds-\\d+"),
-//				Ids: []string{
-//					"drdsabc123456",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("firstDbInstanceId", drdsInstancesDs.Instances[0].Id)
-//			return nil
-//		})
+//	   pulumi.Run(func(ctx *pulumi.Context) error {
+//	       drdsInstancesDs, err := drds.GetInstances(ctx, &drds.GetInstancesArgs{
+//	           NameRegex: pulumi.StringRef("drds-\\d+"),
+//	           Ids: []string{
+//	               "drdsabc123456",
+//	           },
+//	       }, nil)
+//	       if err != nil {
+//	           return err
+//	       }
+//	       ctx.Export("firstDbInstanceId", drdsInstancesDs.Instances[0].Id)
+//	       return nil
+//	   })
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetInstances(ctx *pulumi.Context, args *GetInstancesArgs, opts ...pulumi.InvokeOption) (*GetInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetInstancesResult

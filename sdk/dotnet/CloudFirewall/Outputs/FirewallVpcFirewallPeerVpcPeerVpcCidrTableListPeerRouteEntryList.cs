@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
     [OutputType]
     public sealed class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList
     {
-        /// <summary>
-        /// The target network segment of the peer VPC.
-        /// </summary>
         public readonly string PeerDestinationCidr;
-        /// <summary>
-        /// The ID of the next-hop instance in the peer VPC.
-        /// </summary>
         public readonly string PeerNextHopInstanceId;
 
         [OutputConstructor]

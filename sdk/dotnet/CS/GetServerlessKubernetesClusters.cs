@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.AliCloud.CS
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServerlessKubernetesClustersResult> InvokeAsync(GetServerlessKubernetesClustersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerlessKubernetesClustersResult>("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", args ?? new GetServerlessKubernetesClustersArgs(), options.WithDefaults());
@@ -57,7 +55,6 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Pulumi.AliCloud.CS
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServerlessKubernetesClustersResult> Invoke(GetServerlessKubernetesClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerlessKubernetesClustersResult>("alicloud:cs/getServerlessKubernetesClusters:getServerlessKubernetesClusters", args ?? new GetServerlessKubernetesClustersInvokeArgs(), options.WithDefaults());

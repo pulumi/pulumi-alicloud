@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Alb
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.AliCloud.Alb
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetListenersResult> InvokeAsync(GetListenersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetListenersResult>("alicloud:alb/getListeners:getListeners", args ?? new GetListenersArgs(), options.WithDefaults());
@@ -57,7 +55,6 @@ namespace Pulumi.AliCloud.Alb
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Pulumi.AliCloud.Alb
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetListenersResult> Invoke(GetListenersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetListenersResult>("alicloud:alb/getListeners:getListeners", args ?? new GetListenersInvokeArgs(), options.WithDefaults());
@@ -144,7 +140,7 @@ namespace Pulumi.AliCloud.Alb
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+        /// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -212,7 +208,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+        /// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

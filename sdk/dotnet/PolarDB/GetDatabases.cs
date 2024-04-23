@@ -19,7 +19,6 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -85,7 +84,6 @@ namespace Pulumi.AliCloud.PolarDB
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDatabasesResult> InvokeAsync(GetDatabasesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDatabasesResult>("alicloud:polardb/getDatabases:getDatabases", args ?? new GetDatabasesArgs(), options.WithDefaults());
@@ -98,7 +96,6 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -164,7 +161,6 @@ namespace Pulumi.AliCloud.PolarDB
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDatabasesResult> Invoke(GetDatabasesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabasesResult>("alicloud:polardb/getDatabases:getDatabases", args ?? new GetDatabasesInvokeArgs(), options.WithDefaults());

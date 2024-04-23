@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Ga
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.AliCloud.Ga
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetEndpointGroupIpAddressCidrBlocksResult> InvokeAsync(GetEndpointGroupIpAddressCidrBlocksArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEndpointGroupIpAddressCidrBlocksResult>("alicloud:ga/getEndpointGroupIpAddressCidrBlocks:getEndpointGroupIpAddressCidrBlocks", args ?? new GetEndpointGroupIpAddressCidrBlocksArgs(), options.WithDefaults());
@@ -54,7 +52,6 @@ namespace Pulumi.AliCloud.Ga
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.AliCloud.Ga
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetEndpointGroupIpAddressCidrBlocksResult> Invoke(GetEndpointGroupIpAddressCidrBlocksInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEndpointGroupIpAddressCidrBlocksResult>("alicloud:ga/getEndpointGroupIpAddressCidrBlocks:getEndpointGroupIpAddressCidrBlocks", args ?? new GetEndpointGroupIpAddressCidrBlocksInvokeArgs(), options.WithDefaults());

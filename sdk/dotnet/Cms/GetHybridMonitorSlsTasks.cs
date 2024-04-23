@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Cms
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.AliCloud.Cms
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetHybridMonitorSlsTasksResult> InvokeAsync(GetHybridMonitorSlsTasksArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHybridMonitorSlsTasksResult>("alicloud:cms/getHybridMonitorSlsTasks:getHybridMonitorSlsTasks", args ?? new GetHybridMonitorSlsTasksArgs(), options.WithDefaults());
@@ -57,7 +55,6 @@ namespace Pulumi.AliCloud.Cms
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Pulumi.AliCloud.Cms
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetHybridMonitorSlsTasksResult> Invoke(GetHybridMonitorSlsTasksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHybridMonitorSlsTasksResult>("alicloud:cms/getHybridMonitorSlsTasks:getHybridMonitorSlsTasks", args ?? new GetHybridMonitorSlsTasksInvokeArgs(), options.WithDefaults());
@@ -108,7 +104,7 @@ namespace Pulumi.AliCloud.Cms
         public string? Keyword { get; set; }
 
         /// <summary>
-        /// The namespace to which the host belongs.
+        /// The name of the namespace.
         /// </summary>
         [Input("namespace")]
         public string? Namespace { get; set; }
@@ -152,7 +148,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? Keyword { get; set; }
 
         /// <summary>
-        /// The namespace to which the host belongs.
+        /// The name of the namespace.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }

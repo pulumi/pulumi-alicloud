@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     [OutputType]
     public sealed class GetListenersListenerDefaultActionResult
     {
-        /// <summary>
-        /// The configuration of the forwarding rule action. This parameter is required if the Type parameter is set to FowardGroup.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetListenersListenerDefaultActionForwardGroupConfigResult> ForwardGroupConfigs;
-        /// <summary>
-        /// Action Type. The value is set to ForwardGroup. It indicates that requests are forwarded to multiple vServer groups.
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

@@ -122,7 +122,6 @@ def get_remote_writes(cluster_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -134,7 +133,6 @@ def get_remote_writes(cluster_id: Optional[str] = None,
         cluster_id="your_cluster_id")
     pulumi.export("armsRemoteWritesId2", name_regex.remote_writes[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The ID of the Prometheus instance.
@@ -175,7 +173,6 @@ def get_remote_writes_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -187,7 +184,6 @@ def get_remote_writes_output(cluster_id: Optional[pulumi.Input[str]] = None,
         cluster_id="your_cluster_id")
     pulumi.export("armsRemoteWritesId2", name_regex.remote_writes[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The ID of the Prometheus instance.

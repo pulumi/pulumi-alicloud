@@ -313,7 +313,6 @@ class Topic(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -338,7 +337,6 @@ class Topic(pulumi.CustomResource):
             message_type=0,
             remark="dafault_ons_topic_remark")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -379,7 +377,6 @@ class Topic(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -404,7 +401,6 @@ class Topic(pulumi.CustomResource):
             message_type=0,
             remark="dafault_ons_topic_remark")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

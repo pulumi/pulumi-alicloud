@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class VvpInstanceStorageOss {
-    /**
-     * @return OSS Bucket name.
-     * 
-     */
     private String bucket;
 
     private VvpInstanceStorageOss() {}
-    /**
-     * @return OSS Bucket name.
-     * 
-     */
     public String bucket() {
         return this.bucket;
     }

@@ -16,7 +16,6 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,7 +36,6 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRegionRouteEntriesResult> InvokeAsync(GetRegionRouteEntriesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionRouteEntriesResult>("alicloud:cen/getRegionRouteEntries:getRegionRouteEntries", args ?? new GetRegionRouteEntriesArgs(), options.WithDefaults());
@@ -47,7 +45,6 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -68,7 +65,6 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRegionRouteEntriesResult> Invoke(GetRegionRouteEntriesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionRouteEntriesResult>("alicloud:cen/getRegionRouteEntries:getRegionRouteEntries", args ?? new GetRegionRouteEntriesInvokeArgs(), options.WithDefaults());

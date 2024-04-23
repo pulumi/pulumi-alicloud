@@ -14,25 +14,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BucketLifecycleRuleTransition {
-    /**
-     * @return Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-     * 
-     */
     private @Nullable String createdBeforeDate;
-    /**
-     * @return Specifies the number of days noncurrent object versions transition.
-     * 
-     */
     private @Nullable Integer days;
-    /**
-     * @return Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
-     * 
-     */
     private @Nullable Boolean isAccessTime;
-    /**
-     * @return Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-     * 
-     */
     private @Nullable Boolean returnToStdWhenVisit;
     /**
      * @return The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34;, &#34;ColdArchive&#34; and &#34;DeepColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available since 1.203.0. &#34;DeepColdArchive&#34; is available since 1.209.0.
@@ -41,31 +25,15 @@ public final class BucketLifecycleRuleTransition {
     private String storageClass;
 
     private BucketLifecycleRuleTransition() {}
-    /**
-     * @return Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-     * 
-     */
     public Optional<String> createdBeforeDate() {
         return Optional.ofNullable(this.createdBeforeDate);
     }
-    /**
-     * @return Specifies the number of days noncurrent object versions transition.
-     * 
-     */
     public Optional<Integer> days() {
         return Optional.ofNullable(this.days);
     }
-    /**
-     * @return Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
-     * 
-     */
     public Optional<Boolean> isAccessTime() {
         return Optional.ofNullable(this.isAccessTime);
     }
-    /**
-     * @return Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-     * 
-     */
     public Optional<Boolean> returnToStdWhenVisit() {
         return Optional.ofNullable(this.returnToStdWhenVisit);
     }

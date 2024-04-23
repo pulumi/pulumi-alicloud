@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.AliCloud.ActionTrail
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetConsumerGroupsResult> InvokeAsync(GetConsumerGroupsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConsumerGroupsResult>("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", args ?? new GetConsumerGroupsArgs(), options.WithDefaults());
@@ -52,7 +50,6 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.AliCloud.ActionTrail
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetConsumerGroupsResult> Invoke(GetConsumerGroupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConsumerGroupsResult>("alicloud:actiontrail/getConsumerGroups:getConsumerGroups", args ?? new GetConsumerGroupsInvokeArgs(), options.WithDefaults());

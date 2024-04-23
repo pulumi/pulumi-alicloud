@@ -179,14 +179,14 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Specifies a snapshot that is used to create a combined custom image.
+     * Specifies a snapshot that is used to create a custom image.
      * 
      */
     @Import(name="snapshotId")
     private @Nullable Output<String> snapshotId;
 
     /**
-     * @return Specifies a snapshot that is used to create a combined custom image.
+     * @return Specifies a snapshot that is used to create a custom image.
      * 
      */
     public Optional<Output<String>> snapshotId() {
@@ -468,7 +468,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshotId Specifies a snapshot that is used to create a combined custom image.
+         * @param snapshotId Specifies a snapshot that is used to create a custom image.
          * 
          * @return builder
          * 
@@ -479,7 +479,7 @@ public final class ImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param snapshotId Specifies a snapshot that is used to create a combined custom image.
+         * @param snapshotId Specifies a snapshot that is used to create a custom image.
          * 
          * @return builder
          * 

@@ -12,9 +12,6 @@ namespace Pulumi.AliCloud.Ehpc.Inputs
 
     public sealed class ClusterAdditionalVolumeRoleArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The type of the nodes to which the additional file system is attached.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

@@ -153,14 +153,14 @@ public final class GetApplicationsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `RUNNING`, `STOPPED`,`UNKNOWN`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `RUNNING`, `STOPPED`,`UNKNOWN`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -400,7 +400,7 @@ public final class GetApplicationsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `RUNNING`, `STOPPED`,`UNKNOWN`.
          * 
          * @return builder
          * 
@@ -411,7 +411,7 @@ public final class GetApplicationsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `RUNNING`, `STOPPED`,`UNKNOWN`.
          * 
          * @return builder
          * 

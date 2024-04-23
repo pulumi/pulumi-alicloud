@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudEfloVpdExampleId = _default.then(_default => _default.vpds?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVpds(args?: GetVpdsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpdsResult> {
     args = args || {};
@@ -134,7 +132,6 @@ export interface GetVpdsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -146,7 +143,6 @@ export interface GetVpdsResult {
  * });
  * export const alicloudEfloVpdExampleId = _default.then(_default => _default.vpds?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVpdsOutput(args?: GetVpdsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpdsResult> {
     return pulumi.output(args).apply((a: any) => getVpds(a, opts))

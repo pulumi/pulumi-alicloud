@@ -24,7 +24,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -202,11 +201,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // MNS topic trigger:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -344,11 +341,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // CDN events trigger:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -523,11 +518,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // EventBridge trigger:
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -787,7 +780,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Module Support
 //

@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerGroupContainerReadinessProbeTcpSocket {
-    /**
-     * @return When using the HTTP request method for health check, the port number for HTTP Get request detection.
-     * 
-     */
     private @Nullable Integer port;
 
     private ContainerGroupContainerReadinessProbeTcpSocket() {}
-    /**
-     * @return When using the HTTP request method for health check, the port number for HTTP Get request detection.
-     * 
-     */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }

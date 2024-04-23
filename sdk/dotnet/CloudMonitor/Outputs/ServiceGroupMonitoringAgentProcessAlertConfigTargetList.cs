@@ -13,21 +13,9 @@ namespace Pulumi.AliCloud.CloudMonitor.Outputs
     [OutputType]
     public sealed class ServiceGroupMonitoringAgentProcessAlertConfigTargetList
     {
-        /// <summary>
-        /// The Alibaba Cloud Resource Name (ARN) of the resource.
-        /// </summary>
         public readonly string? Arn;
-        /// <summary>
-        /// The parameters of the alert callback. Specify the parameters in the JSON format.
-        /// </summary>
         public readonly string? JsonParams;
-        /// <summary>
-        /// The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
-        /// </summary>
         public readonly string? Level;
-        /// <summary>
-        /// The ID of the resource for which alerts are triggered.
-        /// </summary>
         public readonly string? TargetListId;
 
         [OutputConstructor]

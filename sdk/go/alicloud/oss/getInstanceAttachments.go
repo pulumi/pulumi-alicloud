@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,7 +41,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Deprecated: alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments
 func GetInstanceAttachments(ctx *pulumi.Context, args *GetInstanceAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetInstanceAttachmentsResult, error) {

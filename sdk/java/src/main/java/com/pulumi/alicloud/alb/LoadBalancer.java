@@ -255,14 +255,14 @@ public class LoadBalancer extends com.pulumi.resources.CustomResource {
         return this.resourceGroupId;
     }
     /**
-     * Load Balancing Modify the Protection Status.
+     * Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
      * 
      */
     @Export(name="status", refs={String.class}, tree="[0]")
     private Output<String> status;
 
     /**
-     * @return Load Balancing Modify the Protection Status.
+     * @return Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
      * 
      */
     public Output<String> status() {

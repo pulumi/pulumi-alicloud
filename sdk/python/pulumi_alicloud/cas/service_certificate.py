@@ -235,7 +235,6 @@ class ServiceCertificate(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -298,7 +297,6 @@ class ServiceCertificate(pulumi.CustomResource):
         -----END PRIVATE KEY-----
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -337,7 +335,6 @@ class ServiceCertificate(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -400,7 +397,6 @@ class ServiceCertificate(pulumi.CustomResource):
         -----END PRIVATE KEY-----
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

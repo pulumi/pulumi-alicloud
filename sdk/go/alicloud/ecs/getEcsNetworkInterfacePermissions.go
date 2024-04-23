@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetEcsNetworkInterfacePermissions(ctx *pulumi.Context, args *GetEcsNetworkInterfacePermissionsArgs, opts ...pulumi.InvokeOption) (*GetEcsNetworkInterfacePermissionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsNetworkInterfacePermissionsResult

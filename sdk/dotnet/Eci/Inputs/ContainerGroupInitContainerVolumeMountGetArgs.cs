@@ -12,21 +12,12 @@ namespace Pulumi.AliCloud.Eci.Inputs
 
     public sealed class ContainerGroupInitContainerVolumeMountGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
-        /// </summary>
         [Input("mountPath")]
         public Input<string>? MountPath { get; set; }
 
-        /// <summary>
-        /// The name of the mounted volume.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// Specifies whether the volume is read-only. Default value: `false`.
-        /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 

@@ -13,17 +13,8 @@ namespace Pulumi.AliCloud.Sae.Outputs
     [OutputType]
     public sealed class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricResult
     {
-        /// <summary>
-        /// The current value.
-        /// </summary>
         public readonly int CurrentValue;
-        /// <summary>
-        /// The name of the trigger condition.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// The metric type. Associated with monitoring indicators.
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

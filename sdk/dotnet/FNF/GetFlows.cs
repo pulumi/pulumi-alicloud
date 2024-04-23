@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.FNF
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Pulumi.AliCloud.FNF
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetFlowsResult> InvokeAsync(GetFlowsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetFlowsResult>("alicloud:fnf/getFlows:getFlows", args ?? new GetFlowsArgs(), options.WithDefaults());
@@ -58,7 +56,6 @@ namespace Pulumi.AliCloud.FNF
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -82,7 +79,6 @@ namespace Pulumi.AliCloud.FNF
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetFlowsResult> Invoke(GetFlowsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFlowsResult>("alicloud:fnf/getFlows:getFlows", args ?? new GetFlowsInvokeArgs(), options.WithDefaults());

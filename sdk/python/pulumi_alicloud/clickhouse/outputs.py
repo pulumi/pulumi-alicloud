@@ -669,11 +669,6 @@ class GetDbClustersClusterDbClusterAccessWhiteListResult(dict):
                  db_cluster_ip_array_attribute: str,
                  db_cluster_ip_array_name: str,
                  security_ip_list: str):
-        """
-        :param str db_cluster_ip_array_attribute: Field `db_cluster_ip_array_attribute` has been removed from provider.
-        :param str db_cluster_ip_array_name: Whitelist group name.
-        :param str security_ip_list: The IP address list under the whitelist group.
-        """
         pulumi.set(__self__, "db_cluster_ip_array_attribute", db_cluster_ip_array_attribute)
         pulumi.set(__self__, "db_cluster_ip_array_name", db_cluster_ip_array_name)
         pulumi.set(__self__, "security_ip_list", security_ip_list)
@@ -681,25 +676,16 @@ class GetDbClustersClusterDbClusterAccessWhiteListResult(dict):
     @property
     @pulumi.getter(name="dbClusterIpArrayAttribute")
     def db_cluster_ip_array_attribute(self) -> str:
-        """
-        Field `db_cluster_ip_array_attribute` has been removed from provider.
-        """
         return pulumi.get(self, "db_cluster_ip_array_attribute")
 
     @property
     @pulumi.getter(name="dbClusterIpArrayName")
     def db_cluster_ip_array_name(self) -> str:
-        """
-        Whitelist group name.
-        """
         return pulumi.get(self, "db_cluster_ip_array_name")
 
     @property
     @pulumi.getter(name="securityIpList")
     def security_ip_list(self) -> str:
-        """
-        The IP address list under the whitelist group.
-        """
         return pulumi.get(self, "security_ip_list")
 
 
@@ -708,27 +694,17 @@ class GetDbClustersClusterScaleOutStatusResult(dict):
     def __init__(__self__, *,
                  progress: str,
                  ratio: str):
-        """
-        :param str progress: Process.
-        :param str ratio: Efficiency.
-        """
         pulumi.set(__self__, "progress", progress)
         pulumi.set(__self__, "ratio", ratio)
 
     @property
     @pulumi.getter
     def progress(self) -> str:
-        """
-        Process.
-        """
         return pulumi.get(self, "progress")
 
     @property
     @pulumi.getter
     def ratio(self) -> str:
-        """
-        Efficiency.
-        """
         return pulumi.get(self, "ratio")
 
 
@@ -766,27 +742,17 @@ class GetRegionsRegionZoneIdResult(dict):
     def __init__(__self__, *,
                  vpc_enabled: bool,
                  zone_id: str):
-        """
-        :param bool vpc_enabled: Whether to support vpc network.
-        :param str zone_id: The zone ID.
-        """
         pulumi.set(__self__, "vpc_enabled", vpc_enabled)
         pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="vpcEnabled")
     def vpc_enabled(self) -> bool:
-        """
-        Whether to support vpc network.
-        """
         return pulumi.get(self, "vpc_enabled")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
-        """
-        The zone ID.
-        """
         return pulumi.get(self, "zone_id")
 
 

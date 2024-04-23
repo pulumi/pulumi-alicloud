@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class TemplateScratchPreferenceParameter {
-    /**
-     * @return Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
-     * 
-     */
     private String parameterKey;
-    /**
-     * @return Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
-     * 
-     */
     private String parameterValue;
 
     private TemplateScratchPreferenceParameter() {}
-    /**
-     * @return Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
-     * 
-     */
     public String parameterKey() {
         return this.parameterKey;
     }
-    /**
-     * @return Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
-     * 
-     */
     public String parameterValue() {
         return this.parameterValue;
     }

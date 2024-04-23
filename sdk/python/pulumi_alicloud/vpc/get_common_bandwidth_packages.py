@@ -169,7 +169,6 @@ def get_common_bandwidth_packages(bandwidth_package_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -181,7 +180,6 @@ def get_common_bandwidth_packages(bandwidth_package_name: Optional[str] = None,
     foo = alicloud.vpc.get_common_bandwidth_packages_output(name_regex="^tf-testAcc.*",
         ids=[foo_common_bandwith_package.id])
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Public ip addresses Block
 
@@ -244,7 +242,6 @@ def get_common_bandwidth_packages_output(bandwidth_package_name: Optional[pulumi
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -256,7 +253,6 @@ def get_common_bandwidth_packages_output(bandwidth_package_name: Optional[pulumi
     foo = alicloud.vpc.get_common_bandwidth_packages_output(name_regex="^tf-testAcc.*",
         ids=[foo_common_bandwith_package.id])
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Public ip addresses Block
 

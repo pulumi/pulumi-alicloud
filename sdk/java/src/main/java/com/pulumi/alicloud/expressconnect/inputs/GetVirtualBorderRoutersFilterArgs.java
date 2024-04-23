@@ -16,34 +16,16 @@ public final class GetVirtualBorderRoutersFilterArgs extends com.pulumi.resource
 
     public static final GetVirtualBorderRoutersFilterArgs Empty = new GetVirtualBorderRoutersFilterArgs();
 
-    /**
-     * The key of the field to filter by, as defined by
-     * [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
-     * 
-     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
-    /**
-     * @return The key of the field to filter by, as defined by
-     * [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
-     * 
-     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
 
-    /**
-     * Set of values that are accepted for the given field.
-     * 
-     */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
-    /**
-     * @return Set of values that are accepted for the given field.
-     * 
-     */
     public Optional<Output<List<String>>> values() {
         return Optional.ofNullable(this.values);
     }
@@ -73,56 +55,24 @@ public final class GetVirtualBorderRoutersFilterArgs extends com.pulumi.resource
             $ = new GetVirtualBorderRoutersFilterArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param key The key of the field to filter by, as defined by
-         * [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
-        /**
-         * @param key The key of the field to filter by, as defined by
-         * [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
-        /**
-         * @param values Set of values that are accepted for the given field.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(@Nullable Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
-        /**
-         * @param values Set of values that are accepted for the given field.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(List<String> values) {
             return values(Output.of(values));
         }
 
-        /**
-         * @param values Set of values that are accepted for the given field.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(String... values) {
             return values(List.of(values));
         }

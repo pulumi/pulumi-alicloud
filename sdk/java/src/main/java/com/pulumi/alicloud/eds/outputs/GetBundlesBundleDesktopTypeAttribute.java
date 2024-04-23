@@ -11,53 +11,21 @@ import java.util.Objects;
 
 @CustomType
 public final class GetBundlesBundleDesktopTypeAttribute {
-    /**
-     * @return The cpu count attribute of the bundle.
-     * 
-     */
     private Integer cpuCount;
-    /**
-     * @return The gpu count attribute of the bundle.
-     * 
-     */
     private String gpuCount;
-    /**
-     * @return The gpu spec attribute of the bundle.
-     * 
-     */
     private String gpuSpec;
-    /**
-     * @return The memory size attribute of the bundle.
-     * 
-     */
     private String memorySize;
 
     private GetBundlesBundleDesktopTypeAttribute() {}
-    /**
-     * @return The cpu count attribute of the bundle.
-     * 
-     */
     public Integer cpuCount() {
         return this.cpuCount;
     }
-    /**
-     * @return The gpu count attribute of the bundle.
-     * 
-     */
     public String gpuCount() {
         return this.gpuCount;
     }
-    /**
-     * @return The gpu spec attribute of the bundle.
-     * 
-     */
     public String gpuSpec() {
         return this.gpuSpec;
     }
-    /**
-     * @return The memory size attribute of the bundle.
-     * 
-     */
     public String memorySize() {
         return this.memorySize;
     }

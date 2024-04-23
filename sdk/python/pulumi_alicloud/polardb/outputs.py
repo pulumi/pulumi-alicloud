@@ -231,27 +231,17 @@ class ParameterGroupParameter(dict):
     def __init__(__self__, *,
                  param_name: str,
                  param_value: str):
-        """
-        :param str param_name: The name of a parameter in the parameter template.
-        :param str param_value: The value of a parameter in the parameter template.
-        """
         pulumi.set(__self__, "param_name", param_name)
         pulumi.set(__self__, "param_value", param_value)
 
     @property
     @pulumi.getter(name="paramName")
     def param_name(self) -> str:
-        """
-        The name of a parameter in the parameter template.
-        """
         return pulumi.get(self, "param_name")
 
     @property
     @pulumi.getter(name="paramValue")
     def param_value(self) -> str:
-        """
-        The value of a parameter in the parameter template.
-        """
         return pulumi.get(self, "param_value")
 
 

@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEcsNetworkInterfacesInterfaceAssociatedPublicIp {
-    /**
-     * @return The EIP of the ENI.
-     * 
-     */
     private String publicIpAddress;
 
     private GetEcsNetworkInterfacesInterfaceAssociatedPublicIp() {}
-    /**
-     * @return The EIP of the ENI.
-     * 
-     */
     public String publicIpAddress() {
         return this.publicIpAddress;
     }

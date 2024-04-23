@@ -139,7 +139,6 @@ def get_basic_accelerate_ips(accelerate_ip_address: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -148,7 +147,6 @@ def get_basic_accelerate_ips(accelerate_ip_address: Optional[str] = None,
         ip_set_id="example_ip_set_id")
     pulumi.export("gaBasicAccelerateIpId1", ids.ips[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str accelerate_ip_address: The address of the Basic Accelerate IP.
@@ -196,7 +194,6 @@ def get_basic_accelerate_ips_output(accelerate_ip_address: Optional[pulumi.Input
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -205,7 +202,6 @@ def get_basic_accelerate_ips_output(accelerate_ip_address: Optional[pulumi.Input
         ip_set_id="example_ip_set_id")
     pulumi.export("gaBasicAccelerateIpId1", ids.ips[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str accelerate_ip_address: The address of the Basic Accelerate IP.

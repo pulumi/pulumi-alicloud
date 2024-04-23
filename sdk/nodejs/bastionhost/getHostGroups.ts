@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -34,7 +33,6 @@ import * as utilities from "../utilities";
  * });
  * export const bastionhostHostGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHostGroups(args: GetHostGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetHostGroupsResult> {
 
@@ -99,7 +97,6 @@ export interface GetHostGroupsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -118,7 +115,6 @@ export interface GetHostGroupsResult {
  * });
  * export const bastionhostHostGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHostGroupsOutput(args: GetHostGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostGroupsResult> {
     return pulumi.output(args).apply((a: any) => getHostGroups(a, opts))

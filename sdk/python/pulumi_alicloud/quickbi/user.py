@@ -237,7 +237,6 @@ class User(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -249,7 +248,6 @@ class User(pulumi.CustomResource):
             nick_name="example_value",
             user_type="Analyst")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -285,7 +283,6 @@ class User(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -297,7 +294,6 @@ class User(pulumi.CustomResource):
             nick_name="example_value",
             user_type="Analyst")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

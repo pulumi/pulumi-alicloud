@@ -62,14 +62,14 @@ public final class GetEcsBackupClientsArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `REGISTERED`, `STOPPED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `UNKNOWN`, `UPGRADE_FAILED`, `UPGRADING`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid values: `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `REGISTERED`, `STOPPED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `UNKNOWN`, `UPGRADE_FAILED`, `UPGRADING`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -187,7 +187,7 @@ public final class GetEcsBackupClientsArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `REGISTERED`, `STOPPED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `UNKNOWN`, `UPGRADE_FAILED`, `UPGRADING`.
          * 
          * @return builder
          * 
@@ -198,7 +198,7 @@ public final class GetEcsBackupClientsArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid values: `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `REGISTERED`, `STOPPED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `UNKNOWN`, `UPGRADE_FAILED`, `UPGRADING`.
          * 
          * @return builder
          * 

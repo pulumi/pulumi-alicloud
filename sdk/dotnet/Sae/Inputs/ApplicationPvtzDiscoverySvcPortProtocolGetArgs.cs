@@ -12,15 +12,9 @@ namespace Pulumi.AliCloud.Sae.Inputs
 
     public sealed class ApplicationPvtzDiscoverySvcPortProtocolGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The port.
-        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
-        /// <summary>
-        /// The protocol. Valid values: `TCP` and `UDP`.
-        /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 

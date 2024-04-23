@@ -137,7 +137,6 @@ class Topic(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -147,7 +146,6 @@ class Topic(pulumi.CustomResource):
             maximum_message_size=65536,
             logging_enabled=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -174,7 +172,6 @@ class Topic(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -184,7 +181,6 @@ class Topic(pulumi.CustomResource):
             maximum_message_size=65536,
             logging_enabled=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

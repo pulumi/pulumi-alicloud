@@ -128,7 +128,6 @@ def get_rules(frontend_port: Optional[int] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -169,7 +168,6 @@ def get_rules(frontend_port: Optional[int] = None,
         frontend_port=22))
     pulumi.export("firstSlbRuleId", sample_ds.slb_rules[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int frontend_port: SLB listener port.
@@ -210,7 +208,6 @@ def get_rules_output(frontend_port: Optional[pulumi.Input[int]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -251,7 +248,6 @@ def get_rules_output(frontend_port: Optional[pulumi.Input[int]] = None,
         frontend_port=22))
     pulumi.export("firstSlbRuleId", sample_ds.slb_rules[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param int frontend_port: SLB listener port.

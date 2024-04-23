@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  * });
  * export const simpleApplicationServerFirewallRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServerFirewallRules(args: GetServerFirewallRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetServerFirewallRulesResult> {
 
@@ -81,7 +79,6 @@ export interface GetServerFirewallRulesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -95,7 +92,6 @@ export interface GetServerFirewallRulesResult {
  * });
  * export const simpleApplicationServerFirewallRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServerFirewallRulesOutput(args: GetServerFirewallRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerFirewallRulesResult> {
     return pulumi.output(args).apply((a: any) => getServerFirewallRules(a, opts))

@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetApplicationsApplicationMountDesc {
-    /**
-     * @return The Container mount path.
-     * 
-     */
     private String mountPath;
-    /**
-     * @return NAS relative file directory.
-     * 
-     */
     private String nasPath;
 
     private GetApplicationsApplicationMountDesc() {}
-    /**
-     * @return The Container mount path.
-     * 
-     */
     public String mountPath() {
         return this.mountPath;
     }
-    /**
-     * @return NAS relative file directory.
-     * 
-     */
     public String nasPath() {
         return this.nasPath;
     }

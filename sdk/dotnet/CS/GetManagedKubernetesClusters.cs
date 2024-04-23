@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.AliCloud.CS
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetManagedKubernetesClustersResult> InvokeAsync(GetManagedKubernetesClustersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetManagedKubernetesClustersResult>("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", args ?? new GetManagedKubernetesClustersArgs(), options.WithDefaults());
@@ -57,7 +55,6 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Pulumi.AliCloud.CS
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetManagedKubernetesClustersResult> Invoke(GetManagedKubernetesClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetManagedKubernetesClustersResult>("alicloud:cs/getManagedKubernetesClusters:getManagedKubernetesClusters", args ?? new GetManagedKubernetesClustersInvokeArgs(), options.WithDefaults());

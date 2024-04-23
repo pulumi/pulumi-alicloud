@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
     [OutputType]
     public sealed class DbInstancePlanPlanConfigPause
     {
-        /// <summary>
-        /// The executed time of the Plan.
-        /// </summary>
         public readonly string? ExecuteTime;
-        /// <summary>
-        /// The Cron Time of the plan.
-        /// </summary>
         public readonly string? PlanCronTime;
 
         [OutputConstructor]

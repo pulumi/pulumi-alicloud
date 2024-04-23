@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.AliCloud.ActionTrail
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSaslUsersResult> InvokeAsync(GetSaslUsersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSaslUsersResult>("alicloud:actiontrail/getSaslUsers:getSaslUsers", args ?? new GetSaslUsersArgs(), options.WithDefaults());
@@ -52,7 +50,6 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.AliCloud.ActionTrail
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSaslUsersResult> Invoke(GetSaslUsersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSaslUsersResult>("alicloud:actiontrail/getSaslUsers:getSaslUsers", args ?? new GetSaslUsersInvokeArgs(), options.WithDefaults());

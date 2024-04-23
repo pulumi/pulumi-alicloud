@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -83,7 +82,6 @@ namespace Pulumi.AliCloud.Vpc
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNatIpCidrsResult> InvokeAsync(GetNatIpCidrsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNatIpCidrsResult>("alicloud:vpc/getNatIpCidrs:getNatIpCidrs", args ?? new GetNatIpCidrsArgs(), options.WithDefaults());
@@ -97,7 +95,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -160,7 +157,6 @@ namespace Pulumi.AliCloud.Vpc
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNatIpCidrsResult> Invoke(GetNatIpCidrsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNatIpCidrsResult>("alicloud:vpc/getNatIpCidrs:getNatIpCidrs", args ?? new GetNatIpCidrsInvokeArgs(), options.WithDefaults());

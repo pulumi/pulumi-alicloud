@@ -258,7 +258,6 @@ class LakeAccount(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -322,7 +321,6 @@ class LakeAccount(pulumi.CustomResource):
             ],
             account_description=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -359,7 +357,6 @@ class LakeAccount(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -423,7 +420,6 @@ class LakeAccount(pulumi.CustomResource):
             ],
             account_description=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -14,15 +14,14 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     public sealed class GetVersionsVersionResult
     {
         /// <summary>
-        /// The edition of the ASM instance.
+        /// The edition of the ASM instance. Valid values:
+        /// - Default: Standard Edition
+        /// - Pro: Professional Edition
         /// </summary>
         public readonly string Edition;
-        /// <summary>
-        /// The ASM version id. It formats as `&lt;edition&gt;:&lt;version&gt;`.
-        /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The AMS version.
+        /// A list of Service Mesh Service Meshes. Each element contains the following attributes:
         /// </summary>
         public readonly string Version;
 

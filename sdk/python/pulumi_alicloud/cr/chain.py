@@ -258,7 +258,6 @@ class Chain(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -401,7 +400,6 @@ class Chain(pulumi.CustomResource):
             repo_name=default_registry_enterprise_repo.name,
             repo_namespace_name=default_registry_enterprise_namespace.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -437,7 +435,6 @@ class Chain(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -580,7 +577,6 @@ class Chain(pulumi.CustomResource):
             repo_name=default_registry_enterprise_repo.name,
             repo_namespace_name=default_registry_enterprise_namespace.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

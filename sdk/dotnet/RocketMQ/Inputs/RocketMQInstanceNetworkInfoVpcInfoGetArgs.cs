@@ -12,15 +12,9 @@ namespace Pulumi.AliCloud.RocketMQ.Inputs
 
     public sealed class RocketMQInstanceNetworkInfoVpcInfoGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Proprietary Network.
-        /// </summary>
         [Input("vpcId", required: true)]
         public Input<string> VpcId { get; set; } = null!;
 
-        /// <summary>
-        /// VPC network switch.
-        /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
 

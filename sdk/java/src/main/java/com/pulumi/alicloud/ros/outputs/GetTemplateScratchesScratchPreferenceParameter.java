@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetTemplateScratchesScratchPreferenceParameter {
-    /**
-     * @return Priority parameter key.
-     * 
-     */
     private String parameterKey;
-    /**
-     * @return Priority parameter value.
-     * 
-     */
     private String parameterValue;
 
     private GetTemplateScratchesScratchPreferenceParameter() {}
-    /**
-     * @return Priority parameter key.
-     * 
-     */
     public String parameterKey() {
         return this.parameterKey;
     }
-    /**
-     * @return Priority parameter value.
-     * 
-     */
     public String parameterValue() {
         return this.parameterValue;
     }

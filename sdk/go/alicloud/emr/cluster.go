@@ -22,7 +22,6 @@ import (
 //
 // ### 1. Create A Cluster
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -290,7 +289,6 @@ import (
 // })
 // }
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### 2. Scale Up
 // The hosts of EMR Cluster are orginized as host group. Scaling up/down is operating host group.
@@ -302,7 +300,6 @@ import (
 //
 // As the following case, we scale up the TASK group 2 nodes by increasing host_group.node_count by 2.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -570,7 +567,6 @@ import (
 // })
 // }
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### 3. Scale Down
 //
@@ -580,7 +576,6 @@ import (
 //
 // The following is an example. We scale down the cluster by decreasing the node count by 2, and specifying the scale-down instance list.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -848,11 +843,9 @@ import (
 // })
 // }
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ### 4. Create a emr gateway cluster
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -1073,7 +1066,6 @@ import (
 // })
 // }
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

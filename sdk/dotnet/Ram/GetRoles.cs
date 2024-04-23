@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,7 +40,6 @@ namespace Pulumi.AliCloud.Ram
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRolesResult> InvokeAsync(GetRolesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRolesResult>("alicloud:ram/getRoles:getRoles", args ?? new GetRolesArgs(), options.WithDefaults());
@@ -53,7 +51,6 @@ namespace Pulumi.AliCloud.Ram
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,7 +73,6 @@ namespace Pulumi.AliCloud.Ram
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRolesResult> Invoke(GetRolesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRolesResult>("alicloud:ram/getRoles:getRoles", args ?? new GetRolesInvokeArgs(), options.WithDefaults());

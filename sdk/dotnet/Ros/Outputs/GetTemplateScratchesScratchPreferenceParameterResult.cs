@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Ros.Outputs
     [OutputType]
     public sealed class GetTemplateScratchesScratchPreferenceParameterResult
     {
-        /// <summary>
-        /// Priority parameter key.
-        /// </summary>
         public readonly string ParameterKey;
-        /// <summary>
-        /// Priority parameter value.
-        /// </summary>
         public readonly string ParameterValue;
 
         [OutputConstructor]

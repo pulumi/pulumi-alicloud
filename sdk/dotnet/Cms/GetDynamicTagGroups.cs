@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Cms
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -69,7 +68,6 @@ namespace Pulumi.AliCloud.Cms
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDynamicTagGroupsResult> InvokeAsync(GetDynamicTagGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDynamicTagGroupsResult>("alicloud:cms/getDynamicTagGroups:getDynamicTagGroups", args ?? new GetDynamicTagGroupsArgs(), options.WithDefaults());
@@ -83,7 +81,6 @@ namespace Pulumi.AliCloud.Cms
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -132,7 +129,6 @@ namespace Pulumi.AliCloud.Cms
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDynamicTagGroupsResult> Invoke(GetDynamicTagGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDynamicTagGroupsResult>("alicloud:cms/getDynamicTagGroups:getDynamicTagGroups", args ?? new GetDynamicTagGroupsInvokeArgs(), options.WithDefaults());

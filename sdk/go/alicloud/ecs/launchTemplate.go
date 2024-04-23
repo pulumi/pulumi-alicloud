@@ -19,7 +19,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -100,7 +99,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -117,7 +115,7 @@ type LaunchTemplate struct {
 	// The list of data disks created with instance.
 	DataDisks       LaunchTemplateDataDiskArrayOutput `pulumi:"dataDisks"`
 	DeploymentSetId pulumi.StringPtrOutput            `pulumi:"deploymentSetId"`
-	// The description of the data disk.
+	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description      pulumi.StringPtrOutput `pulumi:"description"`
 	EnableVmOsConfig pulumi.BoolPtrOutput   `pulumi:"enableVmOsConfig"`
 	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
@@ -150,7 +148,7 @@ type LaunchTemplate struct {
 	// - The password logon method for Linux instances is set to forbidden upon initialization.
 	KeyPairName        pulumi.StringPtrOutput `pulumi:"keyPairName"`
 	LaunchTemplateName pulumi.StringOutput    `pulumi:"launchTemplateName"`
-	// The name of the data disk.
+	// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -166,7 +164,7 @@ type LaunchTemplate struct {
 	ResourceGroupId pulumi.StringPtrOutput `pulumi:"resourceGroupId"`
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy pulumi.StringPtrOutput `pulumi:"securityEnhancementStrategy"`
-	// The security group ID must be one in the same VPC.
+	// The security group ID.
 	SecurityGroupId  pulumi.StringPtrOutput   `pulumi:"securityGroupId"`
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
 	SpotDuration     pulumi.StringPtrOutput   `pulumi:"spotDuration"`
@@ -212,7 +210,7 @@ type LaunchTemplate struct {
 	Userdata           pulumi.StringOutput    `pulumi:"userdata"`
 	VersionDescription pulumi.StringPtrOutput `pulumi:"versionDescription"`
 	VpcId              pulumi.StringOutput    `pulumi:"vpcId"`
-	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+	// When creating a VPC-Connected instance, you must specify its VSwitch ID.
 	VswitchId pulumi.StringPtrOutput `pulumi:"vswitchId"`
 	// The zone ID of the instance.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
@@ -253,7 +251,7 @@ type launchTemplateState struct {
 	// The list of data disks created with instance.
 	DataDisks       []LaunchTemplateDataDisk `pulumi:"dataDisks"`
 	DeploymentSetId *string                  `pulumi:"deploymentSetId"`
-	// The description of the data disk.
+	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description      *string `pulumi:"description"`
 	EnableVmOsConfig *bool   `pulumi:"enableVmOsConfig"`
 	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
@@ -286,7 +284,7 @@ type launchTemplateState struct {
 	// - The password logon method for Linux instances is set to forbidden upon initialization.
 	KeyPairName        *string `pulumi:"keyPairName"`
 	LaunchTemplateName *string `pulumi:"launchTemplateName"`
-	// The name of the data disk.
+	// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name *string `pulumi:"name"`
@@ -302,7 +300,7 @@ type launchTemplateState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
-	// The security group ID must be one in the same VPC.
+	// The security group ID.
 	SecurityGroupId  *string  `pulumi:"securityGroupId"`
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	SpotDuration     *string  `pulumi:"spotDuration"`
@@ -348,7 +346,7 @@ type launchTemplateState struct {
 	Userdata           *string `pulumi:"userdata"`
 	VersionDescription *string `pulumi:"versionDescription"`
 	VpcId              *string `pulumi:"vpcId"`
-	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+	// When creating a VPC-Connected instance, you must specify its VSwitch ID.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The zone ID of the instance.
 	ZoneId *string `pulumi:"zoneId"`
@@ -360,7 +358,7 @@ type LaunchTemplateState struct {
 	// The list of data disks created with instance.
 	DataDisks       LaunchTemplateDataDiskArrayInput
 	DeploymentSetId pulumi.StringPtrInput
-	// The description of the data disk.
+	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description      pulumi.StringPtrInput
 	EnableVmOsConfig pulumi.BoolPtrInput
 	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
@@ -393,7 +391,7 @@ type LaunchTemplateState struct {
 	// - The password logon method for Linux instances is set to forbidden upon initialization.
 	KeyPairName        pulumi.StringPtrInput
 	LaunchTemplateName pulumi.StringPtrInput
-	// The name of the data disk.
+	// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name pulumi.StringPtrInput
@@ -409,7 +407,7 @@ type LaunchTemplateState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
-	// The security group ID must be one in the same VPC.
+	// The security group ID.
 	SecurityGroupId  pulumi.StringPtrInput
 	SecurityGroupIds pulumi.StringArrayInput
 	SpotDuration     pulumi.StringPtrInput
@@ -455,7 +453,7 @@ type LaunchTemplateState struct {
 	Userdata           pulumi.StringPtrInput
 	VersionDescription pulumi.StringPtrInput
 	VpcId              pulumi.StringPtrInput
-	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+	// When creating a VPC-Connected instance, you must specify its VSwitch ID.
 	VswitchId pulumi.StringPtrInput
 	// The zone ID of the instance.
 	ZoneId pulumi.StringPtrInput
@@ -471,7 +469,7 @@ type launchTemplateArgs struct {
 	// The list of data disks created with instance.
 	DataDisks       []LaunchTemplateDataDisk `pulumi:"dataDisks"`
 	DeploymentSetId *string                  `pulumi:"deploymentSetId"`
-	// The description of the data disk.
+	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description      *string `pulumi:"description"`
 	EnableVmOsConfig *bool   `pulumi:"enableVmOsConfig"`
 	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
@@ -504,7 +502,7 @@ type launchTemplateArgs struct {
 	// - The password logon method for Linux instances is set to forbidden upon initialization.
 	KeyPairName        *string `pulumi:"keyPairName"`
 	LaunchTemplateName *string `pulumi:"launchTemplateName"`
-	// The name of the data disk.
+	// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name *string `pulumi:"name"`
@@ -520,7 +518,7 @@ type launchTemplateArgs struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy *string `pulumi:"securityEnhancementStrategy"`
-	// The security group ID must be one in the same VPC.
+	// The security group ID.
 	SecurityGroupId  *string  `pulumi:"securityGroupId"`
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
 	SpotDuration     *string  `pulumi:"spotDuration"`
@@ -566,7 +564,7 @@ type launchTemplateArgs struct {
 	Userdata           *string `pulumi:"userdata"`
 	VersionDescription *string `pulumi:"versionDescription"`
 	VpcId              *string `pulumi:"vpcId"`
-	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+	// When creating a VPC-Connected instance, you must specify its VSwitch ID.
 	VswitchId *string `pulumi:"vswitchId"`
 	// The zone ID of the instance.
 	ZoneId *string `pulumi:"zoneId"`
@@ -579,7 +577,7 @@ type LaunchTemplateArgs struct {
 	// The list of data disks created with instance.
 	DataDisks       LaunchTemplateDataDiskArrayInput
 	DeploymentSetId pulumi.StringPtrInput
-	// The description of the data disk.
+	// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 	Description      pulumi.StringPtrInput
 	EnableVmOsConfig pulumi.BoolPtrInput
 	// Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
@@ -612,7 +610,7 @@ type LaunchTemplateArgs struct {
 	// - The password logon method for Linux instances is set to forbidden upon initialization.
 	KeyPairName        pulumi.StringPtrInput
 	LaunchTemplateName pulumi.StringPtrInput
-	// The name of the data disk.
+	// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 	Name pulumi.StringPtrInput
@@ -628,7 +626,7 @@ type LaunchTemplateArgs struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
 	SecurityEnhancementStrategy pulumi.StringPtrInput
-	// The security group ID must be one in the same VPC.
+	// The security group ID.
 	SecurityGroupId  pulumi.StringPtrInput
 	SecurityGroupIds pulumi.StringArrayInput
 	SpotDuration     pulumi.StringPtrInput
@@ -674,7 +672,7 @@ type LaunchTemplateArgs struct {
 	Userdata           pulumi.StringPtrInput
 	VersionDescription pulumi.StringPtrInput
 	VpcId              pulumi.StringPtrInput
-	// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+	// When creating a VPC-Connected instance, you must specify its VSwitch ID.
 	VswitchId pulumi.StringPtrInput
 	// The zone ID of the instance.
 	ZoneId pulumi.StringPtrInput
@@ -781,7 +779,7 @@ func (o LaunchTemplateOutput) DeploymentSetId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.DeploymentSetId }).(pulumi.StringPtrOutput)
 }
 
-// The description of the data disk.
+// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
 func (o LaunchTemplateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -856,7 +854,7 @@ func (o LaunchTemplateOutput) LaunchTemplateName() pulumi.StringOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.LaunchTemplateName }).(pulumi.StringOutput)
 }
 
-// The name of the data disk.
+// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
 //
 // Deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
 func (o LaunchTemplateOutput) Name() pulumi.StringOutput {
@@ -899,7 +897,7 @@ func (o LaunchTemplateOutput) SecurityEnhancementStrategy() pulumi.StringPtrOutp
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.SecurityEnhancementStrategy }).(pulumi.StringPtrOutput)
 }
 
-// The security group ID must be one in the same VPC.
+// The security group ID.
 func (o LaunchTemplateOutput) SecurityGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.SecurityGroupId }).(pulumi.StringPtrOutput)
 }
@@ -996,7 +994,7 @@ func (o LaunchTemplateOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringOutput { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+// When creating a VPC-Connected instance, you must specify its VSwitch ID.
 func (o LaunchTemplateOutput) VswitchId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LaunchTemplate) pulumi.StringPtrOutput { return v.VswitchId }).(pulumi.StringPtrOutput)
 }

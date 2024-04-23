@@ -53,14 +53,14 @@ public final class GetOtsSnapshotsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+     * The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
      * 
      */
     @Import(name="startTime")
     private @Nullable String startTime;
 
     /**
-     * @return The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+     * @return The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
      * 
      */
     public Optional<String> startTime() {
@@ -126,7 +126,7 @@ public final class GetOtsSnapshotsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param startTime The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+         * @param startTime The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
          * 
          * @return builder
          * 

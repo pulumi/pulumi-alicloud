@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Brain
     /// 
     /// Basic Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -35,7 +34,6 @@ namespace Pulumi.AliCloud.Brain
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -49,7 +48,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:databasefilesystem/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
@@ -63,7 +61,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -92,7 +89,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:databasefilesystem/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
@@ -126,7 +122,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the Database file system.
+        /// Database file system state. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -164,7 +160,7 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the Database file system.
+        /// Database file system state. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

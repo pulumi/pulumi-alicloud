@@ -276,7 +276,6 @@ class EipAssociation(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -318,7 +317,6 @@ class EipAssociation(pulumi.CustomResource):
             allocation_id=example_eip_address.id,
             instance_id=example_instance.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 
@@ -363,7 +361,6 @@ class EipAssociation(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -405,7 +402,6 @@ class EipAssociation(pulumi.CustomResource):
             allocation_id=example_eip_address.id,
             instance_id=example_instance.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 

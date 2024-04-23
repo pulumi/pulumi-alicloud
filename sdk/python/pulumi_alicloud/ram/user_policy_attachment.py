@@ -136,7 +136,6 @@ class UserPolicyAttachment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -173,7 +172,6 @@ class UserPolicyAttachment(pulumi.CustomResource):
             policy_type=policy.type,
             user_name=user.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -202,7 +200,6 @@ class UserPolicyAttachment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -239,7 +236,6 @@ class UserPolicyAttachment(pulumi.CustomResource):
             policy_type=policy.type,
             user_name=user.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetEcsLaunchTemplatesResult> InvokeAsync(GetEcsLaunchTemplatesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsLaunchTemplatesResult>("alicloud:ecs/getEcsLaunchTemplates:getEcsLaunchTemplates", args ?? new GetEcsLaunchTemplatesArgs(), options.WithDefaults());
@@ -58,7 +56,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -82,7 +79,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetEcsLaunchTemplatesResult> Invoke(GetEcsLaunchTemplatesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEcsLaunchTemplatesResult>("alicloud:ecs/getEcsLaunchTemplates:getEcsLaunchTemplates", args ?? new GetEcsLaunchTemplatesInvokeArgs(), options.WithDefaults());

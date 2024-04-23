@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Imp
     /// 
     /// Basic Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.AliCloud.Imp
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

@@ -15,17 +15,9 @@ public final class ForwardingRuleRuleActionForwardGroupConfigArgs extends com.pu
 
     public static final ForwardingRuleRuleActionForwardGroupConfigArgs Empty = new ForwardingRuleRuleActionForwardGroupConfigArgs();
 
-    /**
-     * The information about the endpoint group. See `server_group_tuples` below.
-     * 
-     */
     @Import(name="serverGroupTuples", required=true)
     private Output<List<ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs>> serverGroupTuples;
 
-    /**
-     * @return The information about the endpoint group. See `server_group_tuples` below.
-     * 
-     */
     public Output<List<ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs>> serverGroupTuples() {
         return this.serverGroupTuples;
     }
@@ -54,33 +46,15 @@ public final class ForwardingRuleRuleActionForwardGroupConfigArgs extends com.pu
             $ = new ForwardingRuleRuleActionForwardGroupConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param serverGroupTuples The information about the endpoint group. See `server_group_tuples` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serverGroupTuples(Output<List<ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs>> serverGroupTuples) {
             $.serverGroupTuples = serverGroupTuples;
             return this;
         }
 
-        /**
-         * @param serverGroupTuples The information about the endpoint group. See `server_group_tuples` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serverGroupTuples(List<ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs> serverGroupTuples) {
             return serverGroupTuples(Output.of(serverGroupTuples));
         }
 
-        /**
-         * @param serverGroupTuples The information about the endpoint group. See `server_group_tuples` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serverGroupTuples(ForwardingRuleRuleActionForwardGroupConfigServerGroupTupleArgs... serverGroupTuples) {
             return serverGroupTuples(List.of(serverGroupTuples));
         }

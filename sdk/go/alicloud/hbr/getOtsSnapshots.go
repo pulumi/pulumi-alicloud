@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetOtsSnapshots(ctx *pulumi.Context, args *GetOtsSnapshotsArgs, opts ...pulumi.InvokeOption) (*GetOtsSnapshotsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOtsSnapshotsResult
@@ -59,7 +57,7 @@ type GetOtsSnapshotsArgs struct {
 	Ids     []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+	// The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
 	StartTime *string `pulumi:"startTime"`
 }
 
@@ -94,7 +92,7 @@ type GetOtsSnapshotsOutputArgs struct {
 	Ids     pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+	// The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
 }
 

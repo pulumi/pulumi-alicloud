@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -39,7 +38,6 @@ import * as utilities from "../utilities";
  *     ids: [id],
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getQuotaApplications(args: GetQuotaApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetQuotaApplicationsResult> {
 
@@ -83,7 +81,7 @@ export interface GetQuotaApplicationsArgs {
      */
     productCode: string;
     /**
-     * The ID of quota action..
+     * The ID of quota action.
      */
     quotaActionCode?: string;
     /**
@@ -91,7 +89,7 @@ export interface GetQuotaApplicationsArgs {
      */
     quotaCategory?: string;
     /**
-     * The status of the quota application.
+     * The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
      */
     status?: string;
 }
@@ -124,7 +122,6 @@ export interface GetQuotaApplicationsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -148,7 +145,6 @@ export interface GetQuotaApplicationsResult {
  *     ids: [id],
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getQuotaApplicationsOutput(args: GetQuotaApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotaApplicationsResult> {
     return pulumi.output(args).apply((a: any) => getQuotaApplications(a, opts))
@@ -180,7 +176,7 @@ export interface GetQuotaApplicationsOutputArgs {
      */
     productCode: pulumi.Input<string>;
     /**
-     * The ID of quota action..
+     * The ID of quota action.
      */
     quotaActionCode?: pulumi.Input<string>;
     /**
@@ -188,7 +184,7 @@ export interface GetQuotaApplicationsOutputArgs {
      */
     quotaCategory?: pulumi.Input<string>;
     /**
-     * The status of the quota application.
+     * The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
      */
     status?: pulumi.Input<string>;
 }

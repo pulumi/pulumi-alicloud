@@ -13,9 +13,6 @@ namespace Pulumi.AliCloud.Ga.Outputs
     [OutputType]
     public sealed class ForwardingRuleRuleConditionPathConfig
     {
-        /// <summary>
-        /// The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
-        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

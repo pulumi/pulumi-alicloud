@@ -14,12 +14,9 @@ namespace Pulumi.AliCloud.Compute.Outputs
     public sealed class GetNestServiceInstancesFilterResult
     {
         /// <summary>
-        /// The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+        /// The name of the service.
         /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// Set of values that are accepted for the given field.
-        /// </summary>
         public readonly ImmutableArray<string> Values;
 
         [OutputConstructor]

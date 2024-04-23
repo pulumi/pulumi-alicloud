@@ -13,12 +13,9 @@ namespace Pulumi.AliCloud.Alb.Outputs
     [OutputType]
     public sealed class GetLoadBalancersBalancerModificationProtectionConfigResult
     {
-        /// <summary>
-        /// The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
-        /// </summary>
         public readonly string Reason;
         /// <summary>
-        /// The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+        /// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
         /// </summary>
         public readonly string Status;
 

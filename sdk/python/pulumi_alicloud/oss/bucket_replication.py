@@ -188,7 +188,7 @@ class _BucketReplicationState:
         :param pulumi.Input['BucketReplicationProgressArgs'] progress: Specifies the progress for querying the progress of a data replication task of a bucket.
         :param pulumi.Input[str] rule_id: The ID of the data replication rule.
         :param pulumi.Input['BucketReplicationSourceSelectionCriteriaArgs'] source_selection_criteria: Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
-        :param pulumi.Input[str] status: Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+        :param pulumi.Input[str] status: The status of the data replication task. Can be starting, doing and closing.
         :param pulumi.Input[str] sync_role: Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
         """
         if action is not None:
@@ -326,7 +326,7 @@ class _BucketReplicationState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+        The status of the data replication task. Can be starting, doing and closing.
         """
         return pulumi.get(self, "status")
 
@@ -373,7 +373,6 @@ class BucketReplication(pulumi.CustomResource):
 
         Set bucket replication configuration
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -386,39 +385,39 @@ class BucketReplication(pulumi.CustomResource):
         bucket_dest = alicloud.oss.Bucket("bucket_dest", bucket=f"example-dest-{default['result']}")
         role = alicloud.ram.Role("role",
             name=f"example-role-{default['result']}",
-            document=\"\"\"		{
-        		  "Statement": [
-        			{
-        			  "Action": "sts:AssumeRole",
-        			  "Effect": "Allow",
-        			  "Principal": {
-        				"Service": [
-        				  "oss.aliyuncs.com"
-        				]
-        			  }
-        			}
-        		  ],
-        		  "Version": "1"
-        		}
+            document=\"\"\"\\x09\\x09{
+        \\x09\\x09  "Statement": [
+        \\x09\\x09\\x09{
+        \\x09\\x09\\x09  "Action": "sts:AssumeRole",
+        \\x09\\x09\\x09  "Effect": "Allow",
+        \\x09\\x09\\x09  "Principal": {
+        \\x09\\x09\\x09\\x09"Service": [
+        \\x09\\x09\\x09\\x09  "oss.aliyuncs.com"
+        \\x09\\x09\\x09\\x09]
+        \\x09\\x09\\x09  }
+        \\x09\\x09\\x09}
+        \\x09\\x09  ],
+        \\x09\\x09  "Version": "1"
+        \\x09\\x09}
         \"\"\",
             description="this is a test",
             force=True)
         policy = alicloud.ram.Policy("policy",
             policy_name=f"example-policy-{default['result']}",
-            policy_document=\"\"\"		{
-        		  "Statement": [
-        			{
-        			  "Action": [
-        				"*"
-        			  ],
-        			  "Effect": "Allow",
-        			  "Resource": [
-        				"*"
-        			  ]
-        			}
-        		  ],
-        			"Version": "1"
-        		}
+            policy_document=\"\"\"\\x09\\x09{
+        \\x09\\x09  "Statement": [
+        \\x09\\x09\\x09{
+        \\x09\\x09\\x09  "Action": [
+        \\x09\\x09\\x09\\x09"*"
+        \\x09\\x09\\x09  ],
+        \\x09\\x09\\x09  "Effect": "Allow",
+        \\x09\\x09\\x09  "Resource": [
+        \\x09\\x09\\x09\\x09"*"
+        \\x09\\x09\\x09  ]
+        \\x09\\x09\\x09}
+        \\x09\\x09  ],
+        \\x09\\x09\\x09"Version": "1"
+        \\x09\\x09}
         \"\"\",
             description="this is a policy test",
             force=True)
@@ -454,7 +453,6 @@ class BucketReplication(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -493,7 +491,6 @@ class BucketReplication(pulumi.CustomResource):
 
         Set bucket replication configuration
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -506,39 +503,39 @@ class BucketReplication(pulumi.CustomResource):
         bucket_dest = alicloud.oss.Bucket("bucket_dest", bucket=f"example-dest-{default['result']}")
         role = alicloud.ram.Role("role",
             name=f"example-role-{default['result']}",
-            document=\"\"\"		{
-        		  "Statement": [
-        			{
-        			  "Action": "sts:AssumeRole",
-        			  "Effect": "Allow",
-        			  "Principal": {
-        				"Service": [
-        				  "oss.aliyuncs.com"
-        				]
-        			  }
-        			}
-        		  ],
-        		  "Version": "1"
-        		}
+            document=\"\"\"\\x09\\x09{
+        \\x09\\x09  "Statement": [
+        \\x09\\x09\\x09{
+        \\x09\\x09\\x09  "Action": "sts:AssumeRole",
+        \\x09\\x09\\x09  "Effect": "Allow",
+        \\x09\\x09\\x09  "Principal": {
+        \\x09\\x09\\x09\\x09"Service": [
+        \\x09\\x09\\x09\\x09  "oss.aliyuncs.com"
+        \\x09\\x09\\x09\\x09]
+        \\x09\\x09\\x09  }
+        \\x09\\x09\\x09}
+        \\x09\\x09  ],
+        \\x09\\x09  "Version": "1"
+        \\x09\\x09}
         \"\"\",
             description="this is a test",
             force=True)
         policy = alicloud.ram.Policy("policy",
             policy_name=f"example-policy-{default['result']}",
-            policy_document=\"\"\"		{
-        		  "Statement": [
-        			{
-        			  "Action": [
-        				"*"
-        			  ],
-        			  "Effect": "Allow",
-        			  "Resource": [
-        				"*"
-        			  ]
-        			}
-        		  ],
-        			"Version": "1"
-        		}
+            policy_document=\"\"\"\\x09\\x09{
+        \\x09\\x09  "Statement": [
+        \\x09\\x09\\x09{
+        \\x09\\x09\\x09  "Action": [
+        \\x09\\x09\\x09\\x09"*"
+        \\x09\\x09\\x09  ],
+        \\x09\\x09\\x09  "Effect": "Allow",
+        \\x09\\x09\\x09  "Resource": [
+        \\x09\\x09\\x09\\x09"*"
+        \\x09\\x09\\x09  ]
+        \\x09\\x09\\x09}
+        \\x09\\x09  ],
+        \\x09\\x09\\x09"Version": "1"
+        \\x09\\x09}
         \"\"\",
             description="this is a policy test",
             force=True)
@@ -574,7 +571,6 @@ class BucketReplication(pulumi.CustomResource):
                 ),
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -669,7 +665,7 @@ class BucketReplication(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['BucketReplicationProgressArgs']] progress: Specifies the progress for querying the progress of a data replication task of a bucket.
         :param pulumi.Input[str] rule_id: The ID of the data replication rule.
         :param pulumi.Input[pulumi.InputType['BucketReplicationSourceSelectionCriteriaArgs']] source_selection_criteria: Specifies other conditions used to filter the source objects to replicate. See `source_selection_criteria` below.
-        :param pulumi.Input[str] status: Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+        :param pulumi.Input[str] status: The status of the data replication task. Can be starting, doing and closing.
         :param pulumi.Input[str] sync_role: Specifies the role that you authorize OSS to use to replicate data. If SSE-KMS is specified to encrypt the objects replicated to the destination bucket, it must be specified.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -765,7 +761,7 @@ class BucketReplication(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+        The status of the data replication task. Can be starting, doing and closing.
         """
         return pulumi.get(self, "status")
 

@@ -17,84 +17,38 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
 
     public static final LaunchTemplateSystemDiskArgs Empty = new LaunchTemplateSystemDiskArgs();
 
-    /**
-     * The category of the disk:
-     * - cloud: Basic cloud disk.
-     * - cloud_efficiency: Ultra cloud disk.
-     * - cloud_ssd: SSD cloud Disks.
-     * - ephemeral_ssd: local SSD Disks
-     * - cloud_essd: ESSD cloud Disks.
-     * 
-     * Default to `cloud_efficiency`.
-     * 
-     */
     @Import(name="category")
     private @Nullable Output<String> category;
 
-    /**
-     * @return The category of the disk:
-     * - cloud: Basic cloud disk.
-     * - cloud_efficiency: Ultra cloud disk.
-     * - cloud_ssd: SSD cloud Disks.
-     * - ephemeral_ssd: local SSD Disks
-     * - cloud_essd: ESSD cloud Disks.
-     * 
-     * Default to `cloud_efficiency`.
-     * 
-     */
     public Optional<Output<String>> category() {
         return Optional.ofNullable(this.category);
     }
 
-    /**
-     * Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
-     * 
-     * Default to true
-     * 
-     */
     @Import(name="deleteWithInstance")
     private @Nullable Output<Boolean> deleteWithInstance;
 
-    /**
-     * @return Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
-     * 
-     * Default to true
-     * 
-     */
     public Optional<Output<Boolean>> deleteWithInstance() {
         return Optional.ofNullable(this.deleteWithInstance);
     }
 
     /**
-     * The description of the data disk.
+     * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the data disk.
+     * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
      * 
      */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
-    /**
-     * Encrypted the data in this disk.
-     * 
-     * Default to false
-     * 
-     */
     @Import(name="encrypted")
     private @Nullable Output<Boolean> encrypted;
 
-    /**
-     * @return Encrypted the data in this disk.
-     * 
-     * Default to false
-     * 
-     */
     public Optional<Output<Boolean>> encrypted() {
         return Optional.ofNullable(this.encrypted);
     }
@@ -107,14 +61,14 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * The name of the data disk.
+     * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the data disk.
+     * @return Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
      * 
      */
     public Optional<Output<String>> name() {
@@ -128,27 +82,9 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.performanceLevel);
     }
 
-    /**
-     * The size of the data disk.
-     * - cloud：[5, 2000]
-     * - cloud_efficiency：[20, 32768]
-     * - cloud_ssd：[20, 32768]
-     * - cloud_essd：[20, 32768]
-     * - ephemeral_ssd: [5, 800]
-     * 
-     */
     @Import(name="size")
     private @Nullable Output<Integer> size;
 
-    /**
-     * @return The size of the data disk.
-     * - cloud：[5, 2000]
-     * - cloud_efficiency：[20, 32768]
-     * - cloud_ssd：[20, 32768]
-     * - cloud_essd：[20, 32768]
-     * - ephemeral_ssd: [5, 800]
-     * 
-     */
     public Optional<Output<Integer>> size() {
         return Optional.ofNullable(this.size);
     }
@@ -184,68 +120,26 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
             $ = new LaunchTemplateSystemDiskArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param category The category of the disk:
-         * - cloud: Basic cloud disk.
-         * - cloud_efficiency: Ultra cloud disk.
-         * - cloud_ssd: SSD cloud Disks.
-         * - ephemeral_ssd: local SSD Disks
-         * - cloud_essd: ESSD cloud Disks.
-         * 
-         * Default to `cloud_efficiency`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder category(@Nullable Output<String> category) {
             $.category = category;
             return this;
         }
 
-        /**
-         * @param category The category of the disk:
-         * - cloud: Basic cloud disk.
-         * - cloud_efficiency: Ultra cloud disk.
-         * - cloud_ssd: SSD cloud Disks.
-         * - ephemeral_ssd: local SSD Disks
-         * - cloud_essd: ESSD cloud Disks.
-         * 
-         * Default to `cloud_efficiency`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder category(String category) {
             return category(Output.of(category));
         }
 
-        /**
-         * @param deleteWithInstance Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
-         * 
-         * Default to true
-         * 
-         * @return builder
-         * 
-         */
         public Builder deleteWithInstance(@Nullable Output<Boolean> deleteWithInstance) {
             $.deleteWithInstance = deleteWithInstance;
             return this;
         }
 
-        /**
-         * @param deleteWithInstance Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don&#39;t set this param.
-         * 
-         * Default to true
-         * 
-         * @return builder
-         * 
-         */
         public Builder deleteWithInstance(Boolean deleteWithInstance) {
             return deleteWithInstance(Output.of(deleteWithInstance));
         }
 
         /**
-         * @param description The description of the data disk.
+         * @param description Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
          * 
          * @return builder
          * 
@@ -256,7 +150,7 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param description The description of the data disk.
+         * @param description Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
          * 
          * @return builder
          * 
@@ -265,27 +159,11 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
             return description(Output.of(description));
         }
 
-        /**
-         * @param encrypted Encrypted the data in this disk.
-         * 
-         * Default to false
-         * 
-         * @return builder
-         * 
-         */
         public Builder encrypted(@Nullable Output<Boolean> encrypted) {
             $.encrypted = encrypted;
             return this;
         }
 
-        /**
-         * @param encrypted Encrypted the data in this disk.
-         * 
-         * Default to false
-         * 
-         * @return builder
-         * 
-         */
         public Builder encrypted(Boolean encrypted) {
             return encrypted(Output.of(encrypted));
         }
@@ -300,7 +178,7 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param name The name of the data disk.
+         * @param name Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
          * 
          * @return builder
          * 
@@ -311,7 +189,7 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param name The name of the data disk.
+         * @param name Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
          * 
          * @return builder
          * 
@@ -329,33 +207,11 @@ public final class LaunchTemplateSystemDiskArgs extends com.pulumi.resources.Res
             return performanceLevel(Output.of(performanceLevel));
         }
 
-        /**
-         * @param size The size of the data disk.
-         * - cloud：[5, 2000]
-         * - cloud_efficiency：[20, 32768]
-         * - cloud_ssd：[20, 32768]
-         * - cloud_essd：[20, 32768]
-         * - ephemeral_ssd: [5, 800]
-         * 
-         * @return builder
-         * 
-         */
         public Builder size(@Nullable Output<Integer> size) {
             $.size = size;
             return this;
         }
 
-        /**
-         * @param size The size of the data disk.
-         * - cloud：[5, 2000]
-         * - cloud_efficiency：[20, 32768]
-         * - cloud_ssd：[20, 32768]
-         * - cloud_essd：[20, 32768]
-         * - ephemeral_ssd: [5, 800]
-         * 
-         * @return builder
-         * 
-         */
         public Builder size(Integer size) {
             return size(Output.of(size));
         }

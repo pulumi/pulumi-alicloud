@@ -16,36 +16,16 @@ public final class RuleRuleConditionHeaderConfigArgs extends com.pulumi.resource
 
     public static final RuleRuleConditionHeaderConfigArgs Empty = new RuleRuleConditionHeaderConfigArgs();
 
-    /**
-     * The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-     * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-     * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-     * 
-     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
-    /**
-     * @return The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-     * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-     * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-     * 
-     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
 
-    /**
-     * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-     * 
-     */
     @Import(name="values")
     private @Nullable Output<List<String>> values;
 
-    /**
-     * @return Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-     * 
-     */
     public Optional<Output<List<String>>> values() {
         return Optional.ofNullable(this.values);
     }
@@ -75,58 +55,24 @@ public final class RuleRuleConditionHeaderConfigArgs extends com.pulumi.resource
             $ = new RuleRuleConditionHeaderConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param key The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-         * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-         * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
-        /**
-         * @param key The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-         * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-         * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
-        /**
-         * @param values Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(@Nullable Output<List<String>> values) {
             $.values = values;
             return this;
         }
 
-        /**
-         * @param values Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(List<String> values) {
             return values(Output.of(values));
         }
 
-        /**
-         * @param values Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(String... values) {
             return values(List.of(values));
         }

@@ -318,10 +318,6 @@ class BucketLifecycleRuleAbortMultipartUploadArgs:
     def __init__(__self__, *,
                  created_before_date: Optional[pulumi.Input[str]] = None,
                  days: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input[str] created_before_date: Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-        :param pulumi.Input[int] days: Specifies the number of days noncurrent object versions transition.
-        """
         if created_before_date is not None:
             pulumi.set(__self__, "created_before_date", created_before_date)
         if days is not None:
@@ -330,9 +326,6 @@ class BucketLifecycleRuleAbortMultipartUploadArgs:
     @property
     @pulumi.getter(name="createdBeforeDate")
     def created_before_date(self) -> Optional[pulumi.Input[str]]:
-        """
-        Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-        """
         return pulumi.get(self, "created_before_date")
 
     @created_before_date.setter
@@ -342,9 +335,6 @@ class BucketLifecycleRuleAbortMultipartUploadArgs:
     @property
     @pulumi.getter
     def days(self) -> Optional[pulumi.Input[int]]:
-        """
-        Specifies the number of days noncurrent object versions transition.
-        """
         return pulumi.get(self, "days")
 
     @days.setter
@@ -359,14 +349,6 @@ class BucketLifecycleRuleExpirationArgs:
                  date: Optional[pulumi.Input[str]] = None,
                  days: Optional[pulumi.Input[int]] = None,
                  expired_object_delete_marker: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[str] created_before_date: Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-        :param pulumi.Input[str] date: Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
-        :param pulumi.Input[int] days: Specifies the number of days noncurrent object versions transition.
-        :param pulumi.Input[bool] expired_object_delete_marker: On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
-               
-               `NOTE`: One and only one of "date", "days", "created_before_date" and "expired_object_delete_marker" can be specified in one expiration configuration.
-        """
         if created_before_date is not None:
             pulumi.set(__self__, "created_before_date", created_before_date)
         if date is not None:
@@ -379,9 +361,6 @@ class BucketLifecycleRuleExpirationArgs:
     @property
     @pulumi.getter(name="createdBeforeDate")
     def created_before_date(self) -> Optional[pulumi.Input[str]]:
-        """
-        Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-        """
         return pulumi.get(self, "created_before_date")
 
     @created_before_date.setter
@@ -391,9 +370,6 @@ class BucketLifecycleRuleExpirationArgs:
     @property
     @pulumi.getter
     def date(self) -> Optional[pulumi.Input[str]]:
-        """
-        Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
-        """
         return pulumi.get(self, "date")
 
     @date.setter
@@ -403,9 +379,6 @@ class BucketLifecycleRuleExpirationArgs:
     @property
     @pulumi.getter
     def days(self) -> Optional[pulumi.Input[int]]:
-        """
-        Specifies the number of days noncurrent object versions transition.
-        """
         return pulumi.get(self, "days")
 
     @days.setter
@@ -415,11 +388,6 @@ class BucketLifecycleRuleExpirationArgs:
     @property
     @pulumi.getter(name="expiredObjectDeleteMarker")
     def expired_object_delete_marker(self) -> Optional[pulumi.Input[bool]]:
-        """
-        On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
-
-        `NOTE`: One and only one of "date", "days", "created_before_date" and "expired_object_delete_marker" can be specified in one expiration configuration.
-        """
         return pulumi.get(self, "expired_object_delete_marker")
 
     @expired_object_delete_marker.setter
@@ -433,11 +401,6 @@ class BucketLifecycleRuleFilterArgs:
                  not_: Optional[pulumi.Input['BucketLifecycleRuleFilterNotArgs']] = None,
                  object_size_greater_than: Optional[pulumi.Input[int]] = None,
                  object_size_less_than: Optional[pulumi.Input[int]] = None):
-        """
-        :param pulumi.Input['BucketLifecycleRuleFilterNotArgs'] not_: The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
-        :param pulumi.Input[int] object_size_greater_than: Minimum object size (in bytes) to which the rule applies.
-        :param pulumi.Input[int] object_size_less_than: Maximum object size (in bytes) to which the rule applies.
-        """
         if not_ is not None:
             pulumi.set(__self__, "not_", not_)
         if object_size_greater_than is not None:
@@ -448,9 +411,6 @@ class BucketLifecycleRuleFilterArgs:
     @property
     @pulumi.getter(name="not")
     def not_(self) -> Optional[pulumi.Input['BucketLifecycleRuleFilterNotArgs']]:
-        """
-        The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
-        """
         return pulumi.get(self, "not_")
 
     @not_.setter
@@ -460,9 +420,6 @@ class BucketLifecycleRuleFilterArgs:
     @property
     @pulumi.getter(name="objectSizeGreaterThan")
     def object_size_greater_than(self) -> Optional[pulumi.Input[int]]:
-        """
-        Minimum object size (in bytes) to which the rule applies.
-        """
         return pulumi.get(self, "object_size_greater_than")
 
     @object_size_greater_than.setter
@@ -472,9 +429,6 @@ class BucketLifecycleRuleFilterArgs:
     @property
     @pulumi.getter(name="objectSizeLessThan")
     def object_size_less_than(self) -> Optional[pulumi.Input[int]]:
-        """
-        Maximum object size (in bytes) to which the rule applies.
-        """
         return pulumi.get(self, "object_size_less_than")
 
     @object_size_less_than.setter
@@ -487,10 +441,6 @@ class BucketLifecycleRuleFilterNotArgs:
     def __init__(__self__, *,
                  prefix: Optional[pulumi.Input[str]] = None,
                  tag: Optional[pulumi.Input['BucketLifecycleRuleFilterNotTagArgs']] = None):
-        """
-        :param pulumi.Input[str] prefix: The prefix in the names of the objects to which the lifecycle rule does not apply.
-        :param pulumi.Input['BucketLifecycleRuleFilterNotTagArgs'] tag: The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
-        """
         if prefix is not None:
             pulumi.set(__self__, "prefix", prefix)
         if tag is not None:
@@ -499,9 +449,6 @@ class BucketLifecycleRuleFilterNotArgs:
     @property
     @pulumi.getter
     def prefix(self) -> Optional[pulumi.Input[str]]:
-        """
-        The prefix in the names of the objects to which the lifecycle rule does not apply.
-        """
         return pulumi.get(self, "prefix")
 
     @prefix.setter
@@ -511,9 +458,6 @@ class BucketLifecycleRuleFilterNotArgs:
     @property
     @pulumi.getter
     def tag(self) -> Optional[pulumi.Input['BucketLifecycleRuleFilterNotTagArgs']]:
-        """
-        The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
-        """
         return pulumi.get(self, "tag")
 
     @tag.setter
@@ -526,19 +470,12 @@ class BucketLifecycleRuleFilterNotTagArgs:
     def __init__(__self__, *,
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] key: The key of the tag that is specified for the objects.
-        :param pulumi.Input[str] value: The value of the tag that is specified for the objects.
-        """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
 
     @property
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
-        """
-        The key of the tag that is specified for the objects.
-        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -548,9 +485,6 @@ class BucketLifecycleRuleFilterNotTagArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
-        """
-        The value of the tag that is specified for the objects.
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -562,17 +496,11 @@ class BucketLifecycleRuleFilterNotTagArgs:
 class BucketLifecycleRuleNoncurrentVersionExpirationArgs:
     def __init__(__self__, *,
                  days: pulumi.Input[int]):
-        """
-        :param pulumi.Input[int] days: Specifies the number of days noncurrent object versions transition.
-        """
         pulumi.set(__self__, "days", days)
 
     @property
     @pulumi.getter
     def days(self) -> pulumi.Input[int]:
-        """
-        Specifies the number of days noncurrent object versions transition.
-        """
         return pulumi.get(self, "days")
 
     @days.setter
@@ -588,10 +516,7 @@ class BucketLifecycleRuleNoncurrentVersionTransitionArgs:
                  is_access_time: Optional[pulumi.Input[bool]] = None,
                  return_to_std_when_visit: Optional[pulumi.Input[bool]] = None):
         """
-        :param pulumi.Input[int] days: Specifies the number of days noncurrent object versions transition.
         :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
-        :param pulumi.Input[bool] is_access_time: Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
-        :param pulumi.Input[bool] return_to_std_when_visit: Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
         """
         pulumi.set(__self__, "days", days)
         pulumi.set(__self__, "storage_class", storage_class)
@@ -603,9 +528,6 @@ class BucketLifecycleRuleNoncurrentVersionTransitionArgs:
     @property
     @pulumi.getter
     def days(self) -> pulumi.Input[int]:
-        """
-        Specifies the number of days noncurrent object versions transition.
-        """
         return pulumi.get(self, "days")
 
     @days.setter
@@ -627,9 +549,6 @@ class BucketLifecycleRuleNoncurrentVersionTransitionArgs:
     @property
     @pulumi.getter(name="isAccessTime")
     def is_access_time(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
-        """
         return pulumi.get(self, "is_access_time")
 
     @is_access_time.setter
@@ -639,9 +558,6 @@ class BucketLifecycleRuleNoncurrentVersionTransitionArgs:
     @property
     @pulumi.getter(name="returnToStdWhenVisit")
     def return_to_std_when_visit(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-        """
         return pulumi.get(self, "return_to_std_when_visit")
 
     @return_to_std_when_visit.setter
@@ -659,10 +575,6 @@ class BucketLifecycleRuleTransitionArgs:
                  return_to_std_when_visit: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[str] storage_class: The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
-        :param pulumi.Input[str] created_before_date: Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-        :param pulumi.Input[int] days: Specifies the number of days noncurrent object versions transition.
-        :param pulumi.Input[bool] is_access_time: Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
-        :param pulumi.Input[bool] return_to_std_when_visit: Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
         """
         pulumi.set(__self__, "storage_class", storage_class)
         if created_before_date is not None:
@@ -689,9 +601,6 @@ class BucketLifecycleRuleTransitionArgs:
     @property
     @pulumi.getter(name="createdBeforeDate")
     def created_before_date(self) -> Optional[pulumi.Input[str]]:
-        """
-        Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-        """
         return pulumi.get(self, "created_before_date")
 
     @created_before_date.setter
@@ -701,9 +610,6 @@ class BucketLifecycleRuleTransitionArgs:
     @property
     @pulumi.getter
     def days(self) -> Optional[pulumi.Input[int]]:
-        """
-        Specifies the number of days noncurrent object versions transition.
-        """
         return pulumi.get(self, "days")
 
     @days.setter
@@ -713,9 +619,6 @@ class BucketLifecycleRuleTransitionArgs:
     @property
     @pulumi.getter(name="isAccessTime")
     def is_access_time(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
-        """
         return pulumi.get(self, "is_access_time")
 
     @is_access_time.setter
@@ -725,9 +628,6 @@ class BucketLifecycleRuleTransitionArgs:
     @property
     @pulumi.getter(name="returnToStdWhenVisit")
     def return_to_std_when_visit(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-        """
         return pulumi.get(self, "return_to_std_when_visit")
 
     @return_to_std_when_visit.setter
@@ -987,7 +887,7 @@ class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs:
     def __init__(__self__, *,
                  status: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] status: Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+        :param pulumi.Input[str] status: The status of the data replication task. Can be starting, doing and closing.
         """
         if status is not None:
             pulumi.set(__self__, "status", status)
@@ -996,7 +896,7 @@ class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+        The status of the data replication task. Can be starting, doing and closing.
         """
         return pulumi.get(self, "status")
 

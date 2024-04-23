@@ -12,24 +12,14 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
 
     public sealed class ClusterBootstrapScriptNodeSelectorArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The configuration effected which node group id of emr cluster.
-        /// </summary>
         [Input("nodeGroupId")]
         public Input<string>? NodeGroupId { get; set; }
 
-        /// <summary>
-        /// The configuration effected which node group name of emr cluster.
-        /// </summary>
         [Input("nodeGroupName")]
         public Input<string>? NodeGroupName { get; set; }
 
         [Input("nodeGroupTypes")]
         private InputList<string>? _nodeGroupTypes;
-
-        /// <summary>
-        /// The bootstrap scripts execution target node group types.
-        /// </summary>
         public InputList<string> NodeGroupTypes
         {
             get => _nodeGroupTypes ?? (_nodeGroupTypes = new InputList<string>());
@@ -38,19 +28,12 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
 
         [Input("nodeNames")]
         private InputList<string>? _nodeNames;
-
-        /// <summary>
-        /// The bootstrap scripts execution target node names.
-        /// </summary>
         public InputList<string> NodeNames
         {
             get => _nodeNames ?? (_nodeNames = new InputList<string>());
             set => _nodeNames = value;
         }
 
-        /// <summary>
-        /// The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
-        /// </summary>
         [Input("nodeSelectType", required: true)]
         public Input<string> NodeSelectType { get; set; } = null!;
 

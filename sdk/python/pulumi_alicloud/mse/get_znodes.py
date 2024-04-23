@@ -133,7 +133,6 @@ def get_znodes(accept_language: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -150,7 +149,6 @@ def get_znodes(accept_language: Optional[str] = None,
         name_regex="^my-Znode")
     pulumi.export("mseZnodeId2", name_regex.znodes[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str accept_language: The language type of the returned information. Valid values: `zh` or `en`.
@@ -199,7 +197,6 @@ def get_znodes_output(accept_language: Optional[pulumi.Input[Optional[str]]] = N
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -216,7 +213,6 @@ def get_znodes_output(accept_language: Optional[pulumi.Input[Optional[str]]] = N
         name_regex="^my-Znode")
     pulumi.export("mseZnodeId2", name_regex.znodes[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str accept_language: The language type of the returned information. Valid values: `zh` or `en`.

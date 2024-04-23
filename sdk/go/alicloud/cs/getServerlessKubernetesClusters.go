@@ -19,7 +19,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetServerlessKubernetesClusters(ctx *pulumi.Context, args *GetServerlessKubernetesClustersArgs, opts ...pulumi.InvokeOption) (*GetServerlessKubernetesClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServerlessKubernetesClustersResult

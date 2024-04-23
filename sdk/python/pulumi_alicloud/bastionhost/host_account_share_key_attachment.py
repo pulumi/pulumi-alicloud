@@ -140,7 +140,6 @@ class HostAccountShareKeyAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -190,7 +189,6 @@ class HostAccountShareKeyAttachment(pulumi.CustomResource):
             host_share_key_id=default_host_share_key.host_share_key_id,
             host_account_id=default_host_account.host_account_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -223,7 +221,6 @@ class HostAccountShareKeyAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -273,7 +270,6 @@ class HostAccountShareKeyAttachment(pulumi.CustomResource):
             host_share_key_id=default_host_share_key.host_share_key_id,
             host_account_id=default_host_account.host_account_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

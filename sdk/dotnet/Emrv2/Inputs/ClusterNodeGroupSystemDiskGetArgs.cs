@@ -12,27 +12,15 @@ namespace Pulumi.AliCloud.Emrv2.Inputs
 
     public sealed class ClusterNodeGroupSystemDiskGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
-        /// </summary>
         [Input("category", required: true)]
         public Input<string> Category { get; set; } = null!;
 
-        /// <summary>
-        /// The count of a data disk.
-        /// </summary>
         [Input("count")]
         public Input<int>? Count { get; set; }
 
-        /// <summary>
-        /// Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
-        /// </summary>
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
 
-        /// <summary>
-        /// The size of a data disk, at least 40. Unit: GiB.
-        /// </summary>
         [Input("size", required: true)]
         public Input<int> Size { get; set; } = null!;
 

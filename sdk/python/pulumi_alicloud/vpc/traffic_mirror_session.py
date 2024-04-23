@@ -492,7 +492,6 @@ class TrafficMirrorSession(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -554,7 +553,6 @@ class TrafficMirrorSession(pulumi.CustomResource):
             traffic_mirror_filter_id=default_traffic_mirror_filter.id,
             traffic_mirror_target_type="NetworkInterface")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -599,7 +597,6 @@ class TrafficMirrorSession(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -661,7 +658,6 @@ class TrafficMirrorSession(pulumi.CustomResource):
             traffic_mirror_filter_id=default_traffic_mirror_filter.id,
             traffic_mirror_target_type="NetworkInterface")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

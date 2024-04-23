@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  *     targetInstanceIds: [_default1.plans?.[0]?.instanceId],
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRestoreJobs(args: GetRestoreJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetRestoreJobsResult> {
 
@@ -118,7 +116,6 @@ export interface GetRestoreJobsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -132,7 +129,6 @@ export interface GetRestoreJobsResult {
  *     targetInstanceIds: [_default1.plans?.[0]?.instanceId],
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRestoreJobsOutput(args: GetRestoreJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRestoreJobsResult> {
     return pulumi.output(args).apply((a: any) => getRestoreJobs(a, opts))

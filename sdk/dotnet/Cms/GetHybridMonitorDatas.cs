@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Cms
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.AliCloud.Cms
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetHybridMonitorDatasResult> InvokeAsync(GetHybridMonitorDatasArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetHybridMonitorDatasResult>("alicloud:cms/getHybridMonitorDatas:getHybridMonitorDatas", args ?? new GetHybridMonitorDatasArgs(), options.WithDefaults());
@@ -57,7 +55,6 @@ namespace Pulumi.AliCloud.Cms
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Pulumi.AliCloud.Cms
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetHybridMonitorDatasResult> Invoke(GetHybridMonitorDatasInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHybridMonitorDatasResult>("alicloud:cms/getHybridMonitorDatas:getHybridMonitorDatas", args ?? new GetHybridMonitorDatasInvokeArgs(), options.WithDefaults());

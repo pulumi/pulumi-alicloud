@@ -21,7 +21,7 @@ namespace Pulumi.AliCloud.Log.Inputs
         }
 
         /// <summary>
-        /// including FixedRate,Hourly,Daily,Weekly,Cron.
+        /// Group configuration type, including no_group, labels_auto, custom.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

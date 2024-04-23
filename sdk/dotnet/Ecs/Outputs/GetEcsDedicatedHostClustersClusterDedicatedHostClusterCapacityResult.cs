@@ -13,25 +13,10 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     [OutputType]
     public sealed class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityResult
     {
-        /// <summary>
-        /// The available memory size. Unit: `GiB`.
-        /// </summary>
         public readonly int AvailableMemory;
-        /// <summary>
-        /// The number of available vCPUs.
-        /// </summary>
         public readonly int AvailableVcpus;
-        /// <summary>
-        /// The local storage.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityResult> LocalStorageCapacities;
-        /// <summary>
-        /// The total memory size. Unit: `GiB`.
-        /// </summary>
         public readonly int TotalMemory;
-        /// <summary>
-        /// The total number of vCPUs.
-        /// </summary>
         public readonly int TotalVcpus;
 
         [OutputConstructor]

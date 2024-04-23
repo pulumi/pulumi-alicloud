@@ -14,47 +14,23 @@ public final class GetPolicyDocumentStatementCondition extends com.pulumi.resour
 
     public static final GetPolicyDocumentStatementCondition Empty = new GetPolicyDocumentStatementCondition();
 
-    /**
-     * The operator of the condition.
-     * 
-     */
     @Import(name="operator", required=true)
     private String operator;
 
-    /**
-     * @return The operator of the condition.
-     * 
-     */
     public String operator() {
         return this.operator;
     }
 
-    /**
-     * The values of the condition.
-     * 
-     */
     @Import(name="values", required=true)
     private List<String> values;
 
-    /**
-     * @return The values of the condition.
-     * 
-     */
     public List<String> values() {
         return this.values;
     }
 
-    /**
-     * The variable of the condition.
-     * 
-     */
     @Import(name="variable", required=true)
     private String variable;
 
-    /**
-     * @return The variable of the condition.
-     * 
-     */
     public String variable() {
         return this.variable;
     }
@@ -85,44 +61,20 @@ public final class GetPolicyDocumentStatementCondition extends com.pulumi.resour
             $ = new GetPolicyDocumentStatementCondition(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param operator The operator of the condition.
-         * 
-         * @return builder
-         * 
-         */
         public Builder operator(String operator) {
             $.operator = operator;
             return this;
         }
 
-        /**
-         * @param values The values of the condition.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(List<String> values) {
             $.values = values;
             return this;
         }
 
-        /**
-         * @param values The values of the condition.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(String... values) {
             return values(List.of(values));
         }
 
-        /**
-         * @param variable The variable of the condition.
-         * 
-         * @return builder
-         * 
-         */
         public Builder variable(String variable) {
             $.variable = variable;
             return this;

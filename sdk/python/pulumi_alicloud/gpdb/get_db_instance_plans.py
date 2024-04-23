@@ -143,7 +143,6 @@ def get_db_instance_plans(db_instance_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -155,7 +154,6 @@ def get_db_instance_plans(db_instance_id: Optional[str] = None,
         name_regex="^my-DBInstancePlan")
     pulumi.export("gpdbDbInstancePlanId2", name_regex.plans[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str db_instance_id: The ID of the Database instance.
@@ -208,7 +206,6 @@ def get_db_instance_plans_output(db_instance_id: Optional[pulumi.Input[str]] = N
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -220,7 +217,6 @@ def get_db_instance_plans_output(db_instance_id: Optional[pulumi.Input[str]] = N
         name_regex="^my-DBInstancePlan")
     pulumi.export("gpdbDbInstancePlanId2", name_regex.plans[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str db_instance_id: The ID of the Database instance.

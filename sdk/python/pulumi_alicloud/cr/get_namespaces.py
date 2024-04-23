@@ -109,7 +109,6 @@ def get_namespaces(name_regex: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -119,7 +118,6 @@ def get_namespaces(name_regex: Optional[str] = None,
         output_file="my-namespace-json")
     pulumi.export("output", my_namespaces.namespaces)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name_regex: A regex string to filter results by namespace name.
@@ -151,7 +149,6 @@ def get_namespaces_output(name_regex: Optional[pulumi.Input[Optional[str]]] = No
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -161,7 +158,6 @@ def get_namespaces_output(name_regex: Optional[pulumi.Input[Optional[str]]] = No
         output_file="my-namespace-json")
     pulumi.export("output", my_namespaces.namespaces)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name_regex: A regex string to filter results by namespace name.

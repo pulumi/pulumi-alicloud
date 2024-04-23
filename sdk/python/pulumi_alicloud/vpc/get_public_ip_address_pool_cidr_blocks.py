@@ -128,7 +128,6 @@ def get_public_ip_address_pool_cidr_blocks(cidr_block: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -140,7 +139,6 @@ def get_public_ip_address_pool_cidr_blocks(cidr_block: Optional[str] = None,
         cidr_block="example_value")
     pulumi.export("vpcPublicIpAddressPoolCidrBlockId2", cidr_block.blocks[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cidr_block: The CIDR block.
@@ -186,7 +184,6 @@ def get_public_ip_address_pool_cidr_blocks_output(cidr_block: Optional[pulumi.In
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -198,7 +195,6 @@ def get_public_ip_address_pool_cidr_blocks_output(cidr_block: Optional[pulumi.In
         cidr_block="example_value")
     pulumi.export("vpcPublicIpAddressPoolCidrBlockId2", cidr_block.blocks[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cidr_block: The CIDR block.

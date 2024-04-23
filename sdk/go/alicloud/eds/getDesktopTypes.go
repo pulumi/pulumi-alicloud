@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDesktopTypes(ctx *pulumi.Context, args *GetDesktopTypesArgs, opts ...pulumi.InvokeOption) (*GetDesktopTypesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDesktopTypesResult

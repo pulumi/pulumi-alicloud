@@ -22,7 +22,7 @@ namespace Pulumi.AliCloud.Compute.Outputs
         /// </summary>
         public readonly string Locale;
         /// <summary>
-        /// The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+        /// The name of the service.
         /// </summary>
         public readonly string Name;
         /// <summary>

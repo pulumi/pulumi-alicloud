@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetStackInstancesInstanceParameterOverride {
-    /**
-     * @return The key of override parameter.
-     * 
-     */
     private String parameterKey;
-    /**
-     * @return The value of override parameter.
-     * 
-     */
     private String parameterValue;
 
     private GetStackInstancesInstanceParameterOverride() {}
-    /**
-     * @return The key of override parameter.
-     * 
-     */
     public String parameterKey() {
         return this.parameterKey;
     }
-    /**
-     * @return The value of override parameter.
-     * 
-     */
     public String parameterValue() {
         return this.parameterValue;
     }

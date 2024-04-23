@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,7 +21,6 @@ import * as utilities from "../utilities";
  *     enable: "On",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPhysicalConnectionService(args?: GetPhysicalConnectionServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetPhysicalConnectionServiceResult> {
     args = args || {};
@@ -68,7 +66,6 @@ export interface GetPhysicalConnectionServiceResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -77,7 +74,6 @@ export interface GetPhysicalConnectionServiceResult {
  *     enable: "On",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPhysicalConnectionServiceOutput(args?: GetPhysicalConnectionServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPhysicalConnectionServiceResult> {
     return pulumi.output(args).apply((a: any) => getPhysicalConnectionService(a, opts))

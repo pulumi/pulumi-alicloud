@@ -304,7 +304,6 @@ class DdosBgpInstance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -322,7 +321,6 @@ class DdosBgpInstance(pulumi.CustomResource):
             normal_bandwidth=100,
             type="Enterprise")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -360,7 +358,6 @@ class DdosBgpInstance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -378,7 +375,6 @@ class DdosBgpInstance(pulumi.CustomResource):
             normal_bandwidth=100,
             type="Enterprise")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

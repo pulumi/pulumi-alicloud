@@ -13,17 +13,11 @@ namespace Pulumi.AliCloud.Sae.Outputs
     [OutputType]
     public sealed class ApplicationUpdateStrategyV2BatchUpdate
     {
-        /// <summary>
-        /// The number of batches in which you want to release the instances.
-        /// </summary>
         public readonly int? Batch;
         /// <summary>
         /// The batch wait time.
         /// </summary>
         public readonly int? BatchWaitTime;
-        /// <summary>
-        /// The processing method for the batches. Valid values: `auto` and `manual`.
-        /// </summary>
         public readonly string? ReleaseType;
 
         [OutputConstructor]

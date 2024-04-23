@@ -18,62 +18,30 @@ public final class BucketLifecycleRuleTransitionArgs extends com.pulumi.resource
 
     public static final BucketLifecycleRuleTransitionArgs Empty = new BucketLifecycleRuleTransitionArgs();
 
-    /**
-     * Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-     * 
-     */
     @Import(name="createdBeforeDate")
     private @Nullable Output<String> createdBeforeDate;
 
-    /**
-     * @return Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-     * 
-     */
     public Optional<Output<String>> createdBeforeDate() {
         return Optional.ofNullable(this.createdBeforeDate);
     }
 
-    /**
-     * Specifies the number of days noncurrent object versions transition.
-     * 
-     */
     @Import(name="days")
     private @Nullable Output<Integer> days;
 
-    /**
-     * @return Specifies the number of days noncurrent object versions transition.
-     * 
-     */
     public Optional<Output<Integer>> days() {
         return Optional.ofNullable(this.days);
     }
 
-    /**
-     * Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
-     * 
-     */
     @Import(name="isAccessTime")
     private @Nullable Output<Boolean> isAccessTime;
 
-    /**
-     * @return Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
-     * 
-     */
     public Optional<Output<Boolean>> isAccessTime() {
         return Optional.ofNullable(this.isAccessTime);
     }
 
-    /**
-     * Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-     * 
-     */
     @Import(name="returnToStdWhenVisit")
     private @Nullable Output<Boolean> returnToStdWhenVisit;
 
-    /**
-     * @return Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-     * 
-     */
     public Optional<Output<Boolean>> returnToStdWhenVisit() {
         return Optional.ofNullable(this.returnToStdWhenVisit);
     }
@@ -121,86 +89,38 @@ public final class BucketLifecycleRuleTransitionArgs extends com.pulumi.resource
             $ = new BucketLifecycleRuleTransitionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param createdBeforeDate Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-         * 
-         * @return builder
-         * 
-         */
         public Builder createdBeforeDate(@Nullable Output<String> createdBeforeDate) {
             $.createdBeforeDate = createdBeforeDate;
             return this;
         }
 
-        /**
-         * @param createdBeforeDate Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-         * 
-         * @return builder
-         * 
-         */
         public Builder createdBeforeDate(String createdBeforeDate) {
             return createdBeforeDate(Output.of(createdBeforeDate));
         }
 
-        /**
-         * @param days Specifies the number of days noncurrent object versions transition.
-         * 
-         * @return builder
-         * 
-         */
         public Builder days(@Nullable Output<Integer> days) {
             $.days = days;
             return this;
         }
 
-        /**
-         * @param days Specifies the number of days noncurrent object versions transition.
-         * 
-         * @return builder
-         * 
-         */
         public Builder days(Integer days) {
             return days(Output.of(days));
         }
 
-        /**
-         * @param isAccessTime Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isAccessTime(@Nullable Output<Boolean> isAccessTime) {
             $.isAccessTime = isAccessTime;
             return this;
         }
 
-        /**
-         * @param isAccessTime Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isAccessTime(Boolean isAccessTime) {
             return isAccessTime(Output.of(isAccessTime));
         }
 
-        /**
-         * @param returnToStdWhenVisit Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-         * 
-         * @return builder
-         * 
-         */
         public Builder returnToStdWhenVisit(@Nullable Output<Boolean> returnToStdWhenVisit) {
             $.returnToStdWhenVisit = returnToStdWhenVisit;
             return this;
         }
 
-        /**
-         * @param returnToStdWhenVisit Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-         * 
-         * @return builder
-         * 
-         */
         public Builder returnToStdWhenVisit(Boolean returnToStdWhenVisit) {
             return returnToStdWhenVisit(Output.of(returnToStdWhenVisit));
         }

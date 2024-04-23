@@ -451,7 +451,6 @@ class OtsBackupPlan(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -483,20 +482,20 @@ class OtsBackupPlan(pulumi.CustomResource):
             deviation_cell_version_in_sec="1")
         default_role = alicloud.ram.Role("default",
             name="hbrexamplerole",
-            document=\"\"\"		{
-        			"Statement": [
-        			{
-        				"Action": "sts:AssumeRole",
-        				"Effect": "Allow",
-        				"Principal": {
-        					"Service": [
-        						"crossbackup.hbr.aliyuncs.com"
-        					]
-        				}
-        			}
-        			],
-          			"Version": "1"
-        		}
+            document=\"\"\"\\x09\\x09{
+        \\x09\\x09\\x09"Statement": [
+        \\x09\\x09\\x09{
+        \\x09\\x09\\x09\\x09"Action": "sts:AssumeRole",
+        \\x09\\x09\\x09\\x09"Effect": "Allow",
+        \\x09\\x09\\x09\\x09"Principal": {
+        \\x09\\x09\\x09\\x09\\x09"Service": [
+        \\x09\\x09\\x09\\x09\\x09\\x09"crossbackup.hbr.aliyuncs.com"
+        \\x09\\x09\\x09\\x09\\x09]
+        \\x09\\x09\\x09\\x09}
+        \\x09\\x09\\x09}
+        \\x09\\x09\\x09],
+          \\x09\\x09\\x09"Version": "1"
+        \\x09\\x09}
         \"\"\",
             force=True)
         default = alicloud.get_account()
@@ -520,7 +519,6 @@ class OtsBackupPlan(pulumi.CustomResource):
                 backup_type="COMPLETE",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -562,7 +560,6 @@ class OtsBackupPlan(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -594,20 +591,20 @@ class OtsBackupPlan(pulumi.CustomResource):
             deviation_cell_version_in_sec="1")
         default_role = alicloud.ram.Role("default",
             name="hbrexamplerole",
-            document=\"\"\"		{
-        			"Statement": [
-        			{
-        				"Action": "sts:AssumeRole",
-        				"Effect": "Allow",
-        				"Principal": {
-        					"Service": [
-        						"crossbackup.hbr.aliyuncs.com"
-        					]
-        				}
-        			}
-        			],
-          			"Version": "1"
-        		}
+            document=\"\"\"\\x09\\x09{
+        \\x09\\x09\\x09"Statement": [
+        \\x09\\x09\\x09{
+        \\x09\\x09\\x09\\x09"Action": "sts:AssumeRole",
+        \\x09\\x09\\x09\\x09"Effect": "Allow",
+        \\x09\\x09\\x09\\x09"Principal": {
+        \\x09\\x09\\x09\\x09\\x09"Service": [
+        \\x09\\x09\\x09\\x09\\x09\\x09"crossbackup.hbr.aliyuncs.com"
+        \\x09\\x09\\x09\\x09\\x09]
+        \\x09\\x09\\x09\\x09}
+        \\x09\\x09\\x09}
+        \\x09\\x09\\x09],
+          \\x09\\x09\\x09"Version": "1"
+        \\x09\\x09}
         \"\"\",
             force=True)
         default = alicloud.get_account()
@@ -631,7 +628,6 @@ class OtsBackupPlan(pulumi.CustomResource):
                 backup_type="COMPLETE",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

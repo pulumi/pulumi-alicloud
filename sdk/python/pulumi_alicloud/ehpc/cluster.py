@@ -2009,7 +2009,6 @@ class Cluster(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -2060,7 +2059,6 @@ class Cluster(pulumi.CustomResource):
             vpc_id=default_network.id,
             zone_id=default.zones[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -2158,7 +2156,6 @@ class Cluster(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -2209,7 +2206,6 @@ class Cluster(pulumi.CustomResource):
             vpc_id=default_network.id,
             zone_id=default.zones[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

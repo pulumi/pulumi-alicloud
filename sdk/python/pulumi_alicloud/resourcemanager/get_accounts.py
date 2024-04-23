@@ -111,7 +111,6 @@ def get_accounts(enable_details: Optional[bool] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -119,7 +118,6 @@ def get_accounts(enable_details: Optional[bool] = None,
     default = alicloud.resourcemanager.get_accounts()
     pulumi.export("firstAccountId", default.accounts[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -157,7 +155,6 @@ def get_accounts_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -165,7 +162,6 @@ def get_accounts_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
     default = alicloud.resourcemanager.get_accounts()
     pulumi.export("firstAccountId", default.accounts[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

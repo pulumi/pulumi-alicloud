@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * const ids = alicloud.cloudfirewall.getInstances({});
  * export const cloudFirewallInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -64,7 +62,6 @@ export interface GetInstancesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -72,7 +69,6 @@ export interface GetInstancesResult {
  * const ids = alicloud.cloudfirewall.getInstances({});
  * export const cloudFirewallInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
     return pulumi.output(args).apply((a: any) => getInstances(a, opts))

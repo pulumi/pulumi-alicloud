@@ -13,25 +13,10 @@ namespace Pulumi.AliCloud.ThreatDetection.Outputs
     [OutputType]
     public sealed class HoneypotProbeHoneypotBindListBindPortList
     {
-        /// <summary>
-        /// Whether to bind the port.
-        /// </summary>
         public readonly bool? BindPort;
-        /// <summary>
-        /// End port.
-        /// </summary>
         public readonly int? EndPort;
-        /// <summary>
-        /// Whether the port is fixed.
-        /// </summary>
         public readonly bool? Fixed;
-        /// <summary>
-        /// Start port.
-        /// </summary>
         public readonly int? StartPort;
-        /// <summary>
-        /// Destination port.
-        /// </summary>
         public readonly int? TargetPort;
 
         [OutputConstructor]

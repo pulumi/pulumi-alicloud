@@ -271,12 +271,9 @@ func (o InstanceReplicaSetArrayOutput) Index(i pulumi.IntInput) InstanceReplicaS
 }
 
 type ServerlessInstanceSecurityIpGroup struct {
-	// The attribute of the IP whitelist. This parameter is empty by default.
 	SecurityIpGroupAttribute *string `pulumi:"securityIpGroupAttribute"`
-	// The name of the IP whitelist.
-	SecurityIpGroupName *string `pulumi:"securityIpGroupName"`
-	// The IP addresses in the whitelist.
-	SecurityIpList *string `pulumi:"securityIpList"`
+	SecurityIpGroupName      *string `pulumi:"securityIpGroupName"`
+	SecurityIpList           *string `pulumi:"securityIpList"`
 }
 
 // ServerlessInstanceSecurityIpGroupInput is an input type that accepts ServerlessInstanceSecurityIpGroupArgs and ServerlessInstanceSecurityIpGroupOutput values.
@@ -291,12 +288,9 @@ type ServerlessInstanceSecurityIpGroupInput interface {
 }
 
 type ServerlessInstanceSecurityIpGroupArgs struct {
-	// The attribute of the IP whitelist. This parameter is empty by default.
 	SecurityIpGroupAttribute pulumi.StringPtrInput `pulumi:"securityIpGroupAttribute"`
-	// The name of the IP whitelist.
-	SecurityIpGroupName pulumi.StringPtrInput `pulumi:"securityIpGroupName"`
-	// The IP addresses in the whitelist.
-	SecurityIpList pulumi.StringPtrInput `pulumi:"securityIpList"`
+	SecurityIpGroupName      pulumi.StringPtrInput `pulumi:"securityIpGroupName"`
+	SecurityIpList           pulumi.StringPtrInput `pulumi:"securityIpList"`
 }
 
 func (ServerlessInstanceSecurityIpGroupArgs) ElementType() reflect.Type {
@@ -350,17 +344,14 @@ func (o ServerlessInstanceSecurityIpGroupOutput) ToServerlessInstanceSecurityIpG
 	return o
 }
 
-// The attribute of the IP whitelist. This parameter is empty by default.
 func (o ServerlessInstanceSecurityIpGroupOutput) SecurityIpGroupAttribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerlessInstanceSecurityIpGroup) *string { return v.SecurityIpGroupAttribute }).(pulumi.StringPtrOutput)
 }
 
-// The name of the IP whitelist.
 func (o ServerlessInstanceSecurityIpGroupOutput) SecurityIpGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerlessInstanceSecurityIpGroup) *string { return v.SecurityIpGroupName }).(pulumi.StringPtrOutput)
 }
 
-// The IP addresses in the whitelist.
 func (o ServerlessInstanceSecurityIpGroupOutput) SecurityIpList() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServerlessInstanceSecurityIpGroup) *string { return v.SecurityIpList }).(pulumi.StringPtrOutput)
 }
@@ -392,15 +383,13 @@ type ShardingInstanceConfigServerList struct {
 	MaxConnections *int `pulumi:"maxConnections"`
 	// The maximum IOPS of the Config Server node.
 	MaxIops *int `pulumi:"maxIops"`
-	// The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+	// The node class of the Config Server node.
 	NodeClass *string `pulumi:"nodeClass"`
 	// The description of the Config Server node.
 	NodeDescription *string `pulumi:"nodeDescription"`
 	// The ID of the Config Server node.
 	NodeId *string `pulumi:"nodeId"`
-	// The storage space of the shard node.
-	// - Custom storage space; value range: [10, 1,000]
-	// - 10-GB increments. Unit: GB.
+	// The node storage of the Config Server node.
 	NodeStorage *int `pulumi:"nodeStorage"`
 	// The connection port of the Config Server node.
 	Port *int `pulumi:"port"`
@@ -424,15 +413,13 @@ type ShardingInstanceConfigServerListArgs struct {
 	MaxConnections pulumi.IntPtrInput `pulumi:"maxConnections"`
 	// The maximum IOPS of the Config Server node.
 	MaxIops pulumi.IntPtrInput `pulumi:"maxIops"`
-	// The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+	// The node class of the Config Server node.
 	NodeClass pulumi.StringPtrInput `pulumi:"nodeClass"`
 	// The description of the Config Server node.
 	NodeDescription pulumi.StringPtrInput `pulumi:"nodeDescription"`
 	// The ID of the Config Server node.
 	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
-	// The storage space of the shard node.
-	// - Custom storage space; value range: [10, 1,000]
-	// - 10-GB increments. Unit: GB.
+	// The node storage of the Config Server node.
 	NodeStorage pulumi.IntPtrInput `pulumi:"nodeStorage"`
 	// The connection port of the Config Server node.
 	Port pulumi.IntPtrInput `pulumi:"port"`
@@ -504,7 +491,7 @@ func (o ShardingInstanceConfigServerListOutput) MaxIops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ShardingInstanceConfigServerList) *int { return v.MaxIops }).(pulumi.IntPtrOutput)
 }
 
-// The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+// The node class of the Config Server node.
 func (o ShardingInstanceConfigServerListOutput) NodeClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShardingInstanceConfigServerList) *string { return v.NodeClass }).(pulumi.StringPtrOutput)
 }
@@ -519,9 +506,7 @@ func (o ShardingInstanceConfigServerListOutput) NodeId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ShardingInstanceConfigServerList) *string { return v.NodeId }).(pulumi.StringPtrOutput)
 }
 
-// The storage space of the shard node.
-// - Custom storage space; value range: [10, 1,000]
-// - 10-GB increments. Unit: GB.
+// The node storage of the Config Server node.
 func (o ShardingInstanceConfigServerListOutput) NodeStorage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ShardingInstanceConfigServerList) *int { return v.NodeStorage }).(pulumi.IntPtrOutput)
 }
@@ -2259,12 +2244,9 @@ func (o GetServerlessInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetS
 }
 
 type GetServerlessInstancesInstanceSecurityIpGroup struct {
-	// The attribute of the IP whitelist. This parameter is empty by default.
 	SecurityIpGroupAttribute string `pulumi:"securityIpGroupAttribute"`
-	// The name of the IP whitelist.
-	SecurityIpGroupName string `pulumi:"securityIpGroupName"`
-	// The IP addresses in the whitelist.
-	SecurityIpList string `pulumi:"securityIpList"`
+	SecurityIpGroupName      string `pulumi:"securityIpGroupName"`
+	SecurityIpList           string `pulumi:"securityIpList"`
 }
 
 // GetServerlessInstancesInstanceSecurityIpGroupInput is an input type that accepts GetServerlessInstancesInstanceSecurityIpGroupArgs and GetServerlessInstancesInstanceSecurityIpGroupOutput values.
@@ -2279,12 +2261,9 @@ type GetServerlessInstancesInstanceSecurityIpGroupInput interface {
 }
 
 type GetServerlessInstancesInstanceSecurityIpGroupArgs struct {
-	// The attribute of the IP whitelist. This parameter is empty by default.
 	SecurityIpGroupAttribute pulumi.StringInput `pulumi:"securityIpGroupAttribute"`
-	// The name of the IP whitelist.
-	SecurityIpGroupName pulumi.StringInput `pulumi:"securityIpGroupName"`
-	// The IP addresses in the whitelist.
-	SecurityIpList pulumi.StringInput `pulumi:"securityIpList"`
+	SecurityIpGroupName      pulumi.StringInput `pulumi:"securityIpGroupName"`
+	SecurityIpList           pulumi.StringInput `pulumi:"securityIpList"`
 }
 
 func (GetServerlessInstancesInstanceSecurityIpGroupArgs) ElementType() reflect.Type {
@@ -2338,17 +2317,14 @@ func (o GetServerlessInstancesInstanceSecurityIpGroupOutput) ToGetServerlessInst
 	return o
 }
 
-// The attribute of the IP whitelist. This parameter is empty by default.
 func (o GetServerlessInstancesInstanceSecurityIpGroupOutput) SecurityIpGroupAttribute() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerlessInstancesInstanceSecurityIpGroup) string { return v.SecurityIpGroupAttribute }).(pulumi.StringOutput)
 }
 
-// The name of the IP whitelist.
 func (o GetServerlessInstancesInstanceSecurityIpGroupOutput) SecurityIpGroupName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerlessInstancesInstanceSecurityIpGroup) string { return v.SecurityIpGroupName }).(pulumi.StringOutput)
 }
 
-// The IP addresses in the whitelist.
 func (o GetServerlessInstancesInstanceSecurityIpGroupOutput) SecurityIpList() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServerlessInstancesInstanceSecurityIpGroup) string { return v.SecurityIpList }).(pulumi.StringOutput)
 }

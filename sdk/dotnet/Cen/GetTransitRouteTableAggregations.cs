@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -51,7 +50,6 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTransitRouteTableAggregationsResult> InvokeAsync(GetTransitRouteTableAggregationsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouteTableAggregationsResult>("alicloud:cen/getTransitRouteTableAggregations:getTransitRouteTableAggregations", args ?? new GetTransitRouteTableAggregationsArgs(), options.WithDefaults());
@@ -65,7 +63,6 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -96,7 +93,6 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTransitRouteTableAggregationsResult> Invoke(GetTransitRouteTableAggregationsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouteTableAggregationsResult>("alicloud:cen/getTransitRouteTableAggregations:getTransitRouteTableAggregations", args ?? new GetTransitRouteTableAggregationsInvokeArgs(), options.WithDefaults());

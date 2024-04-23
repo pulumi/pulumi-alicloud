@@ -125,7 +125,6 @@ class GlobalDatabaseNetwork(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -153,7 +152,6 @@ class GlobalDatabaseNetwork(pulumi.CustomResource):
             db_cluster_id=default_cluster.id,
             description="terraform-example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -185,7 +183,6 @@ class GlobalDatabaseNetwork(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -213,7 +210,6 @@ class GlobalDatabaseNetwork(pulumi.CustomResource):
             db_cluster_id=default_cluster.id,
             description="terraform-example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

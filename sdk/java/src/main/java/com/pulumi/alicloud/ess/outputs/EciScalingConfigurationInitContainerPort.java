@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EciScalingConfigurationInitContainerPort {
-    /**
-     * @return The port number. Valid values: 1 to 65535.
-     * 
-     */
     private @Nullable Integer port;
-    /**
-     * @return Valid values: TCP and UDP.
-     * 
-     */
     private @Nullable String protocol;
 
     private EciScalingConfigurationInitContainerPort() {}
-    /**
-     * @return The port number. Valid values: 1 to 65535.
-     * 
-     */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
-    /**
-     * @return Valid values: TCP and UDP.
-     * 
-     */
     public Optional<String> protocol() {
         return Optional.ofNullable(this.protocol);
     }

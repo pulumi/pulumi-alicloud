@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * const ids = alicloud.dms.getEnterpriseProxies({});
  * export const dmsEnterpriseProxyId1 = ids.then(ids => ids.proxies?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEnterpriseProxies(args?: GetEnterpriseProxiesArgs, opts?: pulumi.InvokeOptions): Promise<GetEnterpriseProxiesResult> {
     args = args || {};
@@ -76,7 +74,6 @@ export interface GetEnterpriseProxiesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -84,7 +81,6 @@ export interface GetEnterpriseProxiesResult {
  * const ids = alicloud.dms.getEnterpriseProxies({});
  * export const dmsEnterpriseProxyId1 = ids.then(ids => ids.proxies?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEnterpriseProxiesOutput(args?: GetEnterpriseProxiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnterpriseProxiesResult> {
     return pulumi.output(args).apply((a: any) => getEnterpriseProxies(a, opts))

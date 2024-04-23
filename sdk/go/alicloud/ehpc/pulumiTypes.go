@@ -192,7 +192,6 @@ func (o ClusterAdditionalVolumeArrayOutput) Index(i pulumi.IntInput) ClusterAddi
 }
 
 type ClusterAdditionalVolumeRole struct {
-	// The type of the nodes to which the additional file system is attached.
 	Name *string `pulumi:"name"`
 }
 
@@ -208,7 +207,6 @@ type ClusterAdditionalVolumeRoleInput interface {
 }
 
 type ClusterAdditionalVolumeRoleArgs struct {
-	// The type of the nodes to which the additional file system is attached.
 	Name pulumi.StringPtrInput `pulumi:"name"`
 }
 
@@ -263,7 +261,6 @@ func (o ClusterAdditionalVolumeRoleOutput) ToClusterAdditionalVolumeRoleOutputWi
 	return o
 }
 
-// The type of the nodes to which the additional file system is attached.
 func (o ClusterAdditionalVolumeRoleOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterAdditionalVolumeRole) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -496,67 +493,37 @@ type GetClustersCluster struct {
 	AccountType  string                          `pulumi:"accountType"`
 	Applications []GetClustersClusterApplication `pulumi:"applications"`
 	// The version number of the client used by the cluster.
-	ClientVersion string `pulumi:"clientVersion"`
-	// The id of E-HPC Cluster.
-	ClusterId string `pulumi:"clusterId"`
-	// The name of E-HPC cluster.
-	ClusterName string `pulumi:"clusterName"`
-	// The number of compute nodes in the cluster.
-	ComputeCount int `pulumi:"computeCount"`
-	// Cluster compute node specifications.
-	ComputeInstanceType string `pulumi:"computeInstanceType"`
-	// The creation time of the resource.
-	CreateTime string `pulumi:"createTime"`
-	// Cluster deployment mode. Possible values:
-	// - Standard: separate deployment of account nodes, scheduling nodes, login nodes, and compute nodes.
-	// - Advanced:HA mode deployment.
-	// - Simple: the account node and the scheduling node are deployed on one node, and the login node and the compute node are deployed separately.
-	// - Tiny: account nodes, scheduling nodes, and login nodes are deployed on one node, and compute nodes are deployed separately.
-	// - OneBox: account node, scheduling node, login node and compute node are deployed on one node.
-	DeployMode string `pulumi:"deployMode"`
-	// The description of E-HPC cluster.
-	Description string `pulumi:"description"`
-	// Whether to turn on high availability. > If high availability is enabled, each control role in the cluster will use two primary and secondary instances.
-	HaEnable bool `pulumi:"haEnable"`
-	// The ID of the Cluster.
-	Id string `pulumi:"id"`
-	// The ID of the Image.
-	ImageId string `pulumi:"imageId"`
-	// The type of the image.
-	ImageOwnerAlias string `pulumi:"imageOwnerAlias"`
-	// The number of cluster login nodes. Only configuration 1 is supported.
-	LoginCount int `pulumi:"loginCount"`
-	// Cluster login node specifications.
-	LoginInstanceType string `pulumi:"loginInstanceType"`
-	ManagerCount      int    `pulumi:"managerCount"`
-	// The instance type of manager nodes.
-	ManagerInstanceType string `pulumi:"managerInstanceType"`
-	// The image tag of the operating system.
-	OsTag              string                                `pulumi:"osTag"`
-	PostInstallScripts []GetClustersClusterPostInstallScript `pulumi:"postInstallScripts"`
-	// Mount the remote directory of the shared storage.
-	RemoteDirectory string `pulumi:"remoteDirectory"`
-	// The SccCluster ID used by the cluster. If the cluster is not an SCC model, it is empty.
-	SccClusterId string `pulumi:"sccClusterId"`
-	// Dispatch server type.
-	SchedulerType string `pulumi:"schedulerType"`
-	// The ID of the security group.
-	SecurityGroupId string `pulumi:"securityGroupId"`
-	// The status of the resource.
-	Status string `pulumi:"status"`
-	// The ID of the NAS instance. Currently, you cannot automatically create an Alibaba Cloud NAS instance.
-	VolumeId string `pulumi:"volumeId"`
-	// The mount target of the file system. Mount targets cannot be automatically created for NAS file systems.
+	ClientVersion       string                                `pulumi:"clientVersion"`
+	ClusterId           string                                `pulumi:"clusterId"`
+	ClusterName         string                                `pulumi:"clusterName"`
+	ComputeCount        int                                   `pulumi:"computeCount"`
+	ComputeInstanceType string                                `pulumi:"computeInstanceType"`
+	CreateTime          string                                `pulumi:"createTime"`
+	DeployMode          string                                `pulumi:"deployMode"`
+	Description         string                                `pulumi:"description"`
+	HaEnable            bool                                  `pulumi:"haEnable"`
+	Id                  string                                `pulumi:"id"`
+	ImageId             string                                `pulumi:"imageId"`
+	ImageOwnerAlias     string                                `pulumi:"imageOwnerAlias"`
+	LoginCount          int                                   `pulumi:"loginCount"`
+	LoginInstanceType   string                                `pulumi:"loginInstanceType"`
+	ManagerCount        int                                   `pulumi:"managerCount"`
+	ManagerInstanceType string                                `pulumi:"managerInstanceType"`
+	OsTag               string                                `pulumi:"osTag"`
+	PostInstallScripts  []GetClustersClusterPostInstallScript `pulumi:"postInstallScripts"`
+	RemoteDirectory     string                                `pulumi:"remoteDirectory"`
+	SccClusterId        string                                `pulumi:"sccClusterId"`
+	SchedulerType       string                                `pulumi:"schedulerType"`
+	SecurityGroupId     string                                `pulumi:"securityGroupId"`
+	// The status of the resource. Valid values:
+	Status           string `pulumi:"status"`
+	VolumeId         string `pulumi:"volumeId"`
 	VolumeMountpoint string `pulumi:"volumeMountpoint"`
-	// The type of the protocol that is used by the file system.
-	VolumeProtocol string `pulumi:"volumeProtocol"`
-	// The type of the network shared storage. Valid value: NAS.
-	VolumeType string `pulumi:"volumeType"`
-	// The ID of the VPC network.
-	VpcId string `pulumi:"vpcId"`
-	// The vswitch id.
-	VswitchId string `pulumi:"vswitchId"`
-	ZoneId    string `pulumi:"zoneId"`
+	VolumeProtocol   string `pulumi:"volumeProtocol"`
+	VolumeType       string `pulumi:"volumeType"`
+	VpcId            string `pulumi:"vpcId"`
+	VswitchId        string `pulumi:"vswitchId"`
+	ZoneId           string `pulumi:"zoneId"`
 }
 
 // GetClustersClusterInput is an input type that accepts GetClustersClusterArgs and GetClustersClusterOutput values.
@@ -575,67 +542,37 @@ type GetClustersClusterArgs struct {
 	AccountType  pulumi.StringInput                      `pulumi:"accountType"`
 	Applications GetClustersClusterApplicationArrayInput `pulumi:"applications"`
 	// The version number of the client used by the cluster.
-	ClientVersion pulumi.StringInput `pulumi:"clientVersion"`
-	// The id of E-HPC Cluster.
-	ClusterId pulumi.StringInput `pulumi:"clusterId"`
-	// The name of E-HPC cluster.
-	ClusterName pulumi.StringInput `pulumi:"clusterName"`
-	// The number of compute nodes in the cluster.
-	ComputeCount pulumi.IntInput `pulumi:"computeCount"`
-	// Cluster compute node specifications.
-	ComputeInstanceType pulumi.StringInput `pulumi:"computeInstanceType"`
-	// The creation time of the resource.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
-	// Cluster deployment mode. Possible values:
-	// - Standard: separate deployment of account nodes, scheduling nodes, login nodes, and compute nodes.
-	// - Advanced:HA mode deployment.
-	// - Simple: the account node and the scheduling node are deployed on one node, and the login node and the compute node are deployed separately.
-	// - Tiny: account nodes, scheduling nodes, and login nodes are deployed on one node, and compute nodes are deployed separately.
-	// - OneBox: account node, scheduling node, login node and compute node are deployed on one node.
-	DeployMode pulumi.StringInput `pulumi:"deployMode"`
-	// The description of E-HPC cluster.
-	Description pulumi.StringInput `pulumi:"description"`
-	// Whether to turn on high availability. > If high availability is enabled, each control role in the cluster will use two primary and secondary instances.
-	HaEnable pulumi.BoolInput `pulumi:"haEnable"`
-	// The ID of the Cluster.
-	Id pulumi.StringInput `pulumi:"id"`
-	// The ID of the Image.
-	ImageId pulumi.StringInput `pulumi:"imageId"`
-	// The type of the image.
-	ImageOwnerAlias pulumi.StringInput `pulumi:"imageOwnerAlias"`
-	// The number of cluster login nodes. Only configuration 1 is supported.
-	LoginCount pulumi.IntInput `pulumi:"loginCount"`
-	// Cluster login node specifications.
-	LoginInstanceType pulumi.StringInput `pulumi:"loginInstanceType"`
-	ManagerCount      pulumi.IntInput    `pulumi:"managerCount"`
-	// The instance type of manager nodes.
-	ManagerInstanceType pulumi.StringInput `pulumi:"managerInstanceType"`
-	// The image tag of the operating system.
-	OsTag              pulumi.StringInput                            `pulumi:"osTag"`
-	PostInstallScripts GetClustersClusterPostInstallScriptArrayInput `pulumi:"postInstallScripts"`
-	// Mount the remote directory of the shared storage.
-	RemoteDirectory pulumi.StringInput `pulumi:"remoteDirectory"`
-	// The SccCluster ID used by the cluster. If the cluster is not an SCC model, it is empty.
-	SccClusterId pulumi.StringInput `pulumi:"sccClusterId"`
-	// Dispatch server type.
-	SchedulerType pulumi.StringInput `pulumi:"schedulerType"`
-	// The ID of the security group.
-	SecurityGroupId pulumi.StringInput `pulumi:"securityGroupId"`
-	// The status of the resource.
-	Status pulumi.StringInput `pulumi:"status"`
-	// The ID of the NAS instance. Currently, you cannot automatically create an Alibaba Cloud NAS instance.
-	VolumeId pulumi.StringInput `pulumi:"volumeId"`
-	// The mount target of the file system. Mount targets cannot be automatically created for NAS file systems.
+	ClientVersion       pulumi.StringInput                            `pulumi:"clientVersion"`
+	ClusterId           pulumi.StringInput                            `pulumi:"clusterId"`
+	ClusterName         pulumi.StringInput                            `pulumi:"clusterName"`
+	ComputeCount        pulumi.IntInput                               `pulumi:"computeCount"`
+	ComputeInstanceType pulumi.StringInput                            `pulumi:"computeInstanceType"`
+	CreateTime          pulumi.StringInput                            `pulumi:"createTime"`
+	DeployMode          pulumi.StringInput                            `pulumi:"deployMode"`
+	Description         pulumi.StringInput                            `pulumi:"description"`
+	HaEnable            pulumi.BoolInput                              `pulumi:"haEnable"`
+	Id                  pulumi.StringInput                            `pulumi:"id"`
+	ImageId             pulumi.StringInput                            `pulumi:"imageId"`
+	ImageOwnerAlias     pulumi.StringInput                            `pulumi:"imageOwnerAlias"`
+	LoginCount          pulumi.IntInput                               `pulumi:"loginCount"`
+	LoginInstanceType   pulumi.StringInput                            `pulumi:"loginInstanceType"`
+	ManagerCount        pulumi.IntInput                               `pulumi:"managerCount"`
+	ManagerInstanceType pulumi.StringInput                            `pulumi:"managerInstanceType"`
+	OsTag               pulumi.StringInput                            `pulumi:"osTag"`
+	PostInstallScripts  GetClustersClusterPostInstallScriptArrayInput `pulumi:"postInstallScripts"`
+	RemoteDirectory     pulumi.StringInput                            `pulumi:"remoteDirectory"`
+	SccClusterId        pulumi.StringInput                            `pulumi:"sccClusterId"`
+	SchedulerType       pulumi.StringInput                            `pulumi:"schedulerType"`
+	SecurityGroupId     pulumi.StringInput                            `pulumi:"securityGroupId"`
+	// The status of the resource. Valid values:
+	Status           pulumi.StringInput `pulumi:"status"`
+	VolumeId         pulumi.StringInput `pulumi:"volumeId"`
 	VolumeMountpoint pulumi.StringInput `pulumi:"volumeMountpoint"`
-	// The type of the protocol that is used by the file system.
-	VolumeProtocol pulumi.StringInput `pulumi:"volumeProtocol"`
-	// The type of the network shared storage. Valid value: NAS.
-	VolumeType pulumi.StringInput `pulumi:"volumeType"`
-	// The ID of the VPC network.
-	VpcId pulumi.StringInput `pulumi:"vpcId"`
-	// The vswitch id.
-	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
-	ZoneId    pulumi.StringInput `pulumi:"zoneId"`
+	VolumeProtocol   pulumi.StringInput `pulumi:"volumeProtocol"`
+	VolumeType       pulumi.StringInput `pulumi:"volumeType"`
+	VpcId            pulumi.StringInput `pulumi:"vpcId"`
+	VswitchId        pulumi.StringInput `pulumi:"vswitchId"`
+	ZoneId           pulumi.StringInput `pulumi:"zoneId"`
 }
 
 func (GetClustersClusterArgs) ElementType() reflect.Type {
@@ -703,72 +640,54 @@ func (o GetClustersClusterOutput) ClientVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ClientVersion }).(pulumi.StringOutput)
 }
 
-// The id of E-HPC Cluster.
 func (o GetClustersClusterOutput) ClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterId }).(pulumi.StringOutput)
 }
 
-// The name of E-HPC cluster.
 func (o GetClustersClusterOutput) ClusterName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ClusterName }).(pulumi.StringOutput)
 }
 
-// The number of compute nodes in the cluster.
 func (o GetClustersClusterOutput) ComputeCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClustersCluster) int { return v.ComputeCount }).(pulumi.IntOutput)
 }
 
-// Cluster compute node specifications.
 func (o GetClustersClusterOutput) ComputeInstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ComputeInstanceType }).(pulumi.StringOutput)
 }
 
-// The creation time of the resource.
 func (o GetClustersClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Cluster deployment mode. Possible values:
-// - Standard: separate deployment of account nodes, scheduling nodes, login nodes, and compute nodes.
-// - Advanced:HA mode deployment.
-// - Simple: the account node and the scheduling node are deployed on one node, and the login node and the compute node are deployed separately.
-// - Tiny: account nodes, scheduling nodes, and login nodes are deployed on one node, and compute nodes are deployed separately.
-// - OneBox: account node, scheduling node, login node and compute node are deployed on one node.
 func (o GetClustersClusterOutput) DeployMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.DeployMode }).(pulumi.StringOutput)
 }
 
-// The description of E-HPC cluster.
 func (o GetClustersClusterOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Whether to turn on high availability. > If high availability is enabled, each control role in the cluster will use two primary and secondary instances.
 func (o GetClustersClusterOutput) HaEnable() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClustersCluster) bool { return v.HaEnable }).(pulumi.BoolOutput)
 }
 
-// The ID of the Cluster.
 func (o GetClustersClusterOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The ID of the Image.
 func (o GetClustersClusterOutput) ImageId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ImageId }).(pulumi.StringOutput)
 }
 
-// The type of the image.
 func (o GetClustersClusterOutput) ImageOwnerAlias() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ImageOwnerAlias }).(pulumi.StringOutput)
 }
 
-// The number of cluster login nodes. Only configuration 1 is supported.
 func (o GetClustersClusterOutput) LoginCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClustersCluster) int { return v.LoginCount }).(pulumi.IntOutput)
 }
 
-// Cluster login node specifications.
 func (o GetClustersClusterOutput) LoginInstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.LoginInstanceType }).(pulumi.StringOutput)
 }
@@ -777,12 +696,10 @@ func (o GetClustersClusterOutput) ManagerCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClustersCluster) int { return v.ManagerCount }).(pulumi.IntOutput)
 }
 
-// The instance type of manager nodes.
 func (o GetClustersClusterOutput) ManagerInstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.ManagerInstanceType }).(pulumi.StringOutput)
 }
 
-// The image tag of the operating system.
 func (o GetClustersClusterOutput) OsTag() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.OsTag }).(pulumi.StringOutput)
 }
@@ -791,57 +708,47 @@ func (o GetClustersClusterOutput) PostInstallScripts() GetClustersClusterPostIns
 	return o.ApplyT(func(v GetClustersCluster) []GetClustersClusterPostInstallScript { return v.PostInstallScripts }).(GetClustersClusterPostInstallScriptArrayOutput)
 }
 
-// Mount the remote directory of the shared storage.
 func (o GetClustersClusterOutput) RemoteDirectory() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.RemoteDirectory }).(pulumi.StringOutput)
 }
 
-// The SccCluster ID used by the cluster. If the cluster is not an SCC model, it is empty.
 func (o GetClustersClusterOutput) SccClusterId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.SccClusterId }).(pulumi.StringOutput)
 }
 
-// Dispatch server type.
 func (o GetClustersClusterOutput) SchedulerType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.SchedulerType }).(pulumi.StringOutput)
 }
 
-// The ID of the security group.
 func (o GetClustersClusterOutput) SecurityGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.SecurityGroupId }).(pulumi.StringOutput)
 }
 
-// The status of the resource.
+// The status of the resource. Valid values:
 func (o GetClustersClusterOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.Status }).(pulumi.StringOutput)
 }
 
-// The ID of the NAS instance. Currently, you cannot automatically create an Alibaba Cloud NAS instance.
 func (o GetClustersClusterOutput) VolumeId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.VolumeId }).(pulumi.StringOutput)
 }
 
-// The mount target of the file system. Mount targets cannot be automatically created for NAS file systems.
 func (o GetClustersClusterOutput) VolumeMountpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.VolumeMountpoint }).(pulumi.StringOutput)
 }
 
-// The type of the protocol that is used by the file system.
 func (o GetClustersClusterOutput) VolumeProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.VolumeProtocol }).(pulumi.StringOutput)
 }
 
-// The type of the network shared storage. Valid value: NAS.
 func (o GetClustersClusterOutput) VolumeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.VolumeType }).(pulumi.StringOutput)
 }
 
-// The ID of the VPC network.
 func (o GetClustersClusterOutput) VpcId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.VpcId }).(pulumi.StringOutput)
 }
 
-// The vswitch id.
 func (o GetClustersClusterOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetClustersCluster) string { return v.VswitchId }).(pulumi.StringOutput)
 }

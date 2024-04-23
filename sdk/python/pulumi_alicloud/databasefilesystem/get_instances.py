@@ -113,7 +113,6 @@ def get_instances(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -123,13 +122,12 @@ def get_instances(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.databasefilesystem.get_instances(name_regex="^my-Instance")
     pulumi.export("dbfsInstanceId2", name_regex.instances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Instance IDs.
     :param str name_regex: A regex string to filter results by Instance name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the Database file system.
+    :param str status: Database file system state. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -164,7 +162,6 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -174,12 +171,11 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
     name_regex = alicloud.databasefilesystem.get_instances(name_regex="^my-Instance")
     pulumi.export("dbfsInstanceId2", name_regex.instances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Instance IDs.
     :param str name_regex: A regex string to filter results by Instance name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the Database file system.
+    :param str status: Database file system state. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
     """
     ...

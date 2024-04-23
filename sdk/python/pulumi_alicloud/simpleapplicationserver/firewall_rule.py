@@ -189,7 +189,6 @@ class FirewallRule(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -213,7 +212,6 @@ class FirewallRule(pulumi.CustomResource):
             port="9999",
             remark=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -247,7 +245,6 @@ class FirewallRule(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -271,7 +268,6 @@ class FirewallRule(pulumi.CustomResource):
             port="9999",
             remark=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

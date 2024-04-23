@@ -19,7 +19,6 @@ namespace Pulumi.AliCloud.Emr
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.AliCloud.Emr
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDiskTypesResult> InvokeAsync(GetDiskTypesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDiskTypesResult>("alicloud:emr/getDiskTypes:getDiskTypes", args ?? new GetDiskTypesArgs(), options.WithDefaults());
@@ -56,7 +54,6 @@ namespace Pulumi.AliCloud.Emr
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Pulumi.AliCloud.Emr
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDiskTypesResult> Invoke(GetDiskTypesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDiskTypesResult>("alicloud:emr/getDiskTypes:getDiskTypes", args ?? new GetDiskTypesInvokeArgs(), options.WithDefaults());

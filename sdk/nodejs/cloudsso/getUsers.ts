@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -48,7 +47,6 @@ import * as utilities from "../utilities";
  * });
  * export const cloudSsoUserId4 = status.then(status => status.users?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getUsers(args: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
 
@@ -89,11 +87,11 @@ export interface GetUsersArgs {
      */
     outputFile?: string;
     /**
-     * ProvisionType.
+     * ProvisionType. Valid values: `Manual`, `Synchronized`.
      */
     provisionType?: string;
     /**
-     * User status. Valid values: `Enabled` and `Disabled`.
+     * The status of user. Valid values: `Disabled`, `Enabled`.
      */
     status?: string;
 }
@@ -127,7 +125,6 @@ export interface GetUsersResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -158,7 +155,6 @@ export interface GetUsersResult {
  * });
  * export const cloudSsoUserId4 = status.then(status => status.users?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getUsersOutput(args: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
     return pulumi.output(args).apply((a: any) => getUsers(a, opts))
@@ -189,11 +185,11 @@ export interface GetUsersOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * ProvisionType.
+     * ProvisionType. Valid values: `Manual`, `Synchronized`.
      */
     provisionType?: pulumi.Input<string>;
     /**
-     * User status. Valid values: `Enabled` and `Disabled`.
+     * The status of user. Valid values: `Disabled`, `Enabled`.
      */
     status?: pulumi.Input<string>;
 }

@@ -133,7 +133,6 @@ def get_custom_lines(domain_name: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -142,7 +141,6 @@ def get_custom_lines(domain_name: Optional[str] = None,
         domain_name="your_domain_name")
     pulumi.export("alidnsCustomLineId1", ids.lines[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str domain_name: The Domain name.
@@ -191,7 +189,6 @@ def get_custom_lines_output(domain_name: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -200,7 +197,6 @@ def get_custom_lines_output(domain_name: Optional[pulumi.Input[str]] = None,
         domain_name="your_domain_name")
     pulumi.export("alidnsCustomLineId1", ids.lines[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str domain_name: The Domain name.

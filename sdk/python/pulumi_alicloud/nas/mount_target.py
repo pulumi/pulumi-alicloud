@@ -289,7 +289,6 @@ class MountTarget(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -323,7 +322,6 @@ class MountTarget(pulumi.CustomResource):
             vpc_id=example.id,
             network_type=example_access_group.access_group_type)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -359,7 +357,6 @@ class MountTarget(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -393,7 +390,6 @@ class MountTarget(pulumi.CustomResource):
             vpc_id=example.id,
             network_type=example_access_group.access_group_type)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

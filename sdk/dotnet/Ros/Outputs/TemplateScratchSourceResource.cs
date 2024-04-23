@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Ros.Outputs
     [OutputType]
     public sealed class TemplateScratchSourceResource
     {
-        /// <summary>
-        /// The ID of the Source Resource.
-        /// </summary>
         public readonly string ResourceId;
-        /// <summary>
-        /// The type of the Source resource.
-        /// </summary>
         public readonly string ResourceType;
 
         [OutputConstructor]

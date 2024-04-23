@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -87,7 +86,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -126,11 +124,11 @@ export class Etl extends pulumi.CustomResource {
     }
 
     /**
-     * Delivery target logstore access key id.
+     * Source logstore access key id.
      */
     public readonly accessKeyId!: pulumi.Output<string | undefined>;
     /**
-     * Delivery target logstore access key secret.
+     * Source logstore access key secret.
      */
     public readonly accessKeySecret!: pulumi.Output<string | undefined>;
     /**
@@ -182,7 +180,7 @@ export class Etl extends pulumi.CustomResource {
      */
     public readonly lastModifiedTime!: pulumi.Output<number>;
     /**
-     * Delivery target logstore.
+     * The source logstore of the processing job.
      */
     public readonly logstore!: pulumi.Output<string>;
     /**
@@ -190,11 +188,11 @@ export class Etl extends pulumi.CustomResource {
      */
     public readonly parameters!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The project where the target logstore is delivered.
+     * The name of the project where the etl job is located.
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+     * Sts role info under source logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
      */
     public readonly roleArn!: pulumi.Output<string | undefined>;
     /**
@@ -310,11 +308,11 @@ export class Etl extends pulumi.CustomResource {
  */
 export interface EtlState {
     /**
-     * Delivery target logstore access key id.
+     * Source logstore access key id.
      */
     accessKeyId?: pulumi.Input<string>;
     /**
-     * Delivery target logstore access key secret.
+     * Source logstore access key secret.
      */
     accessKeySecret?: pulumi.Input<string>;
     /**
@@ -366,7 +364,7 @@ export interface EtlState {
      */
     lastModifiedTime?: pulumi.Input<number>;
     /**
-     * Delivery target logstore.
+     * The source logstore of the processing job.
      */
     logstore?: pulumi.Input<string>;
     /**
@@ -374,11 +372,11 @@ export interface EtlState {
      */
     parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The project where the target logstore is delivered.
+     * The name of the project where the etl job is located.
      */
     project?: pulumi.Input<string>;
     /**
-     * Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+     * Sts role info under source logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
      */
     roleArn?: pulumi.Input<string>;
     /**
@@ -408,11 +406,11 @@ export interface EtlState {
  */
 export interface EtlArgs {
     /**
-     * Delivery target logstore access key id.
+     * Source logstore access key id.
      */
     accessKeyId?: pulumi.Input<string>;
     /**
-     * Delivery target logstore access key secret.
+     * Source logstore access key secret.
      */
     accessKeySecret?: pulumi.Input<string>;
     /**
@@ -464,7 +462,7 @@ export interface EtlArgs {
      */
     lastModifiedTime?: pulumi.Input<number>;
     /**
-     * Delivery target logstore.
+     * The source logstore of the processing job.
      */
     logstore: pulumi.Input<string>;
     /**
@@ -472,11 +470,11 @@ export interface EtlArgs {
      */
     parameters?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The project where the target logstore is delivered.
+     * The name of the project where the etl job is located.
      */
     project: pulumi.Input<string>;
     /**
-     * Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+     * Sts role info under source logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
      */
     roleArn?: pulumi.Input<string>;
     /**

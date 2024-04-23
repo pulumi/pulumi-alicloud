@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Dfs.Outputs
     [OutputType]
     public sealed class GetZonesZoneOptionResult
     {
-        /// <summary>
-        /// The protocol type. Valid values: `HDFS`.
-        /// </summary>
         public readonly string ProtocolType;
-        /// <summary>
-        /// The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
-        /// </summary>
         public readonly string StorageType;
 
         [OutputConstructor]

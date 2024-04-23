@@ -19,7 +19,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,7 +45,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetClassDetails(ctx *pulumi.Context, args *GetClassDetailsArgs, opts ...pulumi.InvokeOption) (*GetClassDetailsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClassDetailsResult

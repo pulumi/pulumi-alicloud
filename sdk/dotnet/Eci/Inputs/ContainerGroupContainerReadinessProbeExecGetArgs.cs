@@ -14,10 +14,6 @@ namespace Pulumi.AliCloud.Eci.Inputs
     {
         [Input("commands")]
         private InputList<string>? _commands;
-
-        /// <summary>
-        /// Commands to be executed inside the container when performing health checks using the command line method.
-        /// </summary>
         public InputList<string> Commands
         {
             get => _commands ?? (_commands = new InputList<string>());

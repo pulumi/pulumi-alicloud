@@ -716,7 +716,6 @@ class DBClusterLakeVersion(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -735,7 +734,6 @@ class DBClusterLakeVersion(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             enable_default_resource_group=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -782,7 +780,6 @@ class DBClusterLakeVersion(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -801,7 +798,6 @@ class DBClusterLakeVersion(pulumi.CustomResource):
             payment_type="PayAsYouGo",
             enable_default_resource_group=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

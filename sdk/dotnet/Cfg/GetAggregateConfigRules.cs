@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Cfg
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,7 +44,6 @@ namespace Pulumi.AliCloud.Cfg
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAggregateConfigRulesResult> InvokeAsync(GetAggregateConfigRulesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAggregateConfigRulesResult>("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", args ?? new GetAggregateConfigRulesArgs(), options.WithDefaults());
@@ -59,7 +57,6 @@ namespace Pulumi.AliCloud.Cfg
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -84,7 +81,6 @@ namespace Pulumi.AliCloud.Cfg
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAggregateConfigRulesResult> Invoke(GetAggregateConfigRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAggregateConfigRulesResult>("alicloud:cfg/getAggregateConfigRules:getAggregateConfigRules", args ?? new GetAggregateConfigRulesInvokeArgs(), options.WithDefaults());

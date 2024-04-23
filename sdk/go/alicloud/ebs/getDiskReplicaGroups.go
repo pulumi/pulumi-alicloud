@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,7 +45,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDiskReplicaGroups(ctx *pulumi.Context, args *GetDiskReplicaGroupsArgs, opts ...pulumi.InvokeOption) (*GetDiskReplicaGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDiskReplicaGroupsResult

@@ -109,7 +109,6 @@ class EventBus(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -120,7 +119,6 @@ class EventBus(pulumi.CustomResource):
             name = "tf-example"
         example = alicloud.eventbridge.EventBus("example", event_bus_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -152,7 +150,6 @@ class EventBus(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -163,7 +160,6 @@ class EventBus(pulumi.CustomResource):
             name = "tf-example"
         example = alicloud.eventbridge.EventBus("example", event_bus_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

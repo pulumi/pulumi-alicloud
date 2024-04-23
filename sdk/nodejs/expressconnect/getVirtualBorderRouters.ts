@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -43,7 +42,6 @@ import * as utilities from "../utilities";
  * });
  * export const expressConnectVirtualBorderRouterId3 = filter.then(filter => filter.routers?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVirtualBorderRouters(args?: GetVirtualBorderRoutersArgs, opts?: pulumi.InvokeOptions): Promise<GetVirtualBorderRoutersResult> {
     args = args || {};
@@ -109,7 +107,6 @@ export interface GetVirtualBorderRoutersResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -137,7 +134,6 @@ export interface GetVirtualBorderRoutersResult {
  * });
  * export const expressConnectVirtualBorderRouterId3 = filter.then(filter => filter.routers?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVirtualBorderRoutersOutput(args?: GetVirtualBorderRoutersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVirtualBorderRoutersResult> {
     return pulumi.output(args).apply((a: any) => getVirtualBorderRouters(a, opts))

@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// ### Create a RDS PostgreSQL upgrade instance
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -94,7 +93,6 @@ namespace Pulumi.AliCloud.Rds
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

@@ -120,7 +120,6 @@ def get_auto_snapshot_policies(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -128,7 +127,6 @@ def get_auto_snapshot_policies(ids: Optional[Sequence[str]] = None,
     ids = alicloud.nas.get_auto_snapshot_policies(ids=["example_value"])
     pulumi.export("nasAutoSnapshotPoliciesId1", ids.policies[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Auto Snapshot Policies IDs.
@@ -167,7 +165,6 @@ def get_auto_snapshot_policies_output(ids: Optional[pulumi.Input[Optional[Sequen
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -175,7 +172,6 @@ def get_auto_snapshot_policies_output(ids: Optional[pulumi.Input[Optional[Sequen
     ids = alicloud.nas.get_auto_snapshot_policies(ids=["example_value"])
     pulumi.export("nasAutoSnapshotPoliciesId1", ids.policies[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Auto Snapshot Policies IDs.

@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceMeshMeshConfigAudit {
-    /**
-     * @return Enable CNI.
-     * 
-     */
     private @Nullable Boolean enabled;
-    /**
-     * @return The name of the SLS Project to which the control plane logs are collected.
-     * 
-     */
     private @Nullable String project;
 
     private ServiceMeshMeshConfigAudit() {}
-    /**
-     * @return Enable CNI.
-     * 
-     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
-    /**
-     * @return The name of the SLS Project to which the control plane logs are collected.
-     * 
-     */
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }

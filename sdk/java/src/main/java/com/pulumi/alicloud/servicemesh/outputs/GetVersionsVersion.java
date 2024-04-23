@@ -11,38 +11,34 @@ import java.util.Objects;
 @CustomType
 public final class GetVersionsVersion {
     /**
-     * @return The edition of the ASM instance.
+     * @return The edition of the ASM instance. Valid values:
+     * - Default: Standard Edition
+     * - Pro: Professional Edition
      * 
      */
     private String edition;
-    /**
-     * @return The ASM version id. It formats as `&lt;edition&gt;:&lt;version&gt;`.
-     * 
-     */
     private String id;
     /**
-     * @return The AMS version.
+     * @return A list of Service Mesh Service Meshes. Each element contains the following attributes:
      * 
      */
     private String version;
 
     private GetVersionsVersion() {}
     /**
-     * @return The edition of the ASM instance.
+     * @return The edition of the ASM instance. Valid values:
+     * - Default: Standard Edition
+     * - Pro: Professional Edition
      * 
      */
     public String edition() {
         return this.edition;
     }
-    /**
-     * @return The ASM version id. It formats as `&lt;edition&gt;:&lt;version&gt;`.
-     * 
-     */
     public String id() {
         return this.id;
     }
     /**
-     * @return The AMS version.
+     * @return A list of Service Mesh Service Meshes. Each element contains the following attributes:
      * 
      */
     public String version() {

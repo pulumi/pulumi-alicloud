@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -45,7 +44,6 @@ import * as utilities from "../utilities";
  * });
  * export const ecdPolicyGroupId = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPolicyGroups(args?: GetPolicyGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetPolicyGroupsResult> {
     args = args || {};
@@ -105,7 +103,6 @@ export interface GetPolicyGroupsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -135,7 +132,6 @@ export interface GetPolicyGroupsResult {
  * });
  * export const ecdPolicyGroupId = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPolicyGroupsOutput(args?: GetPolicyGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyGroupsResult> {
     return pulumi.output(args).apply((a: any) => getPolicyGroups(a, opts))

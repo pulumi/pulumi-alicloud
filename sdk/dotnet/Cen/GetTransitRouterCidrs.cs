@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -51,7 +50,6 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTransitRouterCidrsResult> InvokeAsync(GetTransitRouterCidrsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterCidrsResult>("alicloud:cen/getTransitRouterCidrs:getTransitRouterCidrs", args ?? new GetTransitRouterCidrsArgs(), options.WithDefaults());
@@ -65,7 +63,6 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -96,7 +93,6 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTransitRouterCidrsResult> Invoke(GetTransitRouterCidrsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterCidrsResult>("alicloud:cen/getTransitRouterCidrs:getTransitRouterCidrs", args ?? new GetTransitRouterCidrsInvokeArgs(), options.WithDefaults());

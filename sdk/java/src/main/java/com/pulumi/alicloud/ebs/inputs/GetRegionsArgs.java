@@ -31,14 +31,14 @@ public final class GetRegionsArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The ID of the region.
+     * A list of Disk Replica Group IDs.
      * 
      */
     @Import(name="regionId")
     private @Nullable Output<String> regionId;
 
     /**
-     * @return The ID of the region.
+     * @return A list of Disk Replica Group IDs.
      * 
      */
     public Optional<Output<String>> regionId() {
@@ -92,7 +92,7 @@ public final class GetRegionsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param regionId The ID of the region.
+         * @param regionId A list of Disk Replica Group IDs.
          * 
          * @return builder
          * 
@@ -103,7 +103,7 @@ public final class GetRegionsArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param regionId The ID of the region.
+         * @param regionId A list of Disk Replica Group IDs.
          * 
          * @return builder
          * 

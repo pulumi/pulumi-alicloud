@@ -154,7 +154,6 @@ def get_cross_region_backups(backup_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -164,7 +163,6 @@ def get_cross_region_backups(backup_id: Optional[str] = None,
         end_time="2022-12-16T00:00:00Z")
     pulumi.export("firstRdsCrossRegionBackups", backups.backups[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str backup_id: The ID of the cross-region data backup file.
@@ -224,7 +222,6 @@ def get_cross_region_backups_output(backup_id: Optional[pulumi.Input[Optional[st
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -234,7 +231,6 @@ def get_cross_region_backups_output(backup_id: Optional[pulumi.Input[Optional[st
         end_time="2022-12-16T00:00:00Z")
     pulumi.export("firstRdsCrossRegionBackups", backups.backups[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str backup_id: The ID of the cross-region data backup file.

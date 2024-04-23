@@ -16,32 +16,16 @@ public final class ServiceMeshMeshConfigAccessLogArgs extends com.pulumi.resourc
 
     public static final ServiceMeshMeshConfigAccessLogArgs Empty = new ServiceMeshMeshConfigAccessLogArgs();
 
-    /**
-     * Enable CNI.
-     * 
-     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
-    /**
-     * @return Enable CNI.
-     * 
-     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
-    /**
-     * The name of the SLS Project to which the control plane logs are collected.
-     * 
-     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
-    /**
-     * @return The name of the SLS Project to which the control plane logs are collected.
-     * 
-     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -71,44 +55,20 @@ public final class ServiceMeshMeshConfigAccessLogArgs extends com.pulumi.resourc
             $ = new ServiceMeshMeshConfigAccessLogArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param enabled Enable CNI.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
-        /**
-         * @param enabled Enable CNI.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }
 
-        /**
-         * @param project The name of the SLS Project to which the control plane logs are collected.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
-        /**
-         * @param project The name of the SLS Project to which the control plane logs are collected.
-         * 
-         * @return builder
-         * 
-         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

@@ -101,14 +101,14 @@ public final class GetQuotaApplicationsPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * The ID of quota action..
+     * The ID of quota action.
      * 
      */
     @Import(name="quotaActionCode")
     private @Nullable String quotaActionCode;
 
     /**
-     * @return The ID of quota action..
+     * @return The ID of quota action.
      * 
      */
     public Optional<String> quotaActionCode() {
@@ -131,14 +131,14 @@ public final class GetQuotaApplicationsPlainArgs extends com.pulumi.resources.In
     }
 
     /**
-     * The status of the quota application.
+     * The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the quota application.
+     * @return The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
      * 
      */
     public Optional<String> status() {
@@ -258,7 +258,7 @@ public final class GetQuotaApplicationsPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param quotaActionCode The ID of quota action..
+         * @param quotaActionCode The ID of quota action.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class GetQuotaApplicationsPlainArgs extends com.pulumi.resources.In
         }
 
         /**
-         * @param status The status of the quota application.
+         * @param status The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
          * 
          * @return builder
          * 

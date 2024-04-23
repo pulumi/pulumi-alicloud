@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Cms
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -61,7 +60,6 @@ namespace Pulumi.AliCloud.Cms
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetMetricRuleTemplatesResult> InvokeAsync(GetMetricRuleTemplatesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMetricRuleTemplatesResult>("alicloud:cms/getMetricRuleTemplates:getMetricRuleTemplates", args ?? new GetMetricRuleTemplatesArgs(), options.WithDefaults());
@@ -75,7 +73,6 @@ namespace Pulumi.AliCloud.Cms
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -116,7 +113,6 @@ namespace Pulumi.AliCloud.Cms
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetMetricRuleTemplatesResult> Invoke(GetMetricRuleTemplatesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetricRuleTemplatesResult>("alicloud:cms/getMetricRuleTemplates:getMetricRuleTemplates", args ?? new GetMetricRuleTemplatesInvokeArgs(), options.WithDefaults());

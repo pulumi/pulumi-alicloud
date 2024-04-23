@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.FC.Outputs
     [OutputType]
     public sealed class V2FunctionCustomDnsDnsOption
     {
-        /// <summary>
-        /// DNS option name.
-        /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// DNS option value.
-        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

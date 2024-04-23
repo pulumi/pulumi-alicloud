@@ -13,17 +13,8 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
     [OutputType]
     public sealed class ProjectPropertiesEncryption
     {
-        /// <summary>
-        /// Algorithm.
-        /// </summary>
         public readonly string? Algorithm;
-        /// <summary>
-        /// Whether to open.
-        /// </summary>
         public readonly bool? Enable;
-        /// <summary>
-        /// Encryption algorithm key.
-        /// </summary>
         public readonly string? Key;
 
         [OutputConstructor]

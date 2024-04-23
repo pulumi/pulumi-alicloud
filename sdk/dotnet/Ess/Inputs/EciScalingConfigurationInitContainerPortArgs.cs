@@ -12,15 +12,9 @@ namespace Pulumi.AliCloud.Ess.Inputs
 
     public sealed class EciScalingConfigurationInitContainerPortArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The port number. Valid values: 1 to 65535.
-        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
-        /// <summary>
-        /// Valid values: TCP and UDP.
-        /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 

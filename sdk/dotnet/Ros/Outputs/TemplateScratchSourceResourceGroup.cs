@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Ros.Outputs
     [OutputType]
     public sealed class TemplateScratchSourceResourceGroup
     {
-        /// <summary>
-        /// The ID of the Source Resource Group.
-        /// </summary>
         public readonly string ResourceGroupId;
-        /// <summary>
-        /// Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-        /// </summary>
         public readonly ImmutableArray<string> ResourceTypeFilters;
 
         [OutputConstructor]

@@ -12,41 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class WafRuleRateLimitStatus {
-    /**
-     * @return The HTTP status code returned.
-     * 
-     */
     private @Nullable String code;
-    /**
-     * @return The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
-     * 
-     */
     private @Nullable Integer count;
-    /**
-     * @return The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
-     * 
-     */
     private @Nullable Integer ratio;
 
     private WafRuleRateLimitStatus() {}
-    /**
-     * @return The HTTP status code returned.
-     * 
-     */
     public Optional<String> code() {
         return Optional.ofNullable(this.code);
     }
-    /**
-     * @return The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
-     * 
-     */
     public Optional<Integer> count() {
         return Optional.ofNullable(this.count);
     }
-    /**
-     * @return The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
-     * 
-     */
     public Optional<Integer> ratio() {
         return Optional.ofNullable(this.ratio);
     }

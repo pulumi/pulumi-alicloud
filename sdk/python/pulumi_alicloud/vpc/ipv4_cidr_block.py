@@ -124,7 +124,6 @@ class Ipv4CidrBlock(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -138,7 +137,6 @@ class Ipv4CidrBlock(pulumi.CustomResource):
             secondary_cidr_block="192.168.0.0/16",
             vpc_id=defaultvpc.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -174,7 +172,6 @@ class Ipv4CidrBlock(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -188,7 +185,6 @@ class Ipv4CidrBlock(pulumi.CustomResource):
             secondary_cidr_block="192.168.0.0/16",
             vpc_id=defaultvpc.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

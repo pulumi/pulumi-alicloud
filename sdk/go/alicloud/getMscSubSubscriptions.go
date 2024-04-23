@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,7 +41,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetMscSubSubscriptions(ctx *pulumi.Context, args *GetMscSubSubscriptionsArgs, opts ...pulumi.InvokeOption) (*GetMscSubSubscriptionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMscSubSubscriptionsResult

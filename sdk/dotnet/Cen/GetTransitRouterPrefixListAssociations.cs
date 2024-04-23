@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,7 +40,6 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTransitRouterPrefixListAssociationsResult> InvokeAsync(GetTransitRouterPrefixListAssociationsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterPrefixListAssociationsResult>("alicloud:cen/getTransitRouterPrefixListAssociations:getTransitRouterPrefixListAssociations", args ?? new GetTransitRouterPrefixListAssociationsArgs(), options.WithDefaults());
@@ -55,7 +53,6 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,7 +73,6 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTransitRouterPrefixListAssociationsResult> Invoke(GetTransitRouterPrefixListAssociationsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterPrefixListAssociationsResult>("alicloud:cen/getTransitRouterPrefixListAssociations:getTransitRouterPrefixListAssociations", args ?? new GetTransitRouterPrefixListAssociationsInvokeArgs(), options.WithDefaults());
@@ -122,7 +118,7 @@ namespace Pulumi.AliCloud.Cen
         public string? PrefixListId { get; set; }
 
         /// <summary>
-        /// The status of the prefix list.
+        /// The status of the prefix list. Valid Value: `Active`, `Updating`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -184,7 +180,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? PrefixListId { get; set; }
 
         /// <summary>
-        /// The status of the prefix list.
+        /// The status of the prefix list. Valid Value: `Active`, `Updating`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

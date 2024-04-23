@@ -198,11 +198,6 @@ class ProjectPropertiesEncryptionArgs:
                  algorithm: Optional[pulumi.Input[str]] = None,
                  enable: Optional[pulumi.Input[bool]] = None,
                  key: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] algorithm: Algorithm.
-        :param pulumi.Input[bool] enable: Whether to open.
-        :param pulumi.Input[str] key: Encryption algorithm key.
-        """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
         if enable is not None:
@@ -213,9 +208,6 @@ class ProjectPropertiesEncryptionArgs:
     @property
     @pulumi.getter
     def algorithm(self) -> Optional[pulumi.Input[str]]:
-        """
-        Algorithm.
-        """
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
@@ -225,9 +217,6 @@ class ProjectPropertiesEncryptionArgs:
     @property
     @pulumi.getter
     def enable(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether to open.
-        """
         return pulumi.get(self, "enable")
 
     @enable.setter
@@ -237,9 +226,6 @@ class ProjectPropertiesEncryptionArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
-        """
-        Encryption algorithm key.
-        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -253,8 +239,7 @@ class ProjectPropertiesTableLifecycleArgs:
                  type: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] type: Life cycle type.
-        :param pulumi.Input[str] value: The value of the life cycle.
+        :param pulumi.Input[str] type: Project type
         """
         if type is not None:
             pulumi.set(__self__, "type", type)
@@ -265,7 +250,7 @@ class ProjectPropertiesTableLifecycleArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Life cycle type.
+        Project type
         """
         return pulumi.get(self, "type")
 
@@ -276,9 +261,6 @@ class ProjectPropertiesTableLifecycleArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        The value of the life cycle.
-        """
         return pulumi.get(self, "value")
 
     @value.setter

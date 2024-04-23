@@ -527,7 +527,6 @@ class BucketObject(pulumi.CustomResource):
 
         ### Uploading a file to a bucket
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -544,11 +543,9 @@ class BucketObject(pulumi.CustomResource):
             key="example_key",
             source="./main.tf")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Uploading a content to a bucket
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -565,7 +562,6 @@ class BucketObject(pulumi.CustomResource):
             key="example_key",
             content="the content that you want to upload.")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -599,7 +595,6 @@ class BucketObject(pulumi.CustomResource):
 
         ### Uploading a file to a bucket
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -616,11 +611,9 @@ class BucketObject(pulumi.CustomResource):
             key="example_key",
             source="./main.tf")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### Uploading a content to a bucket
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -637,7 +630,6 @@ class BucketObject(pulumi.CustomResource):
             key="example_key",
             content="the content that you want to upload.")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param BucketObjectArgs args: The arguments to use to populate this resource's properties.

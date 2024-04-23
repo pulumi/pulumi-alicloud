@@ -104,7 +104,6 @@ class AlidnsDomainAttachment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -127,7 +126,6 @@ class AlidnsDomainAttachment(pulumi.CustomResource):
             instance_id=default_alidns_instance.id,
             domain_names=[default_alidns_domain.domain_name])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -155,7 +153,6 @@ class AlidnsDomainAttachment(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -178,7 +175,6 @@ class AlidnsDomainAttachment(pulumi.CustomResource):
             instance_id=default_alidns_instance.id,
             domain_names=[default_alidns_domain.domain_name])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

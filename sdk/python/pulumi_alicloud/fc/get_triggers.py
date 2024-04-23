@@ -128,7 +128,6 @@ def get_triggers(function_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -138,7 +137,6 @@ def get_triggers(function_name: Optional[str] = None,
         name_regex="sample_fc_trigger")
     pulumi.export("firstFcTriggerName", fc_triggers_ds.triggers[0].name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str function_name: FC function name.
@@ -179,7 +177,6 @@ def get_triggers_output(function_name: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -189,7 +186,6 @@ def get_triggers_output(function_name: Optional[pulumi.Input[str]] = None,
         name_regex="sample_fc_trigger")
     pulumi.export("firstFcTriggerName", fc_triggers_ds.triggers[0].name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str function_name: FC function name.

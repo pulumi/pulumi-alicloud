@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Ros.Outputs
     [OutputType]
     public sealed class TemplateScratchPreferenceParameter
     {
-        /// <summary>
-        /// Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
-        /// </summary>
         public readonly string ParameterKey;
-        /// <summary>
-        /// Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
-        /// </summary>
         public readonly string ParameterValue;
 
         [OutputConstructor]

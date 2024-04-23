@@ -21,7 +21,7 @@ public final class GetNestServiceInstancesServiceInstanceServiceServiceInfo {
      */
     private String locale;
     /**
-     * @return The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+     * @return The name of the service.
      * 
      */
     private String name;
@@ -47,7 +47,7 @@ public final class GetNestServiceInstancesServiceInstanceServiceServiceInfo {
         return this.locale;
     }
     /**
-     * @return The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+     * @return The name of the service.
      * 
      */
     public String name() {

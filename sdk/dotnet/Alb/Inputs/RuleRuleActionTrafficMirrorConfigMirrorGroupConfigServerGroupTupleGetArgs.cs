@@ -12,9 +12,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
 
     public sealed class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the destination server group to which requests are forwarded.
-        /// </summary>
         [Input("serverGroupId")]
         public Input<string>? ServerGroupId { get; set; }
 

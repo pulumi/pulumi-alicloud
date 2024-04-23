@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const hbrEcsBackupPlanId = ids.then(ids => ids.plans?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEcsBackupPlans(args?: GetEcsBackupPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsBackupPlansResult> {
     args = args || {};
@@ -49,7 +47,7 @@ export interface GetEcsBackupPlansArgs {
      */
     ids?: string[];
     /**
-     * The ID of ECS instance.
+     * The ECS instance ID of the EcsBackupPlan used.
      */
     instanceId?: string;
     /**
@@ -61,7 +59,7 @@ export interface GetEcsBackupPlansArgs {
      */
     outputFile?: string;
     /**
-     * The ID of Backup vault.
+     * The Vault ID of the EcsBackupPlan used.
      */
     vaultId?: string;
 }
@@ -91,7 +89,6 @@ export interface GetEcsBackupPlansResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -101,7 +98,6 @@ export interface GetEcsBackupPlansResult {
  * });
  * export const hbrEcsBackupPlanId = ids.then(ids => ids.plans?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEcsBackupPlansOutput(args?: GetEcsBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsBackupPlansResult> {
     return pulumi.output(args).apply((a: any) => getEcsBackupPlans(a, opts))
@@ -116,7 +112,7 @@ export interface GetEcsBackupPlansOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of ECS instance.
+     * The ECS instance ID of the EcsBackupPlan used.
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -128,7 +124,7 @@ export interface GetEcsBackupPlansOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The ID of Backup vault.
+     * The Vault ID of the EcsBackupPlan used.
      */
     vaultId?: pulumi.Input<string>;
 }

@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRegionsRegionZone {
-    /**
-     * @return The ID of the zone.
-     * 
-     */
     private String zoneId;
 
     private GetRegionsRegionZone() {}
-    /**
-     * @return The ID of the zone.
-     * 
-     */
     public String zoneId() {
         return this.zoneId;
     }

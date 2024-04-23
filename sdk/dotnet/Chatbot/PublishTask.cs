@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Chatbot
     /// 
     /// Basic Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,7 +38,6 @@ namespace Pulumi.AliCloud.Chatbot
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Ros
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,7 +44,6 @@ namespace Pulumi.AliCloud.Ros
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetChangeSetsResult> InvokeAsync(GetChangeSetsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetChangeSetsResult>("alicloud:ros/getChangeSets:getChangeSets", args ?? new GetChangeSetsArgs(), options.WithDefaults());
@@ -59,7 +57,6 @@ namespace Pulumi.AliCloud.Ros
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -84,7 +81,6 @@ namespace Pulumi.AliCloud.Ros
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetChangeSetsResult> Invoke(GetChangeSetsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetChangeSetsResult>("alicloud:ros/getChangeSets:getChangeSets", args ?? new GetChangeSetsInvokeArgs(), options.WithDefaults());

@@ -12,113 +12,41 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionTunnelOptionsSpecificationTunnelIkeConfig {
-    /**
-     * @return IKE auth Algorithm.
-     * 
-     */
     private @Nullable String ikeAuthAlg;
-    /**
-     * @return IKE encript algorithm.
-     * 
-     */
     private @Nullable String ikeEncAlg;
-    /**
-     * @return IKE lifetime.
-     * 
-     */
     private @Nullable Integer ikeLifetime;
-    /**
-     * @return IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
-     * 
-     */
     private @Nullable String ikeMode;
-    /**
-     * @return DH group.
-     * 
-     */
     private @Nullable String ikePfs;
-    /**
-     * @return IKE version.
-     * 
-     */
     private @Nullable String ikeVersion;
-    /**
-     * @return The local Id.
-     * 
-     */
     private @Nullable String localId;
-    /**
-     * @return Preshared secret key.
-     * 
-     */
     private @Nullable String psk;
-    /**
-     * @return Remote ID.
-     * 
-     */
     private @Nullable String remoteId;
 
     private ConnectionTunnelOptionsSpecificationTunnelIkeConfig() {}
-    /**
-     * @return IKE auth Algorithm.
-     * 
-     */
     public Optional<String> ikeAuthAlg() {
         return Optional.ofNullable(this.ikeAuthAlg);
     }
-    /**
-     * @return IKE encript algorithm.
-     * 
-     */
     public Optional<String> ikeEncAlg() {
         return Optional.ofNullable(this.ikeEncAlg);
     }
-    /**
-     * @return IKE lifetime.
-     * 
-     */
     public Optional<Integer> ikeLifetime() {
         return Optional.ofNullable(this.ikeLifetime);
     }
-    /**
-     * @return IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
-     * 
-     */
     public Optional<String> ikeMode() {
         return Optional.ofNullable(this.ikeMode);
     }
-    /**
-     * @return DH group.
-     * 
-     */
     public Optional<String> ikePfs() {
         return Optional.ofNullable(this.ikePfs);
     }
-    /**
-     * @return IKE version.
-     * 
-     */
     public Optional<String> ikeVersion() {
         return Optional.ofNullable(this.ikeVersion);
     }
-    /**
-     * @return The local Id.
-     * 
-     */
     public Optional<String> localId() {
         return Optional.ofNullable(this.localId);
     }
-    /**
-     * @return Preshared secret key.
-     * 
-     */
     public Optional<String> psk() {
         return Optional.ofNullable(this.psk);
     }
-    /**
-     * @return Remote ID.
-     * 
-     */
     public Optional<String> remoteId() {
         return Optional.ofNullable(this.remoteId);
     }

@@ -137,7 +137,6 @@ def get_elasticity_assurances(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -145,7 +144,6 @@ def get_elasticity_assurances(ids: Optional[Sequence[str]] = None,
     default = alicloud.ecs.get_elasticity_assurances(ids=[default_alicloud_ecs_elasticity_assurance["id"]])
     pulumi.export("alicloudEcsElasticityAssuranceExampleId", default.assurances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Elasticity Assurance IDs.
@@ -191,7 +189,6 @@ def get_elasticity_assurances_output(ids: Optional[pulumi.Input[Optional[Sequenc
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -199,7 +196,6 @@ def get_elasticity_assurances_output(ids: Optional[pulumi.Input[Optional[Sequenc
     default = alicloud.ecs.get_elasticity_assurances(ids=[default_alicloud_ecs_elasticity_assurance["id"]])
     pulumi.export("alicloudEcsElasticityAssuranceExampleId", default.assurances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Elasticity Assurance IDs.

@@ -126,15 +126,6 @@ class SearchIndexSchemaFieldSchema(dict):
                  index: Optional[bool] = None,
                  is_array: Optional[bool] = None,
                  store: Optional[bool] = None):
-        """
-        :param str field_name: The name of the field that is used to sort data. only required if sorter_type is FieldSort.
-        :param str field_type: Specifies the type of the field. Use FieldType.XXX to set the type.
-        :param str analyzer: Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
-        :param bool enable_sort_and_agg: Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
-        :param bool index: Specifies whether to enable indexing for the column. Type: Boolean.
-        :param bool is_array: Specifies whether the value is an array. Type: Boolean.
-        :param bool store: Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
-        """
         pulumi.set(__self__, "field_name", field_name)
         pulumi.set(__self__, "field_type", field_type)
         if analyzer is not None:
@@ -151,57 +142,36 @@ class SearchIndexSchemaFieldSchema(dict):
     @property
     @pulumi.getter(name="fieldName")
     def field_name(self) -> str:
-        """
-        The name of the field that is used to sort data. only required if sorter_type is FieldSort.
-        """
         return pulumi.get(self, "field_name")
 
     @property
     @pulumi.getter(name="fieldType")
     def field_type(self) -> str:
-        """
-        Specifies the type of the field. Use FieldType.XXX to set the type.
-        """
         return pulumi.get(self, "field_type")
 
     @property
     @pulumi.getter
     def analyzer(self) -> Optional[str]:
-        """
-        Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
-        """
         return pulumi.get(self, "analyzer")
 
     @property
     @pulumi.getter(name="enableSortAndAgg")
     def enable_sort_and_agg(self) -> Optional[bool]:
-        """
-        Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enable_sort_and_agg is set to true.
-        """
         return pulumi.get(self, "enable_sort_and_agg")
 
     @property
     @pulumi.getter
     def index(self) -> Optional[bool]:
-        """
-        Specifies whether to enable indexing for the column. Type: Boolean.
-        """
         return pulumi.get(self, "index")
 
     @property
     @pulumi.getter(name="isArray")
     def is_array(self) -> Optional[bool]:
-        """
-        Specifies whether the value is an array. Type: Boolean.
-        """
         return pulumi.get(self, "is_array")
 
     @property
     @pulumi.getter
     def store(self) -> Optional[bool]:
-        """
-        Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
-        """
         return pulumi.get(self, "store")
 
 
@@ -226,18 +196,12 @@ class SearchIndexSchemaIndexSetting(dict):
 
     def __init__(__self__, *,
                  routing_fields: Optional[Sequence[str]] = None):
-        """
-        :param Sequence[str] routing_fields: Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
-        """
         if routing_fields is not None:
             pulumi.set(__self__, "routing_fields", routing_fields)
 
     @property
     @pulumi.getter(name="routingFields")
     def routing_fields(self) -> Optional[Sequence[str]]:
-        """
-        Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
-        """
         return pulumi.get(self, "routing_fields")
 
 
@@ -245,17 +209,11 @@ class SearchIndexSchemaIndexSetting(dict):
 class SearchIndexSchemaIndexSort(dict):
     def __init__(__self__, *,
                  sorters: Sequence['outputs.SearchIndexSchemaIndexSortSorter']):
-        """
-        :param Sequence['SearchIndexSchemaIndexSortSorterArgs'] sorters: Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
-        """
         pulumi.set(__self__, "sorters", sorters)
 
     @property
     @pulumi.getter
     def sorters(self) -> Sequence['outputs.SearchIndexSchemaIndexSortSorter']:
-        """
-        Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
-        """
         return pulumi.get(self, "sorters")
 
 
@@ -285,12 +243,6 @@ class SearchIndexSchemaIndexSortSorter(dict):
                  mode: Optional[str] = None,
                  order: Optional[str] = None,
                  sorter_type: Optional[str] = None):
-        """
-        :param str field_name: The name of the field that is used to sort data. only required if sorter_type is FieldSort.
-        :param str mode: The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
-        :param str order: The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
-        :param str sorter_type: Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
-        """
         if field_name is not None:
             pulumi.set(__self__, "field_name", field_name)
         if mode is not None:
@@ -303,33 +255,21 @@ class SearchIndexSchemaIndexSortSorter(dict):
     @property
     @pulumi.getter(name="fieldName")
     def field_name(self) -> Optional[str]:
-        """
-        The name of the field that is used to sort data. only required if sorter_type is FieldSort.
-        """
         return pulumi.get(self, "field_name")
 
     @property
     @pulumi.getter
     def mode(self) -> Optional[str]:
-        """
-        The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorter_type is FieldSort.
-        """
         return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter
     def order(self) -> Optional[str]:
-        """
-        The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
-        """
         return pulumi.get(self, "order")
 
     @property
     @pulumi.getter(name="sorterType")
     def sorter_type(self) -> Optional[str]:
-        """
-        Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
-        """
         return pulumi.get(self, "sorter_type")
 
 
@@ -602,7 +542,6 @@ class GetInstancesInstanceResult(dict):
         :param str status: Instance status. Possible values: `Running`, `Disabled`, `Deleting`.
         :param int table_quota: (Available since v1.221.0) The instance quota which indicating the maximum number of tables.
         :param Mapping[str, Any] tags: A map of tags assigned to the instance. It must be in the format:
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_alicloud as alicloud
@@ -612,7 +551,6 @@ class GetInstancesInstanceResult(dict):
                    "tagKey2": "tagValue2",
                })
                ```
-               <!--End PulumiCodeChooser -->
         :param str user_id: The user id of the instance.
         """
         pulumi.set(__self__, "cluster_type", cluster_type)
@@ -749,7 +687,6 @@ class GetInstancesInstanceResult(dict):
     def tags(self) -> Mapping[str, Any]:
         """
         A map of tags assigned to the instance. It must be in the format:
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -759,7 +696,6 @@ class GetInstancesInstanceResult(dict):
             "tagKey2": "tagValue2",
         })
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "tags")
 

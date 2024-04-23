@@ -15,7 +15,6 @@ import (
 //
 // Empty resource sets defaults values for every property.
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -37,9 +36,7 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -71,7 +68,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 // For not specified values sets defaults.
 //
 // ## Import

@@ -15,7 +15,6 @@ import * as utilities from "./utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,7 +28,6 @@ import * as utilities from "./utilities";
  * });
  * export const mscSubWebhookId2 = nameRegex.then(nameRegex => nameRegex.webhooks?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMscSubWebhooks(args?: GetMscSubWebhooksArgs, opts?: pulumi.InvokeOptions): Promise<GetMscSubWebhooksResult> {
     args = args || {};
@@ -83,7 +81,6 @@ export interface GetMscSubWebhooksResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -97,7 +94,6 @@ export interface GetMscSubWebhooksResult {
  * });
  * export const mscSubWebhookId2 = nameRegex.then(nameRegex => nameRegex.webhooks?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMscSubWebhooksOutput(args?: GetMscSubWebhooksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMscSubWebhooksResult> {
     return pulumi.output(args).apply((a: any) => getMscSubWebhooks(a, opts))

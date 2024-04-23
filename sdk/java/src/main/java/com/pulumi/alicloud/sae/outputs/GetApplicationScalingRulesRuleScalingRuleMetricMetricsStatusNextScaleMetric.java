@@ -11,41 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric {
-    /**
-     * @return The name of the trigger condition.
-     * 
-     */
     private String name;
-    /**
-     * @return The percentage value of the monitoring indicator elasticity that triggers the shrinkage condition next time.
-     * 
-     */
     private Integer nextScaleInAverageUtilization;
-    /**
-     * @return The percentage value of the monitoring indicator elasticity that triggers the expansion condition next time.
-     * 
-     */
     private Integer nextScaleOutAverageUtilization;
 
     private GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric() {}
-    /**
-     * @return The name of the trigger condition.
-     * 
-     */
     public String name() {
         return this.name;
     }
-    /**
-     * @return The percentage value of the monitoring indicator elasticity that triggers the shrinkage condition next time.
-     * 
-     */
     public Integer nextScaleInAverageUtilization() {
         return this.nextScaleInAverageUtilization;
     }
-    /**
-     * @return The percentage value of the monitoring indicator elasticity that triggers the expansion condition next time.
-     * 
-     */
     public Integer nextScaleOutAverageUtilization() {
         return this.nextScaleOutAverageUtilization;
     }

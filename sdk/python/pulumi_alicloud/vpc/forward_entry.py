@@ -383,7 +383,6 @@ class ForwardEntry(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -419,7 +418,6 @@ class ForwardEntry(pulumi.CustomResource):
             internal_ip="172.16.0.3",
             internal_port="8080")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -456,7 +454,6 @@ class ForwardEntry(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -492,7 +489,6 @@ class ForwardEntry(pulumi.CustomResource):
             internal_ip="172.16.0.3",
             internal_port="8080")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

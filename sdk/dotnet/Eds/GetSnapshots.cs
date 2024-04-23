@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,7 +36,6 @@ namespace Pulumi.AliCloud.Eds
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSnapshotsResult> InvokeAsync(GetSnapshotsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnapshotsResult>("alicloud:eds/getSnapshots:getSnapshots", args ?? new GetSnapshotsArgs(), options.WithDefaults());
@@ -51,7 +49,6 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -68,7 +65,6 @@ namespace Pulumi.AliCloud.Eds
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSnapshotsResult> Invoke(GetSnapshotsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotsResult>("alicloud:eds/getSnapshots:getSnapshots", args ?? new GetSnapshotsInvokeArgs(), options.WithDefaults());
@@ -78,7 +74,7 @@ namespace Pulumi.AliCloud.Eds
     public sealed class GetSnapshotsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the cloud desktop to which the snapshot belongs.
+        /// The ID of the Desktop.
         /// </summary>
         [Input("desktopId")]
         public string? DesktopId { get; set; }
@@ -108,7 +104,7 @@ namespace Pulumi.AliCloud.Eds
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the snapshot.
+        /// The ID of the Snapshot.
         /// </summary>
         [Input("snapshotId")]
         public string? SnapshotId { get; set; }
@@ -122,7 +118,7 @@ namespace Pulumi.AliCloud.Eds
     public sealed class GetSnapshotsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the cloud desktop to which the snapshot belongs.
+        /// The ID of the Desktop.
         /// </summary>
         [Input("desktopId")]
         public Input<string>? DesktopId { get; set; }
@@ -152,7 +148,7 @@ namespace Pulumi.AliCloud.Eds
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the snapshot.
+        /// The ID of the Snapshot.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }

@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,7 +21,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getZoneRecords(args: GetZoneRecordsArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneRecordsResult> {
 
@@ -119,7 +117,6 @@ export interface GetZoneRecordsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -130,7 +127,6 @@ export interface GetZoneRecordsResult {
  * });
  * export const firstRecordId = recordsDs.then(recordsDs => recordsDs.records?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getZoneRecordsOutput(args: GetZoneRecordsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneRecordsResult> {
     return pulumi.output(args).apply((a: any) => getZoneRecords(a, opts))

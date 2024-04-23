@@ -124,14 +124,12 @@ class RdsServiceLinkedRole(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         default = alicloud.rds.RdsServiceLinkedRole("default", service_name="AliyunServiceRoleForRdsPgsqlOnEcs")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -162,14 +160,12 @@ class RdsServiceLinkedRole(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         default = alicloud.rds.RdsServiceLinkedRole("default", service_name="AliyunServiceRoleForRdsPgsqlOnEcs")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

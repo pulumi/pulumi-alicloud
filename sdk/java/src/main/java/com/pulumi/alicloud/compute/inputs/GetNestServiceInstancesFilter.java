@@ -16,31 +16,23 @@ public final class GetNestServiceInstancesFilter extends com.pulumi.resources.In
     public static final GetNestServiceInstancesFilter Empty = new GetNestServiceInstancesFilter();
 
     /**
-     * The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+     * The name of the service.
      * 
      */
     @Import(name="name")
     private @Nullable String name;
 
     /**
-     * @return The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+     * @return The name of the service.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Set of values that are accepted for the given field.
-     * 
-     */
     @Import(name="values")
     private @Nullable List<String> values;
 
-    /**
-     * @return Set of values that are accepted for the given field.
-     * 
-     */
     public Optional<List<String>> values() {
         return Optional.ofNullable(this.values);
     }
@@ -71,7 +63,7 @@ public final class GetNestServiceInstancesFilter extends com.pulumi.resources.In
         }
 
         /**
-         * @param name The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+         * @param name The name of the service.
          * 
          * @return builder
          * 
@@ -81,23 +73,11 @@ public final class GetNestServiceInstancesFilter extends com.pulumi.resources.In
             return this;
         }
 
-        /**
-         * @param values Set of values that are accepted for the given field.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(@Nullable List<String> values) {
             $.values = values;
             return this;
         }
 
-        /**
-         * @param values Set of values that are accepted for the given field.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(String... values) {
             return values(List.of(values));
         }

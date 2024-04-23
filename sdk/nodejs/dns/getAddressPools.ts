@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -34,7 +33,6 @@ import * as utilities from "../utilities";
  * });
  * export const alidnsAddressPoolId2 = nameRegex.then(nameRegex => nameRegex.pools?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAddressPools(args: GetAddressPoolsArgs, opts?: pulumi.InvokeOptions): Promise<GetAddressPoolsResult> {
 
@@ -99,7 +97,6 @@ export interface GetAddressPoolsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -118,7 +115,6 @@ export interface GetAddressPoolsResult {
  * });
  * export const alidnsAddressPoolId2 = nameRegex.then(nameRegex => nameRegex.pools?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAddressPoolsOutput(args: GetAddressPoolsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressPoolsResult> {
     return pulumi.output(args).apply((a: any) => getAddressPools(a, opts))

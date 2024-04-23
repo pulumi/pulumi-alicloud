@@ -14,19 +14,12 @@ namespace Pulumi.AliCloud.Cms.Inputs
     {
         [Input("filters")]
         private InputList<Inputs.HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs>? _filters;
-
-        /// <summary>
-        /// The conditions that are used to filter logs imported from Log Service. See `filters` below.
-        /// </summary>
         public InputList<Inputs.HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs> Filters
         {
             get => _filters ?? (_filters = new InputList<Inputs.HybridMonitorSlsTaskSlsProcessConfigFilterFilterArgs>());
             set => _filters = value;
         }
 
-        /// <summary>
-        /// The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
-        /// </summary>
         [Input("relation")]
         public Input<string>? Relation { get; set; }
 

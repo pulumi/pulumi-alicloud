@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const ecpKeyPairId2 = nameRegex.then(nameRegex => nameRegex.pairs?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKeyPairs(args?: GetKeyPairsArgs, opts?: pulumi.InvokeOptions): Promise<GetKeyPairsResult> {
     args = args || {};
@@ -87,7 +85,6 @@ export interface GetKeyPairsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -99,7 +96,6 @@ export interface GetKeyPairsResult {
  * });
  * export const ecpKeyPairId2 = nameRegex.then(nameRegex => nameRegex.pairs?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getKeyPairsOutput(args?: GetKeyPairsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyPairsResult> {
     return pulumi.output(args).apply((a: any) => getKeyPairs(a, opts))

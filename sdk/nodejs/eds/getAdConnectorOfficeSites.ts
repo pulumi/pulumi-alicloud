@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const ecdAdConnectorOfficeSiteId2 = nameRegex.then(nameRegex => nameRegex.sites?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAdConnectorOfficeSites(args?: GetAdConnectorOfficeSitesArgs, opts?: pulumi.InvokeOptions): Promise<GetAdConnectorOfficeSitesResult> {
     args = args || {};
@@ -87,7 +85,6 @@ export interface GetAdConnectorOfficeSitesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -99,7 +96,6 @@ export interface GetAdConnectorOfficeSitesResult {
  * });
  * export const ecdAdConnectorOfficeSiteId2 = nameRegex.then(nameRegex => nameRegex.sites?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAdConnectorOfficeSitesOutput(args?: GetAdConnectorOfficeSitesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdConnectorOfficeSitesResult> {
     return pulumi.output(args).apply((a: any) => getAdConnectorOfficeSites(a, opts))

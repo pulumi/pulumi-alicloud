@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.DirectMail
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -49,7 +48,6 @@ namespace Pulumi.AliCloud.DirectMail
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTagsResult> InvokeAsync(GetTagsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTagsResult>("alicloud:directmail/getTags:getTags", args ?? new GetTagsArgs(), options.WithDefaults());
@@ -63,7 +61,6 @@ namespace Pulumi.AliCloud.DirectMail
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -92,7 +89,6 @@ namespace Pulumi.AliCloud.DirectMail
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTagsResult> Invoke(GetTagsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagsResult>("alicloud:directmail/getTags:getTags", args ?? new GetTagsInvokeArgs(), options.WithDefaults());

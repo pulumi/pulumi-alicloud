@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
     [OutputType]
     public sealed class BucketLifecycleRuleFilterNotTag
     {
-        /// <summary>
-        /// The key of the tag that is specified for the objects.
-        /// </summary>
         public readonly string Key;
-        /// <summary>
-        /// The value of the tag that is specified for the objects.
-        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

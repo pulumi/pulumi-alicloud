@@ -11,53 +11,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceGroupMonitoringAgentProcessAlertConfigTargetList {
-    /**
-     * @return The Alibaba Cloud Resource Name (ARN) of the resource.
-     * 
-     */
     private @Nullable String arn;
-    /**
-     * @return The parameters of the alert callback. Specify the parameters in the JSON format.
-     * 
-     */
     private @Nullable String jsonParams;
-    /**
-     * @return The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
-     * 
-     */
     private @Nullable String level;
-    /**
-     * @return The ID of the resource for which alerts are triggered.
-     * 
-     */
     private @Nullable String targetListId;
 
     private ServiceGroupMonitoringAgentProcessAlertConfigTargetList() {}
-    /**
-     * @return The Alibaba Cloud Resource Name (ARN) of the resource.
-     * 
-     */
     public Optional<String> arn() {
         return Optional.ofNullable(this.arn);
     }
-    /**
-     * @return The parameters of the alert callback. Specify the parameters in the JSON format.
-     * 
-     */
     public Optional<String> jsonParams() {
         return Optional.ofNullable(this.jsonParams);
     }
-    /**
-     * @return The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
-     * 
-     */
     public Optional<String> level() {
         return Optional.ofNullable(this.level);
     }
-    /**
-     * @return The ID of the resource for which alerts are triggered.
-     * 
-     */
     public Optional<String> targetListId() {
         return Optional.ofNullable(this.targetListId);
     }

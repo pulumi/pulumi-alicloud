@@ -84,7 +84,6 @@ def get_meta_tags(key_name: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -92,7 +91,6 @@ def get_meta_tags(key_name: Optional[str] = None,
     default = alicloud.tag.get_meta_tags(key_name="example_value")
     pulumi.export("tagMetaTagDefault1", default.tags.value_name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str key_name: The name of the key.
@@ -124,7 +122,6 @@ def get_meta_tags_output(key_name: Optional[pulumi.Input[Optional[str]]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -132,7 +129,6 @@ def get_meta_tags_output(key_name: Optional[pulumi.Input[Optional[str]]] = None,
     default = alicloud.tag.get_meta_tags(key_name="example_value")
     pulumi.export("tagMetaTagDefault1", default.tags.value_name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str key_name: The name of the key.

@@ -1485,7 +1485,6 @@ class Instance(pulumi.CustomResource):
 
         ### Create a Mongodb instance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1520,7 +1519,6 @@ class Instance(pulumi.CustomResource):
                 "For": "example",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 
@@ -1606,7 +1604,6 @@ class Instance(pulumi.CustomResource):
 
         ### Create a Mongodb instance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1641,7 +1638,6 @@ class Instance(pulumi.CustomResource):
                 "For": "example",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 

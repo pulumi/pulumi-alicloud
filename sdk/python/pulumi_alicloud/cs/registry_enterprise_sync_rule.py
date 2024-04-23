@@ -385,7 +385,6 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -444,7 +443,6 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
             repo_name=source_registry_enterprise_repo.name,
             target_repo_name=target_registry_enterprise_repo.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -485,7 +483,6 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -544,7 +541,6 @@ class RegistryEnterpriseSyncRule(pulumi.CustomResource):
             repo_name=source_registry_enterprise_repo.name,
             target_repo_name=target_registry_enterprise_repo.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

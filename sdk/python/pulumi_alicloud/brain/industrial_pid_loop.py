@@ -283,7 +283,6 @@ class IndustrialPidLoop(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -296,7 +295,6 @@ class IndustrialPidLoop(pulumi.CustomResource):
             pid_loop_type="0",
             pid_project_id="856c6b8f-ca63-40a4-xxxx-xxxx")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -331,7 +329,6 @@ class IndustrialPidLoop(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -344,7 +341,6 @@ class IndustrialPidLoop(pulumi.CustomResource):
             pid_loop_type="0",
             pid_project_id="856c6b8f-ca63-40a4-xxxx-xxxx")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

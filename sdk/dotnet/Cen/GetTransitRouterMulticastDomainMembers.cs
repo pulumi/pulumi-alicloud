@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTransitRouterMulticastDomainMembersResult> InvokeAsync(GetTransitRouterMulticastDomainMembersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterMulticastDomainMembersResult>("alicloud:cen/getTransitRouterMulticastDomainMembers:getTransitRouterMulticastDomainMembers", args ?? new GetTransitRouterMulticastDomainMembersArgs(), options.WithDefaults());
@@ -54,7 +52,6 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTransitRouterMulticastDomainMembersResult> Invoke(GetTransitRouterMulticastDomainMembersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterMulticastDomainMembersResult>("alicloud:cen/getTransitRouterMulticastDomainMembers:getTransitRouterMulticastDomainMembers", args ?? new GetTransitRouterMulticastDomainMembersInvokeArgs(), options.WithDefaults());

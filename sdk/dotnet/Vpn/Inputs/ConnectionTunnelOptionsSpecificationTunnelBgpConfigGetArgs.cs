@@ -18,15 +18,9 @@ namespace Pulumi.AliCloud.Vpn.Inputs
         [Input("bgpStatus")]
         public Input<string>? BgpStatus { get; set; }
 
-        /// <summary>
-        /// Local asn.
-        /// </summary>
         [Input("localAsn")]
         public Input<string>? LocalAsn { get; set; }
 
-        /// <summary>
-        /// Local bgp IP.
-        /// </summary>
         [Input("localBgpIp")]
         public Input<string>? LocalBgpIp { get; set; }
 
@@ -42,9 +36,6 @@ namespace Pulumi.AliCloud.Vpn.Inputs
         [Input("peerBgpIp")]
         public Input<string>? PeerBgpIp { get; set; }
 
-        /// <summary>
-        /// IPSec tunnel Cidr.
-        /// </summary>
         [Input("tunnelCidr")]
         public Input<string>? TunnelCidr { get; set; }
 

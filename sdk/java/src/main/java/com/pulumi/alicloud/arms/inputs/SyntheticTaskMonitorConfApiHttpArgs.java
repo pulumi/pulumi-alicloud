@@ -20,92 +20,44 @@ public final class SyntheticTaskMonitorConfApiHttpArgs extends com.pulumi.resour
 
     public static final SyntheticTaskMonitorConfApiHttpArgs Empty = new SyntheticTaskMonitorConfApiHttpArgs();
 
-    /**
-     * Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
-     * 
-     */
     @Import(name="connectTimeout")
     private @Nullable Output<Integer> connectTimeout;
 
-    /**
-     * @return Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
-     * 
-     */
     public Optional<Output<Integer>> connectTimeout() {
         return Optional.ofNullable(this.connectTimeout);
     }
 
-    /**
-     * HTTP method, GET or POST.
-     * 
-     */
     @Import(name="method")
     private @Nullable Output<String> method;
 
-    /**
-     * @return HTTP method, GET or POST.
-     * 
-     */
     public Optional<Output<String>> method() {
         return Optional.ofNullable(this.method);
     }
 
-    /**
-     * HTTP request body. See `request_body` below.
-     * 
-     */
     @Import(name="requestBody")
     private @Nullable Output<SyntheticTaskMonitorConfApiHttpRequestBodyArgs> requestBody;
 
-    /**
-     * @return HTTP request body. See `request_body` below.
-     * 
-     */
     public Optional<Output<SyntheticTaskMonitorConfApiHttpRequestBodyArgs>> requestBody() {
         return Optional.ofNullable(this.requestBody);
     }
 
-    /**
-     * HTTP request header.
-     * 
-     */
     @Import(name="requestHeaders")
     private @Nullable Output<Map<String,Object>> requestHeaders;
 
-    /**
-     * @return HTTP request header.
-     * 
-     */
     public Optional<Output<Map<String,Object>>> requestHeaders() {
         return Optional.ofNullable(this.requestHeaders);
     }
 
-    /**
-     * The target URL.
-     * 
-     */
     @Import(name="targetUrl", required=true)
     private Output<String> targetUrl;
 
-    /**
-     * @return The target URL.
-     * 
-     */
     public Output<String> targetUrl() {
         return this.targetUrl;
     }
 
-    /**
-     * TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
-     * 
-     */
     @Import(name="timeout")
     private @Nullable Output<Integer> timeout;
 
-    /**
-     * @return TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
-     * 
-     */
     public Optional<Output<Integer>> timeout() {
         return Optional.ofNullable(this.timeout);
     }
@@ -139,128 +91,56 @@ public final class SyntheticTaskMonitorConfApiHttpArgs extends com.pulumi.resour
             $ = new SyntheticTaskMonitorConfApiHttpArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param connectTimeout Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
-         * 
-         * @return builder
-         * 
-         */
         public Builder connectTimeout(@Nullable Output<Integer> connectTimeout) {
             $.connectTimeout = connectTimeout;
             return this;
         }
 
-        /**
-         * @param connectTimeout Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
-         * 
-         * @return builder
-         * 
-         */
         public Builder connectTimeout(Integer connectTimeout) {
             return connectTimeout(Output.of(connectTimeout));
         }
 
-        /**
-         * @param method HTTP method, GET or POST.
-         * 
-         * @return builder
-         * 
-         */
         public Builder method(@Nullable Output<String> method) {
             $.method = method;
             return this;
         }
 
-        /**
-         * @param method HTTP method, GET or POST.
-         * 
-         * @return builder
-         * 
-         */
         public Builder method(String method) {
             return method(Output.of(method));
         }
 
-        /**
-         * @param requestBody HTTP request body. See `request_body` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder requestBody(@Nullable Output<SyntheticTaskMonitorConfApiHttpRequestBodyArgs> requestBody) {
             $.requestBody = requestBody;
             return this;
         }
 
-        /**
-         * @param requestBody HTTP request body. See `request_body` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder requestBody(SyntheticTaskMonitorConfApiHttpRequestBodyArgs requestBody) {
             return requestBody(Output.of(requestBody));
         }
 
-        /**
-         * @param requestHeaders HTTP request header.
-         * 
-         * @return builder
-         * 
-         */
         public Builder requestHeaders(@Nullable Output<Map<String,Object>> requestHeaders) {
             $.requestHeaders = requestHeaders;
             return this;
         }
 
-        /**
-         * @param requestHeaders HTTP request header.
-         * 
-         * @return builder
-         * 
-         */
         public Builder requestHeaders(Map<String,Object> requestHeaders) {
             return requestHeaders(Output.of(requestHeaders));
         }
 
-        /**
-         * @param targetUrl The target URL.
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetUrl(Output<String> targetUrl) {
             $.targetUrl = targetUrl;
             return this;
         }
 
-        /**
-         * @param targetUrl The target URL.
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetUrl(String targetUrl) {
             return targetUrl(Output.of(targetUrl));
         }
 
-        /**
-         * @param timeout TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeout(@Nullable Output<Integer> timeout) {
             $.timeout = timeout;
             return this;
         }
 
-        /**
-         * @param timeout TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeout(Integer timeout) {
             return timeout(Output.of(timeout));
         }

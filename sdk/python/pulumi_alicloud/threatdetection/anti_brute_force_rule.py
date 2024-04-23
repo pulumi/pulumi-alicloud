@@ -253,7 +253,6 @@ class AntiBruteForceRule(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -265,7 +264,6 @@ class AntiBruteForceRule(pulumi.CustomResource):
             fail_count=80,
             span=10)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -301,7 +299,6 @@ class AntiBruteForceRule(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -313,7 +310,6 @@ class AntiBruteForceRule(pulumi.CustomResource):
             fail_count=80,
             span=10)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

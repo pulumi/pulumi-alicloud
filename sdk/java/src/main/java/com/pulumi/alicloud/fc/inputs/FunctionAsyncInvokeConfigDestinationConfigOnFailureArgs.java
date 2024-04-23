@@ -14,17 +14,9 @@ public final class FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs exten
 
     public static final FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs Empty = new FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs();
 
-    /**
-     * Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
-     * 
-     */
     @Import(name="destination", required=true)
     private Output<String> destination;
 
-    /**
-     * @return Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
-     * 
-     */
     public Output<String> destination() {
         return this.destination;
     }
@@ -53,23 +45,11 @@ public final class FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs exten
             $ = new FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param destination Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder destination(Output<String> destination) {
             $.destination = destination;
             return this;
         }
 
-        /**
-         * @param destination Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
-         * 
-         * @return builder
-         * 
-         */
         public Builder destination(String destination) {
             return destination(Output.of(destination));
         }

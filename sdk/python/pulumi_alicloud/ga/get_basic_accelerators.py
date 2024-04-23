@@ -152,7 +152,6 @@ def get_basic_accelerators(accelerator_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -162,7 +161,6 @@ def get_basic_accelerators(accelerator_id: Optional[str] = None,
     name_regex = alicloud.ga.get_basic_accelerators(name_regex="tf-example")
     pulumi.export("gaBasicAcceleratorId2", name_regex.accelerators[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The ID of the Global Accelerator Basic Accelerator instance.
@@ -213,7 +211,6 @@ def get_basic_accelerators_output(accelerator_id: Optional[pulumi.Input[Optional
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -223,7 +220,6 @@ def get_basic_accelerators_output(accelerator_id: Optional[pulumi.Input[Optional
     name_regex = alicloud.ga.get_basic_accelerators(name_regex="tf-example")
     pulumi.export("gaBasicAcceleratorId2", name_regex.accelerators[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The ID of the Global Accelerator Basic Accelerator instance.

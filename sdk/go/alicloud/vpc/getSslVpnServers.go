@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetSslVpnServers(ctx *pulumi.Context, args *GetSslVpnServersArgs, opts ...pulumi.InvokeOption) (*GetSslVpnServersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSslVpnServersResult

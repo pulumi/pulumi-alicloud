@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstCmsGroupMetricRuleId = example.then(example => example.rules?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGroupMetricRules(args?: GetGroupMetricRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetGroupMetricRulesResult> {
     args = args || {};
@@ -122,7 +120,6 @@ export interface GetGroupMetricRulesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -133,7 +130,6 @@ export interface GetGroupMetricRulesResult {
  * });
  * export const firstCmsGroupMetricRuleId = example.then(example => example.rules?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGroupMetricRulesOutput(args?: GetGroupMetricRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupMetricRulesResult> {
     return pulumi.output(args).apply((a: any) => getGroupMetricRules(a, opts))

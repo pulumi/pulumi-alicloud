@@ -12,33 +12,18 @@ namespace Pulumi.AliCloud.Ecs.Inputs
 
     public sealed class AutoProvisioningGroupLaunchTemplateConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The instance type of the Nth extended configurations of the launch template.
-        /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
-        /// <summary>
-        /// The maximum price of the instance type specified in the Nth extended configurations of the launch template.
-        /// </summary>
         [Input("maxPrice", required: true)]
         public Input<string> MaxPrice { get; set; } = null!;
 
-        /// <summary>
-        /// The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
-        /// </summary>
         [Input("priority")]
         public Input<string>? Priority { get; set; }
 
-        /// <summary>
-        /// The ID of the VSwitch in the Nth extended configurations of the launch template.
-        /// </summary>
         [Input("vswitchId", required: true)]
         public Input<string> VswitchId { get; set; } = null!;
 
-        /// <summary>
-        /// The weight of the instance type specified in the Nth extended configurations of the launch template.
-        /// </summary>
         [Input("weightedCapacity", required: true)]
         public Input<string> WeightedCapacity { get; set; } = null!;
 

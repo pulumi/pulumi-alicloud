@@ -11,29 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class CompliancePackConfigRuleConfigRuleParameter {
-    /**
-     * @return The parameter name.
-     * 
-     */
     private @Nullable String parameterName;
-    /**
-     * @return The parameter value.
-     * 
-     */
     private @Nullable String parameterValue;
 
     private CompliancePackConfigRuleConfigRuleParameter() {}
-    /**
-     * @return The parameter name.
-     * 
-     */
     public Optional<String> parameterName() {
         return Optional.ofNullable(this.parameterName);
     }
-    /**
-     * @return The parameter value.
-     * 
-     */
     public Optional<String> parameterValue() {
         return Optional.ofNullable(this.parameterValue);
     }

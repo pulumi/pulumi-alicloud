@@ -146,7 +146,6 @@ def get_nest_service_instances(filters: Optional[Sequence[pulumi.InputType['GetN
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -156,7 +155,6 @@ def get_nest_service_instances(filters: Optional[Sequence[pulumi.InputType['GetN
     name_regex = alicloud.compute.get_nest_service_instances(name_regex="tf-example")
     pulumi.export("armsPrometheisId2", name_regex.service_instances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetNestServiceInstancesFilterArgs']] filters: The conditions that are used to filter. See the following `Block filter`.
@@ -205,7 +203,6 @@ def get_nest_service_instances_output(filters: Optional[pulumi.Input[Optional[Se
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -215,7 +212,6 @@ def get_nest_service_instances_output(filters: Optional[pulumi.Input[Optional[Se
     name_regex = alicloud.compute.get_nest_service_instances(name_regex="tf-example")
     pulumi.export("armsPrometheisId2", name_regex.service_instances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetNestServiceInstancesFilterArgs']] filters: The conditions that are used to filter. See the following `Block filter`.

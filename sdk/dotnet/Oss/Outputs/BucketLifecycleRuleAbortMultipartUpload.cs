@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
     [OutputType]
     public sealed class BucketLifecycleRuleAbortMultipartUpload
     {
-        /// <summary>
-        /// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-        /// </summary>
         public readonly string? CreatedBeforeDate;
-        /// <summary>
-        /// Specifies the number of days noncurrent object versions transition.
-        /// </summary>
         public readonly int? Days;
 
         [OutputConstructor]

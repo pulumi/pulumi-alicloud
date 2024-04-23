@@ -261,7 +261,6 @@ class Remediation(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -296,7 +295,6 @@ class Remediation(pulumi.CustomResource):
             params=default_bucket.bucket.apply(lambda bucket: f"{{\\"bucketName\\": \\"{bucket}\\", \\"regionId\\": \\"{default.regions[0].id}\\", \\"permissionName\\": \\"private\\"}}"),
             remediation_type="OOS")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -334,7 +332,6 @@ class Remediation(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -369,7 +366,6 @@ class Remediation(pulumi.CustomResource):
             params=default_bucket.bucket.apply(lambda bucket: f"{{\\"bucketName\\": \\"{bucket}\\", \\"regionId\\": \\"{default.regions[0].id}\\", \\"permissionName\\": \\"private\\"}}"),
             remediation_type="OOS")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

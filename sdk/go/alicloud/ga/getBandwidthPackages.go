@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetBandwidthPackages(ctx *pulumi.Context, args *GetBandwidthPackagesArgs, opts ...pulumi.InvokeOption) (*GetBandwidthPackagesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBandwidthPackagesResult

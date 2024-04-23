@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -33,7 +32,6 @@ import * as utilities from "../utilities";
  * }));
  * export const polardbParameterGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getParameterGroups(args?: GetParameterGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetParameterGroupsResult> {
     args = args || {};
@@ -111,7 +109,6 @@ export interface GetParameterGroupsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -129,7 +126,6 @@ export interface GetParameterGroupsResult {
  * }));
  * export const polardbParameterGroupId2 = nameRegex.then(nameRegex => nameRegex.groups?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getParameterGroupsOutput(args?: GetParameterGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetParameterGroupsResult> {
     return pulumi.output(args).apply((a: any) => getParameterGroups(a, opts))

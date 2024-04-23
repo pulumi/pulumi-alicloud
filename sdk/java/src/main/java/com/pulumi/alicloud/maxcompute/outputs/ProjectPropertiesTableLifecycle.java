@@ -12,28 +12,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ProjectPropertiesTableLifecycle {
     /**
-     * @return Life cycle type.
+     * @return Project type
      * 
      */
     private @Nullable String type;
-    /**
-     * @return The value of the life cycle.
-     * 
-     */
     private @Nullable String value;
 
     private ProjectPropertiesTableLifecycle() {}
     /**
-     * @return Life cycle type.
+     * @return Project type
      * 
      */
     public Optional<String> type() {
         return Optional.ofNullable(this.type);
     }
-    /**
-     * @return The value of the life cycle.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

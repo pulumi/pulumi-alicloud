@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,7 +79,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSnatEntriesResult> InvokeAsync(GetSnatEntriesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSnatEntriesResult>("alicloud:vpc/getSnatEntries:getSnatEntries", args ?? new GetSnatEntriesArgs(), options.WithDefaults());
@@ -92,7 +90,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -154,7 +151,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSnatEntriesResult> Invoke(GetSnatEntriesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSnatEntriesResult>("alicloud:vpc/getSnatEntries:getSnatEntries", args ?? new GetSnatEntriesInvokeArgs(), options.WithDefaults());

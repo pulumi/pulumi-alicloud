@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -103,7 +102,6 @@ import (
 // })
 // }
 // ```
-// <!--End PulumiCodeChooser -->
 func GetBackupJobs(ctx *pulumi.Context, args *GetBackupJobsArgs, opts ...pulumi.InvokeOption) (*GetBackupJobsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBackupJobsResult

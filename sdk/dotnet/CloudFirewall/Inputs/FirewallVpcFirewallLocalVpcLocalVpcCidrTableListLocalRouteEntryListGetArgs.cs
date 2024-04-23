@@ -12,15 +12,9 @@ namespace Pulumi.AliCloud.CloudFirewall.Inputs
 
     public sealed class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The target network segment of the local VPC.
-        /// </summary>
         [Input("localDestinationCidr", required: true)]
         public Input<string> LocalDestinationCidr { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the next-hop instance in the local VPC.
-        /// </summary>
         [Input("localNextHopInstanceId", required: true)]
         public Input<string> LocalNextHopInstanceId { get; set; } = null!;
 

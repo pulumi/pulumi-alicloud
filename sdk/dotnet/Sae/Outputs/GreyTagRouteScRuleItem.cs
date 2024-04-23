@@ -13,25 +13,10 @@ namespace Pulumi.AliCloud.Sae.Outputs
     [OutputType]
     public sealed class GreyTagRouteScRuleItem
     {
-        /// <summary>
-        /// The comparison operator. Valid values: `&gt;`, `&lt;`, `&gt;=`, `&lt;=`, `==`, `!=`.
-        /// </summary>
         public readonly string? Cond;
-        /// <summary>
-        /// The name of the parameter.
-        /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
-        /// </summary>
         public readonly string? Operator;
-        /// <summary>
-        /// The compare types. Valid values: `param`, `cookie`, `header`.
-        /// </summary>
         public readonly string? Type;
-        /// <summary>
-        /// The value of the parameter.
-        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

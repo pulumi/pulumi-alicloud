@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstCassandraBackupPlanId = example.then(example => example.plans?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBackupPlans(args: GetBackupPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupPlansResult> {
 
@@ -76,7 +74,6 @@ export interface GetBackupPlansResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -86,7 +83,6 @@ export interface GetBackupPlansResult {
  * });
  * export const firstCassandraBackupPlanId = example.then(example => example.plans?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBackupPlansOutput(args: GetBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupPlansResult> {
     return pulumi.output(args).apply((a: any) => getBackupPlans(a, opts))

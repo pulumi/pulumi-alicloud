@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const desktopAccessType = _default.then(_default => _default.sites?.[0]?.desktopAccessType);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSimpleOfficeSites(args?: GetSimpleOfficeSitesArgs, opts?: pulumi.InvokeOptions): Promise<GetSimpleOfficeSitesResult> {
     args = args || {};
@@ -86,7 +84,6 @@ export interface GetSimpleOfficeSitesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -97,7 +94,6 @@ export interface GetSimpleOfficeSitesResult {
  * });
  * export const desktopAccessType = _default.then(_default => _default.sites?.[0]?.desktopAccessType);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSimpleOfficeSitesOutput(args?: GetSimpleOfficeSitesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSimpleOfficeSitesResult> {
     return pulumi.output(args).apply((a: any) => getSimpleOfficeSites(a, opts))

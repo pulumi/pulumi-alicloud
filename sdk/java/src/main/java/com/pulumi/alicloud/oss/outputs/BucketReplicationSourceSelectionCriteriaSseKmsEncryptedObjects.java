@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects {
     /**
-     * @return Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+     * @return The status of the data replication task. Can be starting, doing and closing.
      * 
      */
     private @Nullable String status;
 
     private BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects() {}
     /**
-     * @return Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+     * @return The status of the data replication task. Can be starting, doing and closing.
      * 
      */
     public Optional<String> status() {

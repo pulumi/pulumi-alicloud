@@ -15,7 +15,7 @@ namespace Pulumi.AliCloud.Log.Outputs
     {
         public readonly ImmutableArray<string> Fields;
         /// <summary>
-        /// including FixedRate,Hourly,Daily,Weekly,Cron.
+        /// Group configuration type, including no_group, labels_auto, custom.
         /// </summary>
         public readonly string Type;
 

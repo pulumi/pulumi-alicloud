@@ -13,17 +13,8 @@ namespace Pulumi.AliCloud.Eci.Outputs
     [OutputType]
     public sealed class ContainerGroupContainerEnvironmentVar
     {
-        /// <summary>
-        /// The reference of the environment variable. See `field_ref` below.
-        /// </summary>
         public readonly ImmutableArray<Outputs.ContainerGroupContainerEnvironmentVarFieldRef> FieldReves;
-        /// <summary>
-        /// The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
-        /// </summary>
         public readonly string? Key;
-        /// <summary>
-        /// The value of the variable. The value can be 0 to 256 characters in length.
-        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

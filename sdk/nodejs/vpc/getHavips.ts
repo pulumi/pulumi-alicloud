@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstHavipId = example.then(example => example.havips?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHavips(args?: GetHavipsArgs, opts?: pulumi.InvokeOptions): Promise<GetHavipsResult> {
     args = args || {};
@@ -86,7 +84,6 @@ export interface GetHavipsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -97,7 +94,6 @@ export interface GetHavipsResult {
  * });
  * export const firstHavipId = example.then(example => example.havips?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHavipsOutput(args?: GetHavipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHavipsResult> {
     return pulumi.output(args).apply((a: any) => getHavips(a, opts))

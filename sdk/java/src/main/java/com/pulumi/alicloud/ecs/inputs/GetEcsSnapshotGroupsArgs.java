@@ -94,14 +94,14 @@ public final class GetEcsSnapshotGroupsArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The status of the resource.
+     * The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -109,14 +109,14 @@ public final class GetEcsSnapshotGroupsArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * List of label key-value pairs.
+     * A mapping of tags to assign to the snapshot group.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return List of label key-value pairs.
+     * @return A mapping of tags to assign to the snapshot group.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -269,7 +269,7 @@ public final class GetEcsSnapshotGroupsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class GetEcsSnapshotGroupsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The state of snapshot-consistent group. Valid Values: `accomplished`, `failed` and `progressing`.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class GetEcsSnapshotGroupsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param tags List of label key-value pairs.
+         * @param tags A mapping of tags to assign to the snapshot group.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class GetEcsSnapshotGroupsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param tags List of label key-value pairs.
+         * @param tags A mapping of tags to assign to the snapshot group.
          * 
          * @return builder
          * 

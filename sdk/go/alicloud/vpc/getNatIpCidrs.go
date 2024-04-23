@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -87,7 +86,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetNatIpCidrs(ctx *pulumi.Context, args *GetNatIpCidrsArgs, opts ...pulumi.InvokeOption) (*GetNatIpCidrsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNatIpCidrsResult

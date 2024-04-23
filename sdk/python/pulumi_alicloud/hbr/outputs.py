@@ -62,18 +62,12 @@ class OtsBackupPlanOtsDetail(dict):
 
     def __init__(__self__, *,
                  table_names: Optional[Sequence[str]] = None):
-        """
-        :param Sequence[str] table_names: The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
-        """
         if table_names is not None:
             pulumi.set(__self__, "table_names", table_names)
 
     @property
     @pulumi.getter(name="tableNames")
     def table_names(self) -> Optional[Sequence[str]]:
-        """
-        The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
-        """
         return pulumi.get(self, "table_names")
 
 
@@ -108,7 +102,6 @@ class OtsBackupPlanRule(dict):
         :param str backup_type: Backup type. Valid values: `COMPLETE`.
         :param bool disabled: Whether to disable the backup task. Valid values: `true`, `false`. Default values: `false`.
         :param str retention: Backup retention days, the minimum is 1.
-        :param str rule_name: The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
         :param str schedule: Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
         """
         if backup_type is not None:
@@ -149,9 +142,6 @@ class OtsBackupPlanRule(dict):
     @property
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[str]:
-        """
-        The name of the backup rule.**Note:** Required while source_type equals `OTS_TABLE`. `rule_name` should be unique for the specific user.
-        """
         return pulumi.get(self, "rule_name")
 
     @property
@@ -226,11 +216,6 @@ class PolicyBindingAdvancedOptionsUdmDetail(dict):
                  destination_kms_key_id: Optional[str] = None,
                  disk_id_lists: Optional[Sequence[str]] = None,
                  exclude_disk_id_lists: Optional[Sequence[str]] = None):
-        """
-        :param str destination_kms_key_id: Custom KMS key ID of encrypted copy.
-        :param Sequence[str] disk_id_lists: The list of backup disks. If it is empty, all disks are backed up.
-        :param Sequence[str] exclude_disk_id_lists: List of cloud disk IDs that are not backed up.
-        """
         if destination_kms_key_id is not None:
             pulumi.set(__self__, "destination_kms_key_id", destination_kms_key_id)
         if disk_id_lists is not None:
@@ -241,25 +226,16 @@ class PolicyBindingAdvancedOptionsUdmDetail(dict):
     @property
     @pulumi.getter(name="destinationKmsKeyId")
     def destination_kms_key_id(self) -> Optional[str]:
-        """
-        Custom KMS key ID of encrypted copy.
-        """
         return pulumi.get(self, "destination_kms_key_id")
 
     @property
     @pulumi.getter(name="diskIdLists")
     def disk_id_lists(self) -> Optional[Sequence[str]]:
-        """
-        The list of backup disks. If it is empty, all disks are backed up.
-        """
         return pulumi.get(self, "disk_id_lists")
 
     @property
     @pulumi.getter(name="excludeDiskIdLists")
     def exclude_disk_id_lists(self) -> Optional[Sequence[str]]:
-        """
-        List of cloud disk IDs that are not backed up.
-        """
         return pulumi.get(self, "exclude_disk_id_lists")
 
 
@@ -442,10 +418,6 @@ class PolicyRuleRetentionRule(dict):
     def __init__(__self__, *,
                  advanced_retention_type: Optional[str] = None,
                  retention: Optional[int] = None):
-        """
-        :param str advanced_retention_type: Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
-        :param int retention: Retention time, in days.
-        """
         if advanced_retention_type is not None:
             pulumi.set(__self__, "advanced_retention_type", advanced_retention_type)
         if retention is not None:
@@ -454,17 +426,11 @@ class PolicyRuleRetentionRule(dict):
     @property
     @pulumi.getter(name="advancedRetentionType")
     def advanced_retention_type(self) -> Optional[str]:
-        """
-        Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
-        """
         return pulumi.get(self, "advanced_retention_type")
 
     @property
     @pulumi.getter
     def retention(self) -> Optional[int]:
-        """
-        Retention time, in days.
-        """
         return pulumi.get(self, "retention")
 
 
@@ -489,18 +455,12 @@ class RestoreJobOtsDetail(dict):
 
     def __init__(__self__, *,
                  overwrite_existing: Optional[bool] = None):
-        """
-        :param bool overwrite_existing: Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
-        """
         if overwrite_existing is not None:
             pulumi.set(__self__, "overwrite_existing", overwrite_existing)
 
     @property
     @pulumi.getter(name="overwriteExisting")
     def overwrite_existing(self) -> Optional[bool]:
-        """
-        Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
-        """
         return pulumi.get(self, "overwrite_existing")
 
 
@@ -670,13 +630,6 @@ class GetBackupJobsFilterResult(dict):
                  key: Optional[str] = None,
                  operator: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
-        """
-        :param str key: The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
-        :param str operator: The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
-        :param Sequence[str] values: Set of values that are accepted for the given field.
-               
-               > **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
-        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if operator is not None:
@@ -687,27 +640,16 @@ class GetBackupJobsFilterResult(dict):
     @property
     @pulumi.getter
     def key(self) -> Optional[str]:
-        """
-        The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
-        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def operator(self) -> Optional[str]:
-        """
-        The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
-        """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
-        """
-        Set of values that are accepted for the given field.
-
-        > **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
-        """
         return pulumi.get(self, "values")
 
 
@@ -3078,10 +3020,6 @@ class GetServerBackupPlansFilterResult(dict):
     def __init__(__self__, *,
                  key: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
-        """
-        :param str key: The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
-        :param Sequence[str] values: Set of values that are accepted for the given field.
-        """
         if key is not None:
             pulumi.set(__self__, "key", key)
         if values is not None:
@@ -3090,17 +3028,11 @@ class GetServerBackupPlansFilterResult(dict):
     @property
     @pulumi.getter
     def key(self) -> Optional[str]:
-        """
-        The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
-        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
-        """
-        Set of values that are accepted for the given field.
-        """
         return pulumi.get(self, "values")
 
 
@@ -3223,18 +3155,6 @@ class GetServerBackupPlansPlanDetailResult(dict):
                  pre_script_path: str,
                  snapshot_group: bool,
                  timeout_in_seconds: int):
-        """
-        :param bool app_consistent: Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
-        :param str destination_region_id: Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
-        :param int destination_retention: Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
-        :param Sequence[str] disk_id_lists: The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
-        :param bool do_copy: Whether replicate to another region. Valid values: `true`, `false`.
-        :param bool enable_fs_freeze: Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
-        :param str post_script_path: Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
-        :param str pre_script_path: Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
-        :param bool snapshot_group: Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
-        :param int timeout_in_seconds: Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
-        """
         pulumi.set(__self__, "app_consistent", app_consistent)
         pulumi.set(__self__, "destination_region_id", destination_region_id)
         pulumi.set(__self__, "destination_retention", destination_retention)
@@ -3249,81 +3169,51 @@ class GetServerBackupPlansPlanDetailResult(dict):
     @property
     @pulumi.getter(name="appConsistent")
     def app_consistent(self) -> bool:
-        """
-        Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
-        """
         return pulumi.get(self, "app_consistent")
 
     @property
     @pulumi.getter(name="destinationRegionId")
     def destination_region_id(self) -> str:
-        """
-        Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
-        """
         return pulumi.get(self, "destination_region_id")
 
     @property
     @pulumi.getter(name="destinationRetention")
     def destination_retention(self) -> int:
-        """
-        Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
-        """
         return pulumi.get(self, "destination_retention")
 
     @property
     @pulumi.getter(name="diskIdLists")
     def disk_id_lists(self) -> Sequence[str]:
-        """
-        The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
-        """
         return pulumi.get(self, "disk_id_lists")
 
     @property
     @pulumi.getter(name="doCopy")
     def do_copy(self) -> bool:
-        """
-        Whether replicate to another region. Valid values: `true`, `false`.
-        """
         return pulumi.get(self, "do_copy")
 
     @property
     @pulumi.getter(name="enableFsFreeze")
     def enable_fs_freeze(self) -> bool:
-        """
-        Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
-        """
         return pulumi.get(self, "enable_fs_freeze")
 
     @property
     @pulumi.getter(name="postScriptPath")
     def post_script_path(self) -> str:
-        """
-        Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
-        """
         return pulumi.get(self, "post_script_path")
 
     @property
     @pulumi.getter(name="preScriptPath")
     def pre_script_path(self) -> str:
-        """
-        Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
-        """
         return pulumi.get(self, "pre_script_path")
 
     @property
     @pulumi.getter(name="snapshotGroup")
     def snapshot_group(self) -> bool:
-        """
-        Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
-        """
         return pulumi.get(self, "snapshot_group")
 
     @property
     @pulumi.getter(name="timeoutInSeconds")
     def timeout_in_seconds(self) -> int:
-        """
-        Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
-        """
         return pulumi.get(self, "timeout_in_seconds")
 
 

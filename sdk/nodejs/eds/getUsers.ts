@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  * const ids = alicloud.eds.getUsers({});
  * export const ecdUserId1 = ids.then(ids => ids.users?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getUsers(args?: GetUsersArgs, opts?: pulumi.InvokeOptions): Promise<GetUsersResult> {
     args = args || {};
@@ -82,7 +80,6 @@ export interface GetUsersResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -96,7 +93,6 @@ export interface GetUsersResult {
  * const ids = alicloud.eds.getUsers({});
  * export const ecdUserId1 = ids.then(ids => ids.users?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getUsersOutput(args?: GetUsersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUsersResult> {
     return pulumi.output(args).apply((a: any) => getUsers(a, opts))

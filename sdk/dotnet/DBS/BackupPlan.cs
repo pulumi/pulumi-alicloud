@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.DBS
     /// 
     /// Basic Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -136,7 +135,6 @@ namespace Pulumi.AliCloud.DBS
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

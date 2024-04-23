@@ -206,7 +206,6 @@ class AddressPool(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -257,7 +256,6 @@ class AddressPool(pulumi.CustomResource):
                 lba_weight=1,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -292,7 +290,6 @@ class AddressPool(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -343,7 +340,6 @@ class AddressPool(pulumi.CustomResource):
                 lba_weight=1,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

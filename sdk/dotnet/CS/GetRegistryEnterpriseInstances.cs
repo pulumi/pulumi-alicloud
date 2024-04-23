@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.AliCloud.CS
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRegistryEnterpriseInstancesResult> InvokeAsync(GetRegistryEnterpriseInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegistryEnterpriseInstancesResult>("alicloud:cs/getRegistryEnterpriseInstances:getRegistryEnterpriseInstances", args ?? new GetRegistryEnterpriseInstancesArgs(), options.WithDefaults());
@@ -52,7 +50,6 @@ namespace Pulumi.AliCloud.CS
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.AliCloud.CS
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRegistryEnterpriseInstancesResult> Invoke(GetRegistryEnterpriseInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegistryEnterpriseInstancesResult>("alicloud:cs/getRegistryEnterpriseInstances:getRegistryEnterpriseInstances", args ?? new GetRegistryEnterpriseInstancesInvokeArgs(), options.WithDefaults());

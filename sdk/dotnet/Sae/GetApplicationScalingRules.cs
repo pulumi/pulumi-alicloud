@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Sae
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,7 +44,6 @@ namespace Pulumi.AliCloud.Sae
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetApplicationScalingRulesResult> InvokeAsync(GetApplicationScalingRulesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationScalingRulesResult>("alicloud:sae/getApplicationScalingRules:getApplicationScalingRules", args ?? new GetApplicationScalingRulesArgs(), options.WithDefaults());
@@ -59,7 +57,6 @@ namespace Pulumi.AliCloud.Sae
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -84,7 +81,6 @@ namespace Pulumi.AliCloud.Sae
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetApplicationScalingRulesResult> Invoke(GetApplicationScalingRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationScalingRulesResult>("alicloud:sae/getApplicationScalingRules:getApplicationScalingRules", args ?? new GetApplicationScalingRulesInvokeArgs(), options.WithDefaults());

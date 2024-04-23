@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,7 +40,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetElasticityAssurancesResult> InvokeAsync(GetElasticityAssurancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetElasticityAssurancesResult>("alicloud:ecs/getElasticityAssurances:getElasticityAssurances", args ?? new GetElasticityAssurancesArgs(), options.WithDefaults());
@@ -53,7 +51,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,7 +73,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetElasticityAssurancesResult> Invoke(GetElasticityAssurancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetElasticityAssurancesResult>("alicloud:ecs/getElasticityAssurances:getElasticityAssurances", args ?? new GetElasticityAssurancesInvokeArgs(), options.WithDefaults());

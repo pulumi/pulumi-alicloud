@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHybridMonitorDatasDataLabel {
-    /**
-     * @return Label key.
-     * 
-     */
     private String key;
-    /**
-     * @return Label value.
-     * 
-     */
     private String value;
 
     private GetHybridMonitorDatasDataLabel() {}
-    /**
-     * @return Label key.
-     * 
-     */
     public String key() {
         return this.key;
     }
-    /**
-     * @return Label value.
-     * 
-     */
     public String value() {
         return this.value;
     }

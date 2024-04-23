@@ -63,14 +63,14 @@ public final class GetApplicationsPlainArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The tag of the resource.
+     * A mapping of tags to assign to the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Map<String,Object> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Optional<Map<String,Object>> tags() {
@@ -148,7 +148,7 @@ public final class GetApplicationsPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
          * 

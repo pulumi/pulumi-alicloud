@@ -15,32 +15,16 @@ public final class ContainerGroupDnsConfigOptionArgs extends com.pulumi.resource
 
     public static final ContainerGroupDnsConfigOptionArgs Empty = new ContainerGroupDnsConfigOptionArgs();
 
-    /**
-     * The name of the mounted volume.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return The name of the mounted volume.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * The value of the variable. The value can be 0 to 256 characters in length.
-     * 
-     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
-    /**
-     * @return The value of the variable. The value can be 0 to 256 characters in length.
-     * 
-     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -70,44 +54,20 @@ public final class ContainerGroupDnsConfigOptionArgs extends com.pulumi.resource
             $ = new ContainerGroupDnsConfigOptionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param name The name of the mounted volume.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The name of the mounted volume.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param value The value of the variable. The value can be 0 to 256 characters in length.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value The value of the variable. The value can be 0 to 256 characters in length.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

@@ -113,7 +113,6 @@ def get_organizations(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -130,7 +129,6 @@ def get_organizations(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.rdc.get_organizations(name_regex="^my-Organization")
     pulumi.export("rdcOrganizationId2", name_regex.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Organization IDs.
@@ -171,7 +169,6 @@ def get_organizations_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -188,7 +185,6 @@ def get_organizations_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     name_regex = alicloud.rdc.get_organizations(name_regex="^my-Organization")
     pulumi.export("rdcOrganizationId2", name_regex.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Organization IDs.

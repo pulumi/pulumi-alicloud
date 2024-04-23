@@ -22,7 +22,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -106,7 +105,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -162,7 +160,7 @@ type LoadBalancer struct {
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
 	// The security group to which the network-based SLB instance belongs.
 	SecurityGroupIds pulumi.StringArrayOutput `pulumi:"securityGroupIds"`
-	// ON.
+	// The status of the resource.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// List of labels.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -255,7 +253,7 @@ type loadBalancerState struct {
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// The security group to which the network-based SLB instance belongs.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// ON.
+	// The status of the resource.
 	Status *string `pulumi:"status"`
 	// List of labels.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -310,7 +308,7 @@ type LoadBalancerState struct {
 	ResourceGroupId pulumi.StringPtrInput
 	// The security group to which the network-based SLB instance belongs.
 	SecurityGroupIds pulumi.StringArrayInput
-	// ON.
+	// The status of the resource.
 	Status pulumi.StringPtrInput
 	// List of labels.
 	Tags pulumi.MapInput
@@ -606,7 +604,7 @@ func (o LoadBalancerOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringArrayOutput { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// ON.
+// The status of the resource.
 func (o LoadBalancerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -325,16 +325,11 @@ func (o ClusterBootstrapScriptArrayOutput) Index(i pulumi.IntInput) ClusterBoots
 }
 
 type ClusterBootstrapScriptNodeSelector struct {
-	// The configuration effected which node group id of emr cluster.
-	NodeGroupId *string `pulumi:"nodeGroupId"`
-	// The configuration effected which node group name of emr cluster.
-	NodeGroupName *string `pulumi:"nodeGroupName"`
-	// The bootstrap scripts execution target node group types.
+	NodeGroupId    *string  `pulumi:"nodeGroupId"`
+	NodeGroupName  *string  `pulumi:"nodeGroupName"`
 	NodeGroupTypes []string `pulumi:"nodeGroupTypes"`
-	// The bootstrap scripts execution target node names.
-	NodeNames []string `pulumi:"nodeNames"`
-	// The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
-	NodeSelectType string `pulumi:"nodeSelectType"`
+	NodeNames      []string `pulumi:"nodeNames"`
+	NodeSelectType string   `pulumi:"nodeSelectType"`
 }
 
 // ClusterBootstrapScriptNodeSelectorInput is an input type that accepts ClusterBootstrapScriptNodeSelectorArgs and ClusterBootstrapScriptNodeSelectorOutput values.
@@ -349,16 +344,11 @@ type ClusterBootstrapScriptNodeSelectorInput interface {
 }
 
 type ClusterBootstrapScriptNodeSelectorArgs struct {
-	// The configuration effected which node group id of emr cluster.
-	NodeGroupId pulumi.StringPtrInput `pulumi:"nodeGroupId"`
-	// The configuration effected which node group name of emr cluster.
-	NodeGroupName pulumi.StringPtrInput `pulumi:"nodeGroupName"`
-	// The bootstrap scripts execution target node group types.
+	NodeGroupId    pulumi.StringPtrInput   `pulumi:"nodeGroupId"`
+	NodeGroupName  pulumi.StringPtrInput   `pulumi:"nodeGroupName"`
 	NodeGroupTypes pulumi.StringArrayInput `pulumi:"nodeGroupTypes"`
-	// The bootstrap scripts execution target node names.
-	NodeNames pulumi.StringArrayInput `pulumi:"nodeNames"`
-	// The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
-	NodeSelectType pulumi.StringInput `pulumi:"nodeSelectType"`
+	NodeNames      pulumi.StringArrayInput `pulumi:"nodeNames"`
+	NodeSelectType pulumi.StringInput      `pulumi:"nodeSelectType"`
 }
 
 func (ClusterBootstrapScriptNodeSelectorArgs) ElementType() reflect.Type {
@@ -387,27 +377,22 @@ func (o ClusterBootstrapScriptNodeSelectorOutput) ToClusterBootstrapScriptNodeSe
 	return o
 }
 
-// The configuration effected which node group id of emr cluster.
 func (o ClusterBootstrapScriptNodeSelectorOutput) NodeGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBootstrapScriptNodeSelector) *string { return v.NodeGroupId }).(pulumi.StringPtrOutput)
 }
 
-// The configuration effected which node group name of emr cluster.
 func (o ClusterBootstrapScriptNodeSelectorOutput) NodeGroupName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterBootstrapScriptNodeSelector) *string { return v.NodeGroupName }).(pulumi.StringPtrOutput)
 }
 
-// The bootstrap scripts execution target node group types.
 func (o ClusterBootstrapScriptNodeSelectorOutput) NodeGroupTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterBootstrapScriptNodeSelector) []string { return v.NodeGroupTypes }).(pulumi.StringArrayOutput)
 }
 
-// The bootstrap scripts execution target node names.
 func (o ClusterBootstrapScriptNodeSelectorOutput) NodeNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterBootstrapScriptNodeSelector) []string { return v.NodeNames }).(pulumi.StringArrayOutput)
 }
 
-// The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
 func (o ClusterBootstrapScriptNodeSelectorOutput) NodeSelectType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterBootstrapScriptNodeSelector) string { return v.NodeSelectType }).(pulumi.StringOutput)
 }
@@ -805,12 +790,9 @@ func (o ClusterNodeGroupArrayOutput) Index(i pulumi.IntInput) ClusterNodeGroupOu
 }
 
 type ClusterNodeGroupCostOptimizedConfig struct {
-	// The cost optimized configuration which on demand based capacity.
-	OnDemandBaseCapacity int `pulumi:"onDemandBaseCapacity"`
-	// The cost optimized configuration which on demand percentage above based capacity.
+	OnDemandBaseCapacity                int `pulumi:"onDemandBaseCapacity"`
 	OnDemandPercentageAboveBaseCapacity int `pulumi:"onDemandPercentageAboveBaseCapacity"`
-	// The cost optimized configuration with spot instance pools.
-	SpotInstancePools int `pulumi:"spotInstancePools"`
+	SpotInstancePools                   int `pulumi:"spotInstancePools"`
 }
 
 // ClusterNodeGroupCostOptimizedConfigInput is an input type that accepts ClusterNodeGroupCostOptimizedConfigArgs and ClusterNodeGroupCostOptimizedConfigOutput values.
@@ -825,12 +807,9 @@ type ClusterNodeGroupCostOptimizedConfigInput interface {
 }
 
 type ClusterNodeGroupCostOptimizedConfigArgs struct {
-	// The cost optimized configuration which on demand based capacity.
-	OnDemandBaseCapacity pulumi.IntInput `pulumi:"onDemandBaseCapacity"`
-	// The cost optimized configuration which on demand percentage above based capacity.
+	OnDemandBaseCapacity                pulumi.IntInput `pulumi:"onDemandBaseCapacity"`
 	OnDemandPercentageAboveBaseCapacity pulumi.IntInput `pulumi:"onDemandPercentageAboveBaseCapacity"`
-	// The cost optimized configuration with spot instance pools.
-	SpotInstancePools pulumi.IntInput `pulumi:"spotInstancePools"`
+	SpotInstancePools                   pulumi.IntInput `pulumi:"spotInstancePools"`
 }
 
 func (ClusterNodeGroupCostOptimizedConfigArgs) ElementType() reflect.Type {
@@ -910,17 +889,14 @@ func (o ClusterNodeGroupCostOptimizedConfigOutput) ToClusterNodeGroupCostOptimiz
 	}).(ClusterNodeGroupCostOptimizedConfigPtrOutput)
 }
 
-// The cost optimized configuration which on demand based capacity.
 func (o ClusterNodeGroupCostOptimizedConfigOutput) OnDemandBaseCapacity() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeGroupCostOptimizedConfig) int { return v.OnDemandBaseCapacity }).(pulumi.IntOutput)
 }
 
-// The cost optimized configuration which on demand percentage above based capacity.
 func (o ClusterNodeGroupCostOptimizedConfigOutput) OnDemandPercentageAboveBaseCapacity() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeGroupCostOptimizedConfig) int { return v.OnDemandPercentageAboveBaseCapacity }).(pulumi.IntOutput)
 }
 
-// The cost optimized configuration with spot instance pools.
 func (o ClusterNodeGroupCostOptimizedConfigOutput) SpotInstancePools() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeGroupCostOptimizedConfig) int { return v.SpotInstancePools }).(pulumi.IntOutput)
 }
@@ -949,7 +925,6 @@ func (o ClusterNodeGroupCostOptimizedConfigPtrOutput) Elem() ClusterNodeGroupCos
 	}).(ClusterNodeGroupCostOptimizedConfigOutput)
 }
 
-// The cost optimized configuration which on demand based capacity.
 func (o ClusterNodeGroupCostOptimizedConfigPtrOutput) OnDemandBaseCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupCostOptimizedConfig) *int {
 		if v == nil {
@@ -959,7 +934,6 @@ func (o ClusterNodeGroupCostOptimizedConfigPtrOutput) OnDemandBaseCapacity() pul
 	}).(pulumi.IntPtrOutput)
 }
 
-// The cost optimized configuration which on demand percentage above based capacity.
 func (o ClusterNodeGroupCostOptimizedConfigPtrOutput) OnDemandPercentageAboveBaseCapacity() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupCostOptimizedConfig) *int {
 		if v == nil {
@@ -969,7 +943,6 @@ func (o ClusterNodeGroupCostOptimizedConfigPtrOutput) OnDemandPercentageAboveBas
 	}).(pulumi.IntPtrOutput)
 }
 
-// The cost optimized configuration with spot instance pools.
 func (o ClusterNodeGroupCostOptimizedConfigPtrOutput) SpotInstancePools() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeGroupCostOptimizedConfig) *int {
 		if v == nil {
@@ -980,14 +953,10 @@ func (o ClusterNodeGroupCostOptimizedConfigPtrOutput) SpotInstancePools() pulumi
 }
 
 type ClusterNodeGroupDataDisk struct {
-	// The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
-	Category string `pulumi:"category"`
-	// The count of a data disk.
-	Count *int `pulumi:"count"`
-	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
+	Category         string  `pulumi:"category"`
+	Count            *int    `pulumi:"count"`
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	// The size of a data disk, at least 40. Unit: GiB.
-	Size int `pulumi:"size"`
+	Size             int     `pulumi:"size"`
 }
 
 // ClusterNodeGroupDataDiskInput is an input type that accepts ClusterNodeGroupDataDiskArgs and ClusterNodeGroupDataDiskOutput values.
@@ -1002,14 +971,10 @@ type ClusterNodeGroupDataDiskInput interface {
 }
 
 type ClusterNodeGroupDataDiskArgs struct {
-	// The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
-	Category pulumi.StringInput `pulumi:"category"`
-	// The count of a data disk.
-	Count pulumi.IntPtrInput `pulumi:"count"`
-	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
+	Category         pulumi.StringInput    `pulumi:"category"`
+	Count            pulumi.IntPtrInput    `pulumi:"count"`
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
-	// The size of a data disk, at least 40. Unit: GiB.
-	Size pulumi.IntInput `pulumi:"size"`
+	Size             pulumi.IntInput       `pulumi:"size"`
 }
 
 func (ClusterNodeGroupDataDiskArgs) ElementType() reflect.Type {
@@ -1063,22 +1028,18 @@ func (o ClusterNodeGroupDataDiskOutput) ToClusterNodeGroupDataDiskOutputWithCont
 	return o
 }
 
-// The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
 func (o ClusterNodeGroupDataDiskOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeGroupDataDisk) string { return v.Category }).(pulumi.StringOutput)
 }
 
-// The count of a data disk.
 func (o ClusterNodeGroupDataDiskOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupDataDisk) *int { return v.Count }).(pulumi.IntPtrOutput)
 }
 
-// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
 func (o ClusterNodeGroupDataDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupDataDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
-// The size of a data disk, at least 40. Unit: GiB.
 func (o ClusterNodeGroupDataDiskOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeGroupDataDisk) int { return v.Size }).(pulumi.IntOutput)
 }
@@ -1104,9 +1065,7 @@ func (o ClusterNodeGroupDataDiskArrayOutput) Index(i pulumi.IntInput) ClusterNod
 }
 
 type ClusterNodeGroupSpotBidPrice struct {
-	// The spot bid price of a PayAsYouGo instance.
-	BidPrice int `pulumi:"bidPrice"`
-	// Host Ecs instance type.
+	BidPrice     int    `pulumi:"bidPrice"`
 	InstanceType string `pulumi:"instanceType"`
 }
 
@@ -1122,9 +1081,7 @@ type ClusterNodeGroupSpotBidPriceInput interface {
 }
 
 type ClusterNodeGroupSpotBidPriceArgs struct {
-	// The spot bid price of a PayAsYouGo instance.
-	BidPrice pulumi.IntInput `pulumi:"bidPrice"`
-	// Host Ecs instance type.
+	BidPrice     pulumi.IntInput    `pulumi:"bidPrice"`
 	InstanceType pulumi.StringInput `pulumi:"instanceType"`
 }
 
@@ -1179,12 +1136,10 @@ func (o ClusterNodeGroupSpotBidPriceOutput) ToClusterNodeGroupSpotBidPriceOutput
 	return o
 }
 
-// The spot bid price of a PayAsYouGo instance.
 func (o ClusterNodeGroupSpotBidPriceOutput) BidPrice() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeGroupSpotBidPrice) int { return v.BidPrice }).(pulumi.IntOutput)
 }
 
-// Host Ecs instance type.
 func (o ClusterNodeGroupSpotBidPriceOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeGroupSpotBidPrice) string { return v.InstanceType }).(pulumi.StringOutput)
 }
@@ -1442,14 +1397,10 @@ func (o ClusterNodeGroupSubscriptionConfigPtrOutput) PaymentDurationUnit() pulum
 }
 
 type ClusterNodeGroupSystemDisk struct {
-	// The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
-	Category string `pulumi:"category"`
-	// The count of a data disk.
-	Count *int `pulumi:"count"`
-	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
+	Category         string  `pulumi:"category"`
+	Count            *int    `pulumi:"count"`
 	PerformanceLevel *string `pulumi:"performanceLevel"`
-	// The size of a data disk, at least 40. Unit: GiB.
-	Size int `pulumi:"size"`
+	Size             int     `pulumi:"size"`
 }
 
 // ClusterNodeGroupSystemDiskInput is an input type that accepts ClusterNodeGroupSystemDiskArgs and ClusterNodeGroupSystemDiskOutput values.
@@ -1464,14 +1415,10 @@ type ClusterNodeGroupSystemDiskInput interface {
 }
 
 type ClusterNodeGroupSystemDiskArgs struct {
-	// The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
-	Category pulumi.StringInput `pulumi:"category"`
-	// The count of a data disk.
-	Count pulumi.IntPtrInput `pulumi:"count"`
-	// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
+	Category         pulumi.StringInput    `pulumi:"category"`
+	Count            pulumi.IntPtrInput    `pulumi:"count"`
 	PerformanceLevel pulumi.StringPtrInput `pulumi:"performanceLevel"`
-	// The size of a data disk, at least 40. Unit: GiB.
-	Size pulumi.IntInput `pulumi:"size"`
+	Size             pulumi.IntInput       `pulumi:"size"`
 }
 
 func (ClusterNodeGroupSystemDiskArgs) ElementType() reflect.Type {
@@ -1500,22 +1447,18 @@ func (o ClusterNodeGroupSystemDiskOutput) ToClusterNodeGroupSystemDiskOutputWith
 	return o
 }
 
-// The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
 func (o ClusterNodeGroupSystemDiskOutput) Category() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterNodeGroupSystemDisk) string { return v.Category }).(pulumi.StringOutput)
 }
 
-// The count of a data disk.
 func (o ClusterNodeGroupSystemDiskOutput) Count() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupSystemDisk) *int { return v.Count }).(pulumi.IntPtrOutput)
 }
 
-// Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
 func (o ClusterNodeGroupSystemDiskOutput) PerformanceLevel() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterNodeGroupSystemDisk) *string { return v.PerformanceLevel }).(pulumi.StringPtrOutput)
 }
 
-// The size of a data disk, at least 40. Unit: GiB.
 func (o ClusterNodeGroupSystemDiskOutput) Size() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterNodeGroupSystemDisk) int { return v.Size }).(pulumi.IntOutput)
 }

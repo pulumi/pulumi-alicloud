@@ -17,123 +17,51 @@ public final class TrafficMirrorFilterEgressRuleArgs extends com.pulumi.resource
 
     public static final TrafficMirrorFilterEgressRuleArgs Empty = new TrafficMirrorFilterEgressRuleArgs();
 
-    /**
-     * Collection strategy for outbound rules. Value:
-     * - accept: collects network traffic.
-     * - drop: No network traffic is collected.
-     * 
-     */
     @Import(name="action", required=true)
     private Output<String> action;
 
-    /**
-     * @return Collection strategy for outbound rules. Value:
-     * - accept: collects network traffic.
-     * - drop: No network traffic is collected.
-     * 
-     */
     public Output<String> action() {
         return this.action;
     }
 
-    /**
-     * DestinationCidrBlock.
-     * 
-     */
     @Import(name="destinationCidrBlock")
     private @Nullable Output<String> destinationCidrBlock;
 
-    /**
-     * @return DestinationCidrBlock.
-     * 
-     */
     public Optional<Output<String>> destinationCidrBlock() {
         return Optional.ofNullable(this.destinationCidrBlock);
     }
 
-    /**
-     * The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-     * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-     * 
-     */
     @Import(name="destinationPortRange")
     private @Nullable Output<String> destinationPortRange;
 
-    /**
-     * @return The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-     * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-     * 
-     */
     public Optional<Output<String>> destinationPortRange() {
         return Optional.ofNullable(this.destinationPortRange);
     }
 
-    /**
-     * Priority.
-     * 
-     */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
-    /**
-     * @return Priority.
-     * 
-     */
     public Optional<Output<Integer>> priority() {
         return Optional.ofNullable(this.priority);
     }
 
-    /**
-     * The type of protocol used by the outbound network traffic to be mirrored. Value:
-     * - ALL: ALL agreements.
-     * - ICMP: Network Control Message Protocol.
-     * - TCP: Transmission Control Protocol.
-     * - UDP: User Datagram Protocol.
-     * 
-     */
     @Import(name="protocol", required=true)
     private Output<String> protocol;
 
-    /**
-     * @return The type of protocol used by the outbound network traffic to be mirrored. Value:
-     * - ALL: ALL agreements.
-     * - ICMP: Network Control Message Protocol.
-     * - TCP: Transmission Control Protocol.
-     * - UDP: User Datagram Protocol.
-     * 
-     */
     public Output<String> protocol() {
         return this.protocol;
     }
 
-    /**
-     * The source address of the outbound rule network traffic.
-     * 
-     */
     @Import(name="sourceCidrBlock")
     private @Nullable Output<String> sourceCidrBlock;
 
-    /**
-     * @return The source address of the outbound rule network traffic.
-     * 
-     */
     public Optional<Output<String>> sourceCidrBlock() {
         return Optional.ofNullable(this.sourceCidrBlock);
     }
 
-    /**
-     * The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-     * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-     * 
-     */
     @Import(name="sourcePortRange")
     private @Nullable Output<String> sourcePortRange;
 
-    /**
-     * @return The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-     * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-     * 
-     */
     public Optional<Output<String>> sourcePortRange() {
         return Optional.ofNullable(this.sourcePortRange);
     }
@@ -176,165 +104,65 @@ public final class TrafficMirrorFilterEgressRuleArgs extends com.pulumi.resource
             $ = new TrafficMirrorFilterEgressRuleArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param action Collection strategy for outbound rules. Value:
-         * - accept: collects network traffic.
-         * - drop: No network traffic is collected.
-         * 
-         * @return builder
-         * 
-         */
         public Builder action(Output<String> action) {
             $.action = action;
             return this;
         }
 
-        /**
-         * @param action Collection strategy for outbound rules. Value:
-         * - accept: collects network traffic.
-         * - drop: No network traffic is collected.
-         * 
-         * @return builder
-         * 
-         */
         public Builder action(String action) {
             return action(Output.of(action));
         }
 
-        /**
-         * @param destinationCidrBlock DestinationCidrBlock.
-         * 
-         * @return builder
-         * 
-         */
         public Builder destinationCidrBlock(@Nullable Output<String> destinationCidrBlock) {
             $.destinationCidrBlock = destinationCidrBlock;
             return this;
         }
 
-        /**
-         * @param destinationCidrBlock DestinationCidrBlock.
-         * 
-         * @return builder
-         * 
-         */
         public Builder destinationCidrBlock(String destinationCidrBlock) {
             return destinationCidrBlock(Output.of(destinationCidrBlock));
         }
 
-        /**
-         * @param destinationPortRange The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-         * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-         * 
-         * @return builder
-         * 
-         */
         public Builder destinationPortRange(@Nullable Output<String> destinationPortRange) {
             $.destinationPortRange = destinationPortRange;
             return this;
         }
 
-        /**
-         * @param destinationPortRange The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-         * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-         * 
-         * @return builder
-         * 
-         */
         public Builder destinationPortRange(String destinationPortRange) {
             return destinationPortRange(Output.of(destinationPortRange));
         }
 
-        /**
-         * @param priority Priority.
-         * 
-         * @return builder
-         * 
-         */
         public Builder priority(@Nullable Output<Integer> priority) {
             $.priority = priority;
             return this;
         }
 
-        /**
-         * @param priority Priority.
-         * 
-         * @return builder
-         * 
-         */
         public Builder priority(Integer priority) {
             return priority(Output.of(priority));
         }
 
-        /**
-         * @param protocol The type of protocol used by the outbound network traffic to be mirrored. Value:
-         * - ALL: ALL agreements.
-         * - ICMP: Network Control Message Protocol.
-         * - TCP: Transmission Control Protocol.
-         * - UDP: User Datagram Protocol.
-         * 
-         * @return builder
-         * 
-         */
         public Builder protocol(Output<String> protocol) {
             $.protocol = protocol;
             return this;
         }
 
-        /**
-         * @param protocol The type of protocol used by the outbound network traffic to be mirrored. Value:
-         * - ALL: ALL agreements.
-         * - ICMP: Network Control Message Protocol.
-         * - TCP: Transmission Control Protocol.
-         * - UDP: User Datagram Protocol.
-         * 
-         * @return builder
-         * 
-         */
         public Builder protocol(String protocol) {
             return protocol(Output.of(protocol));
         }
 
-        /**
-         * @param sourceCidrBlock The source address of the outbound rule network traffic.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourceCidrBlock(@Nullable Output<String> sourceCidrBlock) {
             $.sourceCidrBlock = sourceCidrBlock;
             return this;
         }
 
-        /**
-         * @param sourceCidrBlock The source address of the outbound rule network traffic.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourceCidrBlock(String sourceCidrBlock) {
             return sourceCidrBlock(Output.of(sourceCidrBlock));
         }
 
-        /**
-         * @param sourcePortRange The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-         * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourcePortRange(@Nullable Output<String> sourcePortRange) {
             $.sourcePortRange = sourcePortRange;
             return this;
         }
 
-        /**
-         * @param sourcePortRange The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-         * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourcePortRange(String sourcePortRange) {
             return sourcePortRange(Output.of(sourcePortRange));
         }

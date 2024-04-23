@@ -108,7 +108,6 @@ class ReplicaPairDrill(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -119,7 +118,6 @@ class ReplicaPairDrill(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.ebs.ReplicaPairDrill("default", pair_id="pair-cn-wwo3kjfq5001")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -150,7 +148,6 @@ class ReplicaPairDrill(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -161,7 +158,6 @@ class ReplicaPairDrill(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.ebs.ReplicaPairDrill("default", pair_id="pair-cn-wwo3kjfq5001")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

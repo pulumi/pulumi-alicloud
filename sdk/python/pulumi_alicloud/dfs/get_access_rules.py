@@ -94,7 +94,6 @@ def get_access_rules(access_group_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -106,7 +105,6 @@ def get_access_rules(access_group_id: Optional[str] = None,
         ])
     pulumi.export("dfsAccessRuleId1", ids.rules[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str access_group_id: The resource ID of the Access Group.
@@ -142,7 +140,6 @@ def get_access_rules_output(access_group_id: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -154,7 +151,6 @@ def get_access_rules_output(access_group_id: Optional[pulumi.Input[str]] = None,
         ])
     pulumi.export("dfsAccessRuleId1", ids.rules[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str access_group_id: The resource ID of the Access Group.

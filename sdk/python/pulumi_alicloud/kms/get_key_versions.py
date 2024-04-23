@@ -101,7 +101,6 @@ def get_key_versions(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -111,7 +110,6 @@ def get_key_versions(ids: Optional[Sequence[str]] = None,
         ids=["d89e8a53-b708-41aa-8c67-6873axxx"])
     pulumi.export("allVersions", alicloud_kms_key_versions_ds.versions)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of KMS KeyVersion IDs.
@@ -145,7 +143,6 @@ def get_key_versions_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -155,7 +152,6 @@ def get_key_versions_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
         ids=["d89e8a53-b708-41aa-8c67-6873axxx"])
     pulumi.export("allVersions", alicloud_kms_key_versions_ds.versions)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of KMS KeyVersion IDs.

@@ -132,7 +132,6 @@ def get_alarm_contacts(chanel_type: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -140,7 +139,6 @@ def get_alarm_contacts(chanel_type: Optional[str] = None,
     example = alicloud.cms.get_alarm_contacts(ids=["tf-testAccCmsAlarmContact"])
     pulumi.export("first-contact", this["contacts"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str chanel_type: The alarm notification method. Alarm notifications can be sent by using `Email` or `DingWebHook`.
@@ -187,7 +185,6 @@ def get_alarm_contacts_output(chanel_type: Optional[pulumi.Input[Optional[str]]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -195,7 +192,6 @@ def get_alarm_contacts_output(chanel_type: Optional[pulumi.Input[Optional[str]]]
     example = alicloud.cms.get_alarm_contacts(ids=["tf-testAccCmsAlarmContact"])
     pulumi.export("first-contact", this["contacts"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str chanel_type: The alarm notification method. Alarm notifications can be sent by using `Email` or `DingWebHook`.

@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,7 +36,6 @@ namespace Pulumi.AliCloud.ActionTrail
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGlobalEventsStorageRegionResult> InvokeAsync(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGlobalEventsStorageRegionResult>("alicloud:actiontrail/getGlobalEventsStorageRegion:getGlobalEventsStorageRegion", InvokeArgs.Empty, options.WithDefaults());
@@ -51,7 +49,6 @@ namespace Pulumi.AliCloud.ActionTrail
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -68,7 +65,6 @@ namespace Pulumi.AliCloud.ActionTrail
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGlobalEventsStorageRegionResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGlobalEventsStorageRegionResult>("alicloud:actiontrail/getGlobalEventsStorageRegion:getGlobalEventsStorageRegion", InvokeArgs.Empty, options.WithDefaults());

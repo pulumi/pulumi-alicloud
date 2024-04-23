@@ -19,7 +19,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,7 +42,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetIndustrialSerice(ctx *pulumi.Context, args *GetIndustrialSericeArgs, opts ...pulumi.InvokeOption) (*GetIndustrialSericeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIndustrialSericeResult

@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,7 +39,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetResourceDirectories(ctx *pulumi.Context, args *GetResourceDirectoriesArgs, opts ...pulumi.InvokeOption) (*GetResourceDirectoriesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetResourceDirectoriesResult

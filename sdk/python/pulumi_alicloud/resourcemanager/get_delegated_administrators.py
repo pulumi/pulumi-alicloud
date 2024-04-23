@@ -114,7 +114,6 @@ def get_delegated_administrators(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -122,7 +121,6 @@ def get_delegated_administrators(ids: Optional[Sequence[str]] = None,
     ids = alicloud.resourcemanager.get_delegated_administrators(ids=["example_value"])
     pulumi.export("resourceManagerDelegatedAdministratorId1", ids.administrators[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Delegated Administrator IDs.
@@ -164,7 +162,6 @@ def get_delegated_administrators_output(ids: Optional[pulumi.Input[Optional[Sequ
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -172,7 +169,6 @@ def get_delegated_administrators_output(ids: Optional[pulumi.Input[Optional[Sequ
     ids = alicloud.resourcemanager.get_delegated_administrators(ids=["example_value"])
     pulumi.export("resourceManagerDelegatedAdministratorId1", ids.administrators[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Delegated Administrator IDs.

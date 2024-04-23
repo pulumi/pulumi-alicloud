@@ -550,7 +550,6 @@ class VpcEndpoint(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -575,7 +574,6 @@ class VpcEndpoint(pulumi.CustomResource):
             vpc_id=example_network.id,
             vpc_endpoint_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -621,7 +619,6 @@ class VpcEndpoint(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -646,7 +643,6 @@ class VpcEndpoint(pulumi.CustomResource):
             vpc_id=example_network.id,
             vpc_endpoint_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

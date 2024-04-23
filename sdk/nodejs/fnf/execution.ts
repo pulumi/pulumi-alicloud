@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -46,7 +45,7 @@ import * as utilities from "../utilities";
  *   steps:
  *     - type: wait
  *       name: custom_wait
- *       duration: $.wait
+ *       duration: .wait
  * `,
  *     roleArn: _default.arn,
  *     description: "Test for terraform fnf_flow.",
@@ -59,7 +58,6 @@ import * as utilities from "../utilities";
  *     input: "{\"wait\": 600}",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

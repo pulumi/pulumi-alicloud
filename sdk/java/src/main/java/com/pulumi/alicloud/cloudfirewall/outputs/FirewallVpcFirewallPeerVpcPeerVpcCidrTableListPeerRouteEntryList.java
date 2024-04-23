@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList {
-    /**
-     * @return The target network segment of the peer VPC.
-     * 
-     */
     private String peerDestinationCidr;
-    /**
-     * @return The ID of the next-hop instance in the peer VPC.
-     * 
-     */
     private String peerNextHopInstanceId;
 
     private FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList() {}
-    /**
-     * @return The target network segment of the peer VPC.
-     * 
-     */
     public String peerDestinationCidr() {
         return this.peerDestinationCidr;
     }
-    /**
-     * @return The ID of the next-hop instance in the peer VPC.
-     * 
-     */
     public String peerNextHopInstanceId() {
         return this.peerNextHopInstanceId;
     }

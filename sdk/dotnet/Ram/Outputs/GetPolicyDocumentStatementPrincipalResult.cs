@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Ram.Outputs
     [OutputType]
     public sealed class GetPolicyDocumentStatementPrincipalResult
     {
-        /// <summary>
-        /// The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
-        /// </summary>
         public readonly string Entity;
-        /// <summary>
-        /// The identifiers of the principal.
-        /// </summary>
         public readonly ImmutableArray<string> Identifiers;
 
         [OutputConstructor]

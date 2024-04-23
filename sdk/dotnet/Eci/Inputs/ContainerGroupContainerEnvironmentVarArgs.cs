@@ -14,25 +14,15 @@ namespace Pulumi.AliCloud.Eci.Inputs
     {
         [Input("fieldReves")]
         private InputList<Inputs.ContainerGroupContainerEnvironmentVarFieldRefArgs>? _fieldReves;
-
-        /// <summary>
-        /// The reference of the environment variable. See `field_ref` below.
-        /// </summary>
         public InputList<Inputs.ContainerGroupContainerEnvironmentVarFieldRefArgs> FieldReves
         {
             get => _fieldReves ?? (_fieldReves = new InputList<Inputs.ContainerGroupContainerEnvironmentVarFieldRefArgs>());
             set => _fieldReves = value;
         }
 
-        /// <summary>
-        /// The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
-        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 
-        /// <summary>
-        /// The value of the variable. The value can be 0 to 256 characters in length.
-        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

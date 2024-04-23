@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
-    /**
-     * @return The destination server group to which requests are forwarded. See `server_group_tuples` below.
-     * 
-     */
     private @Nullable List<RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple> serverGroupTuples;
 
     private RuleRuleActionTrafficMirrorConfigMirrorGroupConfig() {}
-    /**
-     * @return The destination server group to which requests are forwarded. See `server_group_tuples` below.
-     * 
-     */
     public List<RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple> serverGroupTuples() {
         return this.serverGroupTuples == null ? List.of() : this.serverGroupTuples;
     }

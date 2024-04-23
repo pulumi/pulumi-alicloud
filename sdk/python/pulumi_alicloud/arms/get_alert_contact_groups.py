@@ -133,7 +133,6 @@ def get_alert_contact_groups(alert_contact_group_name: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -141,7 +140,6 @@ def get_alert_contact_groups(alert_contact_group_name: Optional[str] = None,
     name_regex = alicloud.arms.get_alert_contact_groups(name_regex="^my-AlertContactGroup")
     pulumi.export("armsAlertContactGroupId", name_regex.groups[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str alert_contact_group_name: The name of the resource.
@@ -190,7 +188,6 @@ def get_alert_contact_groups_output(alert_contact_group_name: Optional[pulumi.In
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -198,7 +195,6 @@ def get_alert_contact_groups_output(alert_contact_group_name: Optional[pulumi.In
     name_regex = alicloud.arms.get_alert_contact_groups(name_regex="^my-AlertContactGroup")
     pulumi.export("armsAlertContactGroupId", name_regex.groups[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str alert_contact_group_name: The name of the resource.

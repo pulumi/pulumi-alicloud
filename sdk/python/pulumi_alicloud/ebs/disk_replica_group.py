@@ -287,7 +287,6 @@ class DiskReplicaGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -307,7 +306,6 @@ class DiskReplicaGroup(pulumi.CustomResource):
             description=name,
             rpo=900)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -344,7 +342,6 @@ class DiskReplicaGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -364,7 +361,6 @@ class DiskReplicaGroup(pulumi.CustomResource):
             description=name,
             rpo=900)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

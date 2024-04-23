@@ -143,7 +143,6 @@ def get_hana_instances(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -151,7 +150,6 @@ def get_hana_instances(ids: Optional[Sequence[str]] = None,
     ids = alicloud.hbr.get_hana_instances(ids=["example_id"])
     pulumi.export("hbrHanaInstanceId1", ids.instances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Hana Instance IDs.
@@ -202,7 +200,6 @@ def get_hana_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -210,7 +207,6 @@ def get_hana_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     ids = alicloud.hbr.get_hana_instances(ids=["example_id"])
     pulumi.export("hbrHanaInstanceId1", ids.instances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Hana Instance IDs.

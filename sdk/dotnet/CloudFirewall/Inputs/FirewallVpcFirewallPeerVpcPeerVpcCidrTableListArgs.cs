@@ -14,19 +14,12 @@ namespace Pulumi.AliCloud.CloudFirewall.Inputs
     {
         [Input("peerRouteEntryLists", required: true)]
         private InputList<Inputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs>? _peerRouteEntryLists;
-
-        /// <summary>
-        /// Peer VPC route entry list information. See `peer_route_entry_list` below.
-        /// </summary>
         public InputList<Inputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs> PeerRouteEntryLists
         {
             get => _peerRouteEntryLists ?? (_peerRouteEntryLists = new InputList<Inputs.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs>());
             set => _peerRouteEntryLists = value;
         }
 
-        /// <summary>
-        /// The ID of the route table of the peer VPC.
-        /// </summary>
         [Input("peerRouteTableId", required: true)]
         public Input<string> PeerRouteTableId { get; set; } = null!;
 

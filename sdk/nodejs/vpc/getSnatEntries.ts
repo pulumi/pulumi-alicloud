@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -52,7 +51,6 @@ import * as utilities from "../utilities";
  *     snatTableId: fooSnatEntry.snatTableId,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSnatEntries(args: GetSnatEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetSnatEntriesResult> {
 
@@ -160,7 +158,6 @@ export interface GetSnatEntriesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -199,7 +196,6 @@ export interface GetSnatEntriesResult {
  *     snatTableId: fooSnatEntry.snatTableId,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSnatEntriesOutput(args: GetSnatEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnatEntriesResult> {
     return pulumi.output(args).apply((a: any) => getSnatEntries(a, opts))

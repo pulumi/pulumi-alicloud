@@ -101,7 +101,6 @@ def get_notifications(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -109,7 +108,6 @@ def get_notifications(ids: Optional[Sequence[str]] = None,
     ds = alicloud.ess.get_notifications(scaling_group_id="scaling_group_id")
     pulumi.export("firstNotification", ds.notifications[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of notification ids.
@@ -143,7 +141,6 @@ def get_notifications_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -151,7 +148,6 @@ def get_notifications_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     ds = alicloud.ess.get_notifications(scaling_group_id="scaling_group_id")
     pulumi.export("firstNotification", ds.notifications[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of notification ids.

@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,7 +48,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetEcsStorageCapacityUnits(ctx *pulumi.Context, args *GetEcsStorageCapacityUnitsArgs, opts ...pulumi.InvokeOption) (*GetEcsStorageCapacityUnitsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsStorageCapacityUnitsResult

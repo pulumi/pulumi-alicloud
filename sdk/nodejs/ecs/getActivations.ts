@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * const ids = alicloud.ecs.getActivations({});
  * export const ecsActivationId1 = ids.then(ids => ids.activations?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getActivations(args?: GetActivationsArgs, opts?: pulumi.InvokeOptions): Promise<GetActivationsResult> {
     args = args || {};
@@ -83,7 +81,6 @@ export interface GetActivationsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -91,7 +88,6 @@ export interface GetActivationsResult {
  * const ids = alicloud.ecs.getActivations({});
  * export const ecsActivationId1 = ids.then(ids => ids.activations?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getActivationsOutput(args?: GetActivationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetActivationsResult> {
     return pulumi.output(args).apply((a: any) => getActivations(a, opts))

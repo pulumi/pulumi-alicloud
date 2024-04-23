@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RuleRuleActionTrafficMirrorConfig {
-    /**
-     * @return The Traffic is mirrored to the server group. See `mirror_group_config` below.
-     * 
-     */
     private @Nullable RuleRuleActionTrafficMirrorConfigMirrorGroupConfig mirrorGroupConfig;
-    /**
-     * @return The Mirror target type.
-     * 
-     */
     private @Nullable String targetType;
 
     private RuleRuleActionTrafficMirrorConfig() {}
-    /**
-     * @return The Traffic is mirrored to the server group. See `mirror_group_config` below.
-     * 
-     */
     public Optional<RuleRuleActionTrafficMirrorConfigMirrorGroupConfig> mirrorGroupConfig() {
         return Optional.ofNullable(this.mirrorGroupConfig);
     }
-    /**
-     * @return The Mirror target type.
-     * 
-     */
     public Optional<String> targetType() {
         return Optional.ofNullable(this.targetType);
     }

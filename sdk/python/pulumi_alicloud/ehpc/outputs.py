@@ -183,18 +183,12 @@ class ClusterAdditionalVolume(dict):
 class ClusterAdditionalVolumeRole(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None):
-        """
-        :param str name: The type of the nodes to which the additional file system is attached.
-        """
         if name is not None:
             pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        The type of the nodes to which the additional file system is attached.
-        """
         return pulumi.get(self, "name")
 
 
@@ -286,37 +280,7 @@ class GetClustersClusterResult(dict):
         """
         :param str account_type: The server type of the account.
         :param str client_version: The version number of the client used by the cluster.
-        :param str cluster_id: The id of E-HPC Cluster.
-        :param str cluster_name: The name of E-HPC cluster.
-        :param int compute_count: The number of compute nodes in the cluster.
-        :param str compute_instance_type: Cluster compute node specifications.
-        :param str create_time: The creation time of the resource.
-        :param str deploy_mode: Cluster deployment mode. Possible values:
-               - Standard: separate deployment of account nodes, scheduling nodes, login nodes, and compute nodes.
-               - Advanced:HA mode deployment.
-               - Simple: the account node and the scheduling node are deployed on one node, and the login node and the compute node are deployed separately.
-               - Tiny: account nodes, scheduling nodes, and login nodes are deployed on one node, and compute nodes are deployed separately.
-               - OneBox: account node, scheduling node, login node and compute node are deployed on one node.
-        :param str description: The description of E-HPC cluster.
-        :param bool ha_enable: Whether to turn on high availability. > If high availability is enabled, each control role in the cluster will use two primary and secondary instances.
-        :param str id: The ID of the Cluster.
-        :param str image_id: The ID of the Image.
-        :param str image_owner_alias: The type of the image.
-        :param int login_count: The number of cluster login nodes. Only configuration 1 is supported.
-        :param str login_instance_type: Cluster login node specifications.
-        :param str manager_instance_type: The instance type of manager nodes.
-        :param str os_tag: The image tag of the operating system.
-        :param str remote_directory: Mount the remote directory of the shared storage.
-        :param str scc_cluster_id: The SccCluster ID used by the cluster. If the cluster is not an SCC model, it is empty.
-        :param str scheduler_type: Dispatch server type.
-        :param str security_group_id: The ID of the security group.
-        :param str status: The status of the resource.
-        :param str volume_id: The ID of the NAS instance. Currently, you cannot automatically create an Alibaba Cloud NAS instance.
-        :param str volume_mountpoint: The mount target of the file system. Mount targets cannot be automatically created for NAS file systems.
-        :param str volume_protocol: The type of the protocol that is used by the file system.
-        :param str volume_type: The type of the network shared storage. Valid value: NAS.
-        :param str vpc_id: The ID of the VPC network.
-        :param str vswitch_id: The vswitch id.
+        :param str status: The status of the resource. Valid values:
         """
         pulumi.set(__self__, "account_type", account_type)
         pulumi.set(__self__, "applications", applications)
@@ -375,110 +339,66 @@ class GetClustersClusterResult(dict):
     @property
     @pulumi.getter(name="clusterId")
     def cluster_id(self) -> str:
-        """
-        The id of E-HPC Cluster.
-        """
         return pulumi.get(self, "cluster_id")
 
     @property
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> str:
-        """
-        The name of E-HPC cluster.
-        """
         return pulumi.get(self, "cluster_name")
 
     @property
     @pulumi.getter(name="computeCount")
     def compute_count(self) -> int:
-        """
-        The number of compute nodes in the cluster.
-        """
         return pulumi.get(self, "compute_count")
 
     @property
     @pulumi.getter(name="computeInstanceType")
     def compute_instance_type(self) -> str:
-        """
-        Cluster compute node specifications.
-        """
         return pulumi.get(self, "compute_instance_type")
 
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
-        """
-        The creation time of the resource.
-        """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="deployMode")
     def deploy_mode(self) -> str:
-        """
-        Cluster deployment mode. Possible values:
-        - Standard: separate deployment of account nodes, scheduling nodes, login nodes, and compute nodes.
-        - Advanced:HA mode deployment.
-        - Simple: the account node and the scheduling node are deployed on one node, and the login node and the compute node are deployed separately.
-        - Tiny: account nodes, scheduling nodes, and login nodes are deployed on one node, and compute nodes are deployed separately.
-        - OneBox: account node, scheduling node, login node and compute node are deployed on one node.
-        """
         return pulumi.get(self, "deploy_mode")
 
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        The description of E-HPC cluster.
-        """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter(name="haEnable")
     def ha_enable(self) -> bool:
-        """
-        Whether to turn on high availability. > If high availability is enabled, each control role in the cluster will use two primary and secondary instances.
-        """
         return pulumi.get(self, "ha_enable")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ID of the Cluster.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="imageId")
     def image_id(self) -> str:
-        """
-        The ID of the Image.
-        """
         return pulumi.get(self, "image_id")
 
     @property
     @pulumi.getter(name="imageOwnerAlias")
     def image_owner_alias(self) -> str:
-        """
-        The type of the image.
-        """
         return pulumi.get(self, "image_owner_alias")
 
     @property
     @pulumi.getter(name="loginCount")
     def login_count(self) -> int:
-        """
-        The number of cluster login nodes. Only configuration 1 is supported.
-        """
         return pulumi.get(self, "login_count")
 
     @property
     @pulumi.getter(name="loginInstanceType")
     def login_instance_type(self) -> str:
-        """
-        Cluster login node specifications.
-        """
         return pulumi.get(self, "login_instance_type")
 
     @property
@@ -489,17 +409,11 @@ class GetClustersClusterResult(dict):
     @property
     @pulumi.getter(name="managerInstanceType")
     def manager_instance_type(self) -> str:
-        """
-        The instance type of manager nodes.
-        """
         return pulumi.get(self, "manager_instance_type")
 
     @property
     @pulumi.getter(name="osTag")
     def os_tag(self) -> str:
-        """
-        The image tag of the operating system.
-        """
         return pulumi.get(self, "os_tag")
 
     @property
@@ -510,89 +424,59 @@ class GetClustersClusterResult(dict):
     @property
     @pulumi.getter(name="remoteDirectory")
     def remote_directory(self) -> str:
-        """
-        Mount the remote directory of the shared storage.
-        """
         return pulumi.get(self, "remote_directory")
 
     @property
     @pulumi.getter(name="sccClusterId")
     def scc_cluster_id(self) -> str:
-        """
-        The SccCluster ID used by the cluster. If the cluster is not an SCC model, it is empty.
-        """
         return pulumi.get(self, "scc_cluster_id")
 
     @property
     @pulumi.getter(name="schedulerType")
     def scheduler_type(self) -> str:
-        """
-        Dispatch server type.
-        """
         return pulumi.get(self, "scheduler_type")
 
     @property
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> str:
-        """
-        The ID of the security group.
-        """
         return pulumi.get(self, "security_group_id")
 
     @property
     @pulumi.getter
     def status(self) -> str:
         """
-        The status of the resource.
+        The status of the resource. Valid values:
         """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="volumeId")
     def volume_id(self) -> str:
-        """
-        The ID of the NAS instance. Currently, you cannot automatically create an Alibaba Cloud NAS instance.
-        """
         return pulumi.get(self, "volume_id")
 
     @property
     @pulumi.getter(name="volumeMountpoint")
     def volume_mountpoint(self) -> str:
-        """
-        The mount target of the file system. Mount targets cannot be automatically created for NAS file systems.
-        """
         return pulumi.get(self, "volume_mountpoint")
 
     @property
     @pulumi.getter(name="volumeProtocol")
     def volume_protocol(self) -> str:
-        """
-        The type of the protocol that is used by the file system.
-        """
         return pulumi.get(self, "volume_protocol")
 
     @property
     @pulumi.getter(name="volumeType")
     def volume_type(self) -> str:
-        """
-        The type of the network shared storage. Valid value: NAS.
-        """
         return pulumi.get(self, "volume_type")
 
     @property
     @pulumi.getter(name="vpcId")
     def vpc_id(self) -> str:
-        """
-        The ID of the VPC network.
-        """
         return pulumi.get(self, "vpc_id")
 
     @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
-        """
-        The vswitch id.
-        """
         return pulumi.get(self, "vswitch_id")
 
     @property

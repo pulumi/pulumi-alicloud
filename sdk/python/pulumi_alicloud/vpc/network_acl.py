@@ -394,7 +394,6 @@ class NetworkAcl(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -437,7 +436,6 @@ class NetworkAcl(pulumi.CustomResource):
                 resource_type="VSwitch",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -478,7 +476,6 @@ class NetworkAcl(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -521,7 +518,6 @@ class NetworkAcl(pulumi.CustomResource):
                 resource_type="VSwitch",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

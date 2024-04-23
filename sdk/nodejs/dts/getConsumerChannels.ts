@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * const ids = alicloud.dts.getConsumerChannels({});
  * export const dtsConsumerChannelId1 = ids.then(ids => ids.channels?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getConsumerChannels(args: GetConsumerChannelsArgs, opts?: pulumi.InvokeOptions): Promise<GetConsumerChannelsResult> {
 
@@ -75,7 +73,6 @@ export interface GetConsumerChannelsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -83,7 +80,6 @@ export interface GetConsumerChannelsResult {
  * const ids = alicloud.dts.getConsumerChannels({});
  * export const dtsConsumerChannelId1 = ids.then(ids => ids.channels?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getConsumerChannelsOutput(args: GetConsumerChannelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConsumerChannelsResult> {
     return pulumi.output(args).apply((a: any) => getConsumerChannels(a, opts))

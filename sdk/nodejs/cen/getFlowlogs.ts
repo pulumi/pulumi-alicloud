@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstCenFlowlogId = defaultAlicloudCenInstances.flowlogs[0].id;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFlowlogs(args?: GetFlowlogsArgs, opts?: pulumi.InvokeOptions): Promise<GetFlowlogsResult> {
     args = args || {};
@@ -131,7 +129,6 @@ export interface GetFlowlogsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -142,7 +139,6 @@ export interface GetFlowlogsResult {
  * });
  * export const firstCenFlowlogId = defaultAlicloudCenInstances.flowlogs[0].id;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFlowlogsOutput(args?: GetFlowlogsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlowlogsResult> {
     return pulumi.output(args).apply((a: any) => getFlowlogs(a, opts))

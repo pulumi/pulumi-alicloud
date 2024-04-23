@@ -12,53 +12,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApplicationScalingRuleScalingRuleTimerSchedule {
-    /**
-     * @return Trigger point in time. When supporting format: minutes, for example: `08:00`.
-     * 
-     */
     private @Nullable String atTime;
-    /**
-     * @return Maximum number of instances applied.
-     * 
-     */
     private @Nullable Integer maxReplicas;
-    /**
-     * @return Minimum number of instances applied.
-     * 
-     */
     private @Nullable Integer minReplicas;
-    /**
-     * @return This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
-     * 
-     */
     private @Nullable Integer targetReplicas;
 
     private ApplicationScalingRuleScalingRuleTimerSchedule() {}
-    /**
-     * @return Trigger point in time. When supporting format: minutes, for example: `08:00`.
-     * 
-     */
     public Optional<String> atTime() {
         return Optional.ofNullable(this.atTime);
     }
-    /**
-     * @return Maximum number of instances applied.
-     * 
-     */
     public Optional<Integer> maxReplicas() {
         return Optional.ofNullable(this.maxReplicas);
     }
-    /**
-     * @return Minimum number of instances applied.
-     * 
-     */
     public Optional<Integer> minReplicas() {
         return Optional.ofNullable(this.minReplicas);
     }
-    /**
-     * @return This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
-     * 
-     */
     public Optional<Integer> targetReplicas() {
         return Optional.ofNullable(this.targetReplicas);
     }

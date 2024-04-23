@@ -699,7 +699,6 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -741,7 +740,6 @@ class AutoProvisioningGroup(pulumi.CustomResource):
                 max_price="2",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -787,7 +785,6 @@ class AutoProvisioningGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -829,7 +826,6 @@ class AutoProvisioningGroup(pulumi.CustomResource):
                 max_price="2",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

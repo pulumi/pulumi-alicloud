@@ -164,7 +164,6 @@ def get_applications(app_name: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -200,7 +199,6 @@ def get_applications(app_name: Optional[str] = None,
     default_get_applications = alicloud.sae.get_applications_output(ids=[default_application.id])
     pulumi.export("saeApplicationId", default_get_applications.applications[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str app_name: Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
@@ -212,7 +210,7 @@ def get_applications(app_name: Optional[str] = None,
     :param str order_by: The order by.Valid values:`running`,`instances`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param bool reverse: The reverse.
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `RUNNING`, `STOPPED`,`UNKNOWN`.
     """
     __args__ = dict()
     __args__['appName'] = app_name
@@ -264,7 +262,6 @@ def get_applications_output(app_name: Optional[pulumi.Input[Optional[str]]] = No
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -300,7 +297,6 @@ def get_applications_output(app_name: Optional[pulumi.Input[Optional[str]]] = No
     default_get_applications = alicloud.sae.get_applications_output(ids=[default_application.id])
     pulumi.export("saeApplicationId", default_get_applications.applications[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str app_name: Application Name. Combinations of numbers, letters, and dashes (-) are allowed. It must start with a letter and the maximum length is 36 characters.
@@ -312,6 +308,6 @@ def get_applications_output(app_name: Optional[pulumi.Input[Optional[str]]] = No
     :param str order_by: The order by.Valid values:`running`,`instances`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param bool reverse: The reverse.
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `RUNNING`, `STOPPED`,`UNKNOWN`.
     """
     ...

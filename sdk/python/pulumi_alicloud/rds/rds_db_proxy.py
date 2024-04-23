@@ -827,7 +827,6 @@ class RdsDbProxy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -889,7 +888,6 @@ class RdsDbProxy(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         > **NOTE:** Resource `rds.RdsDbProxy` should be created after `rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
 
@@ -964,7 +962,6 @@ class RdsDbProxy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1026,7 +1023,6 @@ class RdsDbProxy(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         > **NOTE:** Resource `rds.RdsDbProxy` should be created after `rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
 

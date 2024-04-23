@@ -17,47 +17,23 @@ public final class K8sSlbAttachmentSlbConfigPortMappingArgs extends com.pulumi.r
 
     public static final K8sSlbAttachmentSlbConfigPortMappingArgs Empty = new K8sSlbAttachmentSlbConfigPortMappingArgs();
 
-    /**
-     * The ID of your tls certification, this is used for &#39;HTTPS&#39; protocol only.
-     * 
-     */
     @Import(name="certId")
     private @Nullable Output<String> certId;
 
-    /**
-     * @return The ID of your tls certification, this is used for &#39;HTTPS&#39; protocol only.
-     * 
-     */
     public Optional<Output<String>> certId() {
         return Optional.ofNullable(this.certId);
     }
 
-    /**
-     * The protocol of SLB instance configuration, values can be &#39;TCP&#39;, &#39;HTTP&#39; or &#39;HTTPS&#39;.
-     * 
-     */
     @Import(name="loadbalancerProtocol", required=true)
     private Output<String> loadbalancerProtocol;
 
-    /**
-     * @return The protocol of SLB instance configuration, values can be &#39;TCP&#39;, &#39;HTTP&#39; or &#39;HTTPS&#39;.
-     * 
-     */
     public Output<String> loadbalancerProtocol() {
         return this.loadbalancerProtocol;
     }
 
-    /**
-     * The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `service_port` below.
-     * 
-     */
     @Import(name="servicePort", required=true)
     private Output<K8sSlbAttachmentSlbConfigPortMappingServicePortArgs> servicePort;
 
-    /**
-     * @return The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `service_port` below.
-     * 
-     */
     public Output<K8sSlbAttachmentSlbConfigPortMappingServicePortArgs> servicePort() {
         return this.servicePort;
     }
@@ -88,65 +64,29 @@ public final class K8sSlbAttachmentSlbConfigPortMappingArgs extends com.pulumi.r
             $ = new K8sSlbAttachmentSlbConfigPortMappingArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param certId The ID of your tls certification, this is used for &#39;HTTPS&#39; protocol only.
-         * 
-         * @return builder
-         * 
-         */
         public Builder certId(@Nullable Output<String> certId) {
             $.certId = certId;
             return this;
         }
 
-        /**
-         * @param certId The ID of your tls certification, this is used for &#39;HTTPS&#39; protocol only.
-         * 
-         * @return builder
-         * 
-         */
         public Builder certId(String certId) {
             return certId(Output.of(certId));
         }
 
-        /**
-         * @param loadbalancerProtocol The protocol of SLB instance configuration, values can be &#39;TCP&#39;, &#39;HTTP&#39; or &#39;HTTPS&#39;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder loadbalancerProtocol(Output<String> loadbalancerProtocol) {
             $.loadbalancerProtocol = loadbalancerProtocol;
             return this;
         }
 
-        /**
-         * @param loadbalancerProtocol The protocol of SLB instance configuration, values can be &#39;TCP&#39;, &#39;HTTP&#39; or &#39;HTTPS&#39;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder loadbalancerProtocol(String loadbalancerProtocol) {
             return loadbalancerProtocol(Output.of(loadbalancerProtocol));
         }
 
-        /**
-         * @param servicePort The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `service_port` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder servicePort(Output<K8sSlbAttachmentSlbConfigPortMappingServicePortArgs> servicePort) {
             $.servicePort = servicePort;
             return this;
         }
 
-        /**
-         * @param servicePort The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `service_port` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder servicePort(K8sSlbAttachmentSlbConfigPortMappingServicePortArgs servicePort) {
             return servicePort(Output.of(servicePort));
         }

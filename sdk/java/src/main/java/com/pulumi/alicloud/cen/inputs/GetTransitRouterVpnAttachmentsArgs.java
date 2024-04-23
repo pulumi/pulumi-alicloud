@@ -70,14 +70,14 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
     }
 
     /**
-     * The status of the transit router attachment.
+     * The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the transit router attachment.
+     * @return The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -211,7 +211,7 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param status The status of the transit router attachment.
+         * @param status The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
          * 
          * @return builder
          * 
@@ -222,7 +222,7 @@ public final class GetTransitRouterVpnAttachmentsArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param status The status of the transit router attachment.
+         * @param status The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
          * 
          * @return builder
          * 

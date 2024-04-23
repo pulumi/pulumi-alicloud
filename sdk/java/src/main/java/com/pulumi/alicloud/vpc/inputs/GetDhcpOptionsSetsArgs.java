@@ -17,18 +17,14 @@ public final class GetDhcpOptionsSetsArgs extends com.pulumi.resources.InvokeArg
     public static final GetDhcpOptionsSetsArgs Empty = new GetDhcpOptionsSetsArgs();
 
     /**
-     * The root domain, for example, example.com. After a DHCP options set is associated with a
-     * Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
-     * ECS instances in the VPC network.
+     * The name of the DHCP options set.The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
      * 
      */
     @Import(name="dhcpOptionsSetName")
     private @Nullable Output<String> dhcpOptionsSetName;
 
     /**
-     * @return The root domain, for example, example.com. After a DHCP options set is associated with a
-     * Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
-     * ECS instances in the VPC network.
+     * @return The name of the DHCP options set.The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
      * 
      */
     public Optional<Output<String>> dhcpOptionsSetName() {
@@ -36,18 +32,14 @@ public final class GetDhcpOptionsSetsArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
-     * Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
-     * instances in the VPC network.
+     * The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
      * 
      */
     @Import(name="domainName")
     private @Nullable Output<String> domainName;
 
     /**
-     * @return The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
-     * Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
-     * instances in the VPC network.
+     * @return The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
      * 
      */
     public Optional<Output<String>> domainName() {
@@ -144,9 +136,7 @@ public final class GetDhcpOptionsSetsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param dhcpOptionsSetName The root domain, for example, example.com. After a DHCP options set is associated with a
-         * Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
-         * ECS instances in the VPC network.
+         * @param dhcpOptionsSetName The name of the DHCP options set.The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
          * 
          * @return builder
          * 
@@ -157,9 +147,7 @@ public final class GetDhcpOptionsSetsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param dhcpOptionsSetName The root domain, for example, example.com. After a DHCP options set is associated with a
-         * Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
-         * ECS instances in the VPC network.
+         * @param dhcpOptionsSetName The name of the DHCP options set.The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
          * 
          * @return builder
          * 
@@ -169,9 +157,7 @@ public final class GetDhcpOptionsSetsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param domainName The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
-         * Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
-         * instances in the VPC network.
+         * @param domainName The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
          * 
          * @return builder
          * 
@@ -182,9 +168,7 @@ public final class GetDhcpOptionsSetsArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param domainName The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
-         * Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
-         * instances in the VPC network.
+         * @param domainName The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
          * 
          * @return builder
          * 

@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetTopics(ctx *pulumi.Context, args *GetTopicsArgs, opts ...pulumi.InvokeOption) (*GetTopicsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTopicsResult

@@ -16,62 +16,30 @@ public final class GroupMetricRuleEscalationsWarnArgs extends com.pulumi.resourc
 
     public static final GroupMetricRuleEscalationsWarnArgs Empty = new GroupMetricRuleEscalationsWarnArgs();
 
-    /**
-     * The comparison operator of the threshold for warn-level alerts.
-     * 
-     */
     @Import(name="comparisonOperator")
     private @Nullable Output<String> comparisonOperator;
 
-    /**
-     * @return The comparison operator of the threshold for warn-level alerts.
-     * 
-     */
     public Optional<Output<String>> comparisonOperator() {
         return Optional.ofNullable(this.comparisonOperator);
     }
 
-    /**
-     * The statistical aggregation method for warn-level alerts.
-     * 
-     */
     @Import(name="statistics")
     private @Nullable Output<String> statistics;
 
-    /**
-     * @return The statistical aggregation method for warn-level alerts.
-     * 
-     */
     public Optional<Output<String>> statistics() {
         return Optional.ofNullable(this.statistics);
     }
 
-    /**
-     * The threshold for warn-level alerts.
-     * 
-     */
     @Import(name="threshold")
     private @Nullable Output<String> threshold;
 
-    /**
-     * @return The threshold for warn-level alerts.
-     * 
-     */
     public Optional<Output<String>> threshold() {
         return Optional.ofNullable(this.threshold);
     }
 
-    /**
-     * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
-     * 
-     */
     @Import(name="times")
     private @Nullable Output<Integer> times;
 
-    /**
-     * @return The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
-     * 
-     */
     public Optional<Output<Integer>> times() {
         return Optional.ofNullable(this.times);
     }
@@ -103,86 +71,38 @@ public final class GroupMetricRuleEscalationsWarnArgs extends com.pulumi.resourc
             $ = new GroupMetricRuleEscalationsWarnArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param comparisonOperator The comparison operator of the threshold for warn-level alerts.
-         * 
-         * @return builder
-         * 
-         */
         public Builder comparisonOperator(@Nullable Output<String> comparisonOperator) {
             $.comparisonOperator = comparisonOperator;
             return this;
         }
 
-        /**
-         * @param comparisonOperator The comparison operator of the threshold for warn-level alerts.
-         * 
-         * @return builder
-         * 
-         */
         public Builder comparisonOperator(String comparisonOperator) {
             return comparisonOperator(Output.of(comparisonOperator));
         }
 
-        /**
-         * @param statistics The statistical aggregation method for warn-level alerts.
-         * 
-         * @return builder
-         * 
-         */
         public Builder statistics(@Nullable Output<String> statistics) {
             $.statistics = statistics;
             return this;
         }
 
-        /**
-         * @param statistics The statistical aggregation method for warn-level alerts.
-         * 
-         * @return builder
-         * 
-         */
         public Builder statistics(String statistics) {
             return statistics(Output.of(statistics));
         }
 
-        /**
-         * @param threshold The threshold for warn-level alerts.
-         * 
-         * @return builder
-         * 
-         */
         public Builder threshold(@Nullable Output<String> threshold) {
             $.threshold = threshold;
             return this;
         }
 
-        /**
-         * @param threshold The threshold for warn-level alerts.
-         * 
-         * @return builder
-         * 
-         */
         public Builder threshold(String threshold) {
             return threshold(Output.of(threshold));
         }
 
-        /**
-         * @param times The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
-         * 
-         * @return builder
-         * 
-         */
         public Builder times(@Nullable Output<Integer> times) {
             $.times = times;
             return this;
         }
 
-        /**
-         * @param times The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
-         * 
-         * @return builder
-         * 
-         */
         public Builder times(Integer times) {
             return times(Output.of(times));
         }

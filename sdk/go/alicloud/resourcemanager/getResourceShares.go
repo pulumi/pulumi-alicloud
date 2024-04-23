@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,7 +47,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetResourceShares(ctx *pulumi.Context, args *GetResourceSharesArgs, opts ...pulumi.InvokeOption) (*GetResourceSharesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetResourceSharesResult

@@ -15,17 +15,9 @@ public final class ListenerDefaultActionForwardGroupConfigArgs extends com.pulum
 
     public static final ListenerDefaultActionForwardGroupConfigArgs Empty = new ListenerDefaultActionForwardGroupConfigArgs();
 
-    /**
-     * The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
-     * 
-     */
     @Import(name="serverGroupTuples", required=true)
     private Output<List<ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs>> serverGroupTuples;
 
-    /**
-     * @return The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
-     * 
-     */
     public Output<List<ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs>> serverGroupTuples() {
         return this.serverGroupTuples;
     }
@@ -54,33 +46,15 @@ public final class ListenerDefaultActionForwardGroupConfigArgs extends com.pulum
             $ = new ListenerDefaultActionForwardGroupConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serverGroupTuples(Output<List<ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs>> serverGroupTuples) {
             $.serverGroupTuples = serverGroupTuples;
             return this;
         }
 
-        /**
-         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serverGroupTuples(List<ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs> serverGroupTuples) {
             return serverGroupTuples(Output.of(serverGroupTuples));
         }
 
-        /**
-         * @param serverGroupTuples The destination server group to which requests are forwarded. See `server_group_tuples` below for details.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serverGroupTuples(ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs... serverGroupTuples) {
             return serverGroupTuples(List.of(serverGroupTuples));
         }

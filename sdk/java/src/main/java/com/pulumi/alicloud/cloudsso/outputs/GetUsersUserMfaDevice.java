@@ -10,53 +10,21 @@ import java.util.Objects;
 
 @CustomType
 public final class GetUsersUserMfaDevice {
-    /**
-     * @return The MFA Device ID.
-     * 
-     */
     private String deviceId;
-    /**
-     * @return The MFA Device Name.
-     * 
-     */
     private String deviceName;
-    /**
-     * @return The MFA Device Type.
-     * 
-     */
     private String deviceType;
-    /**
-     * @return The Effective Time of MFA Device.
-     * 
-     */
     private String effectiveTime;
 
     private GetUsersUserMfaDevice() {}
-    /**
-     * @return The MFA Device ID.
-     * 
-     */
     public String deviceId() {
         return this.deviceId;
     }
-    /**
-     * @return The MFA Device Name.
-     * 
-     */
     public String deviceName() {
         return this.deviceName;
     }
-    /**
-     * @return The MFA Device Type.
-     * 
-     */
     public String deviceType() {
         return this.deviceType;
     }
-    /**
-     * @return The Effective Time of MFA Device.
-     * 
-     */
     public String effectiveTime() {
         return this.effectiveTime;
     }

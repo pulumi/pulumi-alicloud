@@ -95,7 +95,6 @@ def get_backup_plans(cluster_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -103,7 +102,6 @@ def get_backup_plans(cluster_id: Optional[str] = None,
     example = alicloud.cassandra.get_backup_plans(cluster_id="example_value")
     pulumi.export("firstCassandraBackupPlanId", example.plans[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The ID of the cluster for the backup.
@@ -138,7 +136,6 @@ def get_backup_plans_output(cluster_id: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -146,7 +143,6 @@ def get_backup_plans_output(cluster_id: Optional[pulumi.Input[str]] = None,
     example = alicloud.cassandra.get_backup_plans(cluster_id="example_value")
     pulumi.export("firstCassandraBackupPlanId", example.plans[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The ID of the cluster for the backup.

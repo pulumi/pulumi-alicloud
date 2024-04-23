@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Nlb
     /// 
     /// Basic Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -87,7 +86,6 @@ namespace Pulumi.AliCloud.Nlb
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -217,7 +215,7 @@ namespace Pulumi.AliCloud.Nlb
         public Output<ImmutableArray<string>> SecurityGroupIds { get; private set; } = null!;
 
         /// <summary>
-        /// ON.
+        /// The status of the resource.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -551,7 +549,7 @@ namespace Pulumi.AliCloud.Nlb
         }
 
         /// <summary>
-        /// ON.
+        /// The status of the resource.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -407,7 +407,6 @@ def get_disks(additional_attributes: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -415,7 +414,6 @@ def get_disks(additional_attributes: Optional[Sequence[str]] = None,
     disks_ds = alicloud.ecs.get_disks(name_regex="sample_disk")
     pulumi.export("firstDiskId", disks_ds.disks[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str availability_zone: Availability zone of the disk.
@@ -429,7 +427,6 @@ def get_disks(additional_attributes: Optional[Sequence[str]] = None,
     :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
     :param str status: Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
     :param Mapping[str, Any] tags: A map of tags assigned to the disks. It must be in the format:
-           <!--Start PulumiCodeChooser -->
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -439,7 +436,6 @@ def get_disks(additional_attributes: Optional[Sequence[str]] = None,
                "tagKey2": "tagValue2",
            })
            ```
-           <!--End PulumiCodeChooser -->
     :param str type: Disk type. Possible values: `system` and `data`.
     """
     __args__ = dict()
@@ -549,7 +545,6 @@ def get_disks_output(additional_attributes: Optional[pulumi.Input[Optional[Seque
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -557,7 +552,6 @@ def get_disks_output(additional_attributes: Optional[pulumi.Input[Optional[Seque
     disks_ds = alicloud.ecs.get_disks(name_regex="sample_disk")
     pulumi.export("firstDiskId", disks_ds.disks[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str availability_zone: Availability zone of the disk.
@@ -571,7 +565,6 @@ def get_disks_output(additional_attributes: Optional[pulumi.Input[Optional[Seque
     :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
     :param str status: Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
     :param Mapping[str, Any] tags: A map of tags assigned to the disks. It must be in the format:
-           <!--Start PulumiCodeChooser -->
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -581,7 +574,6 @@ def get_disks_output(additional_attributes: Optional[pulumi.Input[Optional[Seque
                "tagKey2": "tagValue2",
            })
            ```
-           <!--End PulumiCodeChooser -->
     :param str type: Disk type. Possible values: `system` and `data`.
     """
     ...

@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,7 +45,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetVulWhitelists(ctx *pulumi.Context, args *GetVulWhitelistsArgs, opts ...pulumi.InvokeOption) (*GetVulWhitelistsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVulWhitelistsResult

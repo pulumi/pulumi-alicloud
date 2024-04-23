@@ -222,7 +222,6 @@ class Command(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -270,7 +269,6 @@ class Command(pulumi.CustomResource):
             command_type="RunPowerShellScript",
             desktop_id=default_desktop.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -305,7 +303,6 @@ class Command(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -353,7 +350,6 @@ class Command(pulumi.CustomResource):
             command_type="RunPowerShellScript",
             desktop_id=default_desktop.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

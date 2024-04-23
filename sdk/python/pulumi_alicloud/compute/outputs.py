@@ -151,8 +151,7 @@ class GetNestServiceInstancesFilterResult(dict):
                  name: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
         """
-        :param str name: The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param str name: The name of the service.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -163,16 +162,13 @@ class GetNestServiceInstancesFilterResult(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+        The name of the service.
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
-        """
-        Set of values that are accepted for the given field.
-        """
         return pulumi.get(self, "values")
 
 
@@ -464,7 +460,7 @@ class GetNestServiceInstancesServiceInstanceServiceServiceInfoResult(dict):
         """
         :param str image: The image of the service.
         :param str locale: The locale of the service.
-        :param str name: The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+        :param str name: The name of the service.
         :param str short_description: The short description of the service.
         """
         pulumi.set(__self__, "image", image)
@@ -492,7 +488,7 @@ class GetNestServiceInstancesServiceInstanceServiceServiceInfoResult(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+        The name of the service.
         """
         return pulumi.get(self, "name")
 

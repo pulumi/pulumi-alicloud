@@ -284,7 +284,6 @@ class ImageImport(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -302,7 +301,6 @@ class ImageImport(pulumi.CustomResource):
                 oss_object="root.img",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes Reference0
 
@@ -347,7 +345,6 @@ class ImageImport(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -365,7 +362,6 @@ class ImageImport(pulumi.CustomResource):
                 oss_object="root.img",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes Reference0
 

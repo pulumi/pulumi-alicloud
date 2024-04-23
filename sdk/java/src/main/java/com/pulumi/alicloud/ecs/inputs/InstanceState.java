@@ -691,14 +691,14 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The ID of the secondary ENI.
+     * The ID of the ENI.
      * 
      */
     @Import(name="networkInterfaceId")
     private @Nullable Output<String> networkInterfaceId;
 
     /**
-     * @return The ID of the secondary ENI.
+     * @return The ID of the ENI.
      * 
      */
     public Optional<Output<String>> networkInterfaceId() {
@@ -2320,7 +2320,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkInterfaceId The ID of the secondary ENI.
+         * @param networkInterfaceId The ID of the ENI.
          * 
          * @return builder
          * 
@@ -2331,7 +2331,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkInterfaceId The ID of the secondary ENI.
+         * @param networkInterfaceId The ID of the ENI.
          * 
          * @return builder
          * 

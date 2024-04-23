@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * const ids = alicloud.sae.getInstanceSpecifications({});
  * export const saeInstanceSpecificationId1 = ids.then(ids => ids.specifications?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstanceSpecifications(args?: GetInstanceSpecificationsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceSpecificationsResult> {
     args = args || {};
@@ -70,7 +68,6 @@ export interface GetInstanceSpecificationsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -78,7 +75,6 @@ export interface GetInstanceSpecificationsResult {
  * const ids = alicloud.sae.getInstanceSpecifications({});
  * export const saeInstanceSpecificationId1 = ids.then(ids => ids.specifications?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstanceSpecificationsOutput(args?: GetInstanceSpecificationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceSpecificationsResult> {
     return pulumi.output(args).apply((a: any) => getInstanceSpecifications(a, opts))

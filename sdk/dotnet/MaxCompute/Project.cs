@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.MaxCompute
     /// 
     /// Basic Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -41,7 +40,6 @@ namespace Pulumi.AliCloud.MaxCompute
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [AliCloudResourceType("alicloud:maxcompute/project:Project")]
     public partial class Project : global::Pulumi.CustomResource
@@ -101,7 +99,7 @@ namespace Pulumi.AliCloud.MaxCompute
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Life cycle type.
+        /// Project type
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -257,7 +255,7 @@ namespace Pulumi.AliCloud.MaxCompute
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Life cycle type.
+        /// Project type
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

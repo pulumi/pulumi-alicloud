@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetMonitorGroups(ctx *pulumi.Context, args *GetMonitorGroupsArgs, opts ...pulumi.InvokeOption) (*GetMonitorGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMonitorGroupsResult

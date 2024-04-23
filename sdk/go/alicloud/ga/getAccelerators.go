@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetAccelerators(ctx *pulumi.Context, args *GetAcceleratorsArgs, opts ...pulumi.InvokeOption) (*GetAcceleratorsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAcceleratorsResult

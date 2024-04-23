@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Brain
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Pulumi.AliCloud.Brain
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetIndustrialPidOrganizationsResult> InvokeAsync(GetIndustrialPidOrganizationsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIndustrialPidOrganizationsResult>("alicloud:brain/getIndustrialPidOrganizations:getIndustrialPidOrganizations", args ?? new GetIndustrialPidOrganizationsArgs(), options.WithDefaults());
@@ -58,7 +56,6 @@ namespace Pulumi.AliCloud.Brain
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -82,7 +79,6 @@ namespace Pulumi.AliCloud.Brain
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetIndustrialPidOrganizationsResult> Invoke(GetIndustrialPidOrganizationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIndustrialPidOrganizationsResult>("alicloud:brain/getIndustrialPidOrganizations:getIndustrialPidOrganizations", args ?? new GetIndustrialPidOrganizationsInvokeArgs(), options.WithDefaults());

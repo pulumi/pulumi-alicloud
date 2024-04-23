@@ -19,7 +19,6 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -77,7 +76,6 @@ namespace Pulumi.AliCloud.PolarDB
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetEndpointsResult> InvokeAsync(GetEndpointsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEndpointsResult>("alicloud:polardb/getEndpoints:getEndpoints", args ?? new GetEndpointsArgs(), options.WithDefaults());
@@ -90,7 +88,6 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -148,7 +145,6 @@ namespace Pulumi.AliCloud.PolarDB
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetEndpointsResult> Invoke(GetEndpointsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEndpointsResult>("alicloud:polardb/getEndpoints:getEndpoints", args ?? new GetEndpointsInvokeArgs(), options.WithDefaults());

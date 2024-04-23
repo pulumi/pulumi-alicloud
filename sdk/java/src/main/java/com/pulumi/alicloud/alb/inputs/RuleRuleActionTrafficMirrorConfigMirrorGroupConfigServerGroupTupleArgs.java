@@ -15,17 +15,9 @@ public final class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroup
 
     public static final RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs Empty = new RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs();
 
-    /**
-     * The ID of the destination server group to which requests are forwarded.
-     * 
-     */
     @Import(name="serverGroupId")
     private @Nullable Output<String> serverGroupId;
 
-    /**
-     * @return The ID of the destination server group to which requests are forwarded.
-     * 
-     */
     public Optional<Output<String>> serverGroupId() {
         return Optional.ofNullable(this.serverGroupId);
     }
@@ -54,23 +46,11 @@ public final class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroup
             $ = new RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param serverGroupId The ID of the destination server group to which requests are forwarded.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serverGroupId(@Nullable Output<String> serverGroupId) {
             $.serverGroupId = serverGroupId;
             return this;
         }
 
-        /**
-         * @param serverGroupId The ID of the destination server group to which requests are forwarded.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serverGroupId(String serverGroupId) {
             return serverGroupId(Output.of(serverGroupId));
         }

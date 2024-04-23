@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  *     enable: "On",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFlowLogService(args?: GetFlowLogServiceArgs, opts?: pulumi.InvokeOptions): Promise<GetFlowLogServiceResult> {
     args = args || {};
@@ -72,7 +70,6 @@ export interface GetFlowLogServiceResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -81,7 +78,6 @@ export interface GetFlowLogServiceResult {
  *     enable: "On",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFlowLogServiceOutput(args?: GetFlowLogServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFlowLogServiceResult> {
     return pulumi.output(args).apply((a: any) => getFlowLogService(a, opts))

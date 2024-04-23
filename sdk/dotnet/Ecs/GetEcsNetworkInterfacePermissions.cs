@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetEcsNetworkInterfacePermissionsResult> InvokeAsync(GetEcsNetworkInterfacePermissionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsNetworkInterfacePermissionsResult>("alicloud:ecs/getEcsNetworkInterfacePermissions:getEcsNetworkInterfacePermissions", args ?? new GetEcsNetworkInterfacePermissionsArgs(), options.WithDefaults());
@@ -58,7 +56,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -82,7 +79,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetEcsNetworkInterfacePermissionsResult> Invoke(GetEcsNetworkInterfacePermissionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEcsNetworkInterfacePermissionsResult>("alicloud:ecs/getEcsNetworkInterfacePermissions:getEcsNetworkInterfacePermissions", args ?? new GetEcsNetworkInterfacePermissionsInvokeArgs(), options.WithDefaults());

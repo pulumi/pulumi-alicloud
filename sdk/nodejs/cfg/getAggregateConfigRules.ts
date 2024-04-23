@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstConfigAggregateConfigRuleId = example.then(example => example.rules?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAggregateConfigRules(args: GetAggregateConfigRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetAggregateConfigRulesResult> {
 
@@ -128,7 +126,6 @@ export interface GetAggregateConfigRulesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -140,7 +137,6 @@ export interface GetAggregateConfigRulesResult {
  * });
  * export const firstConfigAggregateConfigRuleId = example.then(example => example.rules?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAggregateConfigRulesOutput(args: GetAggregateConfigRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregateConfigRulesResult> {
     return pulumi.output(args).apply((a: any) => getAggregateConfigRules(a, opts))

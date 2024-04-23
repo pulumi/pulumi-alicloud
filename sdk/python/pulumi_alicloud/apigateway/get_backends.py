@@ -123,7 +123,6 @@ def get_backends(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -131,7 +130,6 @@ def get_backends(ids: Optional[Sequence[str]] = None,
     ids = alicloud.apigateway.get_backends()
     pulumi.export("apiGatewayBackendId1", ids.backends[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Backends IDs.
@@ -174,7 +172,6 @@ def get_backends_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -182,7 +179,6 @@ def get_backends_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
     ids = alicloud.apigateway.get_backends()
     pulumi.export("apiGatewayBackendId1", ids.backends[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Backends IDs.

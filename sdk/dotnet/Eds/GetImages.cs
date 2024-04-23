@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -104,7 +103,6 @@ namespace Pulumi.AliCloud.Eds
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetImagesResult> InvokeAsync(GetImagesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImagesResult>("alicloud:eds/getImages:getImages", args ?? new GetImagesArgs(), options.WithDefaults());
@@ -118,7 +116,6 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -202,7 +199,6 @@ namespace Pulumi.AliCloud.Eds
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetImagesResult> Invoke(GetImagesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImagesResult>("alicloud:eds/getImages:getImages", args ?? new GetImagesInvokeArgs(), options.WithDefaults());

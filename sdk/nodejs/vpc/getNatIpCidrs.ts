@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -50,7 +49,6 @@ import * as utilities from "../utilities";
  * });
  * export const vpcNatIpCidrId5 = atIpCidrName.then(atIpCidrName => atIpCidrName.cidrs?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNatIpCidrs(args: GetNatIpCidrsArgs, opts?: pulumi.InvokeOptions): Promise<GetNatIpCidrsResult> {
 
@@ -127,7 +125,6 @@ export interface GetNatIpCidrsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -162,7 +159,6 @@ export interface GetNatIpCidrsResult {
  * });
  * export const vpcNatIpCidrId5 = atIpCidrName.then(atIpCidrName => atIpCidrName.cidrs?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNatIpCidrsOutput(args: GetNatIpCidrsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNatIpCidrsResult> {
     return pulumi.output(args).apply((a: any) => getNatIpCidrs(a, opts))

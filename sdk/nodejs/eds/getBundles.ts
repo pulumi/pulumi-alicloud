@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  *     bundleType: "SYSTEM",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBundles(args?: GetBundlesArgs, opts?: pulumi.InvokeOptions): Promise<GetBundlesResult> {
     args = args || {};
@@ -43,9 +41,6 @@ export function getBundles(args?: GetBundlesArgs, opts?: pulumi.InvokeOptions): 
  * A collection of arguments for invoking getBundles.
  */
 export interface GetBundlesArgs {
-    /**
-     * The bundle id of the bundle.
-     */
     bundleIds?: string[];
     /**
      * The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
@@ -90,7 +85,6 @@ export interface GetBundlesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -99,7 +93,6 @@ export interface GetBundlesResult {
  *     bundleType: "SYSTEM",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBundlesOutput(args?: GetBundlesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBundlesResult> {
     return pulumi.output(args).apply((a: any) => getBundles(a, opts))
@@ -109,9 +102,6 @@ export function getBundlesOutput(args?: GetBundlesOutputArgs, opts?: pulumi.Invo
  * A collection of arguments for invoking getBundles.
  */
 export interface GetBundlesOutputArgs {
-    /**
-     * The bundle id of the bundle.
-     */
     bundleIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.

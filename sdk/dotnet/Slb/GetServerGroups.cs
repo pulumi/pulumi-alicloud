@@ -16,7 +16,6 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -69,7 +68,6 @@ namespace Pulumi.AliCloud.Slb
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServerGroupsResult> InvokeAsync(GetServerGroupsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerGroupsResult>("alicloud:slb/getServerGroups:getServerGroups", args ?? new GetServerGroupsArgs(), options.WithDefaults());
@@ -79,7 +77,6 @@ namespace Pulumi.AliCloud.Slb
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -132,7 +129,6 @@ namespace Pulumi.AliCloud.Slb
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServerGroupsResult> Invoke(GetServerGroupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerGroupsResult>("alicloud:slb/getServerGroups:getServerGroups", args ?? new GetServerGroupsInvokeArgs(), options.WithDefaults());

@@ -75,11 +75,6 @@ class LakeAccountAccountPrivilegePrivilegeObjectArgs:
                  column: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
                  table: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] column: The name of column.
-        :param pulumi.Input[str] database: The name of database.
-        :param pulumi.Input[str] table: The name of table.
-        """
         if column is not None:
             pulumi.set(__self__, "column", column)
         if database is not None:
@@ -90,9 +85,6 @@ class LakeAccountAccountPrivilegePrivilegeObjectArgs:
     @property
     @pulumi.getter
     def column(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of column.
-        """
         return pulumi.get(self, "column")
 
     @column.setter
@@ -102,9 +94,6 @@ class LakeAccountAccountPrivilegePrivilegeObjectArgs:
     @property
     @pulumi.getter
     def database(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of database.
-        """
         return pulumi.get(self, "database")
 
     @database.setter
@@ -114,9 +103,6 @@ class LakeAccountAccountPrivilegePrivilegeObjectArgs:
     @property
     @pulumi.getter
     def table(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of table.
-        """
         return pulumi.get(self, "table")
 
     @table.setter

@@ -149,7 +149,6 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -172,7 +171,6 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
             service_id=example.id,
             user_id=example_user.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -207,7 +205,6 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -230,7 +227,6 @@ class VpcEndpointServiceUser(pulumi.CustomResource):
             service_id=example.id,
             user_id=example_user.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

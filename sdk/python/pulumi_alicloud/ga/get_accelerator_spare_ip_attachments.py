@@ -104,7 +104,6 @@ def get_accelerator_spare_ip_attachments(accelerator_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -116,7 +115,6 @@ def get_accelerator_spare_ip_attachments(accelerator_id: Optional[str] = None,
         ])
     pulumi.export("gaAcceleratorSpareIpAttachmentId1", ids.attachments[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The ID of the global acceleration instance.
@@ -156,7 +154,6 @@ def get_accelerator_spare_ip_attachments_output(accelerator_id: Optional[pulumi.
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -168,7 +165,6 @@ def get_accelerator_spare_ip_attachments_output(accelerator_id: Optional[pulumi.
         ])
     pulumi.export("gaAcceleratorSpareIpAttachmentId1", ids.attachments[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The ID of the global acceleration instance.

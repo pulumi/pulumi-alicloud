@@ -93,14 +93,14 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * ProvisionType.
+     * ProvisionType. Valid values: `Manual`, `Synchronized`.
      * 
      */
     @Import(name="provisionType")
     private @Nullable String provisionType;
 
     /**
-     * @return ProvisionType.
+     * @return ProvisionType. Valid values: `Manual`, `Synchronized`.
      * 
      */
     public Optional<String> provisionType() {
@@ -108,14 +108,14 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * User status. Valid values: `Enabled` and `Disabled`.
+     * The status of user. Valid values: `Disabled`, `Enabled`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return User status. Valid values: `Enabled` and `Disabled`.
+     * @return The status of user. Valid values: `Disabled`, `Enabled`.
      * 
      */
     public Optional<String> status() {
@@ -218,7 +218,7 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param provisionType ProvisionType.
+         * @param provisionType ProvisionType. Valid values: `Manual`, `Synchronized`.
          * 
          * @return builder
          * 
@@ -229,7 +229,7 @@ public final class GetUsersPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status User status. Valid values: `Enabled` and `Disabled`.
+         * @param status The status of user. Valid values: `Disabled`, `Enabled`.
          * 
          * @return builder
          * 

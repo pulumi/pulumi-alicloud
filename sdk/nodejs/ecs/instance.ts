@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -69,7 +68,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Module Support
  *
@@ -304,7 +302,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly memory!: pulumi.Output<number>;
     /**
-     * The ID of the secondary ENI.
+     * The ID of the ENI.
      */
     public /*out*/ readonly networkInterfaceId!: pulumi.Output<string>;
     /**
@@ -849,7 +847,7 @@ export interface InstanceState {
      */
     memory?: pulumi.Input<number>;
     /**
-     * The ID of the secondary ENI.
+     * The ID of the ENI.
      */
     networkInterfaceId?: pulumi.Input<string>;
     /**

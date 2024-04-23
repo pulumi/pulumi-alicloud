@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetOtsSnapshotsResult> InvokeAsync(GetOtsSnapshotsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOtsSnapshotsResult>("alicloud:hbr/getOtsSnapshots:getOtsSnapshots", args ?? new GetOtsSnapshotsArgs(), options.WithDefaults());
@@ -47,7 +45,6 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -60,7 +57,6 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetOtsSnapshotsResult> Invoke(GetOtsSnapshotsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOtsSnapshotsResult>("alicloud:hbr/getOtsSnapshots:getOtsSnapshots", args ?? new GetOtsSnapshotsInvokeArgs(), options.WithDefaults());
@@ -90,7 +86,7 @@ namespace Pulumi.AliCloud.Hbr
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+        /// The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
         /// </summary>
         [Input("startTime")]
         public string? StartTime { get; set; }
@@ -124,7 +120,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+        /// The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }

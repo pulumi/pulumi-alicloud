@@ -113,7 +113,6 @@ def get_simple_office_sites(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -122,7 +121,6 @@ def get_simple_office_sites(ids: Optional[Sequence[str]] = None,
         status="REGISTERED")
     pulumi.export("desktopAccessType", default.sites[0].desktop_access_type)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Simple Office Site IDs.
@@ -163,7 +161,6 @@ def get_simple_office_sites_output(ids: Optional[pulumi.Input[Optional[Sequence[
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -172,7 +169,6 @@ def get_simple_office_sites_output(ids: Optional[pulumi.Input[Optional[Sequence[
         status="REGISTERED")
     pulumi.export("desktopAccessType", default.sites[0].desktop_access_type)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Simple Office Site IDs.

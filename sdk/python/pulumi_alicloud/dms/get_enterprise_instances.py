@@ -201,7 +201,6 @@ def get_enterprise_instances(env_type: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -214,7 +213,6 @@ def get_enterprise_instances(env_type: Optional[str] = None,
         output_file="dms_enterprise_instances.json")
     pulumi.export("firstDatabaseInstanceId", dms_enterprise_instances_ds.instances[0].instance_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str env_type: The type of the environment to which the database instance belongs.
@@ -278,7 +276,6 @@ def get_enterprise_instances_output(env_type: Optional[pulumi.Input[Optional[str
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -291,7 +288,6 @@ def get_enterprise_instances_output(env_type: Optional[pulumi.Input[Optional[str
         output_file="dms_enterprise_instances.json")
     pulumi.export("firstDatabaseInstanceId", dms_enterprise_instances_ds.instances[0].instance_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str env_type: The type of the environment to which the database instance belongs.

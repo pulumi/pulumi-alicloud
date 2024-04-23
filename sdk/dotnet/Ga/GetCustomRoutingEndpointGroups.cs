@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Ga
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -51,7 +50,6 @@ namespace Pulumi.AliCloud.Ga
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCustomRoutingEndpointGroupsResult> InvokeAsync(GetCustomRoutingEndpointGroupsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCustomRoutingEndpointGroupsResult>("alicloud:ga/getCustomRoutingEndpointGroups:getCustomRoutingEndpointGroups", args ?? new GetCustomRoutingEndpointGroupsArgs(), options.WithDefaults());
@@ -65,7 +63,6 @@ namespace Pulumi.AliCloud.Ga
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -96,7 +93,6 @@ namespace Pulumi.AliCloud.Ga
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCustomRoutingEndpointGroupsResult> Invoke(GetCustomRoutingEndpointGroupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomRoutingEndpointGroupsResult>("alicloud:ga/getCustomRoutingEndpointGroups:getCustomRoutingEndpointGroups", args ?? new GetCustomRoutingEndpointGroupsInvokeArgs(), options.WithDefaults());

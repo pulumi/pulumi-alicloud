@@ -162,7 +162,6 @@ def get_topics(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -172,7 +171,6 @@ def get_topics(ids: Optional[Sequence[str]] = None,
         output_file="topics.txt")
     pulumi.export("firstTopicName", topics_ds.topics[0].topic)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of ALIKAFKA Topics IDs, It is formatted to `<instance_id>:<topic>`.
@@ -222,7 +220,6 @@ def get_topics_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -232,7 +229,6 @@ def get_topics_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
         output_file="topics.txt")
     pulumi.export("firstTopicName", topics_ds.topics[0].topic)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of ALIKAFKA Topics IDs, It is formatted to `<instance_id>:<topic>`.

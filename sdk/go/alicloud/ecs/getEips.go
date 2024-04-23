@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,7 +39,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Deprecated: This function has been deprecated in favour of the getEipAddresses function
 func GetEips(ctx *pulumi.Context, args *GetEipsArgs, opts ...pulumi.InvokeOption) (*GetEipsResult, error) {

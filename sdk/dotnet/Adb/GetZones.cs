@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Adb
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -32,7 +31,6 @@ namespace Pulumi.AliCloud.Adb
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetZonesResult> InvokeAsync(GetZonesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZonesResult>("alicloud:adb/getZones:getZones", args ?? new GetZonesArgs(), options.WithDefaults());
@@ -44,7 +42,6 @@ namespace Pulumi.AliCloud.Adb
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +55,6 @@ namespace Pulumi.AliCloud.Adb
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetZonesResult> Invoke(GetZonesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZonesResult>("alicloud:adb/getZones:getZones", args ?? new GetZonesInvokeArgs(), options.WithDefaults());

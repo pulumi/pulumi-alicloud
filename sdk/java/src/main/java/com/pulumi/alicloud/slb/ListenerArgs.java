@@ -19,396 +19,184 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ListenerArgs Empty = new ListenerArgs();
 
-    /**
-     * The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
-     * 
-     */
     @Import(name="aclId")
     private @Nullable Output<String> aclId;
 
-    /**
-     * @return The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
-     * 
-     */
     public Optional<Output<String>> aclId() {
         return Optional.ofNullable(this.aclId);
     }
 
-    /**
-     * Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
-     * 
-     */
     @Import(name="aclStatus")
     private @Nullable Output<String> aclStatus;
 
-    /**
-     * @return Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
-     * 
-     */
     public Optional<Output<String>> aclStatus() {
         return Optional.ofNullable(this.aclStatus);
     }
 
-    /**
-     * The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
-     * 
-     */
     @Import(name="aclType")
     private @Nullable Output<String> aclType;
 
-    /**
-     * @return The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
-     * 
-     */
     public Optional<Output<String>> aclType() {
         return Optional.ofNullable(this.aclType);
     }
 
-    /**
-     * The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
-     * 
-     */
     @Import(name="backendPort")
     private @Nullable Output<Integer> backendPort;
 
-    /**
-     * @return The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
-     * 
-     */
     public Optional<Output<Integer>> backendPort() {
         return Optional.ofNullable(this.backendPort);
     }
 
-    /**
-     * The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
-     * - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
-     * 
-     */
     @Import(name="bandwidth")
     private @Nullable Output<Integer> bandwidth;
 
-    /**
-     * @return The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
-     * - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
-     * 
-     */
     public Optional<Output<Integer>> bandwidth() {
         return Optional.ofNullable(this.bandwidth);
     }
 
-    /**
-     * The ID of the certification authority (CA) certificate.
-     * 
-     */
     @Import(name="caCertificateId")
     private @Nullable Output<String> caCertificateId;
 
-    /**
-     * @return The ID of the certification authority (CA) certificate.
-     * 
-     */
     public Optional<Output<String>> caCertificateId() {
         return Optional.ofNullable(this.caCertificateId);
     }
 
-    /**
-     * The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
-     * 
-     */
     @Import(name="cookie")
     private @Nullable Output<String> cookie;
 
-    /**
-     * @return The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
-     * 
-     */
     public Optional<Output<String>> cookie() {
         return Optional.ofNullable(this.cookie);
     }
 
-    /**
-     * The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
-     * 
-     */
     @Import(name="cookieTimeout")
     private @Nullable Output<Integer> cookieTimeout;
 
-    /**
-     * @return The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
-     * 
-     */
     public Optional<Output<Integer>> cookieTimeout() {
         return Optional.ofNullable(this.cookieTimeout);
     }
 
-    /**
-     * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
-     * 
-     */
     @Import(name="deleteProtectionValidation")
     private @Nullable Output<Boolean> deleteProtectionValidation;
 
-    /**
-     * @return Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
-     * 
-     */
     public Optional<Output<Boolean>> deleteProtectionValidation() {
         return Optional.ofNullable(this.deleteProtectionValidation);
     }
 
-    /**
-     * The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
-     * 
-     */
     @Import(name="description")
     private @Nullable Output<String> description;
 
-    /**
-     * @return The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
-     * 
-     */
     public Optional<Output<String>> description() {
         return Optional.ofNullable(this.description);
     }
 
-    /**
-     * Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
-     * 
-     */
     @Import(name="enableHttp2")
     private @Nullable Output<String> enableHttp2;
 
-    /**
-     * @return Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
-     * 
-     */
     public Optional<Output<String>> enableHttp2() {
         return Optional.ofNullable(this.enableHttp2);
     }
 
-    /**
-     * The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
-     * 
-     */
     @Import(name="establishedTimeout")
     private @Nullable Output<Integer> establishedTimeout;
 
-    /**
-     * @return The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
-     * 
-     */
     public Optional<Output<Integer>> establishedTimeout() {
         return Optional.ofNullable(this.establishedTimeout);
     }
 
-    /**
-     * The listening port that is used to redirect HTTP requests to HTTPS.
-     * 
-     */
     @Import(name="forwardPort")
     private @Nullable Output<Integer> forwardPort;
 
-    /**
-     * @return The listening port that is used to redirect HTTP requests to HTTPS.
-     * 
-     */
     public Optional<Output<Integer>> forwardPort() {
         return Optional.ofNullable(this.forwardPort);
     }
 
-    /**
-     * The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
-     * 
-     */
     @Import(name="frontendPort", required=true)
     private Output<Integer> frontendPort;
 
-    /**
-     * @return The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
-     * 
-     */
     public Output<Integer> frontendPort() {
         return this.frontendPort;
     }
 
-    /**
-     * Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
-     * 
-     */
     @Import(name="gzip")
     private @Nullable Output<Boolean> gzip;
 
-    /**
-     * @return Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
-     * 
-     */
     public Optional<Output<Boolean>> gzip() {
         return Optional.ofNullable(this.gzip);
     }
 
-    /**
-     * Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener&#39;s HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
-     * 
-     */
     @Import(name="healthCheck")
     private @Nullable Output<String> healthCheck;
 
-    /**
-     * @return Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener&#39;s HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
-     * 
-     */
     public Optional<Output<String>> healthCheck() {
         return Optional.ofNullable(this.healthCheck);
     }
 
-    /**
-     * The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
-     * 
-     */
     @Import(name="healthCheckConnectPort")
     private @Nullable Output<Integer> healthCheckConnectPort;
 
-    /**
-     * @return The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
-     * 
-     */
     public Optional<Output<Integer>> healthCheckConnectPort() {
         return Optional.ofNullable(this.healthCheckConnectPort);
     }
 
-    /**
-     * The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
-     * 
-     */
     @Import(name="healthCheckDomain")
     private @Nullable Output<String> healthCheckDomain;
 
-    /**
-     * @return The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
-     * 
-     */
     public Optional<Output<String>> healthCheckDomain() {
         return Optional.ofNullable(this.healthCheckDomain);
     }
 
-    /**
-     * The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
-     * 
-     */
     @Import(name="healthCheckHttpCode")
     private @Nullable Output<String> healthCheckHttpCode;
 
-    /**
-     * @return The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
-     * 
-     */
     public Optional<Output<String>> healthCheckHttpCode() {
         return Optional.ofNullable(this.healthCheckHttpCode);
     }
 
-    /**
-     * The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
-     * 
-     */
     @Import(name="healthCheckInterval")
     private @Nullable Output<Integer> healthCheckInterval;
 
-    /**
-     * @return The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
-     * 
-     */
     public Optional<Output<Integer>> healthCheckInterval() {
         return Optional.ofNullable(this.healthCheckInterval);
     }
 
-    /**
-     * The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
-     * 
-     */
     @Import(name="healthCheckMethod")
     private @Nullable Output<String> healthCheckMethod;
 
-    /**
-     * @return The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
-     * 
-     */
     public Optional<Output<String>> healthCheckMethod() {
         return Optional.ofNullable(this.healthCheckMethod);
     }
 
-    /**
-     * The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` &lt; `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
-     * 
-     */
     @Import(name="healthCheckTimeout")
     private @Nullable Output<Integer> healthCheckTimeout;
 
-    /**
-     * @return The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` &lt; `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
-     * 
-     */
     public Optional<Output<Integer>> healthCheckTimeout() {
         return Optional.ofNullable(this.healthCheckTimeout);
     }
 
-    /**
-     * The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
-     * 
-     */
     @Import(name="healthCheckType")
     private @Nullable Output<String> healthCheckType;
 
-    /**
-     * @return The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
-     * 
-     */
     public Optional<Output<String>> healthCheckType() {
         return Optional.ofNullable(this.healthCheckType);
     }
 
-    /**
-     * The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
-     * **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
-     * 
-     */
     @Import(name="healthCheckUri")
     private @Nullable Output<String> healthCheckUri;
 
-    /**
-     * @return The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
-     * **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
-     * 
-     */
     public Optional<Output<String>> healthCheckUri() {
         return Optional.ofNullable(this.healthCheckUri);
     }
 
-    /**
-     * The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
-     * 
-     */
     @Import(name="healthyThreshold")
     private @Nullable Output<Integer> healthyThreshold;
 
-    /**
-     * @return The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
-     * 
-     */
     public Optional<Output<Integer>> healthyThreshold() {
         return Optional.ofNullable(this.healthyThreshold);
     }
 
-    /**
-     * The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
-     * 
-     */
     @Import(name="idleTimeout")
     private @Nullable Output<Integer> idleTimeout;
 
-    /**
-     * @return The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
-     * 
-     */
     public Optional<Output<Integer>> idleTimeout() {
         return Optional.ofNullable(this.idleTimeout);
     }
@@ -451,159 +239,77 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.lbProtocol);
     }
 
-    /**
-     * Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
-     * 
-     */
     @Import(name="listenerForward")
     private @Nullable Output<String> listenerForward;
 
-    /**
-     * @return Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
-     * 
-     */
     public Optional<Output<String>> listenerForward() {
         return Optional.ofNullable(this.listenerForward);
     }
 
-    /**
-     * The Load Balancer ID which is used to launch a new listener.
-     * 
-     */
     @Import(name="loadBalancerId", required=true)
     private Output<String> loadBalancerId;
 
-    /**
-     * @return The Load Balancer ID which is used to launch a new listener.
-     * 
-     */
     public Output<String> loadBalancerId() {
         return this.loadBalancerId;
     }
 
-    /**
-     * The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
-     * 
-     */
     @Import(name="masterSlaveServerGroupId")
     private @Nullable Output<String> masterSlaveServerGroupId;
 
-    /**
-     * @return The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
-     * 
-     */
     public Optional<Output<String>> masterSlaveServerGroupId() {
         return Optional.ofNullable(this.masterSlaveServerGroupId);
     }
 
-    /**
-     * The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
-     * 
-     */
     @Import(name="persistenceTimeout")
     private @Nullable Output<Integer> persistenceTimeout;
 
-    /**
-     * @return The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
-     * 
-     */
     public Optional<Output<Integer>> persistenceTimeout() {
         return Optional.ofNullable(this.persistenceTimeout);
     }
 
-    /**
-     * The protocol to listen on. Valid values: `http`.
-     * 
-     */
     @Import(name="protocol", required=true)
     private Output<String> protocol;
 
-    /**
-     * @return The protocol to listen on. Valid values: `http`.
-     * 
-     */
     public Output<String> protocol() {
         return this.protocol;
     }
 
-    /**
-     * Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
-     * 
-     */
     @Import(name="proxyProtocolV2Enabled")
     private @Nullable Output<Boolean> proxyProtocolV2Enabled;
 
-    /**
-     * @return Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
-     * 
-     */
     public Optional<Output<Boolean>> proxyProtocolV2Enabled() {
         return Optional.ofNullable(this.proxyProtocolV2Enabled);
     }
 
-    /**
-     * The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
-     * 
-     */
     @Import(name="requestTimeout")
     private @Nullable Output<Integer> requestTimeout;
 
-    /**
-     * @return The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
-     * 
-     */
     public Optional<Output<Integer>> requestTimeout() {
         return Optional.ofNullable(this.requestTimeout);
     }
 
-    /**
-     * The scheduling algorithm. Default value: `wrr`. Valid values:
-     * 
-     */
     @Import(name="scheduler")
     private @Nullable Output<String> scheduler;
 
-    /**
-     * @return The scheduling algorithm. Default value: `wrr`. Valid values:
-     * 
-     */
     public Optional<Output<String>> scheduler() {
         return Optional.ofNullable(this.scheduler);
     }
 
-    /**
-     * The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
-     * 
-     */
     @Import(name="serverCertificateId")
     private @Nullable Output<String> serverCertificateId;
 
-    /**
-     * @return The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
-     * 
-     */
     public Optional<Output<String>> serverCertificateId() {
         return Optional.ofNullable(this.serverCertificateId);
     }
 
-    /**
-     * The ID of the vServer group. It&#39;s the ID of resource `alicloud.slb.ServerGroup`.
-     * 
-     */
     @Import(name="serverGroupId")
     private @Nullable Output<String> serverGroupId;
 
-    /**
-     * @return The ID of the vServer group. It&#39;s the ID of resource `alicloud.slb.ServerGroup`.
-     * 
-     */
     public Optional<Output<String>> serverGroupId() {
         return Optional.ofNullable(this.serverGroupId);
     }
 
     /**
-     * The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
-     * 
      * @deprecated
      * Field &#39;ssl_certificate_id&#39; has been deprecated from 1.59.0 and using &#39;server_certificate_id&#39; instead.
      * 
@@ -613,8 +319,6 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> sslCertificateId;
 
     /**
-     * @return The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
-     * 
      * @deprecated
      * Field &#39;ssl_certificate_id&#39; has been deprecated from 1.59.0 and using &#39;server_certificate_id&#39; instead.
      * 
@@ -624,75 +328,43 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.sslCertificateId);
     }
 
-    /**
-     * Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
-     * 
-     */
     @Import(name="stickySession")
     private @Nullable Output<String> stickySession;
 
-    /**
-     * @return Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
-     * 
-     */
     public Optional<Output<String>> stickySession() {
         return Optional.ofNullable(this.stickySession);
     }
 
-    /**
-     * The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
-     * 
-     */
     @Import(name="stickySessionType")
     private @Nullable Output<String> stickySessionType;
 
-    /**
-     * @return The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
-     * 
-     */
     public Optional<Output<String>> stickySessionType() {
         return Optional.ofNullable(this.stickySessionType);
     }
 
-    /**
-     * The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
-     * 
-     */
     @Import(name="tlsCipherPolicy")
     private @Nullable Output<String> tlsCipherPolicy;
 
-    /**
-     * @return The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
-     * 
-     */
     public Optional<Output<String>> tlsCipherPolicy() {
         return Optional.ofNullable(this.tlsCipherPolicy);
     }
 
-    /**
-     * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
-     * 
-     */
     @Import(name="unhealthyThreshold")
     private @Nullable Output<Integer> unhealthyThreshold;
 
-    /**
-     * @return The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
-     * 
-     */
     public Optional<Output<Integer>> unhealthyThreshold() {
         return Optional.ofNullable(this.unhealthyThreshold);
     }
 
     /**
-     * Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34;. See `x_forwarded_for` below.
+     * Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34;.
      * 
      */
     @Import(name="xForwardedFor")
     private @Nullable Output<ListenerXForwardedForArgs> xForwardedFor;
 
     /**
-     * @return Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34;. See `x_forwarded_for` below.
+     * @return Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34;.
      * 
      */
     public Optional<Output<ListenerXForwardedForArgs>> xForwardedFor() {
@@ -766,552 +438,236 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
             $ = new ListenerArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param aclId The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
-         * 
-         * @return builder
-         * 
-         */
         public Builder aclId(@Nullable Output<String> aclId) {
             $.aclId = aclId;
             return this;
         }
 
-        /**
-         * @param aclId The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
-         * 
-         * @return builder
-         * 
-         */
         public Builder aclId(String aclId) {
             return aclId(Output.of(aclId));
         }
 
-        /**
-         * @param aclStatus Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder aclStatus(@Nullable Output<String> aclStatus) {
             $.aclStatus = aclStatus;
             return this;
         }
 
-        /**
-         * @param aclStatus Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder aclStatus(String aclStatus) {
             return aclStatus(Output.of(aclStatus));
         }
 
-        /**
-         * @param aclType The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
-         * 
-         * @return builder
-         * 
-         */
         public Builder aclType(@Nullable Output<String> aclType) {
             $.aclType = aclType;
             return this;
         }
 
-        /**
-         * @param aclType The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
-         * 
-         * @return builder
-         * 
-         */
         public Builder aclType(String aclType) {
             return aclType(Output.of(aclType));
         }
 
-        /**
-         * @param backendPort The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
-         * 
-         * @return builder
-         * 
-         */
         public Builder backendPort(@Nullable Output<Integer> backendPort) {
             $.backendPort = backendPort;
             return this;
         }
 
-        /**
-         * @param backendPort The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
-         * 
-         * @return builder
-         * 
-         */
         public Builder backendPort(Integer backendPort) {
             return backendPort(Output.of(backendPort));
         }
 
-        /**
-         * @param bandwidth The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
-         * - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
-         * 
-         * @return builder
-         * 
-         */
         public Builder bandwidth(@Nullable Output<Integer> bandwidth) {
             $.bandwidth = bandwidth;
             return this;
         }
 
-        /**
-         * @param bandwidth The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
-         * - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
-         * 
-         * @return builder
-         * 
-         */
         public Builder bandwidth(Integer bandwidth) {
             return bandwidth(Output.of(bandwidth));
         }
 
-        /**
-         * @param caCertificateId The ID of the certification authority (CA) certificate.
-         * 
-         * @return builder
-         * 
-         */
         public Builder caCertificateId(@Nullable Output<String> caCertificateId) {
             $.caCertificateId = caCertificateId;
             return this;
         }
 
-        /**
-         * @param caCertificateId The ID of the certification authority (CA) certificate.
-         * 
-         * @return builder
-         * 
-         */
         public Builder caCertificateId(String caCertificateId) {
             return caCertificateId(Output.of(caCertificateId));
         }
 
-        /**
-         * @param cookie The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cookie(@Nullable Output<String> cookie) {
             $.cookie = cookie;
             return this;
         }
 
-        /**
-         * @param cookie The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cookie(String cookie) {
             return cookie(Output.of(cookie));
         }
 
-        /**
-         * @param cookieTimeout The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cookieTimeout(@Nullable Output<Integer> cookieTimeout) {
             $.cookieTimeout = cookieTimeout;
             return this;
         }
 
-        /**
-         * @param cookieTimeout The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cookieTimeout(Integer cookieTimeout) {
             return cookieTimeout(Output.of(cookieTimeout));
         }
 
-        /**
-         * @param deleteProtectionValidation Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deleteProtectionValidation(@Nullable Output<Boolean> deleteProtectionValidation) {
             $.deleteProtectionValidation = deleteProtectionValidation;
             return this;
         }
 
-        /**
-         * @param deleteProtectionValidation Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder deleteProtectionValidation(Boolean deleteProtectionValidation) {
             return deleteProtectionValidation(Output.of(deleteProtectionValidation));
         }
 
-        /**
-         * @param description The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
 
-        /**
-         * @param description The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
-         * 
-         * @return builder
-         * 
-         */
         public Builder description(String description) {
             return description(Output.of(description));
         }
 
-        /**
-         * @param enableHttp2 Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enableHttp2(@Nullable Output<String> enableHttp2) {
             $.enableHttp2 = enableHttp2;
             return this;
         }
 
-        /**
-         * @param enableHttp2 Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enableHttp2(String enableHttp2) {
             return enableHttp2(Output.of(enableHttp2));
         }
 
-        /**
-         * @param establishedTimeout The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder establishedTimeout(@Nullable Output<Integer> establishedTimeout) {
             $.establishedTimeout = establishedTimeout;
             return this;
         }
 
-        /**
-         * @param establishedTimeout The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder establishedTimeout(Integer establishedTimeout) {
             return establishedTimeout(Output.of(establishedTimeout));
         }
 
-        /**
-         * @param forwardPort The listening port that is used to redirect HTTP requests to HTTPS.
-         * 
-         * @return builder
-         * 
-         */
         public Builder forwardPort(@Nullable Output<Integer> forwardPort) {
             $.forwardPort = forwardPort;
             return this;
         }
 
-        /**
-         * @param forwardPort The listening port that is used to redirect HTTP requests to HTTPS.
-         * 
-         * @return builder
-         * 
-         */
         public Builder forwardPort(Integer forwardPort) {
             return forwardPort(Output.of(forwardPort));
         }
 
-        /**
-         * @param frontendPort The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder frontendPort(Output<Integer> frontendPort) {
             $.frontendPort = frontendPort;
             return this;
         }
 
-        /**
-         * @param frontendPort The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder frontendPort(Integer frontendPort) {
             return frontendPort(Output.of(frontendPort));
         }
 
-        /**
-         * @param gzip Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gzip(@Nullable Output<Boolean> gzip) {
             $.gzip = gzip;
             return this;
         }
 
-        /**
-         * @param gzip Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder gzip(Boolean gzip) {
             return gzip(Output.of(gzip));
         }
 
-        /**
-         * @param healthCheck Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener&#39;s HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheck(@Nullable Output<String> healthCheck) {
             $.healthCheck = healthCheck;
             return this;
         }
 
-        /**
-         * @param healthCheck Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener&#39;s HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheck(String healthCheck) {
             return healthCheck(Output.of(healthCheck));
         }
 
-        /**
-         * @param healthCheckConnectPort The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckConnectPort(@Nullable Output<Integer> healthCheckConnectPort) {
             $.healthCheckConnectPort = healthCheckConnectPort;
             return this;
         }
 
-        /**
-         * @param healthCheckConnectPort The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckConnectPort(Integer healthCheckConnectPort) {
             return healthCheckConnectPort(Output.of(healthCheckConnectPort));
         }
 
-        /**
-         * @param healthCheckDomain The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckDomain(@Nullable Output<String> healthCheckDomain) {
             $.healthCheckDomain = healthCheckDomain;
             return this;
         }
 
-        /**
-         * @param healthCheckDomain The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckDomain(String healthCheckDomain) {
             return healthCheckDomain(Output.of(healthCheckDomain));
         }
 
-        /**
-         * @param healthCheckHttpCode The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckHttpCode(@Nullable Output<String> healthCheckHttpCode) {
             $.healthCheckHttpCode = healthCheckHttpCode;
             return this;
         }
 
-        /**
-         * @param healthCheckHttpCode The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckHttpCode(String healthCheckHttpCode) {
             return healthCheckHttpCode(Output.of(healthCheckHttpCode));
         }
 
-        /**
-         * @param healthCheckInterval The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckInterval(@Nullable Output<Integer> healthCheckInterval) {
             $.healthCheckInterval = healthCheckInterval;
             return this;
         }
 
-        /**
-         * @param healthCheckInterval The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckInterval(Integer healthCheckInterval) {
             return healthCheckInterval(Output.of(healthCheckInterval));
         }
 
-        /**
-         * @param healthCheckMethod The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckMethod(@Nullable Output<String> healthCheckMethod) {
             $.healthCheckMethod = healthCheckMethod;
             return this;
         }
 
-        /**
-         * @param healthCheckMethod The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckMethod(String healthCheckMethod) {
             return healthCheckMethod(Output.of(healthCheckMethod));
         }
 
-        /**
-         * @param healthCheckTimeout The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` &lt; `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckTimeout(@Nullable Output<Integer> healthCheckTimeout) {
             $.healthCheckTimeout = healthCheckTimeout;
             return this;
         }
 
-        /**
-         * @param healthCheckTimeout The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` &lt; `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckTimeout(Integer healthCheckTimeout) {
             return healthCheckTimeout(Output.of(healthCheckTimeout));
         }
 
-        /**
-         * @param healthCheckType The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckType(@Nullable Output<String> healthCheckType) {
             $.healthCheckType = healthCheckType;
             return this;
         }
 
-        /**
-         * @param healthCheckType The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckType(String healthCheckType) {
             return healthCheckType(Output.of(healthCheckType));
         }
 
-        /**
-         * @param healthCheckUri The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
-         * **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckUri(@Nullable Output<String> healthCheckUri) {
             $.healthCheckUri = healthCheckUri;
             return this;
         }
 
-        /**
-         * @param healthCheckUri The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
-         * **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthCheckUri(String healthCheckUri) {
             return healthCheckUri(Output.of(healthCheckUri));
         }
 
-        /**
-         * @param healthyThreshold The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthyThreshold(@Nullable Output<Integer> healthyThreshold) {
             $.healthyThreshold = healthyThreshold;
             return this;
         }
 
-        /**
-         * @param healthyThreshold The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder healthyThreshold(Integer healthyThreshold) {
             return healthyThreshold(Output.of(healthyThreshold));
         }
 
-        /**
-         * @param idleTimeout The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder idleTimeout(@Nullable Output<Integer> idleTimeout) {
             $.idleTimeout = idleTimeout;
             return this;
         }
 
-        /**
-         * @param idleTimeout The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder idleTimeout(Integer idleTimeout) {
             return idleTimeout(Output.of(idleTimeout));
         }
@@ -1366,219 +722,97 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
             return lbProtocol(Output.of(lbProtocol));
         }
 
-        /**
-         * @param listenerForward Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder listenerForward(@Nullable Output<String> listenerForward) {
             $.listenerForward = listenerForward;
             return this;
         }
 
-        /**
-         * @param listenerForward Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder listenerForward(String listenerForward) {
             return listenerForward(Output.of(listenerForward));
         }
 
-        /**
-         * @param loadBalancerId The Load Balancer ID which is used to launch a new listener.
-         * 
-         * @return builder
-         * 
-         */
         public Builder loadBalancerId(Output<String> loadBalancerId) {
             $.loadBalancerId = loadBalancerId;
             return this;
         }
 
-        /**
-         * @param loadBalancerId The Load Balancer ID which is used to launch a new listener.
-         * 
-         * @return builder
-         * 
-         */
         public Builder loadBalancerId(String loadBalancerId) {
             return loadBalancerId(Output.of(loadBalancerId));
         }
 
-        /**
-         * @param masterSlaveServerGroupId The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterSlaveServerGroupId(@Nullable Output<String> masterSlaveServerGroupId) {
             $.masterSlaveServerGroupId = masterSlaveServerGroupId;
             return this;
         }
 
-        /**
-         * @param masterSlaveServerGroupId The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder masterSlaveServerGroupId(String masterSlaveServerGroupId) {
             return masterSlaveServerGroupId(Output.of(masterSlaveServerGroupId));
         }
 
-        /**
-         * @param persistenceTimeout The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder persistenceTimeout(@Nullable Output<Integer> persistenceTimeout) {
             $.persistenceTimeout = persistenceTimeout;
             return this;
         }
 
-        /**
-         * @param persistenceTimeout The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder persistenceTimeout(Integer persistenceTimeout) {
             return persistenceTimeout(Output.of(persistenceTimeout));
         }
 
-        /**
-         * @param protocol The protocol to listen on. Valid values: `http`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder protocol(Output<String> protocol) {
             $.protocol = protocol;
             return this;
         }
 
-        /**
-         * @param protocol The protocol to listen on. Valid values: `http`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder protocol(String protocol) {
             return protocol(Output.of(protocol));
         }
 
-        /**
-         * @param proxyProtocolV2Enabled Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder proxyProtocolV2Enabled(@Nullable Output<Boolean> proxyProtocolV2Enabled) {
             $.proxyProtocolV2Enabled = proxyProtocolV2Enabled;
             return this;
         }
 
-        /**
-         * @param proxyProtocolV2Enabled Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder proxyProtocolV2Enabled(Boolean proxyProtocolV2Enabled) {
             return proxyProtocolV2Enabled(Output.of(proxyProtocolV2Enabled));
         }
 
-        /**
-         * @param requestTimeout The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder requestTimeout(@Nullable Output<Integer> requestTimeout) {
             $.requestTimeout = requestTimeout;
             return this;
         }
 
-        /**
-         * @param requestTimeout The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder requestTimeout(Integer requestTimeout) {
             return requestTimeout(Output.of(requestTimeout));
         }
 
-        /**
-         * @param scheduler The scheduling algorithm. Default value: `wrr`. Valid values:
-         * 
-         * @return builder
-         * 
-         */
         public Builder scheduler(@Nullable Output<String> scheduler) {
             $.scheduler = scheduler;
             return this;
         }
 
-        /**
-         * @param scheduler The scheduling algorithm. Default value: `wrr`. Valid values:
-         * 
-         * @return builder
-         * 
-         */
         public Builder scheduler(String scheduler) {
             return scheduler(Output.of(scheduler));
         }
 
-        /**
-         * @param serverCertificateId The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serverCertificateId(@Nullable Output<String> serverCertificateId) {
             $.serverCertificateId = serverCertificateId;
             return this;
         }
 
-        /**
-         * @param serverCertificateId The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serverCertificateId(String serverCertificateId) {
             return serverCertificateId(Output.of(serverCertificateId));
         }
 
-        /**
-         * @param serverGroupId The ID of the vServer group. It&#39;s the ID of resource `alicloud.slb.ServerGroup`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serverGroupId(@Nullable Output<String> serverGroupId) {
             $.serverGroupId = serverGroupId;
             return this;
         }
 
-        /**
-         * @param serverGroupId The ID of the vServer group. It&#39;s the ID of resource `alicloud.slb.ServerGroup`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serverGroupId(String serverGroupId) {
             return serverGroupId(Output.of(serverGroupId));
         }
 
         /**
-         * @param sslCertificateId The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
-         * 
          * @return builder
          * 
          * @deprecated
@@ -1592,8 +826,6 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param sslCertificateId The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
-         * 
          * @return builder
          * 
          * @deprecated
@@ -1605,92 +837,44 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
             return sslCertificateId(Output.of(sslCertificateId));
         }
 
-        /**
-         * @param stickySession Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder stickySession(@Nullable Output<String> stickySession) {
             $.stickySession = stickySession;
             return this;
         }
 
-        /**
-         * @param stickySession Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder stickySession(String stickySession) {
             return stickySession(Output.of(stickySession));
         }
 
-        /**
-         * @param stickySessionType The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
-         * 
-         * @return builder
-         * 
-         */
         public Builder stickySessionType(@Nullable Output<String> stickySessionType) {
             $.stickySessionType = stickySessionType;
             return this;
         }
 
-        /**
-         * @param stickySessionType The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
-         * 
-         * @return builder
-         * 
-         */
         public Builder stickySessionType(String stickySessionType) {
             return stickySessionType(Output.of(stickySessionType));
         }
 
-        /**
-         * @param tlsCipherPolicy The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tlsCipherPolicy(@Nullable Output<String> tlsCipherPolicy) {
             $.tlsCipherPolicy = tlsCipherPolicy;
             return this;
         }
 
-        /**
-         * @param tlsCipherPolicy The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tlsCipherPolicy(String tlsCipherPolicy) {
             return tlsCipherPolicy(Output.of(tlsCipherPolicy));
         }
 
-        /**
-         * @param unhealthyThreshold The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder unhealthyThreshold(@Nullable Output<Integer> unhealthyThreshold) {
             $.unhealthyThreshold = unhealthyThreshold;
             return this;
         }
 
-        /**
-         * @param unhealthyThreshold The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder unhealthyThreshold(Integer unhealthyThreshold) {
             return unhealthyThreshold(Output.of(unhealthyThreshold));
         }
 
         /**
-         * @param xForwardedFor Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34;. See `x_forwarded_for` below.
+         * @param xForwardedFor Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34;.
          * 
          * @return builder
          * 
@@ -1701,7 +885,7 @@ public final class ListenerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param xForwardedFor Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34;. See `x_forwarded_for` below.
+         * @param xForwardedFor Whether to set additional HTTP Header field &#34;X-Forwarded-For&#34;.
          * 
          * @return builder
          * 

@@ -12,15 +12,9 @@ namespace Pulumi.AliCloud.Vpc.Inputs
 
     public sealed class PrefixListEntryGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The CIDR address block of the prefix list.
-        /// </summary>
         [Input("cidr")]
         public Input<string>? Cidr { get; set; }
 
-        /// <summary>
-        /// The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 

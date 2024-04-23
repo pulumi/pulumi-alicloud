@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -32,7 +31,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstInstanceType = _default.then(_default => _default.types?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstanceTypes(args: GetInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypesResult> {
 
@@ -124,7 +122,6 @@ export interface GetInstanceTypesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -142,7 +139,6 @@ export interface GetInstanceTypesResult {
  * });
  * export const firstInstanceType = _default.then(_default => _default.types?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstanceTypesOutput(args: GetInstanceTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypesResult> {
     return pulumi.output(args).apply((a: any) => getInstanceTypes(a, opts))

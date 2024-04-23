@@ -638,18 +638,12 @@ func (o GetAdConnectorDirectoriesDirectoryArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetAdConnectorDirectoriesDirectoryAdConnector struct {
-	// The address of AD connector.
 	AdConnectorAddress string `pulumi:"adConnectorAddress"`
-	// The status of connector.
-	ConnectorStatus string `pulumi:"connectorStatus"`
-	// The ID of the network interface.
+	ConnectorStatus    string `pulumi:"connectorStatus"`
 	NetworkInterfaceId string `pulumi:"networkInterfaceId"`
-	// The AD Connector specifications.
-	Specification string `pulumi:"specification"`
-	// The AD Connector control trust password.
-	TrustKey string `pulumi:"trustKey"`
-	// The ID of VSwitch.
-	VswitchId string `pulumi:"vswitchId"`
+	Specification      string `pulumi:"specification"`
+	TrustKey           string `pulumi:"trustKey"`
+	VswitchId          string `pulumi:"vswitchId"`
 }
 
 // GetAdConnectorDirectoriesDirectoryAdConnectorInput is an input type that accepts GetAdConnectorDirectoriesDirectoryAdConnectorArgs and GetAdConnectorDirectoriesDirectoryAdConnectorOutput values.
@@ -664,18 +658,12 @@ type GetAdConnectorDirectoriesDirectoryAdConnectorInput interface {
 }
 
 type GetAdConnectorDirectoriesDirectoryAdConnectorArgs struct {
-	// The address of AD connector.
 	AdConnectorAddress pulumi.StringInput `pulumi:"adConnectorAddress"`
-	// The status of connector.
-	ConnectorStatus pulumi.StringInput `pulumi:"connectorStatus"`
-	// The ID of the network interface.
+	ConnectorStatus    pulumi.StringInput `pulumi:"connectorStatus"`
 	NetworkInterfaceId pulumi.StringInput `pulumi:"networkInterfaceId"`
-	// The AD Connector specifications.
-	Specification pulumi.StringInput `pulumi:"specification"`
-	// The AD Connector control trust password.
-	TrustKey pulumi.StringInput `pulumi:"trustKey"`
-	// The ID of VSwitch.
-	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
+	Specification      pulumi.StringInput `pulumi:"specification"`
+	TrustKey           pulumi.StringInput `pulumi:"trustKey"`
+	VswitchId          pulumi.StringInput `pulumi:"vswitchId"`
 }
 
 func (GetAdConnectorDirectoriesDirectoryAdConnectorArgs) ElementType() reflect.Type {
@@ -729,32 +717,26 @@ func (o GetAdConnectorDirectoriesDirectoryAdConnectorOutput) ToGetAdConnectorDir
 	return o
 }
 
-// The address of AD connector.
 func (o GetAdConnectorDirectoriesDirectoryAdConnectorOutput) AdConnectorAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAdConnectorDirectoriesDirectoryAdConnector) string { return v.AdConnectorAddress }).(pulumi.StringOutput)
 }
 
-// The status of connector.
 func (o GetAdConnectorDirectoriesDirectoryAdConnectorOutput) ConnectorStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAdConnectorDirectoriesDirectoryAdConnector) string { return v.ConnectorStatus }).(pulumi.StringOutput)
 }
 
-// The ID of the network interface.
 func (o GetAdConnectorDirectoriesDirectoryAdConnectorOutput) NetworkInterfaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAdConnectorDirectoriesDirectoryAdConnector) string { return v.NetworkInterfaceId }).(pulumi.StringOutput)
 }
 
-// The AD Connector specifications.
 func (o GetAdConnectorDirectoriesDirectoryAdConnectorOutput) Specification() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAdConnectorDirectoriesDirectoryAdConnector) string { return v.Specification }).(pulumi.StringOutput)
 }
 
-// The AD Connector control trust password.
 func (o GetAdConnectorDirectoriesDirectoryAdConnectorOutput) TrustKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAdConnectorDirectoriesDirectoryAdConnector) string { return v.TrustKey }).(pulumi.StringOutput)
 }
 
-// The ID of VSwitch.
 func (o GetAdConnectorDirectoriesDirectoryAdConnectorOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAdConnectorDirectoriesDirectoryAdConnector) string { return v.VswitchId }).(pulumi.StringOutput)
 }
@@ -1566,13 +1548,9 @@ func (o GetBundlesBundleArrayOutput) Index(i pulumi.IntInput) GetBundlesBundleOu
 }
 
 type GetBundlesBundleDesktopTypeAttribute struct {
-	// The cpu count attribute of the bundle.
-	CpuCount int `pulumi:"cpuCount"`
-	// The gpu count attribute of the bundle.
-	GpuCount string `pulumi:"gpuCount"`
-	// The gpu spec attribute of the bundle.
-	GpuSpec string `pulumi:"gpuSpec"`
-	// The memory size attribute of the bundle.
+	CpuCount   int    `pulumi:"cpuCount"`
+	GpuCount   string `pulumi:"gpuCount"`
+	GpuSpec    string `pulumi:"gpuSpec"`
 	MemorySize string `pulumi:"memorySize"`
 }
 
@@ -1588,13 +1566,9 @@ type GetBundlesBundleDesktopTypeAttributeInput interface {
 }
 
 type GetBundlesBundleDesktopTypeAttributeArgs struct {
-	// The cpu count attribute of the bundle.
-	CpuCount pulumi.IntInput `pulumi:"cpuCount"`
-	// The gpu count attribute of the bundle.
-	GpuCount pulumi.StringInput `pulumi:"gpuCount"`
-	// The gpu spec attribute of the bundle.
-	GpuSpec pulumi.StringInput `pulumi:"gpuSpec"`
-	// The memory size attribute of the bundle.
+	CpuCount   pulumi.IntInput    `pulumi:"cpuCount"`
+	GpuCount   pulumi.StringInput `pulumi:"gpuCount"`
+	GpuSpec    pulumi.StringInput `pulumi:"gpuSpec"`
 	MemorySize pulumi.StringInput `pulumi:"memorySize"`
 }
 
@@ -1649,22 +1623,18 @@ func (o GetBundlesBundleDesktopTypeAttributeOutput) ToGetBundlesBundleDesktopTyp
 	return o
 }
 
-// The cpu count attribute of the bundle.
 func (o GetBundlesBundleDesktopTypeAttributeOutput) CpuCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetBundlesBundleDesktopTypeAttribute) int { return v.CpuCount }).(pulumi.IntOutput)
 }
 
-// The gpu count attribute of the bundle.
 func (o GetBundlesBundleDesktopTypeAttributeOutput) GpuCount() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBundlesBundleDesktopTypeAttribute) string { return v.GpuCount }).(pulumi.StringOutput)
 }
 
-// The gpu spec attribute of the bundle.
 func (o GetBundlesBundleDesktopTypeAttributeOutput) GpuSpec() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBundlesBundleDesktopTypeAttribute) string { return v.GpuSpec }).(pulumi.StringOutput)
 }
 
-// The memory size attribute of the bundle.
 func (o GetBundlesBundleDesktopTypeAttributeOutput) MemorySize() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBundlesBundleDesktopTypeAttribute) string { return v.MemorySize }).(pulumi.StringOutput)
 }
@@ -1690,9 +1660,7 @@ func (o GetBundlesBundleDesktopTypeAttributeArrayOutput) Index(i pulumi.IntInput
 }
 
 type GetBundlesBundleDisk struct {
-	// The disk size attribute of the bundle.
 	DiskSize string `pulumi:"diskSize"`
-	// The disk type attribute of the bundle.
 	DiskType string `pulumi:"diskType"`
 }
 
@@ -1708,9 +1676,7 @@ type GetBundlesBundleDiskInput interface {
 }
 
 type GetBundlesBundleDiskArgs struct {
-	// The disk size attribute of the bundle.
 	DiskSize pulumi.StringInput `pulumi:"diskSize"`
-	// The disk type attribute of the bundle.
 	DiskType pulumi.StringInput `pulumi:"diskType"`
 }
 
@@ -1765,12 +1731,10 @@ func (o GetBundlesBundleDiskOutput) ToGetBundlesBundleDiskOutputWithContext(ctx 
 	return o
 }
 
-// The disk size attribute of the bundle.
 func (o GetBundlesBundleDiskOutput) DiskSize() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBundlesBundleDisk) string { return v.DiskSize }).(pulumi.StringOutput)
 }
 
-// The disk type attribute of the bundle.
 func (o GetBundlesBundleDiskOutput) DiskType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBundlesBundleDisk) string { return v.DiskType }).(pulumi.StringOutput)
 }

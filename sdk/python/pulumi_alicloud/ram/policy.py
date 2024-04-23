@@ -457,7 +457,6 @@ class Policy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -484,7 +483,6 @@ class Policy(pulumi.CustomResource):
         \"\"\",
             description="this is a policy test")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -525,7 +523,6 @@ class Policy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -552,7 +549,6 @@ class Policy(pulumi.CustomResource):
         \"\"\",
             description="this is a policy test")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

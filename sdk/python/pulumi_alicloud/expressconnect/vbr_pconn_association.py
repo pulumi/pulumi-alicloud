@@ -411,7 +411,6 @@ class VbrPconnAssociation(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -447,7 +446,6 @@ class VbrPconnAssociation(pulumi.CustomResource):
             peer_ipv6_gateway_ip="2408:4004:cc::4",
             peering_ipv6_subnet_mask="2408:4004:cc::/56")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -489,7 +487,6 @@ class VbrPconnAssociation(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -525,7 +522,6 @@ class VbrPconnAssociation(pulumi.CustomResource):
             peer_ipv6_gateway_ip="2408:4004:cc::4",
             peering_ipv6_subnet_mask="2408:4004:cc::/56")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

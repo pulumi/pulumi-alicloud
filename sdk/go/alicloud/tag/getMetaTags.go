@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetMetaTags(ctx *pulumi.Context, args *GetMetaTagsArgs, opts ...pulumi.InvokeOption) (*GetMetaTagsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMetaTagsResult

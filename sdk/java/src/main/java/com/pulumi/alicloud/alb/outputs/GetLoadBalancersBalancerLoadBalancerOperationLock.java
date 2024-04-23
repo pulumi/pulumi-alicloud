@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLoadBalancersBalancerLoadBalancerOperationLock {
-    /**
-     * @return The Locking of the Reasons.
-     * 
-     */
     private String lockReason;
-    /**
-     * @return The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
-     * 
-     */
     private String lockType;
 
     private GetLoadBalancersBalancerLoadBalancerOperationLock() {}
-    /**
-     * @return The Locking of the Reasons.
-     * 
-     */
     public String lockReason() {
         return this.lockReason;
     }
-    /**
-     * @return The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
-     * 
-     */
     public String lockType() {
         return this.lockType;
     }

@@ -63,14 +63,14 @@ public final class GetTemplateScratchesArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The status of the resource.
+     * The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -78,14 +78,14 @@ public final class GetTemplateScratchesArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The type of the Template Scratch.
+     * The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
      * 
      */
     @Import(name="templateScratchType")
     private @Nullable Output<String> templateScratchType;
 
     /**
-     * @return The type of the Template Scratch.
+     * @return The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
      * 
      */
     public Optional<Output<String>> templateScratchType() {
@@ -194,7 +194,7 @@ public final class GetTemplateScratchesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
          * 
          * @return builder
          * 
@@ -205,7 +205,7 @@ public final class GetTemplateScratchesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
          * 
          * @return builder
          * 
@@ -215,7 +215,7 @@ public final class GetTemplateScratchesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param templateScratchType The type of the Template Scratch.
+         * @param templateScratchType The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
          * 
          * @return builder
          * 
@@ -226,7 +226,7 @@ public final class GetTemplateScratchesArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param templateScratchType The type of the Template Scratch.
+         * @param templateScratchType The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
          * 
          * @return builder
          * 

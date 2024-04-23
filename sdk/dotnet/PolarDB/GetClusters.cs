@@ -19,7 +19,6 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -72,7 +71,6 @@ namespace Pulumi.AliCloud.PolarDB
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetClustersResult> InvokeAsync(GetClustersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClustersResult>("alicloud:polardb/getClusters:getClusters", args ?? new GetClustersArgs(), options.WithDefaults());
@@ -85,7 +83,6 @@ namespace Pulumi.AliCloud.PolarDB
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -138,7 +135,6 @@ namespace Pulumi.AliCloud.PolarDB
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetClustersResult> Invoke(GetClustersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClustersResult>("alicloud:polardb/getClusters:getClusters", args ?? new GetClustersInvokeArgs(), options.WithDefaults());

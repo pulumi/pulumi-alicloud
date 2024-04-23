@@ -678,7 +678,6 @@ class NetworkInterface(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -706,7 +705,6 @@ class NetworkInterface(pulumi.CustomResource):
             private_ip="192.168.0.2",
             private_ips_count=3)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -745,7 +743,6 @@ class NetworkInterface(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -773,7 +770,6 @@ class NetworkInterface(pulumi.CustomResource):
             private_ip="192.168.0.2",
             private_ips_count=3)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

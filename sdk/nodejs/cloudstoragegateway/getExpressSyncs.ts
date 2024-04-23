@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const cloudStorageGatewayExpressSyncId2 = nameRegex.then(nameRegex => nameRegex.syncs?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getExpressSyncs(args?: GetExpressSyncsArgs, opts?: pulumi.InvokeOptions): Promise<GetExpressSyncsResult> {
     args = args || {};
@@ -81,7 +79,6 @@ export interface GetExpressSyncsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -93,7 +90,6 @@ export interface GetExpressSyncsResult {
  * });
  * export const cloudStorageGatewayExpressSyncId2 = nameRegex.then(nameRegex => nameRegex.syncs?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getExpressSyncsOutput(args?: GetExpressSyncsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExpressSyncsResult> {
     return pulumi.output(args).apply((a: any) => getExpressSyncs(a, opts))

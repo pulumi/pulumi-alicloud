@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  * });
  * export const dfsAccessRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAccessRules(args: GetAccessRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessRulesResult> {
 
@@ -81,7 +79,6 @@ export interface GetAccessRulesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -95,7 +92,6 @@ export interface GetAccessRulesResult {
  * });
  * export const dfsAccessRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAccessRulesOutput(args: GetAccessRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessRulesResult> {
     return pulumi.output(args).apply((a: any) => getAccessRules(a, opts))

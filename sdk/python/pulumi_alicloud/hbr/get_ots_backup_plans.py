@@ -133,7 +133,6 @@ def get_ots_backup_plans(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -141,7 +140,6 @@ def get_ots_backup_plans(ids: Optional[Sequence[str]] = None,
     ids = alicloud.hbr.get_ots_backup_plans(name_regex="^my-otsBackupPlan")
     pulumi.export("hbrOtsBackupPlanId", plans[0]["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of OtsBackupPlan IDs.
@@ -149,7 +147,7 @@ def get_ots_backup_plans(ids: Optional[Sequence[str]] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str plan_id: The ID of the backup plan.
     :param str plan_name: The ID of the backup plan.
-    :param str vault_id: The ID of backup vault.
+    :param str vault_id: The ID of backup vault the OtsBackupPlan used.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -190,7 +188,6 @@ def get_ots_backup_plans_output(ids: Optional[pulumi.Input[Optional[Sequence[str
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -198,7 +195,6 @@ def get_ots_backup_plans_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     ids = alicloud.hbr.get_ots_backup_plans(name_regex="^my-otsBackupPlan")
     pulumi.export("hbrOtsBackupPlanId", plans[0]["id"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of OtsBackupPlan IDs.
@@ -206,6 +202,6 @@ def get_ots_backup_plans_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str plan_id: The ID of the backup plan.
     :param str plan_name: The ID of the backup plan.
-    :param str vault_id: The ID of backup vault.
+    :param str vault_id: The ID of backup vault the OtsBackupPlan used.
     """
     ...

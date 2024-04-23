@@ -94,7 +94,6 @@ def get_protocols(output_file: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -104,7 +103,6 @@ def get_protocols(output_file: Optional[str] = None,
         output_file="protocols.txt")
     pulumi.export("nasProtocolsProtocol", default.protocols[0])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -138,7 +136,6 @@ def get_protocols_output(output_file: Optional[pulumi.Input[Optional[str]]] = No
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -148,7 +145,6 @@ def get_protocols_output(output_file: Optional[pulumi.Input[Optional[str]]] = No
         output_file="protocols.txt")
     pulumi.export("nasProtocolsProtocol", default.protocols[0])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

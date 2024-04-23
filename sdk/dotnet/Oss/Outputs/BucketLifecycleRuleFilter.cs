@@ -13,17 +13,8 @@ namespace Pulumi.AliCloud.Oss.Outputs
     [OutputType]
     public sealed class BucketLifecycleRuleFilter
     {
-        /// <summary>
-        /// The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
-        /// </summary>
         public readonly Outputs.BucketLifecycleRuleFilterNot? Not;
-        /// <summary>
-        /// Minimum object size (in bytes) to which the rule applies.
-        /// </summary>
         public readonly int? ObjectSizeGreaterThan;
-        /// <summary>
-        /// Maximum object size (in bytes) to which the rule applies.
-        /// </summary>
         public readonly int? ObjectSizeLessThan;
 
         [OutputConstructor]

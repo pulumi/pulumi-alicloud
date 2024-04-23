@@ -179,7 +179,6 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -198,7 +197,6 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
             public_ip_address_pool_id=default_public_ip_address_pool.id,
             cidr_block="47.118.126.0/25")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -233,7 +231,6 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -252,7 +249,6 @@ class PublicIpAddressPoolCidrBlock(pulumi.CustomResource):
             public_ip_address_pool_id=default_public_ip_address_pool.id,
             cidr_block="47.118.126.0/25")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

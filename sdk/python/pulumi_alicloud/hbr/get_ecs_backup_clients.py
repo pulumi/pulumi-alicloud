@@ -104,7 +104,6 @@ def get_ecs_backup_clients(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -115,13 +114,12 @@ def get_ecs_backup_clients(ids: Optional[Sequence[str]] = None,
         instance_ids=[default_alicloud_hbr_ecs_backup_client["instanceId"]])
     pulumi.export("hbrEcsBackupClientId1", ids.clients[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ecs Backup Client IDs.
     :param Sequence[str] instance_ids: A list of ECS Instance IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `REGISTERED`, `STOPPED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `UNKNOWN`, `UPGRADE_FAILED`, `UPGRADING`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -155,7 +153,6 @@ def get_ecs_backup_clients_output(ids: Optional[pulumi.Input[Optional[Sequence[s
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -166,12 +163,11 @@ def get_ecs_backup_clients_output(ids: Optional[pulumi.Input[Optional[Sequence[s
         instance_ids=[default_alicloud_hbr_ecs_backup_client["instanceId"]])
     pulumi.export("hbrEcsBackupClientId1", ids.clients[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ecs Backup Client IDs.
     :param Sequence[str] instance_ids: A list of ECS Instance IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `REGISTERED`, `STOPPED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `UNKNOWN`, `UPGRADE_FAILED`, `UPGRADING`.
     """
     ...

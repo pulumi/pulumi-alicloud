@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetEdgeKubernetesClusters(ctx *pulumi.Context, args *GetEdgeKubernetesClustersArgs, opts ...pulumi.InvokeOption) (*GetEdgeKubernetesClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEdgeKubernetesClustersResult

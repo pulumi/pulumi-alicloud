@@ -13,27 +13,8 @@ namespace Pulumi.AliCloud.Arms.Outputs
     [OutputType]
     public sealed class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression
     {
-        /// <summary>
-        /// The key of the tag of the dispatch rule. Valid values:
-        /// * _aliyun_arms_userid: user ID
-        /// * _aliyun_arms_involvedObject_kind: type of the associated object
-        /// * _aliyun_arms_involvedObject_id: ID of the associated object
-        /// * _aliyun_arms_involvedObject_name: name of the associated object
-        /// * _aliyun_arms_alert_name: alert name
-        /// * _aliyun_arms_alert_rule_id: alert rule ID
-        /// * _aliyun_arms_alert_type: alert type
-        /// * _aliyun_arms_alert_level: alert severity
-        /// </summary>
         public readonly string Key;
-        /// <summary>
-        /// The operator used in the dispatch rule. Valid values: 
-        /// * eq: equals to.
-        /// * re: matches a regular expression.
-        /// </summary>
         public readonly string Operator;
-        /// <summary>
-        /// The value of the tag.
-        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

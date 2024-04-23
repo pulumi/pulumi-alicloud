@@ -18,8 +18,7 @@ namespace Pulumi.AliCloud.Dcdn
         /// 
         /// ## Example Usage
         /// 
-        ///  &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
+        ///  ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -41,7 +40,6 @@ namespace Pulumi.AliCloud.Dcdn
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDomainsResult> InvokeAsync(GetDomainsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDomainsResult>("alicloud:dcdn/getDomains:getDomains", args ?? new GetDomainsArgs(), options.WithDefaults());
@@ -53,8 +51,7 @@ namespace Pulumi.AliCloud.Dcdn
         /// 
         /// ## Example Usage
         /// 
-        ///  &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
+        ///  ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -76,7 +73,6 @@ namespace Pulumi.AliCloud.Dcdn
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDomainsResult> Invoke(GetDomainsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDomainsResult>("alicloud:dcdn/getDomains:getDomains", args ?? new GetDomainsInvokeArgs(), options.WithDefaults());

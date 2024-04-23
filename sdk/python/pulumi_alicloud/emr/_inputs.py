@@ -27,12 +27,7 @@ class ClusterBootstrapActionArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] arg: bootstrap action args, e.g. "--a=b".
-        :param pulumi.Input[str] execution_fail_strategy: bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
-        :param pulumi.Input[str] execution_moment: bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: "BEFORE_INSTALL".
-        :param pulumi.Input[str] execution_target: bootstrap action execution target, you can specify the host group name, e.g. "core_group". If this is not specified, the bootstrap action execution target is whole cluster.
         :param pulumi.Input[str] name: The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
-        :param pulumi.Input[str] path: bootstrap action path, e.g. "oss://bucket/path".
         """
         if arg is not None:
             pulumi.set(__self__, "arg", arg)
@@ -50,9 +45,6 @@ class ClusterBootstrapActionArgs:
     @property
     @pulumi.getter
     def arg(self) -> Optional[pulumi.Input[str]]:
-        """
-        bootstrap action args, e.g. "--a=b".
-        """
         return pulumi.get(self, "arg")
 
     @arg.setter
@@ -62,9 +54,6 @@ class ClusterBootstrapActionArgs:
     @property
     @pulumi.getter(name="executionFailStrategy")
     def execution_fail_strategy(self) -> Optional[pulumi.Input[str]]:
-        """
-        bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
-        """
         return pulumi.get(self, "execution_fail_strategy")
 
     @execution_fail_strategy.setter
@@ -74,9 +63,6 @@ class ClusterBootstrapActionArgs:
     @property
     @pulumi.getter(name="executionMoment")
     def execution_moment(self) -> Optional[pulumi.Input[str]]:
-        """
-        bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: "BEFORE_INSTALL".
-        """
         return pulumi.get(self, "execution_moment")
 
     @execution_moment.setter
@@ -86,9 +72,6 @@ class ClusterBootstrapActionArgs:
     @property
     @pulumi.getter(name="executionTarget")
     def execution_target(self) -> Optional[pulumi.Input[str]]:
-        """
-        bootstrap action execution target, you can specify the host group name, e.g. "core_group". If this is not specified, the bootstrap action execution target is whole cluster.
-        """
         return pulumi.get(self, "execution_target")
 
     @execution_target.setter
@@ -110,9 +93,6 @@ class ClusterBootstrapActionArgs:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
-        """
-        bootstrap action path, e.g. "oss://bucket/path".
-        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -127,12 +107,6 @@ class ClusterConfigArgs:
                  config_value: pulumi.Input[str],
                  file_name: pulumi.Input[str],
                  service_name: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] config_key: Custom configuration service config key, e.g. ’dfs.replication’.
-        :param pulumi.Input[str] config_value: Custom configuration service config value, e.g. ’3’.
-        :param pulumi.Input[str] file_name: Custom configuration service file name, e.g. ’hdfs-site’.
-        :param pulumi.Input[str] service_name: Custom configuration service name, e.g. ’HDFS’.
-        """
         pulumi.set(__self__, "config_key", config_key)
         pulumi.set(__self__, "config_value", config_value)
         pulumi.set(__self__, "file_name", file_name)
@@ -141,9 +115,6 @@ class ClusterConfigArgs:
     @property
     @pulumi.getter(name="configKey")
     def config_key(self) -> pulumi.Input[str]:
-        """
-        Custom configuration service config key, e.g. ’dfs.replication’.
-        """
         return pulumi.get(self, "config_key")
 
     @config_key.setter
@@ -153,9 +124,6 @@ class ClusterConfigArgs:
     @property
     @pulumi.getter(name="configValue")
     def config_value(self) -> pulumi.Input[str]:
-        """
-        Custom configuration service config value, e.g. ’3’.
-        """
         return pulumi.get(self, "config_value")
 
     @config_value.setter
@@ -165,9 +133,6 @@ class ClusterConfigArgs:
     @property
     @pulumi.getter(name="fileName")
     def file_name(self) -> pulumi.Input[str]:
-        """
-        Custom configuration service file name, e.g. ’hdfs-site’.
-        """
         return pulumi.get(self, "file_name")
 
     @file_name.setter
@@ -177,9 +142,6 @@ class ClusterConfigArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
-        """
-        Custom configuration service name, e.g. ’HDFS’.
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -207,21 +169,8 @@ class ClusterHostGroupArgs:
                  sys_disk_capacity: Optional[pulumi.Input[str]] = None,
                  sys_disk_type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] auto_renew: Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
         :param pulumi.Input[str] charge_type: Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
-        :param pulumi.Input[int] decommission_timeout: Graceful decommission timeout, unit: seconds.
-        :param pulumi.Input[str] disk_capacity: Data disk capacity.
-        :param pulumi.Input[str] disk_count: Data disk count.
-        :param pulumi.Input[str] disk_type: Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
-        :param pulumi.Input[bool] enable_graceful_decommission: Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
-        :param pulumi.Input[str] host_group_name: host group name.
-        :param pulumi.Input[str] host_group_type: host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
-        :param pulumi.Input[str] instance_list: Instance list for cluster scale down. This value follows the json format, e.g. ["instance_id1","instance_id2"]. escape character for " is \\".
-        :param pulumi.Input[str] instance_type: Host Ecs instance type.
-        :param pulumi.Input[str] node_count: Host number in this group.
         :param pulumi.Input[int] period: If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
-        :param pulumi.Input[str] sys_disk_capacity: System disk capacity.
-        :param pulumi.Input[str] sys_disk_type: System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
         """
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
@@ -259,9 +208,6 @@ class ClusterHostGroupArgs:
     @property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
-        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -283,9 +229,6 @@ class ClusterHostGroupArgs:
     @property
     @pulumi.getter(name="decommissionTimeout")
     def decommission_timeout(self) -> Optional[pulumi.Input[int]]:
-        """
-        Graceful decommission timeout, unit: seconds.
-        """
         return pulumi.get(self, "decommission_timeout")
 
     @decommission_timeout.setter
@@ -295,9 +238,6 @@ class ClusterHostGroupArgs:
     @property
     @pulumi.getter(name="diskCapacity")
     def disk_capacity(self) -> Optional[pulumi.Input[str]]:
-        """
-        Data disk capacity.
-        """
         return pulumi.get(self, "disk_capacity")
 
     @disk_capacity.setter
@@ -307,9 +247,6 @@ class ClusterHostGroupArgs:
     @property
     @pulumi.getter(name="diskCount")
     def disk_count(self) -> Optional[pulumi.Input[str]]:
-        """
-        Data disk count.
-        """
         return pulumi.get(self, "disk_count")
 
     @disk_count.setter
@@ -319,9 +256,6 @@ class ClusterHostGroupArgs:
     @property
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
-        """
         return pulumi.get(self, "disk_type")
 
     @disk_type.setter
@@ -331,9 +265,6 @@ class ClusterHostGroupArgs:
     @property
     @pulumi.getter(name="enableGracefulDecommission")
     def enable_graceful_decommission(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
-        """
         return pulumi.get(self, "enable_graceful_decommission")
 
     @enable_graceful_decommission.setter
@@ -352,9 +283,6 @@ class ClusterHostGroupArgs:
     @property
     @pulumi.getter(name="hostGroupName")
     def host_group_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        host group name.
-        """
         return pulumi.get(self, "host_group_name")
 
     @host_group_name.setter
@@ -364,9 +292,6 @@ class ClusterHostGroupArgs:
     @property
     @pulumi.getter(name="hostGroupType")
     def host_group_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
-        """
         return pulumi.get(self, "host_group_type")
 
     @host_group_type.setter
@@ -376,9 +301,6 @@ class ClusterHostGroupArgs:
     @property
     @pulumi.getter(name="instanceList")
     def instance_list(self) -> Optional[pulumi.Input[str]]:
-        """
-        Instance list for cluster scale down. This value follows the json format, e.g. ["instance_id1","instance_id2"]. escape character for " is \\".
-        """
         return pulumi.get(self, "instance_list")
 
     @instance_list.setter
@@ -388,9 +310,6 @@ class ClusterHostGroupArgs:
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Host Ecs instance type.
-        """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
@@ -400,9 +319,6 @@ class ClusterHostGroupArgs:
     @property
     @pulumi.getter(name="nodeCount")
     def node_count(self) -> Optional[pulumi.Input[str]]:
-        """
-        Host number in this group.
-        """
         return pulumi.get(self, "node_count")
 
     @node_count.setter
@@ -424,9 +340,6 @@ class ClusterHostGroupArgs:
     @property
     @pulumi.getter(name="sysDiskCapacity")
     def sys_disk_capacity(self) -> Optional[pulumi.Input[str]]:
-        """
-        System disk capacity.
-        """
         return pulumi.get(self, "sys_disk_capacity")
 
     @sys_disk_capacity.setter
@@ -436,9 +349,6 @@ class ClusterHostGroupArgs:
     @property
     @pulumi.getter(name="sysDiskType")
     def sys_disk_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
-        """
         return pulumi.get(self, "sys_disk_type")
 
     @sys_disk_type.setter
@@ -452,11 +362,6 @@ class ClusterMetaStoreConfArgs:
                  db_password: pulumi.Input[str],
                  db_url: pulumi.Input[str],
                  db_user_name: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] db_password: Custom rds database password.
-        :param pulumi.Input[str] db_url: Custom rds database connection url.
-        :param pulumi.Input[str] db_user_name: Custom rds database user name.
-        """
         pulumi.set(__self__, "db_password", db_password)
         pulumi.set(__self__, "db_url", db_url)
         pulumi.set(__self__, "db_user_name", db_user_name)
@@ -464,9 +369,6 @@ class ClusterMetaStoreConfArgs:
     @property
     @pulumi.getter(name="dbPassword")
     def db_password(self) -> pulumi.Input[str]:
-        """
-        Custom rds database password.
-        """
         return pulumi.get(self, "db_password")
 
     @db_password.setter
@@ -476,9 +378,6 @@ class ClusterMetaStoreConfArgs:
     @property
     @pulumi.getter(name="dbUrl")
     def db_url(self) -> pulumi.Input[str]:
-        """
-        Custom rds database connection url.
-        """
         return pulumi.get(self, "db_url")
 
     @db_url.setter
@@ -488,9 +387,6 @@ class ClusterMetaStoreConfArgs:
     @property
     @pulumi.getter(name="dbUserName")
     def db_user_name(self) -> pulumi.Input[str]:
-        """
-        Custom rds database user name.
-        """
         return pulumi.get(self, "db_user_name")
 
     @db_user_name.setter
@@ -510,17 +406,6 @@ class ClusterModifyClusterServiceConfigArgs:
                  group_id: Optional[pulumi.Input[str]] = None,
                  host_instance_id: Optional[pulumi.Input[str]] = None,
                  refresh_host_config: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[str] config_params: Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
-        :param pulumi.Input[str] service_name: Custom configuration service name, e.g. ’HDFS’.
-        :param pulumi.Input[str] comment: Cluster service configuration modification comment, e.g. "Modify tez configuration".
-        :param pulumi.Input[str] config_type: Cluster service configuration modification type.
-        :param pulumi.Input[str] custom_config_params: Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] gateway_cluster_id_lists: Cluster service configuration modification related gateway cluster id list.
-        :param pulumi.Input[str] group_id: Cluster service configuration modification node group id, e.g. ’G-XXX’.
-        :param pulumi.Input[str] host_instance_id: Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
-        :param pulumi.Input[bool] refresh_host_config: Cluster service configuration modification refresh host config, ’true’ or ’false’.
-        """
         pulumi.set(__self__, "config_params", config_params)
         pulumi.set(__self__, "service_name", service_name)
         if comment is not None:
@@ -541,9 +426,6 @@ class ClusterModifyClusterServiceConfigArgs:
     @property
     @pulumi.getter(name="configParams")
     def config_params(self) -> pulumi.Input[str]:
-        """
-        Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
-        """
         return pulumi.get(self, "config_params")
 
     @config_params.setter
@@ -553,9 +435,6 @@ class ClusterModifyClusterServiceConfigArgs:
     @property
     @pulumi.getter(name="serviceName")
     def service_name(self) -> pulumi.Input[str]:
-        """
-        Custom configuration service name, e.g. ’HDFS’.
-        """
         return pulumi.get(self, "service_name")
 
     @service_name.setter
@@ -565,9 +444,6 @@ class ClusterModifyClusterServiceConfigArgs:
     @property
     @pulumi.getter
     def comment(self) -> Optional[pulumi.Input[str]]:
-        """
-        Cluster service configuration modification comment, e.g. "Modify tez configuration".
-        """
         return pulumi.get(self, "comment")
 
     @comment.setter
@@ -577,9 +453,6 @@ class ClusterModifyClusterServiceConfigArgs:
     @property
     @pulumi.getter(name="configType")
     def config_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Cluster service configuration modification type.
-        """
         return pulumi.get(self, "config_type")
 
     @config_type.setter
@@ -589,9 +462,6 @@ class ClusterModifyClusterServiceConfigArgs:
     @property
     @pulumi.getter(name="customConfigParams")
     def custom_config_params(self) -> Optional[pulumi.Input[str]]:
-        """
-        Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
-        """
         return pulumi.get(self, "custom_config_params")
 
     @custom_config_params.setter
@@ -601,9 +471,6 @@ class ClusterModifyClusterServiceConfigArgs:
     @property
     @pulumi.getter(name="gatewayClusterIdLists")
     def gateway_cluster_id_lists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Cluster service configuration modification related gateway cluster id list.
-        """
         return pulumi.get(self, "gateway_cluster_id_lists")
 
     @gateway_cluster_id_lists.setter
@@ -613,9 +480,6 @@ class ClusterModifyClusterServiceConfigArgs:
     @property
     @pulumi.getter(name="groupId")
     def group_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Cluster service configuration modification node group id, e.g. ’G-XXX’.
-        """
         return pulumi.get(self, "group_id")
 
     @group_id.setter
@@ -625,9 +489,6 @@ class ClusterModifyClusterServiceConfigArgs:
     @property
     @pulumi.getter(name="hostInstanceId")
     def host_instance_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
-        """
         return pulumi.get(self, "host_instance_id")
 
     @host_instance_id.setter
@@ -637,9 +498,6 @@ class ClusterModifyClusterServiceConfigArgs:
     @property
     @pulumi.getter(name="refreshHostConfig")
     def refresh_host_config(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Cluster service configuration modification refresh host config, ’true’ or ’false’.
-        """
         return pulumi.get(self, "refresh_host_config")
 
     @refresh_host_config.setter

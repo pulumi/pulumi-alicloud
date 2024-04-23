@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -34,7 +33,6 @@ import * as utilities from "../utilities";
  * }));
  * export const alicloudThreatDetectionBaselineStrategyExampleId = defaultAlicloudThreatDetectionBaselineStrategys.strategys[0].id;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBaselineStrategies(args?: GetBaselineStrategiesArgs, opts?: pulumi.InvokeOptions): Promise<GetBaselineStrategiesResult> {
     args = args || {};
@@ -106,7 +104,6 @@ export interface GetBaselineStrategiesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -127,7 +124,6 @@ export interface GetBaselineStrategiesResult {
  * }));
  * export const alicloudThreatDetectionBaselineStrategyExampleId = defaultAlicloudThreatDetectionBaselineStrategys.strategys[0].id;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBaselineStrategiesOutput(args?: GetBaselineStrategiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBaselineStrategiesResult> {
     return pulumi.output(args).apply((a: any) => getBaselineStrategies(a, opts))

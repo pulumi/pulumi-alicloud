@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,7 +42,6 @@ import (
 // })
 // }
 // ```
-// <!--End PulumiCodeChooser -->
 func GetPortfolios(ctx *pulumi.Context, args *GetPortfoliosArgs, opts ...pulumi.InvokeOption) (*GetPortfoliosResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPortfoliosResult

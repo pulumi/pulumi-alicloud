@@ -16,7 +16,6 @@ namespace Pulumi.AliCloud.Oss
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Pulumi.AliCloud.Oss
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetBucketsResult> InvokeAsync(GetBucketsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBucketsResult>("alicloud:oss/getBuckets:getBuckets", args ?? new GetBucketsArgs(), options.WithDefaults());
@@ -46,7 +44,6 @@ namespace Pulumi.AliCloud.Oss
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -66,7 +63,6 @@ namespace Pulumi.AliCloud.Oss
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetBucketsResult> Invoke(GetBucketsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBucketsResult>("alicloud:oss/getBuckets:getBuckets", args ?? new GetBucketsInvokeArgs(), options.WithDefaults());

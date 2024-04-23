@@ -200,7 +200,6 @@ def get_db_clusters(description: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -208,7 +207,6 @@ def get_db_clusters(description: Optional[str] = None,
     example = alicloud.adb.get_db_clusters(description_regex="example")
     pulumi.export("firstAdbDbClusterId", example.clusters[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: The description of DBCluster.
@@ -272,7 +270,6 @@ def get_db_clusters_output(description: Optional[pulumi.Input[Optional[str]]] = 
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -280,7 +277,6 @@ def get_db_clusters_output(description: Optional[pulumi.Input[Optional[str]]] = 
     example = alicloud.adb.get_db_clusters(description_regex="example")
     pulumi.export("firstAdbDbClusterId", example.clusters[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: The description of DBCluster.

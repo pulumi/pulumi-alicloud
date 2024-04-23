@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetModifyParameterLogsResult> InvokeAsync(GetModifyParameterLogsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetModifyParameterLogsResult>("alicloud:rds/getModifyParameterLogs:getModifyParameterLogs", args ?? new GetModifyParameterLogsArgs(), options.WithDefaults());
@@ -52,7 +50,6 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,7 +67,6 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetModifyParameterLogsResult> Invoke(GetModifyParameterLogsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetModifyParameterLogsResult>("alicloud:rds/getModifyParameterLogs:getModifyParameterLogs", args ?? new GetModifyParameterLogsInvokeArgs(), options.WithDefaults());

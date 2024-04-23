@@ -143,7 +143,6 @@ def get_vpc_endpoint_services(auto_accept_connection: Optional[bool] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -152,7 +151,6 @@ def get_vpc_endpoint_services(auto_accept_connection: Optional[bool] = None,
         name_regex="the_resource_name")
     pulumi.export("firstPrivatelinkVpcEndpointServiceId", example.services[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool auto_accept_connection: Whether to automatically accept terminal node connections..
@@ -205,7 +203,6 @@ def get_vpc_endpoint_services_output(auto_accept_connection: Optional[pulumi.Inp
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -214,7 +211,6 @@ def get_vpc_endpoint_services_output(auto_accept_connection: Optional[pulumi.Inp
         name_regex="the_resource_name")
     pulumi.export("firstPrivatelinkVpcEndpointServiceId", example.services[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool auto_accept_connection: Whether to automatically accept terminal node connections..

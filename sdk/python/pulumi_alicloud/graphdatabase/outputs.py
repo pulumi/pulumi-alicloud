@@ -456,11 +456,6 @@ class GetDbInstancesInstanceDbInstanceIpArrayResult(dict):
                  db_instance_ip_array_attribute: Optional[str] = None,
                  db_instance_ip_array_name: Optional[str] = None,
                  security_ips: Optional[str] = None):
-        """
-        :param str db_instance_ip_array_attribute: The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
-        :param str db_instance_ip_array_name: IP ADDRESS whitelist group name.
-        :param str security_ips: IP ADDRESS whitelist addresses in the IP ADDRESS list, and a maximum of 1000 comma-separated format is as follows: `0.0.0.0/0` and `10.23.12.24`(IP) or `10.23.12.24/24`(CIDR mode, CIDR (Classless Inter-Domain Routing)/24 represents the address prefixes in the length of the range [1,32]).
-        """
         if db_instance_ip_array_attribute is not None:
             pulumi.set(__self__, "db_instance_ip_array_attribute", db_instance_ip_array_attribute)
         if db_instance_ip_array_name is not None:
@@ -471,25 +466,16 @@ class GetDbInstancesInstanceDbInstanceIpArrayResult(dict):
     @property
     @pulumi.getter(name="dbInstanceIpArrayAttribute")
     def db_instance_ip_array_attribute(self) -> Optional[str]:
-        """
-        The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
-        """
         return pulumi.get(self, "db_instance_ip_array_attribute")
 
     @property
     @pulumi.getter(name="dbInstanceIpArrayName")
     def db_instance_ip_array_name(self) -> Optional[str]:
-        """
-        IP ADDRESS whitelist group name.
-        """
         return pulumi.get(self, "db_instance_ip_array_name")
 
     @property
     @pulumi.getter(name="securityIps")
     def security_ips(self) -> Optional[str]:
-        """
-        IP ADDRESS whitelist addresses in the IP ADDRESS list, and a maximum of 1000 comma-separated format is as follows: `0.0.0.0/0` and `10.23.12.24`(IP) or `10.23.12.24/24`(CIDR mode, CIDR (Classless Inter-Domain Routing)/24 represents the address prefixes in the length of the range [1,32]).
-        """
         return pulumi.get(self, "security_ips")
 
 

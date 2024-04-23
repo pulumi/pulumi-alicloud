@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -67,7 +66,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetNasFileSystems(ctx *pulumi.Context, args *GetNasFileSystemsArgs, opts ...pulumi.InvokeOption) (*GetNasFileSystemsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNasFileSystemsResult

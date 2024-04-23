@@ -538,7 +538,6 @@ class DataCenter(pulumi.CustomResource):
 
         ### Create a cassandra dataCenter
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -568,7 +567,6 @@ class DataCenter(pulumi.CustomResource):
             disk_size=160,
             disk_type="cloud_ssd")
         ```
-        <!--End PulumiCodeChooser -->
 
         This is a example for class netType dataCenter. You can find more detail with the examples/cassandra_data_center dir.
 
@@ -626,7 +624,6 @@ class DataCenter(pulumi.CustomResource):
 
         ### Create a cassandra dataCenter
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -656,7 +653,6 @@ class DataCenter(pulumi.CustomResource):
             disk_size=160,
             disk_type="cloud_ssd")
         ```
-        <!--End PulumiCodeChooser -->
 
         This is a example for class netType dataCenter. You can find more detail with the examples/cassandra_data_center dir.
 

@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -31,7 +30,6 @@ import * as utilities from "../utilities";
  * });
  * export const cenTransitRouterMulticastDomainId1 = nameRegex.then(nameRegex => nameRegex.transitRouteTableAggregations?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTransitRouteTableAggregations(args: GetTransitRouteTableAggregationsArgs, opts?: pulumi.InvokeOptions): Promise<GetTransitRouteTableAggregationsResult> {
 
@@ -117,7 +115,6 @@ export interface GetTransitRouteTableAggregationsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -133,7 +130,6 @@ export interface GetTransitRouteTableAggregationsResult {
  * });
  * export const cenTransitRouterMulticastDomainId1 = nameRegex.then(nameRegex => nameRegex.transitRouteTableAggregations?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTransitRouteTableAggregationsOutput(args: GetTransitRouteTableAggregationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransitRouteTableAggregationsResult> {
     return pulumi.output(args).apply((a: any) => getTransitRouteTableAggregations(a, opts))

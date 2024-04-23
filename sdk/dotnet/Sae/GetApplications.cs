@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Sae
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -85,7 +84,6 @@ namespace Pulumi.AliCloud.Sae
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetApplicationsResult> InvokeAsync(GetApplicationsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetApplicationsResult>("alicloud:sae/getApplications:getApplications", args ?? new GetApplicationsArgs(), options.WithDefaults());
@@ -99,7 +97,6 @@ namespace Pulumi.AliCloud.Sae
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -164,7 +161,6 @@ namespace Pulumi.AliCloud.Sae
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetApplicationsResult> Invoke(GetApplicationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationsResult>("alicloud:sae/getApplications:getApplications", args ?? new GetApplicationsInvokeArgs(), options.WithDefaults());
@@ -234,7 +230,7 @@ namespace Pulumi.AliCloud.Sae
         public bool? Reverse { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `RUNNING`, `STOPPED`,`UNKNOWN`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -308,7 +304,7 @@ namespace Pulumi.AliCloud.Sae
         public Input<bool>? Reverse { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `RUNNING`, `STOPPED`,`UNKNOWN`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

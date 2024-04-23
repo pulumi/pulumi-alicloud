@@ -13,17 +13,8 @@ namespace Pulumi.AliCloud.Sae.Outputs
     [OutputType]
     public sealed class GetGreyTagRoutesRouteScRuleResult
     {
-        /// <summary>
-        /// The Conditional Patterns for Grayscale Rules.
-        /// </summary>
         public readonly string Condition;
-        /// <summary>
-        /// A list of conditions items.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetGreyTagRoutesRouteScRuleItemResult> Items;
-        /// <summary>
-        /// The path corresponding to the grayscale rule.
-        /// </summary>
         public readonly string Path;
 
         [OutputConstructor]

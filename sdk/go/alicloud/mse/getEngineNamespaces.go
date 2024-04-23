@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetEngineNamespaces(ctx *pulumi.Context, args *GetEngineNamespacesArgs, opts ...pulumi.InvokeOption) (*GetEngineNamespacesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEngineNamespacesResult

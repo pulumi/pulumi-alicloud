@@ -118,7 +118,6 @@ def get_apps(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -126,7 +125,6 @@ def get_apps(ids: Optional[Sequence[str]] = None,
     data_apigatway = alicloud.apigateway.get_apps(output_file="outapps")
     pulumi.export("firstAppId", data_apigatway.apps[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of app IDs.
@@ -163,7 +161,6 @@ def get_apps_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -171,7 +168,6 @@ def get_apps_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
     data_apigatway = alicloud.apigateway.get_apps(output_file="outapps")
     pulumi.export("firstAppId", data_apigatway.apps[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of app IDs.

@@ -1381,7 +1381,7 @@ class _InstanceState:
         :param pulumi.Input[bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
         :param pulumi.Input['InstanceMaintenanceTimeArgs'] maintenance_time: The time of maintenance. See `maintenance_time` below.
         :param pulumi.Input[int] memory: The memory size of the instance. Unit: MiB.
-        :param pulumi.Input[str] network_interface_id: The ID of the secondary ENI.
+        :param pulumi.Input[str] network_interface_id: The ID of the ENI.
         :param pulumi.Input['InstanceNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[str] operator_type: The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         :param pulumi.Input[str] os_name: The name of the operating system of the instance.
@@ -2118,7 +2118,7 @@ class _InstanceState:
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The ID of the secondary ENI.
+        The ID of the ENI.
         """
         return pulumi.get(self, "network_interface_id")
 
@@ -2673,7 +2673,6 @@ class Instance(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -2722,7 +2721,6 @@ class Instance(pulumi.CustomResource):
                 kms_key_id=key.id,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 
@@ -2871,7 +2869,6 @@ class Instance(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -2920,7 +2917,6 @@ class Instance(pulumi.CustomResource):
                 kms_key_id=key.id,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 
@@ -3272,7 +3268,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] maintenance_notify: Specifies whether to send an event notification before instance shutdown. Valid values: `true`, `false`. Default value: `false`.
         :param pulumi.Input[pulumi.InputType['InstanceMaintenanceTimeArgs']] maintenance_time: The time of maintenance. See `maintenance_time` below.
         :param pulumi.Input[int] memory: The memory size of the instance. Unit: MiB.
-        :param pulumi.Input[str] network_interface_id: The ID of the secondary ENI.
+        :param pulumi.Input[str] network_interface_id: The ID of the ENI.
         :param pulumi.Input[pulumi.InputType['InstanceNetworkInterfacesArgs']] network_interfaces: The list of network interfaces created with instance. See `network_interfaces` below.
         :param pulumi.Input[str] operator_type: The operation type. It is valid when `instance_charge_type` is `PrePaid`. Default value: `upgrade`. Valid values: `upgrade`, `downgrade`. **NOTE:**  When the new instance type specified by the `instance_type` parameter has lower specifications than the current instance type, you must set `operator_type` to `downgrade`.
         :param pulumi.Input[str] os_name: The name of the operating system of the instance.
@@ -3770,7 +3766,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="networkInterfaceId")
     def network_interface_id(self) -> pulumi.Output[str]:
         """
-        The ID of the secondary ENI.
+        The ID of the ENI.
         """
         return pulumi.get(self, "network_interface_id")
 

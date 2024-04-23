@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Arms
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,7 +44,6 @@ namespace Pulumi.AliCloud.Arms
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetIntegrationExportersResult> InvokeAsync(GetIntegrationExportersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetIntegrationExportersResult>("alicloud:arms/getIntegrationExporters:getIntegrationExporters", args ?? new GetIntegrationExportersArgs(), options.WithDefaults());
@@ -59,7 +57,6 @@ namespace Pulumi.AliCloud.Arms
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -84,7 +81,6 @@ namespace Pulumi.AliCloud.Arms
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetIntegrationExportersResult> Invoke(GetIntegrationExportersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIntegrationExportersResult>("alicloud:arms/getIntegrationExporters:getIntegrationExporters", args ?? new GetIntegrationExportersInvokeArgs(), options.WithDefaults());

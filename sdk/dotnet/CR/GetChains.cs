@@ -22,7 +22,6 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -54,7 +53,6 @@ namespace Pulumi.AliCloud.CR
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetChainsResult> InvokeAsync(GetChainsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetChainsResult>("alicloud:cr/getChains:getChains", args ?? new GetChainsArgs(), options.WithDefaults());
@@ -70,7 +68,6 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -102,7 +99,6 @@ namespace Pulumi.AliCloud.CR
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetChainsResult> Invoke(GetChainsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetChainsResult>("alicloud:cr/getChains:getChains", args ?? new GetChainsInvokeArgs(), options.WithDefaults());

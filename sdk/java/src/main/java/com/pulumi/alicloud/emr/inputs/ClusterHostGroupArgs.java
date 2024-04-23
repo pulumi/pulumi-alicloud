@@ -17,17 +17,9 @@ public final class ClusterHostGroupArgs extends com.pulumi.resources.ResourceArg
 
     public static final ClusterHostGroupArgs Empty = new ClusterHostGroupArgs();
 
-    /**
-     * Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
-     * 
-     */
     @Import(name="autoRenew")
     private @Nullable Output<Boolean> autoRenew;
 
-    /**
-     * @return Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
-     * 
-     */
     public Optional<Output<Boolean>> autoRenew() {
         return Optional.ofNullable(this.autoRenew);
     }
@@ -47,77 +39,37 @@ public final class ClusterHostGroupArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.chargeType);
     }
 
-    /**
-     * Graceful decommission timeout, unit: seconds.
-     * 
-     */
     @Import(name="decommissionTimeout")
     private @Nullable Output<Integer> decommissionTimeout;
 
-    /**
-     * @return Graceful decommission timeout, unit: seconds.
-     * 
-     */
     public Optional<Output<Integer>> decommissionTimeout() {
         return Optional.ofNullable(this.decommissionTimeout);
     }
 
-    /**
-     * Data disk capacity.
-     * 
-     */
     @Import(name="diskCapacity")
     private @Nullable Output<String> diskCapacity;
 
-    /**
-     * @return Data disk capacity.
-     * 
-     */
     public Optional<Output<String>> diskCapacity() {
         return Optional.ofNullable(this.diskCapacity);
     }
 
-    /**
-     * Data disk count.
-     * 
-     */
     @Import(name="diskCount")
     private @Nullable Output<String> diskCount;
 
-    /**
-     * @return Data disk count.
-     * 
-     */
     public Optional<Output<String>> diskCount() {
         return Optional.ofNullable(this.diskCount);
     }
 
-    /**
-     * Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
-     * 
-     */
     @Import(name="diskType")
     private @Nullable Output<String> diskType;
 
-    /**
-     * @return Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
-     * 
-     */
     public Optional<Output<String>> diskType() {
         return Optional.ofNullable(this.diskType);
     }
 
-    /**
-     * Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
-     * 
-     */
     @Import(name="enableGracefulDecommission")
     private @Nullable Output<Boolean> enableGracefulDecommission;
 
-    /**
-     * @return Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
-     * 
-     */
     public Optional<Output<Boolean>> enableGracefulDecommission() {
         return Optional.ofNullable(this.enableGracefulDecommission);
     }
@@ -129,77 +81,37 @@ public final class ClusterHostGroupArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.gpuDriver);
     }
 
-    /**
-     * host group name.
-     * 
-     */
     @Import(name="hostGroupName")
     private @Nullable Output<String> hostGroupName;
 
-    /**
-     * @return host group name.
-     * 
-     */
     public Optional<Output<String>> hostGroupName() {
         return Optional.ofNullable(this.hostGroupName);
     }
 
-    /**
-     * host group type, supported value: MASTER, CORE or TASK, supported &#39;GATEWAY&#39; available in 1.61.0+.
-     * 
-     */
     @Import(name="hostGroupType")
     private @Nullable Output<String> hostGroupType;
 
-    /**
-     * @return host group type, supported value: MASTER, CORE or TASK, supported &#39;GATEWAY&#39; available in 1.61.0+.
-     * 
-     */
     public Optional<Output<String>> hostGroupType() {
         return Optional.ofNullable(this.hostGroupType);
     }
 
-    /**
-     * Instance list for cluster scale down. This value follows the json format, e.g. [&#34;instance_id1&#34;,&#34;instance_id2&#34;]. escape character for &#34; is \&#34;.
-     * 
-     */
     @Import(name="instanceList")
     private @Nullable Output<String> instanceList;
 
-    /**
-     * @return Instance list for cluster scale down. This value follows the json format, e.g. [&#34;instance_id1&#34;,&#34;instance_id2&#34;]. escape character for &#34; is \&#34;.
-     * 
-     */
     public Optional<Output<String>> instanceList() {
         return Optional.ofNullable(this.instanceList);
     }
 
-    /**
-     * Host Ecs instance type.
-     * 
-     */
     @Import(name="instanceType")
     private @Nullable Output<String> instanceType;
 
-    /**
-     * @return Host Ecs instance type.
-     * 
-     */
     public Optional<Output<String>> instanceType() {
         return Optional.ofNullable(this.instanceType);
     }
 
-    /**
-     * Host number in this group.
-     * 
-     */
     @Import(name="nodeCount")
     private @Nullable Output<String> nodeCount;
 
-    /**
-     * @return Host number in this group.
-     * 
-     */
     public Optional<Output<String>> nodeCount() {
         return Optional.ofNullable(this.nodeCount);
     }
@@ -219,32 +131,16 @@ public final class ClusterHostGroupArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.period);
     }
 
-    /**
-     * System disk capacity.
-     * 
-     */
     @Import(name="sysDiskCapacity")
     private @Nullable Output<String> sysDiskCapacity;
 
-    /**
-     * @return System disk capacity.
-     * 
-     */
     public Optional<Output<String>> sysDiskCapacity() {
         return Optional.ofNullable(this.sysDiskCapacity);
     }
 
-    /**
-     * System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
-     * 
-     */
     @Import(name="sysDiskType")
     private @Nullable Output<String> sysDiskType;
 
-    /**
-     * @return System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
-     * 
-     */
     public Optional<Output<String>> sysDiskType() {
         return Optional.ofNullable(this.sysDiskType);
     }
@@ -288,23 +184,11 @@ public final class ClusterHostGroupArgs extends com.pulumi.resources.ResourceArg
             $ = new ClusterHostGroupArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param autoRenew Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoRenew(@Nullable Output<Boolean> autoRenew) {
             $.autoRenew = autoRenew;
             return this;
         }
 
-        /**
-         * @param autoRenew Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoRenew(Boolean autoRenew) {
             return autoRenew(Output.of(autoRenew));
         }
@@ -330,107 +214,47 @@ public final class ClusterHostGroupArgs extends com.pulumi.resources.ResourceArg
             return chargeType(Output.of(chargeType));
         }
 
-        /**
-         * @param decommissionTimeout Graceful decommission timeout, unit: seconds.
-         * 
-         * @return builder
-         * 
-         */
         public Builder decommissionTimeout(@Nullable Output<Integer> decommissionTimeout) {
             $.decommissionTimeout = decommissionTimeout;
             return this;
         }
 
-        /**
-         * @param decommissionTimeout Graceful decommission timeout, unit: seconds.
-         * 
-         * @return builder
-         * 
-         */
         public Builder decommissionTimeout(Integer decommissionTimeout) {
             return decommissionTimeout(Output.of(decommissionTimeout));
         }
 
-        /**
-         * @param diskCapacity Data disk capacity.
-         * 
-         * @return builder
-         * 
-         */
         public Builder diskCapacity(@Nullable Output<String> diskCapacity) {
             $.diskCapacity = diskCapacity;
             return this;
         }
 
-        /**
-         * @param diskCapacity Data disk capacity.
-         * 
-         * @return builder
-         * 
-         */
         public Builder diskCapacity(String diskCapacity) {
             return diskCapacity(Output.of(diskCapacity));
         }
 
-        /**
-         * @param diskCount Data disk count.
-         * 
-         * @return builder
-         * 
-         */
         public Builder diskCount(@Nullable Output<String> diskCount) {
             $.diskCount = diskCount;
             return this;
         }
 
-        /**
-         * @param diskCount Data disk count.
-         * 
-         * @return builder
-         * 
-         */
         public Builder diskCount(String diskCount) {
             return diskCount(Output.of(diskCount));
         }
 
-        /**
-         * @param diskType Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
-         * 
-         * @return builder
-         * 
-         */
         public Builder diskType(@Nullable Output<String> diskType) {
             $.diskType = diskType;
             return this;
         }
 
-        /**
-         * @param diskType Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
-         * 
-         * @return builder
-         * 
-         */
         public Builder diskType(String diskType) {
             return diskType(Output.of(diskType));
         }
 
-        /**
-         * @param enableGracefulDecommission Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enableGracefulDecommission(@Nullable Output<Boolean> enableGracefulDecommission) {
             $.enableGracefulDecommission = enableGracefulDecommission;
             return this;
         }
 
-        /**
-         * @param enableGracefulDecommission Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enableGracefulDecommission(Boolean enableGracefulDecommission) {
             return enableGracefulDecommission(Output.of(enableGracefulDecommission));
         }
@@ -444,107 +268,47 @@ public final class ClusterHostGroupArgs extends com.pulumi.resources.ResourceArg
             return gpuDriver(Output.of(gpuDriver));
         }
 
-        /**
-         * @param hostGroupName host group name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder hostGroupName(@Nullable Output<String> hostGroupName) {
             $.hostGroupName = hostGroupName;
             return this;
         }
 
-        /**
-         * @param hostGroupName host group name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder hostGroupName(String hostGroupName) {
             return hostGroupName(Output.of(hostGroupName));
         }
 
-        /**
-         * @param hostGroupType host group type, supported value: MASTER, CORE or TASK, supported &#39;GATEWAY&#39; available in 1.61.0+.
-         * 
-         * @return builder
-         * 
-         */
         public Builder hostGroupType(@Nullable Output<String> hostGroupType) {
             $.hostGroupType = hostGroupType;
             return this;
         }
 
-        /**
-         * @param hostGroupType host group type, supported value: MASTER, CORE or TASK, supported &#39;GATEWAY&#39; available in 1.61.0+.
-         * 
-         * @return builder
-         * 
-         */
         public Builder hostGroupType(String hostGroupType) {
             return hostGroupType(Output.of(hostGroupType));
         }
 
-        /**
-         * @param instanceList Instance list for cluster scale down. This value follows the json format, e.g. [&#34;instance_id1&#34;,&#34;instance_id2&#34;]. escape character for &#34; is \&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder instanceList(@Nullable Output<String> instanceList) {
             $.instanceList = instanceList;
             return this;
         }
 
-        /**
-         * @param instanceList Instance list for cluster scale down. This value follows the json format, e.g. [&#34;instance_id1&#34;,&#34;instance_id2&#34;]. escape character for &#34; is \&#34;.
-         * 
-         * @return builder
-         * 
-         */
         public Builder instanceList(String instanceList) {
             return instanceList(Output.of(instanceList));
         }
 
-        /**
-         * @param instanceType Host Ecs instance type.
-         * 
-         * @return builder
-         * 
-         */
         public Builder instanceType(@Nullable Output<String> instanceType) {
             $.instanceType = instanceType;
             return this;
         }
 
-        /**
-         * @param instanceType Host Ecs instance type.
-         * 
-         * @return builder
-         * 
-         */
         public Builder instanceType(String instanceType) {
             return instanceType(Output.of(instanceType));
         }
 
-        /**
-         * @param nodeCount Host number in this group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeCount(@Nullable Output<String> nodeCount) {
             $.nodeCount = nodeCount;
             return this;
         }
 
-        /**
-         * @param nodeCount Host number in this group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeCount(String nodeCount) {
             return nodeCount(Output.of(nodeCount));
         }
@@ -570,44 +334,20 @@ public final class ClusterHostGroupArgs extends com.pulumi.resources.ResourceArg
             return period(Output.of(period));
         }
 
-        /**
-         * @param sysDiskCapacity System disk capacity.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sysDiskCapacity(@Nullable Output<String> sysDiskCapacity) {
             $.sysDiskCapacity = sysDiskCapacity;
             return this;
         }
 
-        /**
-         * @param sysDiskCapacity System disk capacity.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sysDiskCapacity(String sysDiskCapacity) {
             return sysDiskCapacity(Output.of(sysDiskCapacity));
         }
 
-        /**
-         * @param sysDiskType System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sysDiskType(@Nullable Output<String> sysDiskType) {
             $.sysDiskType = sysDiskType;
             return this;
         }
 
-        /**
-         * @param sysDiskType System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sysDiskType(String sysDiskType) {
             return sysDiskType(Output.of(sysDiskType));
         }

@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     [OutputType]
     public sealed class PrefixListEntry
     {
-        /// <summary>
-        /// The CIDR address block of the prefix list.
-        /// </summary>
         public readonly string? Cidr;
-        /// <summary>
-        /// The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
-        /// </summary>
         public readonly string? Description;
 
         [OutputConstructor]

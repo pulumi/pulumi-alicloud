@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -33,7 +32,6 @@ import * as utilities from "../utilities";
  * });
  * export const mseGatewayId3 = status.then(status => status.gateways?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGateways(args?: GetGatewaysArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewaysResult> {
     args = args || {};
@@ -75,11 +73,11 @@ export interface GetGatewaysArgs {
      */
     outputFile?: string;
     /**
-     * The status of the gateway.
+     * The status of the gateway. Valid values: `0`, `1`, `2`, `3`, `4`, `6`, `8`, `9`, `10`, `11`, `12`, `13`.
      */
     status?: string;
     /**
-     * The ID of the vpc.
+     * The ID of the VPC.
      */
     vpcId?: string;
 }
@@ -111,7 +109,6 @@ export interface GetGatewaysResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -129,7 +126,6 @@ export interface GetGatewaysResult {
  * });
  * export const mseGatewayId3 = status.then(status => status.gateways?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGatewaysOutput(args?: GetGatewaysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewaysResult> {
     return pulumi.output(args).apply((a: any) => getGateways(a, opts))
@@ -160,11 +156,11 @@ export interface GetGatewaysOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the gateway.
+     * The status of the gateway. Valid values: `0`, `1`, `2`, `3`, `4`, `6`, `8`, `9`, `10`, `11`, `12`, `13`.
      */
     status?: pulumi.Input<string>;
     /**
-     * The ID of the vpc.
+     * The ID of the VPC.
      */
     vpcId?: pulumi.Input<string>;
 }

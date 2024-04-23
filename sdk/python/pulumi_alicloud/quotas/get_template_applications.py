@@ -140,7 +140,6 @@ def get_template_applications(batch_quota_application_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -175,7 +174,6 @@ def get_template_applications(batch_quota_application_id: Optional[str] = None,
         quota_category="FlowControl")
     pulumi.export("alicloudQuotasTemplateApplicationsExampleId", default_get_template_applications.applications[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str batch_quota_application_id: The ID of the quota application batch.
@@ -221,7 +219,6 @@ def get_template_applications_output(batch_quota_application_id: Optional[pulumi
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -256,7 +253,6 @@ def get_template_applications_output(batch_quota_application_id: Optional[pulumi
         quota_category="FlowControl")
     pulumi.export("alicloudQuotasTemplateApplicationsExampleId", default_get_template_applications.applications[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str batch_quota_application_id: The ID of the quota application batch.

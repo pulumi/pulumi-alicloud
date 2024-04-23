@@ -31,14 +31,14 @@ public final class HybridMonitorFcTaskState extends com.pulumi.resources.Resourc
     }
 
     /**
-     * the namespace of the Alibaba Cloud service.
+     * The index warehouse where the host belongs.
      * 
      */
     @Import(name="namespace")
     private @Nullable Output<String> namespace;
 
     /**
-     * @return the namespace of the Alibaba Cloud service.
+     * @return The index warehouse where the host belongs.
      * 
      */
     public Optional<Output<String>> namespace() {
@@ -124,7 +124,7 @@ public final class HybridMonitorFcTaskState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param namespace the namespace of the Alibaba Cloud service.
+         * @param namespace The index warehouse where the host belongs.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class HybridMonitorFcTaskState extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param namespace the namespace of the Alibaba Cloud service.
+         * @param namespace The index warehouse where the host belongs.
          * 
          * @return builder
          * 

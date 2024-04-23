@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Mse
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -54,7 +53,6 @@ namespace Pulumi.AliCloud.Mse
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetZnodesResult> InvokeAsync(GetZnodesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZnodesResult>("alicloud:mse/getZnodes:getZnodes", args ?? new GetZnodesArgs(), options.WithDefaults());
@@ -68,7 +66,6 @@ namespace Pulumi.AliCloud.Mse
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -102,7 +99,6 @@ namespace Pulumi.AliCloud.Mse
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetZnodesResult> Invoke(GetZnodesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZnodesResult>("alicloud:mse/getZnodes:getZnodes", args ?? new GetZnodesInvokeArgs(), options.WithDefaults());

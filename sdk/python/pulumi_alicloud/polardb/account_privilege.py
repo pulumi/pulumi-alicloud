@@ -169,7 +169,6 @@ class AccountPrivilege(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -206,7 +205,6 @@ class AccountPrivilege(pulumi.CustomResource):
             account_privilege="ReadOnly",
             db_names=[default_database.db_name])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -236,7 +234,6 @@ class AccountPrivilege(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -273,7 +270,6 @@ class AccountPrivilege(pulumi.CustomResource):
             account_privilege="ReadOnly",
             db_names=[default_database.db_name])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
