@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const directMailMailAddressId1 = ids.then(ids => ids.addresses?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMailAddresses(args?: GetMailAddressesArgs, opts?: pulumi.InvokeOptions): Promise<GetMailAddressesResult> {
     args = args || {};
@@ -90,7 +88,6 @@ export interface GetMailAddressesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -100,7 +97,6 @@ export interface GetMailAddressesResult {
  * });
  * export const directMailMailAddressId1 = ids.then(ids => ids.addresses?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMailAddressesOutput(args?: GetMailAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMailAddressesResult> {
     return pulumi.output(args).apply((a: any) => getMailAddresses(a, opts))

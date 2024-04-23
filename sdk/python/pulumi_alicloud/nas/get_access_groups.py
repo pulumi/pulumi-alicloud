@@ -184,7 +184,6 @@ def get_access_groups(access_group_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -194,7 +193,6 @@ def get_access_groups(access_group_name: Optional[str] = None,
         description="tf-testAccAccessGroupsdatasource")
     pulumi.export("alicloudNasAccessGroupsId", example.groups[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str access_group_name: The name of access group.
@@ -250,7 +248,6 @@ def get_access_groups_output(access_group_name: Optional[pulumi.Input[Optional[s
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -260,7 +257,6 @@ def get_access_groups_output(access_group_name: Optional[pulumi.Input[Optional[s
         description="tf-testAccAccessGroupsdatasource")
     pulumi.export("alicloudNasAccessGroupsId", example.groups[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str access_group_name: The name of access group.

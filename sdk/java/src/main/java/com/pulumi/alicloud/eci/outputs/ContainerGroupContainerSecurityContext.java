@@ -13,29 +13,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerGroupContainerSecurityContext {
-    /**
-     * @return The permissions that you want to grant to the processes in the containers. See `capability` below.
-     * 
-     */
     private @Nullable List<ContainerGroupContainerSecurityContextCapability> capabilities;
-    /**
-     * @return The ID of the user who runs the container.
-     * 
-     */
     private @Nullable Integer runAsUser;
 
     private ContainerGroupContainerSecurityContext() {}
-    /**
-     * @return The permissions that you want to grant to the processes in the containers. See `capability` below.
-     * 
-     */
     public List<ContainerGroupContainerSecurityContextCapability> capabilities() {
         return this.capabilities == null ? List.of() : this.capabilities;
     }
-    /**
-     * @return The ID of the user who runs the container.
-     * 
-     */
     public Optional<Integer> runAsUser() {
         return Optional.ofNullable(this.runAsUser);
     }

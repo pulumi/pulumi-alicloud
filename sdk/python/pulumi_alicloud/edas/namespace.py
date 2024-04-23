@@ -182,7 +182,6 @@ class Namespace(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -198,7 +197,6 @@ class Namespace(pulumi.CustomResource):
             namespace_logical_id=f"{default.regions[0].id}:example",
             namespace_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -234,7 +232,6 @@ class Namespace(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -250,7 +247,6 @@ class Namespace(pulumi.CustomResource):
             namespace_logical_id=f"{default.regions[0].id}:example",
             namespace_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

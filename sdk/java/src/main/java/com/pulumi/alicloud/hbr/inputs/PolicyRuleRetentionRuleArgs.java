@@ -16,32 +16,16 @@ public final class PolicyRuleRetentionRuleArgs extends com.pulumi.resources.Reso
 
     public static final PolicyRuleRetentionRuleArgs Empty = new PolicyRuleRetentionRuleArgs();
 
-    /**
-     * Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
-     * 
-     */
     @Import(name="advancedRetentionType")
     private @Nullable Output<String> advancedRetentionType;
 
-    /**
-     * @return Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
-     * 
-     */
     public Optional<Output<String>> advancedRetentionType() {
         return Optional.ofNullable(this.advancedRetentionType);
     }
 
-    /**
-     * Retention time, in days.
-     * 
-     */
     @Import(name="retention")
     private @Nullable Output<Integer> retention;
 
-    /**
-     * @return Retention time, in days.
-     * 
-     */
     public Optional<Output<Integer>> retention() {
         return Optional.ofNullable(this.retention);
     }
@@ -71,44 +55,20 @@ public final class PolicyRuleRetentionRuleArgs extends com.pulumi.resources.Reso
             $ = new PolicyRuleRetentionRuleArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param advancedRetentionType Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
-         * 
-         * @return builder
-         * 
-         */
         public Builder advancedRetentionType(@Nullable Output<String> advancedRetentionType) {
             $.advancedRetentionType = advancedRetentionType;
             return this;
         }
 
-        /**
-         * @param advancedRetentionType Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
-         * 
-         * @return builder
-         * 
-         */
         public Builder advancedRetentionType(String advancedRetentionType) {
             return advancedRetentionType(Output.of(advancedRetentionType));
         }
 
-        /**
-         * @param retention Retention time, in days.
-         * 
-         * @return builder
-         * 
-         */
         public Builder retention(@Nullable Output<Integer> retention) {
             $.retention = retention;
             return this;
         }
 
-        /**
-         * @param retention Retention time, in days.
-         * 
-         * @return builder
-         * 
-         */
         public Builder retention(Integer retention) {
             return retention(Output.of(retention));
         }

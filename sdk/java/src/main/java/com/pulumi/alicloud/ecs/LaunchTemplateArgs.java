@@ -62,14 +62,14 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The description of the data disk.
+     * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the data disk.
+     * @return Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
      * 
      */
     public Optional<Output<String>> description() {
@@ -264,7 +264,7 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the data disk.
+     * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
@@ -275,7 +275,7 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the data disk.
+     * @return Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
      * 
      * @deprecated
      * Field &#39;name&#39; has been deprecated from provider version 1.120.0. New field &#39;launch_template_name&#39; instead.
@@ -375,14 +375,14 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The security group ID must be one in the same VPC.
+     * The security group ID.
      * 
      */
     @Import(name="securityGroupId")
     private @Nullable Output<String> securityGroupId;
 
     /**
-     * @return The security group ID must be one in the same VPC.
+     * @return The security group ID.
      * 
      */
     public Optional<Output<String>> securityGroupId() {
@@ -626,14 +626,14 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+     * When creating a VPC-Connected instance, you must specify its VSwitch ID.
      * 
      */
     @Import(name="vswitchId")
     private @Nullable Output<String> vswitchId;
 
     /**
-     * @return The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+     * @return When creating a VPC-Connected instance, you must specify its VSwitch ID.
      * 
      */
     public Optional<Output<String>> vswitchId() {
@@ -785,7 +785,7 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description The description of the data disk.
+         * @param description Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
          * 
          * @return builder
          * 
@@ -796,7 +796,7 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param description The description of the data disk.
+         * @param description Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with &#34;http://&#34; or &#34;https://&#34;. The default value is null.
          * 
          * @return builder
          * 
@@ -1059,7 +1059,7 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The name of the data disk.
+         * @param name Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
          * 
          * @return builder
          * 
@@ -1074,7 +1074,7 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param name The name of the data disk.
+         * @param name Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with &#34;http://&#34; or &#34;https://&#34;.
          * 
          * @return builder
          * 
@@ -1208,7 +1208,7 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param securityGroupId The security group ID must be one in the same VPC.
+         * @param securityGroupId The security group ID.
          * 
          * @return builder
          * 
@@ -1219,7 +1219,7 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param securityGroupId The security group ID must be one in the same VPC.
+         * @param securityGroupId The security group ID.
          * 
          * @return builder
          * 
@@ -1533,7 +1533,7 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vswitchId The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+         * @param vswitchId When creating a VPC-Connected instance, you must specify its VSwitch ID.
          * 
          * @return builder
          * 
@@ -1544,7 +1544,7 @@ public final class LaunchTemplateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param vswitchId The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+         * @param vswitchId When creating a VPC-Connected instance, you must specify its VSwitch ID.
          * 
          * @return builder
          * 

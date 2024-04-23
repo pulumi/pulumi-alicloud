@@ -12,27 +12,15 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApplicationUpdateStrategyV2BatchUpdate {
-    /**
-     * @return The number of batches in which you want to release the instances.
-     * 
-     */
     private @Nullable Integer batch;
     /**
      * @return The batch wait time.
      * 
      */
     private @Nullable Integer batchWaitTime;
-    /**
-     * @return The processing method for the batches. Valid values: `auto` and `manual`.
-     * 
-     */
     private @Nullable String releaseType;
 
     private ApplicationUpdateStrategyV2BatchUpdate() {}
-    /**
-     * @return The number of batches in which you want to release the instances.
-     * 
-     */
     public Optional<Integer> batch() {
         return Optional.ofNullable(this.batch);
     }
@@ -43,10 +31,6 @@ public final class ApplicationUpdateStrategyV2BatchUpdate {
     public Optional<Integer> batchWaitTime() {
         return Optional.ofNullable(this.batchWaitTime);
     }
-    /**
-     * @return The processing method for the batches. Valid values: `auto` and `manual`.
-     * 
-     */
     public Optional<String> releaseType() {
         return Optional.ofNullable(this.releaseType);
     }

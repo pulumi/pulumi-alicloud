@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.ClickHouse
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,7 +40,6 @@ namespace Pulumi.AliCloud.ClickHouse
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("alicloud:clickhouse/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithDefaults());
@@ -55,7 +53,6 @@ namespace Pulumi.AliCloud.ClickHouse
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,7 +73,6 @@ namespace Pulumi.AliCloud.ClickHouse
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRegionsResult> Invoke(GetRegionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("alicloud:clickhouse/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithDefaults());
@@ -98,7 +94,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The Region ID.
+        /// You can use specified region_id to find the region and available zones information that supports ClickHouse.
         /// </summary>
         [Input("regionId")]
         public string? RegionId { get; set; }
@@ -124,7 +120,7 @@ namespace Pulumi.AliCloud.ClickHouse
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The Region ID.
+        /// You can use specified region_id to find the region and available zones information that supports ClickHouse.
         /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }

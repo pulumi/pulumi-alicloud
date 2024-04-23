@@ -24,10 +24,6 @@ public final class GetEcsKeyPairsPair {
      * 
      */
     private String id;
-    /**
-     * @return A list of ECS instances that has been bound this key pair.
-     * 
-     */
     private List<GetEcsKeyPairsPairInstance> instances;
     /**
      * @return The Key Pair Name.
@@ -61,10 +57,6 @@ public final class GetEcsKeyPairsPair {
     public String id() {
         return this.id;
     }
-    /**
-     * @return A list of ECS instances that has been bound this key pair.
-     * 
-     */
     public List<GetEcsKeyPairsPairInstance> instances() {
         return this.instances;
     }

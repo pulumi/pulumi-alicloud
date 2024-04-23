@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.AliCloud.Hbr
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetOssBackupPlansResult> InvokeAsync(GetOssBackupPlansArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetOssBackupPlansResult>("alicloud:hbr/getOssBackupPlans:getOssBackupPlans", args ?? new GetOssBackupPlansArgs(), options.WithDefaults());
@@ -54,7 +52,6 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.AliCloud.Hbr
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetOssBackupPlansResult> Invoke(GetOssBackupPlansInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOssBackupPlansResult>("alicloud:hbr/getOssBackupPlans:getOssBackupPlans", args ?? new GetOssBackupPlansInvokeArgs(), options.WithDefaults());
@@ -114,7 +110,7 @@ namespace Pulumi.AliCloud.Hbr
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of backup vault.
+        /// The ID of backup vault the OssBackupPlan used.
         /// </summary>
         [Input("vaultId")]
         public string? VaultId { get; set; }
@@ -158,7 +154,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of backup vault.
+        /// The ID of backup vault the OssBackupPlan used.
         /// </summary>
         [Input("vaultId")]
         public Input<string>? VaultId { get; set; }

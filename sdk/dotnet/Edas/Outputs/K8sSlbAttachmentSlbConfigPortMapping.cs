@@ -13,17 +13,8 @@ namespace Pulumi.AliCloud.Edas.Outputs
     [OutputType]
     public sealed class K8sSlbAttachmentSlbConfigPortMapping
     {
-        /// <summary>
-        /// The ID of your tls certification, this is used for 'HTTPS' protocol only.
-        /// </summary>
         public readonly string? CertId;
-        /// <summary>
-        /// The protocol of SLB instance configuration, values can be 'TCP', 'HTTP' or 'HTTPS'.
-        /// </summary>
         public readonly string LoadbalancerProtocol;
-        /// <summary>
-        /// The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `service_port` below.
-        /// </summary>
         public readonly Outputs.K8sSlbAttachmentSlbConfigPortMappingServicePort ServicePort;
 
         [OutputConstructor]

@@ -16,31 +16,23 @@ public final class ProjectPropertiesTableLifecycleArgs extends com.pulumi.resour
     public static final ProjectPropertiesTableLifecycleArgs Empty = new ProjectPropertiesTableLifecycleArgs();
 
     /**
-     * Life cycle type.
+     * Project type
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Life cycle type.
+     * @return Project type
      * 
      */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
-    /**
-     * The value of the life cycle.
-     * 
-     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
-    /**
-     * @return The value of the life cycle.
-     * 
-     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -71,7 +63,7 @@ public final class ProjectPropertiesTableLifecycleArgs extends com.pulumi.resour
         }
 
         /**
-         * @param type Life cycle type.
+         * @param type Project type
          * 
          * @return builder
          * 
@@ -82,7 +74,7 @@ public final class ProjectPropertiesTableLifecycleArgs extends com.pulumi.resour
         }
 
         /**
-         * @param type Life cycle type.
+         * @param type Project type
          * 
          * @return builder
          * 
@@ -91,23 +83,11 @@ public final class ProjectPropertiesTableLifecycleArgs extends com.pulumi.resour
             return type(Output.of(type));
         }
 
-        /**
-         * @param value The value of the life cycle.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value The value of the life cycle.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

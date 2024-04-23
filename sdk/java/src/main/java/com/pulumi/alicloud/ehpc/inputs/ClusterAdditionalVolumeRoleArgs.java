@@ -15,17 +15,9 @@ public final class ClusterAdditionalVolumeRoleArgs extends com.pulumi.resources.
 
     public static final ClusterAdditionalVolumeRoleArgs Empty = new ClusterAdditionalVolumeRoleArgs();
 
-    /**
-     * The type of the nodes to which the additional file system is attached.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return The type of the nodes to which the additional file system is attached.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -54,23 +46,11 @@ public final class ClusterAdditionalVolumeRoleArgs extends com.pulumi.resources.
             $ = new ClusterAdditionalVolumeRoleArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param name The type of the nodes to which the additional file system is attached.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The type of the nodes to which the additional file system is attached.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

@@ -13,41 +13,14 @@ namespace Pulumi.AliCloud.Vpn.Outputs
     [OutputType]
     public sealed class ConnectionTunnelOptionsSpecificationTunnelIkeConfig
     {
-        /// <summary>
-        /// IKE auth Algorithm.
-        /// </summary>
         public readonly string? IkeAuthAlg;
-        /// <summary>
-        /// IKE encript algorithm.
-        /// </summary>
         public readonly string? IkeEncAlg;
-        /// <summary>
-        /// IKE lifetime.
-        /// </summary>
         public readonly int? IkeLifetime;
-        /// <summary>
-        /// IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
-        /// </summary>
         public readonly string? IkeMode;
-        /// <summary>
-        /// DH group.
-        /// </summary>
         public readonly string? IkePfs;
-        /// <summary>
-        /// IKE version.
-        /// </summary>
         public readonly string? IkeVersion;
-        /// <summary>
-        /// The local Id.
-        /// </summary>
         public readonly string? LocalId;
-        /// <summary>
-        /// Preshared secret key.
-        /// </summary>
         public readonly string? Psk;
-        /// <summary>
-        /// Remote ID.
-        /// </summary>
         public readonly string? RemoteId;
 
         [OutputConstructor]

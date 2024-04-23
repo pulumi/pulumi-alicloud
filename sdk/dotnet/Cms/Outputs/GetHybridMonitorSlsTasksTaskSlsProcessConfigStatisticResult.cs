@@ -13,25 +13,10 @@ namespace Pulumi.AliCloud.Cms.Outputs
     [OutputType]
     public sealed class GetHybridMonitorSlsTasksTaskSlsProcessConfigStatisticResult
     {
-        /// <summary>
-        /// The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
-        /// </summary>
         public readonly string Alias;
-        /// <summary>
-        /// The function that is used to aggregate log data within a statistical period.
-        /// </summary>
         public readonly string Function;
-        /// <summary>
-        /// The value of the function that is used to aggregate logs imported from Log Service.
-        /// </summary>
         public readonly string ParameterOne;
-        /// <summary>
-        /// The value of the function that is used to aggregate logs imported from Log Service.
-        /// </summary>
         public readonly string ParameterTwo;
-        /// <summary>
-        /// The name of the key that is used to filter logs imported from Log Service.
-        /// </summary>
         public readonly string SlsKeyName;
 
         [OutputConstructor]

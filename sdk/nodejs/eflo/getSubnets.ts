@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudEfloSubnetExampleId = _default.then(_default => _default.subnets?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSubnets(args?: GetSubnetsArgs, opts?: pulumi.InvokeOptions): Promise<GetSubnetsResult> {
     args = args || {};
@@ -153,7 +151,6 @@ export interface GetSubnetsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -166,7 +163,6 @@ export interface GetSubnetsResult {
  * });
  * export const alicloudEfloSubnetExampleId = _default.then(_default => _default.subnets?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSubnetsOutput(args?: GetSubnetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetsResult> {
     return pulumi.output(args).apply((a: any) => getSubnets(a, opts))

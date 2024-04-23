@@ -190,7 +190,6 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -218,7 +217,6 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
             inter_region_traffic_qos_policy_name="tf-example-name",
             inter_region_traffic_qos_policy_description="tf-example-description")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -252,7 +250,6 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -280,7 +277,6 @@ class InterRegionTrafficQosPolicy(pulumi.CustomResource):
             inter_region_traffic_qos_policy_name="tf-example-name",
             inter_region_traffic_qos_policy_description="tf-example-description")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

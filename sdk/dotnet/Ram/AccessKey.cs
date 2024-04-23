@@ -21,7 +21,6 @@ namespace Pulumi.AliCloud.Ram
     /// ## Example Usage
     /// 
     /// Output the secret to a file.
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -49,10 +48,8 @@ namespace Pulumi.AliCloud.Ram
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// Using `pgp_key` to encrypt the secret.
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -110,7 +107,6 @@ namespace Pulumi.AliCloud.Ram
     ///     };
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [AliCloudResourceType("alicloud:ram/accessKey:AccessKey")]
     public partial class AccessKey : global::Pulumi.CustomResource

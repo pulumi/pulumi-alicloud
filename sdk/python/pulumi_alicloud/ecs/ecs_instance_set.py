@@ -1531,7 +1531,6 @@ class EcsInstanceSet(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1572,7 +1571,6 @@ class EcsInstanceSet(pulumi.CustomResource):
             security_group_ids=[__item.id for __item in [default_security_group]],
             zone_id=default.zones[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -1646,7 +1644,6 @@ class EcsInstanceSet(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1687,7 +1684,6 @@ class EcsInstanceSet(pulumi.CustomResource):
             security_group_ids=[__item.id for __item in [default_security_group]],
             zone_id=default.zones[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param EcsInstanceSetArgs args: The arguments to use to populate this resource's properties.

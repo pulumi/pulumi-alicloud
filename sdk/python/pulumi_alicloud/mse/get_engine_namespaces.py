@@ -104,7 +104,6 @@ def get_engine_namespaces(accept_language: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -113,7 +112,6 @@ def get_engine_namespaces(accept_language: Optional[str] = None,
         ids=["example_value"])
     pulumi.export("mseEngineNamespaceId1", ids.namespaces[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str accept_language: The language type of the returned information. Valid values: `zh`, `en`.
@@ -153,7 +151,6 @@ def get_engine_namespaces_output(accept_language: Optional[pulumi.Input[Optional
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -162,7 +159,6 @@ def get_engine_namespaces_output(accept_language: Optional[pulumi.Input[Optional
         ids=["example_value"])
     pulumi.export("mseEngineNamespaceId1", ids.namespaces[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str accept_language: The language type of the returned information. Valid values: `zh`, `en`.

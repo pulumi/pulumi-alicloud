@@ -122,7 +122,6 @@ def get_launch_options(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -131,7 +130,6 @@ def get_launch_options(ids: Optional[Sequence[str]] = None,
     default_get_launch_options = alicloud.servicecatalog.get_launch_options(product_id="data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id")
     pulumi.export("alicloudServiceCatalogLaunchOptionExampleId", default_get_launch_options.launch_options[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Launch Option IDs.
@@ -172,7 +170,6 @@ def get_launch_options_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -181,7 +178,6 @@ def get_launch_options_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]
     default_get_launch_options = alicloud.servicecatalog.get_launch_options(product_id="data.alicloud_service_catalog_end_user_products.default.end_user_products.0.id")
     pulumi.export("alicloudServiceCatalogLaunchOptionExampleId", default_get_launch_options.launch_options[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Launch Option IDs.

@@ -124,7 +124,6 @@ def get_virtual_border_routers(filters: Optional[Sequence[pulumi.InputType['GetV
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -148,7 +147,6 @@ def get_virtual_border_routers(filters: Optional[Sequence[pulumi.InputType['GetV
     ])
     pulumi.export("expressConnectVirtualBorderRouterId3", filter.routers[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetVirtualBorderRoutersFilterArgs']] filters: Custom filter block as described below.
@@ -193,7 +191,6 @@ def get_virtual_border_routers_output(filters: Optional[pulumi.Input[Optional[Se
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -217,7 +214,6 @@ def get_virtual_border_routers_output(filters: Optional[pulumi.Input[Optional[Se
     ])
     pulumi.export("expressConnectVirtualBorderRouterId3", filter.routers[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetVirtualBorderRoutersFilterArgs']] filters: Custom filter block as described below.

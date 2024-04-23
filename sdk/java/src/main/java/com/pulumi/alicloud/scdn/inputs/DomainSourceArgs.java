@@ -17,83 +17,37 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DomainSourceArgs Empty = new DomainSourceArgs();
 
-    /**
-     * The Back-to-Source Address.
-     * 
-     */
     @Import(name="content", required=true)
     private Output<String> content;
 
-    /**
-     * @return The Back-to-Source Address.
-     * 
-     */
     public Output<String> content() {
         return this.content;
     }
 
-    /**
-     * The source status. Valid values: online, offline.
-     * 
-     */
     @Import(name="enabled")
     private @Nullable Output<String> enabled;
 
-    /**
-     * @return The source status. Valid values: online, offline.
-     * 
-     */
     public Optional<Output<String>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
 
-    /**
-     * Port.
-     * 
-     */
     @Import(name="port", required=true)
     private Output<Integer> port;
 
-    /**
-     * @return Port.
-     * 
-     */
     public Output<Integer> port() {
         return this.port;
     }
 
-    /**
-     * Priority.
-     * 
-     */
     @Import(name="priority", required=true)
     private Output<String> priority;
 
-    /**
-     * @return Priority.
-     * 
-     */
     public Output<String> priority() {
         return this.priority;
     }
 
-    /**
-     * The Origin Server Type. Valid Values:
-     * * ipaddr: IP Source Station
-     * * domain: the Domain Name
-     * * oss: OSS Bucket as a Source Station.
-     * 
-     */
     @Import(name="type", required=true)
     private Output<String> type;
 
-    /**
-     * @return The Origin Server Type. Valid Values:
-     * * ipaddr: IP Source Station
-     * * domain: the Domain Name
-     * * oss: OSS Bucket as a Source Station.
-     * 
-     */
     public Output<String> type() {
         return this.type;
     }
@@ -126,113 +80,47 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
             $ = new DomainSourceArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param content The Back-to-Source Address.
-         * 
-         * @return builder
-         * 
-         */
         public Builder content(Output<String> content) {
             $.content = content;
             return this;
         }
 
-        /**
-         * @param content The Back-to-Source Address.
-         * 
-         * @return builder
-         * 
-         */
         public Builder content(String content) {
             return content(Output.of(content));
         }
 
-        /**
-         * @param enabled The source status. Valid values: online, offline.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(@Nullable Output<String> enabled) {
             $.enabled = enabled;
             return this;
         }
 
-        /**
-         * @param enabled The source status. Valid values: online, offline.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(String enabled) {
             return enabled(Output.of(enabled));
         }
 
-        /**
-         * @param port Port.
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(Output<Integer> port) {
             $.port = port;
             return this;
         }
 
-        /**
-         * @param port Port.
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }
 
-        /**
-         * @param priority Priority.
-         * 
-         * @return builder
-         * 
-         */
         public Builder priority(Output<String> priority) {
             $.priority = priority;
             return this;
         }
 
-        /**
-         * @param priority Priority.
-         * 
-         * @return builder
-         * 
-         */
         public Builder priority(String priority) {
             return priority(Output.of(priority));
         }
 
-        /**
-         * @param type The Origin Server Type. Valid Values:
-         * * ipaddr: IP Source Station
-         * * domain: the Domain Name
-         * * oss: OSS Bucket as a Source Station.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(Output<String> type) {
             $.type = type;
             return this;
         }
 
-        /**
-         * @param type The Origin Server Type. Valid Values:
-         * * ipaddr: IP Source Station
-         * * domain: the Domain Name
-         * * oss: OSS Bucket as a Source Station.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(String type) {
             return type(Output.of(type));
         }

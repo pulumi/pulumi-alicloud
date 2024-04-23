@@ -240,7 +240,6 @@ class Certificate(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -256,7 +255,6 @@ class Certificate(pulumi.CustomResource):
             domain="your_domain_name",
             certificate_id="your_certificate_id")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -292,7 +290,6 @@ class Certificate(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -308,7 +305,6 @@ class Certificate(pulumi.CustomResource):
             domain="your_domain_name",
             certificate_id="your_certificate_id")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

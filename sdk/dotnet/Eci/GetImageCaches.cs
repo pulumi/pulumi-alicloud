@@ -18,8 +18,7 @@ namespace Pulumi.AliCloud.Eci
         /// 
         /// ## Example Usage
         /// 
-        ///  &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
+        ///  ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -41,7 +40,6 @@ namespace Pulumi.AliCloud.Eci
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetImageCachesResult> InvokeAsync(GetImageCachesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetImageCachesResult>("alicloud:eci/getImageCaches:getImageCaches", args ?? new GetImageCachesArgs(), options.WithDefaults());
@@ -53,8 +51,7 @@ namespace Pulumi.AliCloud.Eci
         /// 
         /// ## Example Usage
         /// 
-        ///  &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
+        ///  ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -76,7 +73,6 @@ namespace Pulumi.AliCloud.Eci
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetImageCachesResult> Invoke(GetImageCachesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImageCachesResult>("alicloud:eci/getImageCaches:getImageCaches", args ?? new GetImageCachesInvokeArgs(), options.WithDefaults());

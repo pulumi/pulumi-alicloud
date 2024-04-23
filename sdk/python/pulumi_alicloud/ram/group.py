@@ -141,7 +141,6 @@ class Group(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -151,7 +150,6 @@ class Group(pulumi.CustomResource):
             name="groupName",
             comments="this is a group comments.")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -182,7 +180,6 @@ class Group(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -192,7 +189,6 @@ class Group(pulumi.CustomResource):
             name="groupName",
             comments="this is a group comments.")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

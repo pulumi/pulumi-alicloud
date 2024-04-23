@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     [OutputType]
     public sealed class GetLoadBalancersBalancerAccessLogConfigResult
     {
-        /// <summary>
-        /// The log service that access logs are shipped to.
-        /// </summary>
         public readonly string LogProject;
-        /// <summary>
-        /// The logstore that access logs are shipped to.
-        /// </summary>
         public readonly string LogStore;
 
         [OutputConstructor]

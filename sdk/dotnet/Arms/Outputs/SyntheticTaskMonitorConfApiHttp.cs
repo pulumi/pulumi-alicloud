@@ -13,29 +13,11 @@ namespace Pulumi.AliCloud.Arms.Outputs
     [OutputType]
     public sealed class SyntheticTaskMonitorConfApiHttp
     {
-        /// <summary>
-        /// Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
-        /// </summary>
         public readonly int? ConnectTimeout;
-        /// <summary>
-        /// HTTP method, GET or POST.
-        /// </summary>
         public readonly string? Method;
-        /// <summary>
-        /// HTTP request body. See `request_body` below.
-        /// </summary>
         public readonly Outputs.SyntheticTaskMonitorConfApiHttpRequestBody? RequestBody;
-        /// <summary>
-        /// HTTP request header.
-        /// </summary>
         public readonly ImmutableDictionary<string, object>? RequestHeaders;
-        /// <summary>
-        /// The target URL.
-        /// </summary>
         public readonly string TargetUrl;
-        /// <summary>
-        /// TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
-        /// </summary>
         public readonly int? Timeout;
 
         [OutputConstructor]

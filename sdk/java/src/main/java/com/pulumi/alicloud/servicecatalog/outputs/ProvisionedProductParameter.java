@@ -11,29 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ProvisionedProductParameter {
-    /**
-     * @return The name of the parameter defined in the template.
-     * 
-     */
     private @Nullable String parameterKey;
-    /**
-     * @return The Template parameter value entered by the user.
-     * 
-     */
     private @Nullable String parameterValue;
 
     private ProvisionedProductParameter() {}
-    /**
-     * @return The name of the parameter defined in the template.
-     * 
-     */
     public Optional<String> parameterKey() {
         return Optional.ofNullable(this.parameterKey);
     }
-    /**
-     * @return The Template parameter value entered by the user.
-     * 
-     */
     public Optional<String> parameterValue() {
         return Optional.ofNullable(this.parameterValue);
     }

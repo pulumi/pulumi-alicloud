@@ -202,7 +202,6 @@ def get_router_interfaces(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -211,7 +210,6 @@ def get_router_interfaces(ids: Optional[Sequence[str]] = None,
         status="Active")
     pulumi.export("firstRouterInterfaceId", router_interfaces_ds.interfaces[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of router interface IDs.
@@ -276,7 +274,6 @@ def get_router_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[st
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -285,7 +282,6 @@ def get_router_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequence[st
         status="Active")
     pulumi.export("firstRouterInterfaceId", router_interfaces_ds.interfaces[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of router interface IDs.

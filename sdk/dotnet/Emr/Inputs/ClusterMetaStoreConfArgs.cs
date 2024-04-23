@@ -14,10 +14,6 @@ namespace Pulumi.AliCloud.Emr.Inputs
     {
         [Input("dbPassword", required: true)]
         private Input<string>? _dbPassword;
-
-        /// <summary>
-        /// Custom rds database password.
-        /// </summary>
         public Input<string>? DbPassword
         {
             get => _dbPassword;
@@ -28,15 +24,9 @@ namespace Pulumi.AliCloud.Emr.Inputs
             }
         }
 
-        /// <summary>
-        /// Custom rds database connection url.
-        /// </summary>
         [Input("dbUrl", required: true)]
         public Input<string> DbUrl { get; set; } = null!;
 
-        /// <summary>
-        /// Custom rds database user name.
-        /// </summary>
         [Input("dbUserName", required: true)]
         public Input<string> DbUserName { get; set; } = null!;
 

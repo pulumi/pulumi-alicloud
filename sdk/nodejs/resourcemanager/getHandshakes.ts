@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  * const example = alicloud.resourcemanager.getHandshakes({});
  * export const firstHandshakeId = example.then(example => example.handshakes?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHandshakes(args?: GetHandshakesArgs, opts?: pulumi.InvokeOptions): Promise<GetHandshakesResult> {
     args = args || {};
@@ -87,7 +85,6 @@ export interface GetHandshakesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -95,7 +92,6 @@ export interface GetHandshakesResult {
  * const example = alicloud.resourcemanager.getHandshakes({});
  * export const firstHandshakeId = example.then(example => example.handshakes?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHandshakesOutput(args?: GetHandshakesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHandshakesResult> {
     return pulumi.output(args).apply((a: any) => getHandshakes(a, opts))

@@ -113,7 +113,6 @@ def get_access_points(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -123,7 +122,6 @@ def get_access_points(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.expressconnect.get_access_points(name_regex="^杭州-")
     pulumi.export("expressConnectAccessPointId2", name_regex.points[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Access Point IDs.
@@ -164,7 +162,6 @@ def get_access_points_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -174,7 +171,6 @@ def get_access_points_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     name_regex = alicloud.expressconnect.get_access_points(name_regex="^杭州-")
     pulumi.export("expressConnectAccessPointId2", name_regex.points[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Access Point IDs.

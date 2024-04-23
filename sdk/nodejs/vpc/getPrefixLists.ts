@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const vpcPrefixListId2 = nameRegex.then(nameRegex => nameRegex.lists?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPrefixLists(args?: GetPrefixListsArgs, opts?: pulumi.InvokeOptions): Promise<GetPrefixListsResult> {
     args = args || {};
@@ -93,7 +91,6 @@ export interface GetPrefixListsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -105,7 +102,6 @@ export interface GetPrefixListsResult {
  * });
  * export const vpcPrefixListId2 = nameRegex.then(nameRegex => nameRegex.lists?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPrefixListsOutput(args?: GetPrefixListsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPrefixListsResult> {
     return pulumi.output(args).apply((a: any) => getPrefixLists(a, opts))

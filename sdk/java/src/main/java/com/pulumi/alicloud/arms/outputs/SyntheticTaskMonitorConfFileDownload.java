@@ -15,241 +15,77 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SyntheticTaskMonitorConfFileDownload {
-    /**
-     * @return Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
-     * 
-     */
     private @Nullable Integer connectionTimeout;
-    /**
-     * @return Custom header, in JSON Map format.
-     * 
-     */
     private @Nullable Map<String,Object> customHeaderContent;
-    /**
-     * @return Download the kernel.
-     * - 1:curl
-     * - 0:WinInet
-     *   Default 1.
-     * 
-     */
     private @Nullable Integer downloadKernel;
-    /**
-     * @return Ignore CA Certificate authorization error 0: Do not ignore, 1: ignore, default 1.
-     * 
-     */
     private @Nullable Integer ignoreCertificateAuthError;
-    /**
-     * @return Ignore certificate revocation error 0: Do not ignore, 1: ignore, default 1.
-     * 
-     */
     private @Nullable Integer ignoreCertificateCanceledError;
-    /**
-     * @return Ignore certificate expiration error 0: not ignored, 1: Ignored, default 1.
-     * 
-     */
     private @Nullable Integer ignoreCertificateOutOfDateError;
-    /**
-     * @return The certificate status error is ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
-     * 
-     */
     private @Nullable Integer ignoreCertificateStatusError;
-    /**
-     * @return The certificate cannot be trusted and ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
-     * 
-     */
     private @Nullable Integer ignoreCertificateUntrustworthyError;
-    /**
-     * @return Ignore certificate usage error 0: Do not ignore, 1: ignore, default 1.
-     * 
-     */
     private @Nullable Integer ignoreCertificateUsingError;
-    /**
-     * @return Invalid host error ignored, 0: not ignored, 1: Ignored, default 1.
-     * 
-     */
     private @Nullable Integer ignoreInvalidHostError;
-    /**
-     * @return Monitoring timeout, in ms. Not required, 20000 by default.
-     * 
-     */
     private @Nullable Integer monitorTimeout;
-    /**
-     * @return Quick agreement
-     * - 1:http1
-     * - 2:http2
-     * - 3:http3
-     *   Default 1.
-     * 
-     */
     private @Nullable Integer quickProtocol;
-    /**
-     * @return When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
-     * 
-     */
     private @Nullable Integer redirection;
-    /**
-     * @return The target URL.
-     * 
-     */
     private String targetUrl;
-    /**
-     * @return The transmission size, in KB. The default value is 2048KB. The transmission size of the downloaded file must be between 1 and 20480KB.
-     * 
-     */
     private @Nullable Integer transmissionSize;
-    /**
-     * @return Verify keywords.
-     * 
-     */
     private @Nullable String validateKeywords;
-    /**
-     * @return The verification method.
-     * - 0: Do not validate
-     * - 1: Validation string
-     * - 2:MD5 validation.
-     * 
-     */
     private @Nullable Integer verifyWay;
-    /**
-     * @return DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
-     * 
-     */
     private @Nullable String whiteList;
 
     private SyntheticTaskMonitorConfFileDownload() {}
-    /**
-     * @return Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
-     * 
-     */
     public Optional<Integer> connectionTimeout() {
         return Optional.ofNullable(this.connectionTimeout);
     }
-    /**
-     * @return Custom header, in JSON Map format.
-     * 
-     */
     public Map<String,Object> customHeaderContent() {
         return this.customHeaderContent == null ? Map.of() : this.customHeaderContent;
     }
-    /**
-     * @return Download the kernel.
-     * - 1:curl
-     * - 0:WinInet
-     *   Default 1.
-     * 
-     */
     public Optional<Integer> downloadKernel() {
         return Optional.ofNullable(this.downloadKernel);
     }
-    /**
-     * @return Ignore CA Certificate authorization error 0: Do not ignore, 1: ignore, default 1.
-     * 
-     */
     public Optional<Integer> ignoreCertificateAuthError() {
         return Optional.ofNullable(this.ignoreCertificateAuthError);
     }
-    /**
-     * @return Ignore certificate revocation error 0: Do not ignore, 1: ignore, default 1.
-     * 
-     */
     public Optional<Integer> ignoreCertificateCanceledError() {
         return Optional.ofNullable(this.ignoreCertificateCanceledError);
     }
-    /**
-     * @return Ignore certificate expiration error 0: not ignored, 1: Ignored, default 1.
-     * 
-     */
     public Optional<Integer> ignoreCertificateOutOfDateError() {
         return Optional.ofNullable(this.ignoreCertificateOutOfDateError);
     }
-    /**
-     * @return The certificate status error is ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
-     * 
-     */
     public Optional<Integer> ignoreCertificateStatusError() {
         return Optional.ofNullable(this.ignoreCertificateStatusError);
     }
-    /**
-     * @return The certificate cannot be trusted and ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
-     * 
-     */
     public Optional<Integer> ignoreCertificateUntrustworthyError() {
         return Optional.ofNullable(this.ignoreCertificateUntrustworthyError);
     }
-    /**
-     * @return Ignore certificate usage error 0: Do not ignore, 1: ignore, default 1.
-     * 
-     */
     public Optional<Integer> ignoreCertificateUsingError() {
         return Optional.ofNullable(this.ignoreCertificateUsingError);
     }
-    /**
-     * @return Invalid host error ignored, 0: not ignored, 1: Ignored, default 1.
-     * 
-     */
     public Optional<Integer> ignoreInvalidHostError() {
         return Optional.ofNullable(this.ignoreInvalidHostError);
     }
-    /**
-     * @return Monitoring timeout, in ms. Not required, 20000 by default.
-     * 
-     */
     public Optional<Integer> monitorTimeout() {
         return Optional.ofNullable(this.monitorTimeout);
     }
-    /**
-     * @return Quick agreement
-     * - 1:http1
-     * - 2:http2
-     * - 3:http3
-     *   Default 1.
-     * 
-     */
     public Optional<Integer> quickProtocol() {
         return Optional.ofNullable(this.quickProtocol);
     }
-    /**
-     * @return When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
-     * 
-     */
     public Optional<Integer> redirection() {
         return Optional.ofNullable(this.redirection);
     }
-    /**
-     * @return The target URL.
-     * 
-     */
     public String targetUrl() {
         return this.targetUrl;
     }
-    /**
-     * @return The transmission size, in KB. The default value is 2048KB. The transmission size of the downloaded file must be between 1 and 20480KB.
-     * 
-     */
     public Optional<Integer> transmissionSize() {
         return Optional.ofNullable(this.transmissionSize);
     }
-    /**
-     * @return Verify keywords.
-     * 
-     */
     public Optional<String> validateKeywords() {
         return Optional.ofNullable(this.validateKeywords);
     }
-    /**
-     * @return The verification method.
-     * - 0: Do not validate
-     * - 1: Validation string
-     * - 2:MD5 validation.
-     * 
-     */
     public Optional<Integer> verifyWay() {
         return Optional.ofNullable(this.verifyWay);
     }
-    /**
-     * @return DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
-     * 
-     */
     public Optional<String> whiteList() {
         return Optional.ofNullable(this.whiteList);
     }

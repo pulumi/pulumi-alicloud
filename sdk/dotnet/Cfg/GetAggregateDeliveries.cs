@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Cfg
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,7 +44,6 @@ namespace Pulumi.AliCloud.Cfg
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAggregateDeliveriesResult> InvokeAsync(GetAggregateDeliveriesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAggregateDeliveriesResult>("alicloud:cfg/getAggregateDeliveries:getAggregateDeliveries", args ?? new GetAggregateDeliveriesArgs(), options.WithDefaults());
@@ -59,7 +57,6 @@ namespace Pulumi.AliCloud.Cfg
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -84,7 +81,6 @@ namespace Pulumi.AliCloud.Cfg
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAggregateDeliveriesResult> Invoke(GetAggregateDeliveriesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAggregateDeliveriesResult>("alicloud:cfg/getAggregateDeliveries:getAggregateDeliveries", args ?? new GetAggregateDeliveriesInvokeArgs(), options.WithDefaults());

@@ -16,137 +16,65 @@ public final class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs exten
 
     public static final ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs Empty = new ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs();
 
-    /**
-     * IKE auth Algorithm.
-     * 
-     */
     @Import(name="ikeAuthAlg")
     private @Nullable Output<String> ikeAuthAlg;
 
-    /**
-     * @return IKE auth Algorithm.
-     * 
-     */
     public Optional<Output<String>> ikeAuthAlg() {
         return Optional.ofNullable(this.ikeAuthAlg);
     }
 
-    /**
-     * IKE encript algorithm.
-     * 
-     */
     @Import(name="ikeEncAlg")
     private @Nullable Output<String> ikeEncAlg;
 
-    /**
-     * @return IKE encript algorithm.
-     * 
-     */
     public Optional<Output<String>> ikeEncAlg() {
         return Optional.ofNullable(this.ikeEncAlg);
     }
 
-    /**
-     * IKE lifetime.
-     * 
-     */
     @Import(name="ikeLifetime")
     private @Nullable Output<Integer> ikeLifetime;
 
-    /**
-     * @return IKE lifetime.
-     * 
-     */
     public Optional<Output<Integer>> ikeLifetime() {
         return Optional.ofNullable(this.ikeLifetime);
     }
 
-    /**
-     * IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
-     * 
-     */
     @Import(name="ikeMode")
     private @Nullable Output<String> ikeMode;
 
-    /**
-     * @return IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
-     * 
-     */
     public Optional<Output<String>> ikeMode() {
         return Optional.ofNullable(this.ikeMode);
     }
 
-    /**
-     * DH group.
-     * 
-     */
     @Import(name="ikePfs")
     private @Nullable Output<String> ikePfs;
 
-    /**
-     * @return DH group.
-     * 
-     */
     public Optional<Output<String>> ikePfs() {
         return Optional.ofNullable(this.ikePfs);
     }
 
-    /**
-     * IKE version.
-     * 
-     */
     @Import(name="ikeVersion")
     private @Nullable Output<String> ikeVersion;
 
-    /**
-     * @return IKE version.
-     * 
-     */
     public Optional<Output<String>> ikeVersion() {
         return Optional.ofNullable(this.ikeVersion);
     }
 
-    /**
-     * The local Id.
-     * 
-     */
     @Import(name="localId")
     private @Nullable Output<String> localId;
 
-    /**
-     * @return The local Id.
-     * 
-     */
     public Optional<Output<String>> localId() {
         return Optional.ofNullable(this.localId);
     }
 
-    /**
-     * Preshared secret key.
-     * 
-     */
     @Import(name="psk")
     private @Nullable Output<String> psk;
 
-    /**
-     * @return Preshared secret key.
-     * 
-     */
     public Optional<Output<String>> psk() {
         return Optional.ofNullable(this.psk);
     }
 
-    /**
-     * Remote ID.
-     * 
-     */
     @Import(name="remoteId")
     private @Nullable Output<String> remoteId;
 
-    /**
-     * @return Remote ID.
-     * 
-     */
     public Optional<Output<String>> remoteId() {
         return Optional.ofNullable(this.remoteId);
     }
@@ -183,191 +111,83 @@ public final class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs exten
             $ = new ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param ikeAuthAlg IKE auth Algorithm.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ikeAuthAlg(@Nullable Output<String> ikeAuthAlg) {
             $.ikeAuthAlg = ikeAuthAlg;
             return this;
         }
 
-        /**
-         * @param ikeAuthAlg IKE auth Algorithm.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ikeAuthAlg(String ikeAuthAlg) {
             return ikeAuthAlg(Output.of(ikeAuthAlg));
         }
 
-        /**
-         * @param ikeEncAlg IKE encript algorithm.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ikeEncAlg(@Nullable Output<String> ikeEncAlg) {
             $.ikeEncAlg = ikeEncAlg;
             return this;
         }
 
-        /**
-         * @param ikeEncAlg IKE encript algorithm.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ikeEncAlg(String ikeEncAlg) {
             return ikeEncAlg(Output.of(ikeEncAlg));
         }
 
-        /**
-         * @param ikeLifetime IKE lifetime.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ikeLifetime(@Nullable Output<Integer> ikeLifetime) {
             $.ikeLifetime = ikeLifetime;
             return this;
         }
 
-        /**
-         * @param ikeLifetime IKE lifetime.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ikeLifetime(Integer ikeLifetime) {
             return ikeLifetime(Output.of(ikeLifetime));
         }
 
-        /**
-         * @param ikeMode IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ikeMode(@Nullable Output<String> ikeMode) {
             $.ikeMode = ikeMode;
             return this;
         }
 
-        /**
-         * @param ikeMode IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ikeMode(String ikeMode) {
             return ikeMode(Output.of(ikeMode));
         }
 
-        /**
-         * @param ikePfs DH group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ikePfs(@Nullable Output<String> ikePfs) {
             $.ikePfs = ikePfs;
             return this;
         }
 
-        /**
-         * @param ikePfs DH group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ikePfs(String ikePfs) {
             return ikePfs(Output.of(ikePfs));
         }
 
-        /**
-         * @param ikeVersion IKE version.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ikeVersion(@Nullable Output<String> ikeVersion) {
             $.ikeVersion = ikeVersion;
             return this;
         }
 
-        /**
-         * @param ikeVersion IKE version.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ikeVersion(String ikeVersion) {
             return ikeVersion(Output.of(ikeVersion));
         }
 
-        /**
-         * @param localId The local Id.
-         * 
-         * @return builder
-         * 
-         */
         public Builder localId(@Nullable Output<String> localId) {
             $.localId = localId;
             return this;
         }
 
-        /**
-         * @param localId The local Id.
-         * 
-         * @return builder
-         * 
-         */
         public Builder localId(String localId) {
             return localId(Output.of(localId));
         }
 
-        /**
-         * @param psk Preshared secret key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder psk(@Nullable Output<String> psk) {
             $.psk = psk;
             return this;
         }
 
-        /**
-         * @param psk Preshared secret key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder psk(String psk) {
             return psk(Output.of(psk));
         }
 
-        /**
-         * @param remoteId Remote ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder remoteId(@Nullable Output<String> remoteId) {
             $.remoteId = remoteId;
             return this;
         }
 
-        /**
-         * @param remoteId Remote ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder remoteId(String remoteId) {
             return remoteId(Output.of(remoteId));
         }

@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Ebs.Outputs
     [OutputType]
     public sealed class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion
     {
-        /// <summary>
-        /// Destination region ID.
-        /// </summary>
         public readonly string? RegionId;
-        /// <summary>
-        /// Number of days of snapshot retention for replication.
-        /// </summary>
         public readonly int? RetainDays;
 
         [OutputConstructor]

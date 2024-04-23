@@ -113,7 +113,6 @@ def get_ram_directories(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -123,7 +122,6 @@ def get_ram_directories(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.eds.get_ram_directories(name_regex="^my-RamDirectory")
     pulumi.export("ecdRamDirectoryId2", name_regex.directories[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ram Directory IDs.
@@ -164,7 +162,6 @@ def get_ram_directories_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -174,7 +171,6 @@ def get_ram_directories_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
     name_regex = alicloud.eds.get_ram_directories(name_regex="^my-RamDirectory")
     pulumi.export("ecdRamDirectoryId2", name_regex.directories[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ram Directory IDs.

@@ -123,7 +123,6 @@ def get_vaults(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -131,14 +130,13 @@ def get_vaults(ids: Optional[Sequence[str]] = None,
     ids = alicloud.hbr.get_vaults(name_regex="^my-Vault")
     pulumi.export("hbrVaultId1", ids.vaults[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Vault IDs.
     :param str name_regex: A regex string to filter results by Vault name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
-    :param str vault_type: The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+    :param str vault_type: VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -176,7 +174,6 @@ def get_vaults_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -184,13 +181,12 @@ def get_vaults_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
     ids = alicloud.hbr.get_vaults(name_regex="^my-Vault")
     pulumi.export("hbrVaultId1", ids.vaults[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Vault IDs.
     :param str name_regex: A regex string to filter results by Vault name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str status: The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
-    :param str vault_type: The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+    :param str vault_type: VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
     """
     ...

@@ -278,17 +278,11 @@ class FunctionAsyncInvokeConfigDestinationConfig(dict):
 class FunctionAsyncInvokeConfigDestinationConfigOnFailure(dict):
     def __init__(__self__, *,
                  destination: str):
-        """
-        :param str destination: Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
-        """
         pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> str:
-        """
-        Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
-        """
         return pulumi.get(self, "destination")
 
 
@@ -296,17 +290,11 @@ class FunctionAsyncInvokeConfigDestinationConfigOnFailure(dict):
 class FunctionAsyncInvokeConfigDestinationConfigOnSuccess(dict):
     def __init__(__self__, *,
                  destination: str):
-        """
-        :param str destination: Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
-        """
         pulumi.set(__self__, "destination", destination)
 
     @property
     @pulumi.getter
     def destination(self) -> str:
-        """
-        Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
-        """
         return pulumi.get(self, "destination")
 
 
@@ -509,27 +497,17 @@ class ServiceNasConfigMountPoint(dict):
     def __init__(__self__, *,
                  mount_dir: str,
                  server_addr: str):
-        """
-        :param str mount_dir: The local address where to mount your remote NAS directory.
-        :param str server_addr: The address of the remote NAS directory.
-        """
         pulumi.set(__self__, "mount_dir", mount_dir)
         pulumi.set(__self__, "server_addr", server_addr)
 
     @property
     @pulumi.getter(name="mountDir")
     def mount_dir(self) -> str:
-        """
-        The local address where to mount your remote NAS directory.
-        """
         return pulumi.get(self, "mount_dir")
 
     @property
     @pulumi.getter(name="serverAddr")
     def server_addr(self) -> str:
-        """
-        The address of the remote NAS directory.
-        """
         return pulumi.get(self, "server_addr")
 
 
@@ -841,10 +819,6 @@ class V2FunctionCustomDnsDnsOption(dict):
     def __init__(__self__, *,
                  name: Optional[str] = None,
                  value: Optional[str] = None):
-        """
-        :param str name: DNS option name.
-        :param str value: DNS option value.
-        """
         if name is not None:
             pulumi.set(__self__, "name", name)
         if value is not None:
@@ -853,17 +827,11 @@ class V2FunctionCustomDnsDnsOption(dict):
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        DNS option name.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
-        """
-        DNS option value.
-        """
         return pulumi.get(self, "value")
 
 

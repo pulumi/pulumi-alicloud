@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Cms.Outputs
     [OutputType]
     public sealed class GetHybridMonitorSlsTasksTaskAttachLabelResult
     {
-        /// <summary>
-        /// The name of the instance.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// The value of the key that is used to filter logs imported from Log Service.
-        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

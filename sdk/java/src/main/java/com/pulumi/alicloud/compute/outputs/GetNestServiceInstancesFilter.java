@@ -13,28 +13,20 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetNestServiceInstancesFilter {
     /**
-     * @return The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+     * @return The name of the service.
      * 
      */
     private @Nullable String name;
-    /**
-     * @return Set of values that are accepted for the given field.
-     * 
-     */
     private @Nullable List<String> values;
 
     private GetNestServiceInstancesFilter() {}
     /**
-     * @return The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+     * @return The name of the service.
      * 
      */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
-    /**
-     * @return Set of values that are accepted for the given field.
-     * 
-     */
     public List<String> values() {
         return this.values == null ? List.of() : this.values;
     }

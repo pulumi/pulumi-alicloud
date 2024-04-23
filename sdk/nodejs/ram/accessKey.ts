@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  * ## Example Usage
  *
  * Output the secret to a file.
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -35,10 +34,8 @@ import * as utilities from "../utilities";
  *     secretFile: "/xxx/xxx/xxx.txt",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Using `pgpKey` to encrypt the secret.
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -84,7 +81,6 @@ import * as utilities from "../utilities";
  * });
  * export const secret = encrypt.encryptedSecret;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class AccessKey extends pulumi.CustomResource {
     /**

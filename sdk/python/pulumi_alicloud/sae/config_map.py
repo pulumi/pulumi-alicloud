@@ -174,7 +174,6 @@ class ConfigMap(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -202,7 +201,6 @@ class ConfigMap(pulumi.CustomResource):
             name=name,
             namespace_id=default_namespace.namespace_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -236,7 +234,6 @@ class ConfigMap(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -264,7 +261,6 @@ class ConfigMap(pulumi.CustomResource):
             name=name,
             namespace_id=default_namespace.namespace_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

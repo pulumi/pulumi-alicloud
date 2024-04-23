@@ -335,7 +335,6 @@ class MountPoint(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -383,7 +382,6 @@ class MountPoint(pulumi.CustomResource):
             access_group_id=default_access_group.id,
             status="Active")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -421,7 +419,6 @@ class MountPoint(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -469,7 +466,6 @@ class MountPoint(pulumi.CustomResource):
             access_group_id=default_access_group.id,
             status="Active")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

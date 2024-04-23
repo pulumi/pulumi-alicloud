@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress {
-    /**
-     * @return The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
-     * 
-     */
     private String alias;
-    /**
-     * @return The extended field that specifies the result of basic operations that are performed on aggregation results.
-     * 
-     */
     private String express;
 
     private GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress() {}
-    /**
-     * @return The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
-     * 
-     */
     public String alias() {
         return this.alias;
     }
-    /**
-     * @return The extended field that specifies the result of basic operations that are performed on aggregation results.
-     * 
-     */
     public String express() {
         return this.express;
     }

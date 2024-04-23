@@ -104,7 +104,6 @@ def get_mount_points(file_system_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -116,7 +115,6 @@ def get_mount_points(file_system_id: Optional[str] = None,
         ])
     pulumi.export("dfsMountPointId1", ids.points[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str file_system_id: The ID of the File System.
@@ -156,7 +154,6 @@ def get_mount_points_output(file_system_id: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -168,7 +165,6 @@ def get_mount_points_output(file_system_id: Optional[pulumi.Input[str]] = None,
         ])
     pulumi.export("dfsMountPointId1", ids.points[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str file_system_id: The ID of the File System.

@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,7 +52,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetSecurityGroups(ctx *pulumi.Context, args *GetSecurityGroupsArgs, opts ...pulumi.InvokeOption) (*GetSecurityGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSecurityGroupsResult
@@ -78,7 +76,6 @@ type GetSecurityGroupsArgs struct {
 	// The Id of resource group which the securityGroup belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -102,7 +99,6 @@ type GetSecurityGroupsArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Tags map[string]interface{} `pulumi:"tags"`
 	// Used to retrieve security groups that belong to the specified VPC ID.
 	VpcId *string `pulumi:"vpcId"`
@@ -159,7 +155,6 @@ type GetSecurityGroupsOutputArgs struct {
 	// The Id of resource group which the securityGroup belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
 	// A map of tags assigned to the ECS instances. It must be in the format:
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -183,7 +178,6 @@ type GetSecurityGroupsOutputArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// Used to retrieve security groups that belong to the specified VPC ID.
 	VpcId pulumi.StringPtrInput `pulumi:"vpcId"`

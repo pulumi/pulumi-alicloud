@@ -168,12 +168,6 @@ class ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs:
                  json_params: Optional[pulumi.Input[str]] = None,
                  level: Optional[pulumi.Input[str]] = None,
                  target_list_id: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] arn: The Alibaba Cloud Resource Name (ARN) of the resource.
-        :param pulumi.Input[str] json_params: The parameters of the alert callback. Specify the parameters in the JSON format.
-        :param pulumi.Input[str] level: The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
-        :param pulumi.Input[str] target_list_id: The ID of the resource for which alerts are triggered.
-        """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
         if json_params is not None:
@@ -186,9 +180,6 @@ class ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs:
     @property
     @pulumi.getter
     def arn(self) -> Optional[pulumi.Input[str]]:
-        """
-        The Alibaba Cloud Resource Name (ARN) of the resource.
-        """
         return pulumi.get(self, "arn")
 
     @arn.setter
@@ -198,9 +189,6 @@ class ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs:
     @property
     @pulumi.getter(name="jsonParams")
     def json_params(self) -> Optional[pulumi.Input[str]]:
-        """
-        The parameters of the alert callback. Specify the parameters in the JSON format.
-        """
         return pulumi.get(self, "json_params")
 
     @json_params.setter
@@ -210,9 +198,6 @@ class ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs:
     @property
     @pulumi.getter
     def level(self) -> Optional[pulumi.Input[str]]:
-        """
-        The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
-        """
         return pulumi.get(self, "level")
 
     @level.setter
@@ -222,9 +207,6 @@ class ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs:
     @property
     @pulumi.getter(name="targetListId")
     def target_list_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The ID of the resource for which alerts are triggered.
-        """
         return pulumi.get(self, "target_list_id")
 
     @target_list_id.setter

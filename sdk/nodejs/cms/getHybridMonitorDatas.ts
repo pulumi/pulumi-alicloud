@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,7 +27,6 @@ import * as utilities from "../utilities";
  * });
  * export const cmsMetricRuleTemplateId1 = _default.then(_default => _default.datas?.[0]);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHybridMonitorDatas(args: GetHybridMonitorDatasArgs, opts?: pulumi.InvokeOptions): Promise<GetHybridMonitorDatasResult> {
 
@@ -98,7 +96,6 @@ export interface GetHybridMonitorDatasResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -111,7 +108,6 @@ export interface GetHybridMonitorDatasResult {
  * });
  * export const cmsMetricRuleTemplateId1 = _default.then(_default => _default.datas?.[0]);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHybridMonitorDatasOutput(args: GetHybridMonitorDatasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHybridMonitorDatasResult> {
     return pulumi.output(args).apply((a: any) => getHybridMonitorDatas(a, opts))

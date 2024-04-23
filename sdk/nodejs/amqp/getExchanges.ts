@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -36,7 +35,6 @@ import * as utilities from "../utilities";
  * });
  * export const amqpExchangeId2 = nameRegex.then(nameRegex => nameRegex.exchanges?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getExchanges(args: GetExchangesArgs, opts?: pulumi.InvokeOptions): Promise<GetExchangesResult> {
 
@@ -101,7 +99,6 @@ export interface GetExchangesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -122,7 +119,6 @@ export interface GetExchangesResult {
  * });
  * export const amqpExchangeId2 = nameRegex.then(nameRegex => nameRegex.exchanges?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getExchangesOutput(args: GetExchangesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExchangesResult> {
     return pulumi.output(args).apply((a: any) => getExchanges(a, opts))

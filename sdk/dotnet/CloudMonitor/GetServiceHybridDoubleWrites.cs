@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.CloudMonitor
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,7 +62,6 @@ namespace Pulumi.AliCloud.CloudMonitor
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServiceHybridDoubleWritesResult> InvokeAsync(GetServiceHybridDoubleWritesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServiceHybridDoubleWritesResult>("alicloud:cloudmonitor/getServiceHybridDoubleWrites:getServiceHybridDoubleWrites", args ?? new GetServiceHybridDoubleWritesArgs(), options.WithDefaults());
@@ -77,7 +75,6 @@ namespace Pulumi.AliCloud.CloudMonitor
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -120,7 +117,6 @@ namespace Pulumi.AliCloud.CloudMonitor
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServiceHybridDoubleWritesResult> Invoke(GetServiceHybridDoubleWritesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceHybridDoubleWritesResult>("alicloud:cloudmonitor/getServiceHybridDoubleWrites:getServiceHybridDoubleWrites", args ?? new GetServiceHybridDoubleWritesInvokeArgs(), options.WithDefaults());

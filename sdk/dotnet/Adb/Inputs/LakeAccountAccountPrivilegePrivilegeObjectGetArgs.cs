@@ -12,21 +12,12 @@ namespace Pulumi.AliCloud.Adb.Inputs
 
     public sealed class LakeAccountAccountPrivilegePrivilegeObjectGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of column.
-        /// </summary>
         [Input("column")]
         public Input<string>? Column { get; set; }
 
-        /// <summary>
-        /// The name of database.
-        /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
 
-        /// <summary>
-        /// The name of table.
-        /// </summary>
         [Input("table")]
         public Input<string>? Table { get; set; }
 

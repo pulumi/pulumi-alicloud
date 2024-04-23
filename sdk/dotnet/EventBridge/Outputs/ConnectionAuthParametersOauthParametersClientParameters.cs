@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
     [OutputType]
     public sealed class ConnectionAuthParametersOauthParametersClientParameters
     {
-        /// <summary>
-        /// The ID of the client.
-        /// </summary>
         public readonly string? ClientId;
-        /// <summary>
-        /// The AccessKey secret of the client.
-        /// </summary>
         public readonly string? ClientSecret;
 
         [OutputConstructor]

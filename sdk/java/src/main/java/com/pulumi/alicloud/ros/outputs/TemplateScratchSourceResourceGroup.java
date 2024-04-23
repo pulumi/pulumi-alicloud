@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TemplateScratchSourceResourceGroup {
-    /**
-     * @return The ID of the Source Resource Group.
-     * 
-     */
     private String resourceGroupId;
-    /**
-     * @return Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-     * 
-     */
     private @Nullable List<String> resourceTypeFilters;
 
     private TemplateScratchSourceResourceGroup() {}
-    /**
-     * @return The ID of the Source Resource Group.
-     * 
-     */
     public String resourceGroupId() {
         return this.resourceGroupId;
     }
-    /**
-     * @return Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-     * 
-     */
     public List<String> resourceTypeFilters() {
         return this.resourceTypeFilters == null ? List.of() : this.resourceTypeFilters;
     }

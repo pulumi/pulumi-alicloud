@@ -439,7 +439,6 @@ class PolardbxInstance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -467,7 +466,6 @@ class PolardbxInstance(pulumi.CustomResource):
             tertiary_zone="ap-southeast-1c",
             vpc_id=example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -510,7 +508,6 @@ class PolardbxInstance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -538,7 +535,6 @@ class PolardbxInstance(pulumi.CustomResource):
             tertiary_zone="ap-southeast-1c",
             vpc_id=example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

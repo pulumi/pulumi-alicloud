@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     [OutputType]
     public sealed class ServiceMeshMeshConfigAudit
     {
-        /// <summary>
-        /// Enable CNI.
-        /// </summary>
         public readonly bool? Enabled;
-        /// <summary>
-        /// The name of the SLS Project to which the control plane logs are collected.
-        /// </summary>
         public readonly string? Project;
 
         [OutputConstructor]

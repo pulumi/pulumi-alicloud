@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetVaults(ctx *pulumi.Context, args *GetVaultsArgs, opts ...pulumi.InvokeOption) (*GetVaultsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetVaultsResult
@@ -65,7 +63,7 @@ type GetVaultsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
 	Status *string `pulumi:"status"`
-	// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+	// VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
 	VaultType *string `pulumi:"vaultType"`
 }
 
@@ -105,7 +103,7 @@ type GetVaultsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The status of Vault. Valid values: `CREATED`, `ERROR`, `UNKNOWN`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+	// VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
 	VaultType pulumi.StringPtrInput `pulumi:"vaultType"`
 }
 

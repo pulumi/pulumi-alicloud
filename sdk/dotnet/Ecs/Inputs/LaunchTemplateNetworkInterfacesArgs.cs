@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.Ecs.Inputs
     public sealed class LaunchTemplateNetworkInterfacesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The description of the data disk.
+        /// The ENI description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The name of the data disk.
+        /// ENI name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

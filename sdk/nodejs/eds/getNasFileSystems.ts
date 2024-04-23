@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -38,7 +37,6 @@ import * as utilities from "../utilities";
  * }));
  * export const ecdNasFileSystemId2 = nameRegex.apply(nameRegex => nameRegex.systems?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNasFileSystems(args?: GetNasFileSystemsArgs, opts?: pulumi.InvokeOptions): Promise<GetNasFileSystemsResult> {
     args = args || {};
@@ -104,7 +102,6 @@ export interface GetNasFileSystemsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -127,7 +124,6 @@ export interface GetNasFileSystemsResult {
  * }));
  * export const ecdNasFileSystemId2 = nameRegex.apply(nameRegex => nameRegex.systems?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNasFileSystemsOutput(args?: GetNasFileSystemsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNasFileSystemsResult> {
     return pulumi.output(args).apply((a: any) => getNasFileSystems(a, opts))

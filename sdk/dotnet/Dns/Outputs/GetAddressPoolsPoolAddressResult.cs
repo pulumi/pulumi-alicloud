@@ -13,25 +13,10 @@ namespace Pulumi.AliCloud.Dns.Outputs
     [OutputType]
     public sealed class GetAddressPoolsPoolAddressResult
     {
-        /// <summary>
-        /// The address that you want to add to the address pool.
-        /// </summary>
         public readonly string Address;
-        /// <summary>
-        /// The source region of the address.
-        /// </summary>
         public readonly string AttributeInfo;
-        /// <summary>
-        /// The weight of the address.
-        /// </summary>
         public readonly int LbaWeight;
-        /// <summary>
-        /// The type of the address.
-        /// </summary>
         public readonly string Mode;
-        /// <summary>
-        /// The description of the address.
-        /// </summary>
         public readonly string Remark;
 
         [OutputConstructor]

@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.ClickHouse.Outputs
     [OutputType]
     public sealed class GetDbClustersClusterScaleOutStatusResult
     {
-        /// <summary>
-        /// Process.
-        /// </summary>
         public readonly string Progress;
-        /// <summary>
-        /// Efficiency.
-        /// </summary>
         public readonly string Ratio;
 
         [OutputConstructor]

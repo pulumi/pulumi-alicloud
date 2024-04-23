@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -68,7 +67,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetBgpPeers(ctx *pulumi.Context, args *GetBgpPeersArgs, opts ...pulumi.InvokeOption) (*GetBgpPeersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBgpPeersResult

@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class SearchIndexSchemaIndexSetting {
-    /**
-     * @return Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
-     * 
-     */
     private @Nullable List<String> routingFields;
 
     private SearchIndexSchemaIndexSetting() {}
-    /**
-     * @return Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
-     * 
-     */
     public List<String> routingFields() {
         return this.routingFields == null ? List.of() : this.routingFields;
     }

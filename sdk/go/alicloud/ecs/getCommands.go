@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetCommands(ctx *pulumi.Context, args *GetCommandsArgs, opts ...pulumi.InvokeOption) (*GetCommandsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCommandsResult

@@ -93,7 +93,6 @@ def get_attachments(instance_ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -101,7 +100,6 @@ def get_attachments(instance_ids: Optional[Sequence[str]] = None,
     sample_ds = alicloud.slb.get_attachments(load_balancer_id=sample_slb["id"])
     pulumi.export("firstSlbAttachmentInstanceId", sample_ds.slb_attachments[0].instance_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] instance_ids: List of attached ECS instance IDs.
@@ -133,7 +131,6 @@ def get_attachments_output(instance_ids: Optional[pulumi.Input[Optional[Sequence
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -141,7 +138,6 @@ def get_attachments_output(instance_ids: Optional[pulumi.Input[Optional[Sequence
     sample_ds = alicloud.slb.get_attachments(load_balancer_id=sample_slb["id"])
     pulumi.export("firstSlbAttachmentInstanceId", sample_ds.slb_attachments[0].instance_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] instance_ids: List of attached ECS instance IDs.

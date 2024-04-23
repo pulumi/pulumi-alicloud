@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Sae.Outputs
     [OutputType]
     public sealed class GetApplicationScalingRulesRuleScalingRuleMetricMetricResult
     {
-        /// <summary>
-        /// The target value of the monitoring indicator.
-        /// </summary>
         public readonly int MetricTargetAverageUtilization;
-        /// <summary>
-        /// The metric type of the Application Scaling Rule.
-        /// </summary>
         public readonly string MetricType;
 
         [OutputConstructor]

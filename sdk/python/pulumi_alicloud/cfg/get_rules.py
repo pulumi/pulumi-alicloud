@@ -177,7 +177,6 @@ def get_rules(config_rule_state: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -186,7 +185,6 @@ def get_rules(config_rule_state: Optional[str] = None,
         name_regex="tftest")
     pulumi.export("firstConfigRuleId", example.rules[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str config_rule_state: Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.
@@ -243,7 +241,6 @@ def get_rules_output(config_rule_state: Optional[pulumi.Input[Optional[str]]] = 
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -252,7 +249,6 @@ def get_rules_output(config_rule_state: Optional[pulumi.Input[Optional[str]]] = 
         name_regex="tftest")
     pulumi.export("firstConfigRuleId", example.rules[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str config_rule_state: Field `config_rule_state` has been deprecated from provider version 1.124.1. New field `status` instead.

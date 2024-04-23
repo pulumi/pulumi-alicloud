@@ -153,7 +153,6 @@ def get_plugins(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -163,7 +162,6 @@ def get_plugins(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.apigateway.get_plugins(name_regex="^my-Plugin")
     pulumi.export("apiGatewayPluginId2", name_regex.plugins[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Plugin IDs.
@@ -218,7 +216,6 @@ def get_plugins_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -228,7 +225,6 @@ def get_plugins_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
     name_regex = alicloud.apigateway.get_plugins(name_regex="^my-Plugin")
     pulumi.export("apiGatewayPluginId2", name_regex.plugins[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Plugin IDs.

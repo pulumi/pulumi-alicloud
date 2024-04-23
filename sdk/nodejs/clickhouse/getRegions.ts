@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  *     regionId: "cn-hangzhou",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRegions(args?: GetRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetRegionsResult> {
     args = args || {};
@@ -53,7 +51,7 @@ export interface GetRegionsArgs {
      */
     outputFile?: string;
     /**
-     * The Region ID.
+     * You can use specified regionId to find the region and available zones information that supports ClickHouse.
      */
     regionId?: string;
 }
@@ -80,7 +78,6 @@ export interface GetRegionsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -92,7 +89,6 @@ export interface GetRegionsResult {
  *     regionId: "cn-hangzhou",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRegionsOutput(args?: GetRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionsResult> {
     return pulumi.output(args).apply((a: any) => getRegions(a, opts))
@@ -111,7 +107,7 @@ export interface GetRegionsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The Region ID.
+     * You can use specified regionId to find the region and available zones information that supports ClickHouse.
      */
     regionId?: pulumi.Input<string>;
 }

@@ -25,19 +25,12 @@ class ChangeSetParameterArgs:
     def __init__(__self__, *,
                  parameter_key: pulumi.Input[str],
                  parameter_value: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] parameter_key: The parameter key.
-        :param pulumi.Input[str] parameter_value: The parameter value.
-        """
         pulumi.set(__self__, "parameter_key", parameter_key)
         pulumi.set(__self__, "parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")
     def parameter_key(self) -> pulumi.Input[str]:
-        """
-        The parameter key.
-        """
         return pulumi.get(self, "parameter_key")
 
     @parameter_key.setter
@@ -47,9 +40,6 @@ class ChangeSetParameterArgs:
     @property
     @pulumi.getter(name="parameterValue")
     def parameter_value(self) -> pulumi.Input[str]:
-        """
-        The parameter value.
-        """
         return pulumi.get(self, "parameter_value")
 
     @parameter_value.setter
@@ -62,10 +52,6 @@ class StackGroupParameterArgs:
     def __init__(__self__, *,
                  parameter_key: Optional[pulumi.Input[str]] = None,
                  parameter_value: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] parameter_key: The parameter key.
-        :param pulumi.Input[str] parameter_value: The parameter value.
-        """
         if parameter_key is not None:
             pulumi.set(__self__, "parameter_key", parameter_key)
         if parameter_value is not None:
@@ -74,9 +60,6 @@ class StackGroupParameterArgs:
     @property
     @pulumi.getter(name="parameterKey")
     def parameter_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        The parameter key.
-        """
         return pulumi.get(self, "parameter_key")
 
     @parameter_key.setter
@@ -86,9 +69,6 @@ class StackGroupParameterArgs:
     @property
     @pulumi.getter(name="parameterValue")
     def parameter_value(self) -> Optional[pulumi.Input[str]]:
-        """
-        The parameter value.
-        """
         return pulumi.get(self, "parameter_value")
 
     @parameter_value.setter
@@ -101,10 +81,6 @@ class StackInstanceParameterOverrideArgs:
     def __init__(__self__, *,
                  parameter_key: Optional[pulumi.Input[str]] = None,
                  parameter_value: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] parameter_key: The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
-        :param pulumi.Input[str] parameter_value: The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
-        """
         if parameter_key is not None:
             pulumi.set(__self__, "parameter_key", parameter_key)
         if parameter_value is not None:
@@ -113,9 +89,6 @@ class StackInstanceParameterOverrideArgs:
     @property
     @pulumi.getter(name="parameterKey")
     def parameter_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
-        """
         return pulumi.get(self, "parameter_key")
 
     @parameter_key.setter
@@ -125,9 +98,6 @@ class StackInstanceParameterOverrideArgs:
     @property
     @pulumi.getter(name="parameterValue")
     def parameter_value(self) -> Optional[pulumi.Input[str]]:
-        """
-        The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
-        """
         return pulumi.get(self, "parameter_value")
 
     @parameter_value.setter
@@ -140,10 +110,6 @@ class StackParameterArgs:
     def __init__(__self__, *,
                  parameter_value: pulumi.Input[str],
                  parameter_key: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] parameter_value: The parameter value.
-        :param pulumi.Input[str] parameter_key: The parameter key.
-        """
         pulumi.set(__self__, "parameter_value", parameter_value)
         if parameter_key is not None:
             pulumi.set(__self__, "parameter_key", parameter_key)
@@ -151,9 +117,6 @@ class StackParameterArgs:
     @property
     @pulumi.getter(name="parameterValue")
     def parameter_value(self) -> pulumi.Input[str]:
-        """
-        The parameter value.
-        """
         return pulumi.get(self, "parameter_value")
 
     @parameter_value.setter
@@ -163,9 +126,6 @@ class StackParameterArgs:
     @property
     @pulumi.getter(name="parameterKey")
     def parameter_key(self) -> Optional[pulumi.Input[str]]:
-        """
-        The parameter key.
-        """
         return pulumi.get(self, "parameter_key")
 
     @parameter_key.setter
@@ -178,19 +138,12 @@ class TemplateScratchPreferenceParameterArgs:
     def __init__(__self__, *,
                  parameter_key: pulumi.Input[str],
                  parameter_value: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] parameter_key: Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
-        :param pulumi.Input[str] parameter_value: Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
-        """
         pulumi.set(__self__, "parameter_key", parameter_key)
         pulumi.set(__self__, "parameter_value", parameter_value)
 
     @property
     @pulumi.getter(name="parameterKey")
     def parameter_key(self) -> pulumi.Input[str]:
-        """
-        Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
-        """
         return pulumi.get(self, "parameter_key")
 
     @parameter_key.setter
@@ -200,9 +153,6 @@ class TemplateScratchPreferenceParameterArgs:
     @property
     @pulumi.getter(name="parameterValue")
     def parameter_value(self) -> pulumi.Input[str]:
-        """
-        Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
-        """
         return pulumi.get(self, "parameter_value")
 
     @parameter_value.setter
@@ -215,19 +165,12 @@ class TemplateScratchSourceResourceArgs:
     def __init__(__self__, *,
                  resource_id: pulumi.Input[str],
                  resource_type: pulumi.Input[str]):
-        """
-        :param pulumi.Input[str] resource_id: The ID of the Source Resource.
-        :param pulumi.Input[str] resource_type: The type of the Source resource.
-        """
         pulumi.set(__self__, "resource_id", resource_id)
         pulumi.set(__self__, "resource_type", resource_type)
 
     @property
     @pulumi.getter(name="resourceId")
     def resource_id(self) -> pulumi.Input[str]:
-        """
-        The ID of the Source Resource.
-        """
         return pulumi.get(self, "resource_id")
 
     @resource_id.setter
@@ -237,9 +180,6 @@ class TemplateScratchSourceResourceArgs:
     @property
     @pulumi.getter(name="resourceType")
     def resource_type(self) -> pulumi.Input[str]:
-        """
-        The type of the Source resource.
-        """
         return pulumi.get(self, "resource_type")
 
     @resource_type.setter
@@ -252,10 +192,6 @@ class TemplateScratchSourceResourceGroupArgs:
     def __init__(__self__, *,
                  resource_group_id: pulumi.Input[str],
                  resource_type_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[str] resource_group_id: The ID of the Source Resource Group.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_type_filters: Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-        """
         pulumi.set(__self__, "resource_group_id", resource_group_id)
         if resource_type_filters is not None:
             pulumi.set(__self__, "resource_type_filters", resource_type_filters)
@@ -263,9 +199,6 @@ class TemplateScratchSourceResourceGroupArgs:
     @property
     @pulumi.getter(name="resourceGroupId")
     def resource_group_id(self) -> pulumi.Input[str]:
-        """
-        The ID of the Source Resource Group.
-        """
         return pulumi.get(self, "resource_group_id")
 
     @resource_group_id.setter
@@ -275,9 +208,6 @@ class TemplateScratchSourceResourceGroupArgs:
     @property
     @pulumi.getter(name="resourceTypeFilters")
     def resource_type_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-        """
         return pulumi.get(self, "resource_type_filters")
 
     @resource_type_filters.setter
@@ -290,10 +220,6 @@ class TemplateScratchSourceTagArgs:
     def __init__(__self__, *,
                  resource_tags: pulumi.Input[Mapping[str, Any]],
                  resource_type_filters: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
-        """
-        :param pulumi.Input[Mapping[str, Any]] resource_tags: Source label. **NOTE:** A maximum of 10 source labels can be configured.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_type_filters: Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-        """
         pulumi.set(__self__, "resource_tags", resource_tags)
         if resource_type_filters is not None:
             pulumi.set(__self__, "resource_type_filters", resource_type_filters)
@@ -301,9 +227,6 @@ class TemplateScratchSourceTagArgs:
     @property
     @pulumi.getter(name="resourceTags")
     def resource_tags(self) -> pulumi.Input[Mapping[str, Any]]:
-        """
-        Source label. **NOTE:** A maximum of 10 source labels can be configured.
-        """
         return pulumi.get(self, "resource_tags")
 
     @resource_tags.setter
@@ -313,9 +236,6 @@ class TemplateScratchSourceTagArgs:
     @property
     @pulumi.getter(name="resourceTypeFilters")
     def resource_type_filters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-        """
         return pulumi.get(self, "resource_type_filters")
 
     @resource_type_filters.setter

@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -113,7 +112,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDesktops(ctx *pulumi.Context, args *GetDesktopsArgs, opts ...pulumi.InvokeOption) (*GetDesktopsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDesktopsResult

@@ -11,29 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerGroupVolumeConfigFileVolumeConfigFileToPath {
-    /**
-     * @return The content of the configuration file. Maximum size: 32 KB.
-     * 
-     */
     private @Nullable String content;
-    /**
-     * @return The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
-     * 
-     */
     private @Nullable String path;
 
     private ContainerGroupVolumeConfigFileVolumeConfigFileToPath() {}
-    /**
-     * @return The content of the configuration file. Maximum size: 32 KB.
-     * 
-     */
     public Optional<String> content() {
         return Optional.ofNullable(this.content);
     }
-    /**
-     * @return The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
-     * 
-     */
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }

@@ -103,7 +103,6 @@ def get_vpc_endpoint_service_users(output_file: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -111,7 +110,6 @@ def get_vpc_endpoint_service_users(output_file: Optional[str] = None,
     example = alicloud.privatelink.get_vpc_endpoint_service_users(service_id="epsrv-gw81c6vxxxxxx")
     pulumi.export("firstPrivatelinkVpcEndpointServiceUserId", example.users[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -148,7 +146,6 @@ def get_vpc_endpoint_service_users_output(output_file: Optional[pulumi.Input[Opt
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -156,7 +153,6 @@ def get_vpc_endpoint_service_users_output(output_file: Optional[pulumi.Input[Opt
     example = alicloud.privatelink.get_vpc_endpoint_service_users(service_id="epsrv-gw81c6vxxxxxx")
     pulumi.export("firstPrivatelinkVpcEndpointServiceUserId", example.users[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

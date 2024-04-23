@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetRdsBackups(ctx *pulumi.Context, args *GetRdsBackupsArgs, opts ...pulumi.InvokeOption) (*GetRdsBackupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRdsBackupsResult
@@ -57,16 +55,9 @@ func GetRdsBackups(ctx *pulumi.Context, args *GetRdsBackupsArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getRdsBackups.
 type GetRdsBackupsArgs struct {
-	// BackupMode.
+	// BackupMode. Valid values: `Automated` and `Manual`.
 	BackupMode *string `pulumi:"backupMode"`
-	// Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
-	// * **NoStart**: Not started
-	// * **Checking**: check the backup
-	// * **Preparing**: Prepare a backup
-	// * **Waiting**: Waiting for backup
-	// * **Uploading**: Upload backup
-	// * **Finished**: Complete backup
-	// * **Failed**: backup Failed
+	// Backup task status. Valid values: `Automated` and `Manual`.
 	BackupStatus *string `pulumi:"backupStatus"`
 	// The db instance id.
 	DbInstanceId string `pulumi:"dbInstanceId"`
@@ -109,16 +100,9 @@ func GetRdsBackupsOutput(ctx *pulumi.Context, args GetRdsBackupsOutputArgs, opts
 
 // A collection of arguments for invoking getRdsBackups.
 type GetRdsBackupsOutputArgs struct {
-	// BackupMode.
+	// BackupMode. Valid values: `Automated` and `Manual`.
 	BackupMode pulumi.StringPtrInput `pulumi:"backupMode"`
-	// Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
-	// * **NoStart**: Not started
-	// * **Checking**: check the backup
-	// * **Preparing**: Prepare a backup
-	// * **Waiting**: Waiting for backup
-	// * **Uploading**: Upload backup
-	// * **Finished**: Complete backup
-	// * **Failed**: backup Failed
+	// Backup task status. Valid values: `Automated` and `Manual`.
 	BackupStatus pulumi.StringPtrInput `pulumi:"backupStatus"`
 	// The db instance id.
 	DbInstanceId pulumi.StringInput `pulumi:"dbInstanceId"`

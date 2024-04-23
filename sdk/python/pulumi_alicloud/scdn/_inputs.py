@@ -23,16 +23,6 @@ class DomainCertInfoArgs:
                  ssl_pri: Optional[pulumi.Input[str]] = None,
                  ssl_protocol: Optional[pulumi.Input[str]] = None,
                  ssl_pub: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] cert_name: If You Enable HTTPS Here Certificate Name.
-        :param pulumi.Input[str] cert_type: Certificate Type. Value Range: 
-               * upload: Certificate
-               * cas: Certificate Authority Certificate.
-               * free: Free Certificate.
-        :param pulumi.Input[str] ssl_pri: Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
-        :param pulumi.Input[str] ssl_protocol: Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
-        :param pulumi.Input[str] ssl_pub: If You Enable HTTPS Here Key.
-        """
         if cert_name is not None:
             pulumi.set(__self__, "cert_name", cert_name)
         if cert_type is not None:
@@ -47,9 +37,6 @@ class DomainCertInfoArgs:
     @property
     @pulumi.getter(name="certName")
     def cert_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        If You Enable HTTPS Here Certificate Name.
-        """
         return pulumi.get(self, "cert_name")
 
     @cert_name.setter
@@ -59,12 +46,6 @@ class DomainCertInfoArgs:
     @property
     @pulumi.getter(name="certType")
     def cert_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        Certificate Type. Value Range: 
-        * upload: Certificate
-        * cas: Certificate Authority Certificate.
-        * free: Free Certificate.
-        """
         return pulumi.get(self, "cert_type")
 
     @cert_type.setter
@@ -74,9 +55,6 @@ class DomainCertInfoArgs:
     @property
     @pulumi.getter(name="sslPri")
     def ssl_pri(self) -> Optional[pulumi.Input[str]]:
-        """
-        Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
-        """
         return pulumi.get(self, "ssl_pri")
 
     @ssl_pri.setter
@@ -86,9 +64,6 @@ class DomainCertInfoArgs:
     @property
     @pulumi.getter(name="sslProtocol")
     def ssl_protocol(self) -> Optional[pulumi.Input[str]]:
-        """
-        Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
-        """
         return pulumi.get(self, "ssl_protocol")
 
     @ssl_protocol.setter
@@ -98,9 +73,6 @@ class DomainCertInfoArgs:
     @property
     @pulumi.getter(name="sslPub")
     def ssl_pub(self) -> Optional[pulumi.Input[str]]:
-        """
-        If You Enable HTTPS Here Key.
-        """
         return pulumi.get(self, "ssl_pub")
 
     @ssl_pub.setter
@@ -153,16 +125,6 @@ class DomainSourceArgs:
                  priority: pulumi.Input[str],
                  type: pulumi.Input[str],
                  enabled: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] content: The Back-to-Source Address.
-        :param pulumi.Input[int] port: Port.
-        :param pulumi.Input[str] priority: Priority.
-        :param pulumi.Input[str] type: The Origin Server Type. Valid Values: 
-               * ipaddr: IP Source Station
-               * domain: the Domain Name
-               * oss: OSS Bucket as a Source Station.
-        :param pulumi.Input[str] enabled: The source status. Valid values: online, offline.
-        """
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "priority", priority)
@@ -173,9 +135,6 @@ class DomainSourceArgs:
     @property
     @pulumi.getter
     def content(self) -> pulumi.Input[str]:
-        """
-        The Back-to-Source Address.
-        """
         return pulumi.get(self, "content")
 
     @content.setter
@@ -185,9 +144,6 @@ class DomainSourceArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
-        """
-        Port.
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -197,9 +153,6 @@ class DomainSourceArgs:
     @property
     @pulumi.getter
     def priority(self) -> pulumi.Input[str]:
-        """
-        Priority.
-        """
         return pulumi.get(self, "priority")
 
     @priority.setter
@@ -209,12 +162,6 @@ class DomainSourceArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
-        """
-        The Origin Server Type. Valid Values: 
-        * ipaddr: IP Source Station
-        * domain: the Domain Name
-        * oss: OSS Bucket as a Source Station.
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -224,9 +171,6 @@ class DomainSourceArgs:
     @property
     @pulumi.getter
     def enabled(self) -> Optional[pulumi.Input[str]]:
-        """
-        The source status. Valid values: online, offline.
-        """
         return pulumi.get(self, "enabled")
 
     @enabled.setter

@@ -22,7 +22,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,7 +55,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -86,8 +84,6 @@ type Instance struct {
 	Encryption pulumi.BoolPtrOutput `pulumi:"encryption"`
 	// Database file system name.
 	FsName pulumi.StringOutput `pulumi:"fsName"`
-	// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
-	//
 	// Deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
 	InstanceName pulumi.StringOutput `pulumi:"instanceName"`
 	// Instance type. Value range:
@@ -179,8 +175,6 @@ type instanceState struct {
 	Encryption *bool `pulumi:"encryption"`
 	// Database file system name.
 	FsName *string `pulumi:"fsName"`
-	// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
-	//
 	// Deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
 	InstanceName *string `pulumi:"instanceName"`
 	// Instance type. Value range:
@@ -234,8 +228,6 @@ type InstanceState struct {
 	Encryption pulumi.BoolPtrInput
 	// Database file system name.
 	FsName pulumi.StringPtrInput
-	// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
-	//
 	// Deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
 	InstanceName pulumi.StringPtrInput
 	// Instance type. Value range:
@@ -291,8 +283,6 @@ type instanceArgs struct {
 	Encryption *bool `pulumi:"encryption"`
 	// Database file system name.
 	FsName *string `pulumi:"fsName"`
-	// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
-	//
 	// Deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
 	InstanceName *string `pulumi:"instanceName"`
 	// Instance type. Value range:
@@ -343,8 +333,6 @@ type InstanceArgs struct {
 	Encryption pulumi.BoolPtrInput
 	// Database file system name.
 	FsName pulumi.StringPtrInput
-	// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
-	//
 	// Deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
 	InstanceName pulumi.StringPtrInput
 	// Instance type. Value range:
@@ -506,8 +494,6 @@ func (o InstanceOutput) FsName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.FsName }).(pulumi.StringOutput)
 }
 
-// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
-//
 // Deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
 func (o InstanceOutput) InstanceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceName }).(pulumi.StringOutput)

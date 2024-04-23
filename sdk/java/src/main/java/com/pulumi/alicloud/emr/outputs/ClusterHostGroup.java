@@ -13,88 +13,32 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterHostGroup {
-    /**
-     * @return Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
-     * 
-     */
     private @Nullable Boolean autoRenew;
     /**
      * @return Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
      * 
      */
     private @Nullable String chargeType;
-    /**
-     * @return Graceful decommission timeout, unit: seconds.
-     * 
-     */
     private @Nullable Integer decommissionTimeout;
-    /**
-     * @return Data disk capacity.
-     * 
-     */
     private @Nullable String diskCapacity;
-    /**
-     * @return Data disk count.
-     * 
-     */
     private @Nullable String diskCount;
-    /**
-     * @return Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
-     * 
-     */
     private @Nullable String diskType;
-    /**
-     * @return Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
-     * 
-     */
     private @Nullable Boolean enableGracefulDecommission;
     private @Nullable String gpuDriver;
-    /**
-     * @return host group name.
-     * 
-     */
     private @Nullable String hostGroupName;
-    /**
-     * @return host group type, supported value: MASTER, CORE or TASK, supported &#39;GATEWAY&#39; available in 1.61.0+.
-     * 
-     */
     private @Nullable String hostGroupType;
-    /**
-     * @return Instance list for cluster scale down. This value follows the json format, e.g. [&#34;instance_id1&#34;,&#34;instance_id2&#34;]. escape character for &#34; is \&#34;.
-     * 
-     */
     private @Nullable String instanceList;
-    /**
-     * @return Host Ecs instance type.
-     * 
-     */
     private @Nullable String instanceType;
-    /**
-     * @return Host number in this group.
-     * 
-     */
     private @Nullable String nodeCount;
     /**
      * @return If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
      * 
      */
     private @Nullable Integer period;
-    /**
-     * @return System disk capacity.
-     * 
-     */
     private @Nullable String sysDiskCapacity;
-    /**
-     * @return System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
-     * 
-     */
     private @Nullable String sysDiskType;
 
     private ClusterHostGroup() {}
-    /**
-     * @return Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
-     * 
-     */
     public Optional<Boolean> autoRenew() {
         return Optional.ofNullable(this.autoRenew);
     }
@@ -105,76 +49,36 @@ public final class ClusterHostGroup {
     public Optional<String> chargeType() {
         return Optional.ofNullable(this.chargeType);
     }
-    /**
-     * @return Graceful decommission timeout, unit: seconds.
-     * 
-     */
     public Optional<Integer> decommissionTimeout() {
         return Optional.ofNullable(this.decommissionTimeout);
     }
-    /**
-     * @return Data disk capacity.
-     * 
-     */
     public Optional<String> diskCapacity() {
         return Optional.ofNullable(this.diskCapacity);
     }
-    /**
-     * @return Data disk count.
-     * 
-     */
     public Optional<String> diskCount() {
         return Optional.ofNullable(this.diskCount);
     }
-    /**
-     * @return Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
-     * 
-     */
     public Optional<String> diskType() {
         return Optional.ofNullable(this.diskType);
     }
-    /**
-     * @return Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
-     * 
-     */
     public Optional<Boolean> enableGracefulDecommission() {
         return Optional.ofNullable(this.enableGracefulDecommission);
     }
     public Optional<String> gpuDriver() {
         return Optional.ofNullable(this.gpuDriver);
     }
-    /**
-     * @return host group name.
-     * 
-     */
     public Optional<String> hostGroupName() {
         return Optional.ofNullable(this.hostGroupName);
     }
-    /**
-     * @return host group type, supported value: MASTER, CORE or TASK, supported &#39;GATEWAY&#39; available in 1.61.0+.
-     * 
-     */
     public Optional<String> hostGroupType() {
         return Optional.ofNullable(this.hostGroupType);
     }
-    /**
-     * @return Instance list for cluster scale down. This value follows the json format, e.g. [&#34;instance_id1&#34;,&#34;instance_id2&#34;]. escape character for &#34; is \&#34;.
-     * 
-     */
     public Optional<String> instanceList() {
         return Optional.ofNullable(this.instanceList);
     }
-    /**
-     * @return Host Ecs instance type.
-     * 
-     */
     public Optional<String> instanceType() {
         return Optional.ofNullable(this.instanceType);
     }
-    /**
-     * @return Host number in this group.
-     * 
-     */
     public Optional<String> nodeCount() {
         return Optional.ofNullable(this.nodeCount);
     }
@@ -185,17 +89,9 @@ public final class ClusterHostGroup {
     public Optional<Integer> period() {
         return Optional.ofNullable(this.period);
     }
-    /**
-     * @return System disk capacity.
-     * 
-     */
     public Optional<String> sysDiskCapacity() {
         return Optional.ofNullable(this.sysDiskCapacity);
     }
-    /**
-     * @return System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
-     * 
-     */
     public Optional<String> sysDiskType() {
         return Optional.ofNullable(this.sysDiskType);
     }

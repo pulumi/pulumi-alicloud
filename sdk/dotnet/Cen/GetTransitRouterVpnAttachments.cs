@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTransitRouterVpnAttachmentsResult> InvokeAsync(GetTransitRouterVpnAttachmentsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterVpnAttachmentsResult>("alicloud:cen/getTransitRouterVpnAttachments:getTransitRouterVpnAttachments", args ?? new GetTransitRouterVpnAttachmentsArgs(), options.WithDefaults());
@@ -54,7 +52,6 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTransitRouterVpnAttachmentsResult> Invoke(GetTransitRouterVpnAttachmentsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterVpnAttachmentsResult>("alicloud:cen/getTransitRouterVpnAttachments:getTransitRouterVpnAttachments", args ?? new GetTransitRouterVpnAttachmentsInvokeArgs(), options.WithDefaults());
@@ -111,7 +107,7 @@ namespace Pulumi.AliCloud.Cen
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the transit router attachment.
+        /// The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -158,7 +154,7 @@ namespace Pulumi.AliCloud.Cen
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the transit router attachment.
+        /// The Status of Transit Router Vpn Attachment. Valid Value: `Attached`, `Attaching`, `Detaching`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -12,77 +12,29 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServiceMeshMeshConfigOpa {
-    /**
-     * @return Enable CNI.
-     * 
-     */
     private @Nullable Boolean enabled;
-    /**
-     * @return Sidecar injector Pods on the throttle.
-     * 
-     */
     private @Nullable String limitCpu;
-    /**
-     * @return Sidecar injector Pods on the throttle.
-     * 
-     */
     private @Nullable String limitMemory;
-    /**
-     * @return OPA proxy container log level.
-     * 
-     */
     private @Nullable String logLevel;
-    /**
-     * @return Sidecar injector Pods on the requested resource.
-     * 
-     */
     private @Nullable String requestCpu;
-    /**
-     * @return Sidecar injector Pods on the requested resource.
-     * 
-     */
     private @Nullable String requestMemory;
 
     private ServiceMeshMeshConfigOpa() {}
-    /**
-     * @return Enable CNI.
-     * 
-     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
-    /**
-     * @return Sidecar injector Pods on the throttle.
-     * 
-     */
     public Optional<String> limitCpu() {
         return Optional.ofNullable(this.limitCpu);
     }
-    /**
-     * @return Sidecar injector Pods on the throttle.
-     * 
-     */
     public Optional<String> limitMemory() {
         return Optional.ofNullable(this.limitMemory);
     }
-    /**
-     * @return OPA proxy container log level.
-     * 
-     */
     public Optional<String> logLevel() {
         return Optional.ofNullable(this.logLevel);
     }
-    /**
-     * @return Sidecar injector Pods on the requested resource.
-     * 
-     */
     public Optional<String> requestCpu() {
         return Optional.ofNullable(this.requestCpu);
     }
-    /**
-     * @return Sidecar injector Pods on the requested resource.
-     * 
-     */
     public Optional<String> requestMemory() {
         return Optional.ofNullable(this.requestMemory);
     }

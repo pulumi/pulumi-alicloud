@@ -450,7 +450,6 @@ class AdConnectorDirectory(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -486,7 +485,6 @@ class AdConnectorDirectory(pulumi.CustomResource):
             sub_domain_name="child.example.com",
             vswitch_ids=[default_switch.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -528,7 +526,6 @@ class AdConnectorDirectory(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -564,7 +561,6 @@ class AdConnectorDirectory(pulumi.CustomResource):
             sub_domain_name="child.example.com",
             vswitch_ids=[default_switch.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

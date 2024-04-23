@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  *     };
  * }
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAlarmContacts(args?: GetAlarmContactsArgs, opts?: pulumi.InvokeOptions): Promise<GetAlarmContactsResult> {
     args = args || {};
@@ -106,7 +104,6 @@ export interface GetAlarmContactsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -120,7 +117,6 @@ export interface GetAlarmContactsResult {
  *     };
  * }
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAlarmContactsOutput(args?: GetAlarmContactsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAlarmContactsResult> {
     return pulumi.output(args).apply((a: any) => getAlarmContacts(a, opts))

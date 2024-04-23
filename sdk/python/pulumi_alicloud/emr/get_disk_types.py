@@ -138,7 +138,6 @@ def get_disk_types(cluster_type: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -150,7 +149,6 @@ def get_disk_types(cluster_type: Optional[str] = None,
         zone_id="cn-huhehaote-a")
     pulumi.export("dataDiskType", default.types[0].value)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_type: The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.
@@ -198,7 +196,6 @@ def get_disk_types_output(cluster_type: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -210,7 +207,6 @@ def get_disk_types_output(cluster_type: Optional[pulumi.Input[str]] = None,
         zone_id="cn-huhehaote-a")
     pulumi.export("dataDiskType", default.types[0].value)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_type: The cluster type of the emr cluster instance. Possible values: `HADOOP`, `KAFKA`, `ZOOKEEPER`, `DRUID`.

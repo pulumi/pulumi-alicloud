@@ -204,7 +204,6 @@ class DomainExtension(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -300,7 +299,6 @@ class DomainExtension(pulumi.CustomResource):
             domain="www.test.com",
             server_certificate_id=domain_extension_server_certificate.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -334,7 +332,6 @@ class DomainExtension(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -430,7 +427,6 @@ class DomainExtension(pulumi.CustomResource):
             domain="www.test.com",
             server_certificate_id=domain_extension_server_certificate.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

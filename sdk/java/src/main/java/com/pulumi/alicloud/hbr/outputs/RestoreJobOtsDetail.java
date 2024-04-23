@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RestoreJobOtsDetail {
-    /**
-     * @return Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
-     * 
-     */
     private @Nullable Boolean overwriteExisting;
 
     private RestoreJobOtsDetail() {}
-    /**
-     * @return Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
-     * 
-     */
     public Optional<Boolean> overwriteExisting() {
         return Optional.ofNullable(this.overwriteExisting);
     }

@@ -13,9 +13,6 @@ namespace Pulumi.AliCloud.Alb.Outputs
     [OutputType]
     public sealed class RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple
     {
-        /// <summary>
-        /// The ID of the destination server group to which requests are forwarded.
-        /// </summary>
         public readonly string? ServerGroupId;
 
         [OutputConstructor]

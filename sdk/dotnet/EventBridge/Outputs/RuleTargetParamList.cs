@@ -13,35 +13,9 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
     [OutputType]
     public sealed class RuleTargetParamList
     {
-        /// <summary>
-        /// The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
-        /// </summary>
         public readonly string Form;
-        /// <summary>
-        /// The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
-        /// </summary>
         public readonly string ResourceKey;
-        /// <summary>
-        /// The template of the event target parameter.
-        /// </summary>
         public readonly string? Template;
-        /// <summary>
-        /// The value of the event target parameter.
-        /// 
-        /// &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
-        /// 
-        /// ```
-        /// param_list {
-        /// resource_key = "IsBase64Encode"
-        /// form         = "CONSTANT"
-        /// value        = "false"
-        /// template     = ""
-        /// }
-        /// ```
-        /// 
-        /// In order to fix the diff, from version 1.160.0, this resource has removed the param which `resource_key = "IsBase64Encode"` and `value = "false"`.
-        /// If you want to set `resource_key = "IsBase64Encode"`, please avoid to set `value = "false"`.
-        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

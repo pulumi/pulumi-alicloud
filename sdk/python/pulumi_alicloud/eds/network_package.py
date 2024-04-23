@@ -140,7 +140,6 @@ class NetworkPackage(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -151,7 +150,6 @@ class NetworkPackage(pulumi.CustomResource):
             bandwidth=10,
             office_site_id=default.ids[0])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -183,7 +181,6 @@ class NetworkPackage(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -194,7 +191,6 @@ class NetworkPackage(pulumi.CustomResource):
             bandwidth=10,
             office_site_id=default.ids[0])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

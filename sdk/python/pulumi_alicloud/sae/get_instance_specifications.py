@@ -84,7 +84,6 @@ def get_instance_specifications(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -92,7 +91,6 @@ def get_instance_specifications(ids: Optional[Sequence[str]] = None,
     ids = alicloud.sae.get_instance_specifications()
     pulumi.export("saeInstanceSpecificationId1", ids.specifications[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Instance Specification IDs.
@@ -124,7 +122,6 @@ def get_instance_specifications_output(ids: Optional[pulumi.Input[Optional[Seque
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -132,7 +129,6 @@ def get_instance_specifications_output(ids: Optional[pulumi.Input[Optional[Seque
     ids = alicloud.sae.get_instance_specifications()
     pulumi.export("saeInstanceSpecificationId1", ids.specifications[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Instance Specification IDs.

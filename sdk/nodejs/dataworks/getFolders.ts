@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -31,7 +30,6 @@ import * as utilities from "../utilities";
  * }));
  * export const dataWorksFolderId1 = ids.apply(ids => ids.folders?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFolders(args: GetFoldersArgs, opts?: pulumi.InvokeOptions): Promise<GetFoldersResult> {
 
@@ -89,7 +87,6 @@ export interface GetFoldersResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -105,7 +102,6 @@ export interface GetFoldersResult {
  * }));
  * export const dataWorksFolderId1 = ids.apply(ids => ids.folders?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getFoldersOutput(args: GetFoldersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFoldersResult> {
     return pulumi.output(args).apply((a: any) => getFolders(a, opts))

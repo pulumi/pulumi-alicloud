@@ -700,7 +700,6 @@ class GtmInstance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -732,7 +731,6 @@ class GtmInstance(pulumi.CustomResource):
                 dingtalk_notice=True,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -782,7 +780,6 @@ class GtmInstance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -814,7 +811,6 @@ class GtmInstance(pulumi.CustomResource):
                 dingtalk_notice=True,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

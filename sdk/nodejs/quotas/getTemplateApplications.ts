@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -53,7 +52,6 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudQuotasTemplateApplicationsExampleId = defaultGetTemplateApplications.apply(defaultGetTemplateApplications => defaultGetTemplateApplications.applications?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTemplateApplications(args?: GetTemplateApplicationsArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplateApplicationsResult> {
     args = args || {};
@@ -140,7 +138,6 @@ export interface GetTemplateApplicationsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -180,7 +177,6 @@ export interface GetTemplateApplicationsResult {
  * });
  * export const alicloudQuotasTemplateApplicationsExampleId = defaultGetTemplateApplications.apply(defaultGetTemplateApplications => defaultGetTemplateApplications.applications?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTemplateApplicationsOutput(args?: GetTemplateApplicationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplateApplicationsResult> {
     return pulumi.output(args).apply((a: any) => getTemplateApplications(a, opts))

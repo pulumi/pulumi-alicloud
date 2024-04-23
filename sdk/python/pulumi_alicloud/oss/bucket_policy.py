@@ -108,7 +108,6 @@ class BucketPolicy(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -140,7 +139,6 @@ class BucketPolicy(pulumi.CustomResource):
             }),
             bucket=create_bucket.bucket)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -172,7 +170,6 @@ class BucketPolicy(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import json
@@ -204,7 +201,6 @@ class BucketPolicy(pulumi.CustomResource):
             }),
             bucket=create_bucket.bucket)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

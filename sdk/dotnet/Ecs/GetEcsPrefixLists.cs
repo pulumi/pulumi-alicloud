@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetEcsPrefixListsResult> InvokeAsync(GetEcsPrefixListsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsPrefixListsResult>("alicloud:ecs/getEcsPrefixLists:getEcsPrefixLists", args ?? new GetEcsPrefixListsArgs(), options.WithDefaults());
@@ -58,7 +56,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -82,7 +79,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetEcsPrefixListsResult> Invoke(GetEcsPrefixListsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEcsPrefixListsResult>("alicloud:ecs/getEcsPrefixLists:getEcsPrefixLists", args ?? new GetEcsPrefixListsInvokeArgs(), options.WithDefaults());
@@ -92,7 +88,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetEcsPrefixListsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+        /// The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
         /// </summary>
         [Input("addressFamily")]
         public string? AddressFamily { get; set; }
@@ -133,7 +129,7 @@ namespace Pulumi.AliCloud.Ecs
     public sealed class GetEcsPrefixListsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+        /// The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
         /// </summary>
         [Input("addressFamily")]
         public Input<string>? AddressFamily { get; set; }

@@ -212,11 +212,6 @@ class ProjectPropertiesEncryption(dict):
                  algorithm: Optional[str] = None,
                  enable: Optional[bool] = None,
                  key: Optional[str] = None):
-        """
-        :param str algorithm: Algorithm.
-        :param bool enable: Whether to open.
-        :param str key: Encryption algorithm key.
-        """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
         if enable is not None:
@@ -227,25 +222,16 @@ class ProjectPropertiesEncryption(dict):
     @property
     @pulumi.getter
     def algorithm(self) -> Optional[str]:
-        """
-        Algorithm.
-        """
         return pulumi.get(self, "algorithm")
 
     @property
     @pulumi.getter
     def enable(self) -> Optional[bool]:
-        """
-        Whether to open.
-        """
         return pulumi.get(self, "enable")
 
     @property
     @pulumi.getter
     def key(self) -> Optional[str]:
-        """
-        Encryption algorithm key.
-        """
         return pulumi.get(self, "key")
 
 
@@ -255,8 +241,7 @@ class ProjectPropertiesTableLifecycle(dict):
                  type: Optional[str] = None,
                  value: Optional[str] = None):
         """
-        :param str type: Life cycle type.
-        :param str value: The value of the life cycle.
+        :param str type: Project type
         """
         if type is not None:
             pulumi.set(__self__, "type", type)
@@ -267,16 +252,13 @@ class ProjectPropertiesTableLifecycle(dict):
     @pulumi.getter
     def type(self) -> Optional[str]:
         """
-        Life cycle type.
+        Project type
         """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
-        """
-        The value of the life cycle.
-        """
         return pulumi.get(self, "value")
 
 

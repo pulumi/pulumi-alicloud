@@ -237,7 +237,6 @@ class CustomRoutingEndpoint(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -288,7 +287,6 @@ class CustomRoutingEndpoint(pulumi.CustomResource):
             type="PrivateSubNet",
             traffic_to_endpoint_policy="DenyAll")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -322,7 +320,6 @@ class CustomRoutingEndpoint(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -373,7 +370,6 @@ class CustomRoutingEndpoint(pulumi.CustomResource):
             type="PrivateSubNet",
             traffic_to_endpoint_policy="DenyAll")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

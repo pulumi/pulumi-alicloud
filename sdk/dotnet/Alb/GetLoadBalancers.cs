@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Alb
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.AliCloud.Alb
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetLoadBalancersResult> InvokeAsync(GetLoadBalancersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetLoadBalancersResult>("alicloud:alb/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersArgs(), options.WithDefaults());
@@ -57,7 +55,6 @@ namespace Pulumi.AliCloud.Alb
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Pulumi.AliCloud.Alb
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetLoadBalancersResult> Invoke(GetLoadBalancersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLoadBalancersResult>("alicloud:alb/getLoadBalancers:getLoadBalancers", args ?? new GetLoadBalancersInvokeArgs(), options.WithDefaults());
@@ -90,7 +86,8 @@ namespace Pulumi.AliCloud.Alb
     public sealed class GetLoadBalancersArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of IP address that the ALB instance uses to provide services.
+        /// The type of IP address that the ALB instance uses to provide services. Valid
+        /// values: `Intranet`, `Internet`.
         /// </summary>
         [Input("addressType")]
         public string? AddressType { get; set; }
@@ -114,13 +111,13 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+        /// Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
         /// </summary>
         [Input("loadBalancerBusinessStatus")]
         public string? LoadBalancerBusinessStatus { get; set; }
 
         /// <summary>
-        /// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
+        /// Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0. Use 'load_balancer_business_status' replaces it.
         /// </summary>
         [Input("loadBalancerBussinessStatus")]
         public string? LoadBalancerBussinessStatus { get; set; }
@@ -162,17 +159,13 @@ namespace Pulumi.AliCloud.Alb
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+        /// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         [Input("tags")]
         private Dictionary<string, object>? _tags;
-
-        /// <summary>
-        /// The tag of the resource.
-        /// </summary>
         public Dictionary<string, object> Tags
         {
             get => _tags ?? (_tags = new Dictionary<string, object>());
@@ -198,7 +191,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The ID of the zone to which the ALB instance belongs.
+        /// The zone ID of the resource.
         /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }
@@ -212,7 +205,8 @@ namespace Pulumi.AliCloud.Alb
     public sealed class GetLoadBalancersInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The type of IP address that the ALB instance uses to provide services.
+        /// The type of IP address that the ALB instance uses to provide services. Valid
+        /// values: `Intranet`, `Internet`.
         /// </summary>
         [Input("addressType")]
         public Input<string>? AddressType { get; set; }
@@ -236,13 +230,13 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+        /// Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
         /// </summary>
         [Input("loadBalancerBusinessStatus")]
         public Input<string>? LoadBalancerBusinessStatus { get; set; }
 
         /// <summary>
-        /// Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
+        /// Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0. Use 'load_balancer_business_status' replaces it.
         /// </summary>
         [Input("loadBalancerBussinessStatus")]
         public Input<string>? LoadBalancerBussinessStatus { get; set; }
@@ -284,17 +278,13 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+        /// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
-
-        /// <summary>
-        /// The tag of the resource.
-        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
@@ -320,7 +310,7 @@ namespace Pulumi.AliCloud.Alb
         }
 
         /// <summary>
-        /// The ID of the zone to which the ALB instance belongs.
+        /// The zone ID of the resource.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

@@ -16,7 +16,6 @@ import (
 //
 // # Using `vpcIds` to attach being in same region several vpc instances to a private zone
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -65,11 +64,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // # Using `vpcs` to attach being in same region several vpc instances to a private zone
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -122,11 +119,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // # Using `vpcs` to attach being in different regions several vpc instances to a private zone
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -190,7 +185,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //

@@ -117,7 +117,6 @@ def get_grant_rule_to_cens(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -126,7 +125,6 @@ def get_grant_rule_to_cens(ids: Optional[Sequence[str]] = None,
         instance_id="your_vbr_instance_id")
     pulumi.export("expressConnectGrantRuleToCenId0", ids.cens[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Grant Rule To Cen IDs.
@@ -168,7 +166,6 @@ def get_grant_rule_to_cens_output(ids: Optional[pulumi.Input[Optional[Sequence[s
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -177,7 +174,6 @@ def get_grant_rule_to_cens_output(ids: Optional[pulumi.Input[Optional[Sequence[s
         instance_id="your_vbr_instance_id")
     pulumi.export("expressConnectGrantRuleToCenId0", ids.cens[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Grant Rule To Cen IDs.

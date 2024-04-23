@@ -256,7 +256,6 @@ class Ipv6Address(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -284,7 +283,6 @@ class Ipv6Address(pulumi.CustomResource):
             ipv6_address_description="create_description",
             ipv6_address_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -319,7 +317,6 @@ class Ipv6Address(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -347,7 +344,6 @@ class Ipv6Address(pulumi.CustomResource):
             ipv6_address_description="create_description",
             ipv6_address_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

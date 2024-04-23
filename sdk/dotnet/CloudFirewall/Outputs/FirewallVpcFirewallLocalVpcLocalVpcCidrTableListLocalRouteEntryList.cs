@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.CloudFirewall.Outputs
     [OutputType]
     public sealed class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList
     {
-        /// <summary>
-        /// The target network segment of the local VPC.
-        /// </summary>
         public readonly string LocalDestinationCidr;
-        /// <summary>
-        /// The ID of the next-hop instance in the local VPC.
-        /// </summary>
         public readonly string LocalNextHopInstanceId;
 
         [OutputConstructor]

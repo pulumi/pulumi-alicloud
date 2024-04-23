@@ -52,7 +52,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Availability zone of the disk.
+     * Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
      * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
@@ -63,7 +63,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<String> availabilityZone;
 
     /**
-     * @return Availability zone of the disk.
+     * @return Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
      * 
      * @deprecated
      * Field &#39;availability_zone&#39; has been deprecated from provider version 1.122.0. New field &#39;zone_id&#39; instead
@@ -75,14 +75,14 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Disk category.
+     * Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
      * 
      */
     @Import(name="category")
     private @Nullable Output<String> category;
 
     /**
-     * @return Disk category.
+     * @return Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
      * 
      */
     public Optional<Output<String>> category() {
@@ -165,14 +165,14 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Whether the disk implements an automatic snapshot policy.
+     * Indicates whether the automatic snapshot is deleted when the disk is released.
      * 
      */
     @Import(name="enableAutoSnapshot")
     private @Nullable Output<Boolean> enableAutoSnapshot;
 
     /**
-     * @return Whether the disk implements an automatic snapshot policy.
+     * @return Indicates whether the automatic snapshot is deleted when the disk is released.
      * 
      */
     public Optional<Output<Boolean>> enableAutoSnapshot() {
@@ -180,14 +180,14 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Whether the disk implements an automatic snapshot policy.
+     * Whether the cloud disk has an automatic snapshot policy
      * 
      */
     @Import(name="enableAutomatedSnapshotPolicy")
     private @Nullable Output<Boolean> enableAutomatedSnapshotPolicy;
 
     /**
-     * @return Whether the disk implements an automatic snapshot policy.
+     * @return Whether the cloud disk has an automatic snapshot policy
      * 
      */
     public Optional<Output<Boolean>> enableAutomatedSnapshotPolicy() {
@@ -210,14 +210,14 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Indicate whether the disk is encrypted or not.
+     * Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
      * 
      */
     @Import(name="encrypted")
     private @Nullable Output<String> encrypted;
 
     /**
-     * @return Indicate whether the disk is encrypted or not.
+     * @return Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
      * 
      */
     public Optional<Output<String>> encrypted() {
@@ -240,14 +240,14 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The instance ID of the disk mount.
+     * Filter the results by the specified ECS instance ID.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return The instance ID of the disk mount.
+     * @return Filter the results by the specified ECS instance ID.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -321,14 +321,14 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Payment method for disk.
+     * Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
      * 
      */
     @Import(name="paymentType")
     private @Nullable Output<String> paymentType;
 
     /**
-     * @return Payment method for disk.
+     * @return Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
      * 
      */
     public Optional<Output<String>> paymentType() {
@@ -336,14 +336,14 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Whether the disk is unmountable.
+     * Whether the cloud disk or local disk supports uninstallation.
      * 
      */
     @Import(name="portable")
     private @Nullable Output<Boolean> portable;
 
     /**
-     * @return Whether the disk is unmountable.
+     * @return Whether the cloud disk or local disk supports uninstallation.
      * 
      */
     public Optional<Output<Boolean>> portable() {
@@ -351,14 +351,14 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The Id of resource group.
+     * The Id of resource group which the disk belongs.
      * 
      */
     @Import(name="resourceGroupId")
     private @Nullable Output<String> resourceGroupId;
 
     /**
-     * @return The Id of resource group.
+     * @return The Id of resource group which the disk belongs.
      * 
      */
     public Optional<Output<String>> resourceGroupId() {
@@ -366,14 +366,14 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+     * The source snapshot id.
      * 
      */
     @Import(name="snapshotId")
     private @Nullable Output<String> snapshotId;
 
     /**
-     * @return Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+     * @return The source snapshot id.
      * 
      */
     public Optional<Output<String>> snapshotId() {
@@ -381,14 +381,14 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Current status.
+     * The status of disk.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Current status.
+     * @return The status of disk.
      * 
      */
     public Optional<Output<String>> status() {
@@ -396,14 +396,14 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A map of tags assigned to the disk.
+     * A map of tags assigned to the disks.
      * 
      */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
     /**
-     * @return A map of tags assigned to the disk.
+     * @return A map of tags assigned to the disks.
      * 
      */
     public Optional<Output<Map<String,Object>>> tags() {
@@ -411,7 +411,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * Disk type.
+     * Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
      * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated from provider version 1.122.0. New field &#39;disk_type&#39; instead.
@@ -422,7 +422,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     private @Nullable Output<String> type;
 
     /**
-     * @return Disk type.
+     * @return Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
      * 
      * @deprecated
      * Field &#39;type&#39; has been deprecated from provider version 1.122.0. New field &#39;disk_type&#39; instead.
@@ -434,14 +434,14 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The zone id.
+     * ID of the free zone to which the disk belongs.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone id.
+     * @return ID of the free zone to which the disk belongs.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -553,7 +553,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param availabilityZone Availability zone of the disk.
+         * @param availabilityZone Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
          * 
          * @return builder
          * 
@@ -568,7 +568,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param availabilityZone Availability zone of the disk.
+         * @param availabilityZone Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
          * 
          * @return builder
          * 
@@ -582,7 +582,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param category Disk category.
+         * @param category Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
          * 
          * @return builder
          * 
@@ -593,7 +593,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param category Disk category.
+         * @param category Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
          * 
          * @return builder
          * 
@@ -708,7 +708,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableAutoSnapshot Whether the disk implements an automatic snapshot policy.
+         * @param enableAutoSnapshot Indicates whether the automatic snapshot is deleted when the disk is released.
          * 
          * @return builder
          * 
@@ -719,7 +719,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableAutoSnapshot Whether the disk implements an automatic snapshot policy.
+         * @param enableAutoSnapshot Indicates whether the automatic snapshot is deleted when the disk is released.
          * 
          * @return builder
          * 
@@ -729,7 +729,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableAutomatedSnapshotPolicy Whether the disk implements an automatic snapshot policy.
+         * @param enableAutomatedSnapshotPolicy Whether the cloud disk has an automatic snapshot policy
          * 
          * @return builder
          * 
@@ -740,7 +740,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param enableAutomatedSnapshotPolicy Whether the disk implements an automatic snapshot policy.
+         * @param enableAutomatedSnapshotPolicy Whether the cloud disk has an automatic snapshot policy
          * 
          * @return builder
          * 
@@ -771,7 +771,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param encrypted Indicate whether the disk is encrypted or not.
+         * @param encrypted Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
          * 
          * @return builder
          * 
@@ -782,7 +782,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param encrypted Indicate whether the disk is encrypted or not.
+         * @param encrypted Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
          * 
          * @return builder
          * 
@@ -823,7 +823,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param instanceId The instance ID of the disk mount.
+         * @param instanceId Filter the results by the specified ECS instance ID.
          * 
          * @return builder
          * 
@@ -834,7 +834,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param instanceId The instance ID of the disk mount.
+         * @param instanceId Filter the results by the specified ECS instance ID.
          * 
          * @return builder
          * 
@@ -938,7 +938,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param paymentType Payment method for disk.
+         * @param paymentType Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
          * 
          * @return builder
          * 
@@ -949,7 +949,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param paymentType Payment method for disk.
+         * @param paymentType Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
          * 
          * @return builder
          * 
@@ -959,7 +959,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param portable Whether the disk is unmountable.
+         * @param portable Whether the cloud disk or local disk supports uninstallation.
          * 
          * @return builder
          * 
@@ -970,7 +970,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param portable Whether the disk is unmountable.
+         * @param portable Whether the cloud disk or local disk supports uninstallation.
          * 
          * @return builder
          * 
@@ -980,7 +980,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceGroupId The Id of resource group.
+         * @param resourceGroupId The Id of resource group which the disk belongs.
          * 
          * @return builder
          * 
@@ -991,7 +991,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param resourceGroupId The Id of resource group.
+         * @param resourceGroupId The Id of resource group which the disk belongs.
          * 
          * @return builder
          * 
@@ -1001,7 +1001,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param snapshotId Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+         * @param snapshotId The source snapshot id.
          * 
          * @return builder
          * 
@@ -1012,7 +1012,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param snapshotId Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+         * @param snapshotId The source snapshot id.
          * 
          * @return builder
          * 
@@ -1022,7 +1022,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status Current status.
+         * @param status The status of disk.
          * 
          * @return builder
          * 
@@ -1033,7 +1033,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status Current status.
+         * @param status The status of disk.
          * 
          * @return builder
          * 
@@ -1043,7 +1043,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags A map of tags assigned to the disk.
+         * @param tags A map of tags assigned to the disks.
          * 
          * @return builder
          * 
@@ -1054,7 +1054,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param tags A map of tags assigned to the disk.
+         * @param tags A map of tags assigned to the disks.
          * 
          * @return builder
          * 
@@ -1064,7 +1064,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param type Disk type.
+         * @param type Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
          * 
          * @return builder
          * 
@@ -1079,7 +1079,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param type Disk type.
+         * @param type Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
          * 
          * @return builder
          * 
@@ -1093,7 +1093,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId The zone id.
+         * @param zoneId ID of the free zone to which the disk belongs.
          * 
          * @return builder
          * 
@@ -1104,7 +1104,7 @@ public final class GetEcsDisksArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param zoneId The zone id.
+         * @param zoneId ID of the free zone to which the disk belongs.
          * 
          * @return builder
          * 

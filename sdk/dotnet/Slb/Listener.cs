@@ -27,7 +27,6 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// Basic Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -107,7 +106,6 @@ namespace Pulumi.AliCloud.Slb
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -124,161 +122,81 @@ namespace Pulumi.AliCloud.Slb
     [AliCloudResourceType("alicloud:slb/listener:Listener")]
     public partial class Listener : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
-        /// </summary>
         [Output("aclId")]
         public Output<string?> AclId { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
-        /// </summary>
         [Output("aclStatus")]
         public Output<string?> AclStatus { get; private set; } = null!;
 
-        /// <summary>
-        /// The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
-        /// </summary>
         [Output("aclType")]
         public Output<string?> AclType { get; private set; } = null!;
 
-        /// <summary>
-        /// The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
-        /// </summary>
         [Output("backendPort")]
         public Output<int?> BackendPort { get; private set; } = null!;
 
-        /// <summary>
-        /// The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
-        /// - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
-        /// </summary>
         [Output("bandwidth")]
         public Output<int> Bandwidth { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the certification authority (CA) certificate.
-        /// </summary>
         [Output("caCertificateId")]
         public Output<string?> CaCertificateId { get; private set; } = null!;
 
-        /// <summary>
-        /// The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
-        /// </summary>
         [Output("cookie")]
         public Output<string?> Cookie { get; private set; } = null!;
 
-        /// <summary>
-        /// The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
-        /// </summary>
         [Output("cookieTimeout")]
         public Output<int?> CookieTimeout { get; private set; } = null!;
 
-        /// <summary>
-        /// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
-        /// </summary>
         [Output("deleteProtectionValidation")]
         public Output<bool?> DeleteProtectionValidation { get; private set; } = null!;
 
-        /// <summary>
-        /// The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
-        /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
-        /// </summary>
         [Output("enableHttp2")]
         public Output<string?> EnableHttp2 { get; private set; } = null!;
 
-        /// <summary>
-        /// The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
-        /// </summary>
         [Output("establishedTimeout")]
         public Output<int?> EstablishedTimeout { get; private set; } = null!;
 
-        /// <summary>
-        /// The listening port that is used to redirect HTTP requests to HTTPS.
-        /// </summary>
         [Output("forwardPort")]
         public Output<int?> ForwardPort { get; private set; } = null!;
 
-        /// <summary>
-        /// The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
-        /// </summary>
         [Output("frontendPort")]
         public Output<int> FrontendPort { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
-        /// </summary>
         [Output("gzip")]
         public Output<bool?> Gzip { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener's HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
-        /// </summary>
         [Output("healthCheck")]
         public Output<string?> HealthCheck { get; private set; } = null!;
 
-        /// <summary>
-        /// The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Output("healthCheckConnectPort")]
         public Output<int> HealthCheckConnectPort { get; private set; } = null!;
 
-        /// <summary>
-        /// The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Output("healthCheckDomain")]
         public Output<string?> HealthCheckDomain { get; private set; } = null!;
 
-        /// <summary>
-        /// The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Output("healthCheckHttpCode")]
         public Output<string> HealthCheckHttpCode { get; private set; } = null!;
 
-        /// <summary>
-        /// The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Output("healthCheckInterval")]
         public Output<int?> HealthCheckInterval { get; private set; } = null!;
 
-        /// <summary>
-        /// The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Output("healthCheckMethod")]
         public Output<string> HealthCheckMethod { get; private set; } = null!;
 
-        /// <summary>
-        /// The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` &lt; `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Output("healthCheckTimeout")]
         public Output<int?> HealthCheckTimeout { get; private set; } = null!;
 
-        /// <summary>
-        /// The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
-        /// </summary>
         [Output("healthCheckType")]
         public Output<string?> HealthCheckType { get; private set; } = null!;
 
-        /// <summary>
-        /// The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
-        /// **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Output("healthCheckUri")]
         public Output<string?> HealthCheckUri { get; private set; } = null!;
 
-        /// <summary>
-        /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Output("healthyThreshold")]
         public Output<int?> HealthyThreshold { get; private set; } = null!;
 
-        /// <summary>
-        /// The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
-        /// </summary>
         [Output("idleTimeout")]
         public Output<int?> IdleTimeout { get; private set; } = null!;
 
@@ -288,98 +206,53 @@ namespace Pulumi.AliCloud.Slb
         [Output("lbProtocol")]
         public Output<string?> LbProtocol { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
-        /// </summary>
         [Output("listenerForward")]
         public Output<string> ListenerForward { get; private set; } = null!;
 
-        /// <summary>
-        /// The Load Balancer ID which is used to launch a new listener.
-        /// </summary>
         [Output("loadBalancerId")]
         public Output<string> LoadBalancerId { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
-        /// </summary>
         [Output("masterSlaveServerGroupId")]
         public Output<string?> MasterSlaveServerGroupId { get; private set; } = null!;
 
-        /// <summary>
-        /// The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
-        /// </summary>
         [Output("persistenceTimeout")]
         public Output<int?> PersistenceTimeout { get; private set; } = null!;
 
-        /// <summary>
-        /// The protocol to listen on. Valid values: `http`.
-        /// </summary>
         [Output("protocol")]
         public Output<string> Protocol { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
-        /// </summary>
         [Output("proxyProtocolV2Enabled")]
         public Output<bool> ProxyProtocolV2Enabled { get; private set; } = null!;
 
-        /// <summary>
-        /// The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
-        /// </summary>
         [Output("requestTimeout")]
         public Output<int?> RequestTimeout { get; private set; } = null!;
 
-        /// <summary>
-        /// The scheduling algorithm. Default value: `wrr`. Valid values:
-        /// </summary>
         [Output("scheduler")]
         public Output<string?> Scheduler { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
-        /// </summary>
         [Output("serverCertificateId")]
         public Output<string> ServerCertificateId { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the vServer group. It's the ID of resource `alicloud.slb.ServerGroup`.
-        /// </summary>
         [Output("serverGroupId")]
         public Output<string?> ServerGroupId { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
-        /// </summary>
         [Output("sslCertificateId")]
         public Output<string> SslCertificateId { get; private set; } = null!;
 
-        /// <summary>
-        /// Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
-        /// </summary>
         [Output("stickySession")]
         public Output<string?> StickySession { get; private set; } = null!;
 
-        /// <summary>
-        /// The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
-        /// </summary>
         [Output("stickySessionType")]
         public Output<string?> StickySessionType { get; private set; } = null!;
 
-        /// <summary>
-        /// The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
-        /// </summary>
         [Output("tlsCipherPolicy")]
         public Output<string?> TlsCipherPolicy { get; private set; } = null!;
 
-        /// <summary>
-        /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Output("unhealthyThreshold")]
         public Output<int?> UnhealthyThreshold { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to set additional HTTP Header field "X-Forwarded-For". See `x_forwarded_for` below.
+        /// Whether to set additional HTTP Header field "X-Forwarded-For".
         /// </summary>
         [Output("xForwardedFor")]
         public Output<Outputs.ListenerXForwardedFor> XForwardedFor { get; private set; } = null!;
@@ -430,161 +303,81 @@ namespace Pulumi.AliCloud.Slb
 
     public sealed class ListenerArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
-        /// </summary>
         [Input("aclId")]
         public Input<string>? AclId { get; set; }
 
-        /// <summary>
-        /// Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
-        /// </summary>
         [Input("aclStatus")]
         public Input<string>? AclStatus { get; set; }
 
-        /// <summary>
-        /// The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
-        /// </summary>
         [Input("aclType")]
         public Input<string>? AclType { get; set; }
 
-        /// <summary>
-        /// The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
-        /// </summary>
         [Input("backendPort")]
         public Input<int>? BackendPort { get; set; }
 
-        /// <summary>
-        /// The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
-        /// - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
-        /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
 
-        /// <summary>
-        /// The ID of the certification authority (CA) certificate.
-        /// </summary>
         [Input("caCertificateId")]
         public Input<string>? CaCertificateId { get; set; }
 
-        /// <summary>
-        /// The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
-        /// </summary>
         [Input("cookie")]
         public Input<string>? Cookie { get; set; }
 
-        /// <summary>
-        /// The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
-        /// </summary>
         [Input("cookieTimeout")]
         public Input<int>? CookieTimeout { get; set; }
 
-        /// <summary>
-        /// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
-        /// </summary>
         [Input("deleteProtectionValidation")]
         public Input<bool>? DeleteProtectionValidation { get; set; }
 
-        /// <summary>
-        /// The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
-        /// </summary>
         [Input("enableHttp2")]
         public Input<string>? EnableHttp2 { get; set; }
 
-        /// <summary>
-        /// The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
-        /// </summary>
         [Input("establishedTimeout")]
         public Input<int>? EstablishedTimeout { get; set; }
 
-        /// <summary>
-        /// The listening port that is used to redirect HTTP requests to HTTPS.
-        /// </summary>
         [Input("forwardPort")]
         public Input<int>? ForwardPort { get; set; }
 
-        /// <summary>
-        /// The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
-        /// </summary>
         [Input("frontendPort", required: true)]
         public Input<int> FrontendPort { get; set; } = null!;
 
-        /// <summary>
-        /// Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
-        /// </summary>
         [Input("gzip")]
         public Input<bool>? Gzip { get; set; }
 
-        /// <summary>
-        /// Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener's HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
-        /// </summary>
         [Input("healthCheck")]
         public Input<string>? HealthCheck { get; set; }
 
-        /// <summary>
-        /// The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Input("healthCheckConnectPort")]
         public Input<int>? HealthCheckConnectPort { get; set; }
 
-        /// <summary>
-        /// The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Input("healthCheckDomain")]
         public Input<string>? HealthCheckDomain { get; set; }
 
-        /// <summary>
-        /// The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Input("healthCheckHttpCode")]
         public Input<string>? HealthCheckHttpCode { get; set; }
 
-        /// <summary>
-        /// The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Input("healthCheckInterval")]
         public Input<int>? HealthCheckInterval { get; set; }
 
-        /// <summary>
-        /// The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Input("healthCheckMethod")]
         public Input<string>? HealthCheckMethod { get; set; }
 
-        /// <summary>
-        /// The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` &lt; `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Input("healthCheckTimeout")]
         public Input<int>? HealthCheckTimeout { get; set; }
 
-        /// <summary>
-        /// The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
-        /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
-        /// <summary>
-        /// The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
-        /// **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Input("healthCheckUri")]
         public Input<string>? HealthCheckUri { get; set; }
 
-        /// <summary>
-        /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Input("healthyThreshold")]
         public Input<int>? HealthyThreshold { get; set; }
 
-        /// <summary>
-        /// The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
-        /// </summary>
         [Input("idleTimeout")]
         public Input<int>? IdleTimeout { get; set; }
 
@@ -594,98 +387,53 @@ namespace Pulumi.AliCloud.Slb
         [Input("lbProtocol")]
         public Input<string>? LbProtocol { get; set; }
 
-        /// <summary>
-        /// Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
-        /// </summary>
         [Input("listenerForward")]
         public Input<string>? ListenerForward { get; set; }
 
-        /// <summary>
-        /// The Load Balancer ID which is used to launch a new listener.
-        /// </summary>
         [Input("loadBalancerId", required: true)]
         public Input<string> LoadBalancerId { get; set; } = null!;
 
-        /// <summary>
-        /// The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
-        /// </summary>
         [Input("masterSlaveServerGroupId")]
         public Input<string>? MasterSlaveServerGroupId { get; set; }
 
-        /// <summary>
-        /// The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
-        /// </summary>
         [Input("persistenceTimeout")]
         public Input<int>? PersistenceTimeout { get; set; }
 
-        /// <summary>
-        /// The protocol to listen on. Valid values: `http`.
-        /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
 
-        /// <summary>
-        /// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
-        /// </summary>
         [Input("proxyProtocolV2Enabled")]
         public Input<bool>? ProxyProtocolV2Enabled { get; set; }
 
-        /// <summary>
-        /// The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
-        /// </summary>
         [Input("requestTimeout")]
         public Input<int>? RequestTimeout { get; set; }
 
-        /// <summary>
-        /// The scheduling algorithm. Default value: `wrr`. Valid values:
-        /// </summary>
         [Input("scheduler")]
         public Input<string>? Scheduler { get; set; }
 
-        /// <summary>
-        /// The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
-        /// </summary>
         [Input("serverCertificateId")]
         public Input<string>? ServerCertificateId { get; set; }
 
-        /// <summary>
-        /// The ID of the vServer group. It's the ID of resource `alicloud.slb.ServerGroup`.
-        /// </summary>
         [Input("serverGroupId")]
         public Input<string>? ServerGroupId { get; set; }
 
-        /// <summary>
-        /// The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
-        /// </summary>
         [Input("sslCertificateId")]
         public Input<string>? SslCertificateId { get; set; }
 
-        /// <summary>
-        /// Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
-        /// </summary>
         [Input("stickySession")]
         public Input<string>? StickySession { get; set; }
 
-        /// <summary>
-        /// The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
-        /// </summary>
         [Input("stickySessionType")]
         public Input<string>? StickySessionType { get; set; }
 
-        /// <summary>
-        /// The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
-        /// </summary>
         [Input("tlsCipherPolicy")]
         public Input<string>? TlsCipherPolicy { get; set; }
 
-        /// <summary>
-        /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Input("unhealthyThreshold")]
         public Input<int>? UnhealthyThreshold { get; set; }
 
         /// <summary>
-        /// Whether to set additional HTTP Header field "X-Forwarded-For". See `x_forwarded_for` below.
+        /// Whether to set additional HTTP Header field "X-Forwarded-For".
         /// </summary>
         [Input("xForwardedFor")]
         public Input<Inputs.ListenerXForwardedForArgs>? XForwardedFor { get; set; }
@@ -698,161 +446,81 @@ namespace Pulumi.AliCloud.Slb
 
     public sealed class ListenerState : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The ID of the network ACL that is associated with the listener. **NOTE:** If `acl_status` is set to `on`, `acl_id` is required. Otherwise, it will be ignored.
-        /// </summary>
         [Input("aclId")]
         public Input<string>? AclId { get; set; }
 
-        /// <summary>
-        /// Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
-        /// </summary>
         [Input("aclStatus")]
         public Input<string>? AclStatus { get; set; }
 
-        /// <summary>
-        /// The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `acl_status` is set to `on`, `acl_type` is required. Otherwise, it will be ignored.
-        /// </summary>
         [Input("aclType")]
         public Input<string>? AclType { get; set; }
 
-        /// <summary>
-        /// The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `server_group_id` is not set, `backend_port` is required.
-        /// </summary>
         [Input("backendPort")]
         public Input<int>? BackendPort { get; set; }
 
-        /// <summary>
-        /// The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
-        /// - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
-        /// </summary>
         [Input("bandwidth")]
         public Input<int>? Bandwidth { get; set; }
 
-        /// <summary>
-        /// The ID of the certification authority (CA) certificate.
-        /// </summary>
         [Input("caCertificateId")]
         public Input<string>? CaCertificateId { get; set; }
 
-        /// <summary>
-        /// The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
-        /// </summary>
         [Input("cookie")]
         public Input<string>? Cookie { get; set; }
 
-        /// <summary>
-        /// The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `sticky_session` is set to `on`, and `sticky_session_type` is set to `insert`, `cookie_timeout` is required. Otherwise, it will be ignored.
-        /// </summary>
         [Input("cookieTimeout")]
         public Input<int>? CookieTimeout { get; set; }
 
-        /// <summary>
-        /// Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
-        /// </summary>
         [Input("deleteProtectionValidation")]
         public Input<bool>? DeleteProtectionValidation { get; set; }
 
-        /// <summary>
-        /// The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
-        /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
-        /// </summary>
         [Input("enableHttp2")]
         public Input<string>? EnableHttp2 { get; set; }
 
-        /// <summary>
-        /// The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
-        /// </summary>
         [Input("establishedTimeout")]
         public Input<int>? EstablishedTimeout { get; set; }
 
-        /// <summary>
-        /// The listening port that is used to redirect HTTP requests to HTTPS.
-        /// </summary>
         [Input("forwardPort")]
         public Input<int>? ForwardPort { get; set; }
 
-        /// <summary>
-        /// The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
-        /// </summary>
         [Input("frontendPort")]
         public Input<int>? FrontendPort { get; set; }
 
-        /// <summary>
-        /// Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
-        /// </summary>
         [Input("gzip")]
         public Input<bool>? Gzip { get; set; }
 
-        /// <summary>
-        /// Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener's HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
-        /// </summary>
         [Input("healthCheck")]
         public Input<string>? HealthCheck { get; set; }
 
-        /// <summary>
-        /// The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `health_check_connect_port` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Input("healthCheckConnectPort")]
         public Input<int>? HealthCheckConnectPort { get; set; }
 
-        /// <summary>
-        /// The domain name that is used for health checks. **NOTE:** `health_check_domain` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Input("healthCheckDomain")]
         public Input<string>? HealthCheckDomain { get; set; }
 
-        /// <summary>
-        /// The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http_2xx`. Valid values: `http_2xx`, `http_3xx`, `http_4xx` and `http_5xx`. **NOTE:** `health_check_http_code` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Input("healthCheckHttpCode")]
         public Input<string>? HealthCheckHttpCode { get; set; }
 
-        /// <summary>
-        /// The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `health_check_interval` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Input("healthCheckInterval")]
         public Input<int>? HealthCheckInterval { get; set; }
 
-        /// <summary>
-        /// The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `health_check_method` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Input("healthCheckMethod")]
         public Input<string>? HealthCheckMethod { get; set; }
 
-        /// <summary>
-        /// The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `health_check_timeout` &lt; `health_check_interval`, `health_check_timeout` will be replaced by `health_check_interval`. `health_check_timeout` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Input("healthCheckTimeout")]
         public Input<int>? HealthCheckTimeout { get; set; }
 
-        /// <summary>
-        /// The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
-        /// </summary>
         [Input("healthCheckType")]
         public Input<string>? HealthCheckType { get; set; }
 
-        /// <summary>
-        /// The URI that is used for health checks. The `health_check_uri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&amp;). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
-        /// **NOTE:** `health_check_uri` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Input("healthCheckUri")]
         public Input<string>? HealthCheckUri { get; set; }
 
-        /// <summary>
-        /// The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthy_threshold` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Input("healthyThreshold")]
         public Input<int>? HealthyThreshold { get; set; }
 
-        /// <summary>
-        /// The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
-        /// </summary>
         [Input("idleTimeout")]
         public Input<int>? IdleTimeout { get; set; }
 
@@ -862,98 +530,53 @@ namespace Pulumi.AliCloud.Slb
         [Input("lbProtocol")]
         public Input<string>? LbProtocol { get; set; }
 
-        /// <summary>
-        /// Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
-        /// </summary>
         [Input("listenerForward")]
         public Input<string>? ListenerForward { get; set; }
 
-        /// <summary>
-        /// The Load Balancer ID which is used to launch a new listener.
-        /// </summary>
         [Input("loadBalancerId")]
         public Input<string>? LoadBalancerId { get; set; }
 
-        /// <summary>
-        /// The ID of the primary/secondary server group. **NOTE:** You cannot set both `server_group_id` and `master_slave_server_group_id`.
-        /// </summary>
         [Input("masterSlaveServerGroupId")]
         public Input<string>? MasterSlaveServerGroupId { get; set; }
 
-        /// <summary>
-        /// The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
-        /// </summary>
         [Input("persistenceTimeout")]
         public Input<int>? PersistenceTimeout { get; set; }
 
-        /// <summary>
-        /// The protocol to listen on. Valid values: `http`.
-        /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
 
-        /// <summary>
-        /// Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
-        /// </summary>
         [Input("proxyProtocolV2Enabled")]
         public Input<bool>? ProxyProtocolV2Enabled { get; set; }
 
-        /// <summary>
-        /// The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
-        /// </summary>
         [Input("requestTimeout")]
         public Input<int>? RequestTimeout { get; set; }
 
-        /// <summary>
-        /// The scheduling algorithm. Default value: `wrr`. Valid values:
-        /// </summary>
         [Input("scheduler")]
         public Input<string>? Scheduler { get; set; }
 
-        /// <summary>
-        /// The ID of the server certificate. **NOTE:** `server_certificate_id` is also required when the value of the `ssl_certificate_id` is Empty.
-        /// </summary>
         [Input("serverCertificateId")]
         public Input<string>? ServerCertificateId { get; set; }
 
-        /// <summary>
-        /// The ID of the vServer group. It's the ID of resource `alicloud.slb.ServerGroup`.
-        /// </summary>
         [Input("serverGroupId")]
         public Input<string>? ServerGroupId { get; set; }
 
-        /// <summary>
-        /// The ID of the server certificate. **NOTE:** Field `ssl_certificate_id` has been deprecated from provider version 1.59.0. New field `server_certificate_id` instead.
-        /// </summary>
         [Input("sslCertificateId")]
         public Input<string>? SslCertificateId { get; set; }
 
-        /// <summary>
-        /// Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
-        /// </summary>
         [Input("stickySession")]
         public Input<string>? StickySession { get; set; }
 
-        /// <summary>
-        /// The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `sticky_session` is set to `on`, `sticky_session_type` is required. Otherwise, it will be ignored.
-        /// </summary>
         [Input("stickySessionType")]
         public Input<string>? StickySessionType { get; set; }
 
-        /// <summary>
-        /// The Transport Layer Security (TLS) security policy. Default value: `tls_cipher_policy_1_0`. Valid values: `tls_cipher_policy_1_0`, `tls_cipher_policy_1_1`, `tls_cipher_policy_1_2`, `tls_cipher_policy_1_2_strict`.
-        /// </summary>
         [Input("tlsCipherPolicy")]
         public Input<string>? TlsCipherPolicy { get; set; }
 
-        /// <summary>
-        /// The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthy_threshold` takes effect only if `health_check` is set to `on`.
-        /// </summary>
         [Input("unhealthyThreshold")]
         public Input<int>? UnhealthyThreshold { get; set; }
 
         /// <summary>
-        /// Whether to set additional HTTP Header field "X-Forwarded-For". See `x_forwarded_for` below.
+        /// Whether to set additional HTTP Header field "X-Forwarded-For".
         /// </summary>
         [Input("xForwardedFor")]
         public Input<Inputs.ListenerXForwardedForGetArgs>? XForwardedFor { get; set; }

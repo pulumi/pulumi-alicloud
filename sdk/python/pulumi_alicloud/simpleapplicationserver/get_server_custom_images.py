@@ -103,7 +103,6 @@ def get_server_custom_images(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -113,7 +112,6 @@ def get_server_custom_images(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.simpleapplicationserver.get_server_custom_images(name_regex="^my-CustomImage")
     pulumi.export("simpleApplicationServerCustomImageId2", name_regex.images[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Custom Image IDs.
@@ -150,7 +148,6 @@ def get_server_custom_images_output(ids: Optional[pulumi.Input[Optional[Sequence
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -160,7 +157,6 @@ def get_server_custom_images_output(ids: Optional[pulumi.Input[Optional[Sequence
     name_regex = alicloud.simpleapplicationserver.get_server_custom_images(name_regex="^my-CustomImage")
     pulumi.export("simpleApplicationServerCustomImageId2", name_regex.images[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Custom Image IDs.

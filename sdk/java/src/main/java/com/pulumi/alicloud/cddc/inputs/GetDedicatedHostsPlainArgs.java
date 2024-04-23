@@ -20,14 +20,14 @@ public final class GetDedicatedHostsPlainArgs extends com.pulumi.resources.Invok
     public static final GetDedicatedHostsPlainArgs Empty = new GetDedicatedHostsPlainArgs();
 
     /**
-     * Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+     * Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
      * 
      */
     @Import(name="allocationStatus")
     private @Nullable String allocationStatus;
 
     /**
-     * @return Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+     * @return Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
      * 
      */
     public Optional<String> allocationStatus() {
@@ -35,14 +35,14 @@ public final class GetDedicatedHostsPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The ID of the dedicated cluster in which the host is created.
+     * The ID of the dedicated cluster.
      * 
      */
     @Import(name="dedicatedHostGroupId", required=true)
     private String dedicatedHostGroupId;
 
     /**
-     * @return The ID of the dedicated cluster in which the host is created.
+     * @return The ID of the dedicated cluster.
      * 
      */
     public String dedicatedHostGroupId() {
@@ -65,14 +65,14 @@ public final class GetDedicatedHostsPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The storage type of the host.
+     * The storage type of the host. Valid values: `dhg_local_ssd` or `dhg_cloud_ssd`. `dhg_local_ssd`: specifies that the host uses local SSDs. `dhg_cloud_ssd`: specifies that the host uses enhanced SSDs (ESSDs).
      * 
      */
     @Import(name="hostType")
     private @Nullable String hostType;
 
     /**
-     * @return The storage type of the host.
+     * @return The storage type of the host. Valid values: `dhg_local_ssd` or `dhg_cloud_ssd`. `dhg_local_ssd`: specifies that the host uses local SSDs. `dhg_cloud_ssd`: specifies that the host uses enhanced SSDs (ESSDs).
      * 
      */
     public Optional<String> hostType() {
@@ -125,14 +125,16 @@ public final class GetDedicatedHostsPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The state of the host.
+     * The state of the host. Valid values:
+     * * `0:` The host is being created.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The state of the host.
+     * @return The state of the host. Valid values:
+     * * `0:` The host is being created.
      * 
      */
     public Optional<String> status() {
@@ -140,14 +142,14 @@ public final class GetDedicatedHostsPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The tag of the resource.
+     * A mapping of tags to assign to the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Map<String,Object> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Optional<Map<String,Object>> tags() {
@@ -155,14 +157,14 @@ public final class GetDedicatedHostsPlainArgs extends com.pulumi.resources.Invok
     }
 
     /**
-     * The zone ID of the host.
+     * The ID of the zone.
      * 
      */
     @Import(name="zoneId")
     private @Nullable String zoneId;
 
     /**
-     * @return The zone ID of the host.
+     * @return The ID of the zone.
      * 
      */
     public Optional<String> zoneId() {
@@ -203,7 +205,7 @@ public final class GetDedicatedHostsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param allocationStatus Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+         * @param allocationStatus Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
          * 
          * @return builder
          * 
@@ -214,7 +216,7 @@ public final class GetDedicatedHostsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param dedicatedHostGroupId The ID of the dedicated cluster in which the host is created.
+         * @param dedicatedHostGroupId The ID of the dedicated cluster.
          * 
          * @return builder
          * 
@@ -236,7 +238,7 @@ public final class GetDedicatedHostsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param hostType The storage type of the host.
+         * @param hostType The storage type of the host. Valid values: `dhg_local_ssd` or `dhg_cloud_ssd`. `dhg_local_ssd`: specifies that the host uses local SSDs. `dhg_cloud_ssd`: specifies that the host uses enhanced SSDs (ESSDs).
          * 
          * @return builder
          * 
@@ -290,7 +292,8 @@ public final class GetDedicatedHostsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param status The state of the host.
+         * @param status The state of the host. Valid values:
+         * * `0:` The host is being created.
          * 
          * @return builder
          * 
@@ -301,7 +304,7 @@ public final class GetDedicatedHostsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
          * 
@@ -312,7 +315,7 @@ public final class GetDedicatedHostsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param zoneId The zone ID of the host.
+         * @param zoneId The ID of the zone.
          * 
          * @return builder
          * 

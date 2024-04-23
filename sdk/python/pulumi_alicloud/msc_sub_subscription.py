@@ -349,7 +349,6 @@ class MscSubSubscription(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -362,7 +361,6 @@ class MscSubSubscription(pulumi.CustomResource):
             tts_status=1,
             webhook_status=0)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -401,7 +399,6 @@ class MscSubSubscription(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -414,7 +411,6 @@ class MscSubSubscription(pulumi.CustomResource):
             tts_status=1,
             webhook_status=0)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -354,7 +354,6 @@ class DbInstancePlan(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -403,7 +402,6 @@ class DbInstancePlan(pulumi.CustomResource):
             )],
             db_instance_id=default_instance.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -442,7 +440,6 @@ class DbInstancePlan(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -491,7 +488,6 @@ class DbInstancePlan(pulumi.CustomResource):
             )],
             db_instance_id=default_instance.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

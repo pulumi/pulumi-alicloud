@@ -12,21 +12,12 @@ namespace Pulumi.AliCloud.Gpdb.Inputs
 
     public sealed class DbInstancePlanPlanConfigScaleInGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The executed time of the Plan.
-        /// </summary>
         [Input("executeTime")]
         public Input<string>? ExecuteTime { get; set; }
 
-        /// <summary>
-        /// The Cron Time of the plan.
-        /// </summary>
         [Input("planCronTime")]
         public Input<string>? PlanCronTime { get; set; }
 
-        /// <summary>
-        /// The segment Node Num of the Plan.
-        /// </summary>
         [Input("segmentNodeNum")]
         public Input<string>? SegmentNodeNum { get; set; }
 

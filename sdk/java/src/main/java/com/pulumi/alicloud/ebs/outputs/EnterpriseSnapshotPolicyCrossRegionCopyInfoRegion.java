@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion {
-    /**
-     * @return Destination region ID.
-     * 
-     */
     private @Nullable String regionId;
-    /**
-     * @return Number of days of snapshot retention for replication.
-     * 
-     */
     private @Nullable Integer retainDays;
 
     private EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion() {}
-    /**
-     * @return Destination region ID.
-     * 
-     */
     public Optional<String> regionId() {
         return Optional.ofNullable(this.regionId);
     }
-    /**
-     * @return Number of days of snapshot retention for replication.
-     * 
-     */
     public Optional<Integer> retainDays() {
         return Optional.ofNullable(this.retainDays);
     }

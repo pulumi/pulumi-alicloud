@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RuleRuleActionForwardGroupConfigServerGroupTuple {
-    /**
-     * @return The ID of the destination server group to which requests are forwarded.
-     * 
-     */
     private @Nullable String serverGroupId;
-    /**
-     * @return The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `server_group_tuples` is greater than 2.
-     * 
-     */
     private @Nullable Integer weight;
 
     private RuleRuleActionForwardGroupConfigServerGroupTuple() {}
-    /**
-     * @return The ID of the destination server group to which requests are forwarded.
-     * 
-     */
     public Optional<String> serverGroupId() {
         return Optional.ofNullable(this.serverGroupId);
     }
-    /**
-     * @return The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `server_group_tuples` is greater than 2.
-     * 
-     */
     public Optional<Integer> weight() {
         return Optional.ofNullable(this.weight);
     }

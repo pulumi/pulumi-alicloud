@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Mse
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -55,7 +54,6 @@ namespace Pulumi.AliCloud.Mse
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGatewaysResult> InvokeAsync(GetGatewaysArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewaysResult>("alicloud:mse/getGateways:getGateways", args ?? new GetGatewaysArgs(), options.WithDefaults());
@@ -69,7 +67,6 @@ namespace Pulumi.AliCloud.Mse
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -104,7 +101,6 @@ namespace Pulumi.AliCloud.Mse
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGatewaysResult> Invoke(GetGatewaysInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewaysResult>("alicloud:mse/getGateways:getGateways", args ?? new GetGatewaysInvokeArgs(), options.WithDefaults());
@@ -150,13 +146,13 @@ namespace Pulumi.AliCloud.Mse
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the gateway.
+        /// The status of the gateway. Valid values: `0`, `1`, `2`, `3`, `4`, `6`, `8`, `9`, `10`, `11`, `12`, `13`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         /// <summary>
-        /// The ID of the vpc.
+        /// The ID of the VPC.
         /// </summary>
         [Input("vpcId")]
         public string? VpcId { get; set; }
@@ -206,13 +202,13 @@ namespace Pulumi.AliCloud.Mse
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the gateway.
+        /// The status of the gateway. Valid values: `0`, `1`, `2`, `3`, `4`, `6`, `8`, `9`, `10`, `11`, `12`, `13`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The ID of the vpc.
+        /// The ID of the VPC.
         /// </summary>
         [Input("vpcId")]
         public Input<string>? VpcId { get; set; }

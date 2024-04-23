@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,7 +52,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetSmartagFlowLogs(ctx *pulumi.Context, args *GetSmartagFlowLogsArgs, opts ...pulumi.InvokeOption) (*GetSmartagFlowLogsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSmartagFlowLogsResult

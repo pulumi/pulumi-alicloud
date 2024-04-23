@@ -220,7 +220,6 @@ def get_templates(category: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -235,7 +234,6 @@ def get_templates(category: Optional[str] = None,
         has_trigger=False)
     pulumi.export("firstTemplateName", example.templates[0].template_name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str category: The category of template.
@@ -314,7 +312,6 @@ def get_templates_output(category: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -329,7 +326,6 @@ def get_templates_output(category: Optional[pulumi.Input[Optional[str]]] = None,
         has_trigger=False)
     pulumi.export("firstTemplateName", example.templates[0].template_name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str category: The category of template.

@@ -47,14 +47,14 @@ public final class GetHybridMonitorSlsTasksPlainArgs extends com.pulumi.resource
     }
 
     /**
-     * The namespace to which the host belongs.
+     * The name of the namespace.
      * 
      */
     @Import(name="namespace")
     private @Nullable String namespace;
 
     /**
-     * @return The namespace to which the host belongs.
+     * @return The name of the namespace.
      * 
      */
     public Optional<String> namespace() {
@@ -152,7 +152,7 @@ public final class GetHybridMonitorSlsTasksPlainArgs extends com.pulumi.resource
         }
 
         /**
-         * @param namespace The namespace to which the host belongs.
+         * @param namespace The name of the namespace.
          * 
          * @return builder
          * 

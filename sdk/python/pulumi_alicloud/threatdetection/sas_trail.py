@@ -79,7 +79,6 @@ class SasTrail(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -90,7 +89,6 @@ class SasTrail(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.threatdetection.SasTrail("default")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -120,7 +118,6 @@ class SasTrail(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -131,7 +128,6 @@ class SasTrail(pulumi.CustomResource):
             name = "terraform-example"
         default = alicloud.threatdetection.SasTrail("default")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

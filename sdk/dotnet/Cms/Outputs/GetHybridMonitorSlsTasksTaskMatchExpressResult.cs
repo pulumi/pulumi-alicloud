@@ -13,17 +13,8 @@ namespace Pulumi.AliCloud.Cms.Outputs
     [OutputType]
     public sealed class GetHybridMonitorSlsTasksTaskMatchExpressResult
     {
-        /// <summary>
-        /// The function that is used to aggregate log data within a statistical period.
-        /// </summary>
         public readonly string Function;
-        /// <summary>
-        /// The name of the instance.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// The value of the key that is used to filter logs imported from Log Service.
-        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

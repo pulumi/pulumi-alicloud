@@ -112,7 +112,6 @@ def get_networks(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -125,7 +124,6 @@ def get_networks(ids: Optional[Sequence[str]] = None,
         cidr_block="192.168.0.0/24",
         is_default=True)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of CCN instances IDs.
@@ -161,7 +159,6 @@ def get_networks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -174,7 +171,6 @@ def get_networks_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
         cidr_block="192.168.0.0/24",
         is_default=True)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of CCN instances IDs.

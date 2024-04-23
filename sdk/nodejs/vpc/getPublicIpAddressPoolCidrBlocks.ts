@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -33,7 +32,6 @@ import * as utilities from "../utilities";
  * });
  * export const vpcPublicIpAddressPoolCidrBlockId2 = cidrBlock.then(cidrBlock => cidrBlock.blocks?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPublicIpAddressPoolCidrBlocks(args: GetPublicIpAddressPoolCidrBlocksArgs, opts?: pulumi.InvokeOptions): Promise<GetPublicIpAddressPoolCidrBlocksResult> {
 
@@ -111,7 +109,6 @@ export interface GetPublicIpAddressPoolCidrBlocksResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -127,7 +124,6 @@ export interface GetPublicIpAddressPoolCidrBlocksResult {
  * });
  * export const vpcPublicIpAddressPoolCidrBlockId2 = cidrBlock.then(cidrBlock => cidrBlock.blocks?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPublicIpAddressPoolCidrBlocksOutput(args: GetPublicIpAddressPoolCidrBlocksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPublicIpAddressPoolCidrBlocksResult> {
     return pulumi.output(args).apply((a: any) => getPublicIpAddressPoolCidrBlocks(a, opts))

@@ -146,7 +146,6 @@ def get_zones(available_slb_address_ip_version: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -154,7 +153,6 @@ def get_zones(available_slb_address_ip_version: Optional[str] = None,
     zones_ids = alicloud.slb.get_zones(available_slb_address_type="vpc",
         available_slb_address_ip_version="ipv4")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str available_slb_address_ip_version: Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.
@@ -204,7 +202,6 @@ def get_zones_output(available_slb_address_ip_version: Optional[pulumi.Input[Opt
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -212,7 +209,6 @@ def get_zones_output(available_slb_address_ip_version: Optional[pulumi.Input[Opt
     zones_ids = alicloud.slb.get_zones(available_slb_address_type="vpc",
         available_slb_address_ip_version="ipv4")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str available_slb_address_ip_version: Filter the results by a slb instance address version. Can be either `ipv4`, or `ipv6`.

@@ -82,14 +82,12 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         service_linked_role = alicloud.eventbridge.ServiceLinkedRole("service_linked_role", product_name="AliyunServiceRoleForEventBridgeSourceRocketMQ")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -120,14 +118,12 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         service_linked_role = alicloud.eventbridge.ServiceLinkedRole("service_linked_role", product_name="AliyunServiceRoleForEventBridgeSourceRocketMQ")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

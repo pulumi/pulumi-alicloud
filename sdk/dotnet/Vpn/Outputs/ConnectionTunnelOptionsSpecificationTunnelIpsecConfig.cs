@@ -13,21 +13,9 @@ namespace Pulumi.AliCloud.Vpn.Outputs
     [OutputType]
     public sealed class ConnectionTunnelOptionsSpecificationTunnelIpsecConfig
     {
-        /// <summary>
-        /// IPsec authentication algorithm. sha1 and md5 are supported.
-        /// </summary>
         public readonly string? IpsecAuthAlg;
-        /// <summary>
-        /// IPsec Encript algorithm.
-        /// </summary>
         public readonly string? IpsecEncAlg;
-        /// <summary>
-        /// IPsec lifetime.
-        /// </summary>
         public readonly int? IpsecLifetime;
-        /// <summary>
-        /// DH Group.
-        /// </summary>
         public readonly string? IpsecPfs;
 
         [OutputConstructor]

@@ -486,7 +486,6 @@ class NasBackupPlan(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -506,7 +505,6 @@ class NasBackupPlan(pulumi.CustomResource):
             retention="2",
             paths=["/"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -551,7 +549,6 @@ class NasBackupPlan(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -571,7 +568,6 @@ class NasBackupPlan(pulumi.CustomResource):
             retention="2",
             paths=["/"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

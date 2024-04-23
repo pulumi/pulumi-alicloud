@@ -16,17 +16,9 @@ public final class GetBundlesArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetBundlesArgs Empty = new GetBundlesArgs();
 
-    /**
-     * The bundle id of the bundle.
-     * 
-     */
     @Import(name="bundleIds")
     private @Nullable Output<List<String>> bundleIds;
 
-    /**
-     * @return The bundle id of the bundle.
-     * 
-     */
     public Optional<Output<List<String>>> bundleIds() {
         return Optional.ofNullable(this.bundleIds);
     }
@@ -119,33 +111,15 @@ public final class GetBundlesArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetBundlesArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param bundleIds The bundle id of the bundle.
-         * 
-         * @return builder
-         * 
-         */
         public Builder bundleIds(@Nullable Output<List<String>> bundleIds) {
             $.bundleIds = bundleIds;
             return this;
         }
 
-        /**
-         * @param bundleIds The bundle id of the bundle.
-         * 
-         * @return builder
-         * 
-         */
         public Builder bundleIds(List<String> bundleIds) {
             return bundleIds(Output.of(bundleIds));
         }
 
-        /**
-         * @param bundleIds The bundle id of the bundle.
-         * 
-         * @return builder
-         * 
-         */
         public Builder bundleIds(String... bundleIds) {
             return bundleIds(List.of(bundleIds));
         }

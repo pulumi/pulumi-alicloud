@@ -292,7 +292,6 @@ class EipSegmentAddress(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -308,7 +307,6 @@ class EipSegmentAddress(pulumi.CustomResource):
             internet_charge_type="PayByBandwidth",
             netmode="public")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -356,7 +354,6 @@ class EipSegmentAddress(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -372,7 +369,6 @@ class EipSegmentAddress(pulumi.CustomResource):
             internet_charge_type="PayByBandwidth",
             netmode="public")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

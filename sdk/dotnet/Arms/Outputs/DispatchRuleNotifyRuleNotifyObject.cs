@@ -13,17 +13,8 @@ namespace Pulumi.AliCloud.Arms.Outputs
     [OutputType]
     public sealed class DispatchRuleNotifyRuleNotifyObject
     {
-        /// <summary>
-        /// The name of the contact or contact group.
-        /// </summary>
         public readonly string Name;
-        /// <summary>
-        /// The ID of the contact or contact group.
-        /// </summary>
         public readonly string NotifyObjectId;
-        /// <summary>
-        /// The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
-        /// </summary>
         public readonly string NotifyType;
 
         [OutputConstructor]

@@ -97,7 +97,6 @@ def get_queues(name_prefix: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -105,7 +104,6 @@ def get_queues(name_prefix: Optional[str] = None,
     queues = alicloud.mns.get_queues(name_prefix="tf-")
     pulumi.export("firstQueueId", queues.queues[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name_prefix: A string to filter resulting queues by their name prefixs.
@@ -136,7 +134,6 @@ def get_queues_output(name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -144,7 +141,6 @@ def get_queues_output(name_prefix: Optional[pulumi.Input[Optional[str]]] = None,
     queues = alicloud.mns.get_queues(name_prefix="tf-")
     pulumi.export("firstQueueId", queues.queues[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name_prefix: A string to filter resulting queues by their name prefixs.

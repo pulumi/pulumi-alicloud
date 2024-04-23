@@ -13,17 +13,8 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
     [OutputType]
     public sealed class ConnectionAuthParametersOauthParametersOauthHttpParameters
     {
-        /// <summary>
-        /// The parameters that are configured for the request body. See `body_parameters` below.
-        /// </summary>
         public readonly ImmutableArray<Outputs.ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter> BodyParameters;
-        /// <summary>
-        /// The parameters that are configured for the request header. See `header_parameters` below.
-        /// </summary>
         public readonly ImmutableArray<Outputs.ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter> HeaderParameters;
-        /// <summary>
-        /// The parameters that are configured for the request path. See `query_string_parameters` below.
-        /// </summary>
         public readonly ImmutableArray<Outputs.ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter> QueryStringParameters;
 
         [OutputConstructor]

@@ -159,7 +159,6 @@ def get_global_database_networks(db_cluster_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -191,7 +190,6 @@ def get_global_database_networks(db_cluster_id: Optional[str] = None,
     description = alicloud.polardb.get_global_database_networks_output(description=default_global_database_network.description)
     pulumi.export("polardbGlobalDatabaseNetworkId2", description.networks[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str db_cluster_id: The ID of the cluster.
@@ -245,7 +243,6 @@ def get_global_database_networks_output(db_cluster_id: Optional[pulumi.Input[Opt
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -277,7 +274,6 @@ def get_global_database_networks_output(db_cluster_id: Optional[pulumi.Input[Opt
     description = alicloud.polardb.get_global_database_networks_output(description=default_global_database_network.description)
     pulumi.export("polardbGlobalDatabaseNetworkId2", description.networks[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str db_cluster_id: The ID of the cluster.

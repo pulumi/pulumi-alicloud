@@ -562,7 +562,6 @@ class DdosCooInstance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -581,7 +580,6 @@ class DdosCooInstance(pulumi.CustomResource):
             product_type="ddoscoo",
             period=1)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -630,7 +628,6 @@ class DdosCooInstance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -649,7 +646,6 @@ class DdosCooInstance(pulumi.CustomResource):
             product_type="ddoscoo",
             period=1)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

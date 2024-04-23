@@ -223,7 +223,6 @@ class ClientKey(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -243,7 +242,6 @@ class ClientKey(pulumi.CustomResource):
             not_after="2028-09-01T14:11:22Z",
             private_key_data_file="./private_key_data_file.txt")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -280,7 +278,6 @@ class ClientKey(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -300,7 +297,6 @@ class ClientKey(pulumi.CustomResource):
             not_after="2028-09-01T14:11:22Z",
             private_key_data_file="./private_key_data_file.txt")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

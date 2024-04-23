@@ -10,27 +10,19 @@ import java.util.Objects;
 
 @CustomType
 public final class GetLoadBalancersBalancerModificationProtectionConfig {
-    /**
-     * @return The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
-     * 
-     */
     private String reason;
     /**
-     * @return The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+     * @return The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
      * 
      */
     private String status;
 
     private GetLoadBalancersBalancerModificationProtectionConfig() {}
-    /**
-     * @return The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
-     * 
-     */
     public String reason() {
         return this.reason;
     }
     /**
-     * @return The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+     * @return The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
      * 
      */
     public String status() {

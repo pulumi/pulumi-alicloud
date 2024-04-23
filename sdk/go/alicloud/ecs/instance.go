@@ -19,7 +19,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -114,7 +113,6 @@ import (
 // })
 // }
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Module Support
 //
@@ -243,7 +241,7 @@ type Instance struct {
 	MaintenanceTime InstanceMaintenanceTimePtrOutput `pulumi:"maintenanceTime"`
 	// The memory size of the instance. Unit: MiB.
 	Memory pulumi.IntOutput `pulumi:"memory"`
-	// The ID of the secondary ENI.
+	// The ID of the ENI.
 	NetworkInterfaceId pulumi.StringOutput `pulumi:"networkInterfaceId"`
 	// The list of network interfaces created with instance. See `networkInterfaces` below.
 	NetworkInterfaces InstanceNetworkInterfacesOutput `pulumi:"networkInterfaces"`
@@ -488,7 +486,7 @@ type instanceState struct {
 	MaintenanceTime *InstanceMaintenanceTime `pulumi:"maintenanceTime"`
 	// The memory size of the instance. Unit: MiB.
 	Memory *int `pulumi:"memory"`
-	// The ID of the secondary ENI.
+	// The ID of the ENI.
 	NetworkInterfaceId *string `pulumi:"networkInterfaceId"`
 	// The list of network interfaces created with instance. See `networkInterfaces` below.
 	NetworkInterfaces *InstanceNetworkInterfaces `pulumi:"networkInterfaces"`
@@ -697,7 +695,7 @@ type InstanceState struct {
 	MaintenanceTime InstanceMaintenanceTimePtrInput
 	// The memory size of the instance. Unit: MiB.
 	Memory pulumi.IntPtrInput
-	// The ID of the secondary ENI.
+	// The ID of the ENI.
 	NetworkInterfaceId pulumi.StringPtrInput
 	// The list of network interfaces created with instance. See `networkInterfaces` below.
 	NetworkInterfaces InstanceNetworkInterfacesPtrInput
@@ -1499,7 +1497,7 @@ func (o InstanceOutput) Memory() pulumi.IntOutput {
 	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.Memory }).(pulumi.IntOutput)
 }
 
-// The ID of the secondary ENI.
+// The ID of the ENI.
 func (o InstanceOutput) NetworkInterfaceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.NetworkInterfaceId }).(pulumi.StringOutput)
 }

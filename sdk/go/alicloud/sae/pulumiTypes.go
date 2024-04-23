@@ -894,16 +894,11 @@ func (o ApplicationLivenessV2ExecPtrOutput) Commands() pulumi.StringArrayOutput 
 }
 
 type ApplicationLivenessV2HttpGet struct {
-	// Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
-	IsContainKeyWord *bool `pulumi:"isContainKeyWord"`
-	// The custom keywords.
-	KeyWord *string `pulumi:"keyWord"`
-	// The request path.
-	Path *string `pulumi:"path"`
-	// The port.
-	Port *int `pulumi:"port"`
-	// The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
-	Scheme *string `pulumi:"scheme"`
+	IsContainKeyWord *bool   `pulumi:"isContainKeyWord"`
+	KeyWord          *string `pulumi:"keyWord"`
+	Path             *string `pulumi:"path"`
+	Port             *int    `pulumi:"port"`
+	Scheme           *string `pulumi:"scheme"`
 }
 
 // ApplicationLivenessV2HttpGetInput is an input type that accepts ApplicationLivenessV2HttpGetArgs and ApplicationLivenessV2HttpGetOutput values.
@@ -918,16 +913,11 @@ type ApplicationLivenessV2HttpGetInput interface {
 }
 
 type ApplicationLivenessV2HttpGetArgs struct {
-	// Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
-	IsContainKeyWord pulumi.BoolPtrInput `pulumi:"isContainKeyWord"`
-	// The custom keywords.
-	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
-	// The request path.
-	Path pulumi.StringPtrInput `pulumi:"path"`
-	// The port.
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
-	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
+	IsContainKeyWord pulumi.BoolPtrInput   `pulumi:"isContainKeyWord"`
+	KeyWord          pulumi.StringPtrInput `pulumi:"keyWord"`
+	Path             pulumi.StringPtrInput `pulumi:"path"`
+	Port             pulumi.IntPtrInput    `pulumi:"port"`
+	Scheme           pulumi.StringPtrInput `pulumi:"scheme"`
 }
 
 func (ApplicationLivenessV2HttpGetArgs) ElementType() reflect.Type {
@@ -1007,27 +997,22 @@ func (o ApplicationLivenessV2HttpGetOutput) ToApplicationLivenessV2HttpGetPtrOut
 	}).(ApplicationLivenessV2HttpGetPtrOutput)
 }
 
-// Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
 func (o ApplicationLivenessV2HttpGetOutput) IsContainKeyWord() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationLivenessV2HttpGet) *bool { return v.IsContainKeyWord }).(pulumi.BoolPtrOutput)
 }
 
-// The custom keywords.
 func (o ApplicationLivenessV2HttpGetOutput) KeyWord() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationLivenessV2HttpGet) *string { return v.KeyWord }).(pulumi.StringPtrOutput)
 }
 
-// The request path.
 func (o ApplicationLivenessV2HttpGetOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationLivenessV2HttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// The port.
 func (o ApplicationLivenessV2HttpGetOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationLivenessV2HttpGet) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
 func (o ApplicationLivenessV2HttpGetOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationLivenessV2HttpGet) *string { return v.Scheme }).(pulumi.StringPtrOutput)
 }
@@ -1056,7 +1041,6 @@ func (o ApplicationLivenessV2HttpGetPtrOutput) Elem() ApplicationLivenessV2HttpG
 	}).(ApplicationLivenessV2HttpGetOutput)
 }
 
-// Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
 func (o ApplicationLivenessV2HttpGetPtrOutput) IsContainKeyWord() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationLivenessV2HttpGet) *bool {
 		if v == nil {
@@ -1066,7 +1050,6 @@ func (o ApplicationLivenessV2HttpGetPtrOutput) IsContainKeyWord() pulumi.BoolPtr
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The custom keywords.
 func (o ApplicationLivenessV2HttpGetPtrOutput) KeyWord() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationLivenessV2HttpGet) *string {
 		if v == nil {
@@ -1076,7 +1059,6 @@ func (o ApplicationLivenessV2HttpGetPtrOutput) KeyWord() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The request path.
 func (o ApplicationLivenessV2HttpGetPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationLivenessV2HttpGet) *string {
 		if v == nil {
@@ -1086,7 +1068,6 @@ func (o ApplicationLivenessV2HttpGetPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The port.
 func (o ApplicationLivenessV2HttpGetPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationLivenessV2HttpGet) *int {
 		if v == nil {
@@ -1096,7 +1077,6 @@ func (o ApplicationLivenessV2HttpGetPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
 func (o ApplicationLivenessV2HttpGetPtrOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationLivenessV2HttpGet) *string {
 		if v == nil {
@@ -1107,7 +1087,6 @@ func (o ApplicationLivenessV2HttpGetPtrOutput) Scheme() pulumi.StringPtrOutput {
 }
 
 type ApplicationLivenessV2TcpSocket struct {
-	// The port.
 	Port *int `pulumi:"port"`
 }
 
@@ -1123,7 +1102,6 @@ type ApplicationLivenessV2TcpSocketInput interface {
 }
 
 type ApplicationLivenessV2TcpSocketArgs struct {
-	// The port.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
@@ -1204,7 +1182,6 @@ func (o ApplicationLivenessV2TcpSocketOutput) ToApplicationLivenessV2TcpSocketPt
 	}).(ApplicationLivenessV2TcpSocketPtrOutput)
 }
 
-// The port.
 func (o ApplicationLivenessV2TcpSocketOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationLivenessV2TcpSocket) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -1233,7 +1210,6 @@ func (o ApplicationLivenessV2TcpSocketPtrOutput) Elem() ApplicationLivenessV2Tcp
 	}).(ApplicationLivenessV2TcpSocketOutput)
 }
 
-// The port.
 func (o ApplicationLivenessV2TcpSocketPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationLivenessV2TcpSocket) *int {
 		if v == nil {
@@ -1381,9 +1357,9 @@ type ApplicationOssMountDescsV2 struct {
 	BucketName *string `pulumi:"bucketName"`
 	// The directory or object in OSS.
 	BucketPath *string `pulumi:"bucketPath"`
-	// The mount path.
+	// The path of the container in SAE.
 	MountPath *string `pulumi:"mountPath"`
-	// Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `readOnly` to `false`, the application has the read and write permissions.
+	// Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
 	ReadOnly *bool `pulumi:"readOnly"`
 }
 
@@ -1403,9 +1379,9 @@ type ApplicationOssMountDescsV2Args struct {
 	BucketName pulumi.StringPtrInput `pulumi:"bucketName"`
 	// The directory or object in OSS.
 	BucketPath pulumi.StringPtrInput `pulumi:"bucketPath"`
-	// The mount path.
+	// The path of the container in SAE.
 	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
-	// Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `readOnly` to `false`, the application has the read and write permissions.
+	// Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
 	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
 }
 
@@ -1470,12 +1446,12 @@ func (o ApplicationOssMountDescsV2Output) BucketPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationOssMountDescsV2) *string { return v.BucketPath }).(pulumi.StringPtrOutput)
 }
 
-// The mount path.
+// The path of the container in SAE.
 func (o ApplicationOssMountDescsV2Output) MountPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationOssMountDescsV2) *string { return v.MountPath }).(pulumi.StringPtrOutput)
 }
 
-// Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `readOnly` to `false`, the application has the read and write permissions.
+// Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
 func (o ApplicationOssMountDescsV2Output) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationOssMountDescsV2) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
@@ -2243,9 +2219,7 @@ func (o ApplicationPvtzDiscoverySvcPtrOutput) ServiceName() pulumi.StringPtrOutp
 }
 
 type ApplicationPvtzDiscoverySvcPortProtocol struct {
-	// The port.
-	Port *int `pulumi:"port"`
-	// The protocol. Valid values: `TCP` and `UDP`.
+	Port     *int    `pulumi:"port"`
 	Protocol *string `pulumi:"protocol"`
 }
 
@@ -2261,9 +2235,7 @@ type ApplicationPvtzDiscoverySvcPortProtocolInput interface {
 }
 
 type ApplicationPvtzDiscoverySvcPortProtocolArgs struct {
-	// The port.
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// The protocol. Valid values: `TCP` and `UDP`.
+	Port     pulumi.IntPtrInput    `pulumi:"port"`
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 }
 
@@ -2318,12 +2290,10 @@ func (o ApplicationPvtzDiscoverySvcPortProtocolOutput) ToApplicationPvtzDiscover
 	return o
 }
 
-// The port.
 func (o ApplicationPvtzDiscoverySvcPortProtocolOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationPvtzDiscoverySvcPortProtocol) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// The protocol. Valid values: `TCP` and `UDP`.
 func (o ApplicationPvtzDiscoverySvcPortProtocolOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationPvtzDiscoverySvcPortProtocol) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -2718,16 +2688,11 @@ func (o ApplicationReadinessV2ExecPtrOutput) Commands() pulumi.StringArrayOutput
 }
 
 type ApplicationReadinessV2HttpGet struct {
-	// Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
-	IsContainKeyWord *bool `pulumi:"isContainKeyWord"`
-	// The custom keywords.
-	KeyWord *string `pulumi:"keyWord"`
-	// The request path.
-	Path *string `pulumi:"path"`
-	// The port.
-	Port *int `pulumi:"port"`
-	// The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
-	Scheme *string `pulumi:"scheme"`
+	IsContainKeyWord *bool   `pulumi:"isContainKeyWord"`
+	KeyWord          *string `pulumi:"keyWord"`
+	Path             *string `pulumi:"path"`
+	Port             *int    `pulumi:"port"`
+	Scheme           *string `pulumi:"scheme"`
 }
 
 // ApplicationReadinessV2HttpGetInput is an input type that accepts ApplicationReadinessV2HttpGetArgs and ApplicationReadinessV2HttpGetOutput values.
@@ -2742,16 +2707,11 @@ type ApplicationReadinessV2HttpGetInput interface {
 }
 
 type ApplicationReadinessV2HttpGetArgs struct {
-	// Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
-	IsContainKeyWord pulumi.BoolPtrInput `pulumi:"isContainKeyWord"`
-	// The custom keywords.
-	KeyWord pulumi.StringPtrInput `pulumi:"keyWord"`
-	// The request path.
-	Path pulumi.StringPtrInput `pulumi:"path"`
-	// The port.
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
-	Scheme pulumi.StringPtrInput `pulumi:"scheme"`
+	IsContainKeyWord pulumi.BoolPtrInput   `pulumi:"isContainKeyWord"`
+	KeyWord          pulumi.StringPtrInput `pulumi:"keyWord"`
+	Path             pulumi.StringPtrInput `pulumi:"path"`
+	Port             pulumi.IntPtrInput    `pulumi:"port"`
+	Scheme           pulumi.StringPtrInput `pulumi:"scheme"`
 }
 
 func (ApplicationReadinessV2HttpGetArgs) ElementType() reflect.Type {
@@ -2831,27 +2791,22 @@ func (o ApplicationReadinessV2HttpGetOutput) ToApplicationReadinessV2HttpGetPtrO
 	}).(ApplicationReadinessV2HttpGetPtrOutput)
 }
 
-// Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
 func (o ApplicationReadinessV2HttpGetOutput) IsContainKeyWord() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationReadinessV2HttpGet) *bool { return v.IsContainKeyWord }).(pulumi.BoolPtrOutput)
 }
 
-// The custom keywords.
 func (o ApplicationReadinessV2HttpGetOutput) KeyWord() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationReadinessV2HttpGet) *string { return v.KeyWord }).(pulumi.StringPtrOutput)
 }
 
-// The request path.
 func (o ApplicationReadinessV2HttpGetOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationReadinessV2HttpGet) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// The port.
 func (o ApplicationReadinessV2HttpGetOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationReadinessV2HttpGet) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
 func (o ApplicationReadinessV2HttpGetOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationReadinessV2HttpGet) *string { return v.Scheme }).(pulumi.StringPtrOutput)
 }
@@ -2880,7 +2835,6 @@ func (o ApplicationReadinessV2HttpGetPtrOutput) Elem() ApplicationReadinessV2Htt
 	}).(ApplicationReadinessV2HttpGetOutput)
 }
 
-// Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
 func (o ApplicationReadinessV2HttpGetPtrOutput) IsContainKeyWord() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationReadinessV2HttpGet) *bool {
 		if v == nil {
@@ -2890,7 +2844,6 @@ func (o ApplicationReadinessV2HttpGetPtrOutput) IsContainKeyWord() pulumi.BoolPt
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The custom keywords.
 func (o ApplicationReadinessV2HttpGetPtrOutput) KeyWord() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationReadinessV2HttpGet) *string {
 		if v == nil {
@@ -2900,7 +2853,6 @@ func (o ApplicationReadinessV2HttpGetPtrOutput) KeyWord() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The request path.
 func (o ApplicationReadinessV2HttpGetPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationReadinessV2HttpGet) *string {
 		if v == nil {
@@ -2910,7 +2862,6 @@ func (o ApplicationReadinessV2HttpGetPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The port.
 func (o ApplicationReadinessV2HttpGetPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationReadinessV2HttpGet) *int {
 		if v == nil {
@@ -2920,7 +2871,6 @@ func (o ApplicationReadinessV2HttpGetPtrOutput) Port() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
 func (o ApplicationReadinessV2HttpGetPtrOutput) Scheme() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationReadinessV2HttpGet) *string {
 		if v == nil {
@@ -2931,7 +2881,6 @@ func (o ApplicationReadinessV2HttpGetPtrOutput) Scheme() pulumi.StringPtrOutput 
 }
 
 type ApplicationReadinessV2TcpSocket struct {
-	// The port.
 	Port *int `pulumi:"port"`
 }
 
@@ -2947,7 +2896,6 @@ type ApplicationReadinessV2TcpSocketInput interface {
 }
 
 type ApplicationReadinessV2TcpSocketArgs struct {
-	// The port.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 }
 
@@ -3028,7 +2976,6 @@ func (o ApplicationReadinessV2TcpSocketOutput) ToApplicationReadinessV2TcpSocket
 	}).(ApplicationReadinessV2TcpSocketPtrOutput)
 }
 
-// The port.
 func (o ApplicationReadinessV2TcpSocketOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationReadinessV2TcpSocket) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
@@ -3057,7 +3004,6 @@ func (o ApplicationReadinessV2TcpSocketPtrOutput) Elem() ApplicationReadinessV2T
 	}).(ApplicationReadinessV2TcpSocketOutput)
 }
 
-// The port.
 func (o ApplicationReadinessV2TcpSocketPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationReadinessV2TcpSocket) *int {
 		if v == nil {
@@ -3287,28 +3233,12 @@ func (o ApplicationScalingRuleScalingRuleMetricPtrOutput) ScaleUpRules() Applica
 }
 
 type ApplicationScalingRuleScalingRuleMetricMetric struct {
-	// According to different `metricType`, set the target value of the corresponding monitoring index.
-	MetricTargetAverageUtilization *int `pulumi:"metricTargetAverageUtilization"`
-	// Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
-	// - CPU: CPU usage.
-	// - MEMORY: MEMORY usage.
-	// - tcpActiveConn: The average number of TCP active connections for a single instance in 30 seconds.
-	// - QPS: The average QPS of a single instance within 1 minute of JAVA application.
-	// - RT: The average response time of all service interfaces within 1 minute of JAVA application.
-	// - SLB_QPS: The average public network SLB QPS of a single instance within 15 seconds.
-	// - SLB_RT: The average response time of public network SLB within 15 seconds.
-	// - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
-	// - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
-	//   **NOTE:** From version 1.206.0, `metricType` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
-	MetricType *string `pulumi:"metricType"`
-	// SLB ID.
-	SlbId *string `pulumi:"slbId"`
-	// The log store of the Log Service.
-	SlbLogStore *string `pulumi:"slbLogStore"`
-	// The project of the Log Service.
-	SlbProject *string `pulumi:"slbProject"`
-	// SLB listening port.
-	Vport *string `pulumi:"vport"`
+	MetricTargetAverageUtilization *int    `pulumi:"metricTargetAverageUtilization"`
+	MetricType                     *string `pulumi:"metricType"`
+	SlbId                          *string `pulumi:"slbId"`
+	SlbLogStore                    *string `pulumi:"slbLogStore"`
+	SlbProject                     *string `pulumi:"slbProject"`
+	Vport                          *string `pulumi:"vport"`
 }
 
 // ApplicationScalingRuleScalingRuleMetricMetricInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricMetricArgs and ApplicationScalingRuleScalingRuleMetricMetricOutput values.
@@ -3323,28 +3253,12 @@ type ApplicationScalingRuleScalingRuleMetricMetricInput interface {
 }
 
 type ApplicationScalingRuleScalingRuleMetricMetricArgs struct {
-	// According to different `metricType`, set the target value of the corresponding monitoring index.
-	MetricTargetAverageUtilization pulumi.IntPtrInput `pulumi:"metricTargetAverageUtilization"`
-	// Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
-	// - CPU: CPU usage.
-	// - MEMORY: MEMORY usage.
-	// - tcpActiveConn: The average number of TCP active connections for a single instance in 30 seconds.
-	// - QPS: The average QPS of a single instance within 1 minute of JAVA application.
-	// - RT: The average response time of all service interfaces within 1 minute of JAVA application.
-	// - SLB_QPS: The average public network SLB QPS of a single instance within 15 seconds.
-	// - SLB_RT: The average response time of public network SLB within 15 seconds.
-	// - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
-	// - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
-	//   **NOTE:** From version 1.206.0, `metricType` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
-	MetricType pulumi.StringPtrInput `pulumi:"metricType"`
-	// SLB ID.
-	SlbId pulumi.StringPtrInput `pulumi:"slbId"`
-	// The log store of the Log Service.
-	SlbLogStore pulumi.StringPtrInput `pulumi:"slbLogStore"`
-	// The project of the Log Service.
-	SlbProject pulumi.StringPtrInput `pulumi:"slbProject"`
-	// SLB listening port.
-	Vport pulumi.StringPtrInput `pulumi:"vport"`
+	MetricTargetAverageUtilization pulumi.IntPtrInput    `pulumi:"metricTargetAverageUtilization"`
+	MetricType                     pulumi.StringPtrInput `pulumi:"metricType"`
+	SlbId                          pulumi.StringPtrInput `pulumi:"slbId"`
+	SlbLogStore                    pulumi.StringPtrInput `pulumi:"slbLogStore"`
+	SlbProject                     pulumi.StringPtrInput `pulumi:"slbProject"`
+	Vport                          pulumi.StringPtrInput `pulumi:"vport"`
 }
 
 func (ApplicationScalingRuleScalingRuleMetricMetricArgs) ElementType() reflect.Type {
@@ -3398,42 +3312,26 @@ func (o ApplicationScalingRuleScalingRuleMetricMetricOutput) ToApplicationScalin
 	return o
 }
 
-// According to different `metricType`, set the target value of the corresponding monitoring index.
 func (o ApplicationScalingRuleScalingRuleMetricMetricOutput) MetricTargetAverageUtilization() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricMetric) *int { return v.MetricTargetAverageUtilization }).(pulumi.IntPtrOutput)
 }
 
-// Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
-//   - CPU: CPU usage.
-//   - MEMORY: MEMORY usage.
-//   - tcpActiveConn: The average number of TCP active connections for a single instance in 30 seconds.
-//   - QPS: The average QPS of a single instance within 1 minute of JAVA application.
-//   - RT: The average response time of all service interfaces within 1 minute of JAVA application.
-//   - SLB_QPS: The average public network SLB QPS of a single instance within 15 seconds.
-//   - SLB_RT: The average response time of public network SLB within 15 seconds.
-//   - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
-//   - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
-//     **NOTE:** From version 1.206.0, `metricType` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
 func (o ApplicationScalingRuleScalingRuleMetricMetricOutput) MetricType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricMetric) *string { return v.MetricType }).(pulumi.StringPtrOutput)
 }
 
-// SLB ID.
 func (o ApplicationScalingRuleScalingRuleMetricMetricOutput) SlbId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricMetric) *string { return v.SlbId }).(pulumi.StringPtrOutput)
 }
 
-// The log store of the Log Service.
 func (o ApplicationScalingRuleScalingRuleMetricMetricOutput) SlbLogStore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricMetric) *string { return v.SlbLogStore }).(pulumi.StringPtrOutput)
 }
 
-// The project of the Log Service.
 func (o ApplicationScalingRuleScalingRuleMetricMetricOutput) SlbProject() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricMetric) *string { return v.SlbProject }).(pulumi.StringPtrOutput)
 }
 
-// SLB listening port.
 func (o ApplicationScalingRuleScalingRuleMetricMetricOutput) Vport() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricMetric) *string { return v.Vport }).(pulumi.StringPtrOutput)
 }
@@ -3459,12 +3357,9 @@ func (o ApplicationScalingRuleScalingRuleMetricMetricArrayOutput) Index(i pulumi
 }
 
 type ApplicationScalingRuleScalingRuleMetricScaleDownRules struct {
-	// Whether shrinkage is prohibited.
-	Disabled *bool `pulumi:"disabled"`
-	// Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
-	StabilizationWindowSeconds *int `pulumi:"stabilizationWindowSeconds"`
-	// Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
-	Step *int `pulumi:"step"`
+	Disabled                   *bool `pulumi:"disabled"`
+	StabilizationWindowSeconds *int  `pulumi:"stabilizationWindowSeconds"`
+	Step                       *int  `pulumi:"step"`
 }
 
 // ApplicationScalingRuleScalingRuleMetricScaleDownRulesInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs and ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput values.
@@ -3479,12 +3374,9 @@ type ApplicationScalingRuleScalingRuleMetricScaleDownRulesInput interface {
 }
 
 type ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs struct {
-	// Whether shrinkage is prohibited.
-	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
-	StabilizationWindowSeconds pulumi.IntPtrInput `pulumi:"stabilizationWindowSeconds"`
-	// Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
-	Step pulumi.IntPtrInput `pulumi:"step"`
+	Disabled                   pulumi.BoolPtrInput `pulumi:"disabled"`
+	StabilizationWindowSeconds pulumi.IntPtrInput  `pulumi:"stabilizationWindowSeconds"`
+	Step                       pulumi.IntPtrInput  `pulumi:"step"`
 }
 
 func (ApplicationScalingRuleScalingRuleMetricScaleDownRulesArgs) ElementType() reflect.Type {
@@ -3564,19 +3456,16 @@ func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput) ToApplicati
 	}).(ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput)
 }
 
-// Whether shrinkage is prohibited.
 func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricScaleDownRules) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
 func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput) StabilizationWindowSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricScaleDownRules) *int {
 		return v.StabilizationWindowSeconds
 	}).(pulumi.IntPtrOutput)
 }
 
-// Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
 func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput) Step() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricScaleDownRules) *int { return v.Step }).(pulumi.IntPtrOutput)
 }
@@ -3605,7 +3494,6 @@ func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput) Elem() A
 	}).(ApplicationScalingRuleScalingRuleMetricScaleDownRulesOutput)
 }
 
-// Whether shrinkage is prohibited.
 func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetricScaleDownRules) *bool {
 		if v == nil {
@@ -3615,7 +3503,6 @@ func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput) Disabled
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
 func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput) StabilizationWindowSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetricScaleDownRules) *int {
 		if v == nil {
@@ -3625,7 +3512,6 @@ func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput) Stabiliz
 	}).(pulumi.IntPtrOutput)
 }
 
-// Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
 func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput) Step() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetricScaleDownRules) *int {
 		if v == nil {
@@ -3636,12 +3522,9 @@ func (o ApplicationScalingRuleScalingRuleMetricScaleDownRulesPtrOutput) Step() p
 }
 
 type ApplicationScalingRuleScalingRuleMetricScaleUpRules struct {
-	// Whether shrinkage is prohibited.
-	Disabled *bool `pulumi:"disabled"`
-	// Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
-	StabilizationWindowSeconds *int `pulumi:"stabilizationWindowSeconds"`
-	// Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
-	Step *int `pulumi:"step"`
+	Disabled                   *bool `pulumi:"disabled"`
+	StabilizationWindowSeconds *int  `pulumi:"stabilizationWindowSeconds"`
+	Step                       *int  `pulumi:"step"`
 }
 
 // ApplicationScalingRuleScalingRuleMetricScaleUpRulesInput is an input type that accepts ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs and ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput values.
@@ -3656,12 +3539,9 @@ type ApplicationScalingRuleScalingRuleMetricScaleUpRulesInput interface {
 }
 
 type ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs struct {
-	// Whether shrinkage is prohibited.
-	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
-	StabilizationWindowSeconds pulumi.IntPtrInput `pulumi:"stabilizationWindowSeconds"`
-	// Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
-	Step pulumi.IntPtrInput `pulumi:"step"`
+	Disabled                   pulumi.BoolPtrInput `pulumi:"disabled"`
+	StabilizationWindowSeconds pulumi.IntPtrInput  `pulumi:"stabilizationWindowSeconds"`
+	Step                       pulumi.IntPtrInput  `pulumi:"step"`
 }
 
 func (ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs) ElementType() reflect.Type {
@@ -3741,17 +3621,14 @@ func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput) ToApplication
 	}).(ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput)
 }
 
-// Whether shrinkage is prohibited.
 func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricScaleUpRules) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
 func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput) StabilizationWindowSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricScaleUpRules) *int { return v.StabilizationWindowSeconds }).(pulumi.IntPtrOutput)
 }
 
-// Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
 func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput) Step() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleMetricScaleUpRules) *int { return v.Step }).(pulumi.IntPtrOutput)
 }
@@ -3780,7 +3657,6 @@ func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput) Elem() App
 	}).(ApplicationScalingRuleScalingRuleMetricScaleUpRulesOutput)
 }
 
-// Whether shrinkage is prohibited.
 func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput) Disabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetricScaleUpRules) *bool {
 		if v == nil {
@@ -3790,7 +3666,6 @@ func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput) Disabled()
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
 func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput) StabilizationWindowSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetricScaleUpRules) *int {
 		if v == nil {
@@ -3800,7 +3675,6 @@ func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput) Stabilizat
 	}).(pulumi.IntPtrOutput)
 }
 
-// Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
 func (o ApplicationScalingRuleScalingRuleMetricScaleUpRulesPtrOutput) Step() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationScalingRuleScalingRuleMetricScaleUpRules) *int {
 		if v == nil {
@@ -4007,14 +3881,10 @@ func (o ApplicationScalingRuleScalingRuleTimerPtrOutput) Schedules() Application
 }
 
 type ApplicationScalingRuleScalingRuleTimerSchedule struct {
-	// Trigger point in time. When supporting format: minutes, for example: `08:00`.
-	AtTime *string `pulumi:"atTime"`
-	// Maximum number of instances applied.
-	MaxReplicas *int `pulumi:"maxReplicas"`
-	// Minimum number of instances applied.
-	MinReplicas *int `pulumi:"minReplicas"`
-	// This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `timing`.
-	TargetReplicas *int `pulumi:"targetReplicas"`
+	AtTime         *string `pulumi:"atTime"`
+	MaxReplicas    *int    `pulumi:"maxReplicas"`
+	MinReplicas    *int    `pulumi:"minReplicas"`
+	TargetReplicas *int    `pulumi:"targetReplicas"`
 }
 
 // ApplicationScalingRuleScalingRuleTimerScheduleInput is an input type that accepts ApplicationScalingRuleScalingRuleTimerScheduleArgs and ApplicationScalingRuleScalingRuleTimerScheduleOutput values.
@@ -4029,14 +3899,10 @@ type ApplicationScalingRuleScalingRuleTimerScheduleInput interface {
 }
 
 type ApplicationScalingRuleScalingRuleTimerScheduleArgs struct {
-	// Trigger point in time. When supporting format: minutes, for example: `08:00`.
-	AtTime pulumi.StringPtrInput `pulumi:"atTime"`
-	// Maximum number of instances applied.
-	MaxReplicas pulumi.IntPtrInput `pulumi:"maxReplicas"`
-	// Minimum number of instances applied.
-	MinReplicas pulumi.IntPtrInput `pulumi:"minReplicas"`
-	// This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `timing`.
-	TargetReplicas pulumi.IntPtrInput `pulumi:"targetReplicas"`
+	AtTime         pulumi.StringPtrInput `pulumi:"atTime"`
+	MaxReplicas    pulumi.IntPtrInput    `pulumi:"maxReplicas"`
+	MinReplicas    pulumi.IntPtrInput    `pulumi:"minReplicas"`
+	TargetReplicas pulumi.IntPtrInput    `pulumi:"targetReplicas"`
 }
 
 func (ApplicationScalingRuleScalingRuleTimerScheduleArgs) ElementType() reflect.Type {
@@ -4090,22 +3956,18 @@ func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) ToApplicationScali
 	return o
 }
 
-// Trigger point in time. When supporting format: minutes, for example: `08:00`.
 func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) AtTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimerSchedule) *string { return v.AtTime }).(pulumi.StringPtrOutput)
 }
 
-// Maximum number of instances applied.
 func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) MaxReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimerSchedule) *int { return v.MaxReplicas }).(pulumi.IntPtrOutput)
 }
 
-// Minimum number of instances applied.
 func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) MinReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimerSchedule) *int { return v.MinReplicas }).(pulumi.IntPtrOutput)
 }
 
-// This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `timing`.
 func (o ApplicationScalingRuleScalingRuleTimerScheduleOutput) TargetReplicas() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationScalingRuleScalingRuleTimerSchedule) *int { return v.TargetReplicas }).(pulumi.IntPtrOutput)
 }
@@ -4500,12 +4362,10 @@ func (o ApplicationUpdateStrategyV2PtrOutput) Type() pulumi.StringPtrOutput {
 }
 
 type ApplicationUpdateStrategyV2BatchUpdate struct {
-	// The number of batches in which you want to release the instances.
 	Batch *int `pulumi:"batch"`
 	// The batch wait time.
-	BatchWaitTime *int `pulumi:"batchWaitTime"`
-	// The processing method for the batches. Valid values: `auto` and `manual`.
-	ReleaseType *string `pulumi:"releaseType"`
+	BatchWaitTime *int    `pulumi:"batchWaitTime"`
+	ReleaseType   *string `pulumi:"releaseType"`
 }
 
 // ApplicationUpdateStrategyV2BatchUpdateInput is an input type that accepts ApplicationUpdateStrategyV2BatchUpdateArgs and ApplicationUpdateStrategyV2BatchUpdateOutput values.
@@ -4520,12 +4380,10 @@ type ApplicationUpdateStrategyV2BatchUpdateInput interface {
 }
 
 type ApplicationUpdateStrategyV2BatchUpdateArgs struct {
-	// The number of batches in which you want to release the instances.
 	Batch pulumi.IntPtrInput `pulumi:"batch"`
 	// The batch wait time.
-	BatchWaitTime pulumi.IntPtrInput `pulumi:"batchWaitTime"`
-	// The processing method for the batches. Valid values: `auto` and `manual`.
-	ReleaseType pulumi.StringPtrInput `pulumi:"releaseType"`
+	BatchWaitTime pulumi.IntPtrInput    `pulumi:"batchWaitTime"`
+	ReleaseType   pulumi.StringPtrInput `pulumi:"releaseType"`
 }
 
 func (ApplicationUpdateStrategyV2BatchUpdateArgs) ElementType() reflect.Type {
@@ -4605,7 +4463,6 @@ func (o ApplicationUpdateStrategyV2BatchUpdateOutput) ToApplicationUpdateStrateg
 	}).(ApplicationUpdateStrategyV2BatchUpdatePtrOutput)
 }
 
-// The number of batches in which you want to release the instances.
 func (o ApplicationUpdateStrategyV2BatchUpdateOutput) Batch() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ApplicationUpdateStrategyV2BatchUpdate) *int { return v.Batch }).(pulumi.IntPtrOutput)
 }
@@ -4615,7 +4472,6 @@ func (o ApplicationUpdateStrategyV2BatchUpdateOutput) BatchWaitTime() pulumi.Int
 	return o.ApplyT(func(v ApplicationUpdateStrategyV2BatchUpdate) *int { return v.BatchWaitTime }).(pulumi.IntPtrOutput)
 }
 
-// The processing method for the batches. Valid values: `auto` and `manual`.
 func (o ApplicationUpdateStrategyV2BatchUpdateOutput) ReleaseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ApplicationUpdateStrategyV2BatchUpdate) *string { return v.ReleaseType }).(pulumi.StringPtrOutput)
 }
@@ -4644,7 +4500,6 @@ func (o ApplicationUpdateStrategyV2BatchUpdatePtrOutput) Elem() ApplicationUpdat
 	}).(ApplicationUpdateStrategyV2BatchUpdateOutput)
 }
 
-// The number of batches in which you want to release the instances.
 func (o ApplicationUpdateStrategyV2BatchUpdatePtrOutput) Batch() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ApplicationUpdateStrategyV2BatchUpdate) *int {
 		if v == nil {
@@ -4664,7 +4519,6 @@ func (o ApplicationUpdateStrategyV2BatchUpdatePtrOutput) BatchWaitTime() pulumi.
 	}).(pulumi.IntPtrOutput)
 }
 
-// The processing method for the batches. Valid values: `auto` and `manual`.
 func (o ApplicationUpdateStrategyV2BatchUpdatePtrOutput) ReleaseType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ApplicationUpdateStrategyV2BatchUpdate) *string {
 		if v == nil {
@@ -4817,16 +4671,11 @@ func (o GreyTagRouteDubboRuleArrayOutput) Index(i pulumi.IntInput) GreyTagRouteD
 }
 
 type GreyTagRouteDubboRuleItem struct {
-	// The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
-	Cond *string `pulumi:"cond"`
-	// The parameter value gets the expression.
-	Expr *string `pulumi:"expr"`
-	// The parameter number.
-	Index *int `pulumi:"index"`
-	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
+	Cond     *string `pulumi:"cond"`
+	Expr     *string `pulumi:"expr"`
+	Index    *int    `pulumi:"index"`
 	Operator *string `pulumi:"operator"`
-	// The value of the parameter.
-	Value *string `pulumi:"value"`
+	Value    *string `pulumi:"value"`
 }
 
 // GreyTagRouteDubboRuleItemInput is an input type that accepts GreyTagRouteDubboRuleItemArgs and GreyTagRouteDubboRuleItemOutput values.
@@ -4841,16 +4690,11 @@ type GreyTagRouteDubboRuleItemInput interface {
 }
 
 type GreyTagRouteDubboRuleItemArgs struct {
-	// The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
-	Cond pulumi.StringPtrInput `pulumi:"cond"`
-	// The parameter value gets the expression.
-	Expr pulumi.StringPtrInput `pulumi:"expr"`
-	// The parameter number.
-	Index pulumi.IntPtrInput `pulumi:"index"`
-	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
+	Cond     pulumi.StringPtrInput `pulumi:"cond"`
+	Expr     pulumi.StringPtrInput `pulumi:"expr"`
+	Index    pulumi.IntPtrInput    `pulumi:"index"`
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The value of the parameter.
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	Value    pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (GreyTagRouteDubboRuleItemArgs) ElementType() reflect.Type {
@@ -4904,27 +4748,22 @@ func (o GreyTagRouteDubboRuleItemOutput) ToGreyTagRouteDubboRuleItemOutputWithCo
 	return o
 }
 
-// The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
 func (o GreyTagRouteDubboRuleItemOutput) Cond() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteDubboRuleItem) *string { return v.Cond }).(pulumi.StringPtrOutput)
 }
 
-// The parameter value gets the expression.
 func (o GreyTagRouteDubboRuleItemOutput) Expr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteDubboRuleItem) *string { return v.Expr }).(pulumi.StringPtrOutput)
 }
 
-// The parameter number.
 func (o GreyTagRouteDubboRuleItemOutput) Index() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteDubboRuleItem) *int { return v.Index }).(pulumi.IntPtrOutput)
 }
 
-// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
 func (o GreyTagRouteDubboRuleItemOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteDubboRuleItem) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
-// The value of the parameter.
 func (o GreyTagRouteDubboRuleItemOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteDubboRuleItem) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -5065,16 +4904,11 @@ func (o GreyTagRouteScRuleArrayOutput) Index(i pulumi.IntInput) GreyTagRouteScRu
 }
 
 type GreyTagRouteScRuleItem struct {
-	// The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
-	Cond *string `pulumi:"cond"`
-	// The name of the parameter.
-	Name *string `pulumi:"name"`
-	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
+	Cond     *string `pulumi:"cond"`
+	Name     *string `pulumi:"name"`
 	Operator *string `pulumi:"operator"`
-	// The compare types. Valid values: `param`, `cookie`, `header`.
-	Type *string `pulumi:"type"`
-	// The value of the parameter.
-	Value *string `pulumi:"value"`
+	Type     *string `pulumi:"type"`
+	Value    *string `pulumi:"value"`
 }
 
 // GreyTagRouteScRuleItemInput is an input type that accepts GreyTagRouteScRuleItemArgs and GreyTagRouteScRuleItemOutput values.
@@ -5089,16 +4923,11 @@ type GreyTagRouteScRuleItemInput interface {
 }
 
 type GreyTagRouteScRuleItemArgs struct {
-	// The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
-	Cond pulumi.StringPtrInput `pulumi:"cond"`
-	// The name of the parameter.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
+	Cond     pulumi.StringPtrInput `pulumi:"cond"`
+	Name     pulumi.StringPtrInput `pulumi:"name"`
 	Operator pulumi.StringPtrInput `pulumi:"operator"`
-	// The compare types. Valid values: `param`, `cookie`, `header`.
-	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The value of the parameter.
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	Type     pulumi.StringPtrInput `pulumi:"type"`
+	Value    pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (GreyTagRouteScRuleItemArgs) ElementType() reflect.Type {
@@ -5152,27 +4981,22 @@ func (o GreyTagRouteScRuleItemOutput) ToGreyTagRouteScRuleItemOutputWithContext(
 	return o
 }
 
-// The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
 func (o GreyTagRouteScRuleItemOutput) Cond() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteScRuleItem) *string { return v.Cond }).(pulumi.StringPtrOutput)
 }
 
-// The name of the parameter.
 func (o GreyTagRouteScRuleItemOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteScRuleItem) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
 func (o GreyTagRouteScRuleItemOutput) Operator() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteScRuleItem) *string { return v.Operator }).(pulumi.StringPtrOutput)
 }
 
-// The compare types. Valid values: `param`, `cookie`, `header`.
 func (o GreyTagRouteScRuleItemOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteScRuleItem) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
 
-// The value of the parameter.
 func (o GreyTagRouteScRuleItemOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GreyTagRouteScRuleItem) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -5936,18 +5760,12 @@ func (o GetApplicationScalingRulesRuleArrayOutput) Index(i pulumi.IntInput) GetA
 }
 
 type GetApplicationScalingRulesRuleScalingRuleMetric struct {
-	// The maximum number of instances.
-	MaxReplicas int `pulumi:"maxReplicas"`
-	// The auto scaling list of monitoring indicators.
-	Metrics []GetApplicationScalingRulesRuleScalingRuleMetricMetric `pulumi:"metrics"`
-	// Monitor indicator elasticity status.
+	MaxReplicas     int                                                            `pulumi:"maxReplicas"`
+	Metrics         []GetApplicationScalingRulesRuleScalingRuleMetricMetric        `pulumi:"metrics"`
 	MetricsStatuses []GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus `pulumi:"metricsStatuses"`
-	// The minimum number of instances.
-	MinReplicas int `pulumi:"minReplicas"`
-	// The shrink rule.
-	ScaleDownRules []GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule `pulumi:"scaleDownRules"`
-	// The expansion rules.
-	ScaleUpRules []GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule `pulumi:"scaleUpRules"`
+	MinReplicas     int                                                            `pulumi:"minReplicas"`
+	ScaleDownRules  []GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule `pulumi:"scaleDownRules"`
+	ScaleUpRules    []GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule   `pulumi:"scaleUpRules"`
 }
 
 // GetApplicationScalingRulesRuleScalingRuleMetricInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricArgs and GetApplicationScalingRulesRuleScalingRuleMetricOutput values.
@@ -5962,18 +5780,12 @@ type GetApplicationScalingRulesRuleScalingRuleMetricInput interface {
 }
 
 type GetApplicationScalingRulesRuleScalingRuleMetricArgs struct {
-	// The maximum number of instances.
-	MaxReplicas pulumi.IntInput `pulumi:"maxReplicas"`
-	// The auto scaling list of monitoring indicators.
-	Metrics GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayInput `pulumi:"metrics"`
-	// Monitor indicator elasticity status.
+	MaxReplicas     pulumi.IntInput                                                        `pulumi:"maxReplicas"`
+	Metrics         GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayInput        `pulumi:"metrics"`
 	MetricsStatuses GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayInput `pulumi:"metricsStatuses"`
-	// The minimum number of instances.
-	MinReplicas pulumi.IntInput `pulumi:"minReplicas"`
-	// The shrink rule.
-	ScaleDownRules GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayInput `pulumi:"scaleDownRules"`
-	// The expansion rules.
-	ScaleUpRules GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayInput `pulumi:"scaleUpRules"`
+	MinReplicas     pulumi.IntInput                                                        `pulumi:"minReplicas"`
+	ScaleDownRules  GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayInput `pulumi:"scaleDownRules"`
+	ScaleUpRules    GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayInput   `pulumi:"scaleUpRules"`
 }
 
 func (GetApplicationScalingRulesRuleScalingRuleMetricArgs) ElementType() reflect.Type {
@@ -6027,38 +5839,32 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricOutput) ToGetApplicationS
 	return o
 }
 
-// The maximum number of instances.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricOutput) MaxReplicas() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetric) int { return v.MaxReplicas }).(pulumi.IntOutput)
 }
 
-// The auto scaling list of monitoring indicators.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricOutput) Metrics() GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetric) []GetApplicationScalingRulesRuleScalingRuleMetricMetric {
 		return v.Metrics
 	}).(GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput)
 }
 
-// Monitor indicator elasticity status.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricOutput) MetricsStatuses() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetric) []GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus {
 		return v.MetricsStatuses
 	}).(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput)
 }
 
-// The minimum number of instances.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricOutput) MinReplicas() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetric) int { return v.MinReplicas }).(pulumi.IntOutput)
 }
 
-// The shrink rule.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricOutput) ScaleDownRules() GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetric) []GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule {
 		return v.ScaleDownRules
 	}).(GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput)
 }
 
-// The expansion rules.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricOutput) ScaleUpRules() GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetric) []GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule {
 		return v.ScaleUpRules
@@ -6086,10 +5892,8 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricArrayOutput) Index(i pulu
 }
 
 type GetApplicationScalingRulesRuleScalingRuleMetricMetric struct {
-	// The target value of the monitoring indicator.
-	MetricTargetAverageUtilization int `pulumi:"metricTargetAverageUtilization"`
-	// The metric type of the Application Scaling Rule.
-	MetricType string `pulumi:"metricType"`
+	MetricTargetAverageUtilization int    `pulumi:"metricTargetAverageUtilization"`
+	MetricType                     string `pulumi:"metricType"`
 }
 
 // GetApplicationScalingRulesRuleScalingRuleMetricMetricInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricArgs and GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput values.
@@ -6104,10 +5908,8 @@ type GetApplicationScalingRulesRuleScalingRuleMetricMetricInput interface {
 }
 
 type GetApplicationScalingRulesRuleScalingRuleMetricMetricArgs struct {
-	// The target value of the monitoring indicator.
-	MetricTargetAverageUtilization pulumi.IntInput `pulumi:"metricTargetAverageUtilization"`
-	// The metric type of the Application Scaling Rule.
-	MetricType pulumi.StringInput `pulumi:"metricType"`
+	MetricTargetAverageUtilization pulumi.IntInput    `pulumi:"metricTargetAverageUtilization"`
+	MetricType                     pulumi.StringInput `pulumi:"metricType"`
 }
 
 func (GetApplicationScalingRulesRuleScalingRuleMetricMetricArgs) ElementType() reflect.Type {
@@ -6161,14 +5963,12 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput) ToGetApplic
 	return o
 }
 
-// The target value of the monitoring indicator.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput) MetricTargetAverageUtilization() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetric) int {
 		return v.MetricTargetAverageUtilization
 	}).(pulumi.IntOutput)
 }
 
-// The metric type of the Application Scaling Rule.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricOutput) MetricType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetric) string { return v.MetricType }).(pulumi.StringOutput)
 }
@@ -6194,22 +5994,14 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricArrayOutput) Index(
 }
 
 type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus struct {
-	// The current monitoring indicator elasticity list.
-	CurrentMetrics []GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric `pulumi:"currentMetrics"`
-	// The number of current instances.
-	CurrentReplicas int `pulumi:"currentReplicas"`
-	// The number of target instances.
-	DesiredReplicas int `pulumi:"desiredReplicas"`
-	// The time of the last elastic expansion.
-	LastScaleTime string `pulumi:"lastScaleTime"`
-	// The maximum number of instances.
-	MaxReplicas int `pulumi:"maxReplicas"`
-	// The minimum number of instances.
-	MinReplicas int `pulumi:"minReplicas"`
-	// Next monitoring indicator elasticity list
-	NextScaleMetrics []GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric `pulumi:"nextScaleMetrics"`
-	// The next cycle of monitoring indicator elasticity.
-	NextScaleTimePeriod int `pulumi:"nextScaleTimePeriod"`
+	CurrentMetrics      []GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric   `pulumi:"currentMetrics"`
+	CurrentReplicas     int                                                                           `pulumi:"currentReplicas"`
+	DesiredReplicas     int                                                                           `pulumi:"desiredReplicas"`
+	LastScaleTime       string                                                                        `pulumi:"lastScaleTime"`
+	MaxReplicas         int                                                                           `pulumi:"maxReplicas"`
+	MinReplicas         int                                                                           `pulumi:"minReplicas"`
+	NextScaleMetrics    []GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric `pulumi:"nextScaleMetrics"`
+	NextScaleTimePeriod int                                                                           `pulumi:"nextScaleTimePeriod"`
 }
 
 // GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArgs and GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput values.
@@ -6224,22 +6016,14 @@ type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusInput interface
 }
 
 type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArgs struct {
-	// The current monitoring indicator elasticity list.
-	CurrentMetrics GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayInput `pulumi:"currentMetrics"`
-	// The number of current instances.
-	CurrentReplicas pulumi.IntInput `pulumi:"currentReplicas"`
-	// The number of target instances.
-	DesiredReplicas pulumi.IntInput `pulumi:"desiredReplicas"`
-	// The time of the last elastic expansion.
-	LastScaleTime pulumi.StringInput `pulumi:"lastScaleTime"`
-	// The maximum number of instances.
-	MaxReplicas pulumi.IntInput `pulumi:"maxReplicas"`
-	// The minimum number of instances.
-	MinReplicas pulumi.IntInput `pulumi:"minReplicas"`
-	// Next monitoring indicator elasticity list
-	NextScaleMetrics GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayInput `pulumi:"nextScaleMetrics"`
-	// The next cycle of monitoring indicator elasticity.
-	NextScaleTimePeriod pulumi.IntInput `pulumi:"nextScaleTimePeriod"`
+	CurrentMetrics      GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayInput   `pulumi:"currentMetrics"`
+	CurrentReplicas     pulumi.IntInput                                                                       `pulumi:"currentReplicas"`
+	DesiredReplicas     pulumi.IntInput                                                                       `pulumi:"desiredReplicas"`
+	LastScaleTime       pulumi.StringInput                                                                    `pulumi:"lastScaleTime"`
+	MaxReplicas         pulumi.IntInput                                                                       `pulumi:"maxReplicas"`
+	MinReplicas         pulumi.IntInput                                                                       `pulumi:"minReplicas"`
+	NextScaleMetrics    GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayInput `pulumi:"nextScaleMetrics"`
+	NextScaleTimePeriod pulumi.IntInput                                                                       `pulumi:"nextScaleTimePeriod"`
 }
 
 func (GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArgs) ElementType() reflect.Type {
@@ -6293,46 +6077,38 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) ToGe
 	return o
 }
 
-// The current monitoring indicator elasticity list.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) CurrentMetrics() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus) []GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric {
 		return v.CurrentMetrics
 	}).(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArrayOutput)
 }
 
-// The number of current instances.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) CurrentReplicas() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus) int { return v.CurrentReplicas }).(pulumi.IntOutput)
 }
 
-// The number of target instances.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) DesiredReplicas() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus) int { return v.DesiredReplicas }).(pulumi.IntOutput)
 }
 
-// The time of the last elastic expansion.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) LastScaleTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus) string { return v.LastScaleTime }).(pulumi.StringOutput)
 }
 
-// The maximum number of instances.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) MaxReplicas() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus) int { return v.MaxReplicas }).(pulumi.IntOutput)
 }
 
-// The minimum number of instances.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) MinReplicas() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus) int { return v.MinReplicas }).(pulumi.IntOutput)
 }
 
-// Next monitoring indicator elasticity list
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) NextScaleMetrics() GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus) []GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric {
 		return v.NextScaleMetrics
 	}).(GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArrayOutput)
 }
 
-// The next cycle of monitoring indicator elasticity.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusOutput) NextScaleTimePeriod() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus) int { return v.NextScaleTimePeriod }).(pulumi.IntOutput)
 }
@@ -6358,12 +6134,9 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusArrayOutput)
 }
 
 type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric struct {
-	// The current value.
-	CurrentValue int `pulumi:"currentValue"`
-	// The name of the trigger condition.
-	Name string `pulumi:"name"`
-	// The metric type. Associated with monitoring indicators.
-	Type string `pulumi:"type"`
+	CurrentValue int    `pulumi:"currentValue"`
+	Name         string `pulumi:"name"`
+	Type         string `pulumi:"type"`
 }
 
 // GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArgs and GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput values.
@@ -6378,12 +6151,9 @@ type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricIn
 }
 
 type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArgs struct {
-	// The current value.
-	CurrentValue pulumi.IntInput `pulumi:"currentValue"`
-	// The name of the trigger condition.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The metric type. Associated with monitoring indicators.
-	Type pulumi.StringInput `pulumi:"type"`
+	CurrentValue pulumi.IntInput    `pulumi:"currentValue"`
+	Name         pulumi.StringInput `pulumi:"name"`
+	Type         pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricArgs) ElementType() reflect.Type {
@@ -6437,21 +6207,18 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetri
 	return o
 }
 
-// The current value.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput) CurrentValue() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric) int {
 		return v.CurrentValue
 	}).(pulumi.IntOutput)
 }
 
-// The name of the trigger condition.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric) string {
 		return v.Name
 	}).(pulumi.StringOutput)
 }
 
-// The metric type. Associated with monitoring indicators.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetricOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric) string {
 		return v.Type
@@ -6479,12 +6246,9 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetri
 }
 
 type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric struct {
-	// The name of the trigger condition.
-	Name string `pulumi:"name"`
-	// The percentage value of the monitoring indicator elasticity that triggers the shrinkage condition next time.
-	NextScaleInAverageUtilization int `pulumi:"nextScaleInAverageUtilization"`
-	// The percentage value of the monitoring indicator elasticity that triggers the expansion condition next time.
-	NextScaleOutAverageUtilization int `pulumi:"nextScaleOutAverageUtilization"`
+	Name                           string `pulumi:"name"`
+	NextScaleInAverageUtilization  int    `pulumi:"nextScaleInAverageUtilization"`
+	NextScaleOutAverageUtilization int    `pulumi:"nextScaleOutAverageUtilization"`
 }
 
 // GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArgs and GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput values.
@@ -6499,12 +6263,9 @@ type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric
 }
 
 type GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArgs struct {
-	// The name of the trigger condition.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The percentage value of the monitoring indicator elasticity that triggers the shrinkage condition next time.
-	NextScaleInAverageUtilization pulumi.IntInput `pulumi:"nextScaleInAverageUtilization"`
-	// The percentage value of the monitoring indicator elasticity that triggers the expansion condition next time.
-	NextScaleOutAverageUtilization pulumi.IntInput `pulumi:"nextScaleOutAverageUtilization"`
+	Name                           pulumi.StringInput `pulumi:"name"`
+	NextScaleInAverageUtilization  pulumi.IntInput    `pulumi:"nextScaleInAverageUtilization"`
+	NextScaleOutAverageUtilization pulumi.IntInput    `pulumi:"nextScaleOutAverageUtilization"`
 }
 
 func (GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricArgs) ElementType() reflect.Type {
@@ -6558,21 +6319,18 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMet
 	return o
 }
 
-// The name of the trigger condition.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric) string {
 		return v.Name
 	}).(pulumi.StringOutput)
 }
 
-// The percentage value of the monitoring indicator elasticity that triggers the shrinkage condition next time.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput) NextScaleInAverageUtilization() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric) int {
 		return v.NextScaleInAverageUtilization
 	}).(pulumi.IntOutput)
 }
 
-// The percentage value of the monitoring indicator elasticity that triggers the expansion condition next time.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetricOutput) NextScaleOutAverageUtilization() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric) int {
 		return v.NextScaleOutAverageUtilization
@@ -6600,12 +6358,9 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMet
 }
 
 type GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule struct {
-	// Whether shrinkage is prohibited. The values are described as follows:
-	Disabled bool `pulumi:"disabled"`
-	// Expansion cooling time.
-	StabilizationWindowSeconds int `pulumi:"stabilizationWindowSeconds"`
-	// Flexible expansion step. The maximum number of instances per unit time.
-	Step int `pulumi:"step"`
+	Disabled                   bool `pulumi:"disabled"`
+	StabilizationWindowSeconds int  `pulumi:"stabilizationWindowSeconds"`
+	Step                       int  `pulumi:"step"`
 }
 
 // GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs and GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput values.
@@ -6620,12 +6375,9 @@ type GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleInput interface
 }
 
 type GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs struct {
-	// Whether shrinkage is prohibited. The values are described as follows:
-	Disabled pulumi.BoolInput `pulumi:"disabled"`
-	// Expansion cooling time.
-	StabilizationWindowSeconds pulumi.IntInput `pulumi:"stabilizationWindowSeconds"`
-	// Flexible expansion step. The maximum number of instances per unit time.
-	Step pulumi.IntInput `pulumi:"step"`
+	Disabled                   pulumi.BoolInput `pulumi:"disabled"`
+	StabilizationWindowSeconds pulumi.IntInput  `pulumi:"stabilizationWindowSeconds"`
+	Step                       pulumi.IntInput  `pulumi:"step"`
 }
 
 func (GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArgs) ElementType() reflect.Type {
@@ -6679,19 +6431,16 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput) ToGe
 	return o
 }
 
-// Whether shrinkage is prohibited. The values are described as follows:
 func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
-// Expansion cooling time.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput) StabilizationWindowSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule) int {
 		return v.StabilizationWindowSeconds
 	}).(pulumi.IntOutput)
 }
 
-// Flexible expansion step. The maximum number of instances per unit time.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleOutput) Step() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule) int { return v.Step }).(pulumi.IntOutput)
 }
@@ -6717,12 +6466,9 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRuleArrayOutput)
 }
 
 type GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule struct {
-	// Whether shrinkage is prohibited. The values are described as follows:
-	Disabled bool `pulumi:"disabled"`
-	// Expansion cooling time.
-	StabilizationWindowSeconds int `pulumi:"stabilizationWindowSeconds"`
-	// Flexible expansion step. The maximum number of instances per unit time.
-	Step int `pulumi:"step"`
+	Disabled                   bool `pulumi:"disabled"`
+	StabilizationWindowSeconds int  `pulumi:"stabilizationWindowSeconds"`
+	Step                       int  `pulumi:"step"`
 }
 
 // GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArgs and GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput values.
@@ -6737,12 +6483,9 @@ type GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleInput interface {
 }
 
 type GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArgs struct {
-	// Whether shrinkage is prohibited. The values are described as follows:
-	Disabled pulumi.BoolInput `pulumi:"disabled"`
-	// Expansion cooling time.
-	StabilizationWindowSeconds pulumi.IntInput `pulumi:"stabilizationWindowSeconds"`
-	// Flexible expansion step. The maximum number of instances per unit time.
-	Step pulumi.IntInput `pulumi:"step"`
+	Disabled                   pulumi.BoolInput `pulumi:"disabled"`
+	StabilizationWindowSeconds pulumi.IntInput  `pulumi:"stabilizationWindowSeconds"`
+	Step                       pulumi.IntInput  `pulumi:"step"`
 }
 
 func (GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArgs) ElementType() reflect.Type {
@@ -6796,19 +6539,16 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput) ToGetA
 	return o
 }
 
-// Whether shrinkage is prohibited. The values are described as follows:
 func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput) Disabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule) bool { return v.Disabled }).(pulumi.BoolOutput)
 }
 
-// Expansion cooling time.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput) StabilizationWindowSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule) int {
 		return v.StabilizationWindowSeconds
 	}).(pulumi.IntOutput)
 }
 
-// Flexible expansion step. The maximum number of instances per unit time.
 func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleOutput) Step() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule) int { return v.Step }).(pulumi.IntOutput)
 }
@@ -6834,13 +6574,9 @@ func (o GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleArrayOutput) I
 }
 
 type GetApplicationScalingRulesRuleScalingRuleTimer struct {
-	// The short-term start date of the timed elastic scaling strategy.
-	BeginDate string `pulumi:"beginDate"`
-	// The short-term end date of the timed elastic scaling strategy.
-	EndDate string `pulumi:"endDate"`
-	// The period in which a timed elastic scaling strategy is executed.
-	Period string `pulumi:"period"`
-	// Trigger point in time within a single day.
+	BeginDate string                                                   `pulumi:"beginDate"`
+	EndDate   string                                                   `pulumi:"endDate"`
+	Period    string                                                   `pulumi:"period"`
 	Schedules []GetApplicationScalingRulesRuleScalingRuleTimerSchedule `pulumi:"schedules"`
 }
 
@@ -6856,13 +6592,9 @@ type GetApplicationScalingRulesRuleScalingRuleTimerInput interface {
 }
 
 type GetApplicationScalingRulesRuleScalingRuleTimerArgs struct {
-	// The short-term start date of the timed elastic scaling strategy.
-	BeginDate pulumi.StringInput `pulumi:"beginDate"`
-	// The short-term end date of the timed elastic scaling strategy.
-	EndDate pulumi.StringInput `pulumi:"endDate"`
-	// The period in which a timed elastic scaling strategy is executed.
-	Period pulumi.StringInput `pulumi:"period"`
-	// Trigger point in time within a single day.
+	BeginDate pulumi.StringInput                                               `pulumi:"beginDate"`
+	EndDate   pulumi.StringInput                                               `pulumi:"endDate"`
+	Period    pulumi.StringInput                                               `pulumi:"period"`
 	Schedules GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayInput `pulumi:"schedules"`
 }
 
@@ -6917,22 +6649,18 @@ func (o GetApplicationScalingRulesRuleScalingRuleTimerOutput) ToGetApplicationSc
 	return o
 }
 
-// The short-term start date of the timed elastic scaling strategy.
 func (o GetApplicationScalingRulesRuleScalingRuleTimerOutput) BeginDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleTimer) string { return v.BeginDate }).(pulumi.StringOutput)
 }
 
-// The short-term end date of the timed elastic scaling strategy.
 func (o GetApplicationScalingRulesRuleScalingRuleTimerOutput) EndDate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleTimer) string { return v.EndDate }).(pulumi.StringOutput)
 }
 
-// The period in which a timed elastic scaling strategy is executed.
 func (o GetApplicationScalingRulesRuleScalingRuleTimerOutput) Period() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleTimer) string { return v.Period }).(pulumi.StringOutput)
 }
 
-// Trigger point in time within a single day.
 func (o GetApplicationScalingRulesRuleScalingRuleTimerOutput) Schedules() GetApplicationScalingRulesRuleScalingRuleTimerScheduleArrayOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleTimer) []GetApplicationScalingRulesRuleScalingRuleTimerSchedule {
 		return v.Schedules
@@ -6960,14 +6688,10 @@ func (o GetApplicationScalingRulesRuleScalingRuleTimerArrayOutput) Index(i pulum
 }
 
 type GetApplicationScalingRulesRuleScalingRuleTimerSchedule struct {
-	// Time point. Format: `hours:minutes`.
-	AtTime string `pulumi:"atTime"`
-	// The maximum number of instances.
-	MaxReplicas int `pulumi:"maxReplicas"`
-	// The minimum number of instances.
-	MinReplicas int `pulumi:"minReplicas"`
-	// The number of target instances.
-	TargetReplicas int `pulumi:"targetReplicas"`
+	AtTime         string `pulumi:"atTime"`
+	MaxReplicas    int    `pulumi:"maxReplicas"`
+	MinReplicas    int    `pulumi:"minReplicas"`
+	TargetReplicas int    `pulumi:"targetReplicas"`
 }
 
 // GetApplicationScalingRulesRuleScalingRuleTimerScheduleInput is an input type that accepts GetApplicationScalingRulesRuleScalingRuleTimerScheduleArgs and GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput values.
@@ -6982,14 +6706,10 @@ type GetApplicationScalingRulesRuleScalingRuleTimerScheduleInput interface {
 }
 
 type GetApplicationScalingRulesRuleScalingRuleTimerScheduleArgs struct {
-	// Time point. Format: `hours:minutes`.
-	AtTime pulumi.StringInput `pulumi:"atTime"`
-	// The maximum number of instances.
-	MaxReplicas pulumi.IntInput `pulumi:"maxReplicas"`
-	// The minimum number of instances.
-	MinReplicas pulumi.IntInput `pulumi:"minReplicas"`
-	// The number of target instances.
-	TargetReplicas pulumi.IntInput `pulumi:"targetReplicas"`
+	AtTime         pulumi.StringInput `pulumi:"atTime"`
+	MaxReplicas    pulumi.IntInput    `pulumi:"maxReplicas"`
+	MinReplicas    pulumi.IntInput    `pulumi:"minReplicas"`
+	TargetReplicas pulumi.IntInput    `pulumi:"targetReplicas"`
 }
 
 func (GetApplicationScalingRulesRuleScalingRuleTimerScheduleArgs) ElementType() reflect.Type {
@@ -7043,22 +6763,18 @@ func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput) ToGetAppli
 	return o
 }
 
-// Time point. Format: `hours:minutes`.
 func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput) AtTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleTimerSchedule) string { return v.AtTime }).(pulumi.StringOutput)
 }
 
-// The maximum number of instances.
 func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput) MaxReplicas() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleTimerSchedule) int { return v.MaxReplicas }).(pulumi.IntOutput)
 }
 
-// The minimum number of instances.
 func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput) MinReplicas() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleTimerSchedule) int { return v.MinReplicas }).(pulumi.IntOutput)
 }
 
-// The number of target instances.
 func (o GetApplicationScalingRulesRuleScalingRuleTimerScheduleOutput) TargetReplicas() pulumi.IntOutput {
 	return o.ApplyT(func(v GetApplicationScalingRulesRuleScalingRuleTimerSchedule) int { return v.TargetReplicas }).(pulumi.IntOutput)
 }
@@ -7648,10 +7364,8 @@ func (o GetApplicationsApplicationArrayOutput) Index(i pulumi.IntInput) GetAppli
 }
 
 type GetApplicationsApplicationMountDesc struct {
-	// The Container mount path.
 	MountPath string `pulumi:"mountPath"`
-	// NAS relative file directory.
-	NasPath string `pulumi:"nasPath"`
+	NasPath   string `pulumi:"nasPath"`
 }
 
 // GetApplicationsApplicationMountDescInput is an input type that accepts GetApplicationsApplicationMountDescArgs and GetApplicationsApplicationMountDescOutput values.
@@ -7666,10 +7380,8 @@ type GetApplicationsApplicationMountDescInput interface {
 }
 
 type GetApplicationsApplicationMountDescArgs struct {
-	// The Container mount path.
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
-	// NAS relative file directory.
-	NasPath pulumi.StringInput `pulumi:"nasPath"`
+	NasPath   pulumi.StringInput `pulumi:"nasPath"`
 }
 
 func (GetApplicationsApplicationMountDescArgs) ElementType() reflect.Type {
@@ -7723,12 +7435,10 @@ func (o GetApplicationsApplicationMountDescOutput) ToGetApplicationsApplicationM
 	return o
 }
 
-// The Container mount path.
 func (o GetApplicationsApplicationMountDescOutput) MountPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationsApplicationMountDesc) string { return v.MountPath }).(pulumi.StringOutput)
 }
 
-// NAS relative file directory.
 func (o GetApplicationsApplicationMountDescOutput) NasPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationsApplicationMountDesc) string { return v.NasPath }).(pulumi.StringOutput)
 }
@@ -7754,14 +7464,10 @@ func (o GetApplicationsApplicationMountDescArrayOutput) Index(i pulumi.IntInput)
 }
 
 type GetApplicationsApplicationOssMountDetail struct {
-	// The name of the bucket.
 	BucketName string `pulumi:"bucketName"`
-	// The path of the bucket.
 	BucketPath string `pulumi:"bucketPath"`
-	// The Container mount path.
-	MountPath string `pulumi:"mountPath"`
-	// Whether the container path has readable permission to mount directory resources.
-	ReadOnly bool `pulumi:"readOnly"`
+	MountPath  string `pulumi:"mountPath"`
+	ReadOnly   bool   `pulumi:"readOnly"`
 }
 
 // GetApplicationsApplicationOssMountDetailInput is an input type that accepts GetApplicationsApplicationOssMountDetailArgs and GetApplicationsApplicationOssMountDetailOutput values.
@@ -7776,14 +7482,10 @@ type GetApplicationsApplicationOssMountDetailInput interface {
 }
 
 type GetApplicationsApplicationOssMountDetailArgs struct {
-	// The name of the bucket.
 	BucketName pulumi.StringInput `pulumi:"bucketName"`
-	// The path of the bucket.
 	BucketPath pulumi.StringInput `pulumi:"bucketPath"`
-	// The Container mount path.
-	MountPath pulumi.StringInput `pulumi:"mountPath"`
-	// Whether the container path has readable permission to mount directory resources.
-	ReadOnly pulumi.BoolInput `pulumi:"readOnly"`
+	MountPath  pulumi.StringInput `pulumi:"mountPath"`
+	ReadOnly   pulumi.BoolInput   `pulumi:"readOnly"`
 }
 
 func (GetApplicationsApplicationOssMountDetailArgs) ElementType() reflect.Type {
@@ -7837,22 +7539,18 @@ func (o GetApplicationsApplicationOssMountDetailOutput) ToGetApplicationsApplica
 	return o
 }
 
-// The name of the bucket.
 func (o GetApplicationsApplicationOssMountDetailOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationsApplicationOssMountDetail) string { return v.BucketName }).(pulumi.StringOutput)
 }
 
-// The path of the bucket.
 func (o GetApplicationsApplicationOssMountDetailOutput) BucketPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationsApplicationOssMountDetail) string { return v.BucketPath }).(pulumi.StringOutput)
 }
 
-// The Container mount path.
 func (o GetApplicationsApplicationOssMountDetailOutput) MountPath() pulumi.StringOutput {
 	return o.ApplyT(func(v GetApplicationsApplicationOssMountDetail) string { return v.MountPath }).(pulumi.StringOutput)
 }
 
-// Whether the container path has readable permission to mount directory resources.
 func (o GetApplicationsApplicationOssMountDetailOutput) ReadOnly() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetApplicationsApplicationOssMountDetail) bool { return v.ReadOnly }).(pulumi.BoolOutput)
 }
@@ -8162,18 +7860,12 @@ func (o GetGreyTagRoutesRouteArrayOutput) Index(i pulumi.IntInput) GetGreyTagRou
 }
 
 type GetGreyTagRoutesRouteDubboRule struct {
-	// The Conditional Patterns for Grayscale Rules.
-	Condition string `pulumi:"condition"`
-	// The service group.
-	Group string `pulumi:"group"`
-	// A list of conditions items.
-	Items []GetGreyTagRoutesRouteDubboRuleItem `pulumi:"items"`
-	// The method name
-	MethodName string `pulumi:"methodName"`
-	// The service name.
-	ServiceName string `pulumi:"serviceName"`
-	// The service version.
-	Version string `pulumi:"version"`
+	Condition   string                               `pulumi:"condition"`
+	Group       string                               `pulumi:"group"`
+	Items       []GetGreyTagRoutesRouteDubboRuleItem `pulumi:"items"`
+	MethodName  string                               `pulumi:"methodName"`
+	ServiceName string                               `pulumi:"serviceName"`
+	Version     string                               `pulumi:"version"`
 }
 
 // GetGreyTagRoutesRouteDubboRuleInput is an input type that accepts GetGreyTagRoutesRouteDubboRuleArgs and GetGreyTagRoutesRouteDubboRuleOutput values.
@@ -8188,18 +7880,12 @@ type GetGreyTagRoutesRouteDubboRuleInput interface {
 }
 
 type GetGreyTagRoutesRouteDubboRuleArgs struct {
-	// The Conditional Patterns for Grayscale Rules.
-	Condition pulumi.StringInput `pulumi:"condition"`
-	// The service group.
-	Group pulumi.StringInput `pulumi:"group"`
-	// A list of conditions items.
-	Items GetGreyTagRoutesRouteDubboRuleItemArrayInput `pulumi:"items"`
-	// The method name
-	MethodName pulumi.StringInput `pulumi:"methodName"`
-	// The service name.
-	ServiceName pulumi.StringInput `pulumi:"serviceName"`
-	// The service version.
-	Version pulumi.StringInput `pulumi:"version"`
+	Condition   pulumi.StringInput                           `pulumi:"condition"`
+	Group       pulumi.StringInput                           `pulumi:"group"`
+	Items       GetGreyTagRoutesRouteDubboRuleItemArrayInput `pulumi:"items"`
+	MethodName  pulumi.StringInput                           `pulumi:"methodName"`
+	ServiceName pulumi.StringInput                           `pulumi:"serviceName"`
+	Version     pulumi.StringInput                           `pulumi:"version"`
 }
 
 func (GetGreyTagRoutesRouteDubboRuleArgs) ElementType() reflect.Type {
@@ -8253,32 +7939,26 @@ func (o GetGreyTagRoutesRouteDubboRuleOutput) ToGetGreyTagRoutesRouteDubboRuleOu
 	return o
 }
 
-// The Conditional Patterns for Grayscale Rules.
 func (o GetGreyTagRoutesRouteDubboRuleOutput) Condition() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRule) string { return v.Condition }).(pulumi.StringOutput)
 }
 
-// The service group.
 func (o GetGreyTagRoutesRouteDubboRuleOutput) Group() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRule) string { return v.Group }).(pulumi.StringOutput)
 }
 
-// A list of conditions items.
 func (o GetGreyTagRoutesRouteDubboRuleOutput) Items() GetGreyTagRoutesRouteDubboRuleItemArrayOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRule) []GetGreyTagRoutesRouteDubboRuleItem { return v.Items }).(GetGreyTagRoutesRouteDubboRuleItemArrayOutput)
 }
 
-// The method name
 func (o GetGreyTagRoutesRouteDubboRuleOutput) MethodName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRule) string { return v.MethodName }).(pulumi.StringOutput)
 }
 
-// The service name.
 func (o GetGreyTagRoutesRouteDubboRuleOutput) ServiceName() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRule) string { return v.ServiceName }).(pulumi.StringOutput)
 }
 
-// The service version.
 func (o GetGreyTagRoutesRouteDubboRuleOutput) Version() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRule) string { return v.Version }).(pulumi.StringOutput)
 }
@@ -8304,16 +7984,11 @@ func (o GetGreyTagRoutesRouteDubboRuleArrayOutput) Index(i pulumi.IntInput) GetG
 }
 
 type GetGreyTagRoutesRouteDubboRuleItem struct {
-	// The comparison operator.
-	Cond string `pulumi:"cond"`
-	// The parameter value gets the expression.
-	Expr string `pulumi:"expr"`
-	// The parameter number.
-	Index int `pulumi:"index"`
-	// The operator.
+	Cond     string `pulumi:"cond"`
+	Expr     string `pulumi:"expr"`
+	Index    int    `pulumi:"index"`
 	Operator string `pulumi:"operator"`
-	// The value of the parameter.
-	Value string `pulumi:"value"`
+	Value    string `pulumi:"value"`
 }
 
 // GetGreyTagRoutesRouteDubboRuleItemInput is an input type that accepts GetGreyTagRoutesRouteDubboRuleItemArgs and GetGreyTagRoutesRouteDubboRuleItemOutput values.
@@ -8328,16 +8003,11 @@ type GetGreyTagRoutesRouteDubboRuleItemInput interface {
 }
 
 type GetGreyTagRoutesRouteDubboRuleItemArgs struct {
-	// The comparison operator.
-	Cond pulumi.StringInput `pulumi:"cond"`
-	// The parameter value gets the expression.
-	Expr pulumi.StringInput `pulumi:"expr"`
-	// The parameter number.
-	Index pulumi.IntInput `pulumi:"index"`
-	// The operator.
+	Cond     pulumi.StringInput `pulumi:"cond"`
+	Expr     pulumi.StringInput `pulumi:"expr"`
+	Index    pulumi.IntInput    `pulumi:"index"`
 	Operator pulumi.StringInput `pulumi:"operator"`
-	// The value of the parameter.
-	Value pulumi.StringInput `pulumi:"value"`
+	Value    pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetGreyTagRoutesRouteDubboRuleItemArgs) ElementType() reflect.Type {
@@ -8391,27 +8061,22 @@ func (o GetGreyTagRoutesRouteDubboRuleItemOutput) ToGetGreyTagRoutesRouteDubboRu
 	return o
 }
 
-// The comparison operator.
 func (o GetGreyTagRoutesRouteDubboRuleItemOutput) Cond() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRuleItem) string { return v.Cond }).(pulumi.StringOutput)
 }
 
-// The parameter value gets the expression.
 func (o GetGreyTagRoutesRouteDubboRuleItemOutput) Expr() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRuleItem) string { return v.Expr }).(pulumi.StringOutput)
 }
 
-// The parameter number.
 func (o GetGreyTagRoutesRouteDubboRuleItemOutput) Index() pulumi.IntOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRuleItem) int { return v.Index }).(pulumi.IntOutput)
 }
 
-// The operator.
 func (o GetGreyTagRoutesRouteDubboRuleItemOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRuleItem) string { return v.Operator }).(pulumi.StringOutput)
 }
 
-// The value of the parameter.
 func (o GetGreyTagRoutesRouteDubboRuleItemOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesRouteDubboRuleItem) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -8437,12 +8102,9 @@ func (o GetGreyTagRoutesRouteDubboRuleItemArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetGreyTagRoutesRouteScRule struct {
-	// The Conditional Patterns for Grayscale Rules.
-	Condition string `pulumi:"condition"`
-	// A list of conditions items.
-	Items []GetGreyTagRoutesRouteScRuleItem `pulumi:"items"`
-	// The path corresponding to the grayscale rule.
-	Path string `pulumi:"path"`
+	Condition string                            `pulumi:"condition"`
+	Items     []GetGreyTagRoutesRouteScRuleItem `pulumi:"items"`
+	Path      string                            `pulumi:"path"`
 }
 
 // GetGreyTagRoutesRouteScRuleInput is an input type that accepts GetGreyTagRoutesRouteScRuleArgs and GetGreyTagRoutesRouteScRuleOutput values.
@@ -8457,12 +8119,9 @@ type GetGreyTagRoutesRouteScRuleInput interface {
 }
 
 type GetGreyTagRoutesRouteScRuleArgs struct {
-	// The Conditional Patterns for Grayscale Rules.
-	Condition pulumi.StringInput `pulumi:"condition"`
-	// A list of conditions items.
-	Items GetGreyTagRoutesRouteScRuleItemArrayInput `pulumi:"items"`
-	// The path corresponding to the grayscale rule.
-	Path pulumi.StringInput `pulumi:"path"`
+	Condition pulumi.StringInput                        `pulumi:"condition"`
+	Items     GetGreyTagRoutesRouteScRuleItemArrayInput `pulumi:"items"`
+	Path      pulumi.StringInput                        `pulumi:"path"`
 }
 
 func (GetGreyTagRoutesRouteScRuleArgs) ElementType() reflect.Type {
@@ -8516,17 +8175,14 @@ func (o GetGreyTagRoutesRouteScRuleOutput) ToGetGreyTagRoutesRouteScRuleOutputWi
 	return o
 }
 
-// The Conditional Patterns for Grayscale Rules.
 func (o GetGreyTagRoutesRouteScRuleOutput) Condition() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesRouteScRule) string { return v.Condition }).(pulumi.StringOutput)
 }
 
-// A list of conditions items.
 func (o GetGreyTagRoutesRouteScRuleOutput) Items() GetGreyTagRoutesRouteScRuleItemArrayOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesRouteScRule) []GetGreyTagRoutesRouteScRuleItem { return v.Items }).(GetGreyTagRoutesRouteScRuleItemArrayOutput)
 }
 
-// The path corresponding to the grayscale rule.
 func (o GetGreyTagRoutesRouteScRuleOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesRouteScRule) string { return v.Path }).(pulumi.StringOutput)
 }
@@ -8552,16 +8208,11 @@ func (o GetGreyTagRoutesRouteScRuleArrayOutput) Index(i pulumi.IntInput) GetGrey
 }
 
 type GetGreyTagRoutesRouteScRuleItem struct {
-	// The comparison operator.
-	Cond string `pulumi:"cond"`
-	// The name of the parameter.
-	Name string `pulumi:"name"`
-	// The operator.
+	Cond     string `pulumi:"cond"`
+	Name     string `pulumi:"name"`
 	Operator string `pulumi:"operator"`
-	// The Compare types.
-	Type string `pulumi:"type"`
-	// The value of the parameter.
-	Value string `pulumi:"value"`
+	Type     string `pulumi:"type"`
+	Value    string `pulumi:"value"`
 }
 
 // GetGreyTagRoutesRouteScRuleItemInput is an input type that accepts GetGreyTagRoutesRouteScRuleItemArgs and GetGreyTagRoutesRouteScRuleItemOutput values.
@@ -8576,16 +8227,11 @@ type GetGreyTagRoutesRouteScRuleItemInput interface {
 }
 
 type GetGreyTagRoutesRouteScRuleItemArgs struct {
-	// The comparison operator.
-	Cond pulumi.StringInput `pulumi:"cond"`
-	// The name of the parameter.
-	Name pulumi.StringInput `pulumi:"name"`
-	// The operator.
+	Cond     pulumi.StringInput `pulumi:"cond"`
+	Name     pulumi.StringInput `pulumi:"name"`
 	Operator pulumi.StringInput `pulumi:"operator"`
-	// The Compare types.
-	Type pulumi.StringInput `pulumi:"type"`
-	// The value of the parameter.
-	Value pulumi.StringInput `pulumi:"value"`
+	Type     pulumi.StringInput `pulumi:"type"`
+	Value    pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetGreyTagRoutesRouteScRuleItemArgs) ElementType() reflect.Type {
@@ -8639,27 +8285,22 @@ func (o GetGreyTagRoutesRouteScRuleItemOutput) ToGetGreyTagRoutesRouteScRuleItem
 	return o
 }
 
-// The comparison operator.
 func (o GetGreyTagRoutesRouteScRuleItemOutput) Cond() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesRouteScRuleItem) string { return v.Cond }).(pulumi.StringOutput)
 }
 
-// The name of the parameter.
 func (o GetGreyTagRoutesRouteScRuleItemOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesRouteScRuleItem) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The operator.
 func (o GetGreyTagRoutesRouteScRuleItemOutput) Operator() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesRouteScRuleItem) string { return v.Operator }).(pulumi.StringOutput)
 }
 
-// The Compare types.
 func (o GetGreyTagRoutesRouteScRuleItemOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesRouteScRuleItem) string { return v.Type }).(pulumi.StringOutput)
 }
 
-// The value of the parameter.
 func (o GetGreyTagRoutesRouteScRuleItemOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGreyTagRoutesRouteScRuleItem) string { return v.Value }).(pulumi.StringOutput)
 }

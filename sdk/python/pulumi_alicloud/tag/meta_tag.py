@@ -111,7 +111,6 @@ class MetaTag(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -120,7 +119,6 @@ class MetaTag(pulumi.CustomResource):
             key="Name1",
             values=["Desc2"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -155,7 +153,6 @@ class MetaTag(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -164,7 +161,6 @@ class MetaTag(pulumi.CustomResource):
             key="Name1",
             values=["Desc2"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

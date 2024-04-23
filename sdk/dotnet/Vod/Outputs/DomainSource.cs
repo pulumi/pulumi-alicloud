@@ -13,21 +13,9 @@ namespace Pulumi.AliCloud.Vod.Outputs
     [OutputType]
     public sealed class DomainSource
     {
-        /// <summary>
-        /// The address of the origin server. You can specify an IP address or a domain name.
-        /// </summary>
         public readonly string SourceContent;
-        /// <summary>
-        /// The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
-        /// </summary>
         public readonly string SourcePort;
-        /// <summary>
-        /// The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
-        /// </summary>
         public readonly string? SourcePriority;
-        /// <summary>
-        /// The type of the origin server. Valid values:
-        /// </summary>
         public readonly string SourceType;
 
         [OutputConstructor]

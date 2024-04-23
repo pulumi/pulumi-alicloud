@@ -20,14 +20,16 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
     public static final GetLoadBalancersArgs Empty = new GetLoadBalancersArgs();
 
     /**
-     * The type of IP address that the ALB instance uses to provide services.
+     * The type of IP address that the ALB instance uses to provide services. Valid
+     * values: `Intranet`, `Internet`.
      * 
      */
     @Import(name="addressType")
     private @Nullable Output<String> addressType;
 
     /**
-     * @return The type of IP address that the ALB instance uses to provide services.
+     * @return The type of IP address that the ALB instance uses to provide services. Valid
+     * values: `Intranet`, `Internet`.
      * 
      */
     public Optional<Output<String>> addressType() {
@@ -65,14 +67,14 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+     * Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
      * 
      */
     @Import(name="loadBalancerBusinessStatus")
     private @Nullable Output<String> loadBalancerBusinessStatus;
 
     /**
-     * @return Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+     * @return Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
      * 
      */
     public Optional<Output<String>> loadBalancerBusinessStatus() {
@@ -80,7 +82,7 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0.
+     * Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0. Use &#39;load_balancer_business_status&#39; replaces it.
      * 
      * @deprecated
      * Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute &#39;load_balancer_business_status&#39; instead.
@@ -91,7 +93,7 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
     private @Nullable Output<String> loadBalancerBussinessStatus;
 
     /**
-     * @return Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0.
+     * @return Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0. Use &#39;load_balancer_business_status&#39; replaces it.
      * 
      * @deprecated
      * Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute &#39;load_balancer_business_status&#39; instead.
@@ -178,31 +180,23 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+     * The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+     * @return The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
      * 
      */
     public Optional<Output<String>> status() {
         return Optional.ofNullable(this.status);
     }
 
-    /**
-     * The tag of the resource.
-     * 
-     */
     @Import(name="tags")
     private @Nullable Output<Map<String,Object>> tags;
 
-    /**
-     * @return The tag of the resource.
-     * 
-     */
     public Optional<Output<Map<String,Object>>> tags() {
         return Optional.ofNullable(this.tags);
     }
@@ -238,14 +232,14 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The ID of the zone to which the ALB instance belongs.
+     * The zone ID of the resource.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The ID of the zone to which the ALB instance belongs.
+     * @return The zone ID of the resource.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -291,7 +285,8 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param addressType The type of IP address that the ALB instance uses to provide services.
+         * @param addressType The type of IP address that the ALB instance uses to provide services. Valid
+         * values: `Intranet`, `Internet`.
          * 
          * @return builder
          * 
@@ -302,7 +297,8 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param addressType The type of IP address that the ALB instance uses to provide services.
+         * @param addressType The type of IP address that the ALB instance uses to provide services. Valid
+         * values: `Intranet`, `Internet`.
          * 
          * @return builder
          * 
@@ -364,7 +360,7 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param loadBalancerBusinessStatus Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+         * @param loadBalancerBusinessStatus Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
          * 
          * @return builder
          * 
@@ -375,7 +371,7 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param loadBalancerBusinessStatus Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+         * @param loadBalancerBusinessStatus Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
          * 
          * @return builder
          * 
@@ -385,7 +381,7 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param loadBalancerBussinessStatus Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0.
+         * @param loadBalancerBussinessStatus Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0. Use &#39;load_balancer_business_status&#39; replaces it.
          * 
          * @return builder
          * 
@@ -400,7 +396,7 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param loadBalancerBussinessStatus Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0.
+         * @param loadBalancerBussinessStatus Field &#39;load_balancer_bussiness_status&#39; has been deprecated from provider version 1.142.0. Use &#39;load_balancer_business_status&#39; replaces it.
          * 
          * @return builder
          * 
@@ -529,7 +525,7 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param status The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+         * @param status The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
          * 
          * @return builder
          * 
@@ -540,7 +536,7 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param status The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+         * @param status The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
          * 
          * @return builder
          * 
@@ -549,23 +545,11 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
             return status(Output.of(status));
         }
 
-        /**
-         * @param tags The tag of the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(@Nullable Output<Map<String,Object>> tags) {
             $.tags = tags;
             return this;
         }
 
-        /**
-         * @param tags The tag of the resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder tags(Map<String,Object> tags) {
             return tags(Output.of(tags));
         }
@@ -623,7 +607,7 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param zoneId The ID of the zone to which the ALB instance belongs.
+         * @param zoneId The zone ID of the resource.
          * 
          * @return builder
          * 
@@ -634,7 +618,7 @@ public final class GetLoadBalancersArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param zoneId The ID of the zone to which the ALB instance belongs.
+         * @param zoneId The zone ID of the resource.
          * 
          * @return builder
          * 

@@ -12,21 +12,12 @@ namespace Pulumi.AliCloud.Ess.Inputs
 
     public sealed class ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The port will be used for VServer Group backend server.
-        /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
-        /// <summary>
-        /// ID of VServer Group.
-        /// </summary>
         [Input("vserverGroupId", required: true)]
         public Input<string> VserverGroupId { get; set; } = null!;
 
-        /// <summary>
-        /// The weight of an ECS instance attached to the VServer Group.
-        /// </summary>
         [Input("weight", required: true)]
         public Input<int> Weight { get; set; } = null!;
 

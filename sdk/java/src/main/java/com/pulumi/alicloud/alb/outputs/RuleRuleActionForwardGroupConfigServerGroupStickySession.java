@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RuleRuleActionForwardGroupConfigServerGroupStickySession {
-    /**
-     * @return Whether to enable session persistence.
-     * 
-     */
     private @Nullable Boolean enabled;
-    /**
-     * @return The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
-     * 
-     */
     private @Nullable Integer timeout;
 
     private RuleRuleActionForwardGroupConfigServerGroupStickySession() {}
-    /**
-     * @return Whether to enable session persistence.
-     * 
-     */
     public Optional<Boolean> enabled() {
         return Optional.ofNullable(this.enabled);
     }
-    /**
-     * @return The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
-     * 
-     */
     public Optional<Integer> timeout() {
         return Optional.ofNullable(this.timeout);
     }

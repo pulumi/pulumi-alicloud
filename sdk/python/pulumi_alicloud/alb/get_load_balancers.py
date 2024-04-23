@@ -226,7 +226,6 @@ def get_load_balancers(address_type: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -236,24 +235,23 @@ def get_load_balancers(address_type: Optional[str] = None,
     name_regex = alicloud.alb.get_load_balancers(name_regex="^my-LoadBalancer")
     pulumi.export("albLoadBalancerId2", name_regex.balancers[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str address_type: The type of IP address that the ALB instance uses to provide services.
+    :param str address_type: The type of IP address that the ALB instance uses to provide services. Valid
+           values: `Intranet`, `Internet`.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Load Balancer IDs.
-    :param str load_balancer_business_status: Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
-    :param str load_balancer_bussiness_status: Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
+    :param str load_balancer_business_status: Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
+    :param str load_balancer_bussiness_status: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0. Use 'load_balancer_business_status' replaces it.
     :param Sequence[str] load_balancer_ids: The load balancer ids.
     :param str load_balancer_name: The name of the resource.
     :param str name_regex: A regex string to filter results by Load Balancer name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
-    :param str status: The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
-    :param Mapping[str, Any] tags: The tag of the resource.
+    :param str status: The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
     :param str vpc_id: The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
     :param Sequence[str] vpc_ids: The vpc ids.
-    :param str zone_id: The ID of the zone to which the ALB instance belongs.
+    :param str zone_id: The zone ID of the resource.
     """
     __args__ = dict()
     __args__['addressType'] = address_type
@@ -321,7 +319,6 @@ def get_load_balancers_output(address_type: Optional[pulumi.Input[Optional[str]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -331,23 +328,22 @@ def get_load_balancers_output(address_type: Optional[pulumi.Input[Optional[str]]
     name_regex = alicloud.alb.get_load_balancers(name_regex="^my-LoadBalancer")
     pulumi.export("albLoadBalancerId2", name_regex.balancers[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str address_type: The type of IP address that the ALB instance uses to provide services.
+    :param str address_type: The type of IP address that the ALB instance uses to provide services. Valid
+           values: `Intranet`, `Internet`.
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
     :param Sequence[str] ids: A list of Load Balancer IDs.
-    :param str load_balancer_business_status: Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
-    :param str load_balancer_bussiness_status: Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
+    :param str load_balancer_business_status: Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
+    :param str load_balancer_bussiness_status: Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0. Use 'load_balancer_business_status' replaces it.
     :param Sequence[str] load_balancer_ids: The load balancer ids.
     :param str load_balancer_name: The name of the resource.
     :param str name_regex: A regex string to filter results by Load Balancer name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The ID of the resource group.
-    :param str status: The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
-    :param Mapping[str, Any] tags: The tag of the resource.
+    :param str status: The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
     :param str vpc_id: The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
     :param Sequence[str] vpc_ids: The vpc ids.
-    :param str zone_id: The ID of the zone to which the ALB instance belongs.
+    :param str zone_id: The zone ID of the resource.
     """
     ...

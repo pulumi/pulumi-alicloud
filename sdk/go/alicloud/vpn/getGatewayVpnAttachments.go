@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,7 +50,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetGatewayVpnAttachments(ctx *pulumi.Context, args *GetGatewayVpnAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetGatewayVpnAttachmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGatewayVpnAttachmentsResult

@@ -13,25 +13,10 @@ namespace Pulumi.AliCloud.Sae.Outputs
     [OutputType]
     public sealed class GreyTagRouteDubboRuleItem
     {
-        /// <summary>
-        /// The comparison operator. Valid values: `&gt;`, `&lt;`, `&gt;=`, `&lt;=`, `==`, `!=`.
-        /// </summary>
         public readonly string? Cond;
-        /// <summary>
-        /// The parameter value gets the expression.
-        /// </summary>
         public readonly string? Expr;
-        /// <summary>
-        /// The parameter number.
-        /// </summary>
         public readonly int? Index;
-        /// <summary>
-        /// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
-        /// </summary>
         public readonly string? Operator;
-        /// <summary>
-        /// The value of the parameter.
-        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

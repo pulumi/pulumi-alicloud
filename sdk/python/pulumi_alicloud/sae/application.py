@@ -2460,7 +2460,6 @@ class Application(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -2506,7 +2505,6 @@ class Application(pulumi.CustomResource):
             cpu=500,
             memory=2048)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -2610,7 +2608,6 @@ class Application(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -2656,7 +2653,6 @@ class Application(pulumi.CustomResource):
             cpu=500,
             memory=2048)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -189,7 +189,6 @@ class AclAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -226,7 +225,6 @@ class AclAttachment(pulumi.CustomResource):
             acl_id=default_acl.id,
             acl_type="white")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -260,7 +258,6 @@ class AclAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -297,7 +294,6 @@ class AclAttachment(pulumi.CustomResource):
             acl_id=default_acl.id,
             acl_type="white")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

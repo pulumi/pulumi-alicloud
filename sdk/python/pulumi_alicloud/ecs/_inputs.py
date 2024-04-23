@@ -41,13 +41,6 @@ class AutoProvisioningGroupLaunchTemplateConfigArgs:
                  weighted_capacity: pulumi.Input[str],
                  instance_type: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] max_price: The maximum price of the instance type specified in the Nth extended configurations of the launch template.
-        :param pulumi.Input[str] vswitch_id: The ID of the VSwitch in the Nth extended configurations of the launch template.
-        :param pulumi.Input[str] weighted_capacity: The weight of the instance type specified in the Nth extended configurations of the launch template.
-        :param pulumi.Input[str] instance_type: The instance type of the Nth extended configurations of the launch template.
-        :param pulumi.Input[str] priority: The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
-        """
         pulumi.set(__self__, "max_price", max_price)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "weighted_capacity", weighted_capacity)
@@ -59,9 +52,6 @@ class AutoProvisioningGroupLaunchTemplateConfigArgs:
     @property
     @pulumi.getter(name="maxPrice")
     def max_price(self) -> pulumi.Input[str]:
-        """
-        The maximum price of the instance type specified in the Nth extended configurations of the launch template.
-        """
         return pulumi.get(self, "max_price")
 
     @max_price.setter
@@ -71,9 +61,6 @@ class AutoProvisioningGroupLaunchTemplateConfigArgs:
     @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Input[str]:
-        """
-        The ID of the VSwitch in the Nth extended configurations of the launch template.
-        """
         return pulumi.get(self, "vswitch_id")
 
     @vswitch_id.setter
@@ -83,9 +70,6 @@ class AutoProvisioningGroupLaunchTemplateConfigArgs:
     @property
     @pulumi.getter(name="weightedCapacity")
     def weighted_capacity(self) -> pulumi.Input[str]:
-        """
-        The weight of the instance type specified in the Nth extended configurations of the launch template.
-        """
         return pulumi.get(self, "weighted_capacity")
 
     @weighted_capacity.setter
@@ -95,9 +79,6 @@ class AutoProvisioningGroupLaunchTemplateConfigArgs:
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The instance type of the Nth extended configurations of the launch template.
-        """
         return pulumi.get(self, "instance_type")
 
     @instance_type.setter
@@ -107,9 +88,6 @@ class AutoProvisioningGroupLaunchTemplateConfigArgs:
     @property
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[str]]:
-        """
-        The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
-        """
         return pulumi.get(self, "priority")
 
     @priority.setter
@@ -1433,8 +1411,8 @@ class LaunchTemplateNetworkInterfacesArgs:
                  security_group_id: Optional[pulumi.Input[str]] = None,
                  vswitch_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] description: The description of the data disk.
-        :param pulumi.Input[str] name: The name of the data disk.
+        :param pulumi.Input[str] description: The ENI description.
+        :param pulumi.Input[str] name: ENI name.
         :param pulumi.Input[str] primary_ip: The primary private IP address of the ENI.
         :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
         :param pulumi.Input[str] vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
@@ -1454,7 +1432,7 @@ class LaunchTemplateNetworkInterfacesArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the data disk.
+        The ENI description.
         """
         return pulumi.get(self, "description")
 
@@ -1466,7 +1444,7 @@ class LaunchTemplateNetworkInterfacesArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the data disk.
+        ENI name.
         """
         return pulumi.get(self, "name")
 
@@ -1523,28 +1501,8 @@ class LaunchTemplateSystemDiskArgs:
                  performance_level: Optional[pulumi.Input[str]] = None,
                  size: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[str] category: The category of the disk:
-               - cloud: Basic cloud disk.
-               - cloud_efficiency: Ultra cloud disk.
-               - cloud_ssd: SSD cloud Disks.
-               - ephemeral_ssd: local SSD Disks
-               - cloud_essd: ESSD cloud Disks.
-               
-               Default to `cloud_efficiency`.
-        :param pulumi.Input[bool] delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-               
-               Default to true
-        :param pulumi.Input[str] description: The description of the data disk.
-        :param pulumi.Input[bool] encrypted: Encrypted the data in this disk.
-               
-               Default to false
-        :param pulumi.Input[str] name: The name of the data disk.
-        :param pulumi.Input[int] size: The size of the data disk.
-               - cloud：[5, 2000]
-               - cloud_efficiency：[20, 32768]
-               - cloud_ssd：[20, 32768]
-               - cloud_essd：[20, 32768]
-               - ephemeral_ssd: [5, 800]
+        :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+        :param pulumi.Input[str] name: Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -1566,16 +1524,6 @@ class LaunchTemplateSystemDiskArgs:
     @property
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[str]]:
-        """
-        The category of the disk:
-        - cloud: Basic cloud disk.
-        - cloud_efficiency: Ultra cloud disk.
-        - cloud_ssd: SSD cloud Disks.
-        - ephemeral_ssd: local SSD Disks
-        - cloud_essd: ESSD cloud Disks.
-
-        Default to `cloud_efficiency`.
-        """
         return pulumi.get(self, "category")
 
     @category.setter
@@ -1585,11 +1533,6 @@ class LaunchTemplateSystemDiskArgs:
     @property
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-
-        Default to true
-        """
         return pulumi.get(self, "delete_with_instance")
 
     @delete_with_instance.setter
@@ -1600,7 +1543,7 @@ class LaunchTemplateSystemDiskArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the data disk.
+        Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         """
         return pulumi.get(self, "description")
 
@@ -1611,11 +1554,6 @@ class LaunchTemplateSystemDiskArgs:
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Encrypted the data in this disk.
-
-        Default to false
-        """
         return pulumi.get(self, "encrypted")
 
     @encrypted.setter
@@ -1635,7 +1573,7 @@ class LaunchTemplateSystemDiskArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the data disk.
+        Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         """
         return pulumi.get(self, "name")
 
@@ -1655,14 +1593,6 @@ class LaunchTemplateSystemDiskArgs:
     @property
     @pulumi.getter
     def size(self) -> Optional[pulumi.Input[int]]:
-        """
-        The size of the data disk.
-        - cloud：[5, 2000]
-        - cloud_efficiency：[20, 32768]
-        - cloud_ssd：[20, 32768]
-        - cloud_essd：[20, 32768]
-        - ephemeral_ssd: [5, 800]
-        """
         return pulumi.get(self, "size")
 
     @size.setter

@@ -14,10 +14,6 @@ namespace Pulumi.AliCloud.Ros.Inputs
     {
         [Input("resourceTags", required: true)]
         private InputMap<object>? _resourceTags;
-
-        /// <summary>
-        /// Source label. **NOTE:** A maximum of 10 source labels can be configured.
-        /// </summary>
         public InputMap<object> ResourceTags
         {
             get => _resourceTags ?? (_resourceTags = new InputMap<object>());
@@ -26,10 +22,6 @@ namespace Pulumi.AliCloud.Ros.Inputs
 
         [Input("resourceTypeFilters")]
         private InputList<string>? _resourceTypeFilters;
-
-        /// <summary>
-        /// Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-        /// </summary>
         public InputList<string> ResourceTypeFilters
         {
             get => _resourceTypeFilters ?? (_resourceTypeFilters = new InputList<string>());

@@ -204,7 +204,6 @@ def get_vpc_firewall_control_policies(acl_action: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -216,7 +215,6 @@ def get_vpc_firewall_control_policies(acl_action: Optional[str] = None,
         ])
     pulumi.export("alicloudCloudFirewallVpcFirewallControlPoliciesId1", ids.policies[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str acl_action: Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).
@@ -294,7 +292,6 @@ def get_vpc_firewall_control_policies_output(acl_action: Optional[pulumi.Input[O
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -306,7 +303,6 @@ def get_vpc_firewall_control_policies_output(acl_action: Optional[pulumi.Input[O
         ])
     pulumi.export("alicloudCloudFirewallVpcFirewallControlPoliciesId1", ids.policies[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str acl_action: Access control over VPC firewalls are set in the access traffic via Alibaba cloud firewall way (ACT).

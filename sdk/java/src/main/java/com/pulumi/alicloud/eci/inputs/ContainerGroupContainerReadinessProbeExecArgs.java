@@ -16,17 +16,9 @@ public final class ContainerGroupContainerReadinessProbeExecArgs extends com.pul
 
     public static final ContainerGroupContainerReadinessProbeExecArgs Empty = new ContainerGroupContainerReadinessProbeExecArgs();
 
-    /**
-     * Commands to be executed inside the container when performing health checks using the command line method.
-     * 
-     */
     @Import(name="commands")
     private @Nullable Output<List<String>> commands;
 
-    /**
-     * @return Commands to be executed inside the container when performing health checks using the command line method.
-     * 
-     */
     public Optional<Output<List<String>>> commands() {
         return Optional.ofNullable(this.commands);
     }
@@ -55,33 +47,15 @@ public final class ContainerGroupContainerReadinessProbeExecArgs extends com.pul
             $ = new ContainerGroupContainerReadinessProbeExecArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param commands Commands to be executed inside the container when performing health checks using the command line method.
-         * 
-         * @return builder
-         * 
-         */
         public Builder commands(@Nullable Output<List<String>> commands) {
             $.commands = commands;
             return this;
         }
 
-        /**
-         * @param commands Commands to be executed inside the container when performing health checks using the command line method.
-         * 
-         * @return builder
-         * 
-         */
         public Builder commands(List<String> commands) {
             return commands(Output.of(commands));
         }
 
-        /**
-         * @param commands Commands to be executed inside the container when performing health checks using the command line method.
-         * 
-         * @return builder
-         * 
-         */
         public Builder commands(String... commands) {
             return commands(List.of(commands));
         }

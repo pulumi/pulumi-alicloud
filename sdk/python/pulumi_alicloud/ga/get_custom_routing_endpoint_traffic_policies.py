@@ -172,7 +172,6 @@ def get_custom_routing_endpoint_traffic_policies(accelerator_id: Optional[str] =
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -181,7 +180,6 @@ def get_custom_routing_endpoint_traffic_policies(accelerator_id: Optional[str] =
         accelerator_id="your_accelerator_id")
     pulumi.export("gaCustomRoutingEndpointTrafficPoliciesId1", ids.custom_routing_endpoint_traffic_policies[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The ID of the GA instance to which the traffic policies belong.
@@ -239,7 +237,6 @@ def get_custom_routing_endpoint_traffic_policies_output(accelerator_id: Optional
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -248,7 +245,6 @@ def get_custom_routing_endpoint_traffic_policies_output(accelerator_id: Optional
         accelerator_id="your_accelerator_id")
     pulumi.export("gaCustomRoutingEndpointTrafficPoliciesId1", ids.custom_routing_endpoint_traffic_policies[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The ID of the GA instance to which the traffic policies belong.

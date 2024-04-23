@@ -13,17 +13,8 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
     [OutputType]
     public sealed class ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter
     {
-        /// <summary>
-        /// Specifies whether to enable authentication.
-        /// </summary>
         public readonly string? IsValueSecret;
-        /// <summary>
-        /// The key of the request path.
-        /// </summary>
         public readonly string? Key;
-        /// <summary>
-        /// The key of the request path.
-        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

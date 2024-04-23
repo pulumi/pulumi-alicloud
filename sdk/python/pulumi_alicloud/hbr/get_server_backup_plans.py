@@ -95,7 +95,6 @@ def get_server_backup_plans(filters: Optional[Sequence[pulumi.InputType['GetServ
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -108,7 +107,6 @@ def get_server_backup_plans(filters: Optional[Sequence[pulumi.InputType['GetServ
     )])
     pulumi.export("hbrServerBackupPlanId1", ids.plans[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetServerBackupPlansFilterArgs']] filters: The filters.
@@ -144,7 +142,6 @@ def get_server_backup_plans_output(filters: Optional[pulumi.Input[Optional[Seque
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -157,7 +154,6 @@ def get_server_backup_plans_output(filters: Optional[pulumi.Input[Optional[Seque
     )])
     pulumi.export("hbrServerBackupPlanId1", ids.plans[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[pulumi.InputType['GetServerBackupPlansFilterArgs']] filters: The filters.

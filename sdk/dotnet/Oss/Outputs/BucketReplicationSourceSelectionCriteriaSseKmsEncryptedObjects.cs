@@ -14,7 +14,7 @@ namespace Pulumi.AliCloud.Oss.Outputs
     public sealed class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects
     {
         /// <summary>
-        /// Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+        /// The status of the data replication task. Can be starting, doing and closing.
         /// </summary>
         public readonly string? Status;
 

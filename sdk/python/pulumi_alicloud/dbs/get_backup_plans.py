@@ -153,7 +153,6 @@ def get_backup_plans(backup_plan_name: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -163,7 +162,6 @@ def get_backup_plans(backup_plan_name: Optional[str] = None,
     name_regex = alicloud.dbs.get_backup_plans(name_regex="^my-BackupPlan")
     pulumi.export("dbsBackupPlanId2", name_regex.plans[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str backup_plan_name: The name of the resource.
@@ -218,7 +216,6 @@ def get_backup_plans_output(backup_plan_name: Optional[pulumi.Input[Optional[str
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -228,7 +225,6 @@ def get_backup_plans_output(backup_plan_name: Optional[pulumi.Input[Optional[str
     name_regex = alicloud.dbs.get_backup_plans(name_regex="^my-BackupPlan")
     pulumi.export("dbsBackupPlanId2", name_regex.plans[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str backup_plan_name: The name of the resource.

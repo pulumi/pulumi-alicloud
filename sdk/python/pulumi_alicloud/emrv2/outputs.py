@@ -301,13 +301,6 @@ class ClusterBootstrapScriptNodeSelector(dict):
                  node_group_name: Optional[str] = None,
                  node_group_types: Optional[Sequence[str]] = None,
                  node_names: Optional[Sequence[str]] = None):
-        """
-        :param str node_select_type: The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
-        :param str node_group_id: The configuration effected which node group id of emr cluster.
-        :param str node_group_name: The configuration effected which node group name of emr cluster.
-        :param Sequence[str] node_group_types: The bootstrap scripts execution target node group types.
-        :param Sequence[str] node_names: The bootstrap scripts execution target node names.
-        """
         pulumi.set(__self__, "node_select_type", node_select_type)
         if node_group_id is not None:
             pulumi.set(__self__, "node_group_id", node_group_id)
@@ -321,41 +314,26 @@ class ClusterBootstrapScriptNodeSelector(dict):
     @property
     @pulumi.getter(name="nodeSelectType")
     def node_select_type(self) -> str:
-        """
-        The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
-        """
         return pulumi.get(self, "node_select_type")
 
     @property
     @pulumi.getter(name="nodeGroupId")
     def node_group_id(self) -> Optional[str]:
-        """
-        The configuration effected which node group id of emr cluster.
-        """
         return pulumi.get(self, "node_group_id")
 
     @property
     @pulumi.getter(name="nodeGroupName")
     def node_group_name(self) -> Optional[str]:
-        """
-        The configuration effected which node group name of emr cluster.
-        """
         return pulumi.get(self, "node_group_name")
 
     @property
     @pulumi.getter(name="nodeGroupTypes")
     def node_group_types(self) -> Optional[Sequence[str]]:
-        """
-        The bootstrap scripts execution target node group types.
-        """
         return pulumi.get(self, "node_group_types")
 
     @property
     @pulumi.getter(name="nodeNames")
     def node_names(self) -> Optional[Sequence[str]]:
-        """
-        The bootstrap scripts execution target node names.
-        """
         return pulumi.get(self, "node_names")
 
 
@@ -755,11 +733,6 @@ class ClusterNodeGroupCostOptimizedConfig(dict):
                  on_demand_base_capacity: int,
                  on_demand_percentage_above_base_capacity: int,
                  spot_instance_pools: int):
-        """
-        :param int on_demand_base_capacity: The cost optimized configuration which on demand based capacity.
-        :param int on_demand_percentage_above_base_capacity: The cost optimized configuration which on demand percentage above based capacity.
-        :param int spot_instance_pools: The cost optimized configuration with spot instance pools.
-        """
         pulumi.set(__self__, "on_demand_base_capacity", on_demand_base_capacity)
         pulumi.set(__self__, "on_demand_percentage_above_base_capacity", on_demand_percentage_above_base_capacity)
         pulumi.set(__self__, "spot_instance_pools", spot_instance_pools)
@@ -767,25 +740,16 @@ class ClusterNodeGroupCostOptimizedConfig(dict):
     @property
     @pulumi.getter(name="onDemandBaseCapacity")
     def on_demand_base_capacity(self) -> int:
-        """
-        The cost optimized configuration which on demand based capacity.
-        """
         return pulumi.get(self, "on_demand_base_capacity")
 
     @property
     @pulumi.getter(name="onDemandPercentageAboveBaseCapacity")
     def on_demand_percentage_above_base_capacity(self) -> int:
-        """
-        The cost optimized configuration which on demand percentage above based capacity.
-        """
         return pulumi.get(self, "on_demand_percentage_above_base_capacity")
 
     @property
     @pulumi.getter(name="spotInstancePools")
     def spot_instance_pools(self) -> int:
-        """
-        The cost optimized configuration with spot instance pools.
-        """
         return pulumi.get(self, "spot_instance_pools")
 
 
@@ -813,12 +777,6 @@ class ClusterNodeGroupDataDisk(dict):
                  size: int,
                  count: Optional[int] = None,
                  performance_level: Optional[str] = None):
-        """
-        :param str category: The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
-        :param int size: The size of a data disk, at least 40. Unit: GiB.
-        :param int count: The count of a data disk.
-        :param str performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
-        """
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "size", size)
         if count is not None:
@@ -829,33 +787,21 @@ class ClusterNodeGroupDataDisk(dict):
     @property
     @pulumi.getter
     def category(self) -> str:
-        """
-        The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
-        """
         return pulumi.get(self, "category")
 
     @property
     @pulumi.getter
     def size(self) -> int:
-        """
-        The size of a data disk, at least 40. Unit: GiB.
-        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter
     def count(self) -> Optional[int]:
-        """
-        The count of a data disk.
-        """
         return pulumi.get(self, "count")
 
     @property
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[str]:
-        """
-        Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
-        """
         return pulumi.get(self, "performance_level")
 
 
@@ -883,27 +829,17 @@ class ClusterNodeGroupSpotBidPrice(dict):
     def __init__(__self__, *,
                  bid_price: int,
                  instance_type: str):
-        """
-        :param int bid_price: The spot bid price of a PayAsYouGo instance.
-        :param str instance_type: Host Ecs instance type.
-        """
         pulumi.set(__self__, "bid_price", bid_price)
         pulumi.set(__self__, "instance_type", instance_type)
 
     @property
     @pulumi.getter(name="bidPrice")
     def bid_price(self) -> int:
-        """
-        The spot bid price of a PayAsYouGo instance.
-        """
         return pulumi.get(self, "bid_price")
 
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> str:
-        """
-        Host Ecs instance type.
-        """
         return pulumi.get(self, "instance_type")
 
 
@@ -1035,12 +971,6 @@ class ClusterNodeGroupSystemDisk(dict):
                  size: int,
                  count: Optional[int] = None,
                  performance_level: Optional[str] = None):
-        """
-        :param str category: The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
-        :param int size: The size of a data disk, at least 40. Unit: GiB.
-        :param int count: The count of a data disk.
-        :param str performance_level: Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
-        """
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "size", size)
         if count is not None:
@@ -1051,33 +981,21 @@ class ClusterNodeGroupSystemDisk(dict):
     @property
     @pulumi.getter
     def category(self) -> str:
-        """
-        The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
-        """
         return pulumi.get(self, "category")
 
     @property
     @pulumi.getter
     def size(self) -> int:
-        """
-        The size of a data disk, at least 40. Unit: GiB.
-        """
         return pulumi.get(self, "size")
 
     @property
     @pulumi.getter
     def count(self) -> Optional[int]:
-        """
-        The count of a data disk.
-        """
         return pulumi.get(self, "count")
 
     @property
     @pulumi.getter(name="performanceLevel")
     def performance_level(self) -> Optional[str]:
-        """
-        Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
-        """
         return pulumi.get(self, "performance_level")
 
 

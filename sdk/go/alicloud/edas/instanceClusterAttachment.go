@@ -20,7 +20,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -128,7 +127,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type InstanceClusterAttachment struct {
 	pulumi.CustomResourceState
 

@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -53,7 +52,6 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInterRegionTrafficQosPoliciesResult> InvokeAsync(GetInterRegionTrafficQosPoliciesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInterRegionTrafficQosPoliciesResult>("alicloud:cen/getInterRegionTrafficQosPolicies:getInterRegionTrafficQosPolicies", args ?? new GetInterRegionTrafficQosPoliciesArgs(), options.WithDefaults());
@@ -67,7 +65,6 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -100,7 +97,6 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInterRegionTrafficQosPoliciesResult> Invoke(GetInterRegionTrafficQosPoliciesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInterRegionTrafficQosPoliciesResult>("alicloud:cen/getInterRegionTrafficQosPolicies:getInterRegionTrafficQosPolicies", args ?? new GetInterRegionTrafficQosPoliciesInvokeArgs(), options.WithDefaults());

@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstApiId = dataApigatway.apis[0].id;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getApis(args?: GetApisArgs, opts?: pulumi.InvokeOptions): Promise<GetApisResult> {
     args = args || {};
@@ -100,7 +98,6 @@ export interface GetApisResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -110,7 +107,6 @@ export interface GetApisResult {
  * });
  * export const firstApiId = dataApigatway.apis[0].id;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getApisOutput(args?: GetApisOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApisResult> {
     return pulumi.output(args).apply((a: any) => getApis(a, opts))

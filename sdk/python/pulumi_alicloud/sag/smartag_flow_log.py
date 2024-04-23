@@ -439,7 +439,6 @@ class SmartagFlowLog(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -450,7 +449,6 @@ class SmartagFlowLog(pulumi.CustomResource):
             netflow_version="V9",
             output_type="netflow")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -492,7 +490,6 @@ class SmartagFlowLog(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -503,7 +500,6 @@ class SmartagFlowLog(pulumi.CustomResource):
             netflow_version="V9",
             output_type="netflow")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

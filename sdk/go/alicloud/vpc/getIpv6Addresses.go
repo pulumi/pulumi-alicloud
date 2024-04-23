@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -65,7 +64,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetIpv6Addresses(ctx *pulumi.Context, args *GetIpv6AddressesArgs, opts ...pulumi.InvokeOption) (*GetIpv6AddressesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetIpv6AddressesResult

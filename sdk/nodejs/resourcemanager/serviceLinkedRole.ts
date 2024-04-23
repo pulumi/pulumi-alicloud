@@ -15,14 +15,12 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const _default = new alicloud.resourcemanager.ServiceLinkedRole("default", {serviceName: "ops.elasticsearch.aliyuncs.com"});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

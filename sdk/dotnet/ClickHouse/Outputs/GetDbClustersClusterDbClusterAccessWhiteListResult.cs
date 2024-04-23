@@ -13,17 +13,8 @@ namespace Pulumi.AliCloud.ClickHouse.Outputs
     [OutputType]
     public sealed class GetDbClustersClusterDbClusterAccessWhiteListResult
     {
-        /// <summary>
-        /// Field `db_cluster_ip_array_attribute` has been removed from provider.
-        /// </summary>
         public readonly string DbClusterIpArrayAttribute;
-        /// <summary>
-        /// Whitelist group name.
-        /// </summary>
         public readonly string DbClusterIpArrayName;
-        /// <summary>
-        /// The IP address list under the whitelist group.
-        /// </summary>
         public readonly string SecurityIpList;
 
         [OutputConstructor]

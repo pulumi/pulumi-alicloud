@@ -348,7 +348,6 @@ class EnterpriseUser(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -369,7 +368,6 @@ class EnterpriseUser(pulumi.CustomResource):
             role_names=["DBA"],
             mobile="86-18688888888")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -404,7 +402,6 @@ class EnterpriseUser(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -425,7 +422,6 @@ class EnterpriseUser(pulumi.CustomResource):
             role_names=["DBA"],
             mobile="86-18688888888")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

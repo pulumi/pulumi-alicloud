@@ -138,9 +138,7 @@ func (o DbInstancePlanPlanConfigArrayOutput) Index(i pulumi.IntInput) DbInstance
 }
 
 type DbInstancePlanPlanConfigPause struct {
-	// The executed time of the Plan.
-	ExecuteTime *string `pulumi:"executeTime"`
-	// The Cron Time of the plan.
+	ExecuteTime  *string `pulumi:"executeTime"`
 	PlanCronTime *string `pulumi:"planCronTime"`
 }
 
@@ -156,9 +154,7 @@ type DbInstancePlanPlanConfigPauseInput interface {
 }
 
 type DbInstancePlanPlanConfigPauseArgs struct {
-	// The executed time of the Plan.
-	ExecuteTime pulumi.StringPtrInput `pulumi:"executeTime"`
-	// The Cron Time of the plan.
+	ExecuteTime  pulumi.StringPtrInput `pulumi:"executeTime"`
 	PlanCronTime pulumi.StringPtrInput `pulumi:"planCronTime"`
 }
 
@@ -239,12 +235,10 @@ func (o DbInstancePlanPlanConfigPauseOutput) ToDbInstancePlanPlanConfigPausePtrO
 	}).(DbInstancePlanPlanConfigPausePtrOutput)
 }
 
-// The executed time of the Plan.
 func (o DbInstancePlanPlanConfigPauseOutput) ExecuteTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfigPause) *string { return v.ExecuteTime }).(pulumi.StringPtrOutput)
 }
 
-// The Cron Time of the plan.
 func (o DbInstancePlanPlanConfigPauseOutput) PlanCronTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfigPause) *string { return v.PlanCronTime }).(pulumi.StringPtrOutput)
 }
@@ -273,7 +267,6 @@ func (o DbInstancePlanPlanConfigPausePtrOutput) Elem() DbInstancePlanPlanConfigP
 	}).(DbInstancePlanPlanConfigPauseOutput)
 }
 
-// The executed time of the Plan.
 func (o DbInstancePlanPlanConfigPausePtrOutput) ExecuteTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbInstancePlanPlanConfigPause) *string {
 		if v == nil {
@@ -283,7 +276,6 @@ func (o DbInstancePlanPlanConfigPausePtrOutput) ExecuteTime() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Cron Time of the plan.
 func (o DbInstancePlanPlanConfigPausePtrOutput) PlanCronTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbInstancePlanPlanConfigPause) *string {
 		if v == nil {
@@ -294,9 +286,7 @@ func (o DbInstancePlanPlanConfigPausePtrOutput) PlanCronTime() pulumi.StringPtrO
 }
 
 type DbInstancePlanPlanConfigResume struct {
-	// The executed time of the Plan.
-	ExecuteTime *string `pulumi:"executeTime"`
-	// The Cron Time of the plan.
+	ExecuteTime  *string `pulumi:"executeTime"`
 	PlanCronTime *string `pulumi:"planCronTime"`
 }
 
@@ -312,9 +302,7 @@ type DbInstancePlanPlanConfigResumeInput interface {
 }
 
 type DbInstancePlanPlanConfigResumeArgs struct {
-	// The executed time of the Plan.
-	ExecuteTime pulumi.StringPtrInput `pulumi:"executeTime"`
-	// The Cron Time of the plan.
+	ExecuteTime  pulumi.StringPtrInput `pulumi:"executeTime"`
 	PlanCronTime pulumi.StringPtrInput `pulumi:"planCronTime"`
 }
 
@@ -395,12 +383,10 @@ func (o DbInstancePlanPlanConfigResumeOutput) ToDbInstancePlanPlanConfigResumePt
 	}).(DbInstancePlanPlanConfigResumePtrOutput)
 }
 
-// The executed time of the Plan.
 func (o DbInstancePlanPlanConfigResumeOutput) ExecuteTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfigResume) *string { return v.ExecuteTime }).(pulumi.StringPtrOutput)
 }
 
-// The Cron Time of the plan.
 func (o DbInstancePlanPlanConfigResumeOutput) PlanCronTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfigResume) *string { return v.PlanCronTime }).(pulumi.StringPtrOutput)
 }
@@ -429,7 +415,6 @@ func (o DbInstancePlanPlanConfigResumePtrOutput) Elem() DbInstancePlanPlanConfig
 	}).(DbInstancePlanPlanConfigResumeOutput)
 }
 
-// The executed time of the Plan.
 func (o DbInstancePlanPlanConfigResumePtrOutput) ExecuteTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbInstancePlanPlanConfigResume) *string {
 		if v == nil {
@@ -439,7 +424,6 @@ func (o DbInstancePlanPlanConfigResumePtrOutput) ExecuteTime() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Cron Time of the plan.
 func (o DbInstancePlanPlanConfigResumePtrOutput) PlanCronTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbInstancePlanPlanConfigResume) *string {
 		if v == nil {
@@ -450,11 +434,8 @@ func (o DbInstancePlanPlanConfigResumePtrOutput) PlanCronTime() pulumi.StringPtr
 }
 
 type DbInstancePlanPlanConfigScaleIn struct {
-	// The executed time of the Plan.
-	ExecuteTime *string `pulumi:"executeTime"`
-	// The Cron Time of the plan.
-	PlanCronTime *string `pulumi:"planCronTime"`
-	// The segment Node Num of the Plan.
+	ExecuteTime    *string `pulumi:"executeTime"`
+	PlanCronTime   *string `pulumi:"planCronTime"`
 	SegmentNodeNum *string `pulumi:"segmentNodeNum"`
 }
 
@@ -470,11 +451,8 @@ type DbInstancePlanPlanConfigScaleInInput interface {
 }
 
 type DbInstancePlanPlanConfigScaleInArgs struct {
-	// The executed time of the Plan.
-	ExecuteTime pulumi.StringPtrInput `pulumi:"executeTime"`
-	// The Cron Time of the plan.
-	PlanCronTime pulumi.StringPtrInput `pulumi:"planCronTime"`
-	// The segment Node Num of the Plan.
+	ExecuteTime    pulumi.StringPtrInput `pulumi:"executeTime"`
+	PlanCronTime   pulumi.StringPtrInput `pulumi:"planCronTime"`
 	SegmentNodeNum pulumi.StringPtrInput `pulumi:"segmentNodeNum"`
 }
 
@@ -555,17 +533,14 @@ func (o DbInstancePlanPlanConfigScaleInOutput) ToDbInstancePlanPlanConfigScaleIn
 	}).(DbInstancePlanPlanConfigScaleInPtrOutput)
 }
 
-// The executed time of the Plan.
 func (o DbInstancePlanPlanConfigScaleInOutput) ExecuteTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleIn) *string { return v.ExecuteTime }).(pulumi.StringPtrOutput)
 }
 
-// The Cron Time of the plan.
 func (o DbInstancePlanPlanConfigScaleInOutput) PlanCronTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleIn) *string { return v.PlanCronTime }).(pulumi.StringPtrOutput)
 }
 
-// The segment Node Num of the Plan.
 func (o DbInstancePlanPlanConfigScaleInOutput) SegmentNodeNum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleIn) *string { return v.SegmentNodeNum }).(pulumi.StringPtrOutput)
 }
@@ -594,7 +569,6 @@ func (o DbInstancePlanPlanConfigScaleInPtrOutput) Elem() DbInstancePlanPlanConfi
 	}).(DbInstancePlanPlanConfigScaleInOutput)
 }
 
-// The executed time of the Plan.
 func (o DbInstancePlanPlanConfigScaleInPtrOutput) ExecuteTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleIn) *string {
 		if v == nil {
@@ -604,7 +578,6 @@ func (o DbInstancePlanPlanConfigScaleInPtrOutput) ExecuteTime() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Cron Time of the plan.
 func (o DbInstancePlanPlanConfigScaleInPtrOutput) PlanCronTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleIn) *string {
 		if v == nil {
@@ -614,7 +587,6 @@ func (o DbInstancePlanPlanConfigScaleInPtrOutput) PlanCronTime() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The segment Node Num of the Plan.
 func (o DbInstancePlanPlanConfigScaleInPtrOutput) SegmentNodeNum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleIn) *string {
 		if v == nil {
@@ -625,11 +597,8 @@ func (o DbInstancePlanPlanConfigScaleInPtrOutput) SegmentNodeNum() pulumi.String
 }
 
 type DbInstancePlanPlanConfigScaleOut struct {
-	// The executed time of the Plan.
-	ExecuteTime *string `pulumi:"executeTime"`
-	// The Cron Time of the plan.
-	PlanCronTime *string `pulumi:"planCronTime"`
-	// The segment Node Num of the Plan.
+	ExecuteTime    *string `pulumi:"executeTime"`
+	PlanCronTime   *string `pulumi:"planCronTime"`
 	SegmentNodeNum *string `pulumi:"segmentNodeNum"`
 }
 
@@ -645,11 +614,8 @@ type DbInstancePlanPlanConfigScaleOutInput interface {
 }
 
 type DbInstancePlanPlanConfigScaleOutArgs struct {
-	// The executed time of the Plan.
-	ExecuteTime pulumi.StringPtrInput `pulumi:"executeTime"`
-	// The Cron Time of the plan.
-	PlanCronTime pulumi.StringPtrInput `pulumi:"planCronTime"`
-	// The segment Node Num of the Plan.
+	ExecuteTime    pulumi.StringPtrInput `pulumi:"executeTime"`
+	PlanCronTime   pulumi.StringPtrInput `pulumi:"planCronTime"`
 	SegmentNodeNum pulumi.StringPtrInput `pulumi:"segmentNodeNum"`
 }
 
@@ -730,17 +696,14 @@ func (o DbInstancePlanPlanConfigScaleOutOutput) ToDbInstancePlanPlanConfigScaleO
 	}).(DbInstancePlanPlanConfigScaleOutPtrOutput)
 }
 
-// The executed time of the Plan.
 func (o DbInstancePlanPlanConfigScaleOutOutput) ExecuteTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleOut) *string { return v.ExecuteTime }).(pulumi.StringPtrOutput)
 }
 
-// The Cron Time of the plan.
 func (o DbInstancePlanPlanConfigScaleOutOutput) PlanCronTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleOut) *string { return v.PlanCronTime }).(pulumi.StringPtrOutput)
 }
 
-// The segment Node Num of the Plan.
 func (o DbInstancePlanPlanConfigScaleOutOutput) SegmentNodeNum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DbInstancePlanPlanConfigScaleOut) *string { return v.SegmentNodeNum }).(pulumi.StringPtrOutput)
 }
@@ -769,7 +732,6 @@ func (o DbInstancePlanPlanConfigScaleOutPtrOutput) Elem() DbInstancePlanPlanConf
 	}).(DbInstancePlanPlanConfigScaleOutOutput)
 }
 
-// The executed time of the Plan.
 func (o DbInstancePlanPlanConfigScaleOutPtrOutput) ExecuteTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleOut) *string {
 		if v == nil {
@@ -779,7 +741,6 @@ func (o DbInstancePlanPlanConfigScaleOutPtrOutput) ExecuteTime() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
-// The Cron Time of the plan.
 func (o DbInstancePlanPlanConfigScaleOutPtrOutput) PlanCronTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleOut) *string {
 		if v == nil {
@@ -789,7 +750,6 @@ func (o DbInstancePlanPlanConfigScaleOutPtrOutput) PlanCronTime() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The segment Node Num of the Plan.
 func (o DbInstancePlanPlanConfigScaleOutPtrOutput) SegmentNodeNum() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DbInstancePlanPlanConfigScaleOut) *string {
 		if v == nil {
@@ -1838,12 +1798,10 @@ type GetInstancesInstance struct {
 	// The number of CPU cores of the computing node. Unit: Core.
 	CpuCores string `pulumi:"cpuCores"`
 	// The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
-	CreateTime   string `pulumi:"createTime"`
-	CreationTime string `pulumi:"creationTime"`
-	// The db instance category. Valid values: `HighAvailability`, `Basic`.
+	CreateTime         string `pulumi:"createTime"`
+	CreationTime       string `pulumi:"creationTime"`
 	DbInstanceCategory string `pulumi:"dbInstanceCategory"`
-	// The db instance class.
-	DbInstanceClass string `pulumi:"dbInstanceClass"`
+	DbInstanceClass    string `pulumi:"dbInstanceClass"`
 	// The db instance id.
 	DbInstanceId string `pulumi:"dbInstanceId"`
 	// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
@@ -1870,8 +1828,7 @@ type GetInstancesInstance struct {
 	MemorySize string `pulumi:"memorySize"`
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType string `pulumi:"paymentType"`
-	// Region ID the instance belongs to.
-	RegionId string `pulumi:"regionId"`
+	RegionId    string `pulumi:"regionId"`
 	// Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
 	SegNodeNum string `pulumi:"segNodeNum"`
 	// The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
@@ -1910,12 +1867,10 @@ type GetInstancesInstanceArgs struct {
 	// The number of CPU cores of the computing node. Unit: Core.
 	CpuCores pulumi.StringInput `pulumi:"cpuCores"`
 	// The time when the instance was created. The time is in the YYYY-MM-DDThh:mm:ssZ format, such as 2011-05-30T12:11:4Z.
-	CreateTime   pulumi.StringInput `pulumi:"createTime"`
-	CreationTime pulumi.StringInput `pulumi:"creationTime"`
-	// The db instance category. Valid values: `HighAvailability`, `Basic`.
+	CreateTime         pulumi.StringInput `pulumi:"createTime"`
+	CreationTime       pulumi.StringInput `pulumi:"creationTime"`
 	DbInstanceCategory pulumi.StringInput `pulumi:"dbInstanceCategory"`
-	// The db instance class.
-	DbInstanceClass pulumi.StringInput `pulumi:"dbInstanceClass"`
+	DbInstanceClass    pulumi.StringInput `pulumi:"dbInstanceClass"`
 	// The db instance id.
 	DbInstanceId pulumi.StringInput `pulumi:"dbInstanceId"`
 	// The db instance mode. Valid values: `StorageElastic`, `Serverless`, `Classic`.
@@ -1942,8 +1897,7 @@ type GetInstancesInstanceArgs struct {
 	MemorySize pulumi.StringInput `pulumi:"memorySize"`
 	// The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
 	PaymentType pulumi.StringInput `pulumi:"paymentType"`
-	// Region ID the instance belongs to.
-	RegionId pulumi.StringInput `pulumi:"regionId"`
+	RegionId    pulumi.StringInput `pulumi:"regionId"`
 	// Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
 	SegNodeNum pulumi.StringInput `pulumi:"segNodeNum"`
 	// The status of the instance. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardDBInstanceCreating`, `GuardSwitching`, `Importing`, `ImportingFromOtherInstance`, `Rebooting`, `Restoring`, `Running`, `Transfering`, `TransferingToOtherInstance`.
@@ -2041,12 +1995,10 @@ func (o GetInstancesInstanceOutput) CreationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.CreationTime }).(pulumi.StringOutput)
 }
 
-// The db instance category. Valid values: `HighAvailability`, `Basic`.
 func (o GetInstancesInstanceOutput) DbInstanceCategory() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.DbInstanceCategory }).(pulumi.StringOutput)
 }
 
-// The db instance class.
 func (o GetInstancesInstanceOutput) DbInstanceClass() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.DbInstanceClass }).(pulumi.StringOutput)
 }
@@ -2116,7 +2068,6 @@ func (o GetInstancesInstanceOutput) PaymentType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.PaymentType }).(pulumi.StringOutput)
 }
 
-// Region ID the instance belongs to.
 func (o GetInstancesInstanceOutput) RegionId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstancesInstance) string { return v.RegionId }).(pulumi.StringOutput)
 }

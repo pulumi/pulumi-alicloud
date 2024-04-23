@@ -17,77 +17,37 @@ public final class ApplicationReadinessV2HttpGetArgs extends com.pulumi.resource
 
     public static final ApplicationReadinessV2HttpGetArgs Empty = new ApplicationReadinessV2HttpGetArgs();
 
-    /**
-     * Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
-     * 
-     */
     @Import(name="isContainKeyWord")
     private @Nullable Output<Boolean> isContainKeyWord;
 
-    /**
-     * @return Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
-     * 
-     */
     public Optional<Output<Boolean>> isContainKeyWord() {
         return Optional.ofNullable(this.isContainKeyWord);
     }
 
-    /**
-     * The custom keywords.
-     * 
-     */
     @Import(name="keyWord")
     private @Nullable Output<String> keyWord;
 
-    /**
-     * @return The custom keywords.
-     * 
-     */
     public Optional<Output<String>> keyWord() {
         return Optional.ofNullable(this.keyWord);
     }
 
-    /**
-     * The request path.
-     * 
-     */
     @Import(name="path")
     private @Nullable Output<String> path;
 
-    /**
-     * @return The request path.
-     * 
-     */
     public Optional<Output<String>> path() {
         return Optional.ofNullable(this.path);
     }
 
-    /**
-     * The port.
-     * 
-     */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
-    /**
-     * @return The port.
-     * 
-     */
     public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
     }
 
-    /**
-     * The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
-     * 
-     */
     @Import(name="scheme")
     private @Nullable Output<String> scheme;
 
-    /**
-     * @return The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
-     * 
-     */
     public Optional<Output<String>> scheme() {
         return Optional.ofNullable(this.scheme);
     }
@@ -120,107 +80,47 @@ public final class ApplicationReadinessV2HttpGetArgs extends com.pulumi.resource
             $ = new ApplicationReadinessV2HttpGetArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param isContainKeyWord Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isContainKeyWord(@Nullable Output<Boolean> isContainKeyWord) {
             $.isContainKeyWord = isContainKeyWord;
             return this;
         }
 
-        /**
-         * @param isContainKeyWord Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isContainKeyWord(Boolean isContainKeyWord) {
             return isContainKeyWord(Output.of(isContainKeyWord));
         }
 
-        /**
-         * @param keyWord The custom keywords.
-         * 
-         * @return builder
-         * 
-         */
         public Builder keyWord(@Nullable Output<String> keyWord) {
             $.keyWord = keyWord;
             return this;
         }
 
-        /**
-         * @param keyWord The custom keywords.
-         * 
-         * @return builder
-         * 
-         */
         public Builder keyWord(String keyWord) {
             return keyWord(Output.of(keyWord));
         }
 
-        /**
-         * @param path The request path.
-         * 
-         * @return builder
-         * 
-         */
         public Builder path(@Nullable Output<String> path) {
             $.path = path;
             return this;
         }
 
-        /**
-         * @param path The request path.
-         * 
-         * @return builder
-         * 
-         */
         public Builder path(String path) {
             return path(Output.of(path));
         }
 
-        /**
-         * @param port The port.
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
 
-        /**
-         * @param port The port.
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }
 
-        /**
-         * @param scheme The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scheme(@Nullable Output<String> scheme) {
             $.scheme = scheme;
             return this;
         }
 
-        /**
-         * @param scheme The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scheme(String scheme) {
             return scheme(Output.of(scheme));
         }

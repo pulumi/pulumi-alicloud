@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -75,7 +74,6 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -123,7 +121,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
     public readonly dataDisks!: pulumi.Output<outputs.ecs.LaunchTemplateDataDisk[] | undefined>;
     public readonly deploymentSetId!: pulumi.Output<string | undefined>;
     /**
-     * The description of the data disk.
+     * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     public readonly enableVmOsConfig!: pulumi.Output<boolean | undefined>;
@@ -178,7 +176,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
     public readonly keyPairName!: pulumi.Output<string | undefined>;
     public readonly launchTemplateName!: pulumi.Output<string>;
     /**
-     * The name of the data disk.
+     * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
      */
@@ -204,7 +202,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
      */
     public readonly securityEnhancementStrategy!: pulumi.Output<string | undefined>;
     /**
-     * The security group ID must be one in the same VPC.
+     * The security group ID.
      */
     public readonly securityGroupId!: pulumi.Output<string | undefined>;
     public readonly securityGroupIds!: pulumi.Output<string[] | undefined>;
@@ -268,7 +266,7 @@ export class LaunchTemplate extends pulumi.CustomResource {
     public readonly versionDescription!: pulumi.Output<string | undefined>;
     public readonly vpcId!: pulumi.Output<string>;
     /**
-     * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+     * When creating a VPC-Connected instance, you must specify its VSwitch ID.
      */
     public readonly vswitchId!: pulumi.Output<string | undefined>;
     /**
@@ -401,7 +399,7 @@ export interface LaunchTemplateState {
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.LaunchTemplateDataDisk>[]>;
     deploymentSetId?: pulumi.Input<string>;
     /**
-     * The description of the data disk.
+     * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
      */
     description?: pulumi.Input<string>;
     enableVmOsConfig?: pulumi.Input<boolean>;
@@ -456,7 +454,7 @@ export interface LaunchTemplateState {
     keyPairName?: pulumi.Input<string>;
     launchTemplateName?: pulumi.Input<string>;
     /**
-     * The name of the data disk.
+     * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
      */
@@ -482,7 +480,7 @@ export interface LaunchTemplateState {
      */
     securityEnhancementStrategy?: pulumi.Input<string>;
     /**
-     * The security group ID must be one in the same VPC.
+     * The security group ID.
      */
     securityGroupId?: pulumi.Input<string>;
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -546,7 +544,7 @@ export interface LaunchTemplateState {
     versionDescription?: pulumi.Input<string>;
     vpcId?: pulumi.Input<string>;
     /**
-     * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+     * When creating a VPC-Connected instance, you must specify its VSwitch ID.
      */
     vswitchId?: pulumi.Input<string>;
     /**
@@ -569,7 +567,7 @@ export interface LaunchTemplateArgs {
     dataDisks?: pulumi.Input<pulumi.Input<inputs.ecs.LaunchTemplateDataDisk>[]>;
     deploymentSetId?: pulumi.Input<string>;
     /**
-     * The description of the data disk.
+     * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
      */
     description?: pulumi.Input<string>;
     enableVmOsConfig?: pulumi.Input<boolean>;
@@ -624,7 +622,7 @@ export interface LaunchTemplateArgs {
     keyPairName?: pulumi.Input<string>;
     launchTemplateName?: pulumi.Input<string>;
     /**
-     * The name of the data disk.
+     * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
      *
      * @deprecated Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.
      */
@@ -650,7 +648,7 @@ export interface LaunchTemplateArgs {
      */
     securityEnhancementStrategy?: pulumi.Input<string>;
     /**
-     * The security group ID must be one in the same VPC.
+     * The security group ID.
      */
     securityGroupId?: pulumi.Input<string>;
     securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
@@ -714,7 +712,7 @@ export interface LaunchTemplateArgs {
     versionDescription?: pulumi.Input<string>;
     vpcId?: pulumi.Input<string>;
     /**
-     * The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+     * When creating a VPC-Connected instance, you must specify its VSwitch ID.
      */
     vswitchId?: pulumi.Input<string>;
     /**

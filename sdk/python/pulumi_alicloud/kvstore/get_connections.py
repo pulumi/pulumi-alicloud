@@ -88,7 +88,6 @@ def get_connections(ids: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -97,7 +96,6 @@ def get_connections(ids: Optional[str] = None,
     example = alicloud.kvstore.get_connections(ids="r-wer123456")
     pulumi.export("connectionString", example.connections[0].connection_string)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str ids: A list of KVStore DBInstance ids, only support one item.
@@ -127,7 +125,6 @@ def get_connections_output(ids: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -136,7 +133,6 @@ def get_connections_output(ids: Optional[pulumi.Input[str]] = None,
     example = alicloud.kvstore.get_connections(ids="r-wer123456")
     pulumi.export("connectionString", example.connections[0].connection_string)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str ids: A list of KVStore DBInstance ids, only support one item.

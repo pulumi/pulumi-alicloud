@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetCustomRoutingEndpointGroupDestinations(ctx *pulumi.Context, args *GetCustomRoutingEndpointGroupDestinationsArgs, opts ...pulumi.InvokeOption) (*GetCustomRoutingEndpointGroupDestinationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCustomRoutingEndpointGroupDestinationsResult

@@ -476,7 +476,6 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -507,7 +506,6 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
             vbr_id=default_virtual_border_router.id,
             cen_id=default.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -549,7 +547,6 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -580,7 +577,6 @@ class TransitRouterVbrAttachment(pulumi.CustomResource):
             vbr_id=default_virtual_border_router.id,
             cen_id=default.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstKeyId = kmsKeysDs.keys[0].id;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAliases(args?: GetAliasesArgs, opts?: pulumi.InvokeOptions): Promise<GetAliasesResult> {
     args = args || {};
@@ -86,7 +84,6 @@ export interface GetAliasesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -98,7 +95,6 @@ export interface GetAliasesResult {
  * });
  * export const firstKeyId = kmsKeysDs.keys[0].id;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAliasesOutput(args?: GetAliasesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAliasesResult> {
     return pulumi.output(args).apply((a: any) => getAliases(a, opts))

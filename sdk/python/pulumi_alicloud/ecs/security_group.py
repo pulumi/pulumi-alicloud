@@ -332,7 +332,6 @@ class SecurityGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -341,11 +340,9 @@ class SecurityGroup(pulumi.CustomResource):
             name="terraform-example",
             description="New security group")
         ```
-        <!--End PulumiCodeChooser -->
 
         Basic Usage for VPC
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -357,7 +354,6 @@ class SecurityGroup(pulumi.CustomResource):
             name="terraform-example",
             vpc_id=vpc.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 
@@ -406,7 +402,6 @@ class SecurityGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -415,11 +410,9 @@ class SecurityGroup(pulumi.CustomResource):
             name="terraform-example",
             description="New security group")
         ```
-        <!--End PulumiCodeChooser -->
 
         Basic Usage for VPC
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -431,7 +424,6 @@ class SecurityGroup(pulumi.CustomResource):
             name="terraform-example",
             vpc_id=vpc.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 

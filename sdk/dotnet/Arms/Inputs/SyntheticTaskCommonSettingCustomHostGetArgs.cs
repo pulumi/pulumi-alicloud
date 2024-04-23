@@ -14,21 +14,12 @@ namespace Pulumi.AliCloud.Arms.Inputs
     {
         [Input("hosts", required: true)]
         private InputList<Inputs.SyntheticTaskCommonSettingCustomHostHostGetArgs>? _hosts;
-
-        /// <summary>
-        /// The host list. See `hosts` below.
-        /// </summary>
         public InputList<Inputs.SyntheticTaskCommonSettingCustomHostHostGetArgs> Hosts
         {
             get => _hosts ?? (_hosts = new InputList<Inputs.SyntheticTaskCommonSettingCustomHostHostGetArgs>());
             set => _hosts = value;
         }
 
-        /// <summary>
-        /// Selection method:
-        /// - 0: Random
-        /// - 1: Polling.
-        /// </summary>
         [Input("selectType", required: true)]
         public Input<int> SelectType { get; set; } = null!;
 

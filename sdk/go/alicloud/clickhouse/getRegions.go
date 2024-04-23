@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,7 +48,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.InvokeOption) (*GetRegionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegionsResult
@@ -66,7 +64,7 @@ type GetRegionsArgs struct {
 	Current *bool `pulumi:"current"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The Region ID.
+	// You can use specified regionId to find the region and available zones information that supports ClickHouse.
 	RegionId *string `pulumi:"regionId"`
 }
 
@@ -99,7 +97,7 @@ type GetRegionsOutputArgs struct {
 	Current pulumi.BoolPtrInput `pulumi:"current"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The Region ID.
+	// You can use specified regionId to find the region and available zones information that supports ClickHouse.
 	RegionId pulumi.StringPtrInput `pulumi:"regionId"`
 }
 

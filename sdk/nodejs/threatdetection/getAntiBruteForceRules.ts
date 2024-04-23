@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -33,7 +32,6 @@ import * as utilities from "../utilities";
  * }));
  * export const alicloudThreatDetectionAntiBruteForceRuleExampleId = _default.apply(_default => _default.rules?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAntiBruteForceRules(args?: GetAntiBruteForceRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetAntiBruteForceRulesResult> {
     args = args || {};
@@ -94,7 +92,6 @@ export interface GetAntiBruteForceRulesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -114,7 +111,6 @@ export interface GetAntiBruteForceRulesResult {
  * }));
  * export const alicloudThreatDetectionAntiBruteForceRuleExampleId = _default.apply(_default => _default.rules?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAntiBruteForceRulesOutput(args?: GetAntiBruteForceRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAntiBruteForceRulesResult> {
     return pulumi.output(args).apply((a: any) => getAntiBruteForceRules(a, opts))

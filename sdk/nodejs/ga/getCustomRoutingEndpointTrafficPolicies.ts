@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const gaCustomRoutingEndpointTrafficPoliciesId1 = ids.then(ids => ids.customRoutingEndpointTrafficPolicies?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCustomRoutingEndpointTrafficPolicies(args: GetCustomRoutingEndpointTrafficPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomRoutingEndpointTrafficPoliciesResult> {
 
@@ -126,7 +124,6 @@ export interface GetCustomRoutingEndpointTrafficPoliciesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -137,7 +134,6 @@ export interface GetCustomRoutingEndpointTrafficPoliciesResult {
  * });
  * export const gaCustomRoutingEndpointTrafficPoliciesId1 = ids.then(ids => ids.customRoutingEndpointTrafficPolicies?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCustomRoutingEndpointTrafficPoliciesOutput(args: GetCustomRoutingEndpointTrafficPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomRoutingEndpointTrafficPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getCustomRoutingEndpointTrafficPolicies(a, opts))

@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,7 +48,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetExpressSyncs(ctx *pulumi.Context, args *GetExpressSyncsArgs, opts ...pulumi.InvokeOption) (*GetExpressSyncsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetExpressSyncsResult

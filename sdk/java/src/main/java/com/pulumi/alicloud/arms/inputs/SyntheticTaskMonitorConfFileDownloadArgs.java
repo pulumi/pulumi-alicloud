@@ -19,292 +19,128 @@ public final class SyntheticTaskMonitorConfFileDownloadArgs extends com.pulumi.r
 
     public static final SyntheticTaskMonitorConfFileDownloadArgs Empty = new SyntheticTaskMonitorConfFileDownloadArgs();
 
-    /**
-     * Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
-     * 
-     */
     @Import(name="connectionTimeout")
     private @Nullable Output<Integer> connectionTimeout;
 
-    /**
-     * @return Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
-     * 
-     */
     public Optional<Output<Integer>> connectionTimeout() {
         return Optional.ofNullable(this.connectionTimeout);
     }
 
-    /**
-     * Custom header, in JSON Map format.
-     * 
-     */
     @Import(name="customHeaderContent")
     private @Nullable Output<Map<String,Object>> customHeaderContent;
 
-    /**
-     * @return Custom header, in JSON Map format.
-     * 
-     */
     public Optional<Output<Map<String,Object>>> customHeaderContent() {
         return Optional.ofNullable(this.customHeaderContent);
     }
 
-    /**
-     * Download the kernel.
-     * - 1:curl
-     * - 0:WinInet
-     *   Default 1.
-     * 
-     */
     @Import(name="downloadKernel")
     private @Nullable Output<Integer> downloadKernel;
 
-    /**
-     * @return Download the kernel.
-     * - 1:curl
-     * - 0:WinInet
-     *   Default 1.
-     * 
-     */
     public Optional<Output<Integer>> downloadKernel() {
         return Optional.ofNullable(this.downloadKernel);
     }
 
-    /**
-     * Ignore CA Certificate authorization error 0: Do not ignore, 1: ignore, default 1.
-     * 
-     */
     @Import(name="ignoreCertificateAuthError")
     private @Nullable Output<Integer> ignoreCertificateAuthError;
 
-    /**
-     * @return Ignore CA Certificate authorization error 0: Do not ignore, 1: ignore, default 1.
-     * 
-     */
     public Optional<Output<Integer>> ignoreCertificateAuthError() {
         return Optional.ofNullable(this.ignoreCertificateAuthError);
     }
 
-    /**
-     * Ignore certificate revocation error 0: Do not ignore, 1: ignore, default 1.
-     * 
-     */
     @Import(name="ignoreCertificateCanceledError")
     private @Nullable Output<Integer> ignoreCertificateCanceledError;
 
-    /**
-     * @return Ignore certificate revocation error 0: Do not ignore, 1: ignore, default 1.
-     * 
-     */
     public Optional<Output<Integer>> ignoreCertificateCanceledError() {
         return Optional.ofNullable(this.ignoreCertificateCanceledError);
     }
 
-    /**
-     * Ignore certificate expiration error 0: not ignored, 1: Ignored, default 1.
-     * 
-     */
     @Import(name="ignoreCertificateOutOfDateError")
     private @Nullable Output<Integer> ignoreCertificateOutOfDateError;
 
-    /**
-     * @return Ignore certificate expiration error 0: not ignored, 1: Ignored, default 1.
-     * 
-     */
     public Optional<Output<Integer>> ignoreCertificateOutOfDateError() {
         return Optional.ofNullable(this.ignoreCertificateOutOfDateError);
     }
 
-    /**
-     * The certificate status error is ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
-     * 
-     */
     @Import(name="ignoreCertificateStatusError")
     private @Nullable Output<Integer> ignoreCertificateStatusError;
 
-    /**
-     * @return The certificate status error is ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
-     * 
-     */
     public Optional<Output<Integer>> ignoreCertificateStatusError() {
         return Optional.ofNullable(this.ignoreCertificateStatusError);
     }
 
-    /**
-     * The certificate cannot be trusted and ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
-     * 
-     */
     @Import(name="ignoreCertificateUntrustworthyError")
     private @Nullable Output<Integer> ignoreCertificateUntrustworthyError;
 
-    /**
-     * @return The certificate cannot be trusted and ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
-     * 
-     */
     public Optional<Output<Integer>> ignoreCertificateUntrustworthyError() {
         return Optional.ofNullable(this.ignoreCertificateUntrustworthyError);
     }
 
-    /**
-     * Ignore certificate usage error 0: Do not ignore, 1: ignore, default 1.
-     * 
-     */
     @Import(name="ignoreCertificateUsingError")
     private @Nullable Output<Integer> ignoreCertificateUsingError;
 
-    /**
-     * @return Ignore certificate usage error 0: Do not ignore, 1: ignore, default 1.
-     * 
-     */
     public Optional<Output<Integer>> ignoreCertificateUsingError() {
         return Optional.ofNullable(this.ignoreCertificateUsingError);
     }
 
-    /**
-     * Invalid host error ignored, 0: not ignored, 1: Ignored, default 1.
-     * 
-     */
     @Import(name="ignoreInvalidHostError")
     private @Nullable Output<Integer> ignoreInvalidHostError;
 
-    /**
-     * @return Invalid host error ignored, 0: not ignored, 1: Ignored, default 1.
-     * 
-     */
     public Optional<Output<Integer>> ignoreInvalidHostError() {
         return Optional.ofNullable(this.ignoreInvalidHostError);
     }
 
-    /**
-     * Monitoring timeout, in ms. Not required, 20000 by default.
-     * 
-     */
     @Import(name="monitorTimeout")
     private @Nullable Output<Integer> monitorTimeout;
 
-    /**
-     * @return Monitoring timeout, in ms. Not required, 20000 by default.
-     * 
-     */
     public Optional<Output<Integer>> monitorTimeout() {
         return Optional.ofNullable(this.monitorTimeout);
     }
 
-    /**
-     * Quick agreement
-     * - 1:http1
-     * - 2:http2
-     * - 3:http3
-     *   Default 1.
-     * 
-     */
     @Import(name="quickProtocol")
     private @Nullable Output<Integer> quickProtocol;
 
-    /**
-     * @return Quick agreement
-     * - 1:http1
-     * - 2:http2
-     * - 3:http3
-     *   Default 1.
-     * 
-     */
     public Optional<Output<Integer>> quickProtocol() {
         return Optional.ofNullable(this.quickProtocol);
     }
 
-    /**
-     * When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
-     * 
-     */
     @Import(name="redirection")
     private @Nullable Output<Integer> redirection;
 
-    /**
-     * @return When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
-     * 
-     */
     public Optional<Output<Integer>> redirection() {
         return Optional.ofNullable(this.redirection);
     }
 
-    /**
-     * The target URL.
-     * 
-     */
     @Import(name="targetUrl", required=true)
     private Output<String> targetUrl;
 
-    /**
-     * @return The target URL.
-     * 
-     */
     public Output<String> targetUrl() {
         return this.targetUrl;
     }
 
-    /**
-     * The transmission size, in KB. The default value is 2048KB. The transmission size of the downloaded file must be between 1 and 20480KB.
-     * 
-     */
     @Import(name="transmissionSize")
     private @Nullable Output<Integer> transmissionSize;
 
-    /**
-     * @return The transmission size, in KB. The default value is 2048KB. The transmission size of the downloaded file must be between 1 and 20480KB.
-     * 
-     */
     public Optional<Output<Integer>> transmissionSize() {
         return Optional.ofNullable(this.transmissionSize);
     }
 
-    /**
-     * Verify keywords.
-     * 
-     */
     @Import(name="validateKeywords")
     private @Nullable Output<String> validateKeywords;
 
-    /**
-     * @return Verify keywords.
-     * 
-     */
     public Optional<Output<String>> validateKeywords() {
         return Optional.ofNullable(this.validateKeywords);
     }
 
-    /**
-     * The verification method.
-     * - 0: Do not validate
-     * - 1: Validation string
-     * - 2:MD5 validation.
-     * 
-     */
     @Import(name="verifyWay")
     private @Nullable Output<Integer> verifyWay;
 
-    /**
-     * @return The verification method.
-     * - 0: Do not validate
-     * - 1: Validation string
-     * - 2:MD5 validation.
-     * 
-     */
     public Optional<Output<Integer>> verifyWay() {
         return Optional.ofNullable(this.verifyWay);
     }
 
-    /**
-     * DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
-     * 
-     */
     @Import(name="whiteList")
     private @Nullable Output<String> whiteList;
 
-    /**
-     * @return DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
-     * 
-     */
     public Optional<Output<String>> whiteList() {
         return Optional.ofNullable(this.whiteList);
     }
@@ -350,400 +186,164 @@ public final class SyntheticTaskMonitorConfFileDownloadArgs extends com.pulumi.r
             $ = new SyntheticTaskMonitorConfFileDownloadArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param connectionTimeout Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
-         * 
-         * @return builder
-         * 
-         */
         public Builder connectionTimeout(@Nullable Output<Integer> connectionTimeout) {
             $.connectionTimeout = connectionTimeout;
             return this;
         }
 
-        /**
-         * @param connectionTimeout Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
-         * 
-         * @return builder
-         * 
-         */
         public Builder connectionTimeout(Integer connectionTimeout) {
             return connectionTimeout(Output.of(connectionTimeout));
         }
 
-        /**
-         * @param customHeaderContent Custom header, in JSON Map format.
-         * 
-         * @return builder
-         * 
-         */
         public Builder customHeaderContent(@Nullable Output<Map<String,Object>> customHeaderContent) {
             $.customHeaderContent = customHeaderContent;
             return this;
         }
 
-        /**
-         * @param customHeaderContent Custom header, in JSON Map format.
-         * 
-         * @return builder
-         * 
-         */
         public Builder customHeaderContent(Map<String,Object> customHeaderContent) {
             return customHeaderContent(Output.of(customHeaderContent));
         }
 
-        /**
-         * @param downloadKernel Download the kernel.
-         * - 1:curl
-         * - 0:WinInet
-         *   Default 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder downloadKernel(@Nullable Output<Integer> downloadKernel) {
             $.downloadKernel = downloadKernel;
             return this;
         }
 
-        /**
-         * @param downloadKernel Download the kernel.
-         * - 1:curl
-         * - 0:WinInet
-         *   Default 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder downloadKernel(Integer downloadKernel) {
             return downloadKernel(Output.of(downloadKernel));
         }
 
-        /**
-         * @param ignoreCertificateAuthError Ignore CA Certificate authorization error 0: Do not ignore, 1: ignore, default 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ignoreCertificateAuthError(@Nullable Output<Integer> ignoreCertificateAuthError) {
             $.ignoreCertificateAuthError = ignoreCertificateAuthError;
             return this;
         }
 
-        /**
-         * @param ignoreCertificateAuthError Ignore CA Certificate authorization error 0: Do not ignore, 1: ignore, default 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ignoreCertificateAuthError(Integer ignoreCertificateAuthError) {
             return ignoreCertificateAuthError(Output.of(ignoreCertificateAuthError));
         }
 
-        /**
-         * @param ignoreCertificateCanceledError Ignore certificate revocation error 0: Do not ignore, 1: ignore, default 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ignoreCertificateCanceledError(@Nullable Output<Integer> ignoreCertificateCanceledError) {
             $.ignoreCertificateCanceledError = ignoreCertificateCanceledError;
             return this;
         }
 
-        /**
-         * @param ignoreCertificateCanceledError Ignore certificate revocation error 0: Do not ignore, 1: ignore, default 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ignoreCertificateCanceledError(Integer ignoreCertificateCanceledError) {
             return ignoreCertificateCanceledError(Output.of(ignoreCertificateCanceledError));
         }
 
-        /**
-         * @param ignoreCertificateOutOfDateError Ignore certificate expiration error 0: not ignored, 1: Ignored, default 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ignoreCertificateOutOfDateError(@Nullable Output<Integer> ignoreCertificateOutOfDateError) {
             $.ignoreCertificateOutOfDateError = ignoreCertificateOutOfDateError;
             return this;
         }
 
-        /**
-         * @param ignoreCertificateOutOfDateError Ignore certificate expiration error 0: not ignored, 1: Ignored, default 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ignoreCertificateOutOfDateError(Integer ignoreCertificateOutOfDateError) {
             return ignoreCertificateOutOfDateError(Output.of(ignoreCertificateOutOfDateError));
         }
 
-        /**
-         * @param ignoreCertificateStatusError The certificate status error is ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ignoreCertificateStatusError(@Nullable Output<Integer> ignoreCertificateStatusError) {
             $.ignoreCertificateStatusError = ignoreCertificateStatusError;
             return this;
         }
 
-        /**
-         * @param ignoreCertificateStatusError The certificate status error is ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ignoreCertificateStatusError(Integer ignoreCertificateStatusError) {
             return ignoreCertificateStatusError(Output.of(ignoreCertificateStatusError));
         }
 
-        /**
-         * @param ignoreCertificateUntrustworthyError The certificate cannot be trusted and ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ignoreCertificateUntrustworthyError(@Nullable Output<Integer> ignoreCertificateUntrustworthyError) {
             $.ignoreCertificateUntrustworthyError = ignoreCertificateUntrustworthyError;
             return this;
         }
 
-        /**
-         * @param ignoreCertificateUntrustworthyError The certificate cannot be trusted and ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ignoreCertificateUntrustworthyError(Integer ignoreCertificateUntrustworthyError) {
             return ignoreCertificateUntrustworthyError(Output.of(ignoreCertificateUntrustworthyError));
         }
 
-        /**
-         * @param ignoreCertificateUsingError Ignore certificate usage error 0: Do not ignore, 1: ignore, default 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ignoreCertificateUsingError(@Nullable Output<Integer> ignoreCertificateUsingError) {
             $.ignoreCertificateUsingError = ignoreCertificateUsingError;
             return this;
         }
 
-        /**
-         * @param ignoreCertificateUsingError Ignore certificate usage error 0: Do not ignore, 1: ignore, default 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ignoreCertificateUsingError(Integer ignoreCertificateUsingError) {
             return ignoreCertificateUsingError(Output.of(ignoreCertificateUsingError));
         }
 
-        /**
-         * @param ignoreInvalidHostError Invalid host error ignored, 0: not ignored, 1: Ignored, default 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ignoreInvalidHostError(@Nullable Output<Integer> ignoreInvalidHostError) {
             $.ignoreInvalidHostError = ignoreInvalidHostError;
             return this;
         }
 
-        /**
-         * @param ignoreInvalidHostError Invalid host error ignored, 0: not ignored, 1: Ignored, default 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder ignoreInvalidHostError(Integer ignoreInvalidHostError) {
             return ignoreInvalidHostError(Output.of(ignoreInvalidHostError));
         }
 
-        /**
-         * @param monitorTimeout Monitoring timeout, in ms. Not required, 20000 by default.
-         * 
-         * @return builder
-         * 
-         */
         public Builder monitorTimeout(@Nullable Output<Integer> monitorTimeout) {
             $.monitorTimeout = monitorTimeout;
             return this;
         }
 
-        /**
-         * @param monitorTimeout Monitoring timeout, in ms. Not required, 20000 by default.
-         * 
-         * @return builder
-         * 
-         */
         public Builder monitorTimeout(Integer monitorTimeout) {
             return monitorTimeout(Output.of(monitorTimeout));
         }
 
-        /**
-         * @param quickProtocol Quick agreement
-         * - 1:http1
-         * - 2:http2
-         * - 3:http3
-         *   Default 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder quickProtocol(@Nullable Output<Integer> quickProtocol) {
             $.quickProtocol = quickProtocol;
             return this;
         }
 
-        /**
-         * @param quickProtocol Quick agreement
-         * - 1:http1
-         * - 2:http2
-         * - 3:http3
-         *   Default 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder quickProtocol(Integer quickProtocol) {
             return quickProtocol(Output.of(quickProtocol));
         }
 
-        /**
-         * @param redirection When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder redirection(@Nullable Output<Integer> redirection) {
             $.redirection = redirection;
             return this;
         }
 
-        /**
-         * @param redirection When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
-         * 
-         * @return builder
-         * 
-         */
         public Builder redirection(Integer redirection) {
             return redirection(Output.of(redirection));
         }
 
-        /**
-         * @param targetUrl The target URL.
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetUrl(Output<String> targetUrl) {
             $.targetUrl = targetUrl;
             return this;
         }
 
-        /**
-         * @param targetUrl The target URL.
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetUrl(String targetUrl) {
             return targetUrl(Output.of(targetUrl));
         }
 
-        /**
-         * @param transmissionSize The transmission size, in KB. The default value is 2048KB. The transmission size of the downloaded file must be between 1 and 20480KB.
-         * 
-         * @return builder
-         * 
-         */
         public Builder transmissionSize(@Nullable Output<Integer> transmissionSize) {
             $.transmissionSize = transmissionSize;
             return this;
         }
 
-        /**
-         * @param transmissionSize The transmission size, in KB. The default value is 2048KB. The transmission size of the downloaded file must be between 1 and 20480KB.
-         * 
-         * @return builder
-         * 
-         */
         public Builder transmissionSize(Integer transmissionSize) {
             return transmissionSize(Output.of(transmissionSize));
         }
 
-        /**
-         * @param validateKeywords Verify keywords.
-         * 
-         * @return builder
-         * 
-         */
         public Builder validateKeywords(@Nullable Output<String> validateKeywords) {
             $.validateKeywords = validateKeywords;
             return this;
         }
 
-        /**
-         * @param validateKeywords Verify keywords.
-         * 
-         * @return builder
-         * 
-         */
         public Builder validateKeywords(String validateKeywords) {
             return validateKeywords(Output.of(validateKeywords));
         }
 
-        /**
-         * @param verifyWay The verification method.
-         * - 0: Do not validate
-         * - 1: Validation string
-         * - 2:MD5 validation.
-         * 
-         * @return builder
-         * 
-         */
         public Builder verifyWay(@Nullable Output<Integer> verifyWay) {
             $.verifyWay = verifyWay;
             return this;
         }
 
-        /**
-         * @param verifyWay The verification method.
-         * - 0: Do not validate
-         * - 1: Validation string
-         * - 2:MD5 validation.
-         * 
-         * @return builder
-         * 
-         */
         public Builder verifyWay(Integer verifyWay) {
             return verifyWay(Output.of(verifyWay));
         }
 
-        /**
-         * @param whiteList DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
-         * 
-         * @return builder
-         * 
-         */
         public Builder whiteList(@Nullable Output<String> whiteList) {
             $.whiteList = whiteList;
             return this;
         }
 
-        /**
-         * @param whiteList DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
-         * 
-         * @return builder
-         * 
-         */
         public Builder whiteList(String whiteList) {
             return whiteList(Output.of(whiteList));
         }

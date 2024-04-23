@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Eds.Outputs
     [OutputType]
     public sealed class GetBundlesBundleDiskResult
     {
-        /// <summary>
-        /// The disk size attribute of the bundle.
-        /// </summary>
         public readonly string DiskSize;
-        /// <summary>
-        /// The disk type attribute of the bundle.
-        /// </summary>
         public readonly string DiskType;
 
         [OutputConstructor]

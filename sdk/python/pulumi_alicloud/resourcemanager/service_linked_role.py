@@ -190,14 +190,12 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         default = alicloud.resourcemanager.ServiceLinkedRole("default", service_name="ops.elasticsearch.aliyuncs.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -230,14 +228,12 @@ class ServiceLinkedRole(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         default = alicloud.resourcemanager.ServiceLinkedRole("default", service_name="ops.elasticsearch.aliyuncs.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

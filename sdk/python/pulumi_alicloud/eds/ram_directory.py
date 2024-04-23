@@ -223,7 +223,6 @@ class RamDirectory(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -247,7 +246,6 @@ class RamDirectory(pulumi.CustomResource):
             ram_directory_name=name,
             vswitch_ids=[default_switch.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -282,7 +280,6 @@ class RamDirectory(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -306,7 +303,6 @@ class RamDirectory(pulumi.CustomResource):
             ram_directory_name=name,
             vswitch_ids=[default_switch.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

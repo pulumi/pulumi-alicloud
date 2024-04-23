@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -44,7 +43,6 @@ import * as utilities from "../utilities";
  *     slsProjectArn: pulumi.all([example, exampleGetAccount, exampleProject.name]).apply(([example, exampleGetAccount, name]) => `acs:log:${example.regions?.[0]?.id}:${exampleGetAccount.id}:project/${name}`),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

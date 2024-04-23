@@ -21,7 +21,6 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,7 +40,6 @@ namespace Pulumi.AliCloud.ServiceCatalog
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetProductAsEndUsersResult> InvokeAsync(GetProductAsEndUsersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetProductAsEndUsersResult>("alicloud:servicecatalog/getProductAsEndUsers:getProductAsEndUsers", args ?? new GetProductAsEndUsersArgs(), options.WithDefaults());
@@ -56,7 +54,6 @@ namespace Pulumi.AliCloud.ServiceCatalog
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,7 +73,6 @@ namespace Pulumi.AliCloud.ServiceCatalog
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetProductAsEndUsersResult> Invoke(GetProductAsEndUsersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProductAsEndUsersResult>("alicloud:servicecatalog/getProductAsEndUsers:getProductAsEndUsers", args ?? new GetProductAsEndUsersInvokeArgs(), options.WithDefaults());

@@ -12,9 +12,6 @@ namespace Pulumi.AliCloud.Eci.Inputs
 
     public sealed class ContainerGroupContainerLivenessProbeTcpSocketArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// When using the HTTP request method for health check, the port number for HTTP Get request detection.
-        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 

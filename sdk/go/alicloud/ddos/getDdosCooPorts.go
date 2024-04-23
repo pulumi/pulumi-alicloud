@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDdosCooPorts(ctx *pulumi.Context, args *GetDdosCooPortsArgs, opts ...pulumi.InvokeOption) (*GetDdosCooPortsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDdosCooPortsResult
@@ -62,7 +60,7 @@ func GetDdosCooPorts(ctx *pulumi.Context, args *GetDdosCooPortsArgs, opts ...pul
 type GetDdosCooPortsArgs struct {
 	// The forwarding port.
 	FrontendPort *string `pulumi:"frontendPort"`
-	// The forwarding protocol.
+	// The forwarding protocol. Valid values `tcp` and `udp`.
 	FrontendProtocol *string `pulumi:"frontendProtocol"`
 	// A list of Port IDs.
 	Ids []string `pulumi:"ids"`
@@ -101,7 +99,7 @@ func GetDdosCooPortsOutput(ctx *pulumi.Context, args GetDdosCooPortsOutputArgs, 
 type GetDdosCooPortsOutputArgs struct {
 	// The forwarding port.
 	FrontendPort pulumi.StringPtrInput `pulumi:"frontendPort"`
-	// The forwarding protocol.
+	// The forwarding protocol. Valid values `tcp` and `udp`.
 	FrontendProtocol pulumi.StringPtrInput `pulumi:"frontendProtocol"`
 	// A list of Port IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`

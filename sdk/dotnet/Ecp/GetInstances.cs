@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Ecp
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -93,7 +92,6 @@ namespace Pulumi.AliCloud.Ecp
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:ecp/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
@@ -107,7 +105,6 @@ namespace Pulumi.AliCloud.Ecp
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -180,7 +177,6 @@ namespace Pulumi.AliCloud.Ecp
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:ecp/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
@@ -211,7 +207,10 @@ namespace Pulumi.AliCloud.Ecp
         public string? ImageId { get; set; }
 
         /// <summary>
-        /// Instance Name.
+        /// The name of the instance. It must be 2 to 128 characters in length and must start with an
+        /// uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
+        /// half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
+        /// the instance.
         /// </summary>
         [Input("instanceName")]
         public string? InstanceName { get; set; }
@@ -223,7 +222,7 @@ namespace Pulumi.AliCloud.Ecp
         public string? InstanceType { get; set; }
 
         /// <summary>
-        /// The Key Name.
+        /// The name of the key pair of the mobile phone instance.
         /// </summary>
         [Input("keyPairName")]
         public string? KeyPairName { get; set; }
@@ -247,13 +246,14 @@ namespace Pulumi.AliCloud.Ecp
         public string? PaymentType { get; set; }
 
         /// <summary>
-        /// Resolution.
+        /// The selected resolution for the cloud mobile phone instance.
         /// </summary>
         [Input("resolution")]
         public string? Resolution { get; set; }
 
         /// <summary>
-        /// Instance Status.
+        /// Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
+        /// .
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -291,7 +291,10 @@ namespace Pulumi.AliCloud.Ecp
         public Input<string>? ImageId { get; set; }
 
         /// <summary>
-        /// Instance Name.
+        /// The name of the instance. It must be 2 to 128 characters in length and must start with an
+        /// uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
+        /// half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
+        /// the instance.
         /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
@@ -303,7 +306,7 @@ namespace Pulumi.AliCloud.Ecp
         public Input<string>? InstanceType { get; set; }
 
         /// <summary>
-        /// The Key Name.
+        /// The name of the key pair of the mobile phone instance.
         /// </summary>
         [Input("keyPairName")]
         public Input<string>? KeyPairName { get; set; }
@@ -327,13 +330,14 @@ namespace Pulumi.AliCloud.Ecp
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Resolution.
+        /// The selected resolution for the cloud mobile phone instance.
         /// </summary>
         [Input("resolution")]
         public Input<string>? Resolution { get; set; }
 
         /// <summary>
-        /// Instance Status.
+        /// Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
+        /// .
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetEcsBackupPlans(ctx *pulumi.Context, args *GetEcsBackupPlansArgs, opts ...pulumi.InvokeOption) (*GetEcsBackupPlansResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsBackupPlansResult
@@ -59,13 +57,13 @@ func GetEcsBackupPlans(ctx *pulumi.Context, args *GetEcsBackupPlansArgs, opts ..
 type GetEcsBackupPlansArgs struct {
 	// A list of EcsBackupPlan IDs.
 	Ids []string `pulumi:"ids"`
-	// The ID of ECS instance.
+	// The ECS instance ID of the EcsBackupPlan used.
 	InstanceId *string `pulumi:"instanceId"`
 	// A regex string to filter results by EcsBackupPlan name.
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The ID of Backup vault.
+	// The Vault ID of the EcsBackupPlan used.
 	VaultId *string `pulumi:"vaultId"`
 }
 
@@ -99,13 +97,13 @@ func GetEcsBackupPlansOutput(ctx *pulumi.Context, args GetEcsBackupPlansOutputAr
 type GetEcsBackupPlansOutputArgs struct {
 	// A list of EcsBackupPlan IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The ID of ECS instance.
+	// The ECS instance ID of the EcsBackupPlan used.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
 	// A regex string to filter results by EcsBackupPlan name.
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The ID of Backup vault.
+	// The Vault ID of the EcsBackupPlan used.
 	VaultId pulumi.StringPtrInput `pulumi:"vaultId"`
 }
 

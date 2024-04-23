@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Quotas
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -56,7 +55,6 @@ namespace Pulumi.AliCloud.Quotas
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetQuotaApplicationsResult> InvokeAsync(GetQuotaApplicationsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQuotaApplicationsResult>("alicloud:quotas/getQuotaApplications:getQuotaApplications", args ?? new GetQuotaApplicationsArgs(), options.WithDefaults());
@@ -70,7 +68,6 @@ namespace Pulumi.AliCloud.Quotas
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -106,7 +103,6 @@ namespace Pulumi.AliCloud.Quotas
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetQuotaApplicationsResult> Invoke(GetQuotaApplicationsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQuotaApplicationsResult>("alicloud:quotas/getQuotaApplications:getQuotaApplications", args ?? new GetQuotaApplicationsInvokeArgs(), options.WithDefaults());
@@ -161,7 +157,7 @@ namespace Pulumi.AliCloud.Quotas
         public string ProductCode { get; set; } = null!;
 
         /// <summary>
-        /// The ID of quota action..
+        /// The ID of quota action.
         /// </summary>
         [Input("quotaActionCode")]
         public string? QuotaActionCode { get; set; }
@@ -173,7 +169,7 @@ namespace Pulumi.AliCloud.Quotas
         public string? QuotaCategory { get; set; }
 
         /// <summary>
-        /// The status of the quota application.
+        /// The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -232,7 +228,7 @@ namespace Pulumi.AliCloud.Quotas
         public Input<string> ProductCode { get; set; } = null!;
 
         /// <summary>
-        /// The ID of quota action..
+        /// The ID of quota action.
         /// </summary>
         [Input("quotaActionCode")]
         public Input<string>? QuotaActionCode { get; set; }
@@ -244,7 +240,7 @@ namespace Pulumi.AliCloud.Quotas
         public Input<string>? QuotaCategory { get; set; }
 
         /// <summary>
-        /// The status of the quota application.
+        /// The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

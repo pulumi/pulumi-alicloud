@@ -44,7 +44,7 @@ class ImageArgs:
                More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
                **NOTE**: It's default value is Ubuntu before version 1.197.0.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which a custom image belongs
-        :param pulumi.Input[str] snapshot_id: Specifies a snapshot that is used to create a combined custom image.
+        :param pulumi.Input[str] snapshot_id: Specifies a snapshot that is used to create a custom image.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag value of an image. The value of N ranges from 1 to 20.
         """
         if architecture is not None:
@@ -202,7 +202,7 @@ class ImageArgs:
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies a snapshot that is used to create a combined custom image.
+        Specifies a snapshot that is used to create a custom image.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -254,7 +254,7 @@ class _ImageState:
                More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
                **NOTE**: It's default value is Ubuntu before version 1.197.0.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which a custom image belongs
-        :param pulumi.Input[str] snapshot_id: Specifies a snapshot that is used to create a combined custom image.
+        :param pulumi.Input[str] snapshot_id: Specifies a snapshot that is used to create a custom image.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag value of an image. The value of N ranges from 1 to 20.
         """
         if architecture is not None:
@@ -412,7 +412,7 @@ class _ImageState:
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Specifies a snapshot that is used to create a combined custom image.
+        Specifies a snapshot that is used to create a custom image.
         """
         return pulumi.get(self, "snapshot_id")
 
@@ -464,7 +464,6 @@ class Image(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -507,7 +506,6 @@ class Image(pulumi.CustomResource):
                 "FinanceDept": "FinanceDeptJoshua",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -533,7 +531,7 @@ class Image(pulumi.CustomResource):
                More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
                **NOTE**: It's default value is Ubuntu before version 1.197.0.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which a custom image belongs
-        :param pulumi.Input[str] snapshot_id: Specifies a snapshot that is used to create a combined custom image.
+        :param pulumi.Input[str] snapshot_id: Specifies a snapshot that is used to create a custom image.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag value of an image. The value of N ranges from 1 to 20.
         """
         ...
@@ -555,7 +553,6 @@ class Image(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -598,7 +595,6 @@ class Image(pulumi.CustomResource):
                 "FinanceDept": "FinanceDeptJoshua",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -699,7 +695,7 @@ class Image(pulumi.CustomResource):
                More valid values refer to [CreateImage OpenAPI](https://www.alibabacloud.com/help/en/elastic-compute-service/latest/createimage)
                **NOTE**: It's default value is Ubuntu before version 1.197.0.
         :param pulumi.Input[str] resource_group_id: The ID of the enterprise resource group to which a custom image belongs
-        :param pulumi.Input[str] snapshot_id: Specifies a snapshot that is used to create a combined custom image.
+        :param pulumi.Input[str] snapshot_id: Specifies a snapshot that is used to create a custom image.
         :param pulumi.Input[Mapping[str, Any]] tags: The tag value of an image. The value of N ranges from 1 to 20.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -807,7 +803,7 @@ class Image(pulumi.CustomResource):
     @pulumi.getter(name="snapshotId")
     def snapshot_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Specifies a snapshot that is used to create a combined custom image.
+        Specifies a snapshot that is used to create a custom image.
         """
         return pulumi.get(self, "snapshot_id")
 

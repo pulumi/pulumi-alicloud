@@ -176,7 +176,6 @@ class VscMountPoint(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -202,7 +201,6 @@ class VscMountPoint(pulumi.CustomResource):
             storage_type=storage_type,
             zone_id=zone_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -235,7 +233,6 @@ class VscMountPoint(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -261,7 +258,6 @@ class VscMountPoint(pulumi.CustomResource):
             storage_type=storage_type,
             zone_id=zone_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

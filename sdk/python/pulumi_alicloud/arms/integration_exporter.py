@@ -156,7 +156,6 @@ class IntegrationExporter(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -195,7 +194,6 @@ class IntegrationExporter(pulumi.CustomResource):
             integration_type="kafka",
             param="{\\"tls_insecure-skip-tls-verify\\":\\"none=tls.insecure-skip-tls-verify\\",\\"tls_enabled\\":\\"none=tls.enabled\\",\\"sasl_mechanism\\":\\"\\",\\"name\\":\\"kafka1\\",\\"sasl_enabled\\":\\"none=sasl.enabled\\",\\"ip_ports\\":\\"abc:888\\",\\"scrape_interval\\":30,\\"version\\":\\"0.10.1.0\\"}")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -228,7 +226,6 @@ class IntegrationExporter(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -267,7 +264,6 @@ class IntegrationExporter(pulumi.CustomResource):
             integration_type="kafka",
             param="{\\"tls_insecure-skip-tls-verify\\":\\"none=tls.insecure-skip-tls-verify\\",\\"tls_enabled\\":\\"none=tls.enabled\\",\\"sasl_mechanism\\":\\"\\",\\"name\\":\\"kafka1\\",\\"sasl_enabled\\":\\"none=sasl.enabled\\",\\"ip_ports\\":\\"abc:888\\",\\"scrape_interval\\":30,\\"version\\":\\"0.10.1.0\\"}")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

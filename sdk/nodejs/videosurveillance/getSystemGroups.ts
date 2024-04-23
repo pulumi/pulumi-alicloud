@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -32,7 +31,6 @@ import * as utilities from "../utilities";
  * });
  * export const vsGroup = _default.apply(_default => _default.ids?.[0]);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSystemGroups(args?: GetSystemGroupsArgs, opts?: pulumi.InvokeOptions): Promise<GetSystemGroupsResult> {
     args = args || {};
@@ -104,7 +102,6 @@ export interface GetSystemGroupsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -121,7 +118,6 @@ export interface GetSystemGroupsResult {
  * });
  * export const vsGroup = _default.apply(_default => _default.ids?.[0]);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSystemGroupsOutput(args?: GetSystemGroupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSystemGroupsResult> {
     return pulumi.output(args).apply((a: any) => getSystemGroups(a, opts))

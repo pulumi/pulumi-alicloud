@@ -324,7 +324,6 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -358,13 +357,11 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
             bind_instance_region_id=default_get_regions.regions[0].id,
             anycast_id=default_anycast_eip_address.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         Multiple Usage
 
         > **NOTE:**  Anycast EIP supports binding cloud resource instances in multiple regions. Only one cloud resource instance is supported as the default origin station, and the rest are normal origin stations. When no access point is specified or an access point is added, the access request is forwarded to the default origin by default.  If you are bound for the first time, the Default value of the binding mode is **Default * *. /li> li> If you are not binding for the first time, you can set the binding mode to **Default**, and the new Default origin will take effect. The original Default origin will be changed to a common origin.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -436,7 +433,6 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
             bind_instance_region_id="cn-hangzhou",
             anycast_id=default_ef_ybjy.anycast_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -480,7 +476,6 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -514,13 +509,11 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
             bind_instance_region_id=default_get_regions.regions[0].id,
             anycast_id=default_anycast_eip_address.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         Multiple Usage
 
         > **NOTE:**  Anycast EIP supports binding cloud resource instances in multiple regions. Only one cloud resource instance is supported as the default origin station, and the rest are normal origin stations. When no access point is specified or an access point is added, the access request is forwarded to the default origin by default.  If you are bound for the first time, the Default value of the binding mode is **Default * *. /li> li> If you are not binding for the first time, you can set the binding mode to **Default**, and the new Default origin will take effect. The original Default origin will be changed to a common origin.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -592,7 +585,6 @@ class AnycastEipAddressAttachment(pulumi.CustomResource):
             bind_instance_region_id="cn-hangzhou",
             anycast_id=default_ef_ybjy.anycast_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

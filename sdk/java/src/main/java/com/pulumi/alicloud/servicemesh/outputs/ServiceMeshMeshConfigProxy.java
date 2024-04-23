@@ -16,25 +16,9 @@ public final class ServiceMeshMeshConfigProxy {
      * 
      */
     private @Nullable String clusterDomain;
-    /**
-     * @return Sidecar injector Pods on the throttle.
-     * 
-     */
     private @Nullable String limitCpu;
-    /**
-     * @return Sidecar injector Pods on the throttle.
-     * 
-     */
     private @Nullable String limitMemory;
-    /**
-     * @return Sidecar injector Pods on the requested resource.
-     * 
-     */
     private @Nullable String requestCpu;
-    /**
-     * @return Sidecar injector Pods on the requested resource.
-     * 
-     */
     private @Nullable String requestMemory;
 
     private ServiceMeshMeshConfigProxy() {}
@@ -45,31 +29,15 @@ public final class ServiceMeshMeshConfigProxy {
     public Optional<String> clusterDomain() {
         return Optional.ofNullable(this.clusterDomain);
     }
-    /**
-     * @return Sidecar injector Pods on the throttle.
-     * 
-     */
     public Optional<String> limitCpu() {
         return Optional.ofNullable(this.limitCpu);
     }
-    /**
-     * @return Sidecar injector Pods on the throttle.
-     * 
-     */
     public Optional<String> limitMemory() {
         return Optional.ofNullable(this.limitMemory);
     }
-    /**
-     * @return Sidecar injector Pods on the requested resource.
-     * 
-     */
     public Optional<String> requestCpu() {
         return Optional.ofNullable(this.requestCpu);
     }
-    /**
-     * @return Sidecar injector Pods on the requested resource.
-     * 
-     */
     public Optional<String> requestMemory() {
         return Optional.ofNullable(this.requestMemory);
     }

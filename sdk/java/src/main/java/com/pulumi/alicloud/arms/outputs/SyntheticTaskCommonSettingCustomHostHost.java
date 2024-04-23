@@ -12,41 +12,17 @@ import java.util.Objects;
 
 @CustomType
 public final class SyntheticTaskCommonSettingCustomHostHost {
-    /**
-     * @return Domain Name.
-     * 
-     */
     private String domain;
-    /**
-     * @return IpType.
-     * 
-     */
     private Integer ipType;
-    /**
-     * @return The IP list.
-     * 
-     */
     private List<String> ips;
 
     private SyntheticTaskCommonSettingCustomHostHost() {}
-    /**
-     * @return Domain Name.
-     * 
-     */
     public String domain() {
         return this.domain;
     }
-    /**
-     * @return IpType.
-     * 
-     */
     public Integer ipType() {
         return this.ipType;
     }
-    /**
-     * @return The IP list.
-     * 
-     */
     public List<String> ips() {
         return this.ips;
     }

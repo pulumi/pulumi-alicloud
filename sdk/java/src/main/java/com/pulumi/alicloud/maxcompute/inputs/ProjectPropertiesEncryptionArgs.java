@@ -16,47 +16,23 @@ public final class ProjectPropertiesEncryptionArgs extends com.pulumi.resources.
 
     public static final ProjectPropertiesEncryptionArgs Empty = new ProjectPropertiesEncryptionArgs();
 
-    /**
-     * Algorithm.
-     * 
-     */
     @Import(name="algorithm")
     private @Nullable Output<String> algorithm;
 
-    /**
-     * @return Algorithm.
-     * 
-     */
     public Optional<Output<String>> algorithm() {
         return Optional.ofNullable(this.algorithm);
     }
 
-    /**
-     * Whether to open.
-     * 
-     */
     @Import(name="enable")
     private @Nullable Output<Boolean> enable;
 
-    /**
-     * @return Whether to open.
-     * 
-     */
     public Optional<Output<Boolean>> enable() {
         return Optional.ofNullable(this.enable);
     }
 
-    /**
-     * Encryption algorithm key.
-     * 
-     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
-    /**
-     * @return Encryption algorithm key.
-     * 
-     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
@@ -87,65 +63,29 @@ public final class ProjectPropertiesEncryptionArgs extends com.pulumi.resources.
             $ = new ProjectPropertiesEncryptionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param algorithm Algorithm.
-         * 
-         * @return builder
-         * 
-         */
         public Builder algorithm(@Nullable Output<String> algorithm) {
             $.algorithm = algorithm;
             return this;
         }
 
-        /**
-         * @param algorithm Algorithm.
-         * 
-         * @return builder
-         * 
-         */
         public Builder algorithm(String algorithm) {
             return algorithm(Output.of(algorithm));
         }
 
-        /**
-         * @param enable Whether to open.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enable(@Nullable Output<Boolean> enable) {
             $.enable = enable;
             return this;
         }
 
-        /**
-         * @param enable Whether to open.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enable(Boolean enable) {
             return enable(Output.of(enable));
         }
 
-        /**
-         * @param key Encryption algorithm key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
-        /**
-         * @param key Encryption algorithm key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(String key) {
             return key(Output.of(key));
         }

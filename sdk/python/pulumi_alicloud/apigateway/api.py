@@ -546,7 +546,6 @@ class Api(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -587,7 +586,6 @@ class Api(pulumi.CustomResource):
                 "TEST",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -626,7 +624,6 @@ class Api(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -667,7 +664,6 @@ class Api(pulumi.CustomResource):
                 "TEST",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

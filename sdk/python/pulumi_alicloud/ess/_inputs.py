@@ -710,13 +710,6 @@ class EciScalingConfigurationContainerEnvironmentVarArgs:
                  field_ref_field_path: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] field_ref_field_path: Environment variable value reference. Optional values: 
-               - status.podIP: IP of pod.
-        :param pulumi.Input[str] key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-               digits, and underscores (_). It cannot start with a digit.
-        :param pulumi.Input[str] value: The value of the variable. The value can be 0 to 256 characters in length.
-        """
         if field_ref_field_path is not None:
             pulumi.set(__self__, "field_ref_field_path", field_ref_field_path)
         if key is not None:
@@ -727,10 +720,6 @@ class EciScalingConfigurationContainerEnvironmentVarArgs:
     @property
     @pulumi.getter(name="fieldRefFieldPath")
     def field_ref_field_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        Environment variable value reference. Optional values: 
-        - status.podIP: IP of pod.
-        """
         return pulumi.get(self, "field_ref_field_path")
 
     @field_ref_field_path.setter
@@ -740,10 +729,6 @@ class EciScalingConfigurationContainerEnvironmentVarArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-        digits, and underscores (_). It cannot start with a digit.
-        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -753,9 +738,6 @@ class EciScalingConfigurationContainerEnvironmentVarArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        The value of the variable. The value can be 0 to 256 characters in length.
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -768,10 +750,6 @@ class EciScalingConfigurationContainerPortArgs:
     def __init__(__self__, *,
                  port: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[int] port: The port number. Valid values: 1 to 65535.
-        :param pulumi.Input[str] protocol: Valid values: TCP and UDP.
-        """
         if port is not None:
             pulumi.set(__self__, "port", port)
         if protocol is not None:
@@ -780,9 +758,6 @@ class EciScalingConfigurationContainerPortArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
-        """
-        The port number. Valid values: 1 to 65535.
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -792,9 +767,6 @@ class EciScalingConfigurationContainerPortArgs:
     @property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
-        """
-        Valid values: TCP and UDP.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -808,12 +780,6 @@ class EciScalingConfigurationContainerVolumeMountArgs:
                  mount_path: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[str] mount_path: The directory of the mounted volume. Data under this directory will be overwritten by the
-               data in the volume.
-        :param pulumi.Input[str] name: The name of the mounted volume.
-        :param pulumi.Input[bool] read_only: Default to `false`.
-        """
         if mount_path is not None:
             pulumi.set(__self__, "mount_path", mount_path)
         if name is not None:
@@ -824,10 +790,6 @@ class EciScalingConfigurationContainerVolumeMountArgs:
     @property
     @pulumi.getter(name="mountPath")
     def mount_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        The directory of the mounted volume. Data under this directory will be overwritten by the
-        data in the volume.
-        """
         return pulumi.get(self, "mount_path")
 
     @mount_path.setter
@@ -837,9 +799,6 @@ class EciScalingConfigurationContainerVolumeMountArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the mounted volume.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -849,9 +808,6 @@ class EciScalingConfigurationContainerVolumeMountArgs:
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Default to `false`.
-        """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
@@ -1218,13 +1174,6 @@ class EciScalingConfigurationInitContainerEnvironmentVarArgs:
                  field_ref_field_path: Optional[pulumi.Input[str]] = None,
                  key: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] field_ref_field_path: Environment variable value reference. Optional values: 
-               - status.podIP: IP of pod.
-        :param pulumi.Input[str] key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-               digits, and underscores (_). It cannot start with a digit.
-        :param pulumi.Input[str] value: The value of the variable. The value can be 0 to 256 characters in length.
-        """
         if field_ref_field_path is not None:
             pulumi.set(__self__, "field_ref_field_path", field_ref_field_path)
         if key is not None:
@@ -1235,10 +1184,6 @@ class EciScalingConfigurationInitContainerEnvironmentVarArgs:
     @property
     @pulumi.getter(name="fieldRefFieldPath")
     def field_ref_field_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        Environment variable value reference. Optional values: 
-        - status.podIP: IP of pod.
-        """
         return pulumi.get(self, "field_ref_field_path")
 
     @field_ref_field_path.setter
@@ -1248,10 +1193,6 @@ class EciScalingConfigurationInitContainerEnvironmentVarArgs:
     @property
     @pulumi.getter
     def key(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-        digits, and underscores (_). It cannot start with a digit.
-        """
         return pulumi.get(self, "key")
 
     @key.setter
@@ -1261,9 +1202,6 @@ class EciScalingConfigurationInitContainerEnvironmentVarArgs:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
-        """
-        The value of the variable. The value can be 0 to 256 characters in length.
-        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -1276,10 +1214,6 @@ class EciScalingConfigurationInitContainerPortArgs:
     def __init__(__self__, *,
                  port: Optional[pulumi.Input[int]] = None,
                  protocol: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[int] port: The port number. Valid values: 1 to 65535.
-        :param pulumi.Input[str] protocol: Valid values: TCP and UDP.
-        """
         if port is not None:
             pulumi.set(__self__, "port", port)
         if protocol is not None:
@@ -1288,9 +1222,6 @@ class EciScalingConfigurationInitContainerPortArgs:
     @property
     @pulumi.getter
     def port(self) -> Optional[pulumi.Input[int]]:
-        """
-        The port number. Valid values: 1 to 65535.
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -1300,9 +1231,6 @@ class EciScalingConfigurationInitContainerPortArgs:
     @property
     @pulumi.getter
     def protocol(self) -> Optional[pulumi.Input[str]]:
-        """
-        Valid values: TCP and UDP.
-        """
         return pulumi.get(self, "protocol")
 
     @protocol.setter
@@ -1316,12 +1244,6 @@ class EciScalingConfigurationInitContainerVolumeMountArgs:
                  mount_path: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  read_only: Optional[pulumi.Input[bool]] = None):
-        """
-        :param pulumi.Input[str] mount_path: The directory of the mounted volume. Data under this directory will be overwritten by the
-               data in the volume.
-        :param pulumi.Input[str] name: The name of the mounted volume.
-        :param pulumi.Input[bool] read_only: Default to `false`.
-        """
         if mount_path is not None:
             pulumi.set(__self__, "mount_path", mount_path)
         if name is not None:
@@ -1332,10 +1254,6 @@ class EciScalingConfigurationInitContainerVolumeMountArgs:
     @property
     @pulumi.getter(name="mountPath")
     def mount_path(self) -> Optional[pulumi.Input[str]]:
-        """
-        The directory of the mounted volume. Data under this directory will be overwritten by the
-        data in the volume.
-        """
         return pulumi.get(self, "mount_path")
 
     @mount_path.setter
@@ -1345,9 +1263,6 @@ class EciScalingConfigurationInitContainerVolumeMountArgs:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the mounted volume.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1357,9 +1272,6 @@ class EciScalingConfigurationInitContainerVolumeMountArgs:
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Default to `false`.
-        """
         return pulumi.get(self, "read_only")
 
     @read_only.setter
@@ -1581,10 +1493,6 @@ class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs:
     def __init__(__self__, *,
                  content: Optional[pulumi.Input[str]] = None,
                  path: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] content: The content of the configuration file. Maximum size: 32 KB.
-        :param pulumi.Input[str] path: The relative file path.
-        """
         if content is not None:
             pulumi.set(__self__, "content", content)
         if path is not None:
@@ -1593,9 +1501,6 @@ class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs:
     @property
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[str]]:
-        """
-        The content of the configuration file. Maximum size: 32 KB.
-        """
         return pulumi.get(self, "content")
 
     @content.setter
@@ -1605,9 +1510,6 @@ class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs:
     @property
     @pulumi.getter
     def path(self) -> Optional[pulumi.Input[str]]:
-        """
-        The relative file path.
-        """
         return pulumi.get(self, "path")
 
     @path.setter
@@ -2113,11 +2015,6 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs:
                  port: pulumi.Input[int],
                  vserver_group_id: pulumi.Input[str],
                  weight: pulumi.Input[int]):
-        """
-        :param pulumi.Input[int] port: The port will be used for VServer Group backend server.
-        :param pulumi.Input[str] vserver_group_id: ID of VServer Group.
-        :param pulumi.Input[int] weight: The weight of an ECS instance attached to the VServer Group.
-        """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "vserver_group_id", vserver_group_id)
         pulumi.set(__self__, "weight", weight)
@@ -2125,9 +2022,6 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs:
     @property
     @pulumi.getter
     def port(self) -> pulumi.Input[int]:
-        """
-        The port will be used for VServer Group backend server.
-        """
         return pulumi.get(self, "port")
 
     @port.setter
@@ -2137,9 +2031,6 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs:
     @property
     @pulumi.getter(name="vserverGroupId")
     def vserver_group_id(self) -> pulumi.Input[str]:
-        """
-        ID of VServer Group.
-        """
         return pulumi.get(self, "vserver_group_id")
 
     @vserver_group_id.setter
@@ -2149,9 +2040,6 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs:
     @property
     @pulumi.getter
     def weight(self) -> pulumi.Input[int]:
-        """
-        The weight of an ECS instance attached to the VServer Group.
-        """
         return pulumi.get(self, "weight")
 
     @weight.setter

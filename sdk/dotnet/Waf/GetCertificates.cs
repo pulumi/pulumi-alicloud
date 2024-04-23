@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Waf
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,7 +44,6 @@ namespace Pulumi.AliCloud.Waf
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCertificatesResult> InvokeAsync(GetCertificatesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCertificatesResult>("alicloud:waf/getCertificates:getCertificates", args ?? new GetCertificatesArgs(), options.WithDefaults());
@@ -59,7 +57,6 @@ namespace Pulumi.AliCloud.Waf
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -84,7 +81,6 @@ namespace Pulumi.AliCloud.Waf
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCertificatesResult> Invoke(GetCertificatesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCertificatesResult>("alicloud:waf/getCertificates:getCertificates", args ?? new GetCertificatesInvokeArgs(), options.WithDefaults());
@@ -94,7 +90,7 @@ namespace Pulumi.AliCloud.Waf
     public sealed class GetCertificatesArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The domain that you want to add to WAF.
+        /// WAF domain name.
         /// </summary>
         [Input("domain")]
         public string? Domain { get; set; }
@@ -138,7 +134,7 @@ namespace Pulumi.AliCloud.Waf
     public sealed class GetCertificatesInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The domain that you want to add to WAF.
+        /// WAF domain name.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }

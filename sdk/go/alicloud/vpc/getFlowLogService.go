@@ -21,7 +21,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,7 +44,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetFlowLogService(ctx *pulumi.Context, args *GetFlowLogServiceArgs, opts ...pulumi.InvokeOption) (*GetFlowLogServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetFlowLogServiceResult

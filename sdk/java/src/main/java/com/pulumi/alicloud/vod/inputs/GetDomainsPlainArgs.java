@@ -78,14 +78,14 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The status of the resource.
+     * The status of the domain name. The value of this parameter is used as a condition to filter domain names.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the resource.
+     * @return The status of the domain name. The value of this parameter is used as a condition to filter domain names.
      * 
      */
     public Optional<String> status() {
@@ -191,7 +191,7 @@ public final class GetDomainsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status The status of the resource.
+         * @param status The status of the domain name. The value of this parameter is used as a condition to filter domain names.
          * 
          * @return builder
          * 

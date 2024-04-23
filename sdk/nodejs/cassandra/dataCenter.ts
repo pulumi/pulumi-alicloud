@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  *
  * ### Create a cassandra dataCenter
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -56,7 +55,6 @@ import * as utilities from "../utilities";
  *     diskType: "cloud_ssd",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * This is a example for class netType dataCenter. You can find more detail with the examples/cassandra_data_center dir.
  *

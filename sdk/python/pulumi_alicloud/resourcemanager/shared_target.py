@@ -124,7 +124,6 @@ class SharedTarget(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -139,7 +138,6 @@ class SharedTarget(pulumi.CustomResource):
             resource_share_id=example.id,
             target_id=default.ids[0])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -171,7 +169,6 @@ class SharedTarget(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -186,7 +183,6 @@ class SharedTarget(pulumi.CustomResource):
             resource_share_id=example.id,
             target_id=default.ids[0])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

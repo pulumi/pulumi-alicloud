@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetWafDomainsDomainDefenseScene {
-    /**
-     * @return The type of protection policy.
-     * 
-     */
     private String defenseScene;
-    /**
-     * @return The protection policy ID.
-     * 
-     */
     private String policyId;
 
     private GetWafDomainsDomainDefenseScene() {}
-    /**
-     * @return The type of protection policy.
-     * 
-     */
     public String defenseScene() {
         return this.defenseScene;
     }
-    /**
-     * @return The protection policy ID.
-     * 
-     */
     public String policyId() {
         return this.policyId;
     }

@@ -15,14 +15,14 @@ public final class AlertLabelArgs extends com.pulumi.resources.ResourceArgs {
     public static final AlertLabelArgs Empty = new AlertLabelArgs();
 
     /**
-     * Annotations&#39;s key for new alert.
+     * Labels&#39;s key for new alert.
      * 
      */
     @Import(name="key", required=true)
     private Output<String> key;
 
     /**
-     * @return Annotations&#39;s key for new alert.
+     * @return Labels&#39;s key for new alert.
      * 
      */
     public Output<String> key() {
@@ -30,14 +30,14 @@ public final class AlertLabelArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Annotations&#39;s value for new alert.
+     * Labels&#39;s value for new alert.
      * 
      */
     @Import(name="value", required=true)
     private Output<String> value;
 
     /**
-     * @return Annotations&#39;s value for new alert.
+     * @return Labels&#39;s value for new alert.
      * 
      */
     public Output<String> value() {
@@ -70,7 +70,7 @@ public final class AlertLabelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key Annotations&#39;s key for new alert.
+         * @param key Labels&#39;s key for new alert.
          * 
          * @return builder
          * 
@@ -81,7 +81,7 @@ public final class AlertLabelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param key Annotations&#39;s key for new alert.
+         * @param key Labels&#39;s key for new alert.
          * 
          * @return builder
          * 
@@ -91,7 +91,7 @@ public final class AlertLabelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value Annotations&#39;s value for new alert.
+         * @param value Labels&#39;s value for new alert.
          * 
          * @return builder
          * 
@@ -102,7 +102,7 @@ public final class AlertLabelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value Annotations&#39;s value for new alert.
+         * @param value Labels&#39;s value for new alert.
          * 
          * @return builder
          * 

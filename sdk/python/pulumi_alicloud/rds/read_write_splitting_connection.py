@@ -252,7 +252,6 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -308,7 +307,6 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
             connection_prefix="example-con-123",
             distribution_type="Standard")
         ```
-        <!--End PulumiCodeChooser -->
 
         > **NOTE:** Resource `rds.ReadWriteSplittingConnection` should be created after `rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
 
@@ -342,7 +340,6 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -398,7 +395,6 @@ class ReadWriteSplittingConnection(pulumi.CustomResource):
             connection_prefix="example-con-123",
             distribution_type="Standard")
         ```
-        <!--End PulumiCodeChooser -->
 
         > **NOTE:** Resource `rds.ReadWriteSplittingConnection` should be created after `rds.ReadOnlyInstance`, so the `depends_on` statement is necessary.
 

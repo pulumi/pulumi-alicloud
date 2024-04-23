@@ -124,7 +124,6 @@ class InstanceAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -163,7 +162,6 @@ class InstanceAttachment(pulumi.CustomResource):
             ecs_id=default_instance.id,
             instance_id=default_instance2.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -195,7 +193,6 @@ class InstanceAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -234,7 +231,6 @@ class InstanceAttachment(pulumi.CustomResource):
             ecs_id=default_instance.id,
             instance_id=default_instance2.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

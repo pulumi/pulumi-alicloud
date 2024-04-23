@@ -17,47 +17,23 @@ public final class ContainerGroupInitContainerEnvironmentVarArgs extends com.pul
 
     public static final ContainerGroupInitContainerEnvironmentVarArgs Empty = new ContainerGroupInitContainerEnvironmentVarArgs();
 
-    /**
-     * The reference of the environment variable. See `field_ref` below.
-     * 
-     */
     @Import(name="fieldReves")
     private @Nullable Output<List<ContainerGroupInitContainerEnvironmentVarFieldRefArgs>> fieldReves;
 
-    /**
-     * @return The reference of the environment variable. See `field_ref` below.
-     * 
-     */
     public Optional<Output<List<ContainerGroupInitContainerEnvironmentVarFieldRefArgs>>> fieldReves() {
         return Optional.ofNullable(this.fieldReves);
     }
 
-    /**
-     * The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
-     * 
-     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
-    /**
-     * @return The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
-     * 
-     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
 
-    /**
-     * The value of the variable. The value can be 0 to 256 characters in length.
-     * 
-     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
-    /**
-     * @return The value of the variable. The value can be 0 to 256 characters in length.
-     * 
-     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -88,75 +64,33 @@ public final class ContainerGroupInitContainerEnvironmentVarArgs extends com.pul
             $ = new ContainerGroupInitContainerEnvironmentVarArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param fieldReves The reference of the environment variable. See `field_ref` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder fieldReves(@Nullable Output<List<ContainerGroupInitContainerEnvironmentVarFieldRefArgs>> fieldReves) {
             $.fieldReves = fieldReves;
             return this;
         }
 
-        /**
-         * @param fieldReves The reference of the environment variable. See `field_ref` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder fieldReves(List<ContainerGroupInitContainerEnvironmentVarFieldRefArgs> fieldReves) {
             return fieldReves(Output.of(fieldReves));
         }
 
-        /**
-         * @param fieldReves The reference of the environment variable. See `field_ref` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder fieldReves(ContainerGroupInitContainerEnvironmentVarFieldRefArgs... fieldReves) {
             return fieldReves(List.of(fieldReves));
         }
 
-        /**
-         * @param key The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
-        /**
-         * @param key The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
-        /**
-         * @param value The value of the variable. The value can be 0 to 256 characters in length.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value The value of the variable. The value can be 0 to 256 characters in length.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

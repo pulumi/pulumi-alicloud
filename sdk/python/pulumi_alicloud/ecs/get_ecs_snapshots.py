@@ -233,7 +233,6 @@ def get_ecs_snapshots(category: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -242,7 +241,6 @@ def get_ecs_snapshots(category: Optional[str] = None,
         name_regex="tf-test")
     pulumi.export("firstEcsSnapshotId", example.snapshots[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str category: The category of the snapshot.
@@ -330,7 +328,6 @@ def get_ecs_snapshots_output(category: Optional[pulumi.Input[Optional[str]]] = N
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -339,7 +336,6 @@ def get_ecs_snapshots_output(category: Optional[pulumi.Input[Optional[str]]] = N
         name_regex="tf-test")
     pulumi.export("firstEcsSnapshotId", example.snapshots[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str category: The category of the snapshot.

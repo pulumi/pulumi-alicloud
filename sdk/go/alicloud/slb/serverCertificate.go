@@ -21,7 +21,6 @@ import (
 //
 // * using server_certificate/private content as string example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -80,7 +79,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // * using server_certificate/private file example
 //

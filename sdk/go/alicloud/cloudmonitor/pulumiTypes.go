@@ -185,13 +185,9 @@ func (o ServiceGroupMonitoringAgentProcessAlertConfigArrayOutput) Index(i pulumi
 }
 
 type ServiceGroupMonitoringAgentProcessAlertConfigTargetList struct {
-	// The Alibaba Cloud Resource Name (ARN) of the resource.
-	Arn *string `pulumi:"arn"`
-	// The parameters of the alert callback. Specify the parameters in the JSON format.
-	JsonParams *string `pulumi:"jsonParams"`
-	// The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
-	Level *string `pulumi:"level"`
-	// The ID of the resource for which alerts are triggered.
+	Arn          *string `pulumi:"arn"`
+	JsonParams   *string `pulumi:"jsonParams"`
+	Level        *string `pulumi:"level"`
 	TargetListId *string `pulumi:"targetListId"`
 }
 
@@ -207,13 +203,9 @@ type ServiceGroupMonitoringAgentProcessAlertConfigTargetListInput interface {
 }
 
 type ServiceGroupMonitoringAgentProcessAlertConfigTargetListArgs struct {
-	// The Alibaba Cloud Resource Name (ARN) of the resource.
-	Arn pulumi.StringPtrInput `pulumi:"arn"`
-	// The parameters of the alert callback. Specify the parameters in the JSON format.
-	JsonParams pulumi.StringPtrInput `pulumi:"jsonParams"`
-	// The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
-	Level pulumi.StringPtrInput `pulumi:"level"`
-	// The ID of the resource for which alerts are triggered.
+	Arn          pulumi.StringPtrInput `pulumi:"arn"`
+	JsonParams   pulumi.StringPtrInput `pulumi:"jsonParams"`
+	Level        pulumi.StringPtrInput `pulumi:"level"`
 	TargetListId pulumi.StringPtrInput `pulumi:"targetListId"`
 }
 
@@ -268,22 +260,18 @@ func (o ServiceGroupMonitoringAgentProcessAlertConfigTargetListOutput) ToService
 	return o
 }
 
-// The Alibaba Cloud Resource Name (ARN) of the resource.
 func (o ServiceGroupMonitoringAgentProcessAlertConfigTargetListOutput) Arn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceGroupMonitoringAgentProcessAlertConfigTargetList) *string { return v.Arn }).(pulumi.StringPtrOutput)
 }
 
-// The parameters of the alert callback. Specify the parameters in the JSON format.
 func (o ServiceGroupMonitoringAgentProcessAlertConfigTargetListOutput) JsonParams() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceGroupMonitoringAgentProcessAlertConfigTargetList) *string { return v.JsonParams }).(pulumi.StringPtrOutput)
 }
 
-// The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
 func (o ServiceGroupMonitoringAgentProcessAlertConfigTargetListOutput) Level() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceGroupMonitoringAgentProcessAlertConfigTargetList) *string { return v.Level }).(pulumi.StringPtrOutput)
 }
 
-// The ID of the resource for which alerts are triggered.
 func (o ServiceGroupMonitoringAgentProcessAlertConfigTargetListOutput) TargetListId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceGroupMonitoringAgentProcessAlertConfigTargetList) *string { return v.TargetListId }).(pulumi.StringPtrOutput)
 }

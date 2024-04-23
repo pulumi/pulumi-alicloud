@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudCrVpcEndpointLinkedVpcsId1 = ids.then(ids => ids.vpcEndpointLinkedVpcs?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVpcEndpointLinkedVpcs(args: GetVpcEndpointLinkedVpcsArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcEndpointLinkedVpcsResult> {
 
@@ -103,7 +101,6 @@ export interface GetVpcEndpointLinkedVpcsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -115,7 +112,6 @@ export interface GetVpcEndpointLinkedVpcsResult {
  * });
  * export const alicloudCrVpcEndpointLinkedVpcsId1 = ids.then(ids => ids.vpcEndpointLinkedVpcs?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVpcEndpointLinkedVpcsOutput(args: GetVpcEndpointLinkedVpcsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcEndpointLinkedVpcsResult> {
     return pulumi.output(args).apply((a: any) => getVpcEndpointLinkedVpcs(a, opts))

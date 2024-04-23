@@ -192,7 +192,6 @@ class Aggregator(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -212,7 +211,6 @@ class Aggregator(pulumi.CustomResource):
             description=name,
             aggregator_type="CUSTOM")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -246,7 +244,6 @@ class Aggregator(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -266,7 +263,6 @@ class Aggregator(pulumi.CustomResource):
             description=name,
             aggregator_type="CUSTOM")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

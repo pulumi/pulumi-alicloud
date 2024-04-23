@@ -78,14 +78,12 @@ def get_permission(enable: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     open = alicloud.kvstore.get_permission(enable="On")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str enable: Setting the value to `On` to assigns a RAM role to ApsaraDB for Redis. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".
@@ -115,14 +113,12 @@ def get_permission_output(enable: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     open = alicloud.kvstore.get_permission(enable="On")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str enable: Setting the value to `On` to assigns a RAM role to ApsaraDB for Redis. If has been enabled, return the result. Valid values: "On" or "Off". Default to "Off".

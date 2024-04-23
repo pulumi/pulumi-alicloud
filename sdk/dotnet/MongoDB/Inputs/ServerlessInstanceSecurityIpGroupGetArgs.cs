@@ -12,21 +12,12 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
 
     public sealed class ServerlessInstanceSecurityIpGroupGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The attribute of the IP whitelist. This parameter is empty by default.
-        /// </summary>
         [Input("securityIpGroupAttribute")]
         public Input<string>? SecurityIpGroupAttribute { get; set; }
 
-        /// <summary>
-        /// The name of the IP whitelist.
-        /// </summary>
         [Input("securityIpGroupName")]
         public Input<string>? SecurityIpGroupName { get; set; }
 
-        /// <summary>
-        /// The IP addresses in the whitelist.
-        /// </summary>
         [Input("securityIpList")]
         public Input<string>? SecurityIpList { get; set; }
 

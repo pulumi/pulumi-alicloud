@@ -16,32 +16,16 @@ public final class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs extends
 
     public static final EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs Empty = new EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs();
 
-    /**
-     * Destination region ID.
-     * 
-     */
     @Import(name="regionId")
     private @Nullable Output<String> regionId;
 
-    /**
-     * @return Destination region ID.
-     * 
-     */
     public Optional<Output<String>> regionId() {
         return Optional.ofNullable(this.regionId);
     }
 
-    /**
-     * Number of days of snapshot retention for replication.
-     * 
-     */
     @Import(name="retainDays")
     private @Nullable Output<Integer> retainDays;
 
-    /**
-     * @return Number of days of snapshot retention for replication.
-     * 
-     */
     public Optional<Output<Integer>> retainDays() {
         return Optional.ofNullable(this.retainDays);
     }
@@ -71,44 +55,20 @@ public final class EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs extends
             $ = new EnterpriseSnapshotPolicyCrossRegionCopyInfoRegionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param regionId Destination region ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder regionId(@Nullable Output<String> regionId) {
             $.regionId = regionId;
             return this;
         }
 
-        /**
-         * @param regionId Destination region ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder regionId(String regionId) {
             return regionId(Output.of(regionId));
         }
 
-        /**
-         * @param retainDays Number of days of snapshot retention for replication.
-         * 
-         * @return builder
-         * 
-         */
         public Builder retainDays(@Nullable Output<Integer> retainDays) {
             $.retainDays = retainDays;
             return this;
         }
 
-        /**
-         * @param retainDays Number of days of snapshot retention for replication.
-         * 
-         * @return builder
-         * 
-         */
         public Builder retainDays(Integer retainDays) {
             return retainDays(Output.of(retainDays));
         }

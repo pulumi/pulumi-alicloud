@@ -12,9 +12,6 @@ namespace Pulumi.AliCloud.Eci.Inputs
 
     public sealed class ContainerGroupInitContainerEnvironmentVarFieldRefArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The path of the reference.
-        /// </summary>
         [Input("fieldPath")]
         public Input<string>? FieldPath { get; set; }
 

@@ -26,7 +26,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -120,7 +119,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type NetworkAclEntries struct {
 	pulumi.CustomResourceState
 

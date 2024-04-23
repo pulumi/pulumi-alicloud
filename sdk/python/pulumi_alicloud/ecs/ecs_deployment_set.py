@@ -242,7 +242,6 @@ class EcsDeploymentSet(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -254,7 +253,6 @@ class EcsDeploymentSet(pulumi.CustomResource):
             deployment_set_name="example_value",
             description="example_value")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -290,7 +288,6 @@ class EcsDeploymentSet(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -302,7 +299,6 @@ class EcsDeploymentSet(pulumi.CustomResource):
             deployment_set_name="example_value",
             description="example_value")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

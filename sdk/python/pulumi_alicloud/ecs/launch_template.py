@@ -65,7 +65,7 @@ class LaunchTemplateArgs:
         The set of arguments for constructing a LaunchTemplate resource.
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
         :param pulumi.Input[Sequence[pulumi.Input['LaunchTemplateDataDiskArgs']]] data_disks: The list of data disks created with instance.
-        :param pulumi.Input[str] description: The description of the data disk.
+        :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[str] host_name: Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
         :param pulumi.Input[str] image_id: Image ID.
         :param pulumi.Input[str] instance_charge_type: Billing methods. Optional values:
@@ -84,12 +84,12 @@ class LaunchTemplateArgs:
         :param pulumi.Input[str] key_pair_name: The name of the key pair.
                - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
                - The password logon method for Linux instances is set to forbidden upon initialization.
-        :param pulumi.Input[str] name: The name of the data disk.
+        :param pulumi.Input[str] name: Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         :param pulumi.Input['LaunchTemplateNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance.
         :param pulumi.Input[str] network_type: Network type of the instance. Value options: `classic` | `vpc`.
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
-        :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
+        :param pulumi.Input[str] security_group_id: The security group ID.
         :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
                - NoSpot: Normal Pay-As-You-Go instance.
@@ -108,7 +108,7 @@ class LaunchTemplateArgs:
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] userdata: User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
-        :param pulumi.Input[str] vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        :param pulumi.Input[str] vswitch_id: When creating a VPC-Connected instance, you must specify its VSwitch ID.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         if auto_release_time is not None:
@@ -257,7 +257,7 @@ class LaunchTemplateArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the data disk.
+        Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         """
         return pulumi.get(self, "description")
 
@@ -424,7 +424,7 @@ class LaunchTemplateArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the data disk.
+        Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         """
         warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""")
@@ -523,7 +523,7 @@ class LaunchTemplateArgs:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The security group ID must be one in the same VPC.
+        The security group ID.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -728,7 +728,7 @@ class LaunchTemplateArgs:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        When creating a VPC-Connected instance, you must specify its VSwitch ID.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -801,7 +801,7 @@ class _LaunchTemplateState:
         Input properties used for looking up and filtering LaunchTemplate resources.
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
         :param pulumi.Input[Sequence[pulumi.Input['LaunchTemplateDataDiskArgs']]] data_disks: The list of data disks created with instance.
-        :param pulumi.Input[str] description: The description of the data disk.
+        :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[str] host_name: Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
         :param pulumi.Input[str] image_id: Image ID.
         :param pulumi.Input[str] instance_charge_type: Billing methods. Optional values:
@@ -820,12 +820,12 @@ class _LaunchTemplateState:
         :param pulumi.Input[str] key_pair_name: The name of the key pair.
                - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
                - The password logon method for Linux instances is set to forbidden upon initialization.
-        :param pulumi.Input[str] name: The name of the data disk.
+        :param pulumi.Input[str] name: Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         :param pulumi.Input['LaunchTemplateNetworkInterfacesArgs'] network_interfaces: The list of network interfaces created with instance.
         :param pulumi.Input[str] network_type: Network type of the instance. Value options: `classic` | `vpc`.
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
-        :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
+        :param pulumi.Input[str] security_group_id: The security group ID.
         :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
                - NoSpot: Normal Pay-As-You-Go instance.
@@ -844,7 +844,7 @@ class _LaunchTemplateState:
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] userdata: User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
-        :param pulumi.Input[str] vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        :param pulumi.Input[str] vswitch_id: When creating a VPC-Connected instance, you must specify its VSwitch ID.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         if auto_release_time is not None:
@@ -993,7 +993,7 @@ class _LaunchTemplateState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        The description of the data disk.
+        Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         """
         return pulumi.get(self, "description")
 
@@ -1160,7 +1160,7 @@ class _LaunchTemplateState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the data disk.
+        Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         """
         warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""")
@@ -1259,7 +1259,7 @@ class _LaunchTemplateState:
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The security group ID must be one in the same VPC.
+        The security group ID.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -1464,7 +1464,7 @@ class _LaunchTemplateState:
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        When creating a VPC-Connected instance, you must specify its VSwitch ID.
         """
         return pulumi.get(self, "vswitch_id")
 
@@ -1545,7 +1545,6 @@ class LaunchTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1602,7 +1601,6 @@ class LaunchTemplate(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1616,7 +1614,7 @@ class LaunchTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LaunchTemplateDataDiskArgs']]]] data_disks: The list of data disks created with instance.
-        :param pulumi.Input[str] description: The description of the data disk.
+        :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[str] host_name: Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
         :param pulumi.Input[str] image_id: Image ID.
         :param pulumi.Input[str] instance_charge_type: Billing methods. Optional values:
@@ -1635,12 +1633,12 @@ class LaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] key_pair_name: The name of the key pair.
                - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
                - The password logon method for Linux instances is set to forbidden upon initialization.
-        :param pulumi.Input[str] name: The name of the data disk.
+        :param pulumi.Input[str] name: Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         :param pulumi.Input[pulumi.InputType['LaunchTemplateNetworkInterfacesArgs']] network_interfaces: The list of network interfaces created with instance.
         :param pulumi.Input[str] network_type: Network type of the instance. Value options: `classic` | `vpc`.
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
-        :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
+        :param pulumi.Input[str] security_group_id: The security group ID.
         :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
                - NoSpot: Normal Pay-As-You-Go instance.
@@ -1659,7 +1657,7 @@ class LaunchTemplate(pulumi.CustomResource):
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] userdata: User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
-        :param pulumi.Input[str] vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        :param pulumi.Input[str] vswitch_id: When creating a VPC-Connected instance, you must specify its VSwitch ID.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         ...
@@ -1677,7 +1675,6 @@ class LaunchTemplate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1734,7 +1731,6 @@ class LaunchTemplate(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1922,7 +1918,7 @@ class LaunchTemplate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] auto_release_time: Instance auto release time. The time is presented using the ISO8601 standard and in UTC time. The format is  YYYY-MM-DDTHH:MM:SSZ.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LaunchTemplateDataDiskArgs']]]] data_disks: The list of data disks created with instance.
-        :param pulumi.Input[str] description: The description of the data disk.
+        :param pulumi.Input[str] description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         :param pulumi.Input[str] host_name: Instance host name.It cannot start or end with a period (.) or a hyphen (-) and it cannot have two or more consecutive periods (.) or hyphens (-).For Windows: The host name can be [2, 15] characters in length. It can contain A-Z, a-z, numbers, periods (.), and hyphens (-). It cannot only contain numbers. For other operating systems: The host name can be [2, 64] characters in length. It can be segments separated by periods (.). It can contain A-Z, a-z, numbers, and hyphens (-).
         :param pulumi.Input[str] image_id: Image ID.
         :param pulumi.Input[str] instance_charge_type: Billing methods. Optional values:
@@ -1941,12 +1937,12 @@ class LaunchTemplate(pulumi.CustomResource):
         :param pulumi.Input[str] key_pair_name: The name of the key pair.
                - Ignore this parameter for Windows instances. It is null by default. Even if you enter this parameter, only the  Password content is used.
                - The password logon method for Linux instances is set to forbidden upon initialization.
-        :param pulumi.Input[str] name: The name of the data disk.
+        :param pulumi.Input[str] name: Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         :param pulumi.Input[pulumi.InputType['LaunchTemplateNetworkInterfacesArgs']] network_interfaces: The list of network interfaces created with instance.
         :param pulumi.Input[str] network_type: Network type of the instance. Value options: `classic` | `vpc`.
         :param pulumi.Input[str] ram_role_name: The RAM role name of the instance. You can use the RAM API ListRoles to query instance RAM role names.
         :param pulumi.Input[str] security_enhancement_strategy: Whether or not to activate the security enhancement feature and install network security software free of charge. Optional values: Active | Deactive.
-        :param pulumi.Input[str] security_group_id: The security group ID must be one in the same VPC.
+        :param pulumi.Input[str] security_group_id: The security group ID.
         :param pulumi.Input[float] spot_price_limit: Sets the maximum hourly instance price. Supports up to three decimal places.
         :param pulumi.Input[str] spot_strategy: The spot strategy for a Pay-As-You-Go instance. This parameter is valid and required only when InstanceChargeType is set to PostPaid. Value range:
                - NoSpot: Normal Pay-As-You-Go instance.
@@ -1965,7 +1961,7 @@ class LaunchTemplate(pulumi.CustomResource):
                - Key: It can be up to 64 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It cannot be a null string.
                - Value: It can be up to 128 characters in length. It cannot begin with "aliyun", "acs:", "http://", or "https://". It can be a null string.
         :param pulumi.Input[str] userdata: User data of the instance, which is Base64-encoded. Size of the raw data cannot exceed 16 KB.
-        :param pulumi.Input[str] vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        :param pulumi.Input[str] vswitch_id: When creating a VPC-Connected instance, you must specify its VSwitch ID.
         :param pulumi.Input[str] zone_id: The zone ID of the instance.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -2044,7 +2040,7 @@ class LaunchTemplate(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        The description of the data disk.
+        Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         """
         return pulumi.get(self, "description")
 
@@ -2155,7 +2151,7 @@ class LaunchTemplate(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        The name of the data disk.
+        Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         """
         warnings.warn("""Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated from provider version 1.120.0. New field 'launch_template_name' instead.""")
@@ -2218,7 +2214,7 @@ class LaunchTemplate(pulumi.CustomResource):
     @pulumi.getter(name="securityGroupId")
     def security_group_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The security group ID must be one in the same VPC.
+        The security group ID.
         """
         return pulumi.get(self, "security_group_id")
 
@@ -2355,7 +2351,7 @@ class LaunchTemplate(pulumi.CustomResource):
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> pulumi.Output[Optional[str]]:
         """
-        The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        When creating a VPC-Connected instance, you must specify its VSwitch ID.
         """
         return pulumi.get(self, "vswitch_id")
 

@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -68,7 +67,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVirtualBorderRoutersResult> InvokeAsync(GetVirtualBorderRoutersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVirtualBorderRoutersResult>("alicloud:expressconnect/getVirtualBorderRouters:getVirtualBorderRouters", args ?? new GetVirtualBorderRoutersArgs(), options.WithDefaults());
@@ -82,7 +80,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -130,7 +127,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVirtualBorderRoutersResult> Invoke(GetVirtualBorderRoutersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVirtualBorderRoutersResult>("alicloud:expressconnect/getVirtualBorderRouters:getVirtualBorderRouters", args ?? new GetVirtualBorderRoutersInvokeArgs(), options.WithDefaults());

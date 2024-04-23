@@ -156,12 +156,9 @@ func (o K8sSlbAttachmentSlbConfigArrayOutput) Index(i pulumi.IntInput) K8sSlbAtt
 }
 
 type K8sSlbAttachmentSlbConfigPortMapping struct {
-	// The ID of your tls certification, this is used for 'HTTPS' protocol only.
-	CertId *string `pulumi:"certId"`
-	// The protocol of SLB instance configuration, values can be 'TCP', 'HTTP' or 'HTTPS'.
-	LoadbalancerProtocol string `pulumi:"loadbalancerProtocol"`
-	// The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `servicePort` below.
-	ServicePort K8sSlbAttachmentSlbConfigPortMappingServicePort `pulumi:"servicePort"`
+	CertId               *string                                         `pulumi:"certId"`
+	LoadbalancerProtocol string                                          `pulumi:"loadbalancerProtocol"`
+	ServicePort          K8sSlbAttachmentSlbConfigPortMappingServicePort `pulumi:"servicePort"`
 }
 
 // K8sSlbAttachmentSlbConfigPortMappingInput is an input type that accepts K8sSlbAttachmentSlbConfigPortMappingArgs and K8sSlbAttachmentSlbConfigPortMappingOutput values.
@@ -176,12 +173,9 @@ type K8sSlbAttachmentSlbConfigPortMappingInput interface {
 }
 
 type K8sSlbAttachmentSlbConfigPortMappingArgs struct {
-	// The ID of your tls certification, this is used for 'HTTPS' protocol only.
-	CertId pulumi.StringPtrInput `pulumi:"certId"`
-	// The protocol of SLB instance configuration, values can be 'TCP', 'HTTP' or 'HTTPS'.
-	LoadbalancerProtocol pulumi.StringInput `pulumi:"loadbalancerProtocol"`
-	// The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `servicePort` below.
-	ServicePort K8sSlbAttachmentSlbConfigPortMappingServicePortInput `pulumi:"servicePort"`
+	CertId               pulumi.StringPtrInput                                `pulumi:"certId"`
+	LoadbalancerProtocol pulumi.StringInput                                   `pulumi:"loadbalancerProtocol"`
+	ServicePort          K8sSlbAttachmentSlbConfigPortMappingServicePortInput `pulumi:"servicePort"`
 }
 
 func (K8sSlbAttachmentSlbConfigPortMappingArgs) ElementType() reflect.Type {
@@ -235,17 +229,14 @@ func (o K8sSlbAttachmentSlbConfigPortMappingOutput) ToK8sSlbAttachmentSlbConfigP
 	return o
 }
 
-// The ID of your tls certification, this is used for 'HTTPS' protocol only.
 func (o K8sSlbAttachmentSlbConfigPortMappingOutput) CertId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v K8sSlbAttachmentSlbConfigPortMapping) *string { return v.CertId }).(pulumi.StringPtrOutput)
 }
 
-// The protocol of SLB instance configuration, values can be 'TCP', 'HTTP' or 'HTTPS'.
 func (o K8sSlbAttachmentSlbConfigPortMappingOutput) LoadbalancerProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v K8sSlbAttachmentSlbConfigPortMapping) string { return v.LoadbalancerProtocol }).(pulumi.StringOutput)
 }
 
-// The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `servicePort` below.
 func (o K8sSlbAttachmentSlbConfigPortMappingOutput) ServicePort() K8sSlbAttachmentSlbConfigPortMappingServicePortOutput {
 	return o.ApplyT(func(v K8sSlbAttachmentSlbConfigPortMapping) K8sSlbAttachmentSlbConfigPortMappingServicePort {
 		return v.ServicePort
@@ -273,12 +264,9 @@ func (o K8sSlbAttachmentSlbConfigPortMappingArrayOutput) Index(i pulumi.IntInput
 }
 
 type K8sSlbAttachmentSlbConfigPortMappingServicePort struct {
-	// The port of k8s service, values should be within range [1, 65535].
-	Port int `pulumi:"port"`
-	// The protocol of k8s service, values can be 'TCP' or 'UDP'.
-	Protocol string `pulumi:"protocol"`
-	// The port of k8s pod, values should be within range [1, 65535].
-	TargetPort int `pulumi:"targetPort"`
+	Port       int    `pulumi:"port"`
+	Protocol   string `pulumi:"protocol"`
+	TargetPort int    `pulumi:"targetPort"`
 }
 
 // K8sSlbAttachmentSlbConfigPortMappingServicePortInput is an input type that accepts K8sSlbAttachmentSlbConfigPortMappingServicePortArgs and K8sSlbAttachmentSlbConfigPortMappingServicePortOutput values.
@@ -293,12 +281,9 @@ type K8sSlbAttachmentSlbConfigPortMappingServicePortInput interface {
 }
 
 type K8sSlbAttachmentSlbConfigPortMappingServicePortArgs struct {
-	// The port of k8s service, values should be within range [1, 65535].
-	Port pulumi.IntInput `pulumi:"port"`
-	// The protocol of k8s service, values can be 'TCP' or 'UDP'.
-	Protocol pulumi.StringInput `pulumi:"protocol"`
-	// The port of k8s pod, values should be within range [1, 65535].
-	TargetPort pulumi.IntInput `pulumi:"targetPort"`
+	Port       pulumi.IntInput    `pulumi:"port"`
+	Protocol   pulumi.StringInput `pulumi:"protocol"`
+	TargetPort pulumi.IntInput    `pulumi:"targetPort"`
 }
 
 func (K8sSlbAttachmentSlbConfigPortMappingServicePortArgs) ElementType() reflect.Type {
@@ -327,17 +312,14 @@ func (o K8sSlbAttachmentSlbConfigPortMappingServicePortOutput) ToK8sSlbAttachmen
 	return o
 }
 
-// The port of k8s service, values should be within range [1, 65535].
 func (o K8sSlbAttachmentSlbConfigPortMappingServicePortOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v K8sSlbAttachmentSlbConfigPortMappingServicePort) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// The protocol of k8s service, values can be 'TCP' or 'UDP'.
 func (o K8sSlbAttachmentSlbConfigPortMappingServicePortOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v K8sSlbAttachmentSlbConfigPortMappingServicePort) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// The port of k8s pod, values should be within range [1, 65535].
 func (o K8sSlbAttachmentSlbConfigPortMappingServicePortOutput) TargetPort() pulumi.IntOutput {
 	return o.ApplyT(func(v K8sSlbAttachmentSlbConfigPortMappingServicePort) int { return v.TargetPort }).(pulumi.IntOutput)
 }

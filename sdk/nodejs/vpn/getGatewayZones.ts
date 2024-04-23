@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,7 +21,6 @@ import * as utilities from "../utilities";
  *     spec: "5M",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGatewayZones(args: GetGatewayZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetGatewayZonesResult> {
 
@@ -78,7 +76,6 @@ export interface GetGatewayZonesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -87,7 +84,6 @@ export interface GetGatewayZonesResult {
  *     spec: "5M",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGatewayZonesOutput(args: GetGatewayZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGatewayZonesResult> {
     return pulumi.output(args).apply((a: any) => getGatewayZones(a, opts))

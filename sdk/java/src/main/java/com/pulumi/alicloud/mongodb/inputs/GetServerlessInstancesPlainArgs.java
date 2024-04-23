@@ -79,14 +79,14 @@ public final class GetServerlessInstancesPlainArgs extends com.pulumi.resources.
     }
 
     /**
-     * The network type of the instance.
+     * The network type of the instance. Valid values: `Classic` or `VPC`.
      * 
      */
     @Import(name="networkType")
     private @Nullable String networkType;
 
     /**
-     * @return The network type of the instance.
+     * @return The network type of the instance. Valid values: `Classic` or `VPC`.
      * 
      */
     public Optional<String> networkType() {
@@ -124,14 +124,14 @@ public final class GetServerlessInstancesPlainArgs extends com.pulumi.resources.
     }
 
     /**
-     * The status of the instance.
+     * The instance status. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardSwitching`, `HASwitching`, `Importing`, `ImportingFromOthers`, `LinkSwitching`, `MinorVersionUpgrading`, `NodeCreating`, `NodeDeleting`, `Rebooting`, `Restoring`, `Running`, `SSLModifying`, `TDEModifying`, `TempDBInstanceCreating`, `Transing`, `TransingToOthers`, `released`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the instance.
+     * @return The instance status. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardSwitching`, `HASwitching`, `Importing`, `ImportingFromOthers`, `LinkSwitching`, `MinorVersionUpgrading`, `NodeCreating`, `NodeDeleting`, `Rebooting`, `Restoring`, `Running`, `SSLModifying`, `TDEModifying`, `TempDBInstanceCreating`, `Transing`, `TransingToOthers`, `released`.
      * 
      */
     public Optional<String> status() {
@@ -139,14 +139,14 @@ public final class GetServerlessInstancesPlainArgs extends com.pulumi.resources.
     }
 
     /**
-     * The tag of the resource.
+     * A mapping of tags to assign to the resource.
      * 
      */
     @Import(name="tags")
     private @Nullable Map<String,Object> tags;
 
     /**
-     * @return The tag of the resource.
+     * @return A mapping of tags to assign to the resource.
      * 
      */
     public Optional<Map<String,Object>> tags() {
@@ -288,7 +288,7 @@ public final class GetServerlessInstancesPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param networkType The network type of the instance.
+         * @param networkType The network type of the instance. Valid values: `Classic` or `VPC`.
          * 
          * @return builder
          * 
@@ -321,7 +321,7 @@ public final class GetServerlessInstancesPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param status The status of the instance.
+         * @param status The instance status. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardSwitching`, `HASwitching`, `Importing`, `ImportingFromOthers`, `LinkSwitching`, `MinorVersionUpgrading`, `NodeCreating`, `NodeDeleting`, `Rebooting`, `Restoring`, `Running`, `SSLModifying`, `TDEModifying`, `TempDBInstanceCreating`, `Transing`, `TransingToOthers`, `released`.
          * 
          * @return builder
          * 
@@ -332,7 +332,7 @@ public final class GetServerlessInstancesPlainArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param tags The tag of the resource.
+         * @param tags A mapping of tags to assign to the resource.
          * 
          * @return builder
          * 

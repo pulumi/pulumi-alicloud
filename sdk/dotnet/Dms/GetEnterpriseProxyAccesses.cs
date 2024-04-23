@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Dms
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -50,7 +49,6 @@ namespace Pulumi.AliCloud.Dms
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetEnterpriseProxyAccessesResult> InvokeAsync(GetEnterpriseProxyAccessesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEnterpriseProxyAccessesResult>("alicloud:dms/getEnterpriseProxyAccesses:getEnterpriseProxyAccesses", args ?? new GetEnterpriseProxyAccessesArgs(), options.WithDefaults());
@@ -62,7 +60,6 @@ namespace Pulumi.AliCloud.Dms
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -94,7 +91,6 @@ namespace Pulumi.AliCloud.Dms
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetEnterpriseProxyAccessesResult> Invoke(GetEnterpriseProxyAccessesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnterpriseProxyAccessesResult>("alicloud:dms/getEnterpriseProxyAccesses:getEnterpriseProxyAccesses", args ?? new GetEnterpriseProxyAccessesInvokeArgs(), options.WithDefaults());

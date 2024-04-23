@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
     [OutputType]
     public sealed class ContainerGroupContainerPort
     {
-        /// <summary>
-        /// When using the HTTP request method for health check, the port number for HTTP Get request detection.
-        /// </summary>
         public readonly int? Port;
-        /// <summary>
-        /// The type of the protocol. Valid values: `TCP` and `UDP`.
-        /// </summary>
         public readonly string? Protocol;
 
         [OutputConstructor]

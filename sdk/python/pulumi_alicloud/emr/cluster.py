@@ -934,7 +934,6 @@ class Cluster(pulumi.CustomResource):
 
         ### 1. Create A Cluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1047,7 +1046,6 @@ class Cluster(pulumi.CustomResource):
             ssh_enable=True,
             master_pwd="ABCtest1234!")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### 2. Scale Up
         The hosts of EMR Cluster are orginized as host group. Scaling up/down is operating host group.
@@ -1059,7 +1057,6 @@ class Cluster(pulumi.CustomResource):
 
         As the following case, we scale up the TASK group 2 nodes by increasing host_group.node_count by 2.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1172,7 +1169,6 @@ class Cluster(pulumi.CustomResource):
             ssh_enable=True,
             master_pwd="ABCtest1234!")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### 3. Scale Down
 
@@ -1182,7 +1178,6 @@ class Cluster(pulumi.CustomResource):
 
         The following is an example. We scale down the cluster by decreasing the node count by 2, and specifying the scale-down instance list.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1295,11 +1290,9 @@ class Cluster(pulumi.CustomResource):
             ssh_enable=True,
             master_pwd="ABCtest1234!")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### 4. Create a emr gateway cluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1385,7 +1378,6 @@ class Cluster(pulumi.CustomResource):
             master_pwd="ABCtest1234!",
             related_cluster_id=related_cluster_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1442,7 +1434,6 @@ class Cluster(pulumi.CustomResource):
 
         ### 1. Create A Cluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1555,7 +1546,6 @@ class Cluster(pulumi.CustomResource):
             ssh_enable=True,
             master_pwd="ABCtest1234!")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### 2. Scale Up
         The hosts of EMR Cluster are orginized as host group. Scaling up/down is operating host group.
@@ -1567,7 +1557,6 @@ class Cluster(pulumi.CustomResource):
 
         As the following case, we scale up the TASK group 2 nodes by increasing host_group.node_count by 2.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1680,7 +1669,6 @@ class Cluster(pulumi.CustomResource):
             ssh_enable=True,
             master_pwd="ABCtest1234!")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### 3. Scale Down
 
@@ -1690,7 +1678,6 @@ class Cluster(pulumi.CustomResource):
 
         The following is an example. We scale down the cluster by decreasing the node count by 2, and specifying the scale-down instance list.
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1803,11 +1790,9 @@ class Cluster(pulumi.CustomResource):
             ssh_enable=True,
             master_pwd="ABCtest1234!")
         ```
-        <!--End PulumiCodeChooser -->
 
         ### 4. Create a emr gateway cluster
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1893,7 +1878,6 @@ class Cluster(pulumi.CustomResource):
             master_pwd="ABCtest1234!",
             related_cluster_id=related_cluster_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

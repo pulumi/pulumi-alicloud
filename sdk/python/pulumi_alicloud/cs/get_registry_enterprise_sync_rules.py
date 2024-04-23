@@ -162,7 +162,6 @@ def get_registry_enterprise_sync_rules(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -175,7 +174,6 @@ def get_registry_enterprise_sync_rules(ids: Optional[Sequence[str]] = None,
         name_regex="test-rule")
     pulumi.export("output", [__item.id for __item in my_sync_rules.rules])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of ids to filter results by sync rule id.
@@ -226,7 +224,6 @@ def get_registry_enterprise_sync_rules_output(ids: Optional[pulumi.Input[Optiona
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -239,7 +236,6 @@ def get_registry_enterprise_sync_rules_output(ids: Optional[pulumi.Input[Optiona
         name_regex="test-rule")
     pulumi.export("output", [__item.id for __item in my_sync_rules.rules])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of ids to filter results by sync rule id.

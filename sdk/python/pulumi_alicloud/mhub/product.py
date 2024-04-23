@@ -78,14 +78,12 @@ class Product(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         example = alicloud.mhub.Product("example", product_name="example_value")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -118,14 +116,12 @@ class Product(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
         example = alicloud.mhub.Product("example", product_name="example_value")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

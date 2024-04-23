@@ -65,14 +65,12 @@ def get_kv_account(status: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     status = alicloud.dcdn.get_kv_account(status="online")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str status: The status of the KV feature for your account. Valid values: `online`, `offline`.
@@ -97,14 +95,12 @@ def get_kv_account_output(status: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     status = alicloud.dcdn.get_kv_account(status="online")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str status: The status of the KV feature for your account. Valid values: `online`, `offline`.

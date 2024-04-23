@@ -220,7 +220,6 @@ class CaCertificate(pulumi.CustomResource):
 
         * using CA certificate content
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -248,7 +247,6 @@ class CaCertificate(pulumi.CustomResource):
         DUBTxOAvSYfXTtI90EAxEG/bJJyOm5LqoiA=
         -----END CERTIFICATE-----\"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         * using CA certificate file
 
@@ -285,7 +283,6 @@ class CaCertificate(pulumi.CustomResource):
 
         * using CA certificate content
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -313,7 +310,6 @@ class CaCertificate(pulumi.CustomResource):
         DUBTxOAvSYfXTtI90EAxEG/bJJyOm5LqoiA=
         -----END CERTIFICATE-----\"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         * using CA certificate file
 

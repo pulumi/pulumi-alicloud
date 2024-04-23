@@ -955,22 +955,14 @@ func (o GetGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatew
 }
 
 type GetGatewaysGatewaySlbList struct {
-	// The associate id.
-	AssociateId string `pulumi:"associateId"`
-	// The Mode of the gateway slb.
-	GatewaySlbMode string `pulumi:"gatewaySlbMode"`
-	// The Status of the gateway slb.
+	AssociateId      string `pulumi:"associateId"`
+	GatewaySlbMode   string `pulumi:"gatewaySlbMode"`
 	GatewaySlbStatus string `pulumi:"gatewaySlbStatus"`
-	// The creation time of the gateway slb.
-	GmtCreate string `pulumi:"gmtCreate"`
-	// The ID of the gateway slb.
-	SlbId string `pulumi:"slbId"`
-	// The ip of the gateway slb.
-	SlbIp string `pulumi:"slbIp"`
-	// The port of the gateway slb.
-	SlbPort string `pulumi:"slbPort"`
-	// The type of the gateway slb.
-	Type string `pulumi:"type"`
+	GmtCreate        string `pulumi:"gmtCreate"`
+	SlbId            string `pulumi:"slbId"`
+	SlbIp            string `pulumi:"slbIp"`
+	SlbPort          string `pulumi:"slbPort"`
+	Type             string `pulumi:"type"`
 }
 
 // GetGatewaysGatewaySlbListInput is an input type that accepts GetGatewaysGatewaySlbListArgs and GetGatewaysGatewaySlbListOutput values.
@@ -985,22 +977,14 @@ type GetGatewaysGatewaySlbListInput interface {
 }
 
 type GetGatewaysGatewaySlbListArgs struct {
-	// The associate id.
-	AssociateId pulumi.StringInput `pulumi:"associateId"`
-	// The Mode of the gateway slb.
-	GatewaySlbMode pulumi.StringInput `pulumi:"gatewaySlbMode"`
-	// The Status of the gateway slb.
+	AssociateId      pulumi.StringInput `pulumi:"associateId"`
+	GatewaySlbMode   pulumi.StringInput `pulumi:"gatewaySlbMode"`
 	GatewaySlbStatus pulumi.StringInput `pulumi:"gatewaySlbStatus"`
-	// The creation time of the gateway slb.
-	GmtCreate pulumi.StringInput `pulumi:"gmtCreate"`
-	// The ID of the gateway slb.
-	SlbId pulumi.StringInput `pulumi:"slbId"`
-	// The ip of the gateway slb.
-	SlbIp pulumi.StringInput `pulumi:"slbIp"`
-	// The port of the gateway slb.
-	SlbPort pulumi.StringInput `pulumi:"slbPort"`
-	// The type of the gateway slb.
-	Type pulumi.StringInput `pulumi:"type"`
+	GmtCreate        pulumi.StringInput `pulumi:"gmtCreate"`
+	SlbId            pulumi.StringInput `pulumi:"slbId"`
+	SlbIp            pulumi.StringInput `pulumi:"slbIp"`
+	SlbPort          pulumi.StringInput `pulumi:"slbPort"`
+	Type             pulumi.StringInput `pulumi:"type"`
 }
 
 func (GetGatewaysGatewaySlbListArgs) ElementType() reflect.Type {
@@ -1054,42 +1038,34 @@ func (o GetGatewaysGatewaySlbListOutput) ToGetGatewaysGatewaySlbListOutputWithCo
 	return o
 }
 
-// The associate id.
 func (o GetGatewaysGatewaySlbListOutput) AssociateId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGatewaySlbList) string { return v.AssociateId }).(pulumi.StringOutput)
 }
 
-// The Mode of the gateway slb.
 func (o GetGatewaysGatewaySlbListOutput) GatewaySlbMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGatewaySlbList) string { return v.GatewaySlbMode }).(pulumi.StringOutput)
 }
 
-// The Status of the gateway slb.
 func (o GetGatewaysGatewaySlbListOutput) GatewaySlbStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGatewaySlbList) string { return v.GatewaySlbStatus }).(pulumi.StringOutput)
 }
 
-// The creation time of the gateway slb.
 func (o GetGatewaysGatewaySlbListOutput) GmtCreate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGatewaySlbList) string { return v.GmtCreate }).(pulumi.StringOutput)
 }
 
-// The ID of the gateway slb.
 func (o GetGatewaysGatewaySlbListOutput) SlbId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGatewaySlbList) string { return v.SlbId }).(pulumi.StringOutput)
 }
 
-// The ip of the gateway slb.
 func (o GetGatewaysGatewaySlbListOutput) SlbIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGatewaySlbList) string { return v.SlbIp }).(pulumi.StringOutput)
 }
 
-// The port of the gateway slb.
 func (o GetGatewaysGatewaySlbListOutput) SlbPort() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGatewaySlbList) string { return v.SlbPort }).(pulumi.StringOutput)
 }
 
-// The type of the gateway slb.
 func (o GetGatewaysGatewaySlbListOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGatewaySlbList) string { return v.Type }).(pulumi.StringOutput)
 }

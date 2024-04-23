@@ -817,7 +817,6 @@ class LoadBalancer(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -852,7 +851,6 @@ class LoadBalancer(pulumi.CustomResource):
                 "tag_j": 10,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -919,7 +917,6 @@ class LoadBalancer(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -954,7 +951,6 @@ class LoadBalancer(pulumi.CustomResource):
                 "tag_j": 10,
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

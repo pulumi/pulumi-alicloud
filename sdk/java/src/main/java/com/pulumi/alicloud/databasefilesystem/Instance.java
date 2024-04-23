@@ -196,8 +196,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.fsName;
     }
     /**
-     * . Field &#39;instance_name&#39; has been deprecated from provider version 1.212.0. New field &#39;fs_name&#39; instead.
-     * 
      * @deprecated
      * Field &#39;instance_name&#39; has been deprecated since provider version 1.212.0. New field &#39;fs_name&#39; instead.
      * 
@@ -206,10 +204,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
     @Export(name="instanceName", refs={String.class}, tree="[0]")
     private Output<String> instanceName;
 
-    /**
-     * @return . Field &#39;instance_name&#39; has been deprecated from provider version 1.212.0. New field &#39;fs_name&#39; instead.
-     * 
-     */
     public Output<String> instanceName() {
         return this.instanceName;
     }

@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class ServiceNasConfigMountPoint {
-    /**
-     * @return The local address where to mount your remote NAS directory.
-     * 
-     */
     private String mountDir;
-    /**
-     * @return The address of the remote NAS directory.
-     * 
-     */
     private String serverAddr;
 
     private ServiceNasConfigMountPoint() {}
-    /**
-     * @return The local address where to mount your remote NAS directory.
-     * 
-     */
     public String mountDir() {
         return this.mountDir;
     }
-    /**
-     * @return The address of the remote NAS directory.
-     * 
-     */
     public String serverAddr() {
         return this.serverAddr;
     }

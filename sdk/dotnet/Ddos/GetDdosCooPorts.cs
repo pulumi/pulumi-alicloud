@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Ddos
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Pulumi.AliCloud.Ddos
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDdosCooPortsResult> InvokeAsync(GetDdosCooPortsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDdosCooPortsResult>("alicloud:ddos/getDdosCooPorts:getDdosCooPorts", args ?? new GetDdosCooPortsArgs(), options.WithDefaults());
@@ -58,7 +56,6 @@ namespace Pulumi.AliCloud.Ddos
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -82,7 +79,6 @@ namespace Pulumi.AliCloud.Ddos
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDdosCooPortsResult> Invoke(GetDdosCooPortsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDdosCooPortsResult>("alicloud:ddos/getDdosCooPorts:getDdosCooPorts", args ?? new GetDdosCooPortsInvokeArgs(), options.WithDefaults());
@@ -98,7 +94,7 @@ namespace Pulumi.AliCloud.Ddos
         public string? FrontendPort { get; set; }
 
         /// <summary>
-        /// The forwarding protocol.
+        /// The forwarding protocol. Valid values `tcp` and `udp`.
         /// </summary>
         [Input("frontendProtocol")]
         public string? FrontendProtocol { get; set; }
@@ -142,7 +138,7 @@ namespace Pulumi.AliCloud.Ddos
         public Input<string>? FrontendPort { get; set; }
 
         /// <summary>
-        /// The forwarding protocol.
+        /// The forwarding protocol. Valid values `tcp` and `udp`.
         /// </summary>
         [Input("frontendProtocol")]
         public Input<string>? FrontendProtocol { get; set; }

@@ -19,11 +19,6 @@ class StudioApplicationInstanceArgs:
                  id: Optional[pulumi.Input[str]] = None,
                  node_name: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] id: The id of the instance.
-        :param pulumi.Input[str] node_name: The name of the instance.
-        :param pulumi.Input[str] node_type: The type of the instance.
-        """
         if id is not None:
             pulumi.set(__self__, "id", id)
         if node_name is not None:
@@ -34,9 +29,6 @@ class StudioApplicationInstanceArgs:
     @property
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The id of the instance.
-        """
         return pulumi.get(self, "id")
 
     @id.setter
@@ -46,9 +38,6 @@ class StudioApplicationInstanceArgs:
     @property
     @pulumi.getter(name="nodeName")
     def node_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The name of the instance.
-        """
         return pulumi.get(self, "node_name")
 
     @node_name.setter
@@ -58,9 +47,6 @@ class StudioApplicationInstanceArgs:
     @property
     @pulumi.getter(name="nodeType")
     def node_type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of the instance.
-        """
         return pulumi.get(self, "node_type")
 
     @node_type.setter

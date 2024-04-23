@@ -13,17 +13,13 @@ namespace Pulumi.AliCloud.Compute.Inputs
     public sealed class GetNestServiceInstancesFilterArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+        /// The name of the service.
         /// </summary>
         [Input("name")]
         public string? Name { get; set; }
 
         [Input("values")]
         private List<string>? _values;
-
-        /// <summary>
-        /// Set of values that are accepted for the given field.
-        /// </summary>
         public List<string> Values
         {
             get => _values ?? (_values = new List<string>());

@@ -253,14 +253,14 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Load Balancing Modify the Protection Status.
+     * Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Load Balancing Modify the Protection Status.
+     * @return Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
      * 
      */
     public Optional<Output<String>> status() {
@@ -674,7 +674,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Load Balancing Modify the Protection Status.
+         * @param status Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
          * 
          * @return builder
          * 
@@ -685,7 +685,7 @@ public final class LoadBalancerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Load Balancing Modify the Protection Status.
+         * @param status Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
          * 
          * @return builder
          * 

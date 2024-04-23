@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -33,7 +32,6 @@ import * as utilities from "../utilities";
  * });
  * export const rosTemplateScratchId3 = templateScratchType.then(templateScratchType => templateScratchType.scratches?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTemplateScratches(args?: GetTemplateScratchesArgs, opts?: pulumi.InvokeOptions): Promise<GetTemplateScratchesResult> {
     args = args || {};
@@ -65,11 +63,11 @@ export interface GetTemplateScratchesArgs {
      */
     outputFile?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
      */
     status?: string;
     /**
-     * The type of the Template Scratch.
+     * The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
      */
     templateScratchType?: string;
 }
@@ -98,7 +96,6 @@ export interface GetTemplateScratchesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -116,7 +113,6 @@ export interface GetTemplateScratchesResult {
  * });
  * export const rosTemplateScratchId3 = templateScratchType.then(templateScratchType => templateScratchType.scratches?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTemplateScratchesOutput(args?: GetTemplateScratchesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTemplateScratchesResult> {
     return pulumi.output(args).apply((a: any) => getTemplateScratches(a, opts))
@@ -139,11 +135,11 @@ export interface GetTemplateScratchesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
      */
     status?: pulumi.Input<string>;
     /**
-     * The type of the Template Scratch.
+     * The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
      */
     templateScratchType?: pulumi.Input<string>;
 }

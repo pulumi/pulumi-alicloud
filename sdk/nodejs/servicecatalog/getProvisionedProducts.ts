@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudServiceCatalogProvisionedProductExampleId = _default.then(_default => _default.provisionedProducts?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProvisionedProducts(args?: GetProvisionedProductsArgs, opts?: pulumi.InvokeOptions): Promise<GetProvisionedProductsResult> {
     args = args || {};
@@ -125,7 +123,6 @@ export interface GetProvisionedProductsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -136,7 +133,6 @@ export interface GetProvisionedProductsResult {
  * });
  * export const alicloudServiceCatalogProvisionedProductExampleId = _default.then(_default => _default.provisionedProducts?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProvisionedProductsOutput(args?: GetProvisionedProductsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProvisionedProductsResult> {
     return pulumi.output(args).apply((a: any) => getProvisionedProducts(a, opts))

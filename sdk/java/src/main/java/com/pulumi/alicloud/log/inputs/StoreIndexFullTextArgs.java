@@ -17,14 +17,14 @@ public final class StoreIndexFullTextArgs extends com.pulumi.resources.ResourceA
     public static final StoreIndexFullTextArgs Empty = new StoreIndexFullTextArgs();
 
     /**
-     * Whether the case sensitive for the field. Default to false. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
+     * Whether the case sensitive. Default to false.
      * 
      */
     @Import(name="caseSensitive")
     private @Nullable Output<Boolean> caseSensitive;
 
     /**
-     * @return Whether the case sensitive for the field. Default to false. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
+     * @return Whether the case sensitive. Default to false.
      * 
      */
     public Optional<Output<Boolean>> caseSensitive() {
@@ -32,14 +32,14 @@ public final class StoreIndexFullTextArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * Whether includes the chinese for the field. Default to false. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
+     * Whether includes the chinese. Default to false.
      * 
      */
     @Import(name="includeChinese")
     private @Nullable Output<Boolean> includeChinese;
 
     /**
-     * @return Whether includes the chinese for the field. Default to false. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
+     * @return Whether includes the chinese. Default to false.
      * 
      */
     public Optional<Output<Boolean>> includeChinese() {
@@ -47,14 +47,14 @@ public final class StoreIndexFullTextArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The string of several split words, like &#34;\r&#34;, &#34;#&#34;. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
+     * The string of several split words, like &#34;\r&#34;, &#34;#&#34;
      * 
      */
     @Import(name="token")
     private @Nullable Output<String> token;
 
     /**
-     * @return The string of several split words, like &#34;\r&#34;, &#34;#&#34;. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
+     * @return The string of several split words, like &#34;\r&#34;, &#34;#&#34;
      * 
      */
     public Optional<Output<String>> token() {
@@ -88,7 +88,7 @@ public final class StoreIndexFullTextArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param caseSensitive Whether the case sensitive for the field. Default to false. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
+         * @param caseSensitive Whether the case sensitive. Default to false.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class StoreIndexFullTextArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param caseSensitive Whether the case sensitive for the field. Default to false. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
+         * @param caseSensitive Whether the case sensitive. Default to false.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class StoreIndexFullTextArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param includeChinese Whether includes the chinese for the field. Default to false. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
+         * @param includeChinese Whether includes the chinese. Default to false.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class StoreIndexFullTextArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param includeChinese Whether includes the chinese for the field. Default to false. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
+         * @param includeChinese Whether includes the chinese. Default to false.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class StoreIndexFullTextArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param token The string of several split words, like &#34;\r&#34;, &#34;#&#34;. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
+         * @param token The string of several split words, like &#34;\r&#34;, &#34;#&#34;
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class StoreIndexFullTextArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param token The string of several split words, like &#34;\r&#34;, &#34;#&#34;. It is valid when &#34;type&#34; is &#34;text&#34; or &#34;json&#34;.
+         * @param token The string of several split words, like &#34;\r&#34;, &#34;#&#34;
          * 
          * @return builder
          * 

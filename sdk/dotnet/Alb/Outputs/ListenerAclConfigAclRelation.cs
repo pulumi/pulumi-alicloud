@@ -13,9 +13,6 @@ namespace Pulumi.AliCloud.Alb.Outputs
     [OutputType]
     public sealed class ListenerAclConfigAclRelation
     {
-        /// <summary>
-        /// Snooping Binding of the Access Policy Group ID List.
-        /// </summary>
         public readonly string? AclId;
         /// <summary>
         /// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.

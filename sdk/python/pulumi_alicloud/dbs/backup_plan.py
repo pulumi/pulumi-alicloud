@@ -1293,7 +1293,6 @@ class BackupPlan(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1363,7 +1362,6 @@ class BackupPlan(pulumi.CustomResource):
             backup_storage_type="system",
             backup_retention_period=740)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1431,7 +1429,6 @@ class BackupPlan(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1501,7 +1498,6 @@ class BackupPlan(pulumi.CustomResource):
             backup_storage_type="system",
             backup_retention_period=740)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

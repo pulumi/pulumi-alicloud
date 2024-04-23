@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Ros.Outputs
     [OutputType]
     public sealed class GetStackInstancesInstanceParameterOverrideResult
     {
-        /// <summary>
-        /// The key of override parameter.
-        /// </summary>
         public readonly string ParameterKey;
-        /// <summary>
-        /// The value of override parameter.
-        /// </summary>
         public readonly string ParameterValue;
 
         [OutputConstructor]

@@ -110,7 +110,6 @@ def get_ddos_bgp_instances(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -130,7 +129,6 @@ def get_ddos_bgp_instances(ids: Optional[Sequence[str]] = None,
     instance = alicloud.ddos.get_ddos_bgp_instances(name_regex="ddosbgp")
     pulumi.export("instance", [__item.id for __item in [instance]])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of instance IDs.
@@ -165,7 +163,6 @@ def get_ddos_bgp_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[s
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -185,7 +182,6 @@ def get_ddos_bgp_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     instance = alicloud.ddos.get_ddos_bgp_instances(name_regex="ddosbgp")
     pulumi.export("instance", [__item.id for __item in [instance]])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of instance IDs.

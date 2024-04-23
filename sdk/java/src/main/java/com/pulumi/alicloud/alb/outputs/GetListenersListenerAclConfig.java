@@ -12,29 +12,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetListenersListenerAclConfig {
-    /**
-     * @return The ACLs that are associated with the listener.
-     * 
-     */
     private List<GetListenersListenerAclConfigAclRelation> aclRelations;
-    /**
-     * @return The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
-     * 
-     */
     private String aclType;
 
     private GetListenersListenerAclConfig() {}
-    /**
-     * @return The ACLs that are associated with the listener.
-     * 
-     */
     public List<GetListenersListenerAclConfigAclRelation> aclRelations() {
         return this.aclRelations;
     }
-    /**
-     * @return The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
-     * 
-     */
     public String aclType() {
         return this.aclType;
     }

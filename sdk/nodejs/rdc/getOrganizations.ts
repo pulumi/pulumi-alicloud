@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -35,7 +34,6 @@ import * as utilities from "../utilities";
  * });
  * export const rdcOrganizationId2 = nameRegex.then(nameRegex => nameRegex.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getOrganizations(args?: GetOrganizationsArgs, opts?: pulumi.InvokeOptions): Promise<GetOrganizationsResult> {
     args = args || {};
@@ -95,7 +93,6 @@ export interface GetOrganizationsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -115,7 +112,6 @@ export interface GetOrganizationsResult {
  * });
  * export const rdcOrganizationId2 = nameRegex.then(nameRegex => nameRegex.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getOrganizationsOutput(args?: GetOrganizationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationsResult> {
     return pulumi.output(args).apply((a: any) => getOrganizations(a, opts))

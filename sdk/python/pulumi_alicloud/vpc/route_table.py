@@ -315,7 +315,6 @@ class RouteTable(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -331,7 +330,6 @@ class RouteTable(pulumi.CustomResource):
             route_table_name=name,
             associate_type="VSwitch")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -369,7 +367,6 @@ class RouteTable(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -385,7 +382,6 @@ class RouteTable(pulumi.CustomResource):
             route_table_name=name,
             associate_type="VSwitch")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

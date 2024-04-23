@@ -12,21 +12,12 @@ namespace Pulumi.AliCloud.Edas.Inputs
 
     public sealed class K8sSlbAttachmentSlbConfigPortMappingServicePortGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The port of k8s service, values should be within range [1, 65535].
-        /// </summary>
         [Input("port", required: true)]
         public Input<int> Port { get; set; } = null!;
 
-        /// <summary>
-        /// The protocol of k8s service, values can be 'TCP' or 'UDP'.
-        /// </summary>
         [Input("protocol", required: true)]
         public Input<string> Protocol { get; set; } = null!;
 
-        /// <summary>
-        /// The port of k8s pod, values should be within range [1, 65535].
-        /// </summary>
         [Input("targetPort", required: true)]
         public Input<int> TargetPort { get; set; } = null!;
 

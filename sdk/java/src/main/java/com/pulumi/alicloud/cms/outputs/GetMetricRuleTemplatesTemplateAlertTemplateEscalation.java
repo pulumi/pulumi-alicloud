@@ -13,41 +13,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetMetricRuleTemplatesTemplateAlertTemplateEscalation {
-    /**
-     * @return The condition for triggering critical-level alerts.
-     * 
-     */
     private List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical> criticals;
-    /**
-     * @return The condition for triggering info-level alerts.
-     * 
-     */
     private List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo> infos;
-    /**
-     * @return The condition for triggering warn-level alerts.
-     * 
-     */
     private List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn> warns;
 
     private GetMetricRuleTemplatesTemplateAlertTemplateEscalation() {}
-    /**
-     * @return The condition for triggering critical-level alerts.
-     * 
-     */
     public List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical> criticals() {
         return this.criticals;
     }
-    /**
-     * @return The condition for triggering info-level alerts.
-     * 
-     */
     public List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo> infos() {
         return this.infos;
     }
-    /**
-     * @return The condition for triggering warn-level alerts.
-     * 
-     */
     public List<GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn> warns() {
         return this.warns;
     }

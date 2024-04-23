@@ -123,7 +123,6 @@ def get_activations(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -131,7 +130,6 @@ def get_activations(ids: Optional[Sequence[str]] = None,
     ids = alicloud.ecs.get_activations()
     pulumi.export("ecsActivationId1", ids.activations[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Activation IDs.
@@ -174,7 +172,6 @@ def get_activations_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -182,7 +179,6 @@ def get_activations_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] 
     ids = alicloud.ecs.get_activations()
     pulumi.export("ecsActivationId1", ids.activations[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Activation IDs.

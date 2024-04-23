@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,7 +45,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetHybridMonitorSlsTasks(ctx *pulumi.Context, args *GetHybridMonitorSlsTasksArgs, opts ...pulumi.InvokeOption) (*GetHybridMonitorSlsTasksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHybridMonitorSlsTasksResult
@@ -63,7 +61,7 @@ type GetHybridMonitorSlsTasksArgs struct {
 	Ids []string `pulumi:"ids"`
 	// The keyword that is used to search for metric import tasks.
 	Keyword *string `pulumi:"keyword"`
-	// The namespace to which the host belongs.
+	// The name of the namespace.
 	Namespace *string `pulumi:"namespace"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -103,7 +101,7 @@ type GetHybridMonitorSlsTasksOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// The keyword that is used to search for metric import tasks.
 	Keyword pulumi.StringPtrInput `pulumi:"keyword"`
-	// The namespace to which the host belongs.
+	// The name of the namespace.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

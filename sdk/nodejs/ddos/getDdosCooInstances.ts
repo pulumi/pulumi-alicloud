@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const instance = _default.then(_default => _default.instances.map(__item => __item.id));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDdosCooInstances(args?: GetDdosCooInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetDdosCooInstancesResult> {
     args = args || {};
@@ -85,7 +83,6 @@ export interface GetDdosCooInstancesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -95,7 +92,6 @@ export interface GetDdosCooInstancesResult {
  * });
  * export const instance = _default.then(_default => _default.instances.map(__item => __item.id));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDdosCooInstancesOutput(args?: GetDdosCooInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDdosCooInstancesResult> {
     return pulumi.output(args).apply((a: any) => getDdosCooInstances(a, opts))

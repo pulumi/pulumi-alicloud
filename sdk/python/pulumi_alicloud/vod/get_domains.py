@@ -133,7 +133,6 @@ def get_domains(domain_search_type: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -157,14 +156,13 @@ def get_domains(domain_search_type: Optional[str] = None,
         })
     pulumi.export("vodDomain", default.domains[0])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str domain_search_type: The search method. Valid values:
     :param Sequence[str] ids: A list of Domain IDs. Its element value is same as Domain Name.
     :param str name_regex: A regex string to filter results by Domain name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the domain name. The value of this parameter is used as a condition to filter domain names.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     __args__ = dict()
@@ -206,7 +204,6 @@ def get_domains_output(domain_search_type: Optional[pulumi.Input[Optional[str]]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -230,14 +227,13 @@ def get_domains_output(domain_search_type: Optional[pulumi.Input[Optional[str]]]
         })
     pulumi.export("vodDomain", default.domains[0])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str domain_search_type: The search method. Valid values:
     :param Sequence[str] ids: A list of Domain IDs. Its element value is same as Domain Name.
     :param str name_regex: A regex string to filter results by Domain name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the resource.
+    :param str status: The status of the domain name. The value of this parameter is used as a condition to filter domain names.
     :param Mapping[str, Any] tags: A mapping of tags to assign to the resource.
     """
     ...

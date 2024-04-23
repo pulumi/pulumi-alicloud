@@ -17,13 +17,7 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// Whether BGP function is turned on.
         /// </summary>
         public readonly string? BgpStatus;
-        /// <summary>
-        /// Local asn.
-        /// </summary>
         public readonly string? LocalAsn;
-        /// <summary>
-        /// Local bgp IP.
-        /// </summary>
         public readonly string? LocalBgpIp;
         /// <summary>
         /// Peer asn.
@@ -33,9 +27,6 @@ namespace Pulumi.AliCloud.Vpn.Outputs
         /// Peer bgp ip.
         /// </summary>
         public readonly string? PeerBgpIp;
-        /// <summary>
-        /// IPSec tunnel Cidr.
-        /// </summary>
         public readonly string? TunnelCidr;
 
         [OutputConstructor]

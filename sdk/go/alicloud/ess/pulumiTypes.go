@@ -578,14 +578,9 @@ func (o EciScalingConfigurationContainerArrayOutput) Index(i pulumi.IntInput) Ec
 }
 
 type EciScalingConfigurationContainerEnvironmentVar struct {
-	// Environment variable value reference. Optional values:
-	// - status.podIP: IP of pod.
 	FieldRefFieldPath *string `pulumi:"fieldRefFieldPath"`
-	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-	// digits, and underscores (_). It cannot start with a digit.
-	Key *string `pulumi:"key"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
-	Value *string `pulumi:"value"`
+	Key               *string `pulumi:"key"`
+	Value             *string `pulumi:"value"`
 }
 
 // EciScalingConfigurationContainerEnvironmentVarInput is an input type that accepts EciScalingConfigurationContainerEnvironmentVarArgs and EciScalingConfigurationContainerEnvironmentVarOutput values.
@@ -600,14 +595,9 @@ type EciScalingConfigurationContainerEnvironmentVarInput interface {
 }
 
 type EciScalingConfigurationContainerEnvironmentVarArgs struct {
-	// Environment variable value reference. Optional values:
-	// - status.podIP: IP of pod.
 	FieldRefFieldPath pulumi.StringPtrInput `pulumi:"fieldRefFieldPath"`
-	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-	// digits, and underscores (_). It cannot start with a digit.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	Key               pulumi.StringPtrInput `pulumi:"key"`
+	Value             pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (EciScalingConfigurationContainerEnvironmentVarArgs) ElementType() reflect.Type {
@@ -661,19 +651,14 @@ func (o EciScalingConfigurationContainerEnvironmentVarOutput) ToEciScalingConfig
 	return o
 }
 
-// Environment variable value reference. Optional values:
-// - status.podIP: IP of pod.
 func (o EciScalingConfigurationContainerEnvironmentVarOutput) FieldRefFieldPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainerEnvironmentVar) *string { return v.FieldRefFieldPath }).(pulumi.StringPtrOutput)
 }
 
-// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-// digits, and underscores (_). It cannot start with a digit.
 func (o EciScalingConfigurationContainerEnvironmentVarOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainerEnvironmentVar) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The value of the variable. The value can be 0 to 256 characters in length.
 func (o EciScalingConfigurationContainerEnvironmentVarOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainerEnvironmentVar) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -699,9 +684,7 @@ func (o EciScalingConfigurationContainerEnvironmentVarArrayOutput) Index(i pulum
 }
 
 type EciScalingConfigurationContainerPort struct {
-	// The port number. Valid values: 1 to 65535.
-	Port *int `pulumi:"port"`
-	// Valid values: TCP and UDP.
+	Port     *int    `pulumi:"port"`
 	Protocol *string `pulumi:"protocol"`
 }
 
@@ -717,9 +700,7 @@ type EciScalingConfigurationContainerPortInput interface {
 }
 
 type EciScalingConfigurationContainerPortArgs struct {
-	// The port number. Valid values: 1 to 65535.
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Valid values: TCP and UDP.
+	Port     pulumi.IntPtrInput    `pulumi:"port"`
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 }
 
@@ -774,12 +755,10 @@ func (o EciScalingConfigurationContainerPortOutput) ToEciScalingConfigurationCon
 	return o
 }
 
-// The port number. Valid values: 1 to 65535.
 func (o EciScalingConfigurationContainerPortOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainerPort) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Valid values: TCP and UDP.
 func (o EciScalingConfigurationContainerPortOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainerPort) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -805,13 +784,9 @@ func (o EciScalingConfigurationContainerPortArrayOutput) Index(i pulumi.IntInput
 }
 
 type EciScalingConfigurationContainerVolumeMount struct {
-	// The directory of the mounted volume. Data under this directory will be overwritten by the
-	// data in the volume.
 	MountPath *string `pulumi:"mountPath"`
-	// The name of the mounted volume.
-	Name *string `pulumi:"name"`
-	// Default to `false`.
-	ReadOnly *bool `pulumi:"readOnly"`
+	Name      *string `pulumi:"name"`
+	ReadOnly  *bool   `pulumi:"readOnly"`
 }
 
 // EciScalingConfigurationContainerVolumeMountInput is an input type that accepts EciScalingConfigurationContainerVolumeMountArgs and EciScalingConfigurationContainerVolumeMountOutput values.
@@ -826,13 +801,9 @@ type EciScalingConfigurationContainerVolumeMountInput interface {
 }
 
 type EciScalingConfigurationContainerVolumeMountArgs struct {
-	// The directory of the mounted volume. Data under this directory will be overwritten by the
-	// data in the volume.
 	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
-	// The name of the mounted volume.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Default to `false`.
-	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	Name      pulumi.StringPtrInput `pulumi:"name"`
+	ReadOnly  pulumi.BoolPtrInput   `pulumi:"readOnly"`
 }
 
 func (EciScalingConfigurationContainerVolumeMountArgs) ElementType() reflect.Type {
@@ -886,18 +857,14 @@ func (o EciScalingConfigurationContainerVolumeMountOutput) ToEciScalingConfigura
 	return o
 }
 
-// The directory of the mounted volume. Data under this directory will be overwritten by the
-// data in the volume.
 func (o EciScalingConfigurationContainerVolumeMountOutput) MountPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainerVolumeMount) *string { return v.MountPath }).(pulumi.StringPtrOutput)
 }
 
-// The name of the mounted volume.
 func (o EciScalingConfigurationContainerVolumeMountOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainerVolumeMount) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Default to `false`.
 func (o EciScalingConfigurationContainerVolumeMountOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationContainerVolumeMount) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
@@ -1391,14 +1358,9 @@ func (o EciScalingConfigurationInitContainerArrayOutput) Index(i pulumi.IntInput
 }
 
 type EciScalingConfigurationInitContainerEnvironmentVar struct {
-	// Environment variable value reference. Optional values:
-	// - status.podIP: IP of pod.
 	FieldRefFieldPath *string `pulumi:"fieldRefFieldPath"`
-	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-	// digits, and underscores (_). It cannot start with a digit.
-	Key *string `pulumi:"key"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
-	Value *string `pulumi:"value"`
+	Key               *string `pulumi:"key"`
+	Value             *string `pulumi:"value"`
 }
 
 // EciScalingConfigurationInitContainerEnvironmentVarInput is an input type that accepts EciScalingConfigurationInitContainerEnvironmentVarArgs and EciScalingConfigurationInitContainerEnvironmentVarOutput values.
@@ -1413,14 +1375,9 @@ type EciScalingConfigurationInitContainerEnvironmentVarInput interface {
 }
 
 type EciScalingConfigurationInitContainerEnvironmentVarArgs struct {
-	// Environment variable value reference. Optional values:
-	// - status.podIP: IP of pod.
 	FieldRefFieldPath pulumi.StringPtrInput `pulumi:"fieldRefFieldPath"`
-	// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-	// digits, and underscores (_). It cannot start with a digit.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The value of the variable. The value can be 0 to 256 characters in length.
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	Key               pulumi.StringPtrInput `pulumi:"key"`
+	Value             pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (EciScalingConfigurationInitContainerEnvironmentVarArgs) ElementType() reflect.Type {
@@ -1474,19 +1431,14 @@ func (o EciScalingConfigurationInitContainerEnvironmentVarOutput) ToEciScalingCo
 	return o
 }
 
-// Environment variable value reference. Optional values:
-// - status.podIP: IP of pod.
 func (o EciScalingConfigurationInitContainerEnvironmentVarOutput) FieldRefFieldPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainerEnvironmentVar) *string { return v.FieldRefFieldPath }).(pulumi.StringPtrOutput)
 }
 
-// The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-// digits, and underscores (_). It cannot start with a digit.
 func (o EciScalingConfigurationInitContainerEnvironmentVarOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainerEnvironmentVar) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The value of the variable. The value can be 0 to 256 characters in length.
 func (o EciScalingConfigurationInitContainerEnvironmentVarOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainerEnvironmentVar) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -1512,9 +1464,7 @@ func (o EciScalingConfigurationInitContainerEnvironmentVarArrayOutput) Index(i p
 }
 
 type EciScalingConfigurationInitContainerPort struct {
-	// The port number. Valid values: 1 to 65535.
-	Port *int `pulumi:"port"`
-	// Valid values: TCP and UDP.
+	Port     *int    `pulumi:"port"`
 	Protocol *string `pulumi:"protocol"`
 }
 
@@ -1530,9 +1480,7 @@ type EciScalingConfigurationInitContainerPortInput interface {
 }
 
 type EciScalingConfigurationInitContainerPortArgs struct {
-	// The port number. Valid values: 1 to 65535.
-	Port pulumi.IntPtrInput `pulumi:"port"`
-	// Valid values: TCP and UDP.
+	Port     pulumi.IntPtrInput    `pulumi:"port"`
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
 }
 
@@ -1587,12 +1535,10 @@ func (o EciScalingConfigurationInitContainerPortOutput) ToEciScalingConfiguratio
 	return o
 }
 
-// The port number. Valid values: 1 to 65535.
 func (o EciScalingConfigurationInitContainerPortOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainerPort) *int { return v.Port }).(pulumi.IntPtrOutput)
 }
 
-// Valid values: TCP and UDP.
 func (o EciScalingConfigurationInitContainerPortOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainerPort) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -1618,13 +1564,9 @@ func (o EciScalingConfigurationInitContainerPortArrayOutput) Index(i pulumi.IntI
 }
 
 type EciScalingConfigurationInitContainerVolumeMount struct {
-	// The directory of the mounted volume. Data under this directory will be overwritten by the
-	// data in the volume.
 	MountPath *string `pulumi:"mountPath"`
-	// The name of the mounted volume.
-	Name *string `pulumi:"name"`
-	// Default to `false`.
-	ReadOnly *bool `pulumi:"readOnly"`
+	Name      *string `pulumi:"name"`
+	ReadOnly  *bool   `pulumi:"readOnly"`
 }
 
 // EciScalingConfigurationInitContainerVolumeMountInput is an input type that accepts EciScalingConfigurationInitContainerVolumeMountArgs and EciScalingConfigurationInitContainerVolumeMountOutput values.
@@ -1639,13 +1581,9 @@ type EciScalingConfigurationInitContainerVolumeMountInput interface {
 }
 
 type EciScalingConfigurationInitContainerVolumeMountArgs struct {
-	// The directory of the mounted volume. Data under this directory will be overwritten by the
-	// data in the volume.
 	MountPath pulumi.StringPtrInput `pulumi:"mountPath"`
-	// The name of the mounted volume.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Default to `false`.
-	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	Name      pulumi.StringPtrInput `pulumi:"name"`
+	ReadOnly  pulumi.BoolPtrInput   `pulumi:"readOnly"`
 }
 
 func (EciScalingConfigurationInitContainerVolumeMountArgs) ElementType() reflect.Type {
@@ -1699,18 +1637,14 @@ func (o EciScalingConfigurationInitContainerVolumeMountOutput) ToEciScalingConfi
 	return o
 }
 
-// The directory of the mounted volume. Data under this directory will be overwritten by the
-// data in the volume.
 func (o EciScalingConfigurationInitContainerVolumeMountOutput) MountPath() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainerVolumeMount) *string { return v.MountPath }).(pulumi.StringPtrOutput)
 }
 
-// The name of the mounted volume.
 func (o EciScalingConfigurationInitContainerVolumeMountOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainerVolumeMount) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Default to `false`.
 func (o EciScalingConfigurationInitContainerVolumeMountOutput) ReadOnly() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationInitContainerVolumeMount) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
 }
@@ -1949,10 +1883,8 @@ func (o EciScalingConfigurationVolumeArrayOutput) Index(i pulumi.IntInput) EciSc
 }
 
 type EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath struct {
-	// The content of the configuration file. Maximum size: 32 KB.
 	Content *string `pulumi:"content"`
-	// The relative file path.
-	Path *string `pulumi:"path"`
+	Path    *string `pulumi:"path"`
 }
 
 // EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathInput is an input type that accepts EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs and EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput values.
@@ -1967,10 +1899,8 @@ type EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathInput interfac
 }
 
 type EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs struct {
-	// The content of the configuration file. Maximum size: 32 KB.
 	Content pulumi.StringPtrInput `pulumi:"content"`
-	// The relative file path.
-	Path pulumi.StringPtrInput `pulumi:"path"`
+	Path    pulumi.StringPtrInput `pulumi:"path"`
 }
 
 func (EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs) ElementType() reflect.Type {
@@ -2024,12 +1954,10 @@ func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput) ToE
 	return o
 }
 
-// The content of the configuration file. Maximum size: 32 KB.
 func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath) *string { return v.Content }).(pulumi.StringPtrOutput)
 }
 
-// The relative file path.
 func (o EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
@@ -2852,12 +2780,9 @@ func (o ScalingGroupVServerGroupsVserverGroupArrayOutput) Index(i pulumi.IntInpu
 }
 
 type ScalingGroupVServerGroupsVserverGroupVserverAttribute struct {
-	// The port will be used for VServer Group backend server.
-	Port int `pulumi:"port"`
-	// ID of VServer Group.
+	Port           int    `pulumi:"port"`
 	VserverGroupId string `pulumi:"vserverGroupId"`
-	// The weight of an ECS instance attached to the VServer Group.
-	Weight int `pulumi:"weight"`
+	Weight         int    `pulumi:"weight"`
 }
 
 // ScalingGroupVServerGroupsVserverGroupVserverAttributeInput is an input type that accepts ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs and ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput values.
@@ -2872,12 +2797,9 @@ type ScalingGroupVServerGroupsVserverGroupVserverAttributeInput interface {
 }
 
 type ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs struct {
-	// The port will be used for VServer Group backend server.
-	Port pulumi.IntInput `pulumi:"port"`
-	// ID of VServer Group.
+	Port           pulumi.IntInput    `pulumi:"port"`
 	VserverGroupId pulumi.StringInput `pulumi:"vserverGroupId"`
-	// The weight of an ECS instance attached to the VServer Group.
-	Weight pulumi.IntInput `pulumi:"weight"`
+	Weight         pulumi.IntInput    `pulumi:"weight"`
 }
 
 func (ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs) ElementType() reflect.Type {
@@ -2931,17 +2853,14 @@ func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput) ToScalingGr
 	return o
 }
 
-// The port will be used for VServer Group backend server.
 func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput) Port() pulumi.IntOutput {
 	return o.ApplyT(func(v ScalingGroupVServerGroupsVserverGroupVserverAttribute) int { return v.Port }).(pulumi.IntOutput)
 }
 
-// ID of VServer Group.
 func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput) VserverGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v ScalingGroupVServerGroupsVserverGroupVserverAttribute) string { return v.VserverGroupId }).(pulumi.StringOutput)
 }
 
-// The weight of an ECS instance attached to the VServer Group.
 func (o ScalingGroupVServerGroupsVserverGroupVserverAttributeOutput) Weight() pulumi.IntOutput {
 	return o.ApplyT(func(v ScalingGroupVServerGroupsVserverGroupVserverAttribute) int { return v.Weight }).(pulumi.IntOutput)
 }

@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstRosChangeSetId = example.then(example => example.sets?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getChangeSets(args: GetChangeSetsArgs, opts?: pulumi.InvokeOptions): Promise<GetChangeSetsResult> {
 
@@ -104,7 +102,6 @@ export interface GetChangeSetsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -116,7 +113,6 @@ export interface GetChangeSetsResult {
  * });
  * export const firstRosChangeSetId = example.then(example => example.sets?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getChangeSetsOutput(args: GetChangeSetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChangeSetsResult> {
     return pulumi.output(args).apply((a: any) => getChangeSets(a, opts))

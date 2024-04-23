@@ -27,7 +27,6 @@ import (
 //
 // ### Create a Mongodb instance
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -92,7 +91,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Module Support
 //

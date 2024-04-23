@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -34,7 +33,6 @@ import * as utilities from "../utilities";
  * });
  * export const cloudMonitorServiceHybridDoubleWritesId1 = ids.apply(ids => ids.hybridDoubleWrites?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServiceHybridDoubleWrites(args?: GetServiceHybridDoubleWritesArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceHybridDoubleWritesResult> {
     args = args || {};
@@ -120,7 +118,6 @@ export interface GetServiceHybridDoubleWritesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -139,7 +136,6 @@ export interface GetServiceHybridDoubleWritesResult {
  * });
  * export const cloudMonitorServiceHybridDoubleWritesId1 = ids.apply(ids => ids.hybridDoubleWrites?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServiceHybridDoubleWritesOutput(args?: GetServiceHybridDoubleWritesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceHybridDoubleWritesResult> {
     return pulumi.output(args).apply((a: any) => getServiceHybridDoubleWrites(a, opts))

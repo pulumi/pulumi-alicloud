@@ -17,32 +17,16 @@ public final class ContainerGroupInitContainerSecurityContextArgs extends com.pu
 
     public static final ContainerGroupInitContainerSecurityContextArgs Empty = new ContainerGroupInitContainerSecurityContextArgs();
 
-    /**
-     * The permissions that you want to grant to the processes in the containers. See `capability` below.
-     * 
-     */
     @Import(name="capabilities")
     private @Nullable Output<List<ContainerGroupInitContainerSecurityContextCapabilityArgs>> capabilities;
 
-    /**
-     * @return The permissions that you want to grant to the processes in the containers. See `capability` below.
-     * 
-     */
     public Optional<Output<List<ContainerGroupInitContainerSecurityContextCapabilityArgs>>> capabilities() {
         return Optional.ofNullable(this.capabilities);
     }
 
-    /**
-     * The ID of the user who runs the container.
-     * 
-     */
     @Import(name="runAsUser")
     private @Nullable Output<Integer> runAsUser;
 
-    /**
-     * @return The ID of the user who runs the container.
-     * 
-     */
     public Optional<Output<Integer>> runAsUser() {
         return Optional.ofNullable(this.runAsUser);
     }
@@ -72,54 +56,24 @@ public final class ContainerGroupInitContainerSecurityContextArgs extends com.pu
             $ = new ContainerGroupInitContainerSecurityContextArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param capabilities The permissions that you want to grant to the processes in the containers. See `capability` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder capabilities(@Nullable Output<List<ContainerGroupInitContainerSecurityContextCapabilityArgs>> capabilities) {
             $.capabilities = capabilities;
             return this;
         }
 
-        /**
-         * @param capabilities The permissions that you want to grant to the processes in the containers. See `capability` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder capabilities(List<ContainerGroupInitContainerSecurityContextCapabilityArgs> capabilities) {
             return capabilities(Output.of(capabilities));
         }
 
-        /**
-         * @param capabilities The permissions that you want to grant to the processes in the containers. See `capability` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder capabilities(ContainerGroupInitContainerSecurityContextCapabilityArgs... capabilities) {
             return capabilities(List.of(capabilities));
         }
 
-        /**
-         * @param runAsUser The ID of the user who runs the container.
-         * 
-         * @return builder
-         * 
-         */
         public Builder runAsUser(@Nullable Output<Integer> runAsUser) {
             $.runAsUser = runAsUser;
             return this;
         }
 
-        /**
-         * @param runAsUser The ID of the user who runs the container.
-         * 
-         * @return builder
-         * 
-         */
         public Builder runAsUser(Integer runAsUser) {
             return runAsUser(Output.of(runAsUser));
         }

@@ -12,15 +12,9 @@ namespace Pulumi.AliCloud.Eci.Inputs
 
     public sealed class ContainerGroupDnsConfigOptionArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the mounted volume.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The value of the variable. The value can be 0 to 256 characters in length.
-        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

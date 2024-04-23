@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.AliCloud.Rds
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRdsBackupsResult> InvokeAsync(GetRdsBackupsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRdsBackupsResult>("alicloud:rds/getRdsBackups:getRdsBackups", args ?? new GetRdsBackupsArgs(), options.WithDefaults());
@@ -54,7 +52,6 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.AliCloud.Rds
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRdsBackupsResult> Invoke(GetRdsBackupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRdsBackupsResult>("alicloud:rds/getRdsBackups:getRdsBackups", args ?? new GetRdsBackupsInvokeArgs(), options.WithDefaults());
@@ -84,20 +80,13 @@ namespace Pulumi.AliCloud.Rds
     public sealed class GetRdsBackupsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// BackupMode.
+        /// BackupMode. Valid values: `Automated` and `Manual`.
         /// </summary>
         [Input("backupMode")]
         public string? BackupMode { get; set; }
 
         /// <summary>
-        /// Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
-        /// * **NoStart**: Not started
-        /// * **Checking**: check the backup
-        /// * **Preparing**: Prepare a backup
-        /// * **Waiting**: Waiting for backup
-        /// * **Uploading**: Upload backup
-        /// * **Finished**: Complete backup
-        /// * **Failed**: backup Failed
+        /// Backup task status. Valid values: `Automated` and `Manual`.
         /// </summary>
         [Input("backupStatus")]
         public string? BackupStatus { get; set; }
@@ -147,20 +136,13 @@ namespace Pulumi.AliCloud.Rds
     public sealed class GetRdsBackupsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// BackupMode.
+        /// BackupMode. Valid values: `Automated` and `Manual`.
         /// </summary>
         [Input("backupMode")]
         public Input<string>? BackupMode { get; set; }
 
         /// <summary>
-        /// Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
-        /// * **NoStart**: Not started
-        /// * **Checking**: check the backup
-        /// * **Preparing**: Prepare a backup
-        /// * **Waiting**: Waiting for backup
-        /// * **Uploading**: Upload backup
-        /// * **Finished**: Complete backup
-        /// * **Failed**: backup Failed
+        /// Backup task status. Valid values: `Automated` and `Manual`.
         /// </summary>
         [Input("backupStatus")]
         public Input<string>? BackupStatus { get; set; }

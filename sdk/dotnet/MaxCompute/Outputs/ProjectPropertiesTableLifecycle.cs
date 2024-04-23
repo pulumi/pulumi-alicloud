@@ -14,12 +14,9 @@ namespace Pulumi.AliCloud.MaxCompute.Outputs
     public sealed class ProjectPropertiesTableLifecycle
     {
         /// <summary>
-        /// Life cycle type.
+        /// Project type
         /// </summary>
         public readonly string? Type;
-        /// <summary>
-        /// The value of the life cycle.
-        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

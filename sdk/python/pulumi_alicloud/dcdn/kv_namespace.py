@@ -124,7 +124,6 @@ class KvNamespace(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -141,7 +140,6 @@ class KvNamespace(pulumi.CustomResource):
             description=name,
             namespace=f"{name}-{default['result']}")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -173,7 +171,6 @@ class KvNamespace(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -190,7 +187,6 @@ class KvNamespace(pulumi.CustomResource):
             description=name,
             namespace=f"{name}-{default['result']}")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

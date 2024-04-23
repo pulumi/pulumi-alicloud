@@ -178,7 +178,6 @@ def get_inter_region_traffic_qos_policies(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -192,7 +191,6 @@ def get_inter_region_traffic_qos_policies(ids: Optional[Sequence[str]] = None,
         transit_router_attachment_id="your_transit_router_attachment_id")
     pulumi.export("cenInterRegionTrafficQosPolicyId1", name_regex.policies[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Inter Region Traffic Qos Policy IDs.
@@ -253,7 +251,6 @@ def get_inter_region_traffic_qos_policies_output(ids: Optional[pulumi.Input[Opti
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -267,7 +264,6 @@ def get_inter_region_traffic_qos_policies_output(ids: Optional[pulumi.Input[Opti
         transit_router_attachment_id="your_transit_router_attachment_id")
     pulumi.export("cenInterRegionTrafficQosPolicyId1", name_regex.policies[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Inter Region Traffic Qos Policy IDs.

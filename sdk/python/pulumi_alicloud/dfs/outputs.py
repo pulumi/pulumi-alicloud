@@ -680,27 +680,17 @@ class GetZonesZoneOptionResult(dict):
     def __init__(__self__, *,
                  protocol_type: str,
                  storage_type: str):
-        """
-        :param str protocol_type: The protocol type. Valid values: `HDFS`.
-        :param str storage_type: The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
-        """
         pulumi.set(__self__, "protocol_type", protocol_type)
         pulumi.set(__self__, "storage_type", storage_type)
 
     @property
     @pulumi.getter(name="protocolType")
     def protocol_type(self) -> str:
-        """
-        The protocol type. Valid values: `HDFS`.
-        """
         return pulumi.get(self, "protocol_type")
 
     @property
     @pulumi.getter(name="storageType")
     def storage_type(self) -> str:
-        """
-        The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
-        """
         return pulumi.get(self, "storage_type")
 
 

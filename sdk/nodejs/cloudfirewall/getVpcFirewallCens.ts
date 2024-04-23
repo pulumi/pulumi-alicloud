@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudCloudFirewallVpcFirewallCenExampleId = _default.then(_default => _default.cens?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVpcFirewallCens(args?: GetVpcFirewallCensArgs, opts?: pulumi.InvokeOptions): Promise<GetVpcFirewallCensResult> {
     args = args || {};
@@ -144,7 +142,6 @@ export interface GetVpcFirewallCensResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -158,7 +155,6 @@ export interface GetVpcFirewallCensResult {
  * });
  * export const alicloudCloudFirewallVpcFirewallCenExampleId = _default.then(_default => _default.cens?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getVpcFirewallCensOutput(args?: GetVpcFirewallCensOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVpcFirewallCensResult> {
     return pulumi.output(args).apply((a: any) => getVpcFirewallCens(a, opts))

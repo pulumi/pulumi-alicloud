@@ -15,53 +15,23 @@ public final class RuleRuleActionInsertHeaderConfigArgs extends com.pulumi.resou
 
     public static final RuleRuleActionInsertHeaderConfigArgs Empty = new RuleRuleActionInsertHeaderConfigArgs();
 
-    /**
-     * The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-     * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-     * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-     * 
-     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
-    /**
-     * @return The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-     * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-     * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-     * 
-     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
 
-    /**
-     * The content of the inserted header field. Valid values:
-     * * If the `value_type` is set to `SystemDefined`, the following values are used:
-     * 
-     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
-    /**
-     * @return The content of the inserted header field. Valid values:
-     * * If the `value_type` is set to `SystemDefined`, the following values are used:
-     * 
-     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
 
-    /**
-     * The value type of the inserted header field. Valid values:
-     * 
-     */
     @Import(name="valueType")
     private @Nullable Output<String> valueType;
 
-    /**
-     * @return The value type of the inserted header field. Valid values:
-     * 
-     */
     public Optional<Output<String>> valueType() {
         return Optional.ofNullable(this.valueType);
     }
@@ -92,71 +62,29 @@ public final class RuleRuleActionInsertHeaderConfigArgs extends com.pulumi.resou
             $ = new RuleRuleActionInsertHeaderConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param key The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-         * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-         * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
-        /**
-         * @param key The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-         * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-         * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
-        /**
-         * @param value The content of the inserted header field. Valid values:
-         * * If the `value_type` is set to `SystemDefined`, the following values are used:
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value The content of the inserted header field. Valid values:
-         * * If the `value_type` is set to `SystemDefined`, the following values are used:
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }
 
-        /**
-         * @param valueType The value type of the inserted header field. Valid values:
-         * 
-         * @return builder
-         * 
-         */
         public Builder valueType(@Nullable Output<String> valueType) {
             $.valueType = valueType;
             return this;
         }
 
-        /**
-         * @param valueType The value type of the inserted header field. Valid values:
-         * 
-         * @return builder
-         * 
-         */
         public Builder valueType(String valueType) {
             return valueType(Output.of(valueType));
         }

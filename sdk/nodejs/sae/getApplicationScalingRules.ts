@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  * });
  * export const saeApplicationScalingRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getApplicationScalingRules(args: GetApplicationScalingRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetApplicationScalingRulesResult> {
 
@@ -81,7 +79,6 @@ export interface GetApplicationScalingRulesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -95,7 +92,6 @@ export interface GetApplicationScalingRulesResult {
  * });
  * export const saeApplicationScalingRuleId1 = ids.then(ids => ids.rules?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getApplicationScalingRulesOutput(args: GetApplicationScalingRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApplicationScalingRulesResult> {
     return pulumi.output(args).apply((a: any) => getApplicationScalingRules(a, opts))

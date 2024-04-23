@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ### Uploading a file to a bucket
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -31,11 +30,9 @@ import * as utilities from "../utilities";
  *     source: "./main.tf",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ### Uploading a content to a bucket
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -55,7 +52,6 @@ import * as utilities from "../utilities";
  *     content: "the content that you want to upload.",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class BucketObject extends pulumi.CustomResource {
     /**

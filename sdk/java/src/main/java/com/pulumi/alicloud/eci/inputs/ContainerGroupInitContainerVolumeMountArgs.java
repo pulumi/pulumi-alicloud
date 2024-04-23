@@ -16,47 +16,23 @@ public final class ContainerGroupInitContainerVolumeMountArgs extends com.pulumi
 
     public static final ContainerGroupInitContainerVolumeMountArgs Empty = new ContainerGroupInitContainerVolumeMountArgs();
 
-    /**
-     * The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
-     * 
-     */
     @Import(name="mountPath")
     private @Nullable Output<String> mountPath;
 
-    /**
-     * @return The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
-     * 
-     */
     public Optional<Output<String>> mountPath() {
         return Optional.ofNullable(this.mountPath);
     }
 
-    /**
-     * The name of the mounted volume.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return The name of the mounted volume.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * Specifies whether the volume is read-only. Default value: `false`.
-     * 
-     */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
-    /**
-     * @return Specifies whether the volume is read-only. Default value: `false`.
-     * 
-     */
     public Optional<Output<Boolean>> readOnly() {
         return Optional.ofNullable(this.readOnly);
     }
@@ -87,65 +63,29 @@ public final class ContainerGroupInitContainerVolumeMountArgs extends com.pulumi
             $ = new ContainerGroupInitContainerVolumeMountArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param mountPath The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
-         * 
-         * @return builder
-         * 
-         */
         public Builder mountPath(@Nullable Output<String> mountPath) {
             $.mountPath = mountPath;
             return this;
         }
 
-        /**
-         * @param mountPath The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
-         * 
-         * @return builder
-         * 
-         */
         public Builder mountPath(String mountPath) {
             return mountPath(Output.of(mountPath));
         }
 
-        /**
-         * @param name The name of the mounted volume.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The name of the mounted volume.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param readOnly Specifies whether the volume is read-only. Default value: `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder readOnly(@Nullable Output<Boolean> readOnly) {
             $.readOnly = readOnly;
             return this;
         }
 
-        /**
-         * @param readOnly Specifies whether the volume is read-only. Default value: `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder readOnly(Boolean readOnly) {
             return readOnly(Output.of(readOnly));
         }

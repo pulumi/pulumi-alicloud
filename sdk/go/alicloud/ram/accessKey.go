@@ -22,7 +22,6 @@ import (
 // ## Example Usage
 //
 // Output the secret to a file.
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -59,10 +58,8 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // Using `pgpKey` to encrypt the secret.
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -128,7 +125,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type AccessKey struct {
 	pulumi.CustomResourceState
 

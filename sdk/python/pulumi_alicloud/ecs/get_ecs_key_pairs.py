@@ -145,7 +145,6 @@ def get_ecs_key_pairs(finger_print: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -154,7 +153,6 @@ def get_ecs_key_pairs(finger_print: Optional[str] = None,
         name_regex="key_pair_name")
     pulumi.export("firstEcsKeyPairId", example.pairs[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str finger_print: The finger print of the key pair.
@@ -204,7 +202,6 @@ def get_ecs_key_pairs_output(finger_print: Optional[pulumi.Input[Optional[str]]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -213,7 +210,6 @@ def get_ecs_key_pairs_output(finger_print: Optional[pulumi.Input[Optional[str]]]
         name_regex="key_pair_name")
     pulumi.export("firstEcsKeyPairId", example.pairs[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str finger_print: The finger print of the key pair.

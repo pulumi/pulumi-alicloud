@@ -146,7 +146,6 @@ def get_ascripts(ascript_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -157,7 +156,6 @@ def get_ascripts(ascript_name: Optional[str] = None,
         listener_id=listener_id)
     pulumi.export("alicloudAlbAscriptExampleId", default.ascripts[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str ascript_name: Script name.
@@ -203,7 +201,6 @@ def get_ascripts_output(ascript_name: Optional[pulumi.Input[Optional[str]]] = No
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -214,7 +211,6 @@ def get_ascripts_output(ascript_name: Optional[pulumi.Input[Optional[str]]] = No
         listener_id=listener_id)
     pulumi.export("alicloudAlbAscriptExampleId", default.ascripts[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str ascript_name: Script name.

@@ -428,7 +428,6 @@ class DhcpOptionsSet(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -446,7 +445,6 @@ class DhcpOptionsSet(pulumi.CustomResource):
             domain_name=domain,
             domain_name_servers="100.100.2.136")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -488,7 +486,6 @@ class DhcpOptionsSet(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -506,7 +503,6 @@ class DhcpOptionsSet(pulumi.CustomResource):
             domain_name=domain,
             domain_name_servers="100.100.2.136")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

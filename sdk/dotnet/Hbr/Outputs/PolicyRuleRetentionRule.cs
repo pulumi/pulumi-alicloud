@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Hbr.Outputs
     [OutputType]
     public sealed class PolicyRuleRetentionRule
     {
-        /// <summary>
-        /// Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
-        /// </summary>
         public readonly string? AdvancedRetentionType;
-        /// <summary>
-        /// Retention time, in days.
-        /// </summary>
         public readonly int? Retention;
 
         [OutputConstructor]

@@ -13,28 +13,10 @@ namespace Pulumi.AliCloud.Scdn.Outputs
     [OutputType]
     public sealed class DomainSource
     {
-        /// <summary>
-        /// The Back-to-Source Address.
-        /// </summary>
         public readonly string Content;
-        /// <summary>
-        /// The source status. Valid values: online, offline.
-        /// </summary>
         public readonly string? Enabled;
-        /// <summary>
-        /// Port.
-        /// </summary>
         public readonly int Port;
-        /// <summary>
-        /// Priority.
-        /// </summary>
         public readonly string Priority;
-        /// <summary>
-        /// The Origin Server Type. Valid Values: 
-        /// * ipaddr: IP Source Station
-        /// * domain: the Domain Name
-        /// * oss: OSS Bucket as a Source Station.
-        /// </summary>
         public readonly string Type;
 
         [OutputConstructor]

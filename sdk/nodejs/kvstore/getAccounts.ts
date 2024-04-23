@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstKvstoreAccountId = example.then(example => example.accounts?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAccounts(args: GetAccountsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccountsResult> {
 
@@ -88,7 +86,6 @@ export interface GetAccountsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -98,7 +95,6 @@ export interface GetAccountsResult {
  * });
  * export const firstKvstoreAccountId = example.then(example => example.accounts?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAccountsOutput(args: GetAccountsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountsResult> {
     return pulumi.output(args).apply((a: any) => getAccounts(a, opts))

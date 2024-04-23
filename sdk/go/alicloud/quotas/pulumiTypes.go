@@ -1936,9 +1936,7 @@ func (o GetQuotaApplicationsApplicationArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetQuotaApplicationsApplicationDimension struct {
-	// The key of dimensions.
-	Key string `pulumi:"key"`
-	// The value of dimensions.
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -1954,9 +1952,7 @@ type GetQuotaApplicationsApplicationDimensionInput interface {
 }
 
 type GetQuotaApplicationsApplicationDimensionArgs struct {
-	// The key of dimensions.
-	Key pulumi.StringInput `pulumi:"key"`
-	// The value of dimensions.
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -2011,12 +2007,10 @@ func (o GetQuotaApplicationsApplicationDimensionOutput) ToGetQuotaApplicationsAp
 	return o
 }
 
-// The key of dimensions.
 func (o GetQuotaApplicationsApplicationDimensionOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v GetQuotaApplicationsApplicationDimension) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The value of dimensions.
 func (o GetQuotaApplicationsApplicationDimensionOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetQuotaApplicationsApplicationDimension) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -2042,9 +2036,7 @@ func (o GetQuotaApplicationsApplicationDimensionArrayOutput) Index(i pulumi.IntI
 }
 
 type GetQuotaApplicationsDimension struct {
-	// The key of dimensions.
-	Key *string `pulumi:"key"`
-	// The value of dimensions.
+	Key   *string `pulumi:"key"`
 	Value *string `pulumi:"value"`
 }
 
@@ -2060,9 +2052,7 @@ type GetQuotaApplicationsDimensionInput interface {
 }
 
 type GetQuotaApplicationsDimensionArgs struct {
-	// The key of dimensions.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The value of dimensions.
+	Key   pulumi.StringPtrInput `pulumi:"key"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -2117,12 +2107,10 @@ func (o GetQuotaApplicationsDimensionOutput) ToGetQuotaApplicationsDimensionOutp
 	return o
 }
 
-// The key of dimensions.
 func (o GetQuotaApplicationsDimensionOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetQuotaApplicationsDimension) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The value of dimensions.
 func (o GetQuotaApplicationsDimensionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetQuotaApplicationsDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -2148,9 +2136,7 @@ func (o GetQuotaApplicationsDimensionArrayOutput) Index(i pulumi.IntInput) GetQu
 }
 
 type GetQuotasDimension struct {
-	// The key of dimensions.
-	Key *string `pulumi:"key"`
-	// The value of dimensions.
+	Key   *string `pulumi:"key"`
 	Value *string `pulumi:"value"`
 }
 
@@ -2166,9 +2152,7 @@ type GetQuotasDimensionInput interface {
 }
 
 type GetQuotasDimensionArgs struct {
-	// The key of dimensions.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The value of dimensions.
+	Key   pulumi.StringPtrInput `pulumi:"key"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -2223,12 +2207,10 @@ func (o GetQuotasDimensionOutput) ToGetQuotasDimensionOutputWithContext(ctx cont
 	return o
 }
 
-// The key of dimensions.
 func (o GetQuotasDimensionOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetQuotasDimension) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The value of dimensions.
 func (o GetQuotasDimensionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetQuotasDimension) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

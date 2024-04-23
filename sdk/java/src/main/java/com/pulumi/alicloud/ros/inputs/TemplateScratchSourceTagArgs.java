@@ -19,32 +19,16 @@ public final class TemplateScratchSourceTagArgs extends com.pulumi.resources.Res
 
     public static final TemplateScratchSourceTagArgs Empty = new TemplateScratchSourceTagArgs();
 
-    /**
-     * Source label. **NOTE:** A maximum of 10 source labels can be configured.
-     * 
-     */
     @Import(name="resourceTags", required=true)
     private Output<Map<String,Object>> resourceTags;
 
-    /**
-     * @return Source label. **NOTE:** A maximum of 10 source labels can be configured.
-     * 
-     */
     public Output<Map<String,Object>> resourceTags() {
         return this.resourceTags;
     }
 
-    /**
-     * Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-     * 
-     */
     @Import(name="resourceTypeFilters")
     private @Nullable Output<List<String>> resourceTypeFilters;
 
-    /**
-     * @return Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-     * 
-     */
     public Optional<Output<List<String>>> resourceTypeFilters() {
         return Optional.ofNullable(this.resourceTypeFilters);
     }
@@ -74,54 +58,24 @@ public final class TemplateScratchSourceTagArgs extends com.pulumi.resources.Res
             $ = new TemplateScratchSourceTagArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param resourceTags Source label. **NOTE:** A maximum of 10 source labels can be configured.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceTags(Output<Map<String,Object>> resourceTags) {
             $.resourceTags = resourceTags;
             return this;
         }
 
-        /**
-         * @param resourceTags Source label. **NOTE:** A maximum of 10 source labels can be configured.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceTags(Map<String,Object> resourceTags) {
             return resourceTags(Output.of(resourceTags));
         }
 
-        /**
-         * @param resourceTypeFilters Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceTypeFilters(@Nullable Output<List<String>> resourceTypeFilters) {
             $.resourceTypeFilters = resourceTypeFilters;
             return this;
         }
 
-        /**
-         * @param resourceTypeFilters Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceTypeFilters(List<String> resourceTypeFilters) {
             return resourceTypeFilters(Output.of(resourceTypeFilters));
         }
 
-        /**
-         * @param resourceTypeFilters Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceTypeFilters(String... resourceTypeFilters) {
             return resourceTypeFilters(List.of(resourceTypeFilters));
         }

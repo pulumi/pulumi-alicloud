@@ -306,7 +306,6 @@ class SecretParameter(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -328,7 +327,6 @@ class SecretParameter(pulumi.CustomResource):
             },
             resource_group_id=example.groups[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -366,7 +364,6 @@ class SecretParameter(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -388,7 +385,6 @@ class SecretParameter(pulumi.CustomResource):
             },
             resource_group_id=example.groups[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -378,7 +378,6 @@ class ImageCopy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -419,7 +418,6 @@ class ImageCopy(pulumi.CustomResource):
                 "FinanceDept": "FinanceDeptJoshua",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes Reference0
 
@@ -467,7 +465,6 @@ class ImageCopy(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -508,7 +505,6 @@ class ImageCopy(pulumi.CustomResource):
                 "FinanceDept": "FinanceDeptJoshua",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Attributes Reference0
 

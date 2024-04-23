@@ -62,14 +62,14 @@ public final class GetShardingNetworkPrivateAddressesArgs extends com.pulumi.res
     }
 
     /**
-     * The role of the node.
+     * The role of the node. Valid values: `Primary` or `Secondary`.
      * 
      */
     @Import(name="role")
     private @Nullable Output<String> role;
 
     /**
-     * @return The role of the node.
+     * @return The role of the node. Valid values: `Primary` or `Secondary`.
      * 
      */
     public Optional<Output<String>> role() {
@@ -167,7 +167,7 @@ public final class GetShardingNetworkPrivateAddressesArgs extends com.pulumi.res
         }
 
         /**
-         * @param role The role of the node.
+         * @param role The role of the node. Valid values: `Primary` or `Secondary`.
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class GetShardingNetworkPrivateAddressesArgs extends com.pulumi.res
         }
 
         /**
-         * @param role The role of the node.
+         * @param role The role of the node. Valid values: `Primary` or `Secondary`.
          * 
          * @return builder
          * 

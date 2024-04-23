@@ -47,14 +47,14 @@ public final class ApplicationOssMountDescsV2Args extends com.pulumi.resources.R
     }
 
     /**
-     * The mount path.
+     * The path of the container in SAE.
      * 
      */
     @Import(name="mountPath")
     private @Nullable Output<String> mountPath;
 
     /**
-     * @return The mount path.
+     * @return The path of the container in SAE.
      * 
      */
     public Optional<Output<String>> mountPath() {
@@ -62,14 +62,14 @@ public final class ApplicationOssMountDescsV2Args extends com.pulumi.resources.R
     }
 
     /**
-     * Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
+     * Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
      * 
      */
     @Import(name="readOnly")
     private @Nullable Output<Boolean> readOnly;
 
     /**
-     * @return Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
+     * @return Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
      * 
      */
     public Optional<Output<Boolean>> readOnly() {
@@ -146,7 +146,7 @@ public final class ApplicationOssMountDescsV2Args extends com.pulumi.resources.R
         }
 
         /**
-         * @param mountPath The mount path.
+         * @param mountPath The path of the container in SAE.
          * 
          * @return builder
          * 
@@ -157,7 +157,7 @@ public final class ApplicationOssMountDescsV2Args extends com.pulumi.resources.R
         }
 
         /**
-         * @param mountPath The mount path.
+         * @param mountPath The path of the container in SAE.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class ApplicationOssMountDescsV2Args extends com.pulumi.resources.R
         }
 
         /**
-         * @param readOnly Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
+         * @param readOnly Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
          * 
          * @return builder
          * 
@@ -178,7 +178,7 @@ public final class ApplicationOssMountDescsV2Args extends com.pulumi.resources.R
         }
 
         /**
-         * @param readOnly Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
+         * @param readOnly Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
          * 
          * @return builder
          * 

@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstSlbId = slbsDs.then(slbsDs => slbsDs.slbs?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> {
     args = args || {};
@@ -102,7 +100,6 @@ export interface GetLoadBalancersArgs {
     status?: string;
     /**
      * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
@@ -114,7 +111,6 @@ export interface GetLoadBalancersArgs {
      *     },
      * });
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     tags?: {[key: string]: any};
     /**
@@ -198,7 +194,6 @@ export interface GetLoadBalancersResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -209,7 +204,6 @@ export interface GetLoadBalancersResult {
  * });
  * export const firstSlbId = slbsDs.then(slbsDs => slbsDs.slbs?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getLoadBalancersOutput(args?: GetLoadBalancersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancersResult> {
     return pulumi.output(args).apply((a: any) => getLoadBalancers(a, opts))
@@ -261,7 +255,6 @@ export interface GetLoadBalancersOutputArgs {
     status?: pulumi.Input<string>;
     /**
      * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
@@ -273,7 +266,6 @@ export interface GetLoadBalancersOutputArgs {
      *     },
      * });
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**

@@ -590,7 +590,6 @@ func (o ListenerAclConfigPtrOutput) AclType() pulumi.StringPtrOutput {
 }
 
 type ListenerAclConfigAclRelation struct {
-	// Snooping Binding of the Access Policy Group ID List.
 	AclId *string `pulumi:"aclId"`
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status *string `pulumi:"status"`
@@ -608,7 +607,6 @@ type ListenerAclConfigAclRelationInput interface {
 }
 
 type ListenerAclConfigAclRelationArgs struct {
-	// Snooping Binding of the Access Policy Group ID List.
 	AclId pulumi.StringPtrInput `pulumi:"aclId"`
 	// The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status pulumi.StringPtrInput `pulumi:"status"`
@@ -665,7 +663,6 @@ func (o ListenerAclConfigAclRelationOutput) ToListenerAclConfigAclRelationOutput
 	return o
 }
 
-// Snooping Binding of the Access Policy Group ID List.
 func (o ListenerAclConfigAclRelationOutput) AclId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ListenerAclConfigAclRelation) *string { return v.AclId }).(pulumi.StringPtrOutput)
 }
@@ -939,7 +936,6 @@ func (o ListenerDefaultActionArrayOutput) Index(i pulumi.IntInput) ListenerDefau
 }
 
 type ListenerDefaultActionForwardGroupConfig struct {
-	// The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
 	ServerGroupTuples []ListenerDefaultActionForwardGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
 }
 
@@ -955,7 +951,6 @@ type ListenerDefaultActionForwardGroupConfigInput interface {
 }
 
 type ListenerDefaultActionForwardGroupConfigArgs struct {
-	// The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
 	ServerGroupTuples ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
 }
 
@@ -985,7 +980,6 @@ func (o ListenerDefaultActionForwardGroupConfigOutput) ToListenerDefaultActionFo
 	return o
 }
 
-// The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
 func (o ListenerDefaultActionForwardGroupConfigOutput) ServerGroupTuples() ListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v ListenerDefaultActionForwardGroupConfig) []ListenerDefaultActionForwardGroupConfigServerGroupTuple {
 		return v.ServerGroupTuples
@@ -993,7 +987,6 @@ func (o ListenerDefaultActionForwardGroupConfigOutput) ServerGroupTuples() Liste
 }
 
 type ListenerDefaultActionForwardGroupConfigServerGroupTuple struct {
-	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId string `pulumi:"serverGroupId"`
 }
 
@@ -1009,7 +1002,6 @@ type ListenerDefaultActionForwardGroupConfigServerGroupTupleInput interface {
 }
 
 type ListenerDefaultActionForwardGroupConfigServerGroupTupleArgs struct {
-	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId pulumi.StringInput `pulumi:"serverGroupId"`
 }
 
@@ -1064,7 +1056,6 @@ func (o ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput) ToListene
 	return o
 }
 
-// The ID of the destination server group to which requests are forwarded.
 func (o ListenerDefaultActionForwardGroupConfigServerGroupTupleOutput) ServerGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v ListenerDefaultActionForwardGroupConfigServerGroupTuple) string { return v.ServerGroupId }).(pulumi.StringOutput)
 }
@@ -2543,18 +2534,12 @@ func (o RuleRuleActionArrayOutput) Index(i pulumi.IntInput) RuleRuleActionOutput
 }
 
 type RuleRuleActionCorsConfig struct {
-	// Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
-	AllowCredentials *string `pulumi:"allowCredentials"`
-	// The allowed headers for CORS requests.
-	AllowHeaders []string `pulumi:"allowHeaders"`
-	// The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
-	AllowMethods []string `pulumi:"allowMethods"`
-	// The allowed origins of CORS requests.
-	AllowOrigins []string `pulumi:"allowOrigins"`
-	// The headers that can be exposed.
-	ExposeHeaders []string `pulumi:"exposeHeaders"`
-	// The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
-	MaxAge *int `pulumi:"maxAge"`
+	AllowCredentials *string  `pulumi:"allowCredentials"`
+	AllowHeaders     []string `pulumi:"allowHeaders"`
+	AllowMethods     []string `pulumi:"allowMethods"`
+	AllowOrigins     []string `pulumi:"allowOrigins"`
+	ExposeHeaders    []string `pulumi:"exposeHeaders"`
+	MaxAge           *int     `pulumi:"maxAge"`
 }
 
 // RuleRuleActionCorsConfigInput is an input type that accepts RuleRuleActionCorsConfigArgs and RuleRuleActionCorsConfigOutput values.
@@ -2569,18 +2554,12 @@ type RuleRuleActionCorsConfigInput interface {
 }
 
 type RuleRuleActionCorsConfigArgs struct {
-	// Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
-	AllowCredentials pulumi.StringPtrInput `pulumi:"allowCredentials"`
-	// The allowed headers for CORS requests.
-	AllowHeaders pulumi.StringArrayInput `pulumi:"allowHeaders"`
-	// The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
-	AllowMethods pulumi.StringArrayInput `pulumi:"allowMethods"`
-	// The allowed origins of CORS requests.
-	AllowOrigins pulumi.StringArrayInput `pulumi:"allowOrigins"`
-	// The headers that can be exposed.
-	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
-	// The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
-	MaxAge pulumi.IntPtrInput `pulumi:"maxAge"`
+	AllowCredentials pulumi.StringPtrInput   `pulumi:"allowCredentials"`
+	AllowHeaders     pulumi.StringArrayInput `pulumi:"allowHeaders"`
+	AllowMethods     pulumi.StringArrayInput `pulumi:"allowMethods"`
+	AllowOrigins     pulumi.StringArrayInput `pulumi:"allowOrigins"`
+	ExposeHeaders    pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	MaxAge           pulumi.IntPtrInput      `pulumi:"maxAge"`
 }
 
 func (RuleRuleActionCorsConfigArgs) ElementType() reflect.Type {
@@ -2660,32 +2639,26 @@ func (o RuleRuleActionCorsConfigOutput) ToRuleRuleActionCorsConfigPtrOutputWithC
 	}).(RuleRuleActionCorsConfigPtrOutput)
 }
 
-// Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
 func (o RuleRuleActionCorsConfigOutput) AllowCredentials() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionCorsConfig) *string { return v.AllowCredentials }).(pulumi.StringPtrOutput)
 }
 
-// The allowed headers for CORS requests.
 func (o RuleRuleActionCorsConfigOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleActionCorsConfig) []string { return v.AllowHeaders }).(pulumi.StringArrayOutput)
 }
 
-// The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
 func (o RuleRuleActionCorsConfigOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleActionCorsConfig) []string { return v.AllowMethods }).(pulumi.StringArrayOutput)
 }
 
-// The allowed origins of CORS requests.
 func (o RuleRuleActionCorsConfigOutput) AllowOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleActionCorsConfig) []string { return v.AllowOrigins }).(pulumi.StringArrayOutput)
 }
 
-// The headers that can be exposed.
 func (o RuleRuleActionCorsConfigOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleActionCorsConfig) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
 }
 
-// The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
 func (o RuleRuleActionCorsConfigOutput) MaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionCorsConfig) *int { return v.MaxAge }).(pulumi.IntPtrOutput)
 }
@@ -2714,7 +2687,6 @@ func (o RuleRuleActionCorsConfigPtrOutput) Elem() RuleRuleActionCorsConfigOutput
 	}).(RuleRuleActionCorsConfigOutput)
 }
 
-// Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
 func (o RuleRuleActionCorsConfigPtrOutput) AllowCredentials() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionCorsConfig) *string {
 		if v == nil {
@@ -2724,7 +2696,6 @@ func (o RuleRuleActionCorsConfigPtrOutput) AllowCredentials() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The allowed headers for CORS requests.
 func (o RuleRuleActionCorsConfigPtrOutput) AllowHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleActionCorsConfig) []string {
 		if v == nil {
@@ -2734,7 +2705,6 @@ func (o RuleRuleActionCorsConfigPtrOutput) AllowHeaders() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
-// The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
 func (o RuleRuleActionCorsConfigPtrOutput) AllowMethods() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleActionCorsConfig) []string {
 		if v == nil {
@@ -2744,7 +2714,6 @@ func (o RuleRuleActionCorsConfigPtrOutput) AllowMethods() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
-// The allowed origins of CORS requests.
 func (o RuleRuleActionCorsConfigPtrOutput) AllowOrigins() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleActionCorsConfig) []string {
 		if v == nil {
@@ -2754,7 +2723,6 @@ func (o RuleRuleActionCorsConfigPtrOutput) AllowOrigins() pulumi.StringArrayOutp
 	}).(pulumi.StringArrayOutput)
 }
 
-// The headers that can be exposed.
 func (o RuleRuleActionCorsConfigPtrOutput) ExposeHeaders() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleActionCorsConfig) []string {
 		if v == nil {
@@ -2764,7 +2732,6 @@ func (o RuleRuleActionCorsConfigPtrOutput) ExposeHeaders() pulumi.StringArrayOut
 	}).(pulumi.StringArrayOutput)
 }
 
-// The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
 func (o RuleRuleActionCorsConfigPtrOutput) MaxAge() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionCorsConfig) *int {
 		if v == nil {
@@ -2775,12 +2742,9 @@ func (o RuleRuleActionCorsConfigPtrOutput) MaxAge() pulumi.IntPtrOutput {
 }
 
 type RuleRuleActionFixedResponseConfig struct {
-	// The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
-	Content string `pulumi:"content"`
-	// The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+	Content     string  `pulumi:"content"`
 	ContentType *string `pulumi:"contentType"`
-	// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
-	HttpCode *string `pulumi:"httpCode"`
+	HttpCode    *string `pulumi:"httpCode"`
 }
 
 // RuleRuleActionFixedResponseConfigInput is an input type that accepts RuleRuleActionFixedResponseConfigArgs and RuleRuleActionFixedResponseConfigOutput values.
@@ -2795,12 +2759,9 @@ type RuleRuleActionFixedResponseConfigInput interface {
 }
 
 type RuleRuleActionFixedResponseConfigArgs struct {
-	// The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
-	Content pulumi.StringInput `pulumi:"content"`
-	// The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
+	Content     pulumi.StringInput    `pulumi:"content"`
 	ContentType pulumi.StringPtrInput `pulumi:"contentType"`
-	// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
-	HttpCode pulumi.StringPtrInput `pulumi:"httpCode"`
+	HttpCode    pulumi.StringPtrInput `pulumi:"httpCode"`
 }
 
 func (RuleRuleActionFixedResponseConfigArgs) ElementType() reflect.Type {
@@ -2880,17 +2841,14 @@ func (o RuleRuleActionFixedResponseConfigOutput) ToRuleRuleActionFixedResponseCo
 	}).(RuleRuleActionFixedResponseConfigPtrOutput)
 }
 
-// The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
 func (o RuleRuleActionFixedResponseConfigOutput) Content() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleRuleActionFixedResponseConfig) string { return v.Content }).(pulumi.StringOutput)
 }
 
-// The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
 func (o RuleRuleActionFixedResponseConfigOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionFixedResponseConfig) *string { return v.ContentType }).(pulumi.StringPtrOutput)
 }
 
-// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
 func (o RuleRuleActionFixedResponseConfigOutput) HttpCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionFixedResponseConfig) *string { return v.HttpCode }).(pulumi.StringPtrOutput)
 }
@@ -2919,7 +2877,6 @@ func (o RuleRuleActionFixedResponseConfigPtrOutput) Elem() RuleRuleActionFixedRe
 	}).(RuleRuleActionFixedResponseConfigOutput)
 }
 
-// The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
 func (o RuleRuleActionFixedResponseConfigPtrOutput) Content() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionFixedResponseConfig) *string {
 		if v == nil {
@@ -2929,7 +2886,6 @@ func (o RuleRuleActionFixedResponseConfigPtrOutput) Content() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
 func (o RuleRuleActionFixedResponseConfigPtrOutput) ContentType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionFixedResponseConfig) *string {
 		if v == nil {
@@ -2939,7 +2895,6 @@ func (o RuleRuleActionFixedResponseConfigPtrOutput) ContentType() pulumi.StringP
 	}).(pulumi.StringPtrOutput)
 }
 
-// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
 func (o RuleRuleActionFixedResponseConfigPtrOutput) HttpCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionFixedResponseConfig) *string {
 		if v == nil {
@@ -2950,10 +2905,8 @@ func (o RuleRuleActionFixedResponseConfigPtrOutput) HttpCode() pulumi.StringPtrO
 }
 
 type RuleRuleActionForwardGroupConfig struct {
-	// The configuration of session persistence for server groups. See `serverGroupStickySession` below.
 	ServerGroupStickySession *RuleRuleActionForwardGroupConfigServerGroupStickySession `pulumi:"serverGroupStickySession"`
-	// The destination server group to which requests are forwarded. See `serverGroupTuples` below.
-	ServerGroupTuples []RuleRuleActionForwardGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
+	ServerGroupTuples        []RuleRuleActionForwardGroupConfigServerGroupTuple        `pulumi:"serverGroupTuples"`
 }
 
 // RuleRuleActionForwardGroupConfigInput is an input type that accepts RuleRuleActionForwardGroupConfigArgs and RuleRuleActionForwardGroupConfigOutput values.
@@ -2968,10 +2921,8 @@ type RuleRuleActionForwardGroupConfigInput interface {
 }
 
 type RuleRuleActionForwardGroupConfigArgs struct {
-	// The configuration of session persistence for server groups. See `serverGroupStickySession` below.
 	ServerGroupStickySession RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrInput `pulumi:"serverGroupStickySession"`
-	// The destination server group to which requests are forwarded. See `serverGroupTuples` below.
-	ServerGroupTuples RuleRuleActionForwardGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
+	ServerGroupTuples        RuleRuleActionForwardGroupConfigServerGroupTupleArrayInput       `pulumi:"serverGroupTuples"`
 }
 
 func (RuleRuleActionForwardGroupConfigArgs) ElementType() reflect.Type {
@@ -3051,14 +3002,12 @@ func (o RuleRuleActionForwardGroupConfigOutput) ToRuleRuleActionForwardGroupConf
 	}).(RuleRuleActionForwardGroupConfigPtrOutput)
 }
 
-// The configuration of session persistence for server groups. See `serverGroupStickySession` below.
 func (o RuleRuleActionForwardGroupConfigOutput) ServerGroupStickySession() RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionForwardGroupConfig) *RuleRuleActionForwardGroupConfigServerGroupStickySession {
 		return v.ServerGroupStickySession
 	}).(RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput)
 }
 
-// The destination server group to which requests are forwarded. See `serverGroupTuples` below.
 func (o RuleRuleActionForwardGroupConfigOutput) ServerGroupTuples() RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v RuleRuleActionForwardGroupConfig) []RuleRuleActionForwardGroupConfigServerGroupTuple {
 		return v.ServerGroupTuples
@@ -3089,7 +3038,6 @@ func (o RuleRuleActionForwardGroupConfigPtrOutput) Elem() RuleRuleActionForwardG
 	}).(RuleRuleActionForwardGroupConfigOutput)
 }
 
-// The configuration of session persistence for server groups. See `serverGroupStickySession` below.
 func (o RuleRuleActionForwardGroupConfigPtrOutput) ServerGroupStickySession() RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionForwardGroupConfig) *RuleRuleActionForwardGroupConfigServerGroupStickySession {
 		if v == nil {
@@ -3099,7 +3047,6 @@ func (o RuleRuleActionForwardGroupConfigPtrOutput) ServerGroupStickySession() Ru
 	}).(RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput)
 }
 
-// The destination server group to which requests are forwarded. See `serverGroupTuples` below.
 func (o RuleRuleActionForwardGroupConfigPtrOutput) ServerGroupTuples() RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v *RuleRuleActionForwardGroupConfig) []RuleRuleActionForwardGroupConfigServerGroupTuple {
 		if v == nil {
@@ -3110,10 +3057,8 @@ func (o RuleRuleActionForwardGroupConfigPtrOutput) ServerGroupTuples() RuleRuleA
 }
 
 type RuleRuleActionForwardGroupConfigServerGroupStickySession struct {
-	// Whether to enable session persistence.
 	Enabled *bool `pulumi:"enabled"`
-	// The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
-	Timeout *int `pulumi:"timeout"`
+	Timeout *int  `pulumi:"timeout"`
 }
 
 // RuleRuleActionForwardGroupConfigServerGroupStickySessionInput is an input type that accepts RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs and RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput values.
@@ -3128,10 +3073,8 @@ type RuleRuleActionForwardGroupConfigServerGroupStickySessionInput interface {
 }
 
 type RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs struct {
-	// Whether to enable session persistence.
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
-	// The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
-	Timeout pulumi.IntPtrInput `pulumi:"timeout"`
+	Timeout pulumi.IntPtrInput  `pulumi:"timeout"`
 }
 
 func (RuleRuleActionForwardGroupConfigServerGroupStickySessionArgs) ElementType() reflect.Type {
@@ -3211,12 +3154,10 @@ func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput) ToRuleRu
 	}).(RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput)
 }
 
-// Whether to enable session persistence.
 func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionForwardGroupConfigServerGroupStickySession) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
 }
 
-// The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
 func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionForwardGroupConfigServerGroupStickySession) *int { return v.Timeout }).(pulumi.IntPtrOutput)
 }
@@ -3245,7 +3186,6 @@ func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput) Elem(
 	}).(RuleRuleActionForwardGroupConfigServerGroupStickySessionOutput)
 }
 
-// Whether to enable session persistence.
 func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionForwardGroupConfigServerGroupStickySession) *bool {
 		if v == nil {
@@ -3255,7 +3195,6 @@ func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput) Enabl
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
 func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput) Timeout() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionForwardGroupConfigServerGroupStickySession) *int {
 		if v == nil {
@@ -3266,10 +3205,8 @@ func (o RuleRuleActionForwardGroupConfigServerGroupStickySessionPtrOutput) Timeo
 }
 
 type RuleRuleActionForwardGroupConfigServerGroupTuple struct {
-	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId *string `pulumi:"serverGroupId"`
-	// The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `serverGroupTuples` is greater than 2.
-	Weight *int `pulumi:"weight"`
+	Weight        *int    `pulumi:"weight"`
 }
 
 // RuleRuleActionForwardGroupConfigServerGroupTupleInput is an input type that accepts RuleRuleActionForwardGroupConfigServerGroupTupleArgs and RuleRuleActionForwardGroupConfigServerGroupTupleOutput values.
@@ -3284,10 +3221,8 @@ type RuleRuleActionForwardGroupConfigServerGroupTupleInput interface {
 }
 
 type RuleRuleActionForwardGroupConfigServerGroupTupleArgs struct {
-	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId pulumi.StringPtrInput `pulumi:"serverGroupId"`
-	// The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `serverGroupTuples` is greater than 2.
-	Weight pulumi.IntPtrInput `pulumi:"weight"`
+	Weight        pulumi.IntPtrInput    `pulumi:"weight"`
 }
 
 func (RuleRuleActionForwardGroupConfigServerGroupTupleArgs) ElementType() reflect.Type {
@@ -3341,12 +3276,10 @@ func (o RuleRuleActionForwardGroupConfigServerGroupTupleOutput) ToRuleRuleAction
 	return o
 }
 
-// The ID of the destination server group to which requests are forwarded.
 func (o RuleRuleActionForwardGroupConfigServerGroupTupleOutput) ServerGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionForwardGroupConfigServerGroupTuple) *string { return v.ServerGroupId }).(pulumi.StringPtrOutput)
 }
 
-// The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `serverGroupTuples` is greater than 2.
 func (o RuleRuleActionForwardGroupConfigServerGroupTupleOutput) Weight() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionForwardGroupConfigServerGroupTuple) *int { return v.Weight }).(pulumi.IntPtrOutput)
 }
@@ -3372,14 +3305,8 @@ func (o RuleRuleActionForwardGroupConfigServerGroupTupleArrayOutput) Index(i pul
 }
 
 type RuleRuleActionInsertHeaderConfig struct {
-	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-	Key *string `pulumi:"key"`
-	// The content of the inserted header field. Valid values:
-	// * If the `valueType` is set to `SystemDefined`, the following values are used:
-	Value *string `pulumi:"value"`
-	// The value type of the inserted header field. Valid values:
+	Key       *string `pulumi:"key"`
+	Value     *string `pulumi:"value"`
 	ValueType *string `pulumi:"valueType"`
 }
 
@@ -3395,14 +3322,8 @@ type RuleRuleActionInsertHeaderConfigInput interface {
 }
 
 type RuleRuleActionInsertHeaderConfigArgs struct {
-	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The content of the inserted header field. Valid values:
-	// * If the `valueType` is set to `SystemDefined`, the following values are used:
-	Value pulumi.StringPtrInput `pulumi:"value"`
-	// The value type of the inserted header field. Valid values:
+	Key       pulumi.StringPtrInput `pulumi:"key"`
+	Value     pulumi.StringPtrInput `pulumi:"value"`
 	ValueType pulumi.StringPtrInput `pulumi:"valueType"`
 }
 
@@ -3483,20 +3404,14 @@ func (o RuleRuleActionInsertHeaderConfigOutput) ToRuleRuleActionInsertHeaderConf
 	}).(RuleRuleActionInsertHeaderConfigPtrOutput)
 }
 
-// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 func (o RuleRuleActionInsertHeaderConfigOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionInsertHeaderConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The content of the inserted header field. Valid values:
-// * If the `valueType` is set to `SystemDefined`, the following values are used:
 func (o RuleRuleActionInsertHeaderConfigOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionInsertHeaderConfig) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
 
-// The value type of the inserted header field. Valid values:
 func (o RuleRuleActionInsertHeaderConfigOutput) ValueType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionInsertHeaderConfig) *string { return v.ValueType }).(pulumi.StringPtrOutput)
 }
@@ -3525,9 +3440,6 @@ func (o RuleRuleActionInsertHeaderConfigPtrOutput) Elem() RuleRuleActionInsertHe
 	}).(RuleRuleActionInsertHeaderConfigOutput)
 }
 
-// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 func (o RuleRuleActionInsertHeaderConfigPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionInsertHeaderConfig) *string {
 		if v == nil {
@@ -3537,8 +3449,6 @@ func (o RuleRuleActionInsertHeaderConfigPtrOutput) Key() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// The content of the inserted header field. Valid values:
-// * If the `valueType` is set to `SystemDefined`, the following values are used:
 func (o RuleRuleActionInsertHeaderConfigPtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionInsertHeaderConfig) *string {
 		if v == nil {
@@ -3548,7 +3458,6 @@ func (o RuleRuleActionInsertHeaderConfigPtrOutput) Value() pulumi.StringPtrOutpu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The value type of the inserted header field. Valid values:
 func (o RuleRuleActionInsertHeaderConfigPtrOutput) ValueType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionInsertHeaderConfig) *string {
 		if v == nil {
@@ -3559,18 +3468,12 @@ func (o RuleRuleActionInsertHeaderConfigPtrOutput) ValueType() pulumi.StringPtrO
 }
 
 type RuleRuleActionRedirectConfig struct {
-	// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
-	Host *string `pulumi:"host"`
-	// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
+	Host     *string `pulumi:"host"`
 	HttpCode *string `pulumi:"httpCode"`
-	// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
-	Path *string `pulumi:"path"`
-	// The port of the destination to which requests are redirected. Valid values: 1 to 63335. Default value: ${port}. You cannot use this value together with other characters at the same time.
-	Port *string `pulumi:"port"`
-	// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
+	Path     *string `pulumi:"path"`
+	Port     *string `pulumi:"port"`
 	Protocol *string `pulumi:"protocol"`
-	// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
-	Query *string `pulumi:"query"`
+	Query    *string `pulumi:"query"`
 }
 
 // RuleRuleActionRedirectConfigInput is an input type that accepts RuleRuleActionRedirectConfigArgs and RuleRuleActionRedirectConfigOutput values.
@@ -3585,18 +3488,12 @@ type RuleRuleActionRedirectConfigInput interface {
 }
 
 type RuleRuleActionRedirectConfigArgs struct {
-	// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
-	Host pulumi.StringPtrInput `pulumi:"host"`
-	// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
+	Host     pulumi.StringPtrInput `pulumi:"host"`
 	HttpCode pulumi.StringPtrInput `pulumi:"httpCode"`
-	// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
-	Path pulumi.StringPtrInput `pulumi:"path"`
-	// The port of the destination to which requests are redirected. Valid values: 1 to 63335. Default value: ${port}. You cannot use this value together with other characters at the same time.
-	Port pulumi.StringPtrInput `pulumi:"port"`
-	// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
+	Path     pulumi.StringPtrInput `pulumi:"path"`
+	Port     pulumi.StringPtrInput `pulumi:"port"`
 	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
-	Query pulumi.StringPtrInput `pulumi:"query"`
+	Query    pulumi.StringPtrInput `pulumi:"query"`
 }
 
 func (RuleRuleActionRedirectConfigArgs) ElementType() reflect.Type {
@@ -3676,32 +3573,26 @@ func (o RuleRuleActionRedirectConfigOutput) ToRuleRuleActionRedirectConfigPtrOut
 	}).(RuleRuleActionRedirectConfigPtrOutput)
 }
 
-// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
 func (o RuleRuleActionRedirectConfigOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
 func (o RuleRuleActionRedirectConfigOutput) HttpCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.HttpCode }).(pulumi.StringPtrOutput)
 }
 
-// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRedirectConfigOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// The port of the destination to which requests are redirected. Valid values: 1 to 63335. Default value: ${port}. You cannot use this value together with other characters at the same time.
 func (o RuleRuleActionRedirectConfigOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
 func (o RuleRuleActionRedirectConfigOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
-// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRedirectConfigOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRedirectConfig) *string { return v.Query }).(pulumi.StringPtrOutput)
 }
@@ -3730,7 +3621,6 @@ func (o RuleRuleActionRedirectConfigPtrOutput) Elem() RuleRuleActionRedirectConf
 	}).(RuleRuleActionRedirectConfigOutput)
 }
 
-// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
 func (o RuleRuleActionRedirectConfigPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
 		if v == nil {
@@ -3740,7 +3630,6 @@ func (o RuleRuleActionRedirectConfigPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
 func (o RuleRuleActionRedirectConfigPtrOutput) HttpCode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
 		if v == nil {
@@ -3750,7 +3639,6 @@ func (o RuleRuleActionRedirectConfigPtrOutput) HttpCode() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRedirectConfigPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
 		if v == nil {
@@ -3760,7 +3648,6 @@ func (o RuleRuleActionRedirectConfigPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The port of the destination to which requests are redirected. Valid values: 1 to 63335. Default value: ${port}. You cannot use this value together with other characters at the same time.
 func (o RuleRuleActionRedirectConfigPtrOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
 		if v == nil {
@@ -3770,7 +3657,6 @@ func (o RuleRuleActionRedirectConfigPtrOutput) Port() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
 func (o RuleRuleActionRedirectConfigPtrOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
 		if v == nil {
@@ -3780,7 +3666,6 @@ func (o RuleRuleActionRedirectConfigPtrOutput) Protocol() pulumi.StringPtrOutput
 	}).(pulumi.StringPtrOutput)
 }
 
-// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRedirectConfigPtrOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRedirectConfig) *string {
 		if v == nil {
@@ -3791,9 +3676,6 @@ func (o RuleRuleActionRedirectConfigPtrOutput) Query() pulumi.StringPtrOutput {
 }
 
 type RuleRuleActionRemoveHeaderConfig struct {
-	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 	Key *string `pulumi:"key"`
 }
 
@@ -3809,9 +3691,6 @@ type RuleRuleActionRemoveHeaderConfigInput interface {
 }
 
 type RuleRuleActionRemoveHeaderConfigArgs struct {
-	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 	Key pulumi.StringPtrInput `pulumi:"key"`
 }
 
@@ -3892,9 +3771,6 @@ func (o RuleRuleActionRemoveHeaderConfigOutput) ToRuleRuleActionRemoveHeaderConf
 	}).(RuleRuleActionRemoveHeaderConfigPtrOutput)
 }
 
-// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 func (o RuleRuleActionRemoveHeaderConfigOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRemoveHeaderConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
@@ -3923,9 +3799,6 @@ func (o RuleRuleActionRemoveHeaderConfigPtrOutput) Elem() RuleRuleActionRemoveHe
 	}).(RuleRuleActionRemoveHeaderConfigOutput)
 }
 
-// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 func (o RuleRuleActionRemoveHeaderConfigPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRemoveHeaderConfig) *string {
 		if v == nil {
@@ -3936,11 +3809,8 @@ func (o RuleRuleActionRemoveHeaderConfigPtrOutput) Key() pulumi.StringPtrOutput 
 }
 
 type RuleRuleActionRewriteConfig struct {
-	// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
-	Host *string `pulumi:"host"`
-	// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
-	Path *string `pulumi:"path"`
-	// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
+	Host  *string `pulumi:"host"`
+	Path  *string `pulumi:"path"`
 	Query *string `pulumi:"query"`
 }
 
@@ -3956,11 +3826,8 @@ type RuleRuleActionRewriteConfigInput interface {
 }
 
 type RuleRuleActionRewriteConfigArgs struct {
-	// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
-	Host pulumi.StringPtrInput `pulumi:"host"`
-	// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
-	Path pulumi.StringPtrInput `pulumi:"path"`
-	// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
+	Host  pulumi.StringPtrInput `pulumi:"host"`
+	Path  pulumi.StringPtrInput `pulumi:"path"`
 	Query pulumi.StringPtrInput `pulumi:"query"`
 }
 
@@ -4041,17 +3908,14 @@ func (o RuleRuleActionRewriteConfigOutput) ToRuleRuleActionRewriteConfigPtrOutpu
 	}).(RuleRuleActionRewriteConfigPtrOutput)
 }
 
-// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
 func (o RuleRuleActionRewriteConfigOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRewriteConfig) *string { return v.Host }).(pulumi.StringPtrOutput)
 }
 
-// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRewriteConfigOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRewriteConfig) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
-// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRewriteConfigOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionRewriteConfig) *string { return v.Query }).(pulumi.StringPtrOutput)
 }
@@ -4080,7 +3944,6 @@ func (o RuleRuleActionRewriteConfigPtrOutput) Elem() RuleRuleActionRewriteConfig
 	}).(RuleRuleActionRewriteConfigOutput)
 }
 
-// The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
 func (o RuleRuleActionRewriteConfigPtrOutput) Host() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRewriteConfig) *string {
 		if v == nil {
@@ -4090,7 +3953,6 @@ func (o RuleRuleActionRewriteConfigPtrOutput) Host() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRewriteConfigPtrOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRewriteConfig) *string {
 		if v == nil {
@@ -4100,7 +3962,6 @@ func (o RuleRuleActionRewriteConfigPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
 func (o RuleRuleActionRewriteConfigPtrOutput) Query() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionRewriteConfig) *string {
 		if v == nil {
@@ -4111,10 +3972,8 @@ func (o RuleRuleActionRewriteConfigPtrOutput) Query() pulumi.StringPtrOutput {
 }
 
 type RuleRuleActionTrafficLimitConfig struct {
-	// The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
 	PerIpQps *int `pulumi:"perIpQps"`
-	// The Number of requests per second. Valid values: `1` to `100000`.
-	Qps *int `pulumi:"qps"`
+	Qps      *int `pulumi:"qps"`
 }
 
 // RuleRuleActionTrafficLimitConfigInput is an input type that accepts RuleRuleActionTrafficLimitConfigArgs and RuleRuleActionTrafficLimitConfigOutput values.
@@ -4129,10 +3988,8 @@ type RuleRuleActionTrafficLimitConfigInput interface {
 }
 
 type RuleRuleActionTrafficLimitConfigArgs struct {
-	// The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
 	PerIpQps pulumi.IntPtrInput `pulumi:"perIpQps"`
-	// The Number of requests per second. Valid values: `1` to `100000`.
-	Qps pulumi.IntPtrInput `pulumi:"qps"`
+	Qps      pulumi.IntPtrInput `pulumi:"qps"`
 }
 
 func (RuleRuleActionTrafficLimitConfigArgs) ElementType() reflect.Type {
@@ -4212,12 +4069,10 @@ func (o RuleRuleActionTrafficLimitConfigOutput) ToRuleRuleActionTrafficLimitConf
 	}).(RuleRuleActionTrafficLimitConfigPtrOutput)
 }
 
-// The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
 func (o RuleRuleActionTrafficLimitConfigOutput) PerIpQps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionTrafficLimitConfig) *int { return v.PerIpQps }).(pulumi.IntPtrOutput)
 }
 
-// The Number of requests per second. Valid values: `1` to `100000`.
 func (o RuleRuleActionTrafficLimitConfigOutput) Qps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionTrafficLimitConfig) *int { return v.Qps }).(pulumi.IntPtrOutput)
 }
@@ -4246,7 +4101,6 @@ func (o RuleRuleActionTrafficLimitConfigPtrOutput) Elem() RuleRuleActionTrafficL
 	}).(RuleRuleActionTrafficLimitConfigOutput)
 }
 
-// The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
 func (o RuleRuleActionTrafficLimitConfigPtrOutput) PerIpQps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionTrafficLimitConfig) *int {
 		if v == nil {
@@ -4256,7 +4110,6 @@ func (o RuleRuleActionTrafficLimitConfigPtrOutput) PerIpQps() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-// The Number of requests per second. Valid values: `1` to `100000`.
 func (o RuleRuleActionTrafficLimitConfigPtrOutput) Qps() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionTrafficLimitConfig) *int {
 		if v == nil {
@@ -4267,10 +4120,8 @@ func (o RuleRuleActionTrafficLimitConfigPtrOutput) Qps() pulumi.IntPtrOutput {
 }
 
 type RuleRuleActionTrafficMirrorConfig struct {
-	// The Traffic is mirrored to the server group. See `mirrorGroupConfig` below.
 	MirrorGroupConfig *RuleRuleActionTrafficMirrorConfigMirrorGroupConfig `pulumi:"mirrorGroupConfig"`
-	// The Mirror target type.
-	TargetType *string `pulumi:"targetType"`
+	TargetType        *string                                             `pulumi:"targetType"`
 }
 
 // RuleRuleActionTrafficMirrorConfigInput is an input type that accepts RuleRuleActionTrafficMirrorConfigArgs and RuleRuleActionTrafficMirrorConfigOutput values.
@@ -4285,10 +4136,8 @@ type RuleRuleActionTrafficMirrorConfigInput interface {
 }
 
 type RuleRuleActionTrafficMirrorConfigArgs struct {
-	// The Traffic is mirrored to the server group. See `mirrorGroupConfig` below.
 	MirrorGroupConfig RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrInput `pulumi:"mirrorGroupConfig"`
-	// The Mirror target type.
-	TargetType pulumi.StringPtrInput `pulumi:"targetType"`
+	TargetType        pulumi.StringPtrInput                                      `pulumi:"targetType"`
 }
 
 func (RuleRuleActionTrafficMirrorConfigArgs) ElementType() reflect.Type {
@@ -4368,14 +4217,12 @@ func (o RuleRuleActionTrafficMirrorConfigOutput) ToRuleRuleActionTrafficMirrorCo
 	}).(RuleRuleActionTrafficMirrorConfigPtrOutput)
 }
 
-// The Traffic is mirrored to the server group. See `mirrorGroupConfig` below.
 func (o RuleRuleActionTrafficMirrorConfigOutput) MirrorGroupConfig() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionTrafficMirrorConfig) *RuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
 		return v.MirrorGroupConfig
 	}).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput)
 }
 
-// The Mirror target type.
 func (o RuleRuleActionTrafficMirrorConfigOutput) TargetType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionTrafficMirrorConfig) *string { return v.TargetType }).(pulumi.StringPtrOutput)
 }
@@ -4404,7 +4251,6 @@ func (o RuleRuleActionTrafficMirrorConfigPtrOutput) Elem() RuleRuleActionTraffic
 	}).(RuleRuleActionTrafficMirrorConfigOutput)
 }
 
-// The Traffic is mirrored to the server group. See `mirrorGroupConfig` below.
 func (o RuleRuleActionTrafficMirrorConfigPtrOutput) MirrorGroupConfig() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionTrafficMirrorConfig) *RuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
 		if v == nil {
@@ -4414,7 +4260,6 @@ func (o RuleRuleActionTrafficMirrorConfigPtrOutput) MirrorGroupConfig() RuleRule
 	}).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput)
 }
 
-// The Mirror target type.
 func (o RuleRuleActionTrafficMirrorConfigPtrOutput) TargetType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleActionTrafficMirrorConfig) *string {
 		if v == nil {
@@ -4425,7 +4270,6 @@ func (o RuleRuleActionTrafficMirrorConfigPtrOutput) TargetType() pulumi.StringPt
 }
 
 type RuleRuleActionTrafficMirrorConfigMirrorGroupConfig struct {
-	// The destination server group to which requests are forwarded. See `serverGroupTuples` below.
 	ServerGroupTuples []RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
 }
 
@@ -4441,7 +4285,6 @@ type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigInput interface {
 }
 
 type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs struct {
-	// The destination server group to which requests are forwarded. See `serverGroupTuples` below.
 	ServerGroupTuples RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
 }
 
@@ -4522,7 +4365,6 @@ func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput) ToRuleRuleActi
 	}).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput)
 }
 
-// The destination server group to which requests are forwarded. See `serverGroupTuples` below.
 func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput) ServerGroupTuples() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v RuleRuleActionTrafficMirrorConfigMirrorGroupConfig) []RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple {
 		return v.ServerGroupTuples
@@ -4553,7 +4395,6 @@ func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput) Elem() Rule
 	}).(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigOutput)
 }
 
-// The destination server group to which requests are forwarded. See `serverGroupTuples` below.
 func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput) ServerGroupTuples() RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v *RuleRuleActionTrafficMirrorConfigMirrorGroupConfig) []RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple {
 		if v == nil {
@@ -4564,7 +4405,6 @@ func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigPtrOutput) ServerGroup
 }
 
 type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple struct {
-	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId *string `pulumi:"serverGroupId"`
 }
 
@@ -4580,7 +4420,6 @@ type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleInput int
 }
 
 type RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleArgs struct {
-	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId pulumi.StringPtrInput `pulumi:"serverGroupId"`
 }
 
@@ -4635,7 +4474,6 @@ func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput
 	return o
 }
 
-// The ID of the destination server group to which requests are forwarded.
 func (o RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTupleOutput) ServerGroupId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple) *string {
 		return v.ServerGroupId
@@ -4843,7 +4681,6 @@ func (o RuleRuleConditionArrayOutput) Index(i pulumi.IntInput) RuleRuleCondition
 }
 
 type RuleRuleConditionCookieConfig struct {
-	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []RuleRuleConditionCookieConfigValue `pulumi:"values"`
 }
 
@@ -4859,7 +4696,6 @@ type RuleRuleConditionCookieConfigInput interface {
 }
 
 type RuleRuleConditionCookieConfigArgs struct {
-	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values RuleRuleConditionCookieConfigValueArrayInput `pulumi:"values"`
 }
 
@@ -4940,7 +4776,6 @@ func (o RuleRuleConditionCookieConfigOutput) ToRuleRuleConditionCookieConfigPtrO
 	}).(RuleRuleConditionCookieConfigPtrOutput)
 }
 
-// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionCookieConfigOutput) Values() RuleRuleConditionCookieConfigValueArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionCookieConfig) []RuleRuleConditionCookieConfigValue { return v.Values }).(RuleRuleConditionCookieConfigValueArrayOutput)
 }
@@ -4969,7 +4804,6 @@ func (o RuleRuleConditionCookieConfigPtrOutput) Elem() RuleRuleConditionCookieCo
 	}).(RuleRuleConditionCookieConfigOutput)
 }
 
-// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionCookieConfigPtrOutput) Values() RuleRuleConditionCookieConfigValueArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionCookieConfig) []RuleRuleConditionCookieConfigValue {
 		if v == nil {
@@ -4980,12 +4814,7 @@ func (o RuleRuleConditionCookieConfigPtrOutput) Values() RuleRuleConditionCookie
 }
 
 type RuleRuleConditionCookieConfigValue struct {
-	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-	Key *string `pulumi:"key"`
-	// The content of the inserted header field. Valid values:
-	// * If the `valueType` is set to `SystemDefined`, the following values are used:
+	Key   *string `pulumi:"key"`
 	Value *string `pulumi:"value"`
 }
 
@@ -5001,12 +4830,7 @@ type RuleRuleConditionCookieConfigValueInput interface {
 }
 
 type RuleRuleConditionCookieConfigValueArgs struct {
-	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The content of the inserted header field. Valid values:
-	// * If the `valueType` is set to `SystemDefined`, the following values are used:
+	Key   pulumi.StringPtrInput `pulumi:"key"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -5061,15 +4885,10 @@ func (o RuleRuleConditionCookieConfigValueOutput) ToRuleRuleConditionCookieConfi
 	return o
 }
 
-// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 func (o RuleRuleConditionCookieConfigValueOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleConditionCookieConfigValue) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The content of the inserted header field. Valid values:
-// * If the `valueType` is set to `SystemDefined`, the following values are used:
 func (o RuleRuleConditionCookieConfigValueOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleConditionCookieConfigValue) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -5095,11 +4914,7 @@ func (o RuleRuleConditionCookieConfigValueArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type RuleRuleConditionHeaderConfig struct {
-	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-	Key *string `pulumi:"key"`
-	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+	Key    *string  `pulumi:"key"`
 	Values []string `pulumi:"values"`
 }
 
@@ -5115,11 +4930,7 @@ type RuleRuleConditionHeaderConfigInput interface {
 }
 
 type RuleRuleConditionHeaderConfigArgs struct {
-	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+	Key    pulumi.StringPtrInput   `pulumi:"key"`
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -5200,14 +5011,10 @@ func (o RuleRuleConditionHeaderConfigOutput) ToRuleRuleConditionHeaderConfigPtrO
 	}).(RuleRuleConditionHeaderConfigPtrOutput)
 }
 
-// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 func (o RuleRuleConditionHeaderConfigOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleConditionHeaderConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionHeaderConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionHeaderConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -5236,9 +5043,6 @@ func (o RuleRuleConditionHeaderConfigPtrOutput) Elem() RuleRuleConditionHeaderCo
 	}).(RuleRuleConditionHeaderConfigOutput)
 }
 
-// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 func (o RuleRuleConditionHeaderConfigPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleConditionHeaderConfig) *string {
 		if v == nil {
@@ -5248,7 +5052,6 @@ func (o RuleRuleConditionHeaderConfigPtrOutput) Key() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionHeaderConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionHeaderConfig) []string {
 		if v == nil {
@@ -5259,7 +5062,6 @@ func (o RuleRuleConditionHeaderConfigPtrOutput) Values() pulumi.StringArrayOutpu
 }
 
 type RuleRuleConditionHostConfig struct {
-	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []string `pulumi:"values"`
 }
 
@@ -5275,7 +5077,6 @@ type RuleRuleConditionHostConfigInput interface {
 }
 
 type RuleRuleConditionHostConfigArgs struct {
-	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -5356,7 +5157,6 @@ func (o RuleRuleConditionHostConfigOutput) ToRuleRuleConditionHostConfigPtrOutpu
 	}).(RuleRuleConditionHostConfigPtrOutput)
 }
 
-// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionHostConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionHostConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -5385,7 +5185,6 @@ func (o RuleRuleConditionHostConfigPtrOutput) Elem() RuleRuleConditionHostConfig
 	}).(RuleRuleConditionHostConfigOutput)
 }
 
-// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionHostConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionHostConfig) []string {
 		if v == nil {
@@ -5396,7 +5195,6 @@ func (o RuleRuleConditionHostConfigPtrOutput) Values() pulumi.StringArrayOutput 
 }
 
 type RuleRuleConditionMethodConfig struct {
-	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []string `pulumi:"values"`
 }
 
@@ -5412,7 +5210,6 @@ type RuleRuleConditionMethodConfigInput interface {
 }
 
 type RuleRuleConditionMethodConfigArgs struct {
-	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -5493,7 +5290,6 @@ func (o RuleRuleConditionMethodConfigOutput) ToRuleRuleConditionMethodConfigPtrO
 	}).(RuleRuleConditionMethodConfigPtrOutput)
 }
 
-// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionMethodConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionMethodConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -5522,7 +5318,6 @@ func (o RuleRuleConditionMethodConfigPtrOutput) Elem() RuleRuleConditionMethodCo
 	}).(RuleRuleConditionMethodConfigOutput)
 }
 
-// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionMethodConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionMethodConfig) []string {
 		if v == nil {
@@ -5533,7 +5328,6 @@ func (o RuleRuleConditionMethodConfigPtrOutput) Values() pulumi.StringArrayOutpu
 }
 
 type RuleRuleConditionPathConfig struct {
-	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []string `pulumi:"values"`
 }
 
@@ -5549,7 +5343,6 @@ type RuleRuleConditionPathConfigInput interface {
 }
 
 type RuleRuleConditionPathConfigArgs struct {
-	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -5630,7 +5423,6 @@ func (o RuleRuleConditionPathConfigOutput) ToRuleRuleConditionPathConfigPtrOutpu
 	}).(RuleRuleConditionPathConfigPtrOutput)
 }
 
-// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionPathConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionPathConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -5659,7 +5451,6 @@ func (o RuleRuleConditionPathConfigPtrOutput) Elem() RuleRuleConditionPathConfig
 	}).(RuleRuleConditionPathConfigOutput)
 }
 
-// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionPathConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionPathConfig) []string {
 		if v == nil {
@@ -5670,7 +5461,6 @@ func (o RuleRuleConditionPathConfigPtrOutput) Values() pulumi.StringArrayOutput 
 }
 
 type RuleRuleConditionQueryStringConfig struct {
-	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []RuleRuleConditionQueryStringConfigValue `pulumi:"values"`
 }
 
@@ -5686,7 +5476,6 @@ type RuleRuleConditionQueryStringConfigInput interface {
 }
 
 type RuleRuleConditionQueryStringConfigArgs struct {
-	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values RuleRuleConditionQueryStringConfigValueArrayInput `pulumi:"values"`
 }
 
@@ -5767,7 +5556,6 @@ func (o RuleRuleConditionQueryStringConfigOutput) ToRuleRuleConditionQueryString
 	}).(RuleRuleConditionQueryStringConfigPtrOutput)
 }
 
-// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionQueryStringConfigOutput) Values() RuleRuleConditionQueryStringConfigValueArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionQueryStringConfig) []RuleRuleConditionQueryStringConfigValue { return v.Values }).(RuleRuleConditionQueryStringConfigValueArrayOutput)
 }
@@ -5796,7 +5584,6 @@ func (o RuleRuleConditionQueryStringConfigPtrOutput) Elem() RuleRuleConditionQue
 	}).(RuleRuleConditionQueryStringConfigOutput)
 }
 
-// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionQueryStringConfigPtrOutput) Values() RuleRuleConditionQueryStringConfigValueArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionQueryStringConfig) []RuleRuleConditionQueryStringConfigValue {
 		if v == nil {
@@ -5807,12 +5594,7 @@ func (o RuleRuleConditionQueryStringConfigPtrOutput) Values() RuleRuleConditionQ
 }
 
 type RuleRuleConditionQueryStringConfigValue struct {
-	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-	Key *string `pulumi:"key"`
-	// The content of the inserted header field. Valid values:
-	// * If the `valueType` is set to `SystemDefined`, the following values are used:
+	Key   *string `pulumi:"key"`
 	Value *string `pulumi:"value"`
 }
 
@@ -5828,12 +5610,7 @@ type RuleRuleConditionQueryStringConfigValueInput interface {
 }
 
 type RuleRuleConditionQueryStringConfigValueArgs struct {
-	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The content of the inserted header field. Valid values:
-	// * If the `valueType` is set to `SystemDefined`, the following values are used:
+	Key   pulumi.StringPtrInput `pulumi:"key"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -5888,15 +5665,10 @@ func (o RuleRuleConditionQueryStringConfigValueOutput) ToRuleRuleConditionQueryS
 	return o
 }
 
-// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 func (o RuleRuleConditionQueryStringConfigValueOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleConditionQueryStringConfigValue) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The content of the inserted header field. Valid values:
-// * If the `valueType` is set to `SystemDefined`, the following values are used:
 func (o RuleRuleConditionQueryStringConfigValueOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleConditionQueryStringConfigValue) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -5922,11 +5694,7 @@ func (o RuleRuleConditionQueryStringConfigValueArrayOutput) Index(i pulumi.IntIn
 }
 
 type RuleRuleConditionResponseHeaderConfig struct {
-	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-	Key *string `pulumi:"key"`
-	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+	Key    *string  `pulumi:"key"`
 	Values []string `pulumi:"values"`
 }
 
@@ -5942,11 +5710,7 @@ type RuleRuleConditionResponseHeaderConfigInput interface {
 }
 
 type RuleRuleConditionResponseHeaderConfigArgs struct {
-	// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-	// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-	// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
+	Key    pulumi.StringPtrInput   `pulumi:"key"`
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -6027,14 +5791,10 @@ func (o RuleRuleConditionResponseHeaderConfigOutput) ToRuleRuleConditionResponse
 	}).(RuleRuleConditionResponseHeaderConfigPtrOutput)
 }
 
-// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 func (o RuleRuleConditionResponseHeaderConfigOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleRuleConditionResponseHeaderConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionResponseHeaderConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionResponseHeaderConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -6063,9 +5823,6 @@ func (o RuleRuleConditionResponseHeaderConfigPtrOutput) Elem() RuleRuleCondition
 	}).(RuleRuleConditionResponseHeaderConfigOutput)
 }
 
-// The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-// * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-// * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
 func (o RuleRuleConditionResponseHeaderConfigPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleRuleConditionResponseHeaderConfig) *string {
 		if v == nil {
@@ -6075,7 +5832,6 @@ func (o RuleRuleConditionResponseHeaderConfigPtrOutput) Key() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionResponseHeaderConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionResponseHeaderConfig) []string {
 		if v == nil {
@@ -6086,7 +5842,6 @@ func (o RuleRuleConditionResponseHeaderConfigPtrOutput) Values() pulumi.StringAr
 }
 
 type RuleRuleConditionResponseStatusCodeConfig struct {
-	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []string `pulumi:"values"`
 }
 
@@ -6102,7 +5857,6 @@ type RuleRuleConditionResponseStatusCodeConfigInput interface {
 }
 
 type RuleRuleConditionResponseStatusCodeConfigArgs struct {
-	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -6183,7 +5937,6 @@ func (o RuleRuleConditionResponseStatusCodeConfigOutput) ToRuleRuleConditionResp
 	}).(RuleRuleConditionResponseStatusCodeConfigPtrOutput)
 }
 
-// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionResponseStatusCodeConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionResponseStatusCodeConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -6212,7 +5965,6 @@ func (o RuleRuleConditionResponseStatusCodeConfigPtrOutput) Elem() RuleRuleCondi
 	}).(RuleRuleConditionResponseStatusCodeConfigOutput)
 }
 
-// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionResponseStatusCodeConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionResponseStatusCodeConfig) []string {
 		if v == nil {
@@ -6223,7 +5975,6 @@ func (o RuleRuleConditionResponseStatusCodeConfigPtrOutput) Values() pulumi.Stri
 }
 
 type RuleRuleConditionSourceIpConfig struct {
-	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values []string `pulumi:"values"`
 }
 
@@ -6239,7 +5990,6 @@ type RuleRuleConditionSourceIpConfigInput interface {
 }
 
 type RuleRuleConditionSourceIpConfigArgs struct {
-	// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -6320,7 +6070,6 @@ func (o RuleRuleConditionSourceIpConfigOutput) ToRuleRuleConditionSourceIpConfig
 	}).(RuleRuleConditionSourceIpConfigPtrOutput)
 }
 
-// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionSourceIpConfigOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RuleRuleConditionSourceIpConfig) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -6349,7 +6098,6 @@ func (o RuleRuleConditionSourceIpConfigPtrOutput) Elem() RuleRuleConditionSource
 	}).(RuleRuleConditionSourceIpConfigOutput)
 }
 
-// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
 func (o RuleRuleConditionSourceIpConfigPtrOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RuleRuleConditionSourceIpConfig) []string {
 		if v == nil {
@@ -8138,18 +7886,9 @@ func (o GetListenersListenerArrayOutput) Index(i pulumi.IntInput) GetListenersLi
 }
 
 type GetListenersListenerAccessLogTracingConfig struct {
-	// Xtrace Function. Value: True Or False. Default Value: False.
-	//
-	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
-	TracingEnabled bool `pulumi:"tracingEnabled"`
-	// Xtrace Sampling Rate. Value: **1~10000**.
-	//
-	// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
-	TracingSample int `pulumi:"tracingSample"`
-	// Xtrace Type Value Is **Zipkin**.
-	//
-	// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
-	TracingType string `pulumi:"tracingType"`
+	TracingEnabled bool   `pulumi:"tracingEnabled"`
+	TracingSample  int    `pulumi:"tracingSample"`
+	TracingType    string `pulumi:"tracingType"`
 }
 
 // GetListenersListenerAccessLogTracingConfigInput is an input type that accepts GetListenersListenerAccessLogTracingConfigArgs and GetListenersListenerAccessLogTracingConfigOutput values.
@@ -8164,18 +7903,9 @@ type GetListenersListenerAccessLogTracingConfigInput interface {
 }
 
 type GetListenersListenerAccessLogTracingConfigArgs struct {
-	// Xtrace Function. Value: True Or False. Default Value: False.
-	//
-	// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
-	TracingEnabled pulumi.BoolInput `pulumi:"tracingEnabled"`
-	// Xtrace Sampling Rate. Value: **1~10000**.
-	//
-	// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
-	TracingSample pulumi.IntInput `pulumi:"tracingSample"`
-	// Xtrace Type Value Is **Zipkin**.
-	//
-	// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
-	TracingType pulumi.StringInput `pulumi:"tracingType"`
+	TracingEnabled pulumi.BoolInput   `pulumi:"tracingEnabled"`
+	TracingSample  pulumi.IntInput    `pulumi:"tracingSample"`
+	TracingType    pulumi.StringInput `pulumi:"tracingType"`
 }
 
 func (GetListenersListenerAccessLogTracingConfigArgs) ElementType() reflect.Type {
@@ -8229,23 +7959,14 @@ func (o GetListenersListenerAccessLogTracingConfigOutput) ToGetListenersListener
 	return o
 }
 
-// Xtrace Function. Value: True Or False. Default Value: False.
-//
-// > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
 func (o GetListenersListenerAccessLogTracingConfigOutput) TracingEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerAccessLogTracingConfig) bool { return v.TracingEnabled }).(pulumi.BoolOutput)
 }
 
-// Xtrace Sampling Rate. Value: **1~10000**.
-//
-// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
 func (o GetListenersListenerAccessLogTracingConfigOutput) TracingSample() pulumi.IntOutput {
 	return o.ApplyT(func(v GetListenersListenerAccessLogTracingConfig) int { return v.TracingSample }).(pulumi.IntOutput)
 }
 
-// Xtrace Type Value Is **Zipkin**.
-//
-// > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
 func (o GetListenersListenerAccessLogTracingConfigOutput) TracingType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerAccessLogTracingConfig) string { return v.TracingType }).(pulumi.StringOutput)
 }
@@ -8271,10 +7992,8 @@ func (o GetListenersListenerAccessLogTracingConfigArrayOutput) Index(i pulumi.In
 }
 
 type GetListenersListenerAclConfig struct {
-	// The ACLs that are associated with the listener.
 	AclRelations []GetListenersListenerAclConfigAclRelation `pulumi:"aclRelations"`
-	// The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
-	AclType string `pulumi:"aclType"`
+	AclType      string                                     `pulumi:"aclType"`
 }
 
 // GetListenersListenerAclConfigInput is an input type that accepts GetListenersListenerAclConfigArgs and GetListenersListenerAclConfigOutput values.
@@ -8289,10 +8008,8 @@ type GetListenersListenerAclConfigInput interface {
 }
 
 type GetListenersListenerAclConfigArgs struct {
-	// The ACLs that are associated with the listener.
 	AclRelations GetListenersListenerAclConfigAclRelationArrayInput `pulumi:"aclRelations"`
-	// The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
-	AclType pulumi.StringInput `pulumi:"aclType"`
+	AclType      pulumi.StringInput                                 `pulumi:"aclType"`
 }
 
 func (GetListenersListenerAclConfigArgs) ElementType() reflect.Type {
@@ -8346,14 +8063,12 @@ func (o GetListenersListenerAclConfigOutput) ToGetListenersListenerAclConfigOutp
 	return o
 }
 
-// The ACLs that are associated with the listener.
 func (o GetListenersListenerAclConfigOutput) AclRelations() GetListenersListenerAclConfigAclRelationArrayOutput {
 	return o.ApplyT(func(v GetListenersListenerAclConfig) []GetListenersListenerAclConfigAclRelation {
 		return v.AclRelations
 	}).(GetListenersListenerAclConfigAclRelationArrayOutput)
 }
 
-// The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
 func (o GetListenersListenerAclConfigOutput) AclType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerAclConfig) string { return v.AclType }).(pulumi.StringOutput)
 }
@@ -8379,9 +8094,8 @@ func (o GetListenersListenerAclConfigArrayOutput) Index(i pulumi.IntInput) GetLi
 }
 
 type GetListenersListenerAclConfigAclRelation struct {
-	// Snooping Binding of the Access Policy Group ID List.
 	AclId string `pulumi:"aclId"`
-	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+	// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status string `pulumi:"status"`
 }
 
@@ -8397,9 +8111,8 @@ type GetListenersListenerAclConfigAclRelationInput interface {
 }
 
 type GetListenersListenerAclConfigAclRelationArgs struct {
-	// Snooping Binding of the Access Policy Group ID List.
 	AclId pulumi.StringInput `pulumi:"aclId"`
-	// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+	// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -8454,12 +8167,11 @@ func (o GetListenersListenerAclConfigAclRelationOutput) ToGetListenersListenerAc
 	return o
 }
 
-// Snooping Binding of the Access Policy Group ID List.
 func (o GetListenersListenerAclConfigAclRelationOutput) AclId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerAclConfigAclRelation) string { return v.AclId }).(pulumi.StringOutput)
 }
 
-// The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+// The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
 func (o GetListenersListenerAclConfigAclRelationOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerAclConfigAclRelation) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -8485,7 +8197,6 @@ func (o GetListenersListenerAclConfigAclRelationArrayOutput) Index(i pulumi.IntI
 }
 
 type GetListenersListenerCertificate struct {
-	// The ID of the Certificate.
 	CertificateId string `pulumi:"certificateId"`
 }
 
@@ -8501,7 +8212,6 @@ type GetListenersListenerCertificateInput interface {
 }
 
 type GetListenersListenerCertificateArgs struct {
-	// The ID of the Certificate.
 	CertificateId pulumi.StringInput `pulumi:"certificateId"`
 }
 
@@ -8556,7 +8266,6 @@ func (o GetListenersListenerCertificateOutput) ToGetListenersListenerCertificate
 	return o
 }
 
-// The ID of the Certificate.
 func (o GetListenersListenerCertificateOutput) CertificateId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerCertificate) string { return v.CertificateId }).(pulumi.StringOutput)
 }
@@ -8582,10 +8291,8 @@ func (o GetListenersListenerCertificateArrayOutput) Index(i pulumi.IntInput) Get
 }
 
 type GetListenersListenerDefaultAction struct {
-	// The configuration of the forwarding rule action. This parameter is required if the Type parameter is set to FowardGroup.
 	ForwardGroupConfigs []GetListenersListenerDefaultActionForwardGroupConfig `pulumi:"forwardGroupConfigs"`
-	// Action Type. The value is set to ForwardGroup. It indicates that requests are forwarded to multiple vServer groups.
-	Type string `pulumi:"type"`
+	Type                string                                                `pulumi:"type"`
 }
 
 // GetListenersListenerDefaultActionInput is an input type that accepts GetListenersListenerDefaultActionArgs and GetListenersListenerDefaultActionOutput values.
@@ -8600,10 +8307,8 @@ type GetListenersListenerDefaultActionInput interface {
 }
 
 type GetListenersListenerDefaultActionArgs struct {
-	// The configuration of the forwarding rule action. This parameter is required if the Type parameter is set to FowardGroup.
 	ForwardGroupConfigs GetListenersListenerDefaultActionForwardGroupConfigArrayInput `pulumi:"forwardGroupConfigs"`
-	// Action Type. The value is set to ForwardGroup. It indicates that requests are forwarded to multiple vServer groups.
-	Type pulumi.StringInput `pulumi:"type"`
+	Type                pulumi.StringInput                                            `pulumi:"type"`
 }
 
 func (GetListenersListenerDefaultActionArgs) ElementType() reflect.Type {
@@ -8657,14 +8362,12 @@ func (o GetListenersListenerDefaultActionOutput) ToGetListenersListenerDefaultAc
 	return o
 }
 
-// The configuration of the forwarding rule action. This parameter is required if the Type parameter is set to FowardGroup.
 func (o GetListenersListenerDefaultActionOutput) ForwardGroupConfigs() GetListenersListenerDefaultActionForwardGroupConfigArrayOutput {
 	return o.ApplyT(func(v GetListenersListenerDefaultAction) []GetListenersListenerDefaultActionForwardGroupConfig {
 		return v.ForwardGroupConfigs
 	}).(GetListenersListenerDefaultActionForwardGroupConfigArrayOutput)
 }
 
-// Action Type. The value is set to ForwardGroup. It indicates that requests are forwarded to multiple vServer groups.
 func (o GetListenersListenerDefaultActionOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerDefaultAction) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -8690,7 +8393,6 @@ func (o GetListenersListenerDefaultActionArrayOutput) Index(i pulumi.IntInput) G
 }
 
 type GetListenersListenerDefaultActionForwardGroupConfig struct {
-	// The destination server group to which requests are forwarded.
 	ServerGroupTuples []GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple `pulumi:"serverGroupTuples"`
 }
 
@@ -8706,7 +8408,6 @@ type GetListenersListenerDefaultActionForwardGroupConfigInput interface {
 }
 
 type GetListenersListenerDefaultActionForwardGroupConfigArgs struct {
-	// The destination server group to which requests are forwarded.
 	ServerGroupTuples GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayInput `pulumi:"serverGroupTuples"`
 }
 
@@ -8761,7 +8462,6 @@ func (o GetListenersListenerDefaultActionForwardGroupConfigOutput) ToGetListener
 	return o
 }
 
-// The destination server group to which requests are forwarded.
 func (o GetListenersListenerDefaultActionForwardGroupConfigOutput) ServerGroupTuples() GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArrayOutput {
 	return o.ApplyT(func(v GetListenersListenerDefaultActionForwardGroupConfig) []GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple {
 		return v.ServerGroupTuples
@@ -8789,7 +8489,6 @@ func (o GetListenersListenerDefaultActionForwardGroupConfigArrayOutput) Index(i 
 }
 
 type GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple struct {
-	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId string `pulumi:"serverGroupId"`
 }
 
@@ -8805,7 +8504,6 @@ type GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleInput in
 }
 
 type GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArgs struct {
-	// The ID of the destination server group to which requests are forwarded.
 	ServerGroupId pulumi.StringInput `pulumi:"serverGroupId"`
 }
 
@@ -8860,7 +8558,6 @@ func (o GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutpu
 	return o
 }
 
-// The ID of the destination server group to which requests are forwarded.
 func (o GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleOutput) ServerGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple) string {
 		return v.ServerGroupId
@@ -8888,10 +8585,8 @@ func (o GetListenersListenerDefaultActionForwardGroupConfigServerGroupTupleArray
 }
 
 type GetListenersListenerQuicConfig struct {
-	// The ID of the QUIC listener to be associated. If QuicUpgradeEnabled is set to true, this parameter is required. Only HTTPS listeners support this parameter.
-	QuicListenerId string `pulumi:"quicListenerId"`
-	// Indicates whether quic upgrade is enabled. Valid values: true and false. Default value: false.
-	QuicUpgradeEnabled bool `pulumi:"quicUpgradeEnabled"`
+	QuicListenerId     string `pulumi:"quicListenerId"`
+	QuicUpgradeEnabled bool   `pulumi:"quicUpgradeEnabled"`
 }
 
 // GetListenersListenerQuicConfigInput is an input type that accepts GetListenersListenerQuicConfigArgs and GetListenersListenerQuicConfigOutput values.
@@ -8906,10 +8601,8 @@ type GetListenersListenerQuicConfigInput interface {
 }
 
 type GetListenersListenerQuicConfigArgs struct {
-	// The ID of the QUIC listener to be associated. If QuicUpgradeEnabled is set to true, this parameter is required. Only HTTPS listeners support this parameter.
-	QuicListenerId pulumi.StringInput `pulumi:"quicListenerId"`
-	// Indicates whether quic upgrade is enabled. Valid values: true and false. Default value: false.
-	QuicUpgradeEnabled pulumi.BoolInput `pulumi:"quicUpgradeEnabled"`
+	QuicListenerId     pulumi.StringInput `pulumi:"quicListenerId"`
+	QuicUpgradeEnabled pulumi.BoolInput   `pulumi:"quicUpgradeEnabled"`
 }
 
 func (GetListenersListenerQuicConfigArgs) ElementType() reflect.Type {
@@ -8963,12 +8656,10 @@ func (o GetListenersListenerQuicConfigOutput) ToGetListenersListenerQuicConfigOu
 	return o
 }
 
-// The ID of the QUIC listener to be associated. If QuicUpgradeEnabled is set to true, this parameter is required. Only HTTPS listeners support this parameter.
 func (o GetListenersListenerQuicConfigOutput) QuicListenerId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerQuicConfig) string { return v.QuicListenerId }).(pulumi.StringOutput)
 }
 
-// Indicates whether quic upgrade is enabled. Valid values: true and false. Default value: false.
 func (o GetListenersListenerQuicConfigOutput) QuicUpgradeEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerQuicConfig) bool { return v.QuicUpgradeEnabled }).(pulumi.BoolOutput)
 }
@@ -8994,32 +8685,19 @@ func (o GetListenersListenerQuicConfigArrayOutput) Index(i pulumi.IntInput) GetL
 }
 
 type GetListenersListenerXforwardedForConfig struct {
-	// The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
-	XforwardedforclientcertIssuerdnalias string `pulumi:"xforwardedforclientcertIssuerdnalias"`
-	// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
-	XforwardedforclientcertIssuerdnenabled bool `pulumi:"xforwardedforclientcertIssuerdnenabled"`
-	// The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-	Xforwardedforclientcertclientverifyalias string `pulumi:"xforwardedforclientcertclientverifyalias"`
-	// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
-	Xforwardedforclientcertclientverifyenabled bool `pulumi:"xforwardedforclientcertclientverifyenabled"`
-	// The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-	Xforwardedforclientcertfingerprintalias string `pulumi:"xforwardedforclientcertfingerprintalias"`
-	// Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
-	Xforwardedforclientcertfingerprintenabled bool `pulumi:"xforwardedforclientcertfingerprintenabled"`
-	// The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-	Xforwardedforclientcertsubjectdnalias string `pulumi:"xforwardedforclientcertsubjectdnalias"`
-	// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
-	Xforwardedforclientcertsubjectdnenabled bool `pulumi:"xforwardedforclientcertsubjectdnenabled"`
-	// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
-	Xforwardedforclientsrcportenabled bool `pulumi:"xforwardedforclientsrcportenabled"`
-	// Indicates whether the X-Forwarded-For header field is used to obtain the real IP address of tqhe client. Valid values: true and false. Default value: true.
-	Xforwardedforenabled bool `pulumi:"xforwardedforenabled"`
-	// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
-	Xforwardedforprotoenabled bool `pulumi:"xforwardedforprotoenabled"`
-	// Indicates whether the SLB-ID header field is used to obtain the ID of the ALB instance. Valid values: true and false. Default value: false.
-	Xforwardedforslbidenabled bool `pulumi:"xforwardedforslbidenabled"`
-	// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
-	Xforwardedforslbportenabled bool `pulumi:"xforwardedforslbportenabled"`
+	XforwardedforclientcertIssuerdnalias       string `pulumi:"xforwardedforclientcertIssuerdnalias"`
+	XforwardedforclientcertIssuerdnenabled     bool   `pulumi:"xforwardedforclientcertIssuerdnenabled"`
+	Xforwardedforclientcertclientverifyalias   string `pulumi:"xforwardedforclientcertclientverifyalias"`
+	Xforwardedforclientcertclientverifyenabled bool   `pulumi:"xforwardedforclientcertclientverifyenabled"`
+	Xforwardedforclientcertfingerprintalias    string `pulumi:"xforwardedforclientcertfingerprintalias"`
+	Xforwardedforclientcertfingerprintenabled  bool   `pulumi:"xforwardedforclientcertfingerprintenabled"`
+	Xforwardedforclientcertsubjectdnalias      string `pulumi:"xforwardedforclientcertsubjectdnalias"`
+	Xforwardedforclientcertsubjectdnenabled    bool   `pulumi:"xforwardedforclientcertsubjectdnenabled"`
+	Xforwardedforclientsrcportenabled          bool   `pulumi:"xforwardedforclientsrcportenabled"`
+	Xforwardedforenabled                       bool   `pulumi:"xforwardedforenabled"`
+	Xforwardedforprotoenabled                  bool   `pulumi:"xforwardedforprotoenabled"`
+	Xforwardedforslbidenabled                  bool   `pulumi:"xforwardedforslbidenabled"`
+	Xforwardedforslbportenabled                bool   `pulumi:"xforwardedforslbportenabled"`
 }
 
 // GetListenersListenerXforwardedForConfigInput is an input type that accepts GetListenersListenerXforwardedForConfigArgs and GetListenersListenerXforwardedForConfigOutput values.
@@ -9034,32 +8712,19 @@ type GetListenersListenerXforwardedForConfigInput interface {
 }
 
 type GetListenersListenerXforwardedForConfigArgs struct {
-	// The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
-	XforwardedforclientcertIssuerdnalias pulumi.StringInput `pulumi:"xforwardedforclientcertIssuerdnalias"`
-	// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
-	XforwardedforclientcertIssuerdnenabled pulumi.BoolInput `pulumi:"xforwardedforclientcertIssuerdnenabled"`
-	// The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-	Xforwardedforclientcertclientverifyalias pulumi.StringInput `pulumi:"xforwardedforclientcertclientverifyalias"`
-	// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
-	Xforwardedforclientcertclientverifyenabled pulumi.BoolInput `pulumi:"xforwardedforclientcertclientverifyenabled"`
-	// The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-	Xforwardedforclientcertfingerprintalias pulumi.StringInput `pulumi:"xforwardedforclientcertfingerprintalias"`
-	// Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
-	Xforwardedforclientcertfingerprintenabled pulumi.BoolInput `pulumi:"xforwardedforclientcertfingerprintenabled"`
-	// The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-	Xforwardedforclientcertsubjectdnalias pulumi.StringInput `pulumi:"xforwardedforclientcertsubjectdnalias"`
-	// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
-	Xforwardedforclientcertsubjectdnenabled pulumi.BoolInput `pulumi:"xforwardedforclientcertsubjectdnenabled"`
-	// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
-	Xforwardedforclientsrcportenabled pulumi.BoolInput `pulumi:"xforwardedforclientsrcportenabled"`
-	// Indicates whether the X-Forwarded-For header field is used to obtain the real IP address of tqhe client. Valid values: true and false. Default value: true.
-	Xforwardedforenabled pulumi.BoolInput `pulumi:"xforwardedforenabled"`
-	// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
-	Xforwardedforprotoenabled pulumi.BoolInput `pulumi:"xforwardedforprotoenabled"`
-	// Indicates whether the SLB-ID header field is used to obtain the ID of the ALB instance. Valid values: true and false. Default value: false.
-	Xforwardedforslbidenabled pulumi.BoolInput `pulumi:"xforwardedforslbidenabled"`
-	// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
-	Xforwardedforslbportenabled pulumi.BoolInput `pulumi:"xforwardedforslbportenabled"`
+	XforwardedforclientcertIssuerdnalias       pulumi.StringInput `pulumi:"xforwardedforclientcertIssuerdnalias"`
+	XforwardedforclientcertIssuerdnenabled     pulumi.BoolInput   `pulumi:"xforwardedforclientcertIssuerdnenabled"`
+	Xforwardedforclientcertclientverifyalias   pulumi.StringInput `pulumi:"xforwardedforclientcertclientverifyalias"`
+	Xforwardedforclientcertclientverifyenabled pulumi.BoolInput   `pulumi:"xforwardedforclientcertclientverifyenabled"`
+	Xforwardedforclientcertfingerprintalias    pulumi.StringInput `pulumi:"xforwardedforclientcertfingerprintalias"`
+	Xforwardedforclientcertfingerprintenabled  pulumi.BoolInput   `pulumi:"xforwardedforclientcertfingerprintenabled"`
+	Xforwardedforclientcertsubjectdnalias      pulumi.StringInput `pulumi:"xforwardedforclientcertsubjectdnalias"`
+	Xforwardedforclientcertsubjectdnenabled    pulumi.BoolInput   `pulumi:"xforwardedforclientcertsubjectdnenabled"`
+	Xforwardedforclientsrcportenabled          pulumi.BoolInput   `pulumi:"xforwardedforclientsrcportenabled"`
+	Xforwardedforenabled                       pulumi.BoolInput   `pulumi:"xforwardedforenabled"`
+	Xforwardedforprotoenabled                  pulumi.BoolInput   `pulumi:"xforwardedforprotoenabled"`
+	Xforwardedforslbidenabled                  pulumi.BoolInput   `pulumi:"xforwardedforslbidenabled"`
+	Xforwardedforslbportenabled                pulumi.BoolInput   `pulumi:"xforwardedforslbportenabled"`
 }
 
 func (GetListenersListenerXforwardedForConfigArgs) ElementType() reflect.Type {
@@ -9113,75 +8778,62 @@ func (o GetListenersListenerXforwardedForConfigOutput) ToGetListenersListenerXfo
 	return o
 }
 
-// The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
 func (o GetListenersListenerXforwardedForConfigOutput) XforwardedforclientcertIssuerdnalias() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) string { return v.XforwardedforclientcertIssuerdnalias }).(pulumi.StringOutput)
 }
 
-// Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
 func (o GetListenersListenerXforwardedForConfigOutput) XforwardedforclientcertIssuerdnenabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool { return v.XforwardedforclientcertIssuerdnenabled }).(pulumi.BoolOutput)
 }
 
-// The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforclientcertclientverifyalias() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) string {
 		return v.Xforwardedforclientcertclientverifyalias
 	}).(pulumi.StringOutput)
 }
 
-// Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforclientcertclientverifyenabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool {
 		return v.Xforwardedforclientcertclientverifyenabled
 	}).(pulumi.BoolOutput)
 }
 
-// The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforclientcertfingerprintalias() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) string {
 		return v.Xforwardedforclientcertfingerprintalias
 	}).(pulumi.StringOutput)
 }
 
-// Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforclientcertfingerprintenabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool {
 		return v.Xforwardedforclientcertfingerprintenabled
 	}).(pulumi.BoolOutput)
 }
 
-// The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforclientcertsubjectdnalias() pulumi.StringOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) string { return v.Xforwardedforclientcertsubjectdnalias }).(pulumi.StringOutput)
 }
 
-// Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforclientcertsubjectdnenabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool { return v.Xforwardedforclientcertsubjectdnenabled }).(pulumi.BoolOutput)
 }
 
-// Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforclientsrcportenabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool { return v.Xforwardedforclientsrcportenabled }).(pulumi.BoolOutput)
 }
 
-// Indicates whether the X-Forwarded-For header field is used to obtain the real IP address of tqhe client. Valid values: true and false. Default value: true.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforenabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool { return v.Xforwardedforenabled }).(pulumi.BoolOutput)
 }
 
-// Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforprotoenabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool { return v.Xforwardedforprotoenabled }).(pulumi.BoolOutput)
 }
 
-// Indicates whether the SLB-ID header field is used to obtain the ID of the ALB instance. Valid values: true and false. Default value: false.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforslbidenabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool { return v.Xforwardedforslbidenabled }).(pulumi.BoolOutput)
 }
 
-// Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
 func (o GetListenersListenerXforwardedForConfigOutput) Xforwardedforslbportenabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetListenersListenerXforwardedForConfig) bool { return v.Xforwardedforslbportenabled }).(pulumi.BoolOutput)
 }
@@ -9507,10 +9159,8 @@ func (o GetLoadBalancersBalancerArrayOutput) Index(i pulumi.IntInput) GetLoadBal
 }
 
 type GetLoadBalancersBalancerAccessLogConfig struct {
-	// The log service that access logs are shipped to.
 	LogProject string `pulumi:"logProject"`
-	// The logstore that access logs are shipped to.
-	LogStore string `pulumi:"logStore"`
+	LogStore   string `pulumi:"logStore"`
 }
 
 // GetLoadBalancersBalancerAccessLogConfigInput is an input type that accepts GetLoadBalancersBalancerAccessLogConfigArgs and GetLoadBalancersBalancerAccessLogConfigOutput values.
@@ -9525,10 +9175,8 @@ type GetLoadBalancersBalancerAccessLogConfigInput interface {
 }
 
 type GetLoadBalancersBalancerAccessLogConfigArgs struct {
-	// The log service that access logs are shipped to.
 	LogProject pulumi.StringInput `pulumi:"logProject"`
-	// The logstore that access logs are shipped to.
-	LogStore pulumi.StringInput `pulumi:"logStore"`
+	LogStore   pulumi.StringInput `pulumi:"logStore"`
 }
 
 func (GetLoadBalancersBalancerAccessLogConfigArgs) ElementType() reflect.Type {
@@ -9582,12 +9230,10 @@ func (o GetLoadBalancersBalancerAccessLogConfigOutput) ToGetLoadBalancersBalance
 	return o
 }
 
-// The log service that access logs are shipped to.
 func (o GetLoadBalancersBalancerAccessLogConfigOutput) LogProject() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerAccessLogConfig) string { return v.LogProject }).(pulumi.StringOutput)
 }
 
-// The logstore that access logs are shipped to.
 func (o GetLoadBalancersBalancerAccessLogConfigOutput) LogStore() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerAccessLogConfig) string { return v.LogStore }).(pulumi.StringOutput)
 }
@@ -9613,9 +9259,7 @@ func (o GetLoadBalancersBalancerAccessLogConfigArrayOutput) Index(i pulumi.IntIn
 }
 
 type GetLoadBalancersBalancerDeletionProtectionConfig struct {
-	// Remove the Protection Status.
-	Enabled bool `pulumi:"enabled"`
-	// Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm:SSZ.
+	Enabled     bool   `pulumi:"enabled"`
 	EnabledTime string `pulumi:"enabledTime"`
 }
 
@@ -9631,9 +9275,7 @@ type GetLoadBalancersBalancerDeletionProtectionConfigInput interface {
 }
 
 type GetLoadBalancersBalancerDeletionProtectionConfigArgs struct {
-	// Remove the Protection Status.
-	Enabled pulumi.BoolInput `pulumi:"enabled"`
-	// Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm:SSZ.
+	Enabled     pulumi.BoolInput   `pulumi:"enabled"`
 	EnabledTime pulumi.StringInput `pulumi:"enabledTime"`
 }
 
@@ -9688,12 +9330,10 @@ func (o GetLoadBalancersBalancerDeletionProtectionConfigOutput) ToGetLoadBalance
 	return o
 }
 
-// Remove the Protection Status.
 func (o GetLoadBalancersBalancerDeletionProtectionConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerDeletionProtectionConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
-// Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm:SSZ.
 func (o GetLoadBalancersBalancerDeletionProtectionConfigOutput) EnabledTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerDeletionProtectionConfig) string { return v.EnabledTime }).(pulumi.StringOutput)
 }
@@ -9719,7 +9359,6 @@ func (o GetLoadBalancersBalancerDeletionProtectionConfigArrayOutput) Index(i pul
 }
 
 type GetLoadBalancersBalancerLoadBalancerBillingConfig struct {
-	// The billing method of the ALB instance. Valid value: `PayAsYouGo`.
 	PayType string `pulumi:"payType"`
 }
 
@@ -9735,7 +9374,6 @@ type GetLoadBalancersBalancerLoadBalancerBillingConfigInput interface {
 }
 
 type GetLoadBalancersBalancerLoadBalancerBillingConfigArgs struct {
-	// The billing method of the ALB instance. Valid value: `PayAsYouGo`.
 	PayType pulumi.StringInput `pulumi:"payType"`
 }
 
@@ -9790,7 +9428,6 @@ func (o GetLoadBalancersBalancerLoadBalancerBillingConfigOutput) ToGetLoadBalanc
 	return o
 }
 
-// The billing method of the ALB instance. Valid value: `PayAsYouGo`.
 func (o GetLoadBalancersBalancerLoadBalancerBillingConfigOutput) PayType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerLoadBalancerBillingConfig) string { return v.PayType }).(pulumi.StringOutput)
 }
@@ -9816,10 +9453,8 @@ func (o GetLoadBalancersBalancerLoadBalancerBillingConfigArrayOutput) Index(i pu
 }
 
 type GetLoadBalancersBalancerLoadBalancerOperationLock struct {
-	// The Locking of the Reasons.
 	LockReason string `pulumi:"lockReason"`
-	// The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
-	LockType string `pulumi:"lockType"`
+	LockType   string `pulumi:"lockType"`
 }
 
 // GetLoadBalancersBalancerLoadBalancerOperationLockInput is an input type that accepts GetLoadBalancersBalancerLoadBalancerOperationLockArgs and GetLoadBalancersBalancerLoadBalancerOperationLockOutput values.
@@ -9834,10 +9469,8 @@ type GetLoadBalancersBalancerLoadBalancerOperationLockInput interface {
 }
 
 type GetLoadBalancersBalancerLoadBalancerOperationLockArgs struct {
-	// The Locking of the Reasons.
 	LockReason pulumi.StringInput `pulumi:"lockReason"`
-	// The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
-	LockType pulumi.StringInput `pulumi:"lockType"`
+	LockType   pulumi.StringInput `pulumi:"lockType"`
 }
 
 func (GetLoadBalancersBalancerLoadBalancerOperationLockArgs) ElementType() reflect.Type {
@@ -9891,12 +9524,10 @@ func (o GetLoadBalancersBalancerLoadBalancerOperationLockOutput) ToGetLoadBalanc
 	return o
 }
 
-// The Locking of the Reasons.
 func (o GetLoadBalancersBalancerLoadBalancerOperationLockOutput) LockReason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerLoadBalancerOperationLock) string { return v.LockReason }).(pulumi.StringOutput)
 }
 
-// The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
 func (o GetLoadBalancersBalancerLoadBalancerOperationLockOutput) LockType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerLoadBalancerOperationLock) string { return v.LockType }).(pulumi.StringOutput)
 }
@@ -9922,9 +9553,8 @@ func (o GetLoadBalancersBalancerLoadBalancerOperationLockArrayOutput) Index(i pu
 }
 
 type GetLoadBalancersBalancerModificationProtectionConfig struct {
-	// The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
 	Reason string `pulumi:"reason"`
-	// The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+	// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
 	Status string `pulumi:"status"`
 }
 
@@ -9940,9 +9570,8 @@ type GetLoadBalancersBalancerModificationProtectionConfigInput interface {
 }
 
 type GetLoadBalancersBalancerModificationProtectionConfigArgs struct {
-	// The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
 	Reason pulumi.StringInput `pulumi:"reason"`
-	// The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+	// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
@@ -9997,12 +9626,11 @@ func (o GetLoadBalancersBalancerModificationProtectionConfigOutput) ToGetLoadBal
 	return o
 }
 
-// The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
 func (o GetLoadBalancersBalancerModificationProtectionConfigOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerModificationProtectionConfig) string { return v.Reason }).(pulumi.StringOutput)
 }
 
-// The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+// The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
 func (o GetLoadBalancersBalancerModificationProtectionConfigOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerModificationProtectionConfig) string { return v.Status }).(pulumi.StringOutput)
 }
@@ -10029,9 +9657,8 @@ func (o GetLoadBalancersBalancerModificationProtectionConfigArrayOutput) Index(i
 
 type GetLoadBalancersBalancerZoneMapping struct {
 	LoadBalancerAddresses []GetLoadBalancersBalancerZoneMappingLoadBalancerAddress `pulumi:"loadBalancerAddresses"`
-	// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
-	VswitchId string `pulumi:"vswitchId"`
-	// The ID of the zone to which the ALB instance belongs.
+	VswitchId             string                                                   `pulumi:"vswitchId"`
+	// The zone ID of the resource.
 	ZoneId string `pulumi:"zoneId"`
 }
 
@@ -10048,9 +9675,8 @@ type GetLoadBalancersBalancerZoneMappingInput interface {
 
 type GetLoadBalancersBalancerZoneMappingArgs struct {
 	LoadBalancerAddresses GetLoadBalancersBalancerZoneMappingLoadBalancerAddressArrayInput `pulumi:"loadBalancerAddresses"`
-	// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
-	VswitchId pulumi.StringInput `pulumi:"vswitchId"`
-	// The ID of the zone to which the ALB instance belongs.
+	VswitchId             pulumi.StringInput                                               `pulumi:"vswitchId"`
+	// The zone ID of the resource.
 	ZoneId pulumi.StringInput `pulumi:"zoneId"`
 }
 
@@ -10111,12 +9737,11 @@ func (o GetLoadBalancersBalancerZoneMappingOutput) LoadBalancerAddresses() GetLo
 	}).(GetLoadBalancersBalancerZoneMappingLoadBalancerAddressArrayOutput)
 }
 
-// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
 func (o GetLoadBalancersBalancerZoneMappingOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerZoneMapping) string { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-// The ID of the zone to which the ALB instance belongs.
+// The zone ID of the resource.
 func (o GetLoadBalancersBalancerZoneMappingOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetLoadBalancersBalancerZoneMapping) string { return v.ZoneId }).(pulumi.StringOutput)
 }

@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,7 +42,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetCharacterSetNames(ctx *pulumi.Context, args *GetCharacterSetNamesArgs, opts ...pulumi.InvokeOption) (*GetCharacterSetNamesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetCharacterSetNamesResult

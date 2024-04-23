@@ -309,7 +309,6 @@ class Instance(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -331,7 +330,6 @@ class Instance(pulumi.CustomResource):
                 "For": "Building table",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -367,7 +365,6 @@ class Instance(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -389,7 +386,6 @@ class Instance(pulumi.CustomResource):
                 "For": "Building table",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

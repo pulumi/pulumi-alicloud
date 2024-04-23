@@ -473,7 +473,6 @@ class HanaInstance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -493,7 +492,6 @@ class HanaInstance(pulumi.CustomResource):
             validate_certificate=False,
             vault_id=example_vault.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -537,7 +535,6 @@ class HanaInstance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -557,7 +554,6 @@ class HanaInstance(pulumi.CustomResource):
             validate_certificate=False,
             vault_id=example_vault.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

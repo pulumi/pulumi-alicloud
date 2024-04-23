@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetAnycastEipAddresses(ctx *pulumi.Context, args *GetAnycastEipAddressesArgs, opts ...pulumi.InvokeOption) (*GetAnycastEipAddressesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAnycastEipAddressesResult

@@ -16,53 +16,23 @@ public final class EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs extends co
 
     public static final EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs Empty = new EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs();
 
-    /**
-     * The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
-     * - WEEKS
-     * - MONTHS
-     * - YEARS.
-     * 
-     */
     @Import(name="specialPeriodUnit")
     private @Nullable Output<String> specialPeriodUnit;
 
-    /**
-     * @return The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
-     * - WEEKS
-     * - MONTHS
-     * - YEARS.
-     * 
-     */
     public Optional<Output<String>> specialPeriodUnit() {
         return Optional.ofNullable(this.specialPeriodUnit);
     }
 
-    /**
-     * Time unit.
-     * 
-     */
     @Import(name="timeInterval")
     private @Nullable Output<Integer> timeInterval;
 
-    /**
-     * @return Time unit.
-     * 
-     */
     public Optional<Output<Integer>> timeInterval() {
         return Optional.ofNullable(this.timeInterval);
     }
 
-    /**
-     * Time-based retention.
-     * 
-     */
     @Import(name="timeUnit")
     private @Nullable Output<String> timeUnit;
 
-    /**
-     * @return Time-based retention.
-     * 
-     */
     public Optional<Output<String>> timeUnit() {
         return Optional.ofNullable(this.timeUnit);
     }
@@ -93,71 +63,29 @@ public final class EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs extends co
             $ = new EnterpriseSnapshotPolicySpecialRetainRulesRuleArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param specialPeriodUnit The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
-         * - WEEKS
-         * - MONTHS
-         * - YEARS.
-         * 
-         * @return builder
-         * 
-         */
         public Builder specialPeriodUnit(@Nullable Output<String> specialPeriodUnit) {
             $.specialPeriodUnit = specialPeriodUnit;
             return this;
         }
 
-        /**
-         * @param specialPeriodUnit The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
-         * - WEEKS
-         * - MONTHS
-         * - YEARS.
-         * 
-         * @return builder
-         * 
-         */
         public Builder specialPeriodUnit(String specialPeriodUnit) {
             return specialPeriodUnit(Output.of(specialPeriodUnit));
         }
 
-        /**
-         * @param timeInterval Time unit.
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeInterval(@Nullable Output<Integer> timeInterval) {
             $.timeInterval = timeInterval;
             return this;
         }
 
-        /**
-         * @param timeInterval Time unit.
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeInterval(Integer timeInterval) {
             return timeInterval(Output.of(timeInterval));
         }
 
-        /**
-         * @param timeUnit Time-based retention.
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeUnit(@Nullable Output<String> timeUnit) {
             $.timeUnit = timeUnit;
             return this;
         }
 
-        /**
-         * @param timeUnit Time-based retention.
-         * 
-         * @return builder
-         * 
-         */
         public Builder timeUnit(String timeUnit) {
             return timeUnit(Output.of(timeUnit));
         }

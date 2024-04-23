@@ -17,77 +17,37 @@ public final class ClusterBootstrapScriptNodeSelectorArgs extends com.pulumi.res
 
     public static final ClusterBootstrapScriptNodeSelectorArgs Empty = new ClusterBootstrapScriptNodeSelectorArgs();
 
-    /**
-     * The configuration effected which node group id of emr cluster.
-     * 
-     */
     @Import(name="nodeGroupId")
     private @Nullable Output<String> nodeGroupId;
 
-    /**
-     * @return The configuration effected which node group id of emr cluster.
-     * 
-     */
     public Optional<Output<String>> nodeGroupId() {
         return Optional.ofNullable(this.nodeGroupId);
     }
 
-    /**
-     * The configuration effected which node group name of emr cluster.
-     * 
-     */
     @Import(name="nodeGroupName")
     private @Nullable Output<String> nodeGroupName;
 
-    /**
-     * @return The configuration effected which node group name of emr cluster.
-     * 
-     */
     public Optional<Output<String>> nodeGroupName() {
         return Optional.ofNullable(this.nodeGroupName);
     }
 
-    /**
-     * The bootstrap scripts execution target node group types.
-     * 
-     */
     @Import(name="nodeGroupTypes")
     private @Nullable Output<List<String>> nodeGroupTypes;
 
-    /**
-     * @return The bootstrap scripts execution target node group types.
-     * 
-     */
     public Optional<Output<List<String>>> nodeGroupTypes() {
         return Optional.ofNullable(this.nodeGroupTypes);
     }
 
-    /**
-     * The bootstrap scripts execution target node names.
-     * 
-     */
     @Import(name="nodeNames")
     private @Nullable Output<List<String>> nodeNames;
 
-    /**
-     * @return The bootstrap scripts execution target node names.
-     * 
-     */
     public Optional<Output<List<String>>> nodeNames() {
         return Optional.ofNullable(this.nodeNames);
     }
 
-    /**
-     * The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
-     * 
-     */
     @Import(name="nodeSelectType", required=true)
     private Output<String> nodeSelectType;
 
-    /**
-     * @return The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
-     * 
-     */
     public Output<String> nodeSelectType() {
         return this.nodeSelectType;
     }
@@ -120,127 +80,55 @@ public final class ClusterBootstrapScriptNodeSelectorArgs extends com.pulumi.res
             $ = new ClusterBootstrapScriptNodeSelectorArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param nodeGroupId The configuration effected which node group id of emr cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeGroupId(@Nullable Output<String> nodeGroupId) {
             $.nodeGroupId = nodeGroupId;
             return this;
         }
 
-        /**
-         * @param nodeGroupId The configuration effected which node group id of emr cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeGroupId(String nodeGroupId) {
             return nodeGroupId(Output.of(nodeGroupId));
         }
 
-        /**
-         * @param nodeGroupName The configuration effected which node group name of emr cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeGroupName(@Nullable Output<String> nodeGroupName) {
             $.nodeGroupName = nodeGroupName;
             return this;
         }
 
-        /**
-         * @param nodeGroupName The configuration effected which node group name of emr cluster.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeGroupName(String nodeGroupName) {
             return nodeGroupName(Output.of(nodeGroupName));
         }
 
-        /**
-         * @param nodeGroupTypes The bootstrap scripts execution target node group types.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeGroupTypes(@Nullable Output<List<String>> nodeGroupTypes) {
             $.nodeGroupTypes = nodeGroupTypes;
             return this;
         }
 
-        /**
-         * @param nodeGroupTypes The bootstrap scripts execution target node group types.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeGroupTypes(List<String> nodeGroupTypes) {
             return nodeGroupTypes(Output.of(nodeGroupTypes));
         }
 
-        /**
-         * @param nodeGroupTypes The bootstrap scripts execution target node group types.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeGroupTypes(String... nodeGroupTypes) {
             return nodeGroupTypes(List.of(nodeGroupTypes));
         }
 
-        /**
-         * @param nodeNames The bootstrap scripts execution target node names.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeNames(@Nullable Output<List<String>> nodeNames) {
             $.nodeNames = nodeNames;
             return this;
         }
 
-        /**
-         * @param nodeNames The bootstrap scripts execution target node names.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeNames(List<String> nodeNames) {
             return nodeNames(Output.of(nodeNames));
         }
 
-        /**
-         * @param nodeNames The bootstrap scripts execution target node names.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeNames(String... nodeNames) {
             return nodeNames(List.of(nodeNames));
         }
 
-        /**
-         * @param nodeSelectType The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeSelectType(Output<String> nodeSelectType) {
             $.nodeSelectType = nodeSelectType;
             return this;
         }
 
-        /**
-         * @param nodeSelectType The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeSelectType(String nodeSelectType) {
             return nodeSelectType(Output.of(nodeSelectType));
         }

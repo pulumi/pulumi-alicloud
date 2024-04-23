@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetQuotaAlarms(ctx *pulumi.Context, args *GetQuotaAlarmsArgs, opts ...pulumi.InvokeOption) (*GetQuotaAlarmsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetQuotaAlarmsResult

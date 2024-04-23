@@ -108,7 +108,6 @@ class VirtualHost(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -125,7 +124,6 @@ class VirtualHost(pulumi.CustomResource):
             instance_id=default.id,
             virtual_host_name="tf-example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -157,7 +155,6 @@ class VirtualHost(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -174,7 +171,6 @@ class VirtualHost(pulumi.CustomResource):
             instance_id=default.id,
             virtual_host_name="tf-example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const hbrOssBackupPlanId = ids.then(ids => ids.plans?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getOssBackupPlans(args?: GetOssBackupPlansArgs, opts?: pulumi.InvokeOptions): Promise<GetOssBackupPlansResult> {
     args = args || {};
@@ -61,7 +59,7 @@ export interface GetOssBackupPlansArgs {
      */
     outputFile?: string;
     /**
-     * The ID of backup vault.
+     * The ID of backup vault the OssBackupPlan used.
      */
     vaultId?: string;
 }
@@ -91,7 +89,6 @@ export interface GetOssBackupPlansResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -101,7 +98,6 @@ export interface GetOssBackupPlansResult {
  * });
  * export const hbrOssBackupPlanId = ids.then(ids => ids.plans?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getOssBackupPlansOutput(args?: GetOssBackupPlansOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOssBackupPlansResult> {
     return pulumi.output(args).apply((a: any) => getOssBackupPlans(a, opts))
@@ -128,7 +124,7 @@ export interface GetOssBackupPlansOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The ID of backup vault.
+     * The ID of backup vault the OssBackupPlan used.
      */
     vaultId?: pulumi.Input<string>;
 }

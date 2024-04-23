@@ -10,41 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHybridMonitorSlsTasksTaskMatchExpress {
-    /**
-     * @return The function that is used to aggregate log data within a statistical period.
-     * 
-     */
     private String function;
-    /**
-     * @return The name of the instance.
-     * 
-     */
     private String name;
-    /**
-     * @return The value of the key that is used to filter logs imported from Log Service.
-     * 
-     */
     private String value;
 
     private GetHybridMonitorSlsTasksTaskMatchExpress() {}
-    /**
-     * @return The function that is used to aggregate log data within a statistical period.
-     * 
-     */
     public String function() {
         return this.function;
     }
-    /**
-     * @return The name of the instance.
-     * 
-     */
     public String name() {
         return this.name;
     }
-    /**
-     * @return The value of the key that is used to filter logs imported from Log Service.
-     * 
-     */
     public String value() {
         return this.value;
     }

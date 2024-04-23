@@ -669,13 +669,6 @@ class EciScalingConfigurationContainerEnvironmentVar(dict):
                  field_ref_field_path: Optional[str] = None,
                  key: Optional[str] = None,
                  value: Optional[str] = None):
-        """
-        :param str field_ref_field_path: Environment variable value reference. Optional values: 
-               - status.podIP: IP of pod.
-        :param str key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-               digits, and underscores (_). It cannot start with a digit.
-        :param str value: The value of the variable. The value can be 0 to 256 characters in length.
-        """
         if field_ref_field_path is not None:
             pulumi.set(__self__, "field_ref_field_path", field_ref_field_path)
         if key is not None:
@@ -686,27 +679,16 @@ class EciScalingConfigurationContainerEnvironmentVar(dict):
     @property
     @pulumi.getter(name="fieldRefFieldPath")
     def field_ref_field_path(self) -> Optional[str]:
-        """
-        Environment variable value reference. Optional values: 
-        - status.podIP: IP of pod.
-        """
         return pulumi.get(self, "field_ref_field_path")
 
     @property
     @pulumi.getter
     def key(self) -> Optional[str]:
-        """
-        The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-        digits, and underscores (_). It cannot start with a digit.
-        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
-        """
-        The value of the variable. The value can be 0 to 256 characters in length.
-        """
         return pulumi.get(self, "value")
 
 
@@ -715,10 +697,6 @@ class EciScalingConfigurationContainerPort(dict):
     def __init__(__self__, *,
                  port: Optional[int] = None,
                  protocol: Optional[str] = None):
-        """
-        :param int port: The port number. Valid values: 1 to 65535.
-        :param str protocol: Valid values: TCP and UDP.
-        """
         if port is not None:
             pulumi.set(__self__, "port", port)
         if protocol is not None:
@@ -727,17 +705,11 @@ class EciScalingConfigurationContainerPort(dict):
     @property
     @pulumi.getter
     def port(self) -> Optional[int]:
-        """
-        The port number. Valid values: 1 to 65535.
-        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def protocol(self) -> Optional[str]:
-        """
-        Valid values: TCP and UDP.
-        """
         return pulumi.get(self, "protocol")
 
 
@@ -766,12 +738,6 @@ class EciScalingConfigurationContainerVolumeMount(dict):
                  mount_path: Optional[str] = None,
                  name: Optional[str] = None,
                  read_only: Optional[bool] = None):
-        """
-        :param str mount_path: The directory of the mounted volume. Data under this directory will be overwritten by the
-               data in the volume.
-        :param str name: The name of the mounted volume.
-        :param bool read_only: Default to `false`.
-        """
         if mount_path is not None:
             pulumi.set(__self__, "mount_path", mount_path)
         if name is not None:
@@ -782,26 +748,16 @@ class EciScalingConfigurationContainerVolumeMount(dict):
     @property
     @pulumi.getter(name="mountPath")
     def mount_path(self) -> Optional[str]:
-        """
-        The directory of the mounted volume. Data under this directory will be overwritten by the
-        data in the volume.
-        """
         return pulumi.get(self, "mount_path")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        The name of the mounted volume.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[bool]:
-        """
-        Default to `false`.
-        """
         return pulumi.get(self, "read_only")
 
 
@@ -1130,13 +1086,6 @@ class EciScalingConfigurationInitContainerEnvironmentVar(dict):
                  field_ref_field_path: Optional[str] = None,
                  key: Optional[str] = None,
                  value: Optional[str] = None):
-        """
-        :param str field_ref_field_path: Environment variable value reference. Optional values: 
-               - status.podIP: IP of pod.
-        :param str key: The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-               digits, and underscores (_). It cannot start with a digit.
-        :param str value: The value of the variable. The value can be 0 to 256 characters in length.
-        """
         if field_ref_field_path is not None:
             pulumi.set(__self__, "field_ref_field_path", field_ref_field_path)
         if key is not None:
@@ -1147,27 +1096,16 @@ class EciScalingConfigurationInitContainerEnvironmentVar(dict):
     @property
     @pulumi.getter(name="fieldRefFieldPath")
     def field_ref_field_path(self) -> Optional[str]:
-        """
-        Environment variable value reference. Optional values: 
-        - status.podIP: IP of pod.
-        """
         return pulumi.get(self, "field_ref_field_path")
 
     @property
     @pulumi.getter
     def key(self) -> Optional[str]:
-        """
-        The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-        digits, and underscores (_). It cannot start with a digit.
-        """
         return pulumi.get(self, "key")
 
     @property
     @pulumi.getter
     def value(self) -> Optional[str]:
-        """
-        The value of the variable. The value can be 0 to 256 characters in length.
-        """
         return pulumi.get(self, "value")
 
 
@@ -1176,10 +1114,6 @@ class EciScalingConfigurationInitContainerPort(dict):
     def __init__(__self__, *,
                  port: Optional[int] = None,
                  protocol: Optional[str] = None):
-        """
-        :param int port: The port number. Valid values: 1 to 65535.
-        :param str protocol: Valid values: TCP and UDP.
-        """
         if port is not None:
             pulumi.set(__self__, "port", port)
         if protocol is not None:
@@ -1188,17 +1122,11 @@ class EciScalingConfigurationInitContainerPort(dict):
     @property
     @pulumi.getter
     def port(self) -> Optional[int]:
-        """
-        The port number. Valid values: 1 to 65535.
-        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter
     def protocol(self) -> Optional[str]:
-        """
-        Valid values: TCP and UDP.
-        """
         return pulumi.get(self, "protocol")
 
 
@@ -1227,12 +1155,6 @@ class EciScalingConfigurationInitContainerVolumeMount(dict):
                  mount_path: Optional[str] = None,
                  name: Optional[str] = None,
                  read_only: Optional[bool] = None):
-        """
-        :param str mount_path: The directory of the mounted volume. Data under this directory will be overwritten by the
-               data in the volume.
-        :param str name: The name of the mounted volume.
-        :param bool read_only: Default to `false`.
-        """
         if mount_path is not None:
             pulumi.set(__self__, "mount_path", mount_path)
         if name is not None:
@@ -1243,26 +1165,16 @@ class EciScalingConfigurationInitContainerVolumeMount(dict):
     @property
     @pulumi.getter(name="mountPath")
     def mount_path(self) -> Optional[str]:
-        """
-        The directory of the mounted volume. Data under this directory will be overwritten by the
-        data in the volume.
-        """
         return pulumi.get(self, "mount_path")
 
     @property
     @pulumi.getter
     def name(self) -> Optional[str]:
-        """
-        The name of the mounted volume.
-        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="readOnly")
     def read_only(self) -> Optional[bool]:
-        """
-        Default to `false`.
-        """
         return pulumi.get(self, "read_only")
 
 
@@ -1467,10 +1379,6 @@ class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath(dict):
     def __init__(__self__, *,
                  content: Optional[str] = None,
                  path: Optional[str] = None):
-        """
-        :param str content: The content of the configuration file. Maximum size: 32 KB.
-        :param str path: The relative file path.
-        """
         if content is not None:
             pulumi.set(__self__, "content", content)
         if path is not None:
@@ -1479,17 +1387,11 @@ class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath(dict):
     @property
     @pulumi.getter
     def content(self) -> Optional[str]:
-        """
-        The content of the configuration file. Maximum size: 32 KB.
-        """
         return pulumi.get(self, "content")
 
     @property
     @pulumi.getter
     def path(self) -> Optional[str]:
-        """
-        The relative file path.
-        """
         return pulumi.get(self, "path")
 
 
@@ -2023,11 +1925,6 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttribute(dict):
                  port: int,
                  vserver_group_id: str,
                  weight: int):
-        """
-        :param int port: The port will be used for VServer Group backend server.
-        :param str vserver_group_id: ID of VServer Group.
-        :param int weight: The weight of an ECS instance attached to the VServer Group.
-        """
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "vserver_group_id", vserver_group_id)
         pulumi.set(__self__, "weight", weight)
@@ -2035,25 +1932,16 @@ class ScalingGroupVServerGroupsVserverGroupVserverAttribute(dict):
     @property
     @pulumi.getter
     def port(self) -> int:
-        """
-        The port will be used for VServer Group backend server.
-        """
         return pulumi.get(self, "port")
 
     @property
     @pulumi.getter(name="vserverGroupId")
     def vserver_group_id(self) -> str:
-        """
-        ID of VServer Group.
-        """
         return pulumi.get(self, "vserver_group_id")
 
     @property
     @pulumi.getter
     def weight(self) -> int:
-        """
-        The weight of an ECS instance attached to the VServer Group.
-        """
         return pulumi.get(self, "weight")
 
 

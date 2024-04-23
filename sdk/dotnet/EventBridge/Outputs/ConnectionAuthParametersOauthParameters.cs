@@ -13,21 +13,9 @@ namespace Pulumi.AliCloud.EventBridge.Outputs
     [OutputType]
     public sealed class ConnectionAuthParametersOauthParameters
     {
-        /// <summary>
-        /// The IP address of the authorized endpoint.
-        /// </summary>
         public readonly string? AuthorizationEndpoint;
-        /// <summary>
-        /// The parameters that are configured for the client. See `client_parameters` below.
-        /// </summary>
         public readonly Outputs.ConnectionAuthParametersOauthParametersClientParameters? ClientParameters;
-        /// <summary>
-        /// The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
-        /// </summary>
         public readonly string? HttpMethod;
-        /// <summary>
-        /// The request parameters that are configured for OAuth authentication. See `oauth_http_parameters` below.
-        /// </summary>
         public readonly Outputs.ConnectionAuthParametersOauthParametersOauthHttpParameters? OauthHttpParameters;
 
         [OutputConstructor]

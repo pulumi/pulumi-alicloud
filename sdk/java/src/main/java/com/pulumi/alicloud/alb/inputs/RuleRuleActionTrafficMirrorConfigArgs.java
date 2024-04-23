@@ -16,32 +16,16 @@ public final class RuleRuleActionTrafficMirrorConfigArgs extends com.pulumi.reso
 
     public static final RuleRuleActionTrafficMirrorConfigArgs Empty = new RuleRuleActionTrafficMirrorConfigArgs();
 
-    /**
-     * The Traffic is mirrored to the server group. See `mirror_group_config` below.
-     * 
-     */
     @Import(name="mirrorGroupConfig")
     private @Nullable Output<RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs> mirrorGroupConfig;
 
-    /**
-     * @return The Traffic is mirrored to the server group. See `mirror_group_config` below.
-     * 
-     */
     public Optional<Output<RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs>> mirrorGroupConfig() {
         return Optional.ofNullable(this.mirrorGroupConfig);
     }
 
-    /**
-     * The Mirror target type.
-     * 
-     */
     @Import(name="targetType")
     private @Nullable Output<String> targetType;
 
-    /**
-     * @return The Mirror target type.
-     * 
-     */
     public Optional<Output<String>> targetType() {
         return Optional.ofNullable(this.targetType);
     }
@@ -71,44 +55,20 @@ public final class RuleRuleActionTrafficMirrorConfigArgs extends com.pulumi.reso
             $ = new RuleRuleActionTrafficMirrorConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param mirrorGroupConfig The Traffic is mirrored to the server group. See `mirror_group_config` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder mirrorGroupConfig(@Nullable Output<RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs> mirrorGroupConfig) {
             $.mirrorGroupConfig = mirrorGroupConfig;
             return this;
         }
 
-        /**
-         * @param mirrorGroupConfig The Traffic is mirrored to the server group. See `mirror_group_config` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder mirrorGroupConfig(RuleRuleActionTrafficMirrorConfigMirrorGroupConfigArgs mirrorGroupConfig) {
             return mirrorGroupConfig(Output.of(mirrorGroupConfig));
         }
 
-        /**
-         * @param targetType The Mirror target type.
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetType(@Nullable Output<String> targetType) {
             $.targetType = targetType;
             return this;
         }
 
-        /**
-         * @param targetType The Mirror target type.
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetType(String targetType) {
             return targetType(Output.of(targetType));
         }

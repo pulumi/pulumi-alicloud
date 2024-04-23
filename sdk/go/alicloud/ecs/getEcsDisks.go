@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetEcsDisks(ctx *pulumi.Context, args *GetEcsDisksArgs, opts ...pulumi.InvokeOption) (*GetEcsDisksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsDisksResult
@@ -64,11 +62,11 @@ type GetEcsDisksArgs struct {
 	AdditionalAttributes []string `pulumi:"additionalAttributes"`
 	// Query cloud disks based on the automatic snapshot policy ID.
 	AutoSnapshotPolicyId *string `pulumi:"autoSnapshotPolicyId"`
-	// Availability zone of the disk.
+	// Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone *string `pulumi:"availabilityZone"`
-	// Disk category.
+	// Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
 	Category *string `pulumi:"category"`
 	// Indicates whether the automatic snapshot is deleted when the disk is released.
 	DeleteAutoSnapshot *bool `pulumi:"deleteAutoSnapshot"`
@@ -80,17 +78,17 @@ type GetEcsDisksArgs struct {
 	DiskType *string `pulumi:"diskType"`
 	// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
 	DryRun *bool `pulumi:"dryRun"`
-	// Whether the disk implements an automatic snapshot policy.
+	// Indicates whether the automatic snapshot is deleted when the disk is released.
 	EnableAutoSnapshot *bool `pulumi:"enableAutoSnapshot"`
-	// Whether the disk implements an automatic snapshot policy.
+	// Whether the cloud disk has an automatic snapshot policy
 	EnableAutomatedSnapshotPolicy *bool `pulumi:"enableAutomatedSnapshotPolicy"`
 	// Whether it is shared block storage.
 	EnableShared *bool `pulumi:"enableShared"`
-	// Indicate whether the disk is encrypted or not.
+	// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
 	Encrypted *string `pulumi:"encrypted"`
 	// A list of Disk IDs.
 	Ids []string `pulumi:"ids"`
-	// The instance ID of the disk mount.
+	// Filter the results by the specified ECS instance ID.
 	InstanceId *string `pulumi:"instanceId"`
 	// The kms key id.
 	KmsKeyId *string `pulumi:"kmsKeyId"`
@@ -101,23 +99,23 @@ type GetEcsDisksArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	PageNumber *int    `pulumi:"pageNumber"`
 	PageSize   *int    `pulumi:"pageSize"`
-	// Payment method for disk.
+	// Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
 	PaymentType *string `pulumi:"paymentType"`
-	// Whether the disk is unmountable.
+	// Whether the cloud disk or local disk supports uninstallation.
 	Portable *bool `pulumi:"portable"`
-	// The Id of resource group.
+	// The Id of resource group which the disk belongs.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+	// The source snapshot id.
 	SnapshotId *string `pulumi:"snapshotId"`
-	// Current status.
+	// The status of disk.
 	Status *string `pulumi:"status"`
-	// A map of tags assigned to the disk.
+	// A map of tags assigned to the disks.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// Disk type.
+	// Field `type` has been deprecated from provider version 1.122.0. New field `diskType` instead.
 	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
 	Type *string `pulumi:"type"`
-	// The zone id.
+	// ID of the free zone to which the disk belongs.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -180,11 +178,11 @@ type GetEcsDisksOutputArgs struct {
 	AdditionalAttributes pulumi.StringArrayInput `pulumi:"additionalAttributes"`
 	// Query cloud disks based on the automatic snapshot policy ID.
 	AutoSnapshotPolicyId pulumi.StringPtrInput `pulumi:"autoSnapshotPolicyId"`
-	// Availability zone of the disk.
+	// Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
 	//
 	// Deprecated: Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
 	AvailabilityZone pulumi.StringPtrInput `pulumi:"availabilityZone"`
-	// Disk category.
+	// Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
 	Category pulumi.StringPtrInput `pulumi:"category"`
 	// Indicates whether the automatic snapshot is deleted when the disk is released.
 	DeleteAutoSnapshot pulumi.BoolPtrInput `pulumi:"deleteAutoSnapshot"`
@@ -196,17 +194,17 @@ type GetEcsDisksOutputArgs struct {
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
 	DryRun pulumi.BoolPtrInput `pulumi:"dryRun"`
-	// Whether the disk implements an automatic snapshot policy.
+	// Indicates whether the automatic snapshot is deleted when the disk is released.
 	EnableAutoSnapshot pulumi.BoolPtrInput `pulumi:"enableAutoSnapshot"`
-	// Whether the disk implements an automatic snapshot policy.
+	// Whether the cloud disk has an automatic snapshot policy
 	EnableAutomatedSnapshotPolicy pulumi.BoolPtrInput `pulumi:"enableAutomatedSnapshotPolicy"`
 	// Whether it is shared block storage.
 	EnableShared pulumi.BoolPtrInput `pulumi:"enableShared"`
-	// Indicate whether the disk is encrypted or not.
+	// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
 	Encrypted pulumi.StringPtrInput `pulumi:"encrypted"`
 	// A list of Disk IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The instance ID of the disk mount.
+	// Filter the results by the specified ECS instance ID.
 	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
 	// The kms key id.
 	KmsKeyId pulumi.StringPtrInput `pulumi:"kmsKeyId"`
@@ -217,23 +215,23 @@ type GetEcsDisksOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	PageNumber pulumi.IntPtrInput    `pulumi:"pageNumber"`
 	PageSize   pulumi.IntPtrInput    `pulumi:"pageSize"`
-	// Payment method for disk.
+	// Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
 	PaymentType pulumi.StringPtrInput `pulumi:"paymentType"`
-	// Whether the disk is unmountable.
+	// Whether the cloud disk or local disk supports uninstallation.
 	Portable pulumi.BoolPtrInput `pulumi:"portable"`
-	// The Id of resource group.
+	// The Id of resource group which the disk belongs.
 	ResourceGroupId pulumi.StringPtrInput `pulumi:"resourceGroupId"`
-	// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+	// The source snapshot id.
 	SnapshotId pulumi.StringPtrInput `pulumi:"snapshotId"`
-	// Current status.
+	// The status of disk.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// A map of tags assigned to the disk.
+	// A map of tags assigned to the disks.
 	Tags pulumi.MapInput `pulumi:"tags"`
-	// Disk type.
+	// Field `type` has been deprecated from provider version 1.122.0. New field `diskType` instead.
 	//
 	// Deprecated: Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
 	Type pulumi.StringPtrInput `pulumi:"type"`
-	// The zone id.
+	// ID of the free zone to which the disk belongs.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 

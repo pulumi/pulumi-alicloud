@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -58,7 +57,6 @@ namespace Pulumi.AliCloud.CloudFirewall
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAddressBooksResult> InvokeAsync(GetAddressBooksArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAddressBooksResult>("alicloud:cloudfirewall/getAddressBooks:getAddressBooks", args ?? new GetAddressBooksArgs(), options.WithDefaults());
@@ -72,7 +70,6 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -110,7 +107,6 @@ namespace Pulumi.AliCloud.CloudFirewall
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAddressBooksResult> Invoke(GetAddressBooksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAddressBooksResult>("alicloud:cloudfirewall/getAddressBooks:getAddressBooks", args ?? new GetAddressBooksInvokeArgs(), options.WithDefaults());

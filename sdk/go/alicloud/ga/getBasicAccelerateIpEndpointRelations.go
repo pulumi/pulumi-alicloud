@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetBasicAccelerateIpEndpointRelations(ctx *pulumi.Context, args *GetBasicAccelerateIpEndpointRelationsArgs, opts ...pulumi.InvokeOption) (*GetBasicAccelerateIpEndpointRelationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBasicAccelerateIpEndpointRelationsResult

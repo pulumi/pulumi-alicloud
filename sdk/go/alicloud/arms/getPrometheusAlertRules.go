@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -56,7 +55,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetPrometheusAlertRules(ctx *pulumi.Context, args *GetPrometheusAlertRulesArgs, opts ...pulumi.InvokeOption) (*GetPrometheusAlertRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPrometheusAlertRulesResult

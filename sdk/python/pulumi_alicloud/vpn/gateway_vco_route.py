@@ -188,7 +188,6 @@ class GatewayVcoRoute(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -260,7 +259,6 @@ class GatewayVcoRoute(pulumi.CustomResource):
             vpn_connection_id=default_transit_router_vpn_attachment.vpn_id,
             weight=100)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -294,7 +292,6 @@ class GatewayVcoRoute(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -366,7 +363,6 @@ class GatewayVcoRoute(pulumi.CustomResource):
             vpn_connection_id=default_transit_router_vpn_attachment.vpn_id,
             weight=100)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

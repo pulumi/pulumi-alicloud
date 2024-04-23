@@ -173,7 +173,6 @@ class Connection(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -212,7 +211,6 @@ class Connection(pulumi.CustomResource):
             instance_id=default_instance.id,
             connection_prefix="exampelcon")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -244,7 +242,6 @@ class Connection(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -283,7 +280,6 @@ class Connection(pulumi.CustomResource):
             instance_id=default_instance.id,
             connection_prefix="exampelcon")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

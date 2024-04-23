@@ -17,107 +17,51 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
 
     public static final ServiceMeshMeshConfigSidecarInjectorArgs Empty = new ServiceMeshMeshConfigSidecarInjectorArgs();
 
-    /**
-     * Whether to enable by Pod Annotations automatic injection Sidecar.
-     * 
-     */
     @Import(name="autoInjectionPolicyEnabled")
     private @Nullable Output<Boolean> autoInjectionPolicyEnabled;
 
-    /**
-     * @return Whether to enable by Pod Annotations automatic injection Sidecar.
-     * 
-     */
     public Optional<Output<Boolean>> autoInjectionPolicyEnabled() {
         return Optional.ofNullable(this.autoInjectionPolicyEnabled);
     }
 
-    /**
-     * Whether it is the all namespaces you turn on the auto injection capabilities.
-     * 
-     */
     @Import(name="enableNamespacesByDefault")
     private @Nullable Output<Boolean> enableNamespacesByDefault;
 
-    /**
-     * @return Whether it is the all namespaces you turn on the auto injection capabilities.
-     * 
-     */
     public Optional<Output<Boolean>> enableNamespacesByDefault() {
         return Optional.ofNullable(this.enableNamespacesByDefault);
     }
 
-    /**
-     * CNI configuration. See `init_cni_configuration` below.
-     * 
-     */
     @Import(name="initCniConfiguration")
     private @Nullable Output<ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs> initCniConfiguration;
 
-    /**
-     * @return CNI configuration. See `init_cni_configuration` below.
-     * 
-     */
     public Optional<Output<ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs>> initCniConfiguration() {
         return Optional.ofNullable(this.initCniConfiguration);
     }
 
-    /**
-     * Sidecar injector Pods on the throttle.
-     * 
-     */
     @Import(name="limitCpu")
     private @Nullable Output<String> limitCpu;
 
-    /**
-     * @return Sidecar injector Pods on the throttle.
-     * 
-     */
     public Optional<Output<String>> limitCpu() {
         return Optional.ofNullable(this.limitCpu);
     }
 
-    /**
-     * Sidecar injector Pods on the throttle.
-     * 
-     */
     @Import(name="limitMemory")
     private @Nullable Output<String> limitMemory;
 
-    /**
-     * @return Sidecar injector Pods on the throttle.
-     * 
-     */
     public Optional<Output<String>> limitMemory() {
         return Optional.ofNullable(this.limitMemory);
     }
 
-    /**
-     * Sidecar injector Pods on the requested resource.
-     * 
-     */
     @Import(name="requestCpu")
     private @Nullable Output<String> requestCpu;
 
-    /**
-     * @return Sidecar injector Pods on the requested resource.
-     * 
-     */
     public Optional<Output<String>> requestCpu() {
         return Optional.ofNullable(this.requestCpu);
     }
 
-    /**
-     * Sidecar injector Pods on the requested resource.
-     * 
-     */
     @Import(name="requestMemory")
     private @Nullable Output<String> requestMemory;
 
-    /**
-     * @return Sidecar injector Pods on the requested resource.
-     * 
-     */
     public Optional<Output<String>> requestMemory() {
         return Optional.ofNullable(this.requestMemory);
     }
@@ -168,149 +112,65 @@ public final class ServiceMeshMeshConfigSidecarInjectorArgs extends com.pulumi.r
             $ = new ServiceMeshMeshConfigSidecarInjectorArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param autoInjectionPolicyEnabled Whether to enable by Pod Annotations automatic injection Sidecar.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoInjectionPolicyEnabled(@Nullable Output<Boolean> autoInjectionPolicyEnabled) {
             $.autoInjectionPolicyEnabled = autoInjectionPolicyEnabled;
             return this;
         }
 
-        /**
-         * @param autoInjectionPolicyEnabled Whether to enable by Pod Annotations automatic injection Sidecar.
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoInjectionPolicyEnabled(Boolean autoInjectionPolicyEnabled) {
             return autoInjectionPolicyEnabled(Output.of(autoInjectionPolicyEnabled));
         }
 
-        /**
-         * @param enableNamespacesByDefault Whether it is the all namespaces you turn on the auto injection capabilities.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enableNamespacesByDefault(@Nullable Output<Boolean> enableNamespacesByDefault) {
             $.enableNamespacesByDefault = enableNamespacesByDefault;
             return this;
         }
 
-        /**
-         * @param enableNamespacesByDefault Whether it is the all namespaces you turn on the auto injection capabilities.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enableNamespacesByDefault(Boolean enableNamespacesByDefault) {
             return enableNamespacesByDefault(Output.of(enableNamespacesByDefault));
         }
 
-        /**
-         * @param initCniConfiguration CNI configuration. See `init_cni_configuration` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder initCniConfiguration(@Nullable Output<ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs> initCniConfiguration) {
             $.initCniConfiguration = initCniConfiguration;
             return this;
         }
 
-        /**
-         * @param initCniConfiguration CNI configuration. See `init_cni_configuration` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder initCniConfiguration(ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs initCniConfiguration) {
             return initCniConfiguration(Output.of(initCniConfiguration));
         }
 
-        /**
-         * @param limitCpu Sidecar injector Pods on the throttle.
-         * 
-         * @return builder
-         * 
-         */
         public Builder limitCpu(@Nullable Output<String> limitCpu) {
             $.limitCpu = limitCpu;
             return this;
         }
 
-        /**
-         * @param limitCpu Sidecar injector Pods on the throttle.
-         * 
-         * @return builder
-         * 
-         */
         public Builder limitCpu(String limitCpu) {
             return limitCpu(Output.of(limitCpu));
         }
 
-        /**
-         * @param limitMemory Sidecar injector Pods on the throttle.
-         * 
-         * @return builder
-         * 
-         */
         public Builder limitMemory(@Nullable Output<String> limitMemory) {
             $.limitMemory = limitMemory;
             return this;
         }
 
-        /**
-         * @param limitMemory Sidecar injector Pods on the throttle.
-         * 
-         * @return builder
-         * 
-         */
         public Builder limitMemory(String limitMemory) {
             return limitMemory(Output.of(limitMemory));
         }
 
-        /**
-         * @param requestCpu Sidecar injector Pods on the requested resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder requestCpu(@Nullable Output<String> requestCpu) {
             $.requestCpu = requestCpu;
             return this;
         }
 
-        /**
-         * @param requestCpu Sidecar injector Pods on the requested resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder requestCpu(String requestCpu) {
             return requestCpu(Output.of(requestCpu));
         }
 
-        /**
-         * @param requestMemory Sidecar injector Pods on the requested resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder requestMemory(@Nullable Output<String> requestMemory) {
             $.requestMemory = requestMemory;
             return this;
         }
 
-        /**
-         * @param requestMemory Sidecar injector Pods on the requested resource.
-         * 
-         * @return builder
-         * 
-         */
         public Builder requestMemory(String requestMemory) {
             return requestMemory(Output.of(requestMemory));
         }

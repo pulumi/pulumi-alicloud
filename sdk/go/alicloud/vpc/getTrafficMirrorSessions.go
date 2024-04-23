@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -123,7 +122,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetTrafficMirrorSessions(ctx *pulumi.Context, args *GetTrafficMirrorSessionsArgs, opts ...pulumi.InvokeOption) (*GetTrafficMirrorSessionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTrafficMirrorSessionsResult

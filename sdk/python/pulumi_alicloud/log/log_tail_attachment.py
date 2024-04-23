@@ -142,7 +142,6 @@ class LogTailAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -168,16 +167,16 @@ class LogTailAttachment(pulumi.CustomResource):
             input_type="file",
             name="terraform-example",
             output_type="LogService",
-            input_detail=\"\"\"  	{
-        		"logPath": "/logPath",
-        		"filePattern": "access.log",
-        		"logType": "json_log",
-        		"topicFormat": "default",
-        		"discardUnmatch": false,
-        		"enableRawLog": true,
-        		"fileEncoding": "gbk",
-        		"maxDepth": 10
-        	}
+            input_detail=\"\"\"  \\x09{
+        \\x09\\x09"logPath": "/logPath",
+        \\x09\\x09"filePattern": "access.log",
+        \\x09\\x09"logType": "json_log",
+        \\x09\\x09"topicFormat": "default",
+        \\x09\\x09"discardUnmatch": false,
+        \\x09\\x09"enableRawLog": true,
+        \\x09\\x09"fileEncoding": "gbk",
+        \\x09\\x09"maxDepth": 10
+        \\x09}
         \"\"\")
         example_machine_group = alicloud.log.MachineGroup("example",
             project=example.name,
@@ -193,7 +192,6 @@ class LogTailAttachment(pulumi.CustomResource):
             logtail_config_name=example_log_tail_config.name,
             machine_group_name=example_machine_group.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -228,7 +226,6 @@ class LogTailAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -254,16 +251,16 @@ class LogTailAttachment(pulumi.CustomResource):
             input_type="file",
             name="terraform-example",
             output_type="LogService",
-            input_detail=\"\"\"  	{
-        		"logPath": "/logPath",
-        		"filePattern": "access.log",
-        		"logType": "json_log",
-        		"topicFormat": "default",
-        		"discardUnmatch": false,
-        		"enableRawLog": true,
-        		"fileEncoding": "gbk",
-        		"maxDepth": 10
-        	}
+            input_detail=\"\"\"  \\x09{
+        \\x09\\x09"logPath": "/logPath",
+        \\x09\\x09"filePattern": "access.log",
+        \\x09\\x09"logType": "json_log",
+        \\x09\\x09"topicFormat": "default",
+        \\x09\\x09"discardUnmatch": false,
+        \\x09\\x09"enableRawLog": true,
+        \\x09\\x09"fileEncoding": "gbk",
+        \\x09\\x09"maxDepth": 10
+        \\x09}
         \"\"\")
         example_machine_group = alicloud.log.MachineGroup("example",
             project=example.name,
@@ -279,7 +276,6 @@ class LogTailAttachment(pulumi.CustomResource):
             logtail_config_name=example_log_tail_config.name,
             machine_group_name=example_machine_group.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

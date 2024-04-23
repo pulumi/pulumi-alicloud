@@ -113,7 +113,6 @@ def get_lifecycle_policies(file_system_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -128,7 +127,6 @@ def get_lifecycle_policies(file_system_id: Optional[str] = None,
         name_regex="^my-LifecyclePolicy")
     pulumi.export("nasLifecyclePolicyId2", name_regex.policies[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str file_system_id: The ID of the file system.
@@ -169,7 +167,6 @@ def get_lifecycle_policies_output(file_system_id: Optional[pulumi.Input[str]] = 
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -184,7 +181,6 @@ def get_lifecycle_policies_output(file_system_id: Optional[pulumi.Input[str]] = 
         name_regex="^my-LifecyclePolicy")
     pulumi.export("nasLifecyclePolicyId2", name_regex.policies[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str file_system_id: The ID of the file system.

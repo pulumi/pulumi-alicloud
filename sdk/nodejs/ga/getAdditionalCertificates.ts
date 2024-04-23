@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -30,7 +29,6 @@ import * as utilities from "../utilities";
  * });
  * export const gaAdditionalCertificateId1 = ids.then(ids => ids.certificates?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAdditionalCertificates(args: GetAdditionalCertificatesArgs, opts?: pulumi.InvokeOptions): Promise<GetAdditionalCertificatesResult> {
 
@@ -88,7 +86,6 @@ export interface GetAdditionalCertificatesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -103,7 +100,6 @@ export interface GetAdditionalCertificatesResult {
  * });
  * export const gaAdditionalCertificateId1 = ids.then(ids => ids.certificates?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAdditionalCertificatesOutput(args: GetAdditionalCertificatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdditionalCertificatesResult> {
     return pulumi.output(args).apply((a: any) => getAdditionalCertificates(a, opts))

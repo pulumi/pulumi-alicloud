@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     [OutputType]
     public sealed class GetLoadBalancersBalancerLoadBalancerOperationLockResult
     {
-        /// <summary>
-        /// The Locking of the Reasons.
-        /// </summary>
         public readonly string LockReason;
-        /// <summary>
-        /// The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
-        /// </summary>
         public readonly string LockType;
 
         [OutputConstructor]

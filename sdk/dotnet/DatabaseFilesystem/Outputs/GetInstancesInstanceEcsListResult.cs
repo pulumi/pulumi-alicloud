@@ -13,9 +13,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem.Outputs
     [OutputType]
     public sealed class GetInstancesInstanceEcsListResult
     {
-        /// <summary>
-        /// The ID of the ECS instance.
-        /// </summary>
         public readonly string EcsId;
 
         [OutputConstructor]

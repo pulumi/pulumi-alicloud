@@ -15,51 +15,23 @@ public final class EciScalingConfigurationContainerEnvironmentVarArgs extends co
 
     public static final EciScalingConfigurationContainerEnvironmentVarArgs Empty = new EciScalingConfigurationContainerEnvironmentVarArgs();
 
-    /**
-     * Environment variable value reference. Optional values:
-     * - status.podIP: IP of pod.
-     * 
-     */
     @Import(name="fieldRefFieldPath")
     private @Nullable Output<String> fieldRefFieldPath;
 
-    /**
-     * @return Environment variable value reference. Optional values:
-     * - status.podIP: IP of pod.
-     * 
-     */
     public Optional<Output<String>> fieldRefFieldPath() {
         return Optional.ofNullable(this.fieldRefFieldPath);
     }
 
-    /**
-     * The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-     * digits, and underscores (_). It cannot start with a digit.
-     * 
-     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
-    /**
-     * @return The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-     * digits, and underscores (_). It cannot start with a digit.
-     * 
-     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
 
-    /**
-     * The value of the variable. The value can be 0 to 256 characters in length.
-     * 
-     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
-    /**
-     * @return The value of the variable. The value can be 0 to 256 characters in length.
-     * 
-     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -90,69 +62,29 @@ public final class EciScalingConfigurationContainerEnvironmentVarArgs extends co
             $ = new EciScalingConfigurationContainerEnvironmentVarArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param fieldRefFieldPath Environment variable value reference. Optional values:
-         * - status.podIP: IP of pod.
-         * 
-         * @return builder
-         * 
-         */
         public Builder fieldRefFieldPath(@Nullable Output<String> fieldRefFieldPath) {
             $.fieldRefFieldPath = fieldRefFieldPath;
             return this;
         }
 
-        /**
-         * @param fieldRefFieldPath Environment variable value reference. Optional values:
-         * - status.podIP: IP of pod.
-         * 
-         * @return builder
-         * 
-         */
         public Builder fieldRefFieldPath(String fieldRefFieldPath) {
             return fieldRefFieldPath(Output.of(fieldRefFieldPath));
         }
 
-        /**
-         * @param key The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-         * digits, and underscores (_). It cannot start with a digit.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
-        /**
-         * @param key The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-         * digits, and underscores (_). It cannot start with a digit.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
-        /**
-         * @param value The value of the variable. The value can be 0 to 256 characters in length.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value The value of the variable. The value can be 0 to 256 characters in length.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

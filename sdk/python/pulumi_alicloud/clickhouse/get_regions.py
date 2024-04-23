@@ -94,7 +94,6 @@ def get_regions(current: Optional[bool] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -102,12 +101,11 @@ def get_regions(current: Optional[bool] = None,
     default1 = alicloud.clickhouse.get_regions(current=True)
     default2 = alicloud.clickhouse.get_regions(region_id="cn-hangzhou")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool current: Set to true to match only the region configured in the provider. Default value: `true`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str region_id: The Region ID.
+    :param str region_id: You can use specified region_id to find the region and available zones information that supports ClickHouse.
     """
     __args__ = dict()
     __args__['current'] = current
@@ -138,7 +136,6 @@ def get_regions_output(current: Optional[pulumi.Input[Optional[bool]]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -146,11 +143,10 @@ def get_regions_output(current: Optional[pulumi.Input[Optional[bool]]] = None,
     default1 = alicloud.clickhouse.get_regions(current=True)
     default2 = alicloud.clickhouse.get_regions(region_id="cn-hangzhou")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool current: Set to true to match only the region configured in the provider. Default value: `true`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str region_id: The Region ID.
+    :param str region_id: You can use specified region_id to find the region and available zones information that supports ClickHouse.
     """
     ...

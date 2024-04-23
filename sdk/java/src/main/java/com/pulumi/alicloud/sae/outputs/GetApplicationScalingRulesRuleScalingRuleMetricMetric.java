@@ -11,29 +11,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetApplicationScalingRulesRuleScalingRuleMetricMetric {
-    /**
-     * @return The target value of the monitoring indicator.
-     * 
-     */
     private Integer metricTargetAverageUtilization;
-    /**
-     * @return The metric type of the Application Scaling Rule.
-     * 
-     */
     private String metricType;
 
     private GetApplicationScalingRulesRuleScalingRuleMetricMetric() {}
-    /**
-     * @return The target value of the monitoring indicator.
-     * 
-     */
     public Integer metricTargetAverageUtilization() {
         return this.metricTargetAverageUtilization;
     }
-    /**
-     * @return The metric type of the Application Scaling Rule.
-     * 
-     */
     public String metricType() {
         return this.metricType;
     }

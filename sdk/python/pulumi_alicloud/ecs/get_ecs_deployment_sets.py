@@ -123,7 +123,6 @@ def get_ecs_deployment_sets(deployment_set_name: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -133,7 +132,6 @@ def get_ecs_deployment_sets(deployment_set_name: Optional[str] = None,
     name_regex = alicloud.ecs.get_ecs_deployment_sets(name_regex="^my-DeploymentSet")
     pulumi.export("ecsDeploymentSetId2", name_regex.sets[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str deployment_set_name: The name of the deployment set.
@@ -178,7 +176,6 @@ def get_ecs_deployment_sets_output(deployment_set_name: Optional[pulumi.Input[Op
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -188,7 +185,6 @@ def get_ecs_deployment_sets_output(deployment_set_name: Optional[pulumi.Input[Op
     name_regex = alicloud.ecs.get_ecs_deployment_sets(name_regex="^my-DeploymentSet")
     pulumi.export("ecsDeploymentSetId2", name_regex.sets[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str deployment_set_name: The name of the deployment set.

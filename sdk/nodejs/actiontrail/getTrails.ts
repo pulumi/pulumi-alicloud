@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * });
  * export const trailName = _default.then(_default => _default.trails?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTrails(args?: GetTrailsArgs, opts?: pulumi.InvokeOptions): Promise<GetTrailsResult> {
     args = args || {};
@@ -111,7 +109,6 @@ export interface GetTrailsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -121,7 +118,6 @@ export interface GetTrailsResult {
  * });
  * export const trailName = _default.then(_default => _default.trails?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTrailsOutput(args?: GetTrailsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrailsResult> {
     return pulumi.output(args).apply((a: any) => getTrails(a, opts))

@@ -15,17 +15,9 @@ public final class ContainerGroupContainerReadinessProbeTcpSocketArgs extends co
 
     public static final ContainerGroupContainerReadinessProbeTcpSocketArgs Empty = new ContainerGroupContainerReadinessProbeTcpSocketArgs();
 
-    /**
-     * When using the HTTP request method for health check, the port number for HTTP Get request detection.
-     * 
-     */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
-    /**
-     * @return When using the HTTP request method for health check, the port number for HTTP Get request detection.
-     * 
-     */
     public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
     }
@@ -54,23 +46,11 @@ public final class ContainerGroupContainerReadinessProbeTcpSocketArgs extends co
             $ = new ContainerGroupContainerReadinessProbeTcpSocketArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param port When using the HTTP request method for health check, the port number for HTTP Get request detection.
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
 
-        /**
-         * @param port When using the HTTP request method for health check, the port number for HTTP Get request detection.
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }

@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// 
     /// Basic Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -42,7 +41,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -103,9 +101,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         [Output("fsName")]
         public Output<string> FsName { get; private set; } = null!;
 
-        /// <summary>
-        /// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
-        /// </summary>
         [Output("instanceName")]
         public Output<string> InstanceName { get; private set; } = null!;
 
@@ -274,9 +269,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         [Input("fsName")]
         public Input<string>? FsName { get; set; }
 
-        /// <summary>
-        /// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
-        /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 
@@ -413,9 +405,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         [Input("fsName")]
         public Input<string>? FsName { get; set; }
 
-        /// <summary>
-        /// . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
-        /// </summary>
         [Input("instanceName")]
         public Input<string>? InstanceName { get; set; }
 

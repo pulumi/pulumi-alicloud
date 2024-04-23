@@ -120,9 +120,7 @@ func (o DhcpOptionsSetAssociateVpcArrayOutput) Index(i pulumi.IntInput) DhcpOpti
 }
 
 type NetworkAclAttachmentResource struct {
-	// The resource id that the network acl will associate with.
-	ResourceId string `pulumi:"resourceId"`
-	// The resource id that the network acl will associate with. Only support `VSwitch` now.
+	ResourceId   string `pulumi:"resourceId"`
 	ResourceType string `pulumi:"resourceType"`
 }
 
@@ -138,9 +136,7 @@ type NetworkAclAttachmentResourceInput interface {
 }
 
 type NetworkAclAttachmentResourceArgs struct {
-	// The resource id that the network acl will associate with.
-	ResourceId pulumi.StringInput `pulumi:"resourceId"`
-	// The resource id that the network acl will associate with. Only support `VSwitch` now.
+	ResourceId   pulumi.StringInput `pulumi:"resourceId"`
 	ResourceType pulumi.StringInput `pulumi:"resourceType"`
 }
 
@@ -195,12 +191,10 @@ func (o NetworkAclAttachmentResourceOutput) ToNetworkAclAttachmentResourceOutput
 	return o
 }
 
-// The resource id that the network acl will associate with.
 func (o NetworkAclAttachmentResourceOutput) ResourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkAclAttachmentResource) string { return v.ResourceId }).(pulumi.StringOutput)
 }
 
-// The resource id that the network acl will associate with. Only support `VSwitch` now.
 func (o NetworkAclAttachmentResourceOutput) ResourceType() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkAclAttachmentResource) string { return v.ResourceType }).(pulumi.StringOutput)
 }
@@ -407,20 +401,13 @@ func (o NetworkAclEgressAclEntryArrayOutput) Index(i pulumi.IntInput) NetworkAcl
 }
 
 type NetworkAclEntriesEgress struct {
-	// The description of the egress entry.
-	Description *string `pulumi:"description"`
-	// The destination ip of the egress entry.
+	Description       *string `pulumi:"description"`
 	DestinationCidrIp *string `pulumi:"destinationCidrIp"`
-	// The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
-	EntryType *string `pulumi:"entryType"`
-	// The name of the egress entry.
-	Name *string `pulumi:"name"`
-	// The policy of the egress entry. It must be `accept` or `drop`.
-	Policy *string `pulumi:"policy"`
-	// The port of the egress entry.
-	Port *string `pulumi:"port"`
-	// The protocol of the egress entry.
-	Protocol *string `pulumi:"protocol"`
+	EntryType         *string `pulumi:"entryType"`
+	Name              *string `pulumi:"name"`
+	Policy            *string `pulumi:"policy"`
+	Port              *string `pulumi:"port"`
+	Protocol          *string `pulumi:"protocol"`
 }
 
 // NetworkAclEntriesEgressInput is an input type that accepts NetworkAclEntriesEgressArgs and NetworkAclEntriesEgressOutput values.
@@ -435,20 +422,13 @@ type NetworkAclEntriesEgressInput interface {
 }
 
 type NetworkAclEntriesEgressArgs struct {
-	// The description of the egress entry.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The destination ip of the egress entry.
+	Description       pulumi.StringPtrInput `pulumi:"description"`
 	DestinationCidrIp pulumi.StringPtrInput `pulumi:"destinationCidrIp"`
-	// The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
-	EntryType pulumi.StringPtrInput `pulumi:"entryType"`
-	// The name of the egress entry.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The policy of the egress entry. It must be `accept` or `drop`.
-	Policy pulumi.StringPtrInput `pulumi:"policy"`
-	// The port of the egress entry.
-	Port pulumi.StringPtrInput `pulumi:"port"`
-	// The protocol of the egress entry.
-	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
+	EntryType         pulumi.StringPtrInput `pulumi:"entryType"`
+	Name              pulumi.StringPtrInput `pulumi:"name"`
+	Policy            pulumi.StringPtrInput `pulumi:"policy"`
+	Port              pulumi.StringPtrInput `pulumi:"port"`
+	Protocol          pulumi.StringPtrInput `pulumi:"protocol"`
 }
 
 func (NetworkAclEntriesEgressArgs) ElementType() reflect.Type {
@@ -502,37 +482,30 @@ func (o NetworkAclEntriesEgressOutput) ToNetworkAclEntriesEgressOutputWithContex
 	return o
 }
 
-// The description of the egress entry.
 func (o NetworkAclEntriesEgressOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The destination ip of the egress entry.
 func (o NetworkAclEntriesEgressOutput) DestinationCidrIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.DestinationCidrIp }).(pulumi.StringPtrOutput)
 }
 
-// The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
 func (o NetworkAclEntriesEgressOutput) EntryType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.EntryType }).(pulumi.StringPtrOutput)
 }
 
-// The name of the egress entry.
 func (o NetworkAclEntriesEgressOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The policy of the egress entry. It must be `accept` or `drop`.
 func (o NetworkAclEntriesEgressOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
-// The port of the egress entry.
 func (o NetworkAclEntriesEgressOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-// The protocol of the egress entry.
 func (o NetworkAclEntriesEgressOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesEgress) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
@@ -558,19 +531,12 @@ func (o NetworkAclEntriesEgressArrayOutput) Index(i pulumi.IntInput) NetworkAclE
 }
 
 type NetworkAclEntriesIngress struct {
-	// The description of the egress entry.
-	Description *string `pulumi:"description"`
-	// The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
-	EntryType *string `pulumi:"entryType"`
-	// The name of the egress entry.
-	Name *string `pulumi:"name"`
-	// The policy of the egress entry. It must be `accept` or `drop`.
-	Policy *string `pulumi:"policy"`
-	// The port of the egress entry.
-	Port *string `pulumi:"port"`
-	// The protocol of the egress entry.
-	Protocol *string `pulumi:"protocol"`
-	// The source ip of the ingress entry.
+	Description  *string `pulumi:"description"`
+	EntryType    *string `pulumi:"entryType"`
+	Name         *string `pulumi:"name"`
+	Policy       *string `pulumi:"policy"`
+	Port         *string `pulumi:"port"`
+	Protocol     *string `pulumi:"protocol"`
 	SourceCidrIp *string `pulumi:"sourceCidrIp"`
 }
 
@@ -586,19 +552,12 @@ type NetworkAclEntriesIngressInput interface {
 }
 
 type NetworkAclEntriesIngressArgs struct {
-	// The description of the egress entry.
-	Description pulumi.StringPtrInput `pulumi:"description"`
-	// The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
-	EntryType pulumi.StringPtrInput `pulumi:"entryType"`
-	// The name of the egress entry.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// The policy of the egress entry. It must be `accept` or `drop`.
-	Policy pulumi.StringPtrInput `pulumi:"policy"`
-	// The port of the egress entry.
-	Port pulumi.StringPtrInput `pulumi:"port"`
-	// The protocol of the egress entry.
-	Protocol pulumi.StringPtrInput `pulumi:"protocol"`
-	// The source ip of the ingress entry.
+	Description  pulumi.StringPtrInput `pulumi:"description"`
+	EntryType    pulumi.StringPtrInput `pulumi:"entryType"`
+	Name         pulumi.StringPtrInput `pulumi:"name"`
+	Policy       pulumi.StringPtrInput `pulumi:"policy"`
+	Port         pulumi.StringPtrInput `pulumi:"port"`
+	Protocol     pulumi.StringPtrInput `pulumi:"protocol"`
 	SourceCidrIp pulumi.StringPtrInput `pulumi:"sourceCidrIp"`
 }
 
@@ -653,37 +612,30 @@ func (o NetworkAclEntriesIngressOutput) ToNetworkAclEntriesIngressOutputWithCont
 	return o
 }
 
-// The description of the egress entry.
 func (o NetworkAclEntriesIngressOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesIngress) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
 func (o NetworkAclEntriesIngressOutput) EntryType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesIngress) *string { return v.EntryType }).(pulumi.StringPtrOutput)
 }
 
-// The name of the egress entry.
 func (o NetworkAclEntriesIngressOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesIngress) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// The policy of the egress entry. It must be `accept` or `drop`.
 func (o NetworkAclEntriesIngressOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesIngress) *string { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
-// The port of the egress entry.
 func (o NetworkAclEntriesIngressOutput) Port() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesIngress) *string { return v.Port }).(pulumi.StringPtrOutput)
 }
 
-// The protocol of the egress entry.
 func (o NetworkAclEntriesIngressOutput) Protocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesIngress) *string { return v.Protocol }).(pulumi.StringPtrOutput)
 }
 
-// The source ip of the ingress entry.
 func (o NetworkAclEntriesIngressOutput) SourceCidrIp() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkAclEntriesIngress) *string { return v.SourceCidrIp }).(pulumi.StringPtrOutput)
 }
@@ -1126,9 +1078,7 @@ func (o NetworkIpv6CidrBlockArrayOutput) Index(i pulumi.IntInput) NetworkIpv6Cid
 }
 
 type PrefixListEntry struct {
-	// The CIDR address block of the prefix list.
-	Cidr *string `pulumi:"cidr"`
-	// The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	Cidr        *string `pulumi:"cidr"`
 	Description *string `pulumi:"description"`
 }
 
@@ -1144,9 +1094,7 @@ type PrefixListEntryInput interface {
 }
 
 type PrefixListEntryArgs struct {
-	// The CIDR address block of the prefix list.
-	Cidr pulumi.StringPtrInput `pulumi:"cidr"`
-	// The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
+	Cidr        pulumi.StringPtrInput `pulumi:"cidr"`
 	Description pulumi.StringPtrInput `pulumi:"description"`
 }
 
@@ -1201,12 +1149,10 @@ func (o PrefixListEntryOutput) ToPrefixListEntryOutputWithContext(ctx context.Co
 	return o
 }
 
-// The CIDR address block of the prefix list.
 func (o PrefixListEntryOutput) Cidr() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrefixListEntry) *string { return v.Cidr }).(pulumi.StringPtrOutput)
 }
 
-// The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
 func (o PrefixListEntryOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PrefixListEntry) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -1392,27 +1338,12 @@ func (o PrefixListPrefixListAssociationArrayOutput) Index(i pulumi.IntInput) Pre
 }
 
 type TrafficMirrorFilterEgressRuleType struct {
-	// Collection strategy for outbound rules. Value:
-	// - accept: collects network traffic.
-	// - drop: No network traffic is collected.
-	Action string `pulumi:"action"`
-	// DestinationCidrBlock.
-	DestinationCidrBlock *string `pulumi:"destinationCidrBlock"`
-	// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-	DestinationPortRange *string `pulumi:"destinationPortRange"`
-	// Priority.
-	Priority *int `pulumi:"priority"`
-	// The type of protocol used by the outbound network traffic to be mirrored. Value:
-	// - ALL: ALL agreements.
-	// - ICMP: Network Control Message Protocol.
-	// - TCP: Transmission Control Protocol.
-	// - UDP: User Datagram Protocol.
-	Protocol string `pulumi:"protocol"`
-	// The source address of the outbound rule network traffic.
-	SourceCidrBlock *string `pulumi:"sourceCidrBlock"`
-	// The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	Action                        string  `pulumi:"action"`
+	DestinationCidrBlock          *string `pulumi:"destinationCidrBlock"`
+	DestinationPortRange          *string `pulumi:"destinationPortRange"`
+	Priority                      *int    `pulumi:"priority"`
+	Protocol                      string  `pulumi:"protocol"`
+	SourceCidrBlock               *string `pulumi:"sourceCidrBlock"`
 	SourcePortRange               *string `pulumi:"sourcePortRange"`
 	TrafficMirrorFilterRuleStatus *string `pulumi:"trafficMirrorFilterRuleStatus"`
 }
@@ -1429,27 +1360,12 @@ type TrafficMirrorFilterEgressRuleTypeInput interface {
 }
 
 type TrafficMirrorFilterEgressRuleTypeArgs struct {
-	// Collection strategy for outbound rules. Value:
-	// - accept: collects network traffic.
-	// - drop: No network traffic is collected.
-	Action pulumi.StringInput `pulumi:"action"`
-	// DestinationCidrBlock.
-	DestinationCidrBlock pulumi.StringPtrInput `pulumi:"destinationCidrBlock"`
-	// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-	DestinationPortRange pulumi.StringPtrInput `pulumi:"destinationPortRange"`
-	// Priority.
-	Priority pulumi.IntPtrInput `pulumi:"priority"`
-	// The type of protocol used by the outbound network traffic to be mirrored. Value:
-	// - ALL: ALL agreements.
-	// - ICMP: Network Control Message Protocol.
-	// - TCP: Transmission Control Protocol.
-	// - UDP: User Datagram Protocol.
-	Protocol pulumi.StringInput `pulumi:"protocol"`
-	// The source address of the outbound rule network traffic.
-	SourceCidrBlock pulumi.StringPtrInput `pulumi:"sourceCidrBlock"`
-	// The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	Action                        pulumi.StringInput    `pulumi:"action"`
+	DestinationCidrBlock          pulumi.StringPtrInput `pulumi:"destinationCidrBlock"`
+	DestinationPortRange          pulumi.StringPtrInput `pulumi:"destinationPortRange"`
+	Priority                      pulumi.IntPtrInput    `pulumi:"priority"`
+	Protocol                      pulumi.StringInput    `pulumi:"protocol"`
+	SourceCidrBlock               pulumi.StringPtrInput `pulumi:"sourceCidrBlock"`
 	SourcePortRange               pulumi.StringPtrInput `pulumi:"sourcePortRange"`
 	TrafficMirrorFilterRuleStatus pulumi.StringPtrInput `pulumi:"trafficMirrorFilterRuleStatus"`
 }
@@ -1505,45 +1421,30 @@ func (o TrafficMirrorFilterEgressRuleTypeOutput) ToTrafficMirrorFilterEgressRule
 	return o
 }
 
-// Collection strategy for outbound rules. Value:
-// - accept: collects network traffic.
-// - drop: No network traffic is collected.
 func (o TrafficMirrorFilterEgressRuleTypeOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) string { return v.Action }).(pulumi.StringOutput)
 }
 
-// DestinationCidrBlock.
 func (o TrafficMirrorFilterEgressRuleTypeOutput) DestinationCidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) *string { return v.DestinationCidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
 func (o TrafficMirrorFilterEgressRuleTypeOutput) DestinationPortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) *string { return v.DestinationPortRange }).(pulumi.StringPtrOutput)
 }
 
-// Priority.
 func (o TrafficMirrorFilterEgressRuleTypeOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
-// The type of protocol used by the outbound network traffic to be mirrored. Value:
-// - ALL: ALL agreements.
-// - ICMP: Network Control Message Protocol.
-// - TCP: Transmission Control Protocol.
-// - UDP: User Datagram Protocol.
 func (o TrafficMirrorFilterEgressRuleTypeOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// The source address of the outbound rule network traffic.
 func (o TrafficMirrorFilterEgressRuleTypeOutput) SourceCidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) *string { return v.SourceCidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
 func (o TrafficMirrorFilterEgressRuleTypeOutput) SourcePortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterEgressRuleType) *string { return v.SourcePortRange }).(pulumi.StringPtrOutput)
 }
@@ -1573,27 +1474,12 @@ func (o TrafficMirrorFilterEgressRuleTypeArrayOutput) Index(i pulumi.IntInput) T
 }
 
 type TrafficMirrorFilterIngressRuleType struct {
-	// Collection strategy for outbound rules. Value:
-	// - accept: collects network traffic.
-	// - drop: No network traffic is collected.
-	Action string `pulumi:"action"`
-	// DestinationCidrBlock.
-	DestinationCidrBlock *string `pulumi:"destinationCidrBlock"`
-	// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-	DestinationPortRange *string `pulumi:"destinationPortRange"`
-	// Priority.
-	Priority *int `pulumi:"priority"`
-	// The type of protocol used by the outbound network traffic to be mirrored. Value:
-	// - ALL: ALL agreements.
-	// - ICMP: Network Control Message Protocol.
-	// - TCP: Transmission Control Protocol.
-	// - UDP: User Datagram Protocol.
-	Protocol string `pulumi:"protocol"`
-	// The source address of the outbound rule network traffic.
-	SourceCidrBlock *string `pulumi:"sourceCidrBlock"`
-	// The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	Action                        string  `pulumi:"action"`
+	DestinationCidrBlock          *string `pulumi:"destinationCidrBlock"`
+	DestinationPortRange          *string `pulumi:"destinationPortRange"`
+	Priority                      *int    `pulumi:"priority"`
+	Protocol                      string  `pulumi:"protocol"`
+	SourceCidrBlock               *string `pulumi:"sourceCidrBlock"`
 	SourcePortRange               *string `pulumi:"sourcePortRange"`
 	TrafficMirrorFilterRuleStatus *string `pulumi:"trafficMirrorFilterRuleStatus"`
 }
@@ -1610,27 +1496,12 @@ type TrafficMirrorFilterIngressRuleTypeInput interface {
 }
 
 type TrafficMirrorFilterIngressRuleTypeArgs struct {
-	// Collection strategy for outbound rules. Value:
-	// - accept: collects network traffic.
-	// - drop: No network traffic is collected.
-	Action pulumi.StringInput `pulumi:"action"`
-	// DestinationCidrBlock.
-	DestinationCidrBlock pulumi.StringPtrInput `pulumi:"destinationCidrBlock"`
-	// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-	DestinationPortRange pulumi.StringPtrInput `pulumi:"destinationPortRange"`
-	// Priority.
-	Priority pulumi.IntPtrInput `pulumi:"priority"`
-	// The type of protocol used by the outbound network traffic to be mirrored. Value:
-	// - ALL: ALL agreements.
-	// - ICMP: Network Control Message Protocol.
-	// - TCP: Transmission Control Protocol.
-	// - UDP: User Datagram Protocol.
-	Protocol pulumi.StringInput `pulumi:"protocol"`
-	// The source address of the outbound rule network traffic.
-	SourceCidrBlock pulumi.StringPtrInput `pulumi:"sourceCidrBlock"`
-	// The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-	// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
+	Action                        pulumi.StringInput    `pulumi:"action"`
+	DestinationCidrBlock          pulumi.StringPtrInput `pulumi:"destinationCidrBlock"`
+	DestinationPortRange          pulumi.StringPtrInput `pulumi:"destinationPortRange"`
+	Priority                      pulumi.IntPtrInput    `pulumi:"priority"`
+	Protocol                      pulumi.StringInput    `pulumi:"protocol"`
+	SourceCidrBlock               pulumi.StringPtrInput `pulumi:"sourceCidrBlock"`
 	SourcePortRange               pulumi.StringPtrInput `pulumi:"sourcePortRange"`
 	TrafficMirrorFilterRuleStatus pulumi.StringPtrInput `pulumi:"trafficMirrorFilterRuleStatus"`
 }
@@ -1686,45 +1557,30 @@ func (o TrafficMirrorFilterIngressRuleTypeOutput) ToTrafficMirrorFilterIngressRu
 	return o
 }
 
-// Collection strategy for outbound rules. Value:
-// - accept: collects network traffic.
-// - drop: No network traffic is collected.
 func (o TrafficMirrorFilterIngressRuleTypeOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) string { return v.Action }).(pulumi.StringOutput)
 }
 
-// DestinationCidrBlock.
 func (o TrafficMirrorFilterIngressRuleTypeOutput) DestinationCidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) *string { return v.DestinationCidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
 func (o TrafficMirrorFilterIngressRuleTypeOutput) DestinationPortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) *string { return v.DestinationPortRange }).(pulumi.StringPtrOutput)
 }
 
-// Priority.
 func (o TrafficMirrorFilterIngressRuleTypeOutput) Priority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) *int { return v.Priority }).(pulumi.IntPtrOutput)
 }
 
-// The type of protocol used by the outbound network traffic to be mirrored. Value:
-// - ALL: ALL agreements.
-// - ICMP: Network Control Message Protocol.
-// - TCP: Transmission Control Protocol.
-// - UDP: User Datagram Protocol.
 func (o TrafficMirrorFilterIngressRuleTypeOutput) Protocol() pulumi.StringOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) string { return v.Protocol }).(pulumi.StringOutput)
 }
 
-// The source address of the outbound rule network traffic.
 func (o TrafficMirrorFilterIngressRuleTypeOutput) SourceCidrBlock() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) *string { return v.SourceCidrBlock }).(pulumi.StringPtrOutput)
 }
 
-// The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-// > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
 func (o TrafficMirrorFilterIngressRuleTypeOutput) SourcePortRange() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v TrafficMirrorFilterIngressRuleType) *string { return v.SourcePortRange }).(pulumi.StringPtrOutput)
 }

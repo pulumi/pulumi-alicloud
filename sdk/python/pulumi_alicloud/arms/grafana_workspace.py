@@ -274,7 +274,6 @@ class GrafanaWorkspace(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -295,7 +294,6 @@ class GrafanaWorkspace(pulumi.CustomResource):
                 "For": "example",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -331,7 +329,6 @@ class GrafanaWorkspace(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -352,7 +349,6 @@ class GrafanaWorkspace(pulumi.CustomResource):
                 "For": "example",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

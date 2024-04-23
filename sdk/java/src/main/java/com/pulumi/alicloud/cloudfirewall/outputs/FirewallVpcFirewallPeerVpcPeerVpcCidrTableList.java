@@ -12,29 +12,13 @@ import java.util.Objects;
 
 @CustomType
 public final class FirewallVpcFirewallPeerVpcPeerVpcCidrTableList {
-    /**
-     * @return Peer VPC route entry list information. See `peer_route_entry_list` below.
-     * 
-     */
     private List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList> peerRouteEntryLists;
-    /**
-     * @return The ID of the route table of the peer VPC.
-     * 
-     */
     private String peerRouteTableId;
 
     private FirewallVpcFirewallPeerVpcPeerVpcCidrTableList() {}
-    /**
-     * @return Peer VPC route entry list information. See `peer_route_entry_list` below.
-     * 
-     */
     public List<FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList> peerRouteEntryLists() {
         return this.peerRouteEntryLists;
     }
-    /**
-     * @return The ID of the route table of the peer VPC.
-     * 
-     */
     public String peerRouteTableId() {
         return this.peerRouteTableId;
     }

@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -53,20 +52,20 @@ import * as utilities from "../utilities";
  * });
  * const defaultRole = new alicloud.ram.Role("default", {
  *     name: "hbrexamplerole",
- *     document: `		{
- * 			"Statement": [
- * 			{
- * 				"Action": "sts:AssumeRole",
- * 				"Effect": "Allow",
- * 				"Principal": {
- * 					"Service": [
- * 						"crossbackup.hbr.aliyuncs.com"
- * 					]
- * 				}
- * 			}
- * 			],
- *   			"Version": "1"
- * 		}
+ *     document: `\x09\x09{
+ * \x09\x09\x09"Statement": [
+ * \x09\x09\x09{
+ * \x09\x09\x09\x09"Action": "sts:AssumeRole",
+ * \x09\x09\x09\x09"Effect": "Allow",
+ * \x09\x09\x09\x09"Principal": {
+ * \x09\x09\x09\x09\x09"Service": [
+ * \x09\x09\x09\x09\x09\x09"crossbackup.hbr.aliyuncs.com"
+ * \x09\x09\x09\x09\x09]
+ * \x09\x09\x09\x09}
+ * \x09\x09\x09}
+ * \x09\x09\x09],
+ *   \x09\x09\x09"Version": "1"
+ * \x09\x09}
  * `,
  *     force: true,
  * });
@@ -92,7 +91,6 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

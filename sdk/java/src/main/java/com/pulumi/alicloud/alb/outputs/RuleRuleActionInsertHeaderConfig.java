@@ -11,47 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RuleRuleActionInsertHeaderConfig {
-    /**
-     * @return The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-     * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-     * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-     * 
-     */
     private @Nullable String key;
-    /**
-     * @return The content of the inserted header field. Valid values:
-     * * If the `value_type` is set to `SystemDefined`, the following values are used:
-     * 
-     */
     private @Nullable String value;
-    /**
-     * @return The value type of the inserted header field. Valid values:
-     * 
-     */
     private @Nullable String valueType;
 
     private RuleRuleActionInsertHeaderConfig() {}
-    /**
-     * @return The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader.
-     * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-     * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-     * 
-     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
-    /**
-     * @return The content of the inserted header field. Valid values:
-     * * If the `value_type` is set to `SystemDefined`, the following values are used:
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }
-    /**
-     * @return The value type of the inserted header field. Valid values:
-     * 
-     */
     public Optional<String> valueType() {
         return Optional.ofNullable(this.valueType);
     }

@@ -29,7 +29,6 @@ namespace Pulumi.AliCloud.Cassandra
     /// 
     /// ### Create a cassandra dataCenter
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -70,7 +69,6 @@ namespace Pulumi.AliCloud.Cassandra
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// This is a example for class netType dataCenter. You can find more detail with the examples/cassandra_data_center dir.
     /// 

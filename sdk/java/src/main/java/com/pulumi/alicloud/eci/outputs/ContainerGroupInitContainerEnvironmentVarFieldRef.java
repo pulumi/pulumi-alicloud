@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerGroupInitContainerEnvironmentVarFieldRef {
-    /**
-     * @return The path of the reference.
-     * 
-     */
     private @Nullable String fieldPath;
 
     private ContainerGroupInitContainerEnvironmentVarFieldRef() {}
-    /**
-     * @return The path of the reference.
-     * 
-     */
     public Optional<String> fieldPath() {
         return Optional.ofNullable(this.fieldPath);
     }

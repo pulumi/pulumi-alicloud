@@ -11,41 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ServerlessInstanceSecurityIpGroup {
-    /**
-     * @return The attribute of the IP whitelist. This parameter is empty by default.
-     * 
-     */
     private @Nullable String securityIpGroupAttribute;
-    /**
-     * @return The name of the IP whitelist.
-     * 
-     */
     private @Nullable String securityIpGroupName;
-    /**
-     * @return The IP addresses in the whitelist.
-     * 
-     */
     private @Nullable String securityIpList;
 
     private ServerlessInstanceSecurityIpGroup() {}
-    /**
-     * @return The attribute of the IP whitelist. This parameter is empty by default.
-     * 
-     */
     public Optional<String> securityIpGroupAttribute() {
         return Optional.ofNullable(this.securityIpGroupAttribute);
     }
-    /**
-     * @return The name of the IP whitelist.
-     * 
-     */
     public Optional<String> securityIpGroupName() {
         return Optional.ofNullable(this.securityIpGroupName);
     }
-    /**
-     * @return The IP addresses in the whitelist.
-     * 
-     */
     public Optional<String> securityIpList() {
         return Optional.ofNullable(this.securityIpList);
     }

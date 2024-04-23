@@ -11,17 +11,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetListenersListenerDefaultActionForwardGroupConfig {
-    /**
-     * @return The destination server group to which requests are forwarded.
-     * 
-     */
     private List<GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple> serverGroupTuples;
 
     private GetListenersListenerDefaultActionForwardGroupConfig() {}
-    /**
-     * @return The destination server group to which requests are forwarded.
-     * 
-     */
     public List<GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple> serverGroupTuples() {
         return this.serverGroupTuples;
     }

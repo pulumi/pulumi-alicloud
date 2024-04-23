@@ -123,7 +123,6 @@ def get_ecs_prefix_lists(address_family: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -132,10 +131,9 @@ def get_ecs_prefix_lists(address_family: Optional[str] = None,
         name_regex="tf-testAcc")
     pulumi.export("outputId", example.lists[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str address_family: The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+    :param str address_family: The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
     :param Sequence[str] ids: A list of Prefix List IDs.
     :param str name_regex: A regex string to filter results by `prefix_list_name`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
@@ -176,7 +174,6 @@ def get_ecs_prefix_lists_output(address_family: Optional[pulumi.Input[Optional[s
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -185,10 +182,9 @@ def get_ecs_prefix_lists_output(address_family: Optional[pulumi.Input[Optional[s
         name_regex="tf-testAcc")
     pulumi.export("outputId", example.lists[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str address_family: The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+    :param str address_family: The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
     :param Sequence[str] ids: A list of Prefix List IDs.
     :param str name_regex: A regex string to filter results by `prefix_list_name`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).

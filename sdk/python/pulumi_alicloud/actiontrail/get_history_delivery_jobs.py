@@ -104,7 +104,6 @@ def get_history_delivery_jobs(enable_details: Optional[bool] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -115,7 +114,6 @@ def get_history_delivery_jobs(enable_details: Optional[bool] = None,
         status=2)
     pulumi.export("actiontrailHistoryDeliveryJobId2", status.jobs[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of History Delivery Job IDs.
@@ -154,7 +152,6 @@ def get_history_delivery_jobs_output(enable_details: Optional[pulumi.Input[Optio
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -165,7 +162,6 @@ def get_history_delivery_jobs_output(enable_details: Optional[pulumi.Input[Optio
         status=2)
     pulumi.export("actiontrailHistoryDeliveryJobId2", status.jobs[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of History Delivery Job IDs.

@@ -15,17 +15,9 @@ public final class NodePoolManagementAutoRepairPolicyArgs extends com.pulumi.res
 
     public static final NodePoolManagementAutoRepairPolicyArgs Empty = new NodePoolManagementAutoRepairPolicyArgs();
 
-    /**
-     * Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
-     * 
-     */
     @Import(name="restartNode")
     private @Nullable Output<Boolean> restartNode;
 
-    /**
-     * @return Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
-     * 
-     */
     public Optional<Output<Boolean>> restartNode() {
         return Optional.ofNullable(this.restartNode);
     }
@@ -54,23 +46,11 @@ public final class NodePoolManagementAutoRepairPolicyArgs extends com.pulumi.res
             $ = new NodePoolManagementAutoRepairPolicyArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param restartNode Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder restartNode(@Nullable Output<Boolean> restartNode) {
             $.restartNode = restartNode;
             return this;
         }
 
-        /**
-         * @param restartNode Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder restartNode(Boolean restartNode) {
             return restartNode(Output.of(restartNode));
         }

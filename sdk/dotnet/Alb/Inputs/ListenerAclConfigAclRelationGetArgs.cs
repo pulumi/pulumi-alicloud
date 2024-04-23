@@ -12,9 +12,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
 
     public sealed class ListenerAclConfigAclRelationGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Snooping Binding of the Access Policy Group ID List.
-        /// </summary>
         [Input("aclId")]
         public Input<string>? AclId { get; set; }
 

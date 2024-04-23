@@ -144,7 +144,6 @@ def get_domains(accelerator_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -161,7 +160,6 @@ def get_domains(accelerator_id: Optional[str] = None,
         domain="your_domain")
     pulumi.export("alicloudGaDomainExampleId", default_get_domains.domains[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The ID of the global acceleration instance.
@@ -209,7 +207,6 @@ def get_domains_output(accelerator_id: Optional[pulumi.Input[Optional[str]]] = N
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -226,7 +223,6 @@ def get_domains_output(accelerator_id: Optional[pulumi.Input[Optional[str]]] = N
         domain="your_domain")
     pulumi.export("alicloudGaDomainExampleId", default_get_domains.domains[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The ID of the global acceleration instance.

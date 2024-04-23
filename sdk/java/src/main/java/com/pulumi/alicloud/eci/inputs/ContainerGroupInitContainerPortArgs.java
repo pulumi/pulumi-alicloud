@@ -16,32 +16,16 @@ public final class ContainerGroupInitContainerPortArgs extends com.pulumi.resour
 
     public static final ContainerGroupInitContainerPortArgs Empty = new ContainerGroupInitContainerPortArgs();
 
-    /**
-     * When using the HTTP request method for health check, the port number for HTTP Get request detection.
-     * 
-     */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
-    /**
-     * @return When using the HTTP request method for health check, the port number for HTTP Get request detection.
-     * 
-     */
     public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
     }
 
-    /**
-     * The type of the protocol. Valid values: `TCP` and `UDP`.
-     * 
-     */
     @Import(name="protocol")
     private @Nullable Output<String> protocol;
 
-    /**
-     * @return The type of the protocol. Valid values: `TCP` and `UDP`.
-     * 
-     */
     public Optional<Output<String>> protocol() {
         return Optional.ofNullable(this.protocol);
     }
@@ -71,44 +55,20 @@ public final class ContainerGroupInitContainerPortArgs extends com.pulumi.resour
             $ = new ContainerGroupInitContainerPortArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param port When using the HTTP request method for health check, the port number for HTTP Get request detection.
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
 
-        /**
-         * @param port When using the HTTP request method for health check, the port number for HTTP Get request detection.
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }
 
-        /**
-         * @param protocol The type of the protocol. Valid values: `TCP` and `UDP`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder protocol(@Nullable Output<String> protocol) {
             $.protocol = protocol;
             return this;
         }
 
-        /**
-         * @param protocol The type of the protocol. Valid values: `TCP` and `UDP`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder protocol(String protocol) {
             return protocol(Output.of(protocol));
         }

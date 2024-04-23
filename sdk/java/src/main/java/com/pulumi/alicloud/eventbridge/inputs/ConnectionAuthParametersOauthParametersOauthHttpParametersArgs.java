@@ -18,47 +18,23 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersArg
 
     public static final ConnectionAuthParametersOauthParametersOauthHttpParametersArgs Empty = new ConnectionAuthParametersOauthParametersOauthHttpParametersArgs();
 
-    /**
-     * The parameters that are configured for the request body. See `body_parameters` below.
-     * 
-     */
     @Import(name="bodyParameters")
     private @Nullable Output<List<ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs>> bodyParameters;
 
-    /**
-     * @return The parameters that are configured for the request body. See `body_parameters` below.
-     * 
-     */
     public Optional<Output<List<ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs>>> bodyParameters() {
         return Optional.ofNullable(this.bodyParameters);
     }
 
-    /**
-     * The parameters that are configured for the request header. See `header_parameters` below.
-     * 
-     */
     @Import(name="headerParameters")
     private @Nullable Output<List<ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs>> headerParameters;
 
-    /**
-     * @return The parameters that are configured for the request header. See `header_parameters` below.
-     * 
-     */
     public Optional<Output<List<ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs>>> headerParameters() {
         return Optional.ofNullable(this.headerParameters);
     }
 
-    /**
-     * The parameters that are configured for the request path. See `query_string_parameters` below.
-     * 
-     */
     @Import(name="queryStringParameters")
     private @Nullable Output<List<ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs>> queryStringParameters;
 
-    /**
-     * @return The parameters that are configured for the request path. See `query_string_parameters` below.
-     * 
-     */
     public Optional<Output<List<ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs>>> queryStringParameters() {
         return Optional.ofNullable(this.queryStringParameters);
     }
@@ -89,95 +65,41 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersArg
             $ = new ConnectionAuthParametersOauthParametersOauthHttpParametersArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param bodyParameters The parameters that are configured for the request body. See `body_parameters` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder bodyParameters(@Nullable Output<List<ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs>> bodyParameters) {
             $.bodyParameters = bodyParameters;
             return this;
         }
 
-        /**
-         * @param bodyParameters The parameters that are configured for the request body. See `body_parameters` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder bodyParameters(List<ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs> bodyParameters) {
             return bodyParameters(Output.of(bodyParameters));
         }
 
-        /**
-         * @param bodyParameters The parameters that are configured for the request body. See `body_parameters` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder bodyParameters(ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs... bodyParameters) {
             return bodyParameters(List.of(bodyParameters));
         }
 
-        /**
-         * @param headerParameters The parameters that are configured for the request header. See `header_parameters` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder headerParameters(@Nullable Output<List<ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs>> headerParameters) {
             $.headerParameters = headerParameters;
             return this;
         }
 
-        /**
-         * @param headerParameters The parameters that are configured for the request header. See `header_parameters` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder headerParameters(List<ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs> headerParameters) {
             return headerParameters(Output.of(headerParameters));
         }
 
-        /**
-         * @param headerParameters The parameters that are configured for the request header. See `header_parameters` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder headerParameters(ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs... headerParameters) {
             return headerParameters(List.of(headerParameters));
         }
 
-        /**
-         * @param queryStringParameters The parameters that are configured for the request path. See `query_string_parameters` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder queryStringParameters(@Nullable Output<List<ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs>> queryStringParameters) {
             $.queryStringParameters = queryStringParameters;
             return this;
         }
 
-        /**
-         * @param queryStringParameters The parameters that are configured for the request path. See `query_string_parameters` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder queryStringParameters(List<ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs> queryStringParameters) {
             return queryStringParameters(Output.of(queryStringParameters));
         }
 
-        /**
-         * @param queryStringParameters The parameters that are configured for the request path. See `query_string_parameters` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder queryStringParameters(ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs... queryStringParameters) {
             return queryStringParameters(List.of(queryStringParameters));
         }

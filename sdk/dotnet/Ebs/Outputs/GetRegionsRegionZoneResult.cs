@@ -13,9 +13,6 @@ namespace Pulumi.AliCloud.Ebs.Outputs
     [OutputType]
     public sealed class GetRegionsRegionZoneResult
     {
-        /// <summary>
-        /// The ID of the zone.
-        /// </summary>
         public readonly string ZoneId;
 
         [OutputConstructor]

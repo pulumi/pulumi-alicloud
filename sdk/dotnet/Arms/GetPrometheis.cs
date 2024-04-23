@@ -22,7 +22,6 @@ namespace Pulumi.AliCloud.Arms
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -77,7 +76,6 @@ namespace Pulumi.AliCloud.Arms
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPrometheisResult> InvokeAsync(GetPrometheisArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPrometheisResult>("alicloud:arms/getPrometheis:getPrometheis", args ?? new GetPrometheisArgs(), options.WithDefaults());
@@ -93,7 +91,6 @@ namespace Pulumi.AliCloud.Arms
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -148,7 +145,6 @@ namespace Pulumi.AliCloud.Arms
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPrometheisResult> Invoke(GetPrometheisInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrometheisResult>("alicloud:arms/getPrometheis:getPrometheis", args ?? new GetPrometheisInvokeArgs(), options.WithDefaults());

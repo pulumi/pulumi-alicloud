@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
     [OutputType]
     public sealed class SyntheticTaskMonitorConfApiHttpRequestBody
     {
-        /// <summary>
-        /// The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
-        /// </summary>
         public readonly string? Content;
-        /// <summary>
-        /// Assertion type, including: httpresead, httpresead, HttpResBody, HttpResBodyJson, httpressetime, IcmpPackLoss (packet loss rate), IcmpPackMaxLatency (maximum packet delay ms), icmppackwebscreen, fmppackavglatency (average delay rendering), TraceRouteHops (number of hops), dnsarecname, websiteOnload (full load time), see the supplement below for specific use.
-        /// </summary>
         public readonly string? Type;
 
         [OutputConstructor]

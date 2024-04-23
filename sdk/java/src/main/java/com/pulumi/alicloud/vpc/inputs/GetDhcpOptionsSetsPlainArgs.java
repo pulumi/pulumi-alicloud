@@ -16,18 +16,14 @@ public final class GetDhcpOptionsSetsPlainArgs extends com.pulumi.resources.Invo
     public static final GetDhcpOptionsSetsPlainArgs Empty = new GetDhcpOptionsSetsPlainArgs();
 
     /**
-     * The root domain, for example, example.com. After a DHCP options set is associated with a
-     * Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
-     * ECS instances in the VPC network.
+     * The name of the DHCP options set.The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
      * 
      */
     @Import(name="dhcpOptionsSetName")
     private @Nullable String dhcpOptionsSetName;
 
     /**
-     * @return The root domain, for example, example.com. After a DHCP options set is associated with a
-     * Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
-     * ECS instances in the VPC network.
+     * @return The name of the DHCP options set.The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
      * 
      */
     public Optional<String> dhcpOptionsSetName() {
@@ -35,18 +31,14 @@ public final class GetDhcpOptionsSetsPlainArgs extends com.pulumi.resources.Invo
     }
 
     /**
-     * The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
-     * Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
-     * instances in the VPC network.
+     * The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
      * 
      */
     @Import(name="domainName")
     private @Nullable String domainName;
 
     /**
-     * @return The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
-     * Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
-     * instances in the VPC network.
+     * @return The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
      * 
      */
     public Optional<String> domainName() {
@@ -143,9 +135,7 @@ public final class GetDhcpOptionsSetsPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param dhcpOptionsSetName The root domain, for example, example.com. After a DHCP options set is associated with a
-         * Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the
-         * ECS instances in the VPC network.
+         * @param dhcpOptionsSetName The name of the DHCP options set.The name must be 2 to 128 characters in length and can contain letters, Chinese characters, digits, underscores (_), and hyphens (-). It must start with a letter or a Chinese character.
          * 
          * @return builder
          * 
@@ -156,9 +146,7 @@ public final class GetDhcpOptionsSetsPlainArgs extends com.pulumi.resources.Invo
         }
 
         /**
-         * @param domainName The root domain, for example, example.com. After a DHCP options set is associated with a Virtual
-         * Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS
-         * instances in the VPC network.
+         * @param domainName The root domain, for example, example.com. After a DHCP options set is associated with a Virtual Private Cloud (VPC) network, the root domain in the DHCP options set is automatically synchronized to the ECS instances in the VPC network.
          * 
          * @return builder
          * 

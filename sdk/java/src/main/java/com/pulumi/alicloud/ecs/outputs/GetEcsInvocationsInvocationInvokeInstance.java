@@ -12,173 +12,65 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEcsInvocationsInvocationInvokeInstance {
-    /**
-     * @return The start time of the execution.
-     * 
-     */
     private String creationTime;
-    /**
-     * @return The size of truncated and discarded text when the value of the Output response parameter exceeds 24 KB in size.
-     * 
-     */
     private Integer dropped;
     private String errorCode;
-    /**
-     * @return Details about the reason why the command failed to be sent or run.
-     * 
-     */
     private String errorInfo;
-    /**
-     * @return The exit code of the execution.
-     * 
-     */
     private Integer exitCode;
-    /**
-     * @return The end time of the execution.
-     * 
-     */
     private String finishTime;
-    /**
-     * @return The ID of the instance.
-     * 
-     */
     private String instanceId;
     private String instanceInvokeStatus;
-    /**
-     * @return The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
-     * 
-     */
     private String invocationStatus;
-    /**
-     * @return The output of the command.
-     * 
-     */
     private String output;
-    /**
-     * @return The number of times that the command is run on the instance.
-     * 
-     */
     private Integer repeats;
-    /**
-     * @return The time when the command started to be run on the instance.
-     * 
-     */
     private String startTime;
-    /**
-     * @return The time when the command stopped being run on the instance. If you call the StopInvocation operation to manually stop the execution, the value is the time when you call the operation.
-     * 
-     */
     private String stopTime;
-    /**
-     * @return Indicates whether the commands are to be automatically run.
-     * * `error_code	` - The code that indicates why the command failed to be sent or run.
-     * * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
-     * 
-     */
     private Boolean timed;
-    /**
-     * @return The time when the execution state was updated.
-     * 
-     */
     private String updateTime;
 
     private GetEcsInvocationsInvocationInvokeInstance() {}
-    /**
-     * @return The start time of the execution.
-     * 
-     */
     public String creationTime() {
         return this.creationTime;
     }
-    /**
-     * @return The size of truncated and discarded text when the value of the Output response parameter exceeds 24 KB in size.
-     * 
-     */
     public Integer dropped() {
         return this.dropped;
     }
     public String errorCode() {
         return this.errorCode;
     }
-    /**
-     * @return Details about the reason why the command failed to be sent or run.
-     * 
-     */
     public String errorInfo() {
         return this.errorInfo;
     }
-    /**
-     * @return The exit code of the execution.
-     * 
-     */
     public Integer exitCode() {
         return this.exitCode;
     }
-    /**
-     * @return The end time of the execution.
-     * 
-     */
     public String finishTime() {
         return this.finishTime;
     }
-    /**
-     * @return The ID of the instance.
-     * 
-     */
     public String instanceId() {
         return this.instanceId;
     }
     public String instanceInvokeStatus() {
         return this.instanceInvokeStatus;
     }
-    /**
-     * @return The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
-     * 
-     */
     public String invocationStatus() {
         return this.invocationStatus;
     }
-    /**
-     * @return The output of the command.
-     * 
-     */
     public String output() {
         return this.output;
     }
-    /**
-     * @return The number of times that the command is run on the instance.
-     * 
-     */
     public Integer repeats() {
         return this.repeats;
     }
-    /**
-     * @return The time when the command started to be run on the instance.
-     * 
-     */
     public String startTime() {
         return this.startTime;
     }
-    /**
-     * @return The time when the command stopped being run on the instance. If you call the StopInvocation operation to manually stop the execution, the value is the time when you call the operation.
-     * 
-     */
     public String stopTime() {
         return this.stopTime;
     }
-    /**
-     * @return Indicates whether the commands are to be automatically run.
-     * * `error_code	` - The code that indicates why the command failed to be sent or run.
-     * * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
-     * 
-     */
     public Boolean timed() {
         return this.timed;
     }
-    /**
-     * @return The time when the execution state was updated.
-     * 
-     */
     public String updateTime() {
         return this.updateTime;
     }

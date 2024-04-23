@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstFcCustomDomainName = fcDomainsDs.domains[0].domainName;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCustomDomains(args?: GetCustomDomainsArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomDomainsResult> {
     args = args || {};
@@ -84,7 +82,6 @@ export interface GetCustomDomainsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -94,7 +91,6 @@ export interface GetCustomDomainsResult {
  * });
  * export const firstFcCustomDomainName = fcDomainsDs.domains[0].domainName;
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCustomDomainsOutput(args?: GetCustomDomainsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomDomainsResult> {
     return pulumi.output(args).apply((a: any) => getCustomDomains(a, opts))

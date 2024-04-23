@@ -12,15 +12,9 @@ namespace Pulumi.AliCloud.Ess.Inputs
 
     public sealed class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The content of the configuration file. Maximum size: 32 KB.
-        /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
-        /// <summary>
-        /// The relative file path.
-        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 

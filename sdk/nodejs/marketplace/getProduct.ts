@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * export const firstProductSkuCode = _default.then(_default => _default.products?.[0]?.skuses?.[0]?.skuCode);
  * export const firstProductPackageVersion = _default.then(_default => _default.products?.[0]?.skuses?.[0]?.packageVersions?.[0]?.packageVersion);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProduct(args: GetProductArgs, opts?: pulumi.InvokeOptions): Promise<GetProductResult> {
 
@@ -72,7 +70,6 @@ export interface GetProductResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -84,7 +81,6 @@ export interface GetProductResult {
  * export const firstProductSkuCode = _default.then(_default => _default.products?.[0]?.skuses?.[0]?.skuCode);
  * export const firstProductPackageVersion = _default.then(_default => _default.products?.[0]?.skuses?.[0]?.packageVersions?.[0]?.packageVersion);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getProductOutput(args: GetProductOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProductResult> {
     return pulumi.output(args).apply((a: any) => getProduct(a, opts))

@@ -154,14 +154,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Life cycle type.
+     * Project type
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Life cycle type.
+     * @return Project type
      * 
      */
     public Optional<Output<String>> type() {
@@ -391,7 +391,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Life cycle type.
+         * @param type Project type
          * 
          * @return builder
          * 
@@ -402,7 +402,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Life cycle type.
+         * @param type Project type
          * 
          * @return builder
          * 

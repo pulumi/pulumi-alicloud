@@ -304,7 +304,6 @@ class Eip(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -322,7 +321,6 @@ class Eip(pulumi.CustomResource):
             eip_name=name,
             internet_charge_type="95BandwidthByMonth")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -359,7 +357,6 @@ class Eip(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -377,7 +374,6 @@ class Eip(pulumi.CustomResource):
             eip_name=name,
             internet_charge_type="95BandwidthByMonth")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

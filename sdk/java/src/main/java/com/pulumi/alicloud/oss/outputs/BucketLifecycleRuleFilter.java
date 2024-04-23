@@ -12,41 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BucketLifecycleRuleFilter {
-    /**
-     * @return The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
-     * 
-     */
     private @Nullable BucketLifecycleRuleFilterNot not;
-    /**
-     * @return Minimum object size (in bytes) to which the rule applies.
-     * 
-     */
     private @Nullable Integer objectSizeGreaterThan;
-    /**
-     * @return Maximum object size (in bytes) to which the rule applies.
-     * 
-     */
     private @Nullable Integer objectSizeLessThan;
 
     private BucketLifecycleRuleFilter() {}
-    /**
-     * @return The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
-     * 
-     */
     public Optional<BucketLifecycleRuleFilterNot> not() {
         return Optional.ofNullable(this.not);
     }
-    /**
-     * @return Minimum object size (in bytes) to which the rule applies.
-     * 
-     */
     public Optional<Integer> objectSizeGreaterThan() {
         return Optional.ofNullable(this.objectSizeGreaterThan);
     }
-    /**
-     * @return Maximum object size (in bytes) to which the rule applies.
-     * 
-     */
     public Optional<Integer> objectSizeLessThan() {
         return Optional.ofNullable(this.objectSizeLessThan);
     }

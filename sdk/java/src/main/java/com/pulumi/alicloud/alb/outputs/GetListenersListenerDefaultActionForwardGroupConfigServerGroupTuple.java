@@ -10,17 +10,9 @@ import java.util.Objects;
 
 @CustomType
 public final class GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple {
-    /**
-     * @return The ID of the destination server group to which requests are forwarded.
-     * 
-     */
     private String serverGroupId;
 
     private GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple() {}
-    /**
-     * @return The ID of the destination server group to which requests are forwarded.
-     * 
-     */
     public String serverGroupId() {
         return this.serverGroupId;
     }

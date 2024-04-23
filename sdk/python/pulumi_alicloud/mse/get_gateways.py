@@ -143,7 +143,6 @@ def get_gateways(enable_details: Optional[bool] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -155,7 +154,6 @@ def get_gateways(enable_details: Optional[bool] = None,
     status = alicloud.mse.get_gateways(status="2")
     pulumi.export("mseGatewayId3", status.gateways[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -163,8 +161,8 @@ def get_gateways(enable_details: Optional[bool] = None,
     :param Sequence[str] ids: A list of Gateway IDs.
     :param str name_regex: A regex string to filter results by Gateway name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the gateway.
-    :param str vpc_id: The ID of the vpc.
+    :param str status: The status of the gateway. Valid values: `0`, `1`, `2`, `3`, `4`, `6`, `8`, `9`, `10`, `11`, `12`, `13`.
+    :param str vpc_id: The ID of the VPC.
     """
     __args__ = dict()
     __args__['enableDetails'] = enable_details
@@ -208,7 +206,6 @@ def get_gateways_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -220,7 +217,6 @@ def get_gateways_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
     status = alicloud.mse.get_gateways(status="2")
     pulumi.export("mseGatewayId3", status.gateways[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -228,7 +224,7 @@ def get_gateways_output(enable_details: Optional[pulumi.Input[Optional[bool]]] =
     :param Sequence[str] ids: A list of Gateway IDs.
     :param str name_regex: A regex string to filter results by Gateway name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str status: The status of the gateway.
-    :param str vpc_id: The ID of the vpc.
+    :param str status: The status of the gateway. Valid values: `0`, `1`, `2`, `3`, `4`, `6`, `8`, `9`, `10`, `11`, `12`, `13`.
+    :param str vpc_id: The ID of the VPC.
     """
     ...

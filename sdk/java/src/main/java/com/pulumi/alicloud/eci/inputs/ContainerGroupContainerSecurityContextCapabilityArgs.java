@@ -16,17 +16,9 @@ public final class ContainerGroupContainerSecurityContextCapabilityArgs extends 
 
     public static final ContainerGroupContainerSecurityContextCapabilityArgs Empty = new ContainerGroupContainerSecurityContextCapabilityArgs();
 
-    /**
-     * The permissions that you want to grant to the processes in the containers.
-     * 
-     */
     @Import(name="adds")
     private @Nullable Output<List<String>> adds;
 
-    /**
-     * @return The permissions that you want to grant to the processes in the containers.
-     * 
-     */
     public Optional<Output<List<String>>> adds() {
         return Optional.ofNullable(this.adds);
     }
@@ -55,33 +47,15 @@ public final class ContainerGroupContainerSecurityContextCapabilityArgs extends 
             $ = new ContainerGroupContainerSecurityContextCapabilityArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param adds The permissions that you want to grant to the processes in the containers.
-         * 
-         * @return builder
-         * 
-         */
         public Builder adds(@Nullable Output<List<String>> adds) {
             $.adds = adds;
             return this;
         }
 
-        /**
-         * @param adds The permissions that you want to grant to the processes in the containers.
-         * 
-         * @return builder
-         * 
-         */
         public Builder adds(List<String> adds) {
             return adds(Output.of(adds));
         }
 
-        /**
-         * @param adds The permissions that you want to grant to the processes in the containers.
-         * 
-         * @return builder
-         * 
-         */
         public Builder adds(String... adds) {
             return adds(List.of(adds));
         }

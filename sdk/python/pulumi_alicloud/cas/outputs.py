@@ -236,7 +236,6 @@ class GetServiceCertificatesCertificateResult(dict):
         :param str fingerprint: The cert's finger.
         :param str id: The cert's id.
         :param str issuer: The cert's Issuer.
-        :param str key: The cert's Keye.
         :param str org_name: The cert's organization.
         :param str province: The cert's province.
         :param str sans: The cert's subject alternative name.
@@ -360,9 +359,6 @@ class GetServiceCertificatesCertificateResult(dict):
     @property
     @pulumi.getter
     def key(self) -> str:
-        """
-        The cert's Keye.
-        """
         return pulumi.get(self, "key")
 
     @property

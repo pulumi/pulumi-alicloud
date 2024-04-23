@@ -514,12 +514,9 @@ func (o GetDbInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetDbInstanc
 }
 
 type GetDbInstancesInstanceDbInstanceIpArray struct {
-	// The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
 	DbInstanceIpArrayAttribute *string `pulumi:"dbInstanceIpArrayAttribute"`
-	// IP ADDRESS whitelist group name.
-	DbInstanceIpArrayName *string `pulumi:"dbInstanceIpArrayName"`
-	// IP ADDRESS whitelist addresses in the IP ADDRESS list, and a maximum of 1000 comma-separated format is as follows: `0.0.0.0/0` and `10.23.12.24`(IP) or `10.23.12.24/24`(CIDR mode, CIDR (Classless Inter-Domain Routing)/24 represents the address prefixes in the length of the range [1,32]).
-	SecurityIps *string `pulumi:"securityIps"`
+	DbInstanceIpArrayName      *string `pulumi:"dbInstanceIpArrayName"`
+	SecurityIps                *string `pulumi:"securityIps"`
 }
 
 // GetDbInstancesInstanceDbInstanceIpArrayInput is an input type that accepts GetDbInstancesInstanceDbInstanceIpArray and GetDbInstancesInstanceDbInstanceIpArrayOutput values.
@@ -534,12 +531,9 @@ type GetDbInstancesInstanceDbInstanceIpArrayInput interface {
 }
 
 type GetDbInstancesInstanceDbInstanceIpArrayArgs struct {
-	// The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
 	DbInstanceIpArrayAttribute pulumi.StringPtrInput `pulumi:"dbInstanceIpArrayAttribute"`
-	// IP ADDRESS whitelist group name.
-	DbInstanceIpArrayName pulumi.StringPtrInput `pulumi:"dbInstanceIpArrayName"`
-	// IP ADDRESS whitelist addresses in the IP ADDRESS list, and a maximum of 1000 comma-separated format is as follows: `0.0.0.0/0` and `10.23.12.24`(IP) or `10.23.12.24/24`(CIDR mode, CIDR (Classless Inter-Domain Routing)/24 represents the address prefixes in the length of the range [1,32]).
-	SecurityIps pulumi.StringPtrInput `pulumi:"securityIps"`
+	DbInstanceIpArrayName      pulumi.StringPtrInput `pulumi:"dbInstanceIpArrayName"`
+	SecurityIps                pulumi.StringPtrInput `pulumi:"securityIps"`
 }
 
 func (GetDbInstancesInstanceDbInstanceIpArrayArgs) ElementType() reflect.Type {
@@ -593,17 +587,14 @@ func (o GetDbInstancesInstanceDbInstanceIpArrayOutput) ToGetDbInstancesInstanceD
 	return o
 }
 
-// The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
 func (o GetDbInstancesInstanceDbInstanceIpArrayOutput) DbInstanceIpArrayAttribute() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDbInstancesInstanceDbInstanceIpArray) *string { return v.DbInstanceIpArrayAttribute }).(pulumi.StringPtrOutput)
 }
 
-// IP ADDRESS whitelist group name.
 func (o GetDbInstancesInstanceDbInstanceIpArrayOutput) DbInstanceIpArrayName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDbInstancesInstanceDbInstanceIpArray) *string { return v.DbInstanceIpArrayName }).(pulumi.StringPtrOutput)
 }
 
-// IP ADDRESS whitelist addresses in the IP ADDRESS list, and a maximum of 1000 comma-separated format is as follows: `0.0.0.0/0` and `10.23.12.24`(IP) or `10.23.12.24/24`(CIDR mode, CIDR (Classless Inter-Domain Routing)/24 represents the address prefixes in the length of the range [1,32]).
 func (o GetDbInstancesInstanceDbInstanceIpArrayOutput) SecurityIps() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetDbInstancesInstanceDbInstanceIpArray) *string { return v.SecurityIps }).(pulumi.StringPtrOutput)
 }

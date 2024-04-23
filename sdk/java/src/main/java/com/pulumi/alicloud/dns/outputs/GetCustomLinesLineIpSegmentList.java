@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCustomLinesLineIpSegmentList {
-    /**
-     * @return The end IP address of the CIDR block.
-     * 
-     */
     private String endIp;
-    /**
-     * @return The start IP address of the CIDR block.
-     * 
-     */
     private String startIp;
 
     private GetCustomLinesLineIpSegmentList() {}
-    /**
-     * @return The end IP address of the CIDR block.
-     * 
-     */
     public String endIp() {
         return this.endIp;
     }
-    /**
-     * @return The start IP address of the CIDR block.
-     * 
-     */
     public String startIp() {
         return this.startIp;
     }

@@ -113,7 +113,6 @@ def get_dedicated_host_groups(engine: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -121,7 +120,6 @@ def get_dedicated_host_groups(engine: Optional[str] = None,
     default = alicloud.cddc.get_dedicated_host_groups(engine="MongoDB")
     pulumi.export("cddcDedicatedHostGroupId", default.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`
@@ -162,7 +160,6 @@ def get_dedicated_host_groups_output(engine: Optional[pulumi.Input[Optional[str]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -170,7 +167,6 @@ def get_dedicated_host_groups_output(engine: Optional[pulumi.Input[Optional[str]
     default = alicloud.cddc.get_dedicated_host_groups(engine="MongoDB")
     pulumi.export("cddcDedicatedHostGroupId", default.id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str engine: Database Engine Type.The database engine of the dedicated cluster. Valid values:`Redis`, `SQLServer`, `MySQL`, `PostgreSQL`, `MongoDB`

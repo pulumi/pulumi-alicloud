@@ -205,7 +205,6 @@ class Port(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -233,7 +232,6 @@ class Port(pulumi.CustomResource):
                 "2.2.2.2",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -268,7 +266,6 @@ class Port(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -296,7 +293,6 @@ class Port(pulumi.CustomResource):
                 "2.2.2.2",
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

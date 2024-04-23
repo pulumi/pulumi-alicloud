@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetNasBackupPlans(ctx *pulumi.Context, args *GetNasBackupPlansArgs, opts ...pulumi.InvokeOption) (*GetNasBackupPlansResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNasBackupPlansResult
@@ -57,7 +55,7 @@ func GetNasBackupPlans(ctx *pulumi.Context, args *GetNasBackupPlansArgs, opts ..
 
 // A collection of arguments for invoking getNasBackupPlans.
 type GetNasBackupPlansArgs struct {
-	// The File System ID of Nas.
+	// The Nas fileSystem instance ID of the EcsBackupPlan used.
 	FileSystemId *string `pulumi:"fileSystemId"`
 	// A list of NasBackupPlan IDs.
 	Ids []string `pulumi:"ids"`
@@ -65,7 +63,7 @@ type GetNasBackupPlansArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The ID of backup vault.
+	// The backup vault ID of the NasBackupPlan used.
 	VaultId *string `pulumi:"vaultId"`
 }
 
@@ -97,7 +95,7 @@ func GetNasBackupPlansOutput(ctx *pulumi.Context, args GetNasBackupPlansOutputAr
 
 // A collection of arguments for invoking getNasBackupPlans.
 type GetNasBackupPlansOutputArgs struct {
-	// The File System ID of Nas.
+	// The Nas fileSystem instance ID of the EcsBackupPlan used.
 	FileSystemId pulumi.StringPtrInput `pulumi:"fileSystemId"`
 	// A list of NasBackupPlan IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -105,7 +103,7 @@ type GetNasBackupPlansOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The ID of backup vault.
+	// The backup vault ID of the NasBackupPlan used.
 	VaultId pulumi.StringPtrInput `pulumi:"vaultId"`
 }
 

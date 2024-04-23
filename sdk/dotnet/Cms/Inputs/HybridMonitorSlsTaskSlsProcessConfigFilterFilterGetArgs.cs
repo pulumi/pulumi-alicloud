@@ -12,21 +12,12 @@ namespace Pulumi.AliCloud.Cms.Inputs
 
     public sealed class HybridMonitorSlsTaskSlsProcessConfigFilterFilterGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The method that is used to filter logs imported from Log Service. Valid values: `&gt;`, `&gt;=`, `=`, `&lt;=`, `&lt;`, `!=`, `contain`, `notContain`.
-        /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
 
-        /// <summary>
-        /// The name of the key that is used to filter logs imported from Log Service.
-        /// </summary>
         [Input("slsKeyName")]
         public Input<string>? SlsKeyName { get; set; }
 
-        /// <summary>
-        /// The tag value of the metric.
-        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

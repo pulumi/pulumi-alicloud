@@ -10,53 +10,21 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRulesRuleBindVpc {
-    /**
-     * @return The region ID of the vpc.
-     * 
-     */
     private String regionId;
-    /**
-     * @return The Region Name of the vpc.
-     * 
-     */
     private String regionName;
-    /**
-     * @return The ID of the VPC.
-     * 
-     */
     private String vpcId;
-    /**
-     * @return The Name of the VPC.
-     * 
-     */
     private String vpcName;
 
     private GetRulesRuleBindVpc() {}
-    /**
-     * @return The region ID of the vpc.
-     * 
-     */
     public String regionId() {
         return this.regionId;
     }
-    /**
-     * @return The Region Name of the vpc.
-     * 
-     */
     public String regionName() {
         return this.regionName;
     }
-    /**
-     * @return The ID of the VPC.
-     * 
-     */
     public String vpcId() {
         return this.vpcId;
     }
-    /**
-     * @return The Name of the VPC.
-     * 
-     */
     public String vpcName() {
         return this.vpcName;
     }

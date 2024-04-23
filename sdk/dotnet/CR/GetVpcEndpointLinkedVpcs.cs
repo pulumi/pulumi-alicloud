@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,7 +44,6 @@ namespace Pulumi.AliCloud.CR
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVpcEndpointLinkedVpcsResult> InvokeAsync(GetVpcEndpointLinkedVpcsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcEndpointLinkedVpcsResult>("alicloud:cr/getVpcEndpointLinkedVpcs:getVpcEndpointLinkedVpcs", args ?? new GetVpcEndpointLinkedVpcsArgs(), options.WithDefaults());
@@ -59,7 +57,6 @@ namespace Pulumi.AliCloud.CR
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -84,7 +81,6 @@ namespace Pulumi.AliCloud.CR
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVpcEndpointLinkedVpcsResult> Invoke(GetVpcEndpointLinkedVpcsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcEndpointLinkedVpcsResult>("alicloud:cr/getVpcEndpointLinkedVpcs:getVpcEndpointLinkedVpcs", args ?? new GetVpcEndpointLinkedVpcsInvokeArgs(), options.WithDefaults());

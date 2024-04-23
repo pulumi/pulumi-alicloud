@@ -113,7 +113,6 @@ def get_havips(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -122,7 +121,6 @@ def get_havips(ids: Optional[Sequence[str]] = None,
         name_regex="the_resource_name")
     pulumi.export("firstHavipId", example.havips[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ha Vip IDs.
@@ -163,7 +161,6 @@ def get_havips_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -172,7 +169,6 @@ def get_havips_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
         name_regex="the_resource_name")
     pulumi.export("firstHavipId", example.havips[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Ha Vip IDs.

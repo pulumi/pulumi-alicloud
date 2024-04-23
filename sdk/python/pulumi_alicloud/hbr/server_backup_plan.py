@@ -338,7 +338,6 @@ class ServerBackupPlan(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -379,7 +378,6 @@ class ServerBackupPlan(pulumi.CustomResource):
             )],
             disabled=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -418,7 +416,6 @@ class ServerBackupPlan(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -459,7 +456,6 @@ class ServerBackupPlan(pulumi.CustomResource):
             )],
             disabled=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

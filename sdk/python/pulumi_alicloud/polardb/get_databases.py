@@ -98,7 +98,6 @@ def get_databases(db_cluster_id: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -132,7 +131,6 @@ def get_databases(db_cluster_id: Optional[str] = None,
         name_regex=db_name))
     pulumi.export("database", default.databases[0].db_name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str db_cluster_id: The polarDB cluster ID.
@@ -164,7 +162,6 @@ def get_databases_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -198,7 +195,6 @@ def get_databases_output(db_cluster_id: Optional[pulumi.Input[str]] = None,
         name_regex=db_name))
     pulumi.export("database", default.databases[0].db_name)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str db_cluster_id: The polarDB cluster ID.

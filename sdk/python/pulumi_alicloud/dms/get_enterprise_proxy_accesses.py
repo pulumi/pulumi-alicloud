@@ -111,7 +111,6 @@ def get_enterprise_proxy_accesses(enable_details: Optional[bool] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -125,7 +124,6 @@ def get_enterprise_proxy_accesses(enable_details: Optional[bool] = None,
         proxy_id="1881")
     pulumi.export("alicloudDmsProxyAccesesExampleId", default.accesses[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Proxy Access IDs.
@@ -162,7 +160,6 @@ def get_enterprise_proxy_accesses_output(enable_details: Optional[pulumi.Input[O
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -176,7 +173,6 @@ def get_enterprise_proxy_accesses_output(enable_details: Optional[pulumi.Input[O
         proxy_id="1881")
     pulumi.export("alicloudDmsProxyAccesesExampleId", default.accesses[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Proxy Access IDs.

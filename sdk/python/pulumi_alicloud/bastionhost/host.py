@@ -385,7 +385,6 @@ class Host(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -418,7 +417,6 @@ class Host(pulumi.CustomResource):
             os_type="Linux",
             source="Local")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -458,7 +456,6 @@ class Host(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -491,7 +488,6 @@ class Host(pulumi.CustomResource):
             os_type="Linux",
             source="Local")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -236,7 +236,6 @@ class CustomRoutingEndpointGroupDestination(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -278,7 +277,6 @@ class CustomRoutingEndpointGroupDestination(pulumi.CustomResource):
             from_port=1,
             to_port=2)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -312,7 +310,6 @@ class CustomRoutingEndpointGroupDestination(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -354,7 +351,6 @@ class CustomRoutingEndpointGroupDestination(pulumi.CustomResource):
             from_port=1,
             to_port=2)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

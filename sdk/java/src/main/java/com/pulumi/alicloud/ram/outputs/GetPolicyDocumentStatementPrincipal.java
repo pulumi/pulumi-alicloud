@@ -11,29 +11,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPolicyDocumentStatementPrincipal {
-    /**
-     * @return The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
-     * 
-     */
     private String entity;
-    /**
-     * @return The identifiers of the principal.
-     * 
-     */
     private List<String> identifiers;
 
     private GetPolicyDocumentStatementPrincipal() {}
-    /**
-     * @return The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
-     * 
-     */
     public String entity() {
         return this.entity;
     }
-    /**
-     * @return The identifiers of the principal.
-     * 
-     */
     public List<String> identifiers() {
         return this.identifiers;
     }

@@ -12,18 +12,11 @@ namespace Pulumi.AliCloud.Ram.Inputs
 
     public sealed class GetPolicyDocumentStatementPrincipalInputArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
-        /// </summary>
         [Input("entity", required: true)]
         public Input<string> Entity { get; set; } = null!;
 
         [Input("identifiers", required: true)]
         private InputList<string>? _identifiers;
-
-        /// <summary>
-        /// The identifiers of the principal.
-        /// </summary>
         public InputList<string> Identifiers
         {
             get => _identifiers ?? (_identifiers = new InputList<string>());

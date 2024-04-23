@@ -13,17 +13,8 @@ namespace Pulumi.AliCloud.Gpdb.Outputs
     [OutputType]
     public sealed class DbInstancePlanPlanConfigScaleIn
     {
-        /// <summary>
-        /// The executed time of the Plan.
-        /// </summary>
         public readonly string? ExecuteTime;
-        /// <summary>
-        /// The Cron Time of the plan.
-        /// </summary>
         public readonly string? PlanCronTime;
-        /// <summary>
-        /// The segment Node Num of the Plan.
-        /// </summary>
         public readonly string? SegmentNodeNum;
 
         [OutputConstructor]

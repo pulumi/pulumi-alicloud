@@ -793,7 +793,6 @@ class Eip(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -803,7 +802,6 @@ class Eip(pulumi.CustomResource):
             bandwidth="10",
             internet_charge_type="PayByBandwidth")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 
@@ -855,7 +853,6 @@ class Eip(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -865,7 +862,6 @@ class Eip(pulumi.CustomResource):
             bandwidth="10",
             internet_charge_type="PayByBandwidth")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 

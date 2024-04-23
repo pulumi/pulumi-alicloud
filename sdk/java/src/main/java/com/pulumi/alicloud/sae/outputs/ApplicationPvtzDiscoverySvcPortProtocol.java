@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApplicationPvtzDiscoverySvcPortProtocol {
-    /**
-     * @return The port.
-     * 
-     */
     private @Nullable Integer port;
-    /**
-     * @return The protocol. Valid values: `TCP` and `UDP`.
-     * 
-     */
     private @Nullable String protocol;
 
     private ApplicationPvtzDiscoverySvcPortProtocol() {}
-    /**
-     * @return The port.
-     * 
-     */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
-    /**
-     * @return The protocol. Valid values: `TCP` and `UDP`.
-     * 
-     */
     public Optional<String> protocol() {
         return Optional.ofNullable(this.protocol);
     }

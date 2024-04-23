@@ -123,7 +123,6 @@ def get_listeners(accelerator_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -133,7 +132,6 @@ def get_listeners(accelerator_id: Optional[str] = None,
         name_regex="the_resource_name")
     pulumi.export("firstGaListenerId", example.listeners[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The accelerator id.
@@ -178,7 +176,6 @@ def get_listeners_output(accelerator_id: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -188,7 +185,6 @@ def get_listeners_output(accelerator_id: Optional[pulumi.Input[str]] = None,
         name_regex="the_resource_name")
     pulumi.export("firstGaListenerId", example.listeners[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str accelerator_id: The accelerator id.

@@ -131,8 +131,7 @@ class GetNestServiceInstancesFilterArgs:
                  name: Optional[str] = None,
                  values: Optional[Sequence[str]] = None):
         """
-        :param str name: The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
-        :param Sequence[str] values: Set of values that are accepted for the given field.
+        :param str name: The name of the service.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -143,7 +142,7 @@ class GetNestServiceInstancesFilterArgs:
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+        The name of the service.
         """
         return pulumi.get(self, "name")
 
@@ -154,9 +153,6 @@ class GetNestServiceInstancesFilterArgs:
     @property
     @pulumi.getter
     def values(self) -> Optional[Sequence[str]]:
-        """
-        Set of values that are accepted for the given field.
-        """
         return pulumi.get(self, "values")
 
     @values.setter

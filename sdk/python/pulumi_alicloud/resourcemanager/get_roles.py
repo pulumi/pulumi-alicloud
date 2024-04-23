@@ -120,7 +120,6 @@ def get_roles(enable_details: Optional[bool] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -128,7 +127,6 @@ def get_roles(enable_details: Optional[bool] = None,
     example = alicloud.resourcemanager.get_roles(name_regex="tftest")
     pulumi.export("firstRoleId", example.roles[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.
@@ -167,7 +165,6 @@ def get_roles_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -175,7 +172,6 @@ def get_roles_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
     example = alicloud.resourcemanager.get_roles(name_regex="tftest")
     pulumi.export("firstRoleId", example.roles[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to true can output more details.

@@ -22,7 +22,6 @@ import * as utilities from "../utilities";
  *
  * ### Create a cassandra cluster
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -43,7 +42,6 @@ import * as utilities from "../utilities";
  *     ipWhite: "127.0.0.1",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * This is a example for class netType cluster. You can find more detail with the examples/cassandra_cluster dir.
  *

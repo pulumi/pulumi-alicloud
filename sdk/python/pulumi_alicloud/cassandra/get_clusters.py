@@ -126,14 +126,12 @@ def get_clusters(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     cassandra = alicloud.cassandra.get_clusters(name_regex="tf_testAccCassandra")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: The list of Cassandra cluster ids.
@@ -175,14 +173,12 @@ def get_clusters_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = N
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     cassandra = alicloud.cassandra.get_clusters(name_regex="tf_testAccCassandra")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: The list of Cassandra cluster ids.

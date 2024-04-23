@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class RuleRuleConditionQueryStringConfig {
-    /**
-     * @return Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-     * 
-     */
     private @Nullable List<RuleRuleConditionQueryStringConfigValue> values;
 
     private RuleRuleConditionQueryStringConfig() {}
-    /**
-     * @return Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-     * 
-     */
     public List<RuleRuleConditionQueryStringConfigValue> values() {
         return this.values == null ? List.of() : this.values;
     }

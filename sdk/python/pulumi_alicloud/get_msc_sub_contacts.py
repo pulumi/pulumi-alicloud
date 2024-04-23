@@ -103,7 +103,6 @@ def get_msc_sub_contacts(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -113,7 +112,6 @@ def get_msc_sub_contacts(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.get_msc_sub_contacts(name_regex="^my-Contact")
     pulumi.export("mscSubContactId2", name_regex.contacts[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Contact IDs.
@@ -150,7 +148,6 @@ def get_msc_sub_contacts_output(ids: Optional[pulumi.Input[Optional[Sequence[str
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -160,7 +157,6 @@ def get_msc_sub_contacts_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     name_regex = alicloud.get_msc_sub_contacts(name_regex="^my-Contact")
     pulumi.export("mscSubContactId2", name_regex.contacts[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Contact IDs.

@@ -14,12 +14,9 @@ namespace Pulumi.AliCloud.Alb.Outputs
     public sealed class GetLoadBalancersBalancerZoneMappingResult
     {
         public readonly ImmutableArray<Outputs.GetLoadBalancersBalancerZoneMappingLoadBalancerAddressResult> LoadBalancerAddresses;
-        /// <summary>
-        /// The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
-        /// </summary>
         public readonly string VswitchId;
         /// <summary>
-        /// The ID of the zone to which the ALB instance belongs.
+        /// The zone ID of the resource.
         /// </summary>
         public readonly string ZoneId;
 

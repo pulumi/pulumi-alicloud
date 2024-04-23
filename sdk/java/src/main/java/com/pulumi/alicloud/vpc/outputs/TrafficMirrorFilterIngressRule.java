@@ -13,106 +13,34 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TrafficMirrorFilterIngressRule {
-    /**
-     * @return Collection strategy for outbound rules. Value:
-     * - accept: collects network traffic.
-     * - drop: No network traffic is collected.
-     * 
-     */
     private String action;
-    /**
-     * @return DestinationCidrBlock.
-     * 
-     */
     private @Nullable String destinationCidrBlock;
-    /**
-     * @return The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-     * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-     * 
-     */
     private @Nullable String destinationPortRange;
-    /**
-     * @return Priority.
-     * 
-     */
     private @Nullable Integer priority;
-    /**
-     * @return The type of protocol used by the outbound network traffic to be mirrored. Value:
-     * - ALL: ALL agreements.
-     * - ICMP: Network Control Message Protocol.
-     * - TCP: Transmission Control Protocol.
-     * - UDP: User Datagram Protocol.
-     * 
-     */
     private String protocol;
-    /**
-     * @return The source address of the outbound rule network traffic.
-     * 
-     */
     private @Nullable String sourceCidrBlock;
-    /**
-     * @return The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-     * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-     * 
-     */
     private @Nullable String sourcePortRange;
     private @Nullable String trafficMirrorFilterRuleStatus;
 
     private TrafficMirrorFilterIngressRule() {}
-    /**
-     * @return Collection strategy for outbound rules. Value:
-     * - accept: collects network traffic.
-     * - drop: No network traffic is collected.
-     * 
-     */
     public String action() {
         return this.action;
     }
-    /**
-     * @return DestinationCidrBlock.
-     * 
-     */
     public Optional<String> destinationCidrBlock() {
         return Optional.ofNullable(this.destinationCidrBlock);
     }
-    /**
-     * @return The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-     * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-     * 
-     */
     public Optional<String> destinationPortRange() {
         return Optional.ofNullable(this.destinationPortRange);
     }
-    /**
-     * @return Priority.
-     * 
-     */
     public Optional<Integer> priority() {
         return Optional.ofNullable(this.priority);
     }
-    /**
-     * @return The type of protocol used by the outbound network traffic to be mirrored. Value:
-     * - ALL: ALL agreements.
-     * - ICMP: Network Control Message Protocol.
-     * - TCP: Transmission Control Protocol.
-     * - UDP: User Datagram Protocol.
-     * 
-     */
     public String protocol() {
         return this.protocol;
     }
-    /**
-     * @return The source address of the outbound rule network traffic.
-     * 
-     */
     public Optional<String> sourceCidrBlock() {
         return Optional.ofNullable(this.sourceCidrBlock);
     }
-    /**
-     * @return The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-     * &gt; **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-     * 
-     */
     public Optional<String> sourcePortRange() {
         return Optional.ofNullable(this.sourcePortRange);
     }

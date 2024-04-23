@@ -53,15 +53,9 @@ namespace Pulumi.AliCloud.CS
     [AliCloudResourceType("alicloud:cs/managedKubernetes:ManagedKubernetes")]
     public partial class ManagedKubernetes : global::Pulumi.CustomResource
     {
-        /// <summary>
-        /// The addon you want to install in cluster. See `addons` below.
-        /// </summary>
         [Output("addons")]
         public Output<ImmutableArray<Outputs.ManagedKubernetesAddon>> Addons { get; private set; } = null!;
 
-        /// <summary>
-        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
-        /// </summary>
         [Output("apiAudiences")]
         public Output<ImmutableArray<string>> ApiAudiences { get; private set; } = null!;
 
@@ -72,34 +66,26 @@ namespace Pulumi.AliCloud.CS
         public Output<Outputs.ManagedKubernetesCertificateAuthority> CertificateAuthority { get; private set; } = null!;
 
         /// <summary>
-        /// The path of client certificate, like `~/.kube/client-cert.pem`.
+        /// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
         /// </summary>
         [Output("clientCert")]
         public Output<string?> ClientCert { get; private set; } = null!;
 
         /// <summary>
-        /// The path of client key, like `~/.kube/client-key.pem`.
+        /// The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
         /// </summary>
         [Output("clientKey")]
         public Output<string?> ClientKey { get; private set; } = null!;
 
-        /// <summary>
-        /// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
-        /// </summary>
         [Output("clusterCaCert")]
         public Output<string?> ClusterCaCert { get; private set; } = null!;
 
         /// <summary>
-        /// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
+        /// cluster local domain
         /// </summary>
         [Output("clusterDomain")]
         public Output<string?> ClusterDomain { get; private set; } = null!;
 
-        /// <summary>
-        /// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-        /// * ack.standard : Standard managed clusters.
-        /// * ack.pro.small : Professional managed clusters.
-        /// </summary>
         [Output("clusterSpec")]
         public Output<string> ClusterSpec { get; private set; } = null!;
 
@@ -109,68 +95,41 @@ namespace Pulumi.AliCloud.CS
         [Output("connections")]
         public Output<Outputs.ManagedKubernetesConnections> Connections { get; private set; } = null!;
 
-        /// <summary>
-        /// List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
-        /// </summary>
         [Output("controlPlaneLogComponents")]
         public Output<ImmutableArray<string>> ControlPlaneLogComponents { get; private set; } = null!;
 
-        /// <summary>
-        /// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
-        /// </summary>
         [Output("controlPlaneLogProject")]
         public Output<string> ControlPlaneLogProject { get; private set; } = null!;
 
-        /// <summary>
-        /// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
-        /// </summary>
         [Output("controlPlaneLogTtl")]
         public Output<string> ControlPlaneLogTtl { get; private set; } = null!;
 
-        /// <summary>
-        /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
-        /// </summary>
         [Output("customSan")]
         public Output<string?> CustomSan { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether to enable cluster deletion protection.
-        /// </summary>
         [Output("deletionProtection")]
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
-        /// </summary>
         [Output("enableRrsa")]
         public Output<bool?> EnableRrsa { get; private set; } = null!;
 
         /// <summary>
-        /// The disk encryption key.
+        /// disk encryption key, only in ack-pro
         /// </summary>
         [Output("encryptionProviderKey")]
         public Output<string?> EncryptionProviderKey { get; private set; } = null!;
 
-        /// <summary>
-        /// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
-        /// </summary>
         [Output("isEnterpriseSecurityGroup")]
         public Output<bool> IsEnterpriseSecurityGroup { get; private set; } = null!;
 
-        /// <summary>
-        /// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-        /// </summary>
         [Output("loadBalancerSpec")]
         public Output<string?> LoadBalancerSpec { get; private set; } = null!;
 
-        /// <summary>
-        /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
-        /// </summary>
         [Output("maintenanceWindow")]
         public Output<Outputs.ManagedKubernetesMaintenanceWindow> MaintenanceWindow { get; private set; } = null!;
 
         /// <summary>
-        /// This parameter specifies the name of the component.
+        /// Node name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -184,39 +143,21 @@ namespace Pulumi.AliCloud.CS
         [Output("natGatewayId")]
         public Output<string> NatGatewayId { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
-        /// </summary>
         [Output("newNatGateway")]
         public Output<bool?> NewNatGateway { get; private set; } = null!;
 
-        /// <summary>
-        /// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
-        /// </summary>
         [Output("nodeCidrMask")]
         public Output<int?> NodeCidrMask { get; private set; } = null!;
 
-        /// <summary>
-        /// [Flannel Specific] The CIDR block for the pod network when using Flannel.
-        /// </summary>
         [Output("podCidr")]
         public Output<string?> PodCidr { get; private set; } = null!;
 
-        /// <summary>
-        /// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
-        /// </summary>
         [Output("podVswitchIds")]
         public Output<ImmutableArray<string>> PodVswitchIds { get; private set; } = null!;
 
-        /// <summary>
-        /// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-        /// </summary>
         [Output("proxyMode")]
         public Output<string?> ProxyMode { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        /// </summary>
         [Output("resourceGroupId")]
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
@@ -229,21 +170,12 @@ namespace Pulumi.AliCloud.CS
         [Output("rrsaMetadata")]
         public Output<Outputs.ManagedKubernetesRrsaMetadata> RrsaMetadata { get; private set; } = null!;
 
-        /// <summary>
-        /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-        /// </summary>
         [Output("securityGroupId")]
         public Output<string> SecurityGroupId { get; private set; } = null!;
 
-        /// <summary>
-        /// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
-        /// </summary>
         [Output("serviceAccountIssuer")]
         public Output<string?> ServiceAccountIssuer { get; private set; } = null!;
 
-        /// <summary>
-        /// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
-        /// </summary>
         [Output("serviceCidr")]
         public Output<string?> ServiceCidr { get; private set; } = null!;
 
@@ -259,12 +191,6 @@ namespace Pulumi.AliCloud.CS
         [Output("slbInternet")]
         public Output<string> SlbInternet { get; private set; } = null!;
 
-        /// <summary>
-        /// Whether to create internet load balancer for API Server. Default to true.
-        /// 
-        /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
-        /// If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
-        /// </summary>
         [Output("slbInternetEnabled")]
         public Output<bool?> SlbInternetEnabled { get; private set; } = null!;
 
@@ -274,27 +200,15 @@ namespace Pulumi.AliCloud.CS
         [Output("slbIntranet")]
         public Output<string> SlbIntranet { get; private set; } = null!;
 
-        /// <summary>
-        /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
-        /// </summary>
         [Output("tags")]
         public Output<ImmutableDictionary<string, object>?> Tags { get; private set; } = null!;
 
-        /// <summary>
-        /// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
-        /// </summary>
         [Output("timezone")]
         public Output<string?> Timezone { get; private set; } = null!;
 
-        /// <summary>
-        /// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
-        /// </summary>
         [Output("userCa")]
         public Output<string?> UserCa { get; private set; } = null!;
 
-        /// <summary>
-        /// It specifies the version of the component.
-        /// </summary>
         [Output("version")]
         public Output<string> Version { get; private set; } = null!;
 
@@ -310,9 +224,6 @@ namespace Pulumi.AliCloud.CS
         [Output("workerRamRoleName")]
         public Output<string> WorkerRamRoleName { get; private set; } = null!;
 
-        /// <summary>
-        /// The vswitches used by control plane.  See `worker_vswitch_ids` below.
-        /// </summary>
         [Output("workerVswitchIds")]
         public Output<ImmutableArray<string>> WorkerVswitchIds { get; private set; } = null!;
 
@@ -364,10 +275,6 @@ namespace Pulumi.AliCloud.CS
     {
         [Input("addons")]
         private InputList<Inputs.ManagedKubernetesAddonArgs>? _addons;
-
-        /// <summary>
-        /// The addon you want to install in cluster. See `addons` below.
-        /// </summary>
         public InputList<Inputs.ManagedKubernetesAddonArgs> Addons
         {
             get => _addons ?? (_addons = new InputList<Inputs.ManagedKubernetesAddonArgs>());
@@ -376,10 +283,6 @@ namespace Pulumi.AliCloud.CS
 
         [Input("apiAudiences")]
         private InputList<string>? _apiAudiences;
-
-        /// <summary>
-        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
-        /// </summary>
         public InputList<string> ApiAudiences
         {
             get => _apiAudiences ?? (_apiAudiences = new InputList<string>());
@@ -387,105 +290,69 @@ namespace Pulumi.AliCloud.CS
         }
 
         /// <summary>
-        /// The path of client certificate, like `~/.kube/client-cert.pem`.
+        /// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
         /// </summary>
         [Input("clientCert")]
         public Input<string>? ClientCert { get; set; }
 
         /// <summary>
-        /// The path of client key, like `~/.kube/client-key.pem`.
+        /// The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
         /// </summary>
         [Input("clientKey")]
         public Input<string>? ClientKey { get; set; }
 
-        /// <summary>
-        /// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
-        /// </summary>
         [Input("clusterCaCert")]
         public Input<string>? ClusterCaCert { get; set; }
 
         /// <summary>
-        /// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
+        /// cluster local domain
         /// </summary>
         [Input("clusterDomain")]
         public Input<string>? ClusterDomain { get; set; }
 
-        /// <summary>
-        /// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-        /// * ack.standard : Standard managed clusters.
-        /// * ack.pro.small : Professional managed clusters.
-        /// </summary>
         [Input("clusterSpec")]
         public Input<string>? ClusterSpec { get; set; }
 
         [Input("controlPlaneLogComponents")]
         private InputList<string>? _controlPlaneLogComponents;
-
-        /// <summary>
-        /// List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
-        /// </summary>
         public InputList<string> ControlPlaneLogComponents
         {
             get => _controlPlaneLogComponents ?? (_controlPlaneLogComponents = new InputList<string>());
             set => _controlPlaneLogComponents = value;
         }
 
-        /// <summary>
-        /// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
-        /// </summary>
         [Input("controlPlaneLogProject")]
         public Input<string>? ControlPlaneLogProject { get; set; }
 
-        /// <summary>
-        /// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
-        /// </summary>
         [Input("controlPlaneLogTtl")]
         public Input<string>? ControlPlaneLogTtl { get; set; }
 
-        /// <summary>
-        /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
-        /// </summary>
         [Input("customSan")]
         public Input<string>? CustomSan { get; set; }
 
-        /// <summary>
-        /// Whether to enable cluster deletion protection.
-        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
-        /// <summary>
-        /// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
-        /// </summary>
         [Input("enableRrsa")]
         public Input<bool>? EnableRrsa { get; set; }
 
         /// <summary>
-        /// The disk encryption key.
+        /// disk encryption key, only in ack-pro
         /// </summary>
         [Input("encryptionProviderKey")]
         public Input<string>? EncryptionProviderKey { get; set; }
 
-        /// <summary>
-        /// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
-        /// </summary>
         [Input("isEnterpriseSecurityGroup")]
         public Input<bool>? IsEnterpriseSecurityGroup { get; set; }
 
-        /// <summary>
-        /// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-        /// </summary>
         [Input("loadBalancerSpec")]
         public Input<string>? LoadBalancerSpec { get; set; }
 
-        /// <summary>
-        /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
-        /// </summary>
         [Input("maintenanceWindow")]
         public Input<Inputs.ManagedKubernetesMaintenanceWindowArgs>? MaintenanceWindow { get; set; }
 
         /// <summary>
-        /// This parameter specifies the name of the component.
+        /// Node name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -493,45 +360,26 @@ namespace Pulumi.AliCloud.CS
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
 
-        /// <summary>
-        /// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
-        /// </summary>
         [Input("newNatGateway")]
         public Input<bool>? NewNatGateway { get; set; }
 
-        /// <summary>
-        /// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
-        /// </summary>
         [Input("nodeCidrMask")]
         public Input<int>? NodeCidrMask { get; set; }
 
-        /// <summary>
-        /// [Flannel Specific] The CIDR block for the pod network when using Flannel.
-        /// </summary>
         [Input("podCidr")]
         public Input<string>? PodCidr { get; set; }
 
         [Input("podVswitchIds")]
         private InputList<string>? _podVswitchIds;
-
-        /// <summary>
-        /// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
-        /// </summary>
         public InputList<string> PodVswitchIds
         {
             get => _podVswitchIds ?? (_podVswitchIds = new InputList<string>());
             set => _podVswitchIds = value;
         }
 
-        /// <summary>
-        /// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-        /// </summary>
         [Input("proxyMode")]
         public Input<string>? ProxyMode { get; set; }
 
-        /// <summary>
-        /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
@@ -543,69 +391,37 @@ namespace Pulumi.AliCloud.CS
             set => _retainResources = value;
         }
 
-        /// <summary>
-        /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-        /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
-        /// <summary>
-        /// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
-        /// </summary>
         [Input("serviceAccountIssuer")]
         public Input<string>? ServiceAccountIssuer { get; set; }
 
-        /// <summary>
-        /// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
-        /// </summary>
         [Input("serviceCidr")]
         public Input<string>? ServiceCidr { get; set; }
 
-        /// <summary>
-        /// Whether to create internet load balancer for API Server. Default to true.
-        /// 
-        /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
-        /// If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
-        /// </summary>
         [Input("slbInternetEnabled")]
         public Input<bool>? SlbInternetEnabled { get; set; }
 
         [Input("tags")]
         private InputMap<object>? _tags;
-
-        /// <summary>
-        /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
-        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
-        /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
 
-        /// <summary>
-        /// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
-        /// </summary>
         [Input("userCa")]
         public Input<string>? UserCa { get; set; }
 
-        /// <summary>
-        /// It specifies the version of the component.
-        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 
         [Input("workerVswitchIds", required: true)]
         private InputList<string>? _workerVswitchIds;
-
-        /// <summary>
-        /// The vswitches used by control plane.  See `worker_vswitch_ids` below.
-        /// </summary>
         public InputList<string> WorkerVswitchIds
         {
             get => _workerVswitchIds ?? (_workerVswitchIds = new InputList<string>());
@@ -622,10 +438,6 @@ namespace Pulumi.AliCloud.CS
     {
         [Input("addons")]
         private InputList<Inputs.ManagedKubernetesAddonGetArgs>? _addons;
-
-        /// <summary>
-        /// The addon you want to install in cluster. See `addons` below.
-        /// </summary>
         public InputList<Inputs.ManagedKubernetesAddonGetArgs> Addons
         {
             get => _addons ?? (_addons = new InputList<Inputs.ManagedKubernetesAddonGetArgs>());
@@ -634,10 +446,6 @@ namespace Pulumi.AliCloud.CS
 
         [Input("apiAudiences")]
         private InputList<string>? _apiAudiences;
-
-        /// <summary>
-        /// A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `["https://kubernetes.default.svc"]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
-        /// </summary>
         public InputList<string> ApiAudiences
         {
             get => _apiAudiences ?? (_apiAudiences = new InputList<string>());
@@ -651,34 +459,26 @@ namespace Pulumi.AliCloud.CS
         public Input<Inputs.ManagedKubernetesCertificateAuthorityGetArgs>? CertificateAuthority { get; set; }
 
         /// <summary>
-        /// The path of client certificate, like `~/.kube/client-cert.pem`.
+        /// The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
         /// </summary>
         [Input("clientCert")]
         public Input<string>? ClientCert { get; set; }
 
         /// <summary>
-        /// The path of client key, like `~/.kube/client-key.pem`.
+        /// The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
         /// </summary>
         [Input("clientKey")]
         public Input<string>? ClientKey { get; set; }
 
-        /// <summary>
-        /// The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
-        /// </summary>
         [Input("clusterCaCert")]
         public Input<string>? ClusterCaCert { get; set; }
 
         /// <summary>
-        /// Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
+        /// cluster local domain
         /// </summary>
         [Input("clusterDomain")]
         public Input<string>? ClusterDomain { get; set; }
 
-        /// <summary>
-        /// The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-        /// * ack.standard : Standard managed clusters.
-        /// * ack.pro.small : Professional managed clusters.
-        /// </summary>
         [Input("clusterSpec")]
         public Input<string>? ClusterSpec { get; set; }
 
@@ -690,72 +490,44 @@ namespace Pulumi.AliCloud.CS
 
         [Input("controlPlaneLogComponents")]
         private InputList<string>? _controlPlaneLogComponents;
-
-        /// <summary>
-        /// List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
-        /// </summary>
         public InputList<string> ControlPlaneLogComponents
         {
             get => _controlPlaneLogComponents ?? (_controlPlaneLogComponents = new InputList<string>());
             set => _controlPlaneLogComponents = value;
         }
 
-        /// <summary>
-        /// Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
-        /// </summary>
         [Input("controlPlaneLogProject")]
         public Input<string>? ControlPlaneLogProject { get; set; }
 
-        /// <summary>
-        /// Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
-        /// </summary>
         [Input("controlPlaneLogTtl")]
         public Input<string>? ControlPlaneLogTtl { get; set; }
 
-        /// <summary>
-        /// Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
-        /// </summary>
         [Input("customSan")]
         public Input<string>? CustomSan { get; set; }
 
-        /// <summary>
-        /// Whether to enable cluster deletion protection.
-        /// </summary>
         [Input("deletionProtection")]
         public Input<bool>? DeletionProtection { get; set; }
 
-        /// <summary>
-        /// Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
-        /// </summary>
         [Input("enableRrsa")]
         public Input<bool>? EnableRrsa { get; set; }
 
         /// <summary>
-        /// The disk encryption key.
+        /// disk encryption key, only in ack-pro
         /// </summary>
         [Input("encryptionProviderKey")]
         public Input<string>? EncryptionProviderKey { get; set; }
 
-        /// <summary>
-        /// Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
-        /// </summary>
         [Input("isEnterpriseSecurityGroup")]
         public Input<bool>? IsEnterpriseSecurityGroup { get; set; }
 
-        /// <summary>
-        /// The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-        /// </summary>
         [Input("loadBalancerSpec")]
         public Input<string>? LoadBalancerSpec { get; set; }
 
-        /// <summary>
-        /// The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
-        /// </summary>
         [Input("maintenanceWindow")]
         public Input<Inputs.ManagedKubernetesMaintenanceWindowGetArgs>? MaintenanceWindow { get; set; }
 
         /// <summary>
-        /// This parameter specifies the name of the component.
+        /// Node name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -769,45 +541,26 @@ namespace Pulumi.AliCloud.CS
         [Input("natGatewayId")]
         public Input<string>? NatGatewayId { get; set; }
 
-        /// <summary>
-        /// Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
-        /// </summary>
         [Input("newNatGateway")]
         public Input<bool>? NewNatGateway { get; set; }
 
-        /// <summary>
-        /// The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
-        /// </summary>
         [Input("nodeCidrMask")]
         public Input<int>? NodeCidrMask { get; set; }
 
-        /// <summary>
-        /// [Flannel Specific] The CIDR block for the pod network when using Flannel.
-        /// </summary>
         [Input("podCidr")]
         public Input<string>? PodCidr { get; set; }
 
         [Input("podVswitchIds")]
         private InputList<string>? _podVswitchIds;
-
-        /// <summary>
-        /// [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
-        /// </summary>
         public InputList<string> PodVswitchIds
         {
             get => _podVswitchIds ?? (_podVswitchIds = new InputList<string>());
             set => _podVswitchIds = value;
         }
 
-        /// <summary>
-        /// Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-        /// </summary>
         [Input("proxyMode")]
         public Input<string>? ProxyMode { get; set; }
 
-        /// <summary>
-        /// The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-        /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
@@ -825,21 +578,12 @@ namespace Pulumi.AliCloud.CS
         [Input("rrsaMetadata")]
         public Input<Inputs.ManagedKubernetesRrsaMetadataGetArgs>? RrsaMetadata { get; set; }
 
-        /// <summary>
-        /// The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-        /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
 
-        /// <summary>
-        /// The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `"https://kubernetes.default.svc"` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
-        /// </summary>
         [Input("serviceAccountIssuer")]
         public Input<string>? ServiceAccountIssuer { get; set; }
 
-        /// <summary>
-        /// The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
-        /// </summary>
         [Input("serviceCidr")]
         public Input<string>? ServiceCidr { get; set; }
 
@@ -855,12 +599,6 @@ namespace Pulumi.AliCloud.CS
         [Input("slbInternet")]
         public Input<string>? SlbInternet { get; set; }
 
-        /// <summary>
-        /// Whether to create internet load balancer for API Server. Default to true.
-        /// 
-        /// &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
-        /// If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
-        /// </summary>
         [Input("slbInternetEnabled")]
         public Input<bool>? SlbInternetEnabled { get; set; }
 
@@ -872,31 +610,18 @@ namespace Pulumi.AliCloud.CS
 
         [Input("tags")]
         private InputMap<object>? _tags;
-
-        /// <summary>
-        /// Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
-        /// </summary>
         public InputMap<object> Tags
         {
             get => _tags ?? (_tags = new InputMap<object>());
             set => _tags = value;
         }
 
-        /// <summary>
-        /// When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
-        /// </summary>
         [Input("timezone")]
         public Input<string>? Timezone { get; set; }
 
-        /// <summary>
-        /// The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
-        /// </summary>
         [Input("userCa")]
         public Input<string>? UserCa { get; set; }
 
-        /// <summary>
-        /// It specifies the version of the component.
-        /// </summary>
         [Input("version")]
         public Input<string>? Version { get; set; }
 
@@ -914,10 +639,6 @@ namespace Pulumi.AliCloud.CS
 
         [Input("workerVswitchIds")]
         private InputList<string>? _workerVswitchIds;
-
-        /// <summary>
-        /// The vswitches used by control plane.  See `worker_vswitch_ids` below.
-        /// </summary>
         public InputList<string> WorkerVswitchIds
         {
             get => _workerVswitchIds ?? (_workerVswitchIds = new InputList<string>());

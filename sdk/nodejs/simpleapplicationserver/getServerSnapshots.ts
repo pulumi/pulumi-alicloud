@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -39,7 +38,6 @@ import * as utilities from "../utilities";
  * });
  * export const simpleApplicationServerSnapshotId4 = instanceIdConf.then(instanceIdConf => instanceIdConf.snapshots?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServerSnapshots(args?: GetServerSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerSnapshotsResult> {
     args = args || {};
@@ -111,7 +109,6 @@ export interface GetServerSnapshotsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -135,7 +132,6 @@ export interface GetServerSnapshotsResult {
  * });
  * export const simpleApplicationServerSnapshotId4 = instanceIdConf.then(instanceIdConf => instanceIdConf.snapshots?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServerSnapshotsOutput(args?: GetServerSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerSnapshotsResult> {
     return pulumi.output(args).apply((a: any) => getServerSnapshots(a, opts))

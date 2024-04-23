@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// Set bucket replication configuration
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -138,7 +137,6 @@ namespace Pulumi.AliCloud.Oss
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -206,7 +204,7 @@ namespace Pulumi.AliCloud.Oss
         public Output<Outputs.BucketReplicationSourceSelectionCriteria?> SourceSelectionCriteria { get; private set; } = null!;
 
         /// <summary>
-        /// Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+        /// The status of the data replication task. Can be starting, doing and closing.
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -380,7 +378,7 @@ namespace Pulumi.AliCloud.Oss
         public Input<Inputs.BucketReplicationSourceSelectionCriteriaGetArgs>? SourceSelectionCriteria { get; set; }
 
         /// <summary>
-        /// Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+        /// The status of the data replication task. Can be starting, doing and closing.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

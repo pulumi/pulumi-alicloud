@@ -156,7 +156,7 @@ class _ProjectState:
         :param pulumi.Input['ProjectPropertiesArgs'] properties: Project base attributes. See `properties` below.
         :param pulumi.Input['ProjectSecurityPropertiesArgs'] security_properties: Security-related attributes. See `security_properties` below.
         :param pulumi.Input[str] status: The status of the resource
-        :param pulumi.Input[str] type: Life cycle type.
+        :param pulumi.Input[str] type: Project type
         """
         if comment is not None:
             pulumi.set(__self__, "comment", comment)
@@ -291,7 +291,7 @@ class _ProjectState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Life cycle type.
+        Project type
         """
         return pulumi.get(self, "type")
 
@@ -324,7 +324,6 @@ class Project(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -339,7 +338,6 @@ class Project(pulumi.CustomResource):
             comment=name,
             product_type="PayAsYouGo")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -368,7 +366,6 @@ class Project(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -383,7 +380,6 @@ class Project(pulumi.CustomResource):
             comment=name,
             product_type="PayAsYouGo")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param ProjectArgs args: The arguments to use to populate this resource's properties.
@@ -464,7 +460,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ProjectPropertiesArgs']] properties: Project base attributes. See `properties` below.
         :param pulumi.Input[pulumi.InputType['ProjectSecurityPropertiesArgs']] security_properties: Security-related attributes. See `security_properties` below.
         :param pulumi.Input[str] status: The status of the resource
-        :param pulumi.Input[str] type: Life cycle type.
+        :param pulumi.Input[str] type: Project type
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -558,7 +554,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Life cycle type.
+        Project type
         """
         return pulumi.get(self, "type")
 

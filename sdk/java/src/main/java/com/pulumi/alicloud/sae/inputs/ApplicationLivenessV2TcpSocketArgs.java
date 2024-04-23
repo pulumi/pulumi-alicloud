@@ -15,17 +15,9 @@ public final class ApplicationLivenessV2TcpSocketArgs extends com.pulumi.resourc
 
     public static final ApplicationLivenessV2TcpSocketArgs Empty = new ApplicationLivenessV2TcpSocketArgs();
 
-    /**
-     * The port.
-     * 
-     */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
-    /**
-     * @return The port.
-     * 
-     */
     public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
     }
@@ -54,23 +46,11 @@ public final class ApplicationLivenessV2TcpSocketArgs extends com.pulumi.resourc
             $ = new ApplicationLivenessV2TcpSocketArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param port The port.
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
 
-        /**
-         * @param port The port.
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }

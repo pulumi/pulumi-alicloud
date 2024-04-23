@@ -13,41 +13,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class K8sSlbAttachmentSlbConfigPortMapping {
-    /**
-     * @return The ID of your tls certification, this is used for &#39;HTTPS&#39; protocol only.
-     * 
-     */
     private @Nullable String certId;
-    /**
-     * @return The protocol of SLB instance configuration, values can be &#39;TCP&#39;, &#39;HTTP&#39; or &#39;HTTPS&#39;.
-     * 
-     */
     private String loadbalancerProtocol;
-    /**
-     * @return The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `service_port` below.
-     * 
-     */
     private K8sSlbAttachmentSlbConfigPortMappingServicePort servicePort;
 
     private K8sSlbAttachmentSlbConfigPortMapping() {}
-    /**
-     * @return The ID of your tls certification, this is used for &#39;HTTPS&#39; protocol only.
-     * 
-     */
     public Optional<String> certId() {
         return Optional.ofNullable(this.certId);
     }
-    /**
-     * @return The protocol of SLB instance configuration, values can be &#39;TCP&#39;, &#39;HTTP&#39; or &#39;HTTPS&#39;.
-     * 
-     */
     public String loadbalancerProtocol() {
         return this.loadbalancerProtocol;
     }
-    /**
-     * @return The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `service_port` below.
-     * 
-     */
     public K8sSlbAttachmentSlbConfigPortMappingServicePort servicePort() {
         return this.servicePort;
     }

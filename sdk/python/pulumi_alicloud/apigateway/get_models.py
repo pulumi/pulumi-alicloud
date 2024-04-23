@@ -155,7 +155,6 @@ def get_models(group_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -166,7 +165,6 @@ def get_models(group_id: Optional[str] = None,
     group_id = alicloud.apigateway.get_models(group_id="example_group_id")
     pulumi.export("apiGatewayModelId2", group_id.models[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str group_id: The ID of the api group.
@@ -217,7 +215,6 @@ def get_models_output(group_id: Optional[pulumi.Input[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -228,7 +225,6 @@ def get_models_output(group_id: Optional[pulumi.Input[str]] = None,
     group_id = alicloud.apigateway.get_models(group_id="example_group_id")
     pulumi.export("apiGatewayModelId2", group_id.models[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str group_id: The ID of the api group.

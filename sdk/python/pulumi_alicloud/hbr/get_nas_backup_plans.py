@@ -123,7 +123,6 @@ def get_nas_backup_plans(file_system_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -131,14 +130,13 @@ def get_nas_backup_plans(file_system_id: Optional[str] = None,
     ids = alicloud.hbr.get_nas_backup_plans(name_regex="^my-NasBackupPlan")
     pulumi.export("hbrNasBackupPlanId", ids.plans[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str file_system_id: The File System ID of Nas.
+    :param str file_system_id: The Nas fileSystem instance ID of the EcsBackupPlan used.
     :param Sequence[str] ids: A list of NasBackupPlan IDs.
     :param str name_regex: A regex string to filter results by NasBackupPlan name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str vault_id: The ID of backup vault.
+    :param str vault_id: The backup vault ID of the NasBackupPlan used.
     """
     __args__ = dict()
     __args__['fileSystemId'] = file_system_id
@@ -176,7 +174,6 @@ def get_nas_backup_plans_output(file_system_id: Optional[pulumi.Input[Optional[s
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -184,13 +181,12 @@ def get_nas_backup_plans_output(file_system_id: Optional[pulumi.Input[Optional[s
     ids = alicloud.hbr.get_nas_backup_plans(name_regex="^my-NasBackupPlan")
     pulumi.export("hbrNasBackupPlanId", ids.plans[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str file_system_id: The File System ID of Nas.
+    :param str file_system_id: The Nas fileSystem instance ID of the EcsBackupPlan used.
     :param Sequence[str] ids: A list of NasBackupPlan IDs.
     :param str name_regex: A regex string to filter results by NasBackupPlan name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str vault_id: The ID of backup vault.
+    :param str vault_id: The backup vault ID of the NasBackupPlan used.
     """
     ...

@@ -429,7 +429,6 @@ class TrafficMirrorFilterEgressRule(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -443,7 +442,6 @@ class TrafficMirrorFilterEgressRule(pulumi.CustomResource):
             traffic_mirror_filter_id=example.id,
             protocol="ALL")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -487,7 +485,6 @@ class TrafficMirrorFilterEgressRule(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -501,7 +498,6 @@ class TrafficMirrorFilterEgressRule(pulumi.CustomResource):
             traffic_mirror_filter_id=example.id,
             protocol="ALL")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

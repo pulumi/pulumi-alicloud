@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -119,7 +118,6 @@ namespace Pulumi.AliCloud.Vpc
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTrafficMirrorSessionsResult> InvokeAsync(GetTrafficMirrorSessionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTrafficMirrorSessionsResult>("alicloud:vpc/getTrafficMirrorSessions:getTrafficMirrorSessions", args ?? new GetTrafficMirrorSessionsArgs(), options.WithDefaults());
@@ -133,7 +131,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -232,7 +229,6 @@ namespace Pulumi.AliCloud.Vpc
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTrafficMirrorSessionsResult> Invoke(GetTrafficMirrorSessionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTrafficMirrorSessionsResult>("alicloud:vpc/getTrafficMirrorSessions:getTrafficMirrorSessions", args ?? new GetTrafficMirrorSessionsInvokeArgs(), options.WithDefaults());

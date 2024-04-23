@@ -173,7 +173,6 @@ class EngineNamespace(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -207,7 +206,6 @@ class EngineNamespace(pulumi.CustomResource):
             namespace_show_name=name,
             namespace_id=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -241,7 +239,6 @@ class EngineNamespace(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -275,7 +272,6 @@ class EngineNamespace(pulumi.CustomResource):
             namespace_show_name=name,
             namespace_id=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

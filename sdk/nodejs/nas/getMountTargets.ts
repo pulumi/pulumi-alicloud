@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  * });
  * export const theFirstMountTargetDomain = example.then(example => example.targets?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMountTargets(args: GetMountTargetsArgs, opts?: pulumi.InvokeOptions): Promise<GetMountTargetsResult> {
 
@@ -151,7 +149,6 @@ export interface GetMountTargetsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -162,7 +159,6 @@ export interface GetMountTargetsResult {
  * });
  * export const theFirstMountTargetDomain = example.then(example => example.targets?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMountTargetsOutput(args: GetMountTargetsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMountTargetsResult> {
     return pulumi.output(args).apply((a: any) => getMountTargets(a, opts))

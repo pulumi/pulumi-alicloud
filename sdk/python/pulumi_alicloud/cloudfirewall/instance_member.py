@@ -173,7 +173,6 @@ class InstanceMember(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -191,7 +190,6 @@ class InstanceMember(pulumi.CustomResource):
             member_desc=f"{name}-{default['result']}",
             member_uid=default_account.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -223,7 +221,6 @@ class InstanceMember(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -241,7 +238,6 @@ class InstanceMember(pulumi.CustomResource):
             member_desc=f"{name}-{default['result']}",
             member_uid=default_account.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

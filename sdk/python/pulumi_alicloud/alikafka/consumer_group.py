@@ -175,7 +175,6 @@ class ConsumerGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -208,7 +207,6 @@ class ConsumerGroup(pulumi.CustomResource):
             consumer_id=name,
             instance_id=default_instance.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -243,7 +241,6 @@ class ConsumerGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -276,7 +273,6 @@ class ConsumerGroup(pulumi.CustomResource):
             consumer_id=name,
             instance_id=default_instance.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -14,10 +14,6 @@ namespace Pulumi.AliCloud.Ros.Inputs
     {
         [Input("parameterKey")]
         private Input<string>? _parameterKey;
-
-        /// <summary>
-        /// The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
-        /// </summary>
         public Input<string>? ParameterKey
         {
             get => _parameterKey;
@@ -30,10 +26,6 @@ namespace Pulumi.AliCloud.Ros.Inputs
 
         [Input("parameterValue")]
         private Input<string>? _parameterValue;
-
-        /// <summary>
-        /// The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
-        /// </summary>
         public Input<string>? ParameterValue
         {
             get => _parameterValue;

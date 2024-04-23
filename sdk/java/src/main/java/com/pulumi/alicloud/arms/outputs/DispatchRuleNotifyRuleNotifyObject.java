@@ -10,41 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class DispatchRuleNotifyRuleNotifyObject {
-    /**
-     * @return The name of the contact or contact group.
-     * 
-     */
     private String name;
-    /**
-     * @return The ID of the contact or contact group.
-     * 
-     */
     private String notifyObjectId;
-    /**
-     * @return The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
-     * 
-     */
     private String notifyType;
 
     private DispatchRuleNotifyRuleNotifyObject() {}
-    /**
-     * @return The name of the contact or contact group.
-     * 
-     */
     public String name() {
         return this.name;
     }
-    /**
-     * @return The ID of the contact or contact group.
-     * 
-     */
     public String notifyObjectId() {
         return this.notifyObjectId;
     }
-    /**
-     * @return The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
-     * 
-     */
     public String notifyType() {
         return this.notifyType;
     }

@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudServiceCatalogEndUserProductExampleId = _default.then(_default => _default.endUserProducts?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEndUserProducts(args?: GetEndUserProductsArgs, opts?: pulumi.InvokeOptions): Promise<GetEndUserProductsResult> {
     args = args || {};
@@ -98,7 +96,6 @@ export interface GetEndUserProductsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -108,7 +105,6 @@ export interface GetEndUserProductsResult {
  * });
  * export const alicloudServiceCatalogEndUserProductExampleId = _default.then(_default => _default.endUserProducts?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEndUserProductsOutput(args?: GetEndUserProductsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndUserProductsResult> {
     return pulumi.output(args).apply((a: any) => getEndUserProducts(a, opts))

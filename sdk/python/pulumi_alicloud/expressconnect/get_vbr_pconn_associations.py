@@ -118,7 +118,6 @@ def get_vbr_pconn_associations(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -127,7 +126,6 @@ def get_vbr_pconn_associations(ids: Optional[Sequence[str]] = None,
         vbr_id=default_alicloud_express_connect_vbr_pconn_association["vbrId"])
     pulumi.export("alicloudExpressConnectVbrPconnAssociationExampleId", default.associations[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Vbr Pconn Association IDs.
@@ -167,7 +165,6 @@ def get_vbr_pconn_associations_output(ids: Optional[pulumi.Input[Optional[Sequen
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -176,7 +173,6 @@ def get_vbr_pconn_associations_output(ids: Optional[pulumi.Input[Optional[Sequen
         vbr_id=default_alicloud_express_connect_vbr_pconn_association["vbrId"])
     pulumi.export("alicloudExpressConnectVbrPconnAssociationExampleId", default.associations[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Vbr Pconn Association IDs.

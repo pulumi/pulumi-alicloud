@@ -102,14 +102,14 @@ public final class GetQuotaApplicationsArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The ID of quota action..
+     * The ID of quota action.
      * 
      */
     @Import(name="quotaActionCode")
     private @Nullable Output<String> quotaActionCode;
 
     /**
-     * @return The ID of quota action..
+     * @return The ID of quota action.
      * 
      */
     public Optional<Output<String>> quotaActionCode() {
@@ -132,14 +132,14 @@ public final class GetQuotaApplicationsArgs extends com.pulumi.resources.InvokeA
     }
 
     /**
-     * The status of the quota application.
+     * The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the quota application.
+     * @return The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -313,7 +313,7 @@ public final class GetQuotaApplicationsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param quotaActionCode The ID of quota action..
+         * @param quotaActionCode The ID of quota action.
          * 
          * @return builder
          * 
@@ -324,7 +324,7 @@ public final class GetQuotaApplicationsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param quotaActionCode The ID of quota action..
+         * @param quotaActionCode The ID of quota action.
          * 
          * @return builder
          * 
@@ -355,7 +355,7 @@ public final class GetQuotaApplicationsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param status The status of the quota application.
+         * @param status The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
          * 
          * @return builder
          * 
@@ -366,7 +366,7 @@ public final class GetQuotaApplicationsArgs extends com.pulumi.resources.InvokeA
         }
 
         /**
-         * @param status The status of the quota application.
+         * @param status The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
          * 
          * @return builder
          * 

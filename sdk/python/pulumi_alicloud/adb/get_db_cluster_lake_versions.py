@@ -134,7 +134,6 @@ def get_db_cluster_lake_versions(enable_details: Optional[bool] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -142,7 +141,6 @@ def get_db_cluster_lake_versions(enable_details: Optional[bool] = None,
     ids = alicloud.adb.get_db_cluster_lake_versions(ids=["example_id"])
     pulumi.export("adbDbClusterLakeVersionId1", ids.versions[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -192,7 +190,6 @@ def get_db_cluster_lake_versions_output(enable_details: Optional[pulumi.Input[Op
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -200,7 +197,6 @@ def get_db_cluster_lake_versions_output(enable_details: Optional[pulumi.Input[Op
     ids = alicloud.adb.get_db_cluster_lake_versions(ids=["example_id"])
     pulumi.export("adbDbClusterLakeVersionId1", ids.versions[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

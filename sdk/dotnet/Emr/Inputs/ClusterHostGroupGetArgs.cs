@@ -12,9 +12,6 @@ namespace Pulumi.AliCloud.Emr.Inputs
 
     public sealed class ClusterHostGroupGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
-        /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
@@ -24,66 +21,36 @@ namespace Pulumi.AliCloud.Emr.Inputs
         [Input("chargeType")]
         public Input<string>? ChargeType { get; set; }
 
-        /// <summary>
-        /// Graceful decommission timeout, unit: seconds.
-        /// </summary>
         [Input("decommissionTimeout")]
         public Input<int>? DecommissionTimeout { get; set; }
 
-        /// <summary>
-        /// Data disk capacity.
-        /// </summary>
         [Input("diskCapacity")]
         public Input<string>? DiskCapacity { get; set; }
 
-        /// <summary>
-        /// Data disk count.
-        /// </summary>
         [Input("diskCount")]
         public Input<string>? DiskCount { get; set; }
 
-        /// <summary>
-        /// Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
-        /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }
 
-        /// <summary>
-        /// Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
-        /// </summary>
         [Input("enableGracefulDecommission")]
         public Input<bool>? EnableGracefulDecommission { get; set; }
 
         [Input("gpuDriver")]
         public Input<string>? GpuDriver { get; set; }
 
-        /// <summary>
-        /// host group name.
-        /// </summary>
         [Input("hostGroupName")]
         public Input<string>? HostGroupName { get; set; }
 
-        /// <summary>
-        /// host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
-        /// </summary>
         [Input("hostGroupType")]
         public Input<string>? HostGroupType { get; set; }
 
-        /// <summary>
-        /// Instance list for cluster scale down. This value follows the json format, e.g. ["instance_id1","instance_id2"]. escape character for " is \".
-        /// </summary>
         [Input("instanceList")]
         public Input<string>? InstanceList { get; set; }
 
-        /// <summary>
-        /// Host Ecs instance type.
-        /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
 
-        /// <summary>
-        /// Host number in this group.
-        /// </summary>
         [Input("nodeCount")]
         public Input<string>? NodeCount { get; set; }
 
@@ -93,15 +60,9 @@ namespace Pulumi.AliCloud.Emr.Inputs
         [Input("period")]
         public Input<int>? Period { get; set; }
 
-        /// <summary>
-        /// System disk capacity.
-        /// </summary>
         [Input("sysDiskCapacity")]
         public Input<string>? SysDiskCapacity { get; set; }
 
-        /// <summary>
-        /// System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
-        /// </summary>
         [Input("sysDiskType")]
         public Input<string>? SysDiskType { get; set; }
 

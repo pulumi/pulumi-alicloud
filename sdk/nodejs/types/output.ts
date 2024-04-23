@@ -260,9 +260,6 @@ export namespace actiontrail {
     }
 
     export interface GetHistoryDeliveryJobsJobJobStatus {
-        /**
-         * The region of the delivery job.
-         */
         region: string;
         /**
          * The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
@@ -1080,17 +1077,8 @@ export namespace adb {
     }
 
     export interface LakeAccountAccountPrivilegePrivilegeObject {
-        /**
-         * The name of column.
-         */
         column: string;
-        /**
-         * The name of database.
-         */
         database: string;
-        /**
-         * The name of table.
-         */
         table: string;
     }
 
@@ -1371,143 +1359,59 @@ export namespace alb {
     }
 
     export interface GetListenersListenerAccessLogTracingConfig {
-        /**
-         * Xtrace Function. Value: True Or False. Default Value: False.
-         *
-         * > **NOTE:** Only Instances outside the Security Group to Access the Log Switch **accesslogenabled** Open, in Order to Set This Parameter to the **True**.
-         */
         tracingEnabled: boolean;
-        /**
-         * Xtrace Sampling Rate. Value: **1~10000**.
-         *
-         * > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
-         */
         tracingSample: number;
-        /**
-         * Xtrace Type Value Is **Zipkin**.
-         *
-         * > **NOTE:** This attribute is valid when **tracingenabled** is **true**.
-         */
         tracingType: string;
     }
 
     export interface GetListenersListenerAclConfig {
-        /**
-         * The ACLs that are associated with the listener.
-         */
         aclRelations: outputs.alb.GetListenersListenerAclConfigAclRelation[];
-        /**
-         * The type of the ACL. Valid values: `White` Or `Black`. `White`: specifies the ACL as a whitelist. Only requests from the IP addresses or CIDR blocks in the ACL are forwarded. Whitelists apply to scenarios where only specific IP addresses are allowed to access an application. Risks may occur if the whitelist is improperly set. After you set a whitelist for an Application Load Balancer (ALB) listener, only requests from IP addresses that are added to the whitelist are distributed by the listener. If the whitelist is enabled without IP addresses specified, the ALB listener does not forward requests. `Black`: All requests from the IP addresses or CIDR blocks in the ACL are denied. The blacklist is used to prevent specified IP addresses from accessing an application. If the blacklist is enabled but the corresponding ACL does not contain IP addresses, the ALB listener forwards all requests.
-         */
         aclType: string;
     }
 
     export interface GetListenersListenerAclConfigAclRelation {
-        /**
-         * Snooping Binding of the Access Policy Group ID List.
-         */
         aclId: string;
         /**
-         * The association status between the ACL and the listener.  Valid values: `Associating`, `Associated` Or `Dissociating`. `Associating`: The ACL is being associated with the listener. `Associated`: The ACL is associated with the listener. `Dissociating`: The ACL is being disassociated from the listener.
+         * The state of the listener. Valid Values: `Running` Or `Stopped`. `Running`: The listener is running. `Stopped`: The listener is stopped.
          */
         status: string;
     }
 
     export interface GetListenersListenerCertificate {
-        /**
-         * The ID of the Certificate.
-         */
         certificateId: string;
     }
 
     export interface GetListenersListenerDefaultAction {
-        /**
-         * The configuration of the forwarding rule action. This parameter is required if the Type parameter is set to FowardGroup.
-         */
         forwardGroupConfigs: outputs.alb.GetListenersListenerDefaultActionForwardGroupConfig[];
-        /**
-         * Action Type. The value is set to ForwardGroup. It indicates that requests are forwarded to multiple vServer groups.
-         */
         type: string;
     }
 
     export interface GetListenersListenerDefaultActionForwardGroupConfig {
-        /**
-         * The destination server group to which requests are forwarded.
-         */
         serverGroupTuples: outputs.alb.GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple[];
     }
 
     export interface GetListenersListenerDefaultActionForwardGroupConfigServerGroupTuple {
-        /**
-         * The ID of the destination server group to which requests are forwarded.
-         */
         serverGroupId: string;
     }
 
     export interface GetListenersListenerQuicConfig {
-        /**
-         * The ID of the QUIC listener to be associated. If QuicUpgradeEnabled is set to true, this parameter is required. Only HTTPS listeners support this parameter.
-         */
         quicListenerId: string;
-        /**
-         * Indicates whether quic upgrade is enabled. Valid values: true and false. Default value: false.
-         */
         quicUpgradeEnabled: boolean;
     }
 
     export interface GetListenersListenerXforwardedForConfig {
-        /**
-         * The Custom Header Field Names Only When `xforwardedforclientcertIssuerdnenabled`, Which Evaluates to True When the Entry into Force of.
-         */
         xforwardedforclientcertIssuerdnalias: string;
-        /**
-         * Indicates Whether the `X-Forwarded-Clientcert-issuerdn` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate after the Manifests Are Signed, the Publisher Information.
-         */
         xforwardedforclientcertIssuerdnenabled: boolean;
-        /**
-         * The Custom Header Field Names Only When `xforwardedforclientcertclientverifyenabled` Has a Value of True, this Value Will Not Take Effect until.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-         */
         xforwardedforclientcertclientverifyalias: string;
-        /**
-         * Indicates Whether the `X-Forwarded-Clientcert-clientverify` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate to Verify the Results.
-         */
         xforwardedforclientcertclientverifyenabled: boolean;
-        /**
-         * The Custom Header Field Names Only When `xforwardedforclientcertfingerprintenabled`, Which Evaluates to True When the Entry into Force of.The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-         */
         xforwardedforclientcertfingerprintalias: string;
-        /**
-         * Indicates Whether the `X-Forwarded-Clientcert-fingerprint` Header Field Is Used to Obtain Access to the Server Load Balancer Instance of the Client Certificate Fingerprint Value.
-         */
         xforwardedforclientcertfingerprintenabled: boolean;
-        /**
-         * The name of the custom header. This parameter is valid only if `xforwardedforclientcertsubjectdnenabled` is set to true. The name must be 1 to 40 characters in length, and can contain letters, hyphens (-), underscores (_), and digits.
-         */
         xforwardedforclientcertsubjectdnalias: string;
-        /**
-         * Specifies whether to use the `X-Forwarded-Clientcert-subjectdn` header field to obtain information about the owner of the ALB client certificate. Valid values: true and false. Default value: false.
-         */
         xforwardedforclientcertsubjectdnenabled: boolean;
-        /**
-         * Indicates Whether the X-Forwarded-Client-Port Header Field Is Used to Obtain Access to Server Load Balancer Instances to the Client, and Those of the Ports.
-         */
         xforwardedforclientsrcportenabled: boolean;
-        /**
-         * Indicates whether the X-Forwarded-For header field is used to obtain the real IP address of tqhe client. Valid values: true and false. Default value: true.
-         */
         xforwardedforenabled: boolean;
-        /**
-         * Indicates Whether the X-Forwarded-Proto Header Field Is Used to Obtain the Server Load Balancer Instance Snooping Protocols.
-         */
         xforwardedforprotoenabled: boolean;
-        /**
-         * Indicates whether the SLB-ID header field is used to obtain the ID of the ALB instance. Valid values: true and false. Default value: false.
-         */
         xforwardedforslbidenabled: boolean;
-        /**
-         * Indicates Whether the X-Forwarded-Port Header Field Is Used to Obtain the Server Load Balancer Instance Listening Port.
-         */
         xforwardedforslbportenabled: boolean;
     }
 
@@ -1604,64 +1508,37 @@ export namespace alb {
     }
 
     export interface GetLoadBalancersBalancerAccessLogConfig {
-        /**
-         * The log service that access logs are shipped to.
-         */
         logProject: string;
-        /**
-         * The logstore that access logs are shipped to.
-         */
         logStore: string;
     }
 
     export interface GetLoadBalancersBalancerDeletionProtectionConfig {
-        /**
-         * Remove the Protection Status.
-         */
         enabled: boolean;
-        /**
-         * Deletion Protection Turn-on Time Use Greenwich Mean Time, in the Format of Yyyy-MM-ddTHH: mm:SSZ.
-         */
         enabledTime: string;
     }
 
     export interface GetLoadBalancersBalancerLoadBalancerBillingConfig {
-        /**
-         * The billing method of the ALB instance. Valid value: `PayAsYouGo`.
-         */
         payType: string;
     }
 
     export interface GetLoadBalancersBalancerLoadBalancerOperationLock {
-        /**
-         * The Locking of the Reasons.
-         */
         lockReason: string;
-        /**
-         * The Locking of the Type. Valid Values: `securitylocked`,`relatedresourcelocked`, `financiallocked`, and `residuallocked`.
-         */
         lockType: string;
     }
 
     export interface GetLoadBalancersBalancerModificationProtectionConfig {
-        /**
-         * The reason for modification protection. This parameter must be 2 to 128 characters in length, and can contain letters, digits, periods, underscores, and hyphens. The reason must start with a letter. This parameter is required only if `ModificationProtectionStatus` is set to `ConsoleProtection`.
-         */
         reason: string;
         /**
-         * The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+         * The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
          */
         status: string;
     }
 
     export interface GetLoadBalancersBalancerZoneMapping {
         loadBalancerAddresses: outputs.alb.GetLoadBalancersBalancerZoneMappingLoadBalancerAddress[];
-        /**
-         * The ID of the vSwitch that corresponds to the zone. Each zone can use only one vSwitch and subnet.
-         */
         vswitchId: string;
         /**
-         * The ID of the zone to which the ALB instance belongs.
+         * The zone ID of the resource.
          */
         zoneId: string;
     }
@@ -2226,9 +2103,6 @@ export namespace alb {
     }
 
     export interface ListenerAclConfigAclRelation {
-        /**
-         * Snooping Binding of the Access Policy Group ID List.
-         */
         aclId: string;
         /**
          * The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
@@ -2255,16 +2129,10 @@ export namespace alb {
     }
 
     export interface ListenerDefaultActionForwardGroupConfig {
-        /**
-         * The destination server group to which requests are forwarded. See `serverGroupTuples` below for details.
-         */
         serverGroupTuples: outputs.alb.ListenerDefaultActionForwardGroupConfigServerGroupTuple[];
     }
 
     export interface ListenerDefaultActionForwardGroupConfigServerGroupTuple {
-        /**
-         * The ID of the destination server group to which requests are forwarded.
-         */
         serverGroupId: string;
     }
 
@@ -2458,182 +2326,75 @@ export namespace alb {
     }
 
     export interface RuleRuleActionCorsConfig {
-        /**
-         * Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
-         */
         allowCredentials?: string;
-        /**
-         * The allowed headers for CORS requests.
-         */
         allowHeaders?: string[];
-        /**
-         * The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
-         */
         allowMethods?: string[];
-        /**
-         * The allowed origins of CORS requests.
-         */
         allowOrigins?: string[];
-        /**
-         * The headers that can be exposed.
-         */
         exposeHeaders?: string[];
-        /**
-         * The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
-         */
         maxAge?: number;
     }
 
     export interface RuleRuleActionFixedResponseConfig {
-        /**
-         * The fixed response. The response cannot exceed 1 KB in size and can contain only ASCII characters.
-         */
         content: string;
-        /**
-         * The format of the fixed response. Valid values: `text/plain`, `text/css`, `text/html`, `application/javascript`, and `application/json`.
-         */
         contentType?: string;
-        /**
-         * The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
-         */
         httpCode?: string;
     }
 
     export interface RuleRuleActionForwardGroupConfig {
-        /**
-         * The configuration of session persistence for server groups. See `serverGroupStickySession` below.
-         */
         serverGroupStickySession: outputs.alb.RuleRuleActionForwardGroupConfigServerGroupStickySession;
-        /**
-         * The destination server group to which requests are forwarded. See `serverGroupTuples` below.
-         */
         serverGroupTuples: outputs.alb.RuleRuleActionForwardGroupConfigServerGroupTuple[];
     }
 
     export interface RuleRuleActionForwardGroupConfigServerGroupStickySession {
-        /**
-         * Whether to enable session persistence.
-         */
         enabled: boolean;
-        /**
-         * The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
-         */
         timeout: number;
     }
 
     export interface RuleRuleActionForwardGroupConfigServerGroupTuple {
-        /**
-         * The ID of the destination server group to which requests are forwarded.
-         */
         serverGroupId: string;
-        /**
-         * The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `serverGroupTuples` is greater than 2.
-         */
         weight?: number;
     }
 
     export interface RuleRuleActionInsertHeaderConfig {
-        /**
-         * The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
-         * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-         * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-         */
         key?: string;
-        /**
-         * The content of the inserted header field. Valid values:
-         * * If the `valueType` is set to `SystemDefined`, the following values are used:
-         */
         value?: string;
-        /**
-         * The value type of the inserted header field. Valid values:
-         */
         valueType?: string;
     }
 
     export interface RuleRuleActionRedirectConfig {
-        /**
-         * The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
-         */
         host?: string;
-        /**
-         * The redirect method. Valid values: `301`, `302`, `303`, `307`, and `308`.
-         */
         httpCode?: string;
-        /**
-         * The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
-         */
         path?: string;
-        /**
-         * The port of the destination to which requests are redirected. Valid values: 1 to 63335. Default value: ${port}. You cannot use this value together with other characters at the same time.
-         */
         port?: string;
-        /**
-         * The protocol of the requests to be redirected. Valid values: `HTTP` and `HTTPS`. Default value: `${protocol}`. You cannot use this value together with other characters at the same time. Note HTTPS listeners can redirect only HTTPS requests.
-         */
         protocol?: string;
-        /**
-         * The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
-         */
         query?: string;
     }
 
     export interface RuleRuleActionRemoveHeaderConfig {
-        /**
-         * The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
-         * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-         * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-         */
         key?: string;
     }
 
     export interface RuleRuleActionRewriteConfig {
-        /**
-         * The host name of the destination to which requests are redirected within ALB. Valid values:  The host name must be 3 to 128 characters in length, and can contain letters, digits, hyphens (-), periods (.), asterisks (*), and question marks (?). The host name must contain at least one period (.), and cannot start or end with a period (.). The rightmost domain label can contain only letters, asterisks (*) and question marks (?) and cannot contain digits or hyphens (-). Other domain labels cannot start or end with a hyphen (-). You can include asterisks (*) and question marks (?) anywhere in a domain label. Default value: ${host}. You cannot use this value with other characters at the same time.
-         */
         host?: string;
-        /**
-         * The path to which requests are to be redirected within ALB. Valid values: The path must be 1 to 128 characters in length, and start with a forward slash (/). The path can contain letters, digits, asterisks (*), question marks (?)and the following special characters: $ - _ . + / & ~ @ :. It cannot contain the following special characters: " % # ; ! ( ) [ ] ^ , ”. The path is case-sensitive. Default value: ${path}. This value can be used only once. You can use it with a valid string.
-         */
         path?: string;
-        /**
-         * The query string of the request to be redirected within ALB. The query string must be 1 to 128 characters in length, can contain letters and printable characters. It cannot contain the following special characters: # [ ] { } \ | < > &. Default value: ${query}. This value can be used only once. You can use it with a valid string.
-         */
         query?: string;
     }
 
     export interface RuleRuleActionTrafficLimitConfig {
-        /**
-         * The number of requests per second for a single IP address. Value range: 1~1000000. Note: If the QPS parameter is also configured, the value of the PerIpQps parameter must be smaller than the value of the QPS parameter.
-         */
         perIpQps?: number;
-        /**
-         * The Number of requests per second. Valid values: `1` to `100000`.
-         */
         qps?: number;
     }
 
     export interface RuleRuleActionTrafficMirrorConfig {
-        /**
-         * The Traffic is mirrored to the server group. See `mirrorGroupConfig` below.
-         */
         mirrorGroupConfig?: outputs.alb.RuleRuleActionTrafficMirrorConfigMirrorGroupConfig;
-        /**
-         * The Mirror target type.
-         */
         targetType?: string;
     }
 
     export interface RuleRuleActionTrafficMirrorConfigMirrorGroupConfig {
-        /**
-         * The destination server group to which requests are forwarded. See `serverGroupTuples` below.
-         */
         serverGroupTuples?: outputs.alb.RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple[];
     }
 
     export interface RuleRuleActionTrafficMirrorConfigMirrorGroupConfigServerGroupTuple {
-        /**
-         * The ID of the destination server group to which requests are forwarded.
-         */
         serverGroupId?: string;
     }
 
@@ -2681,105 +2442,50 @@ export namespace alb {
     }
 
     export interface RuleRuleConditionCookieConfig {
-        /**
-         * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-         */
         values?: outputs.alb.RuleRuleConditionCookieConfigValue[];
     }
 
     export interface RuleRuleConditionCookieConfigValue {
-        /**
-         * The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
-         * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-         * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-         */
         key?: string;
-        /**
-         * The content of the inserted header field. Valid values:
-         * * If the `valueType` is set to `SystemDefined`, the following values are used:
-         */
         value?: string;
     }
 
     export interface RuleRuleConditionHeaderConfig {
-        /**
-         * The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
-         * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-         * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-         */
         key?: string;
-        /**
-         * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-         */
         values?: string[];
     }
 
     export interface RuleRuleConditionHostConfig {
-        /**
-         * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-         */
         values?: string[];
     }
 
     export interface RuleRuleConditionMethodConfig {
-        /**
-         * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-         */
         values?: string[];
     }
 
     export interface RuleRuleConditionPathConfig {
-        /**
-         * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-         */
         values?: string[];
     }
 
     export interface RuleRuleConditionQueryStringConfig {
-        /**
-         * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-         */
         values?: outputs.alb.RuleRuleConditionQueryStringConfigValue[];
     }
 
     export interface RuleRuleConditionQueryStringConfigValue {
-        /**
-         * The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
-         * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-         * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-         */
         key?: string;
-        /**
-         * The content of the inserted header field. Valid values:
-         * * If the `valueType` is set to `SystemDefined`, the following values are used:
-         */
         value?: string;
     }
 
     export interface RuleRuleConditionResponseHeaderConfig {
-        /**
-         * The name of the removed header field. It can be 1 to 40 characters in length and supports upper and lower case letters a to z, numbers, underscores (_), and dashes (-). Header field names cannot be used repeatedly in RemoveHeader. 
-         * * Request Direction: The header name cannot be set to the following fields (case insensitive):slb-id, slb-ip, x-forwarded-for, x-forwarded-proto, x-forwarded-eip, x-forwarded-port, x-forwarded-client-srcport, connection, upgrade, content-length, transfer-encoding, keep-alive, te, host, cookie, remoteip, and authority.
-         * * Response Direction: The header name cannot be set to the following fields (case insensitive):connection, upgrade, content-length, transfer-encoding.
-         */
         key?: string;
-        /**
-         * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-         */
         values?: string[];
     }
 
     export interface RuleRuleConditionResponseStatusCodeConfig {
-        /**
-         * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-         */
         values?: string[];
     }
 
     export interface RuleRuleConditionSourceIpConfig {
-        /**
-         * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-         */
         values?: string[];
     }
 
@@ -3573,34 +3279,12 @@ export namespace arms {
     }
 
     export interface DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup {
-        /**
-         * Sets the dispatch rule. See `labelMatchExpressions` below.
-         */
         labelMatchExpressions: outputs.arms.DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression[];
     }
 
     export interface DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpression {
-        /**
-         * The key of the tag of the dispatch rule. Valid values:
-         * * _aliyun_arms_userid: user ID
-         * * _aliyun_arms_involvedObject_kind: type of the associated object
-         * * _aliyun_arms_involvedObject_id: ID of the associated object
-         * * _aliyun_arms_involvedObject_name: name of the associated object
-         * * _aliyun_arms_alert_name: alert name
-         * * _aliyun_arms_alert_rule_id: alert rule ID
-         * * _aliyun_arms_alert_type: alert type
-         * * _aliyun_arms_alert_level: alert severity
-         */
         key: string;
-        /**
-         * The operator used in the dispatch rule. Valid values: 
-         * * eq: equals to.
-         * * re: matches a regular expression.
-         */
         operator: string;
-        /**
-         * The value of the tag.
-         */
         value: string;
     }
 
@@ -3616,17 +3300,8 @@ export namespace arms {
     }
 
     export interface DispatchRuleNotifyRuleNotifyObject {
-        /**
-         * The name of the contact or contact group.
-         */
         name: string;
-        /**
-         * The ID of the contact or contact group.
-         */
         notifyObjectId: string;
-        /**
-         * The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
-         */
         notifyType: string;
     }
 
@@ -3774,9 +3449,6 @@ export namespace arms {
     }
 
     export interface GetDispatchRulesRuleNotifyRule {
-        /**
-         * The notification method.
-         */
         notifyChannels: string[];
         /**
          * Sets the notification object.
@@ -3977,24 +3649,12 @@ export namespace arms {
     }
 
     export interface GetPrometheusAlertRulesRuleAnnotation {
-        /**
-         * The name of the label.
-         */
         name: string;
-        /**
-         * The value of the label.
-         */
         value: string;
     }
 
     export interface GetPrometheusAlertRulesRuleLabel {
-        /**
-         * The name of the label.
-         */
         name: string;
-        /**
-         * The value of the label.
-         */
         value: string;
     }
 
@@ -4201,30 +3861,13 @@ export namespace arms {
     }
 
     export interface SyntheticTaskCommonSettingCustomHost {
-        /**
-         * The host list. See `hosts` below.
-         */
         hosts: outputs.arms.SyntheticTaskCommonSettingCustomHostHost[];
-        /**
-         * Selection method:
-         * - 0: Random
-         * - 1: Polling.
-         */
         selectType: number;
     }
 
     export interface SyntheticTaskCommonSettingCustomHostHost {
-        /**
-         * Domain Name.
-         */
         domain: string;
-        /**
-         * IpType.
-         */
         ipType: number;
-        /**
-         * The IP list.
-         */
         ips: string[];
     }
 
@@ -4286,344 +3929,99 @@ export namespace arms {
     }
 
     export interface SyntheticTaskMonitorConfApiHttp {
-        /**
-         * Connection timeout, in ms. Default 5000. Optional range: 1000-300000ms.
-         */
         connectTimeout?: number;
-        /**
-         * HTTP method, GET or POST.
-         */
         method?: string;
-        /**
-         * HTTP request body. See `requestBody` below.
-         */
         requestBody?: outputs.arms.SyntheticTaskMonitorConfApiHttpRequestBody;
-        /**
-         * HTTP request header.
-         */
         requestHeaders?: {[key: string]: any};
-        /**
-         * The target URL.
-         */
         targetUrl: string;
-        /**
-         * TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
-         */
         timeout?: number;
     }
 
     export interface SyntheticTaskMonitorConfApiHttpRequestBody {
-        /**
-         * The request body content, in JSON string format. When the type is text/plain,application/json,application/xml,text/html, the content can be converted to a JSON string.
-         */
         content?: string;
-        /**
-         * Assertion type, including: httpresead, httpresead, HttpResBody, HttpResBodyJson, httpressetime, IcmpPackLoss (packet loss rate), IcmpPackMaxLatency (maximum packet delay ms), icmppackwebscreen, fmppackavglatency (average delay rendering), TraceRouteHops (number of hops), dnsarecname, websiteOnload (full load time), see the supplement below for specific use.
-         */
         type?: string;
     }
 
     export interface SyntheticTaskMonitorConfFileDownload {
-        /**
-         * Connection timeout time, in ms. Default 5000. Optional range: 1000-120000ms.
-         */
         connectionTimeout?: number;
-        /**
-         * Custom header, in JSON Map format.
-         */
         customHeaderContent?: {[key: string]: any};
-        /**
-         * Download the kernel.
-         * - 1:curl
-         * - 0:WinInet
-         * Default 1.
-         */
         downloadKernel?: number;
-        /**
-         * Ignore CA Certificate authorization error 0: Do not ignore, 1: ignore, default 1.
-         */
         ignoreCertificateAuthError?: number;
-        /**
-         * Ignore certificate revocation error 0: Do not ignore, 1: ignore, default 1.
-         */
         ignoreCertificateCanceledError?: number;
-        /**
-         * Ignore certificate expiration error 0: not ignored, 1: Ignored, default 1.
-         */
         ignoreCertificateOutOfDateError?: number;
-        /**
-         * The certificate status error is ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
-         */
         ignoreCertificateStatusError?: number;
-        /**
-         * The certificate cannot be trusted and ignored. 0: Do not ignore, 1: IGNORE. The default value is 1.
-         */
         ignoreCertificateUntrustworthyError?: number;
-        /**
-         * Ignore certificate usage error 0: Do not ignore, 1: ignore, default 1.
-         */
         ignoreCertificateUsingError?: number;
-        /**
-         * Invalid host error ignored, 0: not ignored, 1: Ignored, default 1.
-         */
         ignoreInvalidHostError?: number;
-        /**
-         * Monitoring timeout, in ms. Not required, 20000 by default.
-         */
         monitorTimeout?: number;
-        /**
-         * Quick agreement
-         * - 1:http1
-         * - 2:http2
-         * - 3:http3
-         * Default 1.
-         */
         quickProtocol?: number;
-        /**
-         * When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
-         */
         redirection?: number;
-        /**
-         * The target URL.
-         */
         targetUrl: string;
-        /**
-         * The transmission size, in KB. The default value is 2048KB. The transmission size of the downloaded file must be between 1 and 20480KB.
-         */
         transmissionSize?: number;
-        /**
-         * Verify keywords.
-         */
         validateKeywords?: string;
-        /**
-         * The verification method.
-         * - 0: Do not validate
-         * - 1: Validation string
-         * - 2:MD5 validation.
-         */
         verifyWay?: number;
-        /**
-         * DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
-         */
         whiteList?: string;
     }
 
     export interface SyntheticTaskMonitorConfNetDns {
-        /**
-         * The IP address type of the DNS server.
-         * - 0 (default):ipv4
-         * - 1:ipv6
-         * 2: Automatic.
-         */
         dnsServerIpType?: number;
-        /**
-         * The IP address of the NS server. The default value is 114.114.114.114.
-         */
         nsServer?: string;
-        /**
-         * DNS query method.
-         * - 0 (default): Recursive
-         * - 1: Iteration.
-         */
         queryMethod?: number;
-        /**
-         * The target URL.
-         */
         targetUrl: string;
-        /**
-         * TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
-         */
         timeout?: number;
     }
 
     export interface SyntheticTaskMonitorConfNetIcmp {
-        /**
-         * The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
-         */
         interval?: number;
-        /**
-         * Number of ICMP(Ping) packets sent. The minimum value is 1, the maximum value is 50, and the default is 4.
-         */
         packageNum?: number;
-        /**
-         * The size of the sent ICMP(Ping) packet. The unit is byte. The ICMP(PING) packet size is limited to 32, 64, 128, 256, 512, 1024, 1080, and 1450.
-         */
         packageSize?: number;
-        /**
-         * Whether to split ICMP(Ping) packets. The default is true.
-         */
         splitPackage?: boolean;
-        /**
-         * The target URL.
-         */
         targetUrl: string;
-        /**
-         * TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
-         */
         timeout?: number;
-        /**
-         * Whether to enable tracert. The default is true.
-         */
         tracertEnable?: boolean;
-        /**
-         * The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
-         */
         tracertNumMax?: number;
-        /**
-         * The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
-         */
         tracertTimeout?: number;
     }
 
     export interface SyntheticTaskMonitorConfNetTcp {
-        /**
-         * The number of TCP connections established. The minimum value is 1, the maximum value is 16, and the default is 4.
-         */
         connectTimes?: number;
-        /**
-         * The interval between TCP connections. The unit is milliseconds (ms), the minimum value is 200, the maximum value is 10000, and the default value is 200.
-         */
         interval?: number;
-        /**
-         * The target URL.
-         */
         targetUrl: string;
-        /**
-         * TCP dial test timeout. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 20000.
-         */
         timeout?: number;
-        /**
-         * Whether to enable tracert. The default is true.
-         */
         tracertEnable?: boolean;
-        /**
-         * The maximum number of hops for tracert. The minimum value is 1, the maximum value is 128, and the default value is 20.
-         */
         tracertNumMax?: number;
-        /**
-         * The time-out of tracert. The unit is milliseconds (ms), the minimum value is 1000, the maximum value is 300000, and the default value is 60000.
-         */
         tracertTimeout?: number;
     }
 
     export interface SyntheticTaskMonitorConfStream {
-        /**
-         * Custom header, in JSON Map format.
-         */
         customHeaderContent?: {[key: string]: any};
-        /**
-         * Player, do not pass the default 12.
-         * - 12:VLC
-         * - 2:FlashPlayer.
-         */
         playerType?: number;
-        /**
-         * Resource address type:
-         * - 1: Resource address.
-         * - 0: page address, not 0 by default.
-         */
         streamAddressType?: number;
-        /**
-         * Monitoring duration, in seconds, up to 60s, not 60 by default.
-         */
         streamMonitorTimeout?: number;
-        /**
-         * Audio and video flags: 0-video, 1-audio.
-         */
         streamType?: number;
-        /**
-         * The target URL.
-         */
         targetUrl?: string;
-        /**
-         * DNS hijack whitelist. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
-         */
         whiteList?: string;
     }
 
     export interface SyntheticTaskMonitorConfWebsite {
-        /**
-         * Whether to support automatic scrolling screen, loading page.
-         * - 0 (default): No
-         * 1: Yes.
-         */
         automaticScrolling?: number;
-        /**
-         * Custom header.
-         * - 0 (default): Off
-         * - 1: Modify the first package
-         * - 2: Modify all packages.
-         */
         customHeader?: number;
-        /**
-         * Custom header, in JSON Map format.
-         */
         customHeaderContent?: {[key: string]: any};
-        /**
-         * Whether to disable caching.
-         * - 0: not disabled
-         * - 1 (default): Disabled.
-         */
         disableCache?: number;
-        /**
-         * The Accept-Encoding field is used to determine whether to Accept compressed files. 0-do not disable, 1-disable, the default is 0.
-         */
         disableCompression?: number;
-        /**
-         * When a domain name (such as www.aliyun.com) is resolved, if the resolved IP address or CNAME is not in the DNS hijacking white list, the user will fail to access or return a target IP address that is not Aliyun. If the IP or CNAME in the resolution result is in the DNS white list, it will be determined that DNS hijacking has not occurred.  Fill in the format: Domain name: matching rules. Match rules support IP, IP wildcard, subnet mask, and CNAME. Multiple match rules can be filled in. Multiple match rules are separated by vertical bars (|). For example, www.aliyun.com:203.0.3.55 | 203.3.44.67 indicates that all other IP addresses under the www.aliyun.com domain except 203.0.3.55 and 203.3.44.67 are hijacked.
-         */
         dnsHijackWhitelist?: string;
-        /**
-         * If an element configured in the element blacklist appears during page loading, the element is not requested to be loaded.
-         */
         elementBlacklist?: string;
-        /**
-         * Whether to filter invalid IP parameters. 0: filter, 1: do not filter. The default value is 0.
-         */
         filterInvalidIp?: number;
-        /**
-         * Identify elements: Set the total number of elements on the Browse page.
-         */
         flowHijackJumpTimes?: number;
-        /**
-         * Hijacking ID: Set the matching key information. Enter the hijacking keyword or key element, with an asterisk (*) allowed.
-         */
         flowHijackLogo?: string;
-        /**
-         * Whether to ignore certificate errors during certificate verification in SSL Handshake and continue browsing. 0-do not ignore, 1-ignore. The default value is 1.
-         */
         ignoreCertificateError?: number;
-        /**
-         * Monitoring timeout, in ms. Not required, 20000 by default.
-         */
         monitorTimeout?: number;
-        /**
-         * Monitoring the page appears to be tampered with elements other than the domain settings that belong to the page. Common manifestations are pop-up advertisements, floating advertisements, jumps, etc.  Fill in the format: Domain name: Element. You can fill multiple elements separated by a vertical bar (|). For example, www.aliyun.com:|/cc/bb/a.gif |/vv/bb/cc.jpg indicates that all the other elements of the www.aliyun.com domain name except the basic document,/cc/bb/a.gif, and/vv/bb/cc.jpg are tampered.
-         */
         pageTamper?: string;
-        /**
-         * When redirection occurs, whether to continue browsing, 0-No, 1-Yes, the default is 1.
-         */
         redirection?: number;
-        /**
-         * The slow element threshold, in ms, is 5000 by default and can be selected from 1 to 300000ms.
-         */
         slowElementThreshold?: number;
-        /**
-         * The target URL.
-         */
         targetUrl: string;
-        /**
-         * The verification string is an arbitrary string in the source code of the monitoring page. If the source code returned by the client contains any of the blacklisted strings, 650 error is returned. Multiple strings are separated by a vertical bar (|).
-         */
         verifyStringBlacklist?: string;
-        /**
-         * The verification string is an arbitrary string in the source code of the monitoring page. The source code returned by the client must contain all the strings in the whitelist. Otherwise, 650 error is returned. Multiple strings are separated by a vertical bar (|).
-         */
         verifyStringWhitelist?: string;
-        /**
-         * The maximum waiting time, in ms, is 5000 by default and can be selected from 5000 ms to 300000ms.
-         */
         waitCompletionTime?: number;
     }
 
@@ -4809,7 +4207,6 @@ export namespace bastionhost {
         securityGroupIds: string[];
         /**
          * A map of tags assigned to the bastionhost instance. It must be in the format:
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -4820,7 +4217,6 @@ export namespace bastionhost {
          *     },
          * });
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         tags?: {[key: string]: any};
         /**
@@ -5044,17 +4440,8 @@ export namespace bp {
     }
 
     export interface StudioApplicationInstance {
-        /**
-         * The id of the instance.
-         */
         id?: string;
-        /**
-         * The name of the instance.
-         */
         nodeName?: string;
-        /**
-         * The type of the instance.
-         */
         nodeType?: string;
     }
 
@@ -5345,9 +4732,6 @@ export namespace cas {
          * The cert's Issuer.
          */
         issuer: string;
-        /**
-         * The cert's Keye.
-         */
         key: string;
         /**
          * @deprecated Field 'name' has been deprecated from provider version 1.129.0 and it will be removed in the future version. Please use the new attribute 'certificate_name' instead.
@@ -7217,9 +6601,6 @@ export namespace cen {
     }
 
     export interface GetTransitRouterVpnAttachmentsAttachmentZone {
-        /**
-         * The id of the zone.
-         */
         zoneId: string;
     }
 
@@ -7330,13 +6711,7 @@ export namespace cfg {
     }
 
     export interface AggregateCompliancePackConfigRuleConfigRuleParameter {
-        /**
-         * The Parameter Name.
-         */
         parameterName?: string;
-        /**
-         * The Parameter Value.
-         */
         parameterValue?: string;
     }
 
@@ -7374,13 +6749,7 @@ export namespace cfg {
     }
 
     export interface CompliancePackConfigRuleConfigRuleParameter {
-        /**
-         * The parameter name.
-         */
         parameterName?: string;
-        /**
-         * The parameter value.
-         */
         parameterValue?: string;
     }
 
@@ -8255,28 +7624,13 @@ export namespace clickhouse {
     }
 
     export interface GetDbClustersClusterDbClusterAccessWhiteList {
-        /**
-         * Field `dbClusterIpArrayAttribute` has been removed from provider.
-         */
         dbClusterIpArrayAttribute: string;
-        /**
-         * Whitelist group name.
-         */
         dbClusterIpArrayName: string;
-        /**
-         * The IP address list under the whitelist group.
-         */
         securityIpList: string;
     }
 
     export interface GetDbClustersClusterScaleOutStatus {
-        /**
-         * Process.
-         */
         progress: string;
-        /**
-         * Efficiency.
-         */
         ratio: string;
     }
 
@@ -8292,13 +7646,7 @@ export namespace clickhouse {
     }
 
     export interface GetRegionsRegionZoneId {
-        /**
-         * Whether to support vpc network.
-         */
         vpcEnabled: boolean;
-        /**
-         * The zone ID.
-         */
         zoneId: string;
     }
 
@@ -8493,24 +7841,12 @@ export namespace cloudfirewall {
     }
 
     export interface FirewallVpcFirewallLocalVpcLocalVpcCidrTableList {
-        /**
-         * The list of route entries of the local VPC. See `localRouteEntryList` below.
-         */
         localRouteEntryLists: outputs.cloudfirewall.FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList[];
-        /**
-         * The ID of the route table of the local VPC.
-         */
         localRouteTableId: string;
     }
 
     export interface FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList {
-        /**
-         * The target network segment of the local VPC.
-         */
         localDestinationCidr: string;
-        /**
-         * The ID of the next-hop instance in the local VPC.
-         */
         localNextHopInstanceId: string;
     }
 
@@ -8546,24 +7882,12 @@ export namespace cloudfirewall {
     }
 
     export interface FirewallVpcFirewallPeerVpcPeerVpcCidrTableList {
-        /**
-         * Peer VPC route entry list information. See `peerRouteEntryList` below.
-         */
         peerRouteEntryLists: outputs.cloudfirewall.FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList[];
-        /**
-         * The ID of the route table of the peer VPC.
-         */
         peerRouteTableId: string;
     }
 
     export interface FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList {
-        /**
-         * The target network segment of the peer VPC.
-         */
         peerDestinationCidr: string;
-        /**
-         * The ID of the next-hop instance in the peer VPC.
-         */
         peerNextHopInstanceId: string;
     }
 
@@ -9194,21 +8518,9 @@ export namespace cloudmonitor {
     }
 
     export interface ServiceGroupMonitoringAgentProcessAlertConfigTargetList {
-        /**
-         * The Alibaba Cloud Resource Name (ARN) of the resource.
-         */
         arn?: string;
-        /**
-         * The parameters of the alert callback. Specify the parameters in the JSON format.
-         */
         jsonParams?: string;
-        /**
-         * The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
-         */
         level?: string;
-        /**
-         * The ID of the resource for which alerts are triggered.
-         */
         targetListId?: string;
     }
 
@@ -9405,88 +8717,28 @@ export namespace cloudsso {
     }
 
     export interface GetDirectoriesDirectorySamlIdentityProviderConfiguration {
-        /**
-         * Saml identifies the creation time of the provider configuration.
-         */
         createTime: string;
-        /**
-         * Base64 encoded IdP metadata document.
-         */
         encodedMetadataDocument: string;
-        /**
-         * SAML IdPEntityID.
-         */
         entityId: string;
-        /**
-         * SAML IdP http-post Binding address.
-         */
         loginUrl: string;
-        /**
-         * SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
-         */
         ssoStatus: string;
     }
 
     export interface GetDirectoriesDirectoryTask {
-        /**
-         * The ID of Access Configuration.
-         */
         accessConfigurationId: string;
-        /**
-         * The Name of Access Configuration.
-         */
         accessConfigurationName: string;
-        /**
-         * The End Time of Task.
-         */
         endTime: string;
-        /**
-         * the Reason for the Failure of  the task.
-         */
         failureReason: string;
-        /**
-         * The ID of Cloud SSO Identity.
-         */
         principalId: string;
-        /**
-         * The Name of Cloud SSO Identity.
-         */
         principalName: string;
-        /**
-         * The Type of Cloud SSO Identity.
-         */
         principalType: string;
-        /**
-         * The Start Time of Task.
-         */
         startTime: string;
-        /**
-         * The Task Status.
-         */
         status: string;
-        /**
-         * The Id of deploy target.
-         */
         targetId: string;
-        /**
-         * The Name of Deploy Target.
-         */
         targetName: string;
-        /**
-         * The Path in RD of Deploy Target.
-         */
         targetPath: string;
-        /**
-         * The Type of Deploy Target.
-         */
         targetType: string;
-        /**
-         * The ID of the Task.
-         */
         taskId: string;
-        /**
-         * The Type of the Task.
-         */
         taskType: string;
     }
 
@@ -9612,21 +8864,9 @@ export namespace cloudsso {
     }
 
     export interface GetUsersUserMfaDevice {
-        /**
-         * The MFA Device ID.
-         */
         deviceId: string;
-        /**
-         * The MFA Device Name.
-         */
         deviceName: string;
-        /**
-         * The MFA Device Type.
-         */
         deviceType: string;
-        /**
-         * The Effective Time of MFA Device.
-         */
         effectiveTime: string;
     }
 
@@ -10751,59 +9991,23 @@ export namespace cms {
     }
 
     export interface GetGroupMetricRulesRuleEscalationCritical {
-        /**
-         * The comparison operator of the threshold for warn-level alerts.
-         */
         comparisonOperator: string;
-        /**
-         * The statistical aggregation method for warn-level alerts.
-         */
         statistics: string;
-        /**
-         * The threshold for warn-level alerts.
-         */
         threshold: string;
-        /**
-         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
-         */
         times: number;
     }
 
     export interface GetGroupMetricRulesRuleEscalationInfo {
-        /**
-         * The comparison operator of the threshold for warn-level alerts.
-         */
         comparisonOperator: string;
-        /**
-         * The statistical aggregation method for warn-level alerts.
-         */
         statistics: string;
-        /**
-         * The threshold for warn-level alerts.
-         */
         threshold: string;
-        /**
-         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
-         */
         times: number;
     }
 
     export interface GetGroupMetricRulesRuleEscalationWarn {
-        /**
-         * The comparison operator of the threshold for warn-level alerts.
-         */
         comparisonOperator: string;
-        /**
-         * The statistical aggregation method for warn-level alerts.
-         */
         statistics: string;
-        /**
-         * The threshold for warn-level alerts.
-         */
         threshold: string;
-        /**
-         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
-         */
         times: number;
     }
 
@@ -10823,24 +10027,12 @@ export namespace cms {
     }
 
     export interface GetHybridMonitorDatasDataLabel {
-        /**
-         * Label key.
-         */
         key: string;
-        /**
-         * Label value.
-         */
         value: string;
     }
 
     export interface GetHybridMonitorDatasDataValue {
-        /**
-         * The timestamp that indicates the time when the metric value is collected. Unit: seconds.
-         */
         ts: string;
-        /**
-         * Label value.
-         */
         value: string;
     }
 
@@ -10980,118 +10172,49 @@ export namespace cms {
     }
 
     export interface GetHybridMonitorSlsTasksTaskAttachLabel {
-        /**
-         * The name of the instance.
-         */
         name: string;
-        /**
-         * The value of the key that is used to filter logs imported from Log Service.
-         */
         value: string;
     }
 
     export interface GetHybridMonitorSlsTasksTaskMatchExpress {
-        /**
-         * The function that is used to aggregate log data within a statistical period.
-         */
         function: string;
-        /**
-         * The name of the instance.
-         */
         name: string;
-        /**
-         * The value of the key that is used to filter logs imported from Log Service.
-         */
         value: string;
     }
 
     export interface GetHybridMonitorSlsTasksTaskSlsProcessConfig {
-        /**
-         * The extended field that specifies the result of basic operations that are performed on aggregation results.
-         */
         expresses: outputs.cms.GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress[];
-        /**
-         * The conditions that are used to filter logs imported from Log Service.
-         */
         filters: outputs.cms.GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter[];
-        /**
-         * The dimension based on which data is aggregated. This parameter is equivalent to the GROUP BY clause in SQL.
-         */
         groupBies: outputs.cms.GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy[];
-        /**
-         * The method that is used to aggregate logs imported from Log Service.
-         */
         statistics: outputs.cms.GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic[];
     }
 
     export interface GetHybridMonitorSlsTasksTaskSlsProcessConfigExpress {
-        /**
-         * The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
-         */
         alias: string;
-        /**
-         * The extended field that specifies the result of basic operations that are performed on aggregation results.
-         */
         express: string;
     }
 
     export interface GetHybridMonitorSlsTasksTaskSlsProcessConfigFilter {
-        /**
-         * The conditions that are used to filter logs imported from Log Service.
-         */
         filters: outputs.cms.GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter[];
-        /**
-         * The relationship between multiple filter conditions.
-         */
         relation: string;
     }
 
     export interface GetHybridMonitorSlsTasksTaskSlsProcessConfigFilterFilter {
-        /**
-         * The method that is used to filter logs imported from Log Service.
-         */
         operator: string;
-        /**
-         * The name of the key that is used to filter logs imported from Log Service.
-         */
         slsKeyName: string;
-        /**
-         * The value of the key that is used to filter logs imported from Log Service.
-         */
         value: string;
     }
 
     export interface GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy {
-        /**
-         * The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
-         */
         alias: string;
-        /**
-         * The name of the key that is used to filter logs imported from Log Service.
-         */
         slsKeyName: string;
     }
 
     export interface GetHybridMonitorSlsTasksTaskSlsProcessConfigStatistic {
-        /**
-         * The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
-         */
         alias: string;
-        /**
-         * The function that is used to aggregate log data within a statistical period.
-         */
         function: string;
-        /**
-         * The value of the function that is used to aggregate logs imported from Log Service.
-         */
         parameterOne: string;
-        /**
-         * The value of the function that is used to aggregate logs imported from Log Service.
-         */
         parameterTwo: string;
-        /**
-         * The name of the key that is used to filter logs imported from Log Service.
-         */
         slsKeyName: string;
     }
 
@@ -11196,105 +10319,39 @@ export namespace cms {
     }
 
     export interface GetMetricRuleTemplatesTemplateAlertTemplate {
-        /**
-         * The abbreviation of the service name. Valid values: `ecs`, `rds`, `ads`, `slb`, `vpc`, `apigateway`, `cdn`, `cs`, `dcdn`, `ddos`, `eip`, `elasticsearch`, `emr`, `ess`, `hbase`, `iotEdge`, `kvstoreSharding`, `kvstoreSplitrw`, `kvstoreStandard`, `memcache`, `mns`, `mongodb`, `mongodbCluster`, `mongodbSharding`, `mqTopic`, `ocs`, `opensearch`, `oss`, `polardb`, `petadata`, `scdn`, `sharebandwidthpackages`, `sls`, `vpn`.
-         */
         category: string;
-        /**
-         * The information about the trigger condition based on the alert level.
-         */
         escalations: outputs.cms.GetMetricRuleTemplatesTemplateAlertTemplateEscalation[];
-        /**
-         * The name of the metric.
-         */
         metricName: string;
-        /**
-         * The namespace of the service.
-         */
         namespace: string;
-        /**
-         * The name of the alert rule.
-         */
         ruleName: string;
         selector: string;
-        /**
-         * The callback URL to which a POST request is sent when an alert is triggered based on the alert rule.
-         */
         webhook: string;
     }
 
     export interface GetMetricRuleTemplatesTemplateAlertTemplateEscalation {
-        /**
-         * The condition for triggering critical-level alerts.
-         */
         criticals: outputs.cms.GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical[];
-        /**
-         * The condition for triggering info-level alerts.
-         */
         infos: outputs.cms.GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo[];
-        /**
-         * The condition for triggering warn-level alerts.
-         */
         warns: outputs.cms.GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn[];
     }
 
     export interface GetMetricRuleTemplatesTemplateAlertTemplateEscalationCritical {
-        /**
-         * The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-         */
         comparisonOperator: string;
-        /**
-         * The statistical aggregation method for warn-level alerts.
-         */
         statistics: string;
-        /**
-         * The threshold for warn-level alerts.
-         */
         threshold: string;
-        /**
-         * The consecutive number of times for which the metric value is measured before a warn-level
-         * alert is triggered.
-         */
         times: string;
     }
 
     export interface GetMetricRuleTemplatesTemplateAlertTemplateEscalationInfo {
-        /**
-         * The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-         */
         comparisonOperator: string;
-        /**
-         * The statistical aggregation method for warn-level alerts.
-         */
         statistics: string;
-        /**
-         * The threshold for warn-level alerts.
-         */
         threshold: string;
-        /**
-         * The consecutive number of times for which the metric value is measured before a warn-level
-         * alert is triggered.
-         */
         times: string;
     }
 
     export interface GetMetricRuleTemplatesTemplateAlertTemplateEscalationWarn {
-        /**
-         * The comparison operator of the threshold for warn-level alerts.Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-         */
         comparisonOperator: string;
-        /**
-         * The statistical aggregation method for warn-level alerts.
-         */
         statistics: string;
-        /**
-         * The threshold for warn-level alerts.
-         */
         threshold: string;
-        /**
-         * The consecutive number of times for which the metric value is measured before a warn-level
-         * alert is triggered.
-         */
         times: string;
     }
 
@@ -11449,59 +10506,23 @@ export namespace cms {
     }
 
     export interface GroupMetricRuleEscalationsCritical {
-        /**
-         * The comparison operator of the threshold for warn-level alerts.
-         */
         comparisonOperator?: string;
-        /**
-         * The statistical aggregation method for warn-level alerts.
-         */
         statistics?: string;
-        /**
-         * The threshold for warn-level alerts.
-         */
         threshold?: string;
-        /**
-         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
-         */
         times?: number;
     }
 
     export interface GroupMetricRuleEscalationsInfo {
-        /**
-         * The comparison operator of the threshold for warn-level alerts.
-         */
         comparisonOperator?: string;
-        /**
-         * The statistical aggregation method for warn-level alerts.
-         */
         statistics?: string;
-        /**
-         * The threshold for warn-level alerts.
-         */
         threshold?: string;
-        /**
-         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
-         */
         times?: number;
     }
 
     export interface GroupMetricRuleEscalationsWarn {
-        /**
-         * The comparison operator of the threshold for warn-level alerts.
-         */
         comparisonOperator?: string;
-        /**
-         * The statistical aggregation method for warn-level alerts.
-         */
         statistics?: string;
-        /**
-         * The threshold for warn-level alerts.
-         */
         threshold?: string;
-        /**
-         * The consecutive number of times for which the metric value is measured before a warn-level alert is triggered.
-         */
         times?: number;
     }
 
@@ -11556,75 +10577,31 @@ export namespace cms {
     }
 
     export interface HybridMonitorSlsTaskSlsProcessConfigExpress {
-        /**
-         * The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
-         */
         alias?: string;
-        /**
-         * The extended field that specifies the result of basic operations that are performed on aggregation results.
-         */
         express?: string;
     }
 
     export interface HybridMonitorSlsTaskSlsProcessConfigFilter {
-        /**
-         * The conditions that are used to filter logs imported from Log Service. See `filters` below.
-         */
         filters?: outputs.cms.HybridMonitorSlsTaskSlsProcessConfigFilterFilter[];
-        /**
-         * The relationship between multiple filter conditions. Valid values: `and`(default value), `or`.
-         */
         relation?: string;
     }
 
     export interface HybridMonitorSlsTaskSlsProcessConfigFilterFilter {
-        /**
-         * The method that is used to filter logs imported from Log Service. Valid values: `>`, `>=`, `=`, `<=`, `<`, `!=`, `contain`, `notContain`.
-         */
         operator?: string;
-        /**
-         * The name of the key that is used to filter logs imported from Log Service.
-         */
         slsKeyName?: string;
-        /**
-         * The tag value of the metric.
-         */
         value?: string;
     }
 
     export interface HybridMonitorSlsTaskSlsProcessConfigGroupBy {
-        /**
-         * The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
-         */
         alias?: string;
-        /**
-         * The name of the key that is used to filter logs imported from Log Service.
-         */
         slsKeyName?: string;
     }
 
     export interface HybridMonitorSlsTaskSlsProcessConfigStatistic {
-        /**
-         * The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
-         */
         alias?: string;
-        /**
-         * The function that is used to aggregate log data within a statistical period. Valid values: `count`, `sum`, `avg`, `max`, `min`, `value`, `countps`, `sumps`, `distinct`, `distribution`, `percentile`.
-         */
         function?: string;
-        /**
-         * The value of the function that is used to aggregate logs imported from Log Service.
-         * - If you set the `function` parameter to `distribution`, this parameter specifies the lower limit of the statistical interval. For example, if you want to calculate the number of HTTP requests whose status code is 2XX, set this parameter to 200.
-         * - If you set the `function` parameter to `percentile`, this parameter specifies the percentile at which the expected value is. For example, 0.5 specifies P50.
-         */
         parameterOne?: string;
-        /**
-         * The value of the function that is used to aggregate logs imported from Log Service. **Note:** This parameter is required only if the `function` parameter is set to `distribution`. This parameter specifies the upper limit of the statistical interval.
-         */
         parameterTwo?: string;
-        /**
-         * The name of the key that is used to filter logs imported from Log Service.
-         */
         slsKeyName?: string;
     }
 
@@ -11671,74 +10648,29 @@ export namespace cms {
     }
 
     export interface MetricRuleTemplateAlertTemplateEscalations {
-        /**
-         * The condition for triggering critical-level alerts. See `critical` below.
-         */
         critical?: outputs.cms.MetricRuleTemplateAlertTemplateEscalationsCritical;
-        /**
-         * The condition for triggering info-level alerts. See `info` below.
-         */
         info?: outputs.cms.MetricRuleTemplateAlertTemplateEscalationsInfo;
-        /**
-         * The condition for triggering warn-level alerts. See `warn` below.
-         */
         warn?: outputs.cms.MetricRuleTemplateAlertTemplateEscalationsWarn;
     }
 
     export interface MetricRuleTemplateAlertTemplateEscalationsCritical {
-        /**
-         * The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-         */
         comparisonOperator?: string;
-        /**
-         * The statistical aggregation method for critical-level alerts.
-         */
         statistics?: string;
-        /**
-         * The threshold for critical-level alerts.
-         */
         threshold?: string;
-        /**
-         * The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
-         */
         times?: string;
     }
 
     export interface MetricRuleTemplateAlertTemplateEscalationsInfo {
-        /**
-         * The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-         */
         comparisonOperator?: string;
-        /**
-         * The statistical aggregation method for critical-level alerts.
-         */
         statistics?: string;
-        /**
-         * The threshold for critical-level alerts.
-         */
         threshold?: string;
-        /**
-         * The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
-         */
         times?: string;
     }
 
     export interface MetricRuleTemplateAlertTemplateEscalationsWarn {
-        /**
-         * The comparison operator of the threshold for critical-level alerts. Valid values: `GreaterThanOrEqualToThreshold`, `GreaterThanThreshold`, `LessThanOrEqualToThreshold`, `LessThanThreshold`, `NotEqualToThreshold`, `GreaterThanYesterday`, `LessThanYesterday`, `GreaterThanLastWeek`, `LessThanLastWeek`, `GreaterThanLastPeriod`, `LessThanLastPeriod`.
-         */
         comparisonOperator?: string;
-        /**
-         * The statistical aggregation method for critical-level alerts.
-         */
         statistics?: string;
-        /**
-         * The threshold for critical-level alerts.
-         */
         threshold?: string;
-        /**
-         * The consecutive number of times for which the metric value is measured before a critical-level alert is triggered.
-         */
         times?: string;
     }
 
@@ -11796,12 +10728,9 @@ export namespace cms {
 export namespace compute {
     export interface GetNestServiceInstancesFilter {
         /**
-         * The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+         * The name of the service.
          */
         name?: string;
-        /**
-         * Set of values that are accepted for the given field.
-         */
         values?: string[];
     }
 
@@ -11917,7 +10846,7 @@ export namespace compute {
          */
         locale: string;
         /**
-         * The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+         * The name of the service.
          */
         name: string;
         /**
@@ -13002,11 +11931,13 @@ export namespace cs {
 
     export interface EdgeKubernetesCertificateAuthority {
         /**
-         * The path of client certificate, like `~/.kube/client-cert.pem`.
+         * The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
          */
         clientCert: string;
         /**
-         * The path of client key, like `~/.kube/client-key.pem`.
+         * The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
+         *
+         * *Network params*
          */
         clientKey: string;
         /**
@@ -13961,11 +12892,11 @@ export namespace cs {
 
     export interface ManagedKubernetesCertificateAuthority {
         /**
-         * The path of client certificate, like `~/.kube/client-cert.pem`.
+         * The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
          */
         clientCert: string;
         /**
-         * The path of client key, like `~/.kube/client-key.pem`.
+         * The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
          */
         clientKey: string;
         /**
@@ -14226,27 +13157,15 @@ export namespace cs {
     }
 
     export interface NodePoolManagementAutoRepairPolicy {
-        /**
-         * Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
-         */
         restartNode: boolean;
     }
 
     export interface NodePoolManagementAutoUpgradePolicy {
-        /**
-         * Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
-         */
         autoUpgradeKubelet: boolean;
     }
 
     export interface NodePoolManagementAutoVulFixPolicy {
-        /**
-         * Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
-         */
         restartNode: boolean;
-        /**
-         * The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
-         */
         vulLevel: string;
     }
 
@@ -14527,9 +13446,6 @@ export namespace databasefilesystem {
     }
 
     export interface GetInstancesInstanceEcsList {
-        /**
-         * The ID of the ECS instance.
-         */
         ecsId: string;
     }
 
@@ -14645,45 +13561,15 @@ export namespace databasegateway {
     }
 
     export interface GetGatewaysGatewayGatewayInstance {
-        /**
-         * The connection type of Gateway instance.
-         */
         connectEndpointType: string;
-        /**
-         * The process of version number of Gateway instance.
-         */
         currentDaemonVersion: string;
-        /**
-         * The version of Gateway instance.
-         */
         currentVersion: string;
-        /**
-         * The endpoint address of Gateway instance.
-         */
         endPoint: string;
-        /**
-         * The id of Gateway instance.
-         */
         gatewayInstanceId: string;
-        /**
-         * The status of Gateway instance. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
-         */
         gatewayInstanceStatus: string;
-        /**
-         * The last Updated time stamp of Gateway instance.
-         */
         lastUpdateTime: string;
-        /**
-         * The Local IP ADDRESS of Gateway instance.
-         */
         localIp: string;
-        /**
-         * The prompt information of Gateway instance.
-         */
         message: string;
-        /**
-         * The host of Gateway instance.
-         */
         outputIp: string;
     }
 
@@ -15012,557 +13898,224 @@ export namespace dcdn {
     }
 
     export interface ErEnvConfPresetCanaryAnhui {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryBeijing {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryChongqing {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryFujian {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryGansu {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryGuangdong {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryGuangxi {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryGuizhou {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryHainan {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryHebei {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryHeilongjiang {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryHenan {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryHongKong {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryHubei {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryHunan {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryJiangsu {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryJiangxi {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryJilin {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryLiaoning {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryMacau {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryNeimenggu {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryNingxia {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryOverseas {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryQinghai {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryShaanxi {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryShandong {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryShanghai {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryShanxi {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanarySichuan {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryTaiwan {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryTianjin {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryXinjiang {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryXizang {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryYunnan {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfPresetCanaryZhejiang {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfProduction {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
     export interface ErEnvConfStaging {
-        /**
-         * Allowed DCDN domain names.
-         */
         allowedHosts: string[];
-        /**
-         * The version number of the code.
-         */
         codeRev?: string;
-        /**
-         * The specification of the CPU time slice. Valid values: `5ms`, `50ms`, `100ms`.
-         */
         specName: string;
     }
 
@@ -15738,13 +14291,7 @@ export namespace dcdn {
     }
 
     export interface GetWafDomainsDomainDefenseScene {
-        /**
-         * The type of protection policy.
-         */
         defenseScene: string;
-        /**
-         * The protection policy ID.
-         */
         policyId: string;
     }
 
@@ -15997,17 +14544,8 @@ export namespace dcdn {
     }
 
     export interface WafRuleRateLimitStatus {
-        /**
-         * The HTTP status code returned.
-         */
         code?: string;
-        /**
-         * The number of times that the HTTP status code that was returned. Valid values: 2 to 50000. You can configure only one of the `ratio` and `count` fields.
-         */
         count?: number;
-        /**
-         * The percentage of HTTP status codes. Valid values: 1 to 100. You can configure only one of the `ratio` and `count` fields.
-         */
         ratio?: number;
     }
 
@@ -16250,7 +14788,7 @@ export namespace ddos {
          */
         frontendPort: string;
         /**
-         * The forwarding protocol.
+         * The forwarding protocol. Valid values `tcp` and `udp`.
          */
         frontendProtocol: string;
         /**
@@ -16537,13 +15075,7 @@ export namespace dfs {
     }
 
     export interface GetZonesZoneOption {
-        /**
-         * The protocol type. Valid values: `HDFS`.
-         */
         protocolType: string;
-        /**
-         * The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
-         */
         storageType: string;
     }
 
@@ -17414,25 +15946,10 @@ export namespace dns {
     }
 
     export interface GetAddressPoolsPoolAddress {
-        /**
-         * The address that you want to add to the address pool.
-         */
         address: string;
-        /**
-         * The source region of the address.
-         */
         attributeInfo: string;
-        /**
-         * The weight of the address.
-         */
         lbaWeight: number;
-        /**
-         * The type of the address.
-         */
         mode: string;
-        /**
-         * The description of the address.
-         */
         remark: string;
     }
 
@@ -17677,13 +16194,7 @@ export namespace dns {
     }
 
     export interface GetCustomLinesLineIpSegmentList {
-        /**
-         * The end IP address of the CIDR block.
-         */
         endIp: string;
-        /**
-         * The start IP address of the CIDR block.
-         */
         startIp: string;
     }
 
@@ -17878,21 +16389,9 @@ export namespace dns {
     }
 
     export interface GetGtmInstancesInstanceAlertConfig {
-        /**
-         * Whether to configure DingTalk notifications.
-         */
         dingtalkNotice: boolean;
-        /**
-         * Whether to configure mail notification.
-         */
         emailNotice: boolean;
-        /**
-         * The Alarm Event Type.
-         */
         noticeType: string;
-        /**
-         * Whether to configure SMS notification.
-         */
         smsNotice: boolean;
     }
 
@@ -18579,13 +17078,7 @@ export namespace ebs {
     }
 
     export interface EnterpriseSnapshotPolicyCrossRegionCopyInfoRegion {
-        /**
-         * Destination region ID.
-         */
         regionId?: string;
-        /**
-         * Number of days of snapshot retention for replication.
-         */
         retainDays?: number;
     }
 
@@ -18625,20 +17118,8 @@ export namespace ebs {
     }
 
     export interface EnterpriseSnapshotPolicySpecialRetainRulesRule {
-        /**
-         * The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
-         * - WEEKS
-         * - MONTHS
-         * - YEARS.
-         */
         specialPeriodUnit?: string;
-        /**
-         * Time unit.
-         */
         timeInterval?: number;
-        /**
-         * Time-based retention.
-         */
         timeUnit?: string;
     }
 
@@ -18849,9 +17330,6 @@ export namespace ebs {
     }
 
     export interface GetRegionsRegionZone {
-        /**
-         * The ID of the zone.
-         */
         zoneId: string;
     }
 
@@ -18964,196 +17442,82 @@ export namespace eci {
     }
 
     export interface ContainerGroupContainerEnvironmentVar {
-        /**
-         * The reference of the environment variable. See `fieldRef` below.
-         */
         fieldReves?: outputs.eci.ContainerGroupContainerEnvironmentVarFieldRef[];
-        /**
-         * The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
-         */
         key?: string;
-        /**
-         * The value of the variable. The value can be 0 to 256 characters in length.
-         */
         value?: string;
     }
 
     export interface ContainerGroupContainerEnvironmentVarFieldRef {
-        /**
-         * The path of the reference.
-         */
         fieldPath?: string;
     }
 
     export interface ContainerGroupContainerLivenessProbe {
-        /**
-         * Health check using command line method. See `exec` below.
-         */
         execs?: outputs.eci.ContainerGroupContainerLivenessProbeExec[];
-        /**
-         * Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
-         */
         failureThreshold?: number;
-        /**
-         * Health check using HTTP request method. See `httpGet` below.
-         */
         httpGets?: outputs.eci.ContainerGroupContainerLivenessProbeHttpGet[];
-        /**
-         * Check the time to start execution, calculated from the completion of container startup.
-         */
         initialDelaySeconds?: number;
-        /**
-         * Buffer time for the program to handle operations before closing.
-         */
         periodSeconds?: number;
-        /**
-         * The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
-         */
         successThreshold?: number;
-        /**
-         * Health check using TCP socket method. See `tcpSocket` below.
-         */
         tcpSockets?: outputs.eci.ContainerGroupContainerLivenessProbeTcpSocket[];
-        /**
-         * Check the timeout, the default is 1 second, the minimum is 1 second.
-         */
         timeoutSeconds?: number;
     }
 
     export interface ContainerGroupContainerLivenessProbeExec {
-        /**
-         * Commands to be executed inside the container when performing health checks using the command line method.
-         */
         commands?: string[];
     }
 
     export interface ContainerGroupContainerLivenessProbeHttpGet {
-        /**
-         * The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
-         */
         path?: string;
-        /**
-         * When using the HTTP request method for health check, the port number for HTTP Get request detection.
-         */
         port?: number;
-        /**
-         * The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
-         */
         scheme?: string;
     }
 
     export interface ContainerGroupContainerLivenessProbeTcpSocket {
-        /**
-         * When using the HTTP request method for health check, the port number for HTTP Get request detection.
-         */
         port?: number;
     }
 
     export interface ContainerGroupContainerPort {
-        /**
-         * When using the HTTP request method for health check, the port number for HTTP Get request detection.
-         */
         port?: number;
-        /**
-         * The type of the protocol. Valid values: `TCP` and `UDP`.
-         */
         protocol?: string;
     }
 
     export interface ContainerGroupContainerReadinessProbe {
-        /**
-         * Health check using command line method. See `exec` below.
-         */
         execs?: outputs.eci.ContainerGroupContainerReadinessProbeExec[];
-        /**
-         * Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
-         */
         failureThreshold?: number;
-        /**
-         * Health check using HTTP request method. See `httpGet` below.
-         */
         httpGets?: outputs.eci.ContainerGroupContainerReadinessProbeHttpGet[];
-        /**
-         * Check the time to start execution, calculated from the completion of container startup.
-         */
         initialDelaySeconds?: number;
-        /**
-         * Buffer time for the program to handle operations before closing.
-         */
         periodSeconds?: number;
-        /**
-         * The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
-         */
         successThreshold?: number;
-        /**
-         * Health check using TCP socket method. See `tcpSocket` below.
-         */
         tcpSockets?: outputs.eci.ContainerGroupContainerReadinessProbeTcpSocket[];
-        /**
-         * Check the timeout, the default is 1 second, the minimum is 1 second.
-         */
         timeoutSeconds?: number;
     }
 
     export interface ContainerGroupContainerReadinessProbeExec {
-        /**
-         * Commands to be executed inside the container when performing health checks using the command line method.
-         */
         commands?: string[];
     }
 
     export interface ContainerGroupContainerReadinessProbeHttpGet {
-        /**
-         * The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
-         */
         path?: string;
-        /**
-         * When using the HTTP request method for health check, the port number for HTTP Get request detection.
-         */
         port?: number;
-        /**
-         * The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
-         */
         scheme?: string;
     }
 
     export interface ContainerGroupContainerReadinessProbeTcpSocket {
-        /**
-         * When using the HTTP request method for health check, the port number for HTTP Get request detection.
-         */
         port?: number;
     }
 
     export interface ContainerGroupContainerSecurityContext {
-        /**
-         * The permissions that you want to grant to the processes in the containers. See `capability` below.
-         */
         capabilities?: outputs.eci.ContainerGroupContainerSecurityContextCapability[];
-        /**
-         * The ID of the user who runs the container.
-         */
         runAsUser?: number;
     }
 
     export interface ContainerGroupContainerSecurityContextCapability {
-        /**
-         * The permissions that you want to grant to the processes in the containers.
-         */
         adds?: string[];
     }
 
     export interface ContainerGroupContainerVolumeMount {
-        /**
-         * The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
-         */
         mountPath?: string;
-        /**
-         * The name of the mounted volume.
-         */
         name?: string;
-        /**
-         * Specifies whether the volume is read-only. Default value: `false`.
-         */
         readOnly?: boolean;
     }
 
@@ -19173,13 +17537,7 @@ export namespace eci {
     }
 
     export interface ContainerGroupDnsConfigOption {
-        /**
-         * The name of the mounted volume.
-         */
         name?: string;
-        /**
-         * The value of the variable. The value can be 0 to 256 characters in length.
-         */
         value?: string;
     }
 
@@ -19273,68 +17631,32 @@ export namespace eci {
     }
 
     export interface ContainerGroupInitContainerEnvironmentVar {
-        /**
-         * The reference of the environment variable. See `fieldRef` below.
-         */
         fieldReves?: outputs.eci.ContainerGroupInitContainerEnvironmentVarFieldRef[];
-        /**
-         * The name of the variable. The name can be 1 to 128 characters in length and can contain letters, digits, and underscores (_). It cannot start with a digit.
-         */
         key?: string;
-        /**
-         * The value of the variable. The value can be 0 to 256 characters in length.
-         */
         value?: string;
     }
 
     export interface ContainerGroupInitContainerEnvironmentVarFieldRef {
-        /**
-         * The path of the reference.
-         */
         fieldPath?: string;
     }
 
     export interface ContainerGroupInitContainerPort {
-        /**
-         * When using the HTTP request method for health check, the port number for HTTP Get request detection.
-         */
         port?: number;
-        /**
-         * The type of the protocol. Valid values: `TCP` and `UDP`.
-         */
         protocol?: string;
     }
 
     export interface ContainerGroupInitContainerSecurityContext {
-        /**
-         * The permissions that you want to grant to the processes in the containers. See `capability` below.
-         */
         capabilities?: outputs.eci.ContainerGroupInitContainerSecurityContextCapability[];
-        /**
-         * The ID of the user who runs the container.
-         */
         runAsUser?: number;
     }
 
     export interface ContainerGroupInitContainerSecurityContextCapability {
-        /**
-         * The permissions that you want to grant to the processes in the containers.
-         */
         adds?: string[];
     }
 
     export interface ContainerGroupInitContainerVolumeMount {
-        /**
-         * The directory of the mounted volume. Data under this directory will be overwritten by the data in the volume.
-         */
         mountPath?: string;
-        /**
-         * The name of the mounted volume.
-         */
         name?: string;
-        /**
-         * Specifies whether the volume is read-only. Default value: `false`.
-         */
         readOnly?: boolean;
     }
 
@@ -19346,13 +17668,7 @@ export namespace eci {
     }
 
     export interface ContainerGroupSecurityContextSysctl {
-        /**
-         * The name of the mounted volume.
-         */
         name?: string;
-        /**
-         * The value of the variable. The value can be 0 to 256 characters in length.
-         */
         value?: string;
     }
 
@@ -19405,13 +17721,7 @@ export namespace eci {
     }
 
     export interface ContainerGroupVolumeConfigFileVolumeConfigFileToPath {
-        /**
-         * The content of the configuration file. Maximum size: 32 KB.
-         */
         content?: string;
-        /**
-         * The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
-         */
         path?: string;
     }
 
@@ -19622,7 +17932,7 @@ export namespace eci {
          */
         mountPath: string;
         /**
-         * The name of the volume.
+         * The name of the volume. The name is the same as the volume you selected when you purchased the container.
          */
         name: string;
         /**
@@ -19804,7 +18114,7 @@ export namespace eci {
          */
         mountPath: string;
         /**
-         * The name of the volume.
+         * The name of the volume. The name is the same as the volume you selected when you purchased the container.
          */
         name: string;
         /**
@@ -20197,25 +18507,10 @@ export namespace ecp {
 
 export namespace ecs {
     export interface AutoProvisioningGroupLaunchTemplateConfig {
-        /**
-         * The instance type of the Nth extended configurations of the launch template.
-         */
         instanceType?: string;
-        /**
-         * The maximum price of the instance type specified in the Nth extended configurations of the launch template.
-         */
         maxPrice: string;
-        /**
-         * The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
-         */
         priority: string;
-        /**
-         * The ID of the VSwitch in the Nth extended configurations of the launch template.
-         */
         vswitchId: string;
-        /**
-         * The weight of the instance type specified in the Nth extended configurations of the launch template.
-         */
         weightedCapacity: string;
     }
 
@@ -20900,7 +19195,6 @@ export namespace ecs {
         status: string;
         /**
          * A map of tags assigned to the disks. It must be in the format:
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -20912,7 +19206,6 @@ export namespace ecs {
          *     },
          * });
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         tags: {[key: string]: any};
         /**
@@ -20982,40 +19275,16 @@ export namespace ecs {
     }
 
     export interface GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacity {
-        /**
-         * The available memory size. Unit: `GiB`.
-         */
         availableMemory: number;
-        /**
-         * The number of available vCPUs.
-         */
         availableVcpus: number;
-        /**
-         * The local storage.
-         */
         localStorageCapacities: outputs.ecs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity[];
-        /**
-         * The total memory size. Unit: `GiB`.
-         */
         totalMemory: number;
-        /**
-         * The total number of vCPUs.
-         */
         totalVcpus: number;
     }
 
     export interface GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacity {
-        /**
-         * The available capacity of the local disk. Unit: `GiB`.
-         */
         availableDisk: number;
-        /**
-         * The category of the data disk. Valid values:`cloud`, `cloudEfficiency`, `cloudSsd`, `ephemeralSsd`, `cloudEssd`.
-         */
         dataDiskCategory: string;
-        /**
-         * The total capacity of the local disk. Unit: `GiB`.
-         */
         totalDisk: number;
     }
 
@@ -21211,16 +19480,10 @@ export namespace ecs {
     }
 
     export interface GetEcsDisksDiskMountInstance {
-        /**
-         * A mount of time.
-         */
         attachedTime: string;
-        /**
-         * The mount point of the disk.
-         */
         device: string;
         /**
-         * The instance ID of the disk mount.
+         * Filter the results by the specified ECS instance ID.
          */
         instanceId: string;
     }
@@ -21421,61 +19684,20 @@ export namespace ecs {
     }
 
     export interface GetEcsInvocationsInvocationInvokeInstance {
-        /**
-         * The start time of the execution.
-         */
         creationTime: string;
-        /**
-         * The size of truncated and discarded text when the value of the Output response parameter exceeds 24 KB in size.
-         */
         dropped: number;
         errorCode: string;
-        /**
-         * Details about the reason why the command failed to be sent or run.
-         */
         errorInfo: string;
-        /**
-         * The exit code of the execution.
-         */
         exitCode: number;
-        /**
-         * The end time of the execution.
-         */
         finishTime: string;
-        /**
-         * The ID of the instance.
-         */
         instanceId: string;
         instanceInvokeStatus: string;
-        /**
-         * The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
-         */
         invocationStatus: string;
-        /**
-         * The output of the command.
-         */
         output: string;
-        /**
-         * The number of times that the command is run on the instance.
-         */
         repeats: number;
-        /**
-         * The time when the command started to be run on the instance.
-         */
         startTime: string;
-        /**
-         * The time when the command stopped being run on the instance. If you call the StopInvocation operation to manually stop the execution, the value is the time when you call the operation.
-         */
         stopTime: string;
-        /**
-         * Indicates whether the commands are to be automatically run.
-         * * `errorCode	` - The code that indicates why the command failed to be sent or run.
-         * * `instanceInvokeStatus	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
-         */
         timed: boolean;
-        /**
-         * The time when the execution state was updated.
-         */
         updateTime: string;
     }
 
@@ -21488,9 +19710,6 @@ export namespace ecs {
          * The ID of the Key Pair.
          */
         id: string;
-        /**
-         * A list of ECS instances that has been bound this key pair.
-         */
         instances: outputs.ecs.GetEcsKeyPairsKeyPairInstance[];
         /**
          * The Key Pair Name.
@@ -21508,38 +19727,20 @@ export namespace ecs {
     }
 
     export interface GetEcsKeyPairsKeyPairInstance {
-        /**
-         * The ID of the availability zone where the ECS instance is located.
-         */
         availabilityZone: string;
         description: string;
         imageId: string;
-        /**
-         * The ID of the ECS instance.
-         */
         instanceId: string;
-        /**
-         * The name of the ECS instance.
-         */
         instanceName: string;
         instanceType: string;
         /**
          * The Key Pair Name.
          */
         keyName: string;
-        /**
-         * The private IP address of the ECS instance.
-         */
         privateIp: string;
-        /**
-         * The public IP address or EIP of the ECS instance.
-         */
         publicIp: string;
         regionId: string;
         status: string;
-        /**
-         * The ID of the VSwitch attached to the ECS instance.
-         */
         vswitchId: string;
     }
 
@@ -21552,9 +19753,6 @@ export namespace ecs {
          * The ID of the Key Pair.
          */
         id: string;
-        /**
-         * A list of ECS instances that has been bound this key pair.
-         */
         instances: outputs.ecs.GetEcsKeyPairsPairInstance[];
         /**
          * The Key Pair Name.
@@ -21572,38 +19770,20 @@ export namespace ecs {
     }
 
     export interface GetEcsKeyPairsPairInstance {
-        /**
-         * The ID of the availability zone where the ECS instance is located.
-         */
         availabilityZone: string;
         description: string;
         imageId: string;
-        /**
-         * The ID of the ECS instance.
-         */
         instanceId: string;
-        /**
-         * The name of the ECS instance.
-         */
         instanceName: string;
         instanceType: string;
         /**
          * The Key Pair Name.
          */
         keyName: string;
-        /**
-         * The private IP address of the ECS instance.
-         */
         privateIp: string;
-        /**
-         * The public IP address or EIP of the ECS instance.
-         */
         publicIp: string;
         regionId: string;
         status: string;
-        /**
-         * The ID of the VSwitch attached to the ECS instance.
-         */
         vswitchId: string;
     }
 
@@ -22011,9 +20191,6 @@ export namespace ecs {
     }
 
     export interface GetEcsNetworkInterfacesInterfaceAssociatedPublicIp {
-        /**
-         * The EIP of the ENI.
-         */
         publicIpAddress: string;
     }
 
@@ -22055,9 +20232,6 @@ export namespace ecs {
 
     export interface GetEcsPrefixListsListEntry {
         cidr: string;
-        /**
-         * The description of the prefix list.
-         */
         description: string;
     }
 
@@ -22875,7 +21049,6 @@ export namespace ecs {
         status: string;
         /**
          * A map of tags assigned to the ECS instances. It must be in the format:
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -22887,7 +21060,6 @@ export namespace ecs {
          *     },
          * });
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         tags?: {[key: string]: any};
         /**
@@ -23220,7 +21392,6 @@ export namespace ecs {
         securityGroupType: string;
         /**
          * A map of tags assigned to the ECS instances. It must be in the format:
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -23232,7 +21403,6 @@ export namespace ecs {
          *     },
          * });
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         tags?: {[key: string]: any};
         /**
@@ -23479,11 +21649,11 @@ export namespace ecs {
 
     export interface LaunchTemplateNetworkInterfaces {
         /**
-         * The description of the data disk.
+         * The ENI description.
          */
         description?: string;
         /**
-         * The name of the data disk.
+         * ENI name.
          */
         name?: string;
         /**
@@ -23501,47 +21671,19 @@ export namespace ecs {
     }
 
     export interface LaunchTemplateSystemDisk {
-        /**
-         * The category of the disk:
-         * - cloud: Basic cloud disk.
-         * - cloud_efficiency: Ultra cloud disk.
-         * - cloud_ssd: SSD cloud Disks.
-         * - ephemeral_ssd: local SSD Disks
-         * - cloud_essd: ESSD cloud Disks.
-         *
-         * Default to `cloudEfficiency`.
-         */
         category: string;
-        /**
-         * Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloudSsd and cloudEssd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-         *
-         * Default to true
-         */
         deleteWithInstance?: boolean;
         /**
-         * The description of the data disk.
+         * Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
          */
         description: string;
-        /**
-         * Encrypted the data in this disk.
-         *
-         * Default to false
-         */
         encrypted?: boolean;
         iops?: string;
         /**
-         * The name of the data disk.
+         * Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
          */
         name: string;
         performanceLevel: string;
-        /**
-         * The size of the data disk.
-         * - cloud：[5, 2000]
-         * - cloud_efficiency：[20, 32768]
-         * - cloud_ssd：[20, 32768]
-         * - cloud_essd：[20, 32768]
-         * - ephemeral_ssd: [5, 800]
-         */
         size: number;
     }
 
@@ -23743,32 +21885,14 @@ export namespace edas {
     }
 
     export interface K8sSlbAttachmentSlbConfigPortMapping {
-        /**
-         * The ID of your tls certification, this is used for 'HTTPS' protocol only.
-         */
         certId?: string;
-        /**
-         * The protocol of SLB instance configuration, values can be 'TCP', 'HTTP' or 'HTTPS'.
-         */
         loadbalancerProtocol: string;
-        /**
-         * The backend k8s service configuration for SLB instance, which is supported for multiple configurations. See `servicePort` below.
-         */
         servicePort: outputs.edas.K8sSlbAttachmentSlbConfigPortMappingServicePort;
     }
 
     export interface K8sSlbAttachmentSlbConfigPortMappingServicePort {
-        /**
-         * The port of k8s service, values should be within range [1, 65535].
-         */
         port: number;
-        /**
-         * The protocol of k8s service, values can be 'TCP' or 'UDP'.
-         */
         protocol: string;
-        /**
-         * The port of k8s pod, values should be within range [1, 65535].
-         */
         targetPort: number;
     }
 
@@ -23908,29 +22032,11 @@ export namespace eds {
     }
 
     export interface GetAdConnectorDirectoriesDirectoryAdConnector {
-        /**
-         * The address of AD connector.
-         */
         adConnectorAddress: string;
-        /**
-         * The status of connector.
-         */
         connectorStatus: string;
-        /**
-         * The ID of the network interface.
-         */
         networkInterfaceId: string;
-        /**
-         * The AD Connector specifications.
-         */
         specification: string;
-        /**
-         * The AD Connector control trust password.
-         */
         trustKey: string;
-        /**
-         * The ID of VSwitch.
-         */
         vswitchId: string;
     }
 
@@ -24139,32 +22245,14 @@ export namespace eds {
     }
 
     export interface GetBundlesBundleDesktopTypeAttribute {
-        /**
-         * The cpu count attribute of the bundle.
-         */
         cpuCount: number;
-        /**
-         * The gpu count attribute of the bundle.
-         */
         gpuCount: string;
-        /**
-         * The gpu spec attribute of the bundle.
-         */
         gpuSpec: string;
-        /**
-         * The memory size attribute of the bundle.
-         */
         memorySize: string;
     }
 
     export interface GetBundlesBundleDisk {
-        /**
-         * The disk size attribute of the bundle.
-         */
         diskSize: string;
-        /**
-         * The disk type attribute of the bundle.
-         */
         diskType: string;
     }
 
@@ -25180,9 +23268,6 @@ export namespace ehpc {
     }
 
     export interface ClusterAdditionalVolumeRole {
-        /**
-         * The type of the nodes to which the additional file system is attached.
-         */
         name?: string;
     }
 
@@ -25214,116 +23299,36 @@ export namespace ehpc {
          * The version number of the client used by the cluster.
          */
         clientVersion: string;
-        /**
-         * The id of E-HPC Cluster.
-         */
         clusterId: string;
-        /**
-         * The name of E-HPC cluster.
-         */
         clusterName: string;
-        /**
-         * The number of compute nodes in the cluster.
-         */
         computeCount: number;
-        /**
-         * Cluster compute node specifications.
-         */
         computeInstanceType: string;
-        /**
-         * The creation time of the resource.
-         */
         createTime: string;
-        /**
-         * Cluster deployment mode. Possible values:
-         * - Standard: separate deployment of account nodes, scheduling nodes, login nodes, and compute nodes.
-         * - Advanced:HA mode deployment.
-         * - Simple: the account node and the scheduling node are deployed on one node, and the login node and the compute node are deployed separately.
-         * - Tiny: account nodes, scheduling nodes, and login nodes are deployed on one node, and compute nodes are deployed separately.
-         * - OneBox: account node, scheduling node, login node and compute node are deployed on one node.
-         */
         deployMode: string;
-        /**
-         * The description of E-HPC cluster.
-         */
         description: string;
-        /**
-         * Whether to turn on high availability. > If high availability is enabled, each control role in the cluster will use two primary and secondary instances.
-         */
         haEnable: boolean;
-        /**
-         * The ID of the Cluster.
-         */
         id: string;
-        /**
-         * The ID of the Image.
-         */
         imageId: string;
-        /**
-         * The type of the image.
-         */
         imageOwnerAlias: string;
-        /**
-         * The number of cluster login nodes. Only configuration 1 is supported.
-         */
         loginCount: number;
-        /**
-         * Cluster login node specifications.
-         */
         loginInstanceType: string;
         managerCount: number;
-        /**
-         * The instance type of manager nodes.
-         */
         managerInstanceType: string;
-        /**
-         * The image tag of the operating system.
-         */
         osTag: string;
         postInstallScripts: outputs.ehpc.GetClustersClusterPostInstallScript[];
-        /**
-         * Mount the remote directory of the shared storage.
-         */
         remoteDirectory: string;
-        /**
-         * The SccCluster ID used by the cluster. If the cluster is not an SCC model, it is empty.
-         */
         sccClusterId: string;
-        /**
-         * Dispatch server type.
-         */
         schedulerType: string;
-        /**
-         * The ID of the security group.
-         */
         securityGroupId: string;
         /**
-         * The status of the resource.
+         * The status of the resource. Valid values:
          */
         status: string;
-        /**
-         * The ID of the NAS instance. Currently, you cannot automatically create an Alibaba Cloud NAS instance.
-         */
         volumeId: string;
-        /**
-         * The mount target of the file system. Mount targets cannot be automatically created for NAS file systems.
-         */
         volumeMountpoint: string;
-        /**
-         * The type of the protocol that is used by the file system.
-         */
         volumeProtocol: string;
-        /**
-         * The type of the network shared storage. Valid value: NAS.
-         */
         volumeType: string;
-        /**
-         * The ID of the VPC network.
-         */
         vpcId: string;
-        /**
-         * The vswitch id.
-         */
         vswitchId: string;
         zoneId: string;
     }
@@ -25538,166 +23543,64 @@ export namespace elasticsearch {
 
 export namespace emr {
     export interface ClusterBootstrapAction {
-        /**
-         * bootstrap action args, e.g. "--a=b".
-         */
         arg?: string;
-        /**
-         * bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
-         */
         executionFailStrategy?: string;
-        /**
-         * bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: "BEFORE_INSTALL".
-         */
         executionMoment?: string;
-        /**
-         * bootstrap action execution target, you can specify the host group name, e.g. "coreGroup". If this is not specified, the bootstrap action execution target is whole cluster.
-         */
         executionTarget?: string;
         /**
          * The name of emr cluster. The name length must be less than 64. Supported characters: chinese character, english character, number, "-", "_".
          */
         name?: string;
-        /**
-         * bootstrap action path, e.g. "oss://bucket/path".
-         */
         path?: string;
     }
 
     export interface ClusterConfig {
-        /**
-         * Custom configuration service config key, e.g. ’dfs.replication’.
-         */
         configKey: string;
-        /**
-         * Custom configuration service config value, e.g. ’3’.
-         */
         configValue: string;
-        /**
-         * Custom configuration service file name, e.g. ’hdfs-site’.
-         */
         fileName: string;
-        /**
-         * Custom configuration service name, e.g. ’HDFS’.
-         */
         serviceName: string;
     }
 
     export interface ClusterHostGroup {
-        /**
-         * Auto renew for prepaid, ’true’ or ‘false’ . Default value: false.
-         */
         autoRenew?: boolean;
         /**
          * Charge Type for this cluster. Supported value: PostPaid or PrePaid. Default value: PostPaid.
          */
         chargeType?: string;
-        /**
-         * Graceful decommission timeout, unit: seconds.
-         */
         decommissionTimeout: number;
-        /**
-         * Data disk capacity.
-         */
         diskCapacity?: string;
-        /**
-         * Data disk count.
-         */
         diskCount?: string;
-        /**
-         * Data disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,local_disk,cloud_essd.
-         */
         diskType?: string;
-        /**
-         * Enable hadoop cluster of task node graceful decommission, ’true’ or ‘false’ . Default value: false.
-         */
         enableGracefulDecommission: boolean;
         gpuDriver?: string;
-        /**
-         * host group name.
-         */
         hostGroupName?: string;
-        /**
-         * host group type, supported value: MASTER, CORE or TASK, supported 'GATEWAY' available in 1.61.0+.
-         */
         hostGroupType?: string;
-        /**
-         * Instance list for cluster scale down. This value follows the json format, e.g. ["instanceId1","instanceId2"]. escape character for " is \".
-         */
         instanceList?: string;
-        /**
-         * Host Ecs instance type.
-         */
         instanceType?: string;
-        /**
-         * Host number in this group.
-         */
         nodeCount?: string;
         /**
          * If charge type is PrePaid, this should be specified, unit is month. Supported value: 1、2、3、4、5、6、7、8、9、12、24、36.
          */
         period: number;
-        /**
-         * System disk capacity.
-         */
         sysDiskCapacity?: string;
-        /**
-         * System disk type. Supported value: cloud,cloud_efficiency,cloud_ssd,cloud_essd.
-         */
         sysDiskType?: string;
     }
 
     export interface ClusterMetaStoreConf {
-        /**
-         * Custom rds database password.
-         */
         dbPassword: string;
-        /**
-         * Custom rds database connection url.
-         */
         dbUrl: string;
-        /**
-         * Custom rds database user name.
-         */
         dbUserName: string;
     }
 
     export interface ClusterModifyClusterServiceConfig {
-        /**
-         * Cluster service configuration modification comment, e.g. "Modify tez configuration".
-         */
         comment?: string;
-        /**
-         * Cluster service configuration modification params, e.g. ’{"hdfs-site":{"dfs.replication":"3"}}’.
-         */
         configParams: string;
-        /**
-         * Cluster service configuration modification type.
-         */
         configType?: string;
-        /**
-         * Cluster service configuration modification custom params, e.g. ’{"tez-site":{"key":{"Value":"value"}}}’.
-         */
         customConfigParams?: string;
-        /**
-         * Cluster service configuration modification related gateway cluster id list.
-         */
         gatewayClusterIdLists?: string[];
-        /**
-         * Cluster service configuration modification node group id, e.g. ’G-XXX’.
-         */
         groupId?: string;
-        /**
-         * Cluster service configuration modification host instance id, e.g. ’i-bp146tnrkq4tcxxxxx’.
-         */
         hostInstanceId?: string;
-        /**
-         * Cluster service configuration modification refresh host config, ’true’ or ’false’.
-         */
         refreshHostConfig?: boolean;
-        /**
-         * Custom configuration service name, e.g. ’HDFS’.
-         */
         serviceName: string;
     }
 
@@ -26219,25 +24122,10 @@ export namespace emrv2 {
     }
 
     export interface ClusterBootstrapScriptNodeSelector {
-        /**
-         * The configuration effected which node group id of emr cluster.
-         */
         nodeGroupId?: string;
-        /**
-         * The configuration effected which node group name of emr cluster.
-         */
         nodeGroupName?: string;
-        /**
-         * The bootstrap scripts execution target node group types.
-         */
         nodeGroupTypes?: string[];
-        /**
-         * The bootstrap scripts execution target node names.
-         */
         nodeNames?: string[];
-        /**
-         * The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
-         */
         nodeSelectType: string;
     }
 
@@ -26344,47 +24232,20 @@ export namespace emrv2 {
     }
 
     export interface ClusterNodeGroupCostOptimizedConfig {
-        /**
-         * The cost optimized configuration which on demand based capacity.
-         */
         onDemandBaseCapacity: number;
-        /**
-         * The cost optimized configuration which on demand percentage above based capacity.
-         */
         onDemandPercentageAboveBaseCapacity: number;
-        /**
-         * The cost optimized configuration with spot instance pools.
-         */
         spotInstancePools: number;
     }
 
     export interface ClusterNodeGroupDataDisk {
-        /**
-         * The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
-         */
         category: string;
-        /**
-         * The count of a data disk.
-         */
         count: number;
-        /**
-         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
-         */
         performanceLevel: string;
-        /**
-         * The size of a data disk, at least 40. Unit: GiB.
-         */
         size: number;
     }
 
     export interface ClusterNodeGroupSpotBidPrice {
-        /**
-         * The spot bid price of a PayAsYouGo instance.
-         */
         bidPrice: number;
-        /**
-         * Host Ecs instance type.
-         */
         instanceType: string;
     }
 
@@ -26416,21 +24277,9 @@ export namespace emrv2 {
     }
 
     export interface ClusterNodeGroupSystemDisk {
-        /**
-         * The type of the data disk. Valid values: `cloudEfficiency` and `cloudEssd`.
-         */
         category: string;
-        /**
-         * The count of a data disk.
-         */
         count: number;
-        /**
-         * Worker node data disk performance level, when `category` values `cloudEssd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
-         */
         performanceLevel: string;
-        /**
-         * The size of a data disk, at least 40. Unit: GiB.
-         */
         size: number;
     }
 
@@ -26759,46 +24608,19 @@ export namespace ess {
     }
 
     export interface EciScalingConfigurationContainerEnvironmentVar {
-        /**
-         * Environment variable value reference. Optional values: 
-         * - status.podIP: IP of pod.
-         */
         fieldRefFieldPath?: string;
-        /**
-         * The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-         * digits, and underscores (_). It cannot start with a digit.
-         */
         key?: string;
-        /**
-         * The value of the variable. The value can be 0 to 256 characters in length.
-         */
         value?: string;
     }
 
     export interface EciScalingConfigurationContainerPort {
-        /**
-         * The port number. Valid values: 1 to 65535.
-         */
         port?: number;
-        /**
-         * Valid values: TCP and UDP.
-         */
         protocol?: string;
     }
 
     export interface EciScalingConfigurationContainerVolumeMount {
-        /**
-         * The directory of the mounted volume. Data under this directory will be overwritten by the
-         * data in the volume.
-         */
         mountPath?: string;
-        /**
-         * The name of the mounted volume.
-         */
         name?: string;
-        /**
-         * Default to `false`.
-         */
         readOnly?: boolean;
     }
 
@@ -26898,46 +24720,19 @@ export namespace ess {
     }
 
     export interface EciScalingConfigurationInitContainerEnvironmentVar {
-        /**
-         * Environment variable value reference. Optional values: 
-         * - status.podIP: IP of pod.
-         */
         fieldRefFieldPath?: string;
-        /**
-         * The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-         * digits, and underscores (_). It cannot start with a digit.
-         */
         key?: string;
-        /**
-         * The value of the variable. The value can be 0 to 256 characters in length.
-         */
         value?: string;
     }
 
     export interface EciScalingConfigurationInitContainerPort {
-        /**
-         * The port number. Valid values: 1 to 65535.
-         */
         port?: number;
-        /**
-         * Valid values: TCP and UDP.
-         */
         protocol?: string;
     }
 
     export interface EciScalingConfigurationInitContainerVolumeMount {
-        /**
-         * The directory of the mounted volume. Data under this directory will be overwritten by the
-         * data in the volume.
-         */
         mountPath?: string;
-        /**
-         * The name of the mounted volume.
-         */
         name?: string;
-        /**
-         * Default to `false`.
-         */
         readOnly?: boolean;
     }
 
@@ -26998,13 +24793,7 @@ export namespace ess {
     }
 
     export interface EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath {
-        /**
-         * The content of the configuration file. Maximum size: 32 KB.
-         */
         content?: string;
-        /**
-         * The relative file path.
-         */
         path?: string;
     }
 
@@ -27578,17 +25367,8 @@ export namespace ess {
     }
 
     export interface ScalingGroupVServerGroupsVserverGroupVserverAttribute {
-        /**
-         * The port will be used for VServer Group backend server.
-         */
         port: number;
-        /**
-         * ID of VServer Group.
-         */
         vserverGroupId: string;
-        /**
-         * The weight of an ECS instance attached to the VServer Group.
-         */
         weight: number;
     }
 
@@ -27652,114 +25432,48 @@ export namespace eventbridge {
     }
 
     export interface ConnectionAuthParametersApiKeyAuthParameters {
-        /**
-         * The name of the API key.
-         */
         apiKeyName?: string;
-        /**
-         * The value of the API key.
-         */
         apiKeyValue?: string;
     }
 
     export interface ConnectionAuthParametersBasicAuthParameters {
-        /**
-         * The password for basic authentication.
-         */
         password?: string;
-        /**
-         * The username for basic authentication.
-         */
         username?: string;
     }
 
     export interface ConnectionAuthParametersOauthParameters {
-        /**
-         * The IP address of the authorized endpoint.
-         */
         authorizationEndpoint?: string;
-        /**
-         * The parameters that are configured for the client. See `clientParameters` below.
-         */
         clientParameters?: outputs.eventbridge.ConnectionAuthParametersOauthParametersClientParameters;
-        /**
-         * The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
-         */
         httpMethod?: string;
-        /**
-         * The request parameters that are configured for OAuth authentication. See `oauthHttpParameters` below.
-         */
         oauthHttpParameters?: outputs.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParameters;
     }
 
     export interface ConnectionAuthParametersOauthParametersClientParameters {
-        /**
-         * The ID of the client.
-         */
         clientId?: string;
-        /**
-         * The AccessKey secret of the client.
-         */
         clientSecret?: string;
     }
 
     export interface ConnectionAuthParametersOauthParametersOauthHttpParameters {
-        /**
-         * The parameters that are configured for the request body. See `bodyParameters` below.
-         */
         bodyParameters?: outputs.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter[];
-        /**
-         * The parameters that are configured for the request header. See `headerParameters` below.
-         */
         headerParameters?: outputs.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter[];
-        /**
-         * The parameters that are configured for the request path. See `queryStringParameters` below.
-         */
         queryStringParameters?: outputs.eventbridge.ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter[];
     }
 
     export interface ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter {
-        /**
-         * Specifies whether to enable authentication.
-         */
         isValueSecret?: string;
-        /**
-         * The key of the request path.
-         */
         key?: string;
-        /**
-         * The key of the request path.
-         */
         value?: string;
     }
 
     export interface ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter {
-        /**
-         * Specifies whether to enable authentication.
-         */
         isValueSecret?: string;
-        /**
-         * The key of the request path.
-         */
         key?: string;
-        /**
-         * The key of the request path.
-         */
         value?: string;
     }
 
     export interface ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter {
-        /**
-         * Specifies whether to enable authentication.
-         */
         isValueSecret?: string;
-        /**
-         * The key of the request path.
-         */
         key?: string;
-        /**
-         * The key of the request path.
-         */
         value?: string;
     }
 
@@ -27904,42 +25618,13 @@ export namespace eventbridge {
     }
 
     export interface RuleTargetDeadLetterQueue {
-        /**
-         * The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
-         */
         arn?: string;
     }
 
     export interface RuleTargetParamList {
-        /**
-         * The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
-         */
         form: string;
-        /**
-         * The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
-         */
         resourceKey: string;
-        /**
-         * The template of the event target parameter.
-         */
         template?: string;
-        /**
-         * The value of the event target parameter.
-         *
-         * > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
-         *
-         * ```
-         * param_list {
-         * resource_key = "IsBase64Encode"
-         * form         = "CONSTANT"
-         * value        = "false"
-         * template     = ""
-         * }
-         * ```
-         *
-         * In order to fix the diff, from version 1.160.0, this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
-         * If you want to set `resourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.
-         */
         value?: string;
     }
 
@@ -28339,14 +26024,7 @@ export namespace expressconnect {
     }
 
     export interface GetVirtualBorderRoutersFilter {
-        /**
-         * The key of the field to filter by, as defined by
-         * [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
-         */
         key?: string;
-        /**
-         * Set of values that are accepted for the given field.
-         */
         values?: string[];
     }
 
@@ -28662,16 +26340,10 @@ export namespace fc {
     }
 
     export interface FunctionAsyncInvokeConfigDestinationConfigOnFailure {
-        /**
-         * Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
-         */
         destination: string;
     }
 
     export interface FunctionAsyncInvokeConfigDestinationConfigOnSuccess {
-        /**
-         * Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
-         */
         destination: string;
     }
 
@@ -29025,13 +26697,7 @@ export namespace fc {
     }
 
     export interface ServiceNasConfigMountPoint {
-        /**
-         * The local address where to mount your remote NAS directory.
-         */
         mountDir: string;
-        /**
-         * The address of the remote NAS directory.
-         */
         serverAddr: string;
     }
 
@@ -29115,13 +26781,7 @@ export namespace fc {
     }
 
     export interface V2FunctionCustomDnsDnsOption {
-        /**
-         * DNS option name.
-         */
         name?: string;
-        /**
-         * DNS option value.
-         */
         value?: string;
     }
 
@@ -29385,16 +27045,10 @@ export namespace ga {
     }
 
     export interface ForwardingRuleRuleActionForwardGroupConfig {
-        /**
-         * The information about the endpoint group. See `serverGroupTuples` below.
-         */
         serverGroupTuples: outputs.ga.ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple[];
     }
 
     export interface ForwardingRuleRuleActionForwardGroupConfigServerGroupTuple {
-        /**
-         * The ID of the endpoint group.
-         */
         endpointGroupId: string;
     }
 
@@ -29414,16 +27068,10 @@ export namespace ga {
     }
 
     export interface ForwardingRuleRuleConditionHostConfig {
-        /**
-         * The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
-         */
         values?: string[];
     }
 
     export interface ForwardingRuleRuleConditionPathConfig {
-        /**
-         * The domain name is 3-128 characters long, which can contain letters, numbers, dashes (-) and width period (.), and supports the use of asterisk (*) and width question mark (?) as wildcard characters.
-         */
         values?: string[];
     }
 
@@ -30431,54 +28079,24 @@ export namespace gpdb {
     }
 
     export interface DbInstancePlanPlanConfigPause {
-        /**
-         * The executed time of the Plan.
-         */
         executeTime: string;
-        /**
-         * The Cron Time of the plan.
-         */
         planCronTime?: string;
     }
 
     export interface DbInstancePlanPlanConfigResume {
-        /**
-         * The executed time of the Plan.
-         */
         executeTime: string;
-        /**
-         * The Cron Time of the plan.
-         */
         planCronTime?: string;
     }
 
     export interface DbInstancePlanPlanConfigScaleIn {
-        /**
-         * The executed time of the Plan.
-         */
         executeTime: string;
-        /**
-         * The Cron Time of the plan.
-         */
         planCronTime?: string;
-        /**
-         * The segment Node Num of the Plan.
-         */
         segmentNodeNum?: string;
     }
 
     export interface DbInstancePlanPlanConfigScaleOut {
-        /**
-         * The executed time of the Plan.
-         */
         executeTime: string;
-        /**
-         * The Cron Time of the plan.
-         */
         planCronTime?: string;
-        /**
-         * The segment Node Num of the Plan.
-         */
         segmentNodeNum?: string;
     }
 
@@ -30651,13 +28269,7 @@ export namespace gpdb {
          */
         createTime: string;
         creationTime: string;
-        /**
-         * The db instance category. Valid values: `HighAvailability`, `Basic`.
-         */
         dbInstanceCategory: string;
-        /**
-         * The db instance class.
-         */
         dbInstanceClass: string;
         /**
          * The db instance id.
@@ -30711,9 +28323,6 @@ export namespace gpdb {
          * The billing method of the instance. Valid values: `Subscription`, `PayAsYouGo`.
          */
         paymentType: string;
-        /**
-         * Region ID the instance belongs to.
-         */
         regionId: string;
         /**
          * Calculate the number of nodes. The value range of the high-availability version of the storage elastic mode is 4 to 512, and the value must be a multiple of 4. The value range of the basic version of the storage elastic mode is 2 to 512, and the value must be a multiple of 2. The-Serverless version has a value range of 2 to 512. The value must be a multiple of 2.
@@ -30945,17 +28554,8 @@ export namespace graphdatabase {
     }
 
     export interface GetDbInstancesInstanceDbInstanceIpArray {
-        /**
-         * The default is empty. To distinguish between the different property console does not display a `hidden` label grouping.
-         */
         dbInstanceIpArrayAttribute?: string;
-        /**
-         * IP ADDRESS whitelist group name.
-         */
         dbInstanceIpArrayName?: string;
-        /**
-         * IP ADDRESS whitelist addresses in the IP ADDRESS list, and a maximum of 1000 comma-separated format is as follows: `0.0.0.0/0` and `10.23.12.24`(IP) or `10.23.12.24/24`(CIDR mode, CIDR (Classless Inter-Domain Routing)/24 represents the address prefixes in the length of the range [1,32]).
-         */
         securityIps?: string;
     }
 
@@ -31182,19 +28782,8 @@ export namespace hbase {
 
 export namespace hbr {
     export interface GetBackupJobsFilter {
-        /**
-         * The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
-         */
         key?: string;
-        /**
-         * The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
-         */
         operator?: string;
-        /**
-         * Set of values that are accepted for the given field.
-         *
-         * > **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
-         */
         values?: string[];
     }
 
@@ -32049,13 +29638,7 @@ export namespace hbr {
     }
 
     export interface GetServerBackupPlansFilter {
-        /**
-         * The key of the field to filter. Valid values: `planId`, `instanceId`, `planName`.
-         */
         key?: string;
-        /**
-         * Set of values that are accepted for the given field.
-         */
         values?: string[];
     }
 
@@ -32099,45 +29682,15 @@ export namespace hbr {
     }
 
     export interface GetServerBackupPlansPlanDetail {
-        /**
-         * Whether to turn on application consistency. The application consistency snapshot backs up memory data and ongoing database transactions at the time of snapshot creation to ensure the consistency of application system data and database transactions. By applying consistent snapshots, there is no data damage or loss, so as to avoid log rollback during database startup and ensure that the application is in a consistent startup state. Valid values: `true`, `false`.
-         */
         appConsistent: boolean;
-        /**
-         * Only vaild when DoCopy is true. The destination region ID when replicating to another region. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
-         */
         destinationRegionId: string;
-        /**
-         * Only vaild when DoCopy is true. The retention days of the destination backup. When not specified, the destination backup will be saved permanently. **Note:** Once you set a value of this property, you cannot set it to an empty string anymore.
-         */
         destinationRetention: number;
-        /**
-         * The list of cloud disks to be backed up in the ECS instance. When not specified, a snapshot is executed for all the disks on the ECS instance.
-         */
         diskIdLists: string[];
-        /**
-         * Whether replicate to another region. Valid values: `true`, `false`.
-         */
         doCopy: boolean;
-        /**
-         * Only the Linux system is valid. Whether to use the Linux FsFreeze mechanism to ensure that the file system is read-only consistent before creating a storage snapshot. The default is True. Valid values: `true`, `false`.
-         */
         enableFsFreeze: boolean;
-        /**
-         * Only vaild for the linux system when AppConsistent is true. The application thaw script path (e.g. /tmp/postscript.sh). The postscript.sh script must meet the following conditions: in terms of permissions, only the root user as the owner has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
-         */
         postScriptPath: string;
-        /**
-         * Only vaild for the linux system when AppConsistent is true. Apply the freeze script path (e.g. /tmp/prescript.sh). prescript.sh scripts must meet the following conditions: in terms of permissions, only root, as the owner, has read, write, and execute permissions, that is, 700 permissions. In terms of content, the script content needs to be customized according to the application itself. This indicates that this parameter must be set when creating an application consistency snapshot for a Linux instance. If the script is set incorrectly (for example, permissions, save path, or file name are set incorrectly), the resulting snapshot is a file system consistency snapshot.
-         */
         preScriptPath: string;
-        /**
-         * Whether to turn on file system consistency. If SnapshotGroup is true, when AppConsistent is true but the relevant conditions are not met or AppConsistent is false, the resulting snapshot will be a file system consistency snapshot. The file system consistency ensures that the file system memory and disk information are synchronized at the time of snapshot creation, and the file system write operation is frozen to make the file system in a consistent state. The file system consistency snapshot can prevent the operating system from performing disk inspection and repair operations such as CHKDSK or fsck after restart. Valid values: `true`, `false`.
-         */
         snapshotGroup: boolean;
-        /**
-         * Only the Linux system is valid, and the IO freeze timeout period. The default is 30 seconds.
-         */
         timeoutInSeconds: number;
     }
 
@@ -32350,9 +29903,6 @@ export namespace hbr {
     }
 
     export interface OtsBackupPlanOtsDetail {
-        /**
-         * The names of the destination tables in the Tablestore instance. **Note:** Required while sourceType equals `OTS_TABLE`.
-         */
         tableNames?: string[];
     }
 
@@ -32369,9 +29919,6 @@ export namespace hbr {
          * Backup retention days, the minimum is 1.
          */
         retention?: string;
-        /**
-         * The name of the backup rule.**Note:** Required while sourceType equals `OTS_TABLE`. `ruleName` should be unique for the specific user.
-         */
         ruleName?: string;
         /**
          * Backup strategy. Optional format: `I|{startTime}|{interval}`. It means to execute a backup task every `{interval}` starting from `{startTime}`. The backup task for the elapsed time will not be compensated. If the last backup task has not completed yet, the next backup task will not be triggered.
@@ -32387,17 +29934,8 @@ export namespace hbr {
     }
 
     export interface PolicyBindingAdvancedOptionsUdmDetail {
-        /**
-         * Custom KMS key ID of encrypted copy.
-         */
         destinationKmsKeyId?: string;
-        /**
-         * The list of backup disks. If it is empty, all disks are backed up.
-         */
         diskIdLists?: string[];
-        /**
-         * List of cloud disk IDs that are not backed up.
-         */
         excludeDiskIdLists?: string[];
     }
 
@@ -32445,20 +29983,11 @@ export namespace hbr {
     }
 
     export interface PolicyRuleRetentionRule {
-        /**
-         * Valid values: **annually**, **MONTHLY**, and **WEEKLY**:- **annually**: the first backup of each year. - **MONTHLY**: The first backup of the month. - **WEEKLY**: The first backup of the week.
-         */
         advancedRetentionType?: string;
-        /**
-         * Retention time, in days.
-         */
         retention?: number;
     }
 
     export interface RestoreJobOtsDetail {
-        /**
-         * Whether to overwrite the existing table storage recovery task. Valid values: `true`, `false`.
-         */
         overwriteExisting: boolean;
     }
 
@@ -32585,15 +30114,7 @@ export namespace imm {
 
 export namespace imp {
     export interface AppTemplateConfigList {
-        /**
-         * Configuration item key. Valid values: ["config.appCallbackAuthKey","config.appCallbackUrl","config.callbackClass.live","config.callbackClass.user","config.livePullDomain","config.livePushDomain","config.multipleClientsLogin","config.regionId","config.streamChangeCallbackUrl"].
-         */
         key: string;
-        /**
-         * Configuration item content.
-         *
-         * > **NOTE:**  By default, the attribute `configList` will return all of nine keys with empty value. If you want to set one or more of the key's value, you had better also set other keys, otherwise, there will be a diff.
-         */
         value: string;
     }
 
@@ -33379,7 +30900,7 @@ export namespace log {
     export interface AlertGroupConfiguration {
         fields?: string[];
         /**
-         * including FixedRate,Hourly,Daily,Weekly,Cron.
+         * Group configuration type, including no_group, labels_auto, custom.
          */
         type: string;
     }
@@ -33390,18 +30911,18 @@ export namespace log {
          */
         condition: string;
         /**
-         * including FixedRate,Hourly,Daily,Weekly,Cron.
+         * Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
          */
         type: string;
     }
 
     export interface AlertLabel {
         /**
-         * Annotations's key for new alert.
+         * Labels's key for new alert.
          */
         key: string;
         /**
-         * Annotations's value for new alert.
+         * Labels's value for new alert.
          */
         value: string;
     }
@@ -33424,7 +30945,7 @@ export namespace log {
          */
         serviceUri?: string;
         /**
-         * including FixedRate,Hourly,Daily,Weekly,Cron.
+         * Notification type. support Email, SMS, DingTalk, MessageCenter.
          */
         type: string;
     }
@@ -33559,7 +31080,7 @@ export namespace log {
          */
         tokens?: {[key: string]: string};
         /**
-         * including FixedRate,Hourly,Daily,Weekly,Cron.
+         * Alert template type including `sys`, `user`.
          */
         type: string;
     }
@@ -33687,17 +31208,8 @@ export namespace log {
     }
 
     export interface StoreEncryptConfUserCmkInfo {
-        /**
-         * Role arn.
-         */
         arn: string;
-        /**
-         * User master key id.
-         */
         cmkKeyId: string;
-        /**
-         * Region id where the user master key id is located.
-         */
         regionId: string;
     }
 
@@ -33737,37 +31249,23 @@ export namespace log {
     }
 
     export interface StoreIndexFieldSearchJsonKey {
-        /**
-         * The alias of one field.
-         */
         alias?: string;
-        /**
-         * Whether to enable statistics. default to true.
-         *
-         * > **Note:** At least one of the "fullText" and "fieldSearch" should be specified.
-         */
         docValue?: boolean;
-        /**
-         * When using the jsonKeys field, this field is required.
-         */
         name: string;
-        /**
-         * The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
-         */
         type?: string;
     }
 
     export interface StoreIndexFullText {
         /**
-         * Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
+         * Whether the case sensitive. Default to false.
          */
         caseSensitive?: boolean;
         /**
-         * Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
+         * Whether includes the chinese. Default to false.
          */
         includeChinese?: boolean;
         /**
-         * The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
+         * The string of several split words, like "\r", "#"
          */
         token?: string;
     }
@@ -34125,28 +31623,16 @@ export namespace maxcompute {
     }
 
     export interface ProjectPropertiesEncryption {
-        /**
-         * Algorithm.
-         */
         algorithm: string;
-        /**
-         * Whether to open.
-         */
         enable: boolean;
-        /**
-         * Encryption algorithm key.
-         */
         key: string;
     }
 
     export interface ProjectPropertiesTableLifecycle {
         /**
-         * Life cycle type.
+         * Project type
          */
         type: string;
-        /**
-         * The value of the life cycle.
-         */
         value: string;
     }
 
@@ -34767,17 +32253,8 @@ export namespace mongodb {
     }
 
     export interface GetServerlessInstancesInstanceSecurityIpGroup {
-        /**
-         * The attribute of the IP whitelist. This parameter is empty by default.
-         */
         securityIpGroupAttribute: string;
-        /**
-         * The name of the IP whitelist.
-         */
         securityIpGroupName: string;
-        /**
-         * The IP addresses in the whitelist.
-         */
         securityIpList: string;
     }
 
@@ -34929,17 +32406,8 @@ export namespace mongodb {
     }
 
     export interface ServerlessInstanceSecurityIpGroup {
-        /**
-         * The attribute of the IP whitelist. This parameter is empty by default.
-         */
         securityIpGroupAttribute?: string;
-        /**
-         * The name of the IP whitelist.
-         */
         securityIpGroupName?: string;
-        /**
-         * The IP addresses in the whitelist.
-         */
         securityIpList?: string;
     }
 
@@ -34957,7 +32425,7 @@ export namespace mongodb {
          */
         maxIops: number;
         /**
-         * The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+         * The node class of the Config Server node.
          */
         nodeClass: string;
         /**
@@ -34969,9 +32437,7 @@ export namespace mongodb {
          */
         nodeId: string;
         /**
-         * The storage space of the shard node.
-         * - Custom storage space; value range: [10, 1,000]
-         * - 10-GB increments. Unit: GB.
+         * The node storage of the Config Server node.
          */
         nodeStorage: number;
         /**
@@ -35335,37 +32801,13 @@ export namespace mse {
     }
 
     export interface GetGatewaysGatewaySlbList {
-        /**
-         * The associate id.
-         */
         associateId: string;
-        /**
-         * The Mode of the gateway slb.
-         */
         gatewaySlbMode: string;
-        /**
-         * The Status of the gateway slb.
-         */
         gatewaySlbStatus: string;
-        /**
-         * The creation time of the gateway slb.
-         */
         gmtCreate: string;
-        /**
-         * The ID of the gateway slb.
-         */
         slbId: string;
-        /**
-         * The ip of the gateway slb.
-         */
         slbIp: string;
-        /**
-         * The port of the gateway slb.
-         */
         slbPort: string;
-        /**
-         * The type of the gateway slb.
-         */
         type: string;
     }
 
@@ -37096,93 +34538,40 @@ export namespace oss {
     }
 
     export interface BucketLifecycleRuleAbortMultipartUpload {
-        /**
-         * Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-         */
         createdBeforeDate?: string;
-        /**
-         * Specifies the number of days noncurrent object versions transition.
-         */
         days?: number;
     }
 
     export interface BucketLifecycleRuleExpiration {
-        /**
-         * Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-         */
         createdBeforeDate?: string;
-        /**
-         * Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
-         */
         date?: string;
-        /**
-         * Specifies the number of days noncurrent object versions transition.
-         */
         days?: number;
-        /**
-         * On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
-         *
-         * `NOTE`: One and only one of "date", "days", "createdBeforeDate" and "expiredObjectDeleteMarker" can be specified in one expiration configuration.
-         */
         expiredObjectDeleteMarker?: boolean;
     }
 
     export interface BucketLifecycleRuleFilter {
-        /**
-         * The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
-         */
         not?: outputs.oss.BucketLifecycleRuleFilterNot;
-        /**
-         * Minimum object size (in bytes) to which the rule applies.
-         */
         objectSizeGreaterThan?: number;
-        /**
-         * Maximum object size (in bytes) to which the rule applies.
-         */
         objectSizeLessThan?: number;
     }
 
     export interface BucketLifecycleRuleFilterNot {
-        /**
-         * The prefix in the names of the objects to which the lifecycle rule does not apply.
-         */
         prefix?: string;
-        /**
-         * The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
-         */
         tag?: outputs.oss.BucketLifecycleRuleFilterNotTag;
     }
 
     export interface BucketLifecycleRuleFilterNotTag {
-        /**
-         * The key of the tag that is specified for the objects.
-         */
         key: string;
-        /**
-         * The value of the tag that is specified for the objects.
-         */
         value: string;
     }
 
     export interface BucketLifecycleRuleNoncurrentVersionExpiration {
-        /**
-         * Specifies the number of days noncurrent object versions transition.
-         */
         days: number;
     }
 
     export interface BucketLifecycleRuleNoncurrentVersionTransition {
-        /**
-         * Specifies the number of days noncurrent object versions transition.
-         */
         days: number;
-        /**
-         * Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
-         */
         isAccessTime?: boolean;
-        /**
-         * Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-         */
         returnToStdWhenVisit?: boolean;
         /**
          * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
@@ -37191,21 +34580,9 @@ export namespace oss {
     }
 
     export interface BucketLifecycleRuleTransition {
-        /**
-         * Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-         */
         createdBeforeDate?: string;
-        /**
-         * Specifies the number of days noncurrent object versions transition.
-         */
         days?: number;
-        /**
-         * Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
-         */
         isAccessTime?: boolean;
-        /**
-         * Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-         */
         returnToStdWhenVisit?: boolean;
         /**
          * The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
@@ -37290,7 +34667,7 @@ export namespace oss {
 
     export interface BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects {
         /**
-         * Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+         * The status of the data replication task. Can be starting, doing and closing.
          */
         status?: string;
     }
@@ -37656,7 +35033,6 @@ export namespace oss {
         tableQuota: number;
         /**
          * A map of tags assigned to the instance. It must be in the format:
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -37668,7 +35044,6 @@ export namespace oss {
          *     },
          * });
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         tags: {[key: string]: any};
         /**
@@ -37808,7 +35183,6 @@ export namespace ots {
         tableQuota: number;
         /**
          * A map of tags assigned to the instance. It must be in the format:
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -37820,7 +35194,6 @@ export namespace ots {
          *     },
          * });
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         tags: {[key: string]: any};
         /**
@@ -38039,66 +35412,27 @@ export namespace ots {
     }
 
     export interface SearchIndexSchemaFieldSchema {
-        /**
-         * Specifies the type of the analyzer that you want to use. If fieldType is set to Text, you can configure this parameter. Otherwise, the default analyzer type single-word tokenization is used.
-         */
         analyzer?: string;
-        /**
-         * Specifies whether to enable sorting and aggregation. Type: Boolean. Sorting can be enabled only for fields for which enableSortAndAgg is set to true.
-         */
         enableSortAndAgg?: boolean;
-        /**
-         * The name of the field that is used to sort data. only required if sorterType is FieldSort.
-         */
         fieldName: string;
-        /**
-         * Specifies the type of the field. Use FieldType.XXX to set the type.
-         */
         fieldType: string;
-        /**
-         * Specifies whether to enable indexing for the column. Type: Boolean.
-         */
         index?: boolean;
-        /**
-         * Specifies whether the value is an array. Type: Boolean.
-         */
         isArray?: boolean;
-        /**
-         * Specifies whether to store the value of the field in the search index. Type: Boolean. If you set store to true, you can read the value of the field from the search index without querying the data table. This improves query performance.
-         */
         store?: boolean;
     }
 
     export interface SearchIndexSchemaIndexSetting {
-        /**
-         * Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
-         */
         routingFields?: string[];
     }
 
     export interface SearchIndexSchemaIndexSort {
-        /**
-         * Specifies the presorting method for the search index. PrimaryKeySort and FieldSort are supported. See `sorter` below.
-         */
         sorters: outputs.ots.SearchIndexSchemaIndexSortSorter[];
     }
 
     export interface SearchIndexSchemaIndexSortSorter {
-        /**
-         * The name of the field that is used to sort data. only required if sorterType is FieldSort.
-         */
         fieldName?: string;
-        /**
-         * The sorting method that is used when the field contains multiple values. valid values: `Min`, `Max`, `Avg`. only required if sorterType is FieldSort.
-         */
         mode?: string;
-        /**
-         * The sort order. Data can be sorted in ascending(`Asc`) or descending(`Desc`) order. Default value: `Asc`.
-         */
         order?: string;
-        /**
-         * Data is sorted by Which fields or keys. valid values: `PrimaryKeySort`, `FieldSort`.
-         */
         sorterType?: string;
     }
 
@@ -38599,13 +35933,7 @@ export namespace polardb {
     }
 
     export interface ParameterGroupParameter {
-        /**
-         * The name of a parameter in the parameter template.
-         */
         paramName: string;
-        /**
-         * The value of a parameter in the parameter template.
-         */
         paramValue: string;
     }
 
@@ -38911,21 +36239,9 @@ export namespace pvtz {
     }
 
     export interface GetRulesRuleBindVpc {
-        /**
-         * The region ID of the vpc.
-         */
         regionId: string;
-        /**
-         * The Region Name of the vpc.
-         */
         regionName: string;
-        /**
-         * The ID of the VPC.
-         */
         vpcId: string;
-        /**
-         * The Name of the VPC.
-         */
         vpcName: string;
     }
 
@@ -39308,35 +36624,17 @@ export namespace quotas {
     }
 
     export interface GetQuotaApplicationsApplicationDimension {
-        /**
-         * The key of dimensions.
-         */
         key: string;
-        /**
-         * The value of dimensions.
-         */
         value: string;
     }
 
     export interface GetQuotaApplicationsDimension {
-        /**
-         * The key of dimensions.
-         */
         key?: string;
-        /**
-         * The value of dimensions.
-         */
         value?: string;
     }
 
     export interface GetQuotasDimension {
-        /**
-         * The key of dimensions.
-         */
         key?: string;
-        /**
-         * The value of dimensions.
-         */
         value?: string;
     }
 
@@ -39688,28 +36986,13 @@ export namespace ram {
     }
 
     export interface GetPolicyDocumentStatementCondition {
-        /**
-         * The operator of the condition.
-         */
         operator: string;
-        /**
-         * The values of the condition.
-         */
         values: string[];
-        /**
-         * The variable of the condition.
-         */
         variable: string;
     }
 
     export interface GetPolicyDocumentStatementPrincipal {
-        /**
-         * The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
-         */
         entity: string;
-        /**
-         * The identifiers of the principal.
-         */
         identifiers: string[];
     }
 
@@ -40966,9 +38249,6 @@ export namespace realtimecompute {
     }
 
     export interface VvpInstanceStorageOss {
-        /**
-         * OSS Bucket name.
-         */
         bucket: string;
     }
 
@@ -41666,36 +38946,14 @@ export namespace rocketmq {
     }
 
     export interface RocketMQInstanceNetworkInfoInternetInfo {
-        /**
-         * Public network bandwidth specification. Unit: Mb/s.This field should only be filled when the public network billing type is set to payByBandwidth.The value range is [1 - 1000].
-         */
         flowOutBandwidth?: number;
-        /**
-         * Public network billing type. The parameter values are as follows:
-         * - payByBandwidth: Fixed bandwidth billing. Set this value when enabling public network access.
-         * - uninvolved: Not involved. Set this value when disabling public network access.
-         */
         flowOutType: string;
-        /**
-         * Whether to enable public network access. Instances by default support VPC access. If public network access is enabled, Alibaba Cloud Message Queue RocketMQ version will incur charges for public network outbound bandwidth. For specific billing information, please refer to [Public Network Access Fees](https://help.aliyun.com/zh/apsaramq-for-rocketmq/cloud-message-queue-rocketmq-5-x-series/product-overview/internet-access-fee). The parameter values are as follows:
-         * - enable: Enable public network access
-         * - disable: Disable public network access
-         */
         internetSpec: string;
-        /**
-         * internet ip whitelist.
-         */
         ipWhitelists?: string[];
     }
 
     export interface RocketMQInstanceNetworkInfoVpcInfo {
-        /**
-         * Proprietary Network.
-         */
         vpcId: string;
-        /**
-         * VPC network switch.
-         */
         vswitchId: string;
     }
 
@@ -41741,13 +38999,7 @@ export namespace rocketmq {
 
 export namespace ros {
     export interface ChangeSetParameter {
-        /**
-         * The parameter key.
-         */
         parameterKey: string;
-        /**
-         * The parameter value.
-         */
         parameterValue: string;
     }
 
@@ -41922,13 +39174,7 @@ export namespace ros {
     }
 
     export interface GetStackInstancesInstanceParameterOverride {
-        /**
-         * The key of override parameter.
-         */
         parameterKey: string;
-        /**
-         * The value of override parameter.
-         */
         parameterValue: string;
     }
 
@@ -42070,53 +39316,26 @@ export namespace ros {
     }
 
     export interface GetTemplateScratchesScratchPreferenceParameter {
-        /**
-         * Priority parameter key.
-         */
         parameterKey: string;
-        /**
-         * Priority parameter value.
-         */
         parameterValue: string;
     }
 
     export interface GetTemplateScratchesScratchSourceResource {
-        /**
-         * The ID of the Source Resource.
-         */
         resourceId: string;
-        /**
-         * The type of the Source resource.
-         */
         resourceType: string;
     }
 
     export interface GetTemplateScratchesScratchSourceResourceGroup {
-        /**
-         * The ID of the Source Resource Group.
-         */
         resourceGroupId: string;
-        /**
-         * Source resource type filter list.
-         */
         resourceTypeFilters: string[];
     }
 
     export interface GetTemplateScratchesScratchSourceTag {
-        /**
-         * Source label.
-         */
         resourceTags: {[key: string]: any};
-        /**
-         * Source resource type filter list.
-         */
         resourceTypeFilters: string[];
     }
 
     export interface GetTemplateScratchesScratchStack {
-        /**
-         * The ID of the Resource stack.
-         */
         stackId: string;
     }
 
@@ -42168,79 +39387,37 @@ export namespace ros {
     }
 
     export interface StackGroupParameter {
-        /**
-         * The parameter key.
-         */
         parameterKey?: string;
-        /**
-         * The parameter value.
-         */
         parameterValue?: string;
     }
 
     export interface StackInstanceParameterOverride {
-        /**
-         * The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
-         */
         parameterKey?: string;
-        /**
-         * The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
-         */
         parameterValue?: string;
     }
 
     export interface StackParameter {
-        /**
-         * The parameter key.
-         */
         parameterKey?: string;
-        /**
-         * The parameter value.
-         */
         parameterValue: string;
     }
 
     export interface TemplateScratchPreferenceParameter {
-        /**
-         * Priority parameter key. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
-         */
         parameterKey: string;
-        /**
-         * Priority parameter value. For more information about values, see [supplementary instructions for request parameters](https://www.alibabacloud.com/help/zh/doc-detail/358846.html#h2-url-4).
-         */
         parameterValue: string;
     }
 
     export interface TemplateScratchSourceResource {
-        /**
-         * The ID of the Source Resource.
-         */
         resourceId: string;
-        /**
-         * The type of the Source resource.
-         */
         resourceType: string;
     }
 
     export interface TemplateScratchSourceResourceGroup {
-        /**
-         * The ID of the Source Resource Group.
-         */
         resourceGroupId: string;
-        /**
-         * Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-         */
         resourceTypeFilters?: string[];
     }
 
     export interface TemplateScratchSourceTag {
-        /**
-         * Source label. **NOTE:** A maximum of 10 source labels can be configured.
-         */
         resourceTags: {[key: string]: any};
-        /**
-         * Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-         */
         resourceTypeFilters?: string[];
     }
 
@@ -42338,32 +39515,14 @@ export namespace sae {
     }
 
     export interface ApplicationLivenessV2HttpGet {
-        /**
-         * Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
-         */
         isContainKeyWord: boolean;
-        /**
-         * The custom keywords.
-         */
         keyWord: string;
-        /**
-         * The request path.
-         */
         path: string;
-        /**
-         * The port.
-         */
         port: number;
-        /**
-         * The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
-         */
         scheme: string;
     }
 
     export interface ApplicationLivenessV2TcpSocket {
-        /**
-         * The port.
-         */
         port: number;
     }
 
@@ -42400,11 +39559,11 @@ export namespace sae {
          */
         bucketPath: string;
         /**
-         * The mount path.
+         * The path of the container in SAE.
          */
         mountPath: string;
         /**
-         * Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `readOnly` to `false`, the application has the read and write permissions.
+         * Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
          */
         readOnly: boolean;
     }
@@ -42457,13 +39616,7 @@ export namespace sae {
     }
 
     export interface ApplicationPvtzDiscoverySvcPortProtocol {
-        /**
-         * The port.
-         */
         port?: number;
-        /**
-         * The protocol. Valid values: `TCP` and `UDP`.
-         */
         protocol?: string;
     }
 
@@ -42502,32 +39655,14 @@ export namespace sae {
     }
 
     export interface ApplicationReadinessV2HttpGet {
-        /**
-         * Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
-         */
         isContainKeyWord: boolean;
-        /**
-         * The custom keywords.
-         */
         keyWord: string;
-        /**
-         * The request path.
-         */
         path: string;
-        /**
-         * The port.
-         */
         port: number;
-        /**
-         * The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
-         */
         scheme: string;
     }
 
     export interface ApplicationReadinessV2TcpSocket {
-        /**
-         * The port.
-         */
         port: number;
     }
 
@@ -42555,69 +39690,23 @@ export namespace sae {
     }
 
     export interface ApplicationScalingRuleScalingRuleMetricMetric {
-        /**
-         * According to different `metricType`, set the target value of the corresponding monitoring index.
-         */
         metricTargetAverageUtilization?: number;
-        /**
-         * Monitoring indicator trigger condition. Valid values: `CPU`, `MEMORY`, `tcpActiveConn`, `QPS`, `RT`, `SLB_QPS`, `SLB_RT`, `INTRANET_SLB_QPS` and `INTRANET_SLB_RT`. The values are described as follows:
-         * - CPU: CPU usage.
-         * - MEMORY: MEMORY usage.
-         * - tcpActiveConn: The average number of TCP active connections for a single instance in 30 seconds.
-         * - QPS: The average QPS of a single instance within 1 minute of JAVA application.
-         * - RT: The average response time of all service interfaces within 1 minute of JAVA application.
-         * - SLB_QPS: The average public network SLB QPS of a single instance within 15 seconds.
-         * - SLB_RT: The average response time of public network SLB within 15 seconds.
-         * - INTRANET_SLB_QPS: The average private network SLB QPS of a single instance within 15 seconds.
-         * - INTRANET_SLB_RT: The average response time of private network SLB within 15 seconds.
-         * **NOTE:** From version 1.206.0, `metricType` can be set to `QPS`, `RT`, `INTRANET_SLB_QPS`, `INTRANET_SLB_RT`.
-         */
         metricType?: string;
-        /**
-         * SLB ID.
-         */
         slbId?: string;
-        /**
-         * The log store of the Log Service.
-         */
         slbLogStore?: string;
-        /**
-         * The project of the Log Service.
-         */
         slbProject?: string;
-        /**
-         * SLB listening port.
-         */
         vport?: string;
     }
 
     export interface ApplicationScalingRuleScalingRuleMetricScaleDownRules {
-        /**
-         * Whether shrinkage is prohibited.
-         */
         disabled?: boolean;
-        /**
-         * Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
-         */
         stabilizationWindowSeconds?: number;
-        /**
-         * Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
-         */
         step?: number;
     }
 
     export interface ApplicationScalingRuleScalingRuleMetricScaleUpRules {
-        /**
-         * Whether shrinkage is prohibited.
-         */
         disabled?: boolean;
-        /**
-         * Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
-         */
         stabilizationWindowSeconds?: number;
-        /**
-         * Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
-         */
         step?: number;
     }
 
@@ -42641,21 +39730,9 @@ export namespace sae {
     }
 
     export interface ApplicationScalingRuleScalingRuleTimerSchedule {
-        /**
-         * Trigger point in time. When supporting format: minutes, for example: `08:00`.
-         */
         atTime?: string;
-        /**
-         * Maximum number of instances applied.
-         */
         maxReplicas?: number;
-        /**
-         * Minimum number of instances applied.
-         */
         minReplicas?: number;
-        /**
-         * This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. > **NOTE:** The attribute is valid when the attribute `scalingRuleType` is `timing`.
-         */
         targetReplicas?: number;
     }
 
@@ -42694,17 +39771,11 @@ export namespace sae {
     }
 
     export interface ApplicationUpdateStrategyV2BatchUpdate {
-        /**
-         * The number of batches in which you want to release the instances.
-         */
         batch: number;
         /**
          * The batch wait time.
          */
         batchWaitTime: number;
-        /**
-         * The processing method for the batches. Valid values: `auto` and `manual`.
-         */
         releaseType: string;
     }
 
@@ -42744,173 +39815,65 @@ export namespace sae {
     }
 
     export interface GetApplicationScalingRulesRuleScalingRuleMetric {
-        /**
-         * The maximum number of instances.
-         */
         maxReplicas: number;
-        /**
-         * The auto scaling list of monitoring indicators.
-         */
         metrics: outputs.sae.GetApplicationScalingRulesRuleScalingRuleMetricMetric[];
-        /**
-         * Monitor indicator elasticity status.
-         */
         metricsStatuses: outputs.sae.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus[];
-        /**
-         * The minimum number of instances.
-         */
         minReplicas: number;
-        /**
-         * The shrink rule.
-         */
         scaleDownRules: outputs.sae.GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule[];
-        /**
-         * The expansion rules.
-         */
         scaleUpRules: outputs.sae.GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule[];
     }
 
     export interface GetApplicationScalingRulesRuleScalingRuleMetricMetric {
-        /**
-         * The target value of the monitoring indicator.
-         */
         metricTargetAverageUtilization: number;
-        /**
-         * The metric type of the Application Scaling Rule.
-         */
         metricType: string;
     }
 
     export interface GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatus {
-        /**
-         * The current monitoring indicator elasticity list.
-         */
         currentMetrics: outputs.sae.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric[];
-        /**
-         * The number of current instances.
-         */
         currentReplicas: number;
-        /**
-         * The number of target instances.
-         */
         desiredReplicas: number;
-        /**
-         * The time of the last elastic expansion.
-         */
         lastScaleTime: string;
-        /**
-         * The maximum number of instances.
-         */
         maxReplicas: number;
-        /**
-         * The minimum number of instances.
-         */
         minReplicas: number;
-        /**
-         * Next monitoring indicator elasticity list
-         */
         nextScaleMetrics: outputs.sae.GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric[];
-        /**
-         * The next cycle of monitoring indicator elasticity.
-         */
         nextScaleTimePeriod: number;
     }
 
     export interface GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusCurrentMetric {
-        /**
-         * The current value.
-         */
         currentValue: number;
-        /**
-         * The name of the trigger condition.
-         */
         name: string;
-        /**
-         * The metric type. Associated with monitoring indicators.
-         */
         type: string;
     }
 
     export interface GetApplicationScalingRulesRuleScalingRuleMetricMetricsStatusNextScaleMetric {
-        /**
-         * The name of the trigger condition.
-         */
         name: string;
-        /**
-         * The percentage value of the monitoring indicator elasticity that triggers the shrinkage condition next time.
-         */
         nextScaleInAverageUtilization: number;
-        /**
-         * The percentage value of the monitoring indicator elasticity that triggers the expansion condition next time.
-         */
         nextScaleOutAverageUtilization: number;
     }
 
     export interface GetApplicationScalingRulesRuleScalingRuleMetricScaleDownRule {
-        /**
-         * Whether shrinkage is prohibited. The values are described as follows:
-         */
         disabled: boolean;
-        /**
-         * Expansion cooling time.
-         */
         stabilizationWindowSeconds: number;
-        /**
-         * Flexible expansion step. The maximum number of instances per unit time.
-         */
         step: number;
     }
 
     export interface GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRule {
-        /**
-         * Whether shrinkage is prohibited. The values are described as follows:
-         */
         disabled: boolean;
-        /**
-         * Expansion cooling time.
-         */
         stabilizationWindowSeconds: number;
-        /**
-         * Flexible expansion step. The maximum number of instances per unit time.
-         */
         step: number;
     }
 
     export interface GetApplicationScalingRulesRuleScalingRuleTimer {
-        /**
-         * The short-term start date of the timed elastic scaling strategy.
-         */
         beginDate: string;
-        /**
-         * The short-term end date of the timed elastic scaling strategy.
-         */
         endDate: string;
-        /**
-         * The period in which a timed elastic scaling strategy is executed.
-         */
         period: string;
-        /**
-         * Trigger point in time within a single day.
-         */
         schedules: outputs.sae.GetApplicationScalingRulesRuleScalingRuleTimerSchedule[];
     }
 
     export interface GetApplicationScalingRulesRuleScalingRuleTimerSchedule {
-        /**
-         * Time point. Format: `hours:minutes`.
-         */
         atTime: string;
-        /**
-         * The maximum number of instances.
-         */
         maxReplicas: number;
-        /**
-         * The minimum number of instances.
-         */
         minReplicas: number;
-        /**
-         * The number of target instances.
-         */
         targetReplicas: number;
     }
 
@@ -43122,32 +40085,14 @@ export namespace sae {
     }
 
     export interface GetApplicationsApplicationMountDesc {
-        /**
-         * The Container mount path.
-         */
         mountPath: string;
-        /**
-         * NAS relative file directory.
-         */
         nasPath: string;
     }
 
     export interface GetApplicationsApplicationOssMountDetail {
-        /**
-         * The name of the bucket.
-         */
         bucketName: string;
-        /**
-         * The path of the bucket.
-         */
         bucketPath: string;
-        /**
-         * The Container mount path.
-         */
         mountPath: string;
-        /**
-         * Whether the container path has readable permission to mount directory resources.
-         */
         readOnly: boolean;
     }
 
@@ -43206,90 +40151,33 @@ export namespace sae {
     }
 
     export interface GetGreyTagRoutesRouteDubboRule {
-        /**
-         * The Conditional Patterns for Grayscale Rules.
-         */
         condition: string;
-        /**
-         * The service group.
-         */
         group: string;
-        /**
-         * A list of conditions items.
-         */
         items: outputs.sae.GetGreyTagRoutesRouteDubboRuleItem[];
-        /**
-         * The method name
-         */
         methodName: string;
-        /**
-         * The service name.
-         */
         serviceName: string;
-        /**
-         * The service version.
-         */
         version: string;
     }
 
     export interface GetGreyTagRoutesRouteDubboRuleItem {
-        /**
-         * The comparison operator.
-         */
         cond: string;
-        /**
-         * The parameter value gets the expression.
-         */
         expr: string;
-        /**
-         * The parameter number.
-         */
         index: number;
-        /**
-         * The operator.
-         */
         operator: string;
-        /**
-         * The value of the parameter.
-         */
         value: string;
     }
 
     export interface GetGreyTagRoutesRouteScRule {
-        /**
-         * The Conditional Patterns for Grayscale Rules.
-         */
         condition: string;
-        /**
-         * A list of conditions items.
-         */
         items: outputs.sae.GetGreyTagRoutesRouteScRuleItem[];
-        /**
-         * The path corresponding to the grayscale rule.
-         */
         path: string;
     }
 
     export interface GetGreyTagRoutesRouteScRuleItem {
-        /**
-         * The comparison operator.
-         */
         cond: string;
-        /**
-         * The name of the parameter.
-         */
         name: string;
-        /**
-         * The operator.
-         */
         operator: string;
-        /**
-         * The Compare types.
-         */
         type: string;
-        /**
-         * The value of the parameter.
-         */
         value: string;
     }
 
@@ -43406,25 +40294,10 @@ export namespace sae {
     }
 
     export interface GreyTagRouteDubboRuleItem {
-        /**
-         * The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
-         */
         cond?: string;
-        /**
-         * The parameter value gets the expression.
-         */
         expr?: string;
-        /**
-         * The parameter number.
-         */
         index?: number;
-        /**
-         * The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
-         */
         operator?: string;
-        /**
-         * The value of the parameter.
-         */
         value?: string;
     }
 
@@ -43444,25 +40317,10 @@ export namespace sae {
     }
 
     export interface GreyTagRouteScRuleItem {
-        /**
-         * The comparison operator. Valid values: `>`, `<`, `>=`, `<=`, `==`, `!=`.
-         */
         cond?: string;
-        /**
-         * The name of the parameter.
-         */
         name?: string;
-        /**
-         * The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministicProportionalSteamingDivision`.
-         */
         operator?: string;
-        /**
-         * The compare types. Valid values: `param`, `cookie`, `header`.
-         */
         type?: string;
-        /**
-         * The value of the parameter.
-         */
         value?: string;
     }
 
@@ -43635,28 +40493,10 @@ export namespace sag {
 
 export namespace scdn {
     export interface DomainCertInfo {
-        /**
-         * If You Enable HTTPS Here Certificate Name.
-         */
         certName?: string;
-        /**
-         * Certificate Type. Value Range: 
-         * * upload: Certificate
-         * * cas: Certificate Authority Certificate.
-         * * free: Free Certificate.
-         */
         certType?: string;
-        /**
-         * Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
-         */
         sslPri?: string;
-        /**
-         * Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
-         */
         sslProtocol?: string;
-        /**
-         * If You Enable HTTPS Here Key.
-         */
         sslPub?: string;
     }
 
@@ -43672,28 +40512,10 @@ export namespace scdn {
     }
 
     export interface DomainSource {
-        /**
-         * The Back-to-Source Address.
-         */
         content: string;
-        /**
-         * The source status. Valid values: online, offline.
-         */
         enabled: string;
-        /**
-         * Port.
-         */
         port: number;
-        /**
-         * Priority.
-         */
         priority: string;
-        /**
-         * The Origin Server Type. Valid Values: 
-         * * ipaddr: IP Source Station
-         * * domain: the Domain Name
-         * * oss: OSS Bucket as a Source Station.
-         */
         type: string;
     }
 
@@ -44500,13 +41322,7 @@ export namespace servicecatalog {
     }
 
     export interface ProvisionedProductParameter {
-        /**
-         * The name of the parameter defined in the template.
-         */
         parameterKey?: string;
-        /**
-         * The Template parameter value entered by the user.
-         */
         parameterValue?: string;
     }
 
@@ -44883,15 +41699,14 @@ export namespace servicemesh {
 
     export interface GetVersionsVersion {
         /**
-         * The edition of the ASM instance.
+         * The edition of the ASM instance. Valid values:
+         * - Default: Standard Edition
+         * - Pro: Professional Edition
          */
         edition: string;
-        /**
-         * The ASM version id. It formats as `<edition>:<version>`.
-         */
         id: string;
         /**
-         * The AMS version.
+         * A list of Service Mesh Service Meshes. Each element contains the following attributes:
          */
         version: string;
     }
@@ -44986,42 +41801,21 @@ export namespace servicemesh {
     }
 
     export interface ServiceMeshMeshConfigAccessLog {
-        /**
-         * Enable CNI.
-         */
         enabled: boolean;
-        /**
-         * The name of the SLS Project to which the control plane logs are collected.
-         */
         project: string;
     }
 
     export interface ServiceMeshMeshConfigAudit {
-        /**
-         * Enable CNI.
-         */
         enabled: boolean;
-        /**
-         * The name of the SLS Project to which the control plane logs are collected.
-         */
         project: string;
     }
 
     export interface ServiceMeshMeshConfigControlPlaneLog {
-        /**
-         * Enable CNI.
-         */
         enabled: boolean;
-        /**
-         * The name of the SLS Project to which the control plane logs are collected.
-         */
         project: string;
     }
 
     export interface ServiceMeshMeshConfigKiali {
-        /**
-         * Enable CNI.
-         */
         enabled?: boolean;
         /**
          * Grid topology service address.
@@ -45030,40 +41824,16 @@ export namespace servicemesh {
     }
 
     export interface ServiceMeshMeshConfigOpa {
-        /**
-         * Enable CNI.
-         */
         enabled?: boolean;
-        /**
-         * Sidecar injector Pods on the throttle.
-         */
         limitCpu?: string;
-        /**
-         * Sidecar injector Pods on the throttle.
-         */
         limitMemory?: string;
-        /**
-         * OPA proxy container log level.
-         */
         logLevel?: string;
-        /**
-         * Sidecar injector Pods on the requested resource.
-         */
         requestCpu?: string;
-        /**
-         * Sidecar injector Pods on the requested resource.
-         */
         requestMemory?: string;
     }
 
     export interface ServiceMeshMeshConfigPilot {
-        /**
-         * Whether to support the HTTP1.0.
-         */
         http10Enabled: boolean;
-        /**
-         * Link trace sampling percentage.
-         */
         traceSampling?: number;
     }
 
@@ -45083,52 +41853,19 @@ export namespace servicemesh {
          * Trust cluster domain.
          */
         clusterDomain: string;
-        /**
-         * Sidecar injector Pods on the throttle.
-         */
         limitCpu?: string;
-        /**
-         * Sidecar injector Pods on the throttle.
-         */
         limitMemory?: string;
-        /**
-         * Sidecar injector Pods on the requested resource.
-         */
         requestCpu?: string;
-        /**
-         * Sidecar injector Pods on the requested resource.
-         */
         requestMemory?: string;
     }
 
     export interface ServiceMeshMeshConfigSidecarInjector {
-        /**
-         * Whether to enable by Pod Annotations automatic injection Sidecar.
-         */
         autoInjectionPolicyEnabled: boolean;
-        /**
-         * Whether it is the all namespaces you turn on the auto injection capabilities.
-         */
         enableNamespacesByDefault?: boolean;
-        /**
-         * CNI configuration. See `initCniConfiguration` below.
-         */
         initCniConfiguration: outputs.servicemesh.ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration;
-        /**
-         * Sidecar injector Pods on the throttle.
-         */
         limitCpu: string;
-        /**
-         * Sidecar injector Pods on the throttle.
-         */
         limitMemory: string;
-        /**
-         * Sidecar injector Pods on the requested resource.
-         */
         requestCpu: string;
-        /**
-         * Sidecar injector Pods on the requested resource.
-         */
         requestMemory: string;
         /**
          * Other configurations of automatically injected sidecar (in YAML format).
@@ -45137,13 +41874,7 @@ export namespace servicemesh {
     }
 
     export interface ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration {
-        /**
-         * Enable CNI.
-         */
         enabled?: boolean;
-        /**
-         * The excluded namespace.
-         */
         excludeNamespaces?: string;
     }
 
@@ -46015,7 +42746,6 @@ export namespace slb {
         status: string;
         /**
          * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -46027,7 +42757,6 @@ export namespace slb {
          *     },
          * });
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         tags: {[key: string]: any};
         /**
@@ -46103,7 +42832,6 @@ export namespace slb {
         status: string;
         /**
          * A map of tags assigned to the SLB instances. The `tags` can have a maximum of 5 tag. It must be in the format:
-         * <!--Start PulumiCodeChooser -->
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
          * import * as alicloud from "@pulumi/alicloud";
@@ -46115,7 +42843,6 @@ export namespace slb {
          *     },
          * });
          * ```
-         * <!--End PulumiCodeChooser -->
          */
         tags: {[key: string]: any};
         /**
@@ -46892,36 +43619,15 @@ export namespace threatdetection {
     }
 
     export interface HoneypotProbeHoneypotBindList {
-        /**
-         * List of listening ports.See the following `Block BindPortList`.
-         */
         bindPortLists?: outputs.threatdetection.HoneypotProbeHoneypotBindListBindPortList[];
-        /**
-         * Honeypot ID.
-         */
         honeypotId?: string;
     }
 
     export interface HoneypotProbeHoneypotBindListBindPortList {
-        /**
-         * Whether to bind the port.
-         */
         bindPort: boolean;
-        /**
-         * End port.
-         */
         endPort: number;
-        /**
-         * Whether the port is fixed.
-         */
         fixed: boolean;
-        /**
-         * Start port.
-         */
         startPort: number;
-        /**
-         * Destination port.
-         */
         targetPort: number;
     }
 
@@ -47120,21 +43826,9 @@ export namespace videosurveillance {
 
 export namespace vod {
     export interface DomainSource {
-        /**
-         * The address of the origin server. You can specify an IP address or a domain name.
-         */
         sourceContent: string;
-        /**
-         * The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
-         */
         sourcePort: string;
-        /**
-         * The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
-         */
         sourcePriority: string;
-        /**
-         * The type of the origin server. Valid values:
-         */
         sourceType: string;
     }
 
@@ -49046,13 +45740,7 @@ export namespace vpc {
     }
 
     export interface NetworkAclAttachmentResource {
-        /**
-         * The resource id that the network acl will associate with.
-         */
         resourceId: string;
-        /**
-         * The resource id that the network acl will associate with. Only support `VSwitch` now.
-         */
         resourceType: string;
     }
 
@@ -49099,64 +45787,22 @@ export namespace vpc {
     }
 
     export interface NetworkAclEntriesEgress {
-        /**
-         * The description of the egress entry.
-         */
         description: string;
-        /**
-         * The destination ip of the egress entry.
-         */
         destinationCidrIp: string;
-        /**
-         * The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
-         */
         entryType: string;
-        /**
-         * The name of the egress entry.
-         */
         name: string;
-        /**
-         * The policy of the egress entry. It must be `accept` or `drop`.
-         */
         policy: string;
-        /**
-         * The port of the egress entry.
-         */
         port: string;
-        /**
-         * The protocol of the egress entry.
-         */
         protocol: string;
     }
 
     export interface NetworkAclEntriesIngress {
-        /**
-         * The description of the egress entry.
-         */
         description: string;
-        /**
-         * The entry type of the egress entry. It must be `custom` or `system`. Default value is `custom`.
-         */
         entryType: string;
-        /**
-         * The name of the egress entry.
-         */
         name: string;
-        /**
-         * The policy of the egress entry. It must be `accept` or `drop`.
-         */
         policy: string;
-        /**
-         * The port of the egress entry.
-         */
         port: string;
-        /**
-         * The protocol of the egress entry.
-         */
         protocol: string;
-        /**
-         * The source ip of the ingress entry.
-         */
         sourceCidrIp: string;
     }
 
@@ -49234,13 +45880,7 @@ export namespace vpc {
     }
 
     export interface PrefixListEntry {
-        /**
-         * The CIDR address block of the prefix list.
-         */
         cidr?: string;
-        /**
-         * The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
-         */
         description?: string;
     }
 
@@ -49280,81 +45920,23 @@ export namespace vpc {
     }
 
     export interface TrafficMirrorFilterEgressRule {
-        /**
-         * Collection strategy for outbound rules. Value:
-         * - accept: collects network traffic.
-         * - drop: No network traffic is collected.
-         */
         action: string;
-        /**
-         * DestinationCidrBlock.
-         */
         destinationCidrBlock?: string;
-        /**
-         * The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-         * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-         */
         destinationPortRange?: string;
-        /**
-         * Priority.
-         */
         priority?: number;
-        /**
-         * The type of protocol used by the outbound network traffic to be mirrored. Value:
-         * - ALL: ALL agreements.
-         * - ICMP: Network Control Message Protocol.
-         * - TCP: Transmission Control Protocol.
-         * - UDP: User Datagram Protocol.
-         */
         protocol: string;
-        /**
-         * The source address of the outbound rule network traffic.
-         */
         sourceCidrBlock?: string;
-        /**
-         * The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-         * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-         */
         sourcePortRange?: string;
         trafficMirrorFilterRuleStatus: string;
     }
 
     export interface TrafficMirrorFilterIngressRule {
-        /**
-         * Collection strategy for outbound rules. Value:
-         * - accept: collects network traffic.
-         * - drop: No network traffic is collected.
-         */
         action: string;
-        /**
-         * DestinationCidrBlock.
-         */
         destinationCidrBlock?: string;
-        /**
-         * The destination port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-         * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-         */
         destinationPortRange?: string;
-        /**
-         * Priority.
-         */
         priority?: number;
-        /**
-         * The type of protocol used by the outbound network traffic to be mirrored. Value:
-         * - ALL: ALL agreements.
-         * - ICMP: Network Control Message Protocol.
-         * - TCP: Transmission Control Protocol.
-         * - UDP: User Datagram Protocol.
-         */
         protocol: string;
-        /**
-         * The source address of the outbound rule network traffic.
-         */
         sourceCidrBlock?: string;
-        /**
-         * The source port range of the outbound rule network traffic. The port range is 1 to 65535. Use a forward slash (/) to separate the start port and the end Port. The format is 1/200 and 80/80. Among them, - 1/-1 cannot be set separately, which means that the port is not limited.
-         * > **NOTE:**  When egresrules. N.Protocol is set to ALL or ICMP, this parameter does not need to be configured, indicating that the port is not restricted.
-         */
         sourcePortRange?: string;
         trafficMirrorFilterRuleStatus: string;
     }
@@ -49522,13 +46104,7 @@ export namespace vpn {
          * Whether BGP function is turned on.
          */
         bgpStatus: string;
-        /**
-         * Local asn.
-         */
         localAsn?: string;
-        /**
-         * Local bgp IP.
-         */
         localBgpIp?: string;
         /**
          * Peer asn.
@@ -49538,67 +46114,25 @@ export namespace vpn {
          * Peer bgp ip.
          */
         peerBgpIp: string;
-        /**
-         * IPSec tunnel Cidr.
-         */
         tunnelCidr?: string;
     }
 
     export interface ConnectionTunnelOptionsSpecificationTunnelIkeConfig {
-        /**
-         * IKE auth Algorithm.
-         */
         ikeAuthAlg?: string;
-        /**
-         * IKE encript algorithm.
-         */
         ikeEncAlg?: string;
-        /**
-         * IKE lifetime.
-         */
         ikeLifetime?: number;
-        /**
-         * IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
-         */
         ikeMode?: string;
-        /**
-         * DH group.
-         */
         ikePfs?: string;
-        /**
-         * IKE version.
-         */
         ikeVersion?: string;
-        /**
-         * The local Id.
-         */
         localId?: string;
-        /**
-         * Preshared secret key.
-         */
         psk?: string;
-        /**
-         * Remote ID.
-         */
         remoteId?: string;
     }
 
     export interface ConnectionTunnelOptionsSpecificationTunnelIpsecConfig {
-        /**
-         * IPsec authentication algorithm. sha1 and md5 are supported.
-         */
         ipsecAuthAlg?: string;
-        /**
-         * IPsec Encript algorithm.
-         */
         ipsecEncAlg?: string;
-        /**
-         * IPsec lifetime.
-         */
         ipsecLifetime?: number;
-        /**
-         * DH Group.
-         */
         ipsecPfs?: string;
     }
 
@@ -50104,9 +46638,6 @@ export namespace vpn {
          * Configuration negotiated in the second stage.
          */
         ikeConfigs: outputs.vpn.GetGatewayVpnAttachmentsAttachmentIkeConfig[];
-        /**
-         * The internet ip of the resource. The alicloud.cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
-         */
         internetIp: string;
         /**
          * The configuration of Phase 2 negotiations.
@@ -50716,13 +47247,7 @@ export namespace wafv3 {
     }
 
     export interface DomainRedirectRequestHeader {
-        /**
-         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
-         */
         key?: string;
-        /**
-         * The traffic tag field and value of the domain name, which is used to mark the traffic processed by WAF. the format of this parameter value is **[{" k ":"_key_"," v ":"_value_"}]**. whereKeyRepresents the specified custom request header field, andValueRepresents the value set for this field.By specifying the custom request header field and the corresponding value, when the access traffic of the domain name passes through WAF, WAF automatically adds the specified custom field value to the request header as the traffic mark, which is convenient for backend service statistics.Explain that if the custom header field already exists in the request, the system will overwrite the value of the custom field in the request with the set traffic tag value.
-         */
         value?: string;
     }
 

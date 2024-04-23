@@ -68,31 +68,15 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="alicloud:cs/managedKubernetes:ManagedKubernetes")
 public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
-    /**
-     * The addon you want to install in cluster. See `addons` below.
-     * 
-     */
     @Export(name="addons", refs={List.class,ManagedKubernetesAddon.class}, tree="[0,1]")
     private Output</* @Nullable */ List<ManagedKubernetesAddon>> addons;
 
-    /**
-     * @return The addon you want to install in cluster. See `addons` below.
-     * 
-     */
     public Output<Optional<List<ManagedKubernetesAddon>>> addons() {
         return Codegen.optional(this.addons);
     }
-    /**
-     * A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
-     * 
-     */
     @Export(name="apiAudiences", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> apiAudiences;
 
-    /**
-     * @return A list of API audiences for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm). Set this to `[&#34;https://kubernetes.default.svc&#34;]` if you want to enable the Token Volume Projection feature (requires specifying `service_account_issuer` as well. From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
-     * 
-     */
     public Output<Optional<List<String>>> apiAudiences() {
         return Codegen.optional(this.apiAudiences);
     }
@@ -111,76 +95,56 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
         return this.certificateAuthority;
     }
     /**
-     * The path of client certificate, like `~/.kube/client-cert.pem`.
+     * The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
      * 
      */
     @Export(name="clientCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientCert;
 
     /**
-     * @return The path of client certificate, like `~/.kube/client-cert.pem`.
+     * @return The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
      * 
      */
     public Output<Optional<String>> clientCert() {
         return Codegen.optional(this.clientCert);
     }
     /**
-     * The path of client key, like `~/.kube/client-key.pem`.
+     * The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
      * 
      */
     @Export(name="clientKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clientKey;
 
     /**
-     * @return The path of client key, like `~/.kube/client-key.pem`.
+     * @return The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
      * 
      */
     public Output<Optional<String>> clientKey() {
         return Codegen.optional(this.clientKey);
     }
-    /**
-     * The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
-     * 
-     */
     @Export(name="clusterCaCert", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterCaCert;
 
-    /**
-     * @return The path of cluster ca certificate, like `~/.kube/cluster-ca-cert.pem`
-     * 
-     */
     public Output<Optional<String>> clusterCaCert() {
         return Codegen.optional(this.clusterCaCert);
     }
     /**
-     * Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
+     * cluster local domain
      * 
      */
     @Export(name="clusterDomain", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> clusterDomain;
 
     /**
-     * @return Cluster local domain name, Default to `cluster.local`. A domain name consists of one or more sections separated by a decimal point (.), each of which is up to 63 characters long, and can be lowercase, numerals, and underscores (-), and must be lowercase or numerals at the beginning and end.
+     * @return cluster local domain
      * 
      */
     public Output<Optional<String>> clusterDomain() {
         return Codegen.optional(this.clusterDomain);
     }
-    /**
-     * The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-     * * ack.standard : Standard managed clusters.
-     * * ack.pro.small : Professional managed clusters.
-     * 
-     */
     @Export(name="clusterSpec", refs={String.class}, tree="[0]")
     private Output<String> clusterSpec;
 
-    /**
-     * @return The cluster specifications of kubernetes cluster,which can be empty. Valid values:
-     * * ack.standard : Standard managed clusters.
-     * * ack.pro.small : Professional managed clusters.
-     * 
-     */
     public Output<String> clusterSpec() {
         return this.clusterSpec;
     }
@@ -198,155 +162,83 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     public Output<ManagedKubernetesConnections> connections() {
         return this.connections;
     }
-    /**
-     * List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
-     * 
-     */
     @Export(name="controlPlaneLogComponents", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> controlPlaneLogComponents;
 
-    /**
-     * @return List of target components for which logs need to be collected. Supports `apiserver`, `kcm`, `scheduler`, `ccm` and `controlplane-events`.
-     * 
-     */
     public Output<Optional<List<String>>> controlPlaneLogComponents() {
         return Codegen.optional(this.controlPlaneLogComponents);
     }
-    /**
-     * Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
-     * 
-     */
     @Export(name="controlPlaneLogProject", refs={String.class}, tree="[0]")
     private Output<String> controlPlaneLogProject;
 
-    /**
-     * @return Control plane log project. If this field is not set, a log service project named k8s-log-{ClusterID} will be automatically created.
-     * 
-     */
     public Output<String> controlPlaneLogProject() {
         return this.controlPlaneLogProject;
     }
-    /**
-     * Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
-     * 
-     */
     @Export(name="controlPlaneLogTtl", refs={String.class}, tree="[0]")
     private Output<String> controlPlaneLogTtl;
 
-    /**
-     * @return Control plane log retention duration (unit: day). Default `30`. If control plane logs are to be collected, `control_plane_log_ttl` and `control_plane_log_components` must be specified.
-     * 
-     */
     public Output<String> controlPlaneLogTtl() {
         return this.controlPlaneLogTtl;
     }
-    /**
-     * Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
-     * 
-     */
     @Export(name="customSan", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> customSan;
 
-    /**
-     * @return Customize the certificate SAN, multiple IP or domain names are separated by English commas (,).
-     * 
-     */
     public Output<Optional<String>> customSan() {
         return Codegen.optional(this.customSan);
     }
-    /**
-     * Whether to enable cluster deletion protection.
-     * 
-     */
     @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtection;
 
-    /**
-     * @return Whether to enable cluster deletion protection.
-     * 
-     */
     public Output<Optional<Boolean>> deletionProtection() {
         return Codegen.optional(this.deletionProtection);
     }
-    /**
-     * Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
-     * 
-     */
     @Export(name="enableRrsa", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableRrsa;
 
-    /**
-     * @return Whether to enable cluster to support RRSA for version 1.22.3+. Default to `false`. Once the RRSA function is turned on, it is not allowed to turn off. If your cluster has enabled this function, please manually modify your tf file and add the rrsa configuration to the file, learn more [RAM Roles for Service Accounts](https://www.alibabacloud.com/help/zh/container-service-for-kubernetes/latest/use-rrsa-to-enforce-access-control).
-     * 
-     */
     public Output<Optional<Boolean>> enableRrsa() {
         return Codegen.optional(this.enableRrsa);
     }
     /**
-     * The disk encryption key.
+     * disk encryption key, only in ack-pro
      * 
      */
     @Export(name="encryptionProviderKey", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> encryptionProviderKey;
 
     /**
-     * @return The disk encryption key.
+     * @return disk encryption key, only in ack-pro
      * 
      */
     public Output<Optional<String>> encryptionProviderKey() {
         return Codegen.optional(this.encryptionProviderKey);
     }
-    /**
-     * Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
-     * 
-     */
     @Export(name="isEnterpriseSecurityGroup", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> isEnterpriseSecurityGroup;
 
-    /**
-     * @return Enable to create advanced security group. default: false. See [Advanced security group](https://www.alibabacloud.com/help/doc-detail/120621.htm).
-     * 
-     */
     public Output<Boolean> isEnterpriseSecurityGroup() {
         return this.isEnterpriseSecurityGroup;
     }
-    /**
-     * The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-     * 
-     */
     @Export(name="loadBalancerSpec", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> loadBalancerSpec;
 
-    /**
-     * @return The cluster api server load balance instance specification, default `slb.s1.small`. For more information on how to select a LB instance specification, see [SLB instance overview](https://help.aliyun.com/document_detail/85931.html).
-     * 
-     */
     public Output<Optional<String>> loadBalancerSpec() {
         return Codegen.optional(this.loadBalancerSpec);
     }
-    /**
-     * The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
-     * 
-     */
     @Export(name="maintenanceWindow", refs={ManagedKubernetesMaintenanceWindow.class}, tree="[0]")
     private Output<ManagedKubernetesMaintenanceWindow> maintenanceWindow;
 
-    /**
-     * @return The cluster maintenance window，effective only in the professional managed cluster. Managed node pool will use it. See `maintenance_window` below.
-     * 
-     */
     public Output<ManagedKubernetesMaintenanceWindow> maintenanceWindow() {
         return this.maintenanceWindow;
     }
     /**
-     * This parameter specifies the name of the component.
+     * Node name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return This parameter specifies the name of the component.
+     * @return Node name.
      * 
      */
     public Output<String> name() {
@@ -372,87 +264,39 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     public Output<String> natGatewayId() {
         return this.natGatewayId;
     }
-    /**
-     * Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
-     * 
-     */
     @Export(name="newNatGateway", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> newNatGateway;
 
-    /**
-     * @return Whether to create a new nat gateway while creating kubernetes cluster. Default to true. Then openapi in Alibaba Cloud are not all on intranet, So turn this option on is a good choice.
-     * 
-     */
     public Output<Optional<Boolean>> newNatGateway() {
         return Codegen.optional(this.newNatGateway);
     }
-    /**
-     * The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
-     * 
-     */
     @Export(name="nodeCidrMask", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> nodeCidrMask;
 
-    /**
-     * @return The node cidr block to specific how many pods can run on single node. 24-28 is allowed. 24 means 2^(32-24)-1=255 and the node can run at most 255 pods. default: 24
-     * 
-     */
     public Output<Optional<Integer>> nodeCidrMask() {
         return Codegen.optional(this.nodeCidrMask);
     }
-    /**
-     * [Flannel Specific] The CIDR block for the pod network when using Flannel.
-     * 
-     */
     @Export(name="podCidr", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> podCidr;
 
-    /**
-     * @return [Flannel Specific] The CIDR block for the pod network when using Flannel.
-     * 
-     */
     public Output<Optional<String>> podCidr() {
         return Codegen.optional(this.podCidr);
     }
-    /**
-     * [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
-     * 
-     */
     @Export(name="podVswitchIds", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> podVswitchIds;
 
-    /**
-     * @return [Terway Specific] The vswitches for the pod network when using Terway.Be careful the `pod_vswitch_ids` can not equal to `worker_vswitch_ids` or `master_vswitch_ids` but must be in same availability zones.
-     * 
-     */
     public Output<Optional<List<String>>> podVswitchIds() {
         return Codegen.optional(this.podVswitchIds);
     }
-    /**
-     * Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-     * 
-     */
     @Export(name="proxyMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> proxyMode;
 
-    /**
-     * @return Proxy mode is option of kube-proxy. options: iptables|ipvs. default: ipvs.
-     * 
-     */
     public Output<Optional<String>> proxyMode() {
         return Codegen.optional(this.proxyMode);
     }
-    /**
-     * The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-     * 
-     */
     @Export(name="resourceGroupId", refs={String.class}, tree="[0]")
     private Output<String> resourceGroupId;
 
-    /**
-     * @return The ID of the resource group,by default these cloud resources are automatically assigned to the default resource group.
-     * 
-     */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
@@ -476,45 +320,21 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     public Output<ManagedKubernetesRrsaMetadata> rrsaMetadata() {
         return this.rrsaMetadata;
     }
-    /**
-     * The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-     * 
-     */
     @Export(name="securityGroupId", refs={String.class}, tree="[0]")
     private Output<String> securityGroupId;
 
-    /**
-     * @return The ID of the security group to which the ECS instances in the cluster belong. If it is not specified, a new Security group will be built.
-     * 
-     */
     public Output<String> securityGroupId() {
         return this.securityGroupId;
     }
-    /**
-     * The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
-     * 
-     */
     @Export(name="serviceAccountIssuer", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceAccountIssuer;
 
-    /**
-     * @return The issuer of the Service Account token for [Service Account Token Volume Projection](https://www.alibabacloud.com/help/doc-detail/160384.htm), corresponds to the `iss` field in the token payload. Set this to `&#34;https://kubernetes.default.svc&#34;` to enable the Token Volume Projection feature (requires specifying `api_audiences` as well). From cluster version 1.22+, Service Account Token Volume Projection will be enabled by default.
-     * 
-     */
     public Output<Optional<String>> serviceAccountIssuer() {
         return Codegen.optional(this.serviceAccountIssuer);
     }
-    /**
-     * The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
-     * 
-     */
     @Export(name="serviceCidr", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> serviceCidr;
 
-    /**
-     * @return The CIDR block for the service network. It cannot be duplicated with the VPC CIDR and CIDR used by Kubernetes cluster in VPC, cannot be modified after creation.
-     * 
-     */
     public Output<Optional<String>> serviceCidr() {
         return Codegen.optional(this.serviceCidr);
     }
@@ -550,23 +370,9 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     public Output<String> slbInternet() {
         return this.slbInternet;
     }
-    /**
-     * Whether to create internet load balancer for API Server. Default to true.
-     * 
-     * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
-     * If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
-     * 
-     */
     @Export(name="slbInternetEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> slbInternetEnabled;
 
-    /**
-     * @return Whether to create internet load balancer for API Server. Default to true.
-     * 
-     * &gt; **NOTE:** If you want to use `Terway` as CNI network plugin, You need to specific the `pod_vswitch_ids` field and addons with `terway-eniip`.
-     * If you want to use `Flannel` as CNI network plugin, You need to specific the `pod_cidr` field and addons with `flannel`.
-     * 
-     */
     public Output<Optional<Boolean>> slbInternetEnabled() {
         return Codegen.optional(this.slbInternetEnabled);
     }
@@ -584,59 +390,27 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     public Output<String> slbIntranet() {
         return this.slbIntranet;
     }
-    /**
-     * Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
-     * 
-     */
     @Export(name="tags", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
     private Output</* @Nullable */ Map<String,Object>> tags;
 
-    /**
-     * @return Default nil, A map of tags assigned to the kubernetes cluster and work nodes. See `tags` below.
-     * 
-     */
     public Output<Optional<Map<String,Object>>> tags() {
         return Codegen.optional(this.tags);
     }
-    /**
-     * When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
-     * 
-     */
     @Export(name="timezone", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> timezone;
 
-    /**
-     * @return When you create a cluster, set the time zones for the Master and Worker nodes. You can only change the managed node time zone if you create a cluster. Once the cluster is created, you can only change the time zone of the Worker node.
-     * 
-     */
     public Output<Optional<String>> timezone() {
         return Codegen.optional(this.timezone);
     }
-    /**
-     * The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
-     * 
-     */
     @Export(name="userCa", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userCa;
 
-    /**
-     * @return The path of customized CA cert, you can use this CA to sign client certs to connect your cluster.
-     * 
-     */
     public Output<Optional<String>> userCa() {
         return Codegen.optional(this.userCa);
     }
-    /**
-     * It specifies the version of the component.
-     * 
-     */
     @Export(name="version", refs={String.class}, tree="[0]")
     private Output<String> version;
 
-    /**
-     * @return It specifies the version of the component.
-     * 
-     */
     public Output<String> version() {
         return this.version;
     }
@@ -668,17 +442,9 @@ public class ManagedKubernetes extends com.pulumi.resources.CustomResource {
     public Output<String> workerRamRoleName() {
         return this.workerRamRoleName;
     }
-    /**
-     * The vswitches used by control plane.  See `worker_vswitch_ids` below.
-     * 
-     */
     @Export(name="workerVswitchIds", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> workerVswitchIds;
 
-    /**
-     * @return The vswitches used by control plane.  See `worker_vswitch_ids` below.
-     * 
-     */
     public Output<List<String>> workerVswitchIds() {
         return this.workerVswitchIds;
     }

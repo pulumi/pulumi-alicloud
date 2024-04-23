@@ -15,17 +15,9 @@ public final class ListenerAclConfigAclRelationArgs extends com.pulumi.resources
 
     public static final ListenerAclConfigAclRelationArgs Empty = new ListenerAclConfigAclRelationArgs();
 
-    /**
-     * Snooping Binding of the Access Policy Group ID List.
-     * 
-     */
     @Import(name="aclId")
     private @Nullable Output<String> aclId;
 
-    /**
-     * @return Snooping Binding of the Access Policy Group ID List.
-     * 
-     */
     public Optional<Output<String>> aclId() {
         return Optional.ofNullable(this.aclId);
     }
@@ -70,23 +62,11 @@ public final class ListenerAclConfigAclRelationArgs extends com.pulumi.resources
             $ = new ListenerAclConfigAclRelationArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param aclId Snooping Binding of the Access Policy Group ID List.
-         * 
-         * @return builder
-         * 
-         */
         public Builder aclId(@Nullable Output<String> aclId) {
             $.aclId = aclId;
             return this;
         }
 
-        /**
-         * @param aclId Snooping Binding of the Access Policy Group ID List.
-         * 
-         * @return builder
-         * 
-         */
         public Builder aclId(String aclId) {
             return aclId(Output.of(aclId));
         }

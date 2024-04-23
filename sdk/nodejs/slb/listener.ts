@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -86,7 +85,6 @@ import * as utilities from "../utilities";
  *     comment: "second",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -128,111 +126,31 @@ export class Listener extends pulumi.CustomResource {
         return obj['__pulumiType'] === Listener.__pulumiType;
     }
 
-    /**
-     * The ID of the network ACL that is associated with the listener. **NOTE:** If `aclStatus` is set to `on`, `aclId` is required. Otherwise, it will be ignored.
-     */
     public readonly aclId!: pulumi.Output<string | undefined>;
-    /**
-     * Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
-     */
     public readonly aclStatus!: pulumi.Output<string | undefined>;
-    /**
-     * The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `aclStatus` is set to `on`, `aclType` is required. Otherwise, it will be ignored.
-     */
     public readonly aclType!: pulumi.Output<string | undefined>;
-    /**
-     * The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `serverGroupId` is not set, `backendPort` is required.
-     */
     public readonly backendPort!: pulumi.Output<number | undefined>;
-    /**
-     * The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
-     * - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
-     */
     public readonly bandwidth!: pulumi.Output<number>;
-    /**
-     * The ID of the certification authority (CA) certificate.
-     */
     public readonly caCertificateId!: pulumi.Output<string | undefined>;
-    /**
-     * The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `stickySession` is set to `on`, and `stickySessionType` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
-     */
     public readonly cookie!: pulumi.Output<string | undefined>;
-    /**
-     * The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `stickySession` is set to `on`, and `stickySessionType` is set to `insert`, `cookieTimeout` is required. Otherwise, it will be ignored.
-     */
     public readonly cookieTimeout!: pulumi.Output<number | undefined>;
-    /**
-     * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
-     */
     public readonly deleteProtectionValidation!: pulumi.Output<boolean | undefined>;
-    /**
-     * The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
-     */
     public readonly description!: pulumi.Output<string | undefined>;
-    /**
-     * Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
-     */
     public readonly enableHttp2!: pulumi.Output<string | undefined>;
-    /**
-     * The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
-     */
     public readonly establishedTimeout!: pulumi.Output<number | undefined>;
-    /**
-     * The listening port that is used to redirect HTTP requests to HTTPS.
-     */
     public readonly forwardPort!: pulumi.Output<number | undefined>;
-    /**
-     * The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
-     */
     public readonly frontendPort!: pulumi.Output<number>;
-    /**
-     * Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
-     */
     public readonly gzip!: pulumi.Output<boolean | undefined>;
-    /**
-     * Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener's HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
-     */
     public readonly healthCheck!: pulumi.Output<string | undefined>;
-    /**
-     * The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `healthCheckConnectPort` takes effect only if `healthCheck` is set to `on`.
-     */
     public readonly healthCheckConnectPort!: pulumi.Output<number>;
-    /**
-     * The domain name that is used for health checks. **NOTE:** `healthCheckDomain` takes effect only if `healthCheck` is set to `on`.
-     */
     public readonly healthCheckDomain!: pulumi.Output<string | undefined>;
-    /**
-     * The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http2xx`. Valid values: `http2xx`, `http3xx`, `http4xx` and `http5xx`. **NOTE:** `healthCheckHttpCode` takes effect only if `healthCheck` is set to `on`.
-     */
     public readonly healthCheckHttpCode!: pulumi.Output<string>;
-    /**
-     * The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `healthCheckInterval` takes effect only if `healthCheck` is set to `on`.
-     */
     public readonly healthCheckInterval!: pulumi.Output<number | undefined>;
-    /**
-     * The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `healthCheckMethod` takes effect only if `healthCheck` is set to `on`.
-     */
     public readonly healthCheckMethod!: pulumi.Output<string>;
-    /**
-     * The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `healthCheckTimeout` < `healthCheckInterval`, `healthCheckTimeout` will be replaced by `healthCheckInterval`. `healthCheckTimeout` takes effect only if `healthCheck` is set to `on`.
-     */
     public readonly healthCheckTimeout!: pulumi.Output<number | undefined>;
-    /**
-     * The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
-     */
     public readonly healthCheckType!: pulumi.Output<string | undefined>;
-    /**
-     * The URI that is used for health checks. The `healthCheckUri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
-     * **NOTE:** `healthCheckUri` takes effect only if `healthCheck` is set to `on`.
-     */
     public readonly healthCheckUri!: pulumi.Output<string | undefined>;
-    /**
-     * The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthyThreshold` takes effect only if `healthCheck` is set to `on`.
-     */
     public readonly healthyThreshold!: pulumi.Output<number | undefined>;
-    /**
-     * The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
-     */
     public readonly idleTimeout!: pulumi.Output<number | undefined>;
     /**
      * @deprecated Field 'lb_port' has been removed since 1.211.0.
@@ -242,70 +160,26 @@ export class Listener extends pulumi.CustomResource {
      * @deprecated Field 'lb_protocol' has been removed since 1.211.0.
      */
     public readonly lbProtocol!: pulumi.Output<string | undefined>;
-    /**
-     * Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
-     */
     public readonly listenerForward!: pulumi.Output<string>;
-    /**
-     * The Load Balancer ID which is used to launch a new listener.
-     */
     public readonly loadBalancerId!: pulumi.Output<string>;
-    /**
-     * The ID of the primary/secondary server group. **NOTE:** You cannot set both `serverGroupId` and `masterSlaveServerGroupId`.
-     */
     public readonly masterSlaveServerGroupId!: pulumi.Output<string | undefined>;
-    /**
-     * The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
-     */
     public readonly persistenceTimeout!: pulumi.Output<number | undefined>;
-    /**
-     * The protocol to listen on. Valid values: `http`.
-     */
     public readonly protocol!: pulumi.Output<string>;
-    /**
-     * Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
-     */
     public readonly proxyProtocolV2Enabled!: pulumi.Output<boolean>;
-    /**
-     * The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
-     */
     public readonly requestTimeout!: pulumi.Output<number | undefined>;
-    /**
-     * The scheduling algorithm. Default value: `wrr`. Valid values:
-     */
     public readonly scheduler!: pulumi.Output<string | undefined>;
-    /**
-     * The ID of the server certificate. **NOTE:** `serverCertificateId` is also required when the value of the `sslCertificateId` is Empty.
-     */
     public readonly serverCertificateId!: pulumi.Output<string>;
-    /**
-     * The ID of the vServer group. It's the ID of resource `alicloud.slb.ServerGroup`.
-     */
     public readonly serverGroupId!: pulumi.Output<string | undefined>;
     /**
-     * The ID of the server certificate. **NOTE:** Field `sslCertificateId` has been deprecated from provider version 1.59.0. New field `serverCertificateId` instead.
-     *
      * @deprecated Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
      */
     public readonly sslCertificateId!: pulumi.Output<string>;
-    /**
-     * Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
-     */
     public readonly stickySession!: pulumi.Output<string | undefined>;
-    /**
-     * The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `stickySession` is set to `on`, `stickySessionType` is required. Otherwise, it will be ignored.
-     */
     public readonly stickySessionType!: pulumi.Output<string | undefined>;
-    /**
-     * The Transport Layer Security (TLS) security policy. Default value: `tlsCipherPolicy10`. Valid values: `tlsCipherPolicy10`, `tlsCipherPolicy11`, `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`.
-     */
     public readonly tlsCipherPolicy!: pulumi.Output<string | undefined>;
-    /**
-     * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthyThreshold` takes effect only if `healthCheck` is set to `on`.
-     */
     public readonly unhealthyThreshold!: pulumi.Output<number | undefined>;
     /**
-     * Whether to set additional HTTP Header field "X-Forwarded-For". See `xForwardedFor` below.
+     * Whether to set additional HTTP Header field "X-Forwarded-For".
      */
     public readonly xForwardedFor!: pulumi.Output<outputs.slb.ListenerXForwardedFor>;
 
@@ -431,111 +305,31 @@ export class Listener extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Listener resources.
  */
 export interface ListenerState {
-    /**
-     * The ID of the network ACL that is associated with the listener. **NOTE:** If `aclStatus` is set to `on`, `aclId` is required. Otherwise, it will be ignored.
-     */
     aclId?: pulumi.Input<string>;
-    /**
-     * Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
-     */
     aclStatus?: pulumi.Input<string>;
-    /**
-     * The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `aclStatus` is set to `on`, `aclType` is required. Otherwise, it will be ignored.
-     */
     aclType?: pulumi.Input<string>;
-    /**
-     * The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `serverGroupId` is not set, `backendPort` is required.
-     */
     backendPort?: pulumi.Input<number>;
-    /**
-     * The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
-     * - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
-     */
     bandwidth?: pulumi.Input<number>;
-    /**
-     * The ID of the certification authority (CA) certificate.
-     */
     caCertificateId?: pulumi.Input<string>;
-    /**
-     * The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `stickySession` is set to `on`, and `stickySessionType` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
-     */
     cookie?: pulumi.Input<string>;
-    /**
-     * The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `stickySession` is set to `on`, and `stickySessionType` is set to `insert`, `cookieTimeout` is required. Otherwise, it will be ignored.
-     */
     cookieTimeout?: pulumi.Input<number>;
-    /**
-     * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
-     */
     deleteProtectionValidation?: pulumi.Input<boolean>;
-    /**
-     * The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
-     */
     enableHttp2?: pulumi.Input<string>;
-    /**
-     * The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
-     */
     establishedTimeout?: pulumi.Input<number>;
-    /**
-     * The listening port that is used to redirect HTTP requests to HTTPS.
-     */
     forwardPort?: pulumi.Input<number>;
-    /**
-     * The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
-     */
     frontendPort?: pulumi.Input<number>;
-    /**
-     * Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
-     */
     gzip?: pulumi.Input<boolean>;
-    /**
-     * Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener's HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
-     */
     healthCheck?: pulumi.Input<string>;
-    /**
-     * The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `healthCheckConnectPort` takes effect only if `healthCheck` is set to `on`.
-     */
     healthCheckConnectPort?: pulumi.Input<number>;
-    /**
-     * The domain name that is used for health checks. **NOTE:** `healthCheckDomain` takes effect only if `healthCheck` is set to `on`.
-     */
     healthCheckDomain?: pulumi.Input<string>;
-    /**
-     * The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http2xx`. Valid values: `http2xx`, `http3xx`, `http4xx` and `http5xx`. **NOTE:** `healthCheckHttpCode` takes effect only if `healthCheck` is set to `on`.
-     */
     healthCheckHttpCode?: pulumi.Input<string>;
-    /**
-     * The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `healthCheckInterval` takes effect only if `healthCheck` is set to `on`.
-     */
     healthCheckInterval?: pulumi.Input<number>;
-    /**
-     * The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `healthCheckMethod` takes effect only if `healthCheck` is set to `on`.
-     */
     healthCheckMethod?: pulumi.Input<string>;
-    /**
-     * The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `healthCheckTimeout` < `healthCheckInterval`, `healthCheckTimeout` will be replaced by `healthCheckInterval`. `healthCheckTimeout` takes effect only if `healthCheck` is set to `on`.
-     */
     healthCheckTimeout?: pulumi.Input<number>;
-    /**
-     * The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
-     */
     healthCheckType?: pulumi.Input<string>;
-    /**
-     * The URI that is used for health checks. The `healthCheckUri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
-     * **NOTE:** `healthCheckUri` takes effect only if `healthCheck` is set to `on`.
-     */
     healthCheckUri?: pulumi.Input<string>;
-    /**
-     * The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthyThreshold` takes effect only if `healthCheck` is set to `on`.
-     */
     healthyThreshold?: pulumi.Input<number>;
-    /**
-     * The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
-     */
     idleTimeout?: pulumi.Input<number>;
     /**
      * @deprecated Field 'lb_port' has been removed since 1.211.0.
@@ -545,70 +339,26 @@ export interface ListenerState {
      * @deprecated Field 'lb_protocol' has been removed since 1.211.0.
      */
     lbProtocol?: pulumi.Input<string>;
-    /**
-     * Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
-     */
     listenerForward?: pulumi.Input<string>;
-    /**
-     * The Load Balancer ID which is used to launch a new listener.
-     */
     loadBalancerId?: pulumi.Input<string>;
-    /**
-     * The ID of the primary/secondary server group. **NOTE:** You cannot set both `serverGroupId` and `masterSlaveServerGroupId`.
-     */
     masterSlaveServerGroupId?: pulumi.Input<string>;
-    /**
-     * The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
-     */
     persistenceTimeout?: pulumi.Input<number>;
-    /**
-     * The protocol to listen on. Valid values: `http`.
-     */
     protocol?: pulumi.Input<string>;
-    /**
-     * Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
-     */
     proxyProtocolV2Enabled?: pulumi.Input<boolean>;
-    /**
-     * The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
-     */
     requestTimeout?: pulumi.Input<number>;
-    /**
-     * The scheduling algorithm. Default value: `wrr`. Valid values:
-     */
     scheduler?: pulumi.Input<string>;
-    /**
-     * The ID of the server certificate. **NOTE:** `serverCertificateId` is also required when the value of the `sslCertificateId` is Empty.
-     */
     serverCertificateId?: pulumi.Input<string>;
-    /**
-     * The ID of the vServer group. It's the ID of resource `alicloud.slb.ServerGroup`.
-     */
     serverGroupId?: pulumi.Input<string>;
     /**
-     * The ID of the server certificate. **NOTE:** Field `sslCertificateId` has been deprecated from provider version 1.59.0. New field `serverCertificateId` instead.
-     *
      * @deprecated Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
      */
     sslCertificateId?: pulumi.Input<string>;
-    /**
-     * Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
-     */
     stickySession?: pulumi.Input<string>;
-    /**
-     * The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `stickySession` is set to `on`, `stickySessionType` is required. Otherwise, it will be ignored.
-     */
     stickySessionType?: pulumi.Input<string>;
-    /**
-     * The Transport Layer Security (TLS) security policy. Default value: `tlsCipherPolicy10`. Valid values: `tlsCipherPolicy10`, `tlsCipherPolicy11`, `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`.
-     */
     tlsCipherPolicy?: pulumi.Input<string>;
-    /**
-     * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthyThreshold` takes effect only if `healthCheck` is set to `on`.
-     */
     unhealthyThreshold?: pulumi.Input<number>;
     /**
-     * Whether to set additional HTTP Header field "X-Forwarded-For". See `xForwardedFor` below.
+     * Whether to set additional HTTP Header field "X-Forwarded-For".
      */
     xForwardedFor?: pulumi.Input<inputs.slb.ListenerXForwardedFor>;
 }
@@ -617,111 +367,31 @@ export interface ListenerState {
  * The set of arguments for constructing a Listener resource.
  */
 export interface ListenerArgs {
-    /**
-     * The ID of the network ACL that is associated with the listener. **NOTE:** If `aclStatus` is set to `on`, `aclId` is required. Otherwise, it will be ignored.
-     */
     aclId?: pulumi.Input<string>;
-    /**
-     * Specifies whether to enable access control. Default value: `off`. Valid values: `on`, `off`.
-     */
     aclStatus?: pulumi.Input<string>;
-    /**
-     * The type of the network ACL. Valid values: `black`, `white`. **NOTE:** If `aclStatus` is set to `on`, `aclType` is required. Otherwise, it will be ignored.
-     */
     aclType?: pulumi.Input<string>;
-    /**
-     * The backend port that is used by the CLB instance. Valid values: `1` to `65535`. **NOTE:** If `serverGroupId` is not set, `backendPort` is required.
-     */
     backendPort?: pulumi.Input<number>;
-    /**
-     * The maximum bandwidth of the listener. Unit: Mbit/s. Valid values:
-     * - `-1`: If you set `bandwidth` to `-1`, the bandwidth of the listener is unlimited.
-     */
     bandwidth?: pulumi.Input<number>;
-    /**
-     * The ID of the certification authority (CA) certificate.
-     */
     caCertificateId?: pulumi.Input<string>;
-    /**
-     * The cookie that is configured on the server. The `cookie` must be `1` to `200` characters in length and can contain only ASCII characters and digits. It cannot contain commas (,), semicolons (;), or space characters. It cannot start with a dollar sign ($). **NOTE:** If `stickySession` is set to `on`, and `stickySessionType` is set to `server`, `cookie` is required. Otherwise, it will be ignored.
-     */
     cookie?: pulumi.Input<string>;
-    /**
-     * The timeout period of a cookie. Unit: seconds. Valid values: `1` to `86400`. **NOTE:** If `stickySession` is set to `on`, and `stickySessionType` is set to `insert`, `cookieTimeout` is required. Otherwise, it will be ignored.
-     */
     cookieTimeout?: pulumi.Input<number>;
-    /**
-     * Checking DeleteProtection of SLB instance before deleting. If true, this resource will not be deleted when its SLB instance enabled DeleteProtection. Default value: `false`.
-     */
     deleteProtectionValidation?: pulumi.Input<boolean>;
-    /**
-     * The name of the listener. The name must be 1 to 256 characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), and underscores (_).
-     */
     description?: pulumi.Input<string>;
-    /**
-     * Specifies whether to enable HTTP/2. Default value: `on`. Valid values: `on`, `off`.
-     */
     enableHttp2?: pulumi.Input<string>;
-    /**
-     * The timeout period of a connection. Unit: seconds. Default value: `900`. Valid values: `10` to `900`.
-     */
     establishedTimeout?: pulumi.Input<number>;
-    /**
-     * The listening port that is used to redirect HTTP requests to HTTPS.
-     */
     forwardPort?: pulumi.Input<number>;
-    /**
-     * The frontend port that is used by the CLB instance. Valid values: `1` to `65535`.
-     */
     frontendPort: pulumi.Input<number>;
-    /**
-     * Specifies whether to enable GZIP compression to compress specific types of files. Default value: `true`. Valid values: `true`, `false`.
-     */
     gzip?: pulumi.Input<boolean>;
-    /**
-     * Specifies whether to enable the health check feature. Default value: `on`. Valid values: `on`, `off`. **NOTE:** `TCP` and `UDP` listener's HealthCheck is always on, so it will be ignored when launching `TCP` or `UDP` listener.
-     */
     healthCheck?: pulumi.Input<string>;
-    /**
-     * The backend port that is used for health checks. Valid values: `0` to `65535`. **NOTE:** `healthCheckConnectPort` takes effect only if `healthCheck` is set to `on`.
-     */
     healthCheckConnectPort?: pulumi.Input<number>;
-    /**
-     * The domain name that is used for health checks. **NOTE:** `healthCheckDomain` takes effect only if `healthCheck` is set to `on`.
-     */
     healthCheckDomain?: pulumi.Input<string>;
-    /**
-     * The HTTP status code for a successful health check. Separate multiple HTTP status codes with commas (`,`). Default value: `http2xx`. Valid values: `http2xx`, `http3xx`, `http4xx` and `http5xx`. **NOTE:** `healthCheckHttpCode` takes effect only if `healthCheck` is set to `on`.
-     */
     healthCheckHttpCode?: pulumi.Input<string>;
-    /**
-     * The interval between two consecutive health checks. Unit: seconds. Default value: `2`. Valid values: `1` to `50`. **NOTE:** `healthCheckInterval` takes effect only if `healthCheck` is set to `on`.
-     */
     healthCheckInterval?: pulumi.Input<number>;
-    /**
-     * The health check method used in HTTP health checks. Valid values: `head`, `get`. **NOTE:** `healthCheckMethod` takes effect only if `healthCheck` is set to `on`.
-     */
     healthCheckMethod?: pulumi.Input<string>;
-    /**
-     * The timeout period of a health check response. Unit: seconds. Default value: `5`. Valid values: `1` to `300`. **NOTE:** If `healthCheckTimeout` < `healthCheckInterval`, `healthCheckTimeout` will be replaced by `healthCheckInterval`. `healthCheckTimeout` takes effect only if `healthCheck` is set to `on`.
-     */
     healthCheckTimeout?: pulumi.Input<number>;
-    /**
-     * The type of health checks. Default value: `tcp`. Valid values: `tcp`, `http`.
-     */
     healthCheckType?: pulumi.Input<string>;
-    /**
-     * The URI that is used for health checks. The `healthCheckUri` must be `1` to `80` characters in length, and can contain letters, digits, hyphens (-), forward slashes (/), periods (.), percent signs (%), question marks (?), number signs (#), and ampersands (&). The URI must start with a forward slash (/) but cannot be a single forward slash (/).
-     * **NOTE:** `healthCheckUri` takes effect only if `healthCheck` is set to `on`.
-     */
     healthCheckUri?: pulumi.Input<string>;
-    /**
-     * The number of times that an unhealthy backend server must consecutively pass health checks before it is declared healthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `healthyThreshold` takes effect only if `healthCheck` is set to `on`.
-     */
     healthyThreshold?: pulumi.Input<number>;
-    /**
-     * The timeout period of an idle connection. Unit: seconds. Default value: `15`. Valid values: `1` to `60`.
-     */
     idleTimeout?: pulumi.Input<number>;
     /**
      * @deprecated Field 'lb_port' has been removed since 1.211.0.
@@ -731,70 +401,26 @@ export interface ListenerArgs {
      * @deprecated Field 'lb_protocol' has been removed since 1.211.0.
      */
     lbProtocol?: pulumi.Input<string>;
-    /**
-     * Specifies whether to enable HTTP-to-HTTPS redirection. Default value: `off`. Valid values: `on`, `off`.
-     */
     listenerForward?: pulumi.Input<string>;
-    /**
-     * The Load Balancer ID which is used to launch a new listener.
-     */
     loadBalancerId: pulumi.Input<string>;
-    /**
-     * The ID of the primary/secondary server group. **NOTE:** You cannot set both `serverGroupId` and `masterSlaveServerGroupId`.
-     */
     masterSlaveServerGroupId?: pulumi.Input<string>;
-    /**
-     * The timeout period of session persistence. Unit: seconds. Default value: `0`. Valid values: `0` to `3600`.
-     */
     persistenceTimeout?: pulumi.Input<number>;
-    /**
-     * The protocol to listen on. Valid values: `http`.
-     */
     protocol: pulumi.Input<string>;
-    /**
-     * Specifies whether to use the Proxy protocol to pass client IP addresses to backend servers. Default value: `false`. Valid values: `true`, `false`.
-     */
     proxyProtocolV2Enabled?: pulumi.Input<boolean>;
-    /**
-     * The timeout period of a request. Unit: seconds. Default value: `60`. Valid values: `1` to `180`.
-     */
     requestTimeout?: pulumi.Input<number>;
-    /**
-     * The scheduling algorithm. Default value: `wrr`. Valid values:
-     */
     scheduler?: pulumi.Input<string>;
-    /**
-     * The ID of the server certificate. **NOTE:** `serverCertificateId` is also required when the value of the `sslCertificateId` is Empty.
-     */
     serverCertificateId?: pulumi.Input<string>;
-    /**
-     * The ID of the vServer group. It's the ID of resource `alicloud.slb.ServerGroup`.
-     */
     serverGroupId?: pulumi.Input<string>;
     /**
-     * The ID of the server certificate. **NOTE:** Field `sslCertificateId` has been deprecated from provider version 1.59.0. New field `serverCertificateId` instead.
-     *
      * @deprecated Field 'ssl_certificate_id' has been deprecated from 1.59.0 and using 'server_certificate_id' instead.
      */
     sslCertificateId?: pulumi.Input<string>;
-    /**
-     * Specifies whether to enable session persistence. Default value: `off`. Valid values: `on`, `off`.
-     */
     stickySession?: pulumi.Input<string>;
-    /**
-     * The method that is used to handle a cookie. Valid values: `insert`, `server`. **NOTE:** If `stickySession` is set to `on`, `stickySessionType` is required. Otherwise, it will be ignored.
-     */
     stickySessionType?: pulumi.Input<string>;
-    /**
-     * The Transport Layer Security (TLS) security policy. Default value: `tlsCipherPolicy10`. Valid values: `tlsCipherPolicy10`, `tlsCipherPolicy11`, `tlsCipherPolicy12`, `tlsCipherPolicy12Strict`.
-     */
     tlsCipherPolicy?: pulumi.Input<string>;
-    /**
-     * The number of times that a healthy backend server must consecutively fail health checks before it is declared unhealthy. Default value: `3`. Valid values: `2` to `10`. **NOTE:** `unhealthyThreshold` takes effect only if `healthCheck` is set to `on`.
-     */
     unhealthyThreshold?: pulumi.Input<number>;
     /**
-     * Whether to set additional HTTP Header field "X-Forwarded-For". See `xForwardedFor` below.
+     * Whether to set additional HTTP Header field "X-Forwarded-For".
      */
     xForwardedFor?: pulumi.Input<inputs.slb.ListenerXForwardedFor>;
 }

@@ -244,7 +244,6 @@ def get_clusters(cluster_name: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -357,7 +356,6 @@ def get_clusters(cluster_name: Optional[str] = None,
     name_regex = alicloud.emr.get_clusters_output(name_regex=default_cluster.name)
     pulumi.export("emrClusterId2", name_regex.clusters[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_name: The name of the associated cluster.
@@ -447,7 +445,6 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -560,7 +557,6 @@ def get_clusters_output(cluster_name: Optional[pulumi.Input[Optional[str]]] = No
     name_regex = alicloud.emr.get_clusters_output(name_regex=default_cluster.name)
     pulumi.export("emrClusterId2", name_regex.clusters[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_name: The name of the associated cluster.

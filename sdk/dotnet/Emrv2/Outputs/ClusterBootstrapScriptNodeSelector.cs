@@ -13,25 +13,10 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
     [OutputType]
     public sealed class ClusterBootstrapScriptNodeSelector
     {
-        /// <summary>
-        /// The configuration effected which node group id of emr cluster.
-        /// </summary>
         public readonly string? NodeGroupId;
-        /// <summary>
-        /// The configuration effected which node group name of emr cluster.
-        /// </summary>
         public readonly string? NodeGroupName;
-        /// <summary>
-        /// The bootstrap scripts execution target node group types.
-        /// </summary>
         public readonly ImmutableArray<string> NodeGroupTypes;
-        /// <summary>
-        /// The bootstrap scripts execution target node names.
-        /// </summary>
         public readonly ImmutableArray<string> NodeNames;
-        /// <summary>
-        /// The bootstrap scripts execution target node select type. Supported value: NODE, NODEGROUP or CLUSTER.
-        /// </summary>
         public readonly string NodeSelectType;
 
         [OutputConstructor]

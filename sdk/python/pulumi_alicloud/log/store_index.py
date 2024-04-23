@@ -173,7 +173,6 @@ class StoreIndex(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -197,18 +196,17 @@ class StoreIndex(pulumi.CustomResource):
             logstore=example_store.name,
             full_text=alicloud.log.StoreIndexFullTextArgs(
                 case_sensitive=True,
-                token=\"\"\" #$^*
-        	\"\"\",
+                token=\"\"\" #$^*\\x0d
+        \\x09\"\"\",
             ),
             field_searches=[alicloud.log.StoreIndexFieldSearchArgs(
                 name="terraform-example",
                 enable_analytics=True,
                 type="text",
-                token=\"\"\" #$^*
-        	\"\"\",
+                token=\"\"\" #$^*\\x0d
+        \\x09\"\"\",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 
@@ -244,7 +242,6 @@ class StoreIndex(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -268,18 +265,17 @@ class StoreIndex(pulumi.CustomResource):
             logstore=example_store.name,
             full_text=alicloud.log.StoreIndexFullTextArgs(
                 case_sensitive=True,
-                token=\"\"\" #$^*
-        	\"\"\",
+                token=\"\"\" #$^*\\x0d
+        \\x09\"\"\",
             ),
             field_searches=[alicloud.log.StoreIndexFieldSearchArgs(
                 name="terraform-example",
                 enable_analytics=True,
                 type="text",
-                token=\"\"\" #$^*
-        	\"\"\",
+                token=\"\"\" #$^*\\x0d
+        \\x09\"\"\",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 

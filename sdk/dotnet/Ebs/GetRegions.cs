@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Ebs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.AliCloud.Ebs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetRegionsResult> InvokeAsync(GetRegionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegionsResult>("alicloud:ebs/getRegions:getRegions", args ?? new GetRegionsArgs(), options.WithDefaults());
@@ -54,7 +52,6 @@ namespace Pulumi.AliCloud.Ebs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.AliCloud.Ebs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetRegionsResult> Invoke(GetRegionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionsResult>("alicloud:ebs/getRegions:getRegions", args ?? new GetRegionsInvokeArgs(), options.WithDefaults());
@@ -90,7 +86,7 @@ namespace Pulumi.AliCloud.Ebs
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the region.
+        /// A list of Disk Replica Group IDs.
         /// </summary>
         [Input("regionId")]
         public string? RegionId { get; set; }
@@ -110,7 +106,7 @@ namespace Pulumi.AliCloud.Ebs
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of the region.
+        /// A list of Disk Replica Group IDs.
         /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }

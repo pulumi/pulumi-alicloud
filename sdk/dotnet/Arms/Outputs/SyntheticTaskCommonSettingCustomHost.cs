@@ -13,15 +13,7 @@ namespace Pulumi.AliCloud.Arms.Outputs
     [OutputType]
     public sealed class SyntheticTaskCommonSettingCustomHost
     {
-        /// <summary>
-        /// The host list. See `hosts` below.
-        /// </summary>
         public readonly ImmutableArray<Outputs.SyntheticTaskCommonSettingCustomHostHost> Hosts;
-        /// <summary>
-        /// Selection method:
-        /// - 0: Random
-        /// - 1: Polling.
-        /// </summary>
         public readonly int SelectType;
 
         [OutputConstructor]

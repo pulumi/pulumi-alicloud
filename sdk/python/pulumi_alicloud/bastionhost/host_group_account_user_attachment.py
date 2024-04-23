@@ -170,7 +170,6 @@ class HostGroupAccountUserAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -224,7 +223,6 @@ class HostGroupAccountUserAttachment(pulumi.CustomResource):
             host_group_id=default_host_group.host_group_id,
             host_account_names=[default_host_account.host_account_name])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -256,7 +254,6 @@ class HostGroupAccountUserAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -310,7 +307,6 @@ class HostGroupAccountUserAttachment(pulumi.CustomResource):
             host_group_id=default_host_group.host_group_id,
             host_account_names=[default_host_account.host_account_name])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

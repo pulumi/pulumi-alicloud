@@ -462,7 +462,6 @@ class Switch(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -477,9 +476,7 @@ class Switch(pulumi.CustomResource):
             vpc_id=foo_network.id,
             zone_id=foo.zones[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -503,11 +500,9 @@ class Switch(pulumi.CustomResource):
                 "ManagedBy": "example_value",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         Create a switch associated with the additional network segment
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -524,7 +519,6 @@ class Switch(pulumi.CustomResource):
             cidr_block="192.163.0.0/24",
             zone_id=foo.zones[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -570,7 +564,6 @@ class Switch(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -585,9 +578,7 @@ class Switch(pulumi.CustomResource):
             vpc_id=foo_network.id,
             zone_id=foo.zones[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -611,11 +602,9 @@ class Switch(pulumi.CustomResource):
                 "ManagedBy": "example_value",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         Create a switch associated with the additional network segment
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -632,7 +621,6 @@ class Switch(pulumi.CustomResource):
             cidr_block="192.163.0.0/24",
             zone_id=foo.zones[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

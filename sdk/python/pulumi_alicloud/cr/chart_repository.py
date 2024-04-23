@@ -206,7 +206,6 @@ class ChartRepository(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -230,7 +229,6 @@ class ChartRepository(pulumi.CustomResource):
             instance_id=example_chart_namespace.instance_id,
             repo_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -265,7 +263,6 @@ class ChartRepository(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -289,7 +286,6 @@ class ChartRepository(pulumi.CustomResource):
             instance_id=example_chart_namespace.instance_id,
             repo_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

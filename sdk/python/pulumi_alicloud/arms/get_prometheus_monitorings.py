@@ -148,7 +148,6 @@ def get_prometheus_monitorings(cluster_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -160,7 +159,6 @@ def get_prometheus_monitorings(cluster_id: Optional[str] = None,
         name_regex="tf-example")
     pulumi.export("armsPrometheusMonitoringsId2", name_regex.prometheus_monitorings[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The ID of the Prometheus instance.
@@ -209,7 +207,6 @@ def get_prometheus_monitorings_output(cluster_id: Optional[pulumi.Input[str]] = 
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -221,7 +218,6 @@ def get_prometheus_monitorings_output(cluster_id: Optional[pulumi.Input[str]] = 
         name_regex="tf-example")
     pulumi.export("armsPrometheusMonitoringsId2", name_regex.prometheus_monitorings[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str cluster_id: The ID of the Prometheus instance.

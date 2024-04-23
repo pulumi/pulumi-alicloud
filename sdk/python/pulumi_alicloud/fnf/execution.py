@@ -174,7 +174,6 @@ class Execution(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -217,7 +216,6 @@ class Execution(pulumi.CustomResource):
             flow_name=default_flow.name,
             input="{\\"wait\\": 600}")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -251,7 +249,6 @@ class Execution(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -294,7 +291,6 @@ class Execution(pulumi.CustomResource):
             flow_name=default_flow.name,
             input="{\\"wait\\": 600}")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

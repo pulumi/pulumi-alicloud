@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public Input<int>? MaxIops { get; set; }
 
         /// <summary>
-        /// The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        /// The node class of the Config Server node.
         /// </summary>
         [Input("nodeClass")]
         public Input<string>? NodeClass { get; set; }
@@ -49,9 +49,7 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public Input<string>? NodeId { get; set; }
 
         /// <summary>
-        /// The storage space of the shard node.
-        /// - Custom storage space; value range: [10, 1,000]
-        /// - 10-GB increments. Unit: GB.
+        /// The node storage of the Config Server node.
         /// </summary>
         [Input("nodeStorage")]
         public Input<int>? NodeStorage { get; set; }

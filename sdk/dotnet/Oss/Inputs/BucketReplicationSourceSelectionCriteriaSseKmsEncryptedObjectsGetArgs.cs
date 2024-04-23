@@ -13,7 +13,7 @@ namespace Pulumi.AliCloud.Oss.Inputs
     public sealed class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+        /// The status of the data replication task. Can be starting, doing and closing.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

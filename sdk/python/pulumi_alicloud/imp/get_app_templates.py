@@ -113,7 +113,6 @@ def get_app_templates(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -123,7 +122,6 @@ def get_app_templates(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.imp.get_app_templates(name_regex="^my_AppTemplate")
     pulumi.export("impAppTemplateId2", name_regex.templates[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of App Template IDs.
@@ -164,7 +162,6 @@ def get_app_templates_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -174,7 +171,6 @@ def get_app_templates_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
     name_regex = alicloud.imp.get_app_templates(name_regex="^my_AppTemplate")
     pulumi.export("impAppTemplateId2", name_regex.templates[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of App Template IDs.

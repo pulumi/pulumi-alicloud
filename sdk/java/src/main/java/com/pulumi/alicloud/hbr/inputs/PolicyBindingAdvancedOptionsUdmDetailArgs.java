@@ -16,47 +16,23 @@ public final class PolicyBindingAdvancedOptionsUdmDetailArgs extends com.pulumi.
 
     public static final PolicyBindingAdvancedOptionsUdmDetailArgs Empty = new PolicyBindingAdvancedOptionsUdmDetailArgs();
 
-    /**
-     * Custom KMS key ID of encrypted copy.
-     * 
-     */
     @Import(name="destinationKmsKeyId")
     private @Nullable Output<String> destinationKmsKeyId;
 
-    /**
-     * @return Custom KMS key ID of encrypted copy.
-     * 
-     */
     public Optional<Output<String>> destinationKmsKeyId() {
         return Optional.ofNullable(this.destinationKmsKeyId);
     }
 
-    /**
-     * The list of backup disks. If it is empty, all disks are backed up.
-     * 
-     */
     @Import(name="diskIdLists")
     private @Nullable Output<List<String>> diskIdLists;
 
-    /**
-     * @return The list of backup disks. If it is empty, all disks are backed up.
-     * 
-     */
     public Optional<Output<List<String>>> diskIdLists() {
         return Optional.ofNullable(this.diskIdLists);
     }
 
-    /**
-     * List of cloud disk IDs that are not backed up.
-     * 
-     */
     @Import(name="excludeDiskIdLists")
     private @Nullable Output<List<String>> excludeDiskIdLists;
 
-    /**
-     * @return List of cloud disk IDs that are not backed up.
-     * 
-     */
     public Optional<Output<List<String>>> excludeDiskIdLists() {
         return Optional.ofNullable(this.excludeDiskIdLists);
     }
@@ -87,85 +63,37 @@ public final class PolicyBindingAdvancedOptionsUdmDetailArgs extends com.pulumi.
             $ = new PolicyBindingAdvancedOptionsUdmDetailArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param destinationKmsKeyId Custom KMS key ID of encrypted copy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder destinationKmsKeyId(@Nullable Output<String> destinationKmsKeyId) {
             $.destinationKmsKeyId = destinationKmsKeyId;
             return this;
         }
 
-        /**
-         * @param destinationKmsKeyId Custom KMS key ID of encrypted copy.
-         * 
-         * @return builder
-         * 
-         */
         public Builder destinationKmsKeyId(String destinationKmsKeyId) {
             return destinationKmsKeyId(Output.of(destinationKmsKeyId));
         }
 
-        /**
-         * @param diskIdLists The list of backup disks. If it is empty, all disks are backed up.
-         * 
-         * @return builder
-         * 
-         */
         public Builder diskIdLists(@Nullable Output<List<String>> diskIdLists) {
             $.diskIdLists = diskIdLists;
             return this;
         }
 
-        /**
-         * @param diskIdLists The list of backup disks. If it is empty, all disks are backed up.
-         * 
-         * @return builder
-         * 
-         */
         public Builder diskIdLists(List<String> diskIdLists) {
             return diskIdLists(Output.of(diskIdLists));
         }
 
-        /**
-         * @param diskIdLists The list of backup disks. If it is empty, all disks are backed up.
-         * 
-         * @return builder
-         * 
-         */
         public Builder diskIdLists(String... diskIdLists) {
             return diskIdLists(List.of(diskIdLists));
         }
 
-        /**
-         * @param excludeDiskIdLists List of cloud disk IDs that are not backed up.
-         * 
-         * @return builder
-         * 
-         */
         public Builder excludeDiskIdLists(@Nullable Output<List<String>> excludeDiskIdLists) {
             $.excludeDiskIdLists = excludeDiskIdLists;
             return this;
         }
 
-        /**
-         * @param excludeDiskIdLists List of cloud disk IDs that are not backed up.
-         * 
-         * @return builder
-         * 
-         */
         public Builder excludeDiskIdLists(List<String> excludeDiskIdLists) {
             return excludeDiskIdLists(Output.of(excludeDiskIdLists));
         }
 
-        /**
-         * @param excludeDiskIdLists List of cloud disk IDs that are not backed up.
-         * 
-         * @return builder
-         * 
-         */
         public Builder excludeDiskIdLists(String... excludeDiskIdLists) {
             return excludeDiskIdLists(List.of(excludeDiskIdLists));
         }
