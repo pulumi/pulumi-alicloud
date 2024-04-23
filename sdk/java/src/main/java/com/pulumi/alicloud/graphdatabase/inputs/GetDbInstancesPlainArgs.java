@@ -77,14 +77,14 @@ public final class GetDbInstancesPlainArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+     * Instance status. Value range: `Creating`, `Running`, `Deleting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+     * @return Instance status. Value range: `Creating`, `Running`, `Deleting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
      * 
      */
     public Optional<String> status() {
@@ -174,7 +174,7 @@ public final class GetDbInstancesPlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param status Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+         * @param status Instance status. Value range: `Creating`, `Running`, `Deleting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
          * 
          * @return builder
          * 

@@ -195,7 +195,6 @@ def get_mount_targets(access_group_name: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -204,7 +203,6 @@ def get_mount_targets(access_group_name: Optional[str] = None,
         access_group_name="tf-testAccNasConfig")
     pulumi.export("theFirstMountTargetDomain", example.targets[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str access_group_name: Filter results by a specific AccessGroupName.
@@ -266,7 +264,6 @@ def get_mount_targets_output(access_group_name: Optional[pulumi.Input[Optional[s
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -275,7 +272,6 @@ def get_mount_targets_output(access_group_name: Optional[pulumi.Input[Optional[s
         access_group_name="tf-testAccNasConfig")
     pulumi.export("theFirstMountTargetDomain", example.targets[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str access_group_name: Filter results by a specific AccessGroupName.

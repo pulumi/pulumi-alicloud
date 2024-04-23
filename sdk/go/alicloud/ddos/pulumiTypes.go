@@ -1176,7 +1176,7 @@ type GetDdosCooPortsPort struct {
 	BackendPort string `pulumi:"backendPort"`
 	// The forwarding port.
 	FrontendPort string `pulumi:"frontendPort"`
-	// The forwarding protocol.
+	// The forwarding protocol. Valid values `tcp` and `udp`.
 	FrontendProtocol string `pulumi:"frontendProtocol"`
 	// The ID of the Port.
 	Id string `pulumi:"id"`
@@ -1202,7 +1202,7 @@ type GetDdosCooPortsPortArgs struct {
 	BackendPort pulumi.StringInput `pulumi:"backendPort"`
 	// The forwarding port.
 	FrontendPort pulumi.StringInput `pulumi:"frontendPort"`
-	// The forwarding protocol.
+	// The forwarding protocol. Valid values `tcp` and `udp`.
 	FrontendProtocol pulumi.StringInput `pulumi:"frontendProtocol"`
 	// The ID of the Port.
 	Id pulumi.StringInput `pulumi:"id"`
@@ -1273,7 +1273,7 @@ func (o GetDdosCooPortsPortOutput) FrontendPort() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDdosCooPortsPort) string { return v.FrontendPort }).(pulumi.StringOutput)
 }
 
-// The forwarding protocol.
+// The forwarding protocol. Valid values `tcp` and `udp`.
 func (o GetDdosCooPortsPortOutput) FrontendProtocol() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDdosCooPortsPort) string { return v.FrontendProtocol }).(pulumi.StringOutput)
 }

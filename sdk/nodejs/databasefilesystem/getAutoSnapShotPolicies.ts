@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * });
  * export const alicloudDbfsAutoSnapShotPolicyExampleId = _default.then(_default => _default.autoSnapShotPolicies?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAutoSnapShotPolicies(args?: GetAutoSnapShotPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetAutoSnapShotPoliciesResult> {
     args = args || {};
@@ -90,7 +88,6 @@ export interface GetAutoSnapShotPoliciesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -100,7 +97,6 @@ export interface GetAutoSnapShotPoliciesResult {
  * });
  * export const alicloudDbfsAutoSnapShotPolicyExampleId = _default.then(_default => _default.autoSnapShotPolicies?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAutoSnapShotPoliciesOutput(args?: GetAutoSnapShotPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutoSnapShotPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getAutoSnapShotPolicies(a, opts))

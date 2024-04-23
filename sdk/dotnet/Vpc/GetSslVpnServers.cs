@@ -16,7 +16,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSslVpnServersResult> InvokeAsync(GetSslVpnServersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSslVpnServersResult>("alicloud:vpc/getSslVpnServers:getSslVpnServers", args ?? new GetSslVpnServersArgs(), options.WithDefaults());
@@ -48,7 +46,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,7 +67,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSslVpnServersResult> Invoke(GetSslVpnServersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSslVpnServersResult>("alicloud:vpc/getSslVpnServers:getSslVpnServers", args ?? new GetSslVpnServersInvokeArgs(), options.WithDefaults());

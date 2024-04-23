@@ -205,7 +205,6 @@ class HostShareKey(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -244,7 +243,6 @@ class HostShareKey(pulumi.CustomResource):
             instance_id=instance_id,
             private_key=private_key)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -278,7 +276,6 @@ class HostShareKey(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -317,7 +314,6 @@ class HostShareKey(pulumi.CustomResource):
             instance_id=instance_id,
             private_key=private_key)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

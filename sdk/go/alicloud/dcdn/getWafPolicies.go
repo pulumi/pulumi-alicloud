@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,7 +41,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetWafPolicies(ctx *pulumi.Context, args *GetWafPoliciesArgs, opts ...pulumi.InvokeOption) (*GetWafPoliciesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetWafPoliciesResult
@@ -62,7 +60,7 @@ type GetWafPoliciesArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The query conditions. The value is a string in the JSON format. Format: `{"PolicyIds":"The ID of the proteuleIds":"Thection policy","R range of protection rule IDs","PolicyNameLike":"The name of the protection policy","DomainNames":"The protected domain names","PolicyType":"default","DefenseScenes":"wafGroup","PolicyStatus":"on","OrderBy":"GmtModified","Desc":"false"}`.
 	QueryArgs *string `pulumi:"queryArgs"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `on`, `off`.
 	Status *string `pulumi:"status"`
 }
 
@@ -101,7 +99,7 @@ type GetWafPoliciesOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The query conditions. The value is a string in the JSON format. Format: `{"PolicyIds":"The ID of the proteuleIds":"Thection policy","R range of protection rule IDs","PolicyNameLike":"The name of the protection policy","DomainNames":"The protected domain names","PolicyType":"default","DefenseScenes":"wafGroup","PolicyStatus":"on","OrderBy":"GmtModified","Desc":"false"}`.
 	QueryArgs pulumi.StringPtrInput `pulumi:"queryArgs"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `on`, `off`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

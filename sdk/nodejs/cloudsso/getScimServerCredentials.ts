@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -31,7 +30,6 @@ import * as utilities from "../utilities";
  * });
  * export const cloudSsoScimServerCredentialId1 = ids.then(ids => ids.credentials?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getScimServerCredentials(args: GetScimServerCredentialsArgs, opts?: pulumi.InvokeOptions): Promise<GetScimServerCredentialsResult> {
 
@@ -91,7 +89,6 @@ export interface GetScimServerCredentialsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -105,7 +102,6 @@ export interface GetScimServerCredentialsResult {
  * });
  * export const cloudSsoScimServerCredentialId1 = ids.then(ids => ids.credentials?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getScimServerCredentialsOutput(args: GetScimServerCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScimServerCredentialsResult> {
     return pulumi.output(args).apply((a: any) => getScimServerCredentials(a, opts))

@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetBasicAccelerateIps(ctx *pulumi.Context, args *GetBasicAccelerateIpsArgs, opts ...pulumi.InvokeOption) (*GetBasicAccelerateIpsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBasicAccelerateIpsResult

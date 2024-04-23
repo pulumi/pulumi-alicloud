@@ -16,17 +16,9 @@ public final class SearchIndexSchemaIndexSettingArgs extends com.pulumi.resource
 
     public static final SearchIndexSchemaIndexSettingArgs Empty = new SearchIndexSchemaIndexSettingArgs();
 
-    /**
-     * Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
-     * 
-     */
     @Import(name="routingFields")
     private @Nullable Output<List<String>> routingFields;
 
-    /**
-     * @return Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
-     * 
-     */
     public Optional<Output<List<String>>> routingFields() {
         return Optional.ofNullable(this.routingFields);
     }
@@ -55,33 +47,15 @@ public final class SearchIndexSchemaIndexSettingArgs extends com.pulumi.resource
             $ = new SearchIndexSchemaIndexSettingArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param routingFields Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
-         * 
-         * @return builder
-         * 
-         */
         public Builder routingFields(@Nullable Output<List<String>> routingFields) {
             $.routingFields = routingFields;
             return this;
         }
 
-        /**
-         * @param routingFields Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
-         * 
-         * @return builder
-         * 
-         */
         public Builder routingFields(List<String> routingFields) {
             return routingFields(Output.of(routingFields));
         }
 
-        /**
-         * @param routingFields Specifies custom routing fields. You can specify some primary key columns as routing fields. Tablestore distributes data that is written to a search index across different partitions based on the specified routing fields. The data whose routing field values are the same is distributed to the same partition.
-         * 
-         * @return builder
-         * 
-         */
         public Builder routingFields(String... routingFields) {
             return routingFields(List.of(routingFields));
         }

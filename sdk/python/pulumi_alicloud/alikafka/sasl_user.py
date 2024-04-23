@@ -243,7 +243,6 @@ class SaslUser(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -286,7 +285,6 @@ class SaslUser(pulumi.CustomResource):
             username=name,
             password="tf_example123")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -325,7 +323,6 @@ class SaslUser(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -368,7 +365,6 @@ class SaslUser(pulumi.CustomResource):
             username=name,
             password="tf_example123")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

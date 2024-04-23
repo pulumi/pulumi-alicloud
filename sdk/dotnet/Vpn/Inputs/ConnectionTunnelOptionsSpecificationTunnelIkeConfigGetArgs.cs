@@ -12,57 +12,30 @@ namespace Pulumi.AliCloud.Vpn.Inputs
 
     public sealed class ConnectionTunnelOptionsSpecificationTunnelIkeConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// IKE auth Algorithm.
-        /// </summary>
         [Input("ikeAuthAlg")]
         public Input<string>? IkeAuthAlg { get; set; }
 
-        /// <summary>
-        /// IKE encript algorithm.
-        /// </summary>
         [Input("ikeEncAlg")]
         public Input<string>? IkeEncAlg { get; set; }
 
-        /// <summary>
-        /// IKE lifetime.
-        /// </summary>
         [Input("ikeLifetime")]
         public Input<int>? IkeLifetime { get; set; }
 
-        /// <summary>
-        /// IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
-        /// </summary>
         [Input("ikeMode")]
         public Input<string>? IkeMode { get; set; }
 
-        /// <summary>
-        /// DH group.
-        /// </summary>
         [Input("ikePfs")]
         public Input<string>? IkePfs { get; set; }
 
-        /// <summary>
-        /// IKE version.
-        /// </summary>
         [Input("ikeVersion")]
         public Input<string>? IkeVersion { get; set; }
 
-        /// <summary>
-        /// The local Id.
-        /// </summary>
         [Input("localId")]
         public Input<string>? LocalId { get; set; }
 
-        /// <summary>
-        /// Preshared secret key.
-        /// </summary>
         [Input("psk")]
         public Input<string>? Psk { get; set; }
 
-        /// <summary>
-        /// Remote ID.
-        /// </summary>
         [Input("remoteId")]
         public Input<string>? RemoteId { get; set; }
 

@@ -11,65 +11,25 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGreyTagRoutesRouteDubboRuleItem {
-    /**
-     * @return The comparison operator.
-     * 
-     */
     private String cond;
-    /**
-     * @return The parameter value gets the expression.
-     * 
-     */
     private String expr;
-    /**
-     * @return The parameter number.
-     * 
-     */
     private Integer index;
-    /**
-     * @return The operator.
-     * 
-     */
     private String operator;
-    /**
-     * @return The value of the parameter.
-     * 
-     */
     private String value;
 
     private GetGreyTagRoutesRouteDubboRuleItem() {}
-    /**
-     * @return The comparison operator.
-     * 
-     */
     public String cond() {
         return this.cond;
     }
-    /**
-     * @return The parameter value gets the expression.
-     * 
-     */
     public String expr() {
         return this.expr;
     }
-    /**
-     * @return The parameter number.
-     * 
-     */
     public Integer index() {
         return this.index;
     }
-    /**
-     * @return The operator.
-     * 
-     */
     public String operator() {
         return this.operator;
     }
-    /**
-     * @return The value of the parameter.
-     * 
-     */
     public String value() {
         return this.value;
     }

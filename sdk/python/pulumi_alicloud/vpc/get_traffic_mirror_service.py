@@ -78,14 +78,12 @@ def get_traffic_mirror_service(enable: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     open = alicloud.vpc.get_traffic_mirror_service(enable="On")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.
@@ -117,14 +115,12 @@ def get_traffic_mirror_service_output(enable: Optional[pulumi.Input[Optional[str
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     open = alicloud.vpc.get_traffic_mirror_service(enable="On")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str enable: Setting the value to `On` to enable the service. If has been enabled, return the result. Default value: `Off`. Valid values: `On` and `Off`.

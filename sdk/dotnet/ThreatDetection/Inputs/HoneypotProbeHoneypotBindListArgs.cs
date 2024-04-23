@@ -14,19 +14,12 @@ namespace Pulumi.AliCloud.ThreatDetection.Inputs
     {
         [Input("bindPortLists")]
         private InputList<Inputs.HoneypotProbeHoneypotBindListBindPortListArgs>? _bindPortLists;
-
-        /// <summary>
-        /// List of listening ports.See the following `Block BindPortList`.
-        /// </summary>
         public InputList<Inputs.HoneypotProbeHoneypotBindListBindPortListArgs> BindPortLists
         {
             get => _bindPortLists ?? (_bindPortLists = new InputList<Inputs.HoneypotProbeHoneypotBindListBindPortListArgs>());
             set => _bindPortLists = value;
         }
 
-        /// <summary>
-        /// Honeypot ID.
-        /// </summary>
         [Input("honeypotId")]
         public Input<string>? HoneypotId { get; set; }
 

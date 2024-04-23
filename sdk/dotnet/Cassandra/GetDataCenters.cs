@@ -21,7 +21,6 @@ namespace Pulumi.AliCloud.Cassandra
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.AliCloud.Cassandra
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDataCentersResult> InvokeAsync(GetDataCentersArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDataCentersResult>("alicloud:cassandra/getDataCenters:getDataCenters", args ?? new GetDataCentersArgs(), options.WithDefaults());
@@ -53,7 +51,6 @@ namespace Pulumi.AliCloud.Cassandra
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,7 +67,6 @@ namespace Pulumi.AliCloud.Cassandra
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDataCentersResult> Invoke(GetDataCentersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDataCentersResult>("alicloud:cassandra/getDataCenters:getDataCenters", args ?? new GetDataCentersInvokeArgs(), options.WithDefaults());

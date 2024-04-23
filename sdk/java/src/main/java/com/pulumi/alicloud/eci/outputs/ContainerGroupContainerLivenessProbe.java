@@ -15,101 +15,37 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerGroupContainerLivenessProbe {
-    /**
-     * @return Health check using command line method. See `exec` below.
-     * 
-     */
     private @Nullable List<ContainerGroupContainerLivenessProbeExec> execs;
-    /**
-     * @return Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
-     * 
-     */
     private @Nullable Integer failureThreshold;
-    /**
-     * @return Health check using HTTP request method. See `http_get` below.
-     * 
-     */
     private @Nullable List<ContainerGroupContainerLivenessProbeHttpGet> httpGets;
-    /**
-     * @return Check the time to start execution, calculated from the completion of container startup.
-     * 
-     */
     private @Nullable Integer initialDelaySeconds;
-    /**
-     * @return Buffer time for the program to handle operations before closing.
-     * 
-     */
     private @Nullable Integer periodSeconds;
-    /**
-     * @return The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
-     * 
-     */
     private @Nullable Integer successThreshold;
-    /**
-     * @return Health check using TCP socket method. See `tcp_socket` below.
-     * 
-     */
     private @Nullable List<ContainerGroupContainerLivenessProbeTcpSocket> tcpSockets;
-    /**
-     * @return Check the timeout, the default is 1 second, the minimum is 1 second.
-     * 
-     */
     private @Nullable Integer timeoutSeconds;
 
     private ContainerGroupContainerLivenessProbe() {}
-    /**
-     * @return Health check using command line method. See `exec` below.
-     * 
-     */
     public List<ContainerGroupContainerLivenessProbeExec> execs() {
         return this.execs == null ? List.of() : this.execs;
     }
-    /**
-     * @return Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
-     * 
-     */
     public Optional<Integer> failureThreshold() {
         return Optional.ofNullable(this.failureThreshold);
     }
-    /**
-     * @return Health check using HTTP request method. See `http_get` below.
-     * 
-     */
     public List<ContainerGroupContainerLivenessProbeHttpGet> httpGets() {
         return this.httpGets == null ? List.of() : this.httpGets;
     }
-    /**
-     * @return Check the time to start execution, calculated from the completion of container startup.
-     * 
-     */
     public Optional<Integer> initialDelaySeconds() {
         return Optional.ofNullable(this.initialDelaySeconds);
     }
-    /**
-     * @return Buffer time for the program to handle operations before closing.
-     * 
-     */
     public Optional<Integer> periodSeconds() {
         return Optional.ofNullable(this.periodSeconds);
     }
-    /**
-     * @return The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
-     * 
-     */
     public Optional<Integer> successThreshold() {
         return Optional.ofNullable(this.successThreshold);
     }
-    /**
-     * @return Health check using TCP socket method. See `tcp_socket` below.
-     * 
-     */
     public List<ContainerGroupContainerLivenessProbeTcpSocket> tcpSockets() {
         return this.tcpSockets == null ? List.of() : this.tcpSockets;
     }
-    /**
-     * @return Check the timeout, the default is 1 second, the minimum is 1 second.
-     * 
-     */
     public Optional<Integer> timeoutSeconds() {
         return Optional.ofNullable(this.timeoutSeconds);
     }

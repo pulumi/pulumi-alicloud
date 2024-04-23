@@ -84,7 +84,6 @@ def get_regions(output_file: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -92,11 +91,10 @@ def get_regions(output_file: Optional[str] = None,
     default = alicloud.ebs.get_regions(region_id="cn-hangzhou")
     pulumi.export("regions", default.regions)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str region_id: The ID of the region.
+    :param str region_id: A list of Disk Replica Group IDs.
     """
     __args__ = dict()
     __args__['outputFile'] = output_file
@@ -124,7 +122,6 @@ def get_regions_output(output_file: Optional[pulumi.Input[Optional[str]]] = None
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -132,10 +129,9 @@ def get_regions_output(output_file: Optional[pulumi.Input[Optional[str]]] = None
     default = alicloud.ebs.get_regions(region_id="cn-hangzhou")
     pulumi.export("regions", default.regions)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str region_id: The ID of the region.
+    :param str region_id: A list of Disk Replica Group IDs.
     """
     ...

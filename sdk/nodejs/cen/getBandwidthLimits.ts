@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstCenBandwidthLimitsLocalRegionId = bwl.then(bwl => bwl.limits?.[0]?.localRegionId);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBandwidthLimits(args?: GetBandwidthLimitsArgs, opts?: pulumi.InvokeOptions): Promise<GetBandwidthLimitsResult> {
     args = args || {};
@@ -67,7 +65,6 @@ export interface GetBandwidthLimitsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -77,7 +74,6 @@ export interface GetBandwidthLimitsResult {
  * });
  * export const firstCenBandwidthLimitsLocalRegionId = bwl.then(bwl => bwl.limits?.[0]?.localRegionId);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBandwidthLimitsOutput(args?: GetBandwidthLimitsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBandwidthLimitsResult> {
     return pulumi.output(args).apply((a: any) => getBandwidthLimits(a, opts))

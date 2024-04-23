@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -67,7 +66,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.InvokeOption) (*GetDomainsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainsResult
@@ -88,7 +86,7 @@ type GetDomainsArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the domain name. The value of this parameter is used as a condition to filter domain names.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -131,7 +129,7 @@ type GetDomainsOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the domain name. The value of this parameter is used as a condition to filter domain names.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`

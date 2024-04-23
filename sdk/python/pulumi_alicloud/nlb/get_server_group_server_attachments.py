@@ -114,7 +114,6 @@ def get_server_group_server_attachments(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -122,7 +121,6 @@ def get_server_group_server_attachments(ids: Optional[Sequence[str]] = None,
     ids = alicloud.nlb.get_server_group_server_attachments(ids=["example_value"])
     pulumi.export("nlbServerGroupServerAttachmentId1", ids.attachments[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Server Group Server Attachment IDs.
@@ -166,7 +164,6 @@ def get_server_group_server_attachments_output(ids: Optional[pulumi.Input[Option
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -174,7 +171,6 @@ def get_server_group_server_attachments_output(ids: Optional[pulumi.Input[Option
     ids = alicloud.nlb.get_server_group_server_attachments(ids=["example_value"])
     pulumi.export("nlbServerGroupServerAttachmentId1", ids.attachments[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Server Group Server Attachment IDs.

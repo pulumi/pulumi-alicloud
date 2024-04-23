@@ -14,67 +14,23 @@ public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup
 
     public static final DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs Empty = new DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs();
 
-    /**
-     * The key of the tag of the dispatch rule. Valid values:
-     * * _aliyun_arms_userid: user ID
-     * * _aliyun_arms_involvedObject_kind: type of the associated object
-     * * _aliyun_arms_involvedObject_id: ID of the associated object
-     * * _aliyun_arms_involvedObject_name: name of the associated object
-     * * _aliyun_arms_alert_name: alert name
-     * * _aliyun_arms_alert_rule_id: alert rule ID
-     * * _aliyun_arms_alert_type: alert type
-     * * _aliyun_arms_alert_level: alert severity
-     * 
-     */
     @Import(name="key", required=true)
     private Output<String> key;
 
-    /**
-     * @return The key of the tag of the dispatch rule. Valid values:
-     * * _aliyun_arms_userid: user ID
-     * * _aliyun_arms_involvedObject_kind: type of the associated object
-     * * _aliyun_arms_involvedObject_id: ID of the associated object
-     * * _aliyun_arms_involvedObject_name: name of the associated object
-     * * _aliyun_arms_alert_name: alert name
-     * * _aliyun_arms_alert_rule_id: alert rule ID
-     * * _aliyun_arms_alert_type: alert type
-     * * _aliyun_arms_alert_level: alert severity
-     * 
-     */
     public Output<String> key() {
         return this.key;
     }
 
-    /**
-     * The operator used in the dispatch rule. Valid values:
-     * * eq: equals to.
-     * * re: matches a regular expression.
-     * 
-     */
     @Import(name="operator", required=true)
     private Output<String> operator;
 
-    /**
-     * @return The operator used in the dispatch rule. Valid values:
-     * * eq: equals to.
-     * * re: matches a regular expression.
-     * 
-     */
     public Output<String> operator() {
         return this.operator;
     }
 
-    /**
-     * The value of the tag.
-     * 
-     */
     @Import(name="value", required=true)
     private Output<String> value;
 
-    /**
-     * @return The value of the tag.
-     * 
-     */
     public Output<String> value() {
         return this.value;
     }
@@ -105,85 +61,29 @@ public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup
             $ = new DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param key The key of the tag of the dispatch rule. Valid values:
-         * * _aliyun_arms_userid: user ID
-         * * _aliyun_arms_involvedObject_kind: type of the associated object
-         * * _aliyun_arms_involvedObject_id: ID of the associated object
-         * * _aliyun_arms_involvedObject_name: name of the associated object
-         * * _aliyun_arms_alert_name: alert name
-         * * _aliyun_arms_alert_rule_id: alert rule ID
-         * * _aliyun_arms_alert_type: alert type
-         * * _aliyun_arms_alert_level: alert severity
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(Output<String> key) {
             $.key = key;
             return this;
         }
 
-        /**
-         * @param key The key of the tag of the dispatch rule. Valid values:
-         * * _aliyun_arms_userid: user ID
-         * * _aliyun_arms_involvedObject_kind: type of the associated object
-         * * _aliyun_arms_involvedObject_id: ID of the associated object
-         * * _aliyun_arms_involvedObject_name: name of the associated object
-         * * _aliyun_arms_alert_name: alert name
-         * * _aliyun_arms_alert_rule_id: alert rule ID
-         * * _aliyun_arms_alert_type: alert type
-         * * _aliyun_arms_alert_level: alert severity
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
-        /**
-         * @param operator The operator used in the dispatch rule. Valid values:
-         * * eq: equals to.
-         * * re: matches a regular expression.
-         * 
-         * @return builder
-         * 
-         */
         public Builder operator(Output<String> operator) {
             $.operator = operator;
             return this;
         }
 
-        /**
-         * @param operator The operator used in the dispatch rule. Valid values:
-         * * eq: equals to.
-         * * re: matches a regular expression.
-         * 
-         * @return builder
-         * 
-         */
         public Builder operator(String operator) {
             return operator(Output.of(operator));
         }
 
-        /**
-         * @param value The value of the tag.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value The value of the tag.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

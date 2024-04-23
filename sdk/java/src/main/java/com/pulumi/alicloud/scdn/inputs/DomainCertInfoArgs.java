@@ -15,83 +15,37 @@ public final class DomainCertInfoArgs extends com.pulumi.resources.ResourceArgs 
 
     public static final DomainCertInfoArgs Empty = new DomainCertInfoArgs();
 
-    /**
-     * If You Enable HTTPS Here Certificate Name.
-     * 
-     */
     @Import(name="certName")
     private @Nullable Output<String> certName;
 
-    /**
-     * @return If You Enable HTTPS Here Certificate Name.
-     * 
-     */
     public Optional<Output<String>> certName() {
         return Optional.ofNullable(this.certName);
     }
 
-    /**
-     * Certificate Type. Value Range:
-     * * upload: Certificate
-     * * cas: Certificate Authority Certificate.
-     * * free: Free Certificate.
-     * 
-     */
     @Import(name="certType")
     private @Nullable Output<String> certType;
 
-    /**
-     * @return Certificate Type. Value Range:
-     * * upload: Certificate
-     * * cas: Certificate Authority Certificate.
-     * * free: Free Certificate.
-     * 
-     */
     public Optional<Output<String>> certType() {
         return Optional.ofNullable(this.certType);
     }
 
-    /**
-     * Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
-     * 
-     */
     @Import(name="sslPri")
     private @Nullable Output<String> sslPri;
 
-    /**
-     * @return Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
-     * 
-     */
     public Optional<Output<String>> sslPri() {
         return Optional.ofNullable(this.sslPri);
     }
 
-    /**
-     * Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
-     * 
-     */
     @Import(name="sslProtocol")
     private @Nullable Output<String> sslProtocol;
 
-    /**
-     * @return Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
-     * 
-     */
     public Optional<Output<String>> sslProtocol() {
         return Optional.ofNullable(this.sslProtocol);
     }
 
-    /**
-     * If You Enable HTTPS Here Key.
-     * 
-     */
     @Import(name="sslPub")
     private @Nullable Output<String> sslPub;
 
-    /**
-     * @return If You Enable HTTPS Here Key.
-     * 
-     */
     public Optional<Output<String>> sslPub() {
         return Optional.ofNullable(this.sslPub);
     }
@@ -124,113 +78,47 @@ public final class DomainCertInfoArgs extends com.pulumi.resources.ResourceArgs 
             $ = new DomainCertInfoArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param certName If You Enable HTTPS Here Certificate Name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder certName(@Nullable Output<String> certName) {
             $.certName = certName;
             return this;
         }
 
-        /**
-         * @param certName If You Enable HTTPS Here Certificate Name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder certName(String certName) {
             return certName(Output.of(certName));
         }
 
-        /**
-         * @param certType Certificate Type. Value Range:
-         * * upload: Certificate
-         * * cas: Certificate Authority Certificate.
-         * * free: Free Certificate.
-         * 
-         * @return builder
-         * 
-         */
         public Builder certType(@Nullable Output<String> certType) {
             $.certType = certType;
             return this;
         }
 
-        /**
-         * @param certType Certificate Type. Value Range:
-         * * upload: Certificate
-         * * cas: Certificate Authority Certificate.
-         * * free: Free Certificate.
-         * 
-         * @return builder
-         * 
-         */
         public Builder certType(String certType) {
             return certType(Output.of(certType));
         }
 
-        /**
-         * @param sslPri Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sslPri(@Nullable Output<String> sslPri) {
             $.sslPri = sslPri;
             return this;
         }
 
-        /**
-         * @param sslPri Private Key. Do Not Enable Certificate without Entering a User Name and Configure Certificates Enter Private Key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sslPri(String sslPri) {
             return sslPri(Output.of(sslPri));
         }
 
-        /**
-         * @param sslProtocol Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sslProtocol(@Nullable Output<String> sslProtocol) {
             $.sslProtocol = sslProtocol;
             return this;
         }
 
-        /**
-         * @param sslProtocol Whether to Enable SSL Certificate. Valid Values: on, off. Valid values: `on`, `off`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sslProtocol(String sslProtocol) {
             return sslProtocol(Output.of(sslProtocol));
         }
 
-        /**
-         * @param sslPub If You Enable HTTPS Here Key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sslPub(@Nullable Output<String> sslPub) {
             $.sslPub = sslPub;
             return this;
         }
 
-        /**
-         * @param sslPub If You Enable HTTPS Here Key.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sslPub(String sslPub) {
             return sslPub(Output.of(sslPub));
         }

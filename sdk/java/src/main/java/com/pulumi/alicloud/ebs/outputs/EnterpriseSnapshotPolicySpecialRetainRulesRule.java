@@ -12,47 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnterpriseSnapshotPolicySpecialRetainRulesRule {
-    /**
-     * @return The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
-     * - WEEKS
-     * - MONTHS
-     * - YEARS.
-     * 
-     */
     private @Nullable String specialPeriodUnit;
-    /**
-     * @return Time unit.
-     * 
-     */
     private @Nullable Integer timeInterval;
-    /**
-     * @return Time-based retention.
-     * 
-     */
     private @Nullable String timeUnit;
 
     private EnterpriseSnapshotPolicySpecialRetainRulesRule() {}
-    /**
-     * @return The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
-     * - WEEKS
-     * - MONTHS
-     * - YEARS.
-     * 
-     */
     public Optional<String> specialPeriodUnit() {
         return Optional.ofNullable(this.specialPeriodUnit);
     }
-    /**
-     * @return Time unit.
-     * 
-     */
     public Optional<Integer> timeInterval() {
         return Optional.ofNullable(this.timeInterval);
     }
-    /**
-     * @return Time-based retention.
-     * 
-     */
     public Optional<String> timeUnit() {
         return Optional.ofNullable(this.timeUnit);
     }

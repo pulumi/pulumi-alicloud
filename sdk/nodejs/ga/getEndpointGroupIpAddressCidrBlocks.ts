@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const gaEndpointGroupIpAddressCidrBlocksEndpointGroupRegion = _default.then(_default => _default.endpointGroupIpAddressCidrBlocks?.[0]?.endpointGroupRegion);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEndpointGroupIpAddressCidrBlocks(args: GetEndpointGroupIpAddressCidrBlocksArgs, opts?: pulumi.InvokeOptions): Promise<GetEndpointGroupIpAddressCidrBlocksResult> {
 
@@ -77,7 +75,6 @@ export interface GetEndpointGroupIpAddressCidrBlocksResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -87,7 +84,6 @@ export interface GetEndpointGroupIpAddressCidrBlocksResult {
  * });
  * export const gaEndpointGroupIpAddressCidrBlocksEndpointGroupRegion = _default.then(_default => _default.endpointGroupIpAddressCidrBlocks?.[0]?.endpointGroupRegion);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEndpointGroupIpAddressCidrBlocksOutput(args: GetEndpointGroupIpAddressCidrBlocksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEndpointGroupIpAddressCidrBlocksResult> {
     return pulumi.output(args).apply((a: any) => getEndpointGroupIpAddressCidrBlocks(a, opts))

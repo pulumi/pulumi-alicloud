@@ -12,21 +12,12 @@ namespace Pulumi.AliCloud.Log.Inputs
 
     public sealed class StoreEncryptConfUserCmkInfoGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Role arn.
-        /// </summary>
         [Input("arn")]
         public Input<string>? Arn { get; set; }
 
-        /// <summary>
-        /// User master key id.
-        /// </summary>
         [Input("cmkKeyId")]
         public Input<string>? CmkKeyId { get; set; }
 
-        /// <summary>
-        /// Region id where the user master key id is located.
-        /// </summary>
         [Input("regionId")]
         public Input<string>? RegionId { get; set; }
 

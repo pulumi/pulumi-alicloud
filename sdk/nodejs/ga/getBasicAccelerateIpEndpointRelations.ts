@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const gaBasicAccelerateIpEndpointRelationsId1 = ids.then(ids => ids.relations?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBasicAccelerateIpEndpointRelations(args: GetBasicAccelerateIpEndpointRelationsArgs, opts?: pulumi.InvokeOptions): Promise<GetBasicAccelerateIpEndpointRelationsResult> {
 
@@ -111,7 +109,6 @@ export interface GetBasicAccelerateIpEndpointRelationsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -122,7 +119,6 @@ export interface GetBasicAccelerateIpEndpointRelationsResult {
  * });
  * export const gaBasicAccelerateIpEndpointRelationsId1 = ids.then(ids => ids.relations?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBasicAccelerateIpEndpointRelationsOutput(args: GetBasicAccelerateIpEndpointRelationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBasicAccelerateIpEndpointRelationsResult> {
     return pulumi.output(args).apply((a: any) => getBasicAccelerateIpEndpointRelations(a, opts))

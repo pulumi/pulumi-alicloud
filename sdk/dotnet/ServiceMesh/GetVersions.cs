@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.AliCloud.ServiceMesh
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVersionsResult> InvokeAsync(GetVersionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVersionsResult>("alicloud:servicemesh/getVersions:getVersions", args ?? new GetVersionsArgs(), options.WithDefaults());
@@ -54,7 +52,6 @@ namespace Pulumi.AliCloud.ServiceMesh
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.AliCloud.ServiceMesh
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVersionsResult> Invoke(GetVersionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVersionsResult>("alicloud:servicemesh/getVersions:getVersions", args ?? new GetVersionsInvokeArgs(), options.WithDefaults());
@@ -84,7 +80,9 @@ namespace Pulumi.AliCloud.ServiceMesh
     public sealed class GetVersionsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The edition of the ASM instance.
+        /// The edition of the ASM instance. Valid values:
+        /// - Default: Standard Edition
+        /// - Pro: Professional Edition
         /// </summary>
         [Input("edition")]
         public string? Edition { get; set; }
@@ -116,7 +114,9 @@ namespace Pulumi.AliCloud.ServiceMesh
     public sealed class GetVersionsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The edition of the ASM instance.
+        /// The edition of the ASM instance. Valid values:
+        /// - Default: Standard Edition
+        /// - Pro: Professional Edition
         /// </summary>
         [Input("edition")]
         public Input<string>? Edition { get; set; }

@@ -109,7 +109,6 @@ def get_ddos_coo_instances(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -117,7 +116,6 @@ def get_ddos_coo_instances(ids: Optional[Sequence[str]] = None,
     default = alicloud.ddos.get_ddos_coo_instances(name_regex="tf")
     pulumi.export("instance", [__item.id for __item in default.instances])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of instance IDs.
@@ -154,7 +152,6 @@ def get_ddos_coo_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[s
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -162,7 +159,6 @@ def get_ddos_coo_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[s
     default = alicloud.ddos.get_ddos_coo_instances(name_regex="tf")
     pulumi.export("instance", [__item.id for __item in default.instances])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of instance IDs.

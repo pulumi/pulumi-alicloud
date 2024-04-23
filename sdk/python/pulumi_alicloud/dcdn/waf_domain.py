@@ -109,7 +109,6 @@ class WafDomain(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -136,7 +135,6 @@ class WafDomain(pulumi.CustomResource):
             domain_name=example.domain_name,
             client_ip_tag="X-Forwarded-For")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -168,7 +166,6 @@ class WafDomain(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -195,7 +192,6 @@ class WafDomain(pulumi.CustomResource):
             domain_name=example.domain_name,
             client_ip_tag="X-Forwarded-For")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

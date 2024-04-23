@@ -15,32 +15,16 @@ public final class ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs exte
 
     public static final ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs Empty = new ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs();
 
-    /**
-     * The content of the configuration file. Maximum size: 32 KB.
-     * 
-     */
     @Import(name="content")
     private @Nullable Output<String> content;
 
-    /**
-     * @return The content of the configuration file. Maximum size: 32 KB.
-     * 
-     */
     public Optional<Output<String>> content() {
         return Optional.ofNullable(this.content);
     }
 
-    /**
-     * The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
-     * 
-     */
     @Import(name="path")
     private @Nullable Output<String> path;
 
-    /**
-     * @return The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
-     * 
-     */
     public Optional<Output<String>> path() {
         return Optional.ofNullable(this.path);
     }
@@ -70,44 +54,20 @@ public final class ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs exte
             $ = new ContainerGroupVolumeConfigFileVolumeConfigFileToPathArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param content The content of the configuration file. Maximum size: 32 KB.
-         * 
-         * @return builder
-         * 
-         */
         public Builder content(@Nullable Output<String> content) {
             $.content = content;
             return this;
         }
 
-        /**
-         * @param content The content of the configuration file. Maximum size: 32 KB.
-         * 
-         * @return builder
-         * 
-         */
         public Builder content(String content) {
             return content(Output.of(content));
         }
 
-        /**
-         * @param path The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
-         * 
-         * @return builder
-         * 
-         */
         public Builder path(@Nullable Output<String> path) {
             $.path = path;
             return this;
         }
 
-        /**
-         * @param path The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
-         * 
-         * @return builder
-         * 
-         */
         public Builder path(String path) {
             return path(Output.of(path));
         }

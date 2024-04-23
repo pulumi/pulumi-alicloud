@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,7 +54,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetTransitRouteTableAggregations(ctx *pulumi.Context, args *GetTransitRouteTableAggregationsArgs, opts ...pulumi.InvokeOption) (*GetTransitRouteTableAggregationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTransitRouteTableAggregationsResult

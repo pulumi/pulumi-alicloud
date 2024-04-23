@@ -15,47 +15,23 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersQue
 
     public static final ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs Empty = new ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs();
 
-    /**
-     * Specifies whether to enable authentication.
-     * 
-     */
     @Import(name="isValueSecret")
     private @Nullable Output<String> isValueSecret;
 
-    /**
-     * @return Specifies whether to enable authentication.
-     * 
-     */
     public Optional<Output<String>> isValueSecret() {
         return Optional.ofNullable(this.isValueSecret);
     }
 
-    /**
-     * The key of the request path.
-     * 
-     */
     @Import(name="key")
     private @Nullable Output<String> key;
 
-    /**
-     * @return The key of the request path.
-     * 
-     */
     public Optional<Output<String>> key() {
         return Optional.ofNullable(this.key);
     }
 
-    /**
-     * The key of the request path.
-     * 
-     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
-    /**
-     * @return The key of the request path.
-     * 
-     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -86,65 +62,29 @@ public final class ConnectionAuthParametersOauthParametersOauthHttpParametersQue
             $ = new ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param isValueSecret Specifies whether to enable authentication.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isValueSecret(@Nullable Output<String> isValueSecret) {
             $.isValueSecret = isValueSecret;
             return this;
         }
 
-        /**
-         * @param isValueSecret Specifies whether to enable authentication.
-         * 
-         * @return builder
-         * 
-         */
         public Builder isValueSecret(String isValueSecret) {
             return isValueSecret(Output.of(isValueSecret));
         }
 
-        /**
-         * @param key The key of the request path.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(@Nullable Output<String> key) {
             $.key = key;
             return this;
         }
 
-        /**
-         * @param key The key of the request path.
-         * 
-         * @return builder
-         * 
-         */
         public Builder key(String key) {
             return key(Output.of(key));
         }
 
-        /**
-         * @param value The key of the request path.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value The key of the request path.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

@@ -446,7 +446,6 @@ class SimpleOfficeSite(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -461,7 +460,6 @@ class SimpleOfficeSite(pulumi.CustomResource):
             desktop_access_type="Internet",
             office_site_name=f"terraform-example-{default['result']}")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -502,7 +500,6 @@ class SimpleOfficeSite(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -517,7 +514,6 @@ class SimpleOfficeSite(pulumi.CustomResource):
             desktop_access_type="Internet",
             office_site_name=f"terraform-example-{default['result']}")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

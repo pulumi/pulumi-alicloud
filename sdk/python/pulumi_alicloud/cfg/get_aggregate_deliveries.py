@@ -123,7 +123,6 @@ def get_aggregate_deliveries(aggregator_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -135,7 +134,6 @@ def get_aggregate_deliveries(aggregator_id: Optional[str] = None,
         ])
     pulumi.export("configAggregateDeliveryId1", ids.deliveries[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str aggregator_id: The ID of the Aggregator.
@@ -179,7 +177,6 @@ def get_aggregate_deliveries_output(aggregator_id: Optional[pulumi.Input[str]] =
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -191,7 +188,6 @@ def get_aggregate_deliveries_output(aggregator_id: Optional[pulumi.Input[str]] =
         ])
     pulumi.export("configAggregateDeliveryId1", ids.deliveries[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str aggregator_id: The ID of the Aggregator.

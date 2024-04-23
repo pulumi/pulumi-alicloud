@@ -217,7 +217,6 @@ class Activation(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -229,7 +228,6 @@ class Activation(pulumi.CustomResource):
             ip_address_range="0.0.0.0/0",
             time_to_live_in_hours=4)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -266,7 +264,6 @@ class Activation(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -278,7 +275,6 @@ class Activation(pulumi.CustomResource):
             ip_address_range="0.0.0.0/0",
             time_to_live_in_hours=4)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

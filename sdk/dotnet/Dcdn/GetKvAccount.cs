@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Dcdn
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -34,7 +33,6 @@ namespace Pulumi.AliCloud.Dcdn
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetKvAccountResult> InvokeAsync(GetKvAccountArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKvAccountResult>("alicloud:dcdn/getKvAccount:getKvAccount", args ?? new GetKvAccountArgs(), options.WithDefaults());
@@ -46,7 +44,6 @@ namespace Pulumi.AliCloud.Dcdn
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,7 +59,6 @@ namespace Pulumi.AliCloud.Dcdn
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetKvAccountResult> Invoke(GetKvAccountInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKvAccountResult>("alicloud:dcdn/getKvAccount:getKvAccount", args ?? new GetKvAccountInvokeArgs(), options.WithDefaults());

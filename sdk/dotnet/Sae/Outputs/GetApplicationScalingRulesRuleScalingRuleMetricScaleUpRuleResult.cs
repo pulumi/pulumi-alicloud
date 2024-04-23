@@ -13,17 +13,8 @@ namespace Pulumi.AliCloud.Sae.Outputs
     [OutputType]
     public sealed class GetApplicationScalingRulesRuleScalingRuleMetricScaleUpRuleResult
     {
-        /// <summary>
-        /// Whether shrinkage is prohibited. The values are described as follows:
-        /// </summary>
         public readonly bool Disabled;
-        /// <summary>
-        /// Expansion cooling time.
-        /// </summary>
         public readonly int StabilizationWindowSeconds;
-        /// <summary>
-        /// Flexible expansion step. The maximum number of instances per unit time.
-        /// </summary>
         public readonly int Step;
 
         [OutputConstructor]

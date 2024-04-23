@@ -208,7 +208,6 @@ class ParameterGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -223,7 +222,6 @@ class ParameterGroup(pulumi.CustomResource):
             )],
             description="example_value")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -258,7 +256,6 @@ class ParameterGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -273,7 +270,6 @@ class ParameterGroup(pulumi.CustomResource):
             )],
             description="example_value")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

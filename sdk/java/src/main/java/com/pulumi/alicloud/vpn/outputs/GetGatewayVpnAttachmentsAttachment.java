@@ -56,10 +56,6 @@ public final class GetGatewayVpnAttachmentsAttachment {
      * 
      */
     private List<GetGatewayVpnAttachmentsAttachmentIkeConfig> ikeConfigs;
-    /**
-     * @return The internet ip of the resource. The alicloud.cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
-     * 
-     */
     private String internetIp;
     /**
      * @return The configuration of Phase 2 negotiations.
@@ -154,10 +150,6 @@ public final class GetGatewayVpnAttachmentsAttachment {
     public List<GetGatewayVpnAttachmentsAttachmentIkeConfig> ikeConfigs() {
         return this.ikeConfigs;
     }
-    /**
-     * @return The internet ip of the resource. The alicloud.cen.TransitRouterVpnAttachment resource will not have a value until after it is created.
-     * 
-     */
     public String internetIp() {
         return this.internetIp;
     }

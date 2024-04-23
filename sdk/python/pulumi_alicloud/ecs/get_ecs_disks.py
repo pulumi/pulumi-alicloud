@@ -379,7 +379,6 @@ def get_ecs_disks(additional_attributes: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -388,35 +387,34 @@ def get_ecs_disks(additional_attributes: Optional[Sequence[str]] = None,
         name_regex="tf-test")
     pulumi.export("firstEcsDiskId", example.disks[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] additional_attributes: Other attribute values. Currently, only the incoming value of IOPS is supported, which means to query the IOPS upper limit of the current disk.
     :param str auto_snapshot_policy_id: Query cloud disks based on the automatic snapshot policy ID.
-    :param str availability_zone: Availability zone of the disk.
-    :param str category: Disk category.
+    :param str availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+    :param str category: Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
     :param bool delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released.
     :param bool delete_with_instance: Indicates whether the disk is released together with the instance.
     :param str disk_name: The disk name.
     :param str disk_type: The disk type.
     :param bool dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-    :param bool enable_auto_snapshot: Whether the disk implements an automatic snapshot policy.
-    :param bool enable_automated_snapshot_policy: Whether the disk implements an automatic snapshot policy.
+    :param bool enable_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released.
+    :param bool enable_automated_snapshot_policy: Whether the cloud disk has an automatic snapshot policy
     :param bool enable_shared: Whether it is shared block storage.
-    :param str encrypted: Indicate whether the disk is encrypted or not.
+    :param str encrypted: Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
     :param Sequence[str] ids: A list of Disk IDs.
-    :param str instance_id: The instance ID of the disk mount.
+    :param str instance_id: Filter the results by the specified ECS instance ID.
     :param str kms_key_id: The kms key id.
     :param str name_regex: A regex string to filter results by Disk name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str payment_type: Payment method for disk.
-    :param bool portable: Whether the disk is unmountable.
-    :param str resource_group_id: The Id of resource group.
-    :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
-    :param str status: Current status.
-    :param Mapping[str, Any] tags: A map of tags assigned to the disk.
-    :param str type: Disk type.
-    :param str zone_id: The zone id.
+    :param str payment_type: Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
+    :param bool portable: Whether the cloud disk or local disk supports uninstallation.
+    :param str resource_group_id: The Id of resource group which the disk belongs.
+    :param str snapshot_id: The source snapshot id.
+    :param str status: The status of disk.
+    :param Mapping[str, Any] tags: A map of tags assigned to the disks.
+    :param str type: Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
+    :param str zone_id: ID of the free zone to which the disk belongs.
     """
     __args__ = dict()
     __args__['additionalAttributes'] = additional_attributes
@@ -527,7 +525,6 @@ def get_ecs_disks_output(additional_attributes: Optional[pulumi.Input[Optional[S
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -536,34 +533,33 @@ def get_ecs_disks_output(additional_attributes: Optional[pulumi.Input[Optional[S
         name_regex="tf-test")
     pulumi.export("firstEcsDiskId", example.disks[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] additional_attributes: Other attribute values. Currently, only the incoming value of IOPS is supported, which means to query the IOPS upper limit of the current disk.
     :param str auto_snapshot_policy_id: Query cloud disks based on the automatic snapshot policy ID.
-    :param str availability_zone: Availability zone of the disk.
-    :param str category: Disk category.
+    :param str availability_zone: Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
+    :param str category: Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
     :param bool delete_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released.
     :param bool delete_with_instance: Indicates whether the disk is released together with the instance.
     :param str disk_name: The disk name.
     :param str disk_type: The disk type.
     :param bool dry_run: Specifies whether to check the validity of the request without actually making the request.request Default value: false. Valid values:
-    :param bool enable_auto_snapshot: Whether the disk implements an automatic snapshot policy.
-    :param bool enable_automated_snapshot_policy: Whether the disk implements an automatic snapshot policy.
+    :param bool enable_auto_snapshot: Indicates whether the automatic snapshot is deleted when the disk is released.
+    :param bool enable_automated_snapshot_policy: Whether the cloud disk has an automatic snapshot policy
     :param bool enable_shared: Whether it is shared block storage.
-    :param str encrypted: Indicate whether the disk is encrypted or not.
+    :param str encrypted: Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
     :param Sequence[str] ids: A list of Disk IDs.
-    :param str instance_id: The instance ID of the disk mount.
+    :param str instance_id: Filter the results by the specified ECS instance ID.
     :param str kms_key_id: The kms key id.
     :param str name_regex: A regex string to filter results by Disk name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str payment_type: Payment method for disk.
-    :param bool portable: Whether the disk is unmountable.
-    :param str resource_group_id: The Id of resource group.
-    :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
-    :param str status: Current status.
-    :param Mapping[str, Any] tags: A map of tags assigned to the disk.
-    :param str type: Disk type.
-    :param str zone_id: The zone id.
+    :param str payment_type: Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
+    :param bool portable: Whether the cloud disk or local disk supports uninstallation.
+    :param str resource_group_id: The Id of resource group which the disk belongs.
+    :param str snapshot_id: The source snapshot id.
+    :param str status: The status of disk.
+    :param Mapping[str, Any] tags: A map of tags assigned to the disks.
+    :param str type: Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
+    :param str zone_id: ID of the free zone to which the disk belongs.
     """
     ...

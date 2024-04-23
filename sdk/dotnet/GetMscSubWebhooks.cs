@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -49,7 +48,6 @@ namespace Pulumi.AliCloud
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetMscSubWebhooksResult> InvokeAsync(GetMscSubWebhooksArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMscSubWebhooksResult>("alicloud:index/getMscSubWebhooks:getMscSubWebhooks", args ?? new GetMscSubWebhooksArgs(), options.WithDefaults());
@@ -63,7 +61,6 @@ namespace Pulumi.AliCloud
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -92,7 +89,6 @@ namespace Pulumi.AliCloud
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetMscSubWebhooksResult> Invoke(GetMscSubWebhooksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMscSubWebhooksResult>("alicloud:index/getMscSubWebhooks:getMscSubWebhooks", args ?? new GetMscSubWebhooksInvokeArgs(), options.WithDefaults());

@@ -110,7 +110,6 @@ class NetworkAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -131,7 +130,6 @@ class NetworkAttachment(pulumi.CustomResource):
             ccn_id=default.id,
             sag_id=sag_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -165,7 +163,6 @@ class NetworkAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -186,7 +183,6 @@ class NetworkAttachment(pulumi.CustomResource):
             ccn_id=default.id,
             sag_id=sag_id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

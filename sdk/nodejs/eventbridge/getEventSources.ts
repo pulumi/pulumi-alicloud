@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstEventBridgeEventSourceId = example.then(example => example.sources?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEventSources(args?: GetEventSourcesArgs, opts?: pulumi.InvokeOptions): Promise<GetEventSourcesResult> {
     args = args || {};
@@ -80,7 +78,6 @@ export interface GetEventSourcesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -91,7 +88,6 @@ export interface GetEventSourcesResult {
  * });
  * export const firstEventBridgeEventSourceId = example.then(example => example.sources?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEventSourcesOutput(args?: GetEventSourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEventSourcesResult> {
     return pulumi.output(args).apply((a: any) => getEventSources(a, opts))

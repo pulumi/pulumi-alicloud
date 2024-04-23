@@ -11,10 +11,6 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ListenerAclConfigAclRelation {
-    /**
-     * @return Snooping Binding of the Access Policy Group ID List.
-     * 
-     */
     private @Nullable String aclId;
     /**
      * @return The state of the listener. Valid Values: `Running` Or `Stopped`. Valid values: `Running`: The listener is running. `Stopped`: The listener is stopped.
@@ -23,10 +19,6 @@ public final class ListenerAclConfigAclRelation {
     private @Nullable String status;
 
     private ListenerAclConfigAclRelation() {}
-    /**
-     * @return Snooping Binding of the Access Policy Group ID List.
-     * 
-     */
     public Optional<String> aclId() {
         return Optional.ofNullable(this.aclId);
     }

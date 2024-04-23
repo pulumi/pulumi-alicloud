@@ -20,7 +20,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,7 +44,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDataCenters(ctx *pulumi.Context, args *GetDataCentersArgs, opts ...pulumi.InvokeOption) (*GetDataCentersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDataCentersResult

@@ -271,7 +271,6 @@ class CustomerGateway(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -286,7 +285,6 @@ class CustomerGateway(pulumi.CustomResource):
             asn="1219002",
             customer_gateway_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -318,7 +316,6 @@ class CustomerGateway(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -333,7 +330,6 @@ class CustomerGateway(pulumi.CustomResource):
             asn="1219002",
             customer_gateway_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

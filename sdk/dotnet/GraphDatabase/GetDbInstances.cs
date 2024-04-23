@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.GraphDatabase
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -63,7 +62,6 @@ namespace Pulumi.AliCloud.GraphDatabase
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDbInstancesResult> InvokeAsync(GetDbInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDbInstancesResult>("alicloud:graphdatabase/getDbInstances:getDbInstances", args ?? new GetDbInstancesArgs(), options.WithDefaults());
@@ -77,7 +75,6 @@ namespace Pulumi.AliCloud.GraphDatabase
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -120,7 +117,6 @@ namespace Pulumi.AliCloud.GraphDatabase
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDbInstancesResult> Invoke(GetDbInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDbInstancesResult>("alicloud:graphdatabase/getDbInstances:getDbInstances", args ?? new GetDbInstancesInvokeArgs(), options.WithDefaults());
@@ -160,7 +156,7 @@ namespace Pulumi.AliCloud.GraphDatabase
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+        /// Instance status. Value range: `Creating`, `Running`, `Deleting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -204,7 +200,7 @@ namespace Pulumi.AliCloud.GraphDatabase
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// Instance status. Value range: `Creating`, `Running`, `Deleting`, `Rebooting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
+        /// Instance status. Value range: `Creating`, `Running`, `Deleting`, `DBInstanceClassChanging`, `NetAddressCreating` and `NetAddressDeleting`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

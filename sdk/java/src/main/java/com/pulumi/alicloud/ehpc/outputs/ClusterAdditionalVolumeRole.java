@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterAdditionalVolumeRole {
-    /**
-     * @return The type of the nodes to which the additional file system is attached.
-     * 
-     */
     private @Nullable String name;
 
     private ClusterAdditionalVolumeRole() {}
-    /**
-     * @return The type of the nodes to which the additional file system is attached.
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }

@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -21,7 +20,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstAppId = dataApigatway.then(dataApigatway => dataApigatway.apps?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getApps(args?: GetAppsArgs, opts?: pulumi.InvokeOptions): Promise<GetAppsResult> {
     args = args || {};
@@ -86,7 +84,6 @@ export interface GetAppsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -96,7 +93,6 @@ export interface GetAppsResult {
  * });
  * export const firstAppId = dataApigatway.then(dataApigatway => dataApigatway.apps?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAppsOutput(args?: GetAppsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppsResult> {
     return pulumi.output(args).apply((a: any) => getApps(a, opts))

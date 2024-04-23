@@ -364,9 +364,8 @@ func (o NestServiceInstanceOperationMetadataPtrOutput) Resources() pulumi.String
 }
 
 type GetNestServiceInstancesFilter struct {
-	// The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
-	Name *string `pulumi:"name"`
-	// Set of values that are accepted for the given field.
+	// The name of the service.
+	Name   *string  `pulumi:"name"`
 	Values []string `pulumi:"values"`
 }
 
@@ -382,9 +381,8 @@ type GetNestServiceInstancesFilterInput interface {
 }
 
 type GetNestServiceInstancesFilterArgs struct {
-	// The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// Set of values that are accepted for the given field.
+	// The name of the service.
+	Name   pulumi.StringPtrInput   `pulumi:"name"`
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -439,12 +437,11 @@ func (o GetNestServiceInstancesFilterOutput) ToGetNestServiceInstancesFilterOutp
 	return o
 }
 
-// The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+// The name of the service.
 func (o GetNestServiceInstancesFilterOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetNestServiceInstancesFilter) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// Set of values that are accepted for the given field.
 func (o GetNestServiceInstancesFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetNestServiceInstancesFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }
@@ -870,7 +867,7 @@ type GetNestServiceInstancesServiceInstanceServiceServiceInfo struct {
 	Image string `pulumi:"image"`
 	// The locale of the service.
 	Locale string `pulumi:"locale"`
-	// The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+	// The name of the service.
 	Name string `pulumi:"name"`
 	// The short description of the service.
 	ShortDescription string `pulumi:"shortDescription"`
@@ -892,7 +889,7 @@ type GetNestServiceInstancesServiceInstanceServiceServiceInfoArgs struct {
 	Image pulumi.StringInput `pulumi:"image"`
 	// The locale of the service.
 	Locale pulumi.StringInput `pulumi:"locale"`
-	// The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+	// The name of the service.
 	Name pulumi.StringInput `pulumi:"name"`
 	// The short description of the service.
 	ShortDescription pulumi.StringInput `pulumi:"shortDescription"`
@@ -959,7 +956,7 @@ func (o GetNestServiceInstancesServiceInstanceServiceServiceInfoOutput) Locale()
 	return o.ApplyT(func(v GetNestServiceInstancesServiceInstanceServiceServiceInfo) string { return v.Locale }).(pulumi.StringOutput)
 }
 
-// The name of the filter. Valid Values: `Name`, `ServiceInstanceName`, `ServiceInstanceId`, `ServiceId`, `Version`, `Status`, `DeployType`, `ServiceType`, `OperationStartTimeBefore`, `OperationStartTimeAfter`, `OperationEndTimeBefore`, `OperationEndTimeAfter`, `OperatedServiceInstanceId`, `OperationServiceInstanceId`, `EnableInstanceOps`.
+// The name of the service.
 func (o GetNestServiceInstancesServiceInstanceServiceServiceInfoOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetNestServiceInstancesServiceInstanceServiceServiceInfo) string { return v.Name }).(pulumi.StringOutput)
 }

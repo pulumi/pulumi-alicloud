@@ -11,45 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EciScalingConfigurationContainerEnvironmentVar {
-    /**
-     * @return Environment variable value reference. Optional values:
-     * - status.podIP: IP of pod.
-     * 
-     */
     private @Nullable String fieldRefFieldPath;
-    /**
-     * @return The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-     * digits, and underscores (_). It cannot start with a digit.
-     * 
-     */
     private @Nullable String key;
-    /**
-     * @return The value of the variable. The value can be 0 to 256 characters in length.
-     * 
-     */
     private @Nullable String value;
 
     private EciScalingConfigurationContainerEnvironmentVar() {}
-    /**
-     * @return Environment variable value reference. Optional values:
-     * - status.podIP: IP of pod.
-     * 
-     */
     public Optional<String> fieldRefFieldPath() {
         return Optional.ofNullable(this.fieldRefFieldPath);
     }
-    /**
-     * @return The name of the variable. The name can be 1 to 128 characters in length and can contain letters,
-     * digits, and underscores (_). It cannot start with a digit.
-     * 
-     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
-    /**
-     * @return The value of the variable. The value can be 0 to 256 characters in length.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Sae
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -62,7 +61,6 @@ namespace Pulumi.AliCloud.Sae
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetConfigMapsResult> InvokeAsync(GetConfigMapsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetConfigMapsResult>("alicloud:sae/getConfigMaps:getConfigMaps", args ?? new GetConfigMapsArgs(), options.WithDefaults());
@@ -76,7 +74,6 @@ namespace Pulumi.AliCloud.Sae
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -118,7 +115,6 @@ namespace Pulumi.AliCloud.Sae
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetConfigMapsResult> Invoke(GetConfigMapsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConfigMapsResult>("alicloud:sae/getConfigMaps:getConfigMaps", args ?? new GetConfigMapsInvokeArgs(), options.WithDefaults());

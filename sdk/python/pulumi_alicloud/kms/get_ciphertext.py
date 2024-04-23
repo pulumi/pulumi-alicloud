@@ -92,7 +92,6 @@ def get_ciphertext(encryption_context: Optional[Mapping[str, str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -103,7 +102,6 @@ def get_ciphertext(encryption_context: Optional[Mapping[str, str]] = None,
     encrypted = alicloud.kms.get_ciphertext_output(key_id=key.id,
         plaintext="example")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Mapping[str, str] encryption_context: The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).
@@ -135,7 +133,6 @@ def get_ciphertext_output(encryption_context: Optional[pulumi.Input[Optional[Map
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -146,7 +143,6 @@ def get_ciphertext_output(encryption_context: Optional[pulumi.Input[Optional[Map
     encrypted = alicloud.kms.get_ciphertext_output(key_id=key.id,
         plaintext="example")
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Mapping[str, str] encryption_context: The Encryption context. If you specify this parameter here, it is also required when you call the Decrypt API operation. For more information, see [Encryption Context](https://www.alibabacloud.com/help/doc-detail/42975.htm).

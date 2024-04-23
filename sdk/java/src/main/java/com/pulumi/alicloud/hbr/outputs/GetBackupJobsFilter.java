@@ -12,45 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetBackupJobsFilter {
-    /**
-     * @return The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
-     * 
-     */
     private @Nullable String key;
-    /**
-     * @return The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
-     * 
-     */
     private @Nullable String operator;
-    /**
-     * @return Set of values that are accepted for the given field.
-     * 
-     * &gt; **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
-     * 
-     */
     private @Nullable List<String> values;
 
     private GetBackupJobsFilter() {}
-    /**
-     * @return The key of the field to filter. Valid values: `PlanId`, `VaultId`, `InstanceId`, `Bucket`, `FileSystemId`, `CompleteTime`.
-     * 
-     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
-    /**
-     * @return The operator of the field to filter. Valid values: `EQUAL`, `NOT_EQUAL`, `GREATER_THAN`, `GREATER_THAN_OR_EQUAL`, `LESS_THAN`, `LESS_THAN_OR_EQUAL`, `BETWEEN`, `IN`.
-     * 
-     */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
-    /**
-     * @return Set of values that are accepted for the given field.
-     * 
-     * &gt; **NOTE:** Numeric types such as `CompleteTime` do not support `IN` operations for the time being.
-     * 
-     */
     public List<String> values() {
         return this.values == null ? List.of() : this.values;
     }

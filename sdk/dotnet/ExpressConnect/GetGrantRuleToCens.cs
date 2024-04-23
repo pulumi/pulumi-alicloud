@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGrantRuleToCensResult> InvokeAsync(GetGrantRuleToCensArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGrantRuleToCensResult>("alicloud:expressconnect/getGrantRuleToCens:getGrantRuleToCens", args ?? new GetGrantRuleToCensArgs(), options.WithDefaults());
@@ -58,7 +56,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -82,7 +79,6 @@ namespace Pulumi.AliCloud.ExpressConnect
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGrantRuleToCensResult> Invoke(GetGrantRuleToCensInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGrantRuleToCensResult>("alicloud:expressconnect/getGrantRuleToCens:getGrantRuleToCens", args ?? new GetGrantRuleToCensInvokeArgs(), options.WithDefaults());

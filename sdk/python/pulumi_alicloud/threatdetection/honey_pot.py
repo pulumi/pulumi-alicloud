@@ -236,7 +236,6 @@ class HoneyPot(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -256,7 +255,6 @@ class HoneyPot(pulumi.CustomResource):
             honeypot_name=name,
             node_id=default_honeypot_node.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -290,7 +288,6 @@ class HoneyPot(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -310,7 +307,6 @@ class HoneyPot(pulumi.CustomResource):
             honeypot_name=name,
             node_id=default_honeypot_node.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

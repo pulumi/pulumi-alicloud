@@ -632,11 +632,8 @@ class ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs:
                  tunnel_cidr: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] bgp_status: Whether BGP function is turned on.
-        :param pulumi.Input[str] local_asn: Local asn.
-        :param pulumi.Input[str] local_bgp_ip: Local bgp IP.
         :param pulumi.Input[str] peer_asn: Peer asn.
         :param pulumi.Input[str] peer_bgp_ip: Peer bgp ip.
-        :param pulumi.Input[str] tunnel_cidr: IPSec tunnel Cidr.
         """
         if bgp_status is not None:
             pulumi.set(__self__, "bgp_status", bgp_status)
@@ -666,9 +663,6 @@ class ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs:
     @property
     @pulumi.getter(name="localAsn")
     def local_asn(self) -> Optional[pulumi.Input[str]]:
-        """
-        Local asn.
-        """
         return pulumi.get(self, "local_asn")
 
     @local_asn.setter
@@ -678,9 +672,6 @@ class ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs:
     @property
     @pulumi.getter(name="localBgpIp")
     def local_bgp_ip(self) -> Optional[pulumi.Input[str]]:
-        """
-        Local bgp IP.
-        """
         return pulumi.get(self, "local_bgp_ip")
 
     @local_bgp_ip.setter
@@ -714,9 +705,6 @@ class ConnectionTunnelOptionsSpecificationTunnelBgpConfigArgs:
     @property
     @pulumi.getter(name="tunnelCidr")
     def tunnel_cidr(self) -> Optional[pulumi.Input[str]]:
-        """
-        IPSec tunnel Cidr.
-        """
         return pulumi.get(self, "tunnel_cidr")
 
     @tunnel_cidr.setter
@@ -736,17 +724,6 @@ class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs:
                  local_id: Optional[pulumi.Input[str]] = None,
                  psk: Optional[pulumi.Input[str]] = None,
                  remote_id: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] ike_auth_alg: IKE auth Algorithm.
-        :param pulumi.Input[str] ike_enc_alg: IKE encript algorithm.
-        :param pulumi.Input[int] ike_lifetime: IKE lifetime.
-        :param pulumi.Input[str] ike_mode: IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
-        :param pulumi.Input[str] ike_pfs: DH group.
-        :param pulumi.Input[str] ike_version: IKE version.
-        :param pulumi.Input[str] local_id: The local Id.
-        :param pulumi.Input[str] psk: Preshared secret key.
-        :param pulumi.Input[str] remote_id: Remote ID.
-        """
         if ike_auth_alg is not None:
             pulumi.set(__self__, "ike_auth_alg", ike_auth_alg)
         if ike_enc_alg is not None:
@@ -769,9 +746,6 @@ class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs:
     @property
     @pulumi.getter(name="ikeAuthAlg")
     def ike_auth_alg(self) -> Optional[pulumi.Input[str]]:
-        """
-        IKE auth Algorithm.
-        """
         return pulumi.get(self, "ike_auth_alg")
 
     @ike_auth_alg.setter
@@ -781,9 +755,6 @@ class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs:
     @property
     @pulumi.getter(name="ikeEncAlg")
     def ike_enc_alg(self) -> Optional[pulumi.Input[str]]:
-        """
-        IKE encript algorithm.
-        """
         return pulumi.get(self, "ike_enc_alg")
 
     @ike_enc_alg.setter
@@ -793,9 +764,6 @@ class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs:
     @property
     @pulumi.getter(name="ikeLifetime")
     def ike_lifetime(self) -> Optional[pulumi.Input[int]]:
-        """
-        IKE lifetime.
-        """
         return pulumi.get(self, "ike_lifetime")
 
     @ike_lifetime.setter
@@ -805,9 +773,6 @@ class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs:
     @property
     @pulumi.getter(name="ikeMode")
     def ike_mode(self) -> Optional[pulumi.Input[str]]:
-        """
-        IKE mode, supports main and aggressive mode. The main mode is highly secure. If NAT traversal is enabled, we recommend that you use the aggressive mode.
-        """
         return pulumi.get(self, "ike_mode")
 
     @ike_mode.setter
@@ -817,9 +782,6 @@ class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs:
     @property
     @pulumi.getter(name="ikePfs")
     def ike_pfs(self) -> Optional[pulumi.Input[str]]:
-        """
-        DH group.
-        """
         return pulumi.get(self, "ike_pfs")
 
     @ike_pfs.setter
@@ -829,9 +791,6 @@ class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs:
     @property
     @pulumi.getter(name="ikeVersion")
     def ike_version(self) -> Optional[pulumi.Input[str]]:
-        """
-        IKE version.
-        """
         return pulumi.get(self, "ike_version")
 
     @ike_version.setter
@@ -841,9 +800,6 @@ class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs:
     @property
     @pulumi.getter(name="localId")
     def local_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        The local Id.
-        """
         return pulumi.get(self, "local_id")
 
     @local_id.setter
@@ -853,9 +809,6 @@ class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs:
     @property
     @pulumi.getter
     def psk(self) -> Optional[pulumi.Input[str]]:
-        """
-        Preshared secret key.
-        """
         return pulumi.get(self, "psk")
 
     @psk.setter
@@ -865,9 +818,6 @@ class ConnectionTunnelOptionsSpecificationTunnelIkeConfigArgs:
     @property
     @pulumi.getter(name="remoteId")
     def remote_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Remote ID.
-        """
         return pulumi.get(self, "remote_id")
 
     @remote_id.setter
@@ -882,12 +832,6 @@ class ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs:
                  ipsec_enc_alg: Optional[pulumi.Input[str]] = None,
                  ipsec_lifetime: Optional[pulumi.Input[int]] = None,
                  ipsec_pfs: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] ipsec_auth_alg: IPsec authentication algorithm. sha1 and md5 are supported.
-        :param pulumi.Input[str] ipsec_enc_alg: IPsec Encript algorithm.
-        :param pulumi.Input[int] ipsec_lifetime: IPsec lifetime.
-        :param pulumi.Input[str] ipsec_pfs: DH Group.
-        """
         if ipsec_auth_alg is not None:
             pulumi.set(__self__, "ipsec_auth_alg", ipsec_auth_alg)
         if ipsec_enc_alg is not None:
@@ -900,9 +844,6 @@ class ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs:
     @property
     @pulumi.getter(name="ipsecAuthAlg")
     def ipsec_auth_alg(self) -> Optional[pulumi.Input[str]]:
-        """
-        IPsec authentication algorithm. sha1 and md5 are supported.
-        """
         return pulumi.get(self, "ipsec_auth_alg")
 
     @ipsec_auth_alg.setter
@@ -912,9 +853,6 @@ class ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs:
     @property
     @pulumi.getter(name="ipsecEncAlg")
     def ipsec_enc_alg(self) -> Optional[pulumi.Input[str]]:
-        """
-        IPsec Encript algorithm.
-        """
         return pulumi.get(self, "ipsec_enc_alg")
 
     @ipsec_enc_alg.setter
@@ -924,9 +862,6 @@ class ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs:
     @property
     @pulumi.getter(name="ipsecLifetime")
     def ipsec_lifetime(self) -> Optional[pulumi.Input[int]]:
-        """
-        IPsec lifetime.
-        """
         return pulumi.get(self, "ipsec_lifetime")
 
     @ipsec_lifetime.setter
@@ -936,9 +871,6 @@ class ConnectionTunnelOptionsSpecificationTunnelIpsecConfigArgs:
     @property
     @pulumi.getter(name="ipsecPfs")
     def ipsec_pfs(self) -> Optional[pulumi.Input[str]]:
-        """
-        DH Group.
-        """
         return pulumi.get(self, "ipsec_pfs")
 
     @ipsec_pfs.setter

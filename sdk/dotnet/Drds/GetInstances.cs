@@ -19,8 +19,7 @@ namespace Pulumi.AliCloud.Drds
         /// 
         /// ## Example Usage
         /// 
-        ///  &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
+        ///  ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -43,7 +42,6 @@ namespace Pulumi.AliCloud.Drds
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:drds/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
@@ -56,8 +54,7 @@ namespace Pulumi.AliCloud.Drds
         /// 
         /// ## Example Usage
         /// 
-        ///  &lt;!--Start PulumiCodeChooser --&gt;
-        /// ```csharp
+        ///  ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
         /// using Pulumi;
@@ -80,7 +77,6 @@ namespace Pulumi.AliCloud.Drds
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:drds/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());

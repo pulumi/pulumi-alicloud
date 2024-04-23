@@ -187,7 +187,6 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -226,7 +225,6 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
             key_pair_name=example_ecs_key_pair.key_pair_name,
             instance_ids=[example_instance.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -260,7 +258,6 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -299,7 +296,6 @@ class EcsKeyPairAttachment(pulumi.CustomResource):
             key_pair_name=example_ecs_key_pair.key_pair_name,
             instance_ids=[example_instance.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

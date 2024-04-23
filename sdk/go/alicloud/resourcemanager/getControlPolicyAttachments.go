@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetControlPolicyAttachments(ctx *pulumi.Context, args *GetControlPolicyAttachmentsArgs, opts ...pulumi.InvokeOption) (*GetControlPolicyAttachmentsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetControlPolicyAttachmentsResult

@@ -148,7 +148,6 @@ class NetworkAclEntries(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -196,7 +195,6 @@ class NetworkAclEntries(pulumi.CustomResource):
                 description=name,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -225,7 +223,6 @@ class NetworkAclEntries(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -273,7 +270,6 @@ class NetworkAclEntries(pulumi.CustomResource):
                 description=name,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param NetworkAclEntriesArgs args: The arguments to use to populate this resource's properties.

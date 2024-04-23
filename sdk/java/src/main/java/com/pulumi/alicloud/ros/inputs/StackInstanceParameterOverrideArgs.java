@@ -15,32 +15,16 @@ public final class StackInstanceParameterOverrideArgs extends com.pulumi.resourc
 
     public static final StackInstanceParameterOverrideArgs Empty = new StackInstanceParameterOverrideArgs();
 
-    /**
-     * The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
-     * 
-     */
     @Import(name="parameterKey")
     private @Nullable Output<String> parameterKey;
 
-    /**
-     * @return The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
-     * 
-     */
     public Optional<Output<String>> parameterKey() {
         return Optional.ofNullable(this.parameterKey);
     }
 
-    /**
-     * The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
-     * 
-     */
     @Import(name="parameterValue")
     private @Nullable Output<String> parameterValue;
 
-    /**
-     * @return The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
-     * 
-     */
     public Optional<Output<String>> parameterValue() {
         return Optional.ofNullable(this.parameterValue);
     }
@@ -70,44 +54,20 @@ public final class StackInstanceParameterOverrideArgs extends com.pulumi.resourc
             $ = new StackInstanceParameterOverrideArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param parameterKey The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder parameterKey(@Nullable Output<String> parameterKey) {
             $.parameterKey = parameterKey;
             return this;
         }
 
-        /**
-         * @param parameterKey The key of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder parameterKey(String parameterKey) {
             return parameterKey(Output.of(parameterKey));
         }
 
-        /**
-         * @param parameterValue The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder parameterValue(@Nullable Output<String> parameterValue) {
             $.parameterValue = parameterValue;
             return this;
         }
 
-        /**
-         * @param parameterValue The value of override parameter. If you do not specify the key and value of the parameter, ROS uses the key and value that you specified when you created the stack group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder parameterValue(String parameterValue) {
             return parameterValue(Output.of(parameterValue));
         }

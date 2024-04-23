@@ -289,7 +289,6 @@ class BgpGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -321,7 +320,6 @@ class BgpGroup(pulumi.CustomResource):
             router_id=example_virtual_border_router.id,
             is_fake_asn=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -358,7 +356,6 @@ class BgpGroup(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -390,7 +387,6 @@ class BgpGroup(pulumi.CustomResource):
             router_id=example_virtual_border_router.id,
             is_fake_asn=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

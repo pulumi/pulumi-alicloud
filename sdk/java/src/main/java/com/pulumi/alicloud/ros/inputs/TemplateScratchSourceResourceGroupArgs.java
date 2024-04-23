@@ -17,32 +17,16 @@ public final class TemplateScratchSourceResourceGroupArgs extends com.pulumi.res
 
     public static final TemplateScratchSourceResourceGroupArgs Empty = new TemplateScratchSourceResourceGroupArgs();
 
-    /**
-     * The ID of the Source Resource Group.
-     * 
-     */
     @Import(name="resourceGroupId", required=true)
     private Output<String> resourceGroupId;
 
-    /**
-     * @return The ID of the Source Resource Group.
-     * 
-     */
     public Output<String> resourceGroupId() {
         return this.resourceGroupId;
     }
 
-    /**
-     * Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-     * 
-     */
     @Import(name="resourceTypeFilters")
     private @Nullable Output<List<String>> resourceTypeFilters;
 
-    /**
-     * @return Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-     * 
-     */
     public Optional<Output<List<String>>> resourceTypeFilters() {
         return Optional.ofNullable(this.resourceTypeFilters);
     }
@@ -72,54 +56,24 @@ public final class TemplateScratchSourceResourceGroupArgs extends com.pulumi.res
             $ = new TemplateScratchSourceResourceGroupArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param resourceGroupId The ID of the Source Resource Group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceGroupId(Output<String> resourceGroupId) {
             $.resourceGroupId = resourceGroupId;
             return this;
         }
 
-        /**
-         * @param resourceGroupId The ID of the Source Resource Group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceGroupId(String resourceGroupId) {
             return resourceGroupId(Output.of(resourceGroupId));
         }
 
-        /**
-         * @param resourceTypeFilters Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceTypeFilters(@Nullable Output<List<String>> resourceTypeFilters) {
             $.resourceTypeFilters = resourceTypeFilters;
             return this;
         }
 
-        /**
-         * @param resourceTypeFilters Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceTypeFilters(List<String> resourceTypeFilters) {
             return resourceTypeFilters(Output.of(resourceTypeFilters));
         }
 
-        /**
-         * @param resourceTypeFilters Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceTypeFilters(String... resourceTypeFilters) {
             return resourceTypeFilters(List.of(resourceTypeFilters));
         }

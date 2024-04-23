@@ -12,27 +12,15 @@ namespace Pulumi.AliCloud.Vpn.Inputs
 
     public sealed class ConnectionTunnelOptionsSpecificationTunnelIpsecConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// IPsec authentication algorithm. sha1 and md5 are supported.
-        /// </summary>
         [Input("ipsecAuthAlg")]
         public Input<string>? IpsecAuthAlg { get; set; }
 
-        /// <summary>
-        /// IPsec Encript algorithm.
-        /// </summary>
         [Input("ipsecEncAlg")]
         public Input<string>? IpsecEncAlg { get; set; }
 
-        /// <summary>
-        /// IPsec lifetime.
-        /// </summary>
         [Input("ipsecLifetime")]
         public Input<int>? IpsecLifetime { get; set; }
 
-        /// <summary>
-        /// DH Group.
-        /// </summary>
         [Input("ipsecPfs")]
         public Input<string>? IpsecPfs { get; set; }
 

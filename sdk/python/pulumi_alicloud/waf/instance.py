@@ -602,7 +602,6 @@ class Instance(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -624,7 +623,6 @@ class Instance(pulumi.CustomResource):
                 log_time="180",
                 resource_group_id="rs-abc12345"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -676,7 +674,6 @@ class Instance(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -698,7 +695,6 @@ class Instance(pulumi.CustomResource):
                 log_time="180",
                 resource_group_id="rs-abc12345"))
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -93,7 +92,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -122,7 +120,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> DeploymentSetId { get; private set; } = null!;
 
         /// <summary>
-        /// The description of the data disk.
+        /// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -205,7 +203,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> LaunchTemplateName { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the data disk.
+        /// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -247,7 +245,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> SecurityEnhancementStrategy { get; private set; } = null!;
 
         /// <summary>
-        /// The security group ID must be one in the same VPC.
+        /// The security group ID.
         /// </summary>
         [Output("securityGroupId")]
         public Output<string?> SecurityGroupId { get; private set; } = null!;
@@ -335,7 +333,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string> VpcId { get; private set; } = null!;
 
         /// <summary>
-        /// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        /// When creating a VPC-Connected instance, you must specify its VSwitch ID.
         /// </summary>
         [Output("vswitchId")]
         public Output<string?> VswitchId { get; private set; } = null!;
@@ -414,7 +412,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? DeploymentSetId { get; set; }
 
         /// <summary>
-        /// The description of the data disk.
+        /// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -497,7 +495,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? LaunchTemplateName { get; set; }
 
         /// <summary>
-        /// The name of the data disk.
+        /// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -539,7 +537,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SecurityEnhancementStrategy { get; set; }
 
         /// <summary>
-        /// The security group ID must be one in the same VPC.
+        /// The security group ID.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -643,7 +641,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        /// When creating a VPC-Connected instance, you must specify its VSwitch ID.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }
@@ -684,7 +682,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? DeploymentSetId { get; set; }
 
         /// <summary>
-        /// The description of the data disk.
+        /// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -767,7 +765,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? LaunchTemplateName { get; set; }
 
         /// <summary>
-        /// The name of the data disk.
+        /// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -809,7 +807,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? SecurityEnhancementStrategy { get; set; }
 
         /// <summary>
-        /// The security group ID must be one in the same VPC.
+        /// The security group ID.
         /// </summary>
         [Input("securityGroupId")]
         public Input<string>? SecurityGroupId { get; set; }
@@ -913,7 +911,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? VpcId { get; set; }
 
         /// <summary>
-        /// The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
+        /// When creating a VPC-Connected instance, you must specify its VSwitch ID.
         /// </summary>
         [Input("vswitchId")]
         public Input<string>? VswitchId { get; set; }

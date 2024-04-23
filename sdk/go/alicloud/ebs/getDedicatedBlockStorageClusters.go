@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -45,7 +44,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDedicatedBlockStorageClusters(ctx *pulumi.Context, args *GetDedicatedBlockStorageClustersArgs, opts ...pulumi.InvokeOption) (*GetDedicatedBlockStorageClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDedicatedBlockStorageClustersResult

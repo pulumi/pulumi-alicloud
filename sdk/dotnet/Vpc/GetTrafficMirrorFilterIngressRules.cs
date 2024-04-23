@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -55,7 +54,6 @@ namespace Pulumi.AliCloud.Vpc
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTrafficMirrorFilterIngressRulesResult> InvokeAsync(GetTrafficMirrorFilterIngressRulesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTrafficMirrorFilterIngressRulesResult>("alicloud:vpc/getTrafficMirrorFilterIngressRules:getTrafficMirrorFilterIngressRules", args ?? new GetTrafficMirrorFilterIngressRulesArgs(), options.WithDefaults());
@@ -69,7 +67,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -104,7 +101,6 @@ namespace Pulumi.AliCloud.Vpc
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTrafficMirrorFilterIngressRulesResult> Invoke(GetTrafficMirrorFilterIngressRulesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTrafficMirrorFilterIngressRulesResult>("alicloud:vpc/getTrafficMirrorFilterIngressRules:getTrafficMirrorFilterIngressRules", args ?? new GetTrafficMirrorFilterIngressRulesInvokeArgs(), options.WithDefaults());

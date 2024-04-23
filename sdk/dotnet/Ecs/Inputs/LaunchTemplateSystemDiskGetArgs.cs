@@ -12,38 +12,18 @@ namespace Pulumi.AliCloud.Ecs.Inputs
 
     public sealed class LaunchTemplateSystemDiskGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The category of the disk:
-        /// - cloud: Basic cloud disk.
-        /// - cloud_efficiency: Ultra cloud disk.
-        /// - cloud_ssd: SSD cloud Disks.
-        /// - ephemeral_ssd: local SSD Disks
-        /// - cloud_essd: ESSD cloud Disks.
-        /// 
-        /// Default to `cloud_efficiency`.
-        /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
-        /// <summary>
-        /// Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-        /// 
-        /// Default to true
-        /// </summary>
         [Input("deleteWithInstance")]
         public Input<bool>? DeleteWithInstance { get; set; }
 
         /// <summary>
-        /// The description of the data disk.
+        /// Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
-        /// <summary>
-        /// Encrypted the data in this disk.
-        /// 
-        /// Default to false
-        /// </summary>
         [Input("encrypted")]
         public Input<bool>? Encrypted { get; set; }
 
@@ -51,7 +31,7 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         public Input<string>? Iops { get; set; }
 
         /// <summary>
-        /// The name of the data disk.
+        /// Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -59,14 +39,6 @@ namespace Pulumi.AliCloud.Ecs.Inputs
         [Input("performanceLevel")]
         public Input<string>? PerformanceLevel { get; set; }
 
-        /// <summary>
-        /// The size of the data disk.
-        /// - cloud：[5, 2000]
-        /// - cloud_efficiency：[20, 32768]
-        /// - cloud_ssd：[20, 32768]
-        /// - cloud_essd：[20, 32768]
-        /// - ephemeral_ssd: [5, 800]
-        /// </summary>
         [Input("size")]
         public Input<int>? Size { get; set; }
 

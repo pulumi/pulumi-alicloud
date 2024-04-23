@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -41,7 +40,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAutoSnapShotPoliciesResult> InvokeAsync(GetAutoSnapShotPoliciesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAutoSnapShotPoliciesResult>("alicloud:databasefilesystem/getAutoSnapShotPolicies:getAutoSnapShotPolicies", args ?? new GetAutoSnapShotPoliciesArgs(), options.WithDefaults());
@@ -53,7 +51,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -76,7 +73,6 @@ namespace Pulumi.AliCloud.DatabaseFilesystem
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAutoSnapShotPoliciesResult> Invoke(GetAutoSnapShotPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAutoSnapShotPoliciesResult>("alicloud:databasefilesystem/getAutoSnapShotPolicies:getAutoSnapShotPolicies", args ?? new GetAutoSnapShotPoliciesInvokeArgs(), options.WithDefaults());

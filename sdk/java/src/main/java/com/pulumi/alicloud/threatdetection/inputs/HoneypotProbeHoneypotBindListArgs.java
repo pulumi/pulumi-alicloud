@@ -17,32 +17,16 @@ public final class HoneypotProbeHoneypotBindListArgs extends com.pulumi.resource
 
     public static final HoneypotProbeHoneypotBindListArgs Empty = new HoneypotProbeHoneypotBindListArgs();
 
-    /**
-     * List of listening ports.See the following `Block BindPortList`.
-     * 
-     */
     @Import(name="bindPortLists")
     private @Nullable Output<List<HoneypotProbeHoneypotBindListBindPortListArgs>> bindPortLists;
 
-    /**
-     * @return List of listening ports.See the following `Block BindPortList`.
-     * 
-     */
     public Optional<Output<List<HoneypotProbeHoneypotBindListBindPortListArgs>>> bindPortLists() {
         return Optional.ofNullable(this.bindPortLists);
     }
 
-    /**
-     * Honeypot ID.
-     * 
-     */
     @Import(name="honeypotId")
     private @Nullable Output<String> honeypotId;
 
-    /**
-     * @return Honeypot ID.
-     * 
-     */
     public Optional<Output<String>> honeypotId() {
         return Optional.ofNullable(this.honeypotId);
     }
@@ -72,54 +56,24 @@ public final class HoneypotProbeHoneypotBindListArgs extends com.pulumi.resource
             $ = new HoneypotProbeHoneypotBindListArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param bindPortLists List of listening ports.See the following `Block BindPortList`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder bindPortLists(@Nullable Output<List<HoneypotProbeHoneypotBindListBindPortListArgs>> bindPortLists) {
             $.bindPortLists = bindPortLists;
             return this;
         }
 
-        /**
-         * @param bindPortLists List of listening ports.See the following `Block BindPortList`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder bindPortLists(List<HoneypotProbeHoneypotBindListBindPortListArgs> bindPortLists) {
             return bindPortLists(Output.of(bindPortLists));
         }
 
-        /**
-         * @param bindPortLists List of listening ports.See the following `Block BindPortList`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder bindPortLists(HoneypotProbeHoneypotBindListBindPortListArgs... bindPortLists) {
             return bindPortLists(List.of(bindPortLists));
         }
 
-        /**
-         * @param honeypotId Honeypot ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder honeypotId(@Nullable Output<String> honeypotId) {
             $.honeypotId = honeypotId;
             return this;
         }
 
-        /**
-         * @param honeypotId Honeypot ID.
-         * 
-         * @return builder
-         * 
-         */
         public Builder honeypotId(String honeypotId) {
             return honeypotId(Output.of(honeypotId));
         }

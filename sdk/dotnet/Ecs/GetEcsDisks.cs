@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetEcsDisksResult> InvokeAsync(GetEcsDisksArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsDisksResult>("alicloud:ecs/getEcsDisks:getEcsDisks", args ?? new GetEcsDisksArgs(), options.WithDefaults());
@@ -58,7 +56,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -82,7 +79,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetEcsDisksResult> Invoke(GetEcsDisksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEcsDisksResult>("alicloud:ecs/getEcsDisks:getEcsDisks", args ?? new GetEcsDisksInvokeArgs(), options.WithDefaults());
@@ -110,13 +106,13 @@ namespace Pulumi.AliCloud.Ecs
         public string? AutoSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// Availability zone of the disk.
+        /// Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         /// </summary>
         [Input("availabilityZone")]
         public string? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Disk category.
+        /// Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
         /// </summary>
         [Input("category")]
         public string? Category { get; set; }
@@ -152,13 +148,13 @@ namespace Pulumi.AliCloud.Ecs
         public bool? DryRun { get; set; }
 
         /// <summary>
-        /// Whether the disk implements an automatic snapshot policy.
+        /// Indicates whether the automatic snapshot is deleted when the disk is released.
         /// </summary>
         [Input("enableAutoSnapshot")]
         public bool? EnableAutoSnapshot { get; set; }
 
         /// <summary>
-        /// Whether the disk implements an automatic snapshot policy.
+        /// Whether the cloud disk has an automatic snapshot policy
         /// </summary>
         [Input("enableAutomatedSnapshotPolicy")]
         public bool? EnableAutomatedSnapshotPolicy { get; set; }
@@ -170,7 +166,7 @@ namespace Pulumi.AliCloud.Ecs
         public bool? EnableShared { get; set; }
 
         /// <summary>
-        /// Indicate whether the disk is encrypted or not.
+        /// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
         /// </summary>
         [Input("encrypted")]
         public string? Encrypted { get; set; }
@@ -188,7 +184,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The instance ID of the disk mount.
+        /// Filter the results by the specified ECS instance ID.
         /// </summary>
         [Input("instanceId")]
         public string? InstanceId { get; set; }
@@ -226,31 +222,31 @@ namespace Pulumi.AliCloud.Ecs
         public int? PageSize { get; set; }
 
         /// <summary>
-        /// Payment method for disk.
+        /// Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
         /// </summary>
         [Input("paymentType")]
         public string? PaymentType { get; set; }
 
         /// <summary>
-        /// Whether the disk is unmountable.
+        /// Whether the cloud disk or local disk supports uninstallation.
         /// </summary>
         [Input("portable")]
         public bool? Portable { get; set; }
 
         /// <summary>
-        /// The Id of resource group.
+        /// The Id of resource group which the disk belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public string? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+        /// The source snapshot id.
         /// </summary>
         [Input("snapshotId")]
         public string? SnapshotId { get; set; }
 
         /// <summary>
-        /// Current status.
+        /// The status of disk.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -259,7 +255,7 @@ namespace Pulumi.AliCloud.Ecs
         private Dictionary<string, object>? _tags;
 
         /// <summary>
-        /// A map of tags assigned to the disk.
+        /// A map of tags assigned to the disks.
         /// </summary>
         public Dictionary<string, object> Tags
         {
@@ -268,13 +264,13 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Disk type.
+        /// Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
         /// </summary>
         [Input("type")]
         public string? Type { get; set; }
 
         /// <summary>
-        /// The zone id.
+        /// ID of the free zone to which the disk belongs.
         /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }
@@ -306,13 +302,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? AutoSnapshotPolicyId { get; set; }
 
         /// <summary>
-        /// Availability zone of the disk.
+        /// Field `availability_zone` has been deprecated from provider version 1.122.0. New field `zone_id` instead.
         /// </summary>
         [Input("availabilityZone")]
         public Input<string>? AvailabilityZone { get; set; }
 
         /// <summary>
-        /// Disk category.
+        /// Disk category. Valid values: `cloud`, `cloud_efficiency`, `cloud_essd`, `cloud_ssd`, `ephemeral_ssd`, `cloud_auto`, `cloud_essd_entry`.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
@@ -348,13 +344,13 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? DryRun { get; set; }
 
         /// <summary>
-        /// Whether the disk implements an automatic snapshot policy.
+        /// Indicates whether the automatic snapshot is deleted when the disk is released.
         /// </summary>
         [Input("enableAutoSnapshot")]
         public Input<bool>? EnableAutoSnapshot { get; set; }
 
         /// <summary>
-        /// Whether the disk implements an automatic snapshot policy.
+        /// Whether the cloud disk has an automatic snapshot policy
         /// </summary>
         [Input("enableAutomatedSnapshotPolicy")]
         public Input<bool>? EnableAutomatedSnapshotPolicy { get; set; }
@@ -366,7 +362,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<bool>? EnableShared { get; set; }
 
         /// <summary>
-        /// Indicate whether the disk is encrypted or not.
+        /// Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
         /// </summary>
         [Input("encrypted")]
         public Input<string>? Encrypted { get; set; }
@@ -384,7 +380,7 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// The instance ID of the disk mount.
+        /// Filter the results by the specified ECS instance ID.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
@@ -422,31 +418,31 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? PageSize { get; set; }
 
         /// <summary>
-        /// Payment method for disk.
+        /// Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
         /// </summary>
         [Input("paymentType")]
         public Input<string>? PaymentType { get; set; }
 
         /// <summary>
-        /// Whether the disk is unmountable.
+        /// Whether the cloud disk or local disk supports uninstallation.
         /// </summary>
         [Input("portable")]
         public Input<bool>? Portable { get; set; }
 
         /// <summary>
-        /// The Id of resource group.
+        /// The Id of resource group which the disk belongs.
         /// </summary>
         [Input("resourceGroupId")]
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+        /// The source snapshot id.
         /// </summary>
         [Input("snapshotId")]
         public Input<string>? SnapshotId { get; set; }
 
         /// <summary>
-        /// Current status.
+        /// The status of disk.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -455,7 +451,7 @@ namespace Pulumi.AliCloud.Ecs
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// A map of tags assigned to the disk.
+        /// A map of tags assigned to the disks.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -464,13 +460,13 @@ namespace Pulumi.AliCloud.Ecs
         }
 
         /// <summary>
-        /// Disk type.
+        /// Field `type` has been deprecated from provider version 1.122.0. New field `disk_type` instead.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The zone id.
+        /// ID of the free zone to which the disk belongs.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

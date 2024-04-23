@@ -21,14 +21,14 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
     public static final EtlState Empty = new EtlState();
 
     /**
-     * Delivery target logstore access key id.
+     * Source logstore access key id.
      * 
      */
     @Import(name="accessKeyId")
     private @Nullable Output<String> accessKeyId;
 
     /**
-     * @return Delivery target logstore access key id.
+     * @return Source logstore access key id.
      * 
      */
     public Optional<Output<String>> accessKeyId() {
@@ -36,14 +36,14 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Delivery target logstore access key secret.
+     * Source logstore access key secret.
      * 
      */
     @Import(name="accessKeySecret")
     private @Nullable Output<String> accessKeySecret;
 
     /**
-     * @return Delivery target logstore access key secret.
+     * @return Source logstore access key secret.
      * 
      */
     public Optional<Output<String>> accessKeySecret() {
@@ -231,14 +231,14 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Delivery target logstore.
+     * The source logstore of the processing job.
      * 
      */
     @Import(name="logstore")
     private @Nullable Output<String> logstore;
 
     /**
-     * @return Delivery target logstore.
+     * @return The source logstore of the processing job.
      * 
      */
     public Optional<Output<String>> logstore() {
@@ -261,14 +261,14 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The project where the target logstore is delivered.
+     * The name of the project where the etl job is located.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The project where the target logstore is delivered.
+     * @return The name of the project where the etl job is located.
      * 
      */
     public Optional<Output<String>> project() {
@@ -276,14 +276,14 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+     * Sts role info under source logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
      * 
      */
     @Import(name="roleArn")
     private @Nullable Output<String> roleArn;
 
     /**
-     * @return Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+     * @return Sts role info under source logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
      * 
      */
     public Optional<Output<String>> roleArn() {
@@ -412,7 +412,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessKeyId Delivery target logstore access key id.
+         * @param accessKeyId Source logstore access key id.
          * 
          * @return builder
          * 
@@ -423,7 +423,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessKeyId Delivery target logstore access key id.
+         * @param accessKeyId Source logstore access key id.
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessKeySecret Delivery target logstore access key secret.
+         * @param accessKeySecret Source logstore access key secret.
          * 
          * @return builder
          * 
@@ -444,7 +444,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accessKeySecret Delivery target logstore access key secret.
+         * @param accessKeySecret Source logstore access key secret.
          * 
          * @return builder
          * 
@@ -716,7 +716,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logstore Delivery target logstore.
+         * @param logstore The source logstore of the processing job.
          * 
          * @return builder
          * 
@@ -727,7 +727,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param logstore Delivery target logstore.
+         * @param logstore The source logstore of the processing job.
          * 
          * @return builder
          * 
@@ -758,7 +758,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project where the target logstore is delivered.
+         * @param project The name of the project where the etl job is located.
          * 
          * @return builder
          * 
@@ -769,7 +769,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project where the target logstore is delivered.
+         * @param project The name of the project where the etl job is located.
          * 
          * @return builder
          * 
@@ -779,7 +779,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleArn Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+         * @param roleArn Sts role info under source logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
          * 
          * @return builder
          * 
@@ -790,7 +790,7 @@ public final class EtlState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param roleArn Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+         * @param roleArn Sts role info under source logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
          * 
          * @return builder
          * 

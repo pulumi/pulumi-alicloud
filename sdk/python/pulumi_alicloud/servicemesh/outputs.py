@@ -380,10 +380,6 @@ class ServiceMeshMeshConfigAccessLog(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
                  project: Optional[str] = None):
-        """
-        :param bool enabled: Enable CNI.
-        :param str project: The name of the SLS Project to which the control plane logs are collected.
-        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if project is not None:
@@ -392,17 +388,11 @@ class ServiceMeshMeshConfigAccessLog(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
-        """
-        Enable CNI.
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def project(self) -> Optional[str]:
-        """
-        The name of the SLS Project to which the control plane logs are collected.
-        """
         return pulumi.get(self, "project")
 
 
@@ -411,10 +401,6 @@ class ServiceMeshMeshConfigAudit(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
                  project: Optional[str] = None):
-        """
-        :param bool enabled: Enable CNI.
-        :param str project: The name of the SLS Project to which the control plane logs are collected.
-        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if project is not None:
@@ -423,17 +409,11 @@ class ServiceMeshMeshConfigAudit(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
-        """
-        Enable CNI.
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def project(self) -> Optional[str]:
-        """
-        The name of the SLS Project to which the control plane logs are collected.
-        """
         return pulumi.get(self, "project")
 
 
@@ -442,10 +422,6 @@ class ServiceMeshMeshConfigControlPlaneLog(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
                  project: Optional[str] = None):
-        """
-        :param bool enabled: Enable CNI.
-        :param str project: The name of the SLS Project to which the control plane logs are collected.
-        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if project is not None:
@@ -454,17 +430,11 @@ class ServiceMeshMeshConfigControlPlaneLog(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
-        """
-        Enable CNI.
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter
     def project(self) -> Optional[str]:
-        """
-        The name of the SLS Project to which the control plane logs are collected.
-        """
         return pulumi.get(self, "project")
 
 
@@ -474,7 +444,6 @@ class ServiceMeshMeshConfigKiali(dict):
                  enabled: Optional[bool] = None,
                  url: Optional[str] = None):
         """
-        :param bool enabled: Enable CNI.
         :param str url: Grid topology service address.
         """
         if enabled is not None:
@@ -485,9 +454,6 @@ class ServiceMeshMeshConfigKiali(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
-        """
-        Enable CNI.
-        """
         return pulumi.get(self, "enabled")
 
     @property
@@ -533,14 +499,6 @@ class ServiceMeshMeshConfigOpa(dict):
                  log_level: Optional[str] = None,
                  request_cpu: Optional[str] = None,
                  request_memory: Optional[str] = None):
-        """
-        :param bool enabled: Enable CNI.
-        :param str limit_cpu: Sidecar injector Pods on the throttle.
-        :param str limit_memory: Sidecar injector Pods on the throttle.
-        :param str log_level: OPA proxy container log level.
-        :param str request_cpu: Sidecar injector Pods on the requested resource.
-        :param str request_memory: Sidecar injector Pods on the requested resource.
-        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if limit_cpu is not None:
@@ -557,49 +515,31 @@ class ServiceMeshMeshConfigOpa(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
-        """
-        Enable CNI.
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="limitCpu")
     def limit_cpu(self) -> Optional[str]:
-        """
-        Sidecar injector Pods on the throttle.
-        """
         return pulumi.get(self, "limit_cpu")
 
     @property
     @pulumi.getter(name="limitMemory")
     def limit_memory(self) -> Optional[str]:
-        """
-        Sidecar injector Pods on the throttle.
-        """
         return pulumi.get(self, "limit_memory")
 
     @property
     @pulumi.getter(name="logLevel")
     def log_level(self) -> Optional[str]:
-        """
-        OPA proxy container log level.
-        """
         return pulumi.get(self, "log_level")
 
     @property
     @pulumi.getter(name="requestCpu")
     def request_cpu(self) -> Optional[str]:
-        """
-        Sidecar injector Pods on the requested resource.
-        """
         return pulumi.get(self, "request_cpu")
 
     @property
     @pulumi.getter(name="requestMemory")
     def request_memory(self) -> Optional[str]:
-        """
-        Sidecar injector Pods on the requested resource.
-        """
         return pulumi.get(self, "request_memory")
 
 
@@ -627,10 +567,6 @@ class ServiceMeshMeshConfigPilot(dict):
     def __init__(__self__, *,
                  http10_enabled: Optional[bool] = None,
                  trace_sampling: Optional[float] = None):
-        """
-        :param bool http10_enabled: Whether to support the HTTP1.0.
-        :param float trace_sampling: Link trace sampling percentage.
-        """
         if http10_enabled is not None:
             pulumi.set(__self__, "http10_enabled", http10_enabled)
         if trace_sampling is not None:
@@ -639,17 +575,11 @@ class ServiceMeshMeshConfigPilot(dict):
     @property
     @pulumi.getter(name="http10Enabled")
     def http10_enabled(self) -> Optional[bool]:
-        """
-        Whether to support the HTTP1.0.
-        """
         return pulumi.get(self, "http10_enabled")
 
     @property
     @pulumi.getter(name="traceSampling")
     def trace_sampling(self) -> Optional[float]:
-        """
-        Link trace sampling percentage.
-        """
         return pulumi.get(self, "trace_sampling")
 
 
@@ -738,10 +668,6 @@ class ServiceMeshMeshConfigProxy(dict):
                  request_memory: Optional[str] = None):
         """
         :param str cluster_domain: Trust cluster domain.
-        :param str limit_cpu: Sidecar injector Pods on the throttle.
-        :param str limit_memory: Sidecar injector Pods on the throttle.
-        :param str request_cpu: Sidecar injector Pods on the requested resource.
-        :param str request_memory: Sidecar injector Pods on the requested resource.
         """
         if cluster_domain is not None:
             pulumi.set(__self__, "cluster_domain", cluster_domain)
@@ -765,33 +691,21 @@ class ServiceMeshMeshConfigProxy(dict):
     @property
     @pulumi.getter(name="limitCpu")
     def limit_cpu(self) -> Optional[str]:
-        """
-        Sidecar injector Pods on the throttle.
-        """
         return pulumi.get(self, "limit_cpu")
 
     @property
     @pulumi.getter(name="limitMemory")
     def limit_memory(self) -> Optional[str]:
-        """
-        Sidecar injector Pods on the throttle.
-        """
         return pulumi.get(self, "limit_memory")
 
     @property
     @pulumi.getter(name="requestCpu")
     def request_cpu(self) -> Optional[str]:
-        """
-        Sidecar injector Pods on the requested resource.
-        """
         return pulumi.get(self, "request_cpu")
 
     @property
     @pulumi.getter(name="requestMemory")
     def request_memory(self) -> Optional[str]:
-        """
-        Sidecar injector Pods on the requested resource.
-        """
         return pulumi.get(self, "request_memory")
 
 
@@ -838,13 +752,6 @@ class ServiceMeshMeshConfigSidecarInjector(dict):
                  request_memory: Optional[str] = None,
                  sidecar_injector_webhook_as_yaml: Optional[str] = None):
         """
-        :param bool auto_injection_policy_enabled: Whether to enable by Pod Annotations automatic injection Sidecar.
-        :param bool enable_namespaces_by_default: Whether it is the all namespaces you turn on the auto injection capabilities.
-        :param 'ServiceMeshMeshConfigSidecarInjectorInitCniConfigurationArgs' init_cni_configuration: CNI configuration. See `init_cni_configuration` below.
-        :param str limit_cpu: Sidecar injector Pods on the throttle.
-        :param str limit_memory: Sidecar injector Pods on the throttle.
-        :param str request_cpu: Sidecar injector Pods on the requested resource.
-        :param str request_memory: Sidecar injector Pods on the requested resource.
         :param str sidecar_injector_webhook_as_yaml: Other configurations of automatically injected sidecar (in YAML format).
         """
         if auto_injection_policy_enabled is not None:
@@ -867,57 +774,36 @@ class ServiceMeshMeshConfigSidecarInjector(dict):
     @property
     @pulumi.getter(name="autoInjectionPolicyEnabled")
     def auto_injection_policy_enabled(self) -> Optional[bool]:
-        """
-        Whether to enable by Pod Annotations automatic injection Sidecar.
-        """
         return pulumi.get(self, "auto_injection_policy_enabled")
 
     @property
     @pulumi.getter(name="enableNamespacesByDefault")
     def enable_namespaces_by_default(self) -> Optional[bool]:
-        """
-        Whether it is the all namespaces you turn on the auto injection capabilities.
-        """
         return pulumi.get(self, "enable_namespaces_by_default")
 
     @property
     @pulumi.getter(name="initCniConfiguration")
     def init_cni_configuration(self) -> Optional['outputs.ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration']:
-        """
-        CNI configuration. See `init_cni_configuration` below.
-        """
         return pulumi.get(self, "init_cni_configuration")
 
     @property
     @pulumi.getter(name="limitCpu")
     def limit_cpu(self) -> Optional[str]:
-        """
-        Sidecar injector Pods on the throttle.
-        """
         return pulumi.get(self, "limit_cpu")
 
     @property
     @pulumi.getter(name="limitMemory")
     def limit_memory(self) -> Optional[str]:
-        """
-        Sidecar injector Pods on the throttle.
-        """
         return pulumi.get(self, "limit_memory")
 
     @property
     @pulumi.getter(name="requestCpu")
     def request_cpu(self) -> Optional[str]:
-        """
-        Sidecar injector Pods on the requested resource.
-        """
         return pulumi.get(self, "request_cpu")
 
     @property
     @pulumi.getter(name="requestMemory")
     def request_memory(self) -> Optional[str]:
-        """
-        Sidecar injector Pods on the requested resource.
-        """
         return pulumi.get(self, "request_memory")
 
     @property
@@ -951,10 +837,6 @@ class ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration(dict):
     def __init__(__self__, *,
                  enabled: Optional[bool] = None,
                  exclude_namespaces: Optional[str] = None):
-        """
-        :param bool enabled: Enable CNI.
-        :param str exclude_namespaces: The excluded namespace.
-        """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
         if exclude_namespaces is not None:
@@ -963,17 +845,11 @@ class ServiceMeshMeshConfigSidecarInjectorInitCniConfiguration(dict):
     @property
     @pulumi.getter
     def enabled(self) -> Optional[bool]:
-        """
-        Enable CNI.
-        """
         return pulumi.get(self, "enabled")
 
     @property
     @pulumi.getter(name="excludeNamespaces")
     def exclude_namespaces(self) -> Optional[str]:
-        """
-        The excluded namespace.
-        """
         return pulumi.get(self, "exclude_namespaces")
 
 
@@ -2136,9 +2012,10 @@ class GetVersionsVersionResult(dict):
                  id: str,
                  version: str):
         """
-        :param str edition: The edition of the ASM instance.
-        :param str id: The ASM version id. It formats as `<edition>:<version>`.
-        :param str version: The AMS version.
+        :param str edition: The edition of the ASM instance. Valid values:
+               - Default: Standard Edition
+               - Pro: Professional Edition
+        :param str version: A list of Service Mesh Service Meshes. Each element contains the following attributes:
         """
         pulumi.set(__self__, "edition", edition)
         pulumi.set(__self__, "id", id)
@@ -2148,23 +2025,22 @@ class GetVersionsVersionResult(dict):
     @pulumi.getter
     def edition(self) -> str:
         """
-        The edition of the ASM instance.
+        The edition of the ASM instance. Valid values:
+        - Default: Standard Edition
+        - Pro: Professional Edition
         """
         return pulumi.get(self, "edition")
 
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The ASM version id. It formats as `<edition>:<version>`.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter
     def version(self) -> str:
         """
-        The AMS version.
+        A list of Service Mesh Service Meshes. Each element contains the following attributes:
         """
         return pulumi.get(self, "version")
 

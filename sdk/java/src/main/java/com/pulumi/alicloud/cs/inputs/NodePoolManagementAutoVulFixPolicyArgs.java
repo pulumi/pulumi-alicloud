@@ -16,32 +16,16 @@ public final class NodePoolManagementAutoVulFixPolicyArgs extends com.pulumi.res
 
     public static final NodePoolManagementAutoVulFixPolicyArgs Empty = new NodePoolManagementAutoVulFixPolicyArgs();
 
-    /**
-     * Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
-     * 
-     */
     @Import(name="restartNode")
     private @Nullable Output<Boolean> restartNode;
 
-    /**
-     * @return Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
-     * 
-     */
     public Optional<Output<Boolean>> restartNode() {
         return Optional.ofNullable(this.restartNode);
     }
 
-    /**
-     * The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
-     * 
-     */
     @Import(name="vulLevel")
     private @Nullable Output<String> vulLevel;
 
-    /**
-     * @return The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
-     * 
-     */
     public Optional<Output<String>> vulLevel() {
         return Optional.ofNullable(this.vulLevel);
     }
@@ -71,44 +55,20 @@ public final class NodePoolManagementAutoVulFixPolicyArgs extends com.pulumi.res
             $ = new NodePoolManagementAutoVulFixPolicyArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param restartNode Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder restartNode(@Nullable Output<Boolean> restartNode) {
             $.restartNode = restartNode;
             return this;
         }
 
-        /**
-         * @param restartNode Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder restartNode(Boolean restartNode) {
             return restartNode(Output.of(restartNode));
         }
 
-        /**
-         * @param vulLevel The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
-         * 
-         * @return builder
-         * 
-         */
         public Builder vulLevel(@Nullable Output<String> vulLevel) {
             $.vulLevel = vulLevel;
             return this;
         }
 
-        /**
-         * @param vulLevel The severity levels of vulnerabilities that is allowed to automatically patch. Multiple severity levels are separated by commas (,).
-         * 
-         * @return builder
-         * 
-         */
         public Builder vulLevel(String vulLevel) {
             return vulLevel(Output.of(vulLevel));
         }

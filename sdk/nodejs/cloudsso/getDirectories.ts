@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -31,7 +30,6 @@ import * as utilities from "../utilities";
  * });
  * export const cloudSsoDirectoryId2 = nameRegex.then(nameRegex => nameRegex.directories?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDirectories(args?: GetDirectoriesArgs, opts?: pulumi.InvokeOptions): Promise<GetDirectoriesResult> {
     args = args || {};
@@ -93,7 +91,6 @@ export interface GetDirectoriesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -107,7 +104,6 @@ export interface GetDirectoriesResult {
  * });
  * export const cloudSsoDirectoryId2 = nameRegex.then(nameRegex => nameRegex.directories?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDirectoriesOutput(args?: GetDirectoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDirectoriesResult> {
     return pulumi.output(args).apply((a: any) => getDirectories(a, opts))

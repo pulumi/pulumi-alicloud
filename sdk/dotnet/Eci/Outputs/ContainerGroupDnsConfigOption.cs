@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
     [OutputType]
     public sealed class ContainerGroupDnsConfigOption
     {
-        /// <summary>
-        /// The name of the mounted volume.
-        /// </summary>
         public readonly string? Name;
-        /// <summary>
-        /// The value of the variable. The value can be 0 to 256 characters in length.
-        /// </summary>
         public readonly string? Value;
 
         [OutputConstructor]

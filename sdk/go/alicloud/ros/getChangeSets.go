@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,7 +47,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetChangeSets(ctx *pulumi.Context, args *GetChangeSetsArgs, opts ...pulumi.InvokeOption) (*GetChangeSetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetChangeSetsResult

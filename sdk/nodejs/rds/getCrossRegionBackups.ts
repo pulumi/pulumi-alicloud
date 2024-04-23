@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstRdsCrossRegionBackups = backups.then(backups => backups.backups?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCrossRegionBackups(args: GetCrossRegionBackupsArgs, opts?: pulumi.InvokeOptions): Promise<GetCrossRegionBackupsResult> {
 
@@ -115,7 +113,6 @@ export interface GetCrossRegionBackupsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -127,7 +124,6 @@ export interface GetCrossRegionBackupsResult {
  * });
  * export const firstRdsCrossRegionBackups = backups.then(backups => backups.backups?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCrossRegionBackupsOutput(args: GetCrossRegionBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCrossRegionBackupsResult> {
     return pulumi.output(args).apply((a: any) => getCrossRegionBackups(a, opts))

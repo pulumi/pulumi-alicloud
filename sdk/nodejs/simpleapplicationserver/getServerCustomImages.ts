@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  * });
  * export const simpleApplicationServerCustomImageId2 = nameRegex.then(nameRegex => nameRegex.images?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServerCustomImages(args?: GetServerCustomImagesArgs, opts?: pulumi.InvokeOptions): Promise<GetServerCustomImagesResult> {
     args = args || {};
@@ -83,7 +81,6 @@ export interface GetServerCustomImagesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -97,7 +94,6 @@ export interface GetServerCustomImagesResult {
  * });
  * export const simpleApplicationServerCustomImageId2 = nameRegex.then(nameRegex => nameRegex.images?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServerCustomImagesOutput(args?: GetServerCustomImagesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerCustomImagesResult> {
     return pulumi.output(args).apply((a: any) => getServerCustomImages(a, opts))

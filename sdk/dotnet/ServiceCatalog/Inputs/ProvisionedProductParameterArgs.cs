@@ -12,15 +12,9 @@ namespace Pulumi.AliCloud.ServiceCatalog.Inputs
 
     public sealed class ProvisionedProductParameterArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the parameter defined in the template.
-        /// </summary>
         [Input("parameterKey")]
         public Input<string>? ParameterKey { get; set; }
 
-        /// <summary>
-        /// The Template parameter value entered by the user.
-        /// </summary>
         [Input("parameterValue")]
         public Input<string>? ParameterValue { get; set; }
 

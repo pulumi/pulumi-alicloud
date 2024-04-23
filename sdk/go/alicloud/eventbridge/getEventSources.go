@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetEventSources(ctx *pulumi.Context, args *GetEventSourcesArgs, opts ...pulumi.InvokeOption) (*GetEventSourcesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEventSourcesResult

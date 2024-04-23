@@ -148,7 +148,6 @@ def get_transit_router_multicast_domains(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -160,7 +159,6 @@ def get_transit_router_multicast_domains(ids: Optional[Sequence[str]] = None,
         transit_router_id="your_transit_router_id")
     pulumi.export("cenTransitRouterMulticastDomainId1", name_regex.domains[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Transit Router Multicast Domain IDs.
@@ -209,7 +207,6 @@ def get_transit_router_multicast_domains_output(ids: Optional[pulumi.Input[Optio
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -221,7 +218,6 @@ def get_transit_router_multicast_domains_output(ids: Optional[pulumi.Input[Optio
         transit_router_id="your_transit_router_id")
     pulumi.export("cenTransitRouterMulticastDomainId1", name_regex.domains[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Transit Router Multicast Domain IDs.

@@ -94,14 +94,14 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * ProvisionType.
+     * ProvisionType. Valid values: `Manual`, `Synchronized`.
      * 
      */
     @Import(name="provisionType")
     private @Nullable Output<String> provisionType;
 
     /**
-     * @return ProvisionType.
+     * @return ProvisionType. Valid values: `Manual`, `Synchronized`.
      * 
      */
     public Optional<Output<String>> provisionType() {
@@ -109,14 +109,14 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * User status. Valid values: `Enabled` and `Disabled`.
+     * The status of user. Valid values: `Disabled`, `Enabled`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return User status. Valid values: `Enabled` and `Disabled`.
+     * @return The status of user. Valid values: `Disabled`, `Enabled`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -269,7 +269,7 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param provisionType ProvisionType.
+         * @param provisionType ProvisionType. Valid values: `Manual`, `Synchronized`.
          * 
          * @return builder
          * 
@@ -280,7 +280,7 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param provisionType ProvisionType.
+         * @param provisionType ProvisionType. Valid values: `Manual`, `Synchronized`.
          * 
          * @return builder
          * 
@@ -290,7 +290,7 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status User status. Valid values: `Enabled` and `Disabled`.
+         * @param status The status of user. Valid values: `Disabled`, `Enabled`.
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class GetUsersArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param status User status. Valid values: `Enabled` and `Disabled`.
+         * @param status The status of user. Valid values: `Disabled`, `Enabled`.
          * 
          * @return builder
          * 

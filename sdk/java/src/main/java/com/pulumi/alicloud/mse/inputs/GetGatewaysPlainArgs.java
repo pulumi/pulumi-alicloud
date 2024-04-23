@@ -92,14 +92,14 @@ public final class GetGatewaysPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The status of the gateway.
+     * The status of the gateway. Valid values: `0`, `1`, `2`, `3`, `4`, `6`, `8`, `9`, `10`, `11`, `12`, `13`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the gateway.
+     * @return The status of the gateway. Valid values: `0`, `1`, `2`, `3`, `4`, `6`, `8`, `9`, `10`, `11`, `12`, `13`.
      * 
      */
     public Optional<String> status() {
@@ -107,14 +107,14 @@ public final class GetGatewaysPlainArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
-     * The ID of the vpc.
+     * The ID of the VPC.
      * 
      */
     @Import(name="vpcId")
     private @Nullable String vpcId;
 
     /**
-     * @return The ID of the vpc.
+     * @return The ID of the VPC.
      * 
      */
     public Optional<String> vpcId() {
@@ -217,7 +217,7 @@ public final class GetGatewaysPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param status The status of the gateway.
+         * @param status The status of the gateway. Valid values: `0`, `1`, `2`, `3`, `4`, `6`, `8`, `9`, `10`, `11`, `12`, `13`.
          * 
          * @return builder
          * 
@@ -228,7 +228,7 @@ public final class GetGatewaysPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
-         * @param vpcId The ID of the vpc.
+         * @param vpcId The ID of the VPC.
          * 
          * @return builder
          * 

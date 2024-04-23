@@ -22,7 +22,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -55,7 +54,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 type Project struct {
 	pulumi.CustomResourceState
 
@@ -77,7 +75,7 @@ type Project struct {
 	SecurityProperties ProjectSecurityPropertiesOutput `pulumi:"securityProperties"`
 	// The status of the resource
 	Status pulumi.StringOutput `pulumi:"status"`
-	// Life cycle type.
+	// Project type
 	Type pulumi.StringOutput `pulumi:"type"`
 }
 
@@ -132,7 +130,7 @@ type projectState struct {
 	SecurityProperties *ProjectSecurityProperties `pulumi:"securityProperties"`
 	// The status of the resource
 	Status *string `pulumi:"status"`
-	// Life cycle type.
+	// Project type
 	Type *string `pulumi:"type"`
 }
 
@@ -155,7 +153,7 @@ type ProjectState struct {
 	SecurityProperties ProjectSecurityPropertiesPtrInput
 	// The status of the resource
 	Status pulumi.StringPtrInput
-	// Life cycle type.
+	// Project type
 	Type pulumi.StringPtrInput
 }
 
@@ -330,7 +328,7 @@ func (o ProjectOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }
 
-// Life cycle type.
+// Project type
 func (o ProjectOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

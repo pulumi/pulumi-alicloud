@@ -15,47 +15,23 @@ public final class ServerlessInstanceSecurityIpGroupArgs extends com.pulumi.reso
 
     public static final ServerlessInstanceSecurityIpGroupArgs Empty = new ServerlessInstanceSecurityIpGroupArgs();
 
-    /**
-     * The attribute of the IP whitelist. This parameter is empty by default.
-     * 
-     */
     @Import(name="securityIpGroupAttribute")
     private @Nullable Output<String> securityIpGroupAttribute;
 
-    /**
-     * @return The attribute of the IP whitelist. This parameter is empty by default.
-     * 
-     */
     public Optional<Output<String>> securityIpGroupAttribute() {
         return Optional.ofNullable(this.securityIpGroupAttribute);
     }
 
-    /**
-     * The name of the IP whitelist.
-     * 
-     */
     @Import(name="securityIpGroupName")
     private @Nullable Output<String> securityIpGroupName;
 
-    /**
-     * @return The name of the IP whitelist.
-     * 
-     */
     public Optional<Output<String>> securityIpGroupName() {
         return Optional.ofNullable(this.securityIpGroupName);
     }
 
-    /**
-     * The IP addresses in the whitelist.
-     * 
-     */
     @Import(name="securityIpList")
     private @Nullable Output<String> securityIpList;
 
-    /**
-     * @return The IP addresses in the whitelist.
-     * 
-     */
     public Optional<Output<String>> securityIpList() {
         return Optional.ofNullable(this.securityIpList);
     }
@@ -86,65 +62,29 @@ public final class ServerlessInstanceSecurityIpGroupArgs extends com.pulumi.reso
             $ = new ServerlessInstanceSecurityIpGroupArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param securityIpGroupAttribute The attribute of the IP whitelist. This parameter is empty by default.
-         * 
-         * @return builder
-         * 
-         */
         public Builder securityIpGroupAttribute(@Nullable Output<String> securityIpGroupAttribute) {
             $.securityIpGroupAttribute = securityIpGroupAttribute;
             return this;
         }
 
-        /**
-         * @param securityIpGroupAttribute The attribute of the IP whitelist. This parameter is empty by default.
-         * 
-         * @return builder
-         * 
-         */
         public Builder securityIpGroupAttribute(String securityIpGroupAttribute) {
             return securityIpGroupAttribute(Output.of(securityIpGroupAttribute));
         }
 
-        /**
-         * @param securityIpGroupName The name of the IP whitelist.
-         * 
-         * @return builder
-         * 
-         */
         public Builder securityIpGroupName(@Nullable Output<String> securityIpGroupName) {
             $.securityIpGroupName = securityIpGroupName;
             return this;
         }
 
-        /**
-         * @param securityIpGroupName The name of the IP whitelist.
-         * 
-         * @return builder
-         * 
-         */
         public Builder securityIpGroupName(String securityIpGroupName) {
             return securityIpGroupName(Output.of(securityIpGroupName));
         }
 
-        /**
-         * @param securityIpList The IP addresses in the whitelist.
-         * 
-         * @return builder
-         * 
-         */
         public Builder securityIpList(@Nullable Output<String> securityIpList) {
             $.securityIpList = securityIpList;
             return this;
         }
 
-        /**
-         * @param securityIpList The IP addresses in the whitelist.
-         * 
-         * @return builder
-         * 
-         */
         public Builder securityIpList(String securityIpList) {
             return securityIpList(Output.of(securityIpList));
         }

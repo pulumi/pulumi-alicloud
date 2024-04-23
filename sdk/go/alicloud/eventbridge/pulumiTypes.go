@@ -368,9 +368,7 @@ func (o ConnectionAuthParametersPtrOutput) OauthParameters() ConnectionAuthParam
 }
 
 type ConnectionAuthParametersApiKeyAuthParameters struct {
-	// The name of the API key.
-	ApiKeyName *string `pulumi:"apiKeyName"`
-	// The value of the API key.
+	ApiKeyName  *string `pulumi:"apiKeyName"`
 	ApiKeyValue *string `pulumi:"apiKeyValue"`
 }
 
@@ -386,9 +384,7 @@ type ConnectionAuthParametersApiKeyAuthParametersInput interface {
 }
 
 type ConnectionAuthParametersApiKeyAuthParametersArgs struct {
-	// The name of the API key.
-	ApiKeyName pulumi.StringPtrInput `pulumi:"apiKeyName"`
-	// The value of the API key.
+	ApiKeyName  pulumi.StringPtrInput `pulumi:"apiKeyName"`
 	ApiKeyValue pulumi.StringPtrInput `pulumi:"apiKeyValue"`
 }
 
@@ -469,12 +465,10 @@ func (o ConnectionAuthParametersApiKeyAuthParametersOutput) ToConnectionAuthPara
 	}).(ConnectionAuthParametersApiKeyAuthParametersPtrOutput)
 }
 
-// The name of the API key.
 func (o ConnectionAuthParametersApiKeyAuthParametersOutput) ApiKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersApiKeyAuthParameters) *string { return v.ApiKeyName }).(pulumi.StringPtrOutput)
 }
 
-// The value of the API key.
 func (o ConnectionAuthParametersApiKeyAuthParametersOutput) ApiKeyValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersApiKeyAuthParameters) *string { return v.ApiKeyValue }).(pulumi.StringPtrOutput)
 }
@@ -503,7 +497,6 @@ func (o ConnectionAuthParametersApiKeyAuthParametersPtrOutput) Elem() Connection
 	}).(ConnectionAuthParametersApiKeyAuthParametersOutput)
 }
 
-// The name of the API key.
 func (o ConnectionAuthParametersApiKeyAuthParametersPtrOutput) ApiKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthParametersApiKeyAuthParameters) *string {
 		if v == nil {
@@ -513,7 +506,6 @@ func (o ConnectionAuthParametersApiKeyAuthParametersPtrOutput) ApiKeyName() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The value of the API key.
 func (o ConnectionAuthParametersApiKeyAuthParametersPtrOutput) ApiKeyValue() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthParametersApiKeyAuthParameters) *string {
 		if v == nil {
@@ -524,9 +516,7 @@ func (o ConnectionAuthParametersApiKeyAuthParametersPtrOutput) ApiKeyValue() pul
 }
 
 type ConnectionAuthParametersBasicAuthParameters struct {
-	// The password for basic authentication.
 	Password *string `pulumi:"password"`
-	// The username for basic authentication.
 	Username *string `pulumi:"username"`
 }
 
@@ -542,9 +532,7 @@ type ConnectionAuthParametersBasicAuthParametersInput interface {
 }
 
 type ConnectionAuthParametersBasicAuthParametersArgs struct {
-	// The password for basic authentication.
 	Password pulumi.StringPtrInput `pulumi:"password"`
-	// The username for basic authentication.
 	Username pulumi.StringPtrInput `pulumi:"username"`
 }
 
@@ -625,12 +613,10 @@ func (o ConnectionAuthParametersBasicAuthParametersOutput) ToConnectionAuthParam
 	}).(ConnectionAuthParametersBasicAuthParametersPtrOutput)
 }
 
-// The password for basic authentication.
 func (o ConnectionAuthParametersBasicAuthParametersOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersBasicAuthParameters) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
 
-// The username for basic authentication.
 func (o ConnectionAuthParametersBasicAuthParametersOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersBasicAuthParameters) *string { return v.Username }).(pulumi.StringPtrOutput)
 }
@@ -659,7 +645,6 @@ func (o ConnectionAuthParametersBasicAuthParametersPtrOutput) Elem() ConnectionA
 	}).(ConnectionAuthParametersBasicAuthParametersOutput)
 }
 
-// The password for basic authentication.
 func (o ConnectionAuthParametersBasicAuthParametersPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthParametersBasicAuthParameters) *string {
 		if v == nil {
@@ -669,7 +654,6 @@ func (o ConnectionAuthParametersBasicAuthParametersPtrOutput) Password() pulumi.
 	}).(pulumi.StringPtrOutput)
 }
 
-// The username for basic authentication.
 func (o ConnectionAuthParametersBasicAuthParametersPtrOutput) Username() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthParametersBasicAuthParameters) *string {
 		if v == nil {
@@ -680,14 +664,10 @@ func (o ConnectionAuthParametersBasicAuthParametersPtrOutput) Username() pulumi.
 }
 
 type ConnectionAuthParametersOauthParameters struct {
-	// The IP address of the authorized endpoint.
-	AuthorizationEndpoint *string `pulumi:"authorizationEndpoint"`
-	// The parameters that are configured for the client. See `clientParameters` below.
-	ClientParameters *ConnectionAuthParametersOauthParametersClientParameters `pulumi:"clientParameters"`
-	// The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
-	HttpMethod *string `pulumi:"httpMethod"`
-	// The request parameters that are configured for OAuth authentication. See `oauthHttpParameters` below.
-	OauthHttpParameters *ConnectionAuthParametersOauthParametersOauthHttpParameters `pulumi:"oauthHttpParameters"`
+	AuthorizationEndpoint *string                                                     `pulumi:"authorizationEndpoint"`
+	ClientParameters      *ConnectionAuthParametersOauthParametersClientParameters    `pulumi:"clientParameters"`
+	HttpMethod            *string                                                     `pulumi:"httpMethod"`
+	OauthHttpParameters   *ConnectionAuthParametersOauthParametersOauthHttpParameters `pulumi:"oauthHttpParameters"`
 }
 
 // ConnectionAuthParametersOauthParametersInput is an input type that accepts ConnectionAuthParametersOauthParametersArgs and ConnectionAuthParametersOauthParametersOutput values.
@@ -702,14 +682,10 @@ type ConnectionAuthParametersOauthParametersInput interface {
 }
 
 type ConnectionAuthParametersOauthParametersArgs struct {
-	// The IP address of the authorized endpoint.
-	AuthorizationEndpoint pulumi.StringPtrInput `pulumi:"authorizationEndpoint"`
-	// The parameters that are configured for the client. See `clientParameters` below.
-	ClientParameters ConnectionAuthParametersOauthParametersClientParametersPtrInput `pulumi:"clientParameters"`
-	// The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
-	HttpMethod pulumi.StringPtrInput `pulumi:"httpMethod"`
-	// The request parameters that are configured for OAuth authentication. See `oauthHttpParameters` below.
-	OauthHttpParameters ConnectionAuthParametersOauthParametersOauthHttpParametersPtrInput `pulumi:"oauthHttpParameters"`
+	AuthorizationEndpoint pulumi.StringPtrInput                                              `pulumi:"authorizationEndpoint"`
+	ClientParameters      ConnectionAuthParametersOauthParametersClientParametersPtrInput    `pulumi:"clientParameters"`
+	HttpMethod            pulumi.StringPtrInput                                              `pulumi:"httpMethod"`
+	OauthHttpParameters   ConnectionAuthParametersOauthParametersOauthHttpParametersPtrInput `pulumi:"oauthHttpParameters"`
 }
 
 func (ConnectionAuthParametersOauthParametersArgs) ElementType() reflect.Type {
@@ -789,24 +765,20 @@ func (o ConnectionAuthParametersOauthParametersOutput) ToConnectionAuthParameter
 	}).(ConnectionAuthParametersOauthParametersPtrOutput)
 }
 
-// The IP address of the authorized endpoint.
 func (o ConnectionAuthParametersOauthParametersOutput) AuthorizationEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParameters) *string { return v.AuthorizationEndpoint }).(pulumi.StringPtrOutput)
 }
 
-// The parameters that are configured for the client. See `clientParameters` below.
 func (o ConnectionAuthParametersOauthParametersOutput) ClientParameters() ConnectionAuthParametersOauthParametersClientParametersPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParameters) *ConnectionAuthParametersOauthParametersClientParameters {
 		return v.ClientParameters
 	}).(ConnectionAuthParametersOauthParametersClientParametersPtrOutput)
 }
 
-// The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
 func (o ConnectionAuthParametersOauthParametersOutput) HttpMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParameters) *string { return v.HttpMethod }).(pulumi.StringPtrOutput)
 }
 
-// The request parameters that are configured for OAuth authentication. See `oauthHttpParameters` below.
 func (o ConnectionAuthParametersOauthParametersOutput) OauthHttpParameters() ConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParameters) *ConnectionAuthParametersOauthParametersOauthHttpParameters {
 		return v.OauthHttpParameters
@@ -837,7 +809,6 @@ func (o ConnectionAuthParametersOauthParametersPtrOutput) Elem() ConnectionAuthP
 	}).(ConnectionAuthParametersOauthParametersOutput)
 }
 
-// The IP address of the authorized endpoint.
 func (o ConnectionAuthParametersOauthParametersPtrOutput) AuthorizationEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthParametersOauthParameters) *string {
 		if v == nil {
@@ -847,7 +818,6 @@ func (o ConnectionAuthParametersOauthParametersPtrOutput) AuthorizationEndpoint(
 	}).(pulumi.StringPtrOutput)
 }
 
-// The parameters that are configured for the client. See `clientParameters` below.
 func (o ConnectionAuthParametersOauthParametersPtrOutput) ClientParameters() ConnectionAuthParametersOauthParametersClientParametersPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthParametersOauthParameters) *ConnectionAuthParametersOauthParametersClientParameters {
 		if v == nil {
@@ -857,7 +827,6 @@ func (o ConnectionAuthParametersOauthParametersPtrOutput) ClientParameters() Con
 	}).(ConnectionAuthParametersOauthParametersClientParametersPtrOutput)
 }
 
-// The HTTP request method. Valid values: `GET`, `POST`, `HEAD`, `DELETE`, `PUT`, `PATCH`.
 func (o ConnectionAuthParametersOauthParametersPtrOutput) HttpMethod() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthParametersOauthParameters) *string {
 		if v == nil {
@@ -867,7 +836,6 @@ func (o ConnectionAuthParametersOauthParametersPtrOutput) HttpMethod() pulumi.St
 	}).(pulumi.StringPtrOutput)
 }
 
-// The request parameters that are configured for OAuth authentication. See `oauthHttpParameters` below.
 func (o ConnectionAuthParametersOauthParametersPtrOutput) OauthHttpParameters() ConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthParametersOauthParameters) *ConnectionAuthParametersOauthParametersOauthHttpParameters {
 		if v == nil {
@@ -878,9 +846,7 @@ func (o ConnectionAuthParametersOauthParametersPtrOutput) OauthHttpParameters() 
 }
 
 type ConnectionAuthParametersOauthParametersClientParameters struct {
-	// The ID of the client.
-	ClientId *string `pulumi:"clientId"`
-	// The AccessKey secret of the client.
+	ClientId     *string `pulumi:"clientId"`
 	ClientSecret *string `pulumi:"clientSecret"`
 }
 
@@ -896,9 +862,7 @@ type ConnectionAuthParametersOauthParametersClientParametersInput interface {
 }
 
 type ConnectionAuthParametersOauthParametersClientParametersArgs struct {
-	// The ID of the client.
-	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
-	// The AccessKey secret of the client.
+	ClientId     pulumi.StringPtrInput `pulumi:"clientId"`
 	ClientSecret pulumi.StringPtrInput `pulumi:"clientSecret"`
 }
 
@@ -979,12 +943,10 @@ func (o ConnectionAuthParametersOauthParametersClientParametersOutput) ToConnect
 	}).(ConnectionAuthParametersOauthParametersClientParametersPtrOutput)
 }
 
-// The ID of the client.
 func (o ConnectionAuthParametersOauthParametersClientParametersOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParametersClientParameters) *string { return v.ClientId }).(pulumi.StringPtrOutput)
 }
 
-// The AccessKey secret of the client.
 func (o ConnectionAuthParametersOauthParametersClientParametersOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParametersClientParameters) *string { return v.ClientSecret }).(pulumi.StringPtrOutput)
 }
@@ -1013,7 +975,6 @@ func (o ConnectionAuthParametersOauthParametersClientParametersPtrOutput) Elem()
 	}).(ConnectionAuthParametersOauthParametersClientParametersOutput)
 }
 
-// The ID of the client.
 func (o ConnectionAuthParametersOauthParametersClientParametersPtrOutput) ClientId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthParametersOauthParametersClientParameters) *string {
 		if v == nil {
@@ -1023,7 +984,6 @@ func (o ConnectionAuthParametersOauthParametersClientParametersPtrOutput) Client
 	}).(pulumi.StringPtrOutput)
 }
 
-// The AccessKey secret of the client.
 func (o ConnectionAuthParametersOauthParametersClientParametersPtrOutput) ClientSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthParametersOauthParametersClientParameters) *string {
 		if v == nil {
@@ -1034,11 +994,8 @@ func (o ConnectionAuthParametersOauthParametersClientParametersPtrOutput) Client
 }
 
 type ConnectionAuthParametersOauthParametersOauthHttpParameters struct {
-	// The parameters that are configured for the request body. See `bodyParameters` below.
-	BodyParameters []ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter `pulumi:"bodyParameters"`
-	// The parameters that are configured for the request header. See `headerParameters` below.
-	HeaderParameters []ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter `pulumi:"headerParameters"`
-	// The parameters that are configured for the request path. See `queryStringParameters` below.
+	BodyParameters        []ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter        `pulumi:"bodyParameters"`
+	HeaderParameters      []ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter      `pulumi:"headerParameters"`
 	QueryStringParameters []ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter `pulumi:"queryStringParameters"`
 }
 
@@ -1054,11 +1011,8 @@ type ConnectionAuthParametersOauthParametersOauthHttpParametersInput interface {
 }
 
 type ConnectionAuthParametersOauthParametersOauthHttpParametersArgs struct {
-	// The parameters that are configured for the request body. See `bodyParameters` below.
-	BodyParameters ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArrayInput `pulumi:"bodyParameters"`
-	// The parameters that are configured for the request header. See `headerParameters` below.
-	HeaderParameters ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArrayInput `pulumi:"headerParameters"`
-	// The parameters that are configured for the request path. See `queryStringParameters` below.
+	BodyParameters        ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArrayInput        `pulumi:"bodyParameters"`
+	HeaderParameters      ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArrayInput      `pulumi:"headerParameters"`
 	QueryStringParameters ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArrayInput `pulumi:"queryStringParameters"`
 }
 
@@ -1139,21 +1093,18 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersOutput) ToConn
 	}).(ConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutput)
 }
 
-// The parameters that are configured for the request body. See `bodyParameters` below.
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersOutput) BodyParameters() ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArrayOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParametersOauthHttpParameters) []ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter {
 		return v.BodyParameters
 	}).(ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArrayOutput)
 }
 
-// The parameters that are configured for the request header. See `headerParameters` below.
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersOutput) HeaderParameters() ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArrayOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParametersOauthHttpParameters) []ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter {
 		return v.HeaderParameters
 	}).(ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArrayOutput)
 }
 
-// The parameters that are configured for the request path. See `queryStringParameters` below.
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersOutput) QueryStringParameters() ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArrayOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParametersOauthHttpParameters) []ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter {
 		return v.QueryStringParameters
@@ -1184,7 +1135,6 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutput) Ele
 	}).(ConnectionAuthParametersOauthParametersOauthHttpParametersOutput)
 }
 
-// The parameters that are configured for the request body. See `bodyParameters` below.
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutput) BodyParameters() ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArrayOutput {
 	return o.ApplyT(func(v *ConnectionAuthParametersOauthParametersOauthHttpParameters) []ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter {
 		if v == nil {
@@ -1194,7 +1144,6 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutput) Bod
 	}).(ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArrayOutput)
 }
 
-// The parameters that are configured for the request header. See `headerParameters` below.
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutput) HeaderParameters() ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArrayOutput {
 	return o.ApplyT(func(v *ConnectionAuthParametersOauthParametersOauthHttpParameters) []ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter {
 		if v == nil {
@@ -1204,7 +1153,6 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutput) Hea
 	}).(ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArrayOutput)
 }
 
-// The parameters that are configured for the request path. See `queryStringParameters` below.
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutput) QueryStringParameters() ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArrayOutput {
 	return o.ApplyT(func(v *ConnectionAuthParametersOauthParametersOauthHttpParameters) []ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter {
 		if v == nil {
@@ -1215,12 +1163,9 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersPtrOutput) Que
 }
 
 type ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter struct {
-	// Specifies whether to enable authentication.
 	IsValueSecret *string `pulumi:"isValueSecret"`
-	// The key of the request path.
-	Key *string `pulumi:"key"`
-	// The key of the request path.
-	Value *string `pulumi:"value"`
+	Key           *string `pulumi:"key"`
+	Value         *string `pulumi:"value"`
 }
 
 // ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterInput is an input type that accepts ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs and ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterOutput values.
@@ -1235,12 +1180,9 @@ type ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterInpu
 }
 
 type ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs struct {
-	// Specifies whether to enable authentication.
 	IsValueSecret pulumi.StringPtrInput `pulumi:"isValueSecret"`
-	// The key of the request path.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The key of the request path.
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	Key           pulumi.StringPtrInput `pulumi:"key"`
+	Value         pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterArgs) ElementType() reflect.Type {
@@ -1294,19 +1236,16 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterO
 	return o
 }
 
-// Specifies whether to enable authentication.
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterOutput) IsValueSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter) *string {
 		return v.IsValueSecret
 	}).(pulumi.StringPtrOutput)
 }
 
-// The key of the request path.
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// The key of the request path.
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameter) *string {
 		return v.Value
@@ -1334,12 +1273,9 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersBodyParameterA
 }
 
 type ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter struct {
-	// Specifies whether to enable authentication.
 	IsValueSecret *string `pulumi:"isValueSecret"`
-	// The key of the request path.
-	Key *string `pulumi:"key"`
-	// The key of the request path.
-	Value *string `pulumi:"value"`
+	Key           *string `pulumi:"key"`
+	Value         *string `pulumi:"value"`
 }
 
 // ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterInput is an input type that accepts ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs and ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterOutput values.
@@ -1354,12 +1290,9 @@ type ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterIn
 }
 
 type ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs struct {
-	// Specifies whether to enable authentication.
 	IsValueSecret pulumi.StringPtrInput `pulumi:"isValueSecret"`
-	// The key of the request path.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The key of the request path.
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	Key           pulumi.StringPtrInput `pulumi:"key"`
+	Value         pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterArgs) ElementType() reflect.Type {
@@ -1413,21 +1346,18 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParamete
 	return o
 }
 
-// Specifies whether to enable authentication.
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterOutput) IsValueSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter) *string {
 		return v.IsValueSecret
 	}).(pulumi.StringPtrOutput)
 }
 
-// The key of the request path.
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter) *string {
 		return v.Key
 	}).(pulumi.StringPtrOutput)
 }
 
-// The key of the request path.
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameterOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParameter) *string {
 		return v.Value
@@ -1455,12 +1385,9 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersHeaderParamete
 }
 
 type ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter struct {
-	// Specifies whether to enable authentication.
 	IsValueSecret *string `pulumi:"isValueSecret"`
-	// The key of the request path.
-	Key *string `pulumi:"key"`
-	// The key of the request path.
-	Value *string `pulumi:"value"`
+	Key           *string `pulumi:"key"`
+	Value         *string `pulumi:"value"`
 }
 
 // ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterInput is an input type that accepts ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs and ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterOutput values.
@@ -1475,12 +1402,9 @@ type ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParame
 }
 
 type ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs struct {
-	// Specifies whether to enable authentication.
 	IsValueSecret pulumi.StringPtrInput `pulumi:"isValueSecret"`
-	// The key of the request path.
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// The key of the request path.
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	Key           pulumi.StringPtrInput `pulumi:"key"`
+	Value         pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterArgs) ElementType() reflect.Type {
@@ -1534,21 +1458,18 @@ func (o ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringPar
 	return o
 }
 
-// Specifies whether to enable authentication.
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterOutput) IsValueSecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter) *string {
 		return v.IsValueSecret
 	}).(pulumi.StringPtrOutput)
 }
 
-// The key of the request path.
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter) *string {
 		return v.Key
 	}).(pulumi.StringPtrOutput)
 }
 
-// The key of the request path.
 func (o ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameterOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthParametersOauthParametersOauthHttpParametersQueryStringParameter) *string {
 		return v.Value
@@ -1915,7 +1836,6 @@ func (o RuleTargetArrayOutput) Index(i pulumi.IntInput) RuleTargetOutput {
 }
 
 type RuleTargetDeadLetterQueue struct {
-	// The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
 	Arn *string `pulumi:"arn"`
 }
 
@@ -1931,7 +1851,6 @@ type RuleTargetDeadLetterQueueInput interface {
 }
 
 type RuleTargetDeadLetterQueueArgs struct {
-	// The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
 	Arn pulumi.StringPtrInput `pulumi:"arn"`
 }
 
@@ -2012,7 +1931,6 @@ func (o RuleTargetDeadLetterQueueOutput) ToRuleTargetDeadLetterQueuePtrOutputWit
 	}).(RuleTargetDeadLetterQueuePtrOutput)
 }
 
-// The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
 func (o RuleTargetDeadLetterQueueOutput) Arn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleTargetDeadLetterQueue) *string { return v.Arn }).(pulumi.StringPtrOutput)
 }
@@ -2041,7 +1959,6 @@ func (o RuleTargetDeadLetterQueuePtrOutput) Elem() RuleTargetDeadLetterQueueOutp
 	}).(RuleTargetDeadLetterQueueOutput)
 }
 
-// The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
 func (o RuleTargetDeadLetterQueuePtrOutput) Arn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RuleTargetDeadLetterQueue) *string {
 		if v == nil {
@@ -2052,19 +1969,10 @@ func (o RuleTargetDeadLetterQueuePtrOutput) Arn() pulumi.StringPtrOutput {
 }
 
 type RuleTargetParamList struct {
-	// The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
-	Form string `pulumi:"form"`
-	// The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
-	ResourceKey string `pulumi:"resourceKey"`
-	// The template of the event target parameter.
-	Template *string `pulumi:"template"`
-	// The value of the event target parameter.
-	//
-	// > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
-	//
-	// In order to fix the diff, from version 1.160.0, this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
-	// If you want to set `resourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.
-	Value *string `pulumi:"value"`
+	Form        string  `pulumi:"form"`
+	ResourceKey string  `pulumi:"resourceKey"`
+	Template    *string `pulumi:"template"`
+	Value       *string `pulumi:"value"`
 }
 
 // RuleTargetParamListInput is an input type that accepts RuleTargetParamListArgs and RuleTargetParamListOutput values.
@@ -2079,19 +1987,10 @@ type RuleTargetParamListInput interface {
 }
 
 type RuleTargetParamListArgs struct {
-	// The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
-	Form pulumi.StringInput `pulumi:"form"`
-	// The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
-	ResourceKey pulumi.StringInput `pulumi:"resourceKey"`
-	// The template of the event target parameter.
-	Template pulumi.StringPtrInput `pulumi:"template"`
-	// The value of the event target parameter.
-	//
-	// > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
-	//
-	// In order to fix the diff, from version 1.160.0, this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
-	// If you want to set `resourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.
-	Value pulumi.StringPtrInput `pulumi:"value"`
+	Form        pulumi.StringInput    `pulumi:"form"`
+	ResourceKey pulumi.StringInput    `pulumi:"resourceKey"`
+	Template    pulumi.StringPtrInput `pulumi:"template"`
+	Value       pulumi.StringPtrInput `pulumi:"value"`
 }
 
 func (RuleTargetParamListArgs) ElementType() reflect.Type {
@@ -2145,27 +2044,18 @@ func (o RuleTargetParamListOutput) ToRuleTargetParamListOutputWithContext(ctx co
 	return o
 }
 
-// The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
 func (o RuleTargetParamListOutput) Form() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleTargetParamList) string { return v.Form }).(pulumi.StringOutput)
 }
 
-// The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
 func (o RuleTargetParamListOutput) ResourceKey() pulumi.StringOutput {
 	return o.ApplyT(func(v RuleTargetParamList) string { return v.ResourceKey }).(pulumi.StringOutput)
 }
 
-// The template of the event target parameter.
 func (o RuleTargetParamListOutput) Template() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleTargetParamList) *string { return v.Template }).(pulumi.StringPtrOutput)
 }
 
-// The value of the event target parameter.
-//
-// > **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
-//
-// In order to fix the diff, from version 1.160.0, this resource has removed the param which `resourceKey = "IsBase64Encode"` and `value = "false"`.
-// If you want to set `resourceKey = "IsBase64Encode"`, please avoid to set `value = "false"`.
 func (o RuleTargetParamListOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RuleTargetParamList) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

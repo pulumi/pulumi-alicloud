@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -98,7 +97,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetApplications(ctx *pulumi.Context, args *GetApplicationsArgs, opts ...pulumi.InvokeOption) (*GetApplicationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetApplicationsResult
@@ -129,7 +127,7 @@ type GetApplicationsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The reverse.
 	Reverse *bool `pulumi:"reverse"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `RUNNING`, `STOPPED`,`UNKNOWN`.
 	Status *string `pulumi:"status"`
 }
 
@@ -183,7 +181,7 @@ type GetApplicationsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The reverse.
 	Reverse pulumi.BoolPtrInput `pulumi:"reverse"`
-	// The status of the resource.
+	// The status of the resource. Valid values: `RUNNING`, `STOPPED`,`UNKNOWN`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

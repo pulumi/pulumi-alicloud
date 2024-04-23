@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHybridMonitorDatasDataValue {
-    /**
-     * @return The timestamp that indicates the time when the metric value is collected. Unit: seconds.
-     * 
-     */
     private String ts;
-    /**
-     * @return Label value.
-     * 
-     */
     private String value;
 
     private GetHybridMonitorDatasDataValue() {}
-    /**
-     * @return The timestamp that indicates the time when the metric value is collected. Unit: seconds.
-     * 
-     */
     public String ts() {
         return this.ts;
     }
-    /**
-     * @return Label value.
-     * 
-     */
     public String value() {
         return this.value;
     }

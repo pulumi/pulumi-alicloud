@@ -98,7 +98,6 @@ def get_policy_document(output_file: Optional[str] = None,
 
     ### Basic Example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -117,13 +116,11 @@ def get_policy_document(output_file: Optional[str] = None,
         policy_document=basic_example.document,
         force=True)
     ```
-    <!--End PulumiCodeChooser -->
 
     `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
 
     ### Example Multiple Condition Keys and Values
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -176,13 +173,11 @@ def get_policy_document(output_file: Optional[str] = None,
         policy_document=multiple_condition.document,
         force=True)
     ```
-    <!--End PulumiCodeChooser -->
 
     `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
 
     ### Example Assume-Role Policy with RAM Principal
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -200,13 +195,11 @@ def get_policy_document(output_file: Optional[str] = None,
         document=ram_example.document,
         force=True)
     ```
-    <!--End PulumiCodeChooser -->
 
     `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
 
     ### Example Assume-Role Policy with Service Principal
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -224,13 +217,11 @@ def get_policy_document(output_file: Optional[str] = None,
         document=service_example.document,
         force=True)
     ```
-    <!--End PulumiCodeChooser -->
 
     `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
 
     ### Example Assume-Role Policy with Federated Principal
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -253,7 +244,6 @@ def get_policy_document(output_file: Optional[str] = None,
         document=federated_example.document,
         force=True)
     ```
-    <!--End PulumiCodeChooser -->
 
     `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
 
@@ -291,7 +281,6 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
 
     ### Basic Example
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -310,13 +299,11 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
         policy_document=basic_example.document,
         force=True)
     ```
-    <!--End PulumiCodeChooser -->
 
     `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
 
     ### Example Multiple Condition Keys and Values
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -369,13 +356,11 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
         policy_document=multiple_condition.document,
         force=True)
     ```
-    <!--End PulumiCodeChooser -->
 
     `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
 
     ### Example Assume-Role Policy with RAM Principal
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -393,13 +378,11 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
         document=ram_example.document,
         force=True)
     ```
-    <!--End PulumiCodeChooser -->
 
     `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
 
     ### Example Assume-Role Policy with Service Principal
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -417,13 +400,11 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
         document=service_example.document,
         force=True)
     ```
-    <!--End PulumiCodeChooser -->
 
     `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
 
     ### Example Assume-Role Policy with Federated Principal
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -446,7 +427,6 @@ def get_policy_document_output(output_file: Optional[pulumi.Input[Optional[str]]
         document=federated_example.document,
         force=True)
     ```
-    <!--End PulumiCodeChooser -->
 
     `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
 

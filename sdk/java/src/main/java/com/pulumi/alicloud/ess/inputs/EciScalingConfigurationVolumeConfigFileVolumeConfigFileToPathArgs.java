@@ -15,32 +15,16 @@ public final class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath
 
     public static final EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs Empty = new EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs();
 
-    /**
-     * The content of the configuration file. Maximum size: 32 KB.
-     * 
-     */
     @Import(name="content")
     private @Nullable Output<String> content;
 
-    /**
-     * @return The content of the configuration file. Maximum size: 32 KB.
-     * 
-     */
     public Optional<Output<String>> content() {
         return Optional.ofNullable(this.content);
     }
 
-    /**
-     * The relative file path.
-     * 
-     */
     @Import(name="path")
     private @Nullable Output<String> path;
 
-    /**
-     * @return The relative file path.
-     * 
-     */
     public Optional<Output<String>> path() {
         return Optional.ofNullable(this.path);
     }
@@ -70,44 +54,20 @@ public final class EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPath
             $ = new EciScalingConfigurationVolumeConfigFileVolumeConfigFileToPathArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param content The content of the configuration file. Maximum size: 32 KB.
-         * 
-         * @return builder
-         * 
-         */
         public Builder content(@Nullable Output<String> content) {
             $.content = content;
             return this;
         }
 
-        /**
-         * @param content The content of the configuration file. Maximum size: 32 KB.
-         * 
-         * @return builder
-         * 
-         */
         public Builder content(String content) {
             return content(Output.of(content));
         }
 
-        /**
-         * @param path The relative file path.
-         * 
-         * @return builder
-         * 
-         */
         public Builder path(@Nullable Output<String> path) {
             $.path = path;
             return this;
         }
 
-        /**
-         * @param path The relative file path.
-         * 
-         * @return builder
-         * 
-         */
         public Builder path(String path) {
             return path(Output.of(path));
         }

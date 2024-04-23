@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Cdn
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Pulumi.AliCloud.Cdn
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetBlockedRegionsResult> InvokeAsync(GetBlockedRegionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBlockedRegionsResult>("alicloud:cdn/getBlockedRegions:getBlockedRegions", args ?? new GetBlockedRegionsArgs(), options.WithDefaults());
@@ -50,7 +48,6 @@ namespace Pulumi.AliCloud.Cdn
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -66,7 +63,6 @@ namespace Pulumi.AliCloud.Cdn
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetBlockedRegionsResult> Invoke(GetBlockedRegionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBlockedRegionsResult>("alicloud:cdn/getBlockedRegions:getBlockedRegions", args ?? new GetBlockedRegionsInvokeArgs(), options.WithDefaults());

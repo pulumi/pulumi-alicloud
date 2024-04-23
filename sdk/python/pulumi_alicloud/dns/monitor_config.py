@@ -303,7 +303,6 @@ class MonitorConfig(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -361,7 +360,6 @@ class MonitorConfig(pulumi.CustomResource):
                 isp_code="465",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -399,7 +397,6 @@ class MonitorConfig(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -457,7 +454,6 @@ class MonitorConfig(pulumi.CustomResource):
                 isp_code="465",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class NodePoolManagementAutoRepairPolicy {
-    /**
-     * @return Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
-     * 
-     */
     private @Nullable Boolean restartNode;
 
     private NodePoolManagementAutoRepairPolicy() {}
-    /**
-     * @return Specifies whether to automatically restart nodes after patching CVE vulnerabilities. Valid values: `true`, `false`.
-     * 
-     */
     public Optional<Boolean> restartNode() {
         return Optional.ofNullable(this.restartNode);
     }

@@ -178,12 +178,6 @@ class ServiceGroupMonitoringAgentProcessAlertConfigTargetList(dict):
                  json_params: Optional[str] = None,
                  level: Optional[str] = None,
                  target_list_id: Optional[str] = None):
-        """
-        :param str arn: The Alibaba Cloud Resource Name (ARN) of the resource.
-        :param str json_params: The parameters of the alert callback. Specify the parameters in the JSON format.
-        :param str level: The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
-        :param str target_list_id: The ID of the resource for which alerts are triggered.
-        """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
         if json_params is not None:
@@ -196,33 +190,21 @@ class ServiceGroupMonitoringAgentProcessAlertConfigTargetList(dict):
     @property
     @pulumi.getter
     def arn(self) -> Optional[str]:
-        """
-        The Alibaba Cloud Resource Name (ARN) of the resource.
-        """
         return pulumi.get(self, "arn")
 
     @property
     @pulumi.getter(name="jsonParams")
     def json_params(self) -> Optional[str]:
-        """
-        The parameters of the alert callback. Specify the parameters in the JSON format.
-        """
         return pulumi.get(self, "json_params")
 
     @property
     @pulumi.getter
     def level(self) -> Optional[str]:
-        """
-        The alert level. Valid values: `CRITICAL`, `WARN`, `INFO`.
-        """
         return pulumi.get(self, "level")
 
     @property
     @pulumi.getter(name="targetListId")
     def target_list_id(self) -> Optional[str]:
-        """
-        The ID of the resource for which alerts are triggered.
-        """
         return pulumi.get(self, "target_list_id")
 
 

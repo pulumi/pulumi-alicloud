@@ -12,9 +12,6 @@ namespace Pulumi.AliCloud.Sae.Inputs
 
     public sealed class ApplicationReadinessV2TcpSocketArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The port.
-        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 

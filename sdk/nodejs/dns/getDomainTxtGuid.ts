@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * export const rr = _this.then(_this => _this.rr);
  * export const value = _this.then(_this => _this.value);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDomainTxtGuid(args: GetDomainTxtGuidArgs, opts?: pulumi.InvokeOptions): Promise<GetDomainTxtGuidResult> {
 
@@ -86,7 +84,6 @@ export interface GetDomainTxtGuidResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -98,7 +95,6 @@ export interface GetDomainTxtGuidResult {
  * export const rr = _this.then(_this => _this.rr);
  * export const value = _this.then(_this => _this.value);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDomainTxtGuidOutput(args: GetDomainTxtGuidOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDomainTxtGuidResult> {
     return pulumi.output(args).apply((a: any) => getDomainTxtGuid(a, opts))

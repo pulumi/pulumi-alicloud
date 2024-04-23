@@ -260,7 +260,6 @@ class InstanceAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -278,7 +277,6 @@ class InstanceAttachment(pulumi.CustomResource):
             child_instance_type="VPC",
             child_instance_region_id=default.regions[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -314,7 +312,6 @@ class InstanceAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -332,7 +329,6 @@ class InstanceAttachment(pulumi.CustomResource):
             child_instance_type="VPC",
             child_instance_region_id=default.regions[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

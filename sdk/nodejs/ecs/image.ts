@@ -19,7 +19,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -74,7 +73,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -156,7 +154,7 @@ export class Image extends pulumi.CustomResource {
      */
     public readonly resourceGroupId!: pulumi.Output<string | undefined>;
     /**
-     * Specifies a snapshot that is used to create a combined custom image.
+     * Specifies a snapshot that is used to create a custom image.
      */
     public readonly snapshotId!: pulumi.Output<string | undefined>;
     /**
@@ -257,7 +255,7 @@ export interface ImageState {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Specifies a snapshot that is used to create a combined custom image.
+     * Specifies a snapshot that is used to create a custom image.
      */
     snapshotId?: pulumi.Input<string>;
     /**
@@ -314,7 +312,7 @@ export interface ImageArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Specifies a snapshot that is used to create a combined custom image.
+     * Specifies a snapshot that is used to create a custom image.
      */
     snapshotId?: pulumi.Input<string>;
     /**

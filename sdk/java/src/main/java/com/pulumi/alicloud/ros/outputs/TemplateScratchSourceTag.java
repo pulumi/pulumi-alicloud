@@ -14,29 +14,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class TemplateScratchSourceTag {
-    /**
-     * @return Source label. **NOTE:** A maximum of 10 source labels can be configured.
-     * 
-     */
     private Map<String,Object> resourceTags;
-    /**
-     * @return Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-     * 
-     */
     private @Nullable List<String> resourceTypeFilters;
 
     private TemplateScratchSourceTag() {}
-    /**
-     * @return Source label. **NOTE:** A maximum of 10 source labels can be configured.
-     * 
-     */
     public Map<String,Object> resourceTags() {
         return this.resourceTags;
     }
-    /**
-     * @return Source resource type filter list. If the resource type list is specified, it means to scan the resources of the specified resource type and in the specified resource group; Otherwise, it means to scan all resources in the specified resource group. **NOTE:** A maximum of `20` resource type filter can be configured.
-     * 
-     */
     public List<String> resourceTypeFilters() {
         return this.resourceTypeFilters == null ? List.of() : this.resourceTypeFilters;
     }

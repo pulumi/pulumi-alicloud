@@ -16,32 +16,16 @@ public final class RuleRuleActionForwardGroupConfigServerGroupTupleArgs extends 
 
     public static final RuleRuleActionForwardGroupConfigServerGroupTupleArgs Empty = new RuleRuleActionForwardGroupConfigServerGroupTupleArgs();
 
-    /**
-     * The ID of the destination server group to which requests are forwarded.
-     * 
-     */
     @Import(name="serverGroupId")
     private @Nullable Output<String> serverGroupId;
 
-    /**
-     * @return The ID of the destination server group to which requests are forwarded.
-     * 
-     */
     public Optional<Output<String>> serverGroupId() {
         return Optional.ofNullable(this.serverGroupId);
     }
 
-    /**
-     * The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `server_group_tuples` is greater than 2.
-     * 
-     */
     @Import(name="weight")
     private @Nullable Output<Integer> weight;
 
-    /**
-     * @return The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `server_group_tuples` is greater than 2.
-     * 
-     */
     public Optional<Output<Integer>> weight() {
         return Optional.ofNullable(this.weight);
     }
@@ -71,44 +55,20 @@ public final class RuleRuleActionForwardGroupConfigServerGroupTupleArgs extends 
             $ = new RuleRuleActionForwardGroupConfigServerGroupTupleArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param serverGroupId The ID of the destination server group to which requests are forwarded.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serverGroupId(@Nullable Output<String> serverGroupId) {
             $.serverGroupId = serverGroupId;
             return this;
         }
 
-        /**
-         * @param serverGroupId The ID of the destination server group to which requests are forwarded.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serverGroupId(String serverGroupId) {
             return serverGroupId(Output.of(serverGroupId));
         }
 
-        /**
-         * @param weight The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `server_group_tuples` is greater than 2.
-         * 
-         * @return builder
-         * 
-         */
         public Builder weight(@Nullable Output<Integer> weight) {
             $.weight = weight;
             return this;
         }
 
-        /**
-         * @param weight The Weight of server group. Default value: `100`. **NOTE:** This attribute is required when the number of `server_group_tuples` is greater than 2.
-         * 
-         * @return builder
-         * 
-         */
         public Builder weight(Integer weight) {
             return weight(Output.of(weight));
         }

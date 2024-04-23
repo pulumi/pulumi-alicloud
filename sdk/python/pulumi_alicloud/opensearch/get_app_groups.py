@@ -153,7 +153,6 @@ def get_app_groups(enable_details: Optional[bool] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -174,7 +173,6 @@ def get_app_groups(enable_details: Optional[bool] = None,
     default = alicloud.opensearch.get_app_groups_output(ids=[default_app_group.id])
     pulumi.export("appGroups", default.groups)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -230,7 +228,6 @@ def get_app_groups_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -251,7 +248,6 @@ def get_app_groups_output(enable_details: Optional[pulumi.Input[Optional[bool]]]
     default = alicloud.opensearch.get_app_groups_output(ids=[default_app_group.id])
     pulumi.export("appGroups", default.groups)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -30,7 +29,6 @@ import * as utilities from "../utilities";
  * });
  * export const hbrEcsBackupClientId1 = ids.then(ids => ids.clients?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEcsBackupClients(args?: GetEcsBackupClientsArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsBackupClientsResult> {
     args = args || {};
@@ -61,7 +59,7 @@ export interface GetEcsBackupClientsArgs {
      */
     outputFile?: string;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `REGISTERED`, `STOPPED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `UNKNOWN`, `UPGRADE_FAILED`, `UPGRADING`.
      */
     status?: string;
 }
@@ -89,7 +87,6 @@ export interface GetEcsBackupClientsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -104,7 +101,6 @@ export interface GetEcsBackupClientsResult {
  * });
  * export const hbrEcsBackupClientId1 = ids.then(ids => ids.clients?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEcsBackupClientsOutput(args?: GetEcsBackupClientsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsBackupClientsResult> {
     return pulumi.output(args).apply((a: any) => getEcsBackupClients(a, opts))
@@ -127,7 +123,7 @@ export interface GetEcsBackupClientsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the resource.
+     * The status of the resource. Valid values: `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `REGISTERED`, `STOPPED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `UNKNOWN`, `UPGRADE_FAILED`, `UPGRADING`.
      */
     status?: pulumi.Input<string>;
 }

@@ -77,14 +77,14 @@ public final class GetDbClustersPlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+     * The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+     * @return The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
      * 
      */
     public Optional<String> status() {
@@ -174,7 +174,7 @@ public final class GetDbClustersPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param status The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+         * @param status The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
          * 
          * @return builder
          * 

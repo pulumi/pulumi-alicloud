@@ -142,7 +142,6 @@ class SnatEntry(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -156,7 +155,6 @@ class SnatEntry(pulumi.CustomResource):
             cidr_block="192.168.7.0/24",
             snat_ip="192.0.0.2")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -191,7 +189,6 @@ class SnatEntry(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -205,7 +202,6 @@ class SnatEntry(pulumi.CustomResource):
             cidr_block="192.168.7.0/24",
             snat_ip="192.0.0.2")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

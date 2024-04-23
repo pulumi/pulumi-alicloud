@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -32,7 +31,6 @@ import * as utilities from "../utilities";
  * });
  * export const vpcTrafficMirrorFilterEgressRuleId2 = status.then(status => status.rules?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTrafficMirrorFilterEgressRules(args: GetTrafficMirrorFilterEgressRulesArgs, opts?: pulumi.InvokeOptions): Promise<GetTrafficMirrorFilterEgressRulesResult> {
 
@@ -90,7 +88,6 @@ export interface GetTrafficMirrorFilterEgressRulesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -107,7 +104,6 @@ export interface GetTrafficMirrorFilterEgressRulesResult {
  * });
  * export const vpcTrafficMirrorFilterEgressRuleId2 = status.then(status => status.rules?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTrafficMirrorFilterEgressRulesOutput(args: GetTrafficMirrorFilterEgressRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMirrorFilterEgressRulesResult> {
     return pulumi.output(args).apply((a: any) => getTrafficMirrorFilterEgressRules(a, opts))

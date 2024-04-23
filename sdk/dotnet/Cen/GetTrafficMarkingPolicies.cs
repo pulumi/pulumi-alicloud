@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -52,7 +51,6 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTrafficMarkingPoliciesResult> InvokeAsync(GetTrafficMarkingPoliciesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTrafficMarkingPoliciesResult>("alicloud:cen/getTrafficMarkingPolicies:getTrafficMarkingPolicies", args ?? new GetTrafficMarkingPoliciesArgs(), options.WithDefaults());
@@ -66,7 +64,6 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -98,7 +95,6 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTrafficMarkingPoliciesResult> Invoke(GetTrafficMarkingPoliciesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTrafficMarkingPoliciesResult>("alicloud:cen/getTrafficMarkingPolicies:getTrafficMarkingPolicies", args ?? new GetTrafficMarkingPoliciesInvokeArgs(), options.WithDefaults());

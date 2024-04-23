@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstEcsDiskId = example.then(example => example.disks?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEcsDisks(args?: GetEcsDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsDisksResult> {
     args = args || {};
@@ -78,13 +76,13 @@ export interface GetEcsDisksArgs {
      */
     autoSnapshotPolicyId?: string;
     /**
-     * Availability zone of the disk.
+     * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
      *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
      */
     availabilityZone?: string;
     /**
-     * Disk category.
+     * Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
      */
     category?: string;
     /**
@@ -108,11 +106,11 @@ export interface GetEcsDisksArgs {
      */
     dryRun?: boolean;
     /**
-     * Whether the disk implements an automatic snapshot policy.
+     * Indicates whether the automatic snapshot is deleted when the disk is released.
      */
     enableAutoSnapshot?: boolean;
     /**
-     * Whether the disk implements an automatic snapshot policy.
+     * Whether the cloud disk has an automatic snapshot policy
      */
     enableAutomatedSnapshotPolicy?: boolean;
     /**
@@ -120,7 +118,7 @@ export interface GetEcsDisksArgs {
      */
     enableShared?: boolean;
     /**
-     * Indicate whether the disk is encrypted or not.
+     * Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
      */
     encrypted?: string;
     /**
@@ -128,7 +126,7 @@ export interface GetEcsDisksArgs {
      */
     ids?: string[];
     /**
-     * The instance ID of the disk mount.
+     * Filter the results by the specified ECS instance ID.
      */
     instanceId?: string;
     /**
@@ -147,37 +145,37 @@ export interface GetEcsDisksArgs {
     pageNumber?: number;
     pageSize?: number;
     /**
-     * Payment method for disk.
+     * Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
      */
     paymentType?: string;
     /**
-     * Whether the disk is unmountable.
+     * Whether the cloud disk or local disk supports uninstallation.
      */
     portable?: boolean;
     /**
-     * The Id of resource group.
+     * The Id of resource group which the disk belongs.
      */
     resourceGroupId?: string;
     /**
-     * Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+     * The source snapshot id.
      */
     snapshotId?: string;
     /**
-     * Current status.
+     * The status of disk.
      */
     status?: string;
     /**
-     * A map of tags assigned to the disk.
+     * A map of tags assigned to the disks.
      */
     tags?: {[key: string]: any};
     /**
-     * Disk type.
+     * Field `type` has been deprecated from provider version 1.122.0. New field `diskType` instead.
      *
      * @deprecated Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
      */
     type?: string;
     /**
-     * The zone id.
+     * ID of the free zone to which the disk belongs.
      */
     zoneId?: string;
 }
@@ -238,7 +236,6 @@ export interface GetEcsDisksResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -249,7 +246,6 @@ export interface GetEcsDisksResult {
  * });
  * export const firstEcsDiskId = example.then(example => example.disks?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEcsDisksOutput(args?: GetEcsDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsDisksResult> {
     return pulumi.output(args).apply((a: any) => getEcsDisks(a, opts))
@@ -268,13 +264,13 @@ export interface GetEcsDisksOutputArgs {
      */
     autoSnapshotPolicyId?: pulumi.Input<string>;
     /**
-     * Availability zone of the disk.
+     * Field `availabilityZone` has been deprecated from provider version 1.122.0. New field `zoneId` instead.
      *
      * @deprecated Field 'availability_zone' has been deprecated from provider version 1.122.0. New field 'zone_id' instead
      */
     availabilityZone?: pulumi.Input<string>;
     /**
-     * Disk category.
+     * Disk category. Valid values: `cloud`, `cloudEfficiency`, `cloudEssd`, `cloudSsd`, `ephemeralSsd`, `cloudAuto`, `cloudEssdEntry`.
      */
     category?: pulumi.Input<string>;
     /**
@@ -298,11 +294,11 @@ export interface GetEcsDisksOutputArgs {
      */
     dryRun?: pulumi.Input<boolean>;
     /**
-     * Whether the disk implements an automatic snapshot policy.
+     * Indicates whether the automatic snapshot is deleted when the disk is released.
      */
     enableAutoSnapshot?: pulumi.Input<boolean>;
     /**
-     * Whether the disk implements an automatic snapshot policy.
+     * Whether the cloud disk has an automatic snapshot policy
      */
     enableAutomatedSnapshotPolicy?: pulumi.Input<boolean>;
     /**
@@ -310,7 +306,7 @@ export interface GetEcsDisksOutputArgs {
      */
     enableShared?: pulumi.Input<boolean>;
     /**
-     * Indicate whether the disk is encrypted or not.
+     * Indicate whether the disk is encrypted or not. Possible values: `on` and `off`.
      */
     encrypted?: pulumi.Input<string>;
     /**
@@ -318,7 +314,7 @@ export interface GetEcsDisksOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The instance ID of the disk mount.
+     * Filter the results by the specified ECS instance ID.
      */
     instanceId?: pulumi.Input<string>;
     /**
@@ -337,37 +333,37 @@ export interface GetEcsDisksOutputArgs {
     pageNumber?: pulumi.Input<number>;
     pageSize?: pulumi.Input<number>;
     /**
-     * Payment method for disk.
+     * Payment method for disk. Valid Values: `PayAsYouGo`, `Subscription`.
      */
     paymentType?: pulumi.Input<string>;
     /**
-     * Whether the disk is unmountable.
+     * Whether the cloud disk or local disk supports uninstallation.
      */
     portable?: pulumi.Input<boolean>;
     /**
-     * The Id of resource group.
+     * The Id of resource group which the disk belongs.
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
+     * The source snapshot id.
      */
     snapshotId?: pulumi.Input<string>;
     /**
-     * Current status.
+     * The status of disk.
      */
     status?: pulumi.Input<string>;
     /**
-     * A map of tags assigned to the disk.
+     * A map of tags assigned to the disks.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
-     * Disk type.
+     * Field `type` has been deprecated from provider version 1.122.0. New field `diskType` instead.
      *
      * @deprecated Field 'type' has been deprecated from provider version 1.122.0. New field 'disk_type' instead.
      */
     type?: pulumi.Input<string>;
     /**
-     * The zone id.
+     * ID of the free zone to which the disk belongs.
      */
     zoneId?: pulumi.Input<string>;
 }

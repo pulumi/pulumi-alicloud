@@ -12,29 +12,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerGroupContainerPort {
-    /**
-     * @return When using the HTTP request method for health check, the port number for HTTP Get request detection.
-     * 
-     */
     private @Nullable Integer port;
-    /**
-     * @return The type of the protocol. Valid values: `TCP` and `UDP`.
-     * 
-     */
     private @Nullable String protocol;
 
     private ContainerGroupContainerPort() {}
-    /**
-     * @return When using the HTTP request method for health check, the port number for HTTP Get request detection.
-     * 
-     */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
-    /**
-     * @return The type of the protocol. Valid values: `TCP` and `UDP`.
-     * 
-     */
     public Optional<String> protocol() {
         return Optional.ofNullable(this.protocol);
     }

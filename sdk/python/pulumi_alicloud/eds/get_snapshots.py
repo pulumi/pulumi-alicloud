@@ -123,7 +123,6 @@ def get_snapshots(desktop_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -131,14 +130,13 @@ def get_snapshots(desktop_id: Optional[str] = None,
     ids = alicloud.eds.get_snapshots()
     pulumi.export("ecdSnapshotId1", ids.snapshots[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str desktop_id: The ID of the cloud desktop to which the snapshot belongs.
+    :param str desktop_id: The ID of the Desktop.
     :param Sequence[str] ids: A list of Snapshot IDs.
     :param str name_regex: A regex string to filter results by Snapshot name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str snapshot_id: The ID of the snapshot.
+    :param str snapshot_id: The ID of the Snapshot.
     """
     __args__ = dict()
     __args__['desktopId'] = desktop_id
@@ -176,7 +174,6 @@ def get_snapshots_output(desktop_id: Optional[pulumi.Input[Optional[str]]] = Non
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -184,13 +181,12 @@ def get_snapshots_output(desktop_id: Optional[pulumi.Input[Optional[str]]] = Non
     ids = alicloud.eds.get_snapshots()
     pulumi.export("ecdSnapshotId1", ids.snapshots[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str desktop_id: The ID of the cloud desktop to which the snapshot belongs.
+    :param str desktop_id: The ID of the Desktop.
     :param Sequence[str] ids: A list of Snapshot IDs.
     :param str name_regex: A regex string to filter results by Snapshot name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str snapshot_id: The ID of the snapshot.
+    :param str snapshot_id: The ID of the Snapshot.
     """
     ...

@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.ClickHouse.Outputs
     [OutputType]
     public sealed class GetRegionsRegionZoneIdResult
     {
-        /// <summary>
-        /// Whether to support vpc network.
-        /// </summary>
         public readonly bool VpcEnabled;
-        /// <summary>
-        /// The zone ID.
-        /// </summary>
         public readonly string ZoneId;
 
         [OutputConstructor]

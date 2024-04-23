@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -51,7 +50,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetServiceQueues(ctx *pulumi.Context, args *GetServiceQueuesArgs, opts ...pulumi.InvokeOption) (*GetServiceQueuesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetServiceQueuesResult

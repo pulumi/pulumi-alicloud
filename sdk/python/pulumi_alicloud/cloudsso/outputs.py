@@ -547,13 +547,6 @@ class GetDirectoriesDirectorySamlIdentityProviderConfigurationResult(dict):
                  entity_id: str,
                  login_url: str,
                  sso_status: str):
-        """
-        :param str create_time: Saml identifies the creation time of the provider configuration.
-        :param str encoded_metadata_document: Base64 encoded IdP metadata document.
-        :param str entity_id: SAML IdPEntityID.
-        :param str login_url: SAML IdP http-post Binding address.
-        :param str sso_status: SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
-        """
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "encoded_metadata_document", encoded_metadata_document)
         pulumi.set(__self__, "entity_id", entity_id)
@@ -563,41 +556,26 @@ class GetDirectoriesDirectorySamlIdentityProviderConfigurationResult(dict):
     @property
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
-        """
-        Saml identifies the creation time of the provider configuration.
-        """
         return pulumi.get(self, "create_time")
 
     @property
     @pulumi.getter(name="encodedMetadataDocument")
     def encoded_metadata_document(self) -> str:
-        """
-        Base64 encoded IdP metadata document.
-        """
         return pulumi.get(self, "encoded_metadata_document")
 
     @property
     @pulumi.getter(name="entityId")
     def entity_id(self) -> str:
-        """
-        SAML IdPEntityID.
-        """
         return pulumi.get(self, "entity_id")
 
     @property
     @pulumi.getter(name="loginUrl")
     def login_url(self) -> str:
-        """
-        SAML IdP http-post Binding address.
-        """
         return pulumi.get(self, "login_url")
 
     @property
     @pulumi.getter(name="ssoStatus")
     def sso_status(self) -> str:
-        """
-        SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
-        """
         return pulumi.get(self, "sso_status")
 
 
@@ -619,23 +597,6 @@ class GetDirectoriesDirectoryTaskResult(dict):
                  target_type: str,
                  task_id: str,
                  task_type: str):
-        """
-        :param str access_configuration_id: The ID of Access Configuration.
-        :param str access_configuration_name: The Name of Access Configuration.
-        :param str end_time: The End Time of Task.
-        :param str failure_reason: the Reason for the Failure of  the task.
-        :param str principal_id: The ID of Cloud SSO Identity.
-        :param str principal_name: The Name of Cloud SSO Identity.
-        :param str principal_type: The Type of Cloud SSO Identity.
-        :param str start_time: The Start Time of Task.
-        :param str status: The Task Status.
-        :param str target_id: The Id of deploy target.
-        :param str target_name: The Name of Deploy Target.
-        :param str target_path: The Path in RD of Deploy Target.
-        :param str target_type: The Type of Deploy Target.
-        :param str task_id: The ID of the Task.
-        :param str task_type: The Type of the Task.
-        """
         pulumi.set(__self__, "access_configuration_id", access_configuration_id)
         pulumi.set(__self__, "access_configuration_name", access_configuration_name)
         pulumi.set(__self__, "end_time", end_time)
@@ -655,121 +616,76 @@ class GetDirectoriesDirectoryTaskResult(dict):
     @property
     @pulumi.getter(name="accessConfigurationId")
     def access_configuration_id(self) -> str:
-        """
-        The ID of Access Configuration.
-        """
         return pulumi.get(self, "access_configuration_id")
 
     @property
     @pulumi.getter(name="accessConfigurationName")
     def access_configuration_name(self) -> str:
-        """
-        The Name of Access Configuration.
-        """
         return pulumi.get(self, "access_configuration_name")
 
     @property
     @pulumi.getter(name="endTime")
     def end_time(self) -> str:
-        """
-        The End Time of Task.
-        """
         return pulumi.get(self, "end_time")
 
     @property
     @pulumi.getter(name="failureReason")
     def failure_reason(self) -> str:
-        """
-        the Reason for the Failure of  the task.
-        """
         return pulumi.get(self, "failure_reason")
 
     @property
     @pulumi.getter(name="principalId")
     def principal_id(self) -> str:
-        """
-        The ID of Cloud SSO Identity.
-        """
         return pulumi.get(self, "principal_id")
 
     @property
     @pulumi.getter(name="principalName")
     def principal_name(self) -> str:
-        """
-        The Name of Cloud SSO Identity.
-        """
         return pulumi.get(self, "principal_name")
 
     @property
     @pulumi.getter(name="principalType")
     def principal_type(self) -> str:
-        """
-        The Type of Cloud SSO Identity.
-        """
         return pulumi.get(self, "principal_type")
 
     @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> str:
-        """
-        The Start Time of Task.
-        """
         return pulumi.get(self, "start_time")
 
     @property
     @pulumi.getter
     def status(self) -> str:
-        """
-        The Task Status.
-        """
         return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="targetId")
     def target_id(self) -> str:
-        """
-        The Id of deploy target.
-        """
         return pulumi.get(self, "target_id")
 
     @property
     @pulumi.getter(name="targetName")
     def target_name(self) -> str:
-        """
-        The Name of Deploy Target.
-        """
         return pulumi.get(self, "target_name")
 
     @property
     @pulumi.getter(name="targetPath")
     def target_path(self) -> str:
-        """
-        The Path in RD of Deploy Target.
-        """
         return pulumi.get(self, "target_path")
 
     @property
     @pulumi.getter(name="targetType")
     def target_type(self) -> str:
-        """
-        The Type of Deploy Target.
-        """
         return pulumi.get(self, "target_type")
 
     @property
     @pulumi.getter(name="taskId")
     def task_id(self) -> str:
-        """
-        The ID of the Task.
-        """
         return pulumi.get(self, "task_id")
 
     @property
     @pulumi.getter(name="taskType")
     def task_type(self) -> str:
-        """
-        The Type of the Task.
-        """
         return pulumi.get(self, "task_type")
 
 
@@ -1109,12 +1025,6 @@ class GetUsersUserMfaDeviceResult(dict):
                  device_name: str,
                  device_type: str,
                  effective_time: str):
-        """
-        :param str device_id: The MFA Device ID.
-        :param str device_name: The MFA Device Name.
-        :param str device_type: The MFA Device Type.
-        :param str effective_time: The Effective Time of MFA Device.
-        """
         pulumi.set(__self__, "device_id", device_id)
         pulumi.set(__self__, "device_name", device_name)
         pulumi.set(__self__, "device_type", device_type)
@@ -1123,33 +1033,21 @@ class GetUsersUserMfaDeviceResult(dict):
     @property
     @pulumi.getter(name="deviceId")
     def device_id(self) -> str:
-        """
-        The MFA Device ID.
-        """
         return pulumi.get(self, "device_id")
 
     @property
     @pulumi.getter(name="deviceName")
     def device_name(self) -> str:
-        """
-        The MFA Device Name.
-        """
         return pulumi.get(self, "device_name")
 
     @property
     @pulumi.getter(name="deviceType")
     def device_type(self) -> str:
-        """
-        The MFA Device Type.
-        """
         return pulumi.get(self, "device_type")
 
     @property
     @pulumi.getter(name="effectiveTime")
     def effective_time(self) -> str:
-        """
-        The Effective Time of MFA Device.
-        """
         return pulumi.get(self, "effective_time")
 
 

@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Cddc
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -93,7 +92,6 @@ namespace Pulumi.AliCloud.Cddc
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDedicatedHostsResult> InvokeAsync(GetDedicatedHostsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDedicatedHostsResult>("alicloud:cddc/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsArgs(), options.WithDefaults());
@@ -107,7 +105,6 @@ namespace Pulumi.AliCloud.Cddc
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -180,7 +177,6 @@ namespace Pulumi.AliCloud.Cddc
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDedicatedHostsResult> Invoke(GetDedicatedHostsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDedicatedHostsResult>("alicloud:cddc/getDedicatedHosts:getDedicatedHosts", args ?? new GetDedicatedHostsInvokeArgs(), options.WithDefaults());
@@ -190,13 +186,13 @@ namespace Pulumi.AliCloud.Cddc
     public sealed class GetDedicatedHostsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+        /// Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
         /// </summary>
         [Input("allocationStatus")]
         public string? AllocationStatus { get; set; }
 
         /// <summary>
-        /// The ID of the dedicated cluster in which the host is created.
+        /// The ID of the dedicated cluster.
         /// </summary>
         [Input("dedicatedHostGroupId", required: true)]
         public string DedicatedHostGroupId { get; set; } = null!;
@@ -208,7 +204,7 @@ namespace Pulumi.AliCloud.Cddc
         public bool? EnableDetails { get; set; }
 
         /// <summary>
-        /// The storage type of the host.
+        /// The storage type of the host. Valid values: `dhg_local_ssd` or `dhg_cloud_ssd`. `dhg_local_ssd`: specifies that the host uses local SSDs. `dhg_cloud_ssd`: specifies that the host uses enhanced SSDs (ESSDs).
         /// </summary>
         [Input("hostType")]
         public string? HostType { get; set; }
@@ -238,7 +234,8 @@ namespace Pulumi.AliCloud.Cddc
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The state of the host.
+        /// The state of the host. Valid values: 
+        /// * `0:` The host is being created.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -247,7 +244,7 @@ namespace Pulumi.AliCloud.Cddc
         private Dictionary<string, object>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public Dictionary<string, object> Tags
         {
@@ -256,7 +253,7 @@ namespace Pulumi.AliCloud.Cddc
         }
 
         /// <summary>
-        /// The zone ID of the host.
+        /// The ID of the zone.
         /// </summary>
         [Input("zoneId")]
         public string? ZoneId { get; set; }
@@ -270,13 +267,13 @@ namespace Pulumi.AliCloud.Cddc
     public sealed class GetDedicatedHostsInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+        /// Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
         /// </summary>
         [Input("allocationStatus")]
         public Input<string>? AllocationStatus { get; set; }
 
         /// <summary>
-        /// The ID of the dedicated cluster in which the host is created.
+        /// The ID of the dedicated cluster.
         /// </summary>
         [Input("dedicatedHostGroupId", required: true)]
         public Input<string> DedicatedHostGroupId { get; set; } = null!;
@@ -288,7 +285,7 @@ namespace Pulumi.AliCloud.Cddc
         public Input<bool>? EnableDetails { get; set; }
 
         /// <summary>
-        /// The storage type of the host.
+        /// The storage type of the host. Valid values: `dhg_local_ssd` or `dhg_cloud_ssd`. `dhg_local_ssd`: specifies that the host uses local SSDs. `dhg_cloud_ssd`: specifies that the host uses enhanced SSDs (ESSDs).
         /// </summary>
         [Input("hostType")]
         public Input<string>? HostType { get; set; }
@@ -318,7 +315,8 @@ namespace Pulumi.AliCloud.Cddc
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The state of the host.
+        /// The state of the host. Valid values: 
+        /// * `0:` The host is being created.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
@@ -327,7 +325,7 @@ namespace Pulumi.AliCloud.Cddc
         private InputMap<object>? _tags;
 
         /// <summary>
-        /// The tag of the resource.
+        /// A mapping of tags to assign to the resource.
         /// </summary>
         public InputMap<object> Tags
         {
@@ -336,7 +334,7 @@ namespace Pulumi.AliCloud.Cddc
         }
 
         /// <summary>
-        /// The zone ID of the host.
+        /// The ID of the zone.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

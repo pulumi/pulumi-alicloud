@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -56,7 +55,6 @@ namespace Pulumi.AliCloud.Eds
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetNetworkPackagesResult> InvokeAsync(GetNetworkPackagesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetNetworkPackagesResult>("alicloud:eds/getNetworkPackages:getNetworkPackages", args ?? new GetNetworkPackagesArgs(), options.WithDefaults());
@@ -70,7 +68,6 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -106,7 +103,6 @@ namespace Pulumi.AliCloud.Eds
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetNetworkPackagesResult> Invoke(GetNetworkPackagesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkPackagesResult>("alicloud:eds/getNetworkPackages:getNetworkPackages", args ?? new GetNetworkPackagesInvokeArgs(), options.WithDefaults());

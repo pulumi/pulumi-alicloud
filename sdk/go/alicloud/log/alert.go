@@ -23,7 +23,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -120,11 +119,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // # Basic Usage for new alert
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -279,11 +276,9 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // # Basic Usage for alert template
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -366,7 +361,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -384,11 +378,11 @@ type Alert struct {
 	AlertDisplayname pulumi.StringOutput `pulumi:"alertDisplayname"`
 	// Name of logstore for configuring alarm service.
 	AlertName pulumi.StringOutput `pulumi:"alertName"`
-	// Alert template annotations.
+	// Annotations for new alert.
 	Annotations AlertAnnotationArrayOutput `pulumi:"annotations"`
 	// whether to add automatic annotation, default is false.
 	AutoAnnotation pulumi.BoolPtrOutput `pulumi:"autoAnnotation"`
-	// Join condition.
+	// Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
 	//
 	// Deprecated: Deprecated from 1.161.0+, use evalCondition in severity_configurations
 	Condition pulumi.StringPtrOutput `pulumi:"condition"`
@@ -442,7 +436,7 @@ type Alert struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use repeatInterval in policy_configuration
 	Throttling pulumi.StringPtrOutput `pulumi:"throttling"`
-	// including FixedRate,Hourly,Daily,Weekly,Cron.
+	// The type of new alert, `default` for custom alert, `tpl` for template alert.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// The version of alert, new alert is 2.0.
 	Version pulumi.StringPtrOutput `pulumi:"version"`
@@ -493,11 +487,11 @@ type alertState struct {
 	AlertDisplayname *string `pulumi:"alertDisplayname"`
 	// Name of logstore for configuring alarm service.
 	AlertName *string `pulumi:"alertName"`
-	// Alert template annotations.
+	// Annotations for new alert.
 	Annotations []AlertAnnotation `pulumi:"annotations"`
 	// whether to add automatic annotation, default is false.
 	AutoAnnotation *bool `pulumi:"autoAnnotation"`
-	// Join condition.
+	// Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
 	//
 	// Deprecated: Deprecated from 1.161.0+, use evalCondition in severity_configurations
 	Condition *string `pulumi:"condition"`
@@ -551,7 +545,7 @@ type alertState struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use repeatInterval in policy_configuration
 	Throttling *string `pulumi:"throttling"`
-	// including FixedRate,Hourly,Daily,Weekly,Cron.
+	// The type of new alert, `default` for custom alert, `tpl` for template alert.
 	Type *string `pulumi:"type"`
 	// The version of alert, new alert is 2.0.
 	Version *string `pulumi:"version"`
@@ -564,11 +558,11 @@ type AlertState struct {
 	AlertDisplayname pulumi.StringPtrInput
 	// Name of logstore for configuring alarm service.
 	AlertName pulumi.StringPtrInput
-	// Alert template annotations.
+	// Annotations for new alert.
 	Annotations AlertAnnotationArrayInput
 	// whether to add automatic annotation, default is false.
 	AutoAnnotation pulumi.BoolPtrInput
-	// Join condition.
+	// Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
 	//
 	// Deprecated: Deprecated from 1.161.0+, use evalCondition in severity_configurations
 	Condition pulumi.StringPtrInput
@@ -622,7 +616,7 @@ type AlertState struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use repeatInterval in policy_configuration
 	Throttling pulumi.StringPtrInput
-	// including FixedRate,Hourly,Daily,Weekly,Cron.
+	// The type of new alert, `default` for custom alert, `tpl` for template alert.
 	Type pulumi.StringPtrInput
 	// The version of alert, new alert is 2.0.
 	Version pulumi.StringPtrInput
@@ -639,11 +633,11 @@ type alertArgs struct {
 	AlertDisplayname string `pulumi:"alertDisplayname"`
 	// Name of logstore for configuring alarm service.
 	AlertName string `pulumi:"alertName"`
-	// Alert template annotations.
+	// Annotations for new alert.
 	Annotations []AlertAnnotation `pulumi:"annotations"`
 	// whether to add automatic annotation, default is false.
 	AutoAnnotation *bool `pulumi:"autoAnnotation"`
-	// Join condition.
+	// Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
 	//
 	// Deprecated: Deprecated from 1.161.0+, use evalCondition in severity_configurations
 	Condition *string `pulumi:"condition"`
@@ -697,7 +691,7 @@ type alertArgs struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use repeatInterval in policy_configuration
 	Throttling *string `pulumi:"throttling"`
-	// including FixedRate,Hourly,Daily,Weekly,Cron.
+	// The type of new alert, `default` for custom alert, `tpl` for template alert.
 	Type *string `pulumi:"type"`
 	// The version of alert, new alert is 2.0.
 	Version *string `pulumi:"version"`
@@ -711,11 +705,11 @@ type AlertArgs struct {
 	AlertDisplayname pulumi.StringInput
 	// Name of logstore for configuring alarm service.
 	AlertName pulumi.StringInput
-	// Alert template annotations.
+	// Annotations for new alert.
 	Annotations AlertAnnotationArrayInput
 	// whether to add automatic annotation, default is false.
 	AutoAnnotation pulumi.BoolPtrInput
-	// Join condition.
+	// Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
 	//
 	// Deprecated: Deprecated from 1.161.0+, use evalCondition in severity_configurations
 	Condition pulumi.StringPtrInput
@@ -769,7 +763,7 @@ type AlertArgs struct {
 	//
 	// Deprecated: Deprecated from 1.161.0+, use repeatInterval in policy_configuration
 	Throttling pulumi.StringPtrInput
-	// including FixedRate,Hourly,Daily,Weekly,Cron.
+	// The type of new alert, `default` for custom alert, `tpl` for template alert.
 	Type pulumi.StringPtrInput
 	// The version of alert, new alert is 2.0.
 	Version pulumi.StringPtrInput
@@ -877,7 +871,7 @@ func (o AlertOutput) AlertName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringOutput { return v.AlertName }).(pulumi.StringOutput)
 }
 
-// Alert template annotations.
+// Annotations for new alert.
 func (o AlertOutput) Annotations() AlertAnnotationArrayOutput {
 	return o.ApplyT(func(v *Alert) AlertAnnotationArrayOutput { return v.Annotations }).(AlertAnnotationArrayOutput)
 }
@@ -887,7 +881,7 @@ func (o AlertOutput) AutoAnnotation() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Alert) pulumi.BoolPtrOutput { return v.AutoAnnotation }).(pulumi.BoolPtrOutput)
 }
 
-// Join condition.
+// Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
 //
 // Deprecated: Deprecated from 1.161.0+, use evalCondition in severity_configurations
 func (o AlertOutput) Condition() pulumi.StringPtrOutput {
@@ -1004,7 +998,7 @@ func (o AlertOutput) Throttling() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringPtrOutput { return v.Throttling }).(pulumi.StringPtrOutput)
 }
 
-// including FixedRate,Hourly,Daily,Weekly,Cron.
+// The type of new alert, `default` for custom alert, `tpl` for template alert.
 func (o AlertOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Alert) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

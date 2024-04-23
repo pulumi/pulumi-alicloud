@@ -15,17 +15,9 @@ public final class RuleTargetDeadLetterQueueArgs extends com.pulumi.resources.Re
 
     public static final RuleTargetDeadLetterQueueArgs Empty = new RuleTargetDeadLetterQueueArgs();
 
-    /**
-     * The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
-     * 
-     */
     @Import(name="arn")
     private @Nullable Output<String> arn;
 
-    /**
-     * @return The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
-     * 
-     */
     public Optional<Output<String>> arn() {
         return Optional.ofNullable(this.arn);
     }
@@ -54,23 +46,11 @@ public final class RuleTargetDeadLetterQueueArgs extends com.pulumi.resources.Re
             $ = new RuleTargetDeadLetterQueueArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param arn The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
-         * 
-         * @return builder
-         * 
-         */
         public Builder arn(@Nullable Output<String> arn) {
             $.arn = arn;
             return this;
         }
 
-        /**
-         * @param arn The Alibaba Cloud Resource Name (ARN) of the dead letter queue. Events that are not processed or whose maximum retries are exceeded are written to the dead-letter queue. The ARN feature is supported by the following queue types: MNS and Message Queue for Apache RocketMQ.
-         * 
-         * @return builder
-         * 
-         */
         public Builder arn(String arn) {
             return arn(Output.of(arn));
         }

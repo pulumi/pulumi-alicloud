@@ -183,7 +183,6 @@ def get_hosts(enable_details: Optional[bool] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -198,7 +197,6 @@ def get_hosts(enable_details: Optional[bool] = None,
         name_regex="^my-Host")
     pulumi.export("bastionhostHostId2", name_regex.hosts[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -267,7 +265,6 @@ def get_hosts_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -282,7 +279,6 @@ def get_hosts_output(enable_details: Optional[pulumi.Input[Optional[bool]]] = No
         name_regex="^my-Host")
     pulumi.export("bastionhostHostId2", name_regex.hosts[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

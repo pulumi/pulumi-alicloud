@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  * });
  * export const dbfsInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -60,7 +58,7 @@ export interface GetInstancesArgs {
      */
     outputFile?: string;
     /**
-     * The status of the Database file system.
+     * Database file system state. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
      */
     status?: string;
 }
@@ -89,7 +87,6 @@ export interface GetInstancesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -103,7 +100,6 @@ export interface GetInstancesResult {
  * });
  * export const dbfsInstanceId2 = nameRegex.then(nameRegex => nameRegex.instances?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
     return pulumi.output(args).apply((a: any) => getInstances(a, opts))
@@ -126,7 +122,7 @@ export interface GetInstancesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of the Database file system.
+     * Database file system state. Valid values: `attached`, `attaching`, `creating`, `deleted`, `deleting`, `detaching`, `resizing`, `snapshotting`, `unattached`, `upgrading`.
      */
     status?: pulumi.Input<string>;
 }

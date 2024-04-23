@@ -15,47 +15,23 @@ public final class ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs ext
 
     public static final ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs Empty = new ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs();
 
-    /**
-     * The port will be used for VServer Group backend server.
-     * 
-     */
     @Import(name="port", required=true)
     private Output<Integer> port;
 
-    /**
-     * @return The port will be used for VServer Group backend server.
-     * 
-     */
     public Output<Integer> port() {
         return this.port;
     }
 
-    /**
-     * ID of VServer Group.
-     * 
-     */
     @Import(name="vserverGroupId", required=true)
     private Output<String> vserverGroupId;
 
-    /**
-     * @return ID of VServer Group.
-     * 
-     */
     public Output<String> vserverGroupId() {
         return this.vserverGroupId;
     }
 
-    /**
-     * The weight of an ECS instance attached to the VServer Group.
-     * 
-     */
     @Import(name="weight", required=true)
     private Output<Integer> weight;
 
-    /**
-     * @return The weight of an ECS instance attached to the VServer Group.
-     * 
-     */
     public Output<Integer> weight() {
         return this.weight;
     }
@@ -86,65 +62,29 @@ public final class ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs ext
             $ = new ScalingGroupVServerGroupsVserverGroupVserverAttributeArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param port The port will be used for VServer Group backend server.
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(Output<Integer> port) {
             $.port = port;
             return this;
         }
 
-        /**
-         * @param port The port will be used for VServer Group backend server.
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }
 
-        /**
-         * @param vserverGroupId ID of VServer Group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder vserverGroupId(Output<String> vserverGroupId) {
             $.vserverGroupId = vserverGroupId;
             return this;
         }
 
-        /**
-         * @param vserverGroupId ID of VServer Group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder vserverGroupId(String vserverGroupId) {
             return vserverGroupId(Output.of(vserverGroupId));
         }
 
-        /**
-         * @param weight The weight of an ECS instance attached to the VServer Group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder weight(Output<Integer> weight) {
             $.weight = weight;
             return this;
         }
 
-        /**
-         * @param weight The weight of an ECS instance attached to the VServer Group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder weight(Integer weight) {
             return weight(Output.of(weight));
         }

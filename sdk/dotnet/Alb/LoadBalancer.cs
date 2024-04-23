@@ -120,7 +120,7 @@ namespace Pulumi.AliCloud.Alb
         public Output<string> ResourceGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Load Balancing Modify the Protection Status.
+        /// Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
         /// </summary>
         [Output("status")]
         public Output<string> Status { get; private set; } = null!;
@@ -400,7 +400,7 @@ namespace Pulumi.AliCloud.Alb
         public Input<string>? ResourceGroupId { get; set; }
 
         /// <summary>
-        /// Load Balancing Modify the Protection Status.
+        /// Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

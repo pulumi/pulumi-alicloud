@@ -10,41 +10,17 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterMetaStoreConf {
-    /**
-     * @return Custom rds database password.
-     * 
-     */
     private String dbPassword;
-    /**
-     * @return Custom rds database connection url.
-     * 
-     */
     private String dbUrl;
-    /**
-     * @return Custom rds database user name.
-     * 
-     */
     private String dbUserName;
 
     private ClusterMetaStoreConf() {}
-    /**
-     * @return Custom rds database password.
-     * 
-     */
     public String dbPassword() {
         return this.dbPassword;
     }
-    /**
-     * @return Custom rds database connection url.
-     * 
-     */
     public String dbUrl() {
         return this.dbUrl;
     }
-    /**
-     * @return Custom rds database user name.
-     * 
-     */
     public String dbUserName() {
         return this.dbUserName;
     }

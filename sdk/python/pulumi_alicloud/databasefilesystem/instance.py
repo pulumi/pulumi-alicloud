@@ -44,7 +44,6 @@ class InstanceArgs:
         :param pulumi.Input[bool] enable_raid: Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
         :param pulumi.Input[bool] encryption: Whether to encrypt DBFS.Valid values: true or false. Default value: false.
         :param pulumi.Input[str] fs_name: Database file system name.
-        :param pulumi.Input[str] instance_name: . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
         :param pulumi.Input[str] instance_type: Instance type. Value range:
                - dbfs.small
                - dbfs.medium
@@ -215,9 +214,6 @@ class InstanceArgs:
     @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
-        """
         warnings.warn("""Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""instance_name is deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""")
 
@@ -354,7 +350,6 @@ class _InstanceState:
         :param pulumi.Input[bool] enable_raid: Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
         :param pulumi.Input[bool] encryption: Whether to encrypt DBFS.Valid values: true or false. Default value: false.
         :param pulumi.Input[str] fs_name: Database file system name.
-        :param pulumi.Input[str] instance_name: . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
         :param pulumi.Input[str] instance_type: Instance type. Value range:
                - dbfs.small
                - dbfs.medium
@@ -523,9 +518,6 @@ class _InstanceState:
     @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> Optional[pulumi.Input[str]]:
-        """
-        . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
-        """
         warnings.warn("""Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""instance_name is deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""")
 
@@ -700,7 +692,6 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -716,7 +707,6 @@ class Instance(pulumi.CustomResource):
             instance_name=name,
             size=100)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -735,7 +725,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_raid: Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
         :param pulumi.Input[bool] encryption: Whether to encrypt DBFS.Valid values: true or false. Default value: false.
         :param pulumi.Input[str] fs_name: Database file system name.
-        :param pulumi.Input[str] instance_name: . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
         :param pulumi.Input[str] instance_type: Instance type. Value range:
                - dbfs.small
                - dbfs.medium
@@ -773,7 +762,6 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -789,7 +777,6 @@ class Instance(pulumi.CustomResource):
             instance_name=name,
             size=100)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -909,7 +896,6 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_raid: Whether to create DBFS in RAID mode. If created in RAID mode, the capacity is at least 66GB.Valid values: true or false. Default value: false.
         :param pulumi.Input[bool] encryption: Whether to encrypt DBFS.Valid values: true or false. Default value: false.
         :param pulumi.Input[str] fs_name: Database file system name.
-        :param pulumi.Input[str] instance_name: . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
         :param pulumi.Input[str] instance_type: Instance type. Value range:
                - dbfs.small
                - dbfs.medium
@@ -1026,9 +1012,6 @@ class Instance(pulumi.CustomResource):
     @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> pulumi.Output[str]:
-        """
-        . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
-        """
         warnings.warn("""Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""", DeprecationWarning)
         pulumi.log.warn("""instance_name is deprecated: Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.""")
 

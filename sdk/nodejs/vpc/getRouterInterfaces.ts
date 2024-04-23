@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstRouterInterfaceId = routerInterfacesDs.then(routerInterfacesDs => routerInterfacesDs.interfaces?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRouterInterfaces(args?: GetRouterInterfacesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouterInterfacesResult> {
     args = args || {};
@@ -151,7 +149,6 @@ export interface GetRouterInterfacesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -162,7 +159,6 @@ export interface GetRouterInterfacesResult {
  * });
  * export const firstRouterInterfaceId = routerInterfacesDs.then(routerInterfacesDs => routerInterfacesDs.interfaces?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRouterInterfacesOutput(args?: GetRouterInterfacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterInterfacesResult> {
     return pulumi.output(args).apply((a: any) => getRouterInterfaces(a, opts))

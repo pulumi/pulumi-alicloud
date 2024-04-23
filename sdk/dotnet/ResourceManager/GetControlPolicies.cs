@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Pulumi.AliCloud.ResourceManager
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetControlPoliciesResult> InvokeAsync(GetControlPoliciesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetControlPoliciesResult>("alicloud:resourcemanager/getControlPolicies:getControlPolicies", args ?? new GetControlPoliciesArgs(), options.WithDefaults());
@@ -58,7 +56,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -82,7 +79,6 @@ namespace Pulumi.AliCloud.ResourceManager
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetControlPoliciesResult> Invoke(GetControlPoliciesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetControlPoliciesResult>("alicloud:resourcemanager/getControlPolicies:getControlPolicies", args ?? new GetControlPoliciesInvokeArgs(), options.WithDefaults());

@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -34,7 +33,6 @@ import * as utilities from "../utilities";
  * });
  * export const cenTrafficMarkingPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTrafficMarkingPolicies(args: GetTrafficMarkingPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetTrafficMarkingPoliciesResult> {
 
@@ -105,7 +103,6 @@ export interface GetTrafficMarkingPoliciesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -124,7 +121,6 @@ export interface GetTrafficMarkingPoliciesResult {
  * });
  * export const cenTrafficMarkingPolicyId2 = nameRegex.then(nameRegex => nameRegex.policies?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTrafficMarkingPoliciesOutput(args: GetTrafficMarkingPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTrafficMarkingPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getTrafficMarkingPolicies(a, opts))

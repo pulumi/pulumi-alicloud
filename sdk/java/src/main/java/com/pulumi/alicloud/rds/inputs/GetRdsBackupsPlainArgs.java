@@ -17,14 +17,14 @@ public final class GetRdsBackupsPlainArgs extends com.pulumi.resources.InvokeArg
     public static final GetRdsBackupsPlainArgs Empty = new GetRdsBackupsPlainArgs();
 
     /**
-     * BackupMode.
+     * BackupMode. Valid values: `Automated` and `Manual`.
      * 
      */
     @Import(name="backupMode")
     private @Nullable String backupMode;
 
     /**
-     * @return BackupMode.
+     * @return BackupMode. Valid values: `Automated` and `Manual`.
      * 
      */
     public Optional<String> backupMode() {
@@ -32,28 +32,14 @@ public final class GetRdsBackupsPlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
-     * * **NoStart**: Not started
-     * * **Checking**: check the backup
-     * * **Preparing**: Prepare a backup
-     * * **Waiting**: Waiting for backup
-     * * **Uploading**: Upload backup
-     * * **Finished**: Complete backup
-     * * **Failed**: backup Failed
+     * Backup task status. Valid values: `Automated` and `Manual`.
      * 
      */
     @Import(name="backupStatus")
     private @Nullable String backupStatus;
 
     /**
-     * @return Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
-     * * **NoStart**: Not started
-     * * **Checking**: check the backup
-     * * **Preparing**: Prepare a backup
-     * * **Waiting**: Waiting for backup
-     * * **Uploading**: Upload backup
-     * * **Finished**: Complete backup
-     * * **Failed**: backup Failed
+     * @return Backup task status. Valid values: `Automated` and `Manual`.
      * 
      */
     public Optional<String> backupStatus() {
@@ -166,7 +152,7 @@ public final class GetRdsBackupsPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param backupMode BackupMode.
+         * @param backupMode BackupMode. Valid values: `Automated` and `Manual`.
          * 
          * @return builder
          * 
@@ -177,14 +163,7 @@ public final class GetRdsBackupsPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param backupStatus Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
-         * * **NoStart**: Not started
-         * * **Checking**: check the backup
-         * * **Preparing**: Prepare a backup
-         * * **Waiting**: Waiting for backup
-         * * **Uploading**: Upload backup
-         * * **Finished**: Complete backup
-         * * **Failed**: backup Failed
+         * @param backupStatus Backup task status. Valid values: `Automated` and `Manual`.
          * 
          * @return builder
          * 

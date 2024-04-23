@@ -12,65 +12,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GreyTagRouteDubboRuleItem {
-    /**
-     * @return The comparison operator. Valid values: `&gt;`, `&lt;`, `&gt;=`, `&lt;=`, `==`, `!=`.
-     * 
-     */
     private @Nullable String cond;
-    /**
-     * @return The parameter value gets the expression.
-     * 
-     */
     private @Nullable String expr;
-    /**
-     * @return The parameter number.
-     * 
-     */
     private @Nullable Integer index;
-    /**
-     * @return The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
-     * 
-     */
     private @Nullable String operator;
-    /**
-     * @return The value of the parameter.
-     * 
-     */
     private @Nullable String value;
 
     private GreyTagRouteDubboRuleItem() {}
-    /**
-     * @return The comparison operator. Valid values: `&gt;`, `&lt;`, `&gt;=`, `&lt;=`, `==`, `!=`.
-     * 
-     */
     public Optional<String> cond() {
         return Optional.ofNullable(this.cond);
     }
-    /**
-     * @return The parameter value gets the expression.
-     * 
-     */
     public Optional<String> expr() {
         return Optional.ofNullable(this.expr);
     }
-    /**
-     * @return The parameter number.
-     * 
-     */
     public Optional<Integer> index() {
         return Optional.ofNullable(this.index);
     }
-    /**
-     * @return The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
-     * 
-     */
     public Optional<String> operator() {
         return Optional.ofNullable(this.operator);
     }
-    /**
-     * @return The value of the parameter.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

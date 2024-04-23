@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const resourceManagerDelegatedAdministratorId1 = ids.then(ids => ids.administrators?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDelegatedAdministrators(args?: GetDelegatedAdministratorsArgs, opts?: pulumi.InvokeOptions): Promise<GetDelegatedAdministratorsResult> {
     args = args || {};
@@ -84,7 +82,6 @@ export interface GetDelegatedAdministratorsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -94,7 +91,6 @@ export interface GetDelegatedAdministratorsResult {
  * });
  * export const resourceManagerDelegatedAdministratorId1 = ids.then(ids => ids.administrators?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDelegatedAdministratorsOutput(args?: GetDelegatedAdministratorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDelegatedAdministratorsResult> {
     return pulumi.output(args).apply((a: any) => getDelegatedAdministrators(a, opts))

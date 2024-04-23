@@ -104,7 +104,6 @@ def get_sharding_network_public_addresses(db_instance_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -114,13 +113,12 @@ def get_sharding_network_public_addresses(db_instance_id: Optional[str] = None,
         role="Primary")
     pulumi.export("mongodbShardingNetworkPublicAddressDbInstanceId1", example.addresses[0].db_instance_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str db_instance_id: The db instance id.
     :param str node_id: The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str role: The role of the node.
+    :param str role: The role of the node. Valid values: `Primary` or `Secondary`.
     """
     __args__ = dict()
     __args__['dbInstanceId'] = db_instance_id
@@ -154,7 +152,6 @@ def get_sharding_network_public_addresses_output(db_instance_id: Optional[pulumi
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -164,12 +161,11 @@ def get_sharding_network_public_addresses_output(db_instance_id: Optional[pulumi
         role="Primary")
     pulumi.export("mongodbShardingNetworkPublicAddressDbInstanceId1", example.addresses[0].db_instance_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str db_instance_id: The db instance id.
     :param str node_id: The ID of the `mongos`, `shard`, or `Configserver` node in the sharded cluster instance.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str role: The role of the node.
+    :param str role: The role of the node. Valid values: `Primary` or `Secondary`.
     """
     ...

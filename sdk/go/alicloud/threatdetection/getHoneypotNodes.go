@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,7 +41,6 @@ import (
 // })
 // }
 // ```
-// <!--End PulumiCodeChooser -->
 func GetHoneypotNodes(ctx *pulumi.Context, args *GetHoneypotNodesArgs, opts ...pulumi.InvokeOption) (*GetHoneypotNodesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHoneypotNodesResult

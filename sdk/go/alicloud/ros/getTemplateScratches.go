@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -60,7 +59,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetTemplateScratches(ctx *pulumi.Context, args *GetTemplateScratchesArgs, opts ...pulumi.InvokeOption) (*GetTemplateScratchesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetTemplateScratchesResult
@@ -79,9 +77,9 @@ type GetTemplateScratchesArgs struct {
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
 	Status *string `pulumi:"status"`
-	// The type of the Template Scratch.
+	// The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
 	TemplateScratchType *string `pulumi:"templateScratchType"`
 }
 
@@ -118,9 +116,9 @@ type GetTemplateScratchesOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The type of the Template Scratch.
+	// The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
 	TemplateScratchType pulumi.StringPtrInput `pulumi:"templateScratchType"`
 }
 

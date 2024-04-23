@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.AliCloud.Hbr
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVaultsResult> InvokeAsync(GetVaultsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVaultsResult>("alicloud:hbr/getVaults:getVaults", args ?? new GetVaultsArgs(), options.WithDefaults());
@@ -54,7 +52,6 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.AliCloud.Hbr
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVaultsResult> Invoke(GetVaultsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVaultsResult>("alicloud:hbr/getVaults:getVaults", args ?? new GetVaultsInvokeArgs(), options.WithDefaults());
@@ -114,7 +110,7 @@ namespace Pulumi.AliCloud.Hbr
         public string? Status { get; set; }
 
         /// <summary>
-        /// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+        /// VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
         /// </summary>
         [Input("vaultType")]
         public string? VaultType { get; set; }
@@ -158,7 +154,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The type of Vault. Valid values: `STANDARD`,`OTS_BACKUP`.
+        /// VaultType. Valid values: `STANDARD`,`OTS_BACKUP`.
         /// </summary>
         [Input("vaultType")]
         public Input<string>? VaultType { get; set; }

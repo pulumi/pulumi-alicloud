@@ -21,7 +21,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -94,7 +93,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetPrometheis(ctx *pulumi.Context, args *GetPrometheisArgs, opts ...pulumi.InvokeOption) (*GetPrometheisResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPrometheisResult

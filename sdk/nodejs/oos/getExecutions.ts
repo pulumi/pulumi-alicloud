@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstExecutionId = example.then(example => example.executions?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getExecutions(args?: GetExecutionsArgs, opts?: pulumi.InvokeOptions): Promise<GetExecutionsResult> {
     args = args || {};
@@ -167,7 +165,6 @@ export interface GetExecutionsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -180,7 +177,6 @@ export interface GetExecutionsResult {
  * });
  * export const firstExecutionId = example.then(example => example.executions?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getExecutionsOutput(args?: GetExecutionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExecutionsResult> {
     return pulumi.output(args).apply((a: any) => getExecutions(a, opts))

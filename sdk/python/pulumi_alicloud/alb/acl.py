@@ -124,7 +124,7 @@ class _AclState:
         :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck the API request.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] status: The status of the ACL entry. Valid values:
+        :param pulumi.Input[str] status: The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         if acl_entries is not None:
@@ -199,7 +199,7 @@ class _AclState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        The status of the ACL entry. Valid values:
+        The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
         """
         return pulumi.get(self, "status")
 
@@ -242,7 +242,6 @@ class Acl(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -252,7 +251,6 @@ class Acl(pulumi.CustomResource):
             acl_name="tf_example",
             resource_group_id=default.groups[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -288,7 +286,6 @@ class Acl(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -298,7 +295,6 @@ class Acl(pulumi.CustomResource):
             acl_name="tf_example",
             resource_group_id=default.groups[0].id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -373,7 +369,7 @@ class Acl(pulumi.CustomResource):
         :param pulumi.Input[str] acl_name: The name of the ACL. The name must be `2` to `128` characters in length, and can contain letters, digits, hyphens (-) and underscores (_). It must start with a letter.
         :param pulumi.Input[bool] dry_run: Specifies whether to precheck the API request.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] status: The status of the ACL entry. Valid values:
+        :param pulumi.Input[str] status: The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
         :param pulumi.Input[Mapping[str, Any]] tags: A mapping of tags to assign to the resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -428,7 +424,7 @@ class Acl(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        The status of the ACL entry. Valid values:
+        The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
         """
         return pulumi.get(self, "status")
 

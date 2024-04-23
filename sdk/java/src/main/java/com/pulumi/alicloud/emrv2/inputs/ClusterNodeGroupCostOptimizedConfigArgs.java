@@ -14,47 +14,23 @@ public final class ClusterNodeGroupCostOptimizedConfigArgs extends com.pulumi.re
 
     public static final ClusterNodeGroupCostOptimizedConfigArgs Empty = new ClusterNodeGroupCostOptimizedConfigArgs();
 
-    /**
-     * The cost optimized configuration which on demand based capacity.
-     * 
-     */
     @Import(name="onDemandBaseCapacity", required=true)
     private Output<Integer> onDemandBaseCapacity;
 
-    /**
-     * @return The cost optimized configuration which on demand based capacity.
-     * 
-     */
     public Output<Integer> onDemandBaseCapacity() {
         return this.onDemandBaseCapacity;
     }
 
-    /**
-     * The cost optimized configuration which on demand percentage above based capacity.
-     * 
-     */
     @Import(name="onDemandPercentageAboveBaseCapacity", required=true)
     private Output<Integer> onDemandPercentageAboveBaseCapacity;
 
-    /**
-     * @return The cost optimized configuration which on demand percentage above based capacity.
-     * 
-     */
     public Output<Integer> onDemandPercentageAboveBaseCapacity() {
         return this.onDemandPercentageAboveBaseCapacity;
     }
 
-    /**
-     * The cost optimized configuration with spot instance pools.
-     * 
-     */
     @Import(name="spotInstancePools", required=true)
     private Output<Integer> spotInstancePools;
 
-    /**
-     * @return The cost optimized configuration with spot instance pools.
-     * 
-     */
     public Output<Integer> spotInstancePools() {
         return this.spotInstancePools;
     }
@@ -85,65 +61,29 @@ public final class ClusterNodeGroupCostOptimizedConfigArgs extends com.pulumi.re
             $ = new ClusterNodeGroupCostOptimizedConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param onDemandBaseCapacity The cost optimized configuration which on demand based capacity.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onDemandBaseCapacity(Output<Integer> onDemandBaseCapacity) {
             $.onDemandBaseCapacity = onDemandBaseCapacity;
             return this;
         }
 
-        /**
-         * @param onDemandBaseCapacity The cost optimized configuration which on demand based capacity.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onDemandBaseCapacity(Integer onDemandBaseCapacity) {
             return onDemandBaseCapacity(Output.of(onDemandBaseCapacity));
         }
 
-        /**
-         * @param onDemandPercentageAboveBaseCapacity The cost optimized configuration which on demand percentage above based capacity.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onDemandPercentageAboveBaseCapacity(Output<Integer> onDemandPercentageAboveBaseCapacity) {
             $.onDemandPercentageAboveBaseCapacity = onDemandPercentageAboveBaseCapacity;
             return this;
         }
 
-        /**
-         * @param onDemandPercentageAboveBaseCapacity The cost optimized configuration which on demand percentage above based capacity.
-         * 
-         * @return builder
-         * 
-         */
         public Builder onDemandPercentageAboveBaseCapacity(Integer onDemandPercentageAboveBaseCapacity) {
             return onDemandPercentageAboveBaseCapacity(Output.of(onDemandPercentageAboveBaseCapacity));
         }
 
-        /**
-         * @param spotInstancePools The cost optimized configuration with spot instance pools.
-         * 
-         * @return builder
-         * 
-         */
         public Builder spotInstancePools(Output<Integer> spotInstancePools) {
             $.spotInstancePools = spotInstancePools;
             return this;
         }
 
-        /**
-         * @param spotInstancePools The cost optimized configuration with spot instance pools.
-         * 
-         * @return builder
-         * 
-         */
         public Builder spotInstancePools(Integer spotInstancePools) {
             return spotInstancePools(Output.of(spotInstancePools));
         }

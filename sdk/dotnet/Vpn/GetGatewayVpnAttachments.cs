@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Vpn
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -45,7 +44,6 @@ namespace Pulumi.AliCloud.Vpn
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGatewayVpnAttachmentsResult> InvokeAsync(GetGatewayVpnAttachmentsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGatewayVpnAttachmentsResult>("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", args ?? new GetGatewayVpnAttachmentsArgs(), options.WithDefaults());
@@ -59,7 +57,6 @@ namespace Pulumi.AliCloud.Vpn
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -84,7 +81,6 @@ namespace Pulumi.AliCloud.Vpn
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGatewayVpnAttachmentsResult> Invoke(GetGatewayVpnAttachmentsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGatewayVpnAttachmentsResult>("alicloud:vpn/getGatewayVpnAttachments:getGatewayVpnAttachments", args ?? new GetGatewayVpnAttachmentsInvokeArgs(), options.WithDefaults());

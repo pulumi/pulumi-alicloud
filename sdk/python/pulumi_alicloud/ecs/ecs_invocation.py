@@ -346,7 +346,6 @@ class EcsInvocation(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -401,7 +400,6 @@ class EcsInvocation(pulumi.CustomResource):
             command_id=default_command.id,
             instance_ids=[default_instance.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -445,7 +443,6 @@ class EcsInvocation(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -500,7 +497,6 @@ class EcsInvocation(pulumi.CustomResource):
             command_id=default_command.id,
             instance_ids=[default_instance.id])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

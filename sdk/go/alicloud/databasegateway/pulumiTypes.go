@@ -189,26 +189,16 @@ func (o GetGatewaysGatewayArrayOutput) Index(i pulumi.IntInput) GetGatewaysGatew
 }
 
 type GetGatewaysGatewayGatewayInstance struct {
-	// The connection type of Gateway instance.
-	ConnectEndpointType string `pulumi:"connectEndpointType"`
-	// The process of version number of Gateway instance.
-	CurrentDaemonVersion string `pulumi:"currentDaemonVersion"`
-	// The version of Gateway instance.
-	CurrentVersion string `pulumi:"currentVersion"`
-	// The endpoint address of Gateway instance.
-	EndPoint string `pulumi:"endPoint"`
-	// The id of Gateway instance.
-	GatewayInstanceId string `pulumi:"gatewayInstanceId"`
-	// The status of Gateway instance. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
+	ConnectEndpointType   string `pulumi:"connectEndpointType"`
+	CurrentDaemonVersion  string `pulumi:"currentDaemonVersion"`
+	CurrentVersion        string `pulumi:"currentVersion"`
+	EndPoint              string `pulumi:"endPoint"`
+	GatewayInstanceId     string `pulumi:"gatewayInstanceId"`
 	GatewayInstanceStatus string `pulumi:"gatewayInstanceStatus"`
-	// The last Updated time stamp of Gateway instance.
-	LastUpdateTime string `pulumi:"lastUpdateTime"`
-	// The Local IP ADDRESS of Gateway instance.
-	LocalIp string `pulumi:"localIp"`
-	// The prompt information of Gateway instance.
-	Message string `pulumi:"message"`
-	// The host of Gateway instance.
-	OutputIp string `pulumi:"outputIp"`
+	LastUpdateTime        string `pulumi:"lastUpdateTime"`
+	LocalIp               string `pulumi:"localIp"`
+	Message               string `pulumi:"message"`
+	OutputIp              string `pulumi:"outputIp"`
 }
 
 // GetGatewaysGatewayGatewayInstanceInput is an input type that accepts GetGatewaysGatewayGatewayInstanceArgs and GetGatewaysGatewayGatewayInstanceOutput values.
@@ -223,26 +213,16 @@ type GetGatewaysGatewayGatewayInstanceInput interface {
 }
 
 type GetGatewaysGatewayGatewayInstanceArgs struct {
-	// The connection type of Gateway instance.
-	ConnectEndpointType pulumi.StringInput `pulumi:"connectEndpointType"`
-	// The process of version number of Gateway instance.
-	CurrentDaemonVersion pulumi.StringInput `pulumi:"currentDaemonVersion"`
-	// The version of Gateway instance.
-	CurrentVersion pulumi.StringInput `pulumi:"currentVersion"`
-	// The endpoint address of Gateway instance.
-	EndPoint pulumi.StringInput `pulumi:"endPoint"`
-	// The id of Gateway instance.
-	GatewayInstanceId pulumi.StringInput `pulumi:"gatewayInstanceId"`
-	// The status of Gateway instance. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
+	ConnectEndpointType   pulumi.StringInput `pulumi:"connectEndpointType"`
+	CurrentDaemonVersion  pulumi.StringInput `pulumi:"currentDaemonVersion"`
+	CurrentVersion        pulumi.StringInput `pulumi:"currentVersion"`
+	EndPoint              pulumi.StringInput `pulumi:"endPoint"`
+	GatewayInstanceId     pulumi.StringInput `pulumi:"gatewayInstanceId"`
 	GatewayInstanceStatus pulumi.StringInput `pulumi:"gatewayInstanceStatus"`
-	// The last Updated time stamp of Gateway instance.
-	LastUpdateTime pulumi.StringInput `pulumi:"lastUpdateTime"`
-	// The Local IP ADDRESS of Gateway instance.
-	LocalIp pulumi.StringInput `pulumi:"localIp"`
-	// The prompt information of Gateway instance.
-	Message pulumi.StringInput `pulumi:"message"`
-	// The host of Gateway instance.
-	OutputIp pulumi.StringInput `pulumi:"outputIp"`
+	LastUpdateTime        pulumi.StringInput `pulumi:"lastUpdateTime"`
+	LocalIp               pulumi.StringInput `pulumi:"localIp"`
+	Message               pulumi.StringInput `pulumi:"message"`
+	OutputIp              pulumi.StringInput `pulumi:"outputIp"`
 }
 
 func (GetGatewaysGatewayGatewayInstanceArgs) ElementType() reflect.Type {
@@ -296,52 +276,42 @@ func (o GetGatewaysGatewayGatewayInstanceOutput) ToGetGatewaysGatewayGatewayInst
 	return o
 }
 
-// The connection type of Gateway instance.
 func (o GetGatewaysGatewayGatewayInstanceOutput) ConnectEndpointType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGatewayGatewayInstance) string { return v.ConnectEndpointType }).(pulumi.StringOutput)
 }
 
-// The process of version number of Gateway instance.
 func (o GetGatewaysGatewayGatewayInstanceOutput) CurrentDaemonVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGatewayGatewayInstance) string { return v.CurrentDaemonVersion }).(pulumi.StringOutput)
 }
 
-// The version of Gateway instance.
 func (o GetGatewaysGatewayGatewayInstanceOutput) CurrentVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGatewayGatewayInstance) string { return v.CurrentVersion }).(pulumi.StringOutput)
 }
 
-// The endpoint address of Gateway instance.
 func (o GetGatewaysGatewayGatewayInstanceOutput) EndPoint() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGatewayGatewayInstance) string { return v.EndPoint }).(pulumi.StringOutput)
 }
 
-// The id of Gateway instance.
 func (o GetGatewaysGatewayGatewayInstanceOutput) GatewayInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGatewayGatewayInstance) string { return v.GatewayInstanceId }).(pulumi.StringOutput)
 }
 
-// The status of Gateway instance. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
 func (o GetGatewaysGatewayGatewayInstanceOutput) GatewayInstanceStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGatewayGatewayInstance) string { return v.GatewayInstanceStatus }).(pulumi.StringOutput)
 }
 
-// The last Updated time stamp of Gateway instance.
 func (o GetGatewaysGatewayGatewayInstanceOutput) LastUpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGatewayGatewayInstance) string { return v.LastUpdateTime }).(pulumi.StringOutput)
 }
 
-// The Local IP ADDRESS of Gateway instance.
 func (o GetGatewaysGatewayGatewayInstanceOutput) LocalIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGatewayGatewayInstance) string { return v.LocalIp }).(pulumi.StringOutput)
 }
 
-// The prompt information of Gateway instance.
 func (o GetGatewaysGatewayGatewayInstanceOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGatewayGatewayInstance) string { return v.Message }).(pulumi.StringOutput)
 }
 
-// The host of Gateway instance.
 func (o GetGatewaysGatewayGatewayInstanceOutput) OutputIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGatewaysGatewayGatewayInstance) string { return v.OutputIp }).(pulumi.StringOutput)
 }

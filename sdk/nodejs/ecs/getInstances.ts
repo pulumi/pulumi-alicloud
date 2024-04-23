@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * export const firstInstanceId = instancesDs.then(instancesDs => instancesDs.instances?.[0]?.id);
  * export const instanceIds = instancesDs.then(instancesDs => instancesDs.ids);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstances(args?: GetInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstancesResult> {
     args = args || {};
@@ -96,7 +94,6 @@ export interface GetInstancesArgs {
     status?: string;
     /**
      * A map of tags assigned to the ECS instances. It must be in the format:
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
@@ -108,7 +105,6 @@ export interface GetInstancesArgs {
      *     },
      * });
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     tags?: {[key: string]: any};
     /**
@@ -186,7 +182,6 @@ export interface GetInstancesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -198,7 +193,6 @@ export interface GetInstancesResult {
  * export const firstInstanceId = instancesDs.then(instancesDs => instancesDs.instances?.[0]?.id);
  * export const instanceIds = instancesDs.then(instancesDs => instancesDs.ids);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstancesOutput(args?: GetInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstancesResult> {
     return pulumi.output(args).apply((a: any) => getInstances(a, opts))
@@ -252,7 +246,6 @@ export interface GetInstancesOutputArgs {
     status?: pulumi.Input<string>;
     /**
      * A map of tags assigned to the ECS instances. It must be in the format:
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
@@ -264,7 +257,6 @@ export interface GetInstancesOutputArgs {
      *     },
      * });
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**

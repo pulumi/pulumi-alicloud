@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,7 +27,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstCenRouteMapId = _this.then(_this => _this.maps?.[0]?.routeMapId);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRouteMaps(args: GetRouteMapsArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteMapsResult> {
 
@@ -120,7 +118,6 @@ export interface GetRouteMapsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -135,7 +132,6 @@ export interface GetRouteMapsResult {
  * });
  * export const firstCenRouteMapId = _this.then(_this => _this.maps?.[0]?.routeMapId);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRouteMapsOutput(args: GetRouteMapsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteMapsResult> {
     return pulumi.output(args).apply((a: any) => getRouteMaps(a, opts))

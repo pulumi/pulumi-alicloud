@@ -197,7 +197,6 @@ class Snapshot(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -220,7 +219,6 @@ class Snapshot(pulumi.CustomResource):
             retention_days=20,
             snapshot_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -257,7 +255,6 @@ class Snapshot(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -280,7 +277,6 @@ class Snapshot(pulumi.CustomResource):
             retention_days=20,
             snapshot_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

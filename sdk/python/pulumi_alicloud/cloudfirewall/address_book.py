@@ -311,7 +311,6 @@ class AddressBook(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -327,7 +326,6 @@ class AddressBook(pulumi.CustomResource):
                 tag_value="tfTestAcc0",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -366,7 +364,6 @@ class AddressBook(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -382,7 +379,6 @@ class AddressBook(pulumi.CustomResource):
                 tag_value="tfTestAcc0",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

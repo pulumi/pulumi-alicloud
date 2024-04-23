@@ -133,7 +133,6 @@ def get_server_disks(disk_type: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -149,7 +148,6 @@ def get_server_disks(disk_type: Optional[str] = None,
     disk_type = alicloud.simpleapplicationserver.get_server_disks(disk_type="System")
     pulumi.export("simpleApplicationServerDiskId5", disk_type.disks[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str disk_type: The type of the disk. Possible values: `System`, `Data`.
@@ -198,7 +196,6 @@ def get_server_disks_output(disk_type: Optional[pulumi.Input[Optional[str]]] = N
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -214,7 +211,6 @@ def get_server_disks_output(disk_type: Optional[pulumi.Input[Optional[str]]] = N
     disk_type = alicloud.simpleapplicationserver.get_server_disks(disk_type="System")
     pulumi.export("simpleApplicationServerDiskId5", disk_type.disks[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str disk_type: The type of the disk. Possible values: `System`, `Data`.

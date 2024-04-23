@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -62,7 +61,6 @@ import * as utilities from "../utilities";
  *     notificationArn: pulumi.all([_default, defaultGetAccount, defaultQueue.name]).apply(([_default, defaultGetAccount, name]) => `acs:ess:${_default.regions?.[0]?.id}:${defaultGetAccount.id}:queue/${name}`),
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

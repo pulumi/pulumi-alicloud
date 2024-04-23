@@ -22,7 +22,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -52,7 +51,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -75,7 +73,7 @@ type Acl struct {
 	DryRun pulumi.BoolPtrOutput `pulumi:"dryRun"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// The status of the ACL entry. Valid values:
+	// The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
 	Status pulumi.StringOutput `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -125,7 +123,7 @@ type aclState struct {
 	DryRun *bool `pulumi:"dryRun"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// The status of the ACL entry. Valid values:
+	// The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
 	Status *string `pulumi:"status"`
 	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -143,7 +141,7 @@ type AclState struct {
 	DryRun pulumi.BoolPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// The status of the ACL entry. Valid values:
+	// The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
 	Status pulumi.StringPtrInput
 	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput
@@ -296,7 +294,7 @@ func (o AclOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// The status of the ACL entry. Valid values:
+// The state of the ACL. Valid values:`Provisioning`, `Available` and `Configuring`. `Provisioning`: The ACL is being created. `Available`: The ACL is available. `Configuring`: The ACL is being configured.
 func (o AclOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *Acl) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

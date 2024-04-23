@@ -13,21 +13,9 @@ namespace Pulumi.AliCloud.Eds.Outputs
     [OutputType]
     public sealed class GetBundlesBundleDesktopTypeAttributeResult
     {
-        /// <summary>
-        /// The cpu count attribute of the bundle.
-        /// </summary>
         public readonly int CpuCount;
-        /// <summary>
-        /// The gpu count attribute of the bundle.
-        /// </summary>
         public readonly string GpuCount;
-        /// <summary>
-        /// The gpu spec attribute of the bundle.
-        /// </summary>
         public readonly string GpuSpec;
-        /// <summary>
-        /// The memory size attribute of the bundle.
-        /// </summary>
         public readonly string MemorySize;
 
         [OutputConstructor]

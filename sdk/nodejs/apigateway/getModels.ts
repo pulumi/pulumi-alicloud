@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -30,7 +29,6 @@ import * as utilities from "../utilities";
  * });
  * export const apiGatewayModelId2 = groupId.then(groupId => groupId.models?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getModels(args: GetModelsArgs, opts?: pulumi.InvokeOptions): Promise<GetModelsResult> {
 
@@ -113,7 +111,6 @@ export interface GetModelsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -128,7 +125,6 @@ export interface GetModelsResult {
  * });
  * export const apiGatewayModelId2 = groupId.then(groupId => groupId.models?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getModelsOutput(args: GetModelsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetModelsResult> {
     return pulumi.output(args).apply((a: any) => getModels(a, opts))

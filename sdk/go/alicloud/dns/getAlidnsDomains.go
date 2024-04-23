@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,7 +42,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetAlidnsDomains(ctx *pulumi.Context, args *GetAlidnsDomainsArgs, opts ...pulumi.InvokeOption) (*GetAlidnsDomainsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAlidnsDomainsResult

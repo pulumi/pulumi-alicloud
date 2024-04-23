@@ -16,72 +16,30 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
 
     public static final RuleTargetParamListArgs Empty = new RuleTargetParamListArgs();
 
-    /**
-     * The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
-     * 
-     */
     @Import(name="form", required=true)
     private Output<String> form;
 
-    /**
-     * @return The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
-     * 
-     */
     public Output<String> form() {
         return this.form;
     }
 
-    /**
-     * The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
-     * 
-     */
     @Import(name="resourceKey", required=true)
     private Output<String> resourceKey;
 
-    /**
-     * @return The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
-     * 
-     */
     public Output<String> resourceKey() {
         return this.resourceKey;
     }
 
-    /**
-     * The template of the event target parameter.
-     * 
-     */
     @Import(name="template")
     private @Nullable Output<String> template;
 
-    /**
-     * @return The template of the event target parameter.
-     * 
-     */
     public Optional<Output<String>> template() {
         return Optional.ofNullable(this.template);
     }
 
-    /**
-     * The value of the event target parameter.
-     * 
-     * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
-     * 
-     * In order to fix the diff, from version 1.160.0, this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
-     * If you want to set `resource_key = &#34;IsBase64Encode&#34;`, please avoid to set `value = &#34;false&#34;`.
-     * 
-     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
-    /**
-     * @return The value of the event target parameter.
-     * 
-     * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
-     * 
-     * In order to fix the diff, from version 1.160.0, this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
-     * If you want to set `resource_key = &#34;IsBase64Encode&#34;`, please avoid to set `value = &#34;false&#34;`.
-     * 
-     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -113,96 +71,38 @@ public final class RuleTargetParamListArgs extends com.pulumi.resources.Resource
             $ = new RuleTargetParamListArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param form The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder form(Output<String> form) {
             $.form = form;
             return this;
         }
 
-        /**
-         * @param form The format of the event target parameter. Valid values: `ORIGINAL`, `TEMPLATE`, `JSONPATH`, `CONSTANT`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder form(String form) {
             return form(Output.of(form));
         }
 
-        /**
-         * @param resourceKey The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceKey(Output<String> resourceKey) {
             $.resourceKey = resourceKey;
             return this;
         }
 
-        /**
-         * @param resourceKey The resource parameter of the event target. For more information, see [How to use it](https://www.alibabacloud.com/help/en/eventbridge/latest/event-target-parameters)
-         * 
-         * @return builder
-         * 
-         */
         public Builder resourceKey(String resourceKey) {
             return resourceKey(Output.of(resourceKey));
         }
 
-        /**
-         * @param template The template of the event target parameter.
-         * 
-         * @return builder
-         * 
-         */
         public Builder template(@Nullable Output<String> template) {
             $.template = template;
             return this;
         }
 
-        /**
-         * @param template The template of the event target parameter.
-         * 
-         * @return builder
-         * 
-         */
         public Builder template(String template) {
             return template(Output.of(template));
         }
 
-        /**
-         * @param value The value of the event target parameter.
-         * 
-         * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
-         * 
-         * In order to fix the diff, from version 1.160.0, this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
-         * If you want to set `resource_key = &#34;IsBase64Encode&#34;`, please avoid to set `value = &#34;false&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value The value of the event target parameter.
-         * 
-         * &gt; **NOTE:** There exists a potential diff error that the backend service will return a default param as following:
-         * 
-         * In order to fix the diff, from version 1.160.0, this resource has removed the param which `resource_key = &#34;IsBase64Encode&#34;` and `value = &#34;false&#34;`.
-         * If you want to set `resource_key = &#34;IsBase64Encode&#34;`, please avoid to set `value = &#34;false&#34;`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

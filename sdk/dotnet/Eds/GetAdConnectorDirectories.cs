@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.AliCloud.Eds
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAdConnectorDirectoriesResult> InvokeAsync(GetAdConnectorDirectoriesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAdConnectorDirectoriesResult>("alicloud:eds/getAdConnectorDirectories:getAdConnectorDirectories", args ?? new GetAdConnectorDirectoriesArgs(), options.WithDefaults());
@@ -57,7 +55,6 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Pulumi.AliCloud.Eds
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAdConnectorDirectoriesResult> Invoke(GetAdConnectorDirectoriesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAdConnectorDirectoriesResult>("alicloud:eds/getAdConnectorDirectories:getAdConnectorDirectories", args ?? new GetAdConnectorDirectoriesInvokeArgs(), options.WithDefaults());
@@ -114,7 +110,7 @@ namespace Pulumi.AliCloud.Eds
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of directory.
+        /// The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -152,7 +148,7 @@ namespace Pulumi.AliCloud.Eds
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of directory.
+        /// The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

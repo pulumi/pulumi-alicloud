@@ -168,7 +168,6 @@ class Group(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -177,7 +176,6 @@ class Group(pulumi.CustomResource):
             name="tf_example",
             description="tf_example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -204,7 +202,6 @@ class Group(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -213,7 +210,6 @@ class Group(pulumi.CustomResource):
             name="tf_example",
             description="tf_example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

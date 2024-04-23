@@ -194,14 +194,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.status;
     }
     /**
-     * Life cycle type.
+     * Project type
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return Life cycle type.
+     * @return Project type
      * 
      */
     public Output<String> type() {

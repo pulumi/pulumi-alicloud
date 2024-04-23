@@ -230,7 +230,6 @@ class Plugin(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -245,7 +244,6 @@ class Plugin(pulumi.CustomResource):
                 "For": "example",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -286,7 +284,6 @@ class Plugin(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -301,7 +298,6 @@ class Plugin(pulumi.CustomResource):
                 "For": "example",
             })
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

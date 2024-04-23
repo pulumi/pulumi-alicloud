@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTransitRouterRouteTableAssociationsResult> InvokeAsync(GetTransitRouterRouteTableAssociationsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTransitRouterRouteTableAssociationsResult>("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", args ?? new GetTransitRouterRouteTableAssociationsArgs(), options.WithDefaults());
@@ -50,7 +48,6 @@ namespace Pulumi.AliCloud.Cen
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,7 +67,6 @@ namespace Pulumi.AliCloud.Cen
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTransitRouterRouteTableAssociationsResult> Invoke(GetTransitRouterRouteTableAssociationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTransitRouterRouteTableAssociationsResult>("alicloud:cen/getTransitRouterRouteTableAssociations:getTransitRouterRouteTableAssociations", args ?? new GetTransitRouterRouteTableAssociationsInvokeArgs(), options.WithDefaults());

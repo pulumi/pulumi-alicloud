@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstZonesId = _default.then(_default => _default.zones?.[0]?.zoneId);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getResolverZones(args?: GetResolverZonesArgs, opts?: pulumi.InvokeOptions): Promise<GetResolverZonesResult> {
     args = args || {};
@@ -72,7 +70,6 @@ export interface GetResolverZonesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -82,7 +79,6 @@ export interface GetResolverZonesResult {
  * });
  * export const firstZonesId = _default.then(_default => _default.zones?.[0]?.zoneId);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getResolverZonesOutput(args?: GetResolverZonesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetResolverZonesResult> {
     return pulumi.output(args).apply((a: any) => getResolverZones(a, opts))

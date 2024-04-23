@@ -375,7 +375,7 @@ class _LoadBalancerState:
         :param pulumi.Input[str] modification_protection_status: Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security group to which the network-based SLB instance belongs.
-        :param pulumi.Input[str] status: ON.
+        :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: List of labels.
         :param pulumi.Input[str] vpc_id: The ID of the network-based SLB instance.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]] zone_mappings: The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zone_mappings` below.
@@ -653,7 +653,7 @@ class _LoadBalancerState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        ON.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 
@@ -733,7 +733,6 @@ class LoadBalancer(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -779,7 +778,6 @@ class LoadBalancer(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -835,7 +833,6 @@ class LoadBalancer(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -881,7 +878,6 @@ class LoadBalancer(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -1026,7 +1022,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] modification_protection_status: Specifies whether to enable the configuration read-only mode. Default value: `NonProtection`. Valid values:
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] security_group_ids: The security group to which the network-based SLB instance belongs.
-        :param pulumi.Input[str] status: ON.
+        :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: List of labels.
         :param pulumi.Input[str] vpc_id: The ID of the network-based SLB instance.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerZoneMappingArgs']]]] zone_mappings: The list of zones and vSwitch mappings. You must add at least two zones and a maximum of 10 zones. See `zone_mappings` below.
@@ -1215,7 +1211,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        ON.
+        The status of the resource.
         """
         return pulumi.get(self, "status")
 

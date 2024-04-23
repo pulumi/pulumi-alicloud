@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * ### Basic Example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -37,13 +36,11 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
  *
  * ### Example Multiple Condition Keys and Values
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -99,13 +96,11 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
  *
  * ### Example Assume-Role Policy with RAM Principal
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -126,13 +121,11 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
  *
  * ### Example Assume-Role Policy with Service Principal
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -153,13 +146,11 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
  *
  * ### Example Assume-Role Policy with Federated Principal
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -185,7 +176,6 @@ import * as utilities from "../utilities";
  *     force: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
  */
@@ -243,7 +233,6 @@ export interface GetPolicyDocumentResult {
  *
  * ### Basic Example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -265,13 +254,11 @@ export interface GetPolicyDocumentResult {
  *     force: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
  *
  * ### Example Multiple Condition Keys and Values
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -327,13 +314,11 @@ export interface GetPolicyDocumentResult {
  *     force: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
  *
  * ### Example Assume-Role Policy with RAM Principal
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -354,13 +339,11 @@ export interface GetPolicyDocumentResult {
  *     force: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
  *
  * ### Example Assume-Role Policy with Service Principal
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -381,13 +364,11 @@ export interface GetPolicyDocumentResult {
  *     force: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
  *
  * ### Example Assume-Role Policy with Federated Principal
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -413,7 +394,6 @@ export interface GetPolicyDocumentResult {
  *     force: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
  */

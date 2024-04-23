@@ -14,10 +14,6 @@ namespace Pulumi.AliCloud.Alb.Inputs
     {
         [Input("values")]
         private InputList<Inputs.RuleRuleConditionQueryStringConfigValueArgs>? _values;
-
-        /// <summary>
-        /// Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-        /// </summary>
         public InputList<Inputs.RuleRuleConditionQueryStringConfigValueArgs> Values
         {
             get => _values ?? (_values = new InputList<Inputs.RuleRuleConditionQueryStringConfigValueArgs>());

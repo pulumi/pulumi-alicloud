@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const output = myNamespaces.then(myNamespaces => myNamespaces.namespaces);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRegistryEnterpriseNamespaces(args: GetRegistryEnterpriseNamespacesArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistryEnterpriseNamespacesResult> {
 
@@ -95,7 +93,6 @@ export interface GetRegistryEnterpriseNamespacesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -108,7 +105,6 @@ export interface GetRegistryEnterpriseNamespacesResult {
  * });
  * export const output = myNamespaces.then(myNamespaces => myNamespaces.namespaces);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRegistryEnterpriseNamespacesOutput(args: GetRegistryEnterpriseNamespacesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryEnterpriseNamespacesResult> {
     return pulumi.output(args).apply((a: any) => getRegistryEnterpriseNamespaces(a, opts))

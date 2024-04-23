@@ -12,29 +12,15 @@ namespace Pulumi.AliCloud.Log.Inputs
 
     public sealed class StoreIndexFieldSearchJsonKeyArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The alias of one field.
-        /// </summary>
         [Input("alias")]
         public Input<string>? Alias { get; set; }
 
-        /// <summary>
-        /// Whether to enable statistics. default to true.
-        /// 
-        /// &gt; **Note:** At least one of the "full_text" and "field_search" should be specified.
-        /// </summary>
         [Input("docValue")]
         public Input<bool>? DocValue { get; set; }
 
-        /// <summary>
-        /// When using the json_keys field, this field is required.
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
-        /// <summary>
-        /// The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
-        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 

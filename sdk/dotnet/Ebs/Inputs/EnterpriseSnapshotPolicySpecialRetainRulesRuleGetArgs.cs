@@ -12,24 +12,12 @@ namespace Pulumi.AliCloud.Ebs.Inputs
 
     public sealed class EnterpriseSnapshotPolicySpecialRetainRulesRuleGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The cycle unit of the special reserved snapshot. If the value is set to WEEKS, the first snapshot of each week is reserved. The retention time is determined by TimeUnit and TimeInterval. The value range is:
-        /// - WEEKS
-        /// - MONTHS
-        /// - YEARS.
-        /// </summary>
         [Input("specialPeriodUnit")]
         public Input<string>? SpecialPeriodUnit { get; set; }
 
-        /// <summary>
-        /// Time unit.
-        /// </summary>
         [Input("timeInterval")]
         public Input<int>? TimeInterval { get; set; }
 
-        /// <summary>
-        /// Time-based retention.
-        /// </summary>
         [Input("timeUnit")]
         public Input<string>? TimeUnit { get; set; }
 

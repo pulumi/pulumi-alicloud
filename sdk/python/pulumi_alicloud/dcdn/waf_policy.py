@@ -172,7 +172,6 @@ class WafPolicy(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -191,7 +190,6 @@ class WafPolicy(pulumi.CustomResource):
             policy_type="custom",
             status="on")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -225,7 +223,6 @@ class WafPolicy(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -244,7 +241,6 @@ class WafPolicy(pulumi.CustomResource):
             policy_type="custom",
             status="on")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

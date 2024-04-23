@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy {
-    /**
-     * @return The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
-     * 
-     */
     private String alias;
-    /**
-     * @return The name of the key that is used to filter logs imported from Log Service.
-     * 
-     */
     private String slsKeyName;
 
     private GetHybridMonitorSlsTasksTaskSlsProcessConfigGroupBy() {}
-    /**
-     * @return The alias of the extended field that specifies the result of basic operations that are performed on aggregation results.
-     * 
-     */
     public String alias() {
         return this.alias;
     }
-    /**
-     * @return The name of the key that is used to filter logs imported from Log Service.
-     * 
-     */
     public String slsKeyName() {
         return this.slsKeyName;
     }

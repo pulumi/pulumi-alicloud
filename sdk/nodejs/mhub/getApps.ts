@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -35,7 +34,6 @@ import * as utilities from "../utilities";
  * });
  * export const mhubAppId2 = nameRegex.then(nameRegex => nameRegex.apps?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getApps(args: GetAppsArgs, opts?: pulumi.InvokeOptions): Promise<GetAppsResult> {
 
@@ -106,7 +104,6 @@ export interface GetAppsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -126,7 +123,6 @@ export interface GetAppsResult {
  * });
  * export const mhubAppId2 = nameRegex.then(nameRegex => nameRegex.apps?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAppsOutput(args: GetAppsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppsResult> {
     return pulumi.output(args).apply((a: any) => getApps(a, opts))

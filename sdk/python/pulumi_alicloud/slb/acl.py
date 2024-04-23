@@ -239,7 +239,6 @@ class Acl(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -248,7 +247,6 @@ class Acl(pulumi.CustomResource):
             name="terraformslbaclconfig",
             ip_version="ipv4")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Entry Block
 
@@ -306,7 +304,6 @@ class Acl(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -315,7 +312,6 @@ class Acl(pulumi.CustomResource):
             name="terraformslbaclconfig",
             ip_version="ipv4")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Entry Block
 

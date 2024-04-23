@@ -104,7 +104,6 @@ def get_folders(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -117,7 +116,6 @@ def get_folders(ids: Optional[Sequence[str]] = None,
         parent_folder_path="Business Flow/tfTestAcc/folderDi"))
     pulumi.export("dataWorksFolderId1", ids.folders[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Folder IDs.
@@ -157,7 +155,6 @@ def get_folders_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -170,7 +167,6 @@ def get_folders_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
         parent_folder_path="Business Flow/tfTestAcc/folderDi"))
     pulumi.export("dataWorksFolderId1", ids.folders[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Folder IDs.

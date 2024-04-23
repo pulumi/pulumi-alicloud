@@ -374,7 +374,6 @@ class Role(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -400,7 +399,6 @@ class Role(pulumi.CustomResource):
         \"\"\",
             description="this is a role test.")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -436,7 +434,6 @@ class Role(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -462,7 +459,6 @@ class Role(pulumi.CustomResource):
         \"\"\",
             description="this is a role test.")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

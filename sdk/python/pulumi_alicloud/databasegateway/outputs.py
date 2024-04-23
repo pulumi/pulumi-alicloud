@@ -141,18 +141,6 @@ class GetGatewaysGatewayGatewayInstanceResult(dict):
                  local_ip: str,
                  message: str,
                  output_ip: str):
-        """
-        :param str connect_endpoint_type: The connection type of Gateway instance.
-        :param str current_daemon_version: The process of version number of Gateway instance.
-        :param str current_version: The version of Gateway instance.
-        :param str end_point: The endpoint address of Gateway instance.
-        :param str gateway_instance_id: The id of Gateway instance.
-        :param str gateway_instance_status: The status of Gateway instance. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
-        :param str last_update_time: The last Updated time stamp of Gateway instance.
-        :param str local_ip: The Local IP ADDRESS of Gateway instance.
-        :param str message: The prompt information of Gateway instance.
-        :param str output_ip: The host of Gateway instance.
-        """
         pulumi.set(__self__, "connect_endpoint_type", connect_endpoint_type)
         pulumi.set(__self__, "current_daemon_version", current_daemon_version)
         pulumi.set(__self__, "current_version", current_version)
@@ -167,81 +155,51 @@ class GetGatewaysGatewayGatewayInstanceResult(dict):
     @property
     @pulumi.getter(name="connectEndpointType")
     def connect_endpoint_type(self) -> str:
-        """
-        The connection type of Gateway instance.
-        """
         return pulumi.get(self, "connect_endpoint_type")
 
     @property
     @pulumi.getter(name="currentDaemonVersion")
     def current_daemon_version(self) -> str:
-        """
-        The process of version number of Gateway instance.
-        """
         return pulumi.get(self, "current_daemon_version")
 
     @property
     @pulumi.getter(name="currentVersion")
     def current_version(self) -> str:
-        """
-        The version of Gateway instance.
-        """
         return pulumi.get(self, "current_version")
 
     @property
     @pulumi.getter(name="endPoint")
     def end_point(self) -> str:
-        """
-        The endpoint address of Gateway instance.
-        """
         return pulumi.get(self, "end_point")
 
     @property
     @pulumi.getter(name="gatewayInstanceId")
     def gateway_instance_id(self) -> str:
-        """
-        The id of Gateway instance.
-        """
         return pulumi.get(self, "gateway_instance_id")
 
     @property
     @pulumi.getter(name="gatewayInstanceStatus")
     def gateway_instance_status(self) -> str:
-        """
-        The status of Gateway instance. Valid values: `EXCEPTION`, `NEW`, `RUNNING`, `STOPPED`.
-        """
         return pulumi.get(self, "gateway_instance_status")
 
     @property
     @pulumi.getter(name="lastUpdateTime")
     def last_update_time(self) -> str:
-        """
-        The last Updated time stamp of Gateway instance.
-        """
         return pulumi.get(self, "last_update_time")
 
     @property
     @pulumi.getter(name="localIp")
     def local_ip(self) -> str:
-        """
-        The Local IP ADDRESS of Gateway instance.
-        """
         return pulumi.get(self, "local_ip")
 
     @property
     @pulumi.getter
     def message(self) -> str:
-        """
-        The prompt information of Gateway instance.
-        """
         return pulumi.get(self, "message")
 
     @property
     @pulumi.getter(name="outputIp")
     def output_ip(self) -> str:
-        """
-        The host of Gateway instance.
-        """
         return pulumi.get(self, "output_ip")
 
 

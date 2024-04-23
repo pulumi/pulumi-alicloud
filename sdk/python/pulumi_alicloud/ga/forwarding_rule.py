@@ -272,7 +272,6 @@ class ForwardingRule(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -371,7 +370,6 @@ class ForwardingRule(pulumi.CustomResource):
             priority=2,
             forwarding_rule_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -407,7 +405,6 @@ class ForwardingRule(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -506,7 +503,6 @@ class ForwardingRule(pulumi.CustomResource):
             priority=2,
             forwarding_rule_name=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

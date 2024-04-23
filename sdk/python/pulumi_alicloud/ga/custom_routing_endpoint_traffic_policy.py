@@ -223,7 +223,6 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -286,7 +285,6 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
                 to_port=10,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -319,7 +317,6 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -382,7 +379,6 @@ class CustomRoutingEndpointTrafficPolicy(pulumi.CustomResource):
                 to_port=10,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

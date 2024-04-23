@@ -246,7 +246,6 @@ class TopicSubscription(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -263,7 +262,6 @@ class TopicSubscription(pulumi.CustomResource):
             notify_strategy="BACKOFF_RETRY",
             notify_content_format="XML")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -296,7 +294,6 @@ class TopicSubscription(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -313,7 +310,6 @@ class TopicSubscription(pulumi.CustomResource):
             notify_strategy="BACKOFF_RETRY",
             notify_content_format="XML")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -15,17 +15,9 @@ public final class ContainerGroupContainerEnvironmentVarFieldRefArgs extends com
 
     public static final ContainerGroupContainerEnvironmentVarFieldRefArgs Empty = new ContainerGroupContainerEnvironmentVarFieldRefArgs();
 
-    /**
-     * The path of the reference.
-     * 
-     */
     @Import(name="fieldPath")
     private @Nullable Output<String> fieldPath;
 
-    /**
-     * @return The path of the reference.
-     * 
-     */
     public Optional<Output<String>> fieldPath() {
         return Optional.ofNullable(this.fieldPath);
     }
@@ -54,23 +46,11 @@ public final class ContainerGroupContainerEnvironmentVarFieldRefArgs extends com
             $ = new ContainerGroupContainerEnvironmentVarFieldRefArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param fieldPath The path of the reference.
-         * 
-         * @return builder
-         * 
-         */
         public Builder fieldPath(@Nullable Output<String> fieldPath) {
             $.fieldPath = fieldPath;
             return this;
         }
 
-        /**
-         * @param fieldPath The path of the reference.
-         * 
-         * @return builder
-         * 
-         */
         public Builder fieldPath(String fieldPath) {
             return fieldPath(Output.of(fieldPath));
         }

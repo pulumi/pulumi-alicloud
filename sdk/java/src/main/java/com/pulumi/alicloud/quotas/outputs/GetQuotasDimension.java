@@ -11,29 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class GetQuotasDimension {
-    /**
-     * @return The key of dimensions.
-     * 
-     */
     private @Nullable String key;
-    /**
-     * @return The value of dimensions.
-     * 
-     */
     private @Nullable String value;
 
     private GetQuotasDimension() {}
-    /**
-     * @return The key of dimensions.
-     * 
-     */
     public Optional<String> key() {
         return Optional.ofNullable(this.key);
     }
-    /**
-     * @return The value of dimensions.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

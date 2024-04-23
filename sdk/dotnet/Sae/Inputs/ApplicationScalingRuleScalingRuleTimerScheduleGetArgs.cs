@@ -12,27 +12,15 @@ namespace Pulumi.AliCloud.Sae.Inputs
 
     public sealed class ApplicationScalingRuleScalingRuleTimerScheduleGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Trigger point in time. When supporting format: minutes, for example: `08:00`.
-        /// </summary>
         [Input("atTime")]
         public Input<string>? AtTime { get; set; }
 
-        /// <summary>
-        /// Maximum number of instances applied.
-        /// </summary>
         [Input("maxReplicas")]
         public Input<int>? MaxReplicas { get; set; }
 
-        /// <summary>
-        /// Minimum number of instances applied.
-        /// </summary>
         [Input("minReplicas")]
         public Input<int>? MinReplicas { get; set; }
 
-        /// <summary>
-        /// This parameter can specify the number of instances to be applied or the minimum number of surviving instances per deployment. value range [1,50]. &gt; **NOTE:** The attribute is valid when the attribute `scaling_rule_type` is `timing`.
-        /// </summary>
         [Input("targetReplicas")]
         public Input<int>? TargetReplicas { get; set; }
 

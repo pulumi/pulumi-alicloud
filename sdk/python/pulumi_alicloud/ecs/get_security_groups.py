@@ -186,7 +186,6 @@ def get_security_groups(enable_details: Optional[bool] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -199,7 +198,6 @@ def get_security_groups(enable_details: Optional[bool] = None,
     primary_sec_groups_ds = alicloud.ecs.get_security_groups_output(vpc_id=primary_vpc_ds.id)
     pulumi.export("firstGroupId", primary_sec_groups_ds.groups[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Security Group IDs.
@@ -207,7 +205,6 @@ def get_security_groups(enable_details: Optional[bool] = None,
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the security_group belongs.
     :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
-           <!--Start PulumiCodeChooser -->
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -217,7 +214,6 @@ def get_security_groups(enable_details: Optional[bool] = None,
                "tagKey2": "tagValue2",
            })
            ```
-           <!--End PulumiCodeChooser -->
     :param str vpc_id: Used to retrieve security groups that belong to the specified VPC ID.
     """
     __args__ = dict()
@@ -265,7 +261,6 @@ def get_security_groups_output(enable_details: Optional[pulumi.Input[Optional[bo
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -278,7 +273,6 @@ def get_security_groups_output(enable_details: Optional[pulumi.Input[Optional[bo
     primary_sec_groups_ds = alicloud.ecs.get_security_groups_output(vpc_id=primary_vpc_ds.id)
     pulumi.export("firstGroupId", primary_sec_groups_ds.groups[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Security Group IDs.
@@ -286,7 +280,6 @@ def get_security_groups_output(enable_details: Optional[pulumi.Input[Optional[bo
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str resource_group_id: The Id of resource group which the security_group belongs.
     :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
-           <!--Start PulumiCodeChooser -->
            ```python
            import pulumi
            import pulumi_alicloud as alicloud
@@ -296,7 +289,6 @@ def get_security_groups_output(enable_details: Optional[pulumi.Input[Optional[bo
                "tagKey2": "tagValue2",
            })
            ```
-           <!--End PulumiCodeChooser -->
     :param str vpc_id: Used to retrieve security groups that belong to the specified VPC ID.
     """
     ...

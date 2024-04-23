@@ -921,7 +921,6 @@ class Instance(pulumi.CustomResource):
 
         ### Create a hbase instance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -950,7 +949,6 @@ class Instance(pulumi.CustomResource):
             cold_storage_size=0,
             deletion_protection=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         this is a example for class netType instance. you can find more detail with the examples/hbase dir.
 
@@ -1015,7 +1013,6 @@ class Instance(pulumi.CustomResource):
 
         ### Create a hbase instance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1044,7 +1041,6 @@ class Instance(pulumi.CustomResource):
             cold_storage_size=0,
             deletion_protection=False)
         ```
-        <!--End PulumiCodeChooser -->
 
         this is a example for class netType instance. you can find more detail with the examples/hbase dir.
 

@@ -13,14 +13,11 @@ namespace Pulumi.AliCloud.MaxCompute.Inputs
     public sealed class ProjectPropertiesTableLifecycleGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Life cycle type.
+        /// Project type
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
-        /// <summary>
-        /// The value of the life cycle.
-        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

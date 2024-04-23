@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,7 +42,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetBundles(ctx *pulumi.Context, args *GetBundlesArgs, opts ...pulumi.InvokeOption) (*GetBundlesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBundlesResult
@@ -56,7 +54,6 @@ func GetBundles(ctx *pulumi.Context, args *GetBundlesArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getBundles.
 type GetBundlesArgs struct {
-	// The bundle id of the bundle.
 	BundleIds []string `pulumi:"bundleIds"`
 	// The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
 	BundleType *string `pulumi:"bundleType"`
@@ -96,7 +93,6 @@ func GetBundlesOutput(ctx *pulumi.Context, args GetBundlesOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getBundles.
 type GetBundlesOutputArgs struct {
-	// The bundle id of the bundle.
 	BundleIds pulumi.StringArrayInput `pulumi:"bundleIds"`
 	// The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
 	BundleType pulumi.StringPtrInput `pulumi:"bundleType"`

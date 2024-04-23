@@ -11,29 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerGroupDnsConfigOption {
-    /**
-     * @return The name of the mounted volume.
-     * 
-     */
     private @Nullable String name;
-    /**
-     * @return The value of the variable. The value can be 0 to 256 characters in length.
-     * 
-     */
     private @Nullable String value;
 
     private ContainerGroupDnsConfigOption() {}
-    /**
-     * @return The name of the mounted volume.
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
-    /**
-     * @return The value of the variable. The value can be 0 to 256 characters in length.
-     * 
-     */
     public Optional<String> value() {
         return Optional.ofNullable(this.value);
     }

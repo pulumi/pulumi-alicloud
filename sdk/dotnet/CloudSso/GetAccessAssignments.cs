@@ -22,7 +22,6 @@ namespace Pulumi.AliCloud.CloudSso
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -47,7 +46,6 @@ namespace Pulumi.AliCloud.CloudSso
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAccessAssignmentsResult> InvokeAsync(GetAccessAssignmentsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAccessAssignmentsResult>("alicloud:cloudsso/getAccessAssignments:getAccessAssignments", args ?? new GetAccessAssignmentsArgs(), options.WithDefaults());
@@ -63,7 +61,6 @@ namespace Pulumi.AliCloud.CloudSso
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -88,7 +85,6 @@ namespace Pulumi.AliCloud.CloudSso
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAccessAssignmentsResult> Invoke(GetAccessAssignmentsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessAssignmentsResult>("alicloud:cloudsso/getAccessAssignments:getAccessAssignments", args ?? new GetAccessAssignmentsInvokeArgs(), options.WithDefaults());

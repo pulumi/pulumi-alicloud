@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -37,7 +36,6 @@ import * as utilities from "../utilities";
  * });
  * export const cmsMetricRuleTemplateId4 = nameRegex.then(nameRegex => nameRegex.templates?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMetricRuleTemplates(args?: GetMetricRuleTemplatesArgs, opts?: pulumi.InvokeOptions): Promise<GetMetricRuleTemplatesResult> {
     args = args || {};
@@ -115,7 +113,6 @@ export interface GetMetricRuleTemplatesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -137,7 +134,6 @@ export interface GetMetricRuleTemplatesResult {
  * });
  * export const cmsMetricRuleTemplateId4 = nameRegex.then(nameRegex => nameRegex.templates?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMetricRuleTemplatesOutput(args?: GetMetricRuleTemplatesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetricRuleTemplatesResult> {
     return pulumi.output(args).apply((a: any) => getMetricRuleTemplates(a, opts))

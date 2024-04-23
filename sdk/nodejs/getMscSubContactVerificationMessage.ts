@@ -11,7 +11,6 @@ import * as utilities from "./utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "./utilities";
  *     type: 1,
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMscSubContactVerificationMessage(args: GetMscSubContactVerificationMessageArgs, opts?: pulumi.InvokeOptions): Promise<GetMscSubContactVerificationMessageResult> {
 
@@ -74,7 +72,6 @@ export interface GetMscSubContactVerificationMessageResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -90,7 +87,6 @@ export interface GetMscSubContactVerificationMessageResult {
  *     type: 1,
  * }));
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getMscSubContactVerificationMessageOutput(args: GetMscSubContactVerificationMessageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMscSubContactVerificationMessageResult> {
     return pulumi.output(args).apply((a: any) => getMscSubContactVerificationMessage(a, opts))

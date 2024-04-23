@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * const ids = alicloud.eds.getSnapshots({});
  * export const ecdSnapshotId1 = ids.then(ids => ids.snapshots?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetSnapshotsResult> {
     args = args || {};
@@ -43,7 +41,7 @@ export function getSnapshots(args?: GetSnapshotsArgs, opts?: pulumi.InvokeOption
  */
 export interface GetSnapshotsArgs {
     /**
-     * The ID of the cloud desktop to which the snapshot belongs.
+     * The ID of the Desktop.
      */
     desktopId?: string;
     /**
@@ -59,7 +57,7 @@ export interface GetSnapshotsArgs {
      */
     outputFile?: string;
     /**
-     * The ID of the snapshot.
+     * The ID of the Snapshot.
      */
     snapshotId?: string;
 }
@@ -89,7 +87,6 @@ export interface GetSnapshotsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -97,7 +94,6 @@ export interface GetSnapshotsResult {
  * const ids = alicloud.eds.getSnapshots({});
  * export const ecdSnapshotId1 = ids.then(ids => ids.snapshots?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSnapshotsOutput(args?: GetSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotsResult> {
     return pulumi.output(args).apply((a: any) => getSnapshots(a, opts))
@@ -108,7 +104,7 @@ export function getSnapshotsOutput(args?: GetSnapshotsOutputArgs, opts?: pulumi.
  */
 export interface GetSnapshotsOutputArgs {
     /**
-     * The ID of the cloud desktop to which the snapshot belongs.
+     * The ID of the Desktop.
      */
     desktopId?: pulumi.Input<string>;
     /**
@@ -124,7 +120,7 @@ export interface GetSnapshotsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The ID of the snapshot.
+     * The ID of the Snapshot.
      */
     snapshotId?: pulumi.Input<string>;
 }

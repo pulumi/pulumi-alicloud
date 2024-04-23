@@ -198,7 +198,6 @@ class PrivateZone(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -221,7 +220,6 @@ class PrivateZone(pulumi.CustomResource):
             host_region_id=default.regions[0].id,
             host_vpc_id=example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -259,7 +257,6 @@ class PrivateZone(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -282,7 +279,6 @@ class PrivateZone(pulumi.CustomResource):
             host_region_id=default.regions[0].id,
             host_vpc_id=example.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

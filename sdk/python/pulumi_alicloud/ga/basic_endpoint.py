@@ -336,7 +336,6 @@ class BasicEndpoint(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -384,7 +383,6 @@ class BasicEndpoint(pulumi.CustomResource):
             endpoint_sub_address="192.168.0.1",
             basic_endpoint_name="terraform-example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -422,7 +420,6 @@ class BasicEndpoint(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -470,7 +467,6 @@ class BasicEndpoint(pulumi.CustomResource):
             endpoint_sub_address="192.168.0.1",
             basic_endpoint_name="terraform-example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

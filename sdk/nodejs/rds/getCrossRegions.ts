@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -22,7 +21,6 @@ import * as utilities from "../utilities";
  * const crossRegions = alicloud.rds.getCrossRegions({});
  * export const firstRdsCrossRegions = regions.ids[0];
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCrossRegions(args?: GetCrossRegionsArgs, opts?: pulumi.InvokeOptions): Promise<GetCrossRegionsResult> {
     args = args || {};
@@ -65,7 +63,6 @@ export interface GetCrossRegionsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -74,7 +71,6 @@ export interface GetCrossRegionsResult {
  * const crossRegions = alicloud.rds.getCrossRegions({});
  * export const firstRdsCrossRegions = regions.ids[0];
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCrossRegionsOutput(args?: GetCrossRegionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCrossRegionsResult> {
     return pulumi.output(args).apply((a: any) => getCrossRegions(a, opts))

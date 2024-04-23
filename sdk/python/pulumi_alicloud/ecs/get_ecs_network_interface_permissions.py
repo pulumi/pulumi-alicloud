@@ -133,7 +133,6 @@ def get_ecs_network_interface_permissions(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -142,7 +141,6 @@ def get_ecs_network_interface_permissions(ids: Optional[Sequence[str]] = None,
         network_interface_id="example_value")
     pulumi.export("ecsNetworkInterfacePermissionId1", ids.permissions[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Network Interface Permission IDs.
@@ -189,7 +187,6 @@ def get_ecs_network_interface_permissions_output(ids: Optional[pulumi.Input[Opti
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -198,7 +195,6 @@ def get_ecs_network_interface_permissions_output(ids: Optional[pulumi.Input[Opti
         network_interface_id="example_value")
     pulumi.export("ecsNetworkInterfacePermissionId1", ids.permissions[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Network Interface Permission IDs.

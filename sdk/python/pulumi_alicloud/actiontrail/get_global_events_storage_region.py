@@ -63,7 +63,6 @@ def get_global_events_storage_region(opts: Optional[pulumi.InvokeOptions] = None
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -71,7 +70,6 @@ def get_global_events_storage_region(opts: Optional[pulumi.InvokeOptions] = None
     default = alicloud.actiontrail.get_global_events_storage_region()
     pulumi.export("alicloudActiontrailGlobalEventsStorageRegion1", default.storage_region)
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -93,7 +91,6 @@ def get_global_events_storage_region_output(opts: Optional[pulumi.InvokeOptions]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -101,6 +98,5 @@ def get_global_events_storage_region_output(opts: Optional[pulumi.InvokeOptions]
     default = alicloud.actiontrail.get_global_events_storage_region()
     pulumi.export("alicloudActiontrailGlobalEventsStorageRegion1", default.storage_region)
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

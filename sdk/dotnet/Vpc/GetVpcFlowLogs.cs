@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -44,7 +43,6 @@ namespace Pulumi.AliCloud.Vpc
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetVpcFlowLogsResult> InvokeAsync(GetVpcFlowLogsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetVpcFlowLogsResult>("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", args ?? new GetVpcFlowLogsArgs(), options.WithDefaults());
@@ -58,7 +56,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -82,7 +79,6 @@ namespace Pulumi.AliCloud.Vpc
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetVpcFlowLogsResult> Invoke(GetVpcFlowLogsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVpcFlowLogsResult>("alicloud:vpc/getVpcFlowLogs:getVpcFlowLogs", args ?? new GetVpcFlowLogsInvokeArgs(), options.WithDefaults());

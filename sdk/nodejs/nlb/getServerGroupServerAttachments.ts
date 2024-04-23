@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const nlbServerGroupServerAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServerGroupServerAttachments(args?: GetServerGroupServerAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetServerGroupServerAttachmentsResult> {
     args = args || {};
@@ -90,7 +88,6 @@ export interface GetServerGroupServerAttachmentsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -100,7 +97,6 @@ export interface GetServerGroupServerAttachmentsResult {
  * });
  * export const nlbServerGroupServerAttachmentId1 = ids.then(ids => ids.attachments?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServerGroupServerAttachmentsOutput(args?: GetServerGroupServerAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerGroupServerAttachmentsResult> {
     return pulumi.output(args).apply((a: any) => getServerGroupServerAttachments(a, opts))

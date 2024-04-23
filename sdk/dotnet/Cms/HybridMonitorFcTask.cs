@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// Basic Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -66,7 +65,6 @@ namespace Pulumi.AliCloud.Cms
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -86,7 +84,7 @@ namespace Pulumi.AliCloud.Cms
         public Output<string> HybridMonitorFcTaskId { get; private set; } = null!;
 
         /// <summary>
-        /// the namespace of the Alibaba Cloud service.
+        /// The index warehouse where the host belongs.
         /// </summary>
         [Output("namespace")]
         public Output<string> Namespace { get; private set; } = null!;
@@ -150,7 +148,7 @@ namespace Pulumi.AliCloud.Cms
     public sealed class HybridMonitorFcTaskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// the namespace of the Alibaba Cloud service.
+        /// The index warehouse where the host belongs.
         /// </summary>
         [Input("namespace", required: true)]
         public Input<string> Namespace { get; set; } = null!;
@@ -182,7 +180,7 @@ namespace Pulumi.AliCloud.Cms
         public Input<string>? HybridMonitorFcTaskId { get; set; }
 
         /// <summary>
-        /// the namespace of the Alibaba Cloud service.
+        /// The index warehouse where the host belongs.
         /// </summary>
         [Input("namespace")]
         public Input<string>? Namespace { get; set; }

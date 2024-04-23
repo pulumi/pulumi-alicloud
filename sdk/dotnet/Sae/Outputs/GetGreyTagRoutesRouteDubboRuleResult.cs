@@ -13,29 +13,11 @@ namespace Pulumi.AliCloud.Sae.Outputs
     [OutputType]
     public sealed class GetGreyTagRoutesRouteDubboRuleResult
     {
-        /// <summary>
-        /// The Conditional Patterns for Grayscale Rules.
-        /// </summary>
         public readonly string Condition;
-        /// <summary>
-        /// The service group.
-        /// </summary>
         public readonly string Group;
-        /// <summary>
-        /// A list of conditions items.
-        /// </summary>
         public readonly ImmutableArray<Outputs.GetGreyTagRoutesRouteDubboRuleItemResult> Items;
-        /// <summary>
-        /// The method name
-        /// </summary>
         public readonly string MethodName;
-        /// <summary>
-        /// The service name.
-        /// </summary>
         public readonly string ServiceName;
-        /// <summary>
-        /// The service version.
-        /// </summary>
         public readonly string Version;
 
         [OutputConstructor]

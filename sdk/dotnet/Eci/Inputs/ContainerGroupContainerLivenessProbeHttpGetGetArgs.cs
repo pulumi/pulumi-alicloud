@@ -12,21 +12,12 @@ namespace Pulumi.AliCloud.Eci.Inputs
 
     public sealed class ContainerGroupContainerLivenessProbeHttpGetGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
-        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
-        /// <summary>
-        /// When using the HTTP request method for health check, the port number for HTTP Get request detection.
-        /// </summary>
         [Input("port")]
         public Input<int>? Port { get; set; }
 
-        /// <summary>
-        /// The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
-        /// </summary>
         [Input("scheme")]
         public Input<string>? Scheme { get; set; }
 

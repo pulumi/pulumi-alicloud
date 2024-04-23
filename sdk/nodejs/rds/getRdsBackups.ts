@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstRdsBackupId = example.then(example => example.backups?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRdsBackups(args: GetRdsBackupsArgs, opts?: pulumi.InvokeOptions): Promise<GetRdsBackupsResult> {
 
@@ -46,18 +44,11 @@ export function getRdsBackups(args: GetRdsBackupsArgs, opts?: pulumi.InvokeOptio
  */
 export interface GetRdsBackupsArgs {
     /**
-     * BackupMode.
+     * BackupMode. Valid values: `Automated` and `Manual`.
      */
     backupMode?: string;
     /**
-     * Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
-     * * **NoStart**: Not started
-     * * **Checking**: check the backup
-     * * **Preparing**: Prepare a backup
-     * * **Waiting**: Waiting for backup
-     * * **Uploading**: Upload backup
-     * * **Finished**: Complete backup
-     * * **Failed**: backup Failed
+     * Backup task status. Valid values: `Automated` and `Manual`.
      */
     backupStatus?: string;
     /**
@@ -108,7 +99,6 @@ export interface GetRdsBackupsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -118,7 +108,6 @@ export interface GetRdsBackupsResult {
  * });
  * export const firstRdsBackupId = example.then(example => example.backups?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRdsBackupsOutput(args: GetRdsBackupsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRdsBackupsResult> {
     return pulumi.output(args).apply((a: any) => getRdsBackups(a, opts))
@@ -129,18 +118,11 @@ export function getRdsBackupsOutput(args: GetRdsBackupsOutputArgs, opts?: pulumi
  */
 export interface GetRdsBackupsOutputArgs {
     /**
-     * BackupMode.
+     * BackupMode. Valid values: `Automated` and `Manual`.
      */
     backupMode?: pulumi.Input<string>;
     /**
-     * Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
-     * * **NoStart**: Not started
-     * * **Checking**: check the backup
-     * * **Preparing**: Prepare a backup
-     * * **Waiting**: Waiting for backup
-     * * **Uploading**: Upload backup
-     * * **Finished**: Complete backup
-     * * **Failed**: backup Failed
+     * Backup task status. Valid values: `Automated` and `Manual`.
      */
     backupStatus?: pulumi.Input<string>;
     /**

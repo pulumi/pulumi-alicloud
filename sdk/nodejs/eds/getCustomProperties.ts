@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const ecdCustomPropertyId1 = ids.then(ids => ids.properties?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCustomProperties(args?: GetCustomPropertiesArgs, opts?: pulumi.InvokeOptions): Promise<GetCustomPropertiesResult> {
     args = args || {};
@@ -72,7 +70,6 @@ export interface GetCustomPropertiesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -82,7 +79,6 @@ export interface GetCustomPropertiesResult {
  * });
  * export const ecdCustomPropertyId1 = ids.then(ids => ids.properties?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getCustomPropertiesOutput(args?: GetCustomPropertiesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomPropertiesResult> {
     return pulumi.output(args).apply((a: any) => getCustomProperties(a, opts))

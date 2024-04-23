@@ -273,7 +273,6 @@ class Command(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -285,7 +284,6 @@ class Command(pulumi.CustomResource):
             type="RunShellScript",
             working_dir="/root")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -322,7 +320,6 @@ class Command(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -334,7 +331,6 @@ class Command(pulumi.CustomResource):
             type="RunShellScript",
             working_dir="/root")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

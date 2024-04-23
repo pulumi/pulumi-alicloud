@@ -22,7 +22,6 @@ namespace Pulumi.AliCloud.Log
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,7 +38,6 @@ namespace Pulumi.AliCloud.Log
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetAlertResourceResult> InvokeAsync(GetAlertResourceArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetAlertResourceResult>("alicloud:log/getAlertResource:getAlertResource", args ?? new GetAlertResourceArgs(), options.WithDefaults());
@@ -55,7 +53,6 @@ namespace Pulumi.AliCloud.Log
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -72,7 +69,6 @@ namespace Pulumi.AliCloud.Log
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetAlertResourceResult> Invoke(GetAlertResourceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAlertResourceResult>("alicloud:log/getAlertResource:getAlertResource", args ?? new GetAlertResourceInvokeArgs(), options.WithDefaults());

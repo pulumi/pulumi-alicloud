@@ -882,7 +882,6 @@ class RestoreJob(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -928,7 +927,6 @@ class RestoreJob(pulumi.CustomResource):
             target_instance_id=default.plans[0].instance_id,
             target_path="/")
         ```
-        <!--End PulumiCodeChooser -->
 
         > **NOTE:** This resource can only be created, cannot be modified or deleted. Therefore, any modification of the resource attribute will not affect exist resource.
 
@@ -985,7 +983,6 @@ class RestoreJob(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1031,7 +1028,6 @@ class RestoreJob(pulumi.CustomResource):
             target_instance_id=default.plans[0].instance_id,
             target_path="/")
         ```
-        <!--End PulumiCodeChooser -->
 
         > **NOTE:** This resource can only be created, cannot be modified or deleted. Therefore, any modification of the resource attribute will not affect exist resource.
 

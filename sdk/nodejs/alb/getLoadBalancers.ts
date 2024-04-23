@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const albLoadBalancerId2 = nameRegex.then(nameRegex => nameRegex.balancers?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.InvokeOptions): Promise<GetLoadBalancersResult> {
     args = args || {};
@@ -57,7 +55,8 @@ export function getLoadBalancers(args?: GetLoadBalancersArgs, opts?: pulumi.Invo
  */
 export interface GetLoadBalancersArgs {
     /**
-     * The type of IP address that the ALB instance uses to provide services.
+     * The type of IP address that the ALB instance uses to provide services. Valid
+     * values: `Intranet`, `Internet`.
      */
     addressType?: string;
     /**
@@ -69,11 +68,11 @@ export interface GetLoadBalancersArgs {
      */
     ids?: string[];
     /**
-     * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+     * Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
      */
     loadBalancerBusinessStatus?: string;
     /**
-     * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
+     * Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0. Use 'load_balancer_business_status' replaces it.
      *
      * @deprecated Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.
      */
@@ -99,12 +98,9 @@ export interface GetLoadBalancersArgs {
      */
     resourceGroupId?: string;
     /**
-     * The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+     * The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
      */
     status?: string;
-    /**
-     * The tag of the resource.
-     */
     tags?: {[key: string]: any};
     /**
      * The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
@@ -115,7 +111,7 @@ export interface GetLoadBalancersArgs {
      */
     vpcIds?: string[];
     /**
-     * The ID of the zone to which the ALB instance belongs.
+     * The zone ID of the resource.
      */
     zoneId?: string;
 }
@@ -158,7 +154,6 @@ export interface GetLoadBalancersResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -170,7 +165,6 @@ export interface GetLoadBalancersResult {
  * });
  * export const albLoadBalancerId2 = nameRegex.then(nameRegex => nameRegex.balancers?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getLoadBalancersOutput(args?: GetLoadBalancersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLoadBalancersResult> {
     return pulumi.output(args).apply((a: any) => getLoadBalancers(a, opts))
@@ -181,7 +175,8 @@ export function getLoadBalancersOutput(args?: GetLoadBalancersOutputArgs, opts?:
  */
 export interface GetLoadBalancersOutputArgs {
     /**
-     * The type of IP address that the ALB instance uses to provide services.
+     * The type of IP address that the ALB instance uses to provide services. Valid
+     * values: `Intranet`, `Internet`.
      */
     addressType?: pulumi.Input<string>;
     /**
@@ -193,11 +188,11 @@ export interface GetLoadBalancersOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`. **NOTE:** Available in 1.142.0+
+     * Load Balancing of the Service Status. Valid Values: `Abnormal`and `Normal`.
      */
     loadBalancerBusinessStatus?: pulumi.Input<string>;
     /**
-     * Load Balancing of the Service Status. Valid Values: `Abnormal` and `Normal`.  **NOTE:** Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0.
+     * Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0. Use 'load_balancer_business_status' replaces it.
      *
      * @deprecated Field 'load_balancer_bussiness_status' has been deprecated from provider version 1.142.0 and it will be removed in the future version. Please use the new attribute 'load_balancer_business_status' instead.
      */
@@ -223,12 +218,9 @@ export interface GetLoadBalancersOutputArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
+     * The load balancer status. Valid values: `Active`, `Configuring`, `CreateFailed`, `Inactive` and `Provisioning`.
      */
     status?: pulumi.Input<string>;
-    /**
-     * The tag of the resource.
-     */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**
      * The ID of the virtual private cloud (VPC) where the ALB instance is deployed.
@@ -239,7 +231,7 @@ export interface GetLoadBalancersOutputArgs {
      */
     vpcIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The ID of the zone to which the ALB instance belongs.
+     * The zone ID of the resource.
      */
     zoneId?: pulumi.Input<string>;
 }

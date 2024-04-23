@@ -15,14 +15,12 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const snapshots = alicloud.hbr.getOtsSnapshots({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getOtsSnapshots(args?: GetOtsSnapshotsArgs, opts?: pulumi.InvokeOptions): Promise<GetOtsSnapshotsResult> {
     args = args || {};
@@ -50,7 +48,7 @@ export interface GetOtsSnapshotsArgs {
      */
     outputFile?: string;
     /**
-     * The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+     * The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
      */
     startTime?: string;
 }
@@ -78,14 +76,12 @@ export interface GetOtsSnapshotsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const snapshots = alicloud.hbr.getOtsSnapshots({});
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getOtsSnapshotsOutput(args?: GetOtsSnapshotsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOtsSnapshotsResult> {
     return pulumi.output(args).apply((a: any) => getOtsSnapshots(a, opts))
@@ -105,7 +101,7 @@ export interface GetOtsSnapshotsOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The start time of the backup snapshot. This value is a UNIX timestamp. Unit: seconds.
+     * The start time of the backup. This value must be a UNIX timestamp. Unit: milliseconds.
      */
     startTime?: pulumi.Input<string>;
 }

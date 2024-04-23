@@ -239,7 +239,6 @@ class Vswitch(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -260,7 +259,6 @@ class Vswitch(pulumi.CustomResource):
             ens_region_id="cn-chenzhou-telecom_unicom_cmcc",
             network_id=default.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -295,7 +293,6 @@ class Vswitch(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -316,7 +313,6 @@ class Vswitch(pulumi.CustomResource):
             ens_region_id="cn-chenzhou-telecom_unicom_cmcc",
             network_id=default.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

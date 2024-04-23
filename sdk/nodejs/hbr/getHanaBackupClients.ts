@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const hbrHanaBackupClientsId1 = ids.then(ids => ids.hanaBackupClients?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHanaBackupClients(args: GetHanaBackupClientsArgs, opts?: pulumi.InvokeOptions): Promise<GetHanaBackupClientsResult> {
 
@@ -117,7 +115,6 @@ export interface GetHanaBackupClientsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -128,7 +125,6 @@ export interface GetHanaBackupClientsResult {
  * });
  * export const hbrHanaBackupClientsId1 = ids.then(ids => ids.hanaBackupClients?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getHanaBackupClientsOutput(args: GetHanaBackupClientsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHanaBackupClientsResult> {
     return pulumi.output(args).apply((a: any) => getHanaBackupClients(a, opts))

@@ -13,25 +13,10 @@ namespace Pulumi.AliCloud.Sae.Outputs
     [OutputType]
     public sealed class ApplicationReadinessV2HttpGet
     {
-        /// <summary>
-        /// Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
-        /// </summary>
         public readonly bool? IsContainKeyWord;
-        /// <summary>
-        /// The custom keywords.
-        /// </summary>
         public readonly string? KeyWord;
-        /// <summary>
-        /// The request path.
-        /// </summary>
         public readonly string? Path;
-        /// <summary>
-        /// The port.
-        /// </summary>
         public readonly int? Port;
-        /// <summary>
-        /// The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
-        /// </summary>
         public readonly string? Scheme;
 
         [OutputConstructor]

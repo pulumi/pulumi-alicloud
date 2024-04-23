@@ -133,7 +133,6 @@ def get_alert_contacts(alert_contact_name: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -143,7 +142,6 @@ def get_alert_contacts(alert_contact_name: Optional[str] = None,
     name_regex = alicloud.arms.get_alert_contacts(name_regex="^my-AlertContact")
     pulumi.export("armsAlertContactId2", name_regex.contacts[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str alert_contact_name: The name of the alert contact.
@@ -192,7 +190,6 @@ def get_alert_contacts_output(alert_contact_name: Optional[pulumi.Input[Optional
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -202,7 +199,6 @@ def get_alert_contacts_output(alert_contact_name: Optional[pulumi.Input[Optional
     name_regex = alicloud.arms.get_alert_contacts(name_regex="^my-AlertContact")
     pulumi.export("armsAlertContactId2", name_regex.contacts[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str alert_contact_name: The name of the alert contact.

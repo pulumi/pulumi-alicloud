@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstQuotasQuotaId = example.then(example => example.quotas?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getQuotas(args: GetQuotasArgs, opts?: pulumi.InvokeOptions): Promise<GetQuotasResult> {
 
@@ -122,7 +120,6 @@ export interface GetQuotasResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -133,7 +130,6 @@ export interface GetQuotasResult {
  * });
  * export const firstQuotasQuotaId = example.then(example => example.quotas?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getQuotasOutput(args: GetQuotasOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQuotasResult> {
     return pulumi.output(args).apply((a: any) => getQuotas(a, opts))

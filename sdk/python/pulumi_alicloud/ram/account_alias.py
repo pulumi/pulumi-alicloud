@@ -72,7 +72,6 @@ class AccountAlias(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -83,7 +82,6 @@ class AccountAlias(pulumi.CustomResource):
             name = "tfexample"
         alias = alicloud.ram.AccountAlias("alias", account_alias=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -110,7 +108,6 @@ class AccountAlias(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -121,7 +118,6 @@ class AccountAlias(pulumi.CustomResource):
             name = "tfexample"
         alias = alicloud.ram.AccountAlias("alias", account_alias=name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

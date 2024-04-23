@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Ess.Outputs
     [OutputType]
     public sealed class EciScalingConfigurationContainerPort
     {
-        /// <summary>
-        /// The port number. Valid values: 1 to 65535.
-        /// </summary>
         public readonly int? Port;
-        /// <summary>
-        /// Valid values: TCP and UDP.
-        /// </summary>
         public readonly string? Protocol;
 
         [OutputConstructor]

@@ -18,7 +18,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
         /// </summary>
         public readonly string MountPath;
         /// <summary>
-        /// The name of the volume.
+        /// The name of the volume. The name is the same as the volume you selected when you purchased the container.
         /// </summary>
         public readonly string Name;
         /// <summary>

@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Quotas
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -82,7 +81,6 @@ namespace Pulumi.AliCloud.Quotas
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTemplateApplicationsResult> InvokeAsync(GetTemplateApplicationsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTemplateApplicationsResult>("alicloud:quotas/getTemplateApplications:getTemplateApplications", args ?? new GetTemplateApplicationsArgs(), options.WithDefaults());
@@ -94,7 +92,6 @@ namespace Pulumi.AliCloud.Quotas
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -158,7 +155,6 @@ namespace Pulumi.AliCloud.Quotas
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTemplateApplicationsResult> Invoke(GetTemplateApplicationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTemplateApplicationsResult>("alicloud:quotas/getTemplateApplications:getTemplateApplications", args ?? new GetTemplateApplicationsInvokeArgs(), options.WithDefaults());

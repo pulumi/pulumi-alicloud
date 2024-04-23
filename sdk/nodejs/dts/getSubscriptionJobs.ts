@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * const ids = alicloud.dts.getSubscriptionJobs({});
  * export const dtsSubscriptionJobId1 = ids.then(ids => ids.jobs?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSubscriptionJobs(args?: GetSubscriptionJobsArgs, opts?: pulumi.InvokeOptions): Promise<GetSubscriptionJobsResult> {
     args = args || {};
@@ -92,7 +90,6 @@ export interface GetSubscriptionJobsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -100,7 +97,6 @@ export interface GetSubscriptionJobsResult {
  * const ids = alicloud.dts.getSubscriptionJobs({});
  * export const dtsSubscriptionJobId1 = ids.then(ids => ids.jobs?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getSubscriptionJobsOutput(args?: GetSubscriptionJobsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubscriptionJobsResult> {
     return pulumi.output(args).apply((a: any) => getSubscriptionJobs(a, opts))

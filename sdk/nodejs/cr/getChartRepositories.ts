@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  * });
  * export const crChartRepositoryId1 = _default.ids[0];
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getChartRepositories(args: GetChartRepositoriesArgs, opts?: pulumi.InvokeOptions): Promise<GetChartRepositoriesResult> {
 
@@ -88,7 +86,6 @@ export interface GetChartRepositoriesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -102,7 +99,6 @@ export interface GetChartRepositoriesResult {
  * });
  * export const crChartRepositoryId1 = _default.ids[0];
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getChartRepositoriesOutput(args: GetChartRepositoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetChartRepositoriesResult> {
     return pulumi.output(args).apply((a: any) => getChartRepositories(a, opts))

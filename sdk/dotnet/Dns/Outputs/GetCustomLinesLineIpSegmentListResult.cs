@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Dns.Outputs
     [OutputType]
     public sealed class GetCustomLinesLineIpSegmentListResult
     {
-        /// <summary>
-        /// The end IP address of the CIDR block.
-        /// </summary>
         public readonly string EndIp;
-        /// <summary>
-        /// The start IP address of the CIDR block.
-        /// </summary>
         public readonly string StartIp;
 
         [OutputConstructor]

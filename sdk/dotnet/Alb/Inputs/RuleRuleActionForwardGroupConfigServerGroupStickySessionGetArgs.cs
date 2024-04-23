@@ -12,15 +12,9 @@ namespace Pulumi.AliCloud.Alb.Inputs
 
     public sealed class RuleRuleActionForwardGroupConfigServerGroupStickySessionGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Whether to enable session persistence.
-        /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }
 
-        /// <summary>
-        /// The timeout period. Unit: seconds. Valid values: `1` to `86400`. Default value: `1000`.
-        /// </summary>
         [Input("timeout")]
         public Input<int>? Timeout { get; set; }
 

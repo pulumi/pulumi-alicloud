@@ -10,53 +10,21 @@ import java.util.Objects;
 
 @CustomType
 public final class ClusterConfig {
-    /**
-     * @return Custom configuration service config key, e.g. ’dfs.replication’.
-     * 
-     */
     private String configKey;
-    /**
-     * @return Custom configuration service config value, e.g. ’3’.
-     * 
-     */
     private String configValue;
-    /**
-     * @return Custom configuration service file name, e.g. ’hdfs-site’.
-     * 
-     */
     private String fileName;
-    /**
-     * @return Custom configuration service name, e.g. ’HDFS’.
-     * 
-     */
     private String serviceName;
 
     private ClusterConfig() {}
-    /**
-     * @return Custom configuration service config key, e.g. ’dfs.replication’.
-     * 
-     */
     public String configKey() {
         return this.configKey;
     }
-    /**
-     * @return Custom configuration service config value, e.g. ’3’.
-     * 
-     */
     public String configValue() {
         return this.configValue;
     }
-    /**
-     * @return Custom configuration service file name, e.g. ’hdfs-site’.
-     * 
-     */
     public String fileName() {
         return this.fileName;
     }
-    /**
-     * @return Custom configuration service name, e.g. ’HDFS’.
-     * 
-     */
     public String serviceName() {
         return this.serviceName;
     }

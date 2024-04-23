@@ -505,7 +505,6 @@ class Endpoint(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -533,7 +532,6 @@ class Endpoint(pulumi.CustomResource):
             db_cluster_id=default_cluster.id,
             endpoint_type="Custom")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -573,7 +571,6 @@ class Endpoint(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -601,7 +598,6 @@ class Endpoint(pulumi.CustomResource):
             db_cluster_id=default_cluster.id,
             endpoint_type="Custom")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

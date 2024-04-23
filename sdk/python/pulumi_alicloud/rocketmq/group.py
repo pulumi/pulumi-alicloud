@@ -294,7 +294,6 @@ class Group(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -316,7 +315,6 @@ class Group(pulumi.CustomResource):
             instance_id=default_instance.id,
             remark="dafault_ons_group_remark")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -355,7 +353,6 @@ class Group(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -377,7 +374,6 @@ class Group(pulumi.CustomResource):
             instance_id=default_instance.id,
             remark="dafault_ons_group_remark")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

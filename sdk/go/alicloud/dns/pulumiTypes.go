@@ -1677,16 +1677,11 @@ func (o GetAddressPoolsPoolArrayOutput) Index(i pulumi.IntInput) GetAddressPools
 }
 
 type GetAddressPoolsPoolAddress struct {
-	// The address that you want to add to the address pool.
-	Address string `pulumi:"address"`
-	// The source region of the address.
+	Address       string `pulumi:"address"`
 	AttributeInfo string `pulumi:"attributeInfo"`
-	// The weight of the address.
-	LbaWeight int `pulumi:"lbaWeight"`
-	// The type of the address.
-	Mode string `pulumi:"mode"`
-	// The description of the address.
-	Remark string `pulumi:"remark"`
+	LbaWeight     int    `pulumi:"lbaWeight"`
+	Mode          string `pulumi:"mode"`
+	Remark        string `pulumi:"remark"`
 }
 
 // GetAddressPoolsPoolAddressInput is an input type that accepts GetAddressPoolsPoolAddressArgs and GetAddressPoolsPoolAddressOutput values.
@@ -1701,16 +1696,11 @@ type GetAddressPoolsPoolAddressInput interface {
 }
 
 type GetAddressPoolsPoolAddressArgs struct {
-	// The address that you want to add to the address pool.
-	Address pulumi.StringInput `pulumi:"address"`
-	// The source region of the address.
+	Address       pulumi.StringInput `pulumi:"address"`
 	AttributeInfo pulumi.StringInput `pulumi:"attributeInfo"`
-	// The weight of the address.
-	LbaWeight pulumi.IntInput `pulumi:"lbaWeight"`
-	// The type of the address.
-	Mode pulumi.StringInput `pulumi:"mode"`
-	// The description of the address.
-	Remark pulumi.StringInput `pulumi:"remark"`
+	LbaWeight     pulumi.IntInput    `pulumi:"lbaWeight"`
+	Mode          pulumi.StringInput `pulumi:"mode"`
+	Remark        pulumi.StringInput `pulumi:"remark"`
 }
 
 func (GetAddressPoolsPoolAddressArgs) ElementType() reflect.Type {
@@ -1764,27 +1754,22 @@ func (o GetAddressPoolsPoolAddressOutput) ToGetAddressPoolsPoolAddressOutputWith
 	return o
 }
 
-// The address that you want to add to the address pool.
 func (o GetAddressPoolsPoolAddressOutput) Address() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressPoolsPoolAddress) string { return v.Address }).(pulumi.StringOutput)
 }
 
-// The source region of the address.
 func (o GetAddressPoolsPoolAddressOutput) AttributeInfo() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressPoolsPoolAddress) string { return v.AttributeInfo }).(pulumi.StringOutput)
 }
 
-// The weight of the address.
 func (o GetAddressPoolsPoolAddressOutput) LbaWeight() pulumi.IntOutput {
 	return o.ApplyT(func(v GetAddressPoolsPoolAddress) int { return v.LbaWeight }).(pulumi.IntOutput)
 }
 
-// The type of the address.
 func (o GetAddressPoolsPoolAddressOutput) Mode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressPoolsPoolAddress) string { return v.Mode }).(pulumi.StringOutput)
 }
 
-// The description of the address.
 func (o GetAddressPoolsPoolAddressOutput) Remark() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressPoolsPoolAddress) string { return v.Remark }).(pulumi.StringOutput)
 }
@@ -2845,9 +2830,7 @@ func (o GetCustomLinesLineArrayOutput) Index(i pulumi.IntInput) GetCustomLinesLi
 }
 
 type GetCustomLinesLineIpSegmentList struct {
-	// The end IP address of the CIDR block.
-	EndIp string `pulumi:"endIp"`
-	// The start IP address of the CIDR block.
+	EndIp   string `pulumi:"endIp"`
 	StartIp string `pulumi:"startIp"`
 }
 
@@ -2863,9 +2846,7 @@ type GetCustomLinesLineIpSegmentListInput interface {
 }
 
 type GetCustomLinesLineIpSegmentListArgs struct {
-	// The end IP address of the CIDR block.
-	EndIp pulumi.StringInput `pulumi:"endIp"`
-	// The start IP address of the CIDR block.
+	EndIp   pulumi.StringInput `pulumi:"endIp"`
 	StartIp pulumi.StringInput `pulumi:"startIp"`
 }
 
@@ -2920,12 +2901,10 @@ func (o GetCustomLinesLineIpSegmentListOutput) ToGetCustomLinesLineIpSegmentList
 	return o
 }
 
-// The end IP address of the CIDR block.
 func (o GetCustomLinesLineIpSegmentListOutput) EndIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCustomLinesLineIpSegmentList) string { return v.EndIp }).(pulumi.StringOutput)
 }
 
-// The start IP address of the CIDR block.
 func (o GetCustomLinesLineIpSegmentListOutput) StartIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCustomLinesLineIpSegmentList) string { return v.StartIp }).(pulumi.StringOutput)
 }
@@ -3941,14 +3920,10 @@ func (o GetGtmInstancesInstanceArrayOutput) Index(i pulumi.IntInput) GetGtmInsta
 }
 
 type GetGtmInstancesInstanceAlertConfig struct {
-	// Whether to configure DingTalk notifications.
-	DingtalkNotice bool `pulumi:"dingtalkNotice"`
-	// Whether to configure mail notification.
-	EmailNotice bool `pulumi:"emailNotice"`
-	// The Alarm Event Type.
-	NoticeType string `pulumi:"noticeType"`
-	// Whether to configure SMS notification.
-	SmsNotice bool `pulumi:"smsNotice"`
+	DingtalkNotice bool   `pulumi:"dingtalkNotice"`
+	EmailNotice    bool   `pulumi:"emailNotice"`
+	NoticeType     string `pulumi:"noticeType"`
+	SmsNotice      bool   `pulumi:"smsNotice"`
 }
 
 // GetGtmInstancesInstanceAlertConfigInput is an input type that accepts GetGtmInstancesInstanceAlertConfigArgs and GetGtmInstancesInstanceAlertConfigOutput values.
@@ -3963,14 +3938,10 @@ type GetGtmInstancesInstanceAlertConfigInput interface {
 }
 
 type GetGtmInstancesInstanceAlertConfigArgs struct {
-	// Whether to configure DingTalk notifications.
-	DingtalkNotice pulumi.BoolInput `pulumi:"dingtalkNotice"`
-	// Whether to configure mail notification.
-	EmailNotice pulumi.BoolInput `pulumi:"emailNotice"`
-	// The Alarm Event Type.
-	NoticeType pulumi.StringInput `pulumi:"noticeType"`
-	// Whether to configure SMS notification.
-	SmsNotice pulumi.BoolInput `pulumi:"smsNotice"`
+	DingtalkNotice pulumi.BoolInput   `pulumi:"dingtalkNotice"`
+	EmailNotice    pulumi.BoolInput   `pulumi:"emailNotice"`
+	NoticeType     pulumi.StringInput `pulumi:"noticeType"`
+	SmsNotice      pulumi.BoolInput   `pulumi:"smsNotice"`
 }
 
 func (GetGtmInstancesInstanceAlertConfigArgs) ElementType() reflect.Type {
@@ -4024,22 +3995,18 @@ func (o GetGtmInstancesInstanceAlertConfigOutput) ToGetGtmInstancesInstanceAlert
 	return o
 }
 
-// Whether to configure DingTalk notifications.
 func (o GetGtmInstancesInstanceAlertConfigOutput) DingtalkNotice() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGtmInstancesInstanceAlertConfig) bool { return v.DingtalkNotice }).(pulumi.BoolOutput)
 }
 
-// Whether to configure mail notification.
 func (o GetGtmInstancesInstanceAlertConfigOutput) EmailNotice() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGtmInstancesInstanceAlertConfig) bool { return v.EmailNotice }).(pulumi.BoolOutput)
 }
 
-// The Alarm Event Type.
 func (o GetGtmInstancesInstanceAlertConfigOutput) NoticeType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetGtmInstancesInstanceAlertConfig) string { return v.NoticeType }).(pulumi.StringOutput)
 }
 
-// Whether to configure SMS notification.
 func (o GetGtmInstancesInstanceAlertConfigOutput) SmsNotice() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetGtmInstancesInstanceAlertConfig) bool { return v.SmsNotice }).(pulumi.BoolOutput)
 }

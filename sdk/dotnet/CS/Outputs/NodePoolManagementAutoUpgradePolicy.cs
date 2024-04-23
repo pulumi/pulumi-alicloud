@@ -13,9 +13,6 @@ namespace Pulumi.AliCloud.CS.Outputs
     [OutputType]
     public sealed class NodePoolManagementAutoUpgradePolicy
     {
-        /// <summary>
-        /// Specifies whether  to automatically update the kubelet. Valid values: `true`: yes; `false`: no.
-        /// </summary>
         public readonly bool? AutoUpgradeKubelet;
 
         [OutputConstructor]

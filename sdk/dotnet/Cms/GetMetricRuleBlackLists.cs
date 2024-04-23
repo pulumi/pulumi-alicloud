@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Cms
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.AliCloud.Cms
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetMetricRuleBlackListsResult> InvokeAsync(GetMetricRuleBlackListsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetMetricRuleBlackListsResult>("alicloud:cms/getMetricRuleBlackLists:getMetricRuleBlackLists", args ?? new GetMetricRuleBlackListsArgs(), options.WithDefaults());
@@ -55,7 +53,6 @@ namespace Pulumi.AliCloud.Cms
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Pulumi.AliCloud.Cms
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetMetricRuleBlackListsResult> Invoke(GetMetricRuleBlackListsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetricRuleBlackListsResult>("alicloud:cms/getMetricRuleBlackLists:getMetricRuleBlackLists", args ?? new GetMetricRuleBlackListsInvokeArgs(), options.WithDefaults());

@@ -11,17 +11,9 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApplicationLivenessV2TcpSocket {
-    /**
-     * @return The port.
-     * 
-     */
     private @Nullable Integer port;
 
     private ApplicationLivenessV2TcpSocket() {}
-    /**
-     * @return The port.
-     * 
-     */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }

@@ -659,7 +659,6 @@ class ServerlessInstance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -693,7 +692,6 @@ class ServerlessInstance(pulumi.CustomResource):
                 security_ip_list="192.168.0.1",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -745,7 +743,6 @@ class ServerlessInstance(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -779,7 +776,6 @@ class ServerlessInstance(pulumi.CustomResource):
                 security_ip_list="192.168.0.1",
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

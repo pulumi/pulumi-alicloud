@@ -17,8 +17,6 @@ import (
 //
 // ## Example Usage
 //
-//	<!--Start PulumiCodeChooser -->
-//
 // ```go
 // package main
 //
@@ -30,22 +28,21 @@ import (
 // )
 //
 //	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			example, err := dcdn.GetDomains(ctx, &dcdn.GetDomainsArgs{
-//				Ids: []string{
-//					"example.com",
-//				},
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			ctx.Export("domainId", example.Domains[0].Id)
-//			return nil
-//		})
+//	   pulumi.Run(func(ctx *pulumi.Context) error {
+//	       example, err := dcdn.GetDomains(ctx, &dcdn.GetDomainsArgs{
+//	           Ids: []string{
+//	               "example.com",
+//	           },
+//	       }, nil)
+//	       if err != nil {
+//	           return err
+//	       }
+//	       ctx.Export("domainId", example.Domains[0].Id)
+//	       return nil
+//	   })
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDomains(ctx *pulumi.Context, args *GetDomainsArgs, opts ...pulumi.InvokeOption) (*GetDomainsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDomainsResult

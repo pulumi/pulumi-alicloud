@@ -16,7 +16,6 @@ namespace Pulumi.AliCloud.Pvtz
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -37,7 +36,6 @@ namespace Pulumi.AliCloud.Pvtz
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetZoneRecordsResult> InvokeAsync(GetZoneRecordsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneRecordsResult>("alicloud:pvtz/getZoneRecords:getZoneRecords", args ?? new GetZoneRecordsArgs(), options.WithDefaults());
@@ -47,7 +45,6 @@ namespace Pulumi.AliCloud.Pvtz
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -68,7 +65,6 @@ namespace Pulumi.AliCloud.Pvtz
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetZoneRecordsResult> Invoke(GetZoneRecordsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneRecordsResult>("alicloud:pvtz/getZoneRecords:getZoneRecords", args ?? new GetZoneRecordsInvokeArgs(), options.WithDefaults());

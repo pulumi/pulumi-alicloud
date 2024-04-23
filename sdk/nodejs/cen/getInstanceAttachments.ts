@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * });
  * export const theFirstAttachmentedInstanceId = example.then(example => example.attachments?.[0]?.childInstanceId);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstanceAttachments(args: GetInstanceAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceAttachmentsResult> {
 
@@ -104,7 +102,6 @@ export interface GetInstanceAttachmentsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -114,7 +111,6 @@ export interface GetInstanceAttachmentsResult {
  * });
  * export const theFirstAttachmentedInstanceId = example.then(example => example.attachments?.[0]?.childInstanceId);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getInstanceAttachmentsOutput(args: GetInstanceAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceAttachmentsResult> {
     return pulumi.output(args).apply((a: any) => getInstanceAttachments(a, opts))

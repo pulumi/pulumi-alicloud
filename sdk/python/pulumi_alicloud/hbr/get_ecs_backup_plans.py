@@ -123,7 +123,6 @@ def get_ecs_backup_plans(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -131,14 +130,13 @@ def get_ecs_backup_plans(ids: Optional[Sequence[str]] = None,
     ids = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-name")
     pulumi.export("hbrEcsBackupPlanId", ids.plans[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of EcsBackupPlan IDs.
-    :param str instance_id: The ID of ECS instance.
+    :param str instance_id: The ECS instance ID of the EcsBackupPlan used.
     :param str name_regex: A regex string to filter results by EcsBackupPlan name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str vault_id: The ID of Backup vault.
+    :param str vault_id: The Vault ID of the EcsBackupPlan used.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -176,7 +174,6 @@ def get_ecs_backup_plans_output(ids: Optional[pulumi.Input[Optional[Sequence[str
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -184,13 +181,12 @@ def get_ecs_backup_plans_output(ids: Optional[pulumi.Input[Optional[Sequence[str
     ids = alicloud.hbr.get_ecs_backup_plans(name_regex="plan-name")
     pulumi.export("hbrEcsBackupPlanId", ids.plans[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of EcsBackupPlan IDs.
-    :param str instance_id: The ID of ECS instance.
+    :param str instance_id: The ECS instance ID of the EcsBackupPlan used.
     :param str name_regex: A regex string to filter results by EcsBackupPlan name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
-    :param str vault_id: The ID of Backup vault.
+    :param str vault_id: The Vault ID of the EcsBackupPlan used.
     """
     ...

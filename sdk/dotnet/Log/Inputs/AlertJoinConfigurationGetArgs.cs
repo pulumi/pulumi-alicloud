@@ -19,7 +19,7 @@ namespace Pulumi.AliCloud.Log.Inputs
         public Input<string> Condition { get; set; } = null!;
 
         /// <summary>
-        /// including FixedRate,Hourly,Daily,Weekly,Cron.
+        /// Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

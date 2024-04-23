@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -28,7 +27,6 @@ import * as utilities from "../utilities";
  * });
  * export const dataDiskType = _default.then(_default => _default.types?.[0]?.value);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDiskTypes(args: GetDiskTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetDiskTypesResult> {
 
@@ -104,7 +102,6 @@ export interface GetDiskTypesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -118,7 +115,6 @@ export interface GetDiskTypesResult {
  * });
  * export const dataDiskType = _default.then(_default => _default.types?.[0]?.value);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDiskTypesOutput(args: GetDiskTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskTypesResult> {
     return pulumi.output(args).apply((a: any) => getDiskTypes(a, opts))

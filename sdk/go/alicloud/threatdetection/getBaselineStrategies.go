@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,7 +56,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetBaselineStrategies(ctx *pulumi.Context, args *GetBaselineStrategiesArgs, opts ...pulumi.InvokeOption) (*GetBaselineStrategiesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBaselineStrategiesResult

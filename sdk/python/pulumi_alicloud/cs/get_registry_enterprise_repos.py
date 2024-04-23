@@ -146,7 +146,6 @@ def get_registry_enterprise_repos(enable_details: Optional[bool] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -157,7 +156,6 @@ def get_registry_enterprise_repos(enable_details: Optional[bool] = None,
         output_file="my-repo-json")
     pulumi.export("output", my_repos.repos)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `tags` in attributes.
@@ -204,7 +202,6 @@ def get_registry_enterprise_repos_output(enable_details: Optional[pulumi.Input[O
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -215,7 +212,6 @@ def get_registry_enterprise_repos_output(enable_details: Optional[pulumi.Input[O
         output_file="my-repo-json")
     pulumi.export("output", my_repos.repos)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Boolean, false by default, only repository attributes are exported. Set to true if tags belong to this repository are needed. See `tags` in attributes.

@@ -12,53 +12,21 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ConnectionTunnelOptionsSpecificationTunnelIpsecConfig {
-    /**
-     * @return IPsec authentication algorithm. sha1 and md5 are supported.
-     * 
-     */
     private @Nullable String ipsecAuthAlg;
-    /**
-     * @return IPsec Encript algorithm.
-     * 
-     */
     private @Nullable String ipsecEncAlg;
-    /**
-     * @return IPsec lifetime.
-     * 
-     */
     private @Nullable Integer ipsecLifetime;
-    /**
-     * @return DH Group.
-     * 
-     */
     private @Nullable String ipsecPfs;
 
     private ConnectionTunnelOptionsSpecificationTunnelIpsecConfig() {}
-    /**
-     * @return IPsec authentication algorithm. sha1 and md5 are supported.
-     * 
-     */
     public Optional<String> ipsecAuthAlg() {
         return Optional.ofNullable(this.ipsecAuthAlg);
     }
-    /**
-     * @return IPsec Encript algorithm.
-     * 
-     */
     public Optional<String> ipsecEncAlg() {
         return Optional.ofNullable(this.ipsecEncAlg);
     }
-    /**
-     * @return IPsec lifetime.
-     * 
-     */
     public Optional<Integer> ipsecLifetime() {
         return Optional.ofNullable(this.ipsecLifetime);
     }
-    /**
-     * @return DH Group.
-     * 
-     */
     public Optional<String> ipsecPfs() {
         return Optional.ofNullable(this.ipsecPfs);
     }

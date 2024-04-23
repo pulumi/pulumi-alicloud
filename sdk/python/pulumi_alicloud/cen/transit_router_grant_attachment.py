@@ -205,7 +205,6 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -224,7 +223,6 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
             instance_type="VPC",
             order_type="PayByCenOwner")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -259,7 +257,6 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -278,7 +275,6 @@ class TransitRouterGrantAttachment(pulumi.CustomResource):
             instance_type="VPC",
             order_type="PayByCenOwner")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

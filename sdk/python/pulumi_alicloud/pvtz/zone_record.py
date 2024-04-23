@@ -426,7 +426,6 @@ class ZoneRecord(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -439,7 +438,6 @@ class ZoneRecord(pulumi.CustomResource):
             value="bbb.test.com",
             ttl=60)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -475,7 +473,6 @@ class ZoneRecord(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -488,7 +485,6 @@ class ZoneRecord(pulumi.CustomResource):
             value="bbb.test.com",
             ttl=60)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -40,7 +39,6 @@ namespace Pulumi.AliCloud.Hbr
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetEcsBackupPlansResult> InvokeAsync(GetEcsBackupPlansArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsBackupPlansResult>("alicloud:hbr/getEcsBackupPlans:getEcsBackupPlans", args ?? new GetEcsBackupPlansArgs(), options.WithDefaults());
@@ -54,7 +52,6 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -74,7 +71,6 @@ namespace Pulumi.AliCloud.Hbr
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetEcsBackupPlansResult> Invoke(GetEcsBackupPlansInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEcsBackupPlansResult>("alicloud:hbr/getEcsBackupPlans:getEcsBackupPlans", args ?? new GetEcsBackupPlansInvokeArgs(), options.WithDefaults());
@@ -96,7 +92,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// The ID of ECS instance.
+        /// The ECS instance ID of the EcsBackupPlan used.
         /// </summary>
         [Input("instanceId")]
         public string? InstanceId { get; set; }
@@ -114,7 +110,7 @@ namespace Pulumi.AliCloud.Hbr
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of Backup vault.
+        /// The Vault ID of the EcsBackupPlan used.
         /// </summary>
         [Input("vaultId")]
         public string? VaultId { get; set; }
@@ -140,7 +136,7 @@ namespace Pulumi.AliCloud.Hbr
         }
 
         /// <summary>
-        /// The ID of ECS instance.
+        /// The ECS instance ID of the EcsBackupPlan used.
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
@@ -158,7 +154,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The ID of Backup vault.
+        /// The Vault ID of the EcsBackupPlan used.
         /// </summary>
         [Input("vaultId")]
         public Input<string>? VaultId { get; set; }

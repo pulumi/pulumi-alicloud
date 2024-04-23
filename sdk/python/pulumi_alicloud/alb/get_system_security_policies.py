@@ -100,7 +100,6 @@ def get_system_security_policies(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -108,7 +107,6 @@ def get_system_security_policies(ids: Optional[Sequence[str]] = None,
     defaults = alicloud.alb.get_system_security_policies(ids=["tls_cipher_policy_1_0"])
     pulumi.export("albSystemSecurityPolicyId1", defaults.policies[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of System Security Policy IDs.
@@ -143,7 +141,6 @@ def get_system_security_policies_output(ids: Optional[pulumi.Input[Optional[Sequ
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -151,7 +148,6 @@ def get_system_security_policies_output(ids: Optional[pulumi.Input[Optional[Sequ
     defaults = alicloud.alb.get_system_security_policies(ids=["tls_cipher_policy_1_0"])
     pulumi.export("albSystemSecurityPolicyId1", defaults.policies[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of System Security Policy IDs.

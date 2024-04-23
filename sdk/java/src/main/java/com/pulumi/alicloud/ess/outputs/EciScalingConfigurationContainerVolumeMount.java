@@ -12,43 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EciScalingConfigurationContainerVolumeMount {
-    /**
-     * @return The directory of the mounted volume. Data under this directory will be overwritten by the
-     * data in the volume.
-     * 
-     */
     private @Nullable String mountPath;
-    /**
-     * @return The name of the mounted volume.
-     * 
-     */
     private @Nullable String name;
-    /**
-     * @return Default to `false`.
-     * 
-     */
     private @Nullable Boolean readOnly;
 
     private EciScalingConfigurationContainerVolumeMount() {}
-    /**
-     * @return The directory of the mounted volume. Data under this directory will be overwritten by the
-     * data in the volume.
-     * 
-     */
     public Optional<String> mountPath() {
         return Optional.ofNullable(this.mountPath);
     }
-    /**
-     * @return The name of the mounted volume.
-     * 
-     */
     public Optional<String> name() {
         return Optional.ofNullable(this.name);
     }
-    /**
-     * @return Default to `false`.
-     * 
-     */
     public Optional<Boolean> readOnly() {
         return Optional.ofNullable(this.readOnly);
     }

@@ -16,15 +16,7 @@ public final class ConnectionTunnelOptionsSpecificationTunnelBgpConfig {
      * 
      */
     private @Nullable String bgpStatus;
-    /**
-     * @return Local asn.
-     * 
-     */
     private @Nullable String localAsn;
-    /**
-     * @return Local bgp IP.
-     * 
-     */
     private @Nullable String localBgpIp;
     /**
      * @return Peer asn.
@@ -36,10 +28,6 @@ public final class ConnectionTunnelOptionsSpecificationTunnelBgpConfig {
      * 
      */
     private @Nullable String peerBgpIp;
-    /**
-     * @return IPSec tunnel Cidr.
-     * 
-     */
     private @Nullable String tunnelCidr;
 
     private ConnectionTunnelOptionsSpecificationTunnelBgpConfig() {}
@@ -50,17 +38,9 @@ public final class ConnectionTunnelOptionsSpecificationTunnelBgpConfig {
     public Optional<String> bgpStatus() {
         return Optional.ofNullable(this.bgpStatus);
     }
-    /**
-     * @return Local asn.
-     * 
-     */
     public Optional<String> localAsn() {
         return Optional.ofNullable(this.localAsn);
     }
-    /**
-     * @return Local bgp IP.
-     * 
-     */
     public Optional<String> localBgpIp() {
         return Optional.ofNullable(this.localBgpIp);
     }
@@ -78,10 +58,6 @@ public final class ConnectionTunnelOptionsSpecificationTunnelBgpConfig {
     public Optional<String> peerBgpIp() {
         return Optional.ofNullable(this.peerBgpIp);
     }
-    /**
-     * @return IPSec tunnel Cidr.
-     * 
-     */
     public Optional<String> tunnelCidr() {
         return Optional.ofNullable(this.tunnelCidr);
     }

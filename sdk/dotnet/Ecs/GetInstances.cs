@@ -16,7 +16,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -38,7 +37,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetInstancesResult> InvokeAsync(GetInstancesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetInstancesResult>("alicloud:ecs/getInstances:getInstances", args ?? new GetInstancesArgs(), options.WithDefaults());
@@ -48,7 +46,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -70,7 +67,6 @@ namespace Pulumi.AliCloud.Ecs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetInstancesResult> Invoke(GetInstancesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstancesResult>("alicloud:ecs/getInstances:getInstances", args ?? new GetInstancesInvokeArgs(), options.WithDefaults());
@@ -156,7 +152,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A map of tags assigned to the ECS instances. It must be in the format:
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -176,7 +171,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public Dictionary<string, object> Tags
         {
@@ -281,7 +275,6 @@ namespace Pulumi.AliCloud.Ecs
 
         /// <summary>
         /// A map of tags assigned to the ECS instances. It must be in the format:
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -301,7 +294,6 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public InputMap<object> Tags
         {

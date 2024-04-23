@@ -313,11 +313,6 @@ class GetPolicyDocumentStatementConditionResult(dict):
                  operator: str,
                  values: Sequence[str],
                  variable: str):
-        """
-        :param str operator: The operator of the condition.
-        :param Sequence[str] values: The values of the condition.
-        :param str variable: The variable of the condition.
-        """
         pulumi.set(__self__, "operator", operator)
         pulumi.set(__self__, "values", values)
         pulumi.set(__self__, "variable", variable)
@@ -325,25 +320,16 @@ class GetPolicyDocumentStatementConditionResult(dict):
     @property
     @pulumi.getter
     def operator(self) -> str:
-        """
-        The operator of the condition.
-        """
         return pulumi.get(self, "operator")
 
     @property
     @pulumi.getter
     def values(self) -> Sequence[str]:
-        """
-        The values of the condition.
-        """
         return pulumi.get(self, "values")
 
     @property
     @pulumi.getter
     def variable(self) -> str:
-        """
-        The variable of the condition.
-        """
         return pulumi.get(self, "variable")
 
 
@@ -352,27 +338,17 @@ class GetPolicyDocumentStatementPrincipalResult(dict):
     def __init__(__self__, *,
                  entity: str,
                  identifiers: Sequence[str]):
-        """
-        :param str entity: The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
-        :param Sequence[str] identifiers: The identifiers of the principal.
-        """
         pulumi.set(__self__, "entity", entity)
         pulumi.set(__self__, "identifiers", identifiers)
 
     @property
     @pulumi.getter
     def entity(self) -> str:
-        """
-        The trusted entity. Valid values: `RAM`, `Service` and `Federated`.
-        """
         return pulumi.get(self, "entity")
 
     @property
     @pulumi.getter
     def identifiers(self) -> Sequence[str]:
-        """
-        The identifiers of the principal.
-        """
         return pulumi.get(self, "identifiers")
 
 

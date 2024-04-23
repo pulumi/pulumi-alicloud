@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * const ids = alicloud.dns.getGtmInstances({});
  * export const alidnsGtmInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGtmInstances(args?: GetGtmInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetGtmInstancesResult> {
     args = args || {};
@@ -77,7 +75,6 @@ export interface GetGtmInstancesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -85,7 +82,6 @@ export interface GetGtmInstancesResult {
  * const ids = alicloud.dns.getGtmInstances({});
  * export const alidnsGtmInstanceId1 = ids.then(ids => ids.instances?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getGtmInstancesOutput(args?: GetGtmInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGtmInstancesResult> {
     return pulumi.output(args).apply((a: any) => getGtmInstances(a, opts))

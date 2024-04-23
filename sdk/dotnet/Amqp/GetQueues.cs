@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Amqp
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -54,7 +53,6 @@ namespace Pulumi.AliCloud.Amqp
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetQueuesResult> InvokeAsync(GetQueuesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetQueuesResult>("alicloud:amqp/getQueues:getQueues", args ?? new GetQueuesArgs(), options.WithDefaults());
@@ -68,7 +66,6 @@ namespace Pulumi.AliCloud.Amqp
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -102,7 +99,6 @@ namespace Pulumi.AliCloud.Amqp
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetQueuesResult> Invoke(GetQueuesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetQueuesResult>("alicloud:amqp/getQueues:getQueues", args ?? new GetQueuesInvokeArgs(), options.WithDefaults());

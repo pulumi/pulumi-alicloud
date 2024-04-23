@@ -1138,10 +1138,8 @@ func (o FirewallVpcFirewallLocalVpcPtrOutput) VpcName() pulumi.StringPtrOutput {
 }
 
 type FirewallVpcFirewallLocalVpcLocalVpcCidrTableList struct {
-	// The list of route entries of the local VPC. See `localRouteEntryList` below.
 	LocalRouteEntryLists []FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList `pulumi:"localRouteEntryLists"`
-	// The ID of the route table of the local VPC.
-	LocalRouteTableId string `pulumi:"localRouteTableId"`
+	LocalRouteTableId    string                                                                `pulumi:"localRouteTableId"`
 }
 
 // FirewallVpcFirewallLocalVpcLocalVpcCidrTableListInput is an input type that accepts FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs and FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput values.
@@ -1156,10 +1154,8 @@ type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListInput interface {
 }
 
 type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs struct {
-	// The list of route entries of the local VPC. See `localRouteEntryList` below.
 	LocalRouteEntryLists FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayInput `pulumi:"localRouteEntryLists"`
-	// The ID of the route table of the local VPC.
-	LocalRouteTableId pulumi.StringInput `pulumi:"localRouteTableId"`
+	LocalRouteTableId    pulumi.StringInput                                                            `pulumi:"localRouteTableId"`
 }
 
 func (FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArgs) ElementType() reflect.Type {
@@ -1213,14 +1209,12 @@ func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput) ToFirewallVpcFir
 	return o
 }
 
-// The list of route entries of the local VPC. See `localRouteEntryList` below.
 func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput) LocalRouteEntryLists() FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallLocalVpcLocalVpcCidrTableList) []FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList {
 		return v.LocalRouteEntryLists
 	}).(FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArrayOutput)
 }
 
-// The ID of the route table of the local VPC.
 func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListOutput) LocalRouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallLocalVpcLocalVpcCidrTableList) string { return v.LocalRouteTableId }).(pulumi.StringOutput)
 }
@@ -1246,9 +1240,7 @@ func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListArrayOutput) Index(i pul
 }
 
 type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList struct {
-	// The target network segment of the local VPC.
-	LocalDestinationCidr string `pulumi:"localDestinationCidr"`
-	// The ID of the next-hop instance in the local VPC.
+	LocalDestinationCidr   string `pulumi:"localDestinationCidr"`
 	LocalNextHopInstanceId string `pulumi:"localNextHopInstanceId"`
 }
 
@@ -1264,9 +1256,7 @@ type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListInput in
 }
 
 type FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListArgs struct {
-	// The target network segment of the local VPC.
-	LocalDestinationCidr pulumi.StringInput `pulumi:"localDestinationCidr"`
-	// The ID of the next-hop instance in the local VPC.
+	LocalDestinationCidr   pulumi.StringInput `pulumi:"localDestinationCidr"`
 	LocalNextHopInstanceId pulumi.StringInput `pulumi:"localNextHopInstanceId"`
 }
 
@@ -1321,14 +1311,12 @@ func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutpu
 	return o
 }
 
-// The target network segment of the local VPC.
 func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput) LocalDestinationCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList) string {
 		return v.LocalDestinationCidr
 	}).(pulumi.StringOutput)
 }
 
-// The ID of the next-hop instance in the local VPC.
 func (o FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryListOutput) LocalNextHopInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList) string {
 		return v.LocalNextHopInstanceId
@@ -1609,10 +1597,8 @@ func (o FirewallVpcFirewallPeerVpcPtrOutput) VpcName() pulumi.StringPtrOutput {
 }
 
 type FirewallVpcFirewallPeerVpcPeerVpcCidrTableList struct {
-	// Peer VPC route entry list information. See `peerRouteEntryList` below.
 	PeerRouteEntryLists []FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList `pulumi:"peerRouteEntryLists"`
-	// The ID of the route table of the peer VPC.
-	PeerRouteTableId string `pulumi:"peerRouteTableId"`
+	PeerRouteTableId    string                                                             `pulumi:"peerRouteTableId"`
 }
 
 // FirewallVpcFirewallPeerVpcPeerVpcCidrTableListInput is an input type that accepts FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs and FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput values.
@@ -1627,10 +1613,8 @@ type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListInput interface {
 }
 
 type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs struct {
-	// Peer VPC route entry list information. See `peerRouteEntryList` below.
 	PeerRouteEntryLists FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayInput `pulumi:"peerRouteEntryLists"`
-	// The ID of the route table of the peer VPC.
-	PeerRouteTableId pulumi.StringInput `pulumi:"peerRouteTableId"`
+	PeerRouteTableId    pulumi.StringInput                                                         `pulumi:"peerRouteTableId"`
 }
 
 func (FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArgs) ElementType() reflect.Type {
@@ -1684,14 +1668,12 @@ func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput) ToFirewallVpcFirew
 	return o
 }
 
-// Peer VPC route entry list information. See `peerRouteEntryList` below.
 func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput) PeerRouteEntryLists() FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallPeerVpcPeerVpcCidrTableList) []FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList {
 		return v.PeerRouteEntryLists
 	}).(FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArrayOutput)
 }
 
-// The ID of the route table of the peer VPC.
 func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListOutput) PeerRouteTableId() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallPeerVpcPeerVpcCidrTableList) string { return v.PeerRouteTableId }).(pulumi.StringOutput)
 }
@@ -1717,9 +1699,7 @@ func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListArrayOutput) Index(i pulum
 }
 
 type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList struct {
-	// The target network segment of the peer VPC.
-	PeerDestinationCidr string `pulumi:"peerDestinationCidr"`
-	// The ID of the next-hop instance in the peer VPC.
+	PeerDestinationCidr   string `pulumi:"peerDestinationCidr"`
 	PeerNextHopInstanceId string `pulumi:"peerNextHopInstanceId"`
 }
 
@@ -1735,9 +1715,7 @@ type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListInput inter
 }
 
 type FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListArgs struct {
-	// The target network segment of the peer VPC.
-	PeerDestinationCidr pulumi.StringInput `pulumi:"peerDestinationCidr"`
-	// The ID of the next-hop instance in the peer VPC.
+	PeerDestinationCidr   pulumi.StringInput `pulumi:"peerDestinationCidr"`
 	PeerNextHopInstanceId pulumi.StringInput `pulumi:"peerNextHopInstanceId"`
 }
 
@@ -1792,14 +1770,12 @@ func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput) 
 	return o
 }
 
-// The target network segment of the peer VPC.
 func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput) PeerDestinationCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList) string {
 		return v.PeerDestinationCidr
 	}).(pulumi.StringOutput)
 }
 
-// The ID of the next-hop instance in the peer VPC.
 func (o FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryListOutput) PeerNextHopInstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallVpcFirewallPeerVpcPeerVpcCidrTableListPeerRouteEntryList) string {
 		return v.PeerNextHopInstanceId

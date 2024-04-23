@@ -189,10 +189,8 @@ func (o HoneypotPresetMetaPtrOutput) TrojanGit() pulumi.StringPtrOutput {
 }
 
 type HoneypotProbeHoneypotBindList struct {
-	// List of listening ports.See the following `Block BindPortList`.
 	BindPortLists []HoneypotProbeHoneypotBindListBindPortList `pulumi:"bindPortLists"`
-	// Honeypot ID.
-	HoneypotId *string `pulumi:"honeypotId"`
+	HoneypotId    *string                                     `pulumi:"honeypotId"`
 }
 
 // HoneypotProbeHoneypotBindListInput is an input type that accepts HoneypotProbeHoneypotBindListArgs and HoneypotProbeHoneypotBindListOutput values.
@@ -207,10 +205,8 @@ type HoneypotProbeHoneypotBindListInput interface {
 }
 
 type HoneypotProbeHoneypotBindListArgs struct {
-	// List of listening ports.See the following `Block BindPortList`.
 	BindPortLists HoneypotProbeHoneypotBindListBindPortListArrayInput `pulumi:"bindPortLists"`
-	// Honeypot ID.
-	HoneypotId pulumi.StringPtrInput `pulumi:"honeypotId"`
+	HoneypotId    pulumi.StringPtrInput                               `pulumi:"honeypotId"`
 }
 
 func (HoneypotProbeHoneypotBindListArgs) ElementType() reflect.Type {
@@ -264,14 +260,12 @@ func (o HoneypotProbeHoneypotBindListOutput) ToHoneypotProbeHoneypotBindListOutp
 	return o
 }
 
-// List of listening ports.See the following `Block BindPortList`.
 func (o HoneypotProbeHoneypotBindListOutput) BindPortLists() HoneypotProbeHoneypotBindListBindPortListArrayOutput {
 	return o.ApplyT(func(v HoneypotProbeHoneypotBindList) []HoneypotProbeHoneypotBindListBindPortList {
 		return v.BindPortLists
 	}).(HoneypotProbeHoneypotBindListBindPortListArrayOutput)
 }
 
-// Honeypot ID.
 func (o HoneypotProbeHoneypotBindListOutput) HoneypotId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HoneypotProbeHoneypotBindList) *string { return v.HoneypotId }).(pulumi.StringPtrOutput)
 }
@@ -297,16 +291,11 @@ func (o HoneypotProbeHoneypotBindListArrayOutput) Index(i pulumi.IntInput) Honey
 }
 
 type HoneypotProbeHoneypotBindListBindPortList struct {
-	// Whether to bind the port.
-	BindPort *bool `pulumi:"bindPort"`
-	// End port.
-	EndPort *int `pulumi:"endPort"`
-	// Whether the port is fixed.
-	Fixed *bool `pulumi:"fixed"`
-	// Start port.
-	StartPort *int `pulumi:"startPort"`
-	// Destination port.
-	TargetPort *int `pulumi:"targetPort"`
+	BindPort   *bool `pulumi:"bindPort"`
+	EndPort    *int  `pulumi:"endPort"`
+	Fixed      *bool `pulumi:"fixed"`
+	StartPort  *int  `pulumi:"startPort"`
+	TargetPort *int  `pulumi:"targetPort"`
 }
 
 // HoneypotProbeHoneypotBindListBindPortListInput is an input type that accepts HoneypotProbeHoneypotBindListBindPortListArgs and HoneypotProbeHoneypotBindListBindPortListOutput values.
@@ -321,16 +310,11 @@ type HoneypotProbeHoneypotBindListBindPortListInput interface {
 }
 
 type HoneypotProbeHoneypotBindListBindPortListArgs struct {
-	// Whether to bind the port.
-	BindPort pulumi.BoolPtrInput `pulumi:"bindPort"`
-	// End port.
-	EndPort pulumi.IntPtrInput `pulumi:"endPort"`
-	// Whether the port is fixed.
-	Fixed pulumi.BoolPtrInput `pulumi:"fixed"`
-	// Start port.
-	StartPort pulumi.IntPtrInput `pulumi:"startPort"`
-	// Destination port.
-	TargetPort pulumi.IntPtrInput `pulumi:"targetPort"`
+	BindPort   pulumi.BoolPtrInput `pulumi:"bindPort"`
+	EndPort    pulumi.IntPtrInput  `pulumi:"endPort"`
+	Fixed      pulumi.BoolPtrInput `pulumi:"fixed"`
+	StartPort  pulumi.IntPtrInput  `pulumi:"startPort"`
+	TargetPort pulumi.IntPtrInput  `pulumi:"targetPort"`
 }
 
 func (HoneypotProbeHoneypotBindListBindPortListArgs) ElementType() reflect.Type {
@@ -384,27 +368,22 @@ func (o HoneypotProbeHoneypotBindListBindPortListOutput) ToHoneypotProbeHoneypot
 	return o
 }
 
-// Whether to bind the port.
 func (o HoneypotProbeHoneypotBindListBindPortListOutput) BindPort() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v HoneypotProbeHoneypotBindListBindPortList) *bool { return v.BindPort }).(pulumi.BoolPtrOutput)
 }
 
-// End port.
 func (o HoneypotProbeHoneypotBindListBindPortListOutput) EndPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HoneypotProbeHoneypotBindListBindPortList) *int { return v.EndPort }).(pulumi.IntPtrOutput)
 }
 
-// Whether the port is fixed.
 func (o HoneypotProbeHoneypotBindListBindPortListOutput) Fixed() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v HoneypotProbeHoneypotBindListBindPortList) *bool { return v.Fixed }).(pulumi.BoolPtrOutput)
 }
 
-// Start port.
 func (o HoneypotProbeHoneypotBindListBindPortListOutput) StartPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HoneypotProbeHoneypotBindListBindPortList) *int { return v.StartPort }).(pulumi.IntPtrOutput)
 }
 
-// Destination port.
 func (o HoneypotProbeHoneypotBindListBindPortListOutput) TargetPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HoneypotProbeHoneypotBindListBindPortList) *int { return v.TargetPort }).(pulumi.IntPtrOutput)
 }

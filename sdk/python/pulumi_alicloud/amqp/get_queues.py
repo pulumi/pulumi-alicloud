@@ -123,7 +123,6 @@ def get_queues(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -140,7 +139,6 @@ def get_queues(ids: Optional[Sequence[str]] = None,
         name_regex="^my-Queue")
     pulumi.export("amqpQueueId2", name_regex.queues[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Queue IDs. Its element value is same as Queue Name.
@@ -185,7 +183,6 @@ def get_queues_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -202,7 +199,6 @@ def get_queues_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = Non
         name_regex="^my-Queue")
     pulumi.export("amqpQueueId2", name_regex.queues[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Queue IDs. Its element value is same as Queue Name.

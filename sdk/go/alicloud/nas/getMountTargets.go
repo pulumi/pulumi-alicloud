@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -43,7 +42,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetMountTargets(ctx *pulumi.Context, args *GetMountTargetsArgs, opts ...pulumi.InvokeOption) (*GetMountTargetsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetMountTargetsResult

@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Ros
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -55,7 +54,6 @@ namespace Pulumi.AliCloud.Ros
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetTemplateScratchesResult> InvokeAsync(GetTemplateScratchesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetTemplateScratchesResult>("alicloud:ros/getTemplateScratches:getTemplateScratches", args ?? new GetTemplateScratchesArgs(), options.WithDefaults());
@@ -69,7 +67,6 @@ namespace Pulumi.AliCloud.Ros
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -104,7 +101,6 @@ namespace Pulumi.AliCloud.Ros
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetTemplateScratchesResult> Invoke(GetTemplateScratchesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTemplateScratchesResult>("alicloud:ros/getTemplateScratches:getTemplateScratches", args ?? new GetTemplateScratchesInvokeArgs(), options.WithDefaults());
@@ -138,13 +134,13 @@ namespace Pulumi.AliCloud.Ros
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
 
         /// <summary>
-        /// The type of the Template Scratch.
+        /// The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
         /// </summary>
         [Input("templateScratchType")]
         public string? TemplateScratchType { get; set; }
@@ -182,13 +178,13 @@ namespace Pulumi.AliCloud.Ros
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid Values: `GENERATE_IN_PROGRESS`, `GENERATE_COMPLETE` and `GENERATE_FAILED`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// The type of the Template Scratch.
+        /// The type of the template scratch. Valid Values: `ResourceImport`, `ArchitectureReplication`.
         /// </summary>
         [Input("templateScratchType")]
         public Input<string>? TemplateScratchType { get; set; }

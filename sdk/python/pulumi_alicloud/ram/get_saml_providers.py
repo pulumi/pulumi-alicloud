@@ -119,7 +119,6 @@ def get_saml_providers(enable_details: Optional[bool] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -128,7 +127,6 @@ def get_saml_providers(enable_details: Optional[bool] = None,
         name_regex="tf-testAcc")
     pulumi.export("firstRamSamlProviderId", example.providers[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -169,7 +167,6 @@ def get_saml_providers_output(enable_details: Optional[pulumi.Input[Optional[boo
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -178,7 +175,6 @@ def get_saml_providers_output(enable_details: Optional[pulumi.Input[Optional[boo
         name_regex="tf-testAcc")
     pulumi.export("firstRamSamlProviderId", example.providers[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

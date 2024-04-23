@@ -16,17 +16,9 @@ public final class ServiceMeshMeshConfigKialiArgs extends com.pulumi.resources.R
 
     public static final ServiceMeshMeshConfigKialiArgs Empty = new ServiceMeshMeshConfigKialiArgs();
 
-    /**
-     * Enable CNI.
-     * 
-     */
     @Import(name="enabled")
     private @Nullable Output<Boolean> enabled;
 
-    /**
-     * @return Enable CNI.
-     * 
-     */
     public Optional<Output<Boolean>> enabled() {
         return Optional.ofNullable(this.enabled);
     }
@@ -71,23 +63,11 @@ public final class ServiceMeshMeshConfigKialiArgs extends com.pulumi.resources.R
             $ = new ServiceMeshMeshConfigKialiArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param enabled Enable CNI.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(@Nullable Output<Boolean> enabled) {
             $.enabled = enabled;
             return this;
         }
 
-        /**
-         * @param enabled Enable CNI.
-         * 
-         * @return builder
-         * 
-         */
         public Builder enabled(Boolean enabled) {
             return enabled(Output.of(enabled));
         }

@@ -15,47 +15,23 @@ public final class StudioApplicationInstanceArgs extends com.pulumi.resources.Re
 
     public static final StudioApplicationInstanceArgs Empty = new StudioApplicationInstanceArgs();
 
-    /**
-     * The id of the instance.
-     * 
-     */
     @Import(name="id")
     private @Nullable Output<String> id;
 
-    /**
-     * @return The id of the instance.
-     * 
-     */
     public Optional<Output<String>> id() {
         return Optional.ofNullable(this.id);
     }
 
-    /**
-     * The name of the instance.
-     * 
-     */
     @Import(name="nodeName")
     private @Nullable Output<String> nodeName;
 
-    /**
-     * @return The name of the instance.
-     * 
-     */
     public Optional<Output<String>> nodeName() {
         return Optional.ofNullable(this.nodeName);
     }
 
-    /**
-     * The type of the instance.
-     * 
-     */
     @Import(name="nodeType")
     private @Nullable Output<String> nodeType;
 
-    /**
-     * @return The type of the instance.
-     * 
-     */
     public Optional<Output<String>> nodeType() {
         return Optional.ofNullable(this.nodeType);
     }
@@ -86,65 +62,29 @@ public final class StudioApplicationInstanceArgs extends com.pulumi.resources.Re
             $ = new StudioApplicationInstanceArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param id The id of the instance.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(@Nullable Output<String> id) {
             $.id = id;
             return this;
         }
 
-        /**
-         * @param id The id of the instance.
-         * 
-         * @return builder
-         * 
-         */
         public Builder id(String id) {
             return id(Output.of(id));
         }
 
-        /**
-         * @param nodeName The name of the instance.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeName(@Nullable Output<String> nodeName) {
             $.nodeName = nodeName;
             return this;
         }
 
-        /**
-         * @param nodeName The name of the instance.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeName(String nodeName) {
             return nodeName(Output.of(nodeName));
         }
 
-        /**
-         * @param nodeType The type of the instance.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeType(@Nullable Output<String> nodeType) {
             $.nodeType = nodeType;
             return this;
         }
 
-        /**
-         * @param nodeType The type of the instance.
-         * 
-         * @return builder
-         * 
-         */
         public Builder nodeType(String nodeType) {
             return nodeType(Output.of(nodeType));
         }

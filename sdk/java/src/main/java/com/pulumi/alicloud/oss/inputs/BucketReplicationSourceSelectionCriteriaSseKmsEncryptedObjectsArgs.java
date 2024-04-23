@@ -16,14 +16,14 @@ public final class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObject
     public static final BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs Empty = new BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs();
 
     /**
-     * Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+     * The status of the data replication task. Can be starting, doing and closing.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+     * @return The status of the data replication task. Can be starting, doing and closing.
      * 
      */
     public Optional<Output<String>> status() {
@@ -55,7 +55,7 @@ public final class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObject
         }
 
         /**
-         * @param status Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+         * @param status The status of the data replication task. Can be starting, doing and closing.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObject
         }
 
         /**
-         * @param status Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+         * @param status The status of the data replication task. Can be starting, doing and closing.
          * 
          * @return builder
          * 

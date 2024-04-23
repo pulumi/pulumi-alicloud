@@ -13,65 +13,25 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApplicationReadinessV2HttpGet {
-    /**
-     * @return Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
-     * 
-     */
     private @Nullable Boolean isContainKeyWord;
-    /**
-     * @return The custom keywords.
-     * 
-     */
     private @Nullable String keyWord;
-    /**
-     * @return The request path.
-     * 
-     */
     private @Nullable String path;
-    /**
-     * @return The port.
-     * 
-     */
     private @Nullable Integer port;
-    /**
-     * @return The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
-     * 
-     */
     private @Nullable String scheme;
 
     private ApplicationReadinessV2HttpGet() {}
-    /**
-     * @return Specifies whether the response contains keywords. Valid values: `true` and `false`. If you do not set it, the advanced settings are not used.
-     * 
-     */
     public Optional<Boolean> isContainKeyWord() {
         return Optional.ofNullable(this.isContainKeyWord);
     }
-    /**
-     * @return The custom keywords.
-     * 
-     */
     public Optional<String> keyWord() {
         return Optional.ofNullable(this.keyWord);
     }
-    /**
-     * @return The request path.
-     * 
-     */
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }
-    /**
-     * @return The port.
-     * 
-     */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
-    /**
-     * @return The protocol that is used to perform the health check. Valid values: `HTTP` and `HTTPS`.
-     * 
-     */
     public Optional<String> scheme() {
         return Optional.ofNullable(this.scheme);
     }

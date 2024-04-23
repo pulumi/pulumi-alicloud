@@ -16,14 +16,14 @@ public final class LaunchTemplateNetworkInterfacesArgs extends com.pulumi.resour
     public static final LaunchTemplateNetworkInterfacesArgs Empty = new LaunchTemplateNetworkInterfacesArgs();
 
     /**
-     * The description of the data disk.
+     * The ENI description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return The description of the data disk.
+     * @return The ENI description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -31,14 +31,14 @@ public final class LaunchTemplateNetworkInterfacesArgs extends com.pulumi.resour
     }
 
     /**
-     * The name of the data disk.
+     * ENI name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the data disk.
+     * @return ENI name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -119,7 +119,7 @@ public final class LaunchTemplateNetworkInterfacesArgs extends com.pulumi.resour
         }
 
         /**
-         * @param description The description of the data disk.
+         * @param description The ENI description.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class LaunchTemplateNetworkInterfacesArgs extends com.pulumi.resour
         }
 
         /**
-         * @param description The description of the data disk.
+         * @param description The ENI description.
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class LaunchTemplateNetworkInterfacesArgs extends com.pulumi.resour
         }
 
         /**
-         * @param name The name of the data disk.
+         * @param name ENI name.
          * 
          * @return builder
          * 
@@ -151,7 +151,7 @@ public final class LaunchTemplateNetworkInterfacesArgs extends com.pulumi.resour
         }
 
         /**
-         * @param name The name of the data disk.
+         * @param name ENI name.
          * 
          * @return builder
          * 

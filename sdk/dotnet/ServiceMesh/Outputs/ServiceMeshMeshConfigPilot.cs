@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.ServiceMesh.Outputs
     [OutputType]
     public sealed class ServiceMeshMeshConfigPilot
     {
-        /// <summary>
-        /// Whether to support the HTTP1.0.
-        /// </summary>
         public readonly bool? Http10Enabled;
-        /// <summary>
-        /// Link trace sampling percentage.
-        /// </summary>
         public readonly double? TraceSampling;
 
         [OutputConstructor]

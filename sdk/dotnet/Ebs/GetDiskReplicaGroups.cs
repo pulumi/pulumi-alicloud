@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Ebs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.AliCloud.Ebs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetDiskReplicaGroupsResult> InvokeAsync(GetDiskReplicaGroupsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetDiskReplicaGroupsResult>("alicloud:ebs/getDiskReplicaGroups:getDiskReplicaGroups", args ?? new GetDiskReplicaGroupsArgs(), options.WithDefaults());
@@ -57,7 +55,6 @@ namespace Pulumi.AliCloud.Ebs
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Pulumi.AliCloud.Ebs
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetDiskReplicaGroupsResult> Invoke(GetDiskReplicaGroupsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDiskReplicaGroupsResult>("alicloud:ebs/getDiskReplicaGroups:getDiskReplicaGroups", args ?? new GetDiskReplicaGroupsInvokeArgs(), options.WithDefaults());

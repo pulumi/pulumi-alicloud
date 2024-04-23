@@ -185,7 +185,6 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -206,7 +205,6 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
             ipv4_gateway_id=example_ipv4_gateway.id,
             route_table_id=example_route_table.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -239,7 +237,6 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -260,7 +257,6 @@ class GatewayRouteTableAttachment(pulumi.CustomResource):
             ipv4_gateway_id=example_ipv4_gateway.id,
             route_table_id=example_route_table.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

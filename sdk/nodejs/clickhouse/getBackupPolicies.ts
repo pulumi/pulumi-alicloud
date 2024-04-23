@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const clickHouseBackupPolicyId1 = example.then(example => example.policies?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBackupPolicies(args: GetBackupPoliciesArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupPoliciesResult> {
 
@@ -71,7 +69,6 @@ export interface GetBackupPoliciesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -81,7 +78,6 @@ export interface GetBackupPoliciesResult {
  * });
  * export const clickHouseBackupPolicyId1 = example.then(example => example.policies?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBackupPoliciesOutput(args: GetBackupPoliciesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupPoliciesResult> {
     return pulumi.output(args).apply((a: any) => getBackupPolicies(a, opts))

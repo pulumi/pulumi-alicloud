@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const apiGatewayPluginId2 = nameRegex.then(nameRegex => nameRegex.plugins?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPlugins(args?: GetPluginsArgs, opts?: pulumi.InvokeOptions): Promise<GetPluginsResult> {
     args = args || {};
@@ -105,7 +103,6 @@ export interface GetPluginsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -117,7 +114,6 @@ export interface GetPluginsResult {
  * });
  * export const apiGatewayPluginId2 = nameRegex.then(nameRegex => nameRegex.plugins?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPluginsOutput(args?: GetPluginsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPluginsResult> {
     return pulumi.output(args).apply((a: any) => getPlugins(a, opts))

@@ -21,7 +21,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -80,7 +79,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetUsers(ctx *pulumi.Context, args *GetUsersArgs, opts ...pulumi.InvokeOption) (*GetUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetUsersResult
@@ -103,9 +101,9 @@ type GetUsersArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// ProvisionType.
+	// ProvisionType. Valid values: `Manual`, `Synchronized`.
 	ProvisionType *string `pulumi:"provisionType"`
-	// User status. Valid values: `Enabled` and `Disabled`.
+	// The status of user. Valid values: `Disabled`, `Enabled`.
 	Status *string `pulumi:"status"`
 }
 
@@ -149,9 +147,9 @@ type GetUsersOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// ProvisionType.
+	// ProvisionType. Valid values: `Manual`, `Synchronized`.
 	ProvisionType pulumi.StringPtrInput `pulumi:"provisionType"`
-	// User status. Valid values: `Enabled` and `Disabled`.
+	// The status of user. Valid values: `Disabled`, `Enabled`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

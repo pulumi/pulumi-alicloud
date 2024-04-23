@@ -94,7 +94,6 @@ def get_configs(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -106,7 +105,6 @@ def get_configs(ids: Optional[Sequence[str]] = None,
         output_file="./t.json")
     pulumi.export("sddpConfigId", default.ids)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Config IDs.
@@ -141,7 +139,6 @@ def get_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -153,7 +150,6 @@ def get_configs_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
         output_file="./t.json")
     pulumi.export("sddpConfigId", default.ids)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Config IDs.

@@ -876,7 +876,6 @@ class ShardingInstance(pulumi.CustomResource):
 
         ### Create a Mongodb Sharding instance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -921,7 +920,6 @@ class ShardingInstance(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 
@@ -986,7 +984,6 @@ class ShardingInstance(pulumi.CustomResource):
 
         ### Create a Mongodb Sharding instance
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -1031,7 +1028,6 @@ class ShardingInstance(pulumi.CustomResource):
                 ),
             ])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Module Support
 

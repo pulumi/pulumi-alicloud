@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Pulumi.AliCloud.Rds
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCrossRegionsResult> InvokeAsync(GetCrossRegionsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCrossRegionsResult>("alicloud:rds/getCrossRegions:getCrossRegions", args ?? new GetCrossRegionsArgs(), options.WithDefaults());
@@ -48,7 +46,6 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -66,7 +63,6 @@ namespace Pulumi.AliCloud.Rds
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCrossRegionsResult> Invoke(GetCrossRegionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCrossRegionsResult>("alicloud:rds/getCrossRegions:getCrossRegions", args ?? new GetCrossRegionsInvokeArgs(), options.WithDefaults());

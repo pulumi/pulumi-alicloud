@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,7 +38,6 @@ namespace Pulumi.AliCloud.ResourceManager
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPolicyVersionsResult> InvokeAsync(GetPolicyVersionsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPolicyVersionsResult>("alicloud:resourcemanager/getPolicyVersions:getPolicyVersions", args ?? new GetPolicyVersionsArgs(), options.WithDefaults());
@@ -51,7 +49,6 @@ namespace Pulumi.AliCloud.ResourceManager
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -72,7 +69,6 @@ namespace Pulumi.AliCloud.ResourceManager
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPolicyVersionsResult> Invoke(GetPolicyVersionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyVersionsResult>("alicloud:resourcemanager/getPolicyVersions:getPolicyVersions", args ?? new GetPolicyVersionsInvokeArgs(), options.WithDefaults());

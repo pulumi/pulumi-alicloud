@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -42,7 +41,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetSynchronizationJobs(ctx *pulumi.Context, args *GetSynchronizationJobsArgs, opts ...pulumi.InvokeOption) (*GetSynchronizationJobsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSynchronizationJobsResult

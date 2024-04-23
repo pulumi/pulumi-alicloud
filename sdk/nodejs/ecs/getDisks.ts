@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstDiskId = disksDs.then(disksDs => disksDs.disks?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDisks(args?: GetDisksArgs, opts?: pulumi.InvokeOptions): Promise<GetDisksResult> {
     args = args || {};
@@ -126,7 +124,6 @@ export interface GetDisksArgs {
     status?: string;
     /**
      * A map of tags assigned to the disks. It must be in the format:
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
@@ -138,7 +135,6 @@ export interface GetDisksArgs {
      *     },
      * });
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     tags?: {[key: string]: any};
     /**
@@ -232,7 +228,6 @@ export interface GetDisksResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -242,7 +237,6 @@ export interface GetDisksResult {
  * });
  * export const firstDiskId = disksDs.then(disksDs => disksDs.disks?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDisksOutput(args?: GetDisksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDisksResult> {
     return pulumi.output(args).apply((a: any) => getDisks(a, opts))
@@ -312,7 +306,6 @@ export interface GetDisksOutputArgs {
     status?: pulumi.Input<string>;
     /**
      * A map of tags assigned to the disks. It must be in the format:
-     * <!--Start PulumiCodeChooser -->
      * ```typescript
      * import * as pulumi from "@pulumi/pulumi";
      * import * as alicloud from "@pulumi/alicloud";
@@ -324,7 +317,6 @@ export interface GetDisksOutputArgs {
      *     },
      * });
      * ```
-     * <!--End PulumiCodeChooser -->
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**

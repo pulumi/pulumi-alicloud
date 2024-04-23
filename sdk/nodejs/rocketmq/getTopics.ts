@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -38,7 +37,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstTopicName = topicsDs.apply(topicsDs => topicsDs.topics?.[0]?.topicName);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTopics(args: GetTopicsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicsResult> {
 
@@ -113,7 +111,6 @@ export interface GetTopicsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -138,7 +135,6 @@ export interface GetTopicsResult {
  * });
  * export const firstTopicName = topicsDs.apply(topicsDs => topicsDs.topics?.[0]?.topicName);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTopicsOutput(args: GetTopicsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicsResult> {
     return pulumi.output(args).apply((a: any) => getTopics(a, opts))

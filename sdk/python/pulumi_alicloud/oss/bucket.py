@@ -769,7 +769,6 @@ class Bucket(pulumi.CustomResource):
 
         Private Bucket
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -782,11 +781,9 @@ class Bucket(pulumi.CustomResource):
             bucket=f"example-value-{default['result']}",
             acl="private")
         ```
-        <!--End PulumiCodeChooser -->
 
         Static Website
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -802,11 +799,9 @@ class Bucket(pulumi.CustomResource):
                 error_document="error.html",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         Enable Logging
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -825,11 +820,9 @@ class Bucket(pulumi.CustomResource):
                 target_prefix="log/",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         Referer configuration
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -849,7 +842,6 @@ class Bucket(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         Set lifecycle rule
 
@@ -899,7 +891,6 @@ class Bucket(pulumi.CustomResource):
 
         Private Bucket
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -912,11 +903,9 @@ class Bucket(pulumi.CustomResource):
             bucket=f"example-value-{default['result']}",
             acl="private")
         ```
-        <!--End PulumiCodeChooser -->
 
         Static Website
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -932,11 +921,9 @@ class Bucket(pulumi.CustomResource):
                 error_document="error.html",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         Enable Logging
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -955,11 +942,9 @@ class Bucket(pulumi.CustomResource):
                 target_prefix="log/",
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         Referer configuration
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -979,7 +964,6 @@ class Bucket(pulumi.CustomResource):
                 ],
             ))
         ```
-        <!--End PulumiCodeChooser -->
 
         Set lifecycle rule
 

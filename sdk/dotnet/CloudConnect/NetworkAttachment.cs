@@ -22,7 +22,6 @@ namespace Pulumi.AliCloud.CloudConnect
     /// 
     /// Basic Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -50,7 +49,6 @@ namespace Pulumi.AliCloud.CloudConnect
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 

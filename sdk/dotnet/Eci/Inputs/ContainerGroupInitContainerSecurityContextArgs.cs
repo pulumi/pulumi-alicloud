@@ -14,19 +14,12 @@ namespace Pulumi.AliCloud.Eci.Inputs
     {
         [Input("capabilities")]
         private InputList<Inputs.ContainerGroupInitContainerSecurityContextCapabilityArgs>? _capabilities;
-
-        /// <summary>
-        /// The permissions that you want to grant to the processes in the containers. See `capability` below.
-        /// </summary>
         public InputList<Inputs.ContainerGroupInitContainerSecurityContextCapabilityArgs> Capabilities
         {
             get => _capabilities ?? (_capabilities = new InputList<Inputs.ContainerGroupInitContainerSecurityContextCapabilityArgs>());
             set => _capabilities = value;
         }
 
-        /// <summary>
-        /// The ID of the user who runs the container.
-        /// </summary>
         [Input("runAsUser")]
         public Input<int>? RunAsUser { get; set; }
 

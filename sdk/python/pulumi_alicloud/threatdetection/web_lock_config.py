@@ -336,7 +336,6 @@ class WebLockConfig(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -350,7 +349,6 @@ class WebLockConfig(pulumi.CustomResource):
             dir="/tmp/",
             defence_mode="audit")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -389,7 +387,6 @@ class WebLockConfig(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -403,7 +400,6 @@ class WebLockConfig(pulumi.CustomResource):
             dir="/tmp/",
             defence_mode="audit")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

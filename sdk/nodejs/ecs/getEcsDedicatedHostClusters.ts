@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -41,7 +40,6 @@ import * as utilities from "../utilities";
  * });
  * export const ecsDedicatedHostClusterId5 = clusterIds.then(clusterIds => clusterIds.clusters?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEcsDedicatedHostClusters(args?: GetEcsDedicatedHostClustersArgs, opts?: pulumi.InvokeOptions): Promise<GetEcsDedicatedHostClustersResult> {
     args = args || {};
@@ -119,7 +117,6 @@ export interface GetEcsDedicatedHostClustersResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -145,7 +142,6 @@ export interface GetEcsDedicatedHostClustersResult {
  * });
  * export const ecsDedicatedHostClusterId5 = clusterIds.then(clusterIds => clusterIds.clusters?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getEcsDedicatedHostClustersOutput(args?: GetEcsDedicatedHostClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEcsDedicatedHostClustersResult> {
     return pulumi.output(args).apply((a: any) => getEcsDedicatedHostClusters(a, opts))

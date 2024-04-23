@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -62,7 +61,6 @@ import (
 // })
 // }
 // ```
-// <!--End PulumiCodeChooser -->
 func GetAntiBruteForceRules(ctx *pulumi.Context, args *GetAntiBruteForceRulesArgs, opts ...pulumi.InvokeOption) (*GetAntiBruteForceRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAntiBruteForceRulesResult

@@ -120,7 +120,6 @@ def get_instances(domain_type: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -128,7 +127,6 @@ def get_instances(domain_type: Optional[str] = None,
     example = alicloud.dns.get_instances(ids=["dns-cn-oew1npk****"])
     pulumi.export("firstInstanceId", example.instances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of instance IDs.
@@ -169,7 +167,6 @@ def get_instances_output(domain_type: Optional[pulumi.Input[Optional[str]]] = No
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -177,7 +174,6 @@ def get_instances_output(domain_type: Optional[pulumi.Input[Optional[str]]] = No
     example = alicloud.dns.get_instances(ids=["dns-cn-oew1npk****"])
     pulumi.export("firstInstanceId", example.instances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of instance IDs.

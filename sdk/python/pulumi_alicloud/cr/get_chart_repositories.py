@@ -113,7 +113,6 @@ def get_chart_repositories(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -125,7 +124,6 @@ def get_chart_repositories(ids: Optional[Sequence[str]] = None,
         ])
     pulumi.export("crChartRepositoryId1", default["ids"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of matched Container Registry Enterprise Edition repositories.
@@ -166,7 +164,6 @@ def get_chart_repositories_output(ids: Optional[pulumi.Input[Optional[Sequence[s
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -178,7 +175,6 @@ def get_chart_repositories_output(ids: Optional[pulumi.Input[Optional[Sequence[s
         ])
     pulumi.export("crChartRepositoryId1", default["ids"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of matched Container Registry Enterprise Edition repositories.

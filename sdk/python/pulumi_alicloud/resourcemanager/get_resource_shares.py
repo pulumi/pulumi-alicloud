@@ -133,7 +133,6 @@ def get_resource_shares(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -143,7 +142,6 @@ def get_resource_shares(ids: Optional[Sequence[str]] = None,
         name_regex="the_resource_name")
     pulumi.export("firstResourceManagerResourceShareId", example.shares[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Resource Share IDs.
@@ -192,7 +190,6 @@ def get_resource_shares_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -202,7 +199,6 @@ def get_resource_shares_output(ids: Optional[pulumi.Input[Optional[Sequence[str]
         name_regex="the_resource_name")
     pulumi.export("firstResourceManagerResourceShareId", example.shares[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Resource Share IDs.

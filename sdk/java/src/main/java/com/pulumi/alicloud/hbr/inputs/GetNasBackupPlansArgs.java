@@ -17,14 +17,14 @@ public final class GetNasBackupPlansArgs extends com.pulumi.resources.InvokeArgs
     public static final GetNasBackupPlansArgs Empty = new GetNasBackupPlansArgs();
 
     /**
-     * The File System ID of Nas.
+     * The Nas fileSystem instance ID of the EcsBackupPlan used.
      * 
      */
     @Import(name="fileSystemId")
     private @Nullable Output<String> fileSystemId;
 
     /**
-     * @return The File System ID of Nas.
+     * @return The Nas fileSystem instance ID of the EcsBackupPlan used.
      * 
      */
     public Optional<Output<String>> fileSystemId() {
@@ -77,14 +77,14 @@ public final class GetNasBackupPlansArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The ID of backup vault.
+     * The backup vault ID of the NasBackupPlan used.
      * 
      */
     @Import(name="vaultId")
     private @Nullable Output<String> vaultId;
 
     /**
-     * @return The ID of backup vault.
+     * @return The backup vault ID of the NasBackupPlan used.
      * 
      */
     public Optional<Output<String>> vaultId() {
@@ -120,7 +120,7 @@ public final class GetNasBackupPlansArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param fileSystemId The File System ID of Nas.
+         * @param fileSystemId The Nas fileSystem instance ID of the EcsBackupPlan used.
          * 
          * @return builder
          * 
@@ -131,7 +131,7 @@ public final class GetNasBackupPlansArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param fileSystemId The File System ID of Nas.
+         * @param fileSystemId The Nas fileSystem instance ID of the EcsBackupPlan used.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class GetNasBackupPlansArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param vaultId The ID of backup vault.
+         * @param vaultId The backup vault ID of the NasBackupPlan used.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class GetNasBackupPlansArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param vaultId The ID of backup vault.
+         * @param vaultId The backup vault ID of the NasBackupPlan used.
          * 
          * @return builder
          * 

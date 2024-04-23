@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -96,7 +95,6 @@ namespace Pulumi.AliCloud.Ecs
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Module Support
     /// 
@@ -382,7 +380,7 @@ namespace Pulumi.AliCloud.Ecs
         public Output<int> Memory { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the secondary ENI.
+        /// The ID of the ENI.
         /// </summary>
         [Output("networkInterfaceId")]
         public Output<string> NetworkInterfaceId { get; private set; } = null!;
@@ -1482,7 +1480,7 @@ namespace Pulumi.AliCloud.Ecs
         public Input<int>? Memory { get; set; }
 
         /// <summary>
-        /// The ID of the secondary ENI.
+        /// The ID of the ENI.
         /// </summary>
         [Input("networkInterfaceId")]
         public Input<string>? NetworkInterfaceId { get; set; }

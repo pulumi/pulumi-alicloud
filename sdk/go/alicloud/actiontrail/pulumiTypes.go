@@ -322,7 +322,6 @@ func (o GetHistoryDeliveryJobsJobArrayOutput) Index(i pulumi.IntInput) GetHistor
 }
 
 type GetHistoryDeliveryJobsJobJobStatus struct {
-	// The region of the delivery job.
 	Region string `pulumi:"region"`
 	// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
 	Status int `pulumi:"status"`
@@ -340,7 +339,6 @@ type GetHistoryDeliveryJobsJobJobStatusInput interface {
 }
 
 type GetHistoryDeliveryJobsJobJobStatusArgs struct {
-	// The region of the delivery job.
 	Region pulumi.StringInput `pulumi:"region"`
 	// The status of the task. Valid values: `0`, `1`, `2`, `3`. `0`: The task is initializing. `1`: The task is delivering historical events. `2`: The delivery of historical events is complete. `3`: The task fails.
 	Status pulumi.IntInput `pulumi:"status"`
@@ -397,7 +395,6 @@ func (o GetHistoryDeliveryJobsJobJobStatusOutput) ToGetHistoryDeliveryJobsJobJob
 	return o
 }
 
-// The region of the delivery job.
 func (o GetHistoryDeliveryJobsJobJobStatusOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetHistoryDeliveryJobsJobJobStatus) string { return v.Region }).(pulumi.StringOutput)
 }

@@ -14,32 +14,16 @@ public final class ServiceNasConfigMountPointArgs extends com.pulumi.resources.R
 
     public static final ServiceNasConfigMountPointArgs Empty = new ServiceNasConfigMountPointArgs();
 
-    /**
-     * The local address where to mount your remote NAS directory.
-     * 
-     */
     @Import(name="mountDir", required=true)
     private Output<String> mountDir;
 
-    /**
-     * @return The local address where to mount your remote NAS directory.
-     * 
-     */
     public Output<String> mountDir() {
         return this.mountDir;
     }
 
-    /**
-     * The address of the remote NAS directory.
-     * 
-     */
     @Import(name="serverAddr", required=true)
     private Output<String> serverAddr;
 
-    /**
-     * @return The address of the remote NAS directory.
-     * 
-     */
     public Output<String> serverAddr() {
         return this.serverAddr;
     }
@@ -69,44 +53,20 @@ public final class ServiceNasConfigMountPointArgs extends com.pulumi.resources.R
             $ = new ServiceNasConfigMountPointArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param mountDir The local address where to mount your remote NAS directory.
-         * 
-         * @return builder
-         * 
-         */
         public Builder mountDir(Output<String> mountDir) {
             $.mountDir = mountDir;
             return this;
         }
 
-        /**
-         * @param mountDir The local address where to mount your remote NAS directory.
-         * 
-         * @return builder
-         * 
-         */
         public Builder mountDir(String mountDir) {
             return mountDir(Output.of(mountDir));
         }
 
-        /**
-         * @param serverAddr The address of the remote NAS directory.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serverAddr(Output<String> serverAddr) {
             $.serverAddr = serverAddr;
             return this;
         }
 
-        /**
-         * @param serverAddr The address of the remote NAS directory.
-         * 
-         * @return builder
-         * 
-         */
         public Builder serverAddr(String serverAddr) {
             return serverAddr(Output.of(serverAddr));
         }

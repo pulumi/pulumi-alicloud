@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -64,7 +63,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetQuotaApplications(ctx *pulumi.Context, args *GetQuotaApplicationsArgs, opts ...pulumi.InvokeOption) (*GetQuotaApplicationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetQuotaApplicationsResult
@@ -88,11 +86,11 @@ type GetQuotaApplicationsArgs struct {
 	OutputFile *string `pulumi:"outputFile"`
 	// The product code.
 	ProductCode string `pulumi:"productCode"`
-	// The ID of quota action..
+	// The ID of quota action.
 	QuotaActionCode *string `pulumi:"quotaActionCode"`
 	// The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
 	QuotaCategory *string `pulumi:"quotaCategory"`
-	// The status of the quota application.
+	// The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
 	Status *string `pulumi:"status"`
 }
 
@@ -138,11 +136,11 @@ type GetQuotaApplicationsOutputArgs struct {
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
 	// The product code.
 	ProductCode pulumi.StringInput `pulumi:"productCode"`
-	// The ID of quota action..
+	// The ID of quota action.
 	QuotaActionCode pulumi.StringPtrInput `pulumi:"quotaActionCode"`
 	// The quota category. Valid values: `CommonQuota`, `FlowControl`, `WhiteListLabel`.
 	QuotaCategory pulumi.StringPtrInput `pulumi:"quotaCategory"`
-	// The status of the quota application.
+	// The status of the quota application. Valid Values: `Agree`, `Disagree` and `Process`.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class TemplateScratchSourceResource {
-    /**
-     * @return The ID of the Source Resource.
-     * 
-     */
     private String resourceId;
-    /**
-     * @return The type of the Source resource.
-     * 
-     */
     private String resourceType;
 
     private TemplateScratchSourceResource() {}
-    /**
-     * @return The ID of the Source Resource.
-     * 
-     */
     public String resourceId() {
         return this.resourceId;
     }
-    /**
-     * @return The type of the Source resource.
-     * 
-     */
     public String resourceType() {
         return this.resourceType;
     }

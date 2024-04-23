@@ -32,14 +32,14 @@ public final class GetEcsBackupPlansArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The ID of ECS instance.
+     * The ECS instance ID of the EcsBackupPlan used.
      * 
      */
     @Import(name="instanceId")
     private @Nullable Output<String> instanceId;
 
     /**
-     * @return The ID of ECS instance.
+     * @return The ECS instance ID of the EcsBackupPlan used.
      * 
      */
     public Optional<Output<String>> instanceId() {
@@ -77,14 +77,14 @@ public final class GetEcsBackupPlansArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The ID of Backup vault.
+     * The Vault ID of the EcsBackupPlan used.
      * 
      */
     @Import(name="vaultId")
     private @Nullable Output<String> vaultId;
 
     /**
-     * @return The ID of Backup vault.
+     * @return The Vault ID of the EcsBackupPlan used.
      * 
      */
     public Optional<Output<String>> vaultId() {
@@ -151,7 +151,7 @@ public final class GetEcsBackupPlansArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param instanceId The ID of ECS instance.
+         * @param instanceId The ECS instance ID of the EcsBackupPlan used.
          * 
          * @return builder
          * 
@@ -162,7 +162,7 @@ public final class GetEcsBackupPlansArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param instanceId The ID of ECS instance.
+         * @param instanceId The ECS instance ID of the EcsBackupPlan used.
          * 
          * @return builder
          * 
@@ -214,7 +214,7 @@ public final class GetEcsBackupPlansArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param vaultId The ID of Backup vault.
+         * @param vaultId The Vault ID of the EcsBackupPlan used.
          * 
          * @return builder
          * 
@@ -225,7 +225,7 @@ public final class GetEcsBackupPlansArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param vaultId The ID of Backup vault.
+         * @param vaultId The Vault ID of the EcsBackupPlan used.
          * 
          * @return builder
          * 

@@ -16,14 +16,14 @@ public final class ManagedKubernetesCertificateAuthorityArgs extends com.pulumi.
     public static final ManagedKubernetesCertificateAuthorityArgs Empty = new ManagedKubernetesCertificateAuthorityArgs();
 
     /**
-     * The path of client certificate, like `~/.kube/client-cert.pem`.
+     * The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
      * 
      */
     @Import(name="clientCert")
     private @Nullable Output<String> clientCert;
 
     /**
-     * @return The path of client certificate, like `~/.kube/client-cert.pem`.
+     * @return The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
      * 
      */
     public Optional<Output<String>> clientCert() {
@@ -31,14 +31,14 @@ public final class ManagedKubernetesCertificateAuthorityArgs extends com.pulumi.
     }
 
     /**
-     * The path of client key, like `~/.kube/client-key.pem`.
+     * The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
      * 
      */
     @Import(name="clientKey")
     private @Nullable Output<String> clientKey;
 
     /**
-     * @return The path of client key, like `~/.kube/client-key.pem`.
+     * @return The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
      * 
      */
     public Optional<Output<String>> clientKey() {
@@ -87,7 +87,7 @@ public final class ManagedKubernetesCertificateAuthorityArgs extends com.pulumi.
         }
 
         /**
-         * @param clientCert The path of client certificate, like `~/.kube/client-cert.pem`.
+         * @param clientCert The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class ManagedKubernetesCertificateAuthorityArgs extends com.pulumi.
         }
 
         /**
-         * @param clientCert The path of client certificate, like `~/.kube/client-cert.pem`.
+         * @param clientCert The base64 encoded client certificate data required to communicate with your cluster. Add this to the client-certificate-data section of the kubeconfig file for your cluster.
          * 
          * @return builder
          * 
@@ -108,7 +108,7 @@ public final class ManagedKubernetesCertificateAuthorityArgs extends com.pulumi.
         }
 
         /**
-         * @param clientKey The path of client key, like `~/.kube/client-key.pem`.
+         * @param clientKey The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
          * 
          * @return builder
          * 
@@ -119,7 +119,7 @@ public final class ManagedKubernetesCertificateAuthorityArgs extends com.pulumi.
         }
 
         /**
-         * @param clientKey The path of client key, like `~/.kube/client-key.pem`.
+         * @param clientKey The base64 encoded client key data required to communicate with your cluster. Add this to the client-key-data section of the kubeconfig file for your cluster.
          * 
          * @return builder
          * 

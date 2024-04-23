@@ -15,77 +15,37 @@ public final class GreyTagRouteScRuleItemArgs extends com.pulumi.resources.Resou
 
     public static final GreyTagRouteScRuleItemArgs Empty = new GreyTagRouteScRuleItemArgs();
 
-    /**
-     * The comparison operator. Valid values: `&gt;`, `&lt;`, `&gt;=`, `&lt;=`, `==`, `!=`.
-     * 
-     */
     @Import(name="cond")
     private @Nullable Output<String> cond;
 
-    /**
-     * @return The comparison operator. Valid values: `&gt;`, `&lt;`, `&gt;=`, `&lt;=`, `==`, `!=`.
-     * 
-     */
     public Optional<Output<String>> cond() {
         return Optional.ofNullable(this.cond);
     }
 
-    /**
-     * The name of the parameter.
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return The name of the parameter.
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
-    /**
-     * The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
-     * 
-     */
     @Import(name="operator")
     private @Nullable Output<String> operator;
 
-    /**
-     * @return The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
-     * 
-     */
     public Optional<Output<String>> operator() {
         return Optional.ofNullable(this.operator);
     }
 
-    /**
-     * The compare types. Valid values: `param`, `cookie`, `header`.
-     * 
-     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
-    /**
-     * @return The compare types. Valid values: `param`, `cookie`, `header`.
-     * 
-     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
-    /**
-     * The value of the parameter.
-     * 
-     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
-    /**
-     * @return The value of the parameter.
-     * 
-     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
@@ -118,107 +78,47 @@ public final class GreyTagRouteScRuleItemArgs extends com.pulumi.resources.Resou
             $ = new GreyTagRouteScRuleItemArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param cond The comparison operator. Valid values: `&gt;`, `&lt;`, `&gt;=`, `&lt;=`, `==`, `!=`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cond(@Nullable Output<String> cond) {
             $.cond = cond;
             return this;
         }
 
-        /**
-         * @param cond The comparison operator. Valid values: `&gt;`, `&lt;`, `&gt;=`, `&lt;=`, `==`, `!=`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder cond(String cond) {
             return cond(Output.of(cond));
         }
 
-        /**
-         * @param name The name of the parameter.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The name of the parameter.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param operator The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder operator(@Nullable Output<String> operator) {
             $.operator = operator;
             return this;
         }
 
-        /**
-         * @param operator The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder operator(String operator) {
             return operator(Output.of(operator));
         }
 
-        /**
-         * @param type The compare types. Valid values: `param`, `cookie`, `header`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
-        /**
-         * @param type The compare types. Valid values: `param`, `cookie`, `header`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder type(String type) {
             return type(Output.of(type));
         }
 
-        /**
-         * @param value The value of the parameter.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
-        /**
-         * @param value The value of the parameter.
-         * 
-         * @return builder
-         * 
-         */
         public Builder value(String value) {
             return value(Output.of(value));
         }

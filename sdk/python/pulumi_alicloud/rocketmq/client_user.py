@@ -307,7 +307,6 @@ class ClientUser(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -327,7 +326,6 @@ class ClientUser(pulumi.CustomResource):
             password="example1234",
             client_ip="192.1.10.0")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -367,7 +365,6 @@ class ClientUser(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -387,7 +384,6 @@ class ClientUser(pulumi.CustomResource):
             password="example1234",
             client_ip="192.1.10.0")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

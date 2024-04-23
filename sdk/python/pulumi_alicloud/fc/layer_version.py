@@ -339,7 +339,6 @@ class LayerVersion(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -364,7 +363,6 @@ class LayerVersion(pulumi.CustomResource):
             oss_bucket_name=default_bucket.bucket,
             oss_object_name=default_bucket_object.key)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -397,7 +395,6 @@ class LayerVersion(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -422,7 +419,6 @@ class LayerVersion(pulumi.CustomResource):
             oss_bucket_name=default_bucket.bucket,
             oss_object_name=default_bucket_object.key)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

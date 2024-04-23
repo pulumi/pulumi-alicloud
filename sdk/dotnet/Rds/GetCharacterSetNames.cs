@@ -18,7 +18,6 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -39,7 +38,6 @@ namespace Pulumi.AliCloud.Rds
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCharacterSetNamesResult> InvokeAsync(GetCharacterSetNamesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCharacterSetNamesResult>("alicloud:rds/getCharacterSetNames:getCharacterSetNames", args ?? new GetCharacterSetNamesArgs(), options.WithDefaults());
@@ -51,7 +49,6 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -72,7 +69,6 @@ namespace Pulumi.AliCloud.Rds
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCharacterSetNamesResult> Invoke(GetCharacterSetNamesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCharacterSetNamesResult>("alicloud:rds/getCharacterSetNames:getCharacterSetNames", args ?? new GetCharacterSetNamesInvokeArgs(), options.WithDefaults());

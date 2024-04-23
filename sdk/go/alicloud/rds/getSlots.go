@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetSlots(ctx *pulumi.Context, args *GetSlotsArgs, opts ...pulumi.InvokeOption) (*GetSlotsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetSlotsResult

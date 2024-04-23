@@ -16,7 +16,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  *     clusterId: "cds-xxxxx",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDataCenters(args: GetDataCentersArgs, opts?: pulumi.InvokeOptions): Promise<GetDataCentersResult> {
 
@@ -98,7 +96,6 @@ export interface GetDataCentersResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -108,7 +105,6 @@ export interface GetDataCentersResult {
  *     clusterId: "cds-xxxxx",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getDataCentersOutput(args: GetDataCentersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDataCentersResult> {
     return pulumi.output(args).apply((a: any) => getDataCenters(a, opts))

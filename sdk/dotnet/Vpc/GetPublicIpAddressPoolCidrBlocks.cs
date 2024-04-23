@@ -22,7 +22,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -53,7 +52,6 @@ namespace Pulumi.AliCloud.Vpc
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetPublicIpAddressPoolCidrBlocksResult> InvokeAsync(GetPublicIpAddressPoolCidrBlocksArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetPublicIpAddressPoolCidrBlocksResult>("alicloud:vpc/getPublicIpAddressPoolCidrBlocks:getPublicIpAddressPoolCidrBlocks", args ?? new GetPublicIpAddressPoolCidrBlocksArgs(), options.WithDefaults());
@@ -69,7 +67,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -100,7 +97,6 @@ namespace Pulumi.AliCloud.Vpc
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetPublicIpAddressPoolCidrBlocksResult> Invoke(GetPublicIpAddressPoolCidrBlocksInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPublicIpAddressPoolCidrBlocksResult>("alicloud:vpc/getPublicIpAddressPoolCidrBlocks:getPublicIpAddressPoolCidrBlocks", args ?? new GetPublicIpAddressPoolCidrBlocksInvokeArgs(), options.WithDefaults());

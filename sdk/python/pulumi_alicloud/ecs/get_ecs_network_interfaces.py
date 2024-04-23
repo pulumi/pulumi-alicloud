@@ -239,7 +239,6 @@ def get_ecs_network_interfaces(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -248,24 +247,23 @@ def get_ecs_network_interfaces(ids: Optional[Sequence[str]] = None,
         name_regex="tf-testAcc")
     pulumi.export("firstEcsNetworkInterfaceId", example.interfaces[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Network Interface IDs.
     :param str instance_id: The instance id.
-    :param str name: The network interface name.
+    :param str name: Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
     :param str name_regex: A regex string to filter results by Network Interface name.
     :param str network_interface_name: The network interface name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str primary_ip_address: The primary private IP address of the ENI.
-    :param str private_ip: The primary private IP address of the ENI.
+    :param str private_ip: Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
     :param str resource_group_id: The resource group id.
     :param str security_group_id: The security group id.
     :param bool service_managed: Whether the user of the elastic network card is a cloud product or a virtual vendor.
-    :param str status: The status of the ENI.
-    :param Mapping[str, Any] tags: The tags.
-    :param str type: The type of the ENI.
-    :param str vpc_id: The Vpc Id.
+    :param str status: The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
+    :param Mapping[str, Any] tags: A map of tags assigned to ENIs.
+    :param str type: The type of ENI. Valid Values: `Primary`, `Secondary`.
+    :param str vpc_id: The vpc id.
     :param str vswitch_id: The vswitch id.
     """
     __args__ = dict()
@@ -337,7 +335,6 @@ def get_ecs_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequen
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -346,24 +343,23 @@ def get_ecs_network_interfaces_output(ids: Optional[pulumi.Input[Optional[Sequen
         name_regex="tf-testAcc")
     pulumi.export("firstEcsNetworkInterfaceId", example.interfaces[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Network Interface IDs.
     :param str instance_id: The instance id.
-    :param str name: The network interface name.
+    :param str name: Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
     :param str name_regex: A regex string to filter results by Network Interface name.
     :param str network_interface_name: The network interface name.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str primary_ip_address: The primary private IP address of the ENI.
-    :param str private_ip: The primary private IP address of the ENI.
+    :param str private_ip: Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
     :param str resource_group_id: The resource group id.
     :param str security_group_id: The security group id.
     :param bool service_managed: Whether the user of the elastic network card is a cloud product or a virtual vendor.
-    :param str status: The status of the ENI.
-    :param Mapping[str, Any] tags: The tags.
-    :param str type: The type of the ENI.
-    :param str vpc_id: The Vpc Id.
+    :param str status: The status of ENI. Valid Values: `Attaching`, `Available`, `CreateFailed`, `Creating`, `Deleting`, `Detaching`, `InUse`, `Linked`, `Linking`, `Unlinking`.
+    :param Mapping[str, Any] tags: A map of tags assigned to ENIs.
+    :param str type: The type of ENI. Valid Values: `Primary`, `Secondary`.
+    :param str vpc_id: The vpc id.
     :param str vswitch_id: The vswitch id.
     """
     ...

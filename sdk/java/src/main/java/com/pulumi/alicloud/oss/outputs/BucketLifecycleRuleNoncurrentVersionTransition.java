@@ -14,20 +14,8 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BucketLifecycleRuleNoncurrentVersionTransition {
-    /**
-     * @return Specifies the number of days noncurrent object versions transition.
-     * 
-     */
     private Integer days;
-    /**
-     * @return Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
-     * 
-     */
     private @Nullable Boolean isAccessTime;
-    /**
-     * @return Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-     * 
-     */
     private @Nullable Boolean returnToStdWhenVisit;
     /**
      * @return The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be &#34;Standard&#34;, &#34;IA&#34;, &#34;Archive&#34;, &#34;ColdArchive&#34; and &#34;DeepColdArchive&#34;. Defaults to &#34;Standard&#34;. &#34;ColdArchive&#34; is available since 1.203.0. &#34;DeepColdArchive&#34; is available since 1.209.0.
@@ -36,24 +24,12 @@ public final class BucketLifecycleRuleNoncurrentVersionTransition {
     private String storageClass;
 
     private BucketLifecycleRuleNoncurrentVersionTransition() {}
-    /**
-     * @return Specifies the number of days noncurrent object versions transition.
-     * 
-     */
     public Integer days() {
         return this.days;
     }
-    /**
-     * @return Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `access_monitor` first.
-     * 
-     */
     public Optional<Boolean> isAccessTime() {
         return Optional.ofNullable(this.isAccessTime);
     }
-    /**
-     * @return Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-     * 
-     */
     public Optional<Boolean> returnToStdWhenVisit() {
         return Optional.ofNullable(this.returnToStdWhenVisit);
     }

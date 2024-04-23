@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstConfigAggregatorId = example.then(example => example.aggregators?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAggregators(args?: GetAggregatorsArgs, opts?: pulumi.InvokeOptions): Promise<GetAggregatorsResult> {
     args = args || {};
@@ -101,7 +99,6 @@ export interface GetAggregatorsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -112,7 +109,6 @@ export interface GetAggregatorsResult {
  * });
  * export const firstConfigAggregatorId = example.then(example => example.aggregators?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAggregatorsOutput(args?: GetAggregatorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAggregatorsResult> {
     return pulumi.output(args).apply((a: any) => getAggregators(a, opts))

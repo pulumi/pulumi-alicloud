@@ -165,7 +165,6 @@ def get_studio_applications(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -175,7 +174,6 @@ def get_studio_applications(ids: Optional[Sequence[str]] = None,
     name_regex = alicloud.bp.get_studio_applications(name_regex="^my-Application")
     pulumi.export("bpStudioApplicationId2", name_regex.applications[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Application IDs.
@@ -231,7 +229,6 @@ def get_studio_applications_output(ids: Optional[pulumi.Input[Optional[Sequence[
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -241,7 +238,6 @@ def get_studio_applications_output(ids: Optional[pulumi.Input[Optional[Sequence[
     name_regex = alicloud.bp.get_studio_applications(name_regex="^my-Application")
     pulumi.export("bpStudioApplicationId2", name_regex.applications[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Application IDs.

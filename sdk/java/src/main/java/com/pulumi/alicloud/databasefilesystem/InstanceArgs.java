@@ -136,8 +136,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * . Field &#39;instance_name&#39; has been deprecated from provider version 1.212.0. New field &#39;fs_name&#39; instead.
-     * 
      * @deprecated
      * Field &#39;instance_name&#39; has been deprecated since provider version 1.212.0. New field &#39;fs_name&#39; instead.
      * 
@@ -147,8 +145,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> instanceName;
 
     /**
-     * @return . Field &#39;instance_name&#39; has been deprecated from provider version 1.212.0. New field &#39;fs_name&#39; instead.
-     * 
      * @deprecated
      * Field &#39;instance_name&#39; has been deprecated since provider version 1.212.0. New field &#39;fs_name&#39; instead.
      * 
@@ -523,8 +519,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName . Field &#39;instance_name&#39; has been deprecated from provider version 1.212.0. New field &#39;fs_name&#39; instead.
-         * 
          * @return builder
          * 
          * @deprecated
@@ -538,8 +532,6 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceName . Field &#39;instance_name&#39; has been deprecated from provider version 1.212.0. New field &#39;fs_name&#39; instead.
-         * 
          * @return builder
          * 
          * @deprecated

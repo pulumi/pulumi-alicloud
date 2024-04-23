@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Eci.Outputs
     [OutputType]
     public sealed class ContainerGroupVolumeConfigFileVolumeConfigFileToPath
     {
-        /// <summary>
-        /// The content of the configuration file. Maximum size: 32 KB.
-        /// </summary>
         public readonly string? Content;
-        /// <summary>
-        /// The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
-        /// </summary>
         public readonly string? Path;
 
         [OutputConstructor]

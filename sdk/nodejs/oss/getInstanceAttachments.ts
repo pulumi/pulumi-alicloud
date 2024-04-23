@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstOtsAttachmentId = attachmentsDs.then(attachmentsDs => attachmentsDs.attachments?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 /** @deprecated alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments */
 export function getInstanceAttachments(args: GetInstanceAttachmentsArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceAttachmentsResult> {
@@ -87,7 +85,6 @@ export interface GetInstanceAttachmentsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -99,7 +96,6 @@ export interface GetInstanceAttachmentsResult {
  * });
  * export const firstOtsAttachmentId = attachmentsDs.then(attachmentsDs => attachmentsDs.attachments?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 /** @deprecated alicloud.oss.getInstanceAttachments has been deprecated in favor of alicloud.ots.getInstanceAttachments */
 export function getInstanceAttachmentsOutput(args: GetInstanceAttachmentsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceAttachmentsResult> {

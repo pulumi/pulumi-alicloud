@@ -16,17 +16,9 @@ public final class ApplicationUpdateStrategyV2BatchUpdateArgs extends com.pulumi
 
     public static final ApplicationUpdateStrategyV2BatchUpdateArgs Empty = new ApplicationUpdateStrategyV2BatchUpdateArgs();
 
-    /**
-     * The number of batches in which you want to release the instances.
-     * 
-     */
     @Import(name="batch")
     private @Nullable Output<Integer> batch;
 
-    /**
-     * @return The number of batches in which you want to release the instances.
-     * 
-     */
     public Optional<Output<Integer>> batch() {
         return Optional.ofNullable(this.batch);
     }
@@ -46,17 +38,9 @@ public final class ApplicationUpdateStrategyV2BatchUpdateArgs extends com.pulumi
         return Optional.ofNullable(this.batchWaitTime);
     }
 
-    /**
-     * The processing method for the batches. Valid values: `auto` and `manual`.
-     * 
-     */
     @Import(name="releaseType")
     private @Nullable Output<String> releaseType;
 
-    /**
-     * @return The processing method for the batches. Valid values: `auto` and `manual`.
-     * 
-     */
     public Optional<Output<String>> releaseType() {
         return Optional.ofNullable(this.releaseType);
     }
@@ -87,23 +71,11 @@ public final class ApplicationUpdateStrategyV2BatchUpdateArgs extends com.pulumi
             $ = new ApplicationUpdateStrategyV2BatchUpdateArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param batch The number of batches in which you want to release the instances.
-         * 
-         * @return builder
-         * 
-         */
         public Builder batch(@Nullable Output<Integer> batch) {
             $.batch = batch;
             return this;
         }
 
-        /**
-         * @param batch The number of batches in which you want to release the instances.
-         * 
-         * @return builder
-         * 
-         */
         public Builder batch(Integer batch) {
             return batch(Output.of(batch));
         }
@@ -129,23 +101,11 @@ public final class ApplicationUpdateStrategyV2BatchUpdateArgs extends com.pulumi
             return batchWaitTime(Output.of(batchWaitTime));
         }
 
-        /**
-         * @param releaseType The processing method for the batches. Valid values: `auto` and `manual`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder releaseType(@Nullable Output<String> releaseType) {
             $.releaseType = releaseType;
             return this;
         }
 
-        /**
-         * @param releaseType The processing method for the batches. Valid values: `auto` and `manual`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder releaseType(String releaseType) {
             return releaseType(Output.of(releaseType));
         }

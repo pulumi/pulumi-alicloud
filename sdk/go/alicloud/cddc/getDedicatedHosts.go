@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -96,7 +95,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDedicatedHosts(ctx *pulumi.Context, args *GetDedicatedHostsArgs, opts ...pulumi.InvokeOption) (*GetDedicatedHostsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDedicatedHostsResult
@@ -109,13 +107,13 @@ func GetDedicatedHosts(ctx *pulumi.Context, args *GetDedicatedHostsArgs, opts ..
 
 // A collection of arguments for invoking getDedicatedHosts.
 type GetDedicatedHostsArgs struct {
-	// Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+	// Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
 	AllocationStatus *string `pulumi:"allocationStatus"`
-	// The ID of the dedicated cluster in which the host is created.
+	// The ID of the dedicated cluster.
 	DedicatedHostGroupId string `pulumi:"dedicatedHostGroupId"`
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails *bool `pulumi:"enableDetails"`
-	// The storage type of the host.
+	// The storage type of the host. Valid values: `dhgLocalSsd` or `dhgCloudSsd`. `dhgLocalSsd`: specifies that the host uses local SSDs. `dhgCloudSsd`: specifies that the host uses enhanced SSDs (ESSDs).
 	HostType *string `pulumi:"hostType"`
 	// A list of Dedicated Host IDs.
 	Ids []string `pulumi:"ids"`
@@ -123,11 +121,12 @@ type GetDedicatedHostsArgs struct {
 	OrderId *string `pulumi:"orderId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The state of the host.
+	// The state of the host. Valid values:
+	// * `0:` The host is being created.
 	Status *string `pulumi:"status"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
-	// The zone ID of the host.
+	// The ID of the zone.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -163,13 +162,13 @@ func GetDedicatedHostsOutput(ctx *pulumi.Context, args GetDedicatedHostsOutputAr
 
 // A collection of arguments for invoking getDedicatedHosts.
 type GetDedicatedHostsOutputArgs struct {
-	// Specifies whether instances can be created on the host. Valid values: `1` or `0`. `1`: Instances can be created on the host. `0`: Instances cannot be created on the host.
+	// Specifies whether instances can be created on the host. Valid values: `Allocatable` or `Suspended`. `Allocatable`: Instances can be created on the host. `Suspended`: Instances cannot be created on the host.
 	AllocationStatus pulumi.StringPtrInput `pulumi:"allocationStatus"`
-	// The ID of the dedicated cluster in which the host is created.
+	// The ID of the dedicated cluster.
 	DedicatedHostGroupId pulumi.StringInput `pulumi:"dedicatedHostGroupId"`
 	// Default to `false`. Set it to `true` can output more details about resource attributes.
 	EnableDetails pulumi.BoolPtrInput `pulumi:"enableDetails"`
-	// The storage type of the host.
+	// The storage type of the host. Valid values: `dhgLocalSsd` or `dhgCloudSsd`. `dhgLocalSsd`: specifies that the host uses local SSDs. `dhgCloudSsd`: specifies that the host uses enhanced SSDs (ESSDs).
 	HostType pulumi.StringPtrInput `pulumi:"hostType"`
 	// A list of Dedicated Host IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
@@ -177,11 +176,12 @@ type GetDedicatedHostsOutputArgs struct {
 	OrderId pulumi.StringPtrInput `pulumi:"orderId"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The state of the host.
+	// The state of the host. Valid values:
+	// * `0:` The host is being created.
 	Status pulumi.StringPtrInput `pulumi:"status"`
-	// The tag of the resource.
+	// A mapping of tags to assign to the resource.
 	Tags pulumi.MapInput `pulumi:"tags"`
-	// The zone ID of the host.
+	// The ID of the zone.
 	ZoneId pulumi.StringPtrInput `pulumi:"zoneId"`
 }
 

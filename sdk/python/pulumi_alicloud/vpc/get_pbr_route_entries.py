@@ -98,7 +98,6 @@ def get_pbr_route_entries(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -107,7 +106,6 @@ def get_pbr_route_entries(ids: Optional[Sequence[str]] = None,
         ids=["example_id"])
     pulumi.export("vpnIpsecServerId1", ids.entries[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of VPN Pbr Route Entries IDs.
@@ -141,7 +139,6 @@ def get_pbr_route_entries_output(ids: Optional[pulumi.Input[Optional[Sequence[st
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -150,7 +147,6 @@ def get_pbr_route_entries_output(ids: Optional[pulumi.Input[Optional[Sequence[st
         ids=["example_id"])
     pulumi.export("vpnIpsecServerId1", ids.entries[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of VPN Pbr Route Entries IDs.

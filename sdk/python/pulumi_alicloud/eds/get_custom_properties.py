@@ -84,7 +84,6 @@ def get_custom_properties(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -92,7 +91,6 @@ def get_custom_properties(ids: Optional[Sequence[str]] = None,
     ids = alicloud.eds.get_custom_properties(ids=["example_id"])
     pulumi.export("ecdCustomPropertyId1", ids.properties[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Custom Property IDs.
@@ -124,7 +122,6 @@ def get_custom_properties_output(ids: Optional[pulumi.Input[Optional[Sequence[st
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -132,7 +129,6 @@ def get_custom_properties_output(ids: Optional[pulumi.Input[Optional[Sequence[st
     ids = alicloud.eds.get_custom_properties(ids=["example_id"])
     pulumi.export("ecdCustomPropertyId1", ids.properties[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Custom Property IDs.

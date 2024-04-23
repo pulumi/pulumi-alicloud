@@ -15,32 +15,16 @@ public final class ProvisionedProductParameterArgs extends com.pulumi.resources.
 
     public static final ProvisionedProductParameterArgs Empty = new ProvisionedProductParameterArgs();
 
-    /**
-     * The name of the parameter defined in the template.
-     * 
-     */
     @Import(name="parameterKey")
     private @Nullable Output<String> parameterKey;
 
-    /**
-     * @return The name of the parameter defined in the template.
-     * 
-     */
     public Optional<Output<String>> parameterKey() {
         return Optional.ofNullable(this.parameterKey);
     }
 
-    /**
-     * The Template parameter value entered by the user.
-     * 
-     */
     @Import(name="parameterValue")
     private @Nullable Output<String> parameterValue;
 
-    /**
-     * @return The Template parameter value entered by the user.
-     * 
-     */
     public Optional<Output<String>> parameterValue() {
         return Optional.ofNullable(this.parameterValue);
     }
@@ -70,44 +54,20 @@ public final class ProvisionedProductParameterArgs extends com.pulumi.resources.
             $ = new ProvisionedProductParameterArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param parameterKey The name of the parameter defined in the template.
-         * 
-         * @return builder
-         * 
-         */
         public Builder parameterKey(@Nullable Output<String> parameterKey) {
             $.parameterKey = parameterKey;
             return this;
         }
 
-        /**
-         * @param parameterKey The name of the parameter defined in the template.
-         * 
-         * @return builder
-         * 
-         */
         public Builder parameterKey(String parameterKey) {
             return parameterKey(Output.of(parameterKey));
         }
 
-        /**
-         * @param parameterValue The Template parameter value entered by the user.
-         * 
-         * @return builder
-         * 
-         */
         public Builder parameterValue(@Nullable Output<String> parameterValue) {
             $.parameterValue = parameterValue;
             return this;
         }
 
-        /**
-         * @param parameterValue The Template parameter value entered by the user.
-         * 
-         * @return builder
-         * 
-         */
         public Builder parameterValue(String parameterValue) {
             return parameterValue(Output.of(parameterValue));
         }

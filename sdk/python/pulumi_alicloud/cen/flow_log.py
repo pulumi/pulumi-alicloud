@@ -241,7 +241,6 @@ class FlowLog(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -265,7 +264,6 @@ class FlowLog(pulumi.CustomResource):
             project_name=default_project.name,
             log_store_name=default_store.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -303,7 +301,6 @@ class FlowLog(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -327,7 +324,6 @@ class FlowLog(pulumi.CustomResource):
             project_name=default_project.name,
             log_store_name=default_store.name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

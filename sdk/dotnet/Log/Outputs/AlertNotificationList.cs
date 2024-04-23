@@ -30,7 +30,7 @@ namespace Pulumi.AliCloud.Log.Outputs
         /// </summary>
         public readonly string? ServiceUri;
         /// <summary>
-        /// including FixedRate,Hourly,Daily,Weekly,Cron.
+        /// Notification type. support Email, SMS, DingTalk, MessageCenter.
         /// </summary>
         public readonly string Type;
 

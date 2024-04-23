@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Vpc.Outputs
     [OutputType]
     public sealed class NetworkAclAttachmentResource
     {
-        /// <summary>
-        /// The resource id that the network acl will associate with.
-        /// </summary>
         public readonly string ResourceId;
-        /// <summary>
-        /// The resource id that the network acl will associate with. Only support `VSwitch` now.
-        /// </summary>
         public readonly string ResourceType;
 
         [OutputConstructor]

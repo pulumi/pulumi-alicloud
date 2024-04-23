@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,7 +47,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetHoneyPots(ctx *pulumi.Context, args *GetHoneyPotsArgs, opts ...pulumi.InvokeOption) (*GetHoneyPotsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHoneyPotsResult

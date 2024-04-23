@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Amqp
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -54,7 +53,6 @@ namespace Pulumi.AliCloud.Amqp
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetExchangesResult> InvokeAsync(GetExchangesArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetExchangesResult>("alicloud:amqp/getExchanges:getExchanges", args ?? new GetExchangesArgs(), options.WithDefaults());
@@ -68,7 +66,6 @@ namespace Pulumi.AliCloud.Amqp
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -102,7 +99,6 @@ namespace Pulumi.AliCloud.Amqp
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetExchangesResult> Invoke(GetExchangesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExchangesResult>("alicloud:amqp/getExchanges:getExchanges", args ?? new GetExchangesInvokeArgs(), options.WithDefaults());

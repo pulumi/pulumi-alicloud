@@ -13,25 +13,10 @@ namespace Pulumi.AliCloud.Ecs.Outputs
     [OutputType]
     public sealed class AutoProvisioningGroupLaunchTemplateConfig
     {
-        /// <summary>
-        /// The instance type of the Nth extended configurations of the launch template.
-        /// </summary>
         public readonly string? InstanceType;
-        /// <summary>
-        /// The maximum price of the instance type specified in the Nth extended configurations of the launch template.
-        /// </summary>
         public readonly string MaxPrice;
-        /// <summary>
-        /// The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
-        /// </summary>
         public readonly string? Priority;
-        /// <summary>
-        /// The ID of the VSwitch in the Nth extended configurations of the launch template.
-        /// </summary>
         public readonly string VswitchId;
-        /// <summary>
-        /// The weight of the instance type specified in the Nth extended configurations of the launch template.
-        /// </summary>
         public readonly string WeightedCapacity;
 
         [OutputConstructor]

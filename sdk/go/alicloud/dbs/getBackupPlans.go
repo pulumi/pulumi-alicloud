@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,7 +48,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetBackupPlans(ctx *pulumi.Context, args *GetBackupPlansArgs, opts ...pulumi.InvokeOption) (*GetBackupPlansResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBackupPlansResult

@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -42,7 +41,6 @@ namespace Pulumi.AliCloud.Rds
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetCrossRegionBackupsResult> InvokeAsync(GetCrossRegionBackupsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCrossRegionBackupsResult>("alicloud:rds/getCrossRegionBackups:getCrossRegionBackups", args ?? new GetCrossRegionBackupsArgs(), options.WithDefaults());
@@ -56,7 +54,6 @@ namespace Pulumi.AliCloud.Rds
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -78,7 +75,6 @@ namespace Pulumi.AliCloud.Rds
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetCrossRegionBackupsResult> Invoke(GetCrossRegionBackupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCrossRegionBackupsResult>("alicloud:rds/getCrossRegionBackups:getCrossRegionBackups", args ?? new GetCrossRegionBackupsInvokeArgs(), options.WithDefaults());

@@ -14,67 +14,40 @@ namespace Pulumi.AliCloud.Eci.Inputs
     {
         [Input("execs")]
         private InputList<Inputs.ContainerGroupContainerLivenessProbeExecGetArgs>? _execs;
-
-        /// <summary>
-        /// Health check using command line method. See `exec` below.
-        /// </summary>
         public InputList<Inputs.ContainerGroupContainerLivenessProbeExecGetArgs> Execs
         {
             get => _execs ?? (_execs = new InputList<Inputs.ContainerGroupContainerLivenessProbeExecGetArgs>());
             set => _execs = value;
         }
 
-        /// <summary>
-        /// Threshold for the number of checks that are determined to have failed since the last successful check (must be consecutive failures), default is 3.
-        /// </summary>
         [Input("failureThreshold")]
         public Input<int>? FailureThreshold { get; set; }
 
         [Input("httpGets")]
         private InputList<Inputs.ContainerGroupContainerLivenessProbeHttpGetGetArgs>? _httpGets;
-
-        /// <summary>
-        /// Health check using HTTP request method. See `http_get` below.
-        /// </summary>
         public InputList<Inputs.ContainerGroupContainerLivenessProbeHttpGetGetArgs> HttpGets
         {
             get => _httpGets ?? (_httpGets = new InputList<Inputs.ContainerGroupContainerLivenessProbeHttpGetGetArgs>());
             set => _httpGets = value;
         }
 
-        /// <summary>
-        /// Check the time to start execution, calculated from the completion of container startup.
-        /// </summary>
         [Input("initialDelaySeconds")]
         public Input<int>? InitialDelaySeconds { get; set; }
 
-        /// <summary>
-        /// Buffer time for the program to handle operations before closing.
-        /// </summary>
         [Input("periodSeconds")]
         public Input<int>? PeriodSeconds { get; set; }
 
-        /// <summary>
-        /// The check count threshold for re-identifying successful checks since the last failed check (must be consecutive successes), default is 1. Current must be 1.
-        /// </summary>
         [Input("successThreshold")]
         public Input<int>? SuccessThreshold { get; set; }
 
         [Input("tcpSockets")]
         private InputList<Inputs.ContainerGroupContainerLivenessProbeTcpSocketGetArgs>? _tcpSockets;
-
-        /// <summary>
-        /// Health check using TCP socket method. See `tcp_socket` below.
-        /// </summary>
         public InputList<Inputs.ContainerGroupContainerLivenessProbeTcpSocketGetArgs> TcpSockets
         {
             get => _tcpSockets ?? (_tcpSockets = new InputList<Inputs.ContainerGroupContainerLivenessProbeTcpSocketGetArgs>());
             set => _tcpSockets = value;
         }
 
-        /// <summary>
-        /// Check the timeout, the default is 1 second, the minimum is 1 second.
-        /// </summary>
         [Input("timeoutSeconds")]
         public Input<int>? TimeoutSeconds { get; set; }
 

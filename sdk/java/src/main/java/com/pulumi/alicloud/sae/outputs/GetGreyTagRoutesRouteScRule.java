@@ -12,41 +12,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetGreyTagRoutesRouteScRule {
-    /**
-     * @return The Conditional Patterns for Grayscale Rules.
-     * 
-     */
     private String condition;
-    /**
-     * @return A list of conditions items.
-     * 
-     */
     private List<GetGreyTagRoutesRouteScRuleItem> items;
-    /**
-     * @return The path corresponding to the grayscale rule.
-     * 
-     */
     private String path;
 
     private GetGreyTagRoutesRouteScRule() {}
-    /**
-     * @return The Conditional Patterns for Grayscale Rules.
-     * 
-     */
     public String condition() {
         return this.condition;
     }
-    /**
-     * @return A list of conditions items.
-     * 
-     */
     public List<GetGreyTagRoutesRouteScRuleItem> items() {
         return this.items;
     }
-    /**
-     * @return The path corresponding to the grayscale rule.
-     * 
-     */
     public String path() {
         return this.path;
     }

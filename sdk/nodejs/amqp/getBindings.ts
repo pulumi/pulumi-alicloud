@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  *     virtualHostName: "my-vh",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBindings(args: GetBindingsArgs, opts?: pulumi.InvokeOptions): Promise<GetBindingsResult> {
 
@@ -78,7 +76,6 @@ export interface GetBindingsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -88,7 +85,6 @@ export interface GetBindingsResult {
  *     virtualHostName: "my-vh",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBindingsOutput(args: GetBindingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBindingsResult> {
     return pulumi.output(args).apply((a: any) => getBindings(a, opts))

@@ -13,9 +13,6 @@ namespace Pulumi.AliCloud.Eci.Outputs
     [OutputType]
     public sealed class ContainerGroupContainerLivenessProbeTcpSocket
     {
-        /// <summary>
-        /// When using the HTTP request method for health check, the port number for HTTP Get request detection.
-        /// </summary>
         public readonly int? Port;
 
         [OutputConstructor]

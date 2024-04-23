@@ -135,7 +135,6 @@ def get_extension_providers(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -149,7 +148,6 @@ def get_extension_providers(ids: Optional[Sequence[str]] = None,
         type="httpextauth")
     pulumi.export("serviceMeshExtensionProvidersId2", name_regex.providers[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Service Mesh Extension Provider IDs.
@@ -194,7 +192,6 @@ def get_extension_providers_output(ids: Optional[pulumi.Input[Optional[Sequence[
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -208,7 +205,6 @@ def get_extension_providers_output(ids: Optional[pulumi.Input[Optional[Sequence[
         type="httpextauth")
     pulumi.export("serviceMeshExtensionProvidersId2", name_regex.providers[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Service Mesh Extension Provider IDs.

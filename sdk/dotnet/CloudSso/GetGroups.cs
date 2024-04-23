@@ -22,7 +22,6 @@ namespace Pulumi.AliCloud.CloudSso
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -54,7 +53,6 @@ namespace Pulumi.AliCloud.CloudSso
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetGroupsResult> InvokeAsync(GetGroupsArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetGroupsResult>("alicloud:cloudsso/getGroups:getGroups", args ?? new GetGroupsArgs(), options.WithDefaults());
@@ -70,7 +68,6 @@ namespace Pulumi.AliCloud.CloudSso
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -102,7 +99,6 @@ namespace Pulumi.AliCloud.CloudSso
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetGroupsResult> Invoke(GetGroupsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupsResult>("alicloud:cloudsso/getGroups:getGroups", args ?? new GetGroupsInvokeArgs(), options.WithDefaults());

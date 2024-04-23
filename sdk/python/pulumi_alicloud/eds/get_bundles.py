@@ -123,17 +123,14 @@ def get_bundles(bundle_ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     default = alicloud.eds.get_bundles(bundle_type="SYSTEM")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param Sequence[str] bundle_ids: The bundle id of the bundle.
     :param str bundle_type: The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
     :param Sequence[str] ids: A list of Bundle IDs.
     :param str name_regex: A regex string to filter results by Bundle name.
@@ -175,17 +172,14 @@ def get_bundles_output(bundle_ids: Optional[pulumi.Input[Optional[Sequence[str]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
     default = alicloud.eds.get_bundles(bundle_type="SYSTEM")
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param Sequence[str] bundle_ids: The bundle id of the bundle.
     :param str bundle_type: The bundle type of  the bundle. Valid values: `SYSTEM`,`CUSTOM`.
     :param Sequence[str] ids: A list of Bundle IDs.
     :param str name_regex: A regex string to filter results by Bundle name.

@@ -566,7 +566,6 @@ class Secret(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -578,7 +577,6 @@ class Secret(pulumi.CustomResource):
             version_id="000000000001",
             force_delete_without_recovery=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -621,7 +619,6 @@ class Secret(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -633,7 +630,6 @@ class Secret(pulumi.CustomResource):
             version_id="000000000001",
             force_delete_without_recovery=True)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

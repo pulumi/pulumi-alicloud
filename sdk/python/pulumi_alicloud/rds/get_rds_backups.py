@@ -134,7 +134,6 @@ def get_rds_backups(backup_mode: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -142,18 +141,10 @@ def get_rds_backups(backup_mode: Optional[str] = None,
     example = alicloud.rds.get_rds_backups(db_instance_id="example_value")
     pulumi.export("firstRdsBackupId", example.backups[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str backup_mode: BackupMode.
-    :param str backup_status: Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
-           * **NoStart**: Not started
-           * **Checking**: check the backup
-           * **Preparing**: Prepare a backup
-           * **Waiting**: Waiting for backup
-           * **Uploading**: Upload backup
-           * **Finished**: Complete backup
-           * **Failed**: backup Failed
+    :param str backup_mode: BackupMode. Valid values: `Automated` and `Manual`.
+    :param str backup_status: Backup task status. Valid values: `Automated` and `Manual`.
     :param str db_instance_id: The db instance id.
     :param str end_time: The end time.
     :param Sequence[str] ids: A list of Backup IDs.
@@ -201,7 +192,6 @@ def get_rds_backups_output(backup_mode: Optional[pulumi.Input[Optional[str]]] = 
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -209,18 +199,10 @@ def get_rds_backups_output(backup_mode: Optional[pulumi.Input[Optional[str]]] = 
     example = alicloud.rds.get_rds_backups(db_instance_id="example_value")
     pulumi.export("firstRdsBackupId", example.backups[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str backup_mode: BackupMode.
-    :param str backup_status: Backup task status. **NOTE:** This parameter will only be returned when a task is executed. Value:
-           * **NoStart**: Not started
-           * **Checking**: check the backup
-           * **Preparing**: Prepare a backup
-           * **Waiting**: Waiting for backup
-           * **Uploading**: Upload backup
-           * **Finished**: Complete backup
-           * **Failed**: backup Failed
+    :param str backup_mode: BackupMode. Valid values: `Automated` and `Manual`.
+    :param str backup_status: Backup task status. Valid values: `Automated` and `Manual`.
     :param str db_instance_id: The db instance id.
     :param str end_time: The end time.
     :param Sequence[str] ids: A list of Backup IDs.

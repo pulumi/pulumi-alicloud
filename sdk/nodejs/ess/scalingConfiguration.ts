@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -85,7 +84,6 @@ import * as utilities from "../utilities";
  *     active: true,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Module Support
  *

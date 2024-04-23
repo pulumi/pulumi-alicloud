@@ -13,19 +13,19 @@ namespace Pulumi.AliCloud.Log.Inputs
     public sealed class StoreIndexFullTextGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
+        /// Whether the case sensitive. Default to false.
         /// </summary>
         [Input("caseSensitive")]
         public Input<bool>? CaseSensitive { get; set; }
 
         /// <summary>
-        /// Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
+        /// Whether includes the chinese. Default to false.
         /// </summary>
         [Input("includeChinese")]
         public Input<bool>? IncludeChinese { get; set; }
 
         /// <summary>
-        /// The string of several split words, like "\r", "#". It is valid when "type" is "text" or "json".
+        /// The string of several split words, like "\r", "#"
         /// </summary>
         [Input("token")]
         public Input<string>? Token { get; set; }

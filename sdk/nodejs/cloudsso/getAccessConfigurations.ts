@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -36,7 +35,6 @@ import * as utilities from "../utilities";
  * });
  * export const cloudSsoAccessConfigurationId2 = nameRegex.then(nameRegex => nameRegex.configurations?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAccessConfigurations(args: GetAccessConfigurationsArgs, opts?: pulumi.InvokeOptions): Promise<GetAccessConfigurationsResult> {
 
@@ -103,7 +101,6 @@ export interface GetAccessConfigurationsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -122,7 +119,6 @@ export interface GetAccessConfigurationsResult {
  * });
  * export const cloudSsoAccessConfigurationId2 = nameRegex.then(nameRegex => nameRegex.configurations?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAccessConfigurationsOutput(args: GetAccessConfigurationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessConfigurationsResult> {
     return pulumi.output(args).apply((a: any) => getAccessConfigurations(a, opts))

@@ -472,10 +472,8 @@ func (o BucketLifecycleRuleArrayOutput) Index(i pulumi.IntInput) BucketLifecycle
 }
 
 type BucketLifecycleRuleAbortMultipartUpload struct {
-	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
 	CreatedBeforeDate *string `pulumi:"createdBeforeDate"`
-	// Specifies the number of days noncurrent object versions transition.
-	Days *int `pulumi:"days"`
+	Days              *int    `pulumi:"days"`
 }
 
 // BucketLifecycleRuleAbortMultipartUploadInput is an input type that accepts BucketLifecycleRuleAbortMultipartUploadArgs and BucketLifecycleRuleAbortMultipartUploadOutput values.
@@ -490,10 +488,8 @@ type BucketLifecycleRuleAbortMultipartUploadInput interface {
 }
 
 type BucketLifecycleRuleAbortMultipartUploadArgs struct {
-	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
 	CreatedBeforeDate pulumi.StringPtrInput `pulumi:"createdBeforeDate"`
-	// Specifies the number of days noncurrent object versions transition.
-	Days pulumi.IntPtrInput `pulumi:"days"`
+	Days              pulumi.IntPtrInput    `pulumi:"days"`
 }
 
 func (BucketLifecycleRuleAbortMultipartUploadArgs) ElementType() reflect.Type {
@@ -547,12 +543,10 @@ func (o BucketLifecycleRuleAbortMultipartUploadOutput) ToBucketLifecycleRuleAbor
 	return o
 }
 
-// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
 func (o BucketLifecycleRuleAbortMultipartUploadOutput) CreatedBeforeDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleAbortMultipartUpload) *string { return v.CreatedBeforeDate }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of days noncurrent object versions transition.
 func (o BucketLifecycleRuleAbortMultipartUploadOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleAbortMultipartUpload) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
@@ -578,16 +572,10 @@ func (o BucketLifecycleRuleAbortMultipartUploadArrayOutput) Index(i pulumi.IntIn
 }
 
 type BucketLifecycleRuleExpiration struct {
-	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-	CreatedBeforeDate *string `pulumi:"createdBeforeDate"`
-	// Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
-	Date *string `pulumi:"date"`
-	// Specifies the number of days noncurrent object versions transition.
-	Days *int `pulumi:"days"`
-	// On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
-	//
-	// `NOTE`: One and only one of "date", "days", "createdBeforeDate" and "expiredObjectDeleteMarker" can be specified in one expiration configuration.
-	ExpiredObjectDeleteMarker *bool `pulumi:"expiredObjectDeleteMarker"`
+	CreatedBeforeDate         *string `pulumi:"createdBeforeDate"`
+	Date                      *string `pulumi:"date"`
+	Days                      *int    `pulumi:"days"`
+	ExpiredObjectDeleteMarker *bool   `pulumi:"expiredObjectDeleteMarker"`
 }
 
 // BucketLifecycleRuleExpirationInput is an input type that accepts BucketLifecycleRuleExpirationArgs and BucketLifecycleRuleExpirationOutput values.
@@ -602,16 +590,10 @@ type BucketLifecycleRuleExpirationInput interface {
 }
 
 type BucketLifecycleRuleExpirationArgs struct {
-	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-	CreatedBeforeDate pulumi.StringPtrInput `pulumi:"createdBeforeDate"`
-	// Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
-	Date pulumi.StringPtrInput `pulumi:"date"`
-	// Specifies the number of days noncurrent object versions transition.
-	Days pulumi.IntPtrInput `pulumi:"days"`
-	// On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
-	//
-	// `NOTE`: One and only one of "date", "days", "createdBeforeDate" and "expiredObjectDeleteMarker" can be specified in one expiration configuration.
-	ExpiredObjectDeleteMarker pulumi.BoolPtrInput `pulumi:"expiredObjectDeleteMarker"`
+	CreatedBeforeDate         pulumi.StringPtrInput `pulumi:"createdBeforeDate"`
+	Date                      pulumi.StringPtrInput `pulumi:"date"`
+	Days                      pulumi.IntPtrInput    `pulumi:"days"`
+	ExpiredObjectDeleteMarker pulumi.BoolPtrInput   `pulumi:"expiredObjectDeleteMarker"`
 }
 
 func (BucketLifecycleRuleExpirationArgs) ElementType() reflect.Type {
@@ -665,24 +647,18 @@ func (o BucketLifecycleRuleExpirationOutput) ToBucketLifecycleRuleExpirationOutp
 	return o
 }
 
-// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
 func (o BucketLifecycleRuleExpirationOutput) CreatedBeforeDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *string { return v.CreatedBeforeDate }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the date after which you want the corresponding action to take effect. The value obeys ISO8601 format like `2017-03-09`.
 func (o BucketLifecycleRuleExpirationOutput) Date() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *string { return v.Date }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of days noncurrent object versions transition.
 func (o BucketLifecycleRuleExpirationOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
 
-// On a versioned bucket (versioning-enabled or versioning-suspended bucket), you can add this element in the lifecycle configuration to direct OSS to delete expired object delete markers. This cannot be specified with Days, Date or CreatedBeforeDate in a Lifecycle Expiration Policy.
-//
-// `NOTE`: One and only one of "date", "days", "createdBeforeDate" and "expiredObjectDeleteMarker" can be specified in one expiration configuration.
 func (o BucketLifecycleRuleExpirationOutput) ExpiredObjectDeleteMarker() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleExpiration) *bool { return v.ExpiredObjectDeleteMarker }).(pulumi.BoolPtrOutput)
 }
@@ -708,12 +684,9 @@ func (o BucketLifecycleRuleExpirationArrayOutput) Index(i pulumi.IntInput) Bucke
 }
 
 type BucketLifecycleRuleFilter struct {
-	// The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
-	Not *BucketLifecycleRuleFilterNot `pulumi:"not"`
-	// Minimum object size (in bytes) to which the rule applies.
-	ObjectSizeGreaterThan *int `pulumi:"objectSizeGreaterThan"`
-	// Maximum object size (in bytes) to which the rule applies.
-	ObjectSizeLessThan *int `pulumi:"objectSizeLessThan"`
+	Not                   *BucketLifecycleRuleFilterNot `pulumi:"not"`
+	ObjectSizeGreaterThan *int                          `pulumi:"objectSizeGreaterThan"`
+	ObjectSizeLessThan    *int                          `pulumi:"objectSizeLessThan"`
 }
 
 // BucketLifecycleRuleFilterInput is an input type that accepts BucketLifecycleRuleFilterArgs and BucketLifecycleRuleFilterOutput values.
@@ -728,12 +701,9 @@ type BucketLifecycleRuleFilterInput interface {
 }
 
 type BucketLifecycleRuleFilterArgs struct {
-	// The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
-	Not BucketLifecycleRuleFilterNotPtrInput `pulumi:"not"`
-	// Minimum object size (in bytes) to which the rule applies.
-	ObjectSizeGreaterThan pulumi.IntPtrInput `pulumi:"objectSizeGreaterThan"`
-	// Maximum object size (in bytes) to which the rule applies.
-	ObjectSizeLessThan pulumi.IntPtrInput `pulumi:"objectSizeLessThan"`
+	Not                   BucketLifecycleRuleFilterNotPtrInput `pulumi:"not"`
+	ObjectSizeGreaterThan pulumi.IntPtrInput                   `pulumi:"objectSizeGreaterThan"`
+	ObjectSizeLessThan    pulumi.IntPtrInput                   `pulumi:"objectSizeLessThan"`
 }
 
 func (BucketLifecycleRuleFilterArgs) ElementType() reflect.Type {
@@ -813,17 +783,14 @@ func (o BucketLifecycleRuleFilterOutput) ToBucketLifecycleRuleFilterPtrOutputWit
 	}).(BucketLifecycleRuleFilterPtrOutput)
 }
 
-// The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
 func (o BucketLifecycleRuleFilterOutput) Not() BucketLifecycleRuleFilterNotPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleFilter) *BucketLifecycleRuleFilterNot { return v.Not }).(BucketLifecycleRuleFilterNotPtrOutput)
 }
 
-// Minimum object size (in bytes) to which the rule applies.
 func (o BucketLifecycleRuleFilterOutput) ObjectSizeGreaterThan() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleFilter) *int { return v.ObjectSizeGreaterThan }).(pulumi.IntPtrOutput)
 }
 
-// Maximum object size (in bytes) to which the rule applies.
 func (o BucketLifecycleRuleFilterOutput) ObjectSizeLessThan() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleFilter) *int { return v.ObjectSizeLessThan }).(pulumi.IntPtrOutput)
 }
@@ -852,7 +819,6 @@ func (o BucketLifecycleRuleFilterPtrOutput) Elem() BucketLifecycleRuleFilterOutp
 	}).(BucketLifecycleRuleFilterOutput)
 }
 
-// The condition that is matched by objects to which the lifecycle rule does not apply. See `not` below.
 func (o BucketLifecycleRuleFilterPtrOutput) Not() BucketLifecycleRuleFilterNotPtrOutput {
 	return o.ApplyT(func(v *BucketLifecycleRuleFilter) *BucketLifecycleRuleFilterNot {
 		if v == nil {
@@ -862,7 +828,6 @@ func (o BucketLifecycleRuleFilterPtrOutput) Not() BucketLifecycleRuleFilterNotPt
 	}).(BucketLifecycleRuleFilterNotPtrOutput)
 }
 
-// Minimum object size (in bytes) to which the rule applies.
 func (o BucketLifecycleRuleFilterPtrOutput) ObjectSizeGreaterThan() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BucketLifecycleRuleFilter) *int {
 		if v == nil {
@@ -872,7 +837,6 @@ func (o BucketLifecycleRuleFilterPtrOutput) ObjectSizeGreaterThan() pulumi.IntPt
 	}).(pulumi.IntPtrOutput)
 }
 
-// Maximum object size (in bytes) to which the rule applies.
 func (o BucketLifecycleRuleFilterPtrOutput) ObjectSizeLessThan() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *BucketLifecycleRuleFilter) *int {
 		if v == nil {
@@ -883,10 +847,8 @@ func (o BucketLifecycleRuleFilterPtrOutput) ObjectSizeLessThan() pulumi.IntPtrOu
 }
 
 type BucketLifecycleRuleFilterNot struct {
-	// The prefix in the names of the objects to which the lifecycle rule does not apply.
-	Prefix *string `pulumi:"prefix"`
-	// The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
-	Tag *BucketLifecycleRuleFilterNotTag `pulumi:"tag"`
+	Prefix *string                          `pulumi:"prefix"`
+	Tag    *BucketLifecycleRuleFilterNotTag `pulumi:"tag"`
 }
 
 // BucketLifecycleRuleFilterNotInput is an input type that accepts BucketLifecycleRuleFilterNotArgs and BucketLifecycleRuleFilterNotOutput values.
@@ -901,10 +863,8 @@ type BucketLifecycleRuleFilterNotInput interface {
 }
 
 type BucketLifecycleRuleFilterNotArgs struct {
-	// The prefix in the names of the objects to which the lifecycle rule does not apply.
-	Prefix pulumi.StringPtrInput `pulumi:"prefix"`
-	// The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
-	Tag BucketLifecycleRuleFilterNotTagPtrInput `pulumi:"tag"`
+	Prefix pulumi.StringPtrInput                   `pulumi:"prefix"`
+	Tag    BucketLifecycleRuleFilterNotTagPtrInput `pulumi:"tag"`
 }
 
 func (BucketLifecycleRuleFilterNotArgs) ElementType() reflect.Type {
@@ -984,12 +944,10 @@ func (o BucketLifecycleRuleFilterNotOutput) ToBucketLifecycleRuleFilterNotPtrOut
 	}).(BucketLifecycleRuleFilterNotPtrOutput)
 }
 
-// The prefix in the names of the objects to which the lifecycle rule does not apply.
 func (o BucketLifecycleRuleFilterNotOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleFilterNot) *string { return v.Prefix }).(pulumi.StringPtrOutput)
 }
 
-// The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
 func (o BucketLifecycleRuleFilterNotOutput) Tag() BucketLifecycleRuleFilterNotTagPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleFilterNot) *BucketLifecycleRuleFilterNotTag { return v.Tag }).(BucketLifecycleRuleFilterNotTagPtrOutput)
 }
@@ -1018,7 +976,6 @@ func (o BucketLifecycleRuleFilterNotPtrOutput) Elem() BucketLifecycleRuleFilterN
 	}).(BucketLifecycleRuleFilterNotOutput)
 }
 
-// The prefix in the names of the objects to which the lifecycle rule does not apply.
 func (o BucketLifecycleRuleFilterNotPtrOutput) Prefix() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketLifecycleRuleFilterNot) *string {
 		if v == nil {
@@ -1028,7 +985,6 @@ func (o BucketLifecycleRuleFilterNotPtrOutput) Prefix() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The tag of the objects to which the lifecycle rule does not apply. See `tag` below.
 func (o BucketLifecycleRuleFilterNotPtrOutput) Tag() BucketLifecycleRuleFilterNotTagPtrOutput {
 	return o.ApplyT(func(v *BucketLifecycleRuleFilterNot) *BucketLifecycleRuleFilterNotTag {
 		if v == nil {
@@ -1039,9 +995,7 @@ func (o BucketLifecycleRuleFilterNotPtrOutput) Tag() BucketLifecycleRuleFilterNo
 }
 
 type BucketLifecycleRuleFilterNotTag struct {
-	// The key of the tag that is specified for the objects.
-	Key string `pulumi:"key"`
-	// The value of the tag that is specified for the objects.
+	Key   string `pulumi:"key"`
 	Value string `pulumi:"value"`
 }
 
@@ -1057,9 +1011,7 @@ type BucketLifecycleRuleFilterNotTagInput interface {
 }
 
 type BucketLifecycleRuleFilterNotTagArgs struct {
-	// The key of the tag that is specified for the objects.
-	Key pulumi.StringInput `pulumi:"key"`
-	// The value of the tag that is specified for the objects.
+	Key   pulumi.StringInput `pulumi:"key"`
 	Value pulumi.StringInput `pulumi:"value"`
 }
 
@@ -1140,12 +1092,10 @@ func (o BucketLifecycleRuleFilterNotTagOutput) ToBucketLifecycleRuleFilterNotTag
 	}).(BucketLifecycleRuleFilterNotTagPtrOutput)
 }
 
-// The key of the tag that is specified for the objects.
 func (o BucketLifecycleRuleFilterNotTagOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleFilterNotTag) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// The value of the tag that is specified for the objects.
 func (o BucketLifecycleRuleFilterNotTagOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleFilterNotTag) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1174,7 +1124,6 @@ func (o BucketLifecycleRuleFilterNotTagPtrOutput) Elem() BucketLifecycleRuleFilt
 	}).(BucketLifecycleRuleFilterNotTagOutput)
 }
 
-// The key of the tag that is specified for the objects.
 func (o BucketLifecycleRuleFilterNotTagPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketLifecycleRuleFilterNotTag) *string {
 		if v == nil {
@@ -1184,7 +1133,6 @@ func (o BucketLifecycleRuleFilterNotTagPtrOutput) Key() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The value of the tag that is specified for the objects.
 func (o BucketLifecycleRuleFilterNotTagPtrOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketLifecycleRuleFilterNotTag) *string {
 		if v == nil {
@@ -1195,7 +1143,6 @@ func (o BucketLifecycleRuleFilterNotTagPtrOutput) Value() pulumi.StringPtrOutput
 }
 
 type BucketLifecycleRuleNoncurrentVersionExpiration struct {
-	// Specifies the number of days noncurrent object versions transition.
 	Days int `pulumi:"days"`
 }
 
@@ -1211,7 +1158,6 @@ type BucketLifecycleRuleNoncurrentVersionExpirationInput interface {
 }
 
 type BucketLifecycleRuleNoncurrentVersionExpirationArgs struct {
-	// Specifies the number of days noncurrent object versions transition.
 	Days pulumi.IntInput `pulumi:"days"`
 }
 
@@ -1266,7 +1212,6 @@ func (o BucketLifecycleRuleNoncurrentVersionExpirationOutput) ToBucketLifecycleR
 	return o
 }
 
-// Specifies the number of days noncurrent object versions transition.
 func (o BucketLifecycleRuleNoncurrentVersionExpirationOutput) Days() pulumi.IntOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionExpiration) int { return v.Days }).(pulumi.IntOutput)
 }
@@ -1292,11 +1237,8 @@ func (o BucketLifecycleRuleNoncurrentVersionExpirationArrayOutput) Index(i pulum
 }
 
 type BucketLifecycleRuleNoncurrentVersionTransition struct {
-	// Specifies the number of days noncurrent object versions transition.
-	Days int `pulumi:"days"`
-	// Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
-	IsAccessTime *bool `pulumi:"isAccessTime"`
-	// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+	Days                 int   `pulumi:"days"`
+	IsAccessTime         *bool `pulumi:"isAccessTime"`
 	ReturnToStdWhenVisit *bool `pulumi:"returnToStdWhenVisit"`
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
 	StorageClass string `pulumi:"storageClass"`
@@ -1314,11 +1256,8 @@ type BucketLifecycleRuleNoncurrentVersionTransitionInput interface {
 }
 
 type BucketLifecycleRuleNoncurrentVersionTransitionArgs struct {
-	// Specifies the number of days noncurrent object versions transition.
-	Days pulumi.IntInput `pulumi:"days"`
-	// Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
-	IsAccessTime pulumi.BoolPtrInput `pulumi:"isAccessTime"`
-	// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
+	Days                 pulumi.IntInput     `pulumi:"days"`
+	IsAccessTime         pulumi.BoolPtrInput `pulumi:"isAccessTime"`
 	ReturnToStdWhenVisit pulumi.BoolPtrInput `pulumi:"returnToStdWhenVisit"`
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
@@ -1375,17 +1314,14 @@ func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) ToBucketLifecycleR
 	return o
 }
 
-// Specifies the number of days noncurrent object versions transition.
 func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) Days() pulumi.IntOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionTransition) int { return v.Days }).(pulumi.IntOutput)
 }
 
-// Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
 func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) IsAccessTime() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionTransition) *bool { return v.IsAccessTime }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
 func (o BucketLifecycleRuleNoncurrentVersionTransitionOutput) ReturnToStdWhenVisit() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleNoncurrentVersionTransition) *bool { return v.ReturnToStdWhenVisit }).(pulumi.BoolPtrOutput)
 }
@@ -1416,14 +1352,10 @@ func (o BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput) Index(i pulum
 }
 
 type BucketLifecycleRuleTransition struct {
-	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-	CreatedBeforeDate *string `pulumi:"createdBeforeDate"`
-	// Specifies the number of days noncurrent object versions transition.
-	Days *int `pulumi:"days"`
-	// Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
-	IsAccessTime *bool `pulumi:"isAccessTime"`
-	// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-	ReturnToStdWhenVisit *bool `pulumi:"returnToStdWhenVisit"`
+	CreatedBeforeDate    *string `pulumi:"createdBeforeDate"`
+	Days                 *int    `pulumi:"days"`
+	IsAccessTime         *bool   `pulumi:"isAccessTime"`
+	ReturnToStdWhenVisit *bool   `pulumi:"returnToStdWhenVisit"`
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
 	StorageClass string `pulumi:"storageClass"`
 }
@@ -1440,14 +1372,10 @@ type BucketLifecycleRuleTransitionInput interface {
 }
 
 type BucketLifecycleRuleTransitionArgs struct {
-	// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
-	CreatedBeforeDate pulumi.StringPtrInput `pulumi:"createdBeforeDate"`
-	// Specifies the number of days noncurrent object versions transition.
-	Days pulumi.IntPtrInput `pulumi:"days"`
-	// Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
-	IsAccessTime pulumi.BoolPtrInput `pulumi:"isAccessTime"`
-	// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
-	ReturnToStdWhenVisit pulumi.BoolPtrInput `pulumi:"returnToStdWhenVisit"`
+	CreatedBeforeDate    pulumi.StringPtrInput `pulumi:"createdBeforeDate"`
+	Days                 pulumi.IntPtrInput    `pulumi:"days"`
+	IsAccessTime         pulumi.BoolPtrInput   `pulumi:"isAccessTime"`
+	ReturnToStdWhenVisit pulumi.BoolPtrInput   `pulumi:"returnToStdWhenVisit"`
 	// The [storage class](https://www.alibabacloud.com/help/doc-detail/51374.htm) to apply. Can be "Standard", "IA", "Archive", "ColdArchive" and "DeepColdArchive". Defaults to "Standard". "ColdArchive" is available since 1.203.0. "DeepColdArchive" is available since 1.209.0.
 	StorageClass pulumi.StringInput `pulumi:"storageClass"`
 }
@@ -1503,22 +1431,18 @@ func (o BucketLifecycleRuleTransitionOutput) ToBucketLifecycleRuleTransitionOutp
 	return o
 }
 
-// Specifies the time before which the rules take effect. The date must conform to the ISO8601 format and always be UTC 00:00. For example: 2002-10-11T00:00:00.000Z indicates that parts created before 2002-10-11T00:00:00.000Z are deleted, and parts created after this time (including this time) are not deleted.
 func (o BucketLifecycleRuleTransitionOutput) CreatedBeforeDate() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) *string { return v.CreatedBeforeDate }).(pulumi.StringPtrOutput)
 }
 
-// Specifies the number of days noncurrent object versions transition.
 func (o BucketLifecycleRuleTransitionOutput) Days() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) *int { return v.Days }).(pulumi.IntPtrOutput)
 }
 
-// Specifies whether the lifecycle rule applies to objects based on their last access time. If set to `true`, the rule applies to objects based on their last access time; if set to `false`, the rule applies to objects based on their last modified time. If configure the rule based on the last access time, please enable `accessMonitor` first.
 func (o BucketLifecycleRuleTransitionOutput) IsAccessTime() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) *bool { return v.IsAccessTime }).(pulumi.BoolPtrOutput)
 }
 
-// Specifies whether to convert the storage class of non-Standard objects back to Standard after the objects are accessed. It takes effect only when the IsAccessTime parameter is set to true. If set to `true`, converts the storage class of the objects to Standard; if set to `false`, does not convert the storage class of the objects to Standard.
 func (o BucketLifecycleRuleTransitionOutput) ReturnToStdWhenVisit() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleTransition) *bool { return v.ReturnToStdWhenVisit }).(pulumi.BoolPtrOutput)
 }
@@ -2629,7 +2553,7 @@ func (o BucketReplicationSourceSelectionCriteriaPtrOutput) SseKmsEncryptedObject
 }
 
 type BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects struct {
-	// Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+	// The status of the data replication task. Can be starting, doing and closing.
 	Status *string `pulumi:"status"`
 }
 
@@ -2645,7 +2569,7 @@ type BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsInput interfa
 }
 
 type BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsArgs struct {
-	// Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+	// The status of the data replication task. Can be starting, doing and closing.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 
@@ -2726,7 +2650,7 @@ func (o BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput) To
 	}).(BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput)
 }
 
-// Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+// The status of the data replication task. Can be starting, doing and closing.
 func (o BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects) *string { return v.Status }).(pulumi.StringPtrOutput)
 }
@@ -2755,7 +2679,7 @@ func (o BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput)
 	}).(BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsOutput)
 }
 
-// Specifies whether to replicate objects encrypted by using SSE-KMS. Can be `Enabled` or `Disabled`.
+// The status of the data replication task. Can be starting, doing and closing.
 func (o BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjectsPtrOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BucketReplicationSourceSelectionCriteriaSseKmsEncryptedObjects) *string {
 		if v == nil {
@@ -4607,7 +4531,6 @@ type GetInstancesInstance struct {
 	// (Available since v1.221.0) The instance quota which indicating the maximum number of tables.
 	TableQuota int `pulumi:"tableQuota"`
 	// A map of tags assigned to the instance. It must be in the format:
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -4631,7 +4554,6 @@ type GetInstancesInstance struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Tags map[string]interface{} `pulumi:"tags"`
 	// The user id of the instance.
 	UserId string `pulumi:"userId"`
@@ -4678,7 +4600,6 @@ type GetInstancesInstanceArgs struct {
 	// (Available since v1.221.0) The instance quota which indicating the maximum number of tables.
 	TableQuota pulumi.IntInput `pulumi:"tableQuota"`
 	// A map of tags assigned to the instance. It must be in the format:
-	// <!--Start PulumiCodeChooser -->
 	// ```go
 	// package main
 	//
@@ -4702,7 +4623,6 @@ type GetInstancesInstanceArgs struct {
 	// 	})
 	// }
 	// ```
-	// <!--End PulumiCodeChooser -->
 	Tags pulumi.MapInput `pulumi:"tags"`
 	// The user id of the instance.
 	UserId pulumi.StringInput `pulumi:"userId"`
@@ -4830,7 +4750,6 @@ func (o GetInstancesInstanceOutput) TableQuota() pulumi.IntOutput {
 }
 
 // A map of tags assigned to the instance. It must be in the format:
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -4857,7 +4776,6 @@ func (o GetInstancesInstanceOutput) TableQuota() pulumi.IntOutput {
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func (o GetInstancesInstanceOutput) Tags() pulumi.MapOutput {
 	return o.ApplyT(func(v GetInstancesInstance) map[string]interface{} { return v.Tags }).(pulumi.MapOutput)
 }

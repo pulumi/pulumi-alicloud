@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -36,7 +35,6 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetBundlesResult> InvokeAsync(GetBundlesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBundlesResult>("alicloud:eds/getBundles:getBundles", args ?? new GetBundlesArgs(), options.WithDefaults());
@@ -50,7 +48,6 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -66,7 +63,6 @@ namespace Pulumi.AliCloud.Eds
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetBundlesResult> Invoke(GetBundlesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBundlesResult>("alicloud:eds/getBundles:getBundles", args ?? new GetBundlesInvokeArgs(), options.WithDefaults());
@@ -77,10 +73,6 @@ namespace Pulumi.AliCloud.Eds
     {
         [Input("bundleIds")]
         private List<string>? _bundleIds;
-
-        /// <summary>
-        /// The bundle id of the bundle.
-        /// </summary>
         public List<string> BundleIds
         {
             get => _bundleIds ?? (_bundleIds = new List<string>());
@@ -127,10 +119,6 @@ namespace Pulumi.AliCloud.Eds
     {
         [Input("bundleIds")]
         private InputList<string>? _bundleIds;
-
-        /// <summary>
-        /// The bundle id of the bundle.
-        /// </summary>
         public InputList<string> BundleIds
         {
             get => _bundleIds ?? (_bundleIds = new InputList<string>());

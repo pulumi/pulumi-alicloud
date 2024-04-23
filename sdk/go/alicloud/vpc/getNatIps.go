@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -102,7 +101,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetNatIps(ctx *pulumi.Context, args *GetNatIpsArgs, opts ...pulumi.InvokeOption) (*GetNatIpsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetNatIpsResult

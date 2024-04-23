@@ -12,21 +12,12 @@ namespace Pulumi.AliCloud.MaxCompute.Inputs
 
     public sealed class ProjectPropertiesEncryptionGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Algorithm.
-        /// </summary>
         [Input("algorithm")]
         public Input<string>? Algorithm { get; set; }
 
-        /// <summary>
-        /// Whether to open.
-        /// </summary>
         [Input("enable")]
         public Input<bool>? Enable { get; set; }
 
-        /// <summary>
-        /// Encryption algorithm key.
-        /// </summary>
         [Input("key")]
         public Input<string>? Key { get; set; }
 

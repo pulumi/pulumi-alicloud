@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -37,7 +36,6 @@ import * as utilities from "../utilities";
  * });
  * export const mongodbServerlessInstanceId1 = example.then(example => example.instances?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServerlessInstances(args?: GetServerlessInstancesArgs, opts?: pulumi.InvokeOptions): Promise<GetServerlessInstancesResult> {
     args = args || {};
@@ -80,7 +78,7 @@ export interface GetServerlessInstancesArgs {
      */
     ids?: string[];
     /**
-     * The network type of the instance.
+     * The network type of the instance. Valid values: `Classic` or `VPC`.
      */
     networkType?: string;
     /**
@@ -92,11 +90,11 @@ export interface GetServerlessInstancesArgs {
      */
     resourceGroupId?: string;
     /**
-     * The status of the instance.
+     * The instance status. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardSwitching`, `HASwitching`, `Importing`, `ImportingFromOthers`, `LinkSwitching`, `MinorVersionUpgrading`, `NodeCreating`, `NodeDeleting`, `Rebooting`, `Restoring`, `Running`, `SSLModifying`, `TDEModifying`, `TempDBInstanceCreating`, `Transing`, `TransingToOthers`, `released`.
      */
     status?: string;
     /**
-     * The tag of the resource.
+     * A mapping of tags to assign to the resource.
      */
     tags?: {[key: string]: any};
     /**
@@ -144,7 +142,6 @@ export interface GetServerlessInstancesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -166,7 +163,6 @@ export interface GetServerlessInstancesResult {
  * });
  * export const mongodbServerlessInstanceId1 = example.then(example => example.instances?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServerlessInstancesOutput(args?: GetServerlessInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServerlessInstancesResult> {
     return pulumi.output(args).apply((a: any) => getServerlessInstances(a, opts))
@@ -193,7 +189,7 @@ export interface GetServerlessInstancesOutputArgs {
      */
     ids?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The network type of the instance.
+     * The network type of the instance. Valid values: `Classic` or `VPC`.
      */
     networkType?: pulumi.Input<string>;
     /**
@@ -205,11 +201,11 @@ export interface GetServerlessInstancesOutputArgs {
      */
     resourceGroupId?: pulumi.Input<string>;
     /**
-     * The status of the instance.
+     * The instance status. Valid values: `Creating`, `DBInstanceClassChanging`, `DBInstanceNetTypeChanging`, `Deleting`, `EngineVersionUpgrading`, `GuardSwitching`, `HASwitching`, `Importing`, `ImportingFromOthers`, `LinkSwitching`, `MinorVersionUpgrading`, `NodeCreating`, `NodeDeleting`, `Rebooting`, `Restoring`, `Running`, `SSLModifying`, `TDEModifying`, `TempDBInstanceCreating`, `Transing`, `TransingToOthers`, `released`.
      */
     status?: pulumi.Input<string>;
     /**
-     * The tag of the resource.
+     * A mapping of tags to assign to the resource.
      */
     tags?: pulumi.Input<{[key: string]: any}>;
     /**

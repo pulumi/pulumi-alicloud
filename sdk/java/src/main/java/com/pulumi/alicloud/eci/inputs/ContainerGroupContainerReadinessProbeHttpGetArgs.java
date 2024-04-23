@@ -16,47 +16,23 @@ public final class ContainerGroupContainerReadinessProbeHttpGetArgs extends com.
 
     public static final ContainerGroupContainerReadinessProbeHttpGetArgs Empty = new ContainerGroupContainerReadinessProbeHttpGetArgs();
 
-    /**
-     * The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
-     * 
-     */
     @Import(name="path")
     private @Nullable Output<String> path;
 
-    /**
-     * @return The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
-     * 
-     */
     public Optional<Output<String>> path() {
         return Optional.ofNullable(this.path);
     }
 
-    /**
-     * When using the HTTP request method for health check, the port number for HTTP Get request detection.
-     * 
-     */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
-    /**
-     * @return When using the HTTP request method for health check, the port number for HTTP Get request detection.
-     * 
-     */
     public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
     }
 
-    /**
-     * The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
-     * 
-     */
     @Import(name="scheme")
     private @Nullable Output<String> scheme;
 
-    /**
-     * @return The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
-     * 
-     */
     public Optional<Output<String>> scheme() {
         return Optional.ofNullable(this.scheme);
     }
@@ -87,65 +63,29 @@ public final class ContainerGroupContainerReadinessProbeHttpGetArgs extends com.
             $ = new ContainerGroupContainerReadinessProbeHttpGetArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param path The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
-         * 
-         * @return builder
-         * 
-         */
         public Builder path(@Nullable Output<String> path) {
             $.path = path;
             return this;
         }
 
-        /**
-         * @param path The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
-         * 
-         * @return builder
-         * 
-         */
         public Builder path(String path) {
             return path(Output.of(path));
         }
 
-        /**
-         * @param port When using the HTTP request method for health check, the port number for HTTP Get request detection.
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
 
-        /**
-         * @param port When using the HTTP request method for health check, the port number for HTTP Get request detection.
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }
 
-        /**
-         * @param scheme The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scheme(@Nullable Output<String> scheme) {
             $.scheme = scheme;
             return this;
         }
 
-        /**
-         * @param scheme The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder scheme(String scheme) {
             return scheme(Output.of(scheme));
         }

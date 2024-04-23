@@ -134,7 +134,6 @@ def get_stack_instances(enable_details: Optional[bool] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -159,7 +158,6 @@ def get_stack_instances(enable_details: Optional[bool] = None,
         enable_details=True)
     pulumi.export("rosStackInstanceId4", account_id.instances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.
@@ -211,7 +209,6 @@ def get_stack_instances_output(enable_details: Optional[pulumi.Input[Optional[bo
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -236,7 +233,6 @@ def get_stack_instances_output(enable_details: Optional[pulumi.Input[Optional[bo
         enable_details=True)
     pulumi.export("rosStackInstanceId4", account_id.instances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enable_details: Default to `false`. Set it to `true` can output more details about resource attributes.

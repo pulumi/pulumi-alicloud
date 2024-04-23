@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -40,7 +39,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetHandshakes(ctx *pulumi.Context, args *GetHandshakesArgs, opts ...pulumi.InvokeOption) (*GetHandshakesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHandshakesResult

@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList {
-    /**
-     * @return The target network segment of the local VPC.
-     * 
-     */
     private String localDestinationCidr;
-    /**
-     * @return The ID of the next-hop instance in the local VPC.
-     * 
-     */
     private String localNextHopInstanceId;
 
     private FirewallVpcFirewallLocalVpcLocalVpcCidrTableListLocalRouteEntryList() {}
-    /**
-     * @return The target network segment of the local VPC.
-     * 
-     */
     public String localDestinationCidr() {
         return this.localDestinationCidr;
     }
-    /**
-     * @return The ID of the next-hop instance in the local VPC.
-     * 
-     */
     public String localNextHopInstanceId() {
         return this.localNextHopInstanceId;
     }

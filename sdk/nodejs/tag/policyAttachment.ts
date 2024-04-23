@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,7 @@ import * as utilities from "../utilities";
  *     policyName: name,
  *     policyDesc: name,
  *     userType: "USER",
- *     policyContent: "		{\"tags\":{\"CostCenter\":{\"tag_value\":{\"@@assign\":[\"Beijing\",\"Shanghai\"]},\"tag_key\":{\"@@assign\":\"CostCenter\"}}}}\n",
+ *     policyContent: "\x09\x09{\"tags\":{\"CostCenter\":{\"tag_value\":{\"@@assign\":[\"Beijing\",\"Shanghai\"]},\"tag_key\":{\"@@assign\":\"CostCenter\"}}}}\n",
  * });
  * const examplePolicyAttachment = new alicloud.tag.PolicyAttachment("example", {
  *     policyId: example.id,
@@ -35,7 +34,6 @@ import * as utilities from "../utilities";
  *     targetType: "USER",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

@@ -530,7 +530,6 @@ class ProvisionedProduct(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -553,7 +552,6 @@ class ProvisionedProduct(pulumi.CustomResource):
                 parameter_value=name,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -591,7 +589,6 @@ class ProvisionedProduct(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -614,7 +611,6 @@ class ProvisionedProduct(pulumi.CustomResource):
                 parameter_value=name,
             )])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

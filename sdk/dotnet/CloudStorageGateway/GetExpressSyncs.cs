@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -43,7 +42,6 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetExpressSyncsResult> InvokeAsync(GetExpressSyncsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetExpressSyncsResult>("alicloud:cloudstoragegateway/getExpressSyncs:getExpressSyncs", args ?? new GetExpressSyncsArgs(), options.WithDefaults());
@@ -57,7 +55,6 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -80,7 +77,6 @@ namespace Pulumi.AliCloud.CloudStorageGateway
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetExpressSyncsResult> Invoke(GetExpressSyncsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExpressSyncsResult>("alicloud:cloudstoragegateway/getExpressSyncs:getExpressSyncs", args ?? new GetExpressSyncsInvokeArgs(), options.WithDefaults());

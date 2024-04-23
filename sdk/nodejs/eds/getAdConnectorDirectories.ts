@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -25,7 +24,6 @@ import * as utilities from "../utilities";
  * });
  * export const ecdAdConnectorDirectoryId1 = ids.then(ids => ids.directories?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAdConnectorDirectories(args?: GetAdConnectorDirectoriesArgs, opts?: pulumi.InvokeOptions): Promise<GetAdConnectorDirectoriesResult> {
     args = args || {};
@@ -56,7 +54,7 @@ export interface GetAdConnectorDirectoriesArgs {
      */
     outputFile?: string;
     /**
-     * The status of directory.
+     * The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
      */
     status?: string;
 }
@@ -85,7 +83,6 @@ export interface GetAdConnectorDirectoriesResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -95,7 +92,6 @@ export interface GetAdConnectorDirectoriesResult {
  * });
  * export const ecdAdConnectorDirectoryId1 = ids.then(ids => ids.directories?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAdConnectorDirectoriesOutput(args?: GetAdConnectorDirectoriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAdConnectorDirectoriesResult> {
     return pulumi.output(args).apply((a: any) => getAdConnectorDirectories(a, opts))
@@ -118,7 +114,7 @@ export interface GetAdConnectorDirectoriesOutputArgs {
      */
     outputFile?: pulumi.Input<string>;
     /**
-     * The status of directory.
+     * The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
      */
     status?: pulumi.Input<string>;
 }

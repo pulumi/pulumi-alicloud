@@ -15,17 +15,9 @@ public final class ApplicationReadinessV2TcpSocketArgs extends com.pulumi.resour
 
     public static final ApplicationReadinessV2TcpSocketArgs Empty = new ApplicationReadinessV2TcpSocketArgs();
 
-    /**
-     * The port.
-     * 
-     */
     @Import(name="port")
     private @Nullable Output<Integer> port;
 
-    /**
-     * @return The port.
-     * 
-     */
     public Optional<Output<Integer>> port() {
         return Optional.ofNullable(this.port);
     }
@@ -54,23 +46,11 @@ public final class ApplicationReadinessV2TcpSocketArgs extends com.pulumi.resour
             $ = new ApplicationReadinessV2TcpSocketArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param port The port.
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(@Nullable Output<Integer> port) {
             $.port = port;
             return this;
         }
 
-        /**
-         * @param port The port.
-         * 
-         * @return builder
-         * 
-         */
         public Builder port(Integer port) {
             return port(Output.of(port));
         }

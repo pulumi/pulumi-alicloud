@@ -13,21 +13,9 @@ namespace Pulumi.AliCloud.Emrv2.Outputs
     [OutputType]
     public sealed class ClusterNodeGroupSystemDisk
     {
-        /// <summary>
-        /// The type of the data disk. Valid values: `cloud_efficiency` and `cloud_essd`.
-        /// </summary>
         public readonly string Category;
-        /// <summary>
-        /// The count of a data disk.
-        /// </summary>
         public readonly int? Count;
-        /// <summary>
-        /// Worker node data disk performance level, when `category` values `cloud_essd`, the optional values are `PL0`, `PL1`, `PL2` or `PL3`, but the specific performance level is related to the disk capacity.
-        /// </summary>
         public readonly string? PerformanceLevel;
-        /// <summary>
-        /// The size of a data disk, at least 40. Unit: GiB.
-        /// </summary>
         public readonly int Size;
 
         [OutputConstructor]

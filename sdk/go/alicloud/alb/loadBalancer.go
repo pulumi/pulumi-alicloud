@@ -60,7 +60,7 @@ type LoadBalancer struct {
 	ModificationProtectionConfig LoadBalancerModificationProtectionConfigOutput `pulumi:"modificationProtectionConfig"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
-	// Load Balancing Modify the Protection Status.
+	// Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
 	Status pulumi.StringOutput `pulumi:"status"`
 	// The tag of the resource.
 	Tags pulumi.MapOutput `pulumi:"tags"`
@@ -147,7 +147,7 @@ type loadBalancerState struct {
 	ModificationProtectionConfig *LoadBalancerModificationProtectionConfig `pulumi:"modificationProtectionConfig"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
-	// Load Balancing Modify the Protection Status.
+	// Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
 	Status *string `pulumi:"status"`
 	// The tag of the resource.
 	Tags map[string]interface{} `pulumi:"tags"`
@@ -190,7 +190,7 @@ type LoadBalancerState struct {
 	ModificationProtectionConfig LoadBalancerModificationProtectionConfigPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
-	// Load Balancing Modify the Protection Status.
+	// Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
 	Status pulumi.StringPtrInput
 	// The tag of the resource.
 	Tags pulumi.MapInput
@@ -445,7 +445,7 @@ func (o LoadBalancerOutput) ResourceGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.ResourceGroupId }).(pulumi.StringOutput)
 }
 
-// Load Balancing Modify the Protection Status.
+// Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
 func (o LoadBalancerOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *LoadBalancer) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
 }

@@ -14,10 +14,6 @@ namespace Pulumi.AliCloud.Hbr.Inputs
     {
         [Input("tableNames")]
         private InputList<string>? _tableNames;
-
-        /// <summary>
-        /// The names of the destination tables in the Tablestore instance. **Note:** Required while source_type equals `OTS_TABLE`.
-        /// </summary>
         public InputList<string> TableNames
         {
             get => _tableNames ?? (_tableNames = new InputList<string>());

@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -24,7 +23,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstTopicSubscriptionId = subscriptions.then(subscriptions => subscriptions.subscriptions?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTopicSubscriptions(args: GetTopicSubscriptionsArgs, opts?: pulumi.InvokeOptions): Promise<GetTopicSubscriptionsResult> {
 
@@ -84,7 +82,6 @@ export interface GetTopicSubscriptionsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -95,7 +92,6 @@ export interface GetTopicSubscriptionsResult {
  * });
  * export const firstTopicSubscriptionId = subscriptions.then(subscriptions => subscriptions.subscriptions?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTopicSubscriptionsOutput(args: GetTopicSubscriptionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicSubscriptionsResult> {
     return pulumi.output(args).apply((a: any) => getTopicSubscriptions(a, opts))

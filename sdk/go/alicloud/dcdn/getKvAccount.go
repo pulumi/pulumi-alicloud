@@ -17,7 +17,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetKvAccount(ctx *pulumi.Context, args *GetKvAccountArgs, opts ...pulumi.InvokeOption) (*GetKvAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetKvAccountResult

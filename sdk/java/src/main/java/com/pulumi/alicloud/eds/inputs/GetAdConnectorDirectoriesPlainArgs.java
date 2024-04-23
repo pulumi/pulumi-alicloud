@@ -61,14 +61,14 @@ public final class GetAdConnectorDirectoriesPlainArgs extends com.pulumi.resourc
     }
 
     /**
-     * The status of directory.
+     * The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return The status of directory.
+     * @return The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
      * 
      */
     public Optional<String> status() {
@@ -146,7 +146,7 @@ public final class GetAdConnectorDirectoriesPlainArgs extends com.pulumi.resourc
         }
 
         /**
-         * @param status The status of directory.
+         * @param status The status of directory. Valid values: `REGISTERING`, `REGISTERED`, `DEREGISTERING`, `NEEDCONFIGTRUST`, `CONFIGTRUSTFAILED`, `DEREGISTERED`, `ERROR`, `CONFIGTRUSTING`, `NEEDCONFIGUSER`.
          * 
          * @return builder
          * 

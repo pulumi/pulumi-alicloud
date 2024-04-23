@@ -16,77 +16,37 @@ public final class HoneypotProbeHoneypotBindListBindPortListArgs extends com.pul
 
     public static final HoneypotProbeHoneypotBindListBindPortListArgs Empty = new HoneypotProbeHoneypotBindListBindPortListArgs();
 
-    /**
-     * Whether to bind the port.
-     * 
-     */
     @Import(name="bindPort")
     private @Nullable Output<Boolean> bindPort;
 
-    /**
-     * @return Whether to bind the port.
-     * 
-     */
     public Optional<Output<Boolean>> bindPort() {
         return Optional.ofNullable(this.bindPort);
     }
 
-    /**
-     * End port.
-     * 
-     */
     @Import(name="endPort")
     private @Nullable Output<Integer> endPort;
 
-    /**
-     * @return End port.
-     * 
-     */
     public Optional<Output<Integer>> endPort() {
         return Optional.ofNullable(this.endPort);
     }
 
-    /**
-     * Whether the port is fixed.
-     * 
-     */
     @Import(name="fixed")
     private @Nullable Output<Boolean> fixed;
 
-    /**
-     * @return Whether the port is fixed.
-     * 
-     */
     public Optional<Output<Boolean>> fixed() {
         return Optional.ofNullable(this.fixed);
     }
 
-    /**
-     * Start port.
-     * 
-     */
     @Import(name="startPort")
     private @Nullable Output<Integer> startPort;
 
-    /**
-     * @return Start port.
-     * 
-     */
     public Optional<Output<Integer>> startPort() {
         return Optional.ofNullable(this.startPort);
     }
 
-    /**
-     * Destination port.
-     * 
-     */
     @Import(name="targetPort")
     private @Nullable Output<Integer> targetPort;
 
-    /**
-     * @return Destination port.
-     * 
-     */
     public Optional<Output<Integer>> targetPort() {
         return Optional.ofNullable(this.targetPort);
     }
@@ -119,107 +79,47 @@ public final class HoneypotProbeHoneypotBindListBindPortListArgs extends com.pul
             $ = new HoneypotProbeHoneypotBindListBindPortListArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param bindPort Whether to bind the port.
-         * 
-         * @return builder
-         * 
-         */
         public Builder bindPort(@Nullable Output<Boolean> bindPort) {
             $.bindPort = bindPort;
             return this;
         }
 
-        /**
-         * @param bindPort Whether to bind the port.
-         * 
-         * @return builder
-         * 
-         */
         public Builder bindPort(Boolean bindPort) {
             return bindPort(Output.of(bindPort));
         }
 
-        /**
-         * @param endPort End port.
-         * 
-         * @return builder
-         * 
-         */
         public Builder endPort(@Nullable Output<Integer> endPort) {
             $.endPort = endPort;
             return this;
         }
 
-        /**
-         * @param endPort End port.
-         * 
-         * @return builder
-         * 
-         */
         public Builder endPort(Integer endPort) {
             return endPort(Output.of(endPort));
         }
 
-        /**
-         * @param fixed Whether the port is fixed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder fixed(@Nullable Output<Boolean> fixed) {
             $.fixed = fixed;
             return this;
         }
 
-        /**
-         * @param fixed Whether the port is fixed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder fixed(Boolean fixed) {
             return fixed(Output.of(fixed));
         }
 
-        /**
-         * @param startPort Start port.
-         * 
-         * @return builder
-         * 
-         */
         public Builder startPort(@Nullable Output<Integer> startPort) {
             $.startPort = startPort;
             return this;
         }
 
-        /**
-         * @param startPort Start port.
-         * 
-         * @return builder
-         * 
-         */
         public Builder startPort(Integer startPort) {
             return startPort(Output.of(startPort));
         }
 
-        /**
-         * @param targetPort Destination port.
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetPort(@Nullable Output<Integer> targetPort) {
             $.targetPort = targetPort;
             return this;
         }
 
-        /**
-         * @param targetPort Destination port.
-         * 
-         * @return builder
-         * 
-         */
         public Builder targetPort(Integer targetPort) {
             return targetPort(Output.of(targetPort));
         }

@@ -191,7 +191,6 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -208,7 +207,6 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
             transit_router_multicast_domain_name="tf_example",
             transit_router_multicast_domain_description="tf_example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -242,7 +240,6 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -259,7 +256,6 @@ class TransitRouterMulticastDomain(pulumi.CustomResource):
             transit_router_multicast_domain_name="tf_example",
             transit_router_multicast_domain_description="tf_example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -174,7 +174,6 @@ class Znode(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -205,7 +204,6 @@ class Znode(pulumi.CustomResource):
             data="terraform-example",
             path="/example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -239,7 +237,6 @@ class Znode(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -270,7 +267,6 @@ class Znode(pulumi.CustomResource):
             data="terraform-example",
             path="/example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

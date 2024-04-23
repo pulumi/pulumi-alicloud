@@ -15,17 +15,9 @@ public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup
 
     public static final DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs Empty = new DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs();
 
-    /**
-     * Sets the dispatch rule. See `label_match_expressions` below.
-     * 
-     */
     @Import(name="labelMatchExpressions", required=true)
     private Output<List<DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs>> labelMatchExpressions;
 
-    /**
-     * @return Sets the dispatch rule. See `label_match_expressions` below.
-     * 
-     */
     public Output<List<DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs>> labelMatchExpressions() {
         return this.labelMatchExpressions;
     }
@@ -54,33 +46,15 @@ public final class DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroup
             $ = new DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param labelMatchExpressions Sets the dispatch rule. See `label_match_expressions` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder labelMatchExpressions(Output<List<DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs>> labelMatchExpressions) {
             $.labelMatchExpressions = labelMatchExpressions;
             return this;
         }
 
-        /**
-         * @param labelMatchExpressions Sets the dispatch rule. See `label_match_expressions` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder labelMatchExpressions(List<DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs> labelMatchExpressions) {
             return labelMatchExpressions(Output.of(labelMatchExpressions));
         }
 
-        /**
-         * @param labelMatchExpressions Sets the dispatch rule. See `label_match_expressions` below.
-         * 
-         * @return builder
-         * 
-         */
         public Builder labelMatchExpressions(DispatchRuleLabelMatchExpressionGridLabelMatchExpressionGroupLabelMatchExpressionArgs... labelMatchExpressions) {
             return labelMatchExpressions(List.of(labelMatchExpressions));
         }

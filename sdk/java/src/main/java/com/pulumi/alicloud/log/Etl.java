@@ -144,28 +144,28 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:log/etl:Etl")
 public class Etl extends com.pulumi.resources.CustomResource {
     /**
-     * Delivery target logstore access key id.
+     * Source logstore access key id.
      * 
      */
     @Export(name="accessKeyId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessKeyId;
 
     /**
-     * @return Delivery target logstore access key id.
+     * @return Source logstore access key id.
      * 
      */
     public Output<Optional<String>> accessKeyId() {
         return Codegen.optional(this.accessKeyId);
     }
     /**
-     * Delivery target logstore access key secret.
+     * Source logstore access key secret.
      * 
      */
     @Export(name="accessKeySecret", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> accessKeySecret;
 
     /**
-     * @return Delivery target logstore access key secret.
+     * @return Source logstore access key secret.
      * 
      */
     public Output<Optional<String>> accessKeySecret() {
@@ -340,14 +340,14 @@ public class Etl extends com.pulumi.resources.CustomResource {
         return this.lastModifiedTime;
     }
     /**
-     * Delivery target logstore.
+     * The source logstore of the processing job.
      * 
      */
     @Export(name="logstore", refs={String.class}, tree="[0]")
     private Output<String> logstore;
 
     /**
-     * @return Delivery target logstore.
+     * @return The source logstore of the processing job.
      * 
      */
     public Output<String> logstore() {
@@ -368,28 +368,28 @@ public class Etl extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.parameters);
     }
     /**
-     * The project where the target logstore is delivered.
+     * The name of the project where the etl job is located.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The project where the target logstore is delivered.
+     * @return The name of the project where the etl job is located.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+     * Sts role info under source logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
      * 
      */
     @Export(name="roleArn", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> roleArn;
 
     /**
-     * @return Sts role info under delivery target logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+     * @return Sts role info under source logstore. `role_arn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
      * 
      */
     public Output<Optional<String>> roleArn() {

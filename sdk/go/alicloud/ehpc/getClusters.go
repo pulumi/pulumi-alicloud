@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -53,7 +52,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetClusters(ctx *pulumi.Context, args *GetClustersArgs, opts ...pulumi.InvokeOption) (*GetClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetClustersResult
@@ -74,7 +72,7 @@ type GetClustersArgs struct {
 	NameRegex *string `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid values:
 	Status *string `pulumi:"status"`
 }
 
@@ -114,7 +112,7 @@ type GetClustersOutputArgs struct {
 	NameRegex pulumi.StringPtrInput `pulumi:"nameRegex"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the resource.
+	// The status of the resource. Valid values:
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

@@ -54,14 +54,20 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Instance Name.
+     * The name of the instance. It must be 2 to 128 characters in length and must start with an
+     * uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
+     * half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
+     * the instance.
      * 
      */
     @Import(name="instanceName")
     private @Nullable String instanceName;
 
     /**
-     * @return Instance Name.
+     * @return The name of the instance. It must be 2 to 128 characters in length and must start with an
+     * uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
+     * half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
+     * the instance.
      * 
      */
     public Optional<String> instanceName() {
@@ -84,14 +90,14 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * The Key Name.
+     * The name of the key pair of the mobile phone instance.
      * 
      */
     @Import(name="keyPairName")
     private @Nullable String keyPairName;
 
     /**
-     * @return The Key Name.
+     * @return The name of the key pair of the mobile phone instance.
      * 
      */
     public Optional<String> keyPairName() {
@@ -144,14 +150,14 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Resolution.
+     * The selected resolution for the cloud mobile phone instance.
      * 
      */
     @Import(name="resolution")
     private @Nullable String resolution;
 
     /**
-     * @return Resolution.
+     * @return The selected resolution for the cloud mobile phone instance.
      * 
      */
     public Optional<String> resolution() {
@@ -159,14 +165,16 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
     }
 
     /**
-     * Instance Status.
+     * Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
+     * .
      * 
      */
     @Import(name="status")
     private @Nullable String status;
 
     /**
-     * @return Instance Status.
+     * @return Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
+     * .
      * 
      */
     public Optional<String> status() {
@@ -253,7 +261,10 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param instanceName Instance Name.
+         * @param instanceName The name of the instance. It must be 2 to 128 characters in length and must start with an
+         * uppercase letter or Chinese. It cannot start with http:// or https. It can contain Chinese, English, numbers,
+         * half-width colons (:), underscores (_), half-width periods (.), or dashes (-). The default value is the InstanceId of
+         * the instance.
          * 
          * @return builder
          * 
@@ -275,7 +286,7 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param keyPairName The Key Name.
+         * @param keyPairName The name of the key pair of the mobile phone instance.
          * 
          * @return builder
          * 
@@ -319,7 +330,7 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param resolution Resolution.
+         * @param resolution The selected resolution for the cloud mobile phone instance.
          * 
          * @return builder
          * 
@@ -330,7 +341,8 @@ public final class GetInstancesPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         /**
-         * @param status Instance Status.
+         * @param status Instance status. Valid values: `Pending`, `Running`, `Starting`, `Stopped`, `Stopping`
+         * .
          * 
          * @return builder
          * 

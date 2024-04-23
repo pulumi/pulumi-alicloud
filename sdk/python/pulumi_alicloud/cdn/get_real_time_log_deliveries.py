@@ -94,7 +94,6 @@ def get_real_time_log_deliveries(domain: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -102,7 +101,6 @@ def get_real_time_log_deliveries(domain: Optional[str] = None,
     example = alicloud.cdn.get_real_time_log_deliveries(domain="example_value")
     pulumi.export("cdnRealTimeLogDelivery1", example.deliveries[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str domain: Real-Time Log Service Domain.
@@ -138,7 +136,6 @@ def get_real_time_log_deliveries_output(domain: Optional[pulumi.Input[str]] = No
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -146,7 +143,6 @@ def get_real_time_log_deliveries_output(domain: Optional[pulumi.Input[str]] = No
     example = alicloud.cdn.get_real_time_log_deliveries(domain="example_value")
     pulumi.export("cdnRealTimeLogDelivery1", example.deliveries[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str domain: Real-Time Log Service Domain.

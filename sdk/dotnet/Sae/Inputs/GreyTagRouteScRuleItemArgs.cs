@@ -12,33 +12,18 @@ namespace Pulumi.AliCloud.Sae.Inputs
 
     public sealed class GreyTagRouteScRuleItemArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The comparison operator. Valid values: `&gt;`, `&lt;`, `&gt;=`, `&lt;=`, `==`, `!=`.
-        /// </summary>
         [Input("cond")]
         public Input<string>? Cond { get; set; }
 
-        /// <summary>
-        /// The name of the parameter.
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// The operator. Valid values: `rawvalue`, `list`, `mod`, `deterministic_proportional_steaming_division`.
-        /// </summary>
         [Input("operator")]
         public Input<string>? Operator { get; set; }
 
-        /// <summary>
-        /// The compare types. Valid values: `param`, `cookie`, `header`.
-        /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
-        /// <summary>
-        /// The value of the parameter.
-        /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 

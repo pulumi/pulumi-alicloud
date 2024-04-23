@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstNotification = ds.then(ds => ds.notifications?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNotifications(args: GetNotificationsArgs, opts?: pulumi.InvokeOptions): Promise<GetNotificationsResult> {
 
@@ -82,7 +80,6 @@ export interface GetNotificationsResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -92,7 +89,6 @@ export interface GetNotificationsResult {
  * });
  * export const firstNotification = ds.then(ds => ds.notifications?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getNotificationsOutput(args: GetNotificationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotificationsResult> {
     return pulumi.output(args).apply((a: any) => getNotifications(a, opts))

@@ -10,29 +10,13 @@ import java.util.Objects;
 
 @CustomType
 public final class GetZonesZoneOption {
-    /**
-     * @return The protocol type. Valid values: `HDFS`.
-     * 
-     */
     private String protocolType;
-    /**
-     * @return The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
-     * 
-     */
     private String storageType;
 
     private GetZonesZoneOption() {}
-    /**
-     * @return The protocol type. Valid values: `HDFS`.
-     * 
-     */
     public String protocolType() {
         return this.protocolType;
     }
-    /**
-     * @return The storage specifications of the File system. Valid values: `PERFORMANCE`, `STANDARD`.
-     * 
-     */
     public String storageType() {
         return this.storageType;
     }

@@ -14,32 +14,16 @@ public final class RocketMQInstanceNetworkInfoVpcInfoArgs extends com.pulumi.res
 
     public static final RocketMQInstanceNetworkInfoVpcInfoArgs Empty = new RocketMQInstanceNetworkInfoVpcInfoArgs();
 
-    /**
-     * Proprietary Network.
-     * 
-     */
     @Import(name="vpcId", required=true)
     private Output<String> vpcId;
 
-    /**
-     * @return Proprietary Network.
-     * 
-     */
     public Output<String> vpcId() {
         return this.vpcId;
     }
 
-    /**
-     * VPC network switch.
-     * 
-     */
     @Import(name="vswitchId", required=true)
     private Output<String> vswitchId;
 
-    /**
-     * @return VPC network switch.
-     * 
-     */
     public Output<String> vswitchId() {
         return this.vswitchId;
     }
@@ -69,44 +53,20 @@ public final class RocketMQInstanceNetworkInfoVpcInfoArgs extends com.pulumi.res
             $ = new RocketMQInstanceNetworkInfoVpcInfoArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param vpcId Proprietary Network.
-         * 
-         * @return builder
-         * 
-         */
         public Builder vpcId(Output<String> vpcId) {
             $.vpcId = vpcId;
             return this;
         }
 
-        /**
-         * @param vpcId Proprietary Network.
-         * 
-         * @return builder
-         * 
-         */
         public Builder vpcId(String vpcId) {
             return vpcId(Output.of(vpcId));
         }
 
-        /**
-         * @param vswitchId VPC network switch.
-         * 
-         * @return builder
-         * 
-         */
         public Builder vswitchId(Output<String> vswitchId) {
             $.vswitchId = vswitchId;
             return this;
         }
 
-        /**
-         * @param vswitchId VPC network switch.
-         * 
-         * @return builder
-         * 
-         */
         public Builder vswitchId(String vswitchId) {
             return vswitchId(Output.of(vswitchId));
         }

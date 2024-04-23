@@ -18,7 +18,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -87,11 +86,9 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Basic Usage for new alert
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -214,11 +211,9 @@ import * as utilities from "../utilities";
  *     }],
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * Basic Usage for alert template
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -275,7 +270,6 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -326,7 +320,7 @@ export class Alert extends pulumi.CustomResource {
      */
     public readonly alertName!: pulumi.Output<string>;
     /**
-     * Alert template annotations.
+     * Annotations for new alert.
      */
     public readonly annotations!: pulumi.Output<outputs.log.AlertAnnotation[] | undefined>;
     /**
@@ -334,7 +328,7 @@ export class Alert extends pulumi.CustomResource {
      */
     public readonly autoAnnotation!: pulumi.Output<boolean | undefined>;
     /**
-     * Join condition.
+     * Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
      *
      * @deprecated Deprecated from 1.161.0+, use evalCondition in severity_configurations
      */
@@ -430,7 +424,7 @@ export class Alert extends pulumi.CustomResource {
      */
     public readonly throttling!: pulumi.Output<string | undefined>;
     /**
-     * including FixedRate,Hourly,Daily,Weekly,Cron.
+     * The type of new alert, `default` for custom alert, `tpl` for template alert.
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -541,7 +535,7 @@ export interface AlertState {
      */
     alertName?: pulumi.Input<string>;
     /**
-     * Alert template annotations.
+     * Annotations for new alert.
      */
     annotations?: pulumi.Input<pulumi.Input<inputs.log.AlertAnnotation>[]>;
     /**
@@ -549,7 +543,7 @@ export interface AlertState {
      */
     autoAnnotation?: pulumi.Input<boolean>;
     /**
-     * Join condition.
+     * Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
      *
      * @deprecated Deprecated from 1.161.0+, use evalCondition in severity_configurations
      */
@@ -645,7 +639,7 @@ export interface AlertState {
      */
     throttling?: pulumi.Input<string>;
     /**
-     * including FixedRate,Hourly,Daily,Weekly,Cron.
+     * The type of new alert, `default` for custom alert, `tpl` for template alert.
      */
     type?: pulumi.Input<string>;
     /**
@@ -671,7 +665,7 @@ export interface AlertArgs {
      */
     alertName: pulumi.Input<string>;
     /**
-     * Alert template annotations.
+     * Annotations for new alert.
      */
     annotations?: pulumi.Input<pulumi.Input<inputs.log.AlertAnnotation>[]>;
     /**
@@ -679,7 +673,7 @@ export interface AlertArgs {
      */
     autoAnnotation?: pulumi.Input<boolean>;
     /**
-     * Join condition.
+     * Conditional expression, such as: count> 100, Deprecated from 1.161.0+.
      *
      * @deprecated Deprecated from 1.161.0+, use evalCondition in severity_configurations
      */
@@ -775,7 +769,7 @@ export interface AlertArgs {
      */
     throttling?: pulumi.Input<string>;
     /**
-     * including FixedRate,Hourly,Daily,Weekly,Cron.
+     * The type of new alert, `default` for custom alert, `tpl` for template alert.
      */
     type?: pulumi.Input<string>;
     /**

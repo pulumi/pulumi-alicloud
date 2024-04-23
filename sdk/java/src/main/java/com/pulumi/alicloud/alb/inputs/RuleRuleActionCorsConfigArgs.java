@@ -17,92 +17,44 @@ public final class RuleRuleActionCorsConfigArgs extends com.pulumi.resources.Res
 
     public static final RuleRuleActionCorsConfigArgs Empty = new RuleRuleActionCorsConfigArgs();
 
-    /**
-     * Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
-     * 
-     */
     @Import(name="allowCredentials")
     private @Nullable Output<String> allowCredentials;
 
-    /**
-     * @return Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
-     * 
-     */
     public Optional<Output<String>> allowCredentials() {
         return Optional.ofNullable(this.allowCredentials);
     }
 
-    /**
-     * The allowed headers for CORS requests.
-     * 
-     */
     @Import(name="allowHeaders")
     private @Nullable Output<List<String>> allowHeaders;
 
-    /**
-     * @return The allowed headers for CORS requests.
-     * 
-     */
     public Optional<Output<List<String>>> allowHeaders() {
         return Optional.ofNullable(this.allowHeaders);
     }
 
-    /**
-     * The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
-     * 
-     */
     @Import(name="allowMethods")
     private @Nullable Output<List<String>> allowMethods;
 
-    /**
-     * @return The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
-     * 
-     */
     public Optional<Output<List<String>>> allowMethods() {
         return Optional.ofNullable(this.allowMethods);
     }
 
-    /**
-     * The allowed origins of CORS requests.
-     * 
-     */
     @Import(name="allowOrigins")
     private @Nullable Output<List<String>> allowOrigins;
 
-    /**
-     * @return The allowed origins of CORS requests.
-     * 
-     */
     public Optional<Output<List<String>>> allowOrigins() {
         return Optional.ofNullable(this.allowOrigins);
     }
 
-    /**
-     * The headers that can be exposed.
-     * 
-     */
     @Import(name="exposeHeaders")
     private @Nullable Output<List<String>> exposeHeaders;
 
-    /**
-     * @return The headers that can be exposed.
-     * 
-     */
     public Optional<Output<List<String>>> exposeHeaders() {
         return Optional.ofNullable(this.exposeHeaders);
     }
 
-    /**
-     * The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
-     * 
-     */
     @Import(name="maxAge")
     private @Nullable Output<Integer> maxAge;
 
-    /**
-     * @return The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
-     * 
-     */
     public Optional<Output<Integer>> maxAge() {
         return Optional.ofNullable(this.maxAge);
     }
@@ -136,168 +88,72 @@ public final class RuleRuleActionCorsConfigArgs extends com.pulumi.resources.Res
             $ = new RuleRuleActionCorsConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param allowCredentials Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder allowCredentials(@Nullable Output<String> allowCredentials) {
             $.allowCredentials = allowCredentials;
             return this;
         }
 
-        /**
-         * @param allowCredentials Specifies whether credentials can be passed during CORS operations. Valid values: `on`, `off`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder allowCredentials(String allowCredentials) {
             return allowCredentials(Output.of(allowCredentials));
         }
 
-        /**
-         * @param allowHeaders The allowed headers for CORS requests.
-         * 
-         * @return builder
-         * 
-         */
         public Builder allowHeaders(@Nullable Output<List<String>> allowHeaders) {
             $.allowHeaders = allowHeaders;
             return this;
         }
 
-        /**
-         * @param allowHeaders The allowed headers for CORS requests.
-         * 
-         * @return builder
-         * 
-         */
         public Builder allowHeaders(List<String> allowHeaders) {
             return allowHeaders(Output.of(allowHeaders));
         }
 
-        /**
-         * @param allowHeaders The allowed headers for CORS requests.
-         * 
-         * @return builder
-         * 
-         */
         public Builder allowHeaders(String... allowHeaders) {
             return allowHeaders(List.of(allowHeaders));
         }
 
-        /**
-         * @param allowMethods The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder allowMethods(@Nullable Output<List<String>> allowMethods) {
             $.allowMethods = allowMethods;
             return this;
         }
 
-        /**
-         * @param allowMethods The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder allowMethods(List<String> allowMethods) {
             return allowMethods(Output.of(allowMethods));
         }
 
-        /**
-         * @param allowMethods The allowed HTTP methods for CORS requests. Valid values: `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`, `PATCH`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder allowMethods(String... allowMethods) {
             return allowMethods(List.of(allowMethods));
         }
 
-        /**
-         * @param allowOrigins The allowed origins of CORS requests.
-         * 
-         * @return builder
-         * 
-         */
         public Builder allowOrigins(@Nullable Output<List<String>> allowOrigins) {
             $.allowOrigins = allowOrigins;
             return this;
         }
 
-        /**
-         * @param allowOrigins The allowed origins of CORS requests.
-         * 
-         * @return builder
-         * 
-         */
         public Builder allowOrigins(List<String> allowOrigins) {
             return allowOrigins(Output.of(allowOrigins));
         }
 
-        /**
-         * @param allowOrigins The allowed origins of CORS requests.
-         * 
-         * @return builder
-         * 
-         */
         public Builder allowOrigins(String... allowOrigins) {
             return allowOrigins(List.of(allowOrigins));
         }
 
-        /**
-         * @param exposeHeaders The headers that can be exposed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder exposeHeaders(@Nullable Output<List<String>> exposeHeaders) {
             $.exposeHeaders = exposeHeaders;
             return this;
         }
 
-        /**
-         * @param exposeHeaders The headers that can be exposed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder exposeHeaders(List<String> exposeHeaders) {
             return exposeHeaders(Output.of(exposeHeaders));
         }
 
-        /**
-         * @param exposeHeaders The headers that can be exposed.
-         * 
-         * @return builder
-         * 
-         */
         public Builder exposeHeaders(String... exposeHeaders) {
             return exposeHeaders(List.of(exposeHeaders));
         }
 
-        /**
-         * @param maxAge The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxAge(@Nullable Output<Integer> maxAge) {
             $.maxAge = maxAge;
             return this;
         }
 
-        /**
-         * @param maxAge The maximum cache time of preflight requests in the browser. Unit: seconds. Valid values: `-1` to `172800`.
-         * 
-         * @return builder
-         * 
-         */
         public Builder maxAge(Integer maxAge) {
             return maxAge(Output.of(maxAge));
         }

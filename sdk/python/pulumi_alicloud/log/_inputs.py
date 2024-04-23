@@ -74,7 +74,7 @@ class AlertGroupConfigurationArgs:
                  type: pulumi.Input[str],
                  fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[str] type: including FixedRate,Hourly,Daily,Weekly,Cron.
+        :param pulumi.Input[str] type: Group configuration type, including no_group, labels_auto, custom.
         """
         pulumi.set(__self__, "type", type)
         if fields is not None:
@@ -84,7 +84,7 @@ class AlertGroupConfigurationArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        including FixedRate,Hourly,Daily,Weekly,Cron.
+        Group configuration type, including no_group, labels_auto, custom.
         """
         return pulumi.get(self, "type")
 
@@ -109,7 +109,7 @@ class AlertJoinConfigurationArgs:
                  type: pulumi.Input[str]):
         """
         :param pulumi.Input[str] condition: Join condition.
-        :param pulumi.Input[str] type: including FixedRate,Hourly,Daily,Weekly,Cron.
+        :param pulumi.Input[str] type: Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
         """
         pulumi.set(__self__, "condition", condition)
         pulumi.set(__self__, "type", type)
@@ -130,7 +130,7 @@ class AlertJoinConfigurationArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        including FixedRate,Hourly,Daily,Weekly,Cron.
+        Join type, including cross_join, inner_join, left_join, right_join, full_join, left_exclude, right_exclude, concat, no_join.
         """
         return pulumi.get(self, "type")
 
@@ -145,8 +145,8 @@ class AlertLabelArgs:
                  key: pulumi.Input[str],
                  value: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] key: Annotations's key for new alert.
-        :param pulumi.Input[str] value: Annotations's value for new alert.
+        :param pulumi.Input[str] key: Labels's key for new alert.
+        :param pulumi.Input[str] value: Labels's value for new alert.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -155,7 +155,7 @@ class AlertLabelArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        Annotations's key for new alert.
+        Labels's key for new alert.
         """
         return pulumi.get(self, "key")
 
@@ -167,7 +167,7 @@ class AlertLabelArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
         """
-        Annotations's value for new alert.
+        Labels's value for new alert.
         """
         return pulumi.get(self, "value")
 
@@ -186,7 +186,7 @@ class AlertNotificationListArgs:
                  service_uri: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] content: Notice content of alarm.
-        :param pulumi.Input[str] type: including FixedRate,Hourly,Daily,Weekly,Cron.
+        :param pulumi.Input[str] type: Notification type. support Email, SMS, DingTalk, MessageCenter.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] email_lists: Email address list.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] mobile_lists: SMS sending mobile number.
         :param pulumi.Input[str] service_uri: Request address.
@@ -216,7 +216,7 @@ class AlertNotificationListArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        including FixedRate,Hourly,Daily,Weekly,Cron.
+        Notification type. support Email, SMS, DingTalk, MessageCenter.
         """
         return pulumi.get(self, "type")
 
@@ -705,7 +705,7 @@ class AlertTemplateConfigurationArgs:
                  tokens: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] id: Alert template id.
-        :param pulumi.Input[str] type: including FixedRate,Hourly,Daily,Weekly,Cron.
+        :param pulumi.Input[str] type: Alert template type including `sys`, `user`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Alert template annotations.
         :param pulumi.Input[str] lang: Alert template language including `cn`, `en`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tokens: Alert template tokens.
@@ -735,7 +735,7 @@ class AlertTemplateConfigurationArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        including FixedRate,Hourly,Daily,Weekly,Cron.
+        Alert template type including `sys`, `user`.
         """
         return pulumi.get(self, "type")
 
@@ -1072,11 +1072,6 @@ class StoreEncryptConfUserCmkInfoArgs:
                  arn: Optional[pulumi.Input[str]] = None,
                  cmk_key_id: Optional[pulumi.Input[str]] = None,
                  region_id: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] arn: Role arn.
-        :param pulumi.Input[str] cmk_key_id: User master key id.
-        :param pulumi.Input[str] region_id: Region id where the user master key id is located.
-        """
         if arn is not None:
             pulumi.set(__self__, "arn", arn)
         if cmk_key_id is not None:
@@ -1087,9 +1082,6 @@ class StoreEncryptConfUserCmkInfoArgs:
     @property
     @pulumi.getter
     def arn(self) -> Optional[pulumi.Input[str]]:
-        """
-        Role arn.
-        """
         return pulumi.get(self, "arn")
 
     @arn.setter
@@ -1099,9 +1091,6 @@ class StoreEncryptConfUserCmkInfoArgs:
     @property
     @pulumi.getter(name="cmkKeyId")
     def cmk_key_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        User master key id.
-        """
         return pulumi.get(self, "cmk_key_id")
 
     @cmk_key_id.setter
@@ -1111,9 +1100,6 @@ class StoreEncryptConfUserCmkInfoArgs:
     @property
     @pulumi.getter(name="regionId")
     def region_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Region id where the user master key id is located.
-        """
         return pulumi.get(self, "region_id")
 
     @region_id.setter
@@ -1262,14 +1248,6 @@ class StoreIndexFieldSearchJsonKeyArgs:
                  alias: Optional[pulumi.Input[str]] = None,
                  doc_value: Optional[pulumi.Input[bool]] = None,
                  type: Optional[pulumi.Input[str]] = None):
-        """
-        :param pulumi.Input[str] name: When using the json_keys field, this field is required.
-        :param pulumi.Input[str] alias: The alias of one field.
-        :param pulumi.Input[bool] doc_value: Whether to enable statistics. default to true.
-               
-               > **Note:** At least one of the "full_text" and "field_search" should be specified.
-        :param pulumi.Input[str] type: The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
-        """
         pulumi.set(__self__, "name", name)
         if alias is not None:
             pulumi.set(__self__, "alias", alias)
@@ -1281,9 +1259,6 @@ class StoreIndexFieldSearchJsonKeyArgs:
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
-        """
-        When using the json_keys field, this field is required.
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -1293,9 +1268,6 @@ class StoreIndexFieldSearchJsonKeyArgs:
     @property
     @pulumi.getter
     def alias(self) -> Optional[pulumi.Input[str]]:
-        """
-        The alias of one field.
-        """
         return pulumi.get(self, "alias")
 
     @alias.setter
@@ -1305,11 +1277,6 @@ class StoreIndexFieldSearchJsonKeyArgs:
     @property
     @pulumi.getter(name="docValue")
     def doc_value(self) -> Optional[pulumi.Input[bool]]:
-        """
-        Whether to enable statistics. default to true.
-
-        > **Note:** At least one of the "full_text" and "field_search" should be specified.
-        """
         return pulumi.get(self, "doc_value")
 
     @doc_value.setter
@@ -1319,9 +1286,6 @@ class StoreIndexFieldSearchJsonKeyArgs:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
-        """
-        The type of one field. Valid values: ["long", "text", "double"]. Default to "long"
-        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -1336,9 +1300,9 @@ class StoreIndexFullTextArgs:
                  include_chinese: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] case_sensitive: Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
-        :param pulumi.Input[bool] include_chinese: Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
-        :param pulumi.Input[str] token: The string of several split words, like "\\r", "#". It is valid when "type" is "text" or "json".
+        :param pulumi.Input[bool] case_sensitive: Whether the case sensitive. Default to false.
+        :param pulumi.Input[bool] include_chinese: Whether includes the chinese. Default to false.
+        :param pulumi.Input[str] token: The string of several split words, like "\\r", "#"
         """
         if case_sensitive is not None:
             pulumi.set(__self__, "case_sensitive", case_sensitive)
@@ -1351,7 +1315,7 @@ class StoreIndexFullTextArgs:
     @pulumi.getter(name="caseSensitive")
     def case_sensitive(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether the case sensitive for the field. Default to false. It is valid when "type" is "text" or "json".
+        Whether the case sensitive. Default to false.
         """
         return pulumi.get(self, "case_sensitive")
 
@@ -1363,7 +1327,7 @@ class StoreIndexFullTextArgs:
     @pulumi.getter(name="includeChinese")
     def include_chinese(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether includes the chinese for the field. Default to false. It is valid when "type" is "text" or "json".
+        Whether includes the chinese. Default to false.
         """
         return pulumi.get(self, "include_chinese")
 
@@ -1375,7 +1339,7 @@ class StoreIndexFullTextArgs:
     @pulumi.getter
     def token(self) -> Optional[pulumi.Input[str]]:
         """
-        The string of several split words, like "\\r", "#". It is valid when "type" is "text" or "json".
+        The string of several split words, like "\\r", "#"
         """
         return pulumi.get(self, "token")
 

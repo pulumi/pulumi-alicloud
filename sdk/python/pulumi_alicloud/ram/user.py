@@ -244,7 +244,6 @@ class User(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -257,7 +256,6 @@ class User(pulumi.CustomResource):
             email="hello.uuu@aaa.com",
             comments="yoyoyo")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -295,7 +293,6 @@ class User(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -308,7 +305,6 @@ class User(pulumi.CustomResource):
             email="hello.uuu@aaa.com",
             comments="yoyoyo")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

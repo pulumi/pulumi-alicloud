@@ -21,7 +21,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,7 +56,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetPublicIpAddressPoolCidrBlocks(ctx *pulumi.Context, args *GetPublicIpAddressPoolCidrBlocksArgs, opts ...pulumi.InvokeOption) (*GetPublicIpAddressPoolCidrBlocksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetPublicIpAddressPoolCidrBlocksResult

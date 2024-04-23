@@ -456,7 +456,6 @@ class Queue(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -485,7 +484,6 @@ class Queue(pulumi.CustomResource):
             queue_name="tf-example",
             virtual_host_name=default_virtual_host.virtual_host_name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -539,7 +537,6 @@ class Queue(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -568,7 +565,6 @@ class Queue(pulumi.CustomResource):
             queue_name="tf-example",
             virtual_host_name=default_virtual_host.virtual_host_name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

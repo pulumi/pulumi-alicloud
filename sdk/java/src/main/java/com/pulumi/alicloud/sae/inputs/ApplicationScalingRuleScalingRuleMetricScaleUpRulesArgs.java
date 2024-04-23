@@ -16,47 +16,23 @@ public final class ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs exten
 
     public static final ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs Empty = new ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs();
 
-    /**
-     * Whether shrinkage is prohibited.
-     * 
-     */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
-    /**
-     * @return Whether shrinkage is prohibited.
-     * 
-     */
     public Optional<Output<Boolean>> disabled() {
         return Optional.ofNullable(this.disabled);
     }
 
-    /**
-     * Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
-     * 
-     */
     @Import(name="stabilizationWindowSeconds")
     private @Nullable Output<Integer> stabilizationWindowSeconds;
 
-    /**
-     * @return Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
-     * 
-     */
     public Optional<Output<Integer>> stabilizationWindowSeconds() {
         return Optional.ofNullable(this.stabilizationWindowSeconds);
     }
 
-    /**
-     * Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
-     * 
-     */
     @Import(name="step")
     private @Nullable Output<Integer> step;
 
-    /**
-     * @return Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
-     * 
-     */
     public Optional<Output<Integer>> step() {
         return Optional.ofNullable(this.step);
     }
@@ -87,65 +63,29 @@ public final class ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs exten
             $ = new ApplicationScalingRuleScalingRuleMetricScaleUpRulesArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param disabled Whether shrinkage is prohibited.
-         * 
-         * @return builder
-         * 
-         */
         public Builder disabled(@Nullable Output<Boolean> disabled) {
             $.disabled = disabled;
             return this;
         }
 
-        /**
-         * @param disabled Whether shrinkage is prohibited.
-         * 
-         * @return builder
-         * 
-         */
         public Builder disabled(Boolean disabled) {
             return disabled(Output.of(disabled));
         }
 
-        /**
-         * @param stabilizationWindowSeconds Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
-         * 
-         * @return builder
-         * 
-         */
         public Builder stabilizationWindowSeconds(@Nullable Output<Integer> stabilizationWindowSeconds) {
             $.stabilizationWindowSeconds = stabilizationWindowSeconds;
             return this;
         }
 
-        /**
-         * @param stabilizationWindowSeconds Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
-         * 
-         * @return builder
-         * 
-         */
         public Builder stabilizationWindowSeconds(Integer stabilizationWindowSeconds) {
             return stabilizationWindowSeconds(Output.of(stabilizationWindowSeconds));
         }
 
-        /**
-         * @param step Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
-         * 
-         * @return builder
-         * 
-         */
         public Builder step(@Nullable Output<Integer> step) {
             $.step = step;
             return this;
         }
 
-        /**
-         * @param step Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
-         * 
-         * @return builder
-         * 
-         */
         public Builder step(Integer step) {
             return step(Output.of(step));
         }

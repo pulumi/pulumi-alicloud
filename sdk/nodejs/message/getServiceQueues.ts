@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const queueId2 = name.then(name => name.queues?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServiceQueues(args?: GetServiceQueuesArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceQueuesResult> {
     args = args || {};
@@ -100,7 +98,6 @@ export interface GetServiceQueuesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -114,7 +111,6 @@ export interface GetServiceQueuesResult {
  * });
  * export const queueId2 = name.then(name => name.queues?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getServiceQueuesOutput(args?: GetServiceQueuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceQueuesResult> {
     return pulumi.output(args).apply((a: any) => getServiceQueues(a, opts))

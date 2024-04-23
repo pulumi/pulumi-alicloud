@@ -619,7 +619,6 @@ func (o FunctionAsyncInvokeConfigDestinationConfigPtrOutput) OnSuccess() Functio
 }
 
 type FunctionAsyncInvokeConfigDestinationConfigOnFailure struct {
-	// Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
 	Destination string `pulumi:"destination"`
 }
 
@@ -635,7 +634,6 @@ type FunctionAsyncInvokeConfigDestinationConfigOnFailureInput interface {
 }
 
 type FunctionAsyncInvokeConfigDestinationConfigOnFailureArgs struct {
-	// Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
 	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
@@ -716,7 +714,6 @@ func (o FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput) ToFunctionAsy
 	}).(FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput)
 }
 
-// Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
 func (o FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionAsyncInvokeConfigDestinationConfigOnFailure) string { return v.Destination }).(pulumi.StringOutput)
 }
@@ -745,7 +742,6 @@ func (o FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput) Elem() Fun
 	}).(FunctionAsyncInvokeConfigDestinationConfigOnFailureOutput)
 }
 
-// Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
 func (o FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionAsyncInvokeConfigDestinationConfigOnFailure) *string {
 		if v == nil {
@@ -756,7 +752,6 @@ func (o FunctionAsyncInvokeConfigDestinationConfigOnFailurePtrOutput) Destinatio
 }
 
 type FunctionAsyncInvokeConfigDestinationConfigOnSuccess struct {
-	// Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
 	Destination string `pulumi:"destination"`
 }
 
@@ -772,7 +767,6 @@ type FunctionAsyncInvokeConfigDestinationConfigOnSuccessInput interface {
 }
 
 type FunctionAsyncInvokeConfigDestinationConfigOnSuccessArgs struct {
-	// Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
 	Destination pulumi.StringInput `pulumi:"destination"`
 }
 
@@ -853,7 +847,6 @@ func (o FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput) ToFunctionAsy
 	}).(FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput)
 }
 
-// Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
 func (o FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput) Destination() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionAsyncInvokeConfigDestinationConfigOnSuccess) string { return v.Destination }).(pulumi.StringOutput)
 }
@@ -882,7 +875,6 @@ func (o FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput) Elem() Fun
 	}).(FunctionAsyncInvokeConfigDestinationConfigOnSuccessOutput)
 }
 
-// Alicloud Resource Name (ARN) of the destination resource. See the [Developer Guide](https://www.alibabacloud.com/help/doc-detail/181866.htm) for acceptable resource types and associated RAM permissions.
 func (o FunctionAsyncInvokeConfigDestinationConfigOnSuccessPtrOutput) Destination() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionAsyncInvokeConfigDestinationConfigOnSuccess) *string {
 		if v == nil {
@@ -1437,9 +1429,7 @@ func (o ServiceNasConfigPtrOutput) UserId() pulumi.IntPtrOutput {
 }
 
 type ServiceNasConfigMountPoint struct {
-	// The local address where to mount your remote NAS directory.
-	MountDir string `pulumi:"mountDir"`
-	// The address of the remote NAS directory.
+	MountDir   string `pulumi:"mountDir"`
 	ServerAddr string `pulumi:"serverAddr"`
 }
 
@@ -1455,9 +1445,7 @@ type ServiceNasConfigMountPointInput interface {
 }
 
 type ServiceNasConfigMountPointArgs struct {
-	// The local address where to mount your remote NAS directory.
-	MountDir pulumi.StringInput `pulumi:"mountDir"`
-	// The address of the remote NAS directory.
+	MountDir   pulumi.StringInput `pulumi:"mountDir"`
 	ServerAddr pulumi.StringInput `pulumi:"serverAddr"`
 }
 
@@ -1512,12 +1500,10 @@ func (o ServiceNasConfigMountPointOutput) ToServiceNasConfigMountPointOutputWith
 	return o
 }
 
-// The local address where to mount your remote NAS directory.
 func (o ServiceNasConfigMountPointOutput) MountDir() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceNasConfigMountPoint) string { return v.MountDir }).(pulumi.StringOutput)
 }
 
-// The address of the remote NAS directory.
 func (o ServiceNasConfigMountPointOutput) ServerAddr() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceNasConfigMountPoint) string { return v.ServerAddr }).(pulumi.StringOutput)
 }
@@ -2437,9 +2423,7 @@ func (o V2FunctionCustomDnsPtrOutput) Searches() pulumi.StringArrayOutput {
 }
 
 type V2FunctionCustomDnsDnsOption struct {
-	// DNS option name.
-	Name *string `pulumi:"name"`
-	// DNS option value.
+	Name  *string `pulumi:"name"`
 	Value *string `pulumi:"value"`
 }
 
@@ -2455,9 +2439,7 @@ type V2FunctionCustomDnsDnsOptionInput interface {
 }
 
 type V2FunctionCustomDnsDnsOptionArgs struct {
-	// DNS option name.
-	Name pulumi.StringPtrInput `pulumi:"name"`
-	// DNS option value.
+	Name  pulumi.StringPtrInput `pulumi:"name"`
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -2512,12 +2494,10 @@ func (o V2FunctionCustomDnsDnsOptionOutput) ToV2FunctionCustomDnsDnsOptionOutput
 	return o
 }
 
-// DNS option name.
 func (o V2FunctionCustomDnsDnsOptionOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V2FunctionCustomDnsDnsOption) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
 
-// DNS option value.
 func (o V2FunctionCustomDnsDnsOptionOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V2FunctionCustomDnsDnsOption) *string { return v.Value }).(pulumi.StringPtrOutput)
 }

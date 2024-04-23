@@ -108,7 +108,6 @@ class ControlPolicyAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -146,7 +145,6 @@ class ControlPolicyAttachment(pulumi.CustomResource):
             policy_id=example.id,
             target_id=example_folder.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -178,7 +176,6 @@ class ControlPolicyAttachment(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -216,7 +213,6 @@ class ControlPolicyAttachment(pulumi.CustomResource):
             policy_id=example.id,
             target_id=example_folder.id)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

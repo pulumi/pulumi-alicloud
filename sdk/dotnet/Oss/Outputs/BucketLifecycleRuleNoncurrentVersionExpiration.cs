@@ -13,9 +13,6 @@ namespace Pulumi.AliCloud.Oss.Outputs
     [OutputType]
     public sealed class BucketLifecycleRuleNoncurrentVersionExpiration
     {
-        /// <summary>
-        /// Specifies the number of days noncurrent object versions transition.
-        /// </summary>
         public readonly int Days;
 
         [OutputConstructor]

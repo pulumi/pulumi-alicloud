@@ -317,7 +317,7 @@ class _LoadBalancerState:
         :param pulumi.Input[str] load_balancer_name: The name of the resource.
         :param pulumi.Input['LoadBalancerModificationProtectionConfigArgs'] modification_protection_config: Modify the Protection Configuration. See `modification_protection_config` below.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] status: Load Balancing Modify the Protection Status.
+        :param pulumi.Input[str] status: Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) where the SLB instance is deployed.
         :param pulumi.Input[Sequence[pulumi.Input['LoadBalancerZoneMappingArgs']]] zone_mappings: The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
@@ -547,7 +547,7 @@ class _LoadBalancerState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[str]]:
         """
-        Load Balancing Modify the Protection Status.
+        Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
         """
         return pulumi.get(self, "status")
 
@@ -793,7 +793,7 @@ class LoadBalancer(pulumi.CustomResource):
         :param pulumi.Input[str] load_balancer_name: The name of the resource.
         :param pulumi.Input[pulumi.InputType['LoadBalancerModificationProtectionConfigArgs']] modification_protection_config: Modify the Protection Configuration. See `modification_protection_config` below.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
-        :param pulumi.Input[str] status: Load Balancing Modify the Protection Status.
+        :param pulumi.Input[str] status: Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
         :param pulumi.Input[Mapping[str, Any]] tags: The tag of the resource.
         :param pulumi.Input[str] vpc_id: The ID of the virtual private cloud (VPC) where the SLB instance is deployed.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['LoadBalancerZoneMappingArgs']]]] zone_mappings: The zones and vSwitches. You must specify at least two zones. See `zone_mappings` below.
@@ -949,7 +949,7 @@ class LoadBalancer(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[str]:
         """
-        Load Balancing Modify the Protection Status.
+        Server Load Balancer Instance Status:, indicating that the instance listener will no longer forward traffic.(default).
         """
         return pulumi.get(self, "status")
 

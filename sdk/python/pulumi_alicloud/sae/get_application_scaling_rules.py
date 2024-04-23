@@ -94,7 +94,6 @@ def get_application_scaling_rules(app_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -106,7 +105,6 @@ def get_application_scaling_rules(app_id: Optional[str] = None,
         ])
     pulumi.export("saeApplicationScalingRuleId1", ids.rules[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str app_id: The ID of the Application.
@@ -142,7 +140,6 @@ def get_application_scaling_rules_output(app_id: Optional[pulumi.Input[str]] = N
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -154,7 +151,6 @@ def get_application_scaling_rules_output(app_id: Optional[pulumi.Input[str]] = N
         ])
     pulumi.export("saeApplicationScalingRuleId1", ids.rules[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str app_id: The ID of the Application.

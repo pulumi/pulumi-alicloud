@@ -236,7 +236,6 @@ def get_instance_classes(architecture: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -249,7 +248,6 @@ def get_instance_classes(architecture: Optional[str] = None,
         output_file="./classes.txt")
     pulumi.export("firstKvstoreInstanceClass", resources_get_instance_classes.instance_classes)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str architecture: The KVStore instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.
@@ -333,7 +331,6 @@ def get_instance_classes_output(architecture: Optional[pulumi.Input[Optional[str
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -346,7 +343,6 @@ def get_instance_classes_output(architecture: Optional[pulumi.Input[Optional[str
         output_file="./classes.txt")
     pulumi.export("firstKvstoreInstanceClass", resources_get_instance_classes.instance_classes)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str architecture: The KVStore instance system architecture required by the user. Valid values: `standard`, `cluster` and `rwsplit`.

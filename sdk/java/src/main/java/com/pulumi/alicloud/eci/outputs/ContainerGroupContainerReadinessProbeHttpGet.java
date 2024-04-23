@@ -12,41 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ContainerGroupContainerReadinessProbeHttpGet {
-    /**
-     * @return The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
-     * 
-     */
     private @Nullable String path;
-    /**
-     * @return When using the HTTP request method for health check, the port number for HTTP Get request detection.
-     * 
-     */
     private @Nullable Integer port;
-    /**
-     * @return The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
-     * 
-     */
     private @Nullable String scheme;
 
     private ContainerGroupContainerReadinessProbeHttpGet() {}
-    /**
-     * @return The path of HTTP Get request detection when setting the postStart callback function using the HTTP request method.
-     * 
-     */
     public Optional<String> path() {
         return Optional.ofNullable(this.path);
     }
-    /**
-     * @return When using the HTTP request method for health check, the port number for HTTP Get request detection.
-     * 
-     */
     public Optional<Integer> port() {
         return Optional.ofNullable(this.port);
     }
-    /**
-     * @return The protocol type corresponding to the HTTP Get request when using the HTTP request method for health checks. Valid values: `HTTP`, `HTTPS`.
-     * 
-     */
     public Optional<String> scheme() {
         return Optional.ofNullable(this.scheme);
     }

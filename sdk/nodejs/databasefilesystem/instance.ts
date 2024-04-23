@@ -17,7 +17,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -32,7 +31,6 @@ import * as utilities from "../utilities";
  *     size: 100,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -105,8 +103,6 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly fsName!: pulumi.Output<string>;
     /**
-     * . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
-     *
      * @deprecated Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
      */
     public readonly instanceName!: pulumi.Output<string>;
@@ -268,8 +264,6 @@ export interface InstanceState {
      */
     fsName?: pulumi.Input<string>;
     /**
-     * . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
-     *
      * @deprecated Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
      */
     instanceName?: pulumi.Input<string>;
@@ -360,8 +354,6 @@ export interface InstanceArgs {
      */
     fsName?: pulumi.Input<string>;
     /**
-     * . Field 'instance_name' has been deprecated from provider version 1.212.0. New field 'fs_name' instead.
-     *
      * @deprecated Field 'instance_name' has been deprecated since provider version 1.212.0. New field 'fs_name' instead.
      */
     instanceName?: pulumi.Input<string>;

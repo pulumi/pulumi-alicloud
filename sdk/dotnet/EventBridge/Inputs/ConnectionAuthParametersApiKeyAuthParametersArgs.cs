@@ -12,18 +12,11 @@ namespace Pulumi.AliCloud.EventBridge.Inputs
 
     public sealed class ConnectionAuthParametersApiKeyAuthParametersArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The name of the API key.
-        /// </summary>
         [Input("apiKeyName")]
         public Input<string>? ApiKeyName { get; set; }
 
         [Input("apiKeyValue")]
         private Input<string>? _apiKeyValue;
-
-        /// <summary>
-        /// The value of the API key.
-        /// </summary>
         public Input<string>? ApiKeyValue
         {
             get => _apiKeyValue;

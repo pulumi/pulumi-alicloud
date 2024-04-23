@@ -14,7 +14,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -36,7 +35,6 @@ import * as utilities from "../utilities";
  *     keytabMd5: "E3CCF7E2416DF04FA958AA4513EA29E8",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export class SmbAclAttachment extends pulumi.CustomResource {
     /**

@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -29,7 +28,6 @@ import * as utilities from "../utilities";
  * });
  * export const gaBasicAcceleratorId2 = nameRegex.then(nameRegex => nameRegex.accelerators?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBasicAccelerators(args?: GetBasicAcceleratorsArgs, opts?: pulumi.InvokeOptions): Promise<GetBasicAcceleratorsResult> {
     args = args || {};
@@ -110,7 +108,6 @@ export interface GetBasicAcceleratorsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -124,7 +121,6 @@ export interface GetBasicAcceleratorsResult {
  * });
  * export const gaBasicAcceleratorId2 = nameRegex.then(nameRegex => nameRegex.accelerators?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getBasicAcceleratorsOutput(args?: GetBasicAcceleratorsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBasicAcceleratorsResult> {
     return pulumi.output(args).apply((a: any) => getBasicAccelerators(a, opts))

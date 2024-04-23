@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -80,7 +79,6 @@ import * as utilities from "../utilities";
  *     routeTableId: fooRouteEntry.routeTableId,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRouteEntries(args: GetRouteEntriesArgs, opts?: pulumi.InvokeOptions): Promise<GetRouteEntriesResult> {
 
@@ -157,7 +155,6 @@ export interface GetRouteEntriesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -224,7 +221,6 @@ export interface GetRouteEntriesResult {
  *     routeTableId: fooRouteEntry.routeTableId,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRouteEntriesOutput(args: GetRouteEntriesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouteEntriesResult> {
     return pulumi.output(args).apply((a: any) => getRouteEntries(a, opts))

@@ -13,13 +13,13 @@ namespace Pulumi.AliCloud.Log.Inputs
     public sealed class AlertLabelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Annotations's key for new alert.
+        /// Labels's key for new alert.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// Annotations's value for new alert.
+        /// Labels's value for new alert.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;

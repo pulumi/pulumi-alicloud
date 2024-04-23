@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -44,7 +43,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetOtsBackupPlans(ctx *pulumi.Context, args *GetOtsBackupPlansArgs, opts ...pulumi.InvokeOption) (*GetOtsBackupPlansResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetOtsBackupPlansResult
@@ -67,7 +65,7 @@ type GetOtsBackupPlansArgs struct {
 	PlanId *string `pulumi:"planId"`
 	// The ID of the backup plan.
 	PlanName *string `pulumi:"planName"`
-	// The ID of backup vault.
+	// The ID of backup vault the OtsBackupPlan used.
 	VaultId *string `pulumi:"vaultId"`
 }
 
@@ -110,7 +108,7 @@ type GetOtsBackupPlansOutputArgs struct {
 	PlanId pulumi.StringPtrInput `pulumi:"planId"`
 	// The ID of the backup plan.
 	PlanName pulumi.StringPtrInput `pulumi:"planName"`
-	// The ID of backup vault.
+	// The ID of backup vault the OtsBackupPlan used.
 	VaultId pulumi.StringPtrInput `pulumi:"vaultId"`
 }
 

@@ -25,13 +25,13 @@ namespace Pulumi.AliCloud.Sae.Inputs
         public Input<string>? BucketPath { get; set; }
 
         /// <summary>
-        /// The mount path.
+        /// The path of the container in SAE.
         /// </summary>
         [Input("mountPath")]
         public Input<string>? MountPath { get; set; }
 
         /// <summary>
-        /// Specifies whether the application can read data from or write data to resources in the directory of the NAS. Valid values: `true` and `false`. If you set `read_only` to `false`, the application has the read and write permissions.
+        /// Specifies whether the application can use the container path to read data from or write data to resources in the directory of the OSS bucket. Valid values:
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }

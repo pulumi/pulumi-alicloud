@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -48,7 +47,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetAccessRules(ctx *pulumi.Context, args *GetAccessRulesArgs, opts ...pulumi.InvokeOption) (*GetAccessRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetAccessRulesResult

@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -69,7 +68,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetServerSnapshotsResult> InvokeAsync(GetServerSnapshotsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetServerSnapshotsResult>("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", args ?? new GetServerSnapshotsArgs(), options.WithDefaults());
@@ -83,7 +81,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -132,7 +129,6 @@ namespace Pulumi.AliCloud.SimpleApplicationServer
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetServerSnapshotsResult> Invoke(GetServerSnapshotsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServerSnapshotsResult>("alicloud:simpleapplicationserver/getServerSnapshots:getServerSnapshots", args ?? new GetServerSnapshotsInvokeArgs(), options.WithDefaults());

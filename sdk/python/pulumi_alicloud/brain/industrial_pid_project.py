@@ -139,7 +139,6 @@ class IndustrialPidProject(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -148,7 +147,6 @@ class IndustrialPidProject(pulumi.CustomResource):
             pid_organization_id="3e74e684-cbb5-xxxx",
             pid_project_name="tf-testAcc")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -179,7 +177,6 @@ class IndustrialPidProject(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -188,7 +185,6 @@ class IndustrialPidProject(pulumi.CustomResource):
             pid_organization_id="3e74e684-cbb5-xxxx",
             pid_project_name="tf-testAcc")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -47,7 +46,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetHavips(ctx *pulumi.Context, args *GetHavipsArgs, opts ...pulumi.InvokeOption) (*GetHavipsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetHavipsResult

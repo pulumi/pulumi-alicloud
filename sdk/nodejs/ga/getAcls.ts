@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const gaAclId2 = nameRegex.then(nameRegex => nameRegex.acls?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAcls(args?: GetAclsArgs, opts?: pulumi.InvokeOptions): Promise<GetAclsResult> {
     args = args || {};
@@ -99,7 +97,6 @@ export interface GetAclsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -111,7 +108,6 @@ export interface GetAclsResult {
  * });
  * export const gaAclId2 = nameRegex.then(nameRegex => nameRegex.acls?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getAclsOutput(args?: GetAclsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAclsResult> {
     return pulumi.output(args).apply((a: any) => getAcls(a, opts))

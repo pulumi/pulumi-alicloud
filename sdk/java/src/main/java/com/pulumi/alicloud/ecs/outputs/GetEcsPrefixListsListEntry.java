@@ -11,20 +11,12 @@ import java.util.Objects;
 @CustomType
 public final class GetEcsPrefixListsListEntry {
     private String cidr;
-    /**
-     * @return The description of the prefix list.
-     * 
-     */
     private String description;
 
     private GetEcsPrefixListsListEntry() {}
     public String cidr() {
         return this.cidr;
     }
-    /**
-     * @return The description of the prefix list.
-     * 
-     */
     public String description() {
         return this.description;
     }

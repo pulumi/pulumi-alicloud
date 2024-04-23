@@ -78,14 +78,14 @@ public final class AlertTemplateConfigurationArgs extends com.pulumi.resources.R
     }
 
     /**
-     * including FixedRate,Hourly,Daily,Weekly,Cron.
+     * Alert template type including `sys`, `user`.
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return including FixedRate,Hourly,Daily,Weekly,Cron.
+     * @return Alert template type including `sys`, `user`.
      * 
      */
     public Output<String> type() {
@@ -205,7 +205,7 @@ public final class AlertTemplateConfigurationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type including FixedRate,Hourly,Daily,Weekly,Cron.
+         * @param type Alert template type including `sys`, `user`.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class AlertTemplateConfigurationArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param type including FixedRate,Hourly,Daily,Weekly,Cron.
+         * @param type Alert template type including `sys`, `user`.
          * 
          * @return builder
          * 

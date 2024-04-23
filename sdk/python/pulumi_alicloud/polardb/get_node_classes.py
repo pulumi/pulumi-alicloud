@@ -151,7 +151,6 @@ def get_node_classes(category: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -162,7 +161,6 @@ def get_node_classes(category: Optional[str] = None,
     pulumi.export("polardbNodeClasses", resources.classes)
     pulumi.export("polardbAvailableZoneId", resources.classes[0].zone_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str category: The PolarDB node cluster series.
@@ -216,7 +214,6 @@ def get_node_classes_output(category: Optional[pulumi.Input[Optional[str]]] = No
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -227,7 +224,6 @@ def get_node_classes_output(category: Optional[pulumi.Input[Optional[str]]] = No
     pulumi.export("polardbNodeClasses", resources.classes)
     pulumi.export("polardbAvailableZoneId", resources.classes[0].zone_id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str category: The PolarDB node cluster series.

@@ -153,7 +153,6 @@ def get_commands(command_provider: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -162,7 +161,6 @@ def get_commands(command_provider: Optional[str] = None,
         name_regex="tf-testAcc")
     pulumi.export("firstEcsCommandId", example.commands[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str command_provider: Public order provider.
@@ -219,7 +217,6 @@ def get_commands_output(command_provider: Optional[pulumi.Input[Optional[str]]] 
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -228,7 +225,6 @@ def get_commands_output(command_provider: Optional[pulumi.Input[Optional[str]]] 
         name_regex="tf-testAcc")
     pulumi.export("firstEcsCommandId", example.commands[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str command_provider: Public order provider.

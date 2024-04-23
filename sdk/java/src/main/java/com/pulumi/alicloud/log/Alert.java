@@ -443,14 +443,14 @@ public class Alert extends com.pulumi.resources.CustomResource {
         return this.alertName;
     }
     /**
-     * Alert template annotations.
+     * Annotations for new alert.
      * 
      */
     @Export(name="annotations", refs={List.class,AlertAnnotation.class}, tree="[0,1]")
     private Output</* @Nullable */ List<AlertAnnotation>> annotations;
 
     /**
-     * @return Alert template annotations.
+     * @return Annotations for new alert.
      * 
      */
     public Output<Optional<List<AlertAnnotation>>> annotations() {
@@ -471,7 +471,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.autoAnnotation);
     }
     /**
-     * Join condition.
+     * Conditional expression, such as: count&gt; 100, Deprecated from 1.161.0+.
      * 
      * @deprecated
      * Deprecated from 1.161.0+, use eval_condition in severity_configurations
@@ -482,7 +482,7 @@ public class Alert extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> condition;
 
     /**
-     * @return Join condition.
+     * @return Conditional expression, such as: count&gt; 100, Deprecated from 1.161.0+.
      * 
      */
     public Output<Optional<String>> condition() {
@@ -787,14 +787,14 @@ public class Alert extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.throttling);
     }
     /**
-     * including FixedRate,Hourly,Daily,Weekly,Cron.
+     * The type of new alert, `default` for custom alert, `tpl` for template alert.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return including FixedRate,Hourly,Daily,Weekly,Cron.
+     * @return The type of new alert, `default` for custom alert, `tpl` for template alert.
      * 
      */
     public Output<Optional<String>> type() {

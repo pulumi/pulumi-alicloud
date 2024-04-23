@@ -128,13 +128,6 @@ class AutoProvisioningGroupLaunchTemplateConfig(dict):
                  weighted_capacity: str,
                  instance_type: Optional[str] = None,
                  priority: Optional[str] = None):
-        """
-        :param str max_price: The maximum price of the instance type specified in the Nth extended configurations of the launch template.
-        :param str vswitch_id: The ID of the VSwitch in the Nth extended configurations of the launch template.
-        :param str weighted_capacity: The weight of the instance type specified in the Nth extended configurations of the launch template.
-        :param str instance_type: The instance type of the Nth extended configurations of the launch template.
-        :param str priority: The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
-        """
         pulumi.set(__self__, "max_price", max_price)
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         pulumi.set(__self__, "weighted_capacity", weighted_capacity)
@@ -146,41 +139,26 @@ class AutoProvisioningGroupLaunchTemplateConfig(dict):
     @property
     @pulumi.getter(name="maxPrice")
     def max_price(self) -> str:
-        """
-        The maximum price of the instance type specified in the Nth extended configurations of the launch template.
-        """
         return pulumi.get(self, "max_price")
 
     @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
-        """
-        The ID of the VSwitch in the Nth extended configurations of the launch template.
-        """
         return pulumi.get(self, "vswitch_id")
 
     @property
     @pulumi.getter(name="weightedCapacity")
     def weighted_capacity(self) -> str:
-        """
-        The weight of the instance type specified in the Nth extended configurations of the launch template.
-        """
         return pulumi.get(self, "weighted_capacity")
 
     @property
     @pulumi.getter(name="instanceType")
     def instance_type(self) -> Optional[str]:
-        """
-        The instance type of the Nth extended configurations of the launch template.
-        """
         return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter
     def priority(self) -> Optional[str]:
-        """
-        The priority of the instance type specified in the Nth extended configurations of the launch template. A value of 0 indicates the highest priority.
-        """
         return pulumi.get(self, "priority")
 
 
@@ -1489,8 +1467,8 @@ class LaunchTemplateNetworkInterfaces(dict):
                  security_group_id: Optional[str] = None,
                  vswitch_id: Optional[str] = None):
         """
-        :param str description: The description of the data disk.
-        :param str name: The name of the data disk.
+        :param str description: The ENI description.
+        :param str name: ENI name.
         :param str primary_ip: The primary private IP address of the ENI.
         :param str security_group_id: The security group ID must be one in the same VPC.
         :param str vswitch_id: The VSwitch ID for ENI. The instance must be in the same zone of the same VPC network as the ENI, but they may belong to different VSwitches.
@@ -1510,7 +1488,7 @@ class LaunchTemplateNetworkInterfaces(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of the data disk.
+        The ENI description.
         """
         return pulumi.get(self, "description")
 
@@ -1518,7 +1496,7 @@ class LaunchTemplateNetworkInterfaces(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the data disk.
+        ENI name.
         """
         return pulumi.get(self, "name")
 
@@ -1578,28 +1556,8 @@ class LaunchTemplateSystemDisk(dict):
                  performance_level: Optional[str] = None,
                  size: Optional[int] = None):
         """
-        :param str category: The category of the disk:
-               - cloud: Basic cloud disk.
-               - cloud_efficiency: Ultra cloud disk.
-               - cloud_ssd: SSD cloud Disks.
-               - ephemeral_ssd: local SSD Disks
-               - cloud_essd: ESSD cloud Disks.
-               
-               Default to `cloud_efficiency`.
-        :param bool delete_with_instance: Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-               
-               Default to true
-        :param str description: The description of the data disk.
-        :param bool encrypted: Encrypted the data in this disk.
-               
-               Default to false
-        :param str name: The name of the data disk.
-        :param int size: The size of the data disk.
-               - cloud：[5, 2000]
-               - cloud_efficiency：[20, 32768]
-               - cloud_ssd：[20, 32768]
-               - cloud_essd：[20, 32768]
-               - ephemeral_ssd: [5, 800]
+        :param str description: Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
+        :param str name: Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -1621,44 +1579,24 @@ class LaunchTemplateSystemDisk(dict):
     @property
     @pulumi.getter
     def category(self) -> Optional[str]:
-        """
-        The category of the disk:
-        - cloud: Basic cloud disk.
-        - cloud_efficiency: Ultra cloud disk.
-        - cloud_ssd: SSD cloud Disks.
-        - ephemeral_ssd: local SSD Disks
-        - cloud_essd: ESSD cloud Disks.
-
-        Default to `cloud_efficiency`.
-        """
         return pulumi.get(self, "category")
 
     @property
     @pulumi.getter(name="deleteWithInstance")
     def delete_with_instance(self) -> Optional[bool]:
-        """
-        Delete this data disk when the instance is destroyed. It only works on cloud, cloud_efficiency, cloud_ssd and cloud_essd disk. If the category of this data disk was ephemeral_ssd, please don't set this param.
-
-        Default to true
-        """
         return pulumi.get(self, "delete_with_instance")
 
     @property
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        The description of the data disk.
+        Description of instance launch template version 1. It can be [2, 256] characters in length. It cannot start with "http://" or "https://". The default value is null.
         """
         return pulumi.get(self, "description")
 
     @property
     @pulumi.getter
     def encrypted(self) -> Optional[bool]:
-        """
-        Encrypted the data in this disk.
-
-        Default to false
-        """
         return pulumi.get(self, "encrypted")
 
     @property
@@ -1670,7 +1608,7 @@ class LaunchTemplateSystemDisk(dict):
     @pulumi.getter
     def name(self) -> Optional[str]:
         """
-        The name of the data disk.
+        Instance launch template name. Can contain [2, 128] characters in length. It must start with an English letter or Chinese, can contain numbers, periods (.), colons (:), underscores (_), and hyphens (-). It cannot start with "http://" or "https://".
         """
         return pulumi.get(self, "name")
 
@@ -1682,14 +1620,6 @@ class LaunchTemplateSystemDisk(dict):
     @property
     @pulumi.getter
     def size(self) -> Optional[int]:
-        """
-        The size of the data disk.
-        - cloud：[5, 2000]
-        - cloud_efficiency：[20, 32768]
-        - cloud_ssd：[20, 32768]
-        - cloud_essd：[20, 32768]
-        - ephemeral_ssd: [5, 800]
-        """
         return pulumi.get(self, "size")
 
 
@@ -2867,7 +2797,6 @@ class GetDisksDiskResult(dict):
         :param str snapshot_id: Snapshot used to create the disk. It is null if no snapshot is used to create the disk.
         :param str status: Current status. Possible values: `In_use`, `Available`, `Attaching`, `Detaching`, `Creating` and `ReIniting`.
         :param Mapping[str, Any] tags: A map of tags assigned to the disks. It must be in the format:
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_alicloud as alicloud
@@ -2877,7 +2806,6 @@ class GetDisksDiskResult(dict):
                    "tagKey2": "tagValue2",
                })
                ```
-               <!--End PulumiCodeChooser -->
         :param str type: Disk type. Possible values: `system` and `data`.
         """
         pulumi.set(__self__, "attached_time", attached_time)
@@ -3159,7 +3087,6 @@ class GetDisksDiskResult(dict):
     def tags(self) -> Mapping[str, Any]:
         """
         A map of tags assigned to the disks. It must be in the format:
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -3169,7 +3096,6 @@ class GetDisksDiskResult(dict):
             "tagKey2": "tagValue2",
         })
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "tags")
 
@@ -3362,13 +3288,6 @@ class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityResult(dict)
                  local_storage_capacities: Sequence['outputs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityResult'],
                  total_memory: int,
                  total_vcpus: int):
-        """
-        :param int available_memory: The available memory size. Unit: `GiB`.
-        :param int available_vcpus: The number of available vCPUs.
-        :param Sequence['GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityArgs'] local_storage_capacities: The local storage.
-        :param int total_memory: The total memory size. Unit: `GiB`.
-        :param int total_vcpus: The total number of vCPUs.
-        """
         pulumi.set(__self__, "available_memory", available_memory)
         pulumi.set(__self__, "available_vcpus", available_vcpus)
         pulumi.set(__self__, "local_storage_capacities", local_storage_capacities)
@@ -3378,41 +3297,26 @@ class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityResult(dict)
     @property
     @pulumi.getter(name="availableMemory")
     def available_memory(self) -> int:
-        """
-        The available memory size. Unit: `GiB`.
-        """
         return pulumi.get(self, "available_memory")
 
     @property
     @pulumi.getter(name="availableVcpus")
     def available_vcpus(self) -> int:
-        """
-        The number of available vCPUs.
-        """
         return pulumi.get(self, "available_vcpus")
 
     @property
     @pulumi.getter(name="localStorageCapacities")
     def local_storage_capacities(self) -> Sequence['outputs.GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorageCapacityResult']:
-        """
-        The local storage.
-        """
         return pulumi.get(self, "local_storage_capacities")
 
     @property
     @pulumi.getter(name="totalMemory")
     def total_memory(self) -> int:
-        """
-        The total memory size. Unit: `GiB`.
-        """
         return pulumi.get(self, "total_memory")
 
     @property
     @pulumi.getter(name="totalVcpus")
     def total_vcpus(self) -> int:
-        """
-        The total number of vCPUs.
-        """
         return pulumi.get(self, "total_vcpus")
 
 
@@ -3422,11 +3326,6 @@ class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorage
                  available_disk: int,
                  data_disk_category: str,
                  total_disk: int):
-        """
-        :param int available_disk: The available capacity of the local disk. Unit: `GiB`.
-        :param str data_disk_category: The category of the data disk. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`, `cloud_essd`.
-        :param int total_disk: The total capacity of the local disk. Unit: `GiB`.
-        """
         pulumi.set(__self__, "available_disk", available_disk)
         pulumi.set(__self__, "data_disk_category", data_disk_category)
         pulumi.set(__self__, "total_disk", total_disk)
@@ -3434,25 +3333,16 @@ class GetEcsDedicatedHostClustersClusterDedicatedHostClusterCapacityLocalStorage
     @property
     @pulumi.getter(name="availableDisk")
     def available_disk(self) -> int:
-        """
-        The available capacity of the local disk. Unit: `GiB`.
-        """
         return pulumi.get(self, "available_disk")
 
     @property
     @pulumi.getter(name="dataDiskCategory")
     def data_disk_category(self) -> str:
-        """
-        The category of the data disk. Valid values:`cloud`, `cloud_efficiency`, `cloud_ssd`, `ephemeral_ssd`, `cloud_essd`.
-        """
         return pulumi.get(self, "data_disk_category")
 
     @property
     @pulumi.getter(name="totalDisk")
     def total_disk(self) -> int:
-        """
-        The total capacity of the local disk. Unit: `GiB`.
-        """
         return pulumi.get(self, "total_disk")
 
 
@@ -4007,9 +3897,7 @@ class GetEcsDisksDiskMountInstanceResult(dict):
                  device: str,
                  instance_id: str):
         """
-        :param str attached_time: A mount of time.
-        :param str device: The mount point of the disk.
-        :param str instance_id: The instance ID of the disk mount.
+        :param str instance_id: Filter the results by the specified ECS instance ID.
         """
         pulumi.set(__self__, "attached_time", attached_time)
         pulumi.set(__self__, "device", device)
@@ -4018,24 +3906,18 @@ class GetEcsDisksDiskMountInstanceResult(dict):
     @property
     @pulumi.getter(name="attachedTime")
     def attached_time(self) -> str:
-        """
-        A mount of time.
-        """
         return pulumi.get(self, "attached_time")
 
     @property
     @pulumi.getter
     def device(self) -> str:
-        """
-        The mount point of the disk.
-        """
         return pulumi.get(self, "device")
 
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
         """
-        The instance ID of the disk mount.
+        Filter the results by the specified ECS instance ID.
         """
         return pulumi.get(self, "instance_id")
 
@@ -4593,23 +4475,6 @@ class GetEcsInvocationsInvocationInvokeInstanceResult(dict):
                  stop_time: str,
                  timed: bool,
                  update_time: str):
-        """
-        :param str creation_time: The start time of the execution.
-        :param int dropped: The size of truncated and discarded text when the value of the Output response parameter exceeds 24 KB in size.
-        :param str error_info: Details about the reason why the command failed to be sent or run.
-        :param int exit_code: The exit code of the execution.
-        :param str finish_time: The end time of the execution.
-        :param str instance_id: The ID of the instance.
-        :param str invocation_status: The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
-        :param str output: The output of the command.
-        :param int repeats: The number of times that the command is run on the instance.
-        :param str start_time: The time when the command started to be run on the instance.
-        :param str stop_time: The time when the command stopped being run on the instance. If you call the StopInvocation operation to manually stop the execution, the value is the time when you call the operation.
-        :param bool timed: Indicates whether the commands are to be automatically run.
-               * `error_code	` - The code that indicates why the command failed to be sent or run.
-               * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
-        :param str update_time: The time when the execution state was updated.
-        """
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "dropped", dropped)
         pulumi.set(__self__, "error_code", error_code)
@@ -4629,17 +4494,11 @@ class GetEcsInvocationsInvocationInvokeInstanceResult(dict):
     @property
     @pulumi.getter(name="creationTime")
     def creation_time(self) -> str:
-        """
-        The start time of the execution.
-        """
         return pulumi.get(self, "creation_time")
 
     @property
     @pulumi.getter
     def dropped(self) -> int:
-        """
-        The size of truncated and discarded text when the value of the Output response parameter exceeds 24 KB in size.
-        """
         return pulumi.get(self, "dropped")
 
     @property
@@ -4650,33 +4509,21 @@ class GetEcsInvocationsInvocationInvokeInstanceResult(dict):
     @property
     @pulumi.getter(name="errorInfo")
     def error_info(self) -> str:
-        """
-        Details about the reason why the command failed to be sent or run.
-        """
         return pulumi.get(self, "error_info")
 
     @property
     @pulumi.getter(name="exitCode")
     def exit_code(self) -> int:
-        """
-        The exit code of the execution.
-        """
         return pulumi.get(self, "exit_code")
 
     @property
     @pulumi.getter(name="finishTime")
     def finish_time(self) -> str:
-        """
-        The end time of the execution.
-        """
         return pulumi.get(self, "finish_time")
 
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
-        """
-        The ID of the instance.
-        """
         return pulumi.get(self, "instance_id")
 
     @property
@@ -4687,59 +4534,36 @@ class GetEcsInvocationsInvocationInvokeInstanceResult(dict):
     @property
     @pulumi.getter(name="invocationStatus")
     def invocation_status(self) -> str:
-        """
-        The execution state on a single instance. Valid values: `Pending`, `Scheduled`, `Running`, `Success`, `Failed`, `Stopping`, `Stopped`, `PartialFailed`.
-        """
         return pulumi.get(self, "invocation_status")
 
     @property
     @pulumi.getter
     def output(self) -> str:
-        """
-        The output of the command.
-        """
         return pulumi.get(self, "output")
 
     @property
     @pulumi.getter
     def repeats(self) -> int:
-        """
-        The number of times that the command is run on the instance.
-        """
         return pulumi.get(self, "repeats")
 
     @property
     @pulumi.getter(name="startTime")
     def start_time(self) -> str:
-        """
-        The time when the command started to be run on the instance.
-        """
         return pulumi.get(self, "start_time")
 
     @property
     @pulumi.getter(name="stopTime")
     def stop_time(self) -> str:
-        """
-        The time when the command stopped being run on the instance. If you call the StopInvocation operation to manually stop the execution, the value is the time when you call the operation.
-        """
         return pulumi.get(self, "stop_time")
 
     @property
     @pulumi.getter
     def timed(self) -> bool:
-        """
-        Indicates whether the commands are to be automatically run.
-        * `error_code	` - The code that indicates why the command failed to be sent or run.
-        * `instance_invoke_status	` - **Note:** We recommend that you ignore this parameter and check the value of the `invocation_status` response parameter for the overall execution state.
-        """
         return pulumi.get(self, "timed")
 
     @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> str:
-        """
-        The time when the execution state was updated.
-        """
         return pulumi.get(self, "update_time")
 
 
@@ -4756,7 +4580,6 @@ class GetEcsKeyPairsKeyPairResult(dict):
         """
         :param str finger_print: The finger print of the key pair.
         :param str id: The ID of the Key Pair.
-        :param Sequence['GetEcsKeyPairsKeyPairInstanceArgs'] instances: A list of ECS instances that has been bound this key pair.
         :param str key_name: The Key Pair Name.
         :param str resource_group_id: The Resource Group Id.
         :param Mapping[str, Any] tags: The tags.
@@ -4788,9 +4611,6 @@ class GetEcsKeyPairsKeyPairResult(dict):
     @property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetEcsKeyPairsKeyPairInstanceResult']:
-        """
-        A list of ECS instances that has been bound this key pair.
-        """
         return pulumi.get(self, "instances")
 
     @property
@@ -4839,13 +4659,7 @@ class GetEcsKeyPairsKeyPairInstanceResult(dict):
                  status: str,
                  vswitch_id: str):
         """
-        :param str availability_zone: The ID of the availability zone where the ECS instance is located.
-        :param str instance_id: The ID of the ECS instance.
-        :param str instance_name: The name of the ECS instance.
         :param str key_name: The Key Pair Name.
-        :param str private_ip: The private IP address of the ECS instance.
-        :param str public_ip: The public IP address or EIP of the ECS instance.
-        :param str vswitch_id: The ID of the VSwitch attached to the ECS instance.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "description", description)
@@ -4863,9 +4677,6 @@ class GetEcsKeyPairsKeyPairInstanceResult(dict):
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> str:
-        """
-        The ID of the availability zone where the ECS instance is located.
-        """
         return pulumi.get(self, "availability_zone")
 
     @property
@@ -4881,17 +4692,11 @@ class GetEcsKeyPairsKeyPairInstanceResult(dict):
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
-        """
-        The ID of the ECS instance.
-        """
         return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> str:
-        """
-        The name of the ECS instance.
-        """
         return pulumi.get(self, "instance_name")
 
     @property
@@ -4910,17 +4715,11 @@ class GetEcsKeyPairsKeyPairInstanceResult(dict):
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> str:
-        """
-        The private IP address of the ECS instance.
-        """
         return pulumi.get(self, "private_ip")
 
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> str:
-        """
-        The public IP address or EIP of the ECS instance.
-        """
         return pulumi.get(self, "public_ip")
 
     @property
@@ -4936,9 +4735,6 @@ class GetEcsKeyPairsKeyPairInstanceResult(dict):
     @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
-        """
-        The ID of the VSwitch attached to the ECS instance.
-        """
         return pulumi.get(self, "vswitch_id")
 
 
@@ -4955,7 +4751,6 @@ class GetEcsKeyPairsPairResult(dict):
         """
         :param str finger_print: The finger print of the key pair.
         :param str id: The ID of the Key Pair.
-        :param Sequence['GetEcsKeyPairsPairInstanceArgs'] instances: A list of ECS instances that has been bound this key pair.
         :param str key_name: The Key Pair Name.
         :param str resource_group_id: The Resource Group Id.
         :param Mapping[str, Any] tags: The tags.
@@ -4987,9 +4782,6 @@ class GetEcsKeyPairsPairResult(dict):
     @property
     @pulumi.getter
     def instances(self) -> Sequence['outputs.GetEcsKeyPairsPairInstanceResult']:
-        """
-        A list of ECS instances that has been bound this key pair.
-        """
         return pulumi.get(self, "instances")
 
     @property
@@ -5038,13 +4830,7 @@ class GetEcsKeyPairsPairInstanceResult(dict):
                  status: str,
                  vswitch_id: str):
         """
-        :param str availability_zone: The ID of the availability zone where the ECS instance is located.
-        :param str instance_id: The ID of the ECS instance.
-        :param str instance_name: The name of the ECS instance.
         :param str key_name: The Key Pair Name.
-        :param str private_ip: The private IP address of the ECS instance.
-        :param str public_ip: The public IP address or EIP of the ECS instance.
-        :param str vswitch_id: The ID of the VSwitch attached to the ECS instance.
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "description", description)
@@ -5062,9 +4848,6 @@ class GetEcsKeyPairsPairInstanceResult(dict):
     @property
     @pulumi.getter(name="availabilityZone")
     def availability_zone(self) -> str:
-        """
-        The ID of the availability zone where the ECS instance is located.
-        """
         return pulumi.get(self, "availability_zone")
 
     @property
@@ -5080,17 +4863,11 @@ class GetEcsKeyPairsPairInstanceResult(dict):
     @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> str:
-        """
-        The ID of the ECS instance.
-        """
         return pulumi.get(self, "instance_id")
 
     @property
     @pulumi.getter(name="instanceName")
     def instance_name(self) -> str:
-        """
-        The name of the ECS instance.
-        """
         return pulumi.get(self, "instance_name")
 
     @property
@@ -5109,17 +4886,11 @@ class GetEcsKeyPairsPairInstanceResult(dict):
     @property
     @pulumi.getter(name="privateIp")
     def private_ip(self) -> str:
-        """
-        The private IP address of the ECS instance.
-        """
         return pulumi.get(self, "private_ip")
 
     @property
     @pulumi.getter(name="publicIp")
     def public_ip(self) -> str:
-        """
-        The public IP address or EIP of the ECS instance.
-        """
         return pulumi.get(self, "public_ip")
 
     @property
@@ -5135,9 +4906,6 @@ class GetEcsKeyPairsPairInstanceResult(dict):
     @property
     @pulumi.getter(name="vswitchId")
     def vswitch_id(self) -> str:
-        """
-        The ID of the VSwitch attached to the ECS instance.
-        """
         return pulumi.get(self, "vswitch_id")
 
 
@@ -6250,17 +6018,11 @@ class GetEcsNetworkInterfacesInterfaceResult(dict):
 class GetEcsNetworkInterfacesInterfaceAssociatedPublicIpResult(dict):
     def __init__(__self__, *,
                  public_ip_address: str):
-        """
-        :param str public_ip_address: The EIP of the ENI.
-        """
         pulumi.set(__self__, "public_ip_address", public_ip_address)
 
     @property
     @pulumi.getter(name="publicIpAddress")
     def public_ip_address(self) -> str:
-        """
-        The EIP of the ENI.
-        """
         return pulumi.get(self, "public_ip_address")
 
 
@@ -6371,9 +6133,6 @@ class GetEcsPrefixListsListEntryResult(dict):
     def __init__(__self__, *,
                  cidr: str,
                  description: str):
-        """
-        :param str description: The description of the prefix list.
-        """
         pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "description", description)
 
@@ -6385,9 +6144,6 @@ class GetEcsPrefixListsListEntryResult(dict):
     @property
     @pulumi.getter
     def description(self) -> str:
-        """
-        The description of the prefix list.
-        """
         return pulumi.get(self, "description")
 
 
@@ -8577,7 +8333,6 @@ class GetInstancesInstanceResult(dict):
         :param str vpc_id: ID of the VPC linked to the instances.
         :param str vswitch_id: ID of the VSwitch linked to the instances.
         :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_alicloud as alicloud
@@ -8587,7 +8342,6 @@ class GetInstancesInstanceResult(dict):
                    "tagKey2": "tagValue2",
                })
                ```
-               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "availability_zone", availability_zone)
         pulumi.set(__self__, "creation_time", creation_time)
@@ -8804,7 +8558,6 @@ class GetInstancesInstanceResult(dict):
     def tags(self) -> Optional[Mapping[str, Any]]:
         """
         A map of tags assigned to the ECS instances. It must be in the format:
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -8814,7 +8567,6 @@ class GetInstancesInstanceResult(dict):
             "tagKey2": "tagValue2",
         })
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "tags")
 
@@ -9730,7 +9482,6 @@ class GetSecurityGroupsGroupResult(dict):
         :param str security_group_type: The type of the security group.
         :param str vpc_id: Used to retrieve security groups that belong to the specified VPC ID.
         :param Mapping[str, Any] tags: A map of tags assigned to the ECS instances. It must be in the format:
-               <!--Start PulumiCodeChooser -->
                ```python
                import pulumi
                import pulumi_alicloud as alicloud
@@ -9740,7 +9491,6 @@ class GetSecurityGroupsGroupResult(dict):
                    "tagKey2": "tagValue2",
                })
                ```
-               <!--End PulumiCodeChooser -->
         """
         pulumi.set(__self__, "creation_time", creation_time)
         pulumi.set(__self__, "description", description)
@@ -9822,7 +9572,6 @@ class GetSecurityGroupsGroupResult(dict):
     def tags(self) -> Optional[Mapping[str, Any]]:
         """
         A map of tags assigned to the ECS instances. It must be in the format:
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -9832,7 +9581,6 @@ class GetSecurityGroupsGroupResult(dict):
             "tagKey2": "tagValue2",
         })
         ```
-        <!--End PulumiCodeChooser -->
         """
         return pulumi.get(self, "tags")
 

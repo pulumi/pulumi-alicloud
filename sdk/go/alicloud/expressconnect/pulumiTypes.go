@@ -1478,10 +1478,7 @@ func (o GetVbrPconnAssociationsAssociationArrayOutput) Index(i pulumi.IntInput) 
 }
 
 type GetVirtualBorderRoutersFilter struct {
-	// The key of the field to filter by, as defined by
-	// [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
-	Key *string `pulumi:"key"`
-	// Set of values that are accepted for the given field.
+	Key    *string  `pulumi:"key"`
 	Values []string `pulumi:"values"`
 }
 
@@ -1497,10 +1494,7 @@ type GetVirtualBorderRoutersFilterInput interface {
 }
 
 type GetVirtualBorderRoutersFilterArgs struct {
-	// The key of the field to filter by, as defined by
-	// [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
-	Key pulumi.StringPtrInput `pulumi:"key"`
-	// Set of values that are accepted for the given field.
+	Key    pulumi.StringPtrInput   `pulumi:"key"`
 	Values pulumi.StringArrayInput `pulumi:"values"`
 }
 
@@ -1555,13 +1549,10 @@ func (o GetVirtualBorderRoutersFilterOutput) ToGetVirtualBorderRoutersFilterOutp
 	return o
 }
 
-// The key of the field to filter by, as defined by
-// [Alibaba Cloud API](https://www.alibabacloud.com/help/en/doc-detail/124791.htm).
 func (o GetVirtualBorderRoutersFilterOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetVirtualBorderRoutersFilter) *string { return v.Key }).(pulumi.StringPtrOutput)
 }
 
-// Set of values that are accepted for the given field.
 func (o GetVirtualBorderRoutersFilterOutput) Values() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetVirtualBorderRoutersFilter) []string { return v.Values }).(pulumi.StringArrayOutput)
 }

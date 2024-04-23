@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -27,7 +26,6 @@ import * as utilities from "../utilities";
  * });
  * export const vpcPeerConnectionId2 = nameRegex.then(nameRegex => nameRegex.connections?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPeerConnections(args?: GetPeerConnectionsArgs, opts?: pulumi.InvokeOptions): Promise<GetPeerConnectionsResult> {
     args = args || {};
@@ -99,7 +97,6 @@ export interface GetPeerConnectionsResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -111,7 +108,6 @@ export interface GetPeerConnectionsResult {
  * });
  * export const vpcPeerConnectionId2 = nameRegex.then(nameRegex => nameRegex.connections?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getPeerConnectionsOutput(args?: GetPeerConnectionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeerConnectionsResult> {
     return pulumi.output(args).apply((a: any) => getPeerConnections(a, opts))

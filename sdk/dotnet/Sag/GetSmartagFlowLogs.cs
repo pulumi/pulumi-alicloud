@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Sag
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -49,7 +48,6 @@ namespace Pulumi.AliCloud.Sag
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSmartagFlowLogsResult> InvokeAsync(GetSmartagFlowLogsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSmartagFlowLogsResult>("alicloud:sag/getSmartagFlowLogs:getSmartagFlowLogs", args ?? new GetSmartagFlowLogsArgs(), options.WithDefaults());
@@ -63,7 +61,6 @@ namespace Pulumi.AliCloud.Sag
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -92,7 +89,6 @@ namespace Pulumi.AliCloud.Sag
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSmartagFlowLogsResult> Invoke(GetSmartagFlowLogsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSmartagFlowLogsResult>("alicloud:sag/getSmartagFlowLogs:getSmartagFlowLogs", args ?? new GetSmartagFlowLogsInvokeArgs(), options.WithDefaults());

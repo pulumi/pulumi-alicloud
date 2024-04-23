@@ -143,7 +143,6 @@ def get_change_sets(change_set_name: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -153,7 +152,6 @@ def get_change_sets(change_set_name: Optional[str] = None,
         name_regex="the_resource_name")
     pulumi.export("firstRosChangeSetId", example.sets[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str change_set_name: The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.
@@ -206,7 +204,6 @@ def get_change_sets_output(change_set_name: Optional[pulumi.Input[Optional[str]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -216,7 +213,6 @@ def get_change_sets_output(change_set_name: Optional[pulumi.Input[Optional[str]]
         name_regex="the_resource_name")
     pulumi.export("firstRosChangeSetId", example.sets[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str change_set_name: The name of the change set.  The name can be up to 255 characters in length and can contain digits, letters, hyphens (-), and underscores (_). It must start with a digit or letter.

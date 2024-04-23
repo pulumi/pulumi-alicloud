@@ -178,7 +178,6 @@ class Domain(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -188,7 +187,6 @@ class Domain(pulumi.CustomResource):
             name="starmove.com",
             group_id="85ab8713-4a30-4de4-9d20-155ff830f651")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -219,7 +217,6 @@ class Domain(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -229,7 +226,6 @@ class Domain(pulumi.CustomResource):
             name="starmove.com",
             group_id="85ab8713-4a30-4de4-9d20-155ff830f651")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

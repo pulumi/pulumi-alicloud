@@ -136,7 +136,6 @@ def get_access_assignments(access_configuration_id: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -148,7 +147,6 @@ def get_access_assignments(access_configuration_id: Optional[str] = None,
         ])
     pulumi.export("cloudSsoAccessAssignmentId1", ids.assignments[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str access_configuration_id: Access configuration ID.
@@ -202,7 +200,6 @@ def get_access_assignments_output(access_configuration_id: Optional[pulumi.Input
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -214,7 +211,6 @@ def get_access_assignments_output(access_configuration_id: Optional[pulumi.Input
         ])
     pulumi.export("cloudSsoAccessAssignmentId1", ids.assignments[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str access_configuration_id: Access configuration ID.

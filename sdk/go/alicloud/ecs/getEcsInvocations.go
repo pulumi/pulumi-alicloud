@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -46,7 +45,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetEcsInvocations(ctx *pulumi.Context, args *GetEcsInvocationsArgs, opts ...pulumi.InvokeOption) (*GetEcsInvocationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetEcsInvocationsResult
@@ -59,13 +57,13 @@ func GetEcsInvocations(ctx *pulumi.Context, args *GetEcsInvocationsArgs, opts ..
 
 // A collection of arguments for invoking getEcsInvocations.
 type GetEcsInvocationsArgs struct {
-	// The ID of the command.
+	// The execution ID of the command.
 	CommandId *string `pulumi:"commandId"`
 	// The encoding mode of the CommandContent and Output response parameters. Valid values: `PlainText`, `Base64`.
 	ContentEncoding *string `pulumi:"contentEncoding"`
 	// A list of Invocation IDs.
 	Ids []string `pulumi:"ids"`
-	// The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+	// The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances. Valid values: `Running`, `Finished`, `Failed`, `PartialFailed`, `Stopped`.
 	InvokeStatus *string `pulumi:"invokeStatus"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
@@ -102,13 +100,13 @@ func GetEcsInvocationsOutput(ctx *pulumi.Context, args GetEcsInvocationsOutputAr
 
 // A collection of arguments for invoking getEcsInvocations.
 type GetEcsInvocationsOutputArgs struct {
-	// The ID of the command.
+	// The execution ID of the command.
 	CommandId pulumi.StringPtrInput `pulumi:"commandId"`
 	// The encoding mode of the CommandContent and Output response parameters. Valid values: `PlainText`, `Base64`.
 	ContentEncoding pulumi.StringPtrInput `pulumi:"contentEncoding"`
 	// A list of Invocation IDs.
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
-	// The overall execution state of the command. **Note:** We recommend that you ignore this parameter and check the value of the `invocationStatus` response parameter for the overall execution state.
+	// The overall execution state of the command. The value of this parameter depends on the execution states on all the involved instances. Valid values: `Running`, `Finished`, `Failed`, `PartialFailed`, `Stopped`.
 	InvokeStatus pulumi.StringPtrInput `pulumi:"invokeStatus"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`

@@ -22,7 +22,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -124,7 +123,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -136,9 +134,9 @@ import (
 type Etl struct {
 	pulumi.CustomResourceState
 
-	// Delivery target logstore access key id.
+	// Source logstore access key id.
 	AccessKeyId pulumi.StringPtrOutput `pulumi:"accessKeyId"`
-	// Delivery target logstore access key secret.
+	// Source logstore access key secret.
 	AccessKeySecret pulumi.StringPtrOutput `pulumi:"accessKeySecret"`
 	// The etl job create time.
 	CreateTime pulumi.IntOutput `pulumi:"createTime"`
@@ -164,13 +162,13 @@ type Etl struct {
 	KmsEncryptionAccessKeySecretContext pulumi.MapOutput `pulumi:"kmsEncryptionAccessKeySecretContext"`
 	// ETL job last modified time.
 	LastModifiedTime pulumi.IntOutput `pulumi:"lastModifiedTime"`
-	// Delivery target logstore.
+	// The source logstore of the processing job.
 	Logstore pulumi.StringOutput `pulumi:"logstore"`
 	// Advanced parameter configuration of processing operations.
 	Parameters pulumi.StringMapOutput `pulumi:"parameters"`
-	// The project where the target logstore is delivered.
+	// The name of the project where the etl job is located.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+	// Sts role info under source logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
 	RoleArn pulumi.StringPtrOutput `pulumi:"roleArn"`
 	// Job scheduling type, the default value is Resident.
 	Schedule pulumi.StringPtrOutput `pulumi:"schedule"`
@@ -243,9 +241,9 @@ func GetEtl(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Etl resources.
 type etlState struct {
-	// Delivery target logstore access key id.
+	// Source logstore access key id.
 	AccessKeyId *string `pulumi:"accessKeyId"`
-	// Delivery target logstore access key secret.
+	// Source logstore access key secret.
 	AccessKeySecret *string `pulumi:"accessKeySecret"`
 	// The etl job create time.
 	CreateTime *int `pulumi:"createTime"`
@@ -271,13 +269,13 @@ type etlState struct {
 	KmsEncryptionAccessKeySecretContext map[string]interface{} `pulumi:"kmsEncryptionAccessKeySecretContext"`
 	// ETL job last modified time.
 	LastModifiedTime *int `pulumi:"lastModifiedTime"`
-	// Delivery target logstore.
+	// The source logstore of the processing job.
 	Logstore *string `pulumi:"logstore"`
 	// Advanced parameter configuration of processing operations.
 	Parameters map[string]string `pulumi:"parameters"`
-	// The project where the target logstore is delivered.
+	// The name of the project where the etl job is located.
 	Project *string `pulumi:"project"`
-	// Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+	// Sts role info under source logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
 	RoleArn *string `pulumi:"roleArn"`
 	// Job scheduling type, the default value is Resident.
 	Schedule *string `pulumi:"schedule"`
@@ -292,9 +290,9 @@ type etlState struct {
 }
 
 type EtlState struct {
-	// Delivery target logstore access key id.
+	// Source logstore access key id.
 	AccessKeyId pulumi.StringPtrInput
-	// Delivery target logstore access key secret.
+	// Source logstore access key secret.
 	AccessKeySecret pulumi.StringPtrInput
 	// The etl job create time.
 	CreateTime pulumi.IntPtrInput
@@ -320,13 +318,13 @@ type EtlState struct {
 	KmsEncryptionAccessKeySecretContext pulumi.MapInput
 	// ETL job last modified time.
 	LastModifiedTime pulumi.IntPtrInput
-	// Delivery target logstore.
+	// The source logstore of the processing job.
 	Logstore pulumi.StringPtrInput
 	// Advanced parameter configuration of processing operations.
 	Parameters pulumi.StringMapInput
-	// The project where the target logstore is delivered.
+	// The name of the project where the etl job is located.
 	Project pulumi.StringPtrInput
-	// Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+	// Sts role info under source logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
 	RoleArn pulumi.StringPtrInput
 	// Job scheduling type, the default value is Resident.
 	Schedule pulumi.StringPtrInput
@@ -345,9 +343,9 @@ func (EtlState) ElementType() reflect.Type {
 }
 
 type etlArgs struct {
-	// Delivery target logstore access key id.
+	// Source logstore access key id.
 	AccessKeyId *string `pulumi:"accessKeyId"`
-	// Delivery target logstore access key secret.
+	// Source logstore access key secret.
 	AccessKeySecret *string `pulumi:"accessKeySecret"`
 	// The etl job create time.
 	CreateTime *int `pulumi:"createTime"`
@@ -373,13 +371,13 @@ type etlArgs struct {
 	KmsEncryptionAccessKeySecretContext map[string]interface{} `pulumi:"kmsEncryptionAccessKeySecretContext"`
 	// ETL job last modified time.
 	LastModifiedTime *int `pulumi:"lastModifiedTime"`
-	// Delivery target logstore.
+	// The source logstore of the processing job.
 	Logstore string `pulumi:"logstore"`
 	// Advanced parameter configuration of processing operations.
 	Parameters map[string]string `pulumi:"parameters"`
-	// The project where the target logstore is delivered.
+	// The name of the project where the etl job is located.
 	Project string `pulumi:"project"`
-	// Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+	// Sts role info under source logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
 	RoleArn *string `pulumi:"roleArn"`
 	// Job scheduling type, the default value is Resident.
 	Schedule *string `pulumi:"schedule"`
@@ -395,9 +393,9 @@ type etlArgs struct {
 
 // The set of arguments for constructing a Etl resource.
 type EtlArgs struct {
-	// Delivery target logstore access key id.
+	// Source logstore access key id.
 	AccessKeyId pulumi.StringPtrInput
-	// Delivery target logstore access key secret.
+	// Source logstore access key secret.
 	AccessKeySecret pulumi.StringPtrInput
 	// The etl job create time.
 	CreateTime pulumi.IntPtrInput
@@ -423,13 +421,13 @@ type EtlArgs struct {
 	KmsEncryptionAccessKeySecretContext pulumi.MapInput
 	// ETL job last modified time.
 	LastModifiedTime pulumi.IntPtrInput
-	// Delivery target logstore.
+	// The source logstore of the processing job.
 	Logstore pulumi.StringInput
 	// Advanced parameter configuration of processing operations.
 	Parameters pulumi.StringMapInput
-	// The project where the target logstore is delivered.
+	// The name of the project where the etl job is located.
 	Project pulumi.StringInput
-	// Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+	// Sts role info under source logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
 	RoleArn pulumi.StringPtrInput
 	// Job scheduling type, the default value is Resident.
 	Schedule pulumi.StringPtrInput
@@ -530,12 +528,12 @@ func (o EtlOutput) ToEtlOutputWithContext(ctx context.Context) EtlOutput {
 	return o
 }
 
-// Delivery target logstore access key id.
+// Source logstore access key id.
 func (o EtlOutput) AccessKeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Etl) pulumi.StringPtrOutput { return v.AccessKeyId }).(pulumi.StringPtrOutput)
 }
 
-// Delivery target logstore access key secret.
+// Source logstore access key secret.
 func (o EtlOutput) AccessKeySecret() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Etl) pulumi.StringPtrOutput { return v.AccessKeySecret }).(pulumi.StringPtrOutput)
 }
@@ -600,7 +598,7 @@ func (o EtlOutput) LastModifiedTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *Etl) pulumi.IntOutput { return v.LastModifiedTime }).(pulumi.IntOutput)
 }
 
-// Delivery target logstore.
+// The source logstore of the processing job.
 func (o EtlOutput) Logstore() pulumi.StringOutput {
 	return o.ApplyT(func(v *Etl) pulumi.StringOutput { return v.Logstore }).(pulumi.StringOutput)
 }
@@ -610,12 +608,12 @@ func (o EtlOutput) Parameters() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Etl) pulumi.StringMapOutput { return v.Parameters }).(pulumi.StringMapOutput)
 }
 
-// The project where the target logstore is delivered.
+// The name of the project where the etl job is located.
 func (o EtlOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Etl) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// Sts role info under delivery target logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
+// Sts role info under source logstore. `roleArn` and `(access_key_id, access_key_secret)` fill in at most one. If you do not fill in both, then you must fill in `(kms_encrypted_access_key_id, kms_encrypted_access_key_secret, kms_encryption_access_key_id_context, kms_encryption_access_key_secret_context)` to use KMS to get the key pair.
 func (o EtlOutput) RoleArn() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Etl) pulumi.StringPtrOutput { return v.RoleArn }).(pulumi.StringPtrOutput)
 }

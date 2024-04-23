@@ -15,32 +15,16 @@ public final class DbInstancePlanPlanConfigPauseArgs extends com.pulumi.resource
 
     public static final DbInstancePlanPlanConfigPauseArgs Empty = new DbInstancePlanPlanConfigPauseArgs();
 
-    /**
-     * The executed time of the Plan.
-     * 
-     */
     @Import(name="executeTime")
     private @Nullable Output<String> executeTime;
 
-    /**
-     * @return The executed time of the Plan.
-     * 
-     */
     public Optional<Output<String>> executeTime() {
         return Optional.ofNullable(this.executeTime);
     }
 
-    /**
-     * The Cron Time of the plan.
-     * 
-     */
     @Import(name="planCronTime")
     private @Nullable Output<String> planCronTime;
 
-    /**
-     * @return The Cron Time of the plan.
-     * 
-     */
     public Optional<Output<String>> planCronTime() {
         return Optional.ofNullable(this.planCronTime);
     }
@@ -70,44 +54,20 @@ public final class DbInstancePlanPlanConfigPauseArgs extends com.pulumi.resource
             $ = new DbInstancePlanPlanConfigPauseArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param executeTime The executed time of the Plan.
-         * 
-         * @return builder
-         * 
-         */
         public Builder executeTime(@Nullable Output<String> executeTime) {
             $.executeTime = executeTime;
             return this;
         }
 
-        /**
-         * @param executeTime The executed time of the Plan.
-         * 
-         * @return builder
-         * 
-         */
         public Builder executeTime(String executeTime) {
             return executeTime(Output.of(executeTime));
         }
 
-        /**
-         * @param planCronTime The Cron Time of the plan.
-         * 
-         * @return builder
-         * 
-         */
         public Builder planCronTime(@Nullable Output<String> planCronTime) {
             $.planCronTime = planCronTime;
             return this;
         }
 
-        /**
-         * @param planCronTime The Cron Time of the plan.
-         * 
-         * @return builder
-         * 
-         */
         public Builder planCronTime(String planCronTime) {
             return planCronTime(Output.of(planCronTime));
         }

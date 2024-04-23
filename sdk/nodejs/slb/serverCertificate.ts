@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * * using server_certificate/private content as string example
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -55,7 +54,6 @@ import * as utilities from "../utilities";
  * -----END RSA PRIVATE KEY-----`,
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * * using server_certificate/private file example
  *

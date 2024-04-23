@@ -71,10 +71,6 @@ public final class GetServiceCertificatesCertificate {
      * 
      */
     private String issuer;
-    /**
-     * @return The cert&#39;s Keye.
-     * 
-     */
     private String key;
     /**
      * @deprecated
@@ -189,10 +185,6 @@ public final class GetServiceCertificatesCertificate {
     public String issuer() {
         return this.issuer;
     }
-    /**
-     * @return The cert&#39;s Keye.
-     * 
-     */
     public String key() {
         return this.key;
     }

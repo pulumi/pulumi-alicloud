@@ -13,13 +13,7 @@ namespace Pulumi.AliCloud.Alb.Outputs
     [OutputType]
     public sealed class GetListenersListenerQuicConfigResult
     {
-        /// <summary>
-        /// The ID of the QUIC listener to be associated. If QuicUpgradeEnabled is set to true, this parameter is required. Only HTTPS listeners support this parameter.
-        /// </summary>
         public readonly string QuicListenerId;
-        /// <summary>
-        /// Indicates whether quic upgrade is enabled. Valid values: true and false. Default value: false.
-        /// </summary>
         public readonly bool QuicUpgradeEnabled;
 
         [OutputConstructor]

@@ -15,7 +15,6 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstRosStackId = example.then(example => example.stacks?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getStacks(args?: GetStacksArgs, opts?: pulumi.InvokeOptions): Promise<GetStacksResult> {
     args = args || {};
@@ -116,7 +114,6 @@ export interface GetStacksResult {
  *
  * Basic Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -127,7 +124,6 @@ export interface GetStacksResult {
  * });
  * export const firstRosStackId = example.then(example => example.stacks?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getStacksOutput(args?: GetStacksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStacksResult> {
     return pulumi.output(args).apply((a: any) => getStacks(a, opts))

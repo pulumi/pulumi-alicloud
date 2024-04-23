@@ -10,65 +10,25 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDirectoriesDirectorySamlIdentityProviderConfiguration {
-    /**
-     * @return Saml identifies the creation time of the provider configuration.
-     * 
-     */
     private String createTime;
-    /**
-     * @return Base64 encoded IdP metadata document.
-     * 
-     */
     private String encodedMetadataDocument;
-    /**
-     * @return SAML IdPEntityID.
-     * 
-     */
     private String entityId;
-    /**
-     * @return SAML IdP http-post Binding address.
-     * 
-     */
     private String loginUrl;
-    /**
-     * @return SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
-     * 
-     */
     private String ssoStatus;
 
     private GetDirectoriesDirectorySamlIdentityProviderConfiguration() {}
-    /**
-     * @return Saml identifies the creation time of the provider configuration.
-     * 
-     */
     public String createTime() {
         return this.createTime;
     }
-    /**
-     * @return Base64 encoded IdP metadata document.
-     * 
-     */
     public String encodedMetadataDocument() {
         return this.encodedMetadataDocument;
     }
-    /**
-     * @return SAML IdPEntityID.
-     * 
-     */
     public String entityId() {
         return this.entityId;
     }
-    /**
-     * @return SAML IdP http-post Binding address.
-     * 
-     */
     public String loginUrl() {
         return this.loginUrl;
     }
-    /**
-     * @return SAML SSO login enabled status. Valid values: `Enabled` or `Disabled`. Default to `Disabled`.
-     * 
-     */
     public String ssoStatus() {
         return this.ssoStatus;
     }

@@ -1017,13 +1017,6 @@ class GetAddressPoolsPoolAddressResult(dict):
                  lba_weight: int,
                  mode: str,
                  remark: str):
-        """
-        :param str address: The address that you want to add to the address pool.
-        :param str attribute_info: The source region of the address.
-        :param int lba_weight: The weight of the address.
-        :param str mode: The type of the address.
-        :param str remark: The description of the address.
-        """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "attribute_info", attribute_info)
         pulumi.set(__self__, "lba_weight", lba_weight)
@@ -1033,41 +1026,26 @@ class GetAddressPoolsPoolAddressResult(dict):
     @property
     @pulumi.getter
     def address(self) -> str:
-        """
-        The address that you want to add to the address pool.
-        """
         return pulumi.get(self, "address")
 
     @property
     @pulumi.getter(name="attributeInfo")
     def attribute_info(self) -> str:
-        """
-        The source region of the address.
-        """
         return pulumi.get(self, "attribute_info")
 
     @property
     @pulumi.getter(name="lbaWeight")
     def lba_weight(self) -> int:
-        """
-        The weight of the address.
-        """
         return pulumi.get(self, "lba_weight")
 
     @property
     @pulumi.getter
     def mode(self) -> str:
-        """
-        The type of the address.
-        """
         return pulumi.get(self, "mode")
 
     @property
     @pulumi.getter
     def remark(self) -> str:
-        """
-        The description of the address.
-        """
         return pulumi.get(self, "remark")
 
 
@@ -1737,27 +1715,17 @@ class GetCustomLinesLineIpSegmentListResult(dict):
     def __init__(__self__, *,
                  end_ip: str,
                  start_ip: str):
-        """
-        :param str end_ip: The end IP address of the CIDR block.
-        :param str start_ip: The start IP address of the CIDR block.
-        """
         pulumi.set(__self__, "end_ip", end_ip)
         pulumi.set(__self__, "start_ip", start_ip)
 
     @property
     @pulumi.getter(name="endIp")
     def end_ip(self) -> str:
-        """
-        The end IP address of the CIDR block.
-        """
         return pulumi.get(self, "end_ip")
 
     @property
     @pulumi.getter(name="startIp")
     def start_ip(self) -> str:
-        """
-        The start IP address of the CIDR block.
-        """
         return pulumi.get(self, "start_ip")
 
 
@@ -2362,12 +2330,6 @@ class GetGtmInstancesInstanceAlertConfigResult(dict):
                  email_notice: bool,
                  notice_type: str,
                  sms_notice: bool):
-        """
-        :param bool dingtalk_notice: Whether to configure DingTalk notifications.
-        :param bool email_notice: Whether to configure mail notification.
-        :param str notice_type: The Alarm Event Type.
-        :param bool sms_notice: Whether to configure SMS notification.
-        """
         pulumi.set(__self__, "dingtalk_notice", dingtalk_notice)
         pulumi.set(__self__, "email_notice", email_notice)
         pulumi.set(__self__, "notice_type", notice_type)
@@ -2376,33 +2338,21 @@ class GetGtmInstancesInstanceAlertConfigResult(dict):
     @property
     @pulumi.getter(name="dingtalkNotice")
     def dingtalk_notice(self) -> bool:
-        """
-        Whether to configure DingTalk notifications.
-        """
         return pulumi.get(self, "dingtalk_notice")
 
     @property
     @pulumi.getter(name="emailNotice")
     def email_notice(self) -> bool:
-        """
-        Whether to configure mail notification.
-        """
         return pulumi.get(self, "email_notice")
 
     @property
     @pulumi.getter(name="noticeType")
     def notice_type(self) -> str:
-        """
-        The Alarm Event Type.
-        """
         return pulumi.get(self, "notice_type")
 
     @property
     @pulumi.getter(name="smsNotice")
     def sms_notice(self) -> bool:
-        """
-        Whether to configure SMS notification.
-        """
         return pulumi.get(self, "sms_notice")
 
 

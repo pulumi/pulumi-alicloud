@@ -13,21 +13,9 @@ namespace Pulumi.AliCloud.Dns.Outputs
     [OutputType]
     public sealed class GetGtmInstancesInstanceAlertConfigResult
     {
-        /// <summary>
-        /// Whether to configure DingTalk notifications.
-        /// </summary>
         public readonly bool DingtalkNotice;
-        /// <summary>
-        /// Whether to configure mail notification.
-        /// </summary>
         public readonly bool EmailNotice;
-        /// <summary>
-        /// The Alarm Event Type.
-        /// </summary>
         public readonly string NoticeType;
-        /// <summary>
-        /// Whether to configure SMS notification.
-        /// </summary>
         public readonly bool SmsNotice;
 
         [OutputConstructor]

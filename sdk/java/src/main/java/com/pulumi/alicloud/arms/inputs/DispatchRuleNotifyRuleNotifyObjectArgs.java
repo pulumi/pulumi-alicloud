@@ -14,47 +14,23 @@ public final class DispatchRuleNotifyRuleNotifyObjectArgs extends com.pulumi.res
 
     public static final DispatchRuleNotifyRuleNotifyObjectArgs Empty = new DispatchRuleNotifyRuleNotifyObjectArgs();
 
-    /**
-     * The name of the contact or contact group.
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return The name of the contact or contact group.
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
 
-    /**
-     * The ID of the contact or contact group.
-     * 
-     */
     @Import(name="notifyObjectId", required=true)
     private Output<String> notifyObjectId;
 
-    /**
-     * @return The ID of the contact or contact group.
-     * 
-     */
     public Output<String> notifyObjectId() {
         return this.notifyObjectId;
     }
 
-    /**
-     * The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
-     * 
-     */
     @Import(name="notifyType", required=true)
     private Output<String> notifyType;
 
-    /**
-     * @return The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
-     * 
-     */
     public Output<String> notifyType() {
         return this.notifyType;
     }
@@ -85,65 +61,29 @@ public final class DispatchRuleNotifyRuleNotifyObjectArgs extends com.pulumi.res
             $ = new DispatchRuleNotifyRuleNotifyObjectArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param name The name of the contact or contact group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The name of the contact or contact group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
-        /**
-         * @param notifyObjectId The ID of the contact or contact group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder notifyObjectId(Output<String> notifyObjectId) {
             $.notifyObjectId = notifyObjectId;
             return this;
         }
 
-        /**
-         * @param notifyObjectId The ID of the contact or contact group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder notifyObjectId(String notifyObjectId) {
             return notifyObjectId(Output.of(notifyObjectId));
         }
 
-        /**
-         * @param notifyType The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder notifyType(Output<String> notifyType) {
             $.notifyType = notifyType;
             return this;
         }
 
-        /**
-         * @param notifyType The type of the alert contact. Valid values: ARMS_CONTACT: contact. ARMS_CONTACT_GROUP: contact group.
-         * 
-         * @return builder
-         * 
-         */
         public Builder notifyType(String notifyType) {
             return notifyType(Output.of(notifyType));
         }

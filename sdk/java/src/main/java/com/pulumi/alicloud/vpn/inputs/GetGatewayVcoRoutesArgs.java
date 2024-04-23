@@ -78,14 +78,14 @@ public final class GetGatewayVcoRoutesArgs extends com.pulumi.resources.InvokeAr
     }
 
     /**
-     * The status of the vpn route entry.
+     * The status of the vpn route entry. Valid values: `normal`, `published`.
      * 
      */
     @Import(name="status")
     private @Nullable Output<String> status;
 
     /**
-     * @return The status of the vpn route entry.
+     * @return The status of the vpn route entry. Valid values: `normal`, `published`.
      * 
      */
     public Optional<Output<String>> status() {
@@ -229,7 +229,7 @@ public final class GetGatewayVcoRoutesArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param status The status of the vpn route entry.
+         * @param status The status of the vpn route entry. Valid values: `normal`, `published`.
          * 
          * @return builder
          * 
@@ -240,7 +240,7 @@ public final class GetGatewayVcoRoutesArgs extends com.pulumi.resources.InvokeAr
         }
 
         /**
-         * @param status The status of the vpn route entry.
+         * @param status The status of the vpn route entry. Valid values: `normal`, `published`.
          * 
          * @return builder
          * 

@@ -123,7 +123,6 @@ def get_waf_policies(ids: Optional[Sequence[str]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -131,13 +130,12 @@ def get_waf_policies(ids: Optional[Sequence[str]] = None,
     ids = alicloud.dcdn.get_waf_policies()
     pulumi.export("dcdnWafPolicyId1", ids.policies[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Waf Policy IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str query_args: The query conditions. The value is a string in the JSON format. Format: `{"PolicyIds":"The ID of the proteuleIds":"Thection policy","R range of protection rule IDs","PolicyNameLike":"The name of the protection policy","DomainNames":"The protected domain names","PolicyType":"default","DefenseScenes":"waf_group","PolicyStatus":"on","OrderBy":"GmtModified","Desc":"false"}`.
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `on`, `off`.
     """
     __args__ = dict()
     __args__['ids'] = ids
@@ -175,7 +173,6 @@ def get_waf_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -183,12 +180,11 @@ def get_waf_policies_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]]
     ids = alicloud.dcdn.get_waf_policies()
     pulumi.export("dcdnWafPolicyId1", ids.policies[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Waf Policy IDs.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     :param str query_args: The query conditions. The value is a string in the JSON format. Format: `{"PolicyIds":"The ID of the proteuleIds":"Thection policy","R range of protection rule IDs","PolicyNameLike":"The name of the protection policy","DomainNames":"The protected domain names","PolicyType":"default","DefenseScenes":"waf_group","PolicyStatus":"on","OrderBy":"GmtModified","Desc":"false"}`.
-    :param str status: The status of the resource.
+    :param str status: The status of the resource. Valid values: `on`, `off`.
     """
     ...

@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -50,7 +49,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetLaunchOptions(ctx *pulumi.Context, args *GetLaunchOptionsArgs, opts ...pulumi.InvokeOption) (*GetLaunchOptionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetLaunchOptionsResult

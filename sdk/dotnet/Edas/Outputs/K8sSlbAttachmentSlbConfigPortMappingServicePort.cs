@@ -13,17 +13,8 @@ namespace Pulumi.AliCloud.Edas.Outputs
     [OutputType]
     public sealed class K8sSlbAttachmentSlbConfigPortMappingServicePort
     {
-        /// <summary>
-        /// The port of k8s service, values should be within range [1, 65535].
-        /// </summary>
         public readonly int Port;
-        /// <summary>
-        /// The protocol of k8s service, values can be 'TCP' or 'UDP'.
-        /// </summary>
         public readonly string Protocol;
-        /// <summary>
-        /// The port of k8s pod, values should be within range [1, 65535].
-        /// </summary>
         public readonly int TargetPort;
 
         [OutputConstructor]

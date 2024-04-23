@@ -244,7 +244,6 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -295,7 +294,6 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
             account_name="example",
             account_password="Example_123")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -335,7 +333,6 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -386,7 +383,6 @@ class ShardingNetworkPrivateAddress(pulumi.CustomResource):
             account_name="example",
             account_password="Example_123")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

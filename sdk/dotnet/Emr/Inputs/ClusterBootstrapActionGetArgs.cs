@@ -12,27 +12,15 @@ namespace Pulumi.AliCloud.Emr.Inputs
 
     public sealed class ClusterBootstrapActionGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// bootstrap action args, e.g. "--a=b".
-        /// </summary>
         [Input("arg")]
         public Input<string>? Arg { get; set; }
 
-        /// <summary>
-        /// bootstrap action execution fail strategy, ’FAILED_BLOCKED’ or ‘FAILED_CONTINUE’ . Default value: "FAILED_BLOCKED
-        /// </summary>
         [Input("executionFailStrategy")]
         public Input<string>? ExecutionFailStrategy { get; set; }
 
-        /// <summary>
-        /// bootstrap action execution moment, ’BEFORE_INSTALL’ or ‘AFTER_STARTED’ . Default value: "BEFORE_INSTALL".
-        /// </summary>
         [Input("executionMoment")]
         public Input<string>? ExecutionMoment { get; set; }
 
-        /// <summary>
-        /// bootstrap action execution target, you can specify the host group name, e.g. "core_group". If this is not specified, the bootstrap action execution target is whole cluster.
-        /// </summary>
         [Input("executionTarget")]
         public Input<string>? ExecutionTarget { get; set; }
 
@@ -42,9 +30,6 @@ namespace Pulumi.AliCloud.Emr.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
-        /// <summary>
-        /// bootstrap action path, e.g. "oss://bucket/path".
-        /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 

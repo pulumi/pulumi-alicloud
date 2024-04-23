@@ -11,7 +11,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -23,7 +22,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstFcTriggerName = fcTriggersDs.then(fcTriggersDs => fcTriggersDs.triggers?.[0]?.name);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTriggers(args: GetTriggersArgs, opts?: pulumi.InvokeOptions): Promise<GetTriggersResult> {
 
@@ -93,7 +91,6 @@ export interface GetTriggersResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -105,7 +102,6 @@ export interface GetTriggersResult {
  * });
  * export const firstFcTriggerName = fcTriggersDs.then(fcTriggersDs => fcTriggersDs.triggers?.[0]?.name);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getTriggersOutput(args: GetTriggersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTriggersResult> {
     return pulumi.output(args).apply((a: any) => getTriggers(a, opts))

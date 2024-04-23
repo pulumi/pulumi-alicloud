@@ -185,7 +185,6 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -270,7 +269,6 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
             health_check_uri="/console",
             established_timeout=600)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Block servers
 
@@ -323,7 +321,6 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -408,7 +405,6 @@ class MasterSlaveServerGroup(pulumi.CustomResource):
             health_check_uri="/console",
             established_timeout=600)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Block servers
 

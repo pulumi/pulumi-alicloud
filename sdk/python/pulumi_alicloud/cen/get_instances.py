@@ -134,7 +134,6 @@ def get_instances(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -143,7 +142,6 @@ def get_instances(ids: Optional[Sequence[str]] = None,
         name_regex="^foo")
     pulumi.export("firstCenInstanceId", cen_instances_ds.instances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of CEN instances IDs.
@@ -184,7 +182,6 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -193,7 +190,6 @@ def get_instances_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = 
         name_regex="^foo")
     pulumi.export("firstCenInstanceId", cen_instances_ds.instances[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of CEN instances IDs.

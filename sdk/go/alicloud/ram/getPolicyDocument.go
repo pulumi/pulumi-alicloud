@@ -19,7 +19,6 @@ import (
 //
 // ### Basic Example
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -63,13 +62,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // `data.alicloud_ram_policy_document.basic_example.document` will evaluate to:
 //
 // ### Example Multiple Condition Keys and Values
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -153,13 +150,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // `data.alicloud_ram_policy_document.multiple_condition.document` will evaluate to:
 //
 // ### Example Assume-Role Policy with RAM Principal
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -206,13 +201,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // `data.alicloud_ram_policy_document.ram_example.document` will evaluate to:
 //
 // ### Example Assume-Role Policy with Service Principal
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -259,13 +252,11 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // `data.alicloud_ram_policy_document.service_example.document` will evaluate to:
 //
 // ### Example Assume-Role Policy with Federated Principal
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -321,7 +312,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 //
 // `data.alicloud_ram_policy_document.federated_example.document` will evaluate to:
 func GetPolicyDocument(ctx *pulumi.Context, args *GetPolicyDocumentArgs, opts ...pulumi.InvokeOption) (*GetPolicyDocumentResult, error) {

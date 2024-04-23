@@ -218,7 +218,6 @@ def get_subnets(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -229,7 +228,6 @@ def get_subnets(ids: Optional[Sequence[str]] = None,
         zone_id=zone_id)
     pulumi.export("alicloudEfloSubnetExampleId", default.subnets[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name_regex: A regex string to filter results by Group Metric Rule name.
@@ -300,7 +298,6 @@ def get_subnets_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -311,7 +308,6 @@ def get_subnets_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]] = No
         zone_id=zone_id)
     pulumi.export("alicloudEfloSubnetExampleId", default.subnets[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str name_regex: A regex string to filter results by Group Metric Rule name.

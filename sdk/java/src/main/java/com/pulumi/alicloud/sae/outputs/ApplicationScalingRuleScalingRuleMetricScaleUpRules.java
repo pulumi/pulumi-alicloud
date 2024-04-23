@@ -12,41 +12,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ApplicationScalingRuleScalingRuleMetricScaleUpRules {
-    /**
-     * @return Whether shrinkage is prohibited.
-     * 
-     */
     private @Nullable Boolean disabled;
-    /**
-     * @return Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
-     * 
-     */
     private @Nullable Integer stabilizationWindowSeconds;
-    /**
-     * @return Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
-     * 
-     */
     private @Nullable Integer step;
 
     private ApplicationScalingRuleScalingRuleMetricScaleUpRules() {}
-    /**
-     * @return Whether shrinkage is prohibited.
-     * 
-     */
     public Optional<Boolean> disabled() {
         return Optional.ofNullable(this.disabled);
     }
-    /**
-     * @return Cooling time for expansion or contraction. Valid values: `0` to `3600`. Unit: seconds. The default is `0` seconds.
-     * 
-     */
     public Optional<Integer> stabilizationWindowSeconds() {
         return Optional.ofNullable(this.stabilizationWindowSeconds);
     }
-    /**
-     * @return Elastic expansion or contraction step size. the maximum number of instances to be scaled in per unit time.
-     * 
-     */
     public Optional<Integer> step() {
         return Optional.ofNullable(this.step);
     }

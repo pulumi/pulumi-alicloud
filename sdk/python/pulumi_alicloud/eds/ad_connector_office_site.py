@@ -682,7 +682,6 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -710,7 +709,6 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
             sub_domain_dns_addresses=["127.0.0.3"],
             sub_domain_name="child.example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -759,7 +757,6 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -787,7 +784,6 @@ class AdConnectorOfficeSite(pulumi.CustomResource):
             sub_domain_dns_addresses=["127.0.0.3"],
             sub_domain_name="child.example.com")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

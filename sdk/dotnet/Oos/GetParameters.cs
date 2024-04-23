@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Oos
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -73,7 +72,6 @@ namespace Pulumi.AliCloud.Oos
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetParametersResult> InvokeAsync(GetParametersArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetParametersResult>("alicloud:oos/getParameters:getParameters", args ?? new GetParametersArgs(), options.WithDefaults());
@@ -87,7 +85,6 @@ namespace Pulumi.AliCloud.Oos
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -140,7 +137,6 @@ namespace Pulumi.AliCloud.Oos
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetParametersResult> Invoke(GetParametersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetParametersResult>("alicloud:oos/getParameters:getParameters", args ?? new GetParametersInvokeArgs(), options.WithDefaults());

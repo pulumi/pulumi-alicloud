@@ -11,29 +11,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class PrefixListEntry {
-    /**
-     * @return The CIDR address block of the prefix list.
-     * 
-     */
     private @Nullable String cidr;
-    /**
-     * @return The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
-     * 
-     */
     private @Nullable String description;
 
     private PrefixListEntry() {}
-    /**
-     * @return The CIDR address block of the prefix list.
-     * 
-     */
     public Optional<String> cidr() {
         return Optional.ofNullable(this.cidr);
     }
-    /**
-     * @return The description of the cidr entry. It must be 2 to 256 characters in length and must start with a letter or Chinese, but cannot start with `http://` or `https://`.
-     * 
-     */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
     }

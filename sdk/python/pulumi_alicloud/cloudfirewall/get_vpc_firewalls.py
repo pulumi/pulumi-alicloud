@@ -198,7 +198,6 @@ def get_vpc_firewalls(ids: Optional[Sequence[str]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -209,7 +208,6 @@ def get_vpc_firewalls(ids: Optional[Sequence[str]] = None,
         vpc_firewall_name="tf-test")
     pulumi.export("alicloudCfwVpcFirewallExampleId", default.firewalls[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Vpc Firewall IDs.
@@ -272,7 +270,6 @@ def get_vpc_firewalls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -283,7 +280,6 @@ def get_vpc_firewalls_output(ids: Optional[pulumi.Input[Optional[Sequence[str]]]
         vpc_firewall_name="tf-test")
     pulumi.export("alicloudCfwVpcFirewallExampleId", default.firewalls[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param Sequence[str] ids: A list of Vpc Firewall IDs.

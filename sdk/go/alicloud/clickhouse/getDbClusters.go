@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -57,7 +56,6 @@ import (
 // })
 // }
 // ```
-// <!--End PulumiCodeChooser -->
 func GetDbClusters(ctx *pulumi.Context, args *GetDbClustersArgs, opts ...pulumi.InvokeOption) (*GetDbClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDbClustersResult
@@ -78,7 +76,7 @@ type GetDbClustersArgs struct {
 	Ids []string `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	// The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
 	Status *string `pulumi:"status"`
 }
 
@@ -117,7 +115,7 @@ type GetDbClustersOutputArgs struct {
 	Ids pulumi.StringArrayInput `pulumi:"ids"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	// The status of the DBCluster. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`.
+	// The status of the resource. Valid values: `Running`,`Creating`,`Deleting`,`Restarting`,`Preparing`,.
 	Status pulumi.StringPtrInput `pulumi:"status"`
 }
 

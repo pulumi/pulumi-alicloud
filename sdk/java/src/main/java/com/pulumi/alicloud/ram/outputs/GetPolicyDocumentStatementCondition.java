@@ -11,41 +11,17 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPolicyDocumentStatementCondition {
-    /**
-     * @return The operator of the condition.
-     * 
-     */
     private String operator;
-    /**
-     * @return The values of the condition.
-     * 
-     */
     private List<String> values;
-    /**
-     * @return The variable of the condition.
-     * 
-     */
     private String variable;
 
     private GetPolicyDocumentStatementCondition() {}
-    /**
-     * @return The operator of the condition.
-     * 
-     */
     public String operator() {
         return this.operator;
     }
-    /**
-     * @return The values of the condition.
-     * 
-     */
     public List<String> values() {
         return this.values;
     }
-    /**
-     * @return The variable of the condition.
-     * 
-     */
     public String variable() {
         return this.variable;
     }

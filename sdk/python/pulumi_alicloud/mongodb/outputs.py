@@ -207,11 +207,6 @@ class ServerlessInstanceSecurityIpGroup(dict):
                  security_ip_group_attribute: Optional[str] = None,
                  security_ip_group_name: Optional[str] = None,
                  security_ip_list: Optional[str] = None):
-        """
-        :param str security_ip_group_attribute: The attribute of the IP whitelist. This parameter is empty by default.
-        :param str security_ip_group_name: The name of the IP whitelist.
-        :param str security_ip_list: The IP addresses in the whitelist.
-        """
         if security_ip_group_attribute is not None:
             pulumi.set(__self__, "security_ip_group_attribute", security_ip_group_attribute)
         if security_ip_group_name is not None:
@@ -222,25 +217,16 @@ class ServerlessInstanceSecurityIpGroup(dict):
     @property
     @pulumi.getter(name="securityIpGroupAttribute")
     def security_ip_group_attribute(self) -> Optional[str]:
-        """
-        The attribute of the IP whitelist. This parameter is empty by default.
-        """
         return pulumi.get(self, "security_ip_group_attribute")
 
     @property
     @pulumi.getter(name="securityIpGroupName")
     def security_ip_group_name(self) -> Optional[str]:
-        """
-        The name of the IP whitelist.
-        """
         return pulumi.get(self, "security_ip_group_name")
 
     @property
     @pulumi.getter(name="securityIpList")
     def security_ip_list(self) -> Optional[str]:
-        """
-        The IP addresses in the whitelist.
-        """
         return pulumi.get(self, "security_ip_list")
 
 
@@ -288,12 +274,10 @@ class ShardingInstanceConfigServerList(dict):
         :param str connect_string: The connection address of the Config Server node.
         :param int max_connections: The max connections of the Config Server node.
         :param int max_iops: The maximum IOPS of the Config Server node.
-        :param str node_class: The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        :param str node_class: The node class of the Config Server node.
         :param str node_description: The description of the Config Server node.
         :param str node_id: The ID of the Config Server node.
-        :param int node_storage: The storage space of the shard node.
-               - Custom storage space; value range: [10, 1,000]
-               - 10-GB increments. Unit: GB.
+        :param int node_storage: The node storage of the Config Server node.
         :param int port: The connection port of the Config Server node.
         """
         if connect_string is not None:
@@ -341,7 +325,7 @@ class ShardingInstanceConfigServerList(dict):
     @pulumi.getter(name="nodeClass")
     def node_class(self) -> Optional[str]:
         """
-        The instance type of the mongo node. see [Instance specifications](https://www.alibabacloud.com/help/doc-detail/57141.htm).
+        The node class of the Config Server node.
         """
         return pulumi.get(self, "node_class")
 
@@ -365,9 +349,7 @@ class ShardingInstanceConfigServerList(dict):
     @pulumi.getter(name="nodeStorage")
     def node_storage(self) -> Optional[int]:
         """
-        The storage space of the shard node.
-        - Custom storage space; value range: [10, 1,000]
-        - 10-GB increments. Unit: GB.
+        The node storage of the Config Server node.
         """
         return pulumi.get(self, "node_storage")
 
@@ -1592,11 +1574,6 @@ class GetServerlessInstancesInstanceSecurityIpGroupResult(dict):
                  security_ip_group_attribute: str,
                  security_ip_group_name: str,
                  security_ip_list: str):
-        """
-        :param str security_ip_group_attribute: The attribute of the IP whitelist. This parameter is empty by default.
-        :param str security_ip_group_name: The name of the IP whitelist.
-        :param str security_ip_list: The IP addresses in the whitelist.
-        """
         pulumi.set(__self__, "security_ip_group_attribute", security_ip_group_attribute)
         pulumi.set(__self__, "security_ip_group_name", security_ip_group_name)
         pulumi.set(__self__, "security_ip_list", security_ip_list)
@@ -1604,25 +1581,16 @@ class GetServerlessInstancesInstanceSecurityIpGroupResult(dict):
     @property
     @pulumi.getter(name="securityIpGroupAttribute")
     def security_ip_group_attribute(self) -> str:
-        """
-        The attribute of the IP whitelist. This parameter is empty by default.
-        """
         return pulumi.get(self, "security_ip_group_attribute")
 
     @property
     @pulumi.getter(name="securityIpGroupName")
     def security_ip_group_name(self) -> str:
-        """
-        The name of the IP whitelist.
-        """
         return pulumi.get(self, "security_ip_group_name")
 
     @property
     @pulumi.getter(name="securityIpList")
     def security_ip_list(self) -> str:
-        """
-        The IP addresses in the whitelist.
-        """
         return pulumi.get(self, "security_ip_list")
 
 

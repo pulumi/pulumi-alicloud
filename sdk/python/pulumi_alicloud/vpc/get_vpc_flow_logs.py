@@ -183,7 +183,6 @@ def get_vpc_flow_logs(description: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -192,7 +191,6 @@ def get_vpc_flow_logs(description: Optional[str] = None,
         name_regex="the_resource_name")
     pulumi.export("firstVpcFlowLogId", example.logs[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: The Description of flow log.
@@ -261,7 +259,6 @@ def get_vpc_flow_logs_output(description: Optional[pulumi.Input[Optional[str]]] 
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -270,7 +267,6 @@ def get_vpc_flow_logs_output(description: Optional[pulumi.Input[Optional[str]]] 
         name_regex="the_resource_name")
     pulumi.export("firstVpcFlowLogId", example.logs[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param str description: The Description of flow log.

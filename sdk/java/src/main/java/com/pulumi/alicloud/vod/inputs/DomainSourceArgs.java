@@ -16,62 +16,30 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DomainSourceArgs Empty = new DomainSourceArgs();
 
-    /**
-     * The address of the origin server. You can specify an IP address or a domain name.
-     * 
-     */
     @Import(name="sourceContent", required=true)
     private Output<String> sourceContent;
 
-    /**
-     * @return The address of the origin server. You can specify an IP address or a domain name.
-     * 
-     */
     public Output<String> sourceContent() {
         return this.sourceContent;
     }
 
-    /**
-     * The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
-     * 
-     */
     @Import(name="sourcePort", required=true)
     private Output<String> sourcePort;
 
-    /**
-     * @return The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
-     * 
-     */
     public Output<String> sourcePort() {
         return this.sourcePort;
     }
 
-    /**
-     * The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
-     * 
-     */
     @Import(name="sourcePriority")
     private @Nullable Output<String> sourcePriority;
 
-    /**
-     * @return The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
-     * 
-     */
     public Optional<Output<String>> sourcePriority() {
         return Optional.ofNullable(this.sourcePriority);
     }
 
-    /**
-     * The type of the origin server. Valid values:
-     * 
-     */
     @Import(name="sourceType", required=true)
     private Output<String> sourceType;
 
-    /**
-     * @return The type of the origin server. Valid values:
-     * 
-     */
     public Output<String> sourceType() {
         return this.sourceType;
     }
@@ -103,86 +71,38 @@ public final class DomainSourceArgs extends com.pulumi.resources.ResourceArgs {
             $ = new DomainSourceArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param sourceContent The address of the origin server. You can specify an IP address or a domain name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourceContent(Output<String> sourceContent) {
             $.sourceContent = sourceContent;
             return this;
         }
 
-        /**
-         * @param sourceContent The address of the origin server. You can specify an IP address or a domain name.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourceContent(String sourceContent) {
             return sourceContent(Output.of(sourceContent));
         }
 
-        /**
-         * @param sourcePort The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourcePort(Output<String> sourcePort) {
             $.sourcePort = sourcePort;
             return this;
         }
 
-        /**
-         * @param sourcePort The port number. You can specify port 443 or 80. **Default value: 80**. If you specify port 443, Alibaba Cloud CDN communicates with the origin server over HTTPS. You can also customize a port.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourcePort(String sourcePort) {
             return sourcePort(Output.of(sourcePort));
         }
 
-        /**
-         * @param sourcePriority The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourcePriority(@Nullable Output<String> sourcePriority) {
             $.sourcePriority = sourcePriority;
             return this;
         }
 
-        /**
-         * @param sourcePriority The priority of the origin server if multiple origin servers are specified. Valid values: `20` and `30`. **Default value: 20**. A value of 20 indicates that the origin server is the primary origin server. A value of 30 indicates that the origin server is a secondary origin server.
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourcePriority(String sourcePriority) {
             return sourcePriority(Output.of(sourcePriority));
         }
 
-        /**
-         * @param sourceType The type of the origin server. Valid values:
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourceType(Output<String> sourceType) {
             $.sourceType = sourceType;
             return this;
         }
 
-        /**
-         * @param sourceType The type of the origin server. Valid values:
-         * 
-         * @return builder
-         * 
-         */
         public Builder sourceType(String sourceType) {
             return sourceType(Output.of(sourceType));
         }

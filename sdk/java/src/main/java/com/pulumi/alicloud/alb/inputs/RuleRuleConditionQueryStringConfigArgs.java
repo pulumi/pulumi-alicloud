@@ -16,17 +16,9 @@ public final class RuleRuleConditionQueryStringConfigArgs extends com.pulumi.res
 
     public static final RuleRuleConditionQueryStringConfigArgs Empty = new RuleRuleConditionQueryStringConfigArgs();
 
-    /**
-     * Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-     * 
-     */
     @Import(name="values")
     private @Nullable Output<List<RuleRuleConditionQueryStringConfigValueArgs>> values;
 
-    /**
-     * @return Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-     * 
-     */
     public Optional<Output<List<RuleRuleConditionQueryStringConfigValueArgs>>> values() {
         return Optional.ofNullable(this.values);
     }
@@ -55,33 +47,15 @@ public final class RuleRuleConditionQueryStringConfigArgs extends com.pulumi.res
             $ = new RuleRuleConditionQueryStringConfigArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param values Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(@Nullable Output<List<RuleRuleConditionQueryStringConfigValueArgs>> values) {
             $.values = values;
             return this;
         }
 
-        /**
-         * @param values Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(List<RuleRuleConditionQueryStringConfigValueArgs> values) {
             return values(Output.of(values));
         }
 
-        /**
-         * @param values Add one or more IP addresses or IP address segments. You can add up to 5 forwarding rules in a SourceIp.
-         * 
-         * @return builder
-         * 
-         */
         public Builder values(RuleRuleConditionQueryStringConfigValueArgs... values) {
             return values(List.of(values));
         }

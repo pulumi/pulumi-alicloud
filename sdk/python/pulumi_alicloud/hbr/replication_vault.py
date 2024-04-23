@@ -222,7 +222,6 @@ class ReplicationVault(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -244,7 +243,6 @@ class ReplicationVault(pulumi.CustomResource):
             vault_storage_class="STANDARD",
             description="terraform-example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -279,7 +277,6 @@ class ReplicationVault(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -301,7 +298,6 @@ class ReplicationVault(pulumi.CustomResource):
             vault_storage_class="STANDARD",
             description="terraform-example")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -16,7 +16,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -50,7 +49,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetSwitchesResult> InvokeAsync(GetSwitchesArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetSwitchesResult>("alicloud:vpc/getSwitches:getSwitches", args ?? new GetSwitchesArgs(), options.WithDefaults());
@@ -60,7 +58,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// ## Example Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -94,7 +91,6 @@ namespace Pulumi.AliCloud.Vpc
         /// 
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetSwitchesResult> Invoke(GetSwitchesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSwitchesResult>("alicloud:vpc/getSwitches:getSwitches", args ?? new GetSwitchesInvokeArgs(), options.WithDefaults());

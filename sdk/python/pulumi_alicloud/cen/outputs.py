@@ -3384,17 +3384,11 @@ class GetTransitRouterVpnAttachmentsAttachmentResult(dict):
 class GetTransitRouterVpnAttachmentsAttachmentZoneResult(dict):
     def __init__(__self__, *,
                  zone_id: str):
-        """
-        :param str zone_id: The id of the zone.
-        """
         pulumi.set(__self__, "zone_id", zone_id)
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> str:
-        """
-        The id of the zone.
-        """
         return pulumi.get(self, "zone_id")
 
 

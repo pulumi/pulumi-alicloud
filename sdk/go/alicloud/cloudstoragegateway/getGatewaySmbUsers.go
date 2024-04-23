@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -88,7 +87,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetGatewaySmbUsers(ctx *pulumi.Context, args *GetGatewaySmbUsersArgs, opts ...pulumi.InvokeOption) (*GetGatewaySmbUsersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetGatewaySmbUsersResult

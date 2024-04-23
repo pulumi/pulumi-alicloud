@@ -12,15 +12,9 @@ namespace Pulumi.AliCloud.Vpc.Inputs
 
     public sealed class NetworkAclAttachmentResourceGetArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The resource id that the network acl will associate with.
-        /// </summary>
         [Input("resourceId", required: true)]
         public Input<string> ResourceId { get; set; } = null!;
 
-        /// <summary>
-        /// The resource id that the network acl will associate with. Only support `VSwitch` now.
-        /// </summary>
         [Input("resourceType", required: true)]
         public Input<string> ResourceType { get; set; } = null!;
 

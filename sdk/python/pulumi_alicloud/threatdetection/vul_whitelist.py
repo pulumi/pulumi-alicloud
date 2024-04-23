@@ -142,7 +142,6 @@ class VulWhitelist(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -152,7 +151,6 @@ class VulWhitelist(pulumi.CustomResource):
             target_info="{\\"type\\":\\"GroupId\\",\\"uuids\\":[],\\"groupIds\\":[10782678]}",
             reason="tf-example-reason")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -185,7 +183,6 @@ class VulWhitelist(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -195,7 +192,6 @@ class VulWhitelist(pulumi.CustomResource):
             target_info="{\\"type\\":\\"GroupId\\",\\"uuids\\":[],\\"groupIds\\":[10782678]}",
             reason="tf-example-reason")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -20,7 +20,6 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -53,7 +52,6 @@ namespace Pulumi.AliCloud.Hbr
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Task<GetEcsBackupClientsResult> InvokeAsync(GetEcsBackupClientsArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetEcsBackupClientsResult>("alicloud:hbr/getEcsBackupClients:getEcsBackupClients", args ?? new GetEcsBackupClientsArgs(), options.WithDefaults());
@@ -67,7 +65,6 @@ namespace Pulumi.AliCloud.Hbr
         /// 
         /// Basic Usage
         /// 
-        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -100,7 +97,6 @@ namespace Pulumi.AliCloud.Hbr
         ///     };
         /// });
         /// ```
-        /// &lt;!--End PulumiCodeChooser --&gt;
         /// </summary>
         public static Output<GetEcsBackupClientsResult> Invoke(GetEcsBackupClientsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEcsBackupClientsResult>("alicloud:hbr/getEcsBackupClients:getEcsBackupClients", args ?? new GetEcsBackupClientsInvokeArgs(), options.WithDefaults());
@@ -140,7 +136,7 @@ namespace Pulumi.AliCloud.Hbr
         public string? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `REGISTERED`, `STOPPED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `UNKNOWN`, `UPGRADE_FAILED`, `UPGRADING`.
         /// </summary>
         [Input("status")]
         public string? Status { get; set; }
@@ -184,7 +180,7 @@ namespace Pulumi.AliCloud.Hbr
         public Input<string>? OutputFile { get; set; }
 
         /// <summary>
-        /// The status of the resource.
+        /// The status of the resource. Valid values: `ACTIVATED`, `DEACTIVATED`, `INSTALLING`, `INSTALL_FAILED`, `NOT_INSTALLED`, `REGISTERED`, `STOPPED`, `UNINSTALLING`, `UNINSTALL_FAILED`, `UNKNOWN`, `UPGRADE_FAILED`, `UPGRADING`.
         /// </summary>
         [Input("status")]
         public Input<string>? Status { get; set; }

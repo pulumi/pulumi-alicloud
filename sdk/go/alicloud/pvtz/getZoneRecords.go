@@ -15,7 +15,6 @@ import (
 //
 // ## Example Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -41,7 +40,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetZoneRecords(ctx *pulumi.Context, args *GetZoneRecordsArgs, opts ...pulumi.InvokeOption) (*GetZoneRecordsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetZoneRecordsResult

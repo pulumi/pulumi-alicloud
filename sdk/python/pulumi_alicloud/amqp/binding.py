@@ -305,7 +305,6 @@ class Binding(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -342,7 +341,6 @@ class Binding(pulumi.CustomResource):
             source_exchange=default_exchange.exchange_name,
             virtual_host_name=default_virtual_host.virtual_host_name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -388,7 +386,6 @@ class Binding(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -425,7 +422,6 @@ class Binding(pulumi.CustomResource):
             source_exchange=default_exchange.exchange_name,
             virtual_host_name=default_virtual_host.virtual_host_name)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

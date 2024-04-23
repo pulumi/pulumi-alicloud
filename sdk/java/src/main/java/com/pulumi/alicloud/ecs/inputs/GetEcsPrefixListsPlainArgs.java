@@ -17,14 +17,14 @@ public final class GetEcsPrefixListsPlainArgs extends com.pulumi.resources.Invok
     public static final GetEcsPrefixListsPlainArgs Empty = new GetEcsPrefixListsPlainArgs();
 
     /**
-     * The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+     * The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
      * 
      */
     @Import(name="addressFamily")
     private @Nullable String addressFamily;
 
     /**
-     * @return The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+     * @return The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
      * 
      */
     public Optional<String> addressFamily() {
@@ -112,7 +112,7 @@ public final class GetEcsPrefixListsPlainArgs extends com.pulumi.resources.Invok
         }
 
         /**
-         * @param addressFamily The address family of the prefix list. Valid values:`IPv4`,`IPv6`.
+         * @param addressFamily The address family of the prefix list. Valid values: `IPv4`,`IPv6`. This parameter is empty by default, which indicates that all prefix lists are to be queried.
          * 
          * @return builder
          * 

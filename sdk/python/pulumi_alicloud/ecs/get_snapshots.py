@@ -259,7 +259,6 @@ def get_snapshots(category: Optional[str] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -267,7 +266,6 @@ def get_snapshots(category: Optional[str] = None,
     snapshots = alicloud.ecs.get_snapshots(ids=["s-123456890abcdef"],
         name_regex="tf-testAcc-snapshot")
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Argument Reference
 
@@ -377,7 +375,6 @@ def get_snapshots_output(category: Optional[pulumi.Input[Optional[str]]] = None,
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -385,7 +382,6 @@ def get_snapshots_output(category: Optional[pulumi.Input[Optional[str]]] = None,
     snapshots = alicloud.ecs.get_snapshots(ids=["s-123456890abcdef"],
         name_regex="tf-testAcc-snapshot")
     ```
-    <!--End PulumiCodeChooser -->
 
     ## Argument Reference
 

@@ -50,7 +50,6 @@ def get_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcco
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -58,7 +57,6 @@ def get_account(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAcco
     current = alicloud.get_account()
     pulumi.export("currentAccountId", current.id)
     ```
-    <!--End PulumiCodeChooser -->
     """
     __args__ = dict()
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
@@ -75,7 +73,6 @@ def get_account_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Ou
 
     ## Example Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -83,6 +80,5 @@ def get_account_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Ou
     current = alicloud.get_account()
     pulumi.export("currentAccountId", current.id)
     ```
-    <!--End PulumiCodeChooser -->
     """
     ...

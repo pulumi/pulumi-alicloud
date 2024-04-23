@@ -21,7 +21,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -58,7 +57,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func GetChains(ctx *pulumi.Context, args *GetChainsArgs, opts ...pulumi.InvokeOption) (*GetChainsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetChainsResult

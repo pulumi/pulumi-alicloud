@@ -19,7 +19,6 @@ import (
 //
 // # Basic Usage
 //
-// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -92,7 +91,6 @@ import (
 //	}
 //
 // ```
-// <!--End PulumiCodeChooser -->
 func LookupPrometheus(ctx *pulumi.Context, args *LookupPrometheusArgs, opts ...pulumi.InvokeOption) (*LookupPrometheusResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupPrometheusResult

@@ -124,7 +124,6 @@ class RemoteWrite(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -172,7 +171,6 @@ class RemoteWrite(pulumi.CustomResource):
             action: keep
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -204,7 +202,6 @@ class RemoteWrite(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -252,7 +249,6 @@ class RemoteWrite(pulumi.CustomResource):
             action: keep
         \"\"\")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

@@ -13,7 +13,6 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -26,7 +25,6 @@ import * as utilities from "../utilities";
  * });
  * export const firstRoleId = rolesDs.then(rolesDs => rolesDs.roles?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRoles(args?: GetRolesArgs, opts?: pulumi.InvokeOptions): Promise<GetRolesResult> {
     args = args || {};
@@ -99,7 +97,6 @@ export interface GetRolesResult {
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
@@ -112,7 +109,6 @@ export interface GetRolesResult {
  * });
  * export const firstRoleId = rolesDs.then(rolesDs => rolesDs.roles?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getRolesOutput(args?: GetRolesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRolesResult> {
     return pulumi.output(args).apply((a: any) => getRoles(a, opts))

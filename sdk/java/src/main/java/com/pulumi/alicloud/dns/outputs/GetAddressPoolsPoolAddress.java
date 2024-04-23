@@ -11,65 +11,25 @@ import java.util.Objects;
 
 @CustomType
 public final class GetAddressPoolsPoolAddress {
-    /**
-     * @return The address that you want to add to the address pool.
-     * 
-     */
     private String address;
-    /**
-     * @return The source region of the address.
-     * 
-     */
     private String attributeInfo;
-    /**
-     * @return The weight of the address.
-     * 
-     */
     private Integer lbaWeight;
-    /**
-     * @return The type of the address.
-     * 
-     */
     private String mode;
-    /**
-     * @return The description of the address.
-     * 
-     */
     private String remark;
 
     private GetAddressPoolsPoolAddress() {}
-    /**
-     * @return The address that you want to add to the address pool.
-     * 
-     */
     public String address() {
         return this.address;
     }
-    /**
-     * @return The source region of the address.
-     * 
-     */
     public String attributeInfo() {
         return this.attributeInfo;
     }
-    /**
-     * @return The weight of the address.
-     * 
-     */
     public Integer lbaWeight() {
         return this.lbaWeight;
     }
-    /**
-     * @return The type of the address.
-     * 
-     */
     public String mode() {
         return this.mode;
     }
-    /**
-     * @return The description of the address.
-     * 
-     */
     public String remark() {
         return this.remark;
     }

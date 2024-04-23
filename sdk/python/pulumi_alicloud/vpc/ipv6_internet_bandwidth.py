@@ -189,7 +189,6 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -241,7 +240,6 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
             internet_charge_type="PayByBandwidth",
             bandwidth=20)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -275,7 +273,6 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
 
         Basic Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
@@ -327,7 +324,6 @@ class Ipv6InternetBandwidth(pulumi.CustomResource):
             internet_charge_type="PayByBandwidth",
             bandwidth=20)
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

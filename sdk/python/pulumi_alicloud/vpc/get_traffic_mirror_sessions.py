@@ -173,7 +173,6 @@ def get_traffic_mirror_sessions(enabled: Optional[bool] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -204,7 +203,6 @@ def get_traffic_mirror_sessions(enabled: Optional[bool] = None,
         status="Created")
     pulumi.export("vpcTrafficMirrorSessionId9", status.sessions[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enabled: Indicates whether traffic mirror sessions are enabled. default to `false`.
@@ -269,7 +267,6 @@ def get_traffic_mirror_sessions_output(enabled: Optional[pulumi.Input[Optional[b
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -300,7 +297,6 @@ def get_traffic_mirror_sessions_output(enabled: Optional[pulumi.Input[Optional[b
         status="Created")
     pulumi.export("vpcTrafficMirrorSessionId9", status.sessions[0].id)
     ```
-    <!--End PulumiCodeChooser -->
 
 
     :param bool enabled: Indicates whether traffic mirror sessions are enabled. default to `false`.

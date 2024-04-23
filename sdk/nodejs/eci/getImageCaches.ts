@@ -13,17 +13,15 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
- *  <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.eci.getImageCaches({
- *     ids: ["imc-bp1ef0dyp7ldhb1d****"],
+ *    ids: ["imc-bp1ef0dyp7ldhb1d****"],
  * });
  * export const imageCache = example.then(example => example.caches?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getImageCaches(args?: GetImageCachesArgs, opts?: pulumi.InvokeOptions): Promise<GetImageCachesResult> {
     args = args || {};
@@ -117,17 +115,15 @@ export interface GetImageCachesResult {
  *
  * ## Example Usage
  *
- *  <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const example = alicloud.eci.getImageCaches({
- *     ids: ["imc-bp1ef0dyp7ldhb1d****"],
+ *    ids: ["imc-bp1ef0dyp7ldhb1d****"],
  * });
  * export const imageCache = example.then(example => example.caches?.[0]?.id);
  * ```
- * <!--End PulumiCodeChooser -->
  */
 export function getImageCachesOutput(args?: GetImageCachesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageCachesResult> {
     return pulumi.output(args).apply((a: any) => getImageCaches(a, opts))

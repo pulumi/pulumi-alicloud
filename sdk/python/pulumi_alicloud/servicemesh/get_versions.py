@@ -94,7 +94,6 @@ def get_versions(edition: Optional[str] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -102,10 +101,11 @@ def get_versions(edition: Optional[str] = None,
     default = alicloud.servicemesh.get_versions(edition="Default")
     pulumi.export("serviceMeshVersion", versions[0]["version"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str edition: The edition of the ASM instance.
+    :param str edition: The edition of the ASM instance. Valid values:
+           - Default: Standard Edition
+           - Pro: Professional Edition
     :param Sequence[str] ids: A list of ASM versions. Its element formats as `<edition>:<version>`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
@@ -138,7 +138,6 @@ def get_versions_output(edition: Optional[pulumi.Input[Optional[str]]] = None,
 
     Basic Usage
 
-    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
@@ -146,10 +145,11 @@ def get_versions_output(edition: Optional[pulumi.Input[Optional[str]]] = None,
     default = alicloud.servicemesh.get_versions(edition="Default")
     pulumi.export("serviceMeshVersion", versions[0]["version"])
     ```
-    <!--End PulumiCodeChooser -->
 
 
-    :param str edition: The edition of the ASM instance.
+    :param str edition: The edition of the ASM instance. Valid values:
+           - Default: Standard Edition
+           - Pro: Professional Edition
     :param Sequence[str] ids: A list of ASM versions. Its element formats as `<edition>:<version>`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
     """
