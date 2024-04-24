@@ -5487,6 +5487,9 @@
                     }
                 }
             },
+            "alicloud_oss_bucket_logging": {
+                "current": "alicloud:oss/bucketLogging:BucketLogging"
+            },
             "alicloud_oss_bucket_object": {
                 "current": "alicloud:oss/bucketObject:BucketObject"
             },
@@ -5537,6 +5540,15 @@
                         }
                     }
                 }
+            },
+            "alicloud_oss_bucket_request_payment": {
+                "current": "alicloud:oss/bucketRequestPayment:BucketRequestPayment"
+            },
+            "alicloud_oss_bucket_server_side_encryption": {
+                "current": "alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption"
+            },
+            "alicloud_oss_bucket_versioning": {
+                "current": "alicloud:oss/bucketVersioning:BucketVersioning"
             },
             "alicloud_ots_instance": {
                 "current": "alicloud:ots/instance:Instance",
