@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BucketAcl{}
 	case "alicloud:oss/bucketHttpsConfig:BucketHttpsConfig":
 		r = &BucketHttpsConfig{}
+	case "alicloud:oss/bucketLogging:BucketLogging":
+		r = &BucketLogging{}
 	case "alicloud:oss/bucketObject:BucketObject":
 		r = &BucketObject{}
 	case "alicloud:oss/bucketPolicy:BucketPolicy":
@@ -35,6 +37,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &BucketReferer{}
 	case "alicloud:oss/bucketReplication:BucketReplication":
 		r = &BucketReplication{}
+	case "alicloud:oss/bucketRequestPayment:BucketRequestPayment":
+		r = &BucketRequestPayment{}
+	case "alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption":
+		r = &BucketServerSideEncryption{}
+	case "alicloud:oss/bucketVersioning:BucketVersioning":
+		r = &BucketVersioning{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -65,6 +73,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"alicloud",
+		"oss/bucketLogging",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
 		"oss/bucketObject",
 		&module{version},
 	)
@@ -81,6 +94,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"oss/bucketReplication",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"oss/bucketRequestPayment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"oss/bucketServerSideEncryption",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"oss/bucketVersioning",
 		&module{version},
 	)
 }

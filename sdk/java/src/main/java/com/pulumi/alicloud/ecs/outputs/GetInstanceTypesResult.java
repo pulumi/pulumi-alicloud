@@ -42,6 +42,7 @@ public final class GetInstanceTypesResult {
     private List<String> ids;
     private @Nullable String imageId;
     private @Nullable String instanceChargeType;
+    private @Nullable String instanceType;
     private @Nullable String instanceTypeFamily;
     /**
      * @return A list of image types. Each element contains the following attributes:
@@ -106,6 +107,9 @@ public final class GetInstanceTypesResult {
     public Optional<String> instanceChargeType() {
         return Optional.ofNullable(this.instanceChargeType);
     }
+    public Optional<String> instanceType() {
+        return Optional.ofNullable(this.instanceType);
+    }
     public Optional<String> instanceTypeFamily() {
         return Optional.ofNullable(this.instanceTypeFamily);
     }
@@ -166,6 +170,7 @@ public final class GetInstanceTypesResult {
         private List<String> ids;
         private @Nullable String imageId;
         private @Nullable String instanceChargeType;
+        private @Nullable String instanceType;
         private @Nullable String instanceTypeFamily;
         private List<GetInstanceTypesInstanceType> instanceTypes;
         private @Nullable Boolean isOutdated;
@@ -189,6 +194,7 @@ public final class GetInstanceTypesResult {
     	      this.ids = defaults.ids;
     	      this.imageId = defaults.imageId;
     	      this.instanceChargeType = defaults.instanceChargeType;
+    	      this.instanceType = defaults.instanceType;
     	      this.instanceTypeFamily = defaults.instanceTypeFamily;
     	      this.instanceTypes = defaults.instanceTypes;
     	      this.isOutdated = defaults.isOutdated;
@@ -261,6 +267,12 @@ public final class GetInstanceTypesResult {
         public Builder instanceChargeType(@Nullable String instanceChargeType) {
 
             this.instanceChargeType = instanceChargeType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder instanceType(@Nullable String instanceType) {
+
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
@@ -345,6 +357,7 @@ public final class GetInstanceTypesResult {
             _resultValue.ids = ids;
             _resultValue.imageId = imageId;
             _resultValue.instanceChargeType = instanceChargeType;
+            _resultValue.instanceType = instanceType;
             _resultValue.instanceTypeFamily = instanceTypeFamily;
             _resultValue.instanceTypes = instanceTypes;
             _resultValue.isOutdated = isOutdated;

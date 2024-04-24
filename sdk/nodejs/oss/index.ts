@@ -20,6 +20,11 @@ export type BucketHttpsConfig = import("./bucketHttpsConfig").BucketHttpsConfig;
 export const BucketHttpsConfig: typeof import("./bucketHttpsConfig").BucketHttpsConfig = null as any;
 utilities.lazyLoad(exports, ["BucketHttpsConfig"], () => require("./bucketHttpsConfig"));
 
+export { BucketLoggingArgs, BucketLoggingState } from "./bucketLogging";
+export type BucketLogging = import("./bucketLogging").BucketLogging;
+export const BucketLogging: typeof import("./bucketLogging").BucketLogging = null as any;
+utilities.lazyLoad(exports, ["BucketLogging"], () => require("./bucketLogging"));
+
 export { BucketObjectArgs, BucketObjectState } from "./bucketObject";
 export type BucketObject = import("./bucketObject").BucketObject;
 export const BucketObject: typeof import("./bucketObject").BucketObject = null as any;
@@ -39,6 +44,21 @@ export { BucketReplicationArgs, BucketReplicationState } from "./bucketReplicati
 export type BucketReplication = import("./bucketReplication").BucketReplication;
 export const BucketReplication: typeof import("./bucketReplication").BucketReplication = null as any;
 utilities.lazyLoad(exports, ["BucketReplication"], () => require("./bucketReplication"));
+
+export { BucketRequestPaymentArgs, BucketRequestPaymentState } from "./bucketRequestPayment";
+export type BucketRequestPayment = import("./bucketRequestPayment").BucketRequestPayment;
+export const BucketRequestPayment: typeof import("./bucketRequestPayment").BucketRequestPayment = null as any;
+utilities.lazyLoad(exports, ["BucketRequestPayment"], () => require("./bucketRequestPayment"));
+
+export { BucketServerSideEncryptionArgs, BucketServerSideEncryptionState } from "./bucketServerSideEncryption";
+export type BucketServerSideEncryption = import("./bucketServerSideEncryption").BucketServerSideEncryption;
+export const BucketServerSideEncryption: typeof import("./bucketServerSideEncryption").BucketServerSideEncryption = null as any;
+utilities.lazyLoad(exports, ["BucketServerSideEncryption"], () => require("./bucketServerSideEncryption"));
+
+export { BucketVersioningArgs, BucketVersioningState } from "./bucketVersioning";
+export type BucketVersioning = import("./bucketVersioning").BucketVersioning;
+export const BucketVersioning: typeof import("./bucketVersioning").BucketVersioning = null as any;
+utilities.lazyLoad(exports, ["BucketVersioning"], () => require("./bucketVersioning"));
 
 export { GetBucketObjectsArgs, GetBucketObjectsResult, GetBucketObjectsOutputArgs } from "./getBucketObjects";
 export const getBucketObjects: typeof import("./getBucketObjects").getBucketObjects = null as any;
@@ -81,6 +101,8 @@ const _module = {
                 return new BucketAcl(name, <any>undefined, { urn })
             case "alicloud:oss/bucketHttpsConfig:BucketHttpsConfig":
                 return new BucketHttpsConfig(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketLogging:BucketLogging":
+                return new BucketLogging(name, <any>undefined, { urn })
             case "alicloud:oss/bucketObject:BucketObject":
                 return new BucketObject(name, <any>undefined, { urn })
             case "alicloud:oss/bucketPolicy:BucketPolicy":
@@ -89,6 +111,12 @@ const _module = {
                 return new BucketReferer(name, <any>undefined, { urn })
             case "alicloud:oss/bucketReplication:BucketReplication":
                 return new BucketReplication(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketRequestPayment:BucketRequestPayment":
+                return new BucketRequestPayment(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption":
+                return new BucketServerSideEncryption(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketVersioning:BucketVersioning":
+                return new BucketVersioning(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -97,7 +125,11 @@ const _module = {
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucket", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketAcl", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketHttpsConfig", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketLogging", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketObject", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketPolicy", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketReferer", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketReplication", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketRequestPayment", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketServerSideEncryption", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketVersioning", _module)

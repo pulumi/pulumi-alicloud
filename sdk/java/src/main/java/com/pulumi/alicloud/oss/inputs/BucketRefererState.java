@@ -33,14 +33,14 @@ public final class BucketRefererState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Allow phase request parameters.
+     * Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
      * 
      */
     @Import(name="allowTruncateQueryString")
     private @Nullable Output<Boolean> allowTruncateQueryString;
 
     /**
-     * @return Allow phase request parameters.
+     * @return Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
      * 
      */
     public Optional<Output<Boolean>> allowTruncateQueryString() {
@@ -93,14 +93,14 @@ public final class BucketRefererState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Name of the bucket.
+     * Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
      * 
      */
     @Import(name="truncatePath")
     private @Nullable Output<Boolean> truncatePath;
 
     /**
-     * @return Name of the bucket.
+     * @return Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
      * 
      */
     public Optional<Output<Boolean>> truncatePath() {
@@ -158,7 +158,7 @@ public final class BucketRefererState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param allowTruncateQueryString Allow phase request parameters.
+         * @param allowTruncateQueryString Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
          * 
          * @return builder
          * 
@@ -169,7 +169,7 @@ public final class BucketRefererState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param allowTruncateQueryString Allow phase request parameters.
+         * @param allowTruncateQueryString Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
          * 
          * @return builder
          * 
@@ -262,7 +262,7 @@ public final class BucketRefererState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param truncatePath Name of the bucket.
+         * @param truncatePath Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
          * 
          * @return builder
          * 
@@ -273,7 +273,7 @@ public final class BucketRefererState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param truncatePath Name of the bucket.
+         * @param truncatePath Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
          * 
          * @return builder
          * 

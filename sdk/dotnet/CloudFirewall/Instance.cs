@@ -20,6 +20,8 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// Basic Usage
     /// 
+    /// create a pay-as-you-go instance
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -28,14 +30,31 @@ namespace Pulumi.AliCloud.CloudFirewall
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new AliCloud.CloudFirewall.Instance("default", new()
+    ///     var payAsYouGo = new AliCloud.CloudFirewall.Instance("PayAsYouGo", new()
     ///     {
     ///         PaymentType = "PayAsYouGo",
-    ///         Spec = "ultimate_version",
-    ///         IpNumber = 400,
-    ///         BandWidth = 200,
-    ///         CfwLog = true,
-    ///         CfwLogStorage = 1000,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// create a subscription instance
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using AliCloud = Pulumi.AliCloud;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var subscription = new AliCloud.CloudFirewall.Instance("Subscription", new()
+    ///     {
+    ///         PaymentType = "Subscription",
+    ///         Spec = "premium_version",
+    ///         IpNumber = 20,
+    ///         BandWidth = 10,
+    ///         CfwLog = false,
+    ///         Period = 1,
     ///     });
     /// 
     /// });
@@ -62,7 +81,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         /// </summary>
         [Output("bandWidth")]
-        public Output<int> BandWidth { get; private set; } = null!;
+        public Output<int?> BandWidth { get; private set; } = null!;
 
         /// <summary>
         /// Whether to use multi-account. Valid values: `true`, `false`.
@@ -74,7 +93,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// Whether to use log audit. Valid values: `true`, `false`.
         /// </summary>
         [Output("cfwLog")]
-        public Output<bool> CfwLog { get; private set; } = null!;
+        public Output<bool?> CfwLog { get; private set; } = null!;
 
         /// <summary>
         /// The log storage capacity. It will be ignored when `cfw_log = false`.
@@ -110,7 +129,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// The number of public IPs that can be protected. Valid values: 20 to 4000.
         /// </summary>
         [Output("ipNumber")]
-        public Output<int> IpNumber { get; private set; } = null!;
+        public Output<int?> IpNumber { get; private set; } = null!;
 
         /// <summary>
         /// The logistics.
@@ -171,7 +190,7 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         /// </summary>
         [Output("spec")]
-        public Output<string> Spec { get; private set; } = null!;
+        public Output<string?> Spec { get; private set; } = null!;
 
         /// <summary>
         /// The status of Instance.
@@ -234,8 +253,8 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         /// </summary>
-        [Input("bandWidth", required: true)]
-        public Input<int> BandWidth { get; set; } = null!;
+        [Input("bandWidth")]
+        public Input<int>? BandWidth { get; set; }
 
         /// <summary>
         /// Whether to use multi-account. Valid values: `true`, `false`.
@@ -246,8 +265,8 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// Whether to use log audit. Valid values: `true`, `false`.
         /// </summary>
-        [Input("cfwLog", required: true)]
-        public Input<bool> CfwLog { get; set; } = null!;
+        [Input("cfwLog")]
+        public Input<bool>? CfwLog { get; set; }
 
         /// <summary>
         /// The log storage capacity. It will be ignored when `cfw_log = false`.
@@ -270,8 +289,8 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// The number of public IPs that can be protected. Valid values: 20 to 4000.
         /// </summary>
-        [Input("ipNumber", required: true)]
-        public Input<int> IpNumber { get; set; } = null!;
+        [Input("ipNumber")]
+        public Input<int>? IpNumber { get; set; }
 
         /// <summary>
         /// The logistics.
@@ -325,8 +344,8 @@ namespace Pulumi.AliCloud.CloudFirewall
         /// <summary>
         /// Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         /// </summary>
-        [Input("spec", required: true)]
-        public Input<string> Spec { get; set; } = null!;
+        [Input("spec")]
+        public Input<string>? Spec { get; set; }
 
         public InstanceArgs()
         {

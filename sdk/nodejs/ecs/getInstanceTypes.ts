@@ -13,19 +13,63 @@ import * as utilities from "../utilities";
  *
  * > **NOTE:** If one instance type is sold out, it will not be exported.
  *
+ * > **NOTE:** Available since v1.0.0.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const typesDs = alicloud.ecs.getInstanceTypes({
- *     cpuCoreCount: 1,
- *     memorySize: 2,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
  * });
- * // Create ECS instance with the first matched instance_type
- * const instance = new alicloud.ecs.Instance("instance", {instanceType: typesDs.then(typesDs => typesDs.instanceTypes?.[0]?.id)});
+ * // Declare the data source
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
+ *     instanceTypeFamily: "ecs.sn1ne",
+ * }));
+ * const defaultGetImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "192.168.192.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultEcsNetworkInterface = new alicloud.ecs.EcsNetworkInterface("default", {
+ *     networkInterfaceName: name,
+ *     vswitchId: defaultSwitch.id,
+ *     securityGroupIds: [defaultSecurityGroup.id],
+ * });
+ * const defaultInstance: alicloud.ecs.Instance[] = [];
+ * for (const range = {value: 0}; range.value < 14; range.value++) {
+ *     defaultInstance.push(new alicloud.ecs.Instance(`default-${range.value}`, {
+ *         imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *         instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
+ *         instanceName: name,
+ *         securityGroups: [defaultSecurityGroup].map(__item => __item.id),
+ *         internetChargeType: "PayByTraffic",
+ *         internetMaxBandwidthOut: 10,
+ *         availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
+ *         instanceChargeType: "PostPaid",
+ *         systemDiskCategory: "cloud_efficiency",
+ *         vswitchId: defaultSwitch.id,
+ *     }));
+ * }
  * ```
  */
 export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.InvokeOptions): Promise<GetInstanceTypesResult> {
@@ -40,6 +84,7 @@ export function getInstanceTypes(args?: GetInstanceTypesArgs, opts?: pulumi.Invo
         "gpuSpec": args.gpuSpec,
         "imageId": args.imageId,
         "instanceChargeType": args.instanceChargeType,
+        "instanceType": args.instanceType,
         "instanceTypeFamily": args.instanceTypeFamily,
         "isOutdated": args.isOutdated,
         "kubernetesNodeRole": args.kubernetesNodeRole,
@@ -86,6 +131,10 @@ export interface GetInstanceTypesArgs {
      */
     instanceChargeType?: string;
     /**
+     * Instance specifications. For more information, see instance Specification Family, or you can call the describe instance types interface to get the latest specification table.
+     */
+    instanceType?: string;
+    /**
      * Filter the results based on their family name. For example: 'ecs.n4'.
      */
     instanceTypeFamily?: string;
@@ -114,6 +163,9 @@ export interface GetInstanceTypesArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: string;
+    /**
+     * Sort mode, valid values: `CPU`, `Memory`, `Price`.
+     */
     sortedBy?: string;
     /**
      * Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
@@ -151,6 +203,7 @@ export interface GetInstanceTypesResult {
     readonly ids: string[];
     readonly imageId?: string;
     readonly instanceChargeType?: string;
+    readonly instanceType?: string;
     readonly instanceTypeFamily?: string;
     /**
      * A list of image types. Each element contains the following attributes:
@@ -176,19 +229,63 @@ export interface GetInstanceTypesResult {
  *
  * > **NOTE:** If one instance type is sold out, it will not be exported.
  *
+ * > **NOTE:** Available since v1.0.0.
+ *
  * ## Example Usage
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * // Declare the data source
- * const typesDs = alicloud.ecs.getInstanceTypes({
- *     cpuCoreCount: 1,
- *     memorySize: 2,
+ * const config = new pulumi.Config();
+ * const name = config.get("name") || "terraform-example";
+ * const default = alicloud.getZones({
+ *     availableResourceCreation: "VSwitch",
  * });
- * // Create ECS instance with the first matched instance_type
- * const instance = new alicloud.ecs.Instance("instance", {instanceType: typesDs.then(typesDs => typesDs.instanceTypes?.[0]?.id)});
+ * // Declare the data source
+ * const defaultGetInstanceTypes = _default.then(_default => alicloud.ecs.getInstanceTypes({
+ *     availabilityZone: _default.zones?.[0]?.id,
+ *     instanceTypeFamily: "ecs.sn1ne",
+ * }));
+ * const defaultGetImages = alicloud.ecs.getImages({
+ *     nameRegex: "^ubuntu_[0-9]+_[0-9]+_x64*",
+ *     mostRecent: true,
+ *     owners: "system",
+ * });
+ * const defaultNetwork = new alicloud.vpc.Network("default", {
+ *     vpcName: name,
+ *     cidrBlock: "192.168.0.0/16",
+ * });
+ * const defaultSwitch = new alicloud.vpc.Switch("default", {
+ *     vswitchName: name,
+ *     vpcId: defaultNetwork.id,
+ *     cidrBlock: "192.168.192.0/24",
+ *     zoneId: _default.then(_default => _default.zones?.[0]?.id),
+ * });
+ * const defaultSecurityGroup = new alicloud.ecs.SecurityGroup("default", {
+ *     name: name,
+ *     vpcId: defaultNetwork.id,
+ * });
+ * const defaultEcsNetworkInterface = new alicloud.ecs.EcsNetworkInterface("default", {
+ *     networkInterfaceName: name,
+ *     vswitchId: defaultSwitch.id,
+ *     securityGroupIds: [defaultSecurityGroup.id],
+ * });
+ * const defaultInstance: alicloud.ecs.Instance[] = [];
+ * for (const range = {value: 0}; range.value < 14; range.value++) {
+ *     defaultInstance.push(new alicloud.ecs.Instance(`default-${range.value}`, {
+ *         imageId: defaultGetImages.then(defaultGetImages => defaultGetImages.images?.[0]?.id),
+ *         instanceType: defaultGetInstanceTypes.then(defaultGetInstanceTypes => defaultGetInstanceTypes.instanceTypes?.[0]?.id),
+ *         instanceName: name,
+ *         securityGroups: [defaultSecurityGroup].map(__item => __item.id),
+ *         internetChargeType: "PayByTraffic",
+ *         internetMaxBandwidthOut: 10,
+ *         availabilityZone: _default.then(_default => _default.zones?.[0]?.id),
+ *         instanceChargeType: "PostPaid",
+ *         systemDiskCategory: "cloud_efficiency",
+ *         vswitchId: defaultSwitch.id,
+ *     }));
+ * }
  * ```
  */
 export function getInstanceTypesOutput(args?: GetInstanceTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTypesResult> {
@@ -228,6 +325,10 @@ export interface GetInstanceTypesOutputArgs {
      */
     instanceChargeType?: pulumi.Input<string>;
     /**
+     * Instance specifications. For more information, see instance Specification Family, or you can call the describe instance types interface to get the latest specification table.
+     */
+    instanceType?: pulumi.Input<string>;
+    /**
      * Filter the results based on their family name. For example: 'ecs.n4'.
      */
     instanceTypeFamily?: pulumi.Input<string>;
@@ -256,6 +357,9 @@ export interface GetInstanceTypesOutputArgs {
      * File name where to save data source results (after running `pulumi preview`).
      */
     outputFile?: pulumi.Input<string>;
+    /**
+     * Sort mode, valid values: `CPU`, `Memory`, `Price`.
+     */
     sortedBy?: pulumi.Input<string>;
     /**
      * Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.

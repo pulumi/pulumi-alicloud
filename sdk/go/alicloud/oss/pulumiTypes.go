@@ -1472,145 +1472,145 @@ func (o BucketLifecycleRuleTransitionArrayOutput) Index(i pulumi.IntInput) Bucke
 	}).(BucketLifecycleRuleTransitionOutput)
 }
 
-type BucketLogging struct {
+type BucketLoggingType struct {
 	// The name of the bucket that will receive the log objects.
 	TargetBucket string `pulumi:"targetBucket"`
 	// To specify a key prefix for log objects.
 	TargetPrefix *string `pulumi:"targetPrefix"`
 }
 
-// BucketLoggingInput is an input type that accepts BucketLoggingArgs and BucketLoggingOutput values.
-// You can construct a concrete instance of `BucketLoggingInput` via:
+// BucketLoggingTypeInput is an input type that accepts BucketLoggingTypeArgs and BucketLoggingTypeOutput values.
+// You can construct a concrete instance of `BucketLoggingTypeInput` via:
 //
-//	BucketLoggingArgs{...}
-type BucketLoggingInput interface {
+//	BucketLoggingTypeArgs{...}
+type BucketLoggingTypeInput interface {
 	pulumi.Input
 
-	ToBucketLoggingOutput() BucketLoggingOutput
-	ToBucketLoggingOutputWithContext(context.Context) BucketLoggingOutput
+	ToBucketLoggingTypeOutput() BucketLoggingTypeOutput
+	ToBucketLoggingTypeOutputWithContext(context.Context) BucketLoggingTypeOutput
 }
 
-type BucketLoggingArgs struct {
+type BucketLoggingTypeArgs struct {
 	// The name of the bucket that will receive the log objects.
 	TargetBucket pulumi.StringInput `pulumi:"targetBucket"`
 	// To specify a key prefix for log objects.
 	TargetPrefix pulumi.StringPtrInput `pulumi:"targetPrefix"`
 }
 
-func (BucketLoggingArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketLogging)(nil)).Elem()
+func (BucketLoggingTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketLoggingType)(nil)).Elem()
 }
 
-func (i BucketLoggingArgs) ToBucketLoggingOutput() BucketLoggingOutput {
-	return i.ToBucketLoggingOutputWithContext(context.Background())
+func (i BucketLoggingTypeArgs) ToBucketLoggingTypeOutput() BucketLoggingTypeOutput {
+	return i.ToBucketLoggingTypeOutputWithContext(context.Background())
 }
 
-func (i BucketLoggingArgs) ToBucketLoggingOutputWithContext(ctx context.Context) BucketLoggingOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLoggingOutput)
+func (i BucketLoggingTypeArgs) ToBucketLoggingTypeOutputWithContext(ctx context.Context) BucketLoggingTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLoggingTypeOutput)
 }
 
-func (i BucketLoggingArgs) ToBucketLoggingPtrOutput() BucketLoggingPtrOutput {
-	return i.ToBucketLoggingPtrOutputWithContext(context.Background())
+func (i BucketLoggingTypeArgs) ToBucketLoggingTypePtrOutput() BucketLoggingTypePtrOutput {
+	return i.ToBucketLoggingTypePtrOutputWithContext(context.Background())
 }
 
-func (i BucketLoggingArgs) ToBucketLoggingPtrOutputWithContext(ctx context.Context) BucketLoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLoggingOutput).ToBucketLoggingPtrOutputWithContext(ctx)
+func (i BucketLoggingTypeArgs) ToBucketLoggingTypePtrOutputWithContext(ctx context.Context) BucketLoggingTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLoggingTypeOutput).ToBucketLoggingTypePtrOutputWithContext(ctx)
 }
 
-// BucketLoggingPtrInput is an input type that accepts BucketLoggingArgs, BucketLoggingPtr and BucketLoggingPtrOutput values.
-// You can construct a concrete instance of `BucketLoggingPtrInput` via:
+// BucketLoggingTypePtrInput is an input type that accepts BucketLoggingTypeArgs, BucketLoggingTypePtr and BucketLoggingTypePtrOutput values.
+// You can construct a concrete instance of `BucketLoggingTypePtrInput` via:
 //
-//	        BucketLoggingArgs{...}
+//	        BucketLoggingTypeArgs{...}
 //
 //	or:
 //
 //	        nil
-type BucketLoggingPtrInput interface {
+type BucketLoggingTypePtrInput interface {
 	pulumi.Input
 
-	ToBucketLoggingPtrOutput() BucketLoggingPtrOutput
-	ToBucketLoggingPtrOutputWithContext(context.Context) BucketLoggingPtrOutput
+	ToBucketLoggingTypePtrOutput() BucketLoggingTypePtrOutput
+	ToBucketLoggingTypePtrOutputWithContext(context.Context) BucketLoggingTypePtrOutput
 }
 
-type bucketLoggingPtrType BucketLoggingArgs
+type bucketLoggingTypePtrType BucketLoggingTypeArgs
 
-func BucketLoggingPtr(v *BucketLoggingArgs) BucketLoggingPtrInput {
-	return (*bucketLoggingPtrType)(v)
+func BucketLoggingTypePtr(v *BucketLoggingTypeArgs) BucketLoggingTypePtrInput {
+	return (*bucketLoggingTypePtrType)(v)
 }
 
-func (*bucketLoggingPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketLogging)(nil)).Elem()
+func (*bucketLoggingTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketLoggingType)(nil)).Elem()
 }
 
-func (i *bucketLoggingPtrType) ToBucketLoggingPtrOutput() BucketLoggingPtrOutput {
-	return i.ToBucketLoggingPtrOutputWithContext(context.Background())
+func (i *bucketLoggingTypePtrType) ToBucketLoggingTypePtrOutput() BucketLoggingTypePtrOutput {
+	return i.ToBucketLoggingTypePtrOutputWithContext(context.Background())
 }
 
-func (i *bucketLoggingPtrType) ToBucketLoggingPtrOutputWithContext(ctx context.Context) BucketLoggingPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketLoggingPtrOutput)
+func (i *bucketLoggingTypePtrType) ToBucketLoggingTypePtrOutputWithContext(ctx context.Context) BucketLoggingTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketLoggingTypePtrOutput)
 }
 
-type BucketLoggingOutput struct{ *pulumi.OutputState }
+type BucketLoggingTypeOutput struct{ *pulumi.OutputState }
 
-func (BucketLoggingOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketLogging)(nil)).Elem()
+func (BucketLoggingTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketLoggingType)(nil)).Elem()
 }
 
-func (o BucketLoggingOutput) ToBucketLoggingOutput() BucketLoggingOutput {
+func (o BucketLoggingTypeOutput) ToBucketLoggingTypeOutput() BucketLoggingTypeOutput {
 	return o
 }
 
-func (o BucketLoggingOutput) ToBucketLoggingOutputWithContext(ctx context.Context) BucketLoggingOutput {
+func (o BucketLoggingTypeOutput) ToBucketLoggingTypeOutputWithContext(ctx context.Context) BucketLoggingTypeOutput {
 	return o
 }
 
-func (o BucketLoggingOutput) ToBucketLoggingPtrOutput() BucketLoggingPtrOutput {
-	return o.ToBucketLoggingPtrOutputWithContext(context.Background())
+func (o BucketLoggingTypeOutput) ToBucketLoggingTypePtrOutput() BucketLoggingTypePtrOutput {
+	return o.ToBucketLoggingTypePtrOutputWithContext(context.Background())
 }
 
-func (o BucketLoggingOutput) ToBucketLoggingPtrOutputWithContext(ctx context.Context) BucketLoggingPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketLogging) *BucketLogging {
+func (o BucketLoggingTypeOutput) ToBucketLoggingTypePtrOutputWithContext(ctx context.Context) BucketLoggingTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketLoggingType) *BucketLoggingType {
 		return &v
-	}).(BucketLoggingPtrOutput)
+	}).(BucketLoggingTypePtrOutput)
 }
 
 // The name of the bucket that will receive the log objects.
-func (o BucketLoggingOutput) TargetBucket() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketLogging) string { return v.TargetBucket }).(pulumi.StringOutput)
+func (o BucketLoggingTypeOutput) TargetBucket() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketLoggingType) string { return v.TargetBucket }).(pulumi.StringOutput)
 }
 
 // To specify a key prefix for log objects.
-func (o BucketLoggingOutput) TargetPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v BucketLogging) *string { return v.TargetPrefix }).(pulumi.StringPtrOutput)
+func (o BucketLoggingTypeOutput) TargetPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BucketLoggingType) *string { return v.TargetPrefix }).(pulumi.StringPtrOutput)
 }
 
-type BucketLoggingPtrOutput struct{ *pulumi.OutputState }
+type BucketLoggingTypePtrOutput struct{ *pulumi.OutputState }
 
-func (BucketLoggingPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketLogging)(nil)).Elem()
+func (BucketLoggingTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketLoggingType)(nil)).Elem()
 }
 
-func (o BucketLoggingPtrOutput) ToBucketLoggingPtrOutput() BucketLoggingPtrOutput {
+func (o BucketLoggingTypePtrOutput) ToBucketLoggingTypePtrOutput() BucketLoggingTypePtrOutput {
 	return o
 }
 
-func (o BucketLoggingPtrOutput) ToBucketLoggingPtrOutputWithContext(ctx context.Context) BucketLoggingPtrOutput {
+func (o BucketLoggingTypePtrOutput) ToBucketLoggingTypePtrOutputWithContext(ctx context.Context) BucketLoggingTypePtrOutput {
 	return o
 }
 
-func (o BucketLoggingPtrOutput) Elem() BucketLoggingOutput {
-	return o.ApplyT(func(v *BucketLogging) BucketLogging {
+func (o BucketLoggingTypePtrOutput) Elem() BucketLoggingTypeOutput {
+	return o.ApplyT(func(v *BucketLoggingType) BucketLoggingType {
 		if v != nil {
 			return *v
 		}
-		var ret BucketLogging
+		var ret BucketLoggingType
 		return ret
-	}).(BucketLoggingOutput)
+	}).(BucketLoggingTypeOutput)
 }
 
 // The name of the bucket that will receive the log objects.
-func (o BucketLoggingPtrOutput) TargetBucket() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketLogging) *string {
+func (o BucketLoggingTypePtrOutput) TargetBucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketLoggingType) *string {
 		if v == nil {
 			return nil
 		}
@@ -1619,8 +1619,8 @@ func (o BucketLoggingPtrOutput) TargetBucket() pulumi.StringPtrOutput {
 }
 
 // To specify a key prefix for log objects.
-func (o BucketLoggingPtrOutput) TargetPrefix() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketLogging) *string {
+func (o BucketLoggingTypePtrOutput) TargetPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketLoggingType) *string {
 		if v == nil {
 			return nil
 		}
@@ -2982,136 +2982,136 @@ func (o BucketTransferAccelerationPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-type BucketVersioning struct {
+type BucketVersioningType struct {
 	// Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
 	Status string `pulumi:"status"`
 }
 
-// BucketVersioningInput is an input type that accepts BucketVersioningArgs and BucketVersioningOutput values.
-// You can construct a concrete instance of `BucketVersioningInput` via:
+// BucketVersioningTypeInput is an input type that accepts BucketVersioningTypeArgs and BucketVersioningTypeOutput values.
+// You can construct a concrete instance of `BucketVersioningTypeInput` via:
 //
-//	BucketVersioningArgs{...}
-type BucketVersioningInput interface {
+//	BucketVersioningTypeArgs{...}
+type BucketVersioningTypeInput interface {
 	pulumi.Input
 
-	ToBucketVersioningOutput() BucketVersioningOutput
-	ToBucketVersioningOutputWithContext(context.Context) BucketVersioningOutput
+	ToBucketVersioningTypeOutput() BucketVersioningTypeOutput
+	ToBucketVersioningTypeOutputWithContext(context.Context) BucketVersioningTypeOutput
 }
 
-type BucketVersioningArgs struct {
+type BucketVersioningTypeArgs struct {
 	// Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
 	Status pulumi.StringInput `pulumi:"status"`
 }
 
-func (BucketVersioningArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketVersioning)(nil)).Elem()
+func (BucketVersioningTypeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketVersioningType)(nil)).Elem()
 }
 
-func (i BucketVersioningArgs) ToBucketVersioningOutput() BucketVersioningOutput {
-	return i.ToBucketVersioningOutputWithContext(context.Background())
+func (i BucketVersioningTypeArgs) ToBucketVersioningTypeOutput() BucketVersioningTypeOutput {
+	return i.ToBucketVersioningTypeOutputWithContext(context.Background())
 }
 
-func (i BucketVersioningArgs) ToBucketVersioningOutputWithContext(ctx context.Context) BucketVersioningOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketVersioningOutput)
+func (i BucketVersioningTypeArgs) ToBucketVersioningTypeOutputWithContext(ctx context.Context) BucketVersioningTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketVersioningTypeOutput)
 }
 
-func (i BucketVersioningArgs) ToBucketVersioningPtrOutput() BucketVersioningPtrOutput {
-	return i.ToBucketVersioningPtrOutputWithContext(context.Background())
+func (i BucketVersioningTypeArgs) ToBucketVersioningTypePtrOutput() BucketVersioningTypePtrOutput {
+	return i.ToBucketVersioningTypePtrOutputWithContext(context.Background())
 }
 
-func (i BucketVersioningArgs) ToBucketVersioningPtrOutputWithContext(ctx context.Context) BucketVersioningPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketVersioningOutput).ToBucketVersioningPtrOutputWithContext(ctx)
+func (i BucketVersioningTypeArgs) ToBucketVersioningTypePtrOutputWithContext(ctx context.Context) BucketVersioningTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketVersioningTypeOutput).ToBucketVersioningTypePtrOutputWithContext(ctx)
 }
 
-// BucketVersioningPtrInput is an input type that accepts BucketVersioningArgs, BucketVersioningPtr and BucketVersioningPtrOutput values.
-// You can construct a concrete instance of `BucketVersioningPtrInput` via:
+// BucketVersioningTypePtrInput is an input type that accepts BucketVersioningTypeArgs, BucketVersioningTypePtr and BucketVersioningTypePtrOutput values.
+// You can construct a concrete instance of `BucketVersioningTypePtrInput` via:
 //
-//	        BucketVersioningArgs{...}
+//	        BucketVersioningTypeArgs{...}
 //
 //	or:
 //
 //	        nil
-type BucketVersioningPtrInput interface {
+type BucketVersioningTypePtrInput interface {
 	pulumi.Input
 
-	ToBucketVersioningPtrOutput() BucketVersioningPtrOutput
-	ToBucketVersioningPtrOutputWithContext(context.Context) BucketVersioningPtrOutput
+	ToBucketVersioningTypePtrOutput() BucketVersioningTypePtrOutput
+	ToBucketVersioningTypePtrOutputWithContext(context.Context) BucketVersioningTypePtrOutput
 }
 
-type bucketVersioningPtrType BucketVersioningArgs
+type bucketVersioningTypePtrType BucketVersioningTypeArgs
 
-func BucketVersioningPtr(v *BucketVersioningArgs) BucketVersioningPtrInput {
-	return (*bucketVersioningPtrType)(v)
+func BucketVersioningTypePtr(v *BucketVersioningTypeArgs) BucketVersioningTypePtrInput {
+	return (*bucketVersioningTypePtrType)(v)
 }
 
-func (*bucketVersioningPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketVersioning)(nil)).Elem()
+func (*bucketVersioningTypePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketVersioningType)(nil)).Elem()
 }
 
-func (i *bucketVersioningPtrType) ToBucketVersioningPtrOutput() BucketVersioningPtrOutput {
-	return i.ToBucketVersioningPtrOutputWithContext(context.Background())
+func (i *bucketVersioningTypePtrType) ToBucketVersioningTypePtrOutput() BucketVersioningTypePtrOutput {
+	return i.ToBucketVersioningTypePtrOutputWithContext(context.Background())
 }
 
-func (i *bucketVersioningPtrType) ToBucketVersioningPtrOutputWithContext(ctx context.Context) BucketVersioningPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(BucketVersioningPtrOutput)
+func (i *bucketVersioningTypePtrType) ToBucketVersioningTypePtrOutputWithContext(ctx context.Context) BucketVersioningTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketVersioningTypePtrOutput)
 }
 
-type BucketVersioningOutput struct{ *pulumi.OutputState }
+type BucketVersioningTypeOutput struct{ *pulumi.OutputState }
 
-func (BucketVersioningOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*BucketVersioning)(nil)).Elem()
+func (BucketVersioningTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketVersioningType)(nil)).Elem()
 }
 
-func (o BucketVersioningOutput) ToBucketVersioningOutput() BucketVersioningOutput {
+func (o BucketVersioningTypeOutput) ToBucketVersioningTypeOutput() BucketVersioningTypeOutput {
 	return o
 }
 
-func (o BucketVersioningOutput) ToBucketVersioningOutputWithContext(ctx context.Context) BucketVersioningOutput {
+func (o BucketVersioningTypeOutput) ToBucketVersioningTypeOutputWithContext(ctx context.Context) BucketVersioningTypeOutput {
 	return o
 }
 
-func (o BucketVersioningOutput) ToBucketVersioningPtrOutput() BucketVersioningPtrOutput {
-	return o.ToBucketVersioningPtrOutputWithContext(context.Background())
+func (o BucketVersioningTypeOutput) ToBucketVersioningTypePtrOutput() BucketVersioningTypePtrOutput {
+	return o.ToBucketVersioningTypePtrOutputWithContext(context.Background())
 }
 
-func (o BucketVersioningOutput) ToBucketVersioningPtrOutputWithContext(ctx context.Context) BucketVersioningPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketVersioning) *BucketVersioning {
+func (o BucketVersioningTypeOutput) ToBucketVersioningTypePtrOutputWithContext(ctx context.Context) BucketVersioningTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BucketVersioningType) *BucketVersioningType {
 		return &v
-	}).(BucketVersioningPtrOutput)
+	}).(BucketVersioningTypePtrOutput)
 }
 
 // Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
-func (o BucketVersioningOutput) Status() pulumi.StringOutput {
-	return o.ApplyT(func(v BucketVersioning) string { return v.Status }).(pulumi.StringOutput)
+func (o BucketVersioningTypeOutput) Status() pulumi.StringOutput {
+	return o.ApplyT(func(v BucketVersioningType) string { return v.Status }).(pulumi.StringOutput)
 }
 
-type BucketVersioningPtrOutput struct{ *pulumi.OutputState }
+type BucketVersioningTypePtrOutput struct{ *pulumi.OutputState }
 
-func (BucketVersioningPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**BucketVersioning)(nil)).Elem()
+func (BucketVersioningTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BucketVersioningType)(nil)).Elem()
 }
 
-func (o BucketVersioningPtrOutput) ToBucketVersioningPtrOutput() BucketVersioningPtrOutput {
+func (o BucketVersioningTypePtrOutput) ToBucketVersioningTypePtrOutput() BucketVersioningTypePtrOutput {
 	return o
 }
 
-func (o BucketVersioningPtrOutput) ToBucketVersioningPtrOutputWithContext(ctx context.Context) BucketVersioningPtrOutput {
+func (o BucketVersioningTypePtrOutput) ToBucketVersioningTypePtrOutputWithContext(ctx context.Context) BucketVersioningTypePtrOutput {
 	return o
 }
 
-func (o BucketVersioningPtrOutput) Elem() BucketVersioningOutput {
-	return o.ApplyT(func(v *BucketVersioning) BucketVersioning {
+func (o BucketVersioningTypePtrOutput) Elem() BucketVersioningTypeOutput {
+	return o.ApplyT(func(v *BucketVersioningType) BucketVersioningType {
 		if v != nil {
 			return *v
 		}
-		var ret BucketVersioning
+		var ret BucketVersioningType
 		return ret
-	}).(BucketVersioningOutput)
+	}).(BucketVersioningTypeOutput)
 }
 
 // Specifies the versioning state of a bucket. Valid values: `Enabled` and `Suspended`.
-func (o BucketVersioningPtrOutput) Status() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *BucketVersioning) *string {
+func (o BucketVersioningTypePtrOutput) Status() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BucketVersioningType) *string {
 		if v == nil {
 			return nil
 		}
@@ -5176,8 +5176,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleNoncurrentVersionTransitionArrayInput)(nil)).Elem(), BucketLifecycleRuleNoncurrentVersionTransitionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleTransitionInput)(nil)).Elem(), BucketLifecycleRuleTransitionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleTransitionArrayInput)(nil)).Elem(), BucketLifecycleRuleTransitionArray{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketLoggingInput)(nil)).Elem(), BucketLoggingArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketLoggingPtrInput)(nil)).Elem(), BucketLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLoggingTypeInput)(nil)).Elem(), BucketLoggingTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketLoggingTypePtrInput)(nil)).Elem(), BucketLoggingTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketRefererConfigInput)(nil)).Elem(), BucketRefererConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketRefererConfigPtrInput)(nil)).Elem(), BucketRefererConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketReplicationDestinationInput)(nil)).Elem(), BucketReplicationDestinationArgs{})
@@ -5196,8 +5196,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketServerSideEncryptionRulePtrInput)(nil)).Elem(), BucketServerSideEncryptionRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketTransferAccelerationInput)(nil)).Elem(), BucketTransferAccelerationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketTransferAccelerationPtrInput)(nil)).Elem(), BucketTransferAccelerationArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketVersioningInput)(nil)).Elem(), BucketVersioningArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*BucketVersioningPtrInput)(nil)).Elem(), BucketVersioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketVersioningTypeInput)(nil)).Elem(), BucketVersioningTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketVersioningTypePtrInput)(nil)).Elem(), BucketVersioningTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsiteInput)(nil)).Elem(), BucketWebsiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketWebsitePtrInput)(nil)).Elem(), BucketWebsiteArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBucketObjectsObjectInput)(nil)).Elem(), GetBucketObjectsObjectArgs{})
@@ -5246,8 +5246,8 @@ func init() {
 	pulumi.RegisterOutputType(BucketLifecycleRuleNoncurrentVersionTransitionArrayOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleTransitionOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleTransitionArrayOutput{})
-	pulumi.RegisterOutputType(BucketLoggingOutput{})
-	pulumi.RegisterOutputType(BucketLoggingPtrOutput{})
+	pulumi.RegisterOutputType(BucketLoggingTypeOutput{})
+	pulumi.RegisterOutputType(BucketLoggingTypePtrOutput{})
 	pulumi.RegisterOutputType(BucketRefererConfigOutput{})
 	pulumi.RegisterOutputType(BucketRefererConfigPtrOutput{})
 	pulumi.RegisterOutputType(BucketReplicationDestinationOutput{})
@@ -5266,8 +5266,8 @@ func init() {
 	pulumi.RegisterOutputType(BucketServerSideEncryptionRulePtrOutput{})
 	pulumi.RegisterOutputType(BucketTransferAccelerationOutput{})
 	pulumi.RegisterOutputType(BucketTransferAccelerationPtrOutput{})
-	pulumi.RegisterOutputType(BucketVersioningOutput{})
-	pulumi.RegisterOutputType(BucketVersioningPtrOutput{})
+	pulumi.RegisterOutputType(BucketVersioningTypeOutput{})
+	pulumi.RegisterOutputType(BucketVersioningTypePtrOutput{})
 	pulumi.RegisterOutputType(BucketWebsiteOutput{})
 	pulumi.RegisterOutputType(BucketWebsitePtrOutput{})
 	pulumi.RegisterOutputType(GetBucketObjectsObjectOutput{})

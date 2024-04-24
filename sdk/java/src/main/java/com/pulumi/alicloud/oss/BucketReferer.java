@@ -17,7 +17,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Provides a OSS Bucket Referer resource. Bucket Referer configuration.
+ * Provides a OSS Bucket Referer resource. Bucket Referer configuration (Hotlink protection).
  * 
  * For information about OSS Bucket Referer and how to use it, see [What is Bucket Referer](https://www.alibabacloud.com/help/en/oss/user-guide/hotlink-protection).
  * 
@@ -107,14 +107,14 @@ public class BucketReferer extends com.pulumi.resources.CustomResource {
         return this.allowEmptyReferer;
     }
     /**
-     * Allow phase request parameters.
+     * Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
      * 
      */
     @Export(name="allowTruncateQueryString", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> allowTruncateQueryString;
 
     /**
-     * @return Allow phase request parameters.
+     * @return Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
      * 
      */
     public Output<Boolean> allowTruncateQueryString() {
@@ -163,14 +163,14 @@ public class BucketReferer extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.refererLists);
     }
     /**
-     * Name of the bucket.
+     * Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
      * 
      */
     @Export(name="truncatePath", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> truncatePath;
 
     /**
-     * @return Name of the bucket.
+     * @return Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
      * 
      */
     public Output<Optional<Boolean>> truncatePath() {

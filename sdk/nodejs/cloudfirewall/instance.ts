@@ -15,17 +15,27 @@ import * as utilities from "../utilities";
  *
  * Basic Usage
  *
+ * create a pay-as-you-go instance
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as alicloud from "@pulumi/alicloud";
  *
- * const _default = new alicloud.cloudfirewall.Instance("default", {
- *     paymentType: "PayAsYouGo",
- *     spec: "ultimate_version",
- *     ipNumber: 400,
- *     bandWidth: 200,
- *     cfwLog: true,
- *     cfwLogStorage: 1000,
+ * const payAsYouGo = new alicloud.cloudfirewall.Instance("PayAsYouGo", {paymentType: "PayAsYouGo"});
+ * ```
+ *
+ * create a subscription instance
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as alicloud from "@pulumi/alicloud";
+ *
+ * const subscription = new alicloud.cloudfirewall.Instance("Subscription", {
+ *     paymentType: "Subscription",
+ *     spec: "premium_version",
+ *     ipNumber: 20,
+ *     bandWidth: 10,
+ *     cfwLog: false,
+ *     period: 1,
  * });
  * ```
  *
@@ -72,7 +82,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
      */
-    public readonly bandWidth!: pulumi.Output<number>;
+    public readonly bandWidth!: pulumi.Output<number | undefined>;
     /**
      * Whether to use multi-account. Valid values: `true`, `false`.
      */
@@ -80,7 +90,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Whether to use log audit. Valid values: `true`, `false`.
      */
-    public readonly cfwLog!: pulumi.Output<boolean>;
+    public readonly cfwLog!: pulumi.Output<boolean | undefined>;
     /**
      * The log storage capacity. It will be ignored when `cfwLog = false`.
      */
@@ -104,7 +114,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * The number of public IPs that can be protected. Valid values: 20 to 4000.
      */
-    public readonly ipNumber!: pulumi.Output<number>;
+    public readonly ipNumber!: pulumi.Output<number | undefined>;
     /**
      * The logistics.
      */
@@ -147,7 +157,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
      */
-    public readonly spec!: pulumi.Output<string>;
+    public readonly spec!: pulumi.Output<string | undefined>;
     /**
      * The status of Instance.
      */
@@ -189,20 +199,8 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["status"] = state ? state.status : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
-            if ((!args || args.bandWidth === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'bandWidth'");
-            }
-            if ((!args || args.cfwLog === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'cfwLog'");
-            }
-            if ((!args || args.ipNumber === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'ipNumber'");
-            }
             if ((!args || args.paymentType === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'paymentType'");
-            }
-            if ((!args || args.spec === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'spec'");
             }
             resourceInputs["accountNumber"] = args ? args.accountNumber : undefined;
             resourceInputs["bandWidth"] = args ? args.bandWidth : undefined;
@@ -335,7 +333,7 @@ export interface InstanceArgs {
     /**
      * Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
      */
-    bandWidth: pulumi.Input<number>;
+    bandWidth?: pulumi.Input<number>;
     /**
      * Whether to use multi-account. Valid values: `true`, `false`.
      */
@@ -343,7 +341,7 @@ export interface InstanceArgs {
     /**
      * Whether to use log audit. Valid values: `true`, `false`.
      */
-    cfwLog: pulumi.Input<boolean>;
+    cfwLog?: pulumi.Input<boolean>;
     /**
      * The log storage capacity. It will be ignored when `cfwLog = false`.
      */
@@ -359,7 +357,7 @@ export interface InstanceArgs {
     /**
      * The number of public IPs that can be protected. Valid values: 20 to 4000.
      */
-    ipNumber: pulumi.Input<number>;
+    ipNumber?: pulumi.Input<number>;
     /**
      * The logistics.
      */
@@ -398,5 +396,5 @@ export interface InstanceArgs {
     /**
      * Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
      */
-    spec: pulumi.Input<string>;
+    spec?: pulumi.Input<string>;
 }

@@ -22,6 +22,8 @@ import (
 //
 // # Basic Usage
 //
+// create a pay-as-you-go instance
+//
 // ```go
 // package main
 //
@@ -34,13 +36,38 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudfirewall.NewInstance(ctx, "default", &cloudfirewall.InstanceArgs{
-//				PaymentType:   pulumi.String("PayAsYouGo"),
-//				Spec:          pulumi.String("ultimate_version"),
-//				IpNumber:      pulumi.Int(400),
-//				BandWidth:     pulumi.Int(200),
-//				CfwLog:        pulumi.Bool(true),
-//				CfwLogStorage: pulumi.Int(1000),
+//			_, err := cloudfirewall.NewInstance(ctx, "PayAsYouGo", &cloudfirewall.InstanceArgs{
+//				PaymentType: pulumi.String("PayAsYouGo"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// create a subscription instance
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/cloudfirewall"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := cloudfirewall.NewInstance(ctx, "Subscription", &cloudfirewall.InstanceArgs{
+//				PaymentType: pulumi.String("Subscription"),
+//				Spec:        pulumi.String("premium_version"),
+//				IpNumber:    pulumi.Int(20),
+//				BandWidth:   pulumi.Int(10),
+//				CfwLog:      pulumi.Bool(false),
+//				Period:      pulumi.Int(1),
 //			})
 //			if err != nil {
 //				return err
@@ -64,11 +91,11 @@ type Instance struct {
 	// The number of multi account. It will be ignored when `cfwAccount = false`.
 	AccountNumber pulumi.IntPtrOutput `pulumi:"accountNumber"`
 	// Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
-	BandWidth pulumi.IntOutput `pulumi:"bandWidth"`
+	BandWidth pulumi.IntPtrOutput `pulumi:"bandWidth"`
 	// Whether to use multi-account. Valid values: `true`, `false`.
 	CfwAccount pulumi.BoolPtrOutput `pulumi:"cfwAccount"`
 	// Whether to use log audit. Valid values: `true`, `false`.
-	CfwLog pulumi.BoolOutput `pulumi:"cfwLog"`
+	CfwLog pulumi.BoolPtrOutput `pulumi:"cfwLog"`
 	// The log storage capacity. It will be ignored when `cfwLog = false`.
 	CfwLogStorage pulumi.IntPtrOutput `pulumi:"cfwLogStorage"`
 	// The creation time.
@@ -80,7 +107,7 @@ type Instance struct {
 	// The number of assets.
 	InstanceCount pulumi.IntPtrOutput `pulumi:"instanceCount"`
 	// The number of public IPs that can be protected. Valid values: 20 to 4000.
-	IpNumber pulumi.IntOutput `pulumi:"ipNumber"`
+	IpNumber pulumi.IntPtrOutput `pulumi:"ipNumber"`
 	// The logistics.
 	Logistics pulumi.StringPtrOutput `pulumi:"logistics"`
 	// The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
@@ -103,7 +130,7 @@ type Instance struct {
 	// Whether to renew an instance automatically or not. Default to "ManualRenewal".
 	RenewalStatus pulumi.StringOutput `pulumi:"renewalStatus"`
 	// Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
-	Spec pulumi.StringOutput `pulumi:"spec"`
+	Spec pulumi.StringPtrOutput `pulumi:"spec"`
 	// The status of Instance.
 	Status pulumi.StringOutput `pulumi:"status"`
 }
@@ -115,20 +142,8 @@ func NewInstance(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.BandWidth == nil {
-		return nil, errors.New("invalid value for required argument 'BandWidth'")
-	}
-	if args.CfwLog == nil {
-		return nil, errors.New("invalid value for required argument 'CfwLog'")
-	}
-	if args.IpNumber == nil {
-		return nil, errors.New("invalid value for required argument 'IpNumber'")
-	}
 	if args.PaymentType == nil {
 		return nil, errors.New("invalid value for required argument 'PaymentType'")
-	}
-	if args.Spec == nil {
-		return nil, errors.New("invalid value for required argument 'Spec'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Instance
@@ -256,11 +271,11 @@ type instanceArgs struct {
 	// The number of multi account. It will be ignored when `cfwAccount = false`.
 	AccountNumber *int `pulumi:"accountNumber"`
 	// Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
-	BandWidth int `pulumi:"bandWidth"`
+	BandWidth *int `pulumi:"bandWidth"`
 	// Whether to use multi-account. Valid values: `true`, `false`.
 	CfwAccount *bool `pulumi:"cfwAccount"`
 	// Whether to use log audit. Valid values: `true`, `false`.
-	CfwLog bool `pulumi:"cfwLog"`
+	CfwLog *bool `pulumi:"cfwLog"`
 	// The log storage capacity. It will be ignored when `cfwLog = false`.
 	CfwLogStorage *int `pulumi:"cfwLogStorage"`
 	// The number of protected VPCs. It will be ignored when `spec = "premiumVersion"`. Valid values between 2 and 500.
@@ -268,7 +283,7 @@ type instanceArgs struct {
 	// The number of assets.
 	InstanceCount *int `pulumi:"instanceCount"`
 	// The number of public IPs that can be protected. Valid values: 20 to 4000.
-	IpNumber int `pulumi:"ipNumber"`
+	IpNumber *int `pulumi:"ipNumber"`
 	// The logistics.
 	Logistics *string `pulumi:"logistics"`
 	// The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
@@ -289,7 +304,7 @@ type instanceArgs struct {
 	// Whether to renew an instance automatically or not. Default to "ManualRenewal".
 	RenewalStatus *string `pulumi:"renewalStatus"`
 	// Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
-	Spec string `pulumi:"spec"`
+	Spec *string `pulumi:"spec"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -297,11 +312,11 @@ type InstanceArgs struct {
 	// The number of multi account. It will be ignored when `cfwAccount = false`.
 	AccountNumber pulumi.IntPtrInput
 	// Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
-	BandWidth pulumi.IntInput
+	BandWidth pulumi.IntPtrInput
 	// Whether to use multi-account. Valid values: `true`, `false`.
 	CfwAccount pulumi.BoolPtrInput
 	// Whether to use log audit. Valid values: `true`, `false`.
-	CfwLog pulumi.BoolInput
+	CfwLog pulumi.BoolPtrInput
 	// The log storage capacity. It will be ignored when `cfwLog = false`.
 	CfwLogStorage pulumi.IntPtrInput
 	// The number of protected VPCs. It will be ignored when `spec = "premiumVersion"`. Valid values between 2 and 500.
@@ -309,7 +324,7 @@ type InstanceArgs struct {
 	// The number of assets.
 	InstanceCount pulumi.IntPtrInput
 	// The number of public IPs that can be protected. Valid values: 20 to 4000.
-	IpNumber pulumi.IntInput
+	IpNumber pulumi.IntPtrInput
 	// The logistics.
 	Logistics pulumi.StringPtrInput
 	// The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modifyType` is required when you execute an update operation.
@@ -330,7 +345,7 @@ type InstanceArgs struct {
 	// Whether to renew an instance automatically or not. Default to "ManualRenewal".
 	RenewalStatus pulumi.StringPtrInput
 	// Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
-	Spec pulumi.StringInput
+	Spec pulumi.StringPtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {
@@ -426,8 +441,8 @@ func (o InstanceOutput) AccountNumber() pulumi.IntPtrOutput {
 }
 
 // Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
-func (o InstanceOutput) BandWidth() pulumi.IntOutput {
-	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.BandWidth }).(pulumi.IntOutput)
+func (o InstanceOutput) BandWidth() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.BandWidth }).(pulumi.IntPtrOutput)
 }
 
 // Whether to use multi-account. Valid values: `true`, `false`.
@@ -436,8 +451,8 @@ func (o InstanceOutput) CfwAccount() pulumi.BoolPtrOutput {
 }
 
 // Whether to use log audit. Valid values: `true`, `false`.
-func (o InstanceOutput) CfwLog() pulumi.BoolOutput {
-	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.CfwLog }).(pulumi.BoolOutput)
+func (o InstanceOutput) CfwLog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.BoolPtrOutput { return v.CfwLog }).(pulumi.BoolPtrOutput)
 }
 
 // The log storage capacity. It will be ignored when `cfwLog = false`.
@@ -466,8 +481,8 @@ func (o InstanceOutput) InstanceCount() pulumi.IntPtrOutput {
 }
 
 // The number of public IPs that can be protected. Valid values: 20 to 4000.
-func (o InstanceOutput) IpNumber() pulumi.IntOutput {
-	return o.ApplyT(func(v *Instance) pulumi.IntOutput { return v.IpNumber }).(pulumi.IntOutput)
+func (o InstanceOutput) IpNumber() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.IntPtrOutput { return v.IpNumber }).(pulumi.IntPtrOutput)
 }
 
 // The logistics.
@@ -519,8 +534,8 @@ func (o InstanceOutput) RenewalStatus() pulumi.StringOutput {
 }
 
 // Current version. Valid values: `premiumVersion`, `enterpriseVersion`,`ultimateVersion`.
-func (o InstanceOutput) Spec() pulumi.StringOutput {
-	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Spec }).(pulumi.StringOutput)
+func (o InstanceOutput) Spec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.Spec }).(pulumi.StringPtrOutput)
 }
 
 // The status of Instance.

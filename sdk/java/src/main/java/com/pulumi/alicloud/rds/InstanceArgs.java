@@ -357,6 +357,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
+     * 
+     */
+    @Import(name="dbParamGroupId")
+    private @Nullable Output<String> dbParamGroupId;
+
+    /**
+     * @return Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
+     * 
+     */
+    public Optional<Output<String>> dbParamGroupId() {
+        return Optional.ofNullable(this.dbParamGroupId);
+    }
+
+    /**
      * The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
      * - If you set the `Engine` parameter to MySQL.
      * - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -1444,6 +1459,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.dbInstanceIpArrayName = $.dbInstanceIpArrayName;
         this.dbInstanceStorageType = $.dbInstanceStorageType;
         this.dbIsIgnoreCase = $.dbIsIgnoreCase;
+        this.dbParamGroupId = $.dbParamGroupId;
         this.dbTimeZone = $.dbTimeZone;
         this.deletionProtection = $.deletionProtection;
         this.direction = $.direction;
@@ -1963,6 +1979,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder dbIsIgnoreCase(Boolean dbIsIgnoreCase) {
             return dbIsIgnoreCase(Output.of(dbIsIgnoreCase));
+        }
+
+        /**
+         * @param dbParamGroupId Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbParamGroupId(@Nullable Output<String> dbParamGroupId) {
+            $.dbParamGroupId = dbParamGroupId;
+            return this;
+        }
+
+        /**
+         * @param dbParamGroupId Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dbParamGroupId(String dbParamGroupId) {
+            return dbParamGroupId(Output.of(dbParamGroupId));
         }
 
         /**

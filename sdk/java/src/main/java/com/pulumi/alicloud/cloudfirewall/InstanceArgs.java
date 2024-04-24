@@ -37,15 +37,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
      * 
      */
-    @Import(name="bandWidth", required=true)
-    private Output<Integer> bandWidth;
+    @Import(name="bandWidth")
+    private @Nullable Output<Integer> bandWidth;
 
     /**
      * @return Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
      * 
      */
-    public Output<Integer> bandWidth() {
-        return this.bandWidth;
+    public Optional<Output<Integer>> bandWidth() {
+        return Optional.ofNullable(this.bandWidth);
     }
 
     /**
@@ -67,15 +67,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * Whether to use log audit. Valid values: `true`, `false`.
      * 
      */
-    @Import(name="cfwLog", required=true)
-    private Output<Boolean> cfwLog;
+    @Import(name="cfwLog")
+    private @Nullable Output<Boolean> cfwLog;
 
     /**
      * @return Whether to use log audit. Valid values: `true`, `false`.
      * 
      */
-    public Output<Boolean> cfwLog() {
-        return this.cfwLog;
+    public Optional<Output<Boolean>> cfwLog() {
+        return Optional.ofNullable(this.cfwLog);
     }
 
     /**
@@ -127,15 +127,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * The number of public IPs that can be protected. Valid values: 20 to 4000.
      * 
      */
-    @Import(name="ipNumber", required=true)
-    private Output<Integer> ipNumber;
+    @Import(name="ipNumber")
+    private @Nullable Output<Integer> ipNumber;
 
     /**
      * @return The number of public IPs that can be protected. Valid values: 20 to 4000.
      * 
      */
-    public Output<Integer> ipNumber() {
-        return this.ipNumber;
+    public Optional<Output<Integer>> ipNumber() {
+        return Optional.ofNullable(this.ipNumber);
     }
 
     /**
@@ -272,15 +272,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      * Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
      * 
      */
-    @Import(name="spec", required=true)
-    private Output<String> spec;
+    @Import(name="spec")
+    private @Nullable Output<String> spec;
 
     /**
      * @return Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
      * 
      */
-    public Output<String> spec() {
-        return this.spec;
+    public Optional<Output<String>> spec() {
+        return Optional.ofNullable(this.spec);
     }
 
     private InstanceArgs() {}
@@ -350,7 +350,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder bandWidth(Output<Integer> bandWidth) {
+        public Builder bandWidth(@Nullable Output<Integer> bandWidth) {
             $.bandWidth = bandWidth;
             return this;
         }
@@ -392,7 +392,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder cfwLog(Output<Boolean> cfwLog) {
+        public Builder cfwLog(@Nullable Output<Boolean> cfwLog) {
             $.cfwLog = cfwLog;
             return this;
         }
@@ -476,7 +476,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder ipNumber(Output<Integer> ipNumber) {
+        public Builder ipNumber(@Nullable Output<Integer> ipNumber) {
             $.ipNumber = ipNumber;
             return this;
         }
@@ -675,7 +675,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder spec(Output<String> spec) {
+        public Builder spec(@Nullable Output<String> spec) {
             $.spec = spec;
             return this;
         }
@@ -691,20 +691,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            if ($.bandWidth == null) {
-                throw new MissingRequiredPropertyException("InstanceArgs", "bandWidth");
-            }
-            if ($.cfwLog == null) {
-                throw new MissingRequiredPropertyException("InstanceArgs", "cfwLog");
-            }
-            if ($.ipNumber == null) {
-                throw new MissingRequiredPropertyException("InstanceArgs", "ipNumber");
-            }
             if ($.paymentType == null) {
                 throw new MissingRequiredPropertyException("InstanceArgs", "paymentType");
-            }
-            if ($.spec == null) {
-                throw new MissingRequiredPropertyException("InstanceArgs", "spec");
             }
             return $;
         }

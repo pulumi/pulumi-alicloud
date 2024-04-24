@@ -27,6 +27,8 @@ import javax.annotation.Nullable;
  * 
  * Basic Usage
  * 
+ * create a pay-as-you-go instance
+ * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
@@ -49,13 +51,45 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+ *         var payAsYouGo = new Instance(&#34;payAsYouGo&#34;, InstanceArgs.builder()        
  *             .paymentType(&#34;PayAsYouGo&#34;)
- *             .spec(&#34;ultimate_version&#34;)
- *             .ipNumber(400)
- *             .bandWidth(200)
- *             .cfwLog(true)
- *             .cfwLogStorage(1000)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * create a subscription instance
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.alicloud.cloudfirewall.Instance;
+ * import com.pulumi.alicloud.cloudfirewall.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var subscription = new Instance(&#34;subscription&#34;, InstanceArgs.builder()        
+ *             .paymentType(&#34;Subscription&#34;)
+ *             .spec(&#34;premium_version&#34;)
+ *             .ipNumber(20)
+ *             .bandWidth(10)
+ *             .cfwLog(false)
+ *             .period(1)
  *             .build());
  * 
  *     }
@@ -93,14 +127,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="bandWidth", refs={Integer.class}, tree="[0]")
-    private Output<Integer> bandWidth;
+    private Output</* @Nullable */ Integer> bandWidth;
 
     /**
      * @return Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
      * 
      */
-    public Output<Integer> bandWidth() {
-        return this.bandWidth;
+    public Output<Optional<Integer>> bandWidth() {
+        return Codegen.optional(this.bandWidth);
     }
     /**
      * Whether to use multi-account. Valid values: `true`, `false`.
@@ -121,14 +155,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="cfwLog", refs={Boolean.class}, tree="[0]")
-    private Output<Boolean> cfwLog;
+    private Output</* @Nullable */ Boolean> cfwLog;
 
     /**
      * @return Whether to use log audit. Valid values: `true`, `false`.
      * 
      */
-    public Output<Boolean> cfwLog() {
-        return this.cfwLog;
+    public Output<Optional<Boolean>> cfwLog() {
+        return Codegen.optional(this.cfwLog);
     }
     /**
      * The log storage capacity. It will be ignored when `cfw_log = false`.
@@ -205,14 +239,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="ipNumber", refs={Integer.class}, tree="[0]")
-    private Output<Integer> ipNumber;
+    private Output</* @Nullable */ Integer> ipNumber;
 
     /**
      * @return The number of public IPs that can be protected. Valid values: 20 to 4000.
      * 
      */
-    public Output<Integer> ipNumber() {
-        return this.ipNumber;
+    public Output<Optional<Integer>> ipNumber() {
+        return Codegen.optional(this.ipNumber);
     }
     /**
      * The logistics.
@@ -351,14 +385,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="spec", refs={String.class}, tree="[0]")
-    private Output<String> spec;
+    private Output</* @Nullable */ String> spec;
 
     /**
      * @return Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
      * 
      */
-    public Output<String> spec() {
-        return this.spec;
+    public Output<Optional<String>> spec() {
+        return Codegen.optional(this.spec);
     }
     /**
      * The status of Instance.

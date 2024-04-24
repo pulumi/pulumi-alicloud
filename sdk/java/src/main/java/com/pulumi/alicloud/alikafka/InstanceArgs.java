@@ -348,14 +348,14 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone ID of the instance.
+     * The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone ID of the instance.
+     * @return The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -867,7 +867,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID of the instance.
+         * @param zoneId The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
          * 
          * @return builder
          * 
@@ -878,7 +878,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID of the instance.
+         * @param zoneId The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
          * 
          * @return builder
          * 

@@ -23,8 +23,13 @@ class ScalingRuleArgs:
                  cooldown: Optional[pulumi.Input[int]] = None,
                  disable_scale_in: Optional[pulumi.Input[bool]] = None,
                  estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
+                 initial_max_size: Optional[pulumi.Input[int]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,
                  min_adjustment_magnitude: Optional[pulumi.Input[int]] = None,
+                 predictive_scaling_mode: Optional[pulumi.Input[str]] = None,
+                 predictive_task_buffer_time: Optional[pulumi.Input[int]] = None,
+                 predictive_value_behavior: Optional[pulumi.Input[str]] = None,
+                 predictive_value_buffer: Optional[pulumi.Input[int]] = None,
                  scale_in_evaluation_count: Optional[pulumi.Input[int]] = None,
                  scale_out_evaluation_count: Optional[pulumi.Input[int]] = None,
                  scaling_rule_name: Optional[pulumi.Input[str]] = None,
@@ -46,12 +51,17 @@ class ScalingRuleArgs:
         :param pulumi.Input[int] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
         :param pulumi.Input[int] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
+        :param pulumi.Input[int] initial_max_size: The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
         :param pulumi.Input[str] metric_name: A CloudMonitor metric name.
         :param pulumi.Input[int] min_adjustment_magnitude: The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+        :param pulumi.Input[str] predictive_scaling_mode: The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+        :param pulumi.Input[int] predictive_task_buffer_time: The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+        :param pulumi.Input[str] predictive_value_behavior: The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+        :param pulumi.Input[int] predictive_value_buffer: The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
         :param pulumi.Input[int] scale_in_evaluation_count: The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
         :param pulumi.Input[int] scale_out_evaluation_count: The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
         :param pulumi.Input[str] scaling_rule_name: Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
-        :param pulumi.Input[str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+        :param pulumi.Input[str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
         :param pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]] step_adjustments: Steps for StepScalingRule. See `step_adjustment` below.
         :param pulumi.Input[float] target_value: The target value for the metric.
         """
@@ -68,10 +78,20 @@ class ScalingRuleArgs:
             pulumi.set(__self__, "disable_scale_in", disable_scale_in)
         if estimated_instance_warmup is not None:
             pulumi.set(__self__, "estimated_instance_warmup", estimated_instance_warmup)
+        if initial_max_size is not None:
+            pulumi.set(__self__, "initial_max_size", initial_max_size)
         if metric_name is not None:
             pulumi.set(__self__, "metric_name", metric_name)
         if min_adjustment_magnitude is not None:
             pulumi.set(__self__, "min_adjustment_magnitude", min_adjustment_magnitude)
+        if predictive_scaling_mode is not None:
+            pulumi.set(__self__, "predictive_scaling_mode", predictive_scaling_mode)
+        if predictive_task_buffer_time is not None:
+            pulumi.set(__self__, "predictive_task_buffer_time", predictive_task_buffer_time)
+        if predictive_value_behavior is not None:
+            pulumi.set(__self__, "predictive_value_behavior", predictive_value_behavior)
+        if predictive_value_buffer is not None:
+            pulumi.set(__self__, "predictive_value_buffer", predictive_value_buffer)
         if scale_in_evaluation_count is not None:
             pulumi.set(__self__, "scale_in_evaluation_count", scale_in_evaluation_count)
         if scale_out_evaluation_count is not None:
@@ -176,6 +196,18 @@ class ScalingRuleArgs:
         pulumi.set(self, "estimated_instance_warmup", value)
 
     @property
+    @pulumi.getter(name="initialMaxSize")
+    def initial_max_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
+        """
+        return pulumi.get(self, "initial_max_size")
+
+    @initial_max_size.setter
+    def initial_max_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "initial_max_size", value)
+
+    @property
     @pulumi.getter(name="metricName")
     def metric_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -198,6 +230,54 @@ class ScalingRuleArgs:
     @min_adjustment_magnitude.setter
     def min_adjustment_magnitude(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_adjustment_magnitude", value)
+
+    @property
+    @pulumi.getter(name="predictiveScalingMode")
+    def predictive_scaling_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+        """
+        return pulumi.get(self, "predictive_scaling_mode")
+
+    @predictive_scaling_mode.setter
+    def predictive_scaling_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "predictive_scaling_mode", value)
+
+    @property
+    @pulumi.getter(name="predictiveTaskBufferTime")
+    def predictive_task_buffer_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+        """
+        return pulumi.get(self, "predictive_task_buffer_time")
+
+    @predictive_task_buffer_time.setter
+    def predictive_task_buffer_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "predictive_task_buffer_time", value)
+
+    @property
+    @pulumi.getter(name="predictiveValueBehavior")
+    def predictive_value_behavior(self) -> Optional[pulumi.Input[str]]:
+        """
+        The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+        """
+        return pulumi.get(self, "predictive_value_behavior")
+
+    @predictive_value_behavior.setter
+    def predictive_value_behavior(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "predictive_value_behavior", value)
+
+    @property
+    @pulumi.getter(name="predictiveValueBuffer")
+    def predictive_value_buffer(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+        """
+        return pulumi.get(self, "predictive_value_buffer")
+
+    @predictive_value_buffer.setter
+    def predictive_value_buffer(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "predictive_value_buffer", value)
 
     @property
     @pulumi.getter(name="scaleInEvaluationCount")
@@ -239,7 +319,7 @@ class ScalingRuleArgs:
     @pulumi.getter(name="scalingRuleType")
     def scaling_rule_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+        The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
         """
         return pulumi.get(self, "scaling_rule_type")
 
@@ -282,8 +362,13 @@ class _ScalingRuleState:
                  cooldown: Optional[pulumi.Input[int]] = None,
                  disable_scale_in: Optional[pulumi.Input[bool]] = None,
                  estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
+                 initial_max_size: Optional[pulumi.Input[int]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,
                  min_adjustment_magnitude: Optional[pulumi.Input[int]] = None,
+                 predictive_scaling_mode: Optional[pulumi.Input[str]] = None,
+                 predictive_task_buffer_time: Optional[pulumi.Input[int]] = None,
+                 predictive_value_behavior: Optional[pulumi.Input[str]] = None,
+                 predictive_value_buffer: Optional[pulumi.Input[int]] = None,
                  scale_in_evaluation_count: Optional[pulumi.Input[int]] = None,
                  scale_out_evaluation_count: Optional[pulumi.Input[int]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
@@ -306,13 +391,18 @@ class _ScalingRuleState:
         :param pulumi.Input[int] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
         :param pulumi.Input[int] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
+        :param pulumi.Input[int] initial_max_size: The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
         :param pulumi.Input[str] metric_name: A CloudMonitor metric name.
         :param pulumi.Input[int] min_adjustment_magnitude: The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+        :param pulumi.Input[str] predictive_scaling_mode: The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+        :param pulumi.Input[int] predictive_task_buffer_time: The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+        :param pulumi.Input[str] predictive_value_behavior: The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+        :param pulumi.Input[int] predictive_value_buffer: The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
         :param pulumi.Input[int] scale_in_evaluation_count: The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
         :param pulumi.Input[int] scale_out_evaluation_count: The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling rule.
         :param pulumi.Input[str] scaling_rule_name: Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
-        :param pulumi.Input[str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+        :param pulumi.Input[str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
         :param pulumi.Input[Sequence[pulumi.Input['ScalingRuleStepAdjustmentArgs']]] step_adjustments: Steps for StepScalingRule. See `step_adjustment` below.
         :param pulumi.Input[float] target_value: The target value for the metric.
         """
@@ -330,10 +420,20 @@ class _ScalingRuleState:
             pulumi.set(__self__, "disable_scale_in", disable_scale_in)
         if estimated_instance_warmup is not None:
             pulumi.set(__self__, "estimated_instance_warmup", estimated_instance_warmup)
+        if initial_max_size is not None:
+            pulumi.set(__self__, "initial_max_size", initial_max_size)
         if metric_name is not None:
             pulumi.set(__self__, "metric_name", metric_name)
         if min_adjustment_magnitude is not None:
             pulumi.set(__self__, "min_adjustment_magnitude", min_adjustment_magnitude)
+        if predictive_scaling_mode is not None:
+            pulumi.set(__self__, "predictive_scaling_mode", predictive_scaling_mode)
+        if predictive_task_buffer_time is not None:
+            pulumi.set(__self__, "predictive_task_buffer_time", predictive_task_buffer_time)
+        if predictive_value_behavior is not None:
+            pulumi.set(__self__, "predictive_value_behavior", predictive_value_behavior)
+        if predictive_value_buffer is not None:
+            pulumi.set(__self__, "predictive_value_buffer", predictive_value_buffer)
         if scale_in_evaluation_count is not None:
             pulumi.set(__self__, "scale_in_evaluation_count", scale_in_evaluation_count)
         if scale_out_evaluation_count is not None:
@@ -440,6 +540,18 @@ class _ScalingRuleState:
         pulumi.set(self, "estimated_instance_warmup", value)
 
     @property
+    @pulumi.getter(name="initialMaxSize")
+    def initial_max_size(self) -> Optional[pulumi.Input[int]]:
+        """
+        The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
+        """
+        return pulumi.get(self, "initial_max_size")
+
+    @initial_max_size.setter
+    def initial_max_size(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "initial_max_size", value)
+
+    @property
     @pulumi.getter(name="metricName")
     def metric_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -462,6 +574,54 @@ class _ScalingRuleState:
     @min_adjustment_magnitude.setter
     def min_adjustment_magnitude(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "min_adjustment_magnitude", value)
+
+    @property
+    @pulumi.getter(name="predictiveScalingMode")
+    def predictive_scaling_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+        """
+        return pulumi.get(self, "predictive_scaling_mode")
+
+    @predictive_scaling_mode.setter
+    def predictive_scaling_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "predictive_scaling_mode", value)
+
+    @property
+    @pulumi.getter(name="predictiveTaskBufferTime")
+    def predictive_task_buffer_time(self) -> Optional[pulumi.Input[int]]:
+        """
+        The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+        """
+        return pulumi.get(self, "predictive_task_buffer_time")
+
+    @predictive_task_buffer_time.setter
+    def predictive_task_buffer_time(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "predictive_task_buffer_time", value)
+
+    @property
+    @pulumi.getter(name="predictiveValueBehavior")
+    def predictive_value_behavior(self) -> Optional[pulumi.Input[str]]:
+        """
+        The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+        """
+        return pulumi.get(self, "predictive_value_behavior")
+
+    @predictive_value_behavior.setter
+    def predictive_value_behavior(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "predictive_value_behavior", value)
+
+    @property
+    @pulumi.getter(name="predictiveValueBuffer")
+    def predictive_value_buffer(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+        """
+        return pulumi.get(self, "predictive_value_buffer")
+
+    @predictive_value_buffer.setter
+    def predictive_value_buffer(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "predictive_value_buffer", value)
 
     @property
     @pulumi.getter(name="scaleInEvaluationCount")
@@ -515,7 +675,7 @@ class _ScalingRuleState:
     @pulumi.getter(name="scalingRuleType")
     def scaling_rule_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+        The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
         """
         return pulumi.get(self, "scaling_rule_type")
 
@@ -559,8 +719,13 @@ class ScalingRule(pulumi.CustomResource):
                  cooldown: Optional[pulumi.Input[int]] = None,
                  disable_scale_in: Optional[pulumi.Input[bool]] = None,
                  estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
+                 initial_max_size: Optional[pulumi.Input[int]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,
                  min_adjustment_magnitude: Optional[pulumi.Input[int]] = None,
+                 predictive_scaling_mode: Optional[pulumi.Input[str]] = None,
+                 predictive_task_buffer_time: Optional[pulumi.Input[int]] = None,
+                 predictive_value_behavior: Optional[pulumi.Input[str]] = None,
+                 predictive_value_buffer: Optional[pulumi.Input[int]] = None,
                  scale_in_evaluation_count: Optional[pulumi.Input[int]] = None,
                  scale_out_evaluation_count: Optional[pulumi.Input[int]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
@@ -667,13 +832,18 @@ class ScalingRule(pulumi.CustomResource):
         :param pulumi.Input[int] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
         :param pulumi.Input[int] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
+        :param pulumi.Input[int] initial_max_size: The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
         :param pulumi.Input[str] metric_name: A CloudMonitor metric name.
         :param pulumi.Input[int] min_adjustment_magnitude: The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+        :param pulumi.Input[str] predictive_scaling_mode: The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+        :param pulumi.Input[int] predictive_task_buffer_time: The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+        :param pulumi.Input[str] predictive_value_behavior: The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+        :param pulumi.Input[int] predictive_value_buffer: The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
         :param pulumi.Input[int] scale_in_evaluation_count: The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
         :param pulumi.Input[int] scale_out_evaluation_count: The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling rule.
         :param pulumi.Input[str] scaling_rule_name: Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
-        :param pulumi.Input[str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+        :param pulumi.Input[str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingRuleStepAdjustmentArgs']]]] step_adjustments: Steps for StepScalingRule. See `step_adjustment` below.
         :param pulumi.Input[float] target_value: The target value for the metric.
         """
@@ -788,8 +958,13 @@ class ScalingRule(pulumi.CustomResource):
                  cooldown: Optional[pulumi.Input[int]] = None,
                  disable_scale_in: Optional[pulumi.Input[bool]] = None,
                  estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
+                 initial_max_size: Optional[pulumi.Input[int]] = None,
                  metric_name: Optional[pulumi.Input[str]] = None,
                  min_adjustment_magnitude: Optional[pulumi.Input[int]] = None,
+                 predictive_scaling_mode: Optional[pulumi.Input[str]] = None,
+                 predictive_task_buffer_time: Optional[pulumi.Input[int]] = None,
+                 predictive_value_behavior: Optional[pulumi.Input[str]] = None,
+                 predictive_value_buffer: Optional[pulumi.Input[int]] = None,
                  scale_in_evaluation_count: Optional[pulumi.Input[int]] = None,
                  scale_out_evaluation_count: Optional[pulumi.Input[int]] = None,
                  scaling_group_id: Optional[pulumi.Input[str]] = None,
@@ -812,8 +987,13 @@ class ScalingRule(pulumi.CustomResource):
             __props__.__dict__["cooldown"] = cooldown
             __props__.__dict__["disable_scale_in"] = disable_scale_in
             __props__.__dict__["estimated_instance_warmup"] = estimated_instance_warmup
+            __props__.__dict__["initial_max_size"] = initial_max_size
             __props__.__dict__["metric_name"] = metric_name
             __props__.__dict__["min_adjustment_magnitude"] = min_adjustment_magnitude
+            __props__.__dict__["predictive_scaling_mode"] = predictive_scaling_mode
+            __props__.__dict__["predictive_task_buffer_time"] = predictive_task_buffer_time
+            __props__.__dict__["predictive_value_behavior"] = predictive_value_behavior
+            __props__.__dict__["predictive_value_buffer"] = predictive_value_buffer
             __props__.__dict__["scale_in_evaluation_count"] = scale_in_evaluation_count
             __props__.__dict__["scale_out_evaluation_count"] = scale_out_evaluation_count
             if scaling_group_id is None and not opts.urn:
@@ -841,8 +1021,13 @@ class ScalingRule(pulumi.CustomResource):
             cooldown: Optional[pulumi.Input[int]] = None,
             disable_scale_in: Optional[pulumi.Input[bool]] = None,
             estimated_instance_warmup: Optional[pulumi.Input[int]] = None,
+            initial_max_size: Optional[pulumi.Input[int]] = None,
             metric_name: Optional[pulumi.Input[str]] = None,
             min_adjustment_magnitude: Optional[pulumi.Input[int]] = None,
+            predictive_scaling_mode: Optional[pulumi.Input[str]] = None,
+            predictive_task_buffer_time: Optional[pulumi.Input[int]] = None,
+            predictive_value_behavior: Optional[pulumi.Input[str]] = None,
+            predictive_value_buffer: Optional[pulumi.Input[int]] = None,
             scale_in_evaluation_count: Optional[pulumi.Input[int]] = None,
             scale_out_evaluation_count: Optional[pulumi.Input[int]] = None,
             scaling_group_id: Optional[pulumi.Input[str]] = None,
@@ -870,13 +1055,18 @@ class ScalingRule(pulumi.CustomResource):
         :param pulumi.Input[int] cooldown: The cooldown time of the scaling rule. This parameter is applicable only to simple scaling rules. Value range: [0, 86,400], in seconds. The default value is empty，if not set, the return value will be 0, which is the default value of integer.
         :param pulumi.Input[bool] disable_scale_in: Indicates whether scale in by the target tracking policy is disabled. Default to false.
         :param pulumi.Input[int] estimated_instance_warmup: The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
+        :param pulumi.Input[int] initial_max_size: The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
         :param pulumi.Input[str] metric_name: A CloudMonitor metric name.
         :param pulumi.Input[int] min_adjustment_magnitude: The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
+        :param pulumi.Input[str] predictive_scaling_mode: The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+        :param pulumi.Input[int] predictive_task_buffer_time: The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+        :param pulumi.Input[str] predictive_value_behavior: The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+        :param pulumi.Input[int] predictive_value_buffer: The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
         :param pulumi.Input[int] scale_in_evaluation_count: The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
         :param pulumi.Input[int] scale_out_evaluation_count: The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
         :param pulumi.Input[str] scaling_group_id: ID of the scaling group of a scaling rule.
         :param pulumi.Input[str] scaling_rule_name: Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
-        :param pulumi.Input[str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+        :param pulumi.Input[str] scaling_rule_type: The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ScalingRuleStepAdjustmentArgs']]]] step_adjustments: Steps for StepScalingRule. See `step_adjustment` below.
         :param pulumi.Input[float] target_value: The target value for the metric.
         """
@@ -891,8 +1081,13 @@ class ScalingRule(pulumi.CustomResource):
         __props__.__dict__["cooldown"] = cooldown
         __props__.__dict__["disable_scale_in"] = disable_scale_in
         __props__.__dict__["estimated_instance_warmup"] = estimated_instance_warmup
+        __props__.__dict__["initial_max_size"] = initial_max_size
         __props__.__dict__["metric_name"] = metric_name
         __props__.__dict__["min_adjustment_magnitude"] = min_adjustment_magnitude
+        __props__.__dict__["predictive_scaling_mode"] = predictive_scaling_mode
+        __props__.__dict__["predictive_task_buffer_time"] = predictive_task_buffer_time
+        __props__.__dict__["predictive_value_behavior"] = predictive_value_behavior
+        __props__.__dict__["predictive_value_buffer"] = predictive_value_buffer
         __props__.__dict__["scale_in_evaluation_count"] = scale_in_evaluation_count
         __props__.__dict__["scale_out_evaluation_count"] = scale_out_evaluation_count
         __props__.__dict__["scaling_group_id"] = scaling_group_id
@@ -965,6 +1160,14 @@ class ScalingRule(pulumi.CustomResource):
         return pulumi.get(self, "estimated_instance_warmup")
 
     @property
+    @pulumi.getter(name="initialMaxSize")
+    def initial_max_size(self) -> pulumi.Output[int]:
+        """
+        The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
+        """
+        return pulumi.get(self, "initial_max_size")
+
+    @property
     @pulumi.getter(name="metricName")
     def metric_name(self) -> pulumi.Output[Optional[str]]:
         """
@@ -979,6 +1182,38 @@ class ScalingRule(pulumi.CustomResource):
         The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
         """
         return pulumi.get(self, "min_adjustment_magnitude")
+
+    @property
+    @pulumi.getter(name="predictiveScalingMode")
+    def predictive_scaling_mode(self) -> pulumi.Output[str]:
+        """
+        The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+        """
+        return pulumi.get(self, "predictive_scaling_mode")
+
+    @property
+    @pulumi.getter(name="predictiveTaskBufferTime")
+    def predictive_task_buffer_time(self) -> pulumi.Output[int]:
+        """
+        The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+        """
+        return pulumi.get(self, "predictive_task_buffer_time")
+
+    @property
+    @pulumi.getter(name="predictiveValueBehavior")
+    def predictive_value_behavior(self) -> pulumi.Output[str]:
+        """
+        The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+        """
+        return pulumi.get(self, "predictive_value_behavior")
+
+    @property
+    @pulumi.getter(name="predictiveValueBuffer")
+    def predictive_value_buffer(self) -> pulumi.Output[int]:
+        """
+        The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+        """
+        return pulumi.get(self, "predictive_value_buffer")
 
     @property
     @pulumi.getter(name="scaleInEvaluationCount")
@@ -1016,7 +1251,7 @@ class ScalingRule(pulumi.CustomResource):
     @pulumi.getter(name="scalingRuleType")
     def scaling_rule_type(self) -> pulumi.Output[Optional[str]]:
         """
-        The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+        The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
         """
         return pulumi.get(self, "scaling_rule_type")
 

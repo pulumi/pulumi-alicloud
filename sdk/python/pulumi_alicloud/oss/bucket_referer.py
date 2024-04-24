@@ -24,10 +24,10 @@ class BucketRefererArgs:
         The set of arguments for constructing a BucketReferer resource.
         :param pulumi.Input[bool] allow_empty_referer: Whether to allow empty Referer request headers.
         :param pulumi.Input[str] bucket: Name of the Bucket.
-        :param pulumi.Input[bool] allow_truncate_query_string: Allow phase request parameters.
+        :param pulumi.Input[bool] allow_truncate_query_string: Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] referer_blacklists: The container that holds the Referer blacklist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] referer_lists: The container that holds the Referer whitelist.
-        :param pulumi.Input[bool] truncate_path: Name of the bucket.
+        :param pulumi.Input[bool] truncate_path: Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
         """
         pulumi.set(__self__, "allow_empty_referer", allow_empty_referer)
         pulumi.set(__self__, "bucket", bucket)
@@ -68,7 +68,7 @@ class BucketRefererArgs:
     @pulumi.getter(name="allowTruncateQueryString")
     def allow_truncate_query_string(self) -> Optional[pulumi.Input[bool]]:
         """
-        Allow phase request parameters.
+        Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
         """
         return pulumi.get(self, "allow_truncate_query_string")
 
@@ -104,7 +104,7 @@ class BucketRefererArgs:
     @pulumi.getter(name="truncatePath")
     def truncate_path(self) -> Optional[pulumi.Input[bool]]:
         """
-        Name of the bucket.
+        Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
         """
         return pulumi.get(self, "truncate_path")
 
@@ -125,11 +125,11 @@ class _BucketRefererState:
         """
         Input properties used for looking up and filtering BucketReferer resources.
         :param pulumi.Input[bool] allow_empty_referer: Whether to allow empty Referer request headers.
-        :param pulumi.Input[bool] allow_truncate_query_string: Allow phase request parameters.
+        :param pulumi.Input[bool] allow_truncate_query_string: Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
         :param pulumi.Input[str] bucket: Name of the Bucket.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] referer_blacklists: The container that holds the Referer blacklist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] referer_lists: The container that holds the Referer whitelist.
-        :param pulumi.Input[bool] truncate_path: Name of the bucket.
+        :param pulumi.Input[bool] truncate_path: Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
         """
         if allow_empty_referer is not None:
             pulumi.set(__self__, "allow_empty_referer", allow_empty_referer)
@@ -160,7 +160,7 @@ class _BucketRefererState:
     @pulumi.getter(name="allowTruncateQueryString")
     def allow_truncate_query_string(self) -> Optional[pulumi.Input[bool]]:
         """
-        Allow phase request parameters.
+        Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
         """
         return pulumi.get(self, "allow_truncate_query_string")
 
@@ -208,7 +208,7 @@ class _BucketRefererState:
     @pulumi.getter(name="truncatePath")
     def truncate_path(self) -> Optional[pulumi.Input[bool]]:
         """
-        Name of the bucket.
+        Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
         """
         return pulumi.get(self, "truncate_path")
 
@@ -230,7 +230,7 @@ class BucketReferer(pulumi.CustomResource):
                  truncate_path: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
-        Provides a OSS Bucket Referer resource. Bucket Referer configuration.
+        Provides a OSS Bucket Referer resource. Bucket Referer configuration (Hotlink protection).
 
         For information about OSS Bucket Referer and how to use it, see [What is Bucket Referer](https://www.alibabacloud.com/help/en/oss/user-guide/hotlink-protection).
 
@@ -278,11 +278,11 @@ class BucketReferer(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_empty_referer: Whether to allow empty Referer request headers.
-        :param pulumi.Input[bool] allow_truncate_query_string: Allow phase request parameters.
+        :param pulumi.Input[bool] allow_truncate_query_string: Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
         :param pulumi.Input[str] bucket: Name of the Bucket.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] referer_blacklists: The container that holds the Referer blacklist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] referer_lists: The container that holds the Referer whitelist.
-        :param pulumi.Input[bool] truncate_path: Name of the bucket.
+        :param pulumi.Input[bool] truncate_path: Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
         """
         ...
     @overload
@@ -291,7 +291,7 @@ class BucketReferer(pulumi.CustomResource):
                  args: BucketRefererArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a OSS Bucket Referer resource. Bucket Referer configuration.
+        Provides a OSS Bucket Referer resource. Bucket Referer configuration (Hotlink protection).
 
         For information about OSS Bucket Referer and how to use it, see [What is Bucket Referer](https://www.alibabacloud.com/help/en/oss/user-guide/hotlink-protection).
 
@@ -400,11 +400,11 @@ class BucketReferer(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] allow_empty_referer: Whether to allow empty Referer request headers.
-        :param pulumi.Input[bool] allow_truncate_query_string: Allow phase request parameters.
+        :param pulumi.Input[bool] allow_truncate_query_string: Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
         :param pulumi.Input[str] bucket: Name of the Bucket.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] referer_blacklists: The container that holds the Referer blacklist.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] referer_lists: The container that holds the Referer whitelist.
-        :param pulumi.Input[bool] truncate_path: Name of the bucket.
+        :param pulumi.Input[bool] truncate_path: Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -430,7 +430,7 @@ class BucketReferer(pulumi.CustomResource):
     @pulumi.getter(name="allowTruncateQueryString")
     def allow_truncate_query_string(self) -> pulumi.Output[bool]:
         """
-        Allow phase request parameters.
+        Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
         """
         return pulumi.get(self, "allow_truncate_query_string")
 
@@ -462,7 +462,7 @@ class BucketReferer(pulumi.CustomResource):
     @pulumi.getter(name="truncatePath")
     def truncate_path(self) -> pulumi.Output[Optional[bool]]:
         """
-        Name of the bucket.
+        Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
         """
         return pulumi.get(self, "truncate_path")
 

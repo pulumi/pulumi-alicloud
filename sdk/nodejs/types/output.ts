@@ -20943,6 +20943,9 @@ export namespace ecs {
          * - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
          */
         nvmeSupport: string;
+        /**
+         * The price of instance type.
+         */
         price: string;
     }
 

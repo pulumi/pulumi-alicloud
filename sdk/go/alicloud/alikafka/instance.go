@@ -99,7 +99,7 @@ type Instance struct {
 	VpcId pulumi.StringOutput `pulumi:"vpcId"`
 	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringOutput `pulumi:"vswitchId"`
-	// The zone ID of the instance.
+	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
 }
 
@@ -222,7 +222,7 @@ type instanceState struct {
 	VpcId *string `pulumi:"vpcId"`
 	// The ID of attaching vswitch to instance.
 	VswitchId *string `pulumi:"vswitchId"`
-	// The zone ID of the instance.
+	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -304,7 +304,7 @@ type InstanceState struct {
 	VpcId pulumi.StringPtrInput
 	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringPtrInput
-	// The zone ID of the instance.
+	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -370,7 +370,7 @@ type instanceArgs struct {
 	VpcId *string `pulumi:"vpcId"`
 	// The ID of attaching vswitch to instance.
 	VswitchId string `pulumi:"vswitchId"`
-	// The zone ID of the instance.
+	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
 	ZoneId *string `pulumi:"zoneId"`
 }
 
@@ -433,7 +433,7 @@ type InstanceArgs struct {
 	VpcId pulumi.StringPtrInput
 	// The ID of attaching vswitch to instance.
 	VswitchId pulumi.StringInput
-	// The zone ID of the instance.
+	// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
 	ZoneId pulumi.StringPtrInput
 }
 
@@ -688,7 +688,7 @@ func (o InstanceOutput) VswitchId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.VswitchId }).(pulumi.StringOutput)
 }
 
-// The zone ID of the instance.
+// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
 func (o InstanceOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }

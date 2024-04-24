@@ -100,6 +100,8 @@ type Instance struct {
 	DbInstanceType pulumi.StringOutput `pulumi:"dbInstanceType"`
 	// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
 	DbIsIgnoreCase pulumi.BoolOutput `pulumi:"dbIsIgnoreCase"`
+	// Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
+	DbParamGroupId pulumi.StringPtrOutput `pulumi:"dbParamGroupId"`
 	// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
 	// - If you set the `Engine` parameter to MySQL.
 	// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -448,6 +450,8 @@ type instanceState struct {
 	DbInstanceType *string `pulumi:"dbInstanceType"`
 	// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
 	DbIsIgnoreCase *bool `pulumi:"dbIsIgnoreCase"`
+	// Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
+	DbParamGroupId *string `pulumi:"dbParamGroupId"`
 	// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
 	// - If you set the `Engine` parameter to MySQL.
 	// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -755,6 +759,8 @@ type InstanceState struct {
 	DbInstanceType pulumi.StringPtrInput
 	// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
 	DbIsIgnoreCase pulumi.BoolPtrInput
+	// Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
+	DbParamGroupId pulumi.StringPtrInput
 	// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
 	// - If you set the `Engine` parameter to MySQL.
 	// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -1060,6 +1066,8 @@ type instanceArgs struct {
 	DbInstanceStorageType *string `pulumi:"dbInstanceStorageType"`
 	// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
 	DbIsIgnoreCase *bool `pulumi:"dbIsIgnoreCase"`
+	// Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
+	DbParamGroupId *string `pulumi:"dbParamGroupId"`
 	// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
 	// - If you set the `Engine` parameter to MySQL.
 	// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -1358,6 +1366,8 @@ type InstanceArgs struct {
 	DbInstanceStorageType pulumi.StringPtrInput
 	// Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
 	DbIsIgnoreCase pulumi.BoolPtrInput
+	// Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
+	DbParamGroupId pulumi.StringPtrInput
 	// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
 	// - If you set the `Engine` parameter to MySQL.
 	// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -1805,6 +1815,11 @@ func (o InstanceOutput) DbInstanceType() pulumi.StringOutput {
 // Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
 func (o InstanceOutput) DbIsIgnoreCase() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Instance) pulumi.BoolOutput { return v.DbIsIgnoreCase }).(pulumi.BoolOutput)
+}
+
+// Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
+func (o InstanceOutput) DbParamGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DbParamGroupId }).(pulumi.StringPtrOutput)
 }
 
 // The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.

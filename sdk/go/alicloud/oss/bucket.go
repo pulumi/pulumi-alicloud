@@ -129,7 +129,7 @@ import (
 //			}
 //			_, err = oss.NewBucket(ctx, "bucket-logging", &oss.BucketArgs{
 //				Bucket: pulumi.String(fmt.Sprintf("example-logging-%v", _default.Result)),
-//				Logging: &oss.BucketLoggingArgs{
+//				Logging: &oss.BucketLoggingTypeArgs{
 //					TargetBucket: bucket_target.ID(),
 //					TargetPrefix: pulumi.String("log/"),
 //				},
@@ -223,7 +223,7 @@ type Bucket struct {
 	// The location of the bucket.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
-	Logging BucketLoggingPtrOutput `pulumi:"logging"`
+	Logging BucketLoggingTypePtrOutput `pulumi:"logging"`
 	// The flag of using logging enable container. Defaults true.
 	//
 	// Deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
@@ -247,7 +247,7 @@ type Bucket struct {
 	// A transfer acceleration status of a bucket. See `transferAcceleration` below.
 	TransferAcceleration BucketTransferAccelerationPtrOutput `pulumi:"transferAcceleration"`
 	// A state of versioning. See `versioning` below.
-	Versioning BucketVersioningPtrOutput `pulumi:"versioning"`
+	Versioning BucketVersioningTypePtrOutput `pulumi:"versioning"`
 	// A website configuration. See `website` below.
 	Website BucketWebsitePtrOutput `pulumi:"website"`
 }
@@ -306,7 +306,7 @@ type bucketState struct {
 	// The location of the bucket.
 	Location *string `pulumi:"location"`
 	// A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
-	Logging *BucketLogging `pulumi:"logging"`
+	Logging *BucketLoggingType `pulumi:"logging"`
 	// The flag of using logging enable container. Defaults true.
 	//
 	// Deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
@@ -330,7 +330,7 @@ type bucketState struct {
 	// A transfer acceleration status of a bucket. See `transferAcceleration` below.
 	TransferAcceleration *BucketTransferAcceleration `pulumi:"transferAcceleration"`
 	// A state of versioning. See `versioning` below.
-	Versioning *BucketVersioning `pulumi:"versioning"`
+	Versioning *BucketVersioningType `pulumi:"versioning"`
 	// A website configuration. See `website` below.
 	Website *BucketWebsite `pulumi:"website"`
 }
@@ -360,7 +360,7 @@ type BucketState struct {
 	// The location of the bucket.
 	Location pulumi.StringPtrInput
 	// A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
-	Logging BucketLoggingPtrInput
+	Logging BucketLoggingTypePtrInput
 	// The flag of using logging enable container. Defaults true.
 	//
 	// Deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
@@ -384,7 +384,7 @@ type BucketState struct {
 	// A transfer acceleration status of a bucket. See `transferAcceleration` below.
 	TransferAcceleration BucketTransferAccelerationPtrInput
 	// A state of versioning. See `versioning` below.
-	Versioning BucketVersioningPtrInput
+	Versioning BucketVersioningTypePtrInput
 	// A website configuration. See `website` below.
 	Website BucketWebsitePtrInput
 }
@@ -410,7 +410,7 @@ type bucketArgs struct {
 	// A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycleRule` below.
 	LifecycleRules []BucketLifecycleRule `pulumi:"lifecycleRules"`
 	// A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
-	Logging *BucketLogging `pulumi:"logging"`
+	Logging *BucketLoggingType `pulumi:"logging"`
 	// The flag of using logging enable container. Defaults true.
 	//
 	// Deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
@@ -432,7 +432,7 @@ type bucketArgs struct {
 	// A transfer acceleration status of a bucket. See `transferAcceleration` below.
 	TransferAcceleration *BucketTransferAcceleration `pulumi:"transferAcceleration"`
 	// A state of versioning. See `versioning` below.
-	Versioning *BucketVersioning `pulumi:"versioning"`
+	Versioning *BucketVersioningType `pulumi:"versioning"`
 	// A website configuration. See `website` below.
 	Website *BucketWebsite `pulumi:"website"`
 }
@@ -455,7 +455,7 @@ type BucketArgs struct {
 	// A configuration of [object lifecycle management](https://www.alibabacloud.com/help/doc-detail/31904.htm). See `lifecycleRule` below.
 	LifecycleRules BucketLifecycleRuleArrayInput
 	// A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
-	Logging BucketLoggingPtrInput
+	Logging BucketLoggingTypePtrInput
 	// The flag of using logging enable container. Defaults true.
 	//
 	// Deprecated: Deprecated from 1.37.0. When `logging` is set, the bucket logging will be able.
@@ -477,7 +477,7 @@ type BucketArgs struct {
 	// A transfer acceleration status of a bucket. See `transferAcceleration` below.
 	TransferAcceleration BucketTransferAccelerationPtrInput
 	// A state of versioning. See `versioning` below.
-	Versioning BucketVersioningPtrInput
+	Versioning BucketVersioningTypePtrInput
 	// A website configuration. See `website` below.
 	Website BucketWebsitePtrInput
 }
@@ -626,8 +626,8 @@ func (o BucketOutput) Location() pulumi.StringOutput {
 }
 
 // A Settings of [bucket logging](https://www.alibabacloud.com/help/doc-detail/31900.htm). See `logging` below.
-func (o BucketOutput) Logging() BucketLoggingPtrOutput {
-	return o.ApplyT(func(v *Bucket) BucketLoggingPtrOutput { return v.Logging }).(BucketLoggingPtrOutput)
+func (o BucketOutput) Logging() BucketLoggingTypePtrOutput {
+	return o.ApplyT(func(v *Bucket) BucketLoggingTypePtrOutput { return v.Logging }).(BucketLoggingTypePtrOutput)
 }
 
 // The flag of using logging enable container. Defaults true.
@@ -683,8 +683,8 @@ func (o BucketOutput) TransferAcceleration() BucketTransferAccelerationPtrOutput
 }
 
 // A state of versioning. See `versioning` below.
-func (o BucketOutput) Versioning() BucketVersioningPtrOutput {
-	return o.ApplyT(func(v *Bucket) BucketVersioningPtrOutput { return v.Versioning }).(BucketVersioningPtrOutput)
+func (o BucketOutput) Versioning() BucketVersioningTypePtrOutput {
+	return o.ApplyT(func(v *Bucket) BucketVersioningTypePtrOutput { return v.Versioning }).(BucketVersioningTypePtrOutput)
 }
 
 // A website configuration. See `website` below.

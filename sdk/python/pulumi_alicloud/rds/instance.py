@@ -37,6 +37,7 @@ class InstanceArgs:
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  db_is_ignore_case: Optional[pulumi.Input[bool]] = None,
+                 db_param_group_id: Optional[pulumi.Input[str]] = None,
                  db_time_zone: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
@@ -174,6 +175,7 @@ class InstanceArgs:
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
         :param pulumi.Input[bool] db_is_ignore_case: Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+        :param pulumi.Input[str] db_param_group_id: Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
         :param pulumi.Input[str] db_time_zone: The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
                - If you set the `Engine` parameter to MySQL.
                - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -348,6 +350,8 @@ class InstanceArgs:
             pulumi.set(__self__, "db_instance_storage_type", db_instance_storage_type)
         if db_is_ignore_case is not None:
             pulumi.set(__self__, "db_is_ignore_case", db_is_ignore_case)
+        if db_param_group_id is not None:
+            pulumi.set(__self__, "db_param_group_id", db_param_group_id)
         if db_time_zone is not None:
             pulumi.set(__self__, "db_time_zone", db_time_zone)
         if deletion_protection is not None:
@@ -772,6 +776,18 @@ class InstanceArgs:
     @db_is_ignore_case.setter
     def db_is_ignore_case(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "db_is_ignore_case", value)
+
+    @property
+    @pulumi.getter(name="dbParamGroupId")
+    def db_param_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
+        """
+        return pulumi.get(self, "db_param_group_id")
+
+    @db_param_group_id.setter
+    def db_param_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_param_group_id", value)
 
     @property
     @pulumi.getter(name="dbTimeZone")
@@ -1510,6 +1526,7 @@ class _InstanceState:
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  db_instance_type: Optional[pulumi.Input[str]] = None,
                  db_is_ignore_case: Optional[pulumi.Input[bool]] = None,
+                 db_param_group_id: Optional[pulumi.Input[str]] = None,
                  db_time_zone: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
@@ -1628,6 +1645,7 @@ class _InstanceState:
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
         :param pulumi.Input[str] db_instance_type: (Available since 1.197.0) The type of db instance.
         :param pulumi.Input[bool] db_is_ignore_case: Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+        :param pulumi.Input[str] db_param_group_id: Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
         :param pulumi.Input[str] db_time_zone: The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
                - If you set the `Engine` parameter to MySQL.
                - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -1834,6 +1852,8 @@ class _InstanceState:
             pulumi.set(__self__, "db_instance_type", db_instance_type)
         if db_is_ignore_case is not None:
             pulumi.set(__self__, "db_is_ignore_case", db_is_ignore_case)
+        if db_param_group_id is not None:
+            pulumi.set(__self__, "db_param_group_id", db_param_group_id)
         if db_time_zone is not None:
             pulumi.set(__self__, "db_time_zone", db_time_zone)
         if deletion_protection is not None:
@@ -2234,6 +2254,18 @@ class _InstanceState:
     @db_is_ignore_case.setter
     def db_is_ignore_case(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "db_is_ignore_case", value)
+
+    @property
+    @pulumi.getter(name="dbParamGroupId")
+    def db_param_group_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
+        """
+        return pulumi.get(self, "db_param_group_id")
+
+    @db_param_group_id.setter
+    def db_param_group_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "db_param_group_id", value)
 
     @property
     @pulumi.getter(name="dbTimeZone")
@@ -3067,6 +3099,7 @@ class Instance(pulumi.CustomResource):
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  db_is_ignore_case: Optional[pulumi.Input[bool]] = None,
+                 db_param_group_id: Optional[pulumi.Input[str]] = None,
                  db_time_zone: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
@@ -3190,6 +3223,7 @@ class Instance(pulumi.CustomResource):
                - cloud_essd2: specifies to use enhanced SSDs (ESSDs).
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
         :param pulumi.Input[bool] db_is_ignore_case: Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+        :param pulumi.Input[str] db_param_group_id: Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
         :param pulumi.Input[str] db_time_zone: The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
                - If you set the `Engine` parameter to MySQL.
                - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -3401,6 +3435,7 @@ class Instance(pulumi.CustomResource):
                  db_instance_ip_array_name: Optional[pulumi.Input[str]] = None,
                  db_instance_storage_type: Optional[pulumi.Input[str]] = None,
                  db_is_ignore_case: Optional[pulumi.Input[bool]] = None,
+                 db_param_group_id: Optional[pulumi.Input[str]] = None,
                  db_time_zone: Optional[pulumi.Input[str]] = None,
                  deletion_protection: Optional[pulumi.Input[bool]] = None,
                  direction: Optional[pulumi.Input[str]] = None,
@@ -3483,6 +3518,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["db_instance_ip_array_name"] = db_instance_ip_array_name
             __props__.__dict__["db_instance_storage_type"] = db_instance_storage_type
             __props__.__dict__["db_is_ignore_case"] = db_is_ignore_case
+            __props__.__dict__["db_param_group_id"] = db_param_group_id
             __props__.__dict__["db_time_zone"] = db_time_zone
             __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["direction"] = direction
@@ -3582,6 +3618,7 @@ class Instance(pulumi.CustomResource):
             db_instance_storage_type: Optional[pulumi.Input[str]] = None,
             db_instance_type: Optional[pulumi.Input[str]] = None,
             db_is_ignore_case: Optional[pulumi.Input[bool]] = None,
+            db_param_group_id: Optional[pulumi.Input[str]] = None,
             db_time_zone: Optional[pulumi.Input[str]] = None,
             deletion_protection: Optional[pulumi.Input[bool]] = None,
             direction: Optional[pulumi.Input[str]] = None,
@@ -3705,6 +3742,7 @@ class Instance(pulumi.CustomResource):
                - cloud_essd3: specifies to use enhanced SSDs (ESSDs).
         :param pulumi.Input[str] db_instance_type: (Available since 1.197.0) The type of db instance.
         :param pulumi.Input[bool] db_is_ignore_case: Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
+        :param pulumi.Input[str] db_param_group_id: Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
         :param pulumi.Input[str] db_time_zone: The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
                - If you set the `Engine` parameter to MySQL.
                - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -3895,6 +3933,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["db_instance_storage_type"] = db_instance_storage_type
         __props__.__dict__["db_instance_type"] = db_instance_type
         __props__.__dict__["db_is_ignore_case"] = db_is_ignore_case
+        __props__.__dict__["db_param_group_id"] = db_param_group_id
         __props__.__dict__["db_time_zone"] = db_time_zone
         __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["direction"] = direction
@@ -4152,6 +4191,14 @@ class Instance(pulumi.CustomResource):
         Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
         """
         return pulumi.get(self, "db_is_ignore_case")
+
+    @property
+    @pulumi.getter(name="dbParamGroupId")
+    def db_param_group_id(self) -> pulumi.Output[Optional[str]]:
+        """
+        Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
+        """
+        return pulumi.get(self, "db_param_group_id")
 
     @property
     @pulumi.getter(name="dbTimeZone")

@@ -8109,6 +8109,7 @@ class GetInstanceTypesInstanceTypeResult(dict):
         :param str nvme_support: Indicates whether the cloud disk can be attached by using the nonvolatile memory express (NVMe) protocol. Valid values:
                - required: The cloud disk can be attached by using the NVMe protocol.
                - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
+        :param str price: The price of instance type.
         """
         pulumi.set(__self__, "availability_zones", availability_zones)
         pulumi.set(__self__, "burstable_instance", burstable_instance)
@@ -8214,6 +8215,9 @@ class GetInstanceTypesInstanceTypeResult(dict):
     @property
     @pulumi.getter
     def price(self) -> str:
+        """
+        The price of instance type.
+        """
         return pulumi.get(self, "price")
 
 

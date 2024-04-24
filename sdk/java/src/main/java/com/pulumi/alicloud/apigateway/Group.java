@@ -11,6 +11,7 @@ import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
 import java.lang.String;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -66,14 +67,14 @@ public class Group extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
-    private Output<String> description;
+    private Output</* @Nullable */ String> description;
 
     /**
      * @return The description of the api gateway group. Defaults to null.
      * 
      */
-    public Output<String> description() {
-        return this.description;
+    public Output<Optional<String>> description() {
+        return Codegen.optional(this.description);
     }
     /**
      * The id of the api gateway.
@@ -144,7 +145,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Group(String name, GroupArgs args) {
+    public Group(String name, @Nullable GroupArgs args) {
         this(name, args, null);
     }
     /**
@@ -153,7 +154,7 @@ public class Group extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Group(String name, GroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Group(String name, @Nullable GroupArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("alicloud:apigateway/group:Group", name, args == null ? GroupArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

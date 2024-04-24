@@ -552,42 +552,6 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available in 1.166.0+.
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cs.CsFunctions;
-     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonMetadataArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = CsFunctions.getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs.builder()
-     *             .clusterId(clusterId)
-     *             .name(&#34;nginx-ingress-controller&#34;)
-     *             .version(&#34;v1.1.2-aliyun.2&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;addonConfigSchema&#34;, defaultAlicloudCsKubernetesAddons.configSchema());
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetKubernetesAddonMetadataResult> getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs args) {
         return getKubernetesAddonMetadata(args, InvokeOptions.Empty);
@@ -596,42 +560,6 @@ public final class CsFunctions {
      * This data source provides metadata of kubernetes cluster addons.
      * 
      * &gt; **NOTE:** Available in 1.166.0+.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cs.CsFunctions;
-     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonMetadataArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = CsFunctions.getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs.builder()
-     *             .clusterId(clusterId)
-     *             .name(&#34;nginx-ingress-controller&#34;)
-     *             .version(&#34;v1.1.2-aliyun.2&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;addonConfigSchema&#34;, defaultAlicloudCsKubernetesAddons.configSchema());
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesAddonMetadataResult> getKubernetesAddonMetadataPlain(GetKubernetesAddonMetadataPlainArgs args) {
@@ -642,42 +570,6 @@ public final class CsFunctions {
      * 
      * &gt; **NOTE:** Available in 1.166.0+.
      * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cs.CsFunctions;
-     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonMetadataArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = CsFunctions.getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs.builder()
-     *             .clusterId(clusterId)
-     *             .name(&#34;nginx-ingress-controller&#34;)
-     *             .version(&#34;v1.1.2-aliyun.2&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;addonConfigSchema&#34;, defaultAlicloudCsKubernetesAddons.configSchema());
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
-     * 
      */
     public static Output<GetKubernetesAddonMetadataResult> getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata", TypeShape.of(GetKubernetesAddonMetadataResult.class), args, Utilities.withVersion(options));
@@ -686,42 +578,6 @@ public final class CsFunctions {
      * This data source provides metadata of kubernetes cluster addons.
      * 
      * &gt; **NOTE:** Available in 1.166.0+.
-     * 
-     * ## Example Usage
-     * 
-     * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
-     * package generated_program;
-     * 
-     * import com.pulumi.Context;
-     * import com.pulumi.Pulumi;
-     * import com.pulumi.core.Output;
-     * import com.pulumi.alicloud.cs.CsFunctions;
-     * import com.pulumi.alicloud.cs.inputs.GetKubernetesAddonMetadataArgs;
-     * import java.util.List;
-     * import java.util.ArrayList;
-     * import java.util.Map;
-     * import java.io.File;
-     * import java.nio.file.Files;
-     * import java.nio.file.Paths;
-     * 
-     * public class App {
-     *     public static void main(String[] args) {
-     *         Pulumi.run(App::stack);
-     *     }
-     * 
-     *     public static void stack(Context ctx) {
-     *         final var default = CsFunctions.getKubernetesAddonMetadata(GetKubernetesAddonMetadataArgs.builder()
-     *             .clusterId(clusterId)
-     *             .name(&#34;nginx-ingress-controller&#34;)
-     *             .version(&#34;v1.1.2-aliyun.2&#34;)
-     *             .build());
-     * 
-     *         ctx.export(&#34;addonConfigSchema&#34;, defaultAlicloudCsKubernetesAddons.configSchema());
-     *     }
-     * }
-     * ```
-     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetKubernetesAddonMetadataResult> getKubernetesAddonMetadataPlain(GetKubernetesAddonMetadataPlainArgs args, InvokeOptions options) {

@@ -15,30 +15,6 @@ namespace Pulumi.AliCloud.CS
         /// This data source provides metadata of kubernetes cluster addons.
         /// 
         /// &gt; **NOTE:** Available in 1.166.0+.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.CS.GetKubernetesAddonMetadata.Invoke(new()
-        ///     {
-        ///         ClusterId = clusterId,
-        ///         Name = "nginx-ingress-controller",
-        ///         Version = "v1.1.2-aliyun.2",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["addonConfigSchema"] = defaultAlicloudCsKubernetesAddons.ConfigSchema,
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Task<GetKubernetesAddonMetadataResult> InvokeAsync(GetKubernetesAddonMetadataArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetKubernetesAddonMetadataResult>("alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata", args ?? new GetKubernetesAddonMetadataArgs(), options.WithDefaults());
@@ -47,30 +23,6 @@ namespace Pulumi.AliCloud.CS
         /// This data source provides metadata of kubernetes cluster addons.
         /// 
         /// &gt; **NOTE:** Available in 1.166.0+.
-        /// 
-        /// ## Example Usage
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using AliCloud = Pulumi.AliCloud;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var @default = AliCloud.CS.GetKubernetesAddonMetadata.Invoke(new()
-        ///     {
-        ///         ClusterId = clusterId,
-        ///         Name = "nginx-ingress-controller",
-        ///         Version = "v1.1.2-aliyun.2",
-        ///     });
-        /// 
-        ///     return new Dictionary&lt;string, object?&gt;
-        ///     {
-        ///         ["addonConfigSchema"] = defaultAlicloudCsKubernetesAddons.ConfigSchema,
-        ///     };
-        /// });
-        /// ```
         /// </summary>
         public static Output<GetKubernetesAddonMetadataResult> Invoke(GetKubernetesAddonMetadataInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKubernetesAddonMetadataResult>("alicloud:cs/getKubernetesAddonMetadata:getKubernetesAddonMetadata", args ?? new GetKubernetesAddonMetadataInvokeArgs(), options.WithDefaults());

@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * 
  * &gt; **NOTE:** Available in v1.113.0+.
  * 
+ * &gt; **DEPRECATED:**  This resource has been from version `1.222.0`.
+ * 
  * ## Example Usage
  * 
  * Basic Usage

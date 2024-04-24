@@ -124,6 +124,21 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
     }
 
     /**
+     * Instance specifications. For more information, see instance Specification Family, or you can call the describe instance types interface to get the latest specification table.
+     * 
+     */
+    @Import(name="instanceType")
+    private @Nullable Output<String> instanceType;
+
+    /**
+     * @return Instance specifications. For more information, see instance Specification Family, or you can call the describe instance types interface to get the latest specification table.
+     * 
+     */
+    public Optional<Output<String>> instanceType() {
+        return Optional.ofNullable(this.instanceType);
+    }
+
+    /**
      * Filter the results based on their family name. For example: &#39;ecs.n4&#39;.
      * 
      */
@@ -230,9 +245,17 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
         return Optional.ofNullable(this.outputFile);
     }
 
+    /**
+     * Sort mode, valid values: `CPU`, `Memory`, `Price`.
+     * 
+     */
     @Import(name="sortedBy")
     private @Nullable Output<String> sortedBy;
 
+    /**
+     * @return Sort mode, valid values: `CPU`, `Memory`, `Price`.
+     * 
+     */
     public Optional<Output<String>> sortedBy() {
         return Optional.ofNullable(this.sortedBy);
     }
@@ -279,6 +302,7 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
         this.gpuSpec = $.gpuSpec;
         this.imageId = $.imageId;
         this.instanceChargeType = $.instanceChargeType;
+        this.instanceType = $.instanceType;
         this.instanceTypeFamily = $.instanceTypeFamily;
         this.isOutdated = $.isOutdated;
         this.kubernetesNodeRole = $.kubernetesNodeRole;
@@ -457,6 +481,27 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         /**
+         * @param instanceType Instance specifications. For more information, see instance Specification Family, or you can call the describe instance types interface to get the latest specification table.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceType(@Nullable Output<String> instanceType) {
+            $.instanceType = instanceType;
+            return this;
+        }
+
+        /**
+         * @param instanceType Instance specifications. For more information, see instance Specification Family, or you can call the describe instance types interface to get the latest specification table.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceType(String instanceType) {
+            return instanceType(Output.of(instanceType));
+        }
+
+        /**
          * @param instanceTypeFamily Filter the results based on their family name. For example: &#39;ecs.n4&#39;.
          * 
          * @return builder
@@ -605,11 +650,23 @@ public final class GetInstanceTypesArgs extends com.pulumi.resources.InvokeArgs 
             return outputFile(Output.of(outputFile));
         }
 
+        /**
+         * @param sortedBy Sort mode, valid values: `CPU`, `Memory`, `Price`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortedBy(@Nullable Output<String> sortedBy) {
             $.sortedBy = sortedBy;
             return this;
         }
 
+        /**
+         * @param sortedBy Sort mode, valid values: `CPU`, `Memory`, `Price`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder sortedBy(String sortedBy) {
             return sortedBy(Output.of(sortedBy));
         }

@@ -162,6 +162,10 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly dbIsIgnoreCase!: pulumi.Output<boolean>;
     /**
+     * Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
+     */
+    public readonly dbParamGroupId!: pulumi.Output<string | undefined>;
+    /**
      * The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
      * - If you set the `Engine` parameter to MySQL.
      * - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -538,6 +542,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["dbInstanceStorageType"] = state ? state.dbInstanceStorageType : undefined;
             resourceInputs["dbInstanceType"] = state ? state.dbInstanceType : undefined;
             resourceInputs["dbIsIgnoreCase"] = state ? state.dbIsIgnoreCase : undefined;
+            resourceInputs["dbParamGroupId"] = state ? state.dbParamGroupId : undefined;
             resourceInputs["dbTimeZone"] = state ? state.dbTimeZone : undefined;
             resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["direction"] = state ? state.direction : undefined;
@@ -627,6 +632,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["dbInstanceIpArrayName"] = args ? args.dbInstanceIpArrayName : undefined;
             resourceInputs["dbInstanceStorageType"] = args ? args.dbInstanceStorageType : undefined;
             resourceInputs["dbIsIgnoreCase"] = args ? args.dbIsIgnoreCase : undefined;
+            resourceInputs["dbParamGroupId"] = args ? args.dbParamGroupId : undefined;
             resourceInputs["dbTimeZone"] = args ? args.dbTimeZone : undefined;
             resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["direction"] = args ? args.direction : undefined;
@@ -816,6 +822,10 @@ export interface InstanceState {
      * Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
      */
     dbIsIgnoreCase?: pulumi.Input<boolean>;
+    /**
+     * Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
+     */
+    dbParamGroupId?: pulumi.Input<string>;
     /**
      * The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
      * - If you set the `Engine` parameter to MySQL.
@@ -1271,6 +1281,10 @@ export interface InstanceArgs {
      * Specifies whether table names on the instance are case-sensitive. Valid values: `true`, `false`.
      */
     dbIsIgnoreCase?: pulumi.Input<boolean>;
+    /**
+     * Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
+     */
+    dbParamGroupId?: pulumi.Input<string>;
     /**
      * The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
      * - If you set the `Engine` parameter to MySQL.

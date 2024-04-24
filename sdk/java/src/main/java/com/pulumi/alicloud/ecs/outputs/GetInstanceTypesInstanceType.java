@@ -75,6 +75,10 @@ public final class GetInstanceTypesInstanceType {
      * 
      */
     private String nvmeSupport;
+    /**
+     * @return The price of instance type.
+     * 
+     */
     private String price;
 
     private GetInstanceTypesInstanceType() {}
@@ -157,6 +161,10 @@ public final class GetInstanceTypesInstanceType {
     public String nvmeSupport() {
         return this.nvmeSupport;
     }
+    /**
+     * @return The price of instance type.
+     * 
+     */
     public String price() {
         return this.price;
     }

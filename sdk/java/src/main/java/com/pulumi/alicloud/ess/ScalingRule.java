@@ -280,6 +280,20 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
         return this.estimatedInstanceWarmup;
     }
     /**
+     * The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
+     * 
+     */
+    @Export(name="initialMaxSize", refs={Integer.class}, tree="[0]")
+    private Output<Integer> initialMaxSize;
+
+    /**
+     * @return The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
+     * 
+     */
+    public Output<Integer> initialMaxSize() {
+        return this.initialMaxSize;
+    }
+    /**
      * A CloudMonitor metric name.
      * 
      */
@@ -306,6 +320,62 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Integer>> minAdjustmentMagnitude() {
         return Codegen.optional(this.minAdjustmentMagnitude);
+    }
+    /**
+     * The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+     * 
+     */
+    @Export(name="predictiveScalingMode", refs={String.class}, tree="[0]")
+    private Output<String> predictiveScalingMode;
+
+    /**
+     * @return The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+     * 
+     */
+    public Output<String> predictiveScalingMode() {
+        return this.predictiveScalingMode;
+    }
+    /**
+     * The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+     * 
+     */
+    @Export(name="predictiveTaskBufferTime", refs={Integer.class}, tree="[0]")
+    private Output<Integer> predictiveTaskBufferTime;
+
+    /**
+     * @return The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+     * 
+     */
+    public Output<Integer> predictiveTaskBufferTime() {
+        return this.predictiveTaskBufferTime;
+    }
+    /**
+     * The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+     * 
+     */
+    @Export(name="predictiveValueBehavior", refs={String.class}, tree="[0]")
+    private Output<String> predictiveValueBehavior;
+
+    /**
+     * @return The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+     * 
+     */
+    public Output<String> predictiveValueBehavior() {
+        return this.predictiveValueBehavior;
+    }
+    /**
+     * The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+     * 
+     */
+    @Export(name="predictiveValueBuffer", refs={Integer.class}, tree="[0]")
+    private Output<Integer> predictiveValueBuffer;
+
+    /**
+     * @return The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+     * 
+     */
+    public Output<Integer> predictiveValueBuffer() {
+        return this.predictiveValueBuffer;
     }
     /**
      * The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
@@ -364,14 +434,14 @@ public class ScalingRule extends com.pulumi.resources.CustomResource {
         return this.scalingRuleName;
     }
     /**
-     * The scaling rule type, either &#34;SimpleScalingRule&#34;, &#34;TargetTrackingScalingRule&#34;, &#34;StepScalingRule&#34;. Default to &#34;SimpleScalingRule&#34;.
+     * The scaling rule type, either &#34;SimpleScalingRule&#34;, &#34;TargetTrackingScalingRule&#34;, &#34;StepScalingRule&#34;, &#34;PredictiveScalingRule&#34;. Default to &#34;SimpleScalingRule&#34;.
      * 
      */
     @Export(name="scalingRuleType", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> scalingRuleType;
 
     /**
-     * @return The scaling rule type, either &#34;SimpleScalingRule&#34;, &#34;TargetTrackingScalingRule&#34;, &#34;StepScalingRule&#34;. Default to &#34;SimpleScalingRule&#34;.
+     * @return The scaling rule type, either &#34;SimpleScalingRule&#34;, &#34;TargetTrackingScalingRule&#34;, &#34;StepScalingRule&#34;, &#34;PredictiveScalingRule&#34;. Default to &#34;SimpleScalingRule&#34;.
      * 
      */
     public Output<Optional<String>> scalingRuleType() {

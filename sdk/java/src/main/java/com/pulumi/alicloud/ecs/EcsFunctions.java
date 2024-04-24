@@ -7566,6 +7566,8 @@ public final class EcsFunctions {
      * 
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
+     * &gt; **NOTE:** Available since v1.0.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -7575,10 +7577,22 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.EcsNetworkInterface;
+     * import com.pulumi.alicloud.ecs.EcsNetworkInterfaceArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -7592,17 +7606,63 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
      *         // Declare the data source
-     *         final var typesDs = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .cpuCoreCount(1)
-     *             .memorySize(2)
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
      *             .build());
      * 
-     *         // Create ECS instance with the first matched instance_type
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
-     *             .instanceType(typesDs.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+     *             .mostRecent(true)
+     *             .owners(&#34;system&#34;)
      *             .build());
      * 
+     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *             .vpcName(name)
+     *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(&#34;192.168.192.0/24&#34;)
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *             .name(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultEcsNetworkInterface = new EcsNetworkInterface(&#34;defaultEcsNetworkInterface&#34;, EcsNetworkInterfaceArgs.builder()        
+     *             .networkInterfaceName(name)
+     *             .vswitchId(defaultSwitch.id())
+     *             .securityGroupIds(defaultSecurityGroup.id())
+     *             .build());
+     * 
+     *         for (var i = 0; i &lt; 14; i++) {
+     *             new Instance(&#34;defaultInstance-&#34; + i, InstanceArgs.builder()            
+     *                 .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *                 .instanceName(name)
+     *                 .securityGroups(defaultSecurityGroup.stream().map(element -&gt; element.id()).collect(toList()))
+     *                 .internetChargeType(&#34;PayByTraffic&#34;)
+     *                 .internetMaxBandwidthOut(&#34;10&#34;)
+     *                 .availabilityZone(default_.zones()[0].id())
+     *                 .instanceChargeType(&#34;PostPaid&#34;)
+     *                 .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *                 .vswitchId(defaultSwitch.id())
+     *                 .build());
+     * 
+     *         
+     * }
      *     }
      * }
      * ```
@@ -7619,6 +7679,8 @@ public final class EcsFunctions {
      * 
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
+     * &gt; **NOTE:** Available since v1.0.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -7628,10 +7690,22 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.EcsNetworkInterface;
+     * import com.pulumi.alicloud.ecs.EcsNetworkInterfaceArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -7645,17 +7719,63 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
      *         // Declare the data source
-     *         final var typesDs = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .cpuCoreCount(1)
-     *             .memorySize(2)
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
      *             .build());
      * 
-     *         // Create ECS instance with the first matched instance_type
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
-     *             .instanceType(typesDs.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+     *             .mostRecent(true)
+     *             .owners(&#34;system&#34;)
      *             .build());
      * 
+     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *             .vpcName(name)
+     *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(&#34;192.168.192.0/24&#34;)
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *             .name(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultEcsNetworkInterface = new EcsNetworkInterface(&#34;defaultEcsNetworkInterface&#34;, EcsNetworkInterfaceArgs.builder()        
+     *             .networkInterfaceName(name)
+     *             .vswitchId(defaultSwitch.id())
+     *             .securityGroupIds(defaultSecurityGroup.id())
+     *             .build());
+     * 
+     *         for (var i = 0; i &lt; 14; i++) {
+     *             new Instance(&#34;defaultInstance-&#34; + i, InstanceArgs.builder()            
+     *                 .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *                 .instanceName(name)
+     *                 .securityGroups(defaultSecurityGroup.stream().map(element -&gt; element.id()).collect(toList()))
+     *                 .internetChargeType(&#34;PayByTraffic&#34;)
+     *                 .internetMaxBandwidthOut(&#34;10&#34;)
+     *                 .availabilityZone(default_.zones()[0].id())
+     *                 .instanceChargeType(&#34;PostPaid&#34;)
+     *                 .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *                 .vswitchId(defaultSwitch.id())
+     *                 .build());
+     * 
+     *         
+     * }
      *     }
      * }
      * ```
@@ -7672,6 +7792,8 @@ public final class EcsFunctions {
      * 
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
+     * &gt; **NOTE:** Available since v1.0.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -7681,10 +7803,22 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.EcsNetworkInterface;
+     * import com.pulumi.alicloud.ecs.EcsNetworkInterfaceArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -7698,17 +7832,63 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
      *         // Declare the data source
-     *         final var typesDs = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .cpuCoreCount(1)
-     *             .memorySize(2)
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
      *             .build());
      * 
-     *         // Create ECS instance with the first matched instance_type
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
-     *             .instanceType(typesDs.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+     *             .mostRecent(true)
+     *             .owners(&#34;system&#34;)
      *             .build());
      * 
+     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *             .vpcName(name)
+     *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(&#34;192.168.192.0/24&#34;)
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *             .name(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultEcsNetworkInterface = new EcsNetworkInterface(&#34;defaultEcsNetworkInterface&#34;, EcsNetworkInterfaceArgs.builder()        
+     *             .networkInterfaceName(name)
+     *             .vswitchId(defaultSwitch.id())
+     *             .securityGroupIds(defaultSecurityGroup.id())
+     *             .build());
+     * 
+     *         for (var i = 0; i &lt; 14; i++) {
+     *             new Instance(&#34;defaultInstance-&#34; + i, InstanceArgs.builder()            
+     *                 .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *                 .instanceName(name)
+     *                 .securityGroups(defaultSecurityGroup.stream().map(element -&gt; element.id()).collect(toList()))
+     *                 .internetChargeType(&#34;PayByTraffic&#34;)
+     *                 .internetMaxBandwidthOut(&#34;10&#34;)
+     *                 .availabilityZone(default_.zones()[0].id())
+     *                 .instanceChargeType(&#34;PostPaid&#34;)
+     *                 .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *                 .vswitchId(defaultSwitch.id())
+     *                 .build());
+     * 
+     *         
+     * }
      *     }
      * }
      * ```
@@ -7725,6 +7905,8 @@ public final class EcsFunctions {
      * 
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
+     * &gt; **NOTE:** Available since v1.0.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -7734,10 +7916,22 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.EcsNetworkInterface;
+     * import com.pulumi.alicloud.ecs.EcsNetworkInterfaceArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -7751,17 +7945,63 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
      *         // Declare the data source
-     *         final var typesDs = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .cpuCoreCount(1)
-     *             .memorySize(2)
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
      *             .build());
      * 
-     *         // Create ECS instance with the first matched instance_type
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
-     *             .instanceType(typesDs.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+     *             .mostRecent(true)
+     *             .owners(&#34;system&#34;)
      *             .build());
      * 
+     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *             .vpcName(name)
+     *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(&#34;192.168.192.0/24&#34;)
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *             .name(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultEcsNetworkInterface = new EcsNetworkInterface(&#34;defaultEcsNetworkInterface&#34;, EcsNetworkInterfaceArgs.builder()        
+     *             .networkInterfaceName(name)
+     *             .vswitchId(defaultSwitch.id())
+     *             .securityGroupIds(defaultSecurityGroup.id())
+     *             .build());
+     * 
+     *         for (var i = 0; i &lt; 14; i++) {
+     *             new Instance(&#34;defaultInstance-&#34; + i, InstanceArgs.builder()            
+     *                 .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *                 .instanceName(name)
+     *                 .securityGroups(defaultSecurityGroup.stream().map(element -&gt; element.id()).collect(toList()))
+     *                 .internetChargeType(&#34;PayByTraffic&#34;)
+     *                 .internetMaxBandwidthOut(&#34;10&#34;)
+     *                 .availabilityZone(default_.zones()[0].id())
+     *                 .instanceChargeType(&#34;PostPaid&#34;)
+     *                 .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *                 .vswitchId(defaultSwitch.id())
+     *                 .build());
+     * 
+     *         
+     * }
      *     }
      * }
      * ```
@@ -7778,6 +8018,8 @@ public final class EcsFunctions {
      * 
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
+     * &gt; **NOTE:** Available since v1.0.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -7787,10 +8029,22 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.EcsNetworkInterface;
+     * import com.pulumi.alicloud.ecs.EcsNetworkInterfaceArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -7804,17 +8058,63 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
      *         // Declare the data source
-     *         final var typesDs = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .cpuCoreCount(1)
-     *             .memorySize(2)
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
      *             .build());
      * 
-     *         // Create ECS instance with the first matched instance_type
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
-     *             .instanceType(typesDs.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+     *             .mostRecent(true)
+     *             .owners(&#34;system&#34;)
      *             .build());
      * 
+     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *             .vpcName(name)
+     *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(&#34;192.168.192.0/24&#34;)
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *             .name(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultEcsNetworkInterface = new EcsNetworkInterface(&#34;defaultEcsNetworkInterface&#34;, EcsNetworkInterfaceArgs.builder()        
+     *             .networkInterfaceName(name)
+     *             .vswitchId(defaultSwitch.id())
+     *             .securityGroupIds(defaultSecurityGroup.id())
+     *             .build());
+     * 
+     *         for (var i = 0; i &lt; 14; i++) {
+     *             new Instance(&#34;defaultInstance-&#34; + i, InstanceArgs.builder()            
+     *                 .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *                 .instanceName(name)
+     *                 .securityGroups(defaultSecurityGroup.stream().map(element -&gt; element.id()).collect(toList()))
+     *                 .internetChargeType(&#34;PayByTraffic&#34;)
+     *                 .internetMaxBandwidthOut(&#34;10&#34;)
+     *                 .availabilityZone(default_.zones()[0].id())
+     *                 .instanceChargeType(&#34;PostPaid&#34;)
+     *                 .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *                 .vswitchId(defaultSwitch.id())
+     *                 .build());
+     * 
+     *         
+     * }
      *     }
      * }
      * ```
@@ -7831,6 +8131,8 @@ public final class EcsFunctions {
      * 
      * &gt; **NOTE:** If one instance type is sold out, it will not be exported.
      * 
+     * &gt; **NOTE:** Available since v1.0.0.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -7840,10 +8142,22 @@ public final class EcsFunctions {
      * import com.pulumi.Context;
      * import com.pulumi.Pulumi;
      * import com.pulumi.core.Output;
+     * import com.pulumi.alicloud.AlicloudFunctions;
+     * import com.pulumi.alicloud.inputs.GetZonesArgs;
      * import com.pulumi.alicloud.ecs.EcsFunctions;
      * import com.pulumi.alicloud.ecs.inputs.GetInstanceTypesArgs;
+     * import com.pulumi.alicloud.ecs.inputs.GetImagesArgs;
+     * import com.pulumi.alicloud.vpc.Network;
+     * import com.pulumi.alicloud.vpc.NetworkArgs;
+     * import com.pulumi.alicloud.vpc.Switch;
+     * import com.pulumi.alicloud.vpc.SwitchArgs;
+     * import com.pulumi.alicloud.ecs.SecurityGroup;
+     * import com.pulumi.alicloud.ecs.SecurityGroupArgs;
+     * import com.pulumi.alicloud.ecs.EcsNetworkInterface;
+     * import com.pulumi.alicloud.ecs.EcsNetworkInterfaceArgs;
      * import com.pulumi.alicloud.ecs.Instance;
      * import com.pulumi.alicloud.ecs.InstanceArgs;
+     * import com.pulumi.codegen.internal.KeyedValue;
      * import java.util.List;
      * import java.util.ArrayList;
      * import java.util.Map;
@@ -7857,17 +8171,63 @@ public final class EcsFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
+     *         final var config = ctx.config();
+     *         final var name = config.get(&#34;name&#34;).orElse(&#34;terraform-example&#34;);
+     *         final var default = AlicloudFunctions.getZones(GetZonesArgs.builder()
+     *             .availableResourceCreation(&#34;VSwitch&#34;)
+     *             .build());
+     * 
      *         // Declare the data source
-     *         final var typesDs = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
-     *             .cpuCoreCount(1)
-     *             .memorySize(2)
+     *         final var defaultGetInstanceTypes = EcsFunctions.getInstanceTypes(GetInstanceTypesArgs.builder()
+     *             .availabilityZone(default_.zones()[0].id())
+     *             .instanceTypeFamily(&#34;ecs.sn1ne&#34;)
      *             .build());
      * 
-     *         // Create ECS instance with the first matched instance_type
-     *         var instance = new Instance(&#34;instance&#34;, InstanceArgs.builder()        
-     *             .instanceType(typesDs.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *         final var defaultGetImages = EcsFunctions.getImages(GetImagesArgs.builder()
+     *             .nameRegex(&#34;^ubuntu_[0-9]+_[0-9]+_x64*&#34;)
+     *             .mostRecent(true)
+     *             .owners(&#34;system&#34;)
      *             .build());
      * 
+     *         var defaultNetwork = new Network(&#34;defaultNetwork&#34;, NetworkArgs.builder()        
+     *             .vpcName(name)
+     *             .cidrBlock(&#34;192.168.0.0/16&#34;)
+     *             .build());
+     * 
+     *         var defaultSwitch = new Switch(&#34;defaultSwitch&#34;, SwitchArgs.builder()        
+     *             .vswitchName(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .cidrBlock(&#34;192.168.192.0/24&#34;)
+     *             .zoneId(default_.zones()[0].id())
+     *             .build());
+     * 
+     *         var defaultSecurityGroup = new SecurityGroup(&#34;defaultSecurityGroup&#34;, SecurityGroupArgs.builder()        
+     *             .name(name)
+     *             .vpcId(defaultNetwork.id())
+     *             .build());
+     * 
+     *         var defaultEcsNetworkInterface = new EcsNetworkInterface(&#34;defaultEcsNetworkInterface&#34;, EcsNetworkInterfaceArgs.builder()        
+     *             .networkInterfaceName(name)
+     *             .vswitchId(defaultSwitch.id())
+     *             .securityGroupIds(defaultSecurityGroup.id())
+     *             .build());
+     * 
+     *         for (var i = 0; i &lt; 14; i++) {
+     *             new Instance(&#34;defaultInstance-&#34; + i, InstanceArgs.builder()            
+     *                 .imageId(defaultGetImages.applyValue(getImagesResult -&gt; getImagesResult.images()[0].id()))
+     *                 .instanceType(defaultGetInstanceTypes.applyValue(getInstanceTypesResult -&gt; getInstanceTypesResult.instanceTypes()[0].id()))
+     *                 .instanceName(name)
+     *                 .securityGroups(defaultSecurityGroup.stream().map(element -&gt; element.id()).collect(toList()))
+     *                 .internetChargeType(&#34;PayByTraffic&#34;)
+     *                 .internetMaxBandwidthOut(&#34;10&#34;)
+     *                 .availabilityZone(default_.zones()[0].id())
+     *                 .instanceChargeType(&#34;PostPaid&#34;)
+     *                 .systemDiskCategory(&#34;cloud_efficiency&#34;)
+     *                 .vswitchId(defaultSwitch.id())
+     *                 .build());
+     * 
+     *         
+     * }
      *     }
      * }
      * ```

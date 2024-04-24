@@ -17,6 +17,8 @@ import (
 //
 // > **NOTE:** If one instance type is sold out, it will not be exported.
 //
+// > **NOTE:** Available since v1.0.0.
+//
 // ## Example Usage
 //
 // ```go
@@ -24,32 +26,105 @@ import (
 //
 // import (
 //
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud"
 //	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/ecs"
+//	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/vpc"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 //
 // )
+// func main() {
+// pulumi.Run(func(ctx *pulumi.Context) error {
+// cfg := config.New(ctx, "")
+// name := "terraform-example";
+// if param := cfg.Get("name"); param != ""{
+// name = param
+// }
+// _default, err := alicloud.GetZones(ctx, &alicloud.GetZonesArgs{
+// AvailableResourceCreation: pulumi.StringRef("VSwitch"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// // Declare the data source
+// defaultGetInstanceTypes, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
+// AvailabilityZone: pulumi.StringRef(_default.Zones[0].Id),
+// InstanceTypeFamily: pulumi.StringRef("ecs.sn1ne"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultGetImages, err := ecs.GetImages(ctx, &ecs.GetImagesArgs{
+// NameRegex: pulumi.StringRef("^ubuntu_[0-9]+_[0-9]+_x64*"),
+// MostRecent: pulumi.BoolRef(true),
+// Owners: pulumi.StringRef("system"),
+// }, nil);
+// if err != nil {
+// return err
+// }
+// defaultNetwork, err := vpc.NewNetwork(ctx, "default", &vpc.NetworkArgs{
+// VpcName: pulumi.String(name),
+// CidrBlock: pulumi.String("192.168.0.0/16"),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSwitch, err := vpc.NewSwitch(ctx, "default", &vpc.SwitchArgs{
+// VswitchName: pulumi.String(name),
+// VpcId: defaultNetwork.ID(),
+// CidrBlock: pulumi.String("192.168.192.0/24"),
+// ZoneId: pulumi.String(_default.Zones[0].Id),
+// })
+// if err != nil {
+// return err
+// }
+// defaultSecurityGroup, err := ecs.NewSecurityGroup(ctx, "default", &ecs.SecurityGroupArgs{
+// Name: pulumi.String(name),
+// VpcId: defaultNetwork.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// _, err = ecs.NewEcsNetworkInterface(ctx, "default", &ecs.EcsNetworkInterfaceArgs{
+// NetworkInterfaceName: pulumi.String(name),
+// VswitchId: defaultSwitch.ID(),
+// SecurityGroupIds: pulumi.StringArray{
+// defaultSecurityGroup.ID(),
+// },
+// })
+// if err != nil {
+// return err
+// }
+// var splat0 pulumi.StringArray
+// for _, val0 := range %!v(PANIC=Format method: fatal: An assertion has failed: tok: ) {
+// splat0 = append(splat0, val0.ID())
+// }
+// var defaultInstance []*ecs.Instance
 //
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Declare the data source
-//			typesDs, err := ecs.GetInstanceTypes(ctx, &ecs.GetInstanceTypesArgs{
-//				CpuCoreCount: pulumi.IntRef(1),
-//				MemorySize:   pulumi.Float64Ref(2),
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			// Create ECS instance with the first matched instance_type
-//			_, err = ecs.NewInstance(ctx, "instance", &ecs.InstanceArgs{
-//				InstanceType: pulumi.String(typesDs.InstanceTypes[0].Id),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
+//	for index := 0; index < 14; index++ {
+//	    key0 := index
+//	    _ := index
 //
+// __res, err := ecs.NewInstance(ctx, fmt.Sprintf("default-%v", key0), &ecs.InstanceArgs{
+// ImageId: pulumi.String(defaultGetImages.Images[0].Id),
+// InstanceType: pulumi.String(defaultGetInstanceTypes.InstanceTypes[0].Id),
+// InstanceName: pulumi.String(name),
+// SecurityGroups: splat0,
+// InternetChargeType: pulumi.String("PayByTraffic"),
+// InternetMaxBandwidthOut: pulumi.Int(10),
+// AvailabilityZone: pulumi.String(_default.Zones[0].Id),
+// InstanceChargeType: pulumi.String("PostPaid"),
+// SystemDiskCategory: pulumi.String("cloud_efficiency"),
+// VswitchId: defaultSwitch.ID(),
+// })
+// if err != nil {
+// return err
+// }
+// defaultInstance = append(defaultInstance, __res)
+// }
+// return nil
+// })
+// }
 // ```
 func GetInstanceTypes(ctx *pulumi.Context, args *GetInstanceTypesArgs, opts ...pulumi.InvokeOption) (*GetInstanceTypesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
@@ -77,6 +152,8 @@ type GetInstanceTypesArgs struct {
 	ImageId *string `pulumi:"imageId"`
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType *string `pulumi:"instanceChargeType"`
+	// Instance specifications. For more information, see instance Specification Family, or you can call the describe instance types interface to get the latest specification table.
+	InstanceType *string `pulumi:"instanceType"`
 	// Filter the results based on their family name. For example: 'ecs.n4'.
 	InstanceTypeFamily *string `pulumi:"instanceTypeFamily"`
 	// If true, outdated instance types are included in the results. Default to false.
@@ -92,7 +169,8 @@ type GetInstanceTypesArgs struct {
 	NetworkType *string `pulumi:"networkType"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile *string `pulumi:"outputFile"`
-	SortedBy   *string `pulumi:"sortedBy"`
+	// Sort mode, valid values: `CPU`, `Memory`, `Price`.
+	SortedBy *string `pulumi:"sortedBy"`
 	// Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
 	SpotStrategy *string `pulumi:"spotStrategy"`
 	// Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `cloudEssdEntry`.
@@ -115,6 +193,7 @@ type GetInstanceTypesResult struct {
 	Ids                []string `pulumi:"ids"`
 	ImageId            *string  `pulumi:"imageId"`
 	InstanceChargeType *string  `pulumi:"instanceChargeType"`
+	InstanceType       *string  `pulumi:"instanceType"`
 	InstanceTypeFamily *string  `pulumi:"instanceTypeFamily"`
 	// A list of image types. Each element contains the following attributes:
 	InstanceTypes      []GetInstanceTypesInstanceType `pulumi:"instanceTypes"`
@@ -159,6 +238,8 @@ type GetInstanceTypesOutputArgs struct {
 	ImageId pulumi.StringPtrInput `pulumi:"imageId"`
 	// Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
 	InstanceChargeType pulumi.StringPtrInput `pulumi:"instanceChargeType"`
+	// Instance specifications. For more information, see instance Specification Family, or you can call the describe instance types interface to get the latest specification table.
+	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
 	// Filter the results based on their family name. For example: 'ecs.n4'.
 	InstanceTypeFamily pulumi.StringPtrInput `pulumi:"instanceTypeFamily"`
 	// If true, outdated instance types are included in the results. Default to false.
@@ -174,7 +255,8 @@ type GetInstanceTypesOutputArgs struct {
 	NetworkType pulumi.StringPtrInput `pulumi:"networkType"`
 	// File name where to save data source results (after running `pulumi preview`).
 	OutputFile pulumi.StringPtrInput `pulumi:"outputFile"`
-	SortedBy   pulumi.StringPtrInput `pulumi:"sortedBy"`
+	// Sort mode, valid values: `CPU`, `Memory`, `Price`.
+	SortedBy pulumi.StringPtrInput `pulumi:"sortedBy"`
 	// Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
 	SpotStrategy pulumi.StringPtrInput `pulumi:"spotStrategy"`
 	// Filter the results by system disk category. Valid values: `cloud`, `ephemeralSsd`, `cloudEssd`, `cloudEfficiency`, `cloudSsd`, `cloudEssdEntry`.
@@ -239,6 +321,10 @@ func (o GetInstanceTypesResultOutput) ImageId() pulumi.StringPtrOutput {
 
 func (o GetInstanceTypesResultOutput) InstanceChargeType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetInstanceTypesResult) *string { return v.InstanceChargeType }).(pulumi.StringPtrOutput)
+}
+
+func (o GetInstanceTypesResultOutput) InstanceType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GetInstanceTypesResult) *string { return v.InstanceType }).(pulumi.StringPtrOutput)
 }
 
 func (o GetInstanceTypesResultOutput) InstanceTypeFamily() pulumi.StringPtrOutput {
