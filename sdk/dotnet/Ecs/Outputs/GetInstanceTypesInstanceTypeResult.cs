@@ -62,6 +62,9 @@ namespace Pulumi.AliCloud.Ecs.Outputs
         /// - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
         /// </summary>
         public readonly string NvmeSupport;
+        /// <summary>
+        /// The price of instance type.
+        /// </summary>
         public readonly string Price;
 
         [OutputConstructor]

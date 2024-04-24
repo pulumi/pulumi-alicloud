@@ -18,7 +18,6 @@ class RuleArgs:
                  content: pulumi.Input[str],
                  rule_name: pulumi.Input[str],
                  content_category: Optional[pulumi.Input[str]] = None,
-                 custom_type: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  lang: Optional[pulumi.Input[str]] = None,
                  product_code: Optional[pulumi.Input[str]] = None,
@@ -31,29 +30,26 @@ class RuleArgs:
                  warn_level: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a Rule resource.
-        :param pulumi.Input[int] category: Sensitive Data Identification Rules for the Type of. Valid values:
-        :param pulumi.Input[str] content: Sensitive Data Identification Rules the Content.
-        :param pulumi.Input[str] rule_name: Sensitive Data Identification Name of the Rule.
-        :param pulumi.Input[str] content_category: The Content Classification.
-        :param pulumi.Input[int] custom_type: Sensitive Data Identification Rules of Type. Valid values:
-        :param pulumi.Input[str] description: Sensitive Data Identification a Description of the Rule Information.
-        :param pulumi.Input[str] lang: The Request and Receive the Language of the Message Type. Valid values:
-        :param pulumi.Input[str] product_code: Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
-        :param pulumi.Input[str] product_id: Product ID. Valid values:
-        :param pulumi.Input[str] risk_level_id: Sensitive Data Identification Rules of Risk Level ID. Valid values:
-        :param pulumi.Input[int] rule_type: Rule Type.
-        :param pulumi.Input[str] stat_express: Triggered the Alarm Conditions.
-        :param pulumi.Input[int] status: Sensitive Data Identification Rules Detection State of.
-        :param pulumi.Input[str] target: The Target of rule.
-        :param pulumi.Input[int] warn_level: The Level of Risk. Valid values:
+        :param pulumi.Input[int] category: The content type of the sensitive data detection rule. Valid values:
+        :param pulumi.Input[str] content: The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
+        :param pulumi.Input[str] rule_name: The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
+        :param pulumi.Input[str] content_category: The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
+        :param pulumi.Input[str] description: The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
+        :param pulumi.Input[str] lang: The language of the content within the request and response. Default value: `zh`. Valid values:
+        :param pulumi.Input[str] product_code: The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
+        :param pulumi.Input[str] product_id: The ID of the service to which the data asset belongs. Valid values:
+        :param pulumi.Input[str] risk_level_id: The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+        :param pulumi.Input[int] rule_type: The type of the sensitive data detection rule. Valid values:
+        :param pulumi.Input[str] stat_express: The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
+        :param pulumi.Input[int] status: Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
+        :param pulumi.Input[str] target: The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
+        :param pulumi.Input[int] warn_level: The risk level of the alert that is triggered. Valid values:
         """
         pulumi.set(__self__, "category", category)
         pulumi.set(__self__, "content", content)
         pulumi.set(__self__, "rule_name", rule_name)
         if content_category is not None:
             pulumi.set(__self__, "content_category", content_category)
-        if custom_type is not None:
-            pulumi.set(__self__, "custom_type", custom_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if lang is not None:
@@ -79,7 +75,7 @@ class RuleArgs:
     @pulumi.getter
     def category(self) -> pulumi.Input[int]:
         """
-        Sensitive Data Identification Rules for the Type of. Valid values:
+        The content type of the sensitive data detection rule. Valid values:
         """
         return pulumi.get(self, "category")
 
@@ -91,7 +87,7 @@ class RuleArgs:
     @pulumi.getter
     def content(self) -> pulumi.Input[str]:
         """
-        Sensitive Data Identification Rules the Content.
+        The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
         """
         return pulumi.get(self, "content")
 
@@ -103,7 +99,7 @@ class RuleArgs:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Input[str]:
         """
-        Sensitive Data Identification Name of the Rule.
+        The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
         """
         return pulumi.get(self, "rule_name")
 
@@ -115,7 +111,7 @@ class RuleArgs:
     @pulumi.getter(name="contentCategory")
     def content_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The Content Classification.
+        The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
         """
         return pulumi.get(self, "content_category")
 
@@ -124,22 +120,10 @@ class RuleArgs:
         pulumi.set(self, "content_category", value)
 
     @property
-    @pulumi.getter(name="customType")
-    def custom_type(self) -> Optional[pulumi.Input[int]]:
-        """
-        Sensitive Data Identification Rules of Type. Valid values:
-        """
-        return pulumi.get(self, "custom_type")
-
-    @custom_type.setter
-    def custom_type(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "custom_type", value)
-
-    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Sensitive Data Identification a Description of the Rule Information.
+        The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
         """
         return pulumi.get(self, "description")
 
@@ -151,7 +135,7 @@ class RuleArgs:
     @pulumi.getter
     def lang(self) -> Optional[pulumi.Input[str]]:
         """
-        The Request and Receive the Language of the Message Type. Valid values:
+        The language of the content within the request and response. Default value: `zh`. Valid values:
         """
         return pulumi.get(self, "lang")
 
@@ -163,7 +147,7 @@ class RuleArgs:
     @pulumi.getter(name="productCode")
     def product_code(self) -> Optional[pulumi.Input[str]]:
         """
-        Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
+        The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
         """
         return pulumi.get(self, "product_code")
 
@@ -175,7 +159,7 @@ class RuleArgs:
     @pulumi.getter(name="productId")
     def product_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Product ID. Valid values:
+        The ID of the service to which the data asset belongs. Valid values:
         """
         return pulumi.get(self, "product_id")
 
@@ -187,7 +171,7 @@ class RuleArgs:
     @pulumi.getter(name="riskLevelId")
     def risk_level_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Sensitive Data Identification Rules of Risk Level ID. Valid values:
+        The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
         """
         return pulumi.get(self, "risk_level_id")
 
@@ -199,7 +183,7 @@ class RuleArgs:
     @pulumi.getter(name="ruleType")
     def rule_type(self) -> Optional[pulumi.Input[int]]:
         """
-        Rule Type.
+        The type of the sensitive data detection rule. Valid values:
         """
         return pulumi.get(self, "rule_type")
 
@@ -211,7 +195,7 @@ class RuleArgs:
     @pulumi.getter(name="statExpress")
     def stat_express(self) -> Optional[pulumi.Input[str]]:
         """
-        Triggered the Alarm Conditions.
+        The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
         """
         return pulumi.get(self, "stat_express")
 
@@ -223,7 +207,7 @@ class RuleArgs:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[int]]:
         """
-        Sensitive Data Identification Rules Detection State of.
+        Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
         """
         return pulumi.get(self, "status")
 
@@ -235,7 +219,7 @@ class RuleArgs:
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[str]]:
         """
-        The Target of rule.
+        The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
         """
         return pulumi.get(self, "target")
 
@@ -247,7 +231,7 @@ class RuleArgs:
     @pulumi.getter(name="warnLevel")
     def warn_level(self) -> Optional[pulumi.Input[int]]:
         """
-        The Level of Risk. Valid values:
+        The risk level of the alert that is triggered. Valid values:
         """
         return pulumi.get(self, "warn_level")
 
@@ -276,21 +260,21 @@ class _RuleState:
                  warn_level: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Rule resources.
-        :param pulumi.Input[int] category: Sensitive Data Identification Rules for the Type of. Valid values:
-        :param pulumi.Input[str] content: Sensitive Data Identification Rules the Content.
-        :param pulumi.Input[str] content_category: The Content Classification.
-        :param pulumi.Input[int] custom_type: Sensitive Data Identification Rules of Type. Valid values:
-        :param pulumi.Input[str] description: Sensitive Data Identification a Description of the Rule Information.
-        :param pulumi.Input[str] lang: The Request and Receive the Language of the Message Type. Valid values:
-        :param pulumi.Input[str] product_code: Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
-        :param pulumi.Input[str] product_id: Product ID. Valid values:
-        :param pulumi.Input[str] risk_level_id: Sensitive Data Identification Rules of Risk Level ID. Valid values:
-        :param pulumi.Input[str] rule_name: Sensitive Data Identification Name of the Rule.
-        :param pulumi.Input[int] rule_type: Rule Type.
-        :param pulumi.Input[str] stat_express: Triggered the Alarm Conditions.
-        :param pulumi.Input[int] status: Sensitive Data Identification Rules Detection State of.
-        :param pulumi.Input[str] target: The Target of rule.
-        :param pulumi.Input[int] warn_level: The Level of Risk. Valid values:
+        :param pulumi.Input[int] category: The content type of the sensitive data detection rule. Valid values:
+        :param pulumi.Input[str] content: The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
+        :param pulumi.Input[str] content_category: The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
+        :param pulumi.Input[int] custom_type: The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
+        :param pulumi.Input[str] description: The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
+        :param pulumi.Input[str] lang: The language of the content within the request and response. Default value: `zh`. Valid values:
+        :param pulumi.Input[str] product_code: The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
+        :param pulumi.Input[str] product_id: The ID of the service to which the data asset belongs. Valid values:
+        :param pulumi.Input[str] risk_level_id: The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+        :param pulumi.Input[str] rule_name: The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
+        :param pulumi.Input[int] rule_type: The type of the sensitive data detection rule. Valid values:
+        :param pulumi.Input[str] stat_express: The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
+        :param pulumi.Input[int] status: Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
+        :param pulumi.Input[str] target: The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
+        :param pulumi.Input[int] warn_level: The risk level of the alert that is triggered. Valid values:
         """
         if category is not None:
             pulumi.set(__self__, "category", category)
@@ -327,7 +311,7 @@ class _RuleState:
     @pulumi.getter
     def category(self) -> Optional[pulumi.Input[int]]:
         """
-        Sensitive Data Identification Rules for the Type of. Valid values:
+        The content type of the sensitive data detection rule. Valid values:
         """
         return pulumi.get(self, "category")
 
@@ -339,7 +323,7 @@ class _RuleState:
     @pulumi.getter
     def content(self) -> Optional[pulumi.Input[str]]:
         """
-        Sensitive Data Identification Rules the Content.
+        The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
         """
         return pulumi.get(self, "content")
 
@@ -351,7 +335,7 @@ class _RuleState:
     @pulumi.getter(name="contentCategory")
     def content_category(self) -> Optional[pulumi.Input[str]]:
         """
-        The Content Classification.
+        The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
         """
         return pulumi.get(self, "content_category")
 
@@ -363,7 +347,7 @@ class _RuleState:
     @pulumi.getter(name="customType")
     def custom_type(self) -> Optional[pulumi.Input[int]]:
         """
-        Sensitive Data Identification Rules of Type. Valid values:
+        The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
         """
         return pulumi.get(self, "custom_type")
 
@@ -375,7 +359,7 @@ class _RuleState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Sensitive Data Identification a Description of the Rule Information.
+        The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
         """
         return pulumi.get(self, "description")
 
@@ -387,7 +371,7 @@ class _RuleState:
     @pulumi.getter
     def lang(self) -> Optional[pulumi.Input[str]]:
         """
-        The Request and Receive the Language of the Message Type. Valid values:
+        The language of the content within the request and response. Default value: `zh`. Valid values:
         """
         return pulumi.get(self, "lang")
 
@@ -399,7 +383,7 @@ class _RuleState:
     @pulumi.getter(name="productCode")
     def product_code(self) -> Optional[pulumi.Input[str]]:
         """
-        Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
+        The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
         """
         return pulumi.get(self, "product_code")
 
@@ -411,7 +395,7 @@ class _RuleState:
     @pulumi.getter(name="productId")
     def product_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Product ID. Valid values:
+        The ID of the service to which the data asset belongs. Valid values:
         """
         return pulumi.get(self, "product_id")
 
@@ -423,7 +407,7 @@ class _RuleState:
     @pulumi.getter(name="riskLevelId")
     def risk_level_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Sensitive Data Identification Rules of Risk Level ID. Valid values:
+        The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
         """
         return pulumi.get(self, "risk_level_id")
 
@@ -435,7 +419,7 @@ class _RuleState:
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> Optional[pulumi.Input[str]]:
         """
-        Sensitive Data Identification Name of the Rule.
+        The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
         """
         return pulumi.get(self, "rule_name")
 
@@ -447,7 +431,7 @@ class _RuleState:
     @pulumi.getter(name="ruleType")
     def rule_type(self) -> Optional[pulumi.Input[int]]:
         """
-        Rule Type.
+        The type of the sensitive data detection rule. Valid values:
         """
         return pulumi.get(self, "rule_type")
 
@@ -459,7 +443,7 @@ class _RuleState:
     @pulumi.getter(name="statExpress")
     def stat_express(self) -> Optional[pulumi.Input[str]]:
         """
-        Triggered the Alarm Conditions.
+        The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
         """
         return pulumi.get(self, "stat_express")
 
@@ -471,7 +455,7 @@ class _RuleState:
     @pulumi.getter
     def status(self) -> Optional[pulumi.Input[int]]:
         """
-        Sensitive Data Identification Rules Detection State of.
+        Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
         """
         return pulumi.get(self, "status")
 
@@ -483,7 +467,7 @@ class _RuleState:
     @pulumi.getter
     def target(self) -> Optional[pulumi.Input[str]]:
         """
-        The Target of rule.
+        The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
         """
         return pulumi.get(self, "target")
 
@@ -495,7 +479,7 @@ class _RuleState:
     @pulumi.getter(name="warnLevel")
     def warn_level(self) -> Optional[pulumi.Input[int]]:
         """
-        The Level of Risk. Valid values:
+        The risk level of the alert that is triggered. Valid values:
         """
         return pulumi.get(self, "warn_level")
 
@@ -512,7 +496,6 @@ class Rule(pulumi.CustomResource):
                  category: Optional[pulumi.Input[int]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  content_category: Optional[pulumi.Input[str]] = None,
-                 custom_type: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  lang: Optional[pulumi.Input[str]] = None,
                  product_code: Optional[pulumi.Input[str]] = None,
@@ -543,11 +526,23 @@ class Rule(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf_example_name"
+            name = "tf-example-name"
         default = alicloud.sddp.Rule("default",
-            category=0,
-            content="content",
             rule_name=name,
+            category=2,
+            content=\"\"\"  [
+            {
+              "rule": [
+                {
+                  "operator": "contains",
+                  "target": "content",
+                  "value": "tf-testACCContent"
+                }
+              ],
+              "ruleRelation": "AND"
+            }
+          ]
+        \"\"\",
             risk_level_id="4",
             product_code="OSS")
         ```
@@ -562,21 +557,20 @@ class Rule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] category: Sensitive Data Identification Rules for the Type of. Valid values:
-        :param pulumi.Input[str] content: Sensitive Data Identification Rules the Content.
-        :param pulumi.Input[str] content_category: The Content Classification.
-        :param pulumi.Input[int] custom_type: Sensitive Data Identification Rules of Type. Valid values:
-        :param pulumi.Input[str] description: Sensitive Data Identification a Description of the Rule Information.
-        :param pulumi.Input[str] lang: The Request and Receive the Language of the Message Type. Valid values:
-        :param pulumi.Input[str] product_code: Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
-        :param pulumi.Input[str] product_id: Product ID. Valid values:
-        :param pulumi.Input[str] risk_level_id: Sensitive Data Identification Rules of Risk Level ID. Valid values:
-        :param pulumi.Input[str] rule_name: Sensitive Data Identification Name of the Rule.
-        :param pulumi.Input[int] rule_type: Rule Type.
-        :param pulumi.Input[str] stat_express: Triggered the Alarm Conditions.
-        :param pulumi.Input[int] status: Sensitive Data Identification Rules Detection State of.
-        :param pulumi.Input[str] target: The Target of rule.
-        :param pulumi.Input[int] warn_level: The Level of Risk. Valid values:
+        :param pulumi.Input[int] category: The content type of the sensitive data detection rule. Valid values:
+        :param pulumi.Input[str] content: The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
+        :param pulumi.Input[str] content_category: The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
+        :param pulumi.Input[str] description: The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
+        :param pulumi.Input[str] lang: The language of the content within the request and response. Default value: `zh`. Valid values:
+        :param pulumi.Input[str] product_code: The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
+        :param pulumi.Input[str] product_id: The ID of the service to which the data asset belongs. Valid values:
+        :param pulumi.Input[str] risk_level_id: The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+        :param pulumi.Input[str] rule_name: The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
+        :param pulumi.Input[int] rule_type: The type of the sensitive data detection rule. Valid values:
+        :param pulumi.Input[str] stat_express: The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
+        :param pulumi.Input[int] status: Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
+        :param pulumi.Input[str] target: The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
+        :param pulumi.Input[int] warn_level: The risk level of the alert that is triggered. Valid values:
         """
         ...
     @overload
@@ -602,11 +596,23 @@ class Rule(pulumi.CustomResource):
         config = pulumi.Config()
         name = config.get("name")
         if name is None:
-            name = "tf_example_name"
+            name = "tf-example-name"
         default = alicloud.sddp.Rule("default",
-            category=0,
-            content="content",
             rule_name=name,
+            category=2,
+            content=\"\"\"  [
+            {
+              "rule": [
+                {
+                  "operator": "contains",
+                  "target": "content",
+                  "value": "tf-testACCContent"
+                }
+              ],
+              "ruleRelation": "AND"
+            }
+          ]
+        \"\"\",
             risk_level_id="4",
             product_code="OSS")
         ```
@@ -637,7 +643,6 @@ class Rule(pulumi.CustomResource):
                  category: Optional[pulumi.Input[int]] = None,
                  content: Optional[pulumi.Input[str]] = None,
                  content_category: Optional[pulumi.Input[str]] = None,
-                 custom_type: Optional[pulumi.Input[int]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  lang: Optional[pulumi.Input[str]] = None,
                  product_code: Optional[pulumi.Input[str]] = None,
@@ -665,7 +670,6 @@ class Rule(pulumi.CustomResource):
                 raise TypeError("Missing required property 'content'")
             __props__.__dict__["content"] = content
             __props__.__dict__["content_category"] = content_category
-            __props__.__dict__["custom_type"] = custom_type
             __props__.__dict__["description"] = description
             __props__.__dict__["lang"] = lang
             __props__.__dict__["product_code"] = product_code
@@ -679,6 +683,7 @@ class Rule(pulumi.CustomResource):
             __props__.__dict__["status"] = status
             __props__.__dict__["target"] = target
             __props__.__dict__["warn_level"] = warn_level
+            __props__.__dict__["custom_type"] = None
         super(Rule, __self__).__init__(
             'alicloud:sddp/rule:Rule',
             resource_name,
@@ -711,21 +716,21 @@ class Rule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[int] category: Sensitive Data Identification Rules for the Type of. Valid values:
-        :param pulumi.Input[str] content: Sensitive Data Identification Rules the Content.
-        :param pulumi.Input[str] content_category: The Content Classification.
-        :param pulumi.Input[int] custom_type: Sensitive Data Identification Rules of Type. Valid values:
-        :param pulumi.Input[str] description: Sensitive Data Identification a Description of the Rule Information.
-        :param pulumi.Input[str] lang: The Request and Receive the Language of the Message Type. Valid values:
-        :param pulumi.Input[str] product_code: Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
-        :param pulumi.Input[str] product_id: Product ID. Valid values:
-        :param pulumi.Input[str] risk_level_id: Sensitive Data Identification Rules of Risk Level ID. Valid values:
-        :param pulumi.Input[str] rule_name: Sensitive Data Identification Name of the Rule.
-        :param pulumi.Input[int] rule_type: Rule Type.
-        :param pulumi.Input[str] stat_express: Triggered the Alarm Conditions.
-        :param pulumi.Input[int] status: Sensitive Data Identification Rules Detection State of.
-        :param pulumi.Input[str] target: The Target of rule.
-        :param pulumi.Input[int] warn_level: The Level of Risk. Valid values:
+        :param pulumi.Input[int] category: The content type of the sensitive data detection rule. Valid values:
+        :param pulumi.Input[str] content: The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
+        :param pulumi.Input[str] content_category: The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
+        :param pulumi.Input[int] custom_type: The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
+        :param pulumi.Input[str] description: The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
+        :param pulumi.Input[str] lang: The language of the content within the request and response. Default value: `zh`. Valid values:
+        :param pulumi.Input[str] product_code: The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
+        :param pulumi.Input[str] product_id: The ID of the service to which the data asset belongs. Valid values:
+        :param pulumi.Input[str] risk_level_id: The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
+        :param pulumi.Input[str] rule_name: The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
+        :param pulumi.Input[int] rule_type: The type of the sensitive data detection rule. Valid values:
+        :param pulumi.Input[str] stat_express: The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
+        :param pulumi.Input[int] status: Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
+        :param pulumi.Input[str] target: The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
+        :param pulumi.Input[int] warn_level: The risk level of the alert that is triggered. Valid values:
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -752,7 +757,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter
     def category(self) -> pulumi.Output[int]:
         """
-        Sensitive Data Identification Rules for the Type of. Valid values:
+        The content type of the sensitive data detection rule. Valid values:
         """
         return pulumi.get(self, "category")
 
@@ -760,7 +765,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter
     def content(self) -> pulumi.Output[str]:
         """
-        Sensitive Data Identification Rules the Content.
+        The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
         """
         return pulumi.get(self, "content")
 
@@ -768,7 +773,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="contentCategory")
     def content_category(self) -> pulumi.Output[str]:
         """
-        The Content Classification.
+        The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
         """
         return pulumi.get(self, "content_category")
 
@@ -776,7 +781,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="customType")
     def custom_type(self) -> pulumi.Output[int]:
         """
-        Sensitive Data Identification Rules of Type. Valid values:
+        The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
         """
         return pulumi.get(self, "custom_type")
 
@@ -784,7 +789,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Sensitive Data Identification a Description of the Rule Information.
+        The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
         """
         return pulumi.get(self, "description")
 
@@ -792,7 +797,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter
     def lang(self) -> pulumi.Output[Optional[str]]:
         """
-        The Request and Receive the Language of the Message Type. Valid values:
+        The language of the content within the request and response. Default value: `zh`. Valid values:
         """
         return pulumi.get(self, "lang")
 
@@ -800,7 +805,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="productCode")
     def product_code(self) -> pulumi.Output[Optional[str]]:
         """
-        Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
+        The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
         """
         return pulumi.get(self, "product_code")
 
@@ -808,7 +813,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="productId")
     def product_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Product ID. Valid values:
+        The ID of the service to which the data asset belongs. Valid values:
         """
         return pulumi.get(self, "product_id")
 
@@ -816,7 +821,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="riskLevelId")
     def risk_level_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Sensitive Data Identification Rules of Risk Level ID. Valid values:
+        The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
         """
         return pulumi.get(self, "risk_level_id")
 
@@ -824,7 +829,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="ruleName")
     def rule_name(self) -> pulumi.Output[str]:
         """
-        Sensitive Data Identification Name of the Rule.
+        The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
         """
         return pulumi.get(self, "rule_name")
 
@@ -832,7 +837,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="ruleType")
     def rule_type(self) -> pulumi.Output[Optional[int]]:
         """
-        Rule Type.
+        The type of the sensitive data detection rule. Valid values:
         """
         return pulumi.get(self, "rule_type")
 
@@ -840,7 +845,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="statExpress")
     def stat_express(self) -> pulumi.Output[Optional[str]]:
         """
-        Triggered the Alarm Conditions.
+        The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
         """
         return pulumi.get(self, "stat_express")
 
@@ -848,7 +853,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output[int]:
         """
-        Sensitive Data Identification Rules Detection State of.
+        Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
         """
         return pulumi.get(self, "status")
 
@@ -856,7 +861,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter
     def target(self) -> pulumi.Output[Optional[str]]:
         """
-        The Target of rule.
+        The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
         """
         return pulumi.get(self, "target")
 
@@ -864,7 +869,7 @@ class Rule(pulumi.CustomResource):
     @pulumi.getter(name="warnLevel")
     def warn_level(self) -> pulumi.Output[Optional[int]]:
         """
-        The Level of Risk. Valid values:
+        The risk level of the alert that is triggered. Valid values:
         """
         return pulumi.get(self, "warn_level")
 

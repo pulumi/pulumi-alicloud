@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a OSS Bucket Referer resource. Bucket Referer configuration.
+// Provides a OSS Bucket Referer resource. Bucket Referer configuration (Hotlink protection).
 //
 // For information about OSS Bucket Referer and how to use it, see [What is Bucket Referer](https://www.alibabacloud.com/help/en/oss/user-guide/hotlink-protection).
 //
@@ -91,7 +91,7 @@ type BucketReferer struct {
 
 	// Whether to allow empty Referer request headers.
 	AllowEmptyReferer pulumi.BoolOutput `pulumi:"allowEmptyReferer"`
-	// Allow phase request parameters.
+	// Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
 	AllowTruncateQueryString pulumi.BoolOutput `pulumi:"allowTruncateQueryString"`
 	// Name of the Bucket.
 	Bucket pulumi.StringOutput `pulumi:"bucket"`
@@ -99,7 +99,7 @@ type BucketReferer struct {
 	RefererBlacklists pulumi.StringArrayOutput `pulumi:"refererBlacklists"`
 	// The container that holds the Referer whitelist.
 	RefererLists pulumi.StringArrayOutput `pulumi:"refererLists"`
-	// Name of the bucket.
+	// Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
 	TruncatePath pulumi.BoolPtrOutput `pulumi:"truncatePath"`
 }
 
@@ -141,7 +141,7 @@ func GetBucketReferer(ctx *pulumi.Context,
 type bucketRefererState struct {
 	// Whether to allow empty Referer request headers.
 	AllowEmptyReferer *bool `pulumi:"allowEmptyReferer"`
-	// Allow phase request parameters.
+	// Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
 	AllowTruncateQueryString *bool `pulumi:"allowTruncateQueryString"`
 	// Name of the Bucket.
 	Bucket *string `pulumi:"bucket"`
@@ -149,14 +149,14 @@ type bucketRefererState struct {
 	RefererBlacklists []string `pulumi:"refererBlacklists"`
 	// The container that holds the Referer whitelist.
 	RefererLists []string `pulumi:"refererLists"`
-	// Name of the bucket.
+	// Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
 	TruncatePath *bool `pulumi:"truncatePath"`
 }
 
 type BucketRefererState struct {
 	// Whether to allow empty Referer request headers.
 	AllowEmptyReferer pulumi.BoolPtrInput
-	// Allow phase request parameters.
+	// Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
 	AllowTruncateQueryString pulumi.BoolPtrInput
 	// Name of the Bucket.
 	Bucket pulumi.StringPtrInput
@@ -164,7 +164,7 @@ type BucketRefererState struct {
 	RefererBlacklists pulumi.StringArrayInput
 	// The container that holds the Referer whitelist.
 	RefererLists pulumi.StringArrayInput
-	// Name of the bucket.
+	// Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
 	TruncatePath pulumi.BoolPtrInput
 }
 
@@ -175,7 +175,7 @@ func (BucketRefererState) ElementType() reflect.Type {
 type bucketRefererArgs struct {
 	// Whether to allow empty Referer request headers.
 	AllowEmptyReferer bool `pulumi:"allowEmptyReferer"`
-	// Allow phase request parameters.
+	// Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
 	AllowTruncateQueryString *bool `pulumi:"allowTruncateQueryString"`
 	// Name of the Bucket.
 	Bucket string `pulumi:"bucket"`
@@ -183,7 +183,7 @@ type bucketRefererArgs struct {
 	RefererBlacklists []string `pulumi:"refererBlacklists"`
 	// The container that holds the Referer whitelist.
 	RefererLists []string `pulumi:"refererLists"`
-	// Name of the bucket.
+	// Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
 	TruncatePath *bool `pulumi:"truncatePath"`
 }
 
@@ -191,7 +191,7 @@ type bucketRefererArgs struct {
 type BucketRefererArgs struct {
 	// Whether to allow empty Referer request headers.
 	AllowEmptyReferer pulumi.BoolInput
-	// Allow phase request parameters.
+	// Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
 	AllowTruncateQueryString pulumi.BoolPtrInput
 	// Name of the Bucket.
 	Bucket pulumi.StringInput
@@ -199,7 +199,7 @@ type BucketRefererArgs struct {
 	RefererBlacklists pulumi.StringArrayInput
 	// The container that holds the Referer whitelist.
 	RefererLists pulumi.StringArrayInput
-	// Name of the bucket.
+	// Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
 	TruncatePath pulumi.BoolPtrInput
 }
 
@@ -295,7 +295,7 @@ func (o BucketRefererOutput) AllowEmptyReferer() pulumi.BoolOutput {
 	return o.ApplyT(func(v *BucketReferer) pulumi.BoolOutput { return v.AllowEmptyReferer }).(pulumi.BoolOutput)
 }
 
-// Allow phase request parameters.
+// Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
 func (o BucketRefererOutput) AllowTruncateQueryString() pulumi.BoolOutput {
 	return o.ApplyT(func(v *BucketReferer) pulumi.BoolOutput { return v.AllowTruncateQueryString }).(pulumi.BoolOutput)
 }
@@ -315,7 +315,7 @@ func (o BucketRefererOutput) RefererLists() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *BucketReferer) pulumi.StringArrayOutput { return v.RefererLists }).(pulumi.StringArrayOutput)
 }
 
-// Name of the bucket.
+// Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
 func (o BucketRefererOutput) TruncatePath() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *BucketReferer) pulumi.BoolPtrOutput { return v.TruncatePath }).(pulumi.BoolPtrOutput)
 }

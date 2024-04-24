@@ -20,11 +20,23 @@ import * as utilities from "../utilities";
  * import * as alicloud from "@pulumi/alicloud";
  *
  * const config = new pulumi.Config();
- * const name = config.get("name") || "tf_example_name";
+ * const name = config.get("name") || "tf-example-name";
  * const _default = new alicloud.sddp.Rule("default", {
- *     category: 0,
- *     content: "content",
  *     ruleName: name,
+ *     category: 2,
+ *     content: `  [
+ *     {
+ *       "rule": [
+ *         {
+ *           "operator": "contains",
+ *           "target": "content",
+ *           "value": "tf-testACCContent"
+ *         }
+ *       ],
+ *       "ruleRelation": "AND"
+ *     }
+ *   ]
+ * `,
  *     riskLevelId: "4",
  *     productCode: "OSS",
  * });
@@ -67,63 +79,63 @@ export class Rule extends pulumi.CustomResource {
     }
 
     /**
-     * Sensitive Data Identification Rules for the Type of. Valid values:
+     * The content type of the sensitive data detection rule. Valid values:
      */
     public readonly category!: pulumi.Output<number>;
     /**
-     * Sensitive Data Identification Rules the Content.
+     * The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
      */
     public readonly content!: pulumi.Output<string>;
     /**
-     * The Content Classification.
+     * The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `contentCategory` cannot be modified.
      */
     public readonly contentCategory!: pulumi.Output<string>;
     /**
-     * Sensitive Data Identification Rules of Type. Valid values:
+     * The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `customType` cannot be specified when create Rule.
      */
-    public readonly customType!: pulumi.Output<number>;
+    public /*out*/ readonly customType!: pulumi.Output<number>;
     /**
-     * Sensitive Data Identification a Description of the Rule Information.
+     * The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The Request and Receive the Language of the Message Type. Valid values:
+     * The language of the content within the request and response. Default value: `zh`. Valid values:
      */
     public readonly lang!: pulumi.Output<string | undefined>;
     /**
-     * Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
+     * The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
      */
     public readonly productCode!: pulumi.Output<string | undefined>;
     /**
-     * Product ID. Valid values:
+     * The ID of the service to which the data asset belongs. Valid values:
      */
     public readonly productId!: pulumi.Output<string | undefined>;
     /**
-     * Sensitive Data Identification Rules of Risk Level ID. Valid values:
+     * The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
      */
     public readonly riskLevelId!: pulumi.Output<string | undefined>;
     /**
-     * Sensitive Data Identification Name of the Rule.
+     * The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `ruleName` can be modified.
      */
     public readonly ruleName!: pulumi.Output<string>;
     /**
-     * Rule Type.
+     * The type of the sensitive data detection rule. Valid values:
      */
     public readonly ruleType!: pulumi.Output<number | undefined>;
     /**
-     * Triggered the Alarm Conditions.
+     * The statistical expression. **NOTE:** From version 1.222.0, `statExpress` cannot be modified.
      */
     public readonly statExpress!: pulumi.Output<string | undefined>;
     /**
-     * Sensitive Data Identification Rules Detection State of.
+     * Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
      */
     public readonly status!: pulumi.Output<number>;
     /**
-     * The Target of rule.
+     * The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
      */
     public readonly target!: pulumi.Output<string | undefined>;
     /**
-     * The Level of Risk. Valid values:
+     * The risk level of the alert that is triggered. Valid values:
      */
     public readonly warnLevel!: pulumi.Output<number | undefined>;
 
@@ -169,7 +181,6 @@ export class Rule extends pulumi.CustomResource {
             resourceInputs["category"] = args ? args.category : undefined;
             resourceInputs["content"] = args ? args.content : undefined;
             resourceInputs["contentCategory"] = args ? args.contentCategory : undefined;
-            resourceInputs["customType"] = args ? args.customType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["lang"] = args ? args.lang : undefined;
             resourceInputs["productCode"] = args ? args.productCode : undefined;
@@ -181,6 +192,7 @@ export class Rule extends pulumi.CustomResource {
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["target"] = args ? args.target : undefined;
             resourceInputs["warnLevel"] = args ? args.warnLevel : undefined;
+            resourceInputs["customType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Rule.__pulumiType, name, resourceInputs, opts);
@@ -192,63 +204,63 @@ export class Rule extends pulumi.CustomResource {
  */
 export interface RuleState {
     /**
-     * Sensitive Data Identification Rules for the Type of. Valid values:
+     * The content type of the sensitive data detection rule. Valid values:
      */
     category?: pulumi.Input<number>;
     /**
-     * Sensitive Data Identification Rules the Content.
+     * The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
      */
     content?: pulumi.Input<string>;
     /**
-     * The Content Classification.
+     * The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `contentCategory` cannot be modified.
      */
     contentCategory?: pulumi.Input<string>;
     /**
-     * Sensitive Data Identification Rules of Type. Valid values:
+     * The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `customType` cannot be specified when create Rule.
      */
     customType?: pulumi.Input<number>;
     /**
-     * Sensitive Data Identification a Description of the Rule Information.
+     * The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
      */
     description?: pulumi.Input<string>;
     /**
-     * The Request and Receive the Language of the Message Type. Valid values:
+     * The language of the content within the request and response. Default value: `zh`. Valid values:
      */
     lang?: pulumi.Input<string>;
     /**
-     * Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
+     * The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
      */
     productCode?: pulumi.Input<string>;
     /**
-     * Product ID. Valid values:
+     * The ID of the service to which the data asset belongs. Valid values:
      */
     productId?: pulumi.Input<string>;
     /**
-     * Sensitive Data Identification Rules of Risk Level ID. Valid values:
+     * The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
      */
     riskLevelId?: pulumi.Input<string>;
     /**
-     * Sensitive Data Identification Name of the Rule.
+     * The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `ruleName` can be modified.
      */
     ruleName?: pulumi.Input<string>;
     /**
-     * Rule Type.
+     * The type of the sensitive data detection rule. Valid values:
      */
     ruleType?: pulumi.Input<number>;
     /**
-     * Triggered the Alarm Conditions.
+     * The statistical expression. **NOTE:** From version 1.222.0, `statExpress` cannot be modified.
      */
     statExpress?: pulumi.Input<string>;
     /**
-     * Sensitive Data Identification Rules Detection State of.
+     * Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
      */
     status?: pulumi.Input<number>;
     /**
-     * The Target of rule.
+     * The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
      */
     target?: pulumi.Input<string>;
     /**
-     * The Level of Risk. Valid values:
+     * The risk level of the alert that is triggered. Valid values:
      */
     warnLevel?: pulumi.Input<number>;
 }
@@ -258,63 +270,59 @@ export interface RuleState {
  */
 export interface RuleArgs {
     /**
-     * Sensitive Data Identification Rules for the Type of. Valid values:
+     * The content type of the sensitive data detection rule. Valid values:
      */
     category: pulumi.Input<number>;
     /**
-     * Sensitive Data Identification Rules the Content.
+     * The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
      */
     content: pulumi.Input<string>;
     /**
-     * The Content Classification.
+     * The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `contentCategory` cannot be modified.
      */
     contentCategory?: pulumi.Input<string>;
     /**
-     * Sensitive Data Identification Rules of Type. Valid values:
-     */
-    customType?: pulumi.Input<number>;
-    /**
-     * Sensitive Data Identification a Description of the Rule Information.
+     * The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
      */
     description?: pulumi.Input<string>;
     /**
-     * The Request and Receive the Language of the Message Type. Valid values:
+     * The language of the content within the request and response. Default value: `zh`. Valid values:
      */
     lang?: pulumi.Input<string>;
     /**
-     * Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
+     * The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
      */
     productCode?: pulumi.Input<string>;
     /**
-     * Product ID. Valid values:
+     * The ID of the service to which the data asset belongs. Valid values:
      */
     productId?: pulumi.Input<string>;
     /**
-     * Sensitive Data Identification Rules of Risk Level ID. Valid values:
+     * The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
      */
     riskLevelId?: pulumi.Input<string>;
     /**
-     * Sensitive Data Identification Name of the Rule.
+     * The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `ruleName` can be modified.
      */
     ruleName: pulumi.Input<string>;
     /**
-     * Rule Type.
+     * The type of the sensitive data detection rule. Valid values:
      */
     ruleType?: pulumi.Input<number>;
     /**
-     * Triggered the Alarm Conditions.
+     * The statistical expression. **NOTE:** From version 1.222.0, `statExpress` cannot be modified.
      */
     statExpress?: pulumi.Input<string>;
     /**
-     * Sensitive Data Identification Rules Detection State of.
+     * Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
      */
     status?: pulumi.Input<number>;
     /**
-     * The Target of rule.
+     * The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
      */
     target?: pulumi.Input<string>;
     /**
-     * The Level of Risk. Valid values:
+     * The risk level of the alert that is triggered. Valid values:
      */
     warnLevel?: pulumi.Input<number>;
 }

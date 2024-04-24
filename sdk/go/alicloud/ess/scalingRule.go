@@ -185,10 +185,20 @@ type ScalingRule struct {
 	DisableScaleIn pulumi.BoolPtrOutput `pulumi:"disableScaleIn"`
 	// The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
 	EstimatedInstanceWarmup pulumi.IntOutput `pulumi:"estimatedInstanceWarmup"`
+	// The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
+	InitialMaxSize pulumi.IntOutput `pulumi:"initialMaxSize"`
 	// A CloudMonitor metric name.
 	MetricName pulumi.StringPtrOutput `pulumi:"metricName"`
 	// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
 	MinAdjustmentMagnitude pulumi.IntPtrOutput `pulumi:"minAdjustmentMagnitude"`
+	// The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+	PredictiveScalingMode pulumi.StringOutput `pulumi:"predictiveScalingMode"`
+	// The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+	PredictiveTaskBufferTime pulumi.IntOutput `pulumi:"predictiveTaskBufferTime"`
+	// The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+	PredictiveValueBehavior pulumi.StringOutput `pulumi:"predictiveValueBehavior"`
+	// The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+	PredictiveValueBuffer pulumi.IntOutput `pulumi:"predictiveValueBuffer"`
 	// The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
 	ScaleInEvaluationCount pulumi.IntOutput `pulumi:"scaleInEvaluationCount"`
 	// The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
@@ -197,7 +207,7 @@ type ScalingRule struct {
 	ScalingGroupId pulumi.StringOutput `pulumi:"scalingGroupId"`
 	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
 	ScalingRuleName pulumi.StringOutput `pulumi:"scalingRuleName"`
-	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
 	ScalingRuleType pulumi.StringPtrOutput `pulumi:"scalingRuleType"`
 	// Steps for StepScalingRule. See `stepAdjustment` below.
 	StepAdjustments ScalingRuleStepAdjustmentArrayOutput `pulumi:"stepAdjustments"`
@@ -258,10 +268,20 @@ type scalingRuleState struct {
 	DisableScaleIn *bool `pulumi:"disableScaleIn"`
 	// The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
 	EstimatedInstanceWarmup *int `pulumi:"estimatedInstanceWarmup"`
+	// The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
+	InitialMaxSize *int `pulumi:"initialMaxSize"`
 	// A CloudMonitor metric name.
 	MetricName *string `pulumi:"metricName"`
 	// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
 	MinAdjustmentMagnitude *int `pulumi:"minAdjustmentMagnitude"`
+	// The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+	PredictiveScalingMode *string `pulumi:"predictiveScalingMode"`
+	// The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+	PredictiveTaskBufferTime *int `pulumi:"predictiveTaskBufferTime"`
+	// The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+	PredictiveValueBehavior *string `pulumi:"predictiveValueBehavior"`
+	// The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+	PredictiveValueBuffer *int `pulumi:"predictiveValueBuffer"`
 	// The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
 	ScaleInEvaluationCount *int `pulumi:"scaleInEvaluationCount"`
 	// The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
@@ -270,7 +290,7 @@ type scalingRuleState struct {
 	ScalingGroupId *string `pulumi:"scalingGroupId"`
 	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
 	ScalingRuleName *string `pulumi:"scalingRuleName"`
-	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
 	ScalingRuleType *string `pulumi:"scalingRuleType"`
 	// Steps for StepScalingRule. See `stepAdjustment` below.
 	StepAdjustments []ScalingRuleStepAdjustment `pulumi:"stepAdjustments"`
@@ -299,10 +319,20 @@ type ScalingRuleState struct {
 	DisableScaleIn pulumi.BoolPtrInput
 	// The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
 	EstimatedInstanceWarmup pulumi.IntPtrInput
+	// The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
+	InitialMaxSize pulumi.IntPtrInput
 	// A CloudMonitor metric name.
 	MetricName pulumi.StringPtrInput
 	// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
 	MinAdjustmentMagnitude pulumi.IntPtrInput
+	// The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+	PredictiveScalingMode pulumi.StringPtrInput
+	// The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+	PredictiveTaskBufferTime pulumi.IntPtrInput
+	// The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+	PredictiveValueBehavior pulumi.StringPtrInput
+	// The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+	PredictiveValueBuffer pulumi.IntPtrInput
 	// The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
 	ScaleInEvaluationCount pulumi.IntPtrInput
 	// The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
@@ -311,7 +341,7 @@ type ScalingRuleState struct {
 	ScalingGroupId pulumi.StringPtrInput
 	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
 	ScalingRuleName pulumi.StringPtrInput
-	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
 	ScalingRuleType pulumi.StringPtrInput
 	// Steps for StepScalingRule. See `stepAdjustment` below.
 	StepAdjustments ScalingRuleStepAdjustmentArrayInput
@@ -342,10 +372,20 @@ type scalingRuleArgs struct {
 	DisableScaleIn *bool `pulumi:"disableScaleIn"`
 	// The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
 	EstimatedInstanceWarmup *int `pulumi:"estimatedInstanceWarmup"`
+	// The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
+	InitialMaxSize *int `pulumi:"initialMaxSize"`
 	// A CloudMonitor metric name.
 	MetricName *string `pulumi:"metricName"`
 	// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
 	MinAdjustmentMagnitude *int `pulumi:"minAdjustmentMagnitude"`
+	// The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+	PredictiveScalingMode *string `pulumi:"predictiveScalingMode"`
+	// The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+	PredictiveTaskBufferTime *int `pulumi:"predictiveTaskBufferTime"`
+	// The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+	PredictiveValueBehavior *string `pulumi:"predictiveValueBehavior"`
+	// The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+	PredictiveValueBuffer *int `pulumi:"predictiveValueBuffer"`
 	// The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
 	ScaleInEvaluationCount *int `pulumi:"scaleInEvaluationCount"`
 	// The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
@@ -354,7 +394,7 @@ type scalingRuleArgs struct {
 	ScalingGroupId string `pulumi:"scalingGroupId"`
 	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
 	ScalingRuleName *string `pulumi:"scalingRuleName"`
-	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
 	ScalingRuleType *string `pulumi:"scalingRuleType"`
 	// Steps for StepScalingRule. See `stepAdjustment` below.
 	StepAdjustments []ScalingRuleStepAdjustment `pulumi:"stepAdjustments"`
@@ -382,10 +422,20 @@ type ScalingRuleArgs struct {
 	DisableScaleIn pulumi.BoolPtrInput
 	// The estimated time, in seconds, until a newly launched instance will contribute CloudMonitor metrics. Default to 300.
 	EstimatedInstanceWarmup pulumi.IntPtrInput
+	// The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
+	InitialMaxSize pulumi.IntPtrInput
 	// A CloudMonitor metric name.
 	MetricName pulumi.StringPtrInput
 	// The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
 	MinAdjustmentMagnitude pulumi.IntPtrInput
+	// The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+	PredictiveScalingMode pulumi.StringPtrInput
+	// The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+	PredictiveTaskBufferTime pulumi.IntPtrInput
+	// The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+	PredictiveValueBehavior pulumi.StringPtrInput
+	// The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+	PredictiveValueBuffer pulumi.IntPtrInput
 	// The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
 	ScaleInEvaluationCount pulumi.IntPtrInput
 	// The number of consecutive times that the event-triggered task created for scale-outs must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
@@ -394,7 +444,7 @@ type ScalingRuleArgs struct {
 	ScalingGroupId pulumi.StringInput
 	// Name shown for the scaling rule, which must contain 2-64 characters (English or Chinese), starting with numbers, English letters or Chinese characters, and can contain number, underscores `_`, hypens `-`, and decimal point `.`. If this parameter value is not specified, the default value is scaling rule id.
 	ScalingRuleName pulumi.StringPtrInput
-	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+	// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
 	ScalingRuleType pulumi.StringPtrInput
 	// Steps for StepScalingRule. See `stepAdjustment` below.
 	StepAdjustments ScalingRuleStepAdjustmentArrayInput
@@ -530,6 +580,11 @@ func (o ScalingRuleOutput) EstimatedInstanceWarmup() pulumi.IntOutput {
 	return o.ApplyT(func(v *ScalingRule) pulumi.IntOutput { return v.EstimatedInstanceWarmup }).(pulumi.IntOutput)
 }
 
+// The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
+func (o ScalingRuleOutput) InitialMaxSize() pulumi.IntOutput {
+	return o.ApplyT(func(v *ScalingRule) pulumi.IntOutput { return v.InitialMaxSize }).(pulumi.IntOutput)
+}
+
 // A CloudMonitor metric name.
 func (o ScalingRuleOutput) MetricName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingRule) pulumi.StringPtrOutput { return v.MetricName }).(pulumi.StringPtrOutput)
@@ -538,6 +593,26 @@ func (o ScalingRuleOutput) MetricName() pulumi.StringPtrOutput {
 // The minimum number of instances that must be scaled. This parameter takes effect if you set ScalingRuleType to SimpleScalingRule or StepScalingRule, and AdjustmentType to PercentChangeInCapacity.
 func (o ScalingRuleOutput) MinAdjustmentMagnitude() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ScalingRule) pulumi.IntPtrOutput { return v.MinAdjustmentMagnitude }).(pulumi.IntPtrOutput)
+}
+
+// The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+func (o ScalingRuleOutput) PredictiveScalingMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingRule) pulumi.StringOutput { return v.PredictiveScalingMode }).(pulumi.StringOutput)
+}
+
+// The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+func (o ScalingRuleOutput) PredictiveTaskBufferTime() pulumi.IntOutput {
+	return o.ApplyT(func(v *ScalingRule) pulumi.IntOutput { return v.PredictiveTaskBufferTime }).(pulumi.IntOutput)
+}
+
+// The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+func (o ScalingRuleOutput) PredictiveValueBehavior() pulumi.StringOutput {
+	return o.ApplyT(func(v *ScalingRule) pulumi.StringOutput { return v.PredictiveValueBehavior }).(pulumi.StringOutput)
+}
+
+// The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+func (o ScalingRuleOutput) PredictiveValueBuffer() pulumi.IntOutput {
+	return o.ApplyT(func(v *ScalingRule) pulumi.IntOutput { return v.PredictiveValueBuffer }).(pulumi.IntOutput)
 }
 
 // The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
@@ -560,7 +635,7 @@ func (o ScalingRuleOutput) ScalingRuleName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ScalingRule) pulumi.StringOutput { return v.ScalingRuleName }).(pulumi.StringOutput)
 }
 
-// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
 func (o ScalingRuleOutput) ScalingRuleType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ScalingRule) pulumi.StringPtrOutput { return v.ScalingRuleType }).(pulumi.StringPtrOutput)
 }

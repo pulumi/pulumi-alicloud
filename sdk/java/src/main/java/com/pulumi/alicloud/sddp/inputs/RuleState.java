@@ -17,14 +17,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     public static final RuleState Empty = new RuleState();
 
     /**
-     * Sensitive Data Identification Rules for the Type of. Valid values:
+     * The content type of the sensitive data detection rule. Valid values:
      * 
      */
     @Import(name="category")
     private @Nullable Output<Integer> category;
 
     /**
-     * @return Sensitive Data Identification Rules for the Type of. Valid values:
+     * @return The content type of the sensitive data detection rule. Valid values:
      * 
      */
     public Optional<Output<Integer>> category() {
@@ -32,14 +32,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Sensitive Data Identification Rules the Content.
+     * The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
      * 
      */
     @Import(name="content")
     private @Nullable Output<String> content;
 
     /**
-     * @return Sensitive Data Identification Rules the Content.
+     * @return The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
      * 
      */
     public Optional<Output<String>> content() {
@@ -47,14 +47,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Content Classification.
+     * The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
      * 
      */
     @Import(name="contentCategory")
     private @Nullable Output<String> contentCategory;
 
     /**
-     * @return The Content Classification.
+     * @return The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
      * 
      */
     public Optional<Output<String>> contentCategory() {
@@ -62,14 +62,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Sensitive Data Identification Rules of Type. Valid values:
+     * The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
      * 
      */
     @Import(name="customType")
     private @Nullable Output<Integer> customType;
 
     /**
-     * @return Sensitive Data Identification Rules of Type. Valid values:
+     * @return The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
      * 
      */
     public Optional<Output<Integer>> customType() {
@@ -77,14 +77,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Sensitive Data Identification a Description of the Rule Information.
+     * The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Sensitive Data Identification a Description of the Rule Information.
+     * @return The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
      * 
      */
     public Optional<Output<String>> description() {
@@ -92,14 +92,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Request and Receive the Language of the Message Type. Valid values:
+     * The language of the content within the request and response. Default value: `zh`. Valid values:
      * 
      */
     @Import(name="lang")
     private @Nullable Output<String> lang;
 
     /**
-     * @return The Request and Receive the Language of the Message Type. Valid values:
+     * @return The language of the content within the request and response. Default value: `zh`. Valid values:
      * 
      */
     public Optional<Output<String>> lang() {
@@ -107,14 +107,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
+     * The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
      * 
      */
     @Import(name="productCode")
     private @Nullable Output<String> productCode;
 
     /**
-     * @return Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
+     * @return The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
      * 
      */
     public Optional<Output<String>> productCode() {
@@ -122,14 +122,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Product ID. Valid values:
+     * The ID of the service to which the data asset belongs. Valid values:
      * 
      */
     @Import(name="productId")
     private @Nullable Output<String> productId;
 
     /**
-     * @return Product ID. Valid values:
+     * @return The ID of the service to which the data asset belongs. Valid values:
      * 
      */
     public Optional<Output<String>> productId() {
@@ -137,14 +137,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Sensitive Data Identification Rules of Risk Level ID. Valid values:
+     * The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
      * 
      */
     @Import(name="riskLevelId")
     private @Nullable Output<String> riskLevelId;
 
     /**
-     * @return Sensitive Data Identification Rules of Risk Level ID. Valid values:
+     * @return The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
      * 
      */
     public Optional<Output<String>> riskLevelId() {
@@ -152,14 +152,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Sensitive Data Identification Name of the Rule.
+     * The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
      * 
      */
     @Import(name="ruleName")
     private @Nullable Output<String> ruleName;
 
     /**
-     * @return Sensitive Data Identification Name of the Rule.
+     * @return The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
      * 
      */
     public Optional<Output<String>> ruleName() {
@@ -167,14 +167,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Rule Type.
+     * The type of the sensitive data detection rule. Valid values:
      * 
      */
     @Import(name="ruleType")
     private @Nullable Output<Integer> ruleType;
 
     /**
-     * @return Rule Type.
+     * @return The type of the sensitive data detection rule. Valid values:
      * 
      */
     public Optional<Output<Integer>> ruleType() {
@@ -182,14 +182,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Triggered the Alarm Conditions.
+     * The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
      * 
      */
     @Import(name="statExpress")
     private @Nullable Output<String> statExpress;
 
     /**
-     * @return Triggered the Alarm Conditions.
+     * @return The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
      * 
      */
     public Optional<Output<String>> statExpress() {
@@ -197,14 +197,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Sensitive Data Identification Rules Detection State of.
+     * Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
      * 
      */
     @Import(name="status")
     private @Nullable Output<Integer> status;
 
     /**
-     * @return Sensitive Data Identification Rules Detection State of.
+     * @return Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
      * 
      */
     public Optional<Output<Integer>> status() {
@@ -212,14 +212,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Target of rule.
+     * The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
      * 
      */
     @Import(name="target")
     private @Nullable Output<String> target;
 
     /**
-     * @return The Target of rule.
+     * @return The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
      * 
      */
     public Optional<Output<String>> target() {
@@ -227,14 +227,14 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The Level of Risk. Valid values:
+     * The risk level of the alert that is triggered. Valid values:
      * 
      */
     @Import(name="warnLevel")
     private @Nullable Output<Integer> warnLevel;
 
     /**
-     * @return The Level of Risk. Valid values:
+     * @return The risk level of the alert that is triggered. Valid values:
      * 
      */
     public Optional<Output<Integer>> warnLevel() {
@@ -280,7 +280,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param category Sensitive Data Identification Rules for the Type of. Valid values:
+         * @param category The content type of the sensitive data detection rule. Valid values:
          * 
          * @return builder
          * 
@@ -291,7 +291,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param category Sensitive Data Identification Rules for the Type of. Valid values:
+         * @param category The content type of the sensitive data detection rule. Valid values:
          * 
          * @return builder
          * 
@@ -301,7 +301,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param content Sensitive Data Identification Rules the Content.
+         * @param content The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param content Sensitive Data Identification Rules the Content.
+         * @param content The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
          * 
          * @return builder
          * 
@@ -322,7 +322,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentCategory The Content Classification.
+         * @param contentCategory The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param contentCategory The Content Classification.
+         * @param contentCategory The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
          * 
          * @return builder
          * 
@@ -343,7 +343,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customType Sensitive Data Identification Rules of Type. Valid values:
+         * @param customType The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customType Sensitive Data Identification Rules of Type. Valid values:
+         * @param customType The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
          * 
          * @return builder
          * 
@@ -364,7 +364,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Sensitive Data Identification a Description of the Rule Information.
+         * @param description The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Sensitive Data Identification a Description of the Rule Information.
+         * @param description The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
          * 
          * @return builder
          * 
@@ -385,7 +385,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lang The Request and Receive the Language of the Message Type. Valid values:
+         * @param lang The language of the content within the request and response. Default value: `zh`. Valid values:
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lang The Request and Receive the Language of the Message Type. Valid values:
+         * @param lang The language of the content within the request and response. Default value: `zh`. Valid values:
          * 
          * @return builder
          * 
@@ -406,7 +406,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param productCode Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
+         * @param productCode The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param productCode Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
+         * @param productCode The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
          * 
          * @return builder
          * 
@@ -427,7 +427,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param productId Product ID. Valid values:
+         * @param productId The ID of the service to which the data asset belongs. Valid values:
          * 
          * @return builder
          * 
@@ -438,7 +438,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param productId Product ID. Valid values:
+         * @param productId The ID of the service to which the data asset belongs. Valid values:
          * 
          * @return builder
          * 
@@ -448,7 +448,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param riskLevelId Sensitive Data Identification Rules of Risk Level ID. Valid values:
+         * @param riskLevelId The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
          * 
          * @return builder
          * 
@@ -459,7 +459,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param riskLevelId Sensitive Data Identification Rules of Risk Level ID. Valid values:
+         * @param riskLevelId The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
          * 
          * @return builder
          * 
@@ -469,7 +469,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleName Sensitive Data Identification Name of the Rule.
+         * @param ruleName The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
          * 
          * @return builder
          * 
@@ -480,7 +480,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleName Sensitive Data Identification Name of the Rule.
+         * @param ruleName The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
          * 
          * @return builder
          * 
@@ -490,7 +490,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleType Rule Type.
+         * @param ruleType The type of the sensitive data detection rule. Valid values:
          * 
          * @return builder
          * 
@@ -501,7 +501,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ruleType Rule Type.
+         * @param ruleType The type of the sensitive data detection rule. Valid values:
          * 
          * @return builder
          * 
@@ -511,7 +511,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param statExpress Triggered the Alarm Conditions.
+         * @param statExpress The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
          * 
          * @return builder
          * 
@@ -522,7 +522,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param statExpress Triggered the Alarm Conditions.
+         * @param statExpress The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
          * 
          * @return builder
          * 
@@ -532,7 +532,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Sensitive Data Identification Rules Detection State of.
+         * @param status Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
          * 
          * @return builder
          * 
@@ -543,7 +543,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param status Sensitive Data Identification Rules Detection State of.
+         * @param status Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
          * 
          * @return builder
          * 
@@ -553,7 +553,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param target The Target of rule.
+         * @param target The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
          * 
          * @return builder
          * 
@@ -564,7 +564,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param target The Target of rule.
+         * @param target The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
          * 
          * @return builder
          * 
@@ -574,7 +574,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param warnLevel The Level of Risk. Valid values:
+         * @param warnLevel The risk level of the alert that is triggered. Valid values:
          * 
          * @return builder
          * 
@@ -585,7 +585,7 @@ public final class RuleState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param warnLevel The Level of Risk. Valid values:
+         * @param warnLevel The risk level of the alert that is triggered. Valid values:
          * 
          * @return builder
          * 

@@ -58,7 +58,7 @@ export class Group extends pulumi.CustomResource {
     /**
      * The description of the api gateway group. Defaults to null.
      */
-    public readonly description!: pulumi.Output<string>;
+    public readonly description!: pulumi.Output<string | undefined>;
     /**
      * The id of the api gateway.
      */
@@ -83,7 +83,7 @@ export class Group extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: GroupArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: GroupArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: GroupArgs | GroupState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -96,9 +96,6 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["vpcDomain"] = state ? state.vpcDomain : undefined;
         } else {
             const args = argsOrState as GroupArgs | undefined;
-            if ((!args || args.description === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'description'");
-            }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -143,7 +140,7 @@ export interface GroupArgs {
     /**
      * The description of the api gateway group. Defaults to null.
      */
-    description: pulumi.Input<string>;
+    description?: pulumi.Input<string>;
     /**
      * The id of the api gateway.
      */

@@ -49,11 +49,24 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         final var config = ctx.config();
- *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf_example_name&#34;);
+ *         final var name = config.get(&#34;name&#34;).orElse(&#34;tf-example-name&#34;);
  *         var default_ = new Rule(&#34;default&#34;, RuleArgs.builder()        
- *             .category(&#34;0&#34;)
- *             .content(&#34;content&#34;)
  *             .ruleName(name)
+ *             .category(&#34;2&#34;)
+ *             .content(&#34;&#34;&#34;
+ *   [
+ *     {
+ *       &#34;rule&#34;: [
+ *         {
+ *           &#34;operator&#34;: &#34;contains&#34;,
+ *           &#34;target&#34;: &#34;content&#34;,
+ *           &#34;value&#34;: &#34;tf-testACCContent&#34;
+ *         }
+ *       ],
+ *       &#34;ruleRelation&#34;: &#34;AND&#34;
+ *     }
+ *   ]
+ *             &#34;&#34;&#34;)
  *             .riskLevelId(&#34;4&#34;)
  *             .productCode(&#34;OSS&#34;)
  *             .build());
@@ -75,210 +88,210 @@ import javax.annotation.Nullable;
 @ResourceType(type="alicloud:sddp/rule:Rule")
 public class Rule extends com.pulumi.resources.CustomResource {
     /**
-     * Sensitive Data Identification Rules for the Type of. Valid values:
+     * The content type of the sensitive data detection rule. Valid values:
      * 
      */
     @Export(name="category", refs={Integer.class}, tree="[0]")
     private Output<Integer> category;
 
     /**
-     * @return Sensitive Data Identification Rules for the Type of. Valid values:
+     * @return The content type of the sensitive data detection rule. Valid values:
      * 
      */
     public Output<Integer> category() {
         return this.category;
     }
     /**
-     * Sensitive Data Identification Rules the Content.
+     * The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
      * 
      */
     @Export(name="content", refs={String.class}, tree="[0]")
     private Output<String> content;
 
     /**
-     * @return Sensitive Data Identification Rules the Content.
+     * @return The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
      * 
      */
     public Output<String> content() {
         return this.content;
     }
     /**
-     * The Content Classification.
+     * The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
      * 
      */
     @Export(name="contentCategory", refs={String.class}, tree="[0]")
     private Output<String> contentCategory;
 
     /**
-     * @return The Content Classification.
+     * @return The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
      * 
      */
     public Output<String> contentCategory() {
         return this.contentCategory;
     }
     /**
-     * Sensitive Data Identification Rules of Type. Valid values:
+     * The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
      * 
      */
     @Export(name="customType", refs={Integer.class}, tree="[0]")
     private Output<Integer> customType;
 
     /**
-     * @return Sensitive Data Identification Rules of Type. Valid values:
+     * @return The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
      * 
      */
     public Output<Integer> customType() {
         return this.customType;
     }
     /**
-     * Sensitive Data Identification a Description of the Rule Information.
+     * The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Sensitive Data Identification a Description of the Rule Information.
+     * @return The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * The Request and Receive the Language of the Message Type. Valid values:
+     * The language of the content within the request and response. Default value: `zh`. Valid values:
      * 
      */
     @Export(name="lang", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> lang;
 
     /**
-     * @return The Request and Receive the Language of the Message Type. Valid values:
+     * @return The language of the content within the request and response. Default value: `zh`. Valid values:
      * 
      */
     public Output<Optional<String>> lang() {
         return Codegen.optional(this.lang);
     }
     /**
-     * Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
+     * The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
      * 
      */
     @Export(name="productCode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> productCode;
 
     /**
-     * @return Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
+     * @return The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
      * 
      */
     public Output<Optional<String>> productCode() {
         return Codegen.optional(this.productCode);
     }
     /**
-     * Product ID. Valid values:
+     * The ID of the service to which the data asset belongs. Valid values:
      * 
      */
     @Export(name="productId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> productId;
 
     /**
-     * @return Product ID. Valid values:
+     * @return The ID of the service to which the data asset belongs. Valid values:
      * 
      */
     public Output<Optional<String>> productId() {
         return Codegen.optional(this.productId);
     }
     /**
-     * Sensitive Data Identification Rules of Risk Level ID. Valid values:
+     * The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
      * 
      */
     @Export(name="riskLevelId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> riskLevelId;
 
     /**
-     * @return Sensitive Data Identification Rules of Risk Level ID. Valid values:
+     * @return The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
      * 
      */
     public Output<Optional<String>> riskLevelId() {
         return Codegen.optional(this.riskLevelId);
     }
     /**
-     * Sensitive Data Identification Name of the Rule.
+     * The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
      * 
      */
     @Export(name="ruleName", refs={String.class}, tree="[0]")
     private Output<String> ruleName;
 
     /**
-     * @return Sensitive Data Identification Name of the Rule.
+     * @return The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
      * 
      */
     public Output<String> ruleName() {
         return this.ruleName;
     }
     /**
-     * Rule Type.
+     * The type of the sensitive data detection rule. Valid values:
      * 
      */
     @Export(name="ruleType", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> ruleType;
 
     /**
-     * @return Rule Type.
+     * @return The type of the sensitive data detection rule. Valid values:
      * 
      */
     public Output<Optional<Integer>> ruleType() {
         return Codegen.optional(this.ruleType);
     }
     /**
-     * Triggered the Alarm Conditions.
+     * The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
      * 
      */
     @Export(name="statExpress", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> statExpress;
 
     /**
-     * @return Triggered the Alarm Conditions.
+     * @return The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
      * 
      */
     public Output<Optional<String>> statExpress() {
         return Codegen.optional(this.statExpress);
     }
     /**
-     * Sensitive Data Identification Rules Detection State of.
+     * Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
      * 
      */
     @Export(name="status", refs={Integer.class}, tree="[0]")
     private Output<Integer> status;
 
     /**
-     * @return Sensitive Data Identification Rules Detection State of.
+     * @return Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
      * 
      */
     public Output<Integer> status() {
         return this.status;
     }
     /**
-     * The Target of rule.
+     * The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
      * 
      */
     @Export(name="target", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> target;
 
     /**
-     * @return The Target of rule.
+     * @return The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
      * 
      */
     public Output<Optional<String>> target() {
         return Codegen.optional(this.target);
     }
     /**
-     * The Level of Risk. Valid values:
+     * The risk level of the alert that is triggered. Valid values:
      * 
      */
     @Export(name="warnLevel", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> warnLevel;
 
     /**
-     * @return The Level of Risk. Valid values:
+     * @return The risk level of the alert that is triggered. Valid values:
      * 
      */
     public Output<Optional<Integer>> warnLevel() {

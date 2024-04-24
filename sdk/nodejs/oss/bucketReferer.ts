@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * Provides a OSS Bucket Referer resource. Bucket Referer configuration.
+ * Provides a OSS Bucket Referer resource. Bucket Referer configuration (Hotlink protection).
  *
  * For information about OSS Bucket Referer and how to use it, see [What is Bucket Referer](https://www.alibabacloud.com/help/en/oss/user-guide/hotlink-protection).
  *
@@ -84,7 +84,7 @@ export class BucketReferer extends pulumi.CustomResource {
      */
     public readonly allowEmptyReferer!: pulumi.Output<boolean>;
     /**
-     * Allow phase request parameters.
+     * Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
      */
     public readonly allowTruncateQueryString!: pulumi.Output<boolean>;
     /**
@@ -100,7 +100,7 @@ export class BucketReferer extends pulumi.CustomResource {
      */
     public readonly refererLists!: pulumi.Output<string[] | undefined>;
     /**
-     * Name of the bucket.
+     * Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
      */
     public readonly truncatePath!: pulumi.Output<boolean | undefined>;
 
@@ -152,7 +152,7 @@ export interface BucketRefererState {
      */
     allowEmptyReferer?: pulumi.Input<boolean>;
     /**
-     * Allow phase request parameters.
+     * Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
      */
     allowTruncateQueryString?: pulumi.Input<boolean>;
     /**
@@ -168,7 +168,7 @@ export interface BucketRefererState {
      */
     refererLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Name of the bucket.
+     * Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
      */
     truncatePath?: pulumi.Input<boolean>;
 }
@@ -182,7 +182,7 @@ export interface BucketRefererArgs {
      */
     allowEmptyReferer: pulumi.Input<boolean>;
     /**
-     * Allow phase request parameters.
+     * Specifies whether to truncate the query string in the URL when the Referer is matched. Valid values: true, false.
      */
     allowTruncateQueryString?: pulumi.Input<boolean>;
     /**
@@ -198,7 +198,7 @@ export interface BucketRefererArgs {
      */
     refererLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Name of the bucket.
+     * Specifies whether to truncate the path and parts that follow the path in the URL when the Referer is matched. Valid values: true, false. If TruncatePath is set to true, the value of AllowTruncateQueryString must be also true because the query string follows the path component. When the path is truncated, the query string is also truncated.
      */
     truncatePath?: pulumi.Input<boolean>;
 }

@@ -8,10 +8,14 @@ import typing
 from .bucket import *
 from .bucket_acl import *
 from .bucket_https_config import *
+from .bucket_logging import *
 from .bucket_object import *
 from .bucket_policy import *
 from .bucket_referer import *
 from .bucket_replication import *
+from .bucket_request_payment import *
+from .bucket_server_side_encryption import *
+from .bucket_versioning import *
 from .get_bucket_objects import *
 from .get_buckets import *
 from .get_instance_attachments import *

@@ -22,7 +22,7 @@ class GetInstanceTypesResult:
     """
     A collection of values returned by getInstanceTypes.
     """
-    def __init__(__self__, availability_zone=None, cpu_core_count=None, eni_amount=None, gpu_amount=None, gpu_spec=None, id=None, ids=None, image_id=None, instance_charge_type=None, instance_type_family=None, instance_types=None, is_outdated=None, kubernetes_node_role=None, memory_size=None, minimum_eni_ipv6_address_quantity=None, network_type=None, output_file=None, sorted_by=None, spot_strategy=None, system_disk_category=None):
+    def __init__(__self__, availability_zone=None, cpu_core_count=None, eni_amount=None, gpu_amount=None, gpu_spec=None, id=None, ids=None, image_id=None, instance_charge_type=None, instance_type=None, instance_type_family=None, instance_types=None, is_outdated=None, kubernetes_node_role=None, memory_size=None, minimum_eni_ipv6_address_quantity=None, network_type=None, output_file=None, sorted_by=None, spot_strategy=None, system_disk_category=None):
         if availability_zone and not isinstance(availability_zone, str):
             raise TypeError("Expected argument 'availability_zone' to be a str")
         pulumi.set(__self__, "availability_zone", availability_zone)
@@ -50,6 +50,9 @@ class GetInstanceTypesResult:
         if instance_charge_type and not isinstance(instance_charge_type, str):
             raise TypeError("Expected argument 'instance_charge_type' to be a str")
         pulumi.set(__self__, "instance_charge_type", instance_charge_type)
+        if instance_type and not isinstance(instance_type, str):
+            raise TypeError("Expected argument 'instance_type' to be a str")
+        pulumi.set(__self__, "instance_type", instance_type)
         if instance_type_family and not isinstance(instance_type_family, str):
             raise TypeError("Expected argument 'instance_type_family' to be a str")
         pulumi.set(__self__, "instance_type_family", instance_type_family)
@@ -142,6 +145,11 @@ class GetInstanceTypesResult:
         return pulumi.get(self, "instance_charge_type")
 
     @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[str]:
+        return pulumi.get(self, "instance_type")
+
+    @property
     @pulumi.getter(name="instanceTypeFamily")
     def instance_type_family(self) -> Optional[str]:
         return pulumi.get(self, "instance_type_family")
@@ -218,6 +226,7 @@ class AwaitableGetInstanceTypesResult(GetInstanceTypesResult):
             ids=self.ids,
             image_id=self.image_id,
             instance_charge_type=self.instance_charge_type,
+            instance_type=self.instance_type,
             instance_type_family=self.instance_type_family,
             instance_types=self.instance_types,
             is_outdated=self.is_outdated,
@@ -238,6 +247,7 @@ def get_instance_types(availability_zone: Optional[str] = None,
                        gpu_spec: Optional[str] = None,
                        image_id: Optional[str] = None,
                        instance_charge_type: Optional[str] = None,
+                       instance_type: Optional[str] = None,
                        instance_type_family: Optional[str] = None,
                        is_outdated: Optional[bool] = None,
                        kubernetes_node_role: Optional[str] = None,
@@ -256,17 +266,53 @@ def get_instance_types(availability_zone: Optional[str] = None,
 
     > **NOTE:** If one instance type is sold out, it will not be exported.
 
+    > **NOTE:** Available since v1.0.0.
+
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
     # Declare the data source
-    types_ds = alicloud.ecs.get_instance_types(cpu_core_count=1,
-        memory_size=2)
-    # Create ECS instance with the first matched instance_type
-    instance = alicloud.ecs.Instance("instance", instance_type=types_ds.instance_types[0].id)
+    default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+        instance_type_family="ecs.sn1ne")
+    default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        most_recent=True,
+        owners="system")
+    default_network = alicloud.vpc.Network("default",
+        vpc_name=name,
+        cidr_block="192.168.0.0/16")
+    default_switch = alicloud.vpc.Switch("default",
+        vswitch_name=name,
+        vpc_id=default_network.id,
+        cidr_block="192.168.192.0/24",
+        zone_id=default.zones[0].id)
+    default_security_group = alicloud.ecs.SecurityGroup("default",
+        name=name,
+        vpc_id=default_network.id)
+    default_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("default",
+        network_interface_name=name,
+        vswitch_id=default_switch.id,
+        security_group_ids=[default_security_group.id])
+    default_instance = []
+    for range in [{"value": i} for i in range(0, 14)]:
+        default_instance.append(alicloud.ecs.Instance(f"default-{range['value']}",
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
+            instance_name=name,
+            security_groups=[__item.id for __item in [default_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=default.zones[0].id,
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
+            vswitch_id=default_switch.id))
     ```
 
 
@@ -277,6 +323,7 @@ def get_instance_types(availability_zone: Optional[str] = None,
     :param str gpu_spec: The GPU spec of an instance type.
     :param str image_id: The ID of the image.
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+    :param str instance_type: Instance specifications. For more information, see instance Specification Family, or you can call the describe instance types interface to get the latest specification table.
     :param str instance_type_family: Filter the results based on their family name. For example: 'ecs.n4'.
     :param bool is_outdated: If true, outdated instance types are included in the results. Default to false.
     :param str kubernetes_node_role: Filter the result which is used to create a kubernetes cluster
@@ -285,6 +332,7 @@ def get_instance_types(availability_zone: Optional[str] = None,
     :param int minimum_eni_ipv6_address_quantity: The minimum number of IPv6 addresses per ENI. **Note:** If an instance type supports fewer IPv6 addresses per ENI than the specified value, information about the instance type is not queried.
     :param str network_type: Filter the results by network type. Valid values: `Classic` and `Vpc`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param str sorted_by: Sort mode, valid values: `CPU`, `Memory`, `Price`.
     :param str spot_strategy: Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
     :param str system_disk_category: Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`. 
            **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.
@@ -297,6 +345,7 @@ def get_instance_types(availability_zone: Optional[str] = None,
     __args__['gpuSpec'] = gpu_spec
     __args__['imageId'] = image_id
     __args__['instanceChargeType'] = instance_charge_type
+    __args__['instanceType'] = instance_type
     __args__['instanceTypeFamily'] = instance_type_family
     __args__['isOutdated'] = is_outdated
     __args__['kubernetesNodeRole'] = kubernetes_node_role
@@ -320,6 +369,7 @@ def get_instance_types(availability_zone: Optional[str] = None,
         ids=pulumi.get(__ret__, 'ids'),
         image_id=pulumi.get(__ret__, 'image_id'),
         instance_charge_type=pulumi.get(__ret__, 'instance_charge_type'),
+        instance_type=pulumi.get(__ret__, 'instance_type'),
         instance_type_family=pulumi.get(__ret__, 'instance_type_family'),
         instance_types=pulumi.get(__ret__, 'instance_types'),
         is_outdated=pulumi.get(__ret__, 'is_outdated'),
@@ -341,6 +391,7 @@ def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[
                               gpu_spec: Optional[pulumi.Input[Optional[str]]] = None,
                               image_id: Optional[pulumi.Input[Optional[str]]] = None,
                               instance_charge_type: Optional[pulumi.Input[Optional[str]]] = None,
+                              instance_type: Optional[pulumi.Input[Optional[str]]] = None,
                               instance_type_family: Optional[pulumi.Input[Optional[str]]] = None,
                               is_outdated: Optional[pulumi.Input[Optional[bool]]] = None,
                               kubernetes_node_role: Optional[pulumi.Input[Optional[str]]] = None,
@@ -359,17 +410,53 @@ def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[
 
     > **NOTE:** If one instance type is sold out, it will not be exported.
 
+    > **NOTE:** Available since v1.0.0.
+
     ## Example Usage
 
     ```python
     import pulumi
     import pulumi_alicloud as alicloud
 
+    config = pulumi.Config()
+    name = config.get("name")
+    if name is None:
+        name = "terraform-example"
+    default = alicloud.get_zones(available_resource_creation="VSwitch")
     # Declare the data source
-    types_ds = alicloud.ecs.get_instance_types(cpu_core_count=1,
-        memory_size=2)
-    # Create ECS instance with the first matched instance_type
-    instance = alicloud.ecs.Instance("instance", instance_type=types_ds.instance_types[0].id)
+    default_get_instance_types = alicloud.ecs.get_instance_types(availability_zone=default.zones[0].id,
+        instance_type_family="ecs.sn1ne")
+    default_get_images = alicloud.ecs.get_images(name_regex="^ubuntu_[0-9]+_[0-9]+_x64*",
+        most_recent=True,
+        owners="system")
+    default_network = alicloud.vpc.Network("default",
+        vpc_name=name,
+        cidr_block="192.168.0.0/16")
+    default_switch = alicloud.vpc.Switch("default",
+        vswitch_name=name,
+        vpc_id=default_network.id,
+        cidr_block="192.168.192.0/24",
+        zone_id=default.zones[0].id)
+    default_security_group = alicloud.ecs.SecurityGroup("default",
+        name=name,
+        vpc_id=default_network.id)
+    default_ecs_network_interface = alicloud.ecs.EcsNetworkInterface("default",
+        network_interface_name=name,
+        vswitch_id=default_switch.id,
+        security_group_ids=[default_security_group.id])
+    default_instance = []
+    for range in [{"value": i} for i in range(0, 14)]:
+        default_instance.append(alicloud.ecs.Instance(f"default-{range['value']}",
+            image_id=default_get_images.images[0].id,
+            instance_type=default_get_instance_types.instance_types[0].id,
+            instance_name=name,
+            security_groups=[__item.id for __item in [default_security_group]],
+            internet_charge_type="PayByTraffic",
+            internet_max_bandwidth_out=10,
+            availability_zone=default.zones[0].id,
+            instance_charge_type="PostPaid",
+            system_disk_category="cloud_efficiency",
+            vswitch_id=default_switch.id))
     ```
 
 
@@ -380,6 +467,7 @@ def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[
     :param str gpu_spec: The GPU spec of an instance type.
     :param str image_id: The ID of the image.
     :param str instance_charge_type: Filter the results by charge type. Valid values: `PrePaid` and `PostPaid`. Default to `PostPaid`.
+    :param str instance_type: Instance specifications. For more information, see instance Specification Family, or you can call the describe instance types interface to get the latest specification table.
     :param str instance_type_family: Filter the results based on their family name. For example: 'ecs.n4'.
     :param bool is_outdated: If true, outdated instance types are included in the results. Default to false.
     :param str kubernetes_node_role: Filter the result which is used to create a kubernetes cluster
@@ -388,6 +476,7 @@ def get_instance_types_output(availability_zone: Optional[pulumi.Input[Optional[
     :param int minimum_eni_ipv6_address_quantity: The minimum number of IPv6 addresses per ENI. **Note:** If an instance type supports fewer IPv6 addresses per ENI than the specified value, information about the instance type is not queried.
     :param str network_type: Filter the results by network type. Valid values: `Classic` and `Vpc`.
     :param str output_file: File name where to save data source results (after running `pulumi preview`).
+    :param str sorted_by: Sort mode, valid values: `CPU`, `Memory`, `Price`.
     :param str spot_strategy: Filter the results by ECS spot type. Valid values: `NoSpot`, `SpotWithPriceLimit` and `SpotAsPriceGo`. Default to `NoSpot`.
     :param str system_disk_category: Filter the results by system disk category. Valid values: `cloud`, `ephemeral_ssd`, `cloud_essd`, `cloud_efficiency`, `cloud_ssd`, `cloud_essd_entry`. 
            **NOTE**: Its default value `cloud_efficiency` has been removed from the version v1.150.0.

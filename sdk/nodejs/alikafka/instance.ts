@@ -177,7 +177,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly vswitchId!: pulumi.Output<string>;
     /**
-     * The zone ID of the instance.
+     * The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
      */
     public readonly zoneId!: pulumi.Output<string>;
 
@@ -414,7 +414,7 @@ export interface InstanceState {
      */
     vswitchId?: pulumi.Input<string>;
     /**
-     * The zone ID of the instance.
+     * The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
      */
     zoneId?: pulumi.Input<string>;
 }
@@ -519,7 +519,7 @@ export interface InstanceArgs {
      */
     vswitchId: pulumi.Input<string>;
     /**
-     * The zone ID of the instance.
+     * The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
      */
     zoneId?: pulumi.Input<string>;
 }

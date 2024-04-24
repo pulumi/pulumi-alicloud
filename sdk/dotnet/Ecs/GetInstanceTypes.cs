@@ -18,6 +18,8 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; **NOTE:** If one instance type is sold out, it will not be exported.
         /// 
+        /// &gt; **NOTE:** Available since v1.0.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -28,19 +30,78 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
         ///     // Declare the data source
-        ///     var typesDs = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+        ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
         ///     {
-        ///         CpuCoreCount = 1,
-        ///         MemorySize = 2,
+        ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         InstanceTypeFamily = "ecs.sn1ne",
         ///     });
         /// 
-        ///     // Create ECS instance with the first matched instance_type
-        ///     var instance = new AliCloud.Ecs.Instance("instance", new()
+        ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
         ///     {
-        ///         InstanceType = typesDs.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+        ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
+        ///         MostRecent = true,
+        ///         Owners = "system",
         ///     });
         /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = name,
+        ///         CidrBlock = "192.168.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "192.168.192.0/24",
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///     });
+        /// 
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+        ///     {
+        ///         Name = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///     });
+        /// 
+        ///     var defaultEcsNetworkInterface = new AliCloud.Ecs.EcsNetworkInterface("default", new()
+        ///     {
+        ///         NetworkInterfaceName = name,
+        ///         VswitchId = defaultSwitch.Id,
+        ///         SecurityGroupIds = new[]
+        ///         {
+        ///             defaultSecurityGroup.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultInstance = new List&lt;AliCloud.Ecs.Instance&gt;();
+        ///     for (var rangeIndex = 0; rangeIndex &lt; 14; rangeIndex++)
+        ///     {
+        ///         var range = new { Value = rangeIndex };
+        ///         defaultInstance.Add(new AliCloud.Ecs.Instance($"default-{range.Value}", new()
+        ///         {
+        ///             ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///             InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+        ///             InstanceName = name,
+        ///             SecurityGroups = new[]
+        ///             {
+        ///                 defaultSecurityGroup,
+        ///             }.Select(__item =&gt; __item.Id).ToList(),
+        ///             InternetChargeType = "PayByTraffic",
+        ///             InternetMaxBandwidthOut = 10,
+        ///             AvailabilityZone = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///             InstanceChargeType = "PostPaid",
+        ///             SystemDiskCategory = "cloud_efficiency",
+        ///             VswitchId = defaultSwitch.Id,
+        ///         }));
+        ///     }
         /// });
         /// ```
         /// </summary>
@@ -54,6 +115,8 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// &gt; **NOTE:** If one instance type is sold out, it will not be exported.
         /// 
+        /// &gt; **NOTE:** Available since v1.0.0.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -64,19 +127,78 @@ namespace Pulumi.AliCloud.Ecs
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
+        ///     var config = new Config();
+        ///     var name = config.Get("name") ?? "terraform-example";
+        ///     var @default = AliCloud.GetZones.Invoke(new()
+        ///     {
+        ///         AvailableResourceCreation = "VSwitch",
+        ///     });
+        /// 
         ///     // Declare the data source
-        ///     var typesDs = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
+        ///     var defaultGetInstanceTypes = AliCloud.Ecs.GetInstanceTypes.Invoke(new()
         ///     {
-        ///         CpuCoreCount = 1,
-        ///         MemorySize = 2,
+        ///         AvailabilityZone = @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id),
+        ///         InstanceTypeFamily = "ecs.sn1ne",
         ///     });
         /// 
-        ///     // Create ECS instance with the first matched instance_type
-        ///     var instance = new AliCloud.Ecs.Instance("instance", new()
+        ///     var defaultGetImages = AliCloud.Ecs.GetImages.Invoke(new()
         ///     {
-        ///         InstanceType = typesDs.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+        ///         NameRegex = "^ubuntu_[0-9]+_[0-9]+_x64*",
+        ///         MostRecent = true,
+        ///         Owners = "system",
         ///     });
         /// 
+        ///     var defaultNetwork = new AliCloud.Vpc.Network("default", new()
+        ///     {
+        ///         VpcName = name,
+        ///         CidrBlock = "192.168.0.0/16",
+        ///     });
+        /// 
+        ///     var defaultSwitch = new AliCloud.Vpc.Switch("default", new()
+        ///     {
+        ///         VswitchName = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///         CidrBlock = "192.168.192.0/24",
+        ///         ZoneId = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///     });
+        /// 
+        ///     var defaultSecurityGroup = new AliCloud.Ecs.SecurityGroup("default", new()
+        ///     {
+        ///         Name = name,
+        ///         VpcId = defaultNetwork.Id,
+        ///     });
+        /// 
+        ///     var defaultEcsNetworkInterface = new AliCloud.Ecs.EcsNetworkInterface("default", new()
+        ///     {
+        ///         NetworkInterfaceName = name,
+        ///         VswitchId = defaultSwitch.Id,
+        ///         SecurityGroupIds = new[]
+        ///         {
+        ///             defaultSecurityGroup.Id,
+        ///         },
+        ///     });
+        /// 
+        ///     var defaultInstance = new List&lt;AliCloud.Ecs.Instance&gt;();
+        ///     for (var rangeIndex = 0; rangeIndex &lt; 14; rangeIndex++)
+        ///     {
+        ///         var range = new { Value = rangeIndex };
+        ///         defaultInstance.Add(new AliCloud.Ecs.Instance($"default-{range.Value}", new()
+        ///         {
+        ///             ImageId = defaultGetImages.Apply(getImagesResult =&gt; getImagesResult.Images[0]?.Id),
+        ///             InstanceType = defaultGetInstanceTypes.Apply(getInstanceTypesResult =&gt; getInstanceTypesResult.InstanceTypes[0]?.Id),
+        ///             InstanceName = name,
+        ///             SecurityGroups = new[]
+        ///             {
+        ///                 defaultSecurityGroup,
+        ///             }.Select(__item =&gt; __item.Id).ToList(),
+        ///             InternetChargeType = "PayByTraffic",
+        ///             InternetMaxBandwidthOut = 10,
+        ///             AvailabilityZone = @default.Apply(@default =&gt; @default.Apply(getZonesResult =&gt; getZonesResult.Zones[0]?.Id)),
+        ///             InstanceChargeType = "PostPaid",
+        ///             SystemDiskCategory = "cloud_efficiency",
+        ///             VswitchId = defaultSwitch.Id,
+        ///         }));
+        ///     }
         /// });
         /// ```
         /// </summary>
@@ -130,6 +252,12 @@ namespace Pulumi.AliCloud.Ecs
         public string? InstanceChargeType { get; set; }
 
         /// <summary>
+        /// Instance specifications. For more information, see instance Specification Family, or you can call the describe instance types interface to get the latest specification table.
+        /// </summary>
+        [Input("instanceType")]
+        public string? InstanceType { get; set; }
+
+        /// <summary>
         /// Filter the results based on their family name. For example: 'ecs.n4'.
         /// </summary>
         [Input("instanceTypeFamily")]
@@ -172,6 +300,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("outputFile")]
         public string? OutputFile { get; set; }
 
+        /// <summary>
+        /// Sort mode, valid values: `CPU`, `Memory`, `Price`.
+        /// </summary>
         [Input("sortedBy")]
         public string? SortedBy { get; set; }
 
@@ -239,6 +370,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? InstanceChargeType { get; set; }
 
         /// <summary>
+        /// Instance specifications. For more information, see instance Specification Family, or you can call the describe instance types interface to get the latest specification table.
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
         /// Filter the results based on their family name. For example: 'ecs.n4'.
         /// </summary>
         [Input("instanceTypeFamily")]
@@ -281,6 +418,9 @@ namespace Pulumi.AliCloud.Ecs
         [Input("outputFile")]
         public Input<string>? OutputFile { get; set; }
 
+        /// <summary>
+        /// Sort mode, valid values: `CPU`, `Memory`, `Price`.
+        /// </summary>
         [Input("sortedBy")]
         public Input<string>? SortedBy { get; set; }
 
@@ -328,6 +468,7 @@ namespace Pulumi.AliCloud.Ecs
         public readonly ImmutableArray<string> Ids;
         public readonly string? ImageId;
         public readonly string? InstanceChargeType;
+        public readonly string? InstanceType;
         public readonly string? InstanceTypeFamily;
         /// <summary>
         /// A list of image types. Each element contains the following attributes:
@@ -366,6 +507,8 @@ namespace Pulumi.AliCloud.Ecs
 
             string? instanceChargeType,
 
+            string? instanceType,
+
             string? instanceTypeFamily,
 
             ImmutableArray<Outputs.GetInstanceTypesInstanceTypeResult> instanceTypes,
@@ -397,6 +540,7 @@ namespace Pulumi.AliCloud.Ecs
             Ids = ids;
             ImageId = imageId;
             InstanceChargeType = instanceChargeType;
+            InstanceType = instanceType;
             InstanceTypeFamily = instanceTypeFamily;
             InstanceTypes = instanceTypes;
             IsOutdated = isOutdated;

@@ -12587,7 +12587,8 @@ type GetInstanceTypesInstanceType struct {
 	// - required: The cloud disk can be attached by using the NVMe protocol.
 	// - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
 	NvmeSupport string `pulumi:"nvmeSupport"`
-	Price       string `pulumi:"price"`
+	// The price of instance type.
+	Price string `pulumi:"price"`
 }
 
 // GetInstanceTypesInstanceTypeInput is an input type that accepts GetInstanceTypesInstanceTypeArgs and GetInstanceTypesInstanceTypeOutput values.
@@ -12631,7 +12632,8 @@ type GetInstanceTypesInstanceTypeArgs struct {
 	// - required: The cloud disk can be attached by using the NVMe protocol.
 	// - unsupported: The cloud disk cannot be attached by using the NVMe protocol.
 	NvmeSupport pulumi.StringInput `pulumi:"nvmeSupport"`
-	Price       pulumi.StringInput `pulumi:"price"`
+	// The price of instance type.
+	Price pulumi.StringInput `pulumi:"price"`
 }
 
 func (GetInstanceTypesInstanceTypeArgs) ElementType() reflect.Type {
@@ -12746,6 +12748,7 @@ func (o GetInstanceTypesInstanceTypeOutput) NvmeSupport() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) string { return v.NvmeSupport }).(pulumi.StringOutput)
 }
 
+// The price of instance type.
 func (o GetInstanceTypesInstanceTypeOutput) Price() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTypesInstanceType) string { return v.Price }).(pulumi.StringOutput)
 }

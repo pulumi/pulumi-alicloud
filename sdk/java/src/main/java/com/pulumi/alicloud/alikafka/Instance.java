@@ -475,14 +475,14 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.vswitchId;
     }
     /**
-     * The zone ID of the instance.
+     * The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone ID of the instance.
+     * @return The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
      * 
      */
     public Output<String> zoneId() {

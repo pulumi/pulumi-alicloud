@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-alicloud/sdk/v3/go/alicloud/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -52,7 +51,7 @@ type Group struct {
 	pulumi.CustomResourceState
 
 	// The description of the api gateway group. Defaults to null.
-	Description pulumi.StringOutput `pulumi:"description"`
+	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// The id of the api gateway.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The name of the api gateway group. Defaults to null.
@@ -67,12 +66,9 @@ type Group struct {
 func NewGroup(ctx *pulumi.Context,
 	name string, args *GroupArgs, opts ...pulumi.ResourceOption) (*Group, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &GroupArgs{}
 	}
 
-	if args.Description == nil {
-		return nil, errors.New("invalid value for required argument 'Description'")
-	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Group
 	err := ctx.RegisterResource("alicloud:apigateway/group:Group", name, args, &resource, opts...)
@@ -127,7 +123,7 @@ func (GroupState) ElementType() reflect.Type {
 
 type groupArgs struct {
 	// The description of the api gateway group. Defaults to null.
-	Description string `pulumi:"description"`
+	Description *string `pulumi:"description"`
 	// The id of the api gateway.
 	InstanceId *string `pulumi:"instanceId"`
 	// The name of the api gateway group. Defaults to null.
@@ -137,7 +133,7 @@ type groupArgs struct {
 // The set of arguments for constructing a Group resource.
 type GroupArgs struct {
 	// The description of the api gateway group. Defaults to null.
-	Description pulumi.StringInput
+	Description pulumi.StringPtrInput
 	// The id of the api gateway.
 	InstanceId pulumi.StringPtrInput
 	// The name of the api gateway group. Defaults to null.
@@ -232,8 +228,8 @@ func (o GroupOutput) ToGroupOutputWithContext(ctx context.Context) GroupOutput {
 }
 
 // The description of the api gateway group. Defaults to null.
-func (o GroupOutput) Description() pulumi.StringOutput {
-	return o.ApplyT(func(v *Group) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+func (o GroupOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
 // The id of the api gateway.

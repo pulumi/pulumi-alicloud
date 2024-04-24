@@ -14,35 +14,34 @@ __all__ = ['InstanceArgs', 'Instance']
 @pulumi.input_type
 class InstanceArgs:
     def __init__(__self__, *,
-                 band_width: pulumi.Input[int],
-                 cfw_log: pulumi.Input[bool],
-                 ip_number: pulumi.Input[int],
                  payment_type: pulumi.Input[str],
-                 spec: pulumi.Input[str],
                  account_number: Optional[pulumi.Input[int]] = None,
+                 band_width: Optional[pulumi.Input[int]] = None,
                  cfw_account: Optional[pulumi.Input[bool]] = None,
+                 cfw_log: Optional[pulumi.Input[bool]] = None,
                  cfw_log_storage: Optional[pulumi.Input[int]] = None,
                  fw_vpc_number: Optional[pulumi.Input[int]] = None,
                  instance_count: Optional[pulumi.Input[int]] = None,
+                 ip_number: Optional[pulumi.Input[int]] = None,
                  logistics: Optional[pulumi.Input[str]] = None,
                  modify_type: Optional[pulumi.Input[str]] = None,
                  period: Optional[pulumi.Input[int]] = None,
                  renew_period: Optional[pulumi.Input[int]] = None,
                  renewal_duration: Optional[pulumi.Input[int]] = None,
                  renewal_duration_unit: Optional[pulumi.Input[str]] = None,
-                 renewal_status: Optional[pulumi.Input[str]] = None):
+                 renewal_status: Optional[pulumi.Input[str]] = None,
+                 spec: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
-        :param pulumi.Input[int] band_width: Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
-        :param pulumi.Input[bool] cfw_log: Whether to use log audit. Valid values: `true`, `false`.
-        :param pulumi.Input[int] ip_number: The number of public IPs that can be protected. Valid values: 20 to 4000.
         :param pulumi.Input[str] payment_type: The payment type of the resource. Valid values: `Subscription`, `PayAsYouGo`. **NOTE:** From version 1.220.0, `payment_type` can be set to `PayAsYouGo`.
-        :param pulumi.Input[str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         :param pulumi.Input[int] account_number: The number of multi account. It will be ignored when `cfw_account = false`.
+        :param pulumi.Input[int] band_width: Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         :param pulumi.Input[bool] cfw_account: Whether to use multi-account. Valid values: `true`, `false`.
+        :param pulumi.Input[bool] cfw_log: Whether to use log audit. Valid values: `true`, `false`.
         :param pulumi.Input[int] cfw_log_storage: The log storage capacity. It will be ignored when `cfw_log = false`.
         :param pulumi.Input[int] fw_vpc_number: The number of protected VPCs. It will be ignored when `spec = "premium_version"`. Valid values between 2 and 500.
         :param pulumi.Input[int] instance_count: The number of assets.
+        :param pulumi.Input[int] ip_number: The number of public IPs that can be protected. Valid values: 20 to 4000.
         :param pulumi.Input[str] logistics: The logistics.
         :param pulumi.Input[str] modify_type: The type of modification. Valid values: `Upgrade`, `Downgrade`.  **NOTE:** The `modify_type` is required when you execute an update operation.
         :param pulumi.Input[int] period: The prepaid period. Valid values: `1`, `3`, `6`, `12`, `24`, `36`. **NOTE:** 1 and 3 available since 1.204.1. If `payment_type` is set to `Subscription`, `period` is required. Otherwise, it will be ignored.
@@ -51,22 +50,25 @@ class InstanceArgs:
                **NOTE:** `renewal_duration` takes effect only if `payment_type` is set to `Subscription`, and `renewal_status` is set to `AutoRenewal`.
         :param pulumi.Input[str] renewal_duration_unit: Auto-Renewal Cycle Unit Values Include: Month: Month. Year: Years. Valid values: `Month`, `Year`.
         :param pulumi.Input[str] renewal_status: Whether to renew an instance automatically or not. Default to "ManualRenewal".
+        :param pulumi.Input[str] spec: Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         """
-        pulumi.set(__self__, "band_width", band_width)
-        pulumi.set(__self__, "cfw_log", cfw_log)
-        pulumi.set(__self__, "ip_number", ip_number)
         pulumi.set(__self__, "payment_type", payment_type)
-        pulumi.set(__self__, "spec", spec)
         if account_number is not None:
             pulumi.set(__self__, "account_number", account_number)
+        if band_width is not None:
+            pulumi.set(__self__, "band_width", band_width)
         if cfw_account is not None:
             pulumi.set(__self__, "cfw_account", cfw_account)
+        if cfw_log is not None:
+            pulumi.set(__self__, "cfw_log", cfw_log)
         if cfw_log_storage is not None:
             pulumi.set(__self__, "cfw_log_storage", cfw_log_storage)
         if fw_vpc_number is not None:
             pulumi.set(__self__, "fw_vpc_number", fw_vpc_number)
         if instance_count is not None:
             pulumi.set(__self__, "instance_count", instance_count)
+        if ip_number is not None:
+            pulumi.set(__self__, "ip_number", ip_number)
         if logistics is not None:
             pulumi.set(__self__, "logistics", logistics)
         if modify_type is not None:
@@ -84,42 +86,8 @@ class InstanceArgs:
             pulumi.set(__self__, "renewal_duration_unit", renewal_duration_unit)
         if renewal_status is not None:
             pulumi.set(__self__, "renewal_status", renewal_status)
-
-    @property
-    @pulumi.getter(name="bandWidth")
-    def band_width(self) -> pulumi.Input[int]:
-        """
-        Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
-        """
-        return pulumi.get(self, "band_width")
-
-    @band_width.setter
-    def band_width(self, value: pulumi.Input[int]):
-        pulumi.set(self, "band_width", value)
-
-    @property
-    @pulumi.getter(name="cfwLog")
-    def cfw_log(self) -> pulumi.Input[bool]:
-        """
-        Whether to use log audit. Valid values: `true`, `false`.
-        """
-        return pulumi.get(self, "cfw_log")
-
-    @cfw_log.setter
-    def cfw_log(self, value: pulumi.Input[bool]):
-        pulumi.set(self, "cfw_log", value)
-
-    @property
-    @pulumi.getter(name="ipNumber")
-    def ip_number(self) -> pulumi.Input[int]:
-        """
-        The number of public IPs that can be protected. Valid values: 20 to 4000.
-        """
-        return pulumi.get(self, "ip_number")
-
-    @ip_number.setter
-    def ip_number(self, value: pulumi.Input[int]):
-        pulumi.set(self, "ip_number", value)
+        if spec is not None:
+            pulumi.set(__self__, "spec", spec)
 
     @property
     @pulumi.getter(name="paymentType")
@@ -134,18 +102,6 @@ class InstanceArgs:
         pulumi.set(self, "payment_type", value)
 
     @property
-    @pulumi.getter
-    def spec(self) -> pulumi.Input[str]:
-        """
-        Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
-        """
-        return pulumi.get(self, "spec")
-
-    @spec.setter
-    def spec(self, value: pulumi.Input[str]):
-        pulumi.set(self, "spec", value)
-
-    @property
     @pulumi.getter(name="accountNumber")
     def account_number(self) -> Optional[pulumi.Input[int]]:
         """
@@ -158,6 +114,18 @@ class InstanceArgs:
         pulumi.set(self, "account_number", value)
 
     @property
+    @pulumi.getter(name="bandWidth")
+    def band_width(self) -> Optional[pulumi.Input[int]]:
+        """
+        Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
+        """
+        return pulumi.get(self, "band_width")
+
+    @band_width.setter
+    def band_width(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "band_width", value)
+
+    @property
     @pulumi.getter(name="cfwAccount")
     def cfw_account(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -168,6 +136,18 @@ class InstanceArgs:
     @cfw_account.setter
     def cfw_account(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "cfw_account", value)
+
+    @property
+    @pulumi.getter(name="cfwLog")
+    def cfw_log(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to use log audit. Valid values: `true`, `false`.
+        """
+        return pulumi.get(self, "cfw_log")
+
+    @cfw_log.setter
+    def cfw_log(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "cfw_log", value)
 
     @property
     @pulumi.getter(name="cfwLogStorage")
@@ -204,6 +184,18 @@ class InstanceArgs:
     @instance_count.setter
     def instance_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "instance_count", value)
+
+    @property
+    @pulumi.getter(name="ipNumber")
+    def ip_number(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of public IPs that can be protected. Valid values: 20 to 4000.
+        """
+        return pulumi.get(self, "ip_number")
+
+    @ip_number.setter
+    def ip_number(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ip_number", value)
 
     @property
     @pulumi.getter
@@ -292,6 +284,18 @@ class InstanceArgs:
     @renewal_status.setter
     def renewal_status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "renewal_status", value)
+
+    @property
+    @pulumi.getter
+    def spec(self) -> Optional[pulumi.Input[str]]:
+        """
+        Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
+        """
+        return pulumi.get(self, "spec")
+
+    @spec.setter
+    def spec(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "spec", value)
 
 
 @pulumi.input_type
@@ -680,17 +684,27 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
+        create a pay-as-you-go instance
+
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.cloudfirewall.Instance("default",
-            payment_type="PayAsYouGo",
-            spec="ultimate_version",
-            ip_number=400,
-            band_width=200,
-            cfw_log=True,
-            cfw_log_storage=1000)
+        pay_as_you_go = alicloud.cloudfirewall.Instance("PayAsYouGo", payment_type="PayAsYouGo")
+        ```
+
+        create a subscription instance
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        subscription = alicloud.cloudfirewall.Instance("Subscription",
+            payment_type="Subscription",
+            spec="premium_version",
+            ip_number=20,
+            band_width=10,
+            cfw_log=False,
+            period=1)
         ```
 
         ## Import
@@ -739,17 +753,27 @@ class Instance(pulumi.CustomResource):
 
         Basic Usage
 
+        create a pay-as-you-go instance
+
         ```python
         import pulumi
         import pulumi_alicloud as alicloud
 
-        default = alicloud.cloudfirewall.Instance("default",
-            payment_type="PayAsYouGo",
-            spec="ultimate_version",
-            ip_number=400,
-            band_width=200,
-            cfw_log=True,
-            cfw_log_storage=1000)
+        pay_as_you_go = alicloud.cloudfirewall.Instance("PayAsYouGo", payment_type="PayAsYouGo")
+        ```
+
+        create a subscription instance
+        ```python
+        import pulumi
+        import pulumi_alicloud as alicloud
+
+        subscription = alicloud.cloudfirewall.Instance("Subscription",
+            payment_type="Subscription",
+            spec="premium_version",
+            ip_number=20,
+            band_width=10,
+            cfw_log=False,
+            period=1)
         ```
 
         ## Import
@@ -802,18 +826,12 @@ class Instance(pulumi.CustomResource):
             __props__ = InstanceArgs.__new__(InstanceArgs)
 
             __props__.__dict__["account_number"] = account_number
-            if band_width is None and not opts.urn:
-                raise TypeError("Missing required property 'band_width'")
             __props__.__dict__["band_width"] = band_width
             __props__.__dict__["cfw_account"] = cfw_account
-            if cfw_log is None and not opts.urn:
-                raise TypeError("Missing required property 'cfw_log'")
             __props__.__dict__["cfw_log"] = cfw_log
             __props__.__dict__["cfw_log_storage"] = cfw_log_storage
             __props__.__dict__["fw_vpc_number"] = fw_vpc_number
             __props__.__dict__["instance_count"] = instance_count
-            if ip_number is None and not opts.urn:
-                raise TypeError("Missing required property 'ip_number'")
             __props__.__dict__["ip_number"] = ip_number
             __props__.__dict__["logistics"] = logistics
             __props__.__dict__["modify_type"] = modify_type
@@ -825,8 +843,6 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["renewal_duration"] = renewal_duration
             __props__.__dict__["renewal_duration_unit"] = renewal_duration_unit
             __props__.__dict__["renewal_status"] = renewal_status
-            if spec is None and not opts.urn:
-                raise TypeError("Missing required property 'spec'")
             __props__.__dict__["spec"] = spec
             __props__.__dict__["create_time"] = None
             __props__.__dict__["end_time"] = None
@@ -930,7 +946,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="bandWidth")
-    def band_width(self) -> pulumi.Output[int]:
+    def band_width(self) -> pulumi.Output[Optional[int]]:
         """
         Public network processing capability. Valid values: 10 to 15000. Unit: Mbps.
         """
@@ -946,7 +962,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="cfwLog")
-    def cfw_log(self) -> pulumi.Output[bool]:
+    def cfw_log(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether to use log audit. Valid values: `true`, `false`.
         """
@@ -994,7 +1010,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ipNumber")
-    def ip_number(self) -> pulumi.Output[int]:
+    def ip_number(self) -> pulumi.Output[Optional[int]]:
         """
         The number of public IPs that can be protected. Valid values: 20 to 4000.
         """
@@ -1078,7 +1094,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def spec(self) -> pulumi.Output[str]:
+    def spec(self) -> pulumi.Output[Optional[str]]:
         """
         Current version. Valid values: `premium_version`, `enterprise_version`,`ultimate_version`.
         """

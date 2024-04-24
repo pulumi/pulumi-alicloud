@@ -29,12 +29,24 @@ namespace Pulumi.AliCloud.Sddp
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     var config = new Config();
-    ///     var name = config.Get("name") ?? "tf_example_name";
+    ///     var name = config.Get("name") ?? "tf-example-name";
     ///     var @default = new AliCloud.Sddp.Rule("default", new()
     ///     {
-    ///         Category = 0,
-    ///         Content = "content",
     ///         RuleName = name,
+    ///         Category = 2,
+    ///         Content = @"  [
+    ///     {
+    ///       ""rule"": [
+    ///         {
+    ///           ""operator"": ""contains"",
+    ///           ""target"": ""content"",
+    ///           ""value"": ""tf-testACCContent""
+    ///         }
+    ///       ],
+    ///       ""ruleRelation"": ""AND""
+    ///     }
+    ///   ]
+    /// ",
     ///         RiskLevelId = "4",
     ///         ProductCode = "OSS",
     ///     });
@@ -54,91 +66,91 @@ namespace Pulumi.AliCloud.Sddp
     public partial class Rule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Sensitive Data Identification Rules for the Type of. Valid values:
+        /// The content type of the sensitive data detection rule. Valid values:
         /// </summary>
         [Output("category")]
         public Output<int> Category { get; private set; } = null!;
 
         /// <summary>
-        /// Sensitive Data Identification Rules the Content.
+        /// The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
         /// </summary>
         [Output("content")]
         public Output<string> Content { get; private set; } = null!;
 
         /// <summary>
-        /// The Content Classification.
+        /// The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
         /// </summary>
         [Output("contentCategory")]
         public Output<string> ContentCategory { get; private set; } = null!;
 
         /// <summary>
-        /// Sensitive Data Identification Rules of Type. Valid values:
+        /// The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
         /// </summary>
         [Output("customType")]
         public Output<int> CustomType { get; private set; } = null!;
 
         /// <summary>
-        /// Sensitive Data Identification a Description of the Rule Information.
+        /// The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The Request and Receive the Language of the Message Type. Valid values:
+        /// The language of the content within the request and response. Default value: `zh`. Valid values:
         /// </summary>
         [Output("lang")]
         public Output<string?> Lang { get; private set; } = null!;
 
         /// <summary>
-        /// Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
+        /// The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
         /// </summary>
         [Output("productCode")]
         public Output<string?> ProductCode { get; private set; } = null!;
 
         /// <summary>
-        /// Product ID. Valid values:
+        /// The ID of the service to which the data asset belongs. Valid values:
         /// </summary>
         [Output("productId")]
         public Output<string?> ProductId { get; private set; } = null!;
 
         /// <summary>
-        /// Sensitive Data Identification Rules of Risk Level ID. Valid values:
+        /// The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
         /// </summary>
         [Output("riskLevelId")]
         public Output<string?> RiskLevelId { get; private set; } = null!;
 
         /// <summary>
-        /// Sensitive Data Identification Name of the Rule.
+        /// The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
         /// </summary>
         [Output("ruleName")]
         public Output<string> RuleName { get; private set; } = null!;
 
         /// <summary>
-        /// Rule Type.
+        /// The type of the sensitive data detection rule. Valid values:
         /// </summary>
         [Output("ruleType")]
         public Output<int?> RuleType { get; private set; } = null!;
 
         /// <summary>
-        /// Triggered the Alarm Conditions.
+        /// The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
         /// </summary>
         [Output("statExpress")]
         public Output<string?> StatExpress { get; private set; } = null!;
 
         /// <summary>
-        /// Sensitive Data Identification Rules Detection State of.
+        /// Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
         /// </summary>
         [Output("status")]
         public Output<int> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The Target of rule.
+        /// The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
         /// </summary>
         [Output("target")]
         public Output<string?> Target { get; private set; } = null!;
 
         /// <summary>
-        /// The Level of Risk. Valid values:
+        /// The risk level of the alert that is triggered. Valid values:
         /// </summary>
         [Output("warnLevel")]
         public Output<int?> WarnLevel { get; private set; } = null!;
@@ -190,91 +202,85 @@ namespace Pulumi.AliCloud.Sddp
     public sealed class RuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Sensitive Data Identification Rules for the Type of. Valid values:
+        /// The content type of the sensitive data detection rule. Valid values:
         /// </summary>
         [Input("category", required: true)]
         public Input<int> Category { get; set; } = null!;
 
         /// <summary>
-        /// Sensitive Data Identification Rules the Content.
+        /// The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
         /// </summary>
         [Input("content", required: true)]
         public Input<string> Content { get; set; } = null!;
 
         /// <summary>
-        /// The Content Classification.
+        /// The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
         /// </summary>
         [Input("contentCategory")]
         public Input<string>? ContentCategory { get; set; }
 
         /// <summary>
-        /// Sensitive Data Identification Rules of Type. Valid values:
-        /// </summary>
-        [Input("customType")]
-        public Input<int>? CustomType { get; set; }
-
-        /// <summary>
-        /// Sensitive Data Identification a Description of the Rule Information.
+        /// The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The Request and Receive the Language of the Message Type. Valid values:
+        /// The language of the content within the request and response. Default value: `zh`. Valid values:
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
+        /// The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
         /// </summary>
         [Input("productCode")]
         public Input<string>? ProductCode { get; set; }
 
         /// <summary>
-        /// Product ID. Valid values:
+        /// The ID of the service to which the data asset belongs. Valid values:
         /// </summary>
         [Input("productId")]
         public Input<string>? ProductId { get; set; }
 
         /// <summary>
-        /// Sensitive Data Identification Rules of Risk Level ID. Valid values:
+        /// The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
         /// </summary>
         [Input("riskLevelId")]
         public Input<string>? RiskLevelId { get; set; }
 
         /// <summary>
-        /// Sensitive Data Identification Name of the Rule.
+        /// The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
         /// </summary>
         [Input("ruleName", required: true)]
         public Input<string> RuleName { get; set; } = null!;
 
         /// <summary>
-        /// Rule Type.
+        /// The type of the sensitive data detection rule. Valid values:
         /// </summary>
         [Input("ruleType")]
         public Input<int>? RuleType { get; set; }
 
         /// <summary>
-        /// Triggered the Alarm Conditions.
+        /// The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
         /// </summary>
         [Input("statExpress")]
         public Input<string>? StatExpress { get; set; }
 
         /// <summary>
-        /// Sensitive Data Identification Rules Detection State of.
+        /// Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
         /// </summary>
         [Input("status")]
         public Input<int>? Status { get; set; }
 
         /// <summary>
-        /// The Target of rule.
+        /// The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
 
         /// <summary>
-        /// The Level of Risk. Valid values:
+        /// The risk level of the alert that is triggered. Valid values:
         /// </summary>
         [Input("warnLevel")]
         public Input<int>? WarnLevel { get; set; }
@@ -288,91 +294,91 @@ namespace Pulumi.AliCloud.Sddp
     public sealed class RuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Sensitive Data Identification Rules for the Type of. Valid values:
+        /// The content type of the sensitive data detection rule. Valid values:
         /// </summary>
         [Input("category")]
         public Input<int>? Category { get; set; }
 
         /// <summary>
-        /// Sensitive Data Identification Rules the Content.
+        /// The content of the sensitive data detection rule. **NOTE:** From version 1.222.0, `content` can be modified.
         /// </summary>
         [Input("content")]
         public Input<string>? Content { get; set; }
 
         /// <summary>
-        /// The Content Classification.
+        /// The type of the content in the sensitive data detection rule. **NOTE:** From version 1.222.0, `content_category` cannot be modified.
         /// </summary>
         [Input("contentCategory")]
         public Input<string>? ContentCategory { get; set; }
 
         /// <summary>
-        /// Sensitive Data Identification Rules of Type. Valid values:
+        /// The type of the sensitive data detection rule. **NOTE:** From version 1.222.0, `custom_type` cannot be specified when create Rule.
         /// </summary>
         [Input("customType")]
         public Input<int>? CustomType { get; set; }
 
         /// <summary>
-        /// Sensitive Data Identification a Description of the Rule Information.
+        /// The description of the rule. **NOTE:** From version 1.222.0, `description` cannot be modified.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The Request and Receive the Language of the Message Type. Valid values:
+        /// The language of the content within the request and response. Default value: `zh`. Valid values:
         /// </summary>
         [Input("lang")]
         public Input<string>? Lang { get; set; }
 
         /// <summary>
-        /// Product Code. Valid values: `OSS`,`RDS`,`ODPS`(MaxCompute).
+        /// The name of the service to which data in the column of the table belongs. Valid values: `OSS`, `RDS`, `ODPS`(MaxCompute).
         /// </summary>
         [Input("productCode")]
         public Input<string>? ProductCode { get; set; }
 
         /// <summary>
-        /// Product ID. Valid values:
+        /// The ID of the service to which the data asset belongs. Valid values:
         /// </summary>
         [Input("productId")]
         public Input<string>? ProductId { get; set; }
 
         /// <summary>
-        /// Sensitive Data Identification Rules of Risk Level ID. Valid values:
+        /// The sensitivity level of the sensitive data that hits the sensitive data detection rule. Valid values:
         /// </summary>
         [Input("riskLevelId")]
         public Input<string>? RiskLevelId { get; set; }
 
         /// <summary>
-        /// Sensitive Data Identification Name of the Rule.
+        /// The name of the sensitive data detection rule. **NOTE:** From version 1.222.0, `rule_name` can be modified.
         /// </summary>
         [Input("ruleName")]
         public Input<string>? RuleName { get; set; }
 
         /// <summary>
-        /// Rule Type.
+        /// The type of the sensitive data detection rule. Valid values:
         /// </summary>
         [Input("ruleType")]
         public Input<int>? RuleType { get; set; }
 
         /// <summary>
-        /// Triggered the Alarm Conditions.
+        /// The statistical expression. **NOTE:** From version 1.222.0, `stat_express` cannot be modified.
         /// </summary>
         [Input("statExpress")]
         public Input<string>? StatExpress { get; set; }
 
         /// <summary>
-        /// Sensitive Data Identification Rules Detection State of.
+        /// Sensitive Specifies whether to enable the sensitive data detection rule. Valid values:
         /// </summary>
         [Input("status")]
         public Input<int>? Status { get; set; }
 
         /// <summary>
-        /// The Target of rule.
+        /// The code of the service to which the sensitive data detection rule is applied. **NOTE:** From version 1.222.0, `target` cannot be modified.
         /// </summary>
         [Input("target")]
         public Input<string>? Target { get; set; }
 
         /// <summary>
-        /// The Level of Risk. Valid values:
+        /// The risk level of the alert that is triggered. Valid values:
         /// </summary>
         [Input("warnLevel")]
         public Input<int>? WarnLevel { get; set; }

@@ -213,7 +213,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Output<string> VswitchId { get; private set; } = null!;
 
         /// <summary>
-        /// The zone ID of the instance.
+        /// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
@@ -408,7 +408,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string> VswitchId { get; set; } = null!;
 
         /// <summary>
-        /// The zone ID of the instance.
+        /// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
@@ -625,7 +625,7 @@ namespace Pulumi.AliCloud.AliKafka
         public Input<string>? VswitchId { get; set; }
 
         /// <summary>
-        /// The zone ID of the instance.
+        /// The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }

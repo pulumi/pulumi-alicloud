@@ -5043,6 +5043,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "oss/bucketLogging",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketLogging:BucketLogging": "BucketLogging"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "oss/bucketObject",
   "fqn": "pulumi_alicloud.oss",
   "classes": {
@@ -5071,6 +5079,30 @@ _utilities.register(
   "fqn": "pulumi_alicloud.oss",
   "classes": {
    "alicloud:oss/bucketReplication:BucketReplication": "BucketReplication"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "oss/bucketRequestPayment",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketRequestPayment:BucketRequestPayment": "BucketRequestPayment"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "oss/bucketServerSideEncryption",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketServerSideEncryption:BucketServerSideEncryption": "BucketServerSideEncryption"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "oss/bucketVersioning",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketVersioning:BucketVersioning": "BucketVersioning"
   }
  },
  {

@@ -125,6 +125,21 @@ public final class ScalingRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
+     * 
+     */
+    @Import(name="initialMaxSize")
+    private @Nullable Output<Integer> initialMaxSize;
+
+    /**
+     * @return The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
+     * 
+     */
+    public Optional<Output<Integer>> initialMaxSize() {
+        return Optional.ofNullable(this.initialMaxSize);
+    }
+
+    /**
      * A CloudMonitor metric name.
      * 
      */
@@ -152,6 +167,66 @@ public final class ScalingRuleArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> minAdjustmentMagnitude() {
         return Optional.ofNullable(this.minAdjustmentMagnitude);
+    }
+
+    /**
+     * The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+     * 
+     */
+    @Import(name="predictiveScalingMode")
+    private @Nullable Output<String> predictiveScalingMode;
+
+    /**
+     * @return The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+     * 
+     */
+    public Optional<Output<String>> predictiveScalingMode() {
+        return Optional.ofNullable(this.predictiveScalingMode);
+    }
+
+    /**
+     * The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+     * 
+     */
+    @Import(name="predictiveTaskBufferTime")
+    private @Nullable Output<Integer> predictiveTaskBufferTime;
+
+    /**
+     * @return The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+     * 
+     */
+    public Optional<Output<Integer>> predictiveTaskBufferTime() {
+        return Optional.ofNullable(this.predictiveTaskBufferTime);
+    }
+
+    /**
+     * The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+     * 
+     */
+    @Import(name="predictiveValueBehavior")
+    private @Nullable Output<String> predictiveValueBehavior;
+
+    /**
+     * @return The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+     * 
+     */
+    public Optional<Output<String>> predictiveValueBehavior() {
+        return Optional.ofNullable(this.predictiveValueBehavior);
+    }
+
+    /**
+     * The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+     * 
+     */
+    @Import(name="predictiveValueBuffer")
+    private @Nullable Output<Integer> predictiveValueBuffer;
+
+    /**
+     * @return The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+     * 
+     */
+    public Optional<Output<Integer>> predictiveValueBuffer() {
+        return Optional.ofNullable(this.predictiveValueBuffer);
     }
 
     /**
@@ -215,14 +290,14 @@ public final class ScalingRuleArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The scaling rule type, either &#34;SimpleScalingRule&#34;, &#34;TargetTrackingScalingRule&#34;, &#34;StepScalingRule&#34;. Default to &#34;SimpleScalingRule&#34;.
+     * The scaling rule type, either &#34;SimpleScalingRule&#34;, &#34;TargetTrackingScalingRule&#34;, &#34;StepScalingRule&#34;, &#34;PredictiveScalingRule&#34;. Default to &#34;SimpleScalingRule&#34;.
      * 
      */
     @Import(name="scalingRuleType")
     private @Nullable Output<String> scalingRuleType;
 
     /**
-     * @return The scaling rule type, either &#34;SimpleScalingRule&#34;, &#34;TargetTrackingScalingRule&#34;, &#34;StepScalingRule&#34;. Default to &#34;SimpleScalingRule&#34;.
+     * @return The scaling rule type, either &#34;SimpleScalingRule&#34;, &#34;TargetTrackingScalingRule&#34;, &#34;StepScalingRule&#34;, &#34;PredictiveScalingRule&#34;. Default to &#34;SimpleScalingRule&#34;.
      * 
      */
     public Optional<Output<String>> scalingRuleType() {
@@ -268,8 +343,13 @@ public final class ScalingRuleArgs extends com.pulumi.resources.ResourceArgs {
         this.cooldown = $.cooldown;
         this.disableScaleIn = $.disableScaleIn;
         this.estimatedInstanceWarmup = $.estimatedInstanceWarmup;
+        this.initialMaxSize = $.initialMaxSize;
         this.metricName = $.metricName;
         this.minAdjustmentMagnitude = $.minAdjustmentMagnitude;
+        this.predictiveScalingMode = $.predictiveScalingMode;
+        this.predictiveTaskBufferTime = $.predictiveTaskBufferTime;
+        this.predictiveValueBehavior = $.predictiveValueBehavior;
+        this.predictiveValueBuffer = $.predictiveValueBuffer;
         this.scaleInEvaluationCount = $.scaleInEvaluationCount;
         this.scaleOutEvaluationCount = $.scaleOutEvaluationCount;
         this.scalingGroupId = $.scalingGroupId;
@@ -436,6 +516,27 @@ public final class ScalingRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param initialMaxSize The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder initialMaxSize(@Nullable Output<Integer> initialMaxSize) {
+            $.initialMaxSize = initialMaxSize;
+            return this;
+        }
+
+        /**
+         * @param initialMaxSize The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder initialMaxSize(Integer initialMaxSize) {
+            return initialMaxSize(Output.of(initialMaxSize));
+        }
+
+        /**
          * @param metricName A CloudMonitor metric name.
          * 
          * @return builder
@@ -475,6 +576,90 @@ public final class ScalingRuleArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder minAdjustmentMagnitude(Integer minAdjustmentMagnitude) {
             return minAdjustmentMagnitude(Output.of(minAdjustmentMagnitude));
+        }
+
+        /**
+         * @param predictiveScalingMode The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder predictiveScalingMode(@Nullable Output<String> predictiveScalingMode) {
+            $.predictiveScalingMode = predictiveScalingMode;
+            return this;
+        }
+
+        /**
+         * @param predictiveScalingMode The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder predictiveScalingMode(String predictiveScalingMode) {
+            return predictiveScalingMode(Output.of(predictiveScalingMode));
+        }
+
+        /**
+         * @param predictiveTaskBufferTime The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder predictiveTaskBufferTime(@Nullable Output<Integer> predictiveTaskBufferTime) {
+            $.predictiveTaskBufferTime = predictiveTaskBufferTime;
+            return this;
+        }
+
+        /**
+         * @param predictiveTaskBufferTime The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder predictiveTaskBufferTime(Integer predictiveTaskBufferTime) {
+            return predictiveTaskBufferTime(Output.of(predictiveTaskBufferTime));
+        }
+
+        /**
+         * @param predictiveValueBehavior The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder predictiveValueBehavior(@Nullable Output<String> predictiveValueBehavior) {
+            $.predictiveValueBehavior = predictiveValueBehavior;
+            return this;
+        }
+
+        /**
+         * @param predictiveValueBehavior The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder predictiveValueBehavior(String predictiveValueBehavior) {
+            return predictiveValueBehavior(Output.of(predictiveValueBehavior));
+        }
+
+        /**
+         * @param predictiveValueBuffer The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder predictiveValueBuffer(@Nullable Output<Integer> predictiveValueBuffer) {
+            $.predictiveValueBuffer = predictiveValueBuffer;
+            return this;
+        }
+
+        /**
+         * @param predictiveValueBuffer The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder predictiveValueBuffer(Integer predictiveValueBuffer) {
+            return predictiveValueBuffer(Output.of(predictiveValueBuffer));
         }
 
         /**
@@ -562,7 +747,7 @@ public final class ScalingRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scalingRuleType The scaling rule type, either &#34;SimpleScalingRule&#34;, &#34;TargetTrackingScalingRule&#34;, &#34;StepScalingRule&#34;. Default to &#34;SimpleScalingRule&#34;.
+         * @param scalingRuleType The scaling rule type, either &#34;SimpleScalingRule&#34;, &#34;TargetTrackingScalingRule&#34;, &#34;StepScalingRule&#34;, &#34;PredictiveScalingRule&#34;. Default to &#34;SimpleScalingRule&#34;.
          * 
          * @return builder
          * 
@@ -573,7 +758,7 @@ public final class ScalingRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param scalingRuleType The scaling rule type, either &#34;SimpleScalingRule&#34;, &#34;TargetTrackingScalingRule&#34;, &#34;StepScalingRule&#34;. Default to &#34;SimpleScalingRule&#34;.
+         * @param scalingRuleType The scaling rule type, either &#34;SimpleScalingRule&#34;, &#34;TargetTrackingScalingRule&#34;, &#34;StepScalingRule&#34;, &#34;PredictiveScalingRule&#34;. Default to &#34;SimpleScalingRule&#34;.
          * 
          * @return builder
          * 

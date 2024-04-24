@@ -5,7 +5,6 @@ package com.pulumi.alicloud.apigateway;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,15 +19,15 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
      * The description of the api gateway group. Defaults to null.
      * 
      */
-    @Import(name="description", required=true)
-    private Output<String> description;
+    @Import(name="description")
+    private @Nullable Output<String> description;
 
     /**
      * @return The description of the api gateway group. Defaults to null.
      * 
      */
-    public Output<String> description() {
-        return this.description;
+    public Optional<Output<String>> description() {
+        return Optional.ofNullable(this.description);
     }
 
     /**
@@ -93,7 +92,7 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder description(Output<String> description) {
+        public Builder description(@Nullable Output<String> description) {
             $.description = description;
             return this;
         }
@@ -151,9 +150,6 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GroupArgs build() {
-            if ($.description == null) {
-                throw new MissingRequiredPropertyException("GroupArgs", "description");
-            }
             return $;
         }
     }

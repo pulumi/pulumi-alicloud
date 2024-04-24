@@ -392,6 +392,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.dbIsIgnoreCase;
     }
     /**
+     * Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
+     * 
+     */
+    @Export(name="dbParamGroupId", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dbParamGroupId;
+
+    /**
+     * @return Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
+     * 
+     */
+    public Output<Optional<String>> dbParamGroupId() {
+        return Codegen.optional(this.dbParamGroupId);
+    }
+    /**
      * The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
      * - If you set the `Engine` parameter to MySQL.
      * - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.

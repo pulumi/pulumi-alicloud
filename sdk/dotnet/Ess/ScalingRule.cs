@@ -189,6 +189,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<int> EstimatedInstanceWarmup { get; private set; } = null!;
 
         /// <summary>
+        /// The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
+        /// </summary>
+        [Output("initialMaxSize")]
+        public Output<int> InitialMaxSize { get; private set; } = null!;
+
+        /// <summary>
         /// A CloudMonitor metric name.
         /// </summary>
         [Output("metricName")]
@@ -199,6 +205,30 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Output("minAdjustmentMagnitude")]
         public Output<int?> MinAdjustmentMagnitude { get; private set; } = null!;
+
+        /// <summary>
+        /// The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+        /// </summary>
+        [Output("predictiveScalingMode")]
+        public Output<string> PredictiveScalingMode { get; private set; } = null!;
+
+        /// <summary>
+        /// The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+        /// </summary>
+        [Output("predictiveTaskBufferTime")]
+        public Output<int> PredictiveTaskBufferTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+        /// </summary>
+        [Output("predictiveValueBehavior")]
+        public Output<string> PredictiveValueBehavior { get; private set; } = null!;
+
+        /// <summary>
+        /// The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+        /// </summary>
+        [Output("predictiveValueBuffer")]
+        public Output<int> PredictiveValueBuffer { get; private set; } = null!;
 
         /// <summary>
         /// The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
@@ -225,7 +255,7 @@ namespace Pulumi.AliCloud.Ess
         public Output<string> ScalingRuleName { get; private set; } = null!;
 
         /// <summary>
-        /// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+        /// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
         /// </summary>
         [Output("scalingRuleType")]
         public Output<string?> ScalingRuleType { get; private set; } = null!;
@@ -331,6 +361,12 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? EstimatedInstanceWarmup { get; set; }
 
         /// <summary>
+        /// The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
+        /// </summary>
+        [Input("initialMaxSize")]
+        public Input<int>? InitialMaxSize { get; set; }
+
+        /// <summary>
         /// A CloudMonitor metric name.
         /// </summary>
         [Input("metricName")]
@@ -341,6 +377,30 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("minAdjustmentMagnitude")]
         public Input<int>? MinAdjustmentMagnitude { get; set; }
+
+        /// <summary>
+        /// The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+        /// </summary>
+        [Input("predictiveScalingMode")]
+        public Input<string>? PredictiveScalingMode { get; set; }
+
+        /// <summary>
+        /// The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+        /// </summary>
+        [Input("predictiveTaskBufferTime")]
+        public Input<int>? PredictiveTaskBufferTime { get; set; }
+
+        /// <summary>
+        /// The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+        /// </summary>
+        [Input("predictiveValueBehavior")]
+        public Input<string>? PredictiveValueBehavior { get; set; }
+
+        /// <summary>
+        /// The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+        /// </summary>
+        [Input("predictiveValueBuffer")]
+        public Input<int>? PredictiveValueBuffer { get; set; }
 
         /// <summary>
         /// The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
@@ -367,7 +427,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? ScalingRuleName { get; set; }
 
         /// <summary>
-        /// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+        /// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
         /// </summary>
         [Input("scalingRuleType")]
         public Input<string>? ScalingRuleType { get; set; }
@@ -447,6 +507,12 @@ namespace Pulumi.AliCloud.Ess
         public Input<int>? EstimatedInstanceWarmup { get; set; }
 
         /// <summary>
+        /// The maximum number of ECS instances that can be added to the scaling group. If you specify InitialMaxSize, you must also specify PredictiveValueBehavior.
+        /// </summary>
+        [Input("initialMaxSize")]
+        public Input<int>? InitialMaxSize { get; set; }
+
+        /// <summary>
         /// A CloudMonitor metric name.
         /// </summary>
         [Input("metricName")]
@@ -457,6 +523,30 @@ namespace Pulumi.AliCloud.Ess
         /// </summary>
         [Input("minAdjustmentMagnitude")]
         public Input<int>? MinAdjustmentMagnitude { get; set; }
+
+        /// <summary>
+        /// The mode of the predictive scaling rule. Valid values: PredictAndScale, PredictOnly.
+        /// </summary>
+        [Input("predictiveScalingMode")]
+        public Input<string>? PredictiveScalingMode { get; set; }
+
+        /// <summary>
+        /// The amount of buffer time before the prediction task runs. By default, all prediction tasks that are automatically created by a predictive scaling rule run on the hour. You can specify a buffer time to run prediction tasks and prepare resources in advance. Valid values: 0 to 60. Unit: minutes.
+        /// </summary>
+        [Input("predictiveTaskBufferTime")]
+        public Input<int>? PredictiveTaskBufferTime { get; set; }
+
+        /// <summary>
+        /// The action on the predicted maximum value. Valid values: MaxOverridePredictiveValue, PredictiveValueOverrideMax, PredictiveValueOverrideMaxWithBuffer.
+        /// </summary>
+        [Input("predictiveValueBehavior")]
+        public Input<string>? PredictiveValueBehavior { get; set; }
+
+        /// <summary>
+        /// The ratio based on which the predicted value is increased if you set PredictiveValueBehavior to PredictiveValueOverrideMaxWithBuffer. If the predicted value increased by this ratio is greater than the initial maximum capacity, the increased value is used as the maximum value for prediction tasks. Valid values: 0 to 100.
+        /// </summary>
+        [Input("predictiveValueBuffer")]
+        public Input<int>? PredictiveValueBuffer { get; set; }
 
         /// <summary>
         /// The number of consecutive times that the event-triggered task created for scale-ins must meet the threshold conditions before an alert is triggered. After a target tracking scaling rule is created, an event-triggered task is automatically created and associated with the target tracking scaling rule.
@@ -483,7 +573,7 @@ namespace Pulumi.AliCloud.Ess
         public Input<string>? ScalingRuleName { get; set; }
 
         /// <summary>
-        /// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule". Default to "SimpleScalingRule".
+        /// The scaling rule type, either "SimpleScalingRule", "TargetTrackingScalingRule", "StepScalingRule", "PredictiveScalingRule". Default to "SimpleScalingRule".
         /// </summary>
         [Input("scalingRuleType")]
         public Input<string>? ScalingRuleType { get; set; }

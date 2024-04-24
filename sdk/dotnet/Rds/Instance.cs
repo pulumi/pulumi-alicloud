@@ -180,6 +180,12 @@ namespace Pulumi.AliCloud.Rds
         public Output<bool> DbIsIgnoreCase { get; private set; } = null!;
 
         /// <summary>
+        /// Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
+        /// </summary>
+        [Output("dbParamGroupId")]
+        public Output<string?> DbParamGroupId { get; private set; } = null!;
+
+        /// <summary>
         /// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
         /// - If you set the `Engine` parameter to MySQL.
         /// - This time zone of the instance is in UTC. Valid values: -12:59 to +13:00.
@@ -825,6 +831,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("dbIsIgnoreCase")]
         public Input<bool>? DbIsIgnoreCase { get; set; }
+
+        /// <summary>
+        /// Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
+        /// </summary>
+        [Input("dbParamGroupId")]
+        public Input<string>? DbParamGroupId { get; set; }
 
         /// <summary>
         /// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.
@@ -1476,6 +1488,12 @@ namespace Pulumi.AliCloud.Rds
         /// </summary>
         [Input("dbIsIgnoreCase")]
         public Input<bool>? DbIsIgnoreCase { get; set; }
+
+        /// <summary>
+        /// Parameter template ID. Only MySQL and PostgreSQL support this parameter. If this parameter is not specified, the default parameter template is used. You can also customize a parameter template and use it here.
+        /// </summary>
+        [Input("dbParamGroupId")]
+        public Input<string>? DbParamGroupId { get; set; }
 
         /// <summary>
         /// The time zone of the instance. This parameter takes effect only when you set the `Engine` parameter to MySQL or PostgreSQL.

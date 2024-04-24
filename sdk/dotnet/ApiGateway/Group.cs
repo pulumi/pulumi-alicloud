@@ -46,7 +46,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// The description of the api gateway group. Defaults to null.
         /// </summary>
         [Output("description")]
-        public Output<string> Description { get; private set; } = null!;
+        public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
         /// The id of the api gateway.
@@ -80,7 +80,7 @@ namespace Pulumi.AliCloud.ApiGateway
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Group(string name, GroupArgs args, CustomResourceOptions? options = null)
+        public Group(string name, GroupArgs? args = null, CustomResourceOptions? options = null)
             : base("alicloud:apigateway/group:Group", name, args ?? new GroupArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -121,8 +121,8 @@ namespace Pulumi.AliCloud.ApiGateway
         /// <summary>
         /// The description of the api gateway group. Defaults to null.
         /// </summary>
-        [Input("description", required: true)]
-        public Input<string> Description { get; set; } = null!;
+        [Input("description")]
+        public Input<string>? Description { get; set; }
 
         /// <summary>
         /// The id of the api gateway.

@@ -72,7 +72,7 @@ class InstanceArgs:
                Currently, its value only can be set to 50 when creating it, and finally depends on `partition_num` value: <`topic_quota`> = 1000 + <`partition_num`>.
                Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
-        :param pulumi.Input[str] zone_id: The zone ID of the instance.
+        :param pulumi.Input[str] zone_id: The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
         pulumi.set(__self__, "deploy_type", deploy_type)
         pulumi.set(__self__, "disk_size", disk_size)
@@ -366,7 +366,7 @@ class InstanceArgs:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone ID of the instance.
+        The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
         return pulumi.get(self, "zone_id")
 
@@ -456,7 +456,7 @@ class _InstanceState:
         :param pulumi.Input[int] topic_used: (Available since v1.214.1) The number of used topics.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
-        :param pulumi.Input[str] zone_id: The zone ID of the instance.
+        :param pulumi.Input[str] zone_id: The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
         if config is not None:
             pulumi.set(__self__, "config", config)
@@ -894,7 +894,7 @@ class _InstanceState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The zone ID of the instance.
+        The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
         return pulumi.get(self, "zone_id")
 
@@ -976,7 +976,7 @@ class Instance(pulumi.CustomResource):
                Therefore, you can update it by updating the `partition_num`, and it is the only updating path.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
-        :param pulumi.Input[str] zone_id: The zone ID of the instance.
+        :param pulumi.Input[str] zone_id: The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
         ...
     @overload
@@ -1168,7 +1168,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[int] topic_used: (Available since v1.214.1) The number of used topics.
         :param pulumi.Input[str] vpc_id: The VPC ID of the instance.
         :param pulumi.Input[str] vswitch_id: The ID of attaching vswitch to instance.
-        :param pulumi.Input[str] zone_id: The zone ID of the instance.
+        :param pulumi.Input[str] zone_id: The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1462,7 +1462,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
         """
-        The zone ID of the instance.
+        The zone ID of the instance. The value can be in zone x or region id-x format. **NOTE**: When the available zone is insufficient, another availability zone may be deployed.
         """
         return pulumi.get(self, "zone_id")
 
