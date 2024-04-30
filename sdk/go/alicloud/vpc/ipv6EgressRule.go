@@ -161,6 +161,8 @@ type Ipv6EgressRule struct {
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	// The type of instance to which you want to apply the egress-only rule. Valid values: `Ipv6Address`. `Ipv6Address` (default): an IPv6 address.
 	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
+	// The ID of the IPv6 EgressRule.
+	Ipv6EgressRuleId pulumi.StringOutput `pulumi:"ipv6EgressRuleId"`
 	// The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
 	Ipv6EgressRuleName pulumi.StringPtrOutput `pulumi:"ipv6EgressRuleName"`
 	// The ID of the IPv6 gateway.
@@ -211,6 +213,8 @@ type ipv6EgressRuleState struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// The type of instance to which you want to apply the egress-only rule. Valid values: `Ipv6Address`. `Ipv6Address` (default): an IPv6 address.
 	InstanceType *string `pulumi:"instanceType"`
+	// The ID of the IPv6 EgressRule.
+	Ipv6EgressRuleId *string `pulumi:"ipv6EgressRuleId"`
 	// The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
 	Ipv6EgressRuleName *string `pulumi:"ipv6EgressRuleName"`
 	// The ID of the IPv6 gateway.
@@ -226,6 +230,8 @@ type Ipv6EgressRuleState struct {
 	InstanceId pulumi.StringPtrInput
 	// The type of instance to which you want to apply the egress-only rule. Valid values: `Ipv6Address`. `Ipv6Address` (default): an IPv6 address.
 	InstanceType pulumi.StringPtrInput
+	// The ID of the IPv6 EgressRule.
+	Ipv6EgressRuleId pulumi.StringPtrInput
 	// The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
 	Ipv6EgressRuleName pulumi.StringPtrInput
 	// The ID of the IPv6 gateway.
@@ -365,6 +371,11 @@ func (o Ipv6EgressRuleOutput) InstanceId() pulumi.StringOutput {
 // The type of instance to which you want to apply the egress-only rule. Valid values: `Ipv6Address`. `Ipv6Address` (default): an IPv6 address.
 func (o Ipv6EgressRuleOutput) InstanceType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Ipv6EgressRule) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
+// The ID of the IPv6 EgressRule.
+func (o Ipv6EgressRuleOutput) Ipv6EgressRuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Ipv6EgressRule) pulumi.StringOutput { return v.Ipv6EgressRuleId }).(pulumi.StringOutput)
 }
 
 // The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.

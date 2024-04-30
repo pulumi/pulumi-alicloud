@@ -199,6 +199,10 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
      */
     public readonly initContainers!: pulumi.Output<outputs.ess.EciScalingConfigurationInitContainer[] | undefined>;
     /**
+     * The specified ECS instance types. You can specify up to five ECS instance types.
+     */
+    public readonly instanceTypes!: pulumi.Output<string[] | undefined>;
+    /**
      * Number of IPv6 addresses.
      */
     public readonly ipv6AddressCount!: pulumi.Output<number | undefined>;
@@ -298,6 +302,7 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["imageSnapshotId"] = state ? state.imageSnapshotId : undefined;
             resourceInputs["ingressBandwidth"] = state ? state.ingressBandwidth : undefined;
             resourceInputs["initContainers"] = state ? state.initContainers : undefined;
+            resourceInputs["instanceTypes"] = state ? state.instanceTypes : undefined;
             resourceInputs["ipv6AddressCount"] = state ? state.ipv6AddressCount : undefined;
             resourceInputs["loadBalancerWeight"] = state ? state.loadBalancerWeight : undefined;
             resourceInputs["memory"] = state ? state.memory : undefined;
@@ -338,6 +343,7 @@ export class EciScalingConfiguration extends pulumi.CustomResource {
             resourceInputs["imageSnapshotId"] = args ? args.imageSnapshotId : undefined;
             resourceInputs["ingressBandwidth"] = args ? args.ingressBandwidth : undefined;
             resourceInputs["initContainers"] = args ? args.initContainers : undefined;
+            resourceInputs["instanceTypes"] = args ? args.instanceTypes : undefined;
             resourceInputs["ipv6AddressCount"] = args ? args.ipv6AddressCount : undefined;
             resourceInputs["loadBalancerWeight"] = args ? args.loadBalancerWeight : undefined;
             resourceInputs["memory"] = args ? args.memory : undefined;
@@ -451,6 +457,10 @@ export interface EciScalingConfigurationState {
      * The list of initContainers. See `initContainers` below for details.
      */
     initContainers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainer>[]>;
+    /**
+     * The specified ECS instance types. You can specify up to five ECS instance types.
+     */
+    instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Number of IPv6 addresses.
      */
@@ -611,6 +621,10 @@ export interface EciScalingConfigurationArgs {
      * The list of initContainers. See `initContainers` below for details.
      */
     initContainers?: pulumi.Input<pulumi.Input<inputs.ess.EciScalingConfigurationInitContainer>[]>;
+    /**
+     * The specified ECS instance types. You can specify up to five ECS instance types.
+     */
+    instanceTypes?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * Number of IPv6 addresses.
      */

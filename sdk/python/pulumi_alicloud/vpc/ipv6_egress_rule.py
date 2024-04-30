@@ -103,6 +103,7 @@ class _Ipv6EgressRuleState:
                  description: Optional[pulumi.Input[str]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  instance_type: Optional[pulumi.Input[str]] = None,
+                 ipv6_egress_rule_id: Optional[pulumi.Input[str]] = None,
                  ipv6_egress_rule_name: Optional[pulumi.Input[str]] = None,
                  ipv6_gateway_id: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
@@ -111,6 +112,7 @@ class _Ipv6EgressRuleState:
         :param pulumi.Input[str] description: The description of the egress-only rule. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         :param pulumi.Input[str] instance_id: The ID of the IPv6 address to which you want to apply the egress-only rule.
         :param pulumi.Input[str] instance_type: The type of instance to which you want to apply the egress-only rule. Valid values: `Ipv6Address`. `Ipv6Address` (default): an IPv6 address.
+        :param pulumi.Input[str] ipv6_egress_rule_id: The ID of the IPv6 EgressRule.
         :param pulumi.Input[str] ipv6_egress_rule_name: The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         :param pulumi.Input[str] ipv6_gateway_id: The ID of the IPv6 gateway.
         :param pulumi.Input[str] status: The status of the resource.
@@ -121,6 +123,8 @@ class _Ipv6EgressRuleState:
             pulumi.set(__self__, "instance_id", instance_id)
         if instance_type is not None:
             pulumi.set(__self__, "instance_type", instance_type)
+        if ipv6_egress_rule_id is not None:
+            pulumi.set(__self__, "ipv6_egress_rule_id", ipv6_egress_rule_id)
         if ipv6_egress_rule_name is not None:
             pulumi.set(__self__, "ipv6_egress_rule_name", ipv6_egress_rule_name)
         if ipv6_gateway_id is not None:
@@ -163,6 +167,18 @@ class _Ipv6EgressRuleState:
     @instance_type.setter
     def instance_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_type", value)
+
+    @property
+    @pulumi.getter(name="ipv6EgressRuleId")
+    def ipv6_egress_rule_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the IPv6 EgressRule.
+        """
+        return pulumi.get(self, "ipv6_egress_rule_id")
+
+    @ipv6_egress_rule_id.setter
+    def ipv6_egress_rule_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ipv6_egress_rule_id", value)
 
     @property
     @pulumi.getter(name="ipv6EgressRuleName")
@@ -418,6 +434,7 @@ class Ipv6EgressRule(pulumi.CustomResource):
             if ipv6_gateway_id is None and not opts.urn:
                 raise TypeError("Missing required property 'ipv6_gateway_id'")
             __props__.__dict__["ipv6_gateway_id"] = ipv6_gateway_id
+            __props__.__dict__["ipv6_egress_rule_id"] = None
             __props__.__dict__["status"] = None
         super(Ipv6EgressRule, __self__).__init__(
             'alicloud:vpc/ipv6EgressRule:Ipv6EgressRule',
@@ -432,6 +449,7 @@ class Ipv6EgressRule(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
             instance_type: Optional[pulumi.Input[str]] = None,
+            ipv6_egress_rule_id: Optional[pulumi.Input[str]] = None,
             ipv6_egress_rule_name: Optional[pulumi.Input[str]] = None,
             ipv6_gateway_id: Optional[pulumi.Input[str]] = None,
             status: Optional[pulumi.Input[str]] = None) -> 'Ipv6EgressRule':
@@ -445,6 +463,7 @@ class Ipv6EgressRule(pulumi.CustomResource):
         :param pulumi.Input[str] description: The description of the egress-only rule. The description must be `2` to `256` characters in length. It cannot start with `http://` or `https://`.
         :param pulumi.Input[str] instance_id: The ID of the IPv6 address to which you want to apply the egress-only rule.
         :param pulumi.Input[str] instance_type: The type of instance to which you want to apply the egress-only rule. Valid values: `Ipv6Address`. `Ipv6Address` (default): an IPv6 address.
+        :param pulumi.Input[str] ipv6_egress_rule_id: The ID of the IPv6 EgressRule.
         :param pulumi.Input[str] ipv6_egress_rule_name: The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         :param pulumi.Input[str] ipv6_gateway_id: The ID of the IPv6 gateway.
         :param pulumi.Input[str] status: The status of the resource.
@@ -456,6 +475,7 @@ class Ipv6EgressRule(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["instance_id"] = instance_id
         __props__.__dict__["instance_type"] = instance_type
+        __props__.__dict__["ipv6_egress_rule_id"] = ipv6_egress_rule_id
         __props__.__dict__["ipv6_egress_rule_name"] = ipv6_egress_rule_name
         __props__.__dict__["ipv6_gateway_id"] = ipv6_gateway_id
         __props__.__dict__["status"] = status
@@ -484,6 +504,14 @@ class Ipv6EgressRule(pulumi.CustomResource):
         The type of instance to which you want to apply the egress-only rule. Valid values: `Ipv6Address`. `Ipv6Address` (default): an IPv6 address.
         """
         return pulumi.get(self, "instance_type")
+
+    @property
+    @pulumi.getter(name="ipv6EgressRuleId")
+    def ipv6_egress_rule_id(self) -> pulumi.Output[str]:
+        """
+        The ID of the IPv6 EgressRule.
+        """
+        return pulumi.get(self, "ipv6_egress_rule_id")
 
     @property
     @pulumi.getter(name="ipv6EgressRuleName")

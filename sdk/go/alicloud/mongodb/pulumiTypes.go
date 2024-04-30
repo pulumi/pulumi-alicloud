@@ -383,13 +383,13 @@ type ShardingInstanceConfigServerList struct {
 	MaxConnections *int `pulumi:"maxConnections"`
 	// The maximum IOPS of the Config Server node.
 	MaxIops *int `pulumi:"maxIops"`
-	// The node class of the Config Server node.
+	// The instance type of the ConfigServer node. Valid values: `mdb.shard.2x.xlarge.d`, `dds.cs.mid`.
 	NodeClass *string `pulumi:"nodeClass"`
 	// The description of the Config Server node.
 	NodeDescription *string `pulumi:"nodeDescription"`
 	// The ID of the Config Server node.
 	NodeId *string `pulumi:"nodeId"`
-	// The node storage of the Config Server node.
+	// The storage space of the ConfigServer node.
 	NodeStorage *int `pulumi:"nodeStorage"`
 	// The connection port of the Config Server node.
 	Port *int `pulumi:"port"`
@@ -413,13 +413,13 @@ type ShardingInstanceConfigServerListArgs struct {
 	MaxConnections pulumi.IntPtrInput `pulumi:"maxConnections"`
 	// The maximum IOPS of the Config Server node.
 	MaxIops pulumi.IntPtrInput `pulumi:"maxIops"`
-	// The node class of the Config Server node.
+	// The instance type of the ConfigServer node. Valid values: `mdb.shard.2x.xlarge.d`, `dds.cs.mid`.
 	NodeClass pulumi.StringPtrInput `pulumi:"nodeClass"`
 	// The description of the Config Server node.
 	NodeDescription pulumi.StringPtrInput `pulumi:"nodeDescription"`
 	// The ID of the Config Server node.
 	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
-	// The node storage of the Config Server node.
+	// The storage space of the ConfigServer node.
 	NodeStorage pulumi.IntPtrInput `pulumi:"nodeStorage"`
 	// The connection port of the Config Server node.
 	Port pulumi.IntPtrInput `pulumi:"port"`
@@ -491,7 +491,7 @@ func (o ShardingInstanceConfigServerListOutput) MaxIops() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ShardingInstanceConfigServerList) *int { return v.MaxIops }).(pulumi.IntPtrOutput)
 }
 
-// The node class of the Config Server node.
+// The instance type of the ConfigServer node. Valid values: `mdb.shard.2x.xlarge.d`, `dds.cs.mid`.
 func (o ShardingInstanceConfigServerListOutput) NodeClass() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ShardingInstanceConfigServerList) *string { return v.NodeClass }).(pulumi.StringPtrOutput)
 }
@@ -506,7 +506,7 @@ func (o ShardingInstanceConfigServerListOutput) NodeId() pulumi.StringPtrOutput 
 	return o.ApplyT(func(v ShardingInstanceConfigServerList) *string { return v.NodeId }).(pulumi.StringPtrOutput)
 }
 
-// The node storage of the Config Server node.
+// The storage space of the ConfigServer node.
 func (o ShardingInstanceConfigServerListOutput) NodeStorage() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ShardingInstanceConfigServerList) *int { return v.NodeStorage }).(pulumi.IntPtrOutput)
 }

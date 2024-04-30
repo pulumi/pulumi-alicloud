@@ -163,32 +163,32 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * Description of the log project.
+     * Description.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return Description of the log project.
+     * @return Description.
      * 
      */
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
     /**
-     * . Field &#39;name&#39; has been deprecated from provider version 1.212.0. New field &#39;project_name&#39; instead.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.223.0. New field &#39;project_name&#39; instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.212.0. New field &#39;project_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.223.0. New field &#39;project_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead. */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return . Field &#39;name&#39; has been deprecated from provider version 1.212.0. New field &#39;project_name&#39; instead.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.223.0. New field &#39;project_name&#39; instead.
      * 
      */
     public Output<String> name() {
@@ -209,14 +209,22 @@ public class Project extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.policy);
     }
     /**
-     * The name of the log project. It is the only in one Alicloud account.
+     * The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+     * - The project name must be globally unique.
+     * - The name can contain only lowercase letters, digits, and hyphens (-).
+     * - It must start and end with a lowercase letter or number.
+     * - The value contains 3 to 63 characters.
      * 
      */
     @Export(name="projectName", refs={String.class}, tree="[0]")
     private Output<String> projectName;
 
     /**
-     * @return The name of the log project. It is the only in one Alicloud account.
+     * @return The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+     * - The project name must be globally unique.
+     * - The name can contain only lowercase letters, digits, and hyphens (-).
+     * - It must start and end with a lowercase letter or number.
+     * - The value contains 3 to 63 characters.
      * 
      */
     public Output<String> projectName() {

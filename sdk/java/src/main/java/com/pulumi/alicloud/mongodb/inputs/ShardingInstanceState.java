@@ -84,14 +84,14 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The information of the ConfigServer nodes.
+     * The ConfigServer nodes of the instance. See `config_server_list` below.
      * 
      */
     @Import(name="configServerLists")
     private @Nullable Output<List<ShardingInstanceConfigServerListArgs>> configServerLists;
 
     /**
-     * @return The information of the ConfigServer nodes.
+     * @return The ConfigServer nodes of the instance. See `config_server_list` below.
      * 
      */
     public Optional<Output<List<ShardingInstanceConfigServerListArgs>>> configServerLists() {
@@ -159,14 +159,14 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
+     * The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
      * 
      */
     @Import(name="mongoLists")
     private @Nullable Output<List<ShardingInstanceMongoListArgs>> mongoLists;
 
     /**
-     * @return The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
+     * @return The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
      * 
      */
     public Optional<Output<List<ShardingInstanceMongoListArgs>>> mongoLists() {
@@ -309,14 +309,14 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * the shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
+     * The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
      * 
      */
     @Import(name="shardLists")
     private @Nullable Output<List<ShardingInstanceShardListArgs>> shardLists;
 
     /**
-     * @return the shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
+     * @return The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
      * 
      */
     public Optional<Output<List<ShardingInstanceShardListArgs>>> shardLists() {
@@ -559,7 +559,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param configServerLists The information of the ConfigServer nodes.
+         * @param configServerLists The ConfigServer nodes of the instance. See `config_server_list` below.
          * 
          * @return builder
          * 
@@ -570,7 +570,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param configServerLists The information of the ConfigServer nodes.
+         * @param configServerLists The ConfigServer nodes of the instance. See `config_server_list` below.
          * 
          * @return builder
          * 
@@ -580,7 +580,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param configServerLists The information of the ConfigServer nodes.
+         * @param configServerLists The ConfigServer nodes of the instance. See `config_server_list` below.
          * 
          * @return builder
          * 
@@ -674,7 +674,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mongoLists The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
+         * @param mongoLists The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
          * 
          * @return builder
          * 
@@ -685,7 +685,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mongoLists The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
+         * @param mongoLists The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
          * 
          * @return builder
          * 
@@ -695,7 +695,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param mongoLists The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
+         * @param mongoLists The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
          * 
          * @return builder
          * 
@@ -904,7 +904,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param shardLists the shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
+         * @param shardLists The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
          * 
          * @return builder
          * 
@@ -915,7 +915,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param shardLists the shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
+         * @param shardLists The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
          * 
          * @return builder
          * 
@@ -925,7 +925,7 @@ public final class ShardingInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param shardLists the shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
+         * @param shardLists The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
          * 
          * @return builder
          * 

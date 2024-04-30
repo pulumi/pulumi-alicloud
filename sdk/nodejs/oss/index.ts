@@ -15,6 +15,11 @@ export type BucketAcl = import("./bucketAcl").BucketAcl;
 export const BucketAcl: typeof import("./bucketAcl").BucketAcl = null as any;
 utilities.lazyLoad(exports, ["BucketAcl"], () => require("./bucketAcl"));
 
+export { BucketCorsArgs, BucketCorsState } from "./bucketCors";
+export type BucketCors = import("./bucketCors").BucketCors;
+export const BucketCors: typeof import("./bucketCors").BucketCors = null as any;
+utilities.lazyLoad(exports, ["BucketCors"], () => require("./bucketCors"));
+
 export { BucketHttpsConfigArgs, BucketHttpsConfigState } from "./bucketHttpsConfig";
 export type BucketHttpsConfig = import("./bucketHttpsConfig").BucketHttpsConfig;
 export const BucketHttpsConfig: typeof import("./bucketHttpsConfig").BucketHttpsConfig = null as any;
@@ -99,6 +104,8 @@ const _module = {
                 return new Bucket(name, <any>undefined, { urn })
             case "alicloud:oss/bucketAcl:BucketAcl":
                 return new BucketAcl(name, <any>undefined, { urn })
+            case "alicloud:oss/bucketCors:BucketCors":
+                return new BucketCors(name, <any>undefined, { urn })
             case "alicloud:oss/bucketHttpsConfig:BucketHttpsConfig":
                 return new BucketHttpsConfig(name, <any>undefined, { urn })
             case "alicloud:oss/bucketLogging:BucketLogging":
@@ -124,6 +131,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucket", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketAcl", _module)
+pulumi.runtime.registerResourceModule("alicloud", "oss/bucketCors", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketHttpsConfig", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketLogging", _module)
 pulumi.runtime.registerResourceModule("alicloud", "oss/bucketObject", _module)

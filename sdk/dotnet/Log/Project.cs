@@ -118,13 +118,13 @@ namespace Pulumi.AliCloud.Log
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Description of the log project.
+        /// Description.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+        /// . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -136,7 +136,11 @@ namespace Pulumi.AliCloud.Log
         public Output<string?> Policy { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the log project. It is the only in one Alicloud account.
+        /// The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+        /// - The project name must be globally unique.
+        /// - The name can contain only lowercase letters, digits, and hyphens (-).
+        /// - It must start and end with a lowercase letter or number.
+        /// - The value contains 3 to 63 characters.
         /// </summary>
         [Output("projectName")]
         public Output<string> ProjectName { get; private set; } = null!;
@@ -208,13 +212,13 @@ namespace Pulumi.AliCloud.Log
     public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Description of the log project.
+        /// Description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+        /// . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -226,7 +230,11 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? Policy { get; set; }
 
         /// <summary>
-        /// The name of the log project. It is the only in one Alicloud account.
+        /// The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+        /// - The project name must be globally unique.
+        /// - The name can contain only lowercase letters, digits, and hyphens (-).
+        /// - It must start and end with a lowercase letter or number.
+        /// - The value contains 3 to 63 characters.
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }
@@ -266,13 +274,13 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// Description of the log project.
+        /// Description.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+        /// . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -284,7 +292,11 @@ namespace Pulumi.AliCloud.Log
         public Input<string>? Policy { get; set; }
 
         /// <summary>
-        /// The name of the log project. It is the only in one Alicloud account.
+        /// The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+        /// - The project name must be globally unique.
+        /// - The name can contain only lowercase letters, digits, and hyphens (-).
+        /// - It must start and end with a lowercase letter or number.
+        /// - The value contains 3 to 63 characters.
         /// </summary>
         [Input("projectName")]
         public Input<string>? ProjectName { get; set; }

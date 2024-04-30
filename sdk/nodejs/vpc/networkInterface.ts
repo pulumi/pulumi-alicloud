@@ -87,6 +87,7 @@ export class NetworkInterface extends pulumi.CustomResource {
      * Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
     public readonly description!: pulumi.Output<string | undefined>;
+    public readonly instanceType!: pulumi.Output<string>;
     public readonly ipv4PrefixCount!: pulumi.Output<number>;
     public readonly ipv4Prefixes!: pulumi.Output<string[]>;
     public readonly ipv6AddressCount!: pulumi.Output<number>;
@@ -102,6 +103,7 @@ export class NetworkInterface extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     public readonly networkInterfaceName!: pulumi.Output<string>;
+    public readonly networkInterfaceTrafficMode!: pulumi.Output<string>;
     public readonly primaryIpAddress!: pulumi.Output<string>;
     /**
      * The primary private IP of the ENI.
@@ -159,6 +161,7 @@ export class NetworkInterface extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as NetworkInterfaceState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
             resourceInputs["ipv4PrefixCount"] = state ? state.ipv4PrefixCount : undefined;
             resourceInputs["ipv4Prefixes"] = state ? state.ipv4Prefixes : undefined;
             resourceInputs["ipv6AddressCount"] = state ? state.ipv6AddressCount : undefined;
@@ -166,6 +169,7 @@ export class NetworkInterface extends pulumi.CustomResource {
             resourceInputs["mac"] = state ? state.mac : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkInterfaceName"] = state ? state.networkInterfaceName : undefined;
+            resourceInputs["networkInterfaceTrafficMode"] = state ? state.networkInterfaceTrafficMode : undefined;
             resourceInputs["primaryIpAddress"] = state ? state.primaryIpAddress : undefined;
             resourceInputs["privateIp"] = state ? state.privateIp : undefined;
             resourceInputs["privateIpAddresses"] = state ? state.privateIpAddresses : undefined;
@@ -185,12 +189,14 @@ export class NetworkInterface extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vswitchId'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
             resourceInputs["ipv4PrefixCount"] = args ? args.ipv4PrefixCount : undefined;
             resourceInputs["ipv4Prefixes"] = args ? args.ipv4Prefixes : undefined;
             resourceInputs["ipv6AddressCount"] = args ? args.ipv6AddressCount : undefined;
             resourceInputs["ipv6Addresses"] = args ? args.ipv6Addresses : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkInterfaceName"] = args ? args.networkInterfaceName : undefined;
+            resourceInputs["networkInterfaceTrafficMode"] = args ? args.networkInterfaceTrafficMode : undefined;
             resourceInputs["primaryIpAddress"] = args ? args.primaryIpAddress : undefined;
             resourceInputs["privateIp"] = args ? args.privateIp : undefined;
             resourceInputs["privateIpAddresses"] = args ? args.privateIpAddresses : undefined;
@@ -219,6 +225,7 @@ export interface NetworkInterfaceState {
      * Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
     description?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
     ipv4PrefixCount?: pulumi.Input<number>;
     ipv4Prefixes?: pulumi.Input<pulumi.Input<string>[]>;
     ipv6AddressCount?: pulumi.Input<number>;
@@ -234,6 +241,7 @@ export interface NetworkInterfaceState {
      */
     name?: pulumi.Input<string>;
     networkInterfaceName?: pulumi.Input<string>;
+    networkInterfaceTrafficMode?: pulumi.Input<string>;
     primaryIpAddress?: pulumi.Input<string>;
     /**
      * The primary private IP of the ENI.
@@ -286,6 +294,7 @@ export interface NetworkInterfaceArgs {
      * Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
      */
     description?: pulumi.Input<string>;
+    instanceType?: pulumi.Input<string>;
     ipv4PrefixCount?: pulumi.Input<number>;
     ipv4Prefixes?: pulumi.Input<pulumi.Input<string>[]>;
     ipv6AddressCount?: pulumi.Input<number>;
@@ -297,6 +306,7 @@ export interface NetworkInterfaceArgs {
      */
     name?: pulumi.Input<string>;
     networkInterfaceName?: pulumi.Input<string>;
+    networkInterfaceTrafficMode?: pulumi.Input<string>;
     primaryIpAddress?: pulumi.Input<string>;
     /**
      * The primary private IP of the ENI.

@@ -71,6 +71,12 @@ namespace Pulumi.AliCloud.Oss
     ///             },
     ///         }),
     ///         Bucket = createBucket.BucketName,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             createBucket,
+    ///         },
     ///     });
     /// 
     /// });

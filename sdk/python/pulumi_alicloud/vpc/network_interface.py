@@ -16,12 +16,14 @@ class NetworkInterfaceArgs:
     def __init__(__self__, *,
                  vswitch_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
                  ipv4_prefix_count: Optional[pulumi.Input[int]] = None,
                  ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interface_name: Optional[pulumi.Input[str]] = None,
+                 network_interface_traffic_mode: Optional[pulumi.Input[str]] = None,
                  primary_ip_address: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -48,6 +50,8 @@ class NetworkInterfaceArgs:
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
         if ipv4_prefix_count is not None:
             pulumi.set(__self__, "ipv4_prefix_count", ipv4_prefix_count)
         if ipv4_prefixes is not None:
@@ -63,6 +67,8 @@ class NetworkInterfaceArgs:
             pulumi.set(__self__, "name", name)
         if network_interface_name is not None:
             pulumi.set(__self__, "network_interface_name", network_interface_name)
+        if network_interface_traffic_mode is not None:
+            pulumi.set(__self__, "network_interface_traffic_mode", network_interface_traffic_mode)
         if primary_ip_address is not None:
             pulumi.set(__self__, "primary_ip_address", primary_ip_address)
         if private_ip is not None:
@@ -123,6 +129,15 @@ class NetworkInterfaceArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
+
+    @property
     @pulumi.getter(name="ipv4PrefixCount")
     def ipv4_prefix_count(self) -> Optional[pulumi.Input[int]]:
         return pulumi.get(self, "ipv4_prefix_count")
@@ -181,6 +196,15 @@ class NetworkInterfaceArgs:
     @network_interface_name.setter
     def network_interface_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network_interface_name", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaceTrafficMode")
+    def network_interface_traffic_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "network_interface_traffic_mode")
+
+    @network_interface_traffic_mode.setter
+    def network_interface_traffic_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_interface_traffic_mode", value)
 
     @property
     @pulumi.getter(name="primaryIpAddress")
@@ -316,6 +340,7 @@ class NetworkInterfaceArgs:
 class _NetworkInterfaceState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
                  ipv4_prefix_count: Optional[pulumi.Input[int]] = None,
                  ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
@@ -323,6 +348,7 @@ class _NetworkInterfaceState:
                  mac: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interface_name: Optional[pulumi.Input[str]] = None,
+                 network_interface_traffic_mode: Optional[pulumi.Input[str]] = None,
                  primary_ip_address: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -351,6 +377,8 @@ class _NetworkInterfaceState:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
         if ipv4_prefix_count is not None:
             pulumi.set(__self__, "ipv4_prefix_count", ipv4_prefix_count)
         if ipv4_prefixes is not None:
@@ -368,6 +396,8 @@ class _NetworkInterfaceState:
             pulumi.set(__self__, "name", name)
         if network_interface_name is not None:
             pulumi.set(__self__, "network_interface_name", network_interface_name)
+        if network_interface_traffic_mode is not None:
+            pulumi.set(__self__, "network_interface_traffic_mode", network_interface_traffic_mode)
         if primary_ip_address is not None:
             pulumi.set(__self__, "primary_ip_address", primary_ip_address)
         if private_ip is not None:
@@ -418,6 +448,15 @@ class _NetworkInterfaceState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
 
     @property
     @pulumi.getter(name="ipv4PrefixCount")
@@ -490,6 +529,15 @@ class _NetworkInterfaceState:
     @network_interface_name.setter
     def network_interface_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network_interface_name", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaceTrafficMode")
+    def network_interface_traffic_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "network_interface_traffic_mode")
+
+    @network_interface_traffic_mode.setter
+    def network_interface_traffic_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_interface_traffic_mode", value)
 
     @property
     @pulumi.getter(name="primaryIpAddress")
@@ -648,12 +696,14 @@ class NetworkInterface(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
                  ipv4_prefix_count: Optional[pulumi.Input[int]] = None,
                  ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interface_name: Optional[pulumi.Input[str]] = None,
+                 network_interface_traffic_mode: Optional[pulumi.Input[str]] = None,
                  primary_ip_address: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -795,12 +845,14 @@ class NetworkInterface(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
                  ipv4_prefix_count: Optional[pulumi.Input[int]] = None,
                  ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interface_name: Optional[pulumi.Input[str]] = None,
+                 network_interface_traffic_mode: Optional[pulumi.Input[str]] = None,
                  primary_ip_address: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -823,12 +875,14 @@ class NetworkInterface(pulumi.CustomResource):
             __props__ = NetworkInterfaceArgs.__new__(NetworkInterfaceArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["ipv4_prefix_count"] = ipv4_prefix_count
             __props__.__dict__["ipv4_prefixes"] = ipv4_prefixes
             __props__.__dict__["ipv6_address_count"] = ipv6_address_count
             __props__.__dict__["ipv6_addresses"] = ipv6_addresses
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interface_name"] = network_interface_name
+            __props__.__dict__["network_interface_traffic_mode"] = network_interface_traffic_mode
             __props__.__dict__["primary_ip_address"] = primary_ip_address
             __props__.__dict__["private_ip"] = private_ip
             __props__.__dict__["private_ip_addresses"] = private_ip_addresses
@@ -856,6 +910,7 @@ class NetworkInterface(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            instance_type: Optional[pulumi.Input[str]] = None,
             ipv4_prefix_count: Optional[pulumi.Input[int]] = None,
             ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ipv6_address_count: Optional[pulumi.Input[int]] = None,
@@ -863,6 +918,7 @@ class NetworkInterface(pulumi.CustomResource):
             mac: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_interface_name: Optional[pulumi.Input[str]] = None,
+            network_interface_traffic_mode: Optional[pulumi.Input[str]] = None,
             primary_ip_address: Optional[pulumi.Input[str]] = None,
             private_ip: Optional[pulumi.Input[str]] = None,
             private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -899,6 +955,7 @@ class NetworkInterface(pulumi.CustomResource):
         __props__ = _NetworkInterfaceState.__new__(_NetworkInterfaceState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["ipv4_prefix_count"] = ipv4_prefix_count
         __props__.__dict__["ipv4_prefixes"] = ipv4_prefixes
         __props__.__dict__["ipv6_address_count"] = ipv6_address_count
@@ -906,6 +963,7 @@ class NetworkInterface(pulumi.CustomResource):
         __props__.__dict__["mac"] = mac
         __props__.__dict__["name"] = name
         __props__.__dict__["network_interface_name"] = network_interface_name
+        __props__.__dict__["network_interface_traffic_mode"] = network_interface_traffic_mode
         __props__.__dict__["primary_ip_address"] = primary_ip_address
         __props__.__dict__["private_ip"] = private_ip
         __props__.__dict__["private_ip_addresses"] = private_ip_addresses
@@ -928,6 +986,11 @@ class NetworkInterface(pulumi.CustomResource):
         Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter(name="ipv4PrefixCount")
@@ -972,6 +1035,11 @@ class NetworkInterface(pulumi.CustomResource):
     @pulumi.getter(name="networkInterfaceName")
     def network_interface_name(self) -> pulumi.Output[str]:
         return pulumi.get(self, "network_interface_name")
+
+    @property
+    @pulumi.getter(name="networkInterfaceTrafficMode")
+    def network_interface_traffic_mode(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "network_interface_traffic_mode")
 
     @property
     @pulumi.getter(name="primaryIpAddress")

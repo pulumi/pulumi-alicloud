@@ -117,13 +117,13 @@ export class Project extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * Description of the log project.
+     * Description.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+     * . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
      *
-     * @deprecated Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -131,7 +131,11 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly policy!: pulumi.Output<string | undefined>;
     /**
-     * The name of the log project. It is the only in one Alicloud account.
+     * The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+     * - The project name must be globally unique.
+     * - The name can contain only lowercase letters, digits, and hyphens (-).
+     * - It must start and end with a lowercase letter or number.
+     * - The value contains 3 to 63 characters.
      */
     public readonly projectName!: pulumi.Output<string>;
     /**
@@ -195,13 +199,13 @@ export interface ProjectState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * Description of the log project.
+     * Description.
      */
     description?: pulumi.Input<string>;
     /**
-     * . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+     * . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
      *
-     * @deprecated Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
@@ -209,7 +213,11 @@ export interface ProjectState {
      */
     policy?: pulumi.Input<string>;
     /**
-     * The name of the log project. It is the only in one Alicloud account.
+     * The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+     * - The project name must be globally unique.
+     * - The name can contain only lowercase letters, digits, and hyphens (-).
+     * - It must start and end with a lowercase letter or number.
+     * - The value contains 3 to 63 characters.
      */
     projectName?: pulumi.Input<string>;
     /**
@@ -233,13 +241,13 @@ export interface ProjectState {
  */
 export interface ProjectArgs {
     /**
-     * Description of the log project.
+     * Description.
      */
     description?: pulumi.Input<string>;
     /**
-     * . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+     * . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
      *
-     * @deprecated Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.
+     * @deprecated Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead.
      */
     name?: pulumi.Input<string>;
     /**
@@ -247,7 +255,11 @@ export interface ProjectArgs {
      */
     policy?: pulumi.Input<string>;
     /**
-     * The name of the log project. It is the only in one Alicloud account.
+     * The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+     * - The project name must be globally unique.
+     * - The name can contain only lowercase letters, digits, and hyphens (-).
+     * - It must start and end with a lowercase letter or number.
+     * - The value contains 3 to 63 characters.
      */
     projectName?: pulumi.Input<string>;
     /**

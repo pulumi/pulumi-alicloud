@@ -150,6 +150,139 @@ func (o BucketAccessMonitorPtrOutput) Status() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type BucketCorsCorsRule struct {
+	// Specifies whether the headers specified by Access-Control-Request-Headers in the OPTIONS preflight request are allowed. You can use only one asterisk (*) as the wildcard for allowed header. .
+	AllowedHeaders []string `pulumi:"allowedHeaders"`
+	// The cross-origin request method that is allowed. Valid values: GET, PUT, DELETE, POST, and HEAD.
+	AllowedMethods []string `pulumi:"allowedMethods"`
+	// The origins from which cross-origin requests are allowed. .
+	AllowedOrigins []string `pulumi:"allowedOrigins"`
+	// The response headers for allowed access requests from applications, such as an XMLHttpRequest object in JavaScript. .
+	ExposeHeaders []string `pulumi:"exposeHeaders"`
+	// The period of time within which the browser can cache the response to an OPTIONS preflight request for the specified resource. Unit: seconds.
+	MaxAgeSeconds *int `pulumi:"maxAgeSeconds"`
+}
+
+// BucketCorsCorsRuleInput is an input type that accepts BucketCorsCorsRuleArgs and BucketCorsCorsRuleOutput values.
+// You can construct a concrete instance of `BucketCorsCorsRuleInput` via:
+//
+//	BucketCorsCorsRuleArgs{...}
+type BucketCorsCorsRuleInput interface {
+	pulumi.Input
+
+	ToBucketCorsCorsRuleOutput() BucketCorsCorsRuleOutput
+	ToBucketCorsCorsRuleOutputWithContext(context.Context) BucketCorsCorsRuleOutput
+}
+
+type BucketCorsCorsRuleArgs struct {
+	// Specifies whether the headers specified by Access-Control-Request-Headers in the OPTIONS preflight request are allowed. You can use only one asterisk (*) as the wildcard for allowed header. .
+	AllowedHeaders pulumi.StringArrayInput `pulumi:"allowedHeaders"`
+	// The cross-origin request method that is allowed. Valid values: GET, PUT, DELETE, POST, and HEAD.
+	AllowedMethods pulumi.StringArrayInput `pulumi:"allowedMethods"`
+	// The origins from which cross-origin requests are allowed. .
+	AllowedOrigins pulumi.StringArrayInput `pulumi:"allowedOrigins"`
+	// The response headers for allowed access requests from applications, such as an XMLHttpRequest object in JavaScript. .
+	ExposeHeaders pulumi.StringArrayInput `pulumi:"exposeHeaders"`
+	// The period of time within which the browser can cache the response to an OPTIONS preflight request for the specified resource. Unit: seconds.
+	MaxAgeSeconds pulumi.IntPtrInput `pulumi:"maxAgeSeconds"`
+}
+
+func (BucketCorsCorsRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketCorsCorsRule)(nil)).Elem()
+}
+
+func (i BucketCorsCorsRuleArgs) ToBucketCorsCorsRuleOutput() BucketCorsCorsRuleOutput {
+	return i.ToBucketCorsCorsRuleOutputWithContext(context.Background())
+}
+
+func (i BucketCorsCorsRuleArgs) ToBucketCorsCorsRuleOutputWithContext(ctx context.Context) BucketCorsCorsRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketCorsCorsRuleOutput)
+}
+
+// BucketCorsCorsRuleArrayInput is an input type that accepts BucketCorsCorsRuleArray and BucketCorsCorsRuleArrayOutput values.
+// You can construct a concrete instance of `BucketCorsCorsRuleArrayInput` via:
+//
+//	BucketCorsCorsRuleArray{ BucketCorsCorsRuleArgs{...} }
+type BucketCorsCorsRuleArrayInput interface {
+	pulumi.Input
+
+	ToBucketCorsCorsRuleArrayOutput() BucketCorsCorsRuleArrayOutput
+	ToBucketCorsCorsRuleArrayOutputWithContext(context.Context) BucketCorsCorsRuleArrayOutput
+}
+
+type BucketCorsCorsRuleArray []BucketCorsCorsRuleInput
+
+func (BucketCorsCorsRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketCorsCorsRule)(nil)).Elem()
+}
+
+func (i BucketCorsCorsRuleArray) ToBucketCorsCorsRuleArrayOutput() BucketCorsCorsRuleArrayOutput {
+	return i.ToBucketCorsCorsRuleArrayOutputWithContext(context.Background())
+}
+
+func (i BucketCorsCorsRuleArray) ToBucketCorsCorsRuleArrayOutputWithContext(ctx context.Context) BucketCorsCorsRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BucketCorsCorsRuleArrayOutput)
+}
+
+type BucketCorsCorsRuleOutput struct{ *pulumi.OutputState }
+
+func (BucketCorsCorsRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BucketCorsCorsRule)(nil)).Elem()
+}
+
+func (o BucketCorsCorsRuleOutput) ToBucketCorsCorsRuleOutput() BucketCorsCorsRuleOutput {
+	return o
+}
+
+func (o BucketCorsCorsRuleOutput) ToBucketCorsCorsRuleOutputWithContext(ctx context.Context) BucketCorsCorsRuleOutput {
+	return o
+}
+
+// Specifies whether the headers specified by Access-Control-Request-Headers in the OPTIONS preflight request are allowed. You can use only one asterisk (*) as the wildcard for allowed header. .
+func (o BucketCorsCorsRuleOutput) AllowedHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BucketCorsCorsRule) []string { return v.AllowedHeaders }).(pulumi.StringArrayOutput)
+}
+
+// The cross-origin request method that is allowed. Valid values: GET, PUT, DELETE, POST, and HEAD.
+func (o BucketCorsCorsRuleOutput) AllowedMethods() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BucketCorsCorsRule) []string { return v.AllowedMethods }).(pulumi.StringArrayOutput)
+}
+
+// The origins from which cross-origin requests are allowed. .
+func (o BucketCorsCorsRuleOutput) AllowedOrigins() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BucketCorsCorsRule) []string { return v.AllowedOrigins }).(pulumi.StringArrayOutput)
+}
+
+// The response headers for allowed access requests from applications, such as an XMLHttpRequest object in JavaScript. .
+func (o BucketCorsCorsRuleOutput) ExposeHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BucketCorsCorsRule) []string { return v.ExposeHeaders }).(pulumi.StringArrayOutput)
+}
+
+// The period of time within which the browser can cache the response to an OPTIONS preflight request for the specified resource. Unit: seconds.
+func (o BucketCorsCorsRuleOutput) MaxAgeSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BucketCorsCorsRule) *int { return v.MaxAgeSeconds }).(pulumi.IntPtrOutput)
+}
+
+type BucketCorsCorsRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (BucketCorsCorsRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BucketCorsCorsRule)(nil)).Elem()
+}
+
+func (o BucketCorsCorsRuleArrayOutput) ToBucketCorsCorsRuleArrayOutput() BucketCorsCorsRuleArrayOutput {
+	return o
+}
+
+func (o BucketCorsCorsRuleArrayOutput) ToBucketCorsCorsRuleArrayOutputWithContext(ctx context.Context) BucketCorsCorsRuleArrayOutput {
+	return o
+}
+
+func (o BucketCorsCorsRuleArrayOutput) Index(i pulumi.IntInput) BucketCorsCorsRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BucketCorsCorsRule {
+		return vs[0].([]BucketCorsCorsRule)[vs[1].(int)]
+	}).(BucketCorsCorsRuleOutput)
+}
+
 type BucketCorsRule struct {
 	// Specifies which headers are allowed.
 	AllowedHeaders []string `pulumi:"allowedHeaders"`
@@ -5156,6 +5289,8 @@ func (o GetTablesTablePrimaryKeyArrayOutput) Index(i pulumi.IntInput) GetTablesT
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessMonitorInput)(nil)).Elem(), BucketAccessMonitorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketAccessMonitorPtrInput)(nil)).Elem(), BucketAccessMonitorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsCorsRuleInput)(nil)).Elem(), BucketCorsCorsRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsCorsRuleArrayInput)(nil)).Elem(), BucketCorsCorsRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsRuleInput)(nil)).Elem(), BucketCorsRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketCorsRuleArrayInput)(nil)).Elem(), BucketCorsRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BucketLifecycleRuleInput)(nil)).Elem(), BucketLifecycleRuleArgs{})
@@ -5226,6 +5361,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTablesTablePrimaryKeyArrayInput)(nil)).Elem(), GetTablesTablePrimaryKeyArray{})
 	pulumi.RegisterOutputType(BucketAccessMonitorOutput{})
 	pulumi.RegisterOutputType(BucketAccessMonitorPtrOutput{})
+	pulumi.RegisterOutputType(BucketCorsCorsRuleOutput{})
+	pulumi.RegisterOutputType(BucketCorsCorsRuleArrayOutput{})
 	pulumi.RegisterOutputType(BucketCorsRuleOutput{})
 	pulumi.RegisterOutputType(BucketCorsRuleArrayOutput{})
 	pulumi.RegisterOutputType(BucketLifecycleRuleOutput{})

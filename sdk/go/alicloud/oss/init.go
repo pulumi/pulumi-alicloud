@@ -25,6 +25,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Bucket{}
 	case "alicloud:oss/bucketAcl:BucketAcl":
 		r = &BucketAcl{}
+	case "alicloud:oss/bucketCors:BucketCors":
+		r = &BucketCors{}
 	case "alicloud:oss/bucketHttpsConfig:BucketHttpsConfig":
 		r = &BucketHttpsConfig{}
 	case "alicloud:oss/bucketLogging:BucketLogging":
@@ -64,6 +66,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"alicloud",
 		"oss/bucketAcl",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"alicloud",
+		"oss/bucketCors",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

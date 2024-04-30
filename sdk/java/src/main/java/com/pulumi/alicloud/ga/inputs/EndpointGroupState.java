@@ -99,7 +99,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-     * &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+     * &gt; **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
      * 
      */
     @Import(name="endpointGroupType")
@@ -107,7 +107,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
     /**
      * @return The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-     * &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+     * &gt; **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
      * 
      */
     public Optional<Output<String>> endpointGroupType() {
@@ -192,14 +192,14 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+     * The protocol that is used to connect to the targets for health checks. Valid values:
      * 
      */
     @Import(name="healthCheckProtocol")
     private @Nullable Output<String> healthCheckProtocol;
 
     /**
-     * @return The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+     * @return The protocol that is used to connect to the targets for health checks. Valid values:
      * 
      */
     public Optional<Output<String>> healthCheckProtocol() {
@@ -482,7 +482,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param endpointGroupType The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-         * &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+         * &gt; **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
          * 
          * @return builder
          * 
@@ -494,7 +494,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
 
         /**
          * @param endpointGroupType The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-         * &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+         * &gt; **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
          * 
          * @return builder
          * 
@@ -611,7 +611,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param healthCheckProtocol The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+         * @param healthCheckProtocol The protocol that is used to connect to the targets for health checks. Valid values:
          * 
          * @return builder
          * 
@@ -622,7 +622,7 @@ public final class EndpointGroupState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param healthCheckProtocol The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+         * @param healthCheckProtocol The protocol that is used to connect to the targets for health checks. Valid values:
          * 
          * @return builder
          * 

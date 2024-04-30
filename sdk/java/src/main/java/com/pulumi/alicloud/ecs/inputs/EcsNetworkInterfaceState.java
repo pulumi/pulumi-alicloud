@@ -35,6 +35,21 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
     }
 
     /**
+     * The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
+     * 
+     */
+    @Import(name="instanceType")
+    private @Nullable Output<String> instanceType;
+
+    /**
+     * @return The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
+     * 
+     */
+    public Optional<Output<String>> instanceType() {
+        return Optional.ofNullable(this.instanceType);
+    }
+
+    /**
      * The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
      * 
      */
@@ -145,6 +160,21 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
      */
     public Optional<Output<String>> networkInterfaceName() {
         return Optional.ofNullable(this.networkInterfaceName);
+    }
+
+    /**
+     * The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
+     * 
+     */
+    @Import(name="networkInterfaceTrafficMode")
+    private @Nullable Output<String> networkInterfaceTrafficMode;
+
+    /**
+     * @return The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
+     * 
+     */
+    public Optional<Output<String>> networkInterfaceTrafficMode() {
+        return Optional.ofNullable(this.networkInterfaceTrafficMode);
     }
 
     /**
@@ -378,6 +408,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
 
     private EcsNetworkInterfaceState(EcsNetworkInterfaceState $) {
         this.description = $.description;
+        this.instanceType = $.instanceType;
         this.ipv4PrefixCount = $.ipv4PrefixCount;
         this.ipv4Prefixes = $.ipv4Prefixes;
         this.ipv6AddressCount = $.ipv6AddressCount;
@@ -385,6 +416,7 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
         this.mac = $.mac;
         this.name = $.name;
         this.networkInterfaceName = $.networkInterfaceName;
+        this.networkInterfaceTrafficMode = $.networkInterfaceTrafficMode;
         this.primaryIpAddress = $.primaryIpAddress;
         this.privateIp = $.privateIp;
         this.privateIpAddresses = $.privateIpAddresses;
@@ -437,6 +469,27 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param instanceType The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceType(@Nullable Output<String> instanceType) {
+            $.instanceType = instanceType;
+            return this;
+        }
+
+        /**
+         * @param instanceType The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceType(String instanceType) {
+            return instanceType(Output.of(instanceType));
         }
 
         /**
@@ -612,6 +665,27 @@ public final class EcsNetworkInterfaceState extends com.pulumi.resources.Resourc
          */
         public Builder networkInterfaceName(String networkInterfaceName) {
             return networkInterfaceName(Output.of(networkInterfaceName));
+        }
+
+        /**
+         * @param networkInterfaceTrafficMode The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkInterfaceTrafficMode(@Nullable Output<String> networkInterfaceTrafficMode) {
+            $.networkInterfaceTrafficMode = networkInterfaceTrafficMode;
+            return this;
+        }
+
+        /**
+         * @param networkInterfaceTrafficMode The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkInterfaceTrafficMode(String networkInterfaceTrafficMode) {
+            return networkInterfaceTrafficMode(Output.of(networkInterfaceTrafficMode));
         }
 
         /**

@@ -120,6 +120,7 @@ const (
 	messageMod             = "Message"
 	mhubMod                = "Mhub"
 	mnsMod                 = "Mns"
+	slsMod                 = "Sls"
 	mongoDbMod             = "MongoDB"
 	mseMod                 = "Mse"
 	nasMod                 = "Nas"
@@ -282,6 +283,7 @@ var mappedMods = map[string]string{
 	"service_catalog":       serviceCatalogMod,
 	"service_mesh":          serviceMeshMod,
 	"slb":                   slbMod,
+	"sls":                   slsMod,
 	"sms":                   smsMod,
 	"tag":                   tagMod,
 	"threat_detection":      threatDetectionMod,

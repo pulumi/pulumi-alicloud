@@ -32428,7 +32428,7 @@ export namespace mongodb {
          */
         maxIops: number;
         /**
-         * The node class of the Config Server node.
+         * The instance type of the ConfigServer node. Valid values: `mdb.shard.2x.xlarge.d`, `dds.cs.mid`.
          */
         nodeClass: string;
         /**
@@ -32440,7 +32440,7 @@ export namespace mongodb {
          */
         nodeId: string;
         /**
-         * The node storage of the Config Server node.
+         * The storage space of the ConfigServer node.
          */
         nodeStorage: number;
         /**
@@ -34470,6 +34470,29 @@ export namespace oss {
          * The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
          */
         status: string;
+    }
+
+    export interface BucketCorsCorsRule {
+        /**
+         * Specifies whether the headers specified by Access-Control-Request-Headers in the OPTIONS preflight request are allowed. You can use only one asterisk (*) as the wildcard for allowed header. .
+         */
+        allowedHeaders?: string[];
+        /**
+         * The cross-origin request method that is allowed. Valid values: GET, PUT, DELETE, POST, and HEAD.
+         */
+        allowedMethods: string[];
+        /**
+         * The origins from which cross-origin requests are allowed. .
+         */
+        allowedOrigins?: string[];
+        /**
+         * The response headers for allowed access requests from applications, such as an XMLHttpRequest object in JavaScript. .
+         */
+        exposeHeaders?: string[];
+        /**
+         * The period of time within which the browser can cache the response to an OPTIONS preflight request for the specified resource. Unit: seconds.
+         */
+        maxAgeSeconds?: number;
     }
 
     export interface BucketCorsRule {
@@ -43136,6 +43159,209 @@ export namespace slb {
          * Weight of the backend server. Valid value range: [0-100]. Default to 100.
          */
         weight?: number;
+    }
+
+}
+
+export namespace sls {
+    export interface AlertConfiguration {
+        /**
+         * Template Annotations.
+         */
+        annotations?: outputs.sls.AlertConfigurationAnnotation[];
+        /**
+         * Whether to turn on automatic labeling. true (default): The automatic annotation function is enabled, and the system automatically adds information such as__county__to the alarm. For more information, see Automatic Labeling. false: Turn off the automatic annotation function.
+         */
+        autoAnnotation: boolean;
+        /**
+         * Alarm trigger condition. See `conditionConfiguration` below.
+         */
+        conditionConfiguration?: outputs.sls.AlertConfigurationConditionConfiguration;
+        /**
+         * The instrument cluster associated with the alarm. It is recommended to set to internal-alert-analysis.
+         */
+        dashboard?: string;
+        /**
+         * Group evaluation configuration. See `groupConfiguration` below.
+         */
+        groupConfiguration?: outputs.sls.AlertConfigurationGroupConfiguration;
+        /**
+         * Set operation configuration. See `joinConfigurations` below.
+         */
+        joinConfigurations?: outputs.sls.AlertConfigurationJoinConfiguration[];
+        /**
+         * Label. See `labels` below.
+         */
+        labels?: outputs.sls.AlertConfigurationLabel[];
+        /**
+         * Second-level timestamp representing the temporary shutdown deadline.
+         */
+        muteUntil?: number;
+        /**
+         * Whether no data triggers an alarm. true: If the number of times the query and analysis results (if there are multiple results, the result after the collection operation) is no data exceeds the continuous trigger threshold, an alarm is generated. false (default): Turn off the no data alarm function.
+         */
+        noDataFire: boolean;
+        /**
+         * Alarm severity when no data triggers an alarm.
+         */
+        noDataSeverity?: number;
+        /**
+         * Alert policy configuration. See `policyConfiguration` below.
+         */
+        policyConfiguration?: outputs.sls.AlertConfigurationPolicyConfiguration;
+        /**
+         * Query the statistical list. See `queryList` below.
+         */
+        queryLists?: outputs.sls.AlertConfigurationQueryList[];
+        /**
+         * Whether to send a recovery notification. true: A recovery alarm is triggered when the alarm is restored. false (default): Turn off the alarm recovery notification function.
+         */
+        sendResolved: boolean;
+        /**
+         * Trigger condition, set at least one trigger condition. See `severityConfigurations` below.
+         */
+        severityConfigurations?: outputs.sls.AlertConfigurationSeverityConfiguration[];
+        /**
+         * Configuration of Alerts Sent to Alerthub. See `sinkAlerthub` below.
+         */
+        sinkAlerthub?: outputs.sls.AlertConfigurationSinkAlerthub;
+        /**
+         * Configure alerts sent to CloudMonitor. See `sinkCms` below.
+         */
+        sinkCms?: outputs.sls.AlertConfigurationSinkCms;
+        /**
+         * Configuration of sending alarms to EventStore. See `sinkEventStore` below.
+         */
+        sinkEventStore?: outputs.sls.AlertConfigurationSinkEventStore;
+        /**
+         * Customize the category of alarm monitoring rules.
+         */
+        tags?: string[];
+        /**
+         * Alarm rule template configuration. See `templateConfiguration` below.
+         */
+        templateConfiguration?: outputs.sls.AlertConfigurationTemplateConfiguration;
+        /**
+         * Set the continuous trigger threshold. When the cumulative number of triggers reaches this value, an alarm is generated. The statistics are not counted when the trigger condition is not met.
+         */
+        threshold?: number;
+        /**
+         * Template Type.
+         */
+        type: string;
+        /**
+         * Template Version.
+         */
+        version?: string;
+    }
+
+    export interface AlertConfigurationAnnotation {
+        key?: string;
+        value?: string;
+    }
+
+    export interface AlertConfigurationConditionConfiguration {
+        condition?: string;
+        countCondition?: string;
+    }
+
+    export interface AlertConfigurationGroupConfiguration {
+        fields?: string[];
+        type?: string;
+    }
+
+    export interface AlertConfigurationJoinConfiguration {
+        condition?: string;
+        type?: string;
+    }
+
+    export interface AlertConfigurationLabel {
+        key?: string;
+        value?: string;
+    }
+
+    export interface AlertConfigurationPolicyConfiguration {
+        actionPolicyId?: string;
+        alertPolicyId?: string;
+        repeatInterval?: string;
+    }
+
+    export interface AlertConfigurationQueryList {
+        chartTitle?: string;
+        dashboardId?: string;
+        end?: string;
+        powerSqlMode?: string;
+        project?: string;
+        query?: string;
+        region?: string;
+        roleArn?: string;
+        start?: string;
+        store?: string;
+        storeType?: string;
+        timeSpanType?: string;
+        ui?: string;
+    }
+
+    export interface AlertConfigurationSeverityConfiguration {
+        evalCondition?: outputs.sls.AlertConfigurationSeverityConfigurationEvalCondition;
+        severity?: number;
+    }
+
+    export interface AlertConfigurationSeverityConfigurationEvalCondition {
+        condition?: string;
+        countCondition?: string;
+    }
+
+    export interface AlertConfigurationSinkAlerthub {
+        enabled?: boolean;
+    }
+
+    export interface AlertConfigurationSinkCms {
+        enabled?: boolean;
+    }
+
+    export interface AlertConfigurationSinkEventStore {
+        enabled?: boolean;
+        endpoint?: string;
+        eventStore?: string;
+        project?: string;
+        roleArn?: string;
+    }
+
+    export interface AlertConfigurationTemplateConfiguration {
+        annotations?: {[key: string]: any};
+        lang?: string;
+        templateId?: string;
+        tokens?: {[key: string]: any};
+        type?: string;
+        version?: string;
+    }
+
+    export interface AlertSchedule {
+        /**
+         * Cron expression, the minimum accuracy is minutes, 24 hours. For example, 0 0/1 * * * means that the check is conducted every 1 hour from 00:00. When type is set to Cron, cronExpression must be set.
+         */
+        cronExpression?: string;
+        /**
+         * Timed task execution delay (unit: s).
+         */
+        delay?: number;
+        /**
+         * Fixed interval for scheduling.
+         */
+        interval?: string;
+        /**
+         * Dispatch immediately.
+         */
+        runImmdiately?: boolean;
+        /**
+         * The time zone where the Cron expression is located. The default value is null, indicating the eighth zone in the east.
+         */
+        timeZone?: string;
+        /**
+         * Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows: Fixedate: checks query and analysis results at regular intervals. Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+         */
+        type?: string;
     }
 
 }

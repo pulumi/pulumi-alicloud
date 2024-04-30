@@ -190,14 +190,14 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return this.backupTime;
     }
     /**
-     * The information of the ConfigServer nodes.
+     * The ConfigServer nodes of the instance. See `config_server_list` below.
      * 
      */
     @Export(name="configServerLists", refs={List.class,ShardingInstanceConfigServerList.class}, tree="[0,1]")
     private Output<List<ShardingInstanceConfigServerList>> configServerLists;
 
     /**
-     * @return The information of the ConfigServer nodes.
+     * @return The ConfigServer nodes of the instance. See `config_server_list` below.
      * 
      */
     public Output<List<ShardingInstanceConfigServerList>> configServerLists() {
@@ -260,14 +260,14 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.kmsEncryptionContext);
     }
     /**
-     * The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
+     * The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
      * 
      */
     @Export(name="mongoLists", refs={List.class,ShardingInstanceMongoList.class}, tree="[0,1]")
     private Output<List<ShardingInstanceMongoList>> mongoLists;
 
     /**
-     * @return The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
+     * @return The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
      * 
      */
     public Output<List<ShardingInstanceMongoList>> mongoLists() {
@@ -400,14 +400,14 @@ public class ShardingInstance extends com.pulumi.resources.CustomResource {
         return this.securityIpLists;
     }
     /**
-     * the shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
+     * The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
      * 
      */
     @Export(name="shardLists", refs={List.class,ShardingInstanceShardList.class}, tree="[0,1]")
     private Output<List<ShardingInstanceShardList>> shardLists;
 
     /**
-     * @return the shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
+     * @return The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
      * 
      */
     public Output<List<ShardingInstanceShardList>> shardLists() {

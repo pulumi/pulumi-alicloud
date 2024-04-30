@@ -201,6 +201,20 @@ public class Ipv6EgressRule extends com.pulumi.resources.CustomResource {
         return this.instanceType;
     }
     /**
+     * The ID of the IPv6 EgressRule.
+     * 
+     */
+    @Export(name="ipv6EgressRuleId", refs={String.class}, tree="[0]")
+    private Output<String> ipv6EgressRuleId;
+
+    /**
+     * @return The ID of the IPv6 EgressRule.
+     * 
+     */
+    public Output<String> ipv6EgressRuleId() {
+        return this.ipv6EgressRuleId;
+    }
+    /**
      * The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
      * 
      */

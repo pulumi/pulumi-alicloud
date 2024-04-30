@@ -137,7 +137,7 @@ type EndpointGroup struct {
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion pulumi.StringOutput `pulumi:"endpointGroupRegion"`
 	// The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-	// > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+	// > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
 	EndpointGroupType pulumi.StringOutput `pulumi:"endpointGroupType"`
 	// The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
 	// > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
@@ -150,7 +150,7 @@ type EndpointGroup struct {
 	HealthCheckPath pulumi.StringPtrOutput `pulumi:"healthCheckPath"`
 	// The port that is used for health checks.
 	HealthCheckPort pulumi.IntPtrOutput `pulumi:"healthCheckPort"`
-	// The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+	// The protocol that is used to connect to the targets for health checks. Valid values:
 	HealthCheckProtocol pulumi.StringPtrOutput `pulumi:"healthCheckProtocol"`
 	// The ID of the listener that is associated with the endpoint group.
 	ListenerId pulumi.StringOutput `pulumi:"listenerId"`
@@ -222,7 +222,7 @@ type endpointGroupState struct {
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion *string `pulumi:"endpointGroupRegion"`
 	// The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-	// > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+	// > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
 	EndpointGroupType *string `pulumi:"endpointGroupType"`
 	// The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
 	// > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
@@ -235,7 +235,7 @@ type endpointGroupState struct {
 	HealthCheckPath *string `pulumi:"healthCheckPath"`
 	// The port that is used for health checks.
 	HealthCheckPort *int `pulumi:"healthCheckPort"`
-	// The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+	// The protocol that is used to connect to the targets for health checks. Valid values:
 	HealthCheckProtocol *string `pulumi:"healthCheckProtocol"`
 	// The ID of the listener that is associated with the endpoint group.
 	ListenerId *string `pulumi:"listenerId"`
@@ -266,7 +266,7 @@ type EndpointGroupState struct {
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion pulumi.StringPtrInput
 	// The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-	// > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+	// > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
 	EndpointGroupType pulumi.StringPtrInput
 	// The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
 	// > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
@@ -279,7 +279,7 @@ type EndpointGroupState struct {
 	HealthCheckPath pulumi.StringPtrInput
 	// The port that is used for health checks.
 	HealthCheckPort pulumi.IntPtrInput
-	// The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+	// The protocol that is used to connect to the targets for health checks. Valid values:
 	HealthCheckProtocol pulumi.StringPtrInput
 	// The ID of the listener that is associated with the endpoint group.
 	ListenerId pulumi.StringPtrInput
@@ -312,7 +312,7 @@ type endpointGroupArgs struct {
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion string `pulumi:"endpointGroupRegion"`
 	// The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-	// > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+	// > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
 	EndpointGroupType *string `pulumi:"endpointGroupType"`
 	// The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
 	// > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
@@ -325,7 +325,7 @@ type endpointGroupArgs struct {
 	HealthCheckPath *string `pulumi:"healthCheckPath"`
 	// The port that is used for health checks.
 	HealthCheckPort *int `pulumi:"healthCheckPort"`
-	// The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+	// The protocol that is used to connect to the targets for health checks. Valid values:
 	HealthCheckProtocol *string `pulumi:"healthCheckProtocol"`
 	// The ID of the listener that is associated with the endpoint group.
 	ListenerId string `pulumi:"listenerId"`
@@ -353,7 +353,7 @@ type EndpointGroupArgs struct {
 	// The ID of the region where the endpoint group is deployed.
 	EndpointGroupRegion pulumi.StringInput
 	// The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-	// > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+	// > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
 	EndpointGroupType pulumi.StringPtrInput
 	// The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
 	// > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
@@ -366,7 +366,7 @@ type EndpointGroupArgs struct {
 	HealthCheckPath pulumi.StringPtrInput
 	// The port that is used for health checks.
 	HealthCheckPort pulumi.IntPtrInput
-	// The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+	// The protocol that is used to connect to the targets for health checks. Valid values:
 	HealthCheckProtocol pulumi.StringPtrInput
 	// The ID of the listener that is associated with the endpoint group.
 	ListenerId pulumi.StringInput
@@ -496,7 +496,7 @@ func (o EndpointGroupOutput) EndpointGroupRegion() pulumi.StringOutput {
 }
 
 // The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-// > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+// > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
 func (o EndpointGroupOutput) EndpointGroupType() pulumi.StringOutput {
 	return o.ApplyT(func(v *EndpointGroup) pulumi.StringOutput { return v.EndpointGroupType }).(pulumi.StringOutput)
 }
@@ -527,7 +527,7 @@ func (o EndpointGroupOutput) HealthCheckPort() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *EndpointGroup) pulumi.IntPtrOutput { return v.HealthCheckPort }).(pulumi.IntPtrOutput)
 }
 
-// The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+// The protocol that is used to connect to the targets for health checks. Valid values:
 func (o EndpointGroupOutput) HealthCheckProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EndpointGroup) pulumi.StringPtrOutput { return v.HealthCheckProtocol }).(pulumi.StringPtrOutput)
 }

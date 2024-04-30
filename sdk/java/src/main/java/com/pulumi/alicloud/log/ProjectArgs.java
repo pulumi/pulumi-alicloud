@@ -18,14 +18,14 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     public static final ProjectArgs Empty = new ProjectArgs();
 
     /**
-     * Description of the log project.
+     * Description.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return Description of the log project.
+     * @return Description.
      * 
      */
     public Optional<Output<String>> description() {
@@ -33,24 +33,24 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * . Field &#39;name&#39; has been deprecated from provider version 1.212.0. New field &#39;project_name&#39; instead.
+     * . Field &#39;name&#39; has been deprecated from provider version 1.223.0. New field &#39;project_name&#39; instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.212.0. New field &#39;project_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.223.0. New field &#39;project_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead. */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return . Field &#39;name&#39; has been deprecated from provider version 1.212.0. New field &#39;project_name&#39; instead.
+     * @return . Field &#39;name&#39; has been deprecated from provider version 1.223.0. New field &#39;project_name&#39; instead.
      * 
      * @deprecated
-     * Field &#39;name&#39; has been deprecated since provider version 1.212.0. New field &#39;project_name&#39; instead.
+     * Field &#39;name&#39; has been deprecated since provider version 1.223.0. New field &#39;project_name&#39; instead.
      * 
      */
-    @Deprecated /* Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead. */
+    @Deprecated /* Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead. */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -71,14 +71,22 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the log project. It is the only in one Alicloud account.
+     * The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+     * - The project name must be globally unique.
+     * - The name can contain only lowercase letters, digits, and hyphens (-).
+     * - It must start and end with a lowercase letter or number.
+     * - The value contains 3 to 63 characters.
      * 
      */
     @Import(name="projectName")
     private @Nullable Output<String> projectName;
 
     /**
-     * @return The name of the log project. It is the only in one Alicloud account.
+     * @return The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+     * - The project name must be globally unique.
+     * - The name can contain only lowercase letters, digits, and hyphens (-).
+     * - It must start and end with a lowercase letter or number.
+     * - The value contains 3 to 63 characters.
      * 
      */
     public Optional<Output<String>> projectName() {
@@ -149,7 +157,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the log project.
+         * @param description Description.
          * 
          * @return builder
          * 
@@ -160,7 +168,7 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description Description of the log project.
+         * @param description Description.
          * 
          * @return builder
          * 
@@ -170,30 +178,30 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.212.0. New field &#39;project_name&#39; instead.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.223.0. New field &#39;project_name&#39; instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated since provider version 1.212.0. New field &#39;project_name&#39; instead.
+         * Field &#39;name&#39; has been deprecated since provider version 1.223.0. New field &#39;project_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead. */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead. */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
         /**
-         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.212.0. New field &#39;project_name&#39; instead.
+         * @param name . Field &#39;name&#39; has been deprecated from provider version 1.223.0. New field &#39;project_name&#39; instead.
          * 
          * @return builder
          * 
          * @deprecated
-         * Field &#39;name&#39; has been deprecated since provider version 1.212.0. New field &#39;project_name&#39; instead.
+         * Field &#39;name&#39; has been deprecated since provider version 1.223.0. New field &#39;project_name&#39; instead.
          * 
          */
-        @Deprecated /* Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead. */
+        @Deprecated /* Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead. */
         public Builder name(String name) {
             return name(Output.of(name));
         }
@@ -220,7 +228,11 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName The name of the log project. It is the only in one Alicloud account.
+         * @param projectName The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+         * - The project name must be globally unique.
+         * - The name can contain only lowercase letters, digits, and hyphens (-).
+         * - It must start and end with a lowercase letter or number.
+         * - The value contains 3 to 63 characters.
          * 
          * @return builder
          * 
@@ -231,7 +243,11 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectName The name of the log project. It is the only in one Alicloud account.
+         * @param projectName The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+         * - The project name must be globally unique.
+         * - The name can contain only lowercase letters, digits, and hyphens (-).
+         * - It must start and end with a lowercase letter or number.
+         * - The value contains 3 to 63 characters.
          * 
          * @return builder
          * 

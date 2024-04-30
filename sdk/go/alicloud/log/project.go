@@ -136,15 +136,19 @@ type Project struct {
 
 	// CreateTime.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// Description of the log project.
+	// Description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+	// . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Log project policy, used to set a policy for a project.
 	Policy pulumi.StringPtrOutput `pulumi:"policy"`
-	// The name of the log project. It is the only in one Alicloud account.
+	// The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+	// - The project name must be globally unique.
+	// - The name can contain only lowercase letters, digits, and hyphens (-).
+	// - It must start and end with a lowercase letter or number.
+	// - The value contains 3 to 63 characters.
 	ProjectName pulumi.StringOutput `pulumi:"projectName"`
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringOutput `pulumi:"resourceGroupId"`
@@ -188,15 +192,19 @@ func GetProject(ctx *pulumi.Context,
 type projectState struct {
 	// CreateTime.
 	CreateTime *string `pulumi:"createTime"`
-	// Description of the log project.
+	// Description.
 	Description *string `pulumi:"description"`
-	// . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+	// . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead.
 	Name *string `pulumi:"name"`
 	// Log project policy, used to set a policy for a project.
 	Policy *string `pulumi:"policy"`
-	// The name of the log project. It is the only in one Alicloud account.
+	// The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+	// - The project name must be globally unique.
+	// - The name can contain only lowercase letters, digits, and hyphens (-).
+	// - It must start and end with a lowercase letter or number.
+	// - The value contains 3 to 63 characters.
 	ProjectName *string `pulumi:"projectName"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -211,15 +219,19 @@ type projectState struct {
 type ProjectState struct {
 	// CreateTime.
 	CreateTime pulumi.StringPtrInput
-	// Description of the log project.
+	// Description.
 	Description pulumi.StringPtrInput
-	// . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+	// . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead.
 	Name pulumi.StringPtrInput
 	// Log project policy, used to set a policy for a project.
 	Policy pulumi.StringPtrInput
-	// The name of the log project. It is the only in one Alicloud account.
+	// The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+	// - The project name must be globally unique.
+	// - The name can contain only lowercase letters, digits, and hyphens (-).
+	// - It must start and end with a lowercase letter or number.
+	// - The value contains 3 to 63 characters.
 	ProjectName pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
@@ -236,15 +248,19 @@ func (ProjectState) ElementType() reflect.Type {
 }
 
 type projectArgs struct {
-	// Description of the log project.
+	// Description.
 	Description *string `pulumi:"description"`
-	// . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+	// . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead.
 	Name *string `pulumi:"name"`
 	// Log project policy, used to set a policy for a project.
 	Policy *string `pulumi:"policy"`
-	// The name of the log project. It is the only in one Alicloud account.
+	// The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+	// - The project name must be globally unique.
+	// - The name can contain only lowercase letters, digits, and hyphens (-).
+	// - It must start and end with a lowercase letter or number.
+	// - The value contains 3 to 63 characters.
 	ProjectName *string `pulumi:"projectName"`
 	// The ID of the resource group.
 	ResourceGroupId *string `pulumi:"resourceGroupId"`
@@ -256,15 +272,19 @@ type projectArgs struct {
 
 // The set of arguments for constructing a Project resource.
 type ProjectArgs struct {
-	// Description of the log project.
+	// Description.
 	Description pulumi.StringPtrInput
-	// . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+	// . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
 	//
-	// Deprecated: Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.
+	// Deprecated: Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead.
 	Name pulumi.StringPtrInput
 	// Log project policy, used to set a policy for a project.
 	Policy pulumi.StringPtrInput
-	// The name of the log project. It is the only in one Alicloud account.
+	// The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+	// - The project name must be globally unique.
+	// - The name can contain only lowercase letters, digits, and hyphens (-).
+	// - It must start and end with a lowercase letter or number.
+	// - The value contains 3 to 63 characters.
 	ProjectName pulumi.StringPtrInput
 	// The ID of the resource group.
 	ResourceGroupId pulumi.StringPtrInput
@@ -366,14 +386,14 @@ func (o ProjectOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Description of the log project.
+// Description.
 func (o ProjectOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+// . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
 //
-// Deprecated: Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.
+// Deprecated: Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead.
 func (o ProjectOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -383,7 +403,11 @@ func (o ProjectOutput) Policy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.Policy }).(pulumi.StringPtrOutput)
 }
 
-// The name of the log project. It is the only in one Alicloud account.
+// The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+// - The project name must be globally unique.
+// - The name can contain only lowercase letters, digits, and hyphens (-).
+// - It must start and end with a lowercase letter or number.
+// - The value contains 3 to 63 characters.
 func (o ProjectOutput) ProjectName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ProjectName }).(pulumi.StringOutput)
 }

@@ -255,6 +255,8 @@ if typing.TYPE_CHECKING:
     simpleapplicationserver = __simpleapplicationserver
     import pulumi_alicloud.slb as __slb
     slb = __slb
+    import pulumi_alicloud.sls as __sls
+    sls = __sls
     import pulumi_alicloud.sms as __sms
     sms = __sms
     import pulumi_alicloud.tag as __tag
@@ -394,6 +396,7 @@ else:
     servicemesh = _utilities.lazy_import('pulumi_alicloud.servicemesh')
     simpleapplicationserver = _utilities.lazy_import('pulumi_alicloud.simpleapplicationserver')
     slb = _utilities.lazy_import('pulumi_alicloud.slb')
+    sls = _utilities.lazy_import('pulumi_alicloud.sls')
     sms = _utilities.lazy_import('pulumi_alicloud.sms')
     tag = _utilities.lazy_import('pulumi_alicloud.tag')
     threatdetection = _utilities.lazy_import('pulumi_alicloud.threatdetection')
@@ -5035,6 +5038,14 @@ _utilities.register(
  },
  {
   "pkg": "alicloud",
+  "mod": "oss/bucketCors",
+  "fqn": "pulumi_alicloud.oss",
+  "classes": {
+   "alicloud:oss/bucketCors:BucketCors": "BucketCors"
+  }
+ },
+ {
+  "pkg": "alicloud",
   "mod": "oss/bucketHttpsConfig",
   "fqn": "pulumi_alicloud.oss",
   "classes": {
@@ -6335,6 +6346,14 @@ _utilities.register(
   "fqn": "pulumi_alicloud.slb",
   "classes": {
    "alicloud:slb/tlsCipherPolicy:TlsCipherPolicy": "TlsCipherPolicy"
+  }
+ },
+ {
+  "pkg": "alicloud",
+  "mod": "sls/alert",
+  "fqn": "pulumi_alicloud.sls",
+  "classes": {
+   "alicloud:sls/alert:Alert": "Alert"
   }
  },
  {

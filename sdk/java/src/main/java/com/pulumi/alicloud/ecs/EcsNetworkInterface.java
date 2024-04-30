@@ -134,6 +134,20 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
+     * The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
+     * 
+     */
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
+    private Output<String> instanceType;
+
+    /**
+     * @return The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
+     * 
+     */
+    public Output<String> instanceType() {
+        return this.instanceType;
+    }
+    /**
      * The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
      * 
      */
@@ -234,6 +248,20 @@ public class EcsNetworkInterface extends com.pulumi.resources.CustomResource {
      */
     public Output<String> networkInterfaceName() {
         return this.networkInterfaceName;
+    }
+    /**
+     * The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
+     * 
+     */
+    @Export(name="networkInterfaceTrafficMode", refs={String.class}, tree="[0]")
+    private Output<String> networkInterfaceTrafficMode;
+
+    /**
+     * @return The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
+     * 
+     */
+    public Output<String> networkInterfaceTrafficMode() {
+        return this.networkInterfaceTrafficMode;
     }
     /**
      * The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.

@@ -7,6 +7,7 @@ import typing
 # Export this package's modules as members:
 from .bucket import *
 from .bucket_acl import *
+from .bucket_cors import *
 from .bucket_https_config import *
 from .bucket_logging import *
 from .bucket_object import *

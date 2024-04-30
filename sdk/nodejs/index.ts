@@ -188,6 +188,7 @@ import * as servicecatalog from "./servicecatalog";
 import * as servicemesh from "./servicemesh";
 import * as simpleapplicationserver from "./simpleapplicationserver";
 import * as slb from "./slb";
+import * as sls from "./sls";
 import * as sms from "./sms";
 import * as tag from "./tag";
 import * as threatdetection from "./threatdetection";
@@ -318,6 +319,7 @@ export {
     servicemesh,
     simpleapplicationserver,
     slb,
+    sls,
     sms,
     tag,
     threatdetection,

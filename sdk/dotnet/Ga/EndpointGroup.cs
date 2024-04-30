@@ -142,7 +142,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-        /// &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+        /// &gt; **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
         /// </summary>
         [Output("endpointGroupType")]
         public Output<string> EndpointGroupType { get; private set; } = null!;
@@ -179,7 +179,7 @@ namespace Pulumi.AliCloud.Ga
         public Output<int?> HealthCheckPort { get; private set; } = null!;
 
         /// <summary>
-        /// The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+        /// The protocol that is used to connect to the targets for health checks. Valid values:
         /// </summary>
         [Output("healthCheckProtocol")]
         public Output<string?> HealthCheckProtocol { get; private set; } = null!;
@@ -305,7 +305,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-        /// &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+        /// &gt; **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
         /// </summary>
         [Input("endpointGroupType")]
         public Input<string>? EndpointGroupType { get; set; }
@@ -342,7 +342,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<int>? HealthCheckPort { get; set; }
 
         /// <summary>
-        /// The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+        /// The protocol that is used to connect to the targets for health checks. Valid values:
         /// </summary>
         [Input("healthCheckProtocol")]
         public Input<string>? HealthCheckProtocol { get; set; }
@@ -442,7 +442,7 @@ namespace Pulumi.AliCloud.Ga
 
         /// <summary>
         /// The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-        /// &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+        /// &gt; **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
         /// </summary>
         [Input("endpointGroupType")]
         public Input<string>? EndpointGroupType { get; set; }
@@ -479,7 +479,7 @@ namespace Pulumi.AliCloud.Ga
         public Input<int>? HealthCheckPort { get; set; }
 
         /// <summary>
-        /// The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+        /// The protocol that is used to connect to the targets for health checks. Valid values:
         /// </summary>
         [Input("healthCheckProtocol")]
         public Input<string>? HealthCheckProtocol { get; set; }

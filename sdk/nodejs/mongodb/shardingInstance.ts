@@ -126,9 +126,9 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly backupTime!: pulumi.Output<string>;
     /**
-     * The information of the ConfigServer nodes.
+     * The ConfigServer nodes of the instance. See `configServerList` below.
      */
-    public /*out*/ readonly configServerLists!: pulumi.Output<outputs.mongodb.ShardingInstanceConfigServerList[]>;
+    public readonly configServerLists!: pulumi.Output<outputs.mongodb.ShardingInstanceConfigServerList[]>;
     /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
      */
@@ -146,7 +146,7 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly kmsEncryptionContext!: pulumi.Output<{[key: string]: any} | undefined>;
     /**
-     * The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
+     * The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
      */
     public readonly mongoLists!: pulumi.Output<outputs.mongodb.ShardingInstanceMongoList[]>;
     /**
@@ -186,7 +186,7 @@ export class ShardingInstance extends pulumi.CustomResource {
      */
     public readonly securityIpLists!: pulumi.Output<string[]>;
     /**
-     * the shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
+     * The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
      */
     public readonly shardLists!: pulumi.Output<outputs.mongodb.ShardingInstanceShardList[]>;
     /**
@@ -269,6 +269,7 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
             resourceInputs["backupPeriods"] = args ? args.backupPeriods : undefined;
             resourceInputs["backupTime"] = args ? args.backupTime : undefined;
+            resourceInputs["configServerLists"] = args ? args.configServerLists : undefined;
             resourceInputs["engineVersion"] = args ? args.engineVersion : undefined;
             resourceInputs["instanceChargeType"] = args ? args.instanceChargeType : undefined;
             resourceInputs["kmsEncryptedPassword"] = args ? args.kmsEncryptedPassword : undefined;
@@ -289,7 +290,6 @@ export class ShardingInstance extends pulumi.CustomResource {
             resourceInputs["vpcId"] = args ? args.vpcId : undefined;
             resourceInputs["vswitchId"] = args ? args.vswitchId : undefined;
             resourceInputs["zoneId"] = args ? args.zoneId : undefined;
-            resourceInputs["configServerLists"] = undefined /*out*/;
             resourceInputs["retentionPeriod"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -320,7 +320,7 @@ export interface ShardingInstanceState {
      */
     backupTime?: pulumi.Input<string>;
     /**
-     * The information of the ConfigServer nodes.
+     * The ConfigServer nodes of the instance. See `configServerList` below.
      */
     configServerLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceConfigServerList>[]>;
     /**
@@ -340,7 +340,7 @@ export interface ShardingInstanceState {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
+     * The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
      */
     mongoLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceMongoList>[]>;
     /**
@@ -380,7 +380,7 @@ export interface ShardingInstanceState {
      */
     securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * the shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
+     * The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
      */
     shardLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceShardList>[]>;
     /**
@@ -431,6 +431,10 @@ export interface ShardingInstanceArgs {
      */
     backupTime?: pulumi.Input<string>;
     /**
+     * The ConfigServer nodes of the instance. See `configServerList` below.
+     */
+    configServerLists?: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceConfigServerList>[]>;
+    /**
      * Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
      */
     engineVersion: pulumi.Input<string>;
@@ -447,7 +451,7 @@ export interface ShardingInstanceArgs {
      */
     kmsEncryptionContext?: pulumi.Input<{[key: string]: any}>;
     /**
-     * The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
+     * The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongoList` below.
      */
     mongoLists: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceMongoList>[]>;
     /**
@@ -483,7 +487,7 @@ export interface ShardingInstanceArgs {
      */
     securityIpLists?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * the shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
+     * The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shardList` below.
      */
     shardLists: pulumi.Input<pulumi.Input<inputs.mongodb.ShardingInstanceShardList>[]>;
     /**

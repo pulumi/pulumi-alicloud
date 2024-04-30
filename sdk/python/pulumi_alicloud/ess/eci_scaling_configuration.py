@@ -38,6 +38,7 @@ class EciScalingConfigurationArgs:
                  image_snapshot_id: Optional[pulumi.Input[str]] = None,
                  ingress_bandwidth: Optional[pulumi.Input[int]] = None,
                  init_containers: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerArgs']]]] = None,
+                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  load_balancer_weight: Optional[pulumi.Input[int]] = None,
                  memory: Optional[pulumi.Input[float]] = None,
@@ -80,6 +81,7 @@ class EciScalingConfigurationArgs:
         :param pulumi.Input[str] image_snapshot_id: The ID of image cache.
         :param pulumi.Input[int] ingress_bandwidth: Ingress bandwidth.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerArgs']]] init_containers: The list of initContainers. See `init_containers` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: The specified ECS instance types. You can specify up to five ECS instance types.
         :param pulumi.Input[int] ipv6_address_count: Number of IPv6 addresses.
         :param pulumi.Input[int] load_balancer_weight: The weight of an ECI instance attached to the Server Group.
         :param pulumi.Input[float] memory: The amount of memory resources allocated to the container group.
@@ -146,6 +148,8 @@ class EciScalingConfigurationArgs:
             pulumi.set(__self__, "ingress_bandwidth", ingress_bandwidth)
         if init_containers is not None:
             pulumi.set(__self__, "init_containers", init_containers)
+        if instance_types is not None:
+            pulumi.set(__self__, "instance_types", instance_types)
         if ipv6_address_count is not None:
             pulumi.set(__self__, "ipv6_address_count", ipv6_address_count)
         if load_balancer_weight is not None:
@@ -443,6 +447,18 @@ class EciScalingConfigurationArgs:
         pulumi.set(self, "init_containers", value)
 
     @property
+    @pulumi.getter(name="instanceTypes")
+    def instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The specified ECS instance types. You can specify up to five ECS instance types.
+        """
+        return pulumi.get(self, "instance_types")
+
+    @instance_types.setter
+    def instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "instance_types", value)
+
+    @property
     @pulumi.getter(name="ipv6AddressCount")
     def ipv6_address_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -632,6 +648,7 @@ class _EciScalingConfigurationState:
                  image_snapshot_id: Optional[pulumi.Input[str]] = None,
                  ingress_bandwidth: Optional[pulumi.Input[int]] = None,
                  init_containers: Optional[pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerArgs']]]] = None,
+                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  load_balancer_weight: Optional[pulumi.Input[int]] = None,
                  memory: Optional[pulumi.Input[float]] = None,
@@ -674,6 +691,7 @@ class _EciScalingConfigurationState:
         :param pulumi.Input[str] image_snapshot_id: The ID of image cache.
         :param pulumi.Input[int] ingress_bandwidth: Ingress bandwidth.
         :param pulumi.Input[Sequence[pulumi.Input['EciScalingConfigurationInitContainerArgs']]] init_containers: The list of initContainers. See `init_containers` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: The specified ECS instance types. You can specify up to five ECS instance types.
         :param pulumi.Input[int] ipv6_address_count: Number of IPv6 addresses.
         :param pulumi.Input[int] load_balancer_weight: The weight of an ECI instance attached to the Server Group.
         :param pulumi.Input[float] memory: The amount of memory resources allocated to the container group.
@@ -740,6 +758,8 @@ class _EciScalingConfigurationState:
             pulumi.set(__self__, "ingress_bandwidth", ingress_bandwidth)
         if init_containers is not None:
             pulumi.set(__self__, "init_containers", init_containers)
+        if instance_types is not None:
+            pulumi.set(__self__, "instance_types", instance_types)
         if ipv6_address_count is not None:
             pulumi.set(__self__, "ipv6_address_count", ipv6_address_count)
         if load_balancer_weight is not None:
@@ -1027,6 +1047,18 @@ class _EciScalingConfigurationState:
         pulumi.set(self, "init_containers", value)
 
     @property
+    @pulumi.getter(name="instanceTypes")
+    def instance_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The specified ECS instance types. You can specify up to five ECS instance types.
+        """
+        return pulumi.get(self, "instance_types")
+
+    @instance_types.setter
+    def instance_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "instance_types", value)
+
+    @property
     @pulumi.getter(name="ipv6AddressCount")
     def ipv6_address_count(self) -> Optional[pulumi.Input[int]]:
         """
@@ -1230,6 +1262,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
                  image_snapshot_id: Optional[pulumi.Input[str]] = None,
                  ingress_bandwidth: Optional[pulumi.Input[int]] = None,
                  init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationInitContainerArgs']]]]] = None,
+                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  load_balancer_weight: Optional[pulumi.Input[int]] = None,
                  memory: Optional[pulumi.Input[float]] = None,
@@ -1342,6 +1375,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] image_snapshot_id: The ID of image cache.
         :param pulumi.Input[int] ingress_bandwidth: Ingress bandwidth.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationInitContainerArgs']]]] init_containers: The list of initContainers. See `init_containers` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: The specified ECS instance types. You can specify up to five ECS instance types.
         :param pulumi.Input[int] ipv6_address_count: Number of IPv6 addresses.
         :param pulumi.Input[int] load_balancer_weight: The weight of an ECI instance attached to the Server Group.
         :param pulumi.Input[float] memory: The amount of memory resources allocated to the container group.
@@ -1477,6 +1511,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
                  image_snapshot_id: Optional[pulumi.Input[str]] = None,
                  ingress_bandwidth: Optional[pulumi.Input[int]] = None,
                  init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationInitContainerArgs']]]]] = None,
+                 instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  load_balancer_weight: Optional[pulumi.Input[int]] = None,
                  memory: Optional[pulumi.Input[float]] = None,
@@ -1521,6 +1556,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
             __props__.__dict__["image_snapshot_id"] = image_snapshot_id
             __props__.__dict__["ingress_bandwidth"] = ingress_bandwidth
             __props__.__dict__["init_containers"] = init_containers
+            __props__.__dict__["instance_types"] = instance_types
             __props__.__dict__["ipv6_address_count"] = ipv6_address_count
             __props__.__dict__["load_balancer_weight"] = load_balancer_weight
             __props__.__dict__["memory"] = memory
@@ -1568,6 +1604,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
             image_snapshot_id: Optional[pulumi.Input[str]] = None,
             ingress_bandwidth: Optional[pulumi.Input[int]] = None,
             init_containers: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationInitContainerArgs']]]]] = None,
+            instance_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ipv6_address_count: Optional[pulumi.Input[int]] = None,
             load_balancer_weight: Optional[pulumi.Input[int]] = None,
             memory: Optional[pulumi.Input[float]] = None,
@@ -1615,6 +1652,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
         :param pulumi.Input[str] image_snapshot_id: The ID of image cache.
         :param pulumi.Input[int] ingress_bandwidth: Ingress bandwidth.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EciScalingConfigurationInitContainerArgs']]]] init_containers: The list of initContainers. See `init_containers` below for details.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] instance_types: The specified ECS instance types. You can specify up to five ECS instance types.
         :param pulumi.Input[int] ipv6_address_count: Number of IPv6 addresses.
         :param pulumi.Input[int] load_balancer_weight: The weight of an ECI instance attached to the Server Group.
         :param pulumi.Input[float] memory: The amount of memory resources allocated to the container group.
@@ -1664,6 +1702,7 @@ class EciScalingConfiguration(pulumi.CustomResource):
         __props__.__dict__["image_snapshot_id"] = image_snapshot_id
         __props__.__dict__["ingress_bandwidth"] = ingress_bandwidth
         __props__.__dict__["init_containers"] = init_containers
+        __props__.__dict__["instance_types"] = instance_types
         __props__.__dict__["ipv6_address_count"] = ipv6_address_count
         __props__.__dict__["load_balancer_weight"] = load_balancer_weight
         __props__.__dict__["memory"] = memory
@@ -1852,6 +1891,14 @@ class EciScalingConfiguration(pulumi.CustomResource):
         The list of initContainers. See `init_containers` below for details.
         """
         return pulumi.get(self, "init_containers")
+
+    @property
+    @pulumi.getter(name="instanceTypes")
+    def instance_types(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The specified ECS instance types. You can specify up to five ECS instance types.
+        """
+        return pulumi.get(self, "instance_types")
 
     @property
     @pulumi.getter(name="ipv6AddressCount")
