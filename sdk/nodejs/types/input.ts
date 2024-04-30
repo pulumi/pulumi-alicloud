@@ -7985,7 +7985,7 @@ export namespace mongodb {
          */
         maxIops?: pulumi.Input<number>;
         /**
-         * The node class of the Config Server node.
+         * The instance type of the ConfigServer node. Valid values: `mdb.shard.2x.xlarge.d`, `dds.cs.mid`.
          */
         nodeClass?: pulumi.Input<string>;
         /**
@@ -7997,7 +7997,7 @@ export namespace mongodb {
          */
         nodeId?: pulumi.Input<string>;
         /**
-         * The node storage of the Config Server node.
+         * The storage space of the ConfigServer node.
          */
         nodeStorage?: pulumi.Input<number>;
         /**
@@ -8352,6 +8352,29 @@ export namespace oss {
          * The access monitor state of a bucket. If you want to manage objects based on the last access time of the objects, specifies the status to `Enabled`. Valid values: `Enabled` and `Disabled`.
          */
         status?: pulumi.Input<string>;
+    }
+
+    export interface BucketCorsCorsRule {
+        /**
+         * Specifies whether the headers specified by Access-Control-Request-Headers in the OPTIONS preflight request are allowed. You can use only one asterisk (*) as the wildcard for allowed header. .
+         */
+        allowedHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The cross-origin request method that is allowed. Valid values: GET, PUT, DELETE, POST, and HEAD.
+         */
+        allowedMethods: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The origins from which cross-origin requests are allowed. .
+         */
+        allowedOrigins?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The response headers for allowed access requests from applications, such as an XMLHttpRequest object in JavaScript. .
+         */
+        exposeHeaders?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The period of time within which the browser can cache the response to an OPTIONS preflight request for the specified resource. Unit: seconds.
+         */
+        maxAgeSeconds?: pulumi.Input<number>;
     }
 
     export interface BucketCorsRule {
@@ -10518,6 +10541,208 @@ export namespace slb {
          * Weight of the backend server. Valid value range: [0-100]. Default to 100.
          */
         weight?: pulumi.Input<number>;
+    }
+}
+
+export namespace sls {
+    export interface AlertConfiguration {
+        /**
+         * Template Annotations.
+         */
+        annotations?: pulumi.Input<pulumi.Input<inputs.sls.AlertConfigurationAnnotation>[]>;
+        /**
+         * Whether to turn on automatic labeling. true (default): The automatic annotation function is enabled, and the system automatically adds information such as__county__to the alarm. For more information, see Automatic Labeling. false: Turn off the automatic annotation function.
+         */
+        autoAnnotation?: pulumi.Input<boolean>;
+        /**
+         * Alarm trigger condition. See `conditionConfiguration` below.
+         */
+        conditionConfiguration?: pulumi.Input<inputs.sls.AlertConfigurationConditionConfiguration>;
+        /**
+         * The instrument cluster associated with the alarm. It is recommended to set to internal-alert-analysis.
+         */
+        dashboard?: pulumi.Input<string>;
+        /**
+         * Group evaluation configuration. See `groupConfiguration` below.
+         */
+        groupConfiguration?: pulumi.Input<inputs.sls.AlertConfigurationGroupConfiguration>;
+        /**
+         * Set operation configuration. See `joinConfigurations` below.
+         */
+        joinConfigurations?: pulumi.Input<pulumi.Input<inputs.sls.AlertConfigurationJoinConfiguration>[]>;
+        /**
+         * Label. See `labels` below.
+         */
+        labels?: pulumi.Input<pulumi.Input<inputs.sls.AlertConfigurationLabel>[]>;
+        /**
+         * Second-level timestamp representing the temporary shutdown deadline.
+         */
+        muteUntil?: pulumi.Input<number>;
+        /**
+         * Whether no data triggers an alarm. true: If the number of times the query and analysis results (if there are multiple results, the result after the collection operation) is no data exceeds the continuous trigger threshold, an alarm is generated. false (default): Turn off the no data alarm function.
+         */
+        noDataFire?: pulumi.Input<boolean>;
+        /**
+         * Alarm severity when no data triggers an alarm.
+         */
+        noDataSeverity?: pulumi.Input<number>;
+        /**
+         * Alert policy configuration. See `policyConfiguration` below.
+         */
+        policyConfiguration?: pulumi.Input<inputs.sls.AlertConfigurationPolicyConfiguration>;
+        /**
+         * Query the statistical list. See `queryList` below.
+         */
+        queryLists?: pulumi.Input<pulumi.Input<inputs.sls.AlertConfigurationQueryList>[]>;
+        /**
+         * Whether to send a recovery notification. true: A recovery alarm is triggered when the alarm is restored. false (default): Turn off the alarm recovery notification function.
+         */
+        sendResolved?: pulumi.Input<boolean>;
+        /**
+         * Trigger condition, set at least one trigger condition. See `severityConfigurations` below.
+         */
+        severityConfigurations?: pulumi.Input<pulumi.Input<inputs.sls.AlertConfigurationSeverityConfiguration>[]>;
+        /**
+         * Configuration of Alerts Sent to Alerthub. See `sinkAlerthub` below.
+         */
+        sinkAlerthub?: pulumi.Input<inputs.sls.AlertConfigurationSinkAlerthub>;
+        /**
+         * Configure alerts sent to CloudMonitor. See `sinkCms` below.
+         */
+        sinkCms?: pulumi.Input<inputs.sls.AlertConfigurationSinkCms>;
+        /**
+         * Configuration of sending alarms to EventStore. See `sinkEventStore` below.
+         */
+        sinkEventStore?: pulumi.Input<inputs.sls.AlertConfigurationSinkEventStore>;
+        /**
+         * Customize the category of alarm monitoring rules.
+         */
+        tags?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Alarm rule template configuration. See `templateConfiguration` below.
+         */
+        templateConfiguration?: pulumi.Input<inputs.sls.AlertConfigurationTemplateConfiguration>;
+        /**
+         * Set the continuous trigger threshold. When the cumulative number of triggers reaches this value, an alarm is generated. The statistics are not counted when the trigger condition is not met.
+         */
+        threshold?: pulumi.Input<number>;
+        /**
+         * Template Type.
+         */
+        type?: pulumi.Input<string>;
+        /**
+         * Template Version.
+         */
+        version?: pulumi.Input<string>;
+    }
+
+    export interface AlertConfigurationAnnotation {
+        key?: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
+    export interface AlertConfigurationConditionConfiguration {
+        condition?: pulumi.Input<string>;
+        countCondition?: pulumi.Input<string>;
+    }
+
+    export interface AlertConfigurationGroupConfiguration {
+        fields?: pulumi.Input<pulumi.Input<string>[]>;
+        type?: pulumi.Input<string>;
+    }
+
+    export interface AlertConfigurationJoinConfiguration {
+        condition?: pulumi.Input<string>;
+        type?: pulumi.Input<string>;
+    }
+
+    export interface AlertConfigurationLabel {
+        key?: pulumi.Input<string>;
+        value?: pulumi.Input<string>;
+    }
+
+    export interface AlertConfigurationPolicyConfiguration {
+        actionPolicyId?: pulumi.Input<string>;
+        alertPolicyId?: pulumi.Input<string>;
+        repeatInterval?: pulumi.Input<string>;
+    }
+
+    export interface AlertConfigurationQueryList {
+        chartTitle?: pulumi.Input<string>;
+        dashboardId?: pulumi.Input<string>;
+        end?: pulumi.Input<string>;
+        powerSqlMode?: pulumi.Input<string>;
+        project?: pulumi.Input<string>;
+        query?: pulumi.Input<string>;
+        region?: pulumi.Input<string>;
+        roleArn?: pulumi.Input<string>;
+        start?: pulumi.Input<string>;
+        store?: pulumi.Input<string>;
+        storeType?: pulumi.Input<string>;
+        timeSpanType?: pulumi.Input<string>;
+        ui?: pulumi.Input<string>;
+    }
+
+    export interface AlertConfigurationSeverityConfiguration {
+        evalCondition?: pulumi.Input<inputs.sls.AlertConfigurationSeverityConfigurationEvalCondition>;
+        severity?: pulumi.Input<number>;
+    }
+
+    export interface AlertConfigurationSeverityConfigurationEvalCondition {
+        condition?: pulumi.Input<string>;
+        countCondition?: pulumi.Input<string>;
+    }
+
+    export interface AlertConfigurationSinkAlerthub {
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface AlertConfigurationSinkCms {
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface AlertConfigurationSinkEventStore {
+        enabled?: pulumi.Input<boolean>;
+        endpoint?: pulumi.Input<string>;
+        eventStore?: pulumi.Input<string>;
+        project?: pulumi.Input<string>;
+        roleArn?: pulumi.Input<string>;
+    }
+
+    export interface AlertConfigurationTemplateConfiguration {
+        annotations?: pulumi.Input<{[key: string]: any}>;
+        lang?: pulumi.Input<string>;
+        templateId?: pulumi.Input<string>;
+        tokens?: pulumi.Input<{[key: string]: any}>;
+        type?: pulumi.Input<string>;
+        version?: pulumi.Input<string>;
+    }
+
+    export interface AlertSchedule {
+        /**
+         * Cron expression, the minimum accuracy is minutes, 24 hours. For example, 0 0/1 * * * means that the check is conducted every 1 hour from 00:00. When type is set to Cron, cronExpression must be set.
+         */
+        cronExpression?: pulumi.Input<string>;
+        /**
+         * Timed task execution delay (unit: s).
+         */
+        delay?: pulumi.Input<number>;
+        /**
+         * Fixed interval for scheduling.
+         */
+        interval?: pulumi.Input<string>;
+        /**
+         * Dispatch immediately.
+         */
+        runImmdiately?: pulumi.Input<boolean>;
+        /**
+         * The time zone where the Cron expression is located. The default value is null, indicating the eighth zone in the east.
+         */
+        timeZone?: pulumi.Input<string>;
+        /**
+         * Check the frequency type. Log Service checks the query and analysis results according to the frequency you configured. The values are as follows: Fixedate: checks query and analysis results at regular intervals. Cron: specifies the time interval by using the Cron expression, and checks the query and analysis results at the specified time interval.
+         */
+        type?: pulumi.Input<string>;
     }
 }
 

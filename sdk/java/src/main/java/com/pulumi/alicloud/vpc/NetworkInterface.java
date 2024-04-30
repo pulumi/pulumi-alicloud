@@ -120,6 +120,12 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
     public Output<Optional<String>> description() {
         return Codegen.optional(this.description);
     }
+    @Export(name="instanceType", refs={String.class}, tree="[0]")
+    private Output<String> instanceType;
+
+    public Output<String> instanceType() {
+        return this.instanceType;
+    }
     @Export(name="ipv4PrefixCount", refs={Integer.class}, tree="[0]")
     private Output<Integer> ipv4PrefixCount;
 
@@ -181,6 +187,12 @@ public class NetworkInterface extends com.pulumi.resources.CustomResource {
 
     public Output<String> networkInterfaceName() {
         return this.networkInterfaceName;
+    }
+    @Export(name="networkInterfaceTrafficMode", refs={String.class}, tree="[0]")
+    private Output<String> networkInterfaceTrafficMode;
+
+    public Output<String> networkInterfaceTrafficMode() {
+        return this.networkInterfaceTrafficMode;
     }
     @Export(name="primaryIpAddress", refs={String.class}, tree="[0]")
     private Output<String> primaryIpAddress;

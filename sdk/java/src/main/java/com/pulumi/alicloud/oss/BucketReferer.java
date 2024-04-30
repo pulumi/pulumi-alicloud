@@ -40,6 +40,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.alicloud.oss.BucketArgs;
  * import com.pulumi.alicloud.oss.BucketReferer;
  * import com.pulumi.alicloud.oss.BucketRefererArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -74,7 +75,9 @@ import javax.annotation.Nullable;
  *             .refererLists(            
  *                 &#34;*.aliyun.com&#34;,
  *                 &#34;*.example.com&#34;)
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(createBucket)
+ *                 .build());
  * 
  *     }
  * }

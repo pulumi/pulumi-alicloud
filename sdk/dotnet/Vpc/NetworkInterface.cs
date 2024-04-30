@@ -87,6 +87,9 @@ namespace Pulumi.AliCloud.Vpc
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
 
+        [Output("instanceType")]
+        public Output<string> InstanceType { get; private set; } = null!;
+
         [Output("ipv4PrefixCount")]
         public Output<int> Ipv4PrefixCount { get; private set; } = null!;
 
@@ -113,6 +116,9 @@ namespace Pulumi.AliCloud.Vpc
 
         [Output("networkInterfaceName")]
         public Output<string> NetworkInterfaceName { get; private set; } = null!;
+
+        [Output("networkInterfaceTrafficMode")]
+        public Output<string> NetworkInterfaceTrafficMode { get; private set; } = null!;
 
         [Output("primaryIpAddress")]
         public Output<string> PrimaryIpAddress { get; private set; } = null!;
@@ -226,6 +232,9 @@ namespace Pulumi.AliCloud.Vpc
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
         [Input("ipv4PrefixCount")]
         public Input<int>? Ipv4PrefixCount { get; set; }
 
@@ -256,6 +265,9 @@ namespace Pulumi.AliCloud.Vpc
 
         [Input("networkInterfaceName")]
         public Input<string>? NetworkInterfaceName { get; set; }
+
+        [Input("networkInterfaceTrafficMode")]
+        public Input<string>? NetworkInterfaceTrafficMode { get; set; }
 
         [Input("primaryIpAddress")]
         public Input<string>? PrimaryIpAddress { get; set; }
@@ -358,6 +370,9 @@ namespace Pulumi.AliCloud.Vpc
         [Input("description")]
         public Input<string>? Description { get; set; }
 
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
         [Input("ipv4PrefixCount")]
         public Input<int>? Ipv4PrefixCount { get; set; }
 
@@ -394,6 +409,9 @@ namespace Pulumi.AliCloud.Vpc
 
         [Input("networkInterfaceName")]
         public Input<string>? NetworkInterfaceName { get; set; }
+
+        [Input("networkInterfaceTrafficMode")]
+        public Input<string>? NetworkInterfaceTrafficMode { get; set; }
 
         [Input("primaryIpAddress")]
         public Input<string>? PrimaryIpAddress { get; set; }

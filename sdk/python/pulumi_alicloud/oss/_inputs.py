@@ -11,6 +11,7 @@ from .. import _utilities
 
 __all__ = [
     'BucketAccessMonitorArgs',
+    'BucketCorsCorsRuleArgs',
     'BucketCorsRuleArgs',
     'BucketLifecycleRuleArgs',
     'BucketLifecycleRuleAbortMultipartUploadArgs',
@@ -56,6 +57,92 @@ class BucketAccessMonitorArgs:
     @status.setter
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
+
+
+@pulumi.input_type
+class BucketCorsCorsRuleArgs:
+    def __init__(__self__, *,
+                 allowed_methods: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 allowed_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 allowed_origins: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 expose_headers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 max_age_seconds: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_methods: The cross-origin request method that is allowed. Valid values: GET, PUT, DELETE, POST, and HEAD.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_headers: Specifies whether the headers specified by Access-Control-Request-Headers in the OPTIONS preflight request are allowed. You can use only one asterisk (*) as the wildcard for allowed header. .
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_origins: The origins from which cross-origin requests are allowed. .
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] expose_headers: The response headers for allowed access requests from applications, such as an XMLHttpRequest object in JavaScript. .
+        :param pulumi.Input[int] max_age_seconds: The period of time within which the browser can cache the response to an OPTIONS preflight request for the specified resource. Unit: seconds.
+        """
+        pulumi.set(__self__, "allowed_methods", allowed_methods)
+        if allowed_headers is not None:
+            pulumi.set(__self__, "allowed_headers", allowed_headers)
+        if allowed_origins is not None:
+            pulumi.set(__self__, "allowed_origins", allowed_origins)
+        if expose_headers is not None:
+            pulumi.set(__self__, "expose_headers", expose_headers)
+        if max_age_seconds is not None:
+            pulumi.set(__self__, "max_age_seconds", max_age_seconds)
+
+    @property
+    @pulumi.getter(name="allowedMethods")
+    def allowed_methods(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        The cross-origin request method that is allowed. Valid values: GET, PUT, DELETE, POST, and HEAD.
+        """
+        return pulumi.get(self, "allowed_methods")
+
+    @allowed_methods.setter
+    def allowed_methods(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "allowed_methods", value)
+
+    @property
+    @pulumi.getter(name="allowedHeaders")
+    def allowed_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Specifies whether the headers specified by Access-Control-Request-Headers in the OPTIONS preflight request are allowed. You can use only one asterisk (*) as the wildcard for allowed header. .
+        """
+        return pulumi.get(self, "allowed_headers")
+
+    @allowed_headers.setter
+    def allowed_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_headers", value)
+
+    @property
+    @pulumi.getter(name="allowedOrigins")
+    def allowed_origins(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The origins from which cross-origin requests are allowed. .
+        """
+        return pulumi.get(self, "allowed_origins")
+
+    @allowed_origins.setter
+    def allowed_origins(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "allowed_origins", value)
+
+    @property
+    @pulumi.getter(name="exposeHeaders")
+    def expose_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The response headers for allowed access requests from applications, such as an XMLHttpRequest object in JavaScript. .
+        """
+        return pulumi.get(self, "expose_headers")
+
+    @expose_headers.setter
+    def expose_headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "expose_headers", value)
+
+    @property
+    @pulumi.getter(name="maxAgeSeconds")
+    def max_age_seconds(self) -> Optional[pulumi.Input[int]]:
+        """
+        The period of time within which the browser can cache the response to an OPTIONS preflight request for the specified resource. Unit: seconds.
+        """
+        return pulumi.get(self, "max_age_seconds")
+
+    @max_age_seconds.setter
+    def max_age_seconds(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "max_age_seconds", value)
 
 
 @pulumi.input_type

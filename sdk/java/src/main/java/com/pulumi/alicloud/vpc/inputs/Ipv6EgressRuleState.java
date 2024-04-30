@@ -61,6 +61,21 @@ public final class Ipv6EgressRuleState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
+     * The ID of the IPv6 EgressRule.
+     * 
+     */
+    @Import(name="ipv6EgressRuleId")
+    private @Nullable Output<String> ipv6EgressRuleId;
+
+    /**
+     * @return The ID of the IPv6 EgressRule.
+     * 
+     */
+    public Optional<Output<String>> ipv6EgressRuleId() {
+        return Optional.ofNullable(this.ipv6EgressRuleId);
+    }
+
+    /**
      * The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
      * 
      */
@@ -111,6 +126,7 @@ public final class Ipv6EgressRuleState extends com.pulumi.resources.ResourceArgs
         this.description = $.description;
         this.instanceId = $.instanceId;
         this.instanceType = $.instanceType;
+        this.ipv6EgressRuleId = $.ipv6EgressRuleId;
         this.ipv6EgressRuleName = $.ipv6EgressRuleName;
         this.ipv6GatewayId = $.ipv6GatewayId;
         this.status = $.status;
@@ -195,6 +211,27 @@ public final class Ipv6EgressRuleState extends com.pulumi.resources.ResourceArgs
          */
         public Builder instanceType(String instanceType) {
             return instanceType(Output.of(instanceType));
+        }
+
+        /**
+         * @param ipv6EgressRuleId The ID of the IPv6 EgressRule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6EgressRuleId(@Nullable Output<String> ipv6EgressRuleId) {
+            $.ipv6EgressRuleId = ipv6EgressRuleId;
+            return this;
+        }
+
+        /**
+         * @param ipv6EgressRuleId The ID of the IPv6 EgressRule.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ipv6EgressRuleId(String ipv6EgressRuleId) {
+            return ipv6EgressRuleId(Output.of(ipv6EgressRuleId));
         }
 
         /**

@@ -101,6 +101,7 @@ type NetworkInterface struct {
 
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description      pulumi.StringPtrOutput   `pulumi:"description"`
+	InstanceType     pulumi.StringOutput      `pulumi:"instanceType"`
 	Ipv4PrefixCount  pulumi.IntOutput         `pulumi:"ipv4PrefixCount"`
 	Ipv4Prefixes     pulumi.StringArrayOutput `pulumi:"ipv4Prefixes"`
 	Ipv6AddressCount pulumi.IntOutput         `pulumi:"ipv6AddressCount"`
@@ -110,9 +111,10 @@ type NetworkInterface struct {
 	// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
-	Name                 pulumi.StringOutput `pulumi:"name"`
-	NetworkInterfaceName pulumi.StringOutput `pulumi:"networkInterfaceName"`
-	PrimaryIpAddress     pulumi.StringOutput `pulumi:"primaryIpAddress"`
+	Name                        pulumi.StringOutput `pulumi:"name"`
+	NetworkInterfaceName        pulumi.StringOutput `pulumi:"networkInterfaceName"`
+	NetworkInterfaceTrafficMode pulumi.StringOutput `pulumi:"networkInterfaceTrafficMode"`
+	PrimaryIpAddress            pulumi.StringOutput `pulumi:"primaryIpAddress"`
 	// The primary private IP of the ENI.
 	//
 	// Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
@@ -177,6 +179,7 @@ func GetNetworkInterface(ctx *pulumi.Context,
 type networkInterfaceState struct {
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description      *string  `pulumi:"description"`
+	InstanceType     *string  `pulumi:"instanceType"`
 	Ipv4PrefixCount  *int     `pulumi:"ipv4PrefixCount"`
 	Ipv4Prefixes     []string `pulumi:"ipv4Prefixes"`
 	Ipv6AddressCount *int     `pulumi:"ipv6AddressCount"`
@@ -186,9 +189,10 @@ type networkInterfaceState struct {
 	// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
-	Name                 *string `pulumi:"name"`
-	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
-	PrimaryIpAddress     *string `pulumi:"primaryIpAddress"`
+	Name                        *string `pulumi:"name"`
+	NetworkInterfaceName        *string `pulumi:"networkInterfaceName"`
+	NetworkInterfaceTrafficMode *string `pulumi:"networkInterfaceTrafficMode"`
+	PrimaryIpAddress            *string `pulumi:"primaryIpAddress"`
 	// The primary private IP of the ENI.
 	//
 	// Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
@@ -221,6 +225,7 @@ type networkInterfaceState struct {
 type NetworkInterfaceState struct {
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description      pulumi.StringPtrInput
+	InstanceType     pulumi.StringPtrInput
 	Ipv4PrefixCount  pulumi.IntPtrInput
 	Ipv4Prefixes     pulumi.StringArrayInput
 	Ipv6AddressCount pulumi.IntPtrInput
@@ -230,9 +235,10 @@ type NetworkInterfaceState struct {
 	// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
-	Name                 pulumi.StringPtrInput
-	NetworkInterfaceName pulumi.StringPtrInput
-	PrimaryIpAddress     pulumi.StringPtrInput
+	Name                        pulumi.StringPtrInput
+	NetworkInterfaceName        pulumi.StringPtrInput
+	NetworkInterfaceTrafficMode pulumi.StringPtrInput
+	PrimaryIpAddress            pulumi.StringPtrInput
 	// The primary private IP of the ENI.
 	//
 	// Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
@@ -269,6 +275,7 @@ func (NetworkInterfaceState) ElementType() reflect.Type {
 type networkInterfaceArgs struct {
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description      *string  `pulumi:"description"`
+	InstanceType     *string  `pulumi:"instanceType"`
 	Ipv4PrefixCount  *int     `pulumi:"ipv4PrefixCount"`
 	Ipv4Prefixes     []string `pulumi:"ipv4Prefixes"`
 	Ipv6AddressCount *int     `pulumi:"ipv6AddressCount"`
@@ -276,9 +283,10 @@ type networkInterfaceArgs struct {
 	// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
-	Name                 *string `pulumi:"name"`
-	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
-	PrimaryIpAddress     *string `pulumi:"primaryIpAddress"`
+	Name                        *string `pulumi:"name"`
+	NetworkInterfaceName        *string `pulumi:"networkInterfaceName"`
+	NetworkInterfaceTrafficMode *string `pulumi:"networkInterfaceTrafficMode"`
+	PrimaryIpAddress            *string `pulumi:"primaryIpAddress"`
 	// The primary private IP of the ENI.
 	//
 	// Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
@@ -311,6 +319,7 @@ type networkInterfaceArgs struct {
 type NetworkInterfaceArgs struct {
 	// Description of the ENI. This description can have a string of 2 to 256 characters, It cannot begin with http:// or https://. Default value is null.
 	Description      pulumi.StringPtrInput
+	InstanceType     pulumi.StringPtrInput
 	Ipv4PrefixCount  pulumi.IntPtrInput
 	Ipv4Prefixes     pulumi.StringArrayInput
 	Ipv6AddressCount pulumi.IntPtrInput
@@ -318,9 +327,10 @@ type NetworkInterfaceArgs struct {
 	// Name of the ENI. This name can have a string of 2 to 128 characters, must contain only alphanumeric characters or hyphens, such as "-", ".", "_", and must not begin or end with a hyphen, and must not begin with http:// or https://. Default value is null.
 	//
 	// Deprecated: Field 'name' has been deprecated from provider version 1.123.1. New field 'network_interface_name' instead
-	Name                 pulumi.StringPtrInput
-	NetworkInterfaceName pulumi.StringPtrInput
-	PrimaryIpAddress     pulumi.StringPtrInput
+	Name                        pulumi.StringPtrInput
+	NetworkInterfaceName        pulumi.StringPtrInput
+	NetworkInterfaceTrafficMode pulumi.StringPtrInput
+	PrimaryIpAddress            pulumi.StringPtrInput
 	// The primary private IP of the ENI.
 	//
 	// Deprecated: Field 'private_ip' has been deprecated from provider version 1.123.1. New field 'primary_ip_address' instead
@@ -441,6 +451,10 @@ func (o NetworkInterfaceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+func (o NetworkInterfaceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
 func (o NetworkInterfaceOutput) Ipv4PrefixCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.IntOutput { return v.Ipv4PrefixCount }).(pulumi.IntOutput)
 }
@@ -471,6 +485,10 @@ func (o NetworkInterfaceOutput) Name() pulumi.StringOutput {
 
 func (o NetworkInterfaceOutput) NetworkInterfaceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.NetworkInterfaceName }).(pulumi.StringOutput)
+}
+
+func (o NetworkInterfaceOutput) NetworkInterfaceTrafficMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *NetworkInterface) pulumi.StringOutput { return v.NetworkInterfaceTrafficMode }).(pulumi.StringOutput)
 }
 
 func (o NetworkInterfaceOutput) PrimaryIpAddress() pulumi.StringOutput {

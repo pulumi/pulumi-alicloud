@@ -353,6 +353,21 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
     }
 
     /**
+     * The specified ECS instance types. You can specify up to five ECS instance types.
+     * 
+     */
+    @Import(name="instanceTypes")
+    private @Nullable Output<List<String>> instanceTypes;
+
+    /**
+     * @return The specified ECS instance types. You can specify up to five ECS instance types.
+     * 
+     */
+    public Optional<Output<List<String>>> instanceTypes() {
+        return Optional.ofNullable(this.instanceTypes);
+    }
+
+    /**
      * Number of IPv6 addresses.
      * 
      */
@@ -604,6 +619,7 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
         this.imageSnapshotId = $.imageSnapshotId;
         this.ingressBandwidth = $.ingressBandwidth;
         this.initContainers = $.initContainers;
+        this.instanceTypes = $.instanceTypes;
         this.ipv6AddressCount = $.ipv6AddressCount;
         this.loadBalancerWeight = $.loadBalancerWeight;
         this.memory = $.memory;
@@ -1138,6 +1154,37 @@ public final class EciScalingConfigurationState extends com.pulumi.resources.Res
          */
         public Builder initContainers(EciScalingConfigurationInitContainerArgs... initContainers) {
             return initContainers(List.of(initContainers));
+        }
+
+        /**
+         * @param instanceTypes The specified ECS instance types. You can specify up to five ECS instance types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceTypes(@Nullable Output<List<String>> instanceTypes) {
+            $.instanceTypes = instanceTypes;
+            return this;
+        }
+
+        /**
+         * @param instanceTypes The specified ECS instance types. You can specify up to five ECS instance types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceTypes(List<String> instanceTypes) {
+            return instanceTypes(Output.of(instanceTypes));
+        }
+
+        /**
+         * @param instanceTypes The specified ECS instance types. You can specify up to five ECS instance types.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceTypes(String... instanceTypes) {
+            return instanceTypes(List.of(instanceTypes));
         }
 
         /**

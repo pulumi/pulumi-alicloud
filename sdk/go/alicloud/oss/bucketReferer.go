@@ -69,7 +69,9 @@ import (
 //					pulumi.String("*.aliyun.com"),
 //					pulumi.String("*.example.com"),
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				createBucket,
+//			}))
 //			if err != nil {
 //				return err
 //			}

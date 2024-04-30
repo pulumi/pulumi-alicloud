@@ -449,6 +449,20 @@ public class EciScalingConfiguration extends com.pulumi.resources.CustomResource
         return Codegen.optional(this.initContainers);
     }
     /**
+     * The specified ECS instance types. You can specify up to five ECS instance types.
+     * 
+     */
+    @Export(name="instanceTypes", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> instanceTypes;
+
+    /**
+     * @return The specified ECS instance types. You can specify up to five ECS instance types.
+     * 
+     */
+    public Output<Optional<List<String>>> instanceTypes() {
+        return Codegen.optional(this.instanceTypes);
+    }
+    /**
      * Number of IPv6 addresses.
      * 
      */

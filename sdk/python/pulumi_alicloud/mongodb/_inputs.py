@@ -232,10 +232,10 @@ class ShardingInstanceConfigServerListArgs:
         :param pulumi.Input[str] connect_string: The connection address of the Config Server node.
         :param pulumi.Input[int] max_connections: The max connections of the Config Server node.
         :param pulumi.Input[int] max_iops: The maximum IOPS of the Config Server node.
-        :param pulumi.Input[str] node_class: The node class of the Config Server node.
+        :param pulumi.Input[str] node_class: The instance type of the ConfigServer node. Valid values: `mdb.shard.2x.xlarge.d`, `dds.cs.mid`.
         :param pulumi.Input[str] node_description: The description of the Config Server node.
         :param pulumi.Input[str] node_id: The ID of the Config Server node.
-        :param pulumi.Input[int] node_storage: The node storage of the Config Server node.
+        :param pulumi.Input[int] node_storage: The storage space of the ConfigServer node.
         :param pulumi.Input[int] port: The connection port of the Config Server node.
         """
         if connect_string is not None:
@@ -295,7 +295,7 @@ class ShardingInstanceConfigServerListArgs:
     @pulumi.getter(name="nodeClass")
     def node_class(self) -> Optional[pulumi.Input[str]]:
         """
-        The node class of the Config Server node.
+        The instance type of the ConfigServer node. Valid values: `mdb.shard.2x.xlarge.d`, `dds.cs.mid`.
         """
         return pulumi.get(self, "node_class")
 
@@ -331,7 +331,7 @@ class ShardingInstanceConfigServerListArgs:
     @pulumi.getter(name="nodeStorage")
     def node_storage(self) -> Optional[pulumi.Input[int]]:
         """
-        The node storage of the Config Server node.
+        The storage space of the ConfigServer node.
         """
         return pulumi.get(self, "node_storage")
 

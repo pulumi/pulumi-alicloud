@@ -208,7 +208,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
     }
     /**
      * The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-     * &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+     * &gt; **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
      * 
      */
     @Export(name="endpointGroupType", refs={String.class}, tree="[0]")
@@ -216,7 +216,7 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-     * &gt; **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+     * &gt; **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
      * 
      */
     public Output<String> endpointGroupType() {
@@ -295,14 +295,14 @@ public class EndpointGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.healthCheckPort);
     }
     /**
-     * The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+     * The protocol that is used to connect to the targets for health checks. Valid values:
      * 
      */
     @Export(name="healthCheckProtocol", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> healthCheckProtocol;
 
     /**
-     * @return The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+     * @return The protocol that is used to connect to the targets for health checks. Valid values:
      * 
      */
     public Output<Optional<String>> healthCheckProtocol() {

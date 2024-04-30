@@ -151,6 +151,12 @@ namespace Pulumi.AliCloud.Vpc
         public Output<string> InstanceType { get; private set; } = null!;
 
         /// <summary>
+        /// The ID of the IPv6 EgressRule.
+        /// </summary>
+        [Output("ipv6EgressRuleId")]
+        public Output<string> Ipv6EgressRuleId { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.
         /// </summary>
         [Output("ipv6EgressRuleName")]
@@ -269,6 +275,12 @@ namespace Pulumi.AliCloud.Vpc
         /// </summary>
         [Input("instanceType")]
         public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
+        /// The ID of the IPv6 EgressRule.
+        /// </summary>
+        [Input("ipv6EgressRuleId")]
+        public Input<string>? Ipv6EgressRuleId { get; set; }
 
         /// <summary>
         /// The name of the egress-only rule. The name must be `2` to `128` characters in length, and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter but cannot start with `http://` or `https://`.

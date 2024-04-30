@@ -132,7 +132,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<string> BackupTime { get; private set; } = null!;
 
         /// <summary>
-        /// The information of the ConfigServer nodes.
+        /// The ConfigServer nodes of the instance. See `config_server_list` below.
         /// </summary>
         [Output("configServerLists")]
         public Output<ImmutableArray<Outputs.ShardingInstanceConfigServerList>> ConfigServerLists { get; private set; } = null!;
@@ -162,7 +162,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<ImmutableDictionary<string, object>?> KmsEncryptionContext { get; private set; } = null!;
 
         /// <summary>
-        /// The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
+        /// The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
         /// </summary>
         [Output("mongoLists")]
         public Output<ImmutableArray<Outputs.ShardingInstanceMongoList>> MongoLists { get; private set; } = null!;
@@ -222,7 +222,7 @@ namespace Pulumi.AliCloud.MongoDB
         public Output<ImmutableArray<string>> SecurityIpLists { get; private set; } = null!;
 
         /// <summary>
-        /// the shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
+        /// The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
         /// </summary>
         [Output("shardLists")]
         public Output<ImmutableArray<Outputs.ShardingInstanceShardList>> ShardLists { get; private set; } = null!;
@@ -354,6 +354,18 @@ namespace Pulumi.AliCloud.MongoDB
         [Input("backupTime")]
         public Input<string>? BackupTime { get; set; }
 
+        [Input("configServerLists")]
+        private InputList<Inputs.ShardingInstanceConfigServerListArgs>? _configServerLists;
+
+        /// <summary>
+        /// The ConfigServer nodes of the instance. See `config_server_list` below.
+        /// </summary>
+        public InputList<Inputs.ShardingInstanceConfigServerListArgs> ConfigServerLists
+        {
+            get => _configServerLists ?? (_configServerLists = new InputList<Inputs.ShardingInstanceConfigServerListArgs>());
+            set => _configServerLists = value;
+        }
+
         /// <summary>
         /// Database version. Value options can refer to the latest docs [CreateDBInstance](https://www.alibabacloud.com/help/en/doc-detail/61884.htm) `EngineVersion`.
         /// </summary>
@@ -388,7 +400,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.ShardingInstanceMongoListArgs>? _mongoLists;
 
         /// <summary>
-        /// The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
+        /// The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
         /// </summary>
         public InputList<Inputs.ShardingInstanceMongoListArgs> MongoLists
         {
@@ -454,7 +466,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.ShardingInstanceShardListArgs>? _shardLists;
 
         /// <summary>
-        /// the shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
+        /// The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
         /// </summary>
         public InputList<Inputs.ShardingInstanceShardListArgs> ShardLists
         {
@@ -557,7 +569,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.ShardingInstanceConfigServerListGetArgs>? _configServerLists;
 
         /// <summary>
-        /// The information of the ConfigServer nodes.
+        /// The ConfigServer nodes of the instance. See `config_server_list` below.
         /// </summary>
         public InputList<Inputs.ShardingInstanceConfigServerListGetArgs> ConfigServerLists
         {
@@ -599,7 +611,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.ShardingInstanceMongoListGetArgs>? _mongoLists;
 
         /// <summary>
-        /// The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
+        /// The Mongo nodes of the instance. The mongo-node count can be purchased is in range of [2, 32]. See `mongo_list` below.
         /// </summary>
         public InputList<Inputs.ShardingInstanceMongoListGetArgs> MongoLists
         {
@@ -671,7 +683,7 @@ namespace Pulumi.AliCloud.MongoDB
         private InputList<Inputs.ShardingInstanceShardListGetArgs>? _shardLists;
 
         /// <summary>
-        /// the shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
+        /// The Shard nodes of the instance. The shard-node count can be purchased is in range of [2, 32]. See `shard_list` below.
         /// </summary>
         public InputList<Inputs.ShardingInstanceShardListGetArgs> ShardLists
         {

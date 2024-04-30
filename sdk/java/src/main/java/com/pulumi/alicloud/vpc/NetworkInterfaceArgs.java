@@ -35,6 +35,13 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.description);
     }
 
+    @Import(name="instanceType")
+    private @Nullable Output<String> instanceType;
+
+    public Optional<Output<String>> instanceType() {
+        return Optional.ofNullable(this.instanceType);
+    }
+
     @Import(name="ipv4PrefixCount")
     private @Nullable Output<Integer> ipv4PrefixCount;
 
@@ -91,6 +98,13 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
 
     public Optional<Output<String>> networkInterfaceName() {
         return Optional.ofNullable(this.networkInterfaceName);
+    }
+
+    @Import(name="networkInterfaceTrafficMode")
+    private @Nullable Output<String> networkInterfaceTrafficMode;
+
+    public Optional<Output<String>> networkInterfaceTrafficMode() {
+        return Optional.ofNullable(this.networkInterfaceTrafficMode);
     }
 
     @Import(name="primaryIpAddress")
@@ -269,12 +283,14 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
 
     private NetworkInterfaceArgs(NetworkInterfaceArgs $) {
         this.description = $.description;
+        this.instanceType = $.instanceType;
         this.ipv4PrefixCount = $.ipv4PrefixCount;
         this.ipv4Prefixes = $.ipv4Prefixes;
         this.ipv6AddressCount = $.ipv6AddressCount;
         this.ipv6Addresses = $.ipv6Addresses;
         this.name = $.name;
         this.networkInterfaceName = $.networkInterfaceName;
+        this.networkInterfaceTrafficMode = $.networkInterfaceTrafficMode;
         this.primaryIpAddress = $.primaryIpAddress;
         this.privateIp = $.privateIp;
         this.privateIpAddresses = $.privateIpAddresses;
@@ -326,6 +342,15 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        public Builder instanceType(@Nullable Output<String> instanceType) {
+            $.instanceType = instanceType;
+            return this;
+        }
+
+        public Builder instanceType(String instanceType) {
+            return instanceType(Output.of(instanceType));
         }
 
         public Builder ipv4PrefixCount(@Nullable Output<Integer> ipv4PrefixCount) {
@@ -408,6 +433,15 @@ public final class NetworkInterfaceArgs extends com.pulumi.resources.ResourceArg
 
         public Builder networkInterfaceName(String networkInterfaceName) {
             return networkInterfaceName(Output.of(networkInterfaceName));
+        }
+
+        public Builder networkInterfaceTrafficMode(@Nullable Output<String> networkInterfaceTrafficMode) {
+            $.networkInterfaceTrafficMode = networkInterfaceTrafficMode;
+            return this;
+        }
+
+        public Builder networkInterfaceTrafficMode(String networkInterfaceTrafficMode) {
+            return networkInterfaceTrafficMode(Output.of(networkInterfaceTrafficMode));
         }
 
         public Builder primaryIpAddress(@Nullable Output<String> primaryIpAddress) {

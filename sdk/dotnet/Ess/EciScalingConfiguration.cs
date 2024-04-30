@@ -247,6 +247,12 @@ namespace Pulumi.AliCloud.Ess
         public Output<ImmutableArray<Outputs.EciScalingConfigurationInitContainer>> InitContainers { get; private set; } = null!;
 
         /// <summary>
+        /// The specified ECS instance types. You can specify up to five ECS instance types.
+        /// </summary>
+        [Output("instanceTypes")]
+        public Output<ImmutableArray<string>> InstanceTypes { get; private set; } = null!;
+
+        /// <summary>
         /// Number of IPv6 addresses.
         /// </summary>
         [Output("ipv6AddressCount")]
@@ -546,6 +552,18 @@ namespace Pulumi.AliCloud.Ess
             set => _initContainers = value;
         }
 
+        [Input("instanceTypes")]
+        private InputList<string>? _instanceTypes;
+
+        /// <summary>
+        /// The specified ECS instance types. You can specify up to five ECS instance types.
+        /// </summary>
+        public InputList<string> InstanceTypes
+        {
+            get => _instanceTypes ?? (_instanceTypes = new InputList<string>());
+            set => _instanceTypes = value;
+        }
+
         /// <summary>
         /// Number of IPv6 addresses.
         /// </summary>
@@ -818,6 +836,18 @@ namespace Pulumi.AliCloud.Ess
         {
             get => _initContainers ?? (_initContainers = new InputList<Inputs.EciScalingConfigurationInitContainerGetArgs>());
             set => _initContainers = value;
+        }
+
+        [Input("instanceTypes")]
+        private InputList<string>? _instanceTypes;
+
+        /// <summary>
+        /// The specified ECS instance types. You can specify up to five ECS instance types.
+        /// </summary>
+        public InputList<string> InstanceTypes
+        {
+            get => _instanceTypes ?? (_instanceTypes = new InputList<string>());
+            set => _instanceTypes = value;
         }
 
         /// <summary>

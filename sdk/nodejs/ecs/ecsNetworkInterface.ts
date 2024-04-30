@@ -98,6 +98,10 @@ export class EcsNetworkInterface extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
+     * The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
+     */
+    public readonly instanceType!: pulumi.Output<string>;
+    /**
      * The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
      */
     public readonly ipv4PrefixCount!: pulumi.Output<number>;
@@ -127,6 +131,10 @@ export class EcsNetworkInterface extends pulumi.CustomResource {
      * The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
      */
     public readonly networkInterfaceName!: pulumi.Output<string>;
+    /**
+     * The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
+     */
+    public readonly networkInterfaceTrafficMode!: pulumi.Output<string>;
     /**
      * The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
      */
@@ -202,6 +210,7 @@ export class EcsNetworkInterface extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as EcsNetworkInterfaceState | undefined;
             resourceInputs["description"] = state ? state.description : undefined;
+            resourceInputs["instanceType"] = state ? state.instanceType : undefined;
             resourceInputs["ipv4PrefixCount"] = state ? state.ipv4PrefixCount : undefined;
             resourceInputs["ipv4Prefixes"] = state ? state.ipv4Prefixes : undefined;
             resourceInputs["ipv6AddressCount"] = state ? state.ipv6AddressCount : undefined;
@@ -209,6 +218,7 @@ export class EcsNetworkInterface extends pulumi.CustomResource {
             resourceInputs["mac"] = state ? state.mac : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkInterfaceName"] = state ? state.networkInterfaceName : undefined;
+            resourceInputs["networkInterfaceTrafficMode"] = state ? state.networkInterfaceTrafficMode : undefined;
             resourceInputs["primaryIpAddress"] = state ? state.primaryIpAddress : undefined;
             resourceInputs["privateIp"] = state ? state.privateIp : undefined;
             resourceInputs["privateIpAddresses"] = state ? state.privateIpAddresses : undefined;
@@ -228,12 +238,14 @@ export class EcsNetworkInterface extends pulumi.CustomResource {
                 throw new Error("Missing required property 'vswitchId'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["instanceType"] = args ? args.instanceType : undefined;
             resourceInputs["ipv4PrefixCount"] = args ? args.ipv4PrefixCount : undefined;
             resourceInputs["ipv4Prefixes"] = args ? args.ipv4Prefixes : undefined;
             resourceInputs["ipv6AddressCount"] = args ? args.ipv6AddressCount : undefined;
             resourceInputs["ipv6Addresses"] = args ? args.ipv6Addresses : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkInterfaceName"] = args ? args.networkInterfaceName : undefined;
+            resourceInputs["networkInterfaceTrafficMode"] = args ? args.networkInterfaceTrafficMode : undefined;
             resourceInputs["primaryIpAddress"] = args ? args.primaryIpAddress : undefined;
             resourceInputs["privateIp"] = args ? args.privateIp : undefined;
             resourceInputs["privateIpAddresses"] = args ? args.privateIpAddresses : undefined;
@@ -262,6 +274,10 @@ export interface EcsNetworkInterfaceState {
      * The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
+     */
+    instanceType?: pulumi.Input<string>;
     /**
      * The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
      */
@@ -292,6 +308,10 @@ export interface EcsNetworkInterfaceState {
      * The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
      */
     networkInterfaceName?: pulumi.Input<string>;
+    /**
+     * The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
+     */
+    networkInterfaceTrafficMode?: pulumi.Input<string>;
     /**
      * The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
      */
@@ -363,6 +383,10 @@ export interface EcsNetworkInterfaceArgs {
      */
     description?: pulumi.Input<string>;
     /**
+     * The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
+     */
+    instanceType?: pulumi.Input<string>;
+    /**
      * The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
      */
     ipv4PrefixCount?: pulumi.Input<number>;
@@ -388,6 +412,10 @@ export interface EcsNetworkInterfaceArgs {
      * The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
      */
     networkInterfaceName?: pulumi.Input<string>;
+    /**
+     * The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
+     */
+    networkInterfaceTrafficMode?: pulumi.Input<string>;
     /**
      * The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
      */

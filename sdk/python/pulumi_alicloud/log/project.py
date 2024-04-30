@@ -22,10 +22,14 @@ class ProjectArgs:
                  tags: Optional[pulumi.Input[Mapping[str, Any]]] = None):
         """
         The set of arguments for constructing a Project resource.
-        :param pulumi.Input[str] description: Description of the log project.
-        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+        :param pulumi.Input[str] description: Description.
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
         :param pulumi.Input[str] policy: Log project policy, used to set a policy for a project.
-        :param pulumi.Input[str] project_name: The name of the log project. It is the only in one Alicloud account.
+        :param pulumi.Input[str] project_name: The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+               - The project name must be globally unique.
+               - The name can contain only lowercase letters, digits, and hyphens (-).
+               - It must start and end with a lowercase letter or number.
+               - The value contains 3 to 63 characters.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: Tag.
                
@@ -34,8 +38,8 @@ class ProjectArgs:
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
-            warnings.warn("""Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.""")
+            warnings.warn("""Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if policy is not None:
@@ -51,7 +55,7 @@ class ProjectArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the log project.
+        Description.
         """
         return pulumi.get(self, "description")
 
@@ -63,10 +67,10 @@ class ProjectArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+        . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.""")
+        warnings.warn("""Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead.""")
 
         return pulumi.get(self, "name")
 
@@ -90,7 +94,11 @@ class ProjectArgs:
     @pulumi.getter(name="projectName")
     def project_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the log project. It is the only in one Alicloud account.
+        The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+        - The project name must be globally unique.
+        - The name can contain only lowercase letters, digits, and hyphens (-).
+        - It must start and end with a lowercase letter or number.
+        - The value contains 3 to 63 characters.
         """
         return pulumi.get(self, "project_name")
 
@@ -139,10 +147,14 @@ class _ProjectState:
         """
         Input properties used for looking up and filtering Project resources.
         :param pulumi.Input[str] create_time: CreateTime.
-        :param pulumi.Input[str] description: Description of the log project.
-        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+        :param pulumi.Input[str] description: Description.
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
         :param pulumi.Input[str] policy: Log project policy, used to set a policy for a project.
-        :param pulumi.Input[str] project_name: The name of the log project. It is the only in one Alicloud account.
+        :param pulumi.Input[str] project_name: The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+               - The project name must be globally unique.
+               - The name can contain only lowercase letters, digits, and hyphens (-).
+               - It must start and end with a lowercase letter or number.
+               - The value contains 3 to 63 characters.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: Tag.
@@ -154,8 +166,8 @@ class _ProjectState:
         if description is not None:
             pulumi.set(__self__, "description", description)
         if name is not None:
-            warnings.warn("""Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.""", DeprecationWarning)
-            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.""")
+            warnings.warn("""Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead.""", DeprecationWarning)
+            pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead.""")
         if name is not None:
             pulumi.set(__self__, "name", name)
         if policy is not None:
@@ -185,7 +197,7 @@ class _ProjectState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        Description of the log project.
+        Description.
         """
         return pulumi.get(self, "description")
 
@@ -197,10 +209,10 @@ class _ProjectState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+        . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.""")
+        warnings.warn("""Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead.""")
 
         return pulumi.get(self, "name")
 
@@ -224,7 +236,11 @@ class _ProjectState:
     @pulumi.getter(name="projectName")
     def project_name(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the log project. It is the only in one Alicloud account.
+        The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+        - The project name must be globally unique.
+        - The name can contain only lowercase letters, digits, and hyphens (-).
+        - It must start and end with a lowercase letter or number.
+        - The value contains 3 to 63 characters.
         """
         return pulumi.get(self, "project_name")
 
@@ -361,10 +377,14 @@ class Project(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] description: Description of the log project.
-        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+        :param pulumi.Input[str] description: Description.
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
         :param pulumi.Input[str] policy: Log project policy, used to set a policy for a project.
-        :param pulumi.Input[str] project_name: The name of the log project. It is the only in one Alicloud account.
+        :param pulumi.Input[str] project_name: The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+               - The project name must be globally unique.
+               - The name can contain only lowercase letters, digits, and hyphens (-).
+               - It must start and end with a lowercase letter or number.
+               - The value contains 3 to 63 characters.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[Mapping[str, Any]] tags: Tag.
                
@@ -516,10 +536,14 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: CreateTime.
-        :param pulumi.Input[str] description: Description of the log project.
-        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+        :param pulumi.Input[str] description: Description.
+        :param pulumi.Input[str] name: . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
         :param pulumi.Input[str] policy: Log project policy, used to set a policy for a project.
-        :param pulumi.Input[str] project_name: The name of the log project. It is the only in one Alicloud account.
+        :param pulumi.Input[str] project_name: The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+               - The project name must be globally unique.
+               - The name can contain only lowercase letters, digits, and hyphens (-).
+               - It must start and end with a lowercase letter or number.
+               - The value contains 3 to 63 characters.
         :param pulumi.Input[str] resource_group_id: The ID of the resource group.
         :param pulumi.Input[str] status: The status of the resource.
         :param pulumi.Input[Mapping[str, Any]] tags: Tag.
@@ -552,7 +576,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        Description of the log project.
+        Description.
         """
         return pulumi.get(self, "description")
 
@@ -560,10 +584,10 @@ class Project(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        . Field 'name' has been deprecated from provider version 1.212.0. New field 'project_name' instead.
+        . Field 'name' has been deprecated from provider version 1.223.0. New field 'project_name' instead.
         """
-        warnings.warn("""Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.""", DeprecationWarning)
-        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.212.0. New field 'project_name' instead.""")
+        warnings.warn("""Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead.""", DeprecationWarning)
+        pulumi.log.warn("""name is deprecated: Field 'name' has been deprecated since provider version 1.223.0. New field 'project_name' instead.""")
 
         return pulumi.get(self, "name")
 
@@ -579,7 +603,11 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="projectName")
     def project_name(self) -> pulumi.Output[str]:
         """
-        The name of the log project. It is the only in one Alicloud account.
+        The name of the log project. It is the only in one Alicloud account. The project name is globally unique in Alibaba Cloud and cannot be modified after it is created. The naming rules are as follows:
+        - The project name must be globally unique.
+        - The name can contain only lowercase letters, digits, and hyphens (-).
+        - It must start and end with a lowercase letter or number.
+        - The value contains 3 to 63 characters.
         """
         return pulumi.get(self, "project_name")
 

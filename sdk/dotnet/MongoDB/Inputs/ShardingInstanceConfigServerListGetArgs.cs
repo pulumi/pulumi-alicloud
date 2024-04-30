@@ -31,7 +31,7 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public Input<int>? MaxIops { get; set; }
 
         /// <summary>
-        /// The node class of the Config Server node.
+        /// The instance type of the ConfigServer node. Valid values: `mdb.shard.2x.xlarge.d`, `dds.cs.mid`.
         /// </summary>
         [Input("nodeClass")]
         public Input<string>? NodeClass { get; set; }
@@ -49,7 +49,7 @@ namespace Pulumi.AliCloud.MongoDB.Inputs
         public Input<string>? NodeId { get; set; }
 
         /// <summary>
-        /// The node storage of the Config Server node.
+        /// The storage space of the ConfigServer node.
         /// </summary>
         [Input("nodeStorage")]
         public Input<int>? NodeStorage { get; set; }

@@ -26,7 +26,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly int? MaxIops;
         /// <summary>
-        /// The node class of the Config Server node.
+        /// The instance type of the ConfigServer node. Valid values: `mdb.shard.2x.xlarge.d`, `dds.cs.mid`.
         /// </summary>
         public readonly string? NodeClass;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AliCloud.MongoDB.Outputs
         /// </summary>
         public readonly string? NodeId;
         /// <summary>
-        /// The node storage of the Config Server node.
+        /// The storage space of the ConfigServer node.
         /// </summary>
         public readonly int? NodeStorage;
         /// <summary>

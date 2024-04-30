@@ -16,12 +16,14 @@ class EcsNetworkInterfaceArgs:
     def __init__(__self__, *,
                  vswitch_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
                  ipv4_prefix_count: Optional[pulumi.Input[int]] = None,
                  ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interface_name: Optional[pulumi.Input[str]] = None,
+                 network_interface_traffic_mode: Optional[pulumi.Input[str]] = None,
                  primary_ip_address: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -37,12 +39,14 @@ class EcsNetworkInterfaceArgs:
         The set of arguments for constructing a EcsNetworkInterface resource.
         :param pulumi.Input[str] vswitch_id: The ID of the VSwitch in the specified VPC. The private IP addresses assigned to the ENI must be available IP addresses within the CIDR block of the VSwitch.
         :param pulumi.Input[str] description: The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[str] instance_type: The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
         :param pulumi.Input[int] ipv4_prefix_count: The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_prefixes: A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
         :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
         :param pulumi.Input[str] network_interface_name: The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
+        :param pulumi.Input[str] network_interface_traffic_mode: The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
         :param pulumi.Input[str] primary_ip_address: The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
         :param pulumi.Input[str] private_ip: Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ip_addresses: Specifies secondary private IP address N of the ENI. This IP address must be an available IP address within the CIDR block of the VSwitch to which the ENI belongs.
@@ -58,6 +62,8 @@ class EcsNetworkInterfaceArgs:
         pulumi.set(__self__, "vswitch_id", vswitch_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
         if ipv4_prefix_count is not None:
             pulumi.set(__self__, "ipv4_prefix_count", ipv4_prefix_count)
         if ipv4_prefixes is not None:
@@ -73,6 +79,8 @@ class EcsNetworkInterfaceArgs:
             pulumi.set(__self__, "name", name)
         if network_interface_name is not None:
             pulumi.set(__self__, "network_interface_name", network_interface_name)
+        if network_interface_traffic_mode is not None:
+            pulumi.set(__self__, "network_interface_traffic_mode", network_interface_traffic_mode)
         if primary_ip_address is not None:
             pulumi.set(__self__, "primary_ip_address", primary_ip_address)
         if private_ip is not None:
@@ -131,6 +139,18 @@ class EcsNetworkInterfaceArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
 
     @property
     @pulumi.getter(name="ipv4PrefixCount")
@@ -206,6 +226,18 @@ class EcsNetworkInterfaceArgs:
     @network_interface_name.setter
     def network_interface_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network_interface_name", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaceTrafficMode")
+    def network_interface_traffic_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
+        """
+        return pulumi.get(self, "network_interface_traffic_mode")
+
+    @network_interface_traffic_mode.setter
+    def network_interface_traffic_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_interface_traffic_mode", value)
 
     @property
     @pulumi.getter(name="primaryIpAddress")
@@ -356,6 +388,7 @@ class EcsNetworkInterfaceArgs:
 class _EcsNetworkInterfaceState:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
                  ipv4_prefix_count: Optional[pulumi.Input[int]] = None,
                  ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
@@ -363,6 +396,7 @@ class _EcsNetworkInterfaceState:
                  mac: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interface_name: Optional[pulumi.Input[str]] = None,
+                 network_interface_traffic_mode: Optional[pulumi.Input[str]] = None,
                  primary_ip_address: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -379,6 +413,7 @@ class _EcsNetworkInterfaceState:
         """
         Input properties used for looking up and filtering EcsNetworkInterface resources.
         :param pulumi.Input[str] description: The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[str] instance_type: The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
         :param pulumi.Input[int] ipv4_prefix_count: The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_prefixes: A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
         :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
@@ -386,6 +421,7 @@ class _EcsNetworkInterfaceState:
         :param pulumi.Input[str] mac: The MAC address of the ENI.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
         :param pulumi.Input[str] network_interface_name: The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
+        :param pulumi.Input[str] network_interface_traffic_mode: The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
         :param pulumi.Input[str] primary_ip_address: The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
         :param pulumi.Input[str] private_ip: Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ip_addresses: Specifies secondary private IP address N of the ENI. This IP address must be an available IP address within the CIDR block of the VSwitch to which the ENI belongs.
@@ -402,6 +438,8 @@ class _EcsNetworkInterfaceState:
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if instance_type is not None:
+            pulumi.set(__self__, "instance_type", instance_type)
         if ipv4_prefix_count is not None:
             pulumi.set(__self__, "ipv4_prefix_count", ipv4_prefix_count)
         if ipv4_prefixes is not None:
@@ -419,6 +457,8 @@ class _EcsNetworkInterfaceState:
             pulumi.set(__self__, "name", name)
         if network_interface_name is not None:
             pulumi.set(__self__, "network_interface_name", network_interface_name)
+        if network_interface_traffic_mode is not None:
+            pulumi.set(__self__, "network_interface_traffic_mode", network_interface_traffic_mode)
         if primary_ip_address is not None:
             pulumi.set(__self__, "primary_ip_address", primary_ip_address)
         if private_ip is not None:
@@ -469,6 +509,18 @@ class _EcsNetworkInterfaceState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
+        """
+        return pulumi.get(self, "instance_type")
+
+    @instance_type.setter
+    def instance_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "instance_type", value)
 
     @property
     @pulumi.getter(name="ipv4PrefixCount")
@@ -556,6 +608,18 @@ class _EcsNetworkInterfaceState:
     @network_interface_name.setter
     def network_interface_name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network_interface_name", value)
+
+    @property
+    @pulumi.getter(name="networkInterfaceTrafficMode")
+    def network_interface_traffic_mode(self) -> Optional[pulumi.Input[str]]:
+        """
+        The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
+        """
+        return pulumi.get(self, "network_interface_traffic_mode")
+
+    @network_interface_traffic_mode.setter
+    def network_interface_traffic_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_interface_traffic_mode", value)
 
     @property
     @pulumi.getter(name="primaryIpAddress")
@@ -732,12 +796,14 @@ class EcsNetworkInterface(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
                  ipv4_prefix_count: Optional[pulumi.Input[int]] = None,
                  ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interface_name: Optional[pulumi.Input[str]] = None,
+                 network_interface_traffic_mode: Optional[pulumi.Input[str]] = None,
                  primary_ip_address: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -809,12 +875,14 @@ class EcsNetworkInterface(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[str] instance_type: The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
         :param pulumi.Input[int] ipv4_prefix_count: The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_prefixes: A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
         :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv6_addresses: A list of IPv6 address to be assigned to the primary ENI. Support up to 10.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
         :param pulumi.Input[str] network_interface_name: The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
+        :param pulumi.Input[str] network_interface_traffic_mode: The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
         :param pulumi.Input[str] primary_ip_address: The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
         :param pulumi.Input[str] private_ip: Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ip_addresses: Specifies secondary private IP address N of the ENI. This IP address must be an available IP address within the CIDR block of the VSwitch to which the ENI belongs.
@@ -905,12 +973,14 @@ class EcsNetworkInterface(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 instance_type: Optional[pulumi.Input[str]] = None,
                  ipv4_prefix_count: Optional[pulumi.Input[int]] = None,
                  ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  ipv6_address_count: Optional[pulumi.Input[int]] = None,
                  ipv6_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_interface_name: Optional[pulumi.Input[str]] = None,
+                 network_interface_traffic_mode: Optional[pulumi.Input[str]] = None,
                  primary_ip_address: Optional[pulumi.Input[str]] = None,
                  private_ip: Optional[pulumi.Input[str]] = None,
                  private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -933,12 +1003,14 @@ class EcsNetworkInterface(pulumi.CustomResource):
             __props__ = EcsNetworkInterfaceArgs.__new__(EcsNetworkInterfaceArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["instance_type"] = instance_type
             __props__.__dict__["ipv4_prefix_count"] = ipv4_prefix_count
             __props__.__dict__["ipv4_prefixes"] = ipv4_prefixes
             __props__.__dict__["ipv6_address_count"] = ipv6_address_count
             __props__.__dict__["ipv6_addresses"] = ipv6_addresses
             __props__.__dict__["name"] = name
             __props__.__dict__["network_interface_name"] = network_interface_name
+            __props__.__dict__["network_interface_traffic_mode"] = network_interface_traffic_mode
             __props__.__dict__["primary_ip_address"] = primary_ip_address
             __props__.__dict__["private_ip"] = private_ip
             __props__.__dict__["private_ip_addresses"] = private_ip_addresses
@@ -966,6 +1038,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             description: Optional[pulumi.Input[str]] = None,
+            instance_type: Optional[pulumi.Input[str]] = None,
             ipv4_prefix_count: Optional[pulumi.Input[int]] = None,
             ipv4_prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             ipv6_address_count: Optional[pulumi.Input[int]] = None,
@@ -973,6 +1046,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
             mac: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_interface_name: Optional[pulumi.Input[str]] = None,
+            network_interface_traffic_mode: Optional[pulumi.Input[str]] = None,
             primary_ip_address: Optional[pulumi.Input[str]] = None,
             private_ip: Optional[pulumi.Input[str]] = None,
             private_ip_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -994,6 +1068,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+        :param pulumi.Input[str] instance_type: The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
         :param pulumi.Input[int] ipv4_prefix_count: The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ipv4_prefixes: A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
         :param pulumi.Input[int] ipv6_address_count: The number of IPv6 addresses to randomly generate for the primary ENI. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv6_addresses` and `ipv6_address_count` parameters.
@@ -1001,6 +1076,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
         :param pulumi.Input[str] mac: The MAC address of the ENI.
         :param pulumi.Input[str] name: Field `name` has been deprecated from provider version 1.123.1. New field `network_interface_name` instead
         :param pulumi.Input[str] network_interface_name: The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
+        :param pulumi.Input[str] network_interface_traffic_mode: The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
         :param pulumi.Input[str] primary_ip_address: The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
         :param pulumi.Input[str] private_ip: Field `private_ip` has been deprecated from provider version 1.123.1. New field `primary_ip_address` instead
         :param pulumi.Input[Sequence[pulumi.Input[str]]] private_ip_addresses: Specifies secondary private IP address N of the ENI. This IP address must be an available IP address within the CIDR block of the VSwitch to which the ENI belongs.
@@ -1020,6 +1096,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
         __props__ = _EcsNetworkInterfaceState.__new__(_EcsNetworkInterfaceState)
 
         __props__.__dict__["description"] = description
+        __props__.__dict__["instance_type"] = instance_type
         __props__.__dict__["ipv4_prefix_count"] = ipv4_prefix_count
         __props__.__dict__["ipv4_prefixes"] = ipv4_prefixes
         __props__.__dict__["ipv6_address_count"] = ipv6_address_count
@@ -1027,6 +1104,7 @@ class EcsNetworkInterface(pulumi.CustomResource):
         __props__.__dict__["mac"] = mac
         __props__.__dict__["name"] = name
         __props__.__dict__["network_interface_name"] = network_interface_name
+        __props__.__dict__["network_interface_traffic_mode"] = network_interface_traffic_mode
         __props__.__dict__["primary_ip_address"] = primary_ip_address
         __props__.__dict__["private_ip"] = private_ip
         __props__.__dict__["private_ip_addresses"] = private_ip_addresses
@@ -1049,6 +1127,14 @@ class EcsNetworkInterface(pulumi.CustomResource):
         The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> pulumi.Output[str]:
+        """
+        The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
+        """
+        return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter(name="ipv4PrefixCount")
@@ -1108,6 +1194,14 @@ class EcsNetworkInterface(pulumi.CustomResource):
         The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
         """
         return pulumi.get(self, "network_interface_name")
+
+    @property
+    @pulumi.getter(name="networkInterfaceTrafficMode")
+    def network_interface_traffic_mode(self) -> pulumi.Output[str]:
+        """
+        The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
+        """
+        return pulumi.get(self, "network_interface_traffic_mode")
 
     @property
     @pulumi.getter(name="primaryIpAddress")

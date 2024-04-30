@@ -62,14 +62,14 @@ public final class ShardingInstanceConfigServerListArgs extends com.pulumi.resou
     }
 
     /**
-     * The node class of the Config Server node.
+     * The instance type of the ConfigServer node. Valid values: `mdb.shard.2x.xlarge.d`, `dds.cs.mid`.
      * 
      */
     @Import(name="nodeClass")
     private @Nullable Output<String> nodeClass;
 
     /**
-     * @return The node class of the Config Server node.
+     * @return The instance type of the ConfigServer node. Valid values: `mdb.shard.2x.xlarge.d`, `dds.cs.mid`.
      * 
      */
     public Optional<Output<String>> nodeClass() {
@@ -107,14 +107,14 @@ public final class ShardingInstanceConfigServerListArgs extends com.pulumi.resou
     }
 
     /**
-     * The node storage of the Config Server node.
+     * The storage space of the ConfigServer node.
      * 
      */
     @Import(name="nodeStorage")
     private @Nullable Output<Integer> nodeStorage;
 
     /**
-     * @return The node storage of the Config Server node.
+     * @return The storage space of the ConfigServer node.
      * 
      */
     public Optional<Output<Integer>> nodeStorage() {
@@ -231,7 +231,7 @@ public final class ShardingInstanceConfigServerListArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nodeClass The node class of the Config Server node.
+         * @param nodeClass The instance type of the ConfigServer node. Valid values: `mdb.shard.2x.xlarge.d`, `dds.cs.mid`.
          * 
          * @return builder
          * 
@@ -242,7 +242,7 @@ public final class ShardingInstanceConfigServerListArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nodeClass The node class of the Config Server node.
+         * @param nodeClass The instance type of the ConfigServer node. Valid values: `mdb.shard.2x.xlarge.d`, `dds.cs.mid`.
          * 
          * @return builder
          * 
@@ -294,7 +294,7 @@ public final class ShardingInstanceConfigServerListArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nodeStorage The node storage of the Config Server node.
+         * @param nodeStorage The storage space of the ConfigServer node.
          * 
          * @return builder
          * 
@@ -305,7 +305,7 @@ public final class ShardingInstanceConfigServerListArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nodeStorage The node storage of the Config Server node.
+         * @param nodeStorage The storage space of the ConfigServer node.
          * 
          * @return builder
          * 

@@ -101,6 +101,12 @@ namespace Pulumi.AliCloud.Ecs
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
+        /// The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
+        /// </summary>
+        [Output("instanceType")]
+        public Output<string> InstanceType { get; private set; } = null!;
+
+        /// <summary>
         /// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
         /// </summary>
         [Output("ipv4PrefixCount")]
@@ -141,6 +147,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Output("networkInterfaceName")]
         public Output<string> NetworkInterfaceName { get; private set; } = null!;
+
+        /// <summary>
+        /// The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
+        /// </summary>
+        [Output("networkInterfaceTrafficMode")]
+        public Output<string> NetworkInterfaceTrafficMode { get; private set; } = null!;
 
         /// <summary>
         /// The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
@@ -273,6 +285,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
         /// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
         /// </summary>
         [Input("ipv4PrefixCount")]
@@ -319,6 +337,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("networkInterfaceName")]
         public Input<string>? NetworkInterfaceName { get; set; }
+
+        /// <summary>
+        /// The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
+        /// </summary>
+        [Input("networkInterfaceTrafficMode")]
+        public Input<string>? NetworkInterfaceTrafficMode { get; set; }
 
         /// <summary>
         /// The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
@@ -439,6 +463,12 @@ namespace Pulumi.AliCloud.Ecs
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
+        /// </summary>
+        [Input("instanceType")]
+        public Input<string>? InstanceType { get; set; }
+
+        /// <summary>
         /// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4_prefixes` and `ipv4_prefix_count` parameters.
         /// </summary>
         [Input("ipv4PrefixCount")]
@@ -491,6 +521,12 @@ namespace Pulumi.AliCloud.Ecs
         /// </summary>
         [Input("networkInterfaceName")]
         public Input<string>? NetworkInterfaceName { get; set; }
+
+        /// <summary>
+        /// The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
+        /// </summary>
+        [Input("networkInterfaceTrafficMode")]
+        public Input<string>? NetworkInterfaceTrafficMode { get; set; }
 
         /// <summary>
         /// The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.

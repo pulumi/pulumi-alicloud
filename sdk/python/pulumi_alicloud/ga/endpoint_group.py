@@ -41,14 +41,14 @@ class EndpointGroupArgs:
         :param pulumi.Input[str] listener_id: The ID of the listener that is associated with the endpoint group.
         :param pulumi.Input[str] description: The description of the endpoint group.
         :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-               > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+               > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
         :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
                > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
         :param pulumi.Input[bool] health_check_enabled: Specifies whether to enable the health check feature. Valid values:
         :param pulumi.Input[int] health_check_interval_seconds: The interval between two consecutive health checks. Unit: seconds.
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
         :param pulumi.Input[int] health_check_port: The port that is used for health checks.
-        :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+        :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values:
         :param pulumi.Input[str] name: The name of the endpoint group.
         :param pulumi.Input['EndpointGroupPortOverridesArgs'] port_overrides: Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
                > **NOTE:** Port mapping is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. The listening port in the port map must be consistent with the listening port of the current listening instance.
@@ -152,7 +152,7 @@ class EndpointGroupArgs:
     def endpoint_group_type(self) -> Optional[pulumi.Input[str]]:
         """
         The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-        > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+        > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
         """
         return pulumi.get(self, "endpoint_group_type")
 
@@ -225,7 +225,7 @@ class EndpointGroupArgs:
     @pulumi.getter(name="healthCheckProtocol")
     def health_check_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+        The protocol that is used to connect to the targets for health checks. Valid values:
         """
         return pulumi.get(self, "health_check_protocol")
 
@@ -325,14 +325,14 @@ class _EndpointGroupState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] endpoint_group_ip_lists: (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpoint_group_ip_list` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-               > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+               > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
         :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
                > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
         :param pulumi.Input[bool] health_check_enabled: Specifies whether to enable the health check feature. Valid values:
         :param pulumi.Input[int] health_check_interval_seconds: The interval between two consecutive health checks. Unit: seconds.
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
         :param pulumi.Input[int] health_check_port: The port that is used for health checks.
-        :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+        :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values:
         :param pulumi.Input[str] listener_id: The ID of the listener that is associated with the endpoint group.
         :param pulumi.Input[str] name: The name of the endpoint group.
         :param pulumi.Input['EndpointGroupPortOverridesArgs'] port_overrides: Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
@@ -446,7 +446,7 @@ class _EndpointGroupState:
     def endpoint_group_type(self) -> Optional[pulumi.Input[str]]:
         """
         The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-        > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+        > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
         """
         return pulumi.get(self, "endpoint_group_type")
 
@@ -519,7 +519,7 @@ class _EndpointGroupState:
     @pulumi.getter(name="healthCheckProtocol")
     def health_check_protocol(self) -> Optional[pulumi.Input[str]]:
         """
-        The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+        The protocol that is used to connect to the targets for health checks. Valid values:
         """
         return pulumi.get(self, "health_check_protocol")
 
@@ -711,14 +711,14 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EndpointGroupEndpointConfigurationArgs']]]] endpoint_configurations: The endpointConfigurations of the endpoint group. See `endpoint_configurations` below.
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-               > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+               > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
         :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
                > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
         :param pulumi.Input[bool] health_check_enabled: Specifies whether to enable the health check feature. Valid values:
         :param pulumi.Input[int] health_check_interval_seconds: The interval between two consecutive health checks. Unit: seconds.
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
         :param pulumi.Input[int] health_check_port: The port that is used for health checks.
-        :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+        :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values:
         :param pulumi.Input[str] listener_id: The ID of the listener that is associated with the endpoint group.
         :param pulumi.Input[str] name: The name of the endpoint group.
         :param pulumi.Input[pulumi.InputType['EndpointGroupPortOverridesArgs']] port_overrides: Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
@@ -911,14 +911,14 @@ class EndpointGroup(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] endpoint_group_ip_lists: (Available since v1.213.0) The active endpoint IP addresses of the endpoint group. `endpoint_group_ip_list` will change with the growth of network traffic. You can run `pulumi up` to query the latest CIDR blocks and IP addresses.
         :param pulumi.Input[str] endpoint_group_region: The ID of the region where the endpoint group is deployed.
         :param pulumi.Input[str] endpoint_group_type: The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-               > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+               > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
         :param pulumi.Input[str] endpoint_request_protocol: The endpoint request protocol. Valid values: `HTTP`, `HTTPS`.
                > **NOTE:** This item is only supported when creating terminal node group for listening instance of HTTP or HTTPS protocol. For the listening instance of HTTP protocol, the back-end service protocol supports and only supports HTTP.
         :param pulumi.Input[bool] health_check_enabled: Specifies whether to enable the health check feature. Valid values:
         :param pulumi.Input[int] health_check_interval_seconds: The interval between two consecutive health checks. Unit: seconds.
         :param pulumi.Input[str] health_check_path: The path specified as the destination of the targets for health checks.
         :param pulumi.Input[int] health_check_port: The port that is used for health checks.
-        :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+        :param pulumi.Input[str] health_check_protocol: The protocol that is used to connect to the targets for health checks. Valid values:
         :param pulumi.Input[str] listener_id: The ID of the listener that is associated with the endpoint group.
         :param pulumi.Input[str] name: The name of the endpoint group.
         :param pulumi.Input[pulumi.InputType['EndpointGroupPortOverridesArgs']] port_overrides: Mapping between listening port and forwarding port of boarding point. See `port_overrides` below.
@@ -998,7 +998,7 @@ class EndpointGroup(pulumi.CustomResource):
     def endpoint_group_type(self) -> pulumi.Output[str]:
         """
         The endpoint group type. Default value: `default`. Valid values: `default`, `virtual`.
-        > **NOTE:** Only the listening instance of HTTP or HTTPS protocol supports the creation of virtual terminal node group.
+        > **NOTE:** Currently, only `HTTP` or `HTTPS` protocol listener can directly create a `virtual` Endpoint Group. If it is `TCP` protocol listener, and you want to create a `virtual` Endpoint Group, please ensure that the `default` Endpoint Group has been created.
         """
         return pulumi.get(self, "endpoint_group_type")
 
@@ -1047,7 +1047,7 @@ class EndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="healthCheckProtocol")
     def health_check_protocol(self) -> pulumi.Output[Optional[str]]:
         """
-        The protocol that is used to connect to the targets for health checks. Valid values: `http`, `https`, `tcp`.
+        The protocol that is used to connect to the targets for health checks. Valid values:
         """
         return pulumi.get(self, "health_check_protocol")
 

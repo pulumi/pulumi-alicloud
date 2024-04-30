@@ -181,6 +181,8 @@ type EciScalingConfiguration struct {
 	IngressBandwidth pulumi.IntPtrOutput `pulumi:"ingressBandwidth"`
 	// The list of initContainers. See `initContainers` below for details.
 	InitContainers EciScalingConfigurationInitContainerArrayOutput `pulumi:"initContainers"`
+	// The specified ECS instance types. You can specify up to five ECS instance types.
+	InstanceTypes pulumi.StringArrayOutput `pulumi:"instanceTypes"`
 	// Number of IPv6 addresses.
 	Ipv6AddressCount pulumi.IntPtrOutput `pulumi:"ipv6AddressCount"`
 	// The weight of an ECI instance attached to the Server Group.
@@ -300,6 +302,8 @@ type eciScalingConfigurationState struct {
 	IngressBandwidth *int `pulumi:"ingressBandwidth"`
 	// The list of initContainers. See `initContainers` below for details.
 	InitContainers []EciScalingConfigurationInitContainer `pulumi:"initContainers"`
+	// The specified ECS instance types. You can specify up to five ECS instance types.
+	InstanceTypes []string `pulumi:"instanceTypes"`
 	// Number of IPv6 addresses.
 	Ipv6AddressCount *int `pulumi:"ipv6AddressCount"`
 	// The weight of an ECI instance attached to the Server Group.
@@ -387,6 +391,8 @@ type EciScalingConfigurationState struct {
 	IngressBandwidth pulumi.IntPtrInput
 	// The list of initContainers. See `initContainers` below for details.
 	InitContainers EciScalingConfigurationInitContainerArrayInput
+	// The specified ECS instance types. You can specify up to five ECS instance types.
+	InstanceTypes pulumi.StringArrayInput
 	// Number of IPv6 addresses.
 	Ipv6AddressCount pulumi.IntPtrInput
 	// The weight of an ECI instance attached to the Server Group.
@@ -478,6 +484,8 @@ type eciScalingConfigurationArgs struct {
 	IngressBandwidth *int `pulumi:"ingressBandwidth"`
 	// The list of initContainers. See `initContainers` below for details.
 	InitContainers []EciScalingConfigurationInitContainer `pulumi:"initContainers"`
+	// The specified ECS instance types. You can specify up to five ECS instance types.
+	InstanceTypes []string `pulumi:"instanceTypes"`
 	// Number of IPv6 addresses.
 	Ipv6AddressCount *int `pulumi:"ipv6AddressCount"`
 	// The weight of an ECI instance attached to the Server Group.
@@ -566,6 +574,8 @@ type EciScalingConfigurationArgs struct {
 	IngressBandwidth pulumi.IntPtrInput
 	// The list of initContainers. See `initContainers` below for details.
 	InitContainers EciScalingConfigurationInitContainerArrayInput
+	// The specified ECS instance types. You can specify up to five ECS instance types.
+	InstanceTypes pulumi.StringArrayInput
 	// Number of IPv6 addresses.
 	Ipv6AddressCount pulumi.IntPtrInput
 	// The weight of an ECI instance attached to the Server Group.
@@ -806,6 +816,11 @@ func (o EciScalingConfigurationOutput) InitContainers() EciScalingConfigurationI
 	return o.ApplyT(func(v *EciScalingConfiguration) EciScalingConfigurationInitContainerArrayOutput {
 		return v.InitContainers
 	}).(EciScalingConfigurationInitContainerArrayOutput)
+}
+
+// The specified ECS instance types. You can specify up to five ECS instance types.
+func (o EciScalingConfigurationOutput) InstanceTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *EciScalingConfiguration) pulumi.StringArrayOutput { return v.InstanceTypes }).(pulumi.StringArrayOutput)
 }
 
 // Number of IPv6 addresses.

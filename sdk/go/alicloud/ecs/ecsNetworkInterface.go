@@ -115,6 +115,8 @@ type EcsNetworkInterface struct {
 
 	// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
+	InstanceType pulumi.StringOutput `pulumi:"instanceType"`
 	// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
 	Ipv4PrefixCount pulumi.IntOutput `pulumi:"ipv4PrefixCount"`
 	// A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
@@ -131,6 +133,8 @@ type EcsNetworkInterface struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
 	NetworkInterfaceName pulumi.StringOutput `pulumi:"networkInterfaceName"`
+	// The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
+	NetworkInterfaceTrafficMode pulumi.StringOutput `pulumi:"networkInterfaceTrafficMode"`
 	// The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
 	PrimaryIpAddress pulumi.StringOutput `pulumi:"primaryIpAddress"`
 	// Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
@@ -202,6 +206,8 @@ func GetEcsNetworkInterface(ctx *pulumi.Context,
 type ecsNetworkInterfaceState struct {
 	// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description *string `pulumi:"description"`
+	// The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
+	InstanceType *string `pulumi:"instanceType"`
 	// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
 	Ipv4PrefixCount *int `pulumi:"ipv4PrefixCount"`
 	// A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
@@ -218,6 +224,8 @@ type ecsNetworkInterfaceState struct {
 	Name *string `pulumi:"name"`
 	// The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
 	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
+	// The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
+	NetworkInterfaceTrafficMode *string `pulumi:"networkInterfaceTrafficMode"`
 	// The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
 	PrimaryIpAddress *string `pulumi:"primaryIpAddress"`
 	// Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
@@ -257,6 +265,8 @@ type ecsNetworkInterfaceState struct {
 type EcsNetworkInterfaceState struct {
 	// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrInput
+	// The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
+	InstanceType pulumi.StringPtrInput
 	// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
 	Ipv4PrefixCount pulumi.IntPtrInput
 	// A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
@@ -273,6 +283,8 @@ type EcsNetworkInterfaceState struct {
 	Name pulumi.StringPtrInput
 	// The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
 	NetworkInterfaceName pulumi.StringPtrInput
+	// The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
+	NetworkInterfaceTrafficMode pulumi.StringPtrInput
 	// The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
 	PrimaryIpAddress pulumi.StringPtrInput
 	// Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
@@ -316,6 +328,8 @@ func (EcsNetworkInterfaceState) ElementType() reflect.Type {
 type ecsNetworkInterfaceArgs struct {
 	// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description *string `pulumi:"description"`
+	// The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
+	InstanceType *string `pulumi:"instanceType"`
 	// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
 	Ipv4PrefixCount *int `pulumi:"ipv4PrefixCount"`
 	// A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
@@ -330,6 +344,8 @@ type ecsNetworkInterfaceArgs struct {
 	Name *string `pulumi:"name"`
 	// The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
 	NetworkInterfaceName *string `pulumi:"networkInterfaceName"`
+	// The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
+	NetworkInterfaceTrafficMode *string `pulumi:"networkInterfaceTrafficMode"`
 	// The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
 	PrimaryIpAddress *string `pulumi:"primaryIpAddress"`
 	// Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
@@ -368,6 +384,8 @@ type ecsNetworkInterfaceArgs struct {
 type EcsNetworkInterfaceArgs struct {
 	// The description of the ENI. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	Description pulumi.StringPtrInput
+	// The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
+	InstanceType pulumi.StringPtrInput
 	// The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
 	Ipv4PrefixCount pulumi.IntPtrInput
 	// A list of IPv4 prefixes to be assigned to the ENI. Support up to 10.
@@ -382,6 +400,8 @@ type EcsNetworkInterfaceArgs struct {
 	Name pulumi.StringPtrInput
 	// The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
 	NetworkInterfaceName pulumi.StringPtrInput
+	// The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
+	NetworkInterfaceTrafficMode pulumi.StringPtrInput
 	// The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.
 	PrimaryIpAddress pulumi.StringPtrInput
 	// Field `privateIp` has been deprecated from provider version 1.123.1. New field `primaryIpAddress` instead
@@ -508,6 +528,11 @@ func (o EcsNetworkInterfaceOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
+// The type of the ENI. Default value: `Secondary`. Valid values: `Secondary`, `Trunk`.
+func (o EcsNetworkInterfaceOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringOutput { return v.InstanceType }).(pulumi.StringOutput)
+}
+
 // The number of IPv4 prefixes that can be automatically created by ECS. Valid values: 1 to 10. **NOTE:** You cannot specify both the `ipv4Prefixes` and `ipv4PrefixCount` parameters.
 func (o EcsNetworkInterfaceOutput) Ipv4PrefixCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.IntOutput { return v.Ipv4PrefixCount }).(pulumi.IntOutput)
@@ -543,6 +568,11 @@ func (o EcsNetworkInterfaceOutput) Name() pulumi.StringOutput {
 // The name of the ENI. The name must be 2 to 128 characters in length, and can contain letters, digits, colons (:), underscores (_), and hyphens (-). It must start with a letter and cannot start with http:// or https://.
 func (o EcsNetworkInterfaceOutput) NetworkInterfaceName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringOutput { return v.NetworkInterfaceName }).(pulumi.StringOutput)
+}
+
+// The communication mode of the ENI. Default value: `Standard`. Valid values: `Standard`, `HighPerformance`.
+func (o EcsNetworkInterfaceOutput) NetworkInterfaceTrafficMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *EcsNetworkInterface) pulumi.StringOutput { return v.NetworkInterfaceTrafficMode }).(pulumi.StringOutput)
 }
 
 // The primary private IP address of the ENI. The specified IP address must be available within the CIDR block of the VSwitch. If this parameter is not specified, an available IP address is assigned from the VSwitch CIDR block at random.

@@ -40,6 +40,8 @@ import * as utilities from "../utilities";
  *         "*.aliyun.com",
  *         "*.example.com",
  *     ],
+ * }, {
+ *     dependsOn: [createBucket],
  * });
  * ```
  *

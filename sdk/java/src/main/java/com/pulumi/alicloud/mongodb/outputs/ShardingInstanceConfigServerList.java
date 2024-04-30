@@ -28,7 +28,7 @@ public final class ShardingInstanceConfigServerList {
      */
     private @Nullable Integer maxIops;
     /**
-     * @return The node class of the Config Server node.
+     * @return The instance type of the ConfigServer node. Valid values: `mdb.shard.2x.xlarge.d`, `dds.cs.mid`.
      * 
      */
     private @Nullable String nodeClass;
@@ -43,7 +43,7 @@ public final class ShardingInstanceConfigServerList {
      */
     private @Nullable String nodeId;
     /**
-     * @return The node storage of the Config Server node.
+     * @return The storage space of the ConfigServer node.
      * 
      */
     private @Nullable Integer nodeStorage;
@@ -76,7 +76,7 @@ public final class ShardingInstanceConfigServerList {
         return Optional.ofNullable(this.maxIops);
     }
     /**
-     * @return The node class of the Config Server node.
+     * @return The instance type of the ConfigServer node. Valid values: `mdb.shard.2x.xlarge.d`, `dds.cs.mid`.
      * 
      */
     public Optional<String> nodeClass() {
@@ -97,7 +97,7 @@ public final class ShardingInstanceConfigServerList {
         return Optional.ofNullable(this.nodeId);
     }
     /**
-     * @return The node storage of the Config Server node.
+     * @return The storage space of the ConfigServer node.
      * 
      */
     public Optional<Integer> nodeStorage() {
