@@ -54,17 +54,9 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> accountId() {
         return Codegen.optional(this.accountId);
     }
-    /**
-     * Use this to mark a terraform configuration file source.
-     * 
-     */
     @Export(name="configurationSource", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> configurationSource;
 
-    /**
-     * @return Use this to mark a terraform configuration file source.
-     * 
-     */
     public Output<Optional<String>> configurationSource() {
         return Codegen.optional(this.configurationSource);
     }
