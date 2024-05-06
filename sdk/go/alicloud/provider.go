@@ -23,8 +23,7 @@ type Provider struct {
 	AccessKey pulumi.StringPtrOutput `pulumi:"accessKey"`
 	// The account ID for some service API operations. You can retrieve this from the 'Security Settings' section of the
 	// Alibaba Cloud console.
-	AccountId pulumi.StringPtrOutput `pulumi:"accountId"`
-	// Use this to mark a terraform configuration file source.
+	AccountId           pulumi.StringPtrOutput `pulumi:"accountId"`
 	ConfigurationSource pulumi.StringPtrOutput `pulumi:"configurationSource"`
 	// The URI of sidecar credentials service.
 	CredentialsUri pulumi.StringPtrOutput `pulumi:"credentialsUri"`
@@ -101,8 +100,7 @@ type providerArgs struct {
 	// The maximum timeout of the client connection server.
 	ClientConnectTimeout *int `pulumi:"clientConnectTimeout"`
 	// The maximum timeout of the client read request.
-	ClientReadTimeout *int `pulumi:"clientReadTimeout"`
-	// Use this to mark a terraform configuration file source.
+	ClientReadTimeout   *int    `pulumi:"clientReadTimeout"`
 	ConfigurationSource *string `pulumi:"configurationSource"`
 	// The URI of sidecar credentials service.
 	CredentialsUri *string `pulumi:"credentialsUri"`
@@ -156,8 +154,7 @@ type ProviderArgs struct {
 	// The maximum timeout of the client connection server.
 	ClientConnectTimeout pulumi.IntPtrInput
 	// The maximum timeout of the client read request.
-	ClientReadTimeout pulumi.IntPtrInput
-	// Use this to mark a terraform configuration file source.
+	ClientReadTimeout   pulumi.IntPtrInput
 	ConfigurationSource pulumi.StringPtrInput
 	// The URI of sidecar credentials service.
 	CredentialsUri pulumi.StringPtrInput
@@ -247,7 +244,6 @@ func (o ProviderOutput) AccountId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.AccountId }).(pulumi.StringPtrOutput)
 }
 
-// Use this to mark a terraform configuration file source.
 func (o ProviderOutput) ConfigurationSource() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ConfigurationSource }).(pulumi.StringPtrOutput)
 }
