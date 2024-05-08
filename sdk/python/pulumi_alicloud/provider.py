@@ -49,7 +49,6 @@ class ProviderArgs:
                Alibaba Cloud console.
         :param pulumi.Input[int] client_connect_timeout: The maximum timeout of the client connection server.
         :param pulumi.Input[int] client_read_timeout: The maximum timeout of the client read request.
-        :param pulumi.Input[str] configuration_source: Use this to mark a terraform configuration file source.
         :param pulumi.Input[str] credentials_uri: The URI of sidecar credentials service.
         :param pulumi.Input[str] ecs_role_name: The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
                of the Alibaba Cloud console.
@@ -207,9 +206,6 @@ class ProviderArgs:
     @property
     @pulumi.getter(name="configurationSource")
     def configuration_source(self) -> Optional[pulumi.Input[str]]:
-        """
-        Use this to mark a terraform configuration file source.
-        """
         return pulumi.get(self, "configuration_source")
 
     @configuration_source.setter
@@ -482,7 +478,6 @@ class Provider(pulumi.ProviderResource):
                Alibaba Cloud console.
         :param pulumi.Input[int] client_connect_timeout: The maximum timeout of the client connection server.
         :param pulumi.Input[int] client_read_timeout: The maximum timeout of the client read request.
-        :param pulumi.Input[str] configuration_source: Use this to mark a terraform configuration file source.
         :param pulumi.Input[str] credentials_uri: The URI of sidecar credentials service.
         :param pulumi.Input[str] ecs_role_name: The RAM Role Name attached on a ECS instance for API operations. You can retrieve this from the 'Access Control' section
                of the Alibaba Cloud console.
@@ -619,9 +614,6 @@ class Provider(pulumi.ProviderResource):
     @property
     @pulumi.getter(name="configurationSource")
     def configuration_source(self) -> pulumi.Output[Optional[str]]:
-        """
-        Use this to mark a terraform configuration file source.
-        """
         return pulumi.get(self, "configuration_source")
 
     @property
